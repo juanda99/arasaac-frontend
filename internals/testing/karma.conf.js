@@ -1,6 +1,6 @@
-const webpackConfig = require('../webpack/webpack.test.babel');
-const argv = require('minimist')(process.argv.slice(2));
-const path = require('path');
+const webpackConfig = require('../webpack/webpack.test.babel')
+const argv = require('minimist')(process.argv.slice(2))
+const path = require('path')
 
 module.exports = (config) => {
   config.set({
@@ -57,5 +57,5 @@ module.exports = (config) => {
       ],
     },
 
-  });
-};
+  })
+}
