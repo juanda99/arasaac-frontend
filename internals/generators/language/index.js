@@ -16,7 +16,7 @@ module.exports = {
       }
 
       return '2 character language specifier is required'
-    },
+    }
   }],
 
   actions: () => {
@@ -25,43 +25,43 @@ module.exports = {
       type: 'modify',
       path: '../../app/i18n.js',
       pattern: /('react-intl\/locale-data\/[a-z]+';\n)(?!.*'react-intl\/locale-data\/[a-z]+';)/g,
-      templateFile: './language/intl-locale-data.hbs',
+      templateFile: './language/intl-locale-data.hbs'
     })
     actions.push({
       type: 'modify',
       path: '../../app/i18n.js',
       pattern: /(\s+'[a-z]+',\n)(?!.*\s+'[a-z]+',)/g,
-      templateFile: './language/app-locale.hbs',
+      templateFile: './language/app-locale.hbs'
     })
     actions.push({
       type: 'modify',
       path: '../../app/i18n.js',
       pattern: /(from\s'.\/translations\/[a-z]+.json';\n)(?!.*from\s'.\/translations\/[a-z]+.json';)/g,
-      templateFile: './language/translation-messages.hbs',
+      templateFile: './language/translation-messages.hbs'
     })
     actions.push({
       type: 'modify',
       path: '../../app/i18n.js',
       pattern: /(addLocaleData\([a-z]+LocaleData\);\n)(?!.*addLocaleData\([a-z]+LocaleData\);)/g,
-      templateFile: './language/add-locale-data.hbs',
+      templateFile: './language/add-locale-data.hbs'
     })
     actions.push({
       type: 'modify',
       path: '../../app/i18n.js',
       pattern: /([a-z]+:\sformatTranslationMessages\('[a-z]+',\s[a-z]+TranslationMessages\),\n)(?!.*[a-z]+:\sformatTranslationMessages\('[a-z]+',\s[a-z]+TranslationMessages\),)/g,
-      templateFile: './language/format-translation-messages.hbs',
+      templateFile: './language/format-translation-messages.hbs'
     })
     actions.push({
       type: 'add',
       path: '../../app/translations/{{language}}.json',
       templateFile: './language/translations-json.hbs',
-      abortOnFail: true,
+      abortOnFail: true
     })
     actions.push({
       type: 'modify',
       path: '../../app/app.js',
       pattern: /(System\.import\('intl\/locale-data\/jsonp\/[a-z]+\.js'\),\n)(?!.*System\.import\('intl\/locale-data\/jsonp\/[a-z]+\.js'\),)/g,
-      templateFile: './language/polyfill-intl-locale.hbs',
+      templateFile: './language/polyfill-intl-locale.hbs'
     })
     actions.push(
       () => {
@@ -76,5 +76,5 @@ module.exports = {
     )
 
     return actions
-  },
+  }
 }

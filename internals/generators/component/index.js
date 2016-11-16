@@ -11,7 +11,7 @@ module.exports = {
     name: 'type',
     message: 'Select the type of component',
     default: 'Stateless Function',
-    choices: () => ['Stateless Function', 'ES6 Class (Pure)', 'ES6 Class'],
+    choices: () => ['Stateless Function', 'ES6 Class (Pure)', 'ES6 Class']
   }, {
     type: 'input',
     name: 'name',
@@ -23,12 +23,12 @@ module.exports = {
       }
 
       return 'The name is required'
-    },
+    }
   }, {
     type: 'confirm',
     name: 'wantMessages',
     default: true,
-    message: 'Do you want i18n messages (i.e. will this component use text)?',
+    message: 'Do you want i18n messages (i.e. will this component use text)?'
   }],
   actions: (data) => {
     // Generate index.js and index.test.js
@@ -56,12 +56,12 @@ module.exports = {
       type: 'add',
       path: '../../app/components/{{properCase name}}/index.js',
       templateFile: componentTemplate,
-      abortOnFail: true,
+      abortOnFail: true
     }, {
       type: 'add',
       path: '../../app/components/{{properCase name}}/tests/index.test.js',
       templateFile: './component/test.js.hbs',
-      abortOnFail: true,
+      abortOnFail: true
     }]
 
     // If they want a i18n messages file
@@ -70,10 +70,10 @@ module.exports = {
         type: 'add',
         path: '../../app/components/{{properCase name}}/messages.js',
         templateFile: './component/messages.js.hbs',
-        abortOnFail: true,
+        abortOnFail: true
       })
     }
 
     return actions
-  },
+  }
 }

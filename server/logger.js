@@ -31,7 +31,7 @@ Localhost: ${chalk.magenta(`http://localhost:${port}`)}
 (tunnelStarted ? `\n    Proxy: ${chalk.magenta(tunnelStarted)}` : '')}${divider}
 ${chalk.blue(`Press ${chalk.italic('CTRL-C')} to stop`)}
     `)
-  },
+  }
 }
 
 module.exports = logger

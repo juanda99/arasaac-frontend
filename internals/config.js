@@ -27,7 +27,7 @@ const ReactBoilerplate = {
         'express',
         'ip',
         'minimist',
-        'sanitize.css',
+        'sanitize.css'
       ],
 
       /**
@@ -37,7 +37,7 @@ const ReactBoilerplate = {
       include: ['core-js', 'eventsource-polyfill', 'babel-polyfill', 'lodash'],
 
       // The path where the DLL manifest and bundle will get built
-      path: resolve('../node_modules/react-boilerplate-dlls'),
+      path: resolve('../node_modules/react-boilerplate-dlls')
     },
 
     entry(pkg) {
@@ -47,10 +47,10 @@ const ReactBoilerplate = {
       const includeDependencies = uniq(dependencyNames.concat(include))
 
       return {
-        reactBoilerplateDeps: pullAll(includeDependencies, exclude),
+        reactBoilerplateDeps: pullAll(includeDependencies, exclude)
       }
-    },
-  },
+    }
+  }
 }
 
 module.exports = ReactBoilerplate

@@ -39,7 +39,7 @@ module.exports = {
       }
 
       return 'The path is required'
-    },
+    }
   }, {
     type: 'input',
     name: 'path',
@@ -51,7 +51,7 @@ module.exports = {
       }
 
       return 'path is required'
-    },
+    }
   }],
 
   // Add the route to the routes.js file above the error route
@@ -64,17 +64,17 @@ module.exports = {
         type: 'modify',
         path: '../../app/routes.js',
         pattern: /(\s{\n\s{0,}path: '\*',)/g,
-        template: trimTemplateFile('routeWithReducer.hbs'),
+        template: trimTemplateFile('routeWithReducer.hbs')
       })
     } else {
       actions.push({
         type: 'modify',
         path: '../../app/routes.js',
         pattern: /(\s{\n\s{0,}path: '\*',)/g,
-        template: trimTemplateFile('route.hbs'),
+        template: trimTemplateFile('route.hbs')
       })
     }
 
     return actions
-  },
+  }
 }

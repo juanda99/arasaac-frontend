@@ -16,5 +16,5 @@ const selectLocale = () => createSelector(
 
 export {
   selectLanguage,
-  selectLocale,
+  selectLocale
 }

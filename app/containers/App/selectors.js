@@ -16,5 +16,5 @@ const selectLocationState = () => {
 }
 
 export {
-  selectLocationState,
+  selectLocationState
 }

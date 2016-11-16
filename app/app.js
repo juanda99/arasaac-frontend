@@ -4,10 +4,13 @@
  * This is the entry file for the application, only setup and boilerplate
  * code.
  */
+
+// Needed for redux-saga es6 generator support
 import 'babel-polyfill'
 
 /* eslint-disable import/no-unresolved, import/extensions */
-// Load the manifest.json file and the .htaccess file
+// Load the favicon, the manifest.json file and the .htaccess file
+import 'file?name=[name].[ext]!./favicon.png'
 import '!file?name=[name].[ext]!./manifest.json'
 import 'file?name=[name].[ext]!./.htaccess'
 /* eslint-enable import/no-unresolved, import/extensions */
@@ -18,15 +21,40 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
+import FontFaceObserver from 'fontfaceobserver'
 import { useScroll } from 'react-router-scroll'
-import LanguageProvider from 'containers/LanguageProvider'
 import configureStore from './store'
+
+// Import Language Provider
+import LanguageProvider from 'containers/LanguageProvider'
+
+// material-ui requirement
+import injectTapEventPlugin from 'react-tap-event-plugin'
+
+// Import CSS reset and Global Styles
+import 'sanitize.css/sanitize.css'
+import './global-styles'
+
+// Needed for onTouchTap
+// Can go away when react 1.0 release
+// Check this repo:
+// https://github.com/zilverline/react-tap-event-plugin
+injectTapEventPlugin()
+
+
+// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
+// the index.html file and this observer)
+const openSansObserver = new FontFaceObserver('Roboto', {})
+
+// When Open Sans is loaded, add a font-family using Open Sans to the body
+openSansObserver.load().then(() => {
+  document.body.classList.add('fontLoaded')
+}, () => {
+  document.body.classList.remove('fontLoaded')
+})
 
 // Import i18n messages
 import { translationMessages } from './i18n'
-
-// Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
-import 'sanitize.css/sanitize.css'
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
@@ -40,7 +68,7 @@ const store = configureStore(initialState, browserHistory)
 // must be provided for resolving how to retrieve the "route" in the state
 import { selectLocationState } from 'containers/App/selectors'
 const history = syncHistoryWithStore(browserHistory, store, {
-  selectLocationState: selectLocationState(),
+  selectLocationState: selectLocationState()
 })
 
 // Set up the router, wrapping all Routes in the App component
@@ -48,14 +76,13 @@ import App from 'containers/App'
 import createRoutes from './routes'
 const rootRoute = {
   component: App,
-  childRoutes: createRoutes(store),
+  childRoutes: createRoutes(store)
 }
 
-
-const render = (translatedMessages) => {
+const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
-      <LanguageProvider messages={translatedMessages}>
+      <LanguageProvider messages={messages}>
         <Router
           history={history}
           routes={rootRoute}
@@ -70,7 +97,6 @@ const render = (translatedMessages) => {
     document.getElementById('app')
   )
 }
-
 
 // Hot reloadable translation json files
 if (module.hot) {
@@ -87,7 +113,8 @@ if (!window.Intl) {
     resolve(System.import('intl'))
   }))
     .then(() => Promise.all([
-      System.import('intl/locale-data/jsonp/de.js'),
+      System.import('intl/locale-data/jsonp/en.js'),
+      System.import('intl/locale-data/jsonp/es.js')
     ]))
     .then(() => render(translationMessages))
     .catch((err) => {
@@ -100,5 +127,7 @@ if (!window.Intl) {
 // Install ServiceWorker and AppCache in the end since
 // it's not most important operation and if main code fails,
 // we do not want it installed
-import { install } from 'offline-plugin/runtime'
-install()
+if (process.env.NODE_ENV === 'production') {
+  require('offline-plugin/runtime').install() // eslint-disable-line global-require
+}
+

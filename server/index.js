@@ -16,7 +16,7 @@ const app = express()
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),
-  publicPath: '/',
+  publicPath: '/'
 })
 
 // get the intended port number, use port 3000 if not provided
