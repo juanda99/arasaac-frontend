@@ -35,6 +35,6 @@ export default {
     width: '100%',
     position: 'absolute',
     bottom: 0,
-    minHeight: '8 rem'
+    height: '8 rem'
   }
 }

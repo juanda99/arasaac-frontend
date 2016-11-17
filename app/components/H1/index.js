@@ -12,11 +12,11 @@ import media from 'utils/mediaqueries'
 
 const H1 = styled.h1`
   color: ${darkWhite};
-  font-size: 3em;
+  font-size: 5.6em;
   margin-bottom: 0.25em;
   font-weight: ${typography.fontWeightLight};
   ${media.lg} {
-    font-size: 4em;
+    font-size: 5.6em;
   }
 `
 
