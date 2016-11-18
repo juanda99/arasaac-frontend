@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import { lightGreen500 } from 'material-ui/styles/colors'
 
 const FullWidthSection = styled.div`
-  backgroundColor: ${lightGreen500};
+  backgroundColor: white;
   overflow: 'hidden';
   clear:both;
   padding-bottom: 2em;

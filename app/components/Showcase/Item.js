@@ -11,9 +11,9 @@ import Paper from 'material-ui/Paper'
 class Item extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    title: PropTypes.string.required,
-    route: PropTypes.string.required,
-    image: PropTypes.string.required
+    title: PropTypes.object.isRequired,
+    route: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired
   }
 
   constructor(props) {
