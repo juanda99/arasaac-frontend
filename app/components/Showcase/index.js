@@ -18,21 +18,21 @@ const Showcase = () => (
   <FullWidthSection>
     <Grid>
       <Row>
-        <Col md={4}>
+        <Col xs={12} sm={12} md={4} lg={4}>
           <Item
             title={<FormattedMessage {...messages.saac} />}
             route='/get-started'
             image={PictogramsImage}
           />
         </Col>
-        <Col md={4}>
+        <Col xs={12} sm={12} md={4} lg={4}>
           <Item
             title={<FormattedMessage {...messages.software} />}
             route='/get-started'
             image={SoftwareImage}
           />
         </Col>
-        <Col md={4}>
+        <Col xs={12} sm={12} md={4} lg={4}>
           <Item
             title={<FormattedMessage {...messages.news} />}
             route='/get-started'

@@ -4,6 +4,6 @@ const FullWidthSection = styled.div`
   backgroundColor: white;
   overflow: 'hidden';
   clear:both;
-  padding-bottom: 2em;
+  padding: 2em;
 `
 export default FullWidthSection

@@ -7,6 +7,20 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import Paper from 'material-ui/Paper'
+import Image from 'components/Image'
+import H3 from 'components/H3'
+
+const styles = {
+  paper: {
+    width: '100%',
+    maxWidth: '370px',
+    padding: '1em',
+    margin: '0 auto'
+  },
+  H3: {
+    textAlign: 'center'
+  }
+}
 
 class Item extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -37,13 +51,14 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
     const { title, route, image } = this.props
     return (
       <Paper
+        style={styles.paper}
         zDepth={this.state.zDepth}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <h3>{title}</h3>
+        <H3 style={styles.H3}>{title}</H3>
         <Link to={route}>
-          <img src={image} alt={title} />
+          <Image src={image} alt={title} />
         </Link>
       </Paper>
     )
