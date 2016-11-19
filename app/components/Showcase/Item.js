@@ -9,12 +9,13 @@ import { Link } from 'react-router'
 import Paper from 'material-ui/Paper'
 import Image from 'components/Image'
 import H3 from 'components/H3'
+import { grey200 } from 'material-ui/styles/colors'
+import FullWidthSection from 'components/FullWidthSection'
 
 const styles = {
   paper: {
     width: '100%',
     maxWidth: '370px',
-    padding: '1em',
     margin: '0 auto'
   },
   H3: {
@@ -56,7 +57,9 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <H3 style={styles.H3}>{title}</H3>
+        <FullWidthSection color={grey200}>
+          <H3 style={styles.H3}>{title}</H3>
+        </FullWidthSection>
         <Link to={route}>
           <Image src={image} alt={title} />
         </Link>

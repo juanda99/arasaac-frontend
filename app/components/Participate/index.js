@@ -4,18 +4,34 @@
 *
 */
 
-import React from 'react';
+import { grey200 } from 'material-ui/styles/colors'
+import { typography } from 'material-ui/styles'
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import React from 'react'
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
+import H3 from 'components/H3'
+import FullWidthSection from 'components/FullWidthSection'
+import RaisedButton from 'material-ui/RaisedButton'
 
-
-function Participate() {
-  return (
-    <div>
-      <FormattedMessage {...messages.header} />
-    </div>
-  );
+const styles = {
+  H3: {
+    fontWeight: typography.fontWeightLight
+  }
 }
 
-export default Participate;
+const Participate = () => (
+  <FullWidthSection color={grey200}>
+    <H3 style={styles.H3}><FormattedMessage {...messages.participate} /></H3>
+    <RaisedButton
+      label={<FormattedMessage {...messages.contact} />}
+      primary={true}
+      linkButton={true}
+      href='https://github.com/callemall/material-ui'
+      style={styles.button}
+    />
+  </FullWidthSection>
+)
+
+export default Participate
+

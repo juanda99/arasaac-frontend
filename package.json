@@ -149,6 +149,7 @@
       "prefer-template": 2,
       "class-methods-use-this": 0,
       "react/forbid-prop-types": 0,
+      "react/jsx-boolean-value": 0,
       "react/jsx-first-prop-new-line": [
         2,
         "multiline"
@@ -208,7 +209,7 @@
     "minimist": "1.2.0",
     "react": "15.3.2",
     "react-dom": "15.3.2",
-    "react-flexbox-grid": "^0.10.2",
+    "react-flexbox-grid": "git+https://github.com/juanda99/react-flexbox-grid.git",
     "react-helmet": "3.1.0",
     "react-intl": "2.1.5",
     "react-redux": "4.4.5",

@@ -7,7 +7,7 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import messages from './messages'
-import FullWidthSection from './FullWidthSection'
+import FullWidthSection from 'components/FullWidthSection'
 import Item from './Item'
 import SoftwareImage from './software.png'
 import NewsImage from './news.png'

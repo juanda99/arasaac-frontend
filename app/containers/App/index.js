@@ -100,34 +100,34 @@ class App extends Component {
     return styles
   }
 
-  getViewProps() {
+  getViewProps(width) {
     let title = ''
     let docked = false
     const url = this.props.location.pathname
     switch (true) {
       case /api/.test(url):
         title = <FormattedMessage {...messages.api} />
-        docked = true
+        docked = width === LARGE
         break
       case /search/.test(url):
         title = <FormattedMessage {...messages.pictogramsSearch} />
-        docked = true
+        docked = width === LARGE
         break
       case /catalogs/.test(url):
         title = <FormattedMessage {...messages.catalogs} />
-        docked = true
+        docked = width === LARGE
         break
       case /materials/.test(url):
         title = <FormattedMessage {...messages.materials} />
-        docked = true
+        docked = width === LARGE
         break
       case /onlinetools/.test(url):
         title = <FormattedMessage {...messages.onlineTools} />
-        docked = true
+        docked = width === LARGE
         break
       case /software/.test(url):
         title = <FormattedMessage {...messages.software} />
-        docked = true
+        docked = width === LARGE
         break
       case /signin/.test(url):
         title = <FormattedMessage {...messages.signinTitle} />
@@ -139,15 +139,15 @@ class App extends Component {
         break
       case /profile/.test(url):
         title = <FormattedMessage {...messages.userProfileTitle} />
-        docked = true
+        docked = width === LARGE
         break
       case /configuration/.test(url):
         title = <FormattedMessage {...messages.configurationTitle} />
-        docked = true
+        docked = width === LARGE
         break
       case /uploadmaterial/.test(url):
         title = <FormattedMessage {...messages.configurationTitle} />
-        docked = true
+        docked = width === LARGE
         break
       default:
     }
@@ -196,7 +196,7 @@ class App extends Component {
 
     const styles = this.getStyles()
 
-    let { title, docked } = this.getViewProps()
+    const { title, docked } = this.getViewProps(width)
 
     let showMenuIconButton = true
     if (width === LARGE && docked) {
@@ -204,8 +204,6 @@ class App extends Component {
       showMenuIconButton = false
       styles.root.paddingLeft = 256
       styles.footer.paddingLeft = 256
-    } else {
-      docked = false
     }
     return (
       <div>
@@ -230,8 +228,6 @@ class App extends Component {
           open={menuOpen}
         />
 
-
-        <div style={{ paddingTop: '8rem' }}></div>
         <Footer style={styles.footer} />
       </div>
     )

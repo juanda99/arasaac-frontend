@@ -3,11 +3,18 @@
  *
  * This contains all the text for the Participate component.
  */
-import { defineMessages } from 'react-intl';
+import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  header: {
-    id: 'app.components.Participate.header',
-    defaultMessage: 'This is the Participate component !',
+  participate: {
+    id: 'app.component.Participate.header',
+    description: 'Participate building Arasaac',
+    defaultMessage: 'We are building Arasaac. Would you like to join us?'
   },
-});
+  contact: {
+    id: 'app.component.Participate.contact',
+    description: 'Contact button',
+    defaultMessage: 'Contact us'
+  }
+})
+
