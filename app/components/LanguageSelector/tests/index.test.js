@@ -1,10 +1,10 @@
-// import Welcome from '../index';
+// import LanguageSelector from '../index';
 
 import expect from 'expect'
 // import { shallow } from 'enzyme';
 // import React from 'react';
 
-describe('<Welcome />', () => {
+describe('<LanguageSelector />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false)
   })

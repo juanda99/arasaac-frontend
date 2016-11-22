@@ -4,10 +4,10 @@
 *
 */
 
-import React from 'react';
+import React from 'react'
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
 
 class Prueba extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -15,8 +15,8 @@ class Prueba extends React.PureComponent { // eslint-disable-line react/prefer-s
       <div>
         <FormattedMessage {...messages.header} />
       </div>
-    );
+    )
   }
 }
 
-export default Prueba;
+export default Prueba
