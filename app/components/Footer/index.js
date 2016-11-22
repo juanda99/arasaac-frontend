@@ -16,8 +16,8 @@ import { lightGreen800 } from 'material-ui/styles/colors'
 import { Row, Col } from 'react-flexbox-grid'
 
 
-const Footer = () => (
-  <FooterSection color={lightGreen800}>
+const Footer = ({ docked }) => (
+  <FooterSection color={lightGreen800} docked={docked}>
     <Row middle='xs'>
       <Col xs={12} md={7}>
         <p style={styles.p}>
@@ -39,5 +39,9 @@ const Footer = () => (
     </Row>
   </FooterSection>
 )
+
+Footer.propTypes = {
+  docked: React.PropTypes.bool.isRequired
+}
 
 export default Footer

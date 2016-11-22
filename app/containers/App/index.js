@@ -20,7 +20,7 @@ import Footer from 'components/Footer'
 import Menu from 'components/Menu'
 import { FormattedMessage } from 'react-intl'
 import messages from './messages'
-
+import Wrapper from './Wrapper'
 import { connect } from 'react-redux'
 import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
@@ -70,10 +70,6 @@ class App extends Component {
 
   getStyles() {
     const styles = {
-      root: {
-        paddingTop: spacing.desktopKeylineIncrement,
-        minHeight: '100%'
-      },
       content: {
         margin: spacing.desktopGutter
       },
@@ -150,6 +146,8 @@ class App extends Component {
         docked = width === LARGE
         break
       default:
+        docked = false
+        break
     }
     return { docked, title }
   }
@@ -192,7 +190,6 @@ class App extends Component {
       menuOpen
     } = this.state
 
-    const { prepareStyles } = this.state.muiTheme
 
     const styles = this.getStyles()
 
@@ -202,8 +199,6 @@ class App extends Component {
     if (width === LARGE && docked) {
       menuOpen = true
       showMenuIconButton = false
-      styles.root.paddingLeft = 256
-      styles.footer.paddingLeft = 256
     }
     return (
       <div>
@@ -211,15 +206,9 @@ class App extends Component {
           showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} style={styles.appBar} zDepth={0}
         />
-        {title !== ''
-        ? <div style={prepareStyles(styles.root)}>
-          <div style={prepareStyles(styles.content)}>
-            { React.cloneElement(children, { onChangeMuiTheme: this.handleChangeMuiTheme }) }
-          </div>
-        </div>
-        : children
-        }
-
+        <Wrapper docked={docked}>
+          {children}
+        </Wrapper>
         <Menu
           location={location}
           docked={docked}
@@ -228,7 +217,7 @@ class App extends Component {
           open={menuOpen}
         />
 
-        <Footer style={styles.footer} />
+        <Footer docked={docked} style={styles.footer} />
       </div>
     )
   }
