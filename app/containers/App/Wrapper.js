@@ -2,11 +2,11 @@ import styled from 'styled-components'
 import media from 'utils/mediaqueries'
 
 const Wrapper = styled.div`
+  padding-left: 4rem;
+  padding-top: 8rem;
   ${media.lg} {
-    padding-left: ${(props) => (props.docked ? '26em' : '0em')};
+    padding-left: ${(props) => (props.docked ? '20rem' : '4rem')};
   }
-  margin-top: 10em;
-  margin-left: 1em;
 `
 
 export default Wrapper
