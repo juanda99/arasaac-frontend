@@ -34,6 +34,26 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading)
       }
     }, {
+      path: '/pictograms/search',
+      name: 'pictogramsView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/PictogramsView/reducer'),
+          System.import('containers/PictogramsView/sagas'),
+          System.import('containers/PictogramsView')
+        ])
+
+        const renderRoute = loadModule(cb)
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('pictogramsView', reducer.default)
+          injectSagas(sagas.default)
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      }
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

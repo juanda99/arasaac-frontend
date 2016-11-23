@@ -14,6 +14,10 @@ injectGlobal`
     font-size: 62.5%;
   }
 
+  p, input, label {
+    font-size: 1rem
+  }
+  
   body.fontLoaded {
     font-family: 'Roboto', sans-serif;
   }
@@ -24,7 +28,7 @@ injectGlobal`
 
   ${media.md} {
     body {
-      margin-bottom: 16em;
+      margin-bottom: 16rem;
     }
   }
 `

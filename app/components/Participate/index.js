@@ -15,7 +15,11 @@ import messages from './messages'
 
 const styles = {
   H3: {
-    fontWeight: typography.fontWeightLight
+    fontWeight: typography.fontWeightLight,
+    margin: '2em'
+  },
+  button: {
+    marginBottom: '6em'
   }
 }
 
