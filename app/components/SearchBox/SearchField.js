@@ -11,42 +11,58 @@ const styles = {
   }
 }
 
-const SearchField = (props) => {
-  const { formatMessage } = props.intl
-  const dataSource = props.dataSource
+class SearchField extends React.Component {
 
-  const getInputValue = () => (
-    this.refs.input.refs.searchTextField.props.value
-  )
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value !== this.props.value) {
+      this.setInputValue(nextProps.value)
+    }
+  }
 
-  const handleUpdateInput = (t) => {
+  getInputValue() {
+    return this.refs.input.refs.searchTextField.props.value
+  }
+
+  setInputValue(val) {
+    // Generally mutating DOM is a bad idea in React components,
+    // but doing this for a single uncontrolled field is less fuss
+    // than making it controlled and maintaining a state for it.
+    this.refs.input.value = val
+  }
+
+
+  handleUpdateInput = (t) => {
     if (t.keyCode === 13) {
       this.props.onChange(this.getInputValue())
     }
   }
 
-  const handleSubmit = (t) => {
+  handleSubmit = (t) => {
     this.props.onChange(t)
   }
 
-  const handleClick = () => {
-    this.props.onChange(getInputValue())
+  handleClick = () => {
+    this.props.onChange(this.getInputValue())
   }
 
-  // let link = `/pictograms/search/${this.props.value}`
-  // if (typeof dataSource === 'undefined') dataSource = []
-  return (
-    <div>
-      <AutoComplete
-        ref='input'
-        floatingLabelText={formatMessage(messages.search)}
-        filter={AutoComplete.fuzzyFilter}
-        dataSource={dataSource}
-        onNewRequest={handleSubmit} onUpdateInput={handleUpdateInput} searchText={props.value}
-      />
-      <RaisedButton label='Search' primary={true} style={styles.button} onClick={handleClick} />
-    </div>
-  )
+  render() {
+    const { formatMessage } = this.props.intl
+    const dataSource = this.props.dataSource
+
+
+    return (
+      <div>
+        <AutoComplete
+          ref='input'
+          floatingLabelText={formatMessage(messages.search)}
+          filter={AutoComplete.fuzzyFilter}
+          dataSource={dataSource}
+          onNewRequest={this.handleSubmit} onUpdateInput={this.handleUpdateInput} searchText={this.props.value}
+        />
+        <RaisedButton label='Search' primary={true} style={styles.button} onClick={this.handleClick} />
+      </div>
+    )
+  }
 }
 
 SearchField.propTypes = {

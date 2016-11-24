@@ -6,53 +6,34 @@
 
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
 import Helmet from 'react-helmet'
 import SearchBox from 'components/SearchBox'
-import Toggle from 'material-ui/Toggle'
 import { withRouter } from 'react-router'
-
-// import FilterPictograms from 'components/Filter/Filter'
+import { loadAutocomplete, loadPictograms, toggleShowFilter } from './actions'
 
 // import selectPictogramsView from './selectors'
-import messages from './messages'
+// import messages from './messages'
 
-// import { resetErrorMessage } from 'redux/modules/error'
-// import { loadKeywords } from 'redux/modules/keywords'
-// import { toggleShowFilter } from 'redux/modules/showFilter'
-
-
-export class PictogramsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class PictogramsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount = () => {
-    // this.props.loadKeywords(this.props.locale)
+    // aquí deberíamos cargar las llamadas ajax, para autocomplete y para pictograms
   }
 
-  handleDismissClick = (e) => {
-    // this.props.resetErrorMessage()
-    e.preventDefault()
+  componentDidUpdate = () => {
+    // remote calls here, first render doesn't need them (componentDidMount)
+    // autocomplete will always
+    if (this.props.searchText) {
+      this.props.loadPictograms()
+    }
   }
 
   handleChange = (nextValue) => {
     this.props.router.push(`/pictograms/search/${nextValue}`)
   }
 
-  renderErrorMessage = () => {
-    const { errorMessage } = this.props
-    if (!errorMessage) {
-      return null
-    }
-    return (
-      <p style={{ backgroundColor: '#e99', padding: 10 }}>
-        <b>{errorMessage}</b>
-        {' '}
-        (<a href='#' onClick={this.handleDismissClick}>
-          Dismiss
-        </a>)
-      </p>
-    )
-  }
   render() {
+    const { children, searchText, showFilter, filters, keywords } = this.props
     return (
       <div>
         <Helmet
@@ -61,12 +42,49 @@ export class PictogramsView extends React.Component { // eslint-disable-line rea
             { name: 'description', content: 'Description of PictogramsView' }
           ]}
         />
-        <SearchBox />
+        <SearchBox
+          value={searchText}
+          dataSource={keywords}
+          onSubmit={this.handleSubmit}
+          onChange={this.props.loadAutocomplete}
+          onToggleFilter={this.props.toggleShowFilter}
+          filter={filters}
+          showFilter={showFilter}
+        />
+
+        {searchText ? <SearchList data={pictograms} /> : null}
+        {children}
       </div>
     )
   }
 }
 
+PictogramsView.propTypes = {
+  // Injected by React Redux
+  loadAutocomplete: PropTypes.func.isRequired,
+  loadPictograms: PropTypes.func.isRequired,
+  toggleShowFilter: PropTypes.func.isRequired,
+  searchText: PropTypes.string,
+  keywords: PropTypes.object,
+  showFilter: PropTypes.bool,
+  filters: PropTypes.object.isRequired,
+  // Injected by React Router
+  children: PropTypes.node,
+  router: React.PropTypes.any.isRequired
+}
 
-export default (withRouter(PictogramsView))
-// export default connect(mapStateToProps, {resetErrorMessage, loadKeywords, toggleShowFilter})(withRouter(PictogramsView))
+const mapStateToProps = (state, ownProps) => {
+  const errorMessage = state.errorMessage
+  const { searchText } = ownProps.params
+  const { gui: { filters } } = state
+  const { showFilters } = state
+
+  return {
+    errorMessage,
+    searchText,
+    filters,
+    showFilter
+  }
+}
+
+export default connect(mapStateToProps, { loadAutocomplete, loadPictograms, toggleShowFilter } )(withRouter(PictogramsView))

@@ -7,26 +7,31 @@
 import React, { PropTypes } from 'react'
 import { FormattedMessage } from 'react-intl'
 import Toggle from 'material-ui/Toggle'
+import FilterPictograms from 'components/Filters'
 import SearchField from './SearchField'
+
 
 import messages from './messages'
 
-const styles = {
-  toggle: {
-    width: '12rem'
-  }
-}
-
-const SearchBox = ({ searchText, keywords }) => (
+const SearchBox = ({ value, dataSource, onSubmit, onChange, onToggleFilter, filters, showFilter }) => (
   <div>
-    <Toggle style={styles.toggle} label={<FormattedMessage {...messages.advancedSearch} />} />
-    <SearchField value={searchText} fullWidth={true} dataSource={keywords} />
+    <Toggle
+      label={<FormattedMessage {...messages.advancedSearch} />}
+      onToggle={onToggleFilter} defaultToggled={showFilter}
+    />
+    <SearchField value={value} dataSource={dataSource} onSubmit={onSubmit} onChange={onChange} />
+    {showFilter ? <FilterPictograms filter={filters} /> : null}
   </div>
 )
 
 SearchBox.propTypes = {
-  searchText: PropTypes.string,
-  keywords: PropTypes.arrayOf(PropTypes.string)
+  value: PropTypes.string,
+  dataSource: PropTypes.arrayOf(PropTypes.string),
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onToggleFilter: PropTypes.func.isRequired,
+  showFilter: React.PropTypes.bool.isRequired,
+  filters: PropTypes.arrayOf(PropTypes.string)
 }
 SearchBox.defaultProps = {
   searchText: '',
