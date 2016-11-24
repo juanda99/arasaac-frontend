@@ -11,10 +11,15 @@ import SearchField from './SearchField'
 
 import messages from './messages'
 
+const styles = {
+  toggle: {
+    width: '12rem'
+  }
+}
 
 const SearchBox = ({ searchText, keywords }) => (
   <div>
-    <Toggle label={<FormattedMessage {...messages.advancedSearch} />} />
+    <Toggle style={styles.toggle} label={<FormattedMessage {...messages.advancedSearch} />} />
     <SearchField value={searchText} fullWidth={true} dataSource={keywords} />
   </div>
 )
