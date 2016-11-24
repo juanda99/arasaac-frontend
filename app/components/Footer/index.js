@@ -5,6 +5,8 @@
 */
 
 import React from 'react'
+import { lightGreen800 } from 'material-ui/styles/colors'
+import { Row, Col } from 'react-flexbox-grid'
 // import { FormattedMessage } from 'react-intl'
 // import messages from './messages'
 
@@ -12,9 +14,6 @@ import UnionEuropea from './union-europea-horizontal-logo.png'
 import GobiernoAragon from './gobierno-aragon-logo.svg'
 import styles from './styles'
 import FooterSection from './FooterSection'
-import { lightGreen800 } from 'material-ui/styles/colors'
-import { Row, Col } from 'react-flexbox-grid'
-
 
 const Footer = ({ docked }) => (
   <FooterSection color={lightGreen800} docked={docked}>

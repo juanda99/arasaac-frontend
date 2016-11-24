@@ -5,21 +5,31 @@
  */
 
 import { fromJS } from 'immutable'
-import { PICTOGRAMS } from './actions'
+import { PICTOGRAMS, AUTOCOMPLETE, SHOW_FILTERS } from './actions'
 
 const initialState = fromJS({})
 
 function pictogramsViewReducer(state = initialState, action) {
-  let nextState
   switch (action.type) {
     case PICTOGRAMS.REQUEST:
       return state
     case PICTOGRAMS.SUCCESS:
-      nextState = state.setIn([action.searchText], action.response.data)
-      return nextState
+      return state
+        .setIn(['search', action.searchText], action.data)
     case PICTOGRAMS.FAILURE:
-      nextState = state.setIn([action.searchText], action.response.data)
-      return nextState
+      return state
+        .setIn(['search', action.searchText], action.data)
+    case AUTOCOMPLETE.REQUEST:
+      return state
+    case AUTOCOMPLETE.SUCCESS:
+      return state
+        .setIn(['autocomplete', action.searchText], action.data)
+    case AUTOCOMPLETE.FAILURE:
+      return state
+        .setIn(['autocomplete', action.searchText], action.data)
+    case SHOW_FILTERS:
+      return state
+        .set('showFilters', !state.show_filters)
     default:
       return state
   }
