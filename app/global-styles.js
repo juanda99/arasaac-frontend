@@ -9,7 +9,7 @@ injectGlobal`
   }
   body {
     /* Margin bottom by footer height */
-    margin-bottom: 20em;
+    margin-bottom: 22em;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 62.5%;
   }
@@ -28,7 +28,7 @@ injectGlobal`
 
   ${media.md} {
     body {
-      margin-bottom: 16rem;
+      margin-bottom: 15em;
     }
   }
 `
