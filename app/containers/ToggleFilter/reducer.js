@@ -4,20 +4,24 @@
  *
  */
 
-import { fromJS } from 'immutable';
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import { fromJS } from 'immutable'
+import { TOGGLE_FILTER } from './actions'
 
-const initialState = fromJS({});
+export const initialState = fromJS({
+  catalog: true,
+  license: true,
+  size: true
+})
+
 
 function toggleFilterReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case TOGGLE_FILTER:
+      return state
+        .set(action.filter, !state[action.filter])
     default:
-      return state;
+      return state
   }
 }
 
-export default toggleFilterReducer;
+export default toggleFilterReducer

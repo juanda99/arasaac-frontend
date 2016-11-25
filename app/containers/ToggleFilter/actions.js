@@ -4,12 +4,8 @@
  *
  */
 
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import { action } from 'utils/actions'
 
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
+export const TOGGLE_FILTER = 'app/ToggleFilter/TOGGLE_FILTER'
+
+export const toggleFilter = (filter) => action(TOGGLE_FILTER, { filter })

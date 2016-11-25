@@ -4,25 +4,33 @@
  *
  */
 
-import React from 'react';
-import { connect } from 'react-redux';
-import selectToggleFilter from './selectors';
+import { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import Toggle from 'material-ui/Toggle'
+import { action } from 'utils/actions'
 
-export class ToggleFilter extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  render() {
-    return (
-      <div>
-      </div>
-    );
+const ToggleFilter = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Toggle)
+
+
+const mapStateToProps = (state, ownProps) => ({
+  defaultToggled: state.gui.filters[ownProps.filter],
+  label: ownProps.label,
+  style: { width: 100 }
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onToggle: () => {
+    dispatch(action.toggleFilter(ownProps.filter))
   }
+})
+
+
+ToggleFilter.propTypes = {
+  label: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired
 }
 
-const mapStateToProps = selectToggleFilter();
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ToggleFilter);
+export default ToggleFilter
