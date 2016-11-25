@@ -5,9 +5,9 @@
  */
 
 import React from 'react'
-import { defineMessages, FormattedMessage } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
-import PictogramsFiltersConf from './PictogramsFiltersConf'
+import PictogramsFiltersConf from 'components/PictogramsFiltersConf'
 import messages from './messages'
 
 const ConfigurationView = () => (

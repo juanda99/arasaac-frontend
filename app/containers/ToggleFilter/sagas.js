@@ -2,10 +2,10 @@
 
 // Individual exports for testing
 export function* defaultSaga() {
-  return;
+
 }
 
 // All sagas to be loaded
 export default [
-  defaultSaga,
-];
+  defaultSaga
+]

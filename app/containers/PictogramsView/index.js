@@ -87,4 +87,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, { loadAutocomplete, loadPictograms, toggleShowFilter } )(withRouter(PictogramsView))
+export default connect(mapStateToProps, { loadAutocomplete, loadPictograms, toggleShowFilter })(withRouter(PictogramsView))

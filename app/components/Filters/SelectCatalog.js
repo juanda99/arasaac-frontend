@@ -9,7 +9,7 @@ class SelectCatalog extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {value: 1}
+    this.state = { value: 1 }
   }
 
   getStyles() {
@@ -22,7 +22,7 @@ class SelectCatalog extends React.Component {
     }
   }
 
-  handleChange = (event, index, value) => this.setState({value})
+  handleChange = (event, index, value) => this.setState({ value })
 
   render() {
     const styles = this.getStyles()

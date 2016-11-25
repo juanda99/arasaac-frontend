@@ -10,10 +10,10 @@ import IconMenu from 'material-ui/IconMenu'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import MenuItem from 'material-ui/MenuItem'
 import { Link } from 'react-router'
-
 import { FormattedMessage } from 'react-intl'
 import messages from './messages'
 import styles from './styles'
+import Title from './Title'
 
 const Header = (props) => {
   const handleTouchTapLeftIconButton = () => {
@@ -25,7 +25,7 @@ const Header = (props) => {
       {(!isAuthenticated)
       ? <AppBar
         onLeftIconButtonTouchTap={handleTouchTapLeftIconButton}
-        title={title}
+        title={<Title docked={props.docked}>{title}</Title>}
         zDepth={0}
         style={styles.appBar}
         showMenuIconButton={showMenuIconButton}
@@ -46,7 +46,7 @@ const Header = (props) => {
       />
       : <AppBar
         onLeftIconButtonTouchTap={handleTouchTapLeftIconButton}
-        title={title}
+        title={<Title docked={props.docked}>{title}</Title>}
         zDepth={0}
         style={styles.appBar}
         showMenuIconButton={showMenuIconButton}
@@ -80,7 +80,8 @@ Header.propTypes = {
     PropTypes.string.isRequired,
     PropTypes.object.isRequired
   ]),
-  touchTapLeftIconButton: PropTypes.func.isRequired
+  touchTapLeftIconButton: PropTypes.func.isRequired,
+  docked: React.PropTypes.bool.isRequired
 }
 
 export default Header

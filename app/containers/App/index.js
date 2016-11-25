@@ -204,7 +204,7 @@ class App extends Component {
       <div>
         <Header
           showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
-          touchTapLeftIconButton={this.handleTouchTapLeftIconButton} style={styles.appBar} zDepth={0}
+          touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
         />
         <Wrapper docked={docked}>
           {children}

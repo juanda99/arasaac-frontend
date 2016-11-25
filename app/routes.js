@@ -54,6 +54,14 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading)
       }
     }, {
+      path: '/configuration',
+      name: 'configurationView',
+      getComponent(location, cb) {
+        System.import('containers/ConfigurationView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

@@ -1,7 +1,7 @@
 import { normalize } from 'normalizr'
 import { camelizeKeys } from 'humps'
 import 'isomorphic-fetch'
-import {API_ROOT} from './config'
+import { API_ROOT } from './config'
 
 // Extracts the next page URL from Github API response.
 function getNextPageUrl(response) {
@@ -10,7 +10,7 @@ function getNextPageUrl(response) {
     return null
   }
 
-  const nextLink = link.split(',').find(s => s.indexOf('rel="next"') > -1)
+  const nextLink = link.split(',').find((s) => s.indexOf('rel="next"') > -1)
   if (!nextLink) {
     return null
   }
@@ -39,8 +39,8 @@ const callApi = (endpoint, schema, config) => {
       )
     })
     .then(
-      response => ({response}),
-      error => ({error: error.message || 'Something bad happened'})
+      (response) => ({ response }),
+      (error) => ({ error: error.message || 'Something bad happened' })
     )
 }
 
