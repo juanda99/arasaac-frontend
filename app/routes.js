@@ -56,6 +56,25 @@ export default function createRoutes(store) {
     }, {
       path: '/configuration',
       name: 'configurationView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          // System.import('containers/ConfigurationView/reducer'),
+          System.import('containers/ConfigurationView/')
+        ])
+
+        const renderRoute = loadModule(cb)
+        // if reducer is async, render values:  defaultToggled:
+        // state.configuration.filters[ownProps.filter] got undefined!!!
+        importModules.then(([component]) => {
+          // injectReducer('configuration', reducer.default)
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      }
+    }, {
+      path: '/configuration',
+      name: 'configurationView',
       getComponent(location, cb) {
         System.import('containers/ConfigurationView')
           .then(loadModule(cb))
