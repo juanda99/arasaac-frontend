@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+// import muiThemeable from 'material-ui/styles/muiThemeable'
 
 const FullWidthSection = styled.div`
   overflow: 'hidden';
@@ -8,4 +9,5 @@ const FullWidthSection = styled.div`
   text-align: center;
   width: 100%;
 `
+// export default muiThemeable()(FullWidthSection)
 export default FullWidthSection

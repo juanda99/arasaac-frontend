@@ -27,8 +27,6 @@ import { white } from 'material-ui/styles/colors'
 import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth'
 
 
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-
 class App extends Component {
   static propTypes = {
     width: PropTypes.number.isRequired,
@@ -41,31 +39,8 @@ class App extends Component {
     router: PropTypes.object.isRequired
   }
 
-  static childContextTypes = {
-    muiTheme: PropTypes.object
-  }
-
   state = {
     menuOpen: false
-  }
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme
-    }
-  }
-
-  componentWillMount() {
-    this.setState({
-      muiTheme: getMuiTheme()
-    })
-  }
-
-  componentWillReceiveProps(nextProps, nextContext) {
-    const newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme
-    this.setState({
-      muiTheme: newMuiTheme
-    })
   }
 
   getStyles() {
@@ -169,12 +144,6 @@ class App extends Component {
     this.context.router.push(value)
     this.setState({
       menuOpen: false
-    })
-  }
-
-  handleChangeMuiTheme = (muiTheme) => {
-    this.setState({
-      muiTheme
     })
   }
 
