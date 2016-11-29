@@ -19,7 +19,12 @@ const selectPictogramsView = () => createSelector(
   (substate) => substate.toJS()
 )
 
+const selectShowFilters = () => createSelector(
+  selectPictogramsViewDomain(),
+  (substate) => substate.get('showFilters')
+)
+
 export default selectPictogramsView
 export {
-  selectPictogramsViewDomain
+  selectPictogramsViewDomain, selectShowFilters
 }

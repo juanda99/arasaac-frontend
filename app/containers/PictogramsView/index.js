@@ -10,6 +10,8 @@ import Helmet from 'react-helmet'
 import SearchBox from 'components/SearchBox'
 import { withRouter } from 'react-router'
 import { loadAutocomplete, loadPictograms, toggleShowFilter } from './actions'
+import { selectShowFilters } from './selectors'
+import { selectFilters } from 'containers/ToggleFilter/selectors'
 
 // import selectPictogramsView from './selectors'
 // import messages from './messages'
@@ -52,7 +54,8 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
           showFilter={showFilter}
         />
 
-        {searchText ? <SearchList data={pictograms} /> : null}
+        {searchText ? <Gallery data={pictograms} /> : null}
+        { React.Children.map(children, (child) => React.cloneElement(child, { ...this.props }))}
         {children}
       </div>
     )
@@ -73,18 +76,10 @@ PictogramsView.propTypes = {
   router: React.PropTypes.any.isRequired
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const errorMessage = state.errorMessage
-  const { searchText } = ownProps.params
-  const { gui: { filters } } = state
-  const { showFilters } = state
-
-  return {
-    errorMessage,
-    searchText,
-    filters,
-    showFilter
-  }
-}
+const mapStateToProps = (state, ownProps) => ({
+  searchText: ownProps.params,
+  filters: selectFilters(state),
+  showFilters: selectShowFilters(state)
+})
 
 export default connect(mapStateToProps, { loadAutocomplete, loadPictograms, toggleShowFilter })(withRouter(PictogramsView))

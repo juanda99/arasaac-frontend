@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect'
+import { selectConfigurationViewDomain } from 'containers/ConfigurationView/selectors'
 
 /**
  * Direct selector to the toggleFilter state domain
@@ -19,7 +20,13 @@ const selectToggleFilter = () => createSelector(
   (substate) => substate.toJS()
 )
 
+
+const selectFilters = () => createSelector(
+  selectConfigurationViewDomain,
+  (substate) => substate.get('filters')
+)
+
 export default selectToggleFilter
 export {
-  selectToggleFilterDomain
+  selectFilters
 }
