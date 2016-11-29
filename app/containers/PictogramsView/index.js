@@ -10,7 +10,7 @@ import Helmet from 'react-helmet'
 import SearchBox from 'components/SearchBox'
 import { withRouter } from 'react-router'
 import { loadAutocomplete, loadPictograms, toggleShowFilter } from './actions'
-import { selectShowFilters } from './selectors'
+import { selectShowFilters, selectPictogramsBySearchKey } from './selectors'
 import { selectFilters } from 'containers/ToggleFilter/selectors'
 
 // import selectPictogramsView from './selectors'
@@ -18,15 +18,14 @@ import { selectFilters } from 'containers/ToggleFilter/selectors'
 
 class PictogramsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  componentDidMount = () => {
-    // aquí deberíamos cargar las llamadas ajax, para autocomplete y para pictograms
-  }
-
-  componentDidUpdate = () => {
-    // remote calls here, first render doesn't need them (componentDidMount)
-    // autocomplete will always
+  componentWillMount = () => {
     if (this.props.searchText) {
-      this.props.loadPictograms()
+      this.props.loadPictograms(this.props.searchText)
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.searchText !== nextProps.searchTest) {
+      this.props.loadPictograms(nextProps.searchText)
     }
   }
 
@@ -35,7 +34,8 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
   }
 
   render() {
-    const { children, searchText, showFilter, filters, keywords } = this.props
+    const { children, searchText, showFilter, filters, keywords, pictograms } = this.props
+    const gallery = React.cloneElement(children, { data: pictograms })
     return (
       <div>
         <Helmet
@@ -53,10 +53,7 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
           filter={filters}
           showFilter={showFilter}
         />
-
-        {searchText ? <Gallery data={pictograms} /> : null}
-        { React.Children.map(children, (child) => React.cloneElement(child, { ...this.props }))}
-        {children}
+        {gallery}
       </div>
     )
   }
@@ -73,13 +70,15 @@ PictogramsView.propTypes = {
   filters: PropTypes.object.isRequired,
   // Injected by React Router
   children: PropTypes.node,
-  router: React.PropTypes.any.isRequired
+  router: PropTypes.any.isRequired,
+  pictograms: PropTypes.arrayOf(PropTypes.object)
 }
 
 const mapStateToProps = (state, ownProps) => ({
   searchText: ownProps.params,
   filters: selectFilters(state),
-  showFilters: selectShowFilters(state)
+  showFilters: selectShowFilters(state),
+  pictograms: selectPictogramsBySearchKey(state)
 })
 
 export default connect(mapStateToProps, { loadAutocomplete, loadPictograms, toggleShowFilter })(withRouter(PictogramsView))

@@ -24,7 +24,24 @@ const selectShowFilters = () => createSelector(
   (substate) => substate.get('showFilters')
 )
 
+const selectPictogramsList = () => createSelector(
+  selectPictogramsViewDomain(),
+  (substate) => substate.get('pictograms')
+)
+
+
+const selectSearchKey = () => createSelector(
+  selectPictogramsViewDomain(),
+  (substate) => substate.get('searchkey')
+)
+
+const selectPictogramsBySearchKey = () => createSelector(
+  selectPictogramsList(),
+  selectSearchKey(),
+  (pictogramsList, searchKey) => pictogramsList.get(searchKey)
+)
+
 export default selectPictogramsView
 export {
-  selectPictogramsViewDomain, selectShowFilters
+  selectPictogramsViewDomain, selectShowFilters, selectPictogramsList, selectSearchKey, selectPictogramsBySearchKey
 }
