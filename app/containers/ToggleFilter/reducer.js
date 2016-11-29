@@ -18,7 +18,7 @@ function toggleFilterReducer(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_FILTER:
       return state
-        .set(action.filter, !state[action.filter])
+        .set(action.filter, !state.get(action.filter))
     default:
       return state
   }
