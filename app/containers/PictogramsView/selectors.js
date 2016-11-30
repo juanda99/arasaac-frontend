@@ -32,7 +32,7 @@ const selectPictogramsList = () => createSelector(
 
 const selectSearchKey = () => createSelector(
   selectPictogramsViewDomain(),
-  (substate) => substate.get('searchkey')
+  (substate) => substate.get('search')
 )
 
 const selectPictogramsBySearchKey = () => createSelector(
