@@ -52,7 +52,21 @@ export default function createRoutes(store) {
         })
 
         importModules.catch(errorLoading)
-      }
+      },
+      childRoutes: [{
+        path: '/pictograms/search/:search',
+        name: 'gallery',
+        getComponent(nextState, cb) {
+          const importModules = Promise.all([
+            System.import('components/Gallery')
+          ])
+          const renderRoute = loadModule(cb)
+          importModules.then(([component]) => {
+            renderRoute(component)
+          })
+          importModules.catch(errorLoading)
+        }
+      }]
     }, {
       path: '/configuration',
       name: 'configurationView',
