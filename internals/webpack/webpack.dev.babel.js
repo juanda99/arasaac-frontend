@@ -43,7 +43,9 @@ module.exports = require('./webpack.base.babel')({
   },
 
   // Emit a source map for easier debugging
-  devtool: 'cheap-module-eval-source-map'
+  // I prefer inline-source-map, slower but better for step by step in chrome dev tools
+  devtool: 'inline-source-map'
+  // devtool: 'cheap-module-eval-source-map'
 })
 
 /**
