@@ -18,7 +18,7 @@ import { selectShowFilters, selectPictogramsBySearchKey } from './selectors'
 
 class PictogramsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  componentWillMount = () => {
+  componentWillMount() {
     if (this.props.searchText) {
       this.props.loadPictograms(this.props.searchText)
     }
@@ -35,7 +35,8 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
 
   render() {
     const { children, searchText, showFilter, filters, keywords, pictograms } = this.props
-    const gallery = React.cloneElement(children, { data: pictograms })
+    const gallery = children ? React.cloneElement(children, { data: pictograms }) : null
+    // const gallery = React.cloneElement(children, { data: pictograms })
     return (
       <div>
         <Helmet
@@ -75,7 +76,7 @@ PictogramsView.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  searchText: ownProps.params,
+  searchText: ownProps.params.searchText,
   filters: selectFilters(state),
   showFilters: selectShowFilters(state),
   pictograms: selectPictogramsBySearchKey(state)

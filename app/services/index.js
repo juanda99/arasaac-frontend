@@ -1,6 +1,6 @@
-import { put, get, remove } from 'redux/persistance/storage'
+import { put, get, remove } from 'storage'
 import { userSchema, repoSchema, userSchemaArray, repoSchemaArray } from './schemas'
-import { callApi } from './api'
+import callApi from './api'
 import { AUTH } from './config'
 
 const api = {
