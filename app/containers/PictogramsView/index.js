@@ -10,7 +10,7 @@ import Helmet from 'react-helmet'
 import SearchBox from 'components/SearchBox'
 import { withRouter } from 'react-router'
 import { selectFilters } from 'containers/ToggleFilter/selectors'
-import { loadAutocomplete, loadPictograms, toggleShowFilter } from './actions'
+import { loadAutocomplete, pictograms, toggleShowFilter } from './actions'
 import { selectShowFilters, selectPictogramsBySearchKey } from './selectors'
 
 // import selectPictogramsView from './selectors'
@@ -20,12 +20,12 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
 
   componentWillMount() {
     if (this.props.searchText) {
-      this.props.loadPictograms(this.props.searchText)
+      this.props.requestPictograms(this.props.searchText)
     }
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.searchText !== nextProps.searchTest) {
-      this.props.loadPictograms(nextProps.searchText)
+      this.props.requestPictograms(nextProps.searchText)
     }
   }
 
@@ -45,15 +45,7 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
             { name: 'description', content: 'Description of PictogramsView' }
           ]}
         />
-        <SearchBox
-          value={searchText}
-          dataSource={keywords}
-          onSubmit={this.handleSubmit}
-          onChange={this.props.loadAutocomplete}
-          onToggleFilter={this.props.toggleShowFilter}
-          filter={filters}
-          showFilter={showFilter}
-        />
+
         {gallery}
       </div>
     )
@@ -62,9 +54,9 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
 
 PictogramsView.propTypes = {
   // Injected by React Redux
-  loadAutocomplete: PropTypes.func.isRequired,
-  loadPictograms: PropTypes.func.isRequired,
-  toggleShowFilter: PropTypes.func.isRequired,
+  // loadAutocomplete: PropTypes.func.isRequired,
+  requestPictograms: PropTypes.func.isRequired,
+  //toggleShowFilter: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   keywords: PropTypes.object,
   showFilter: PropTypes.bool,
@@ -82,4 +74,13 @@ const mapStateToProps = (state, ownProps) => ({
   pictograms: selectPictogramsBySearchKey(state)
 })
 
-export default connect(mapStateToProps, { loadAutocomplete, loadPictograms, toggleShowFilter })(withRouter(PictogramsView))
+const mapDispatchToProps = (dispatch) => ({
+  requestPictograms: (searchText) => {
+    dispatch(pictograms.request(searchText))
+  },
+  toggleShowFilter: () => {
+    dispatch(toggleShowFilter())
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PictogramsView))
