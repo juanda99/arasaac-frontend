@@ -22,7 +22,7 @@ const selectToggleFilter = () => createSelector(
 
 
 const selectFilters = () => createSelector(
-  selectConfigurationViewDomain,
+  selectConfigurationViewDomain(),
   (substate) => substate.get('filters')
 )
 

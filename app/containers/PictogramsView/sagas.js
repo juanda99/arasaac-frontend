@@ -30,6 +30,8 @@ function* pictogramsFlow() {
   // it should go in another fork
   // yield take(LOCATION_CHANGE);
   // yield cancel(watcher);
+  // o mejor: yield fork(takeLatest, SUBMIT_FILTER, fetchHotel);
+  // de: -------> https://github.com/yelouafi/redux-saga/issues/451
 }
 
 // All sagas to be loaded

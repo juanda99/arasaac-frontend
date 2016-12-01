@@ -7,7 +7,7 @@
 import { fromJS } from 'immutable'
 import { PICTOGRAMS, AUTOCOMPLETE, SHOW_FILTERS } from './actions'
 
-const initialState = fromJS({})
+const initialState = fromJS({ showFilter: false })
 
 function pictogramsViewReducer(state = initialState, action) {
   switch (action.type) {
@@ -29,7 +29,7 @@ function pictogramsViewReducer(state = initialState, action) {
         .setIn(['autocomplete', action.searchText], action.data)
     case SHOW_FILTERS:
       return state
-        .set('showFilters', !state.show_filters)
+        .set('showFilter', !state.showFilter)
     default:
       return state
   }

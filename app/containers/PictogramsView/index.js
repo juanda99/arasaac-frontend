@@ -8,10 +8,11 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 import SearchBox from 'components/SearchBox'
+import { createSelector } from 'reselect'
 import { withRouter } from 'react-router'
 import { selectFilters } from 'containers/ToggleFilter/selectors'
-import { loadAutocomplete, pictograms, toggleShowFilter } from './actions'
-import { selectShowFilters, selectPictogramsBySearchKey } from './selectors'
+import { autocomplete, pictograms, toggleShowFilter } from './actions'
+import { selectShowFilter, selectPictogramsBySearchKey } from './selectors'
 
 // import selectPictogramsView from './selectors'
 // import messages from './messages'
@@ -29,13 +30,17 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
     }
   }
 
-  handleChange = (nextValue) => {
+  handleSubmit = (nextValue) => {
     this.props.router.push(`/pictograms/search/${nextValue}`)
   }
 
+  handleChange = (searchText) => {
+    this.props.requestAutocomplete(searchText)
+  }
+
   render() {
-    const { children, searchText, showFilter, filters, keywords, pictograms } = this.props
-    const gallery = children ? React.cloneElement(children, { data: pictograms }) : null
+    const { children, searchText, showFilter, filters, keywords, pictoList } = this.props
+    const gallery = children ? React.cloneElement(children, { data: pictoList }) : null
     // const gallery = React.cloneElement(children, { data: pictograms })
     return (
       <div>
@@ -45,7 +50,15 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
             { name: 'description', content: 'Description of PictogramsView' }
           ]}
         />
-
+        <SearchBox
+          value={searchText}
+          dataSource={keywords}
+          onSubmit={this.handleSubmit}
+          onChange={this.props.handleChange}
+          onToggleFilter={this.props.toggleShowFilter}
+          filter={filters}
+          showFilter={showFilter}
+        />
         {gallery}
       </div>
     )
@@ -56,23 +69,29 @@ PictogramsView.propTypes = {
   // Injected by React Redux
   // loadAutocomplete: PropTypes.func.isRequired,
   requestPictograms: PropTypes.func.isRequired,
-  //toggleShowFilter: PropTypes.func.isRequired,
+  toggleShowFilter: PropTypes.func.isRequired,
   searchText: PropTypes.string,
-  keywords: PropTypes.object,
+  keywords: PropTypes.arrayOf(PropTypes.string),
   showFilter: PropTypes.bool,
   filters: PropTypes.object.isRequired,
   // Injected by React Router
   children: PropTypes.node,
   router: PropTypes.any.isRequired,
-  pictograms: PropTypes.arrayOf(PropTypes.object)
+  pictoList: PropTypes.arrayOf(PropTypes.object)
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  searchText: ownProps.params.searchText,
-  filters: selectFilters(state),
-  showFilters: selectShowFilters(state),
-  pictograms: selectPictogramsBySearchKey(state)
-})
+const mapStateToProps = (state, ownProps) => {
+  const filters = createSelector(selectFilters(), (fltrs) => (fltrs))(state)
+  const showFilter = createSelector(selectShowFilter(), (shwFltrs) => (shwFltrs))(state)
+  const pictoList = createSelector(selectPictogramsBySearchKey(), (pctLst) => (pctLst))(state, ownProps)
+  return ({
+    searchText: ownProps.params.searchText || null,
+    filters,
+    showFilter,
+    pictoList,
+    keywords: ['prueba1', 'prueba2', 'prueba3']
+  })
+}
 
 const mapDispatchToProps = (dispatch) => ({
   requestPictograms: (searchText) => {
@@ -80,6 +99,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())
+  },
+  requestAutocomplete: (searchText) => {
+    dispatch(autocomplete.request(searchText))
   }
 })
 
