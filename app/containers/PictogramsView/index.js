@@ -11,6 +11,7 @@ import SearchBox from 'components/SearchBox'
 import { createSelector } from 'reselect'
 import { withRouter } from 'react-router'
 import { selectFilters } from 'containers/ToggleFilter/selectors'
+import View from 'components/View'
 import { autocomplete, pictograms, toggleShowFilter } from './actions'
 import { selectShowFilter, selectPictogramsBySearchKey } from './selectors'
 
@@ -43,7 +44,7 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
     const gallery = children ? React.cloneElement(children, { data: pictoList }) : null
     // const gallery = React.cloneElement(children, { data: pictograms })
     return (
-      <div>
+      <View>
         <Helmet
           title='PictogramsView'
           meta={[
@@ -54,21 +55,20 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
           value={searchText}
           dataSource={keywords}
           onSubmit={this.handleSubmit}
-          onChange={this.props.handleChange}
+          onChange={this.handleChange}
           onToggleFilter={this.props.toggleShowFilter}
-          filter={filters}
+          filters={filters}
           showFilter={showFilter}
         />
         {gallery}
-      </div>
+      </View>
     )
   }
 }
 
 PictogramsView.propTypes = {
-  // Injected by React Redux
-  // loadAutocomplete: PropTypes.func.isRequired,
   requestPictograms: PropTypes.func.isRequired,
+  requestAutocomplete: PropTypes.func.isRequired,
   toggleShowFilter: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   keywords: PropTypes.arrayOf(PropTypes.string),
@@ -85,7 +85,7 @@ const mapStateToProps = (state, ownProps) => {
   const showFilter = createSelector(selectShowFilter(), (shwFltrs) => (shwFltrs))(state)
   const pictoList = createSelector(selectPictogramsBySearchKey(), (pctLst) => (pctLst))(state, ownProps)
   return ({
-    searchText: ownProps.params.searchText || null,
+    searchText: ownProps.params.searchText || '',
     filters,
     showFilter,
     pictoList,

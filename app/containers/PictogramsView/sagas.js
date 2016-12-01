@@ -1,6 +1,6 @@
 import { take, call, put, fork } from 'redux-saga/effects'
 import api from 'services'
-import { PICTOGRAMS, pictograms } from './actions'
+import { PICTOGRAMS, pictograms, AUTOCOMPLETE, autocomplete } from './actions'
 
 // Individual exports for testing
 export function* defaultSaga() {
@@ -22,9 +22,25 @@ function* pictogramsGetData() {
   }
 }
 
+function* autocompleteGetData() {
+  while (true) { // eslint-disable-line no-constant-condition
+    const { searchText } = yield take(AUTOCOMPLETE.REQUEST)
+    try {
+      const response = yield call(api.fetchAutocomplete, searchText)
+      yield put(autocomplete.request(response))
+    } catch (error) {
+      yield put(autocomplete.failure(error.message))
+    } finally {
+      // When done, we tell Redux we're not in the middle of a request any more
+      // yield put({type: SENDING_REQUEST, sending: false})
+    }
+  }
+}
+
 
 function* pictogramsFlow() {
   yield fork(pictogramsGetData)
+  yield fork(autocompleteGetData)
   // const watcher = yield fork(pictogramsGetData)
   // Suspend execution until location changes,
   // it should go in another fork

@@ -68,7 +68,7 @@ class SearchField extends React.Component {
 SearchField.propTypes = {
   dataSource: PropTypes.array.isRequired,
   intl: intlShape.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired
 }
 

@@ -31,7 +31,7 @@ SearchBox.propTypes = {
   onChange: PropTypes.func.isRequired,
   onToggleFilter: PropTypes.func.isRequired,
   showFilter: React.PropTypes.bool.isRequired,
-  filters: PropTypes.arrayOf(PropTypes.string)
+  filters: PropTypes.object.isRequired
 }
 SearchBox.defaultProps = {
   searchText: '',
