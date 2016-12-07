@@ -1,6 +1,6 @@
 import expect from 'expect'
-import toggleFilterReducer from '../reducer'
 import { fromJS } from 'immutable'
+import toggleFilterReducer from '../reducer'
 
 describe('toggleFilterReducer', () => {
   it('returns the initial state', () => {
