@@ -33,16 +33,18 @@ class SearchField extends React.Component {
 
   handleUpdateInput = (t) => {
     if (t.keyCode === 13) {
+      this.props.onSubmit(this.getInputValue())
+    } else {
       this.props.onChange(this.getInputValue())
     }
   }
 
   handleSubmit = (t) => {
-    this.props.onChange(t)
+    this.props.onSubmit(t)
   }
 
   handleClick = () => {
-    this.props.onChange(this.getInputValue())
+    this.props.onSubmit(this.getInputValue())
   }
 
   render() {
@@ -57,7 +59,9 @@ class SearchField extends React.Component {
           floatingLabelText={formatMessage(messages.search)}
           filter={AutoComplete.fuzzyFilter}
           dataSource={dataSource}
-          onNewRequest={this.handleSubmit} onUpdateInput={this.handleUpdateInput} searchText={this.props.value}
+          onNewRequest={this.handleSubmit}
+          onUpdateInput={this.handleUpdateInput}
+          searchText={this.props.value}
         />
         <RaisedButton label='Search' primary={true} style={styles.button} onClick={this.handleClick} />
       </div>
@@ -69,6 +73,7 @@ SearchField.propTypes = {
   dataSource: PropTypes.array.isRequired,
   intl: intlShape.isRequired,
   value: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired
 }
 

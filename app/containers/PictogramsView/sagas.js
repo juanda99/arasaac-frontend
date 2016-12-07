@@ -26,7 +26,7 @@ function* autocompleteGetData() {
   while (true) { // eslint-disable-line no-constant-condition
     const { searchText } = yield take(AUTOCOMPLETE.REQUEST)
     try {
-      const response = yield call(api.fetchAutocomplete, searchText)
+      const response = yield call(api.fetchSearches, searchText)
       yield put(autocomplete.request(response))
     } catch (error) {
       yield put(autocomplete.failure(error.message))

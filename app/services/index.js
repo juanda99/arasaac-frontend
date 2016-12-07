@@ -1,9 +1,11 @@
 import { put, get, remove } from 'storage'
-import { userSchema, repoSchema, userSchemaArray, repoSchemaArray } from './schemas'
+import { userSchema, repoSchema, userSchemaArray, repoSchemaArray, searchSchema } from './schemas'
 import callApi from './api'
 import { AUTH } from './config'
 
 const api = {
+  fetchSearches: (searchText) => callApi(`searches/${searchText}`, searchSchema),
+  fetchPictograms: (searchText) => callApi(`searches/${searchText}`, searchSchema),
   fetchUser: (login) => callApi(`users/${login}`, userSchema),
   fetchRepo: (fullName) => callApi(`repos/${fullName}`, repoSchema),
   fetchStarred: (url) => callApi(url, repoSchemaArray),

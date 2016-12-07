@@ -25,8 +25,8 @@ const SearchBox = ({ value, dataSource, onSubmit, onChange, onToggleFilter, filt
 )
 
 SearchBox.propTypes = {
-  value: PropTypes.string,
-  dataSource: PropTypes.arrayOf(PropTypes.string),
+  value: PropTypes.string.isRequired,
+  dataSource: PropTypes.arrayOf(PropTypes.string).isRequired,
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onToggleFilter: PropTypes.func.isRequired,
@@ -34,8 +34,8 @@ SearchBox.propTypes = {
   filters: PropTypes.object.isRequired
 }
 SearchBox.defaultProps = {
-  searchText: '',
-  keywords: []
+  value: '',
+  dataSource: []
 }
 
 export default SearchBox

@@ -21,5 +21,10 @@ repoSchema.define({
   owner: userSchema
 })
 
+export const searchSchema = new Schema('searches', {
+  idAttribute: 'searchKey'
+})
+
+
 export const userSchemaArray = arrayOf(userSchema)
 export const repoSchemaArray = arrayOf(repoSchema)
