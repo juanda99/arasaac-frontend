@@ -1,6 +1,6 @@
 import expect from 'expect'
-import pictogramsViewReducer from '../reducer'
 import { fromJS } from 'immutable'
+import pictogramsViewReducer from '../reducer'
 
 describe('pictogramsViewReducer', () => {
   it('returns the initial state', () => {

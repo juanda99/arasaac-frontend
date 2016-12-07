@@ -6,9 +6,10 @@
 
 import React, { PropTypes } from 'react'
 import PictogramCard from 'components/PictogramCard'
+// import { FormattedMessage } from 'react-intl'
+// import messages from './messages'
+
 const Masonry = require('react-masonry-component')
-import { FormattedMessage } from 'react-intl'
-import messages from './messages'
 
 const masonryOptions = {
   transitionDuration: '1s'

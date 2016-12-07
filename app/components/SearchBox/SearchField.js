@@ -20,14 +20,14 @@ class SearchField extends React.Component {
   }
 
   getInputValue() {
-    return this.refs.input.refs.searchTextField.props.value
+    return this.myInput.refs.searchTextField.props.value
   }
 
   setInputValue(val) {
     // Generally mutating DOM is a bad idea in React components,
     // but doing this for a single uncontrolled field is less fuss
     // than making it controlled and maintaining a state for it.
-    this.refs.input.value = val
+    this.myInput.value = val
   }
 
 
@@ -53,7 +53,7 @@ class SearchField extends React.Component {
     return (
       <div>
         <AutoComplete
-          ref='input'
+          ref={(ref) => (this.myInput = ref)}
           floatingLabelText={formatMessage(messages.search)}
           filter={AutoComplete.fuzzyFilter}
           dataSource={dataSource}

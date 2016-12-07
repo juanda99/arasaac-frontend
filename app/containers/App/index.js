@@ -11,6 +11,7 @@
  * the linting exception.
  */
 
+/* eslint-disable */
 
 import React, { Component, PropTypes } from 'react'
 // import Helmet from 'react-helmet'
