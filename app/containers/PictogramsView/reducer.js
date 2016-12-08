@@ -13,12 +13,16 @@ function pictogramsViewReducer(state = initialState, action) {
   switch (action.type) {
     case PICTOGRAMS.REQUEST:
       return state
+        .set('loading', true)
+        .set('error', false)
     case PICTOGRAMS.SUCCESS:
       return state
+        .set('loading', false)
         .setIn(['search', action.searchText], action.data)
     case PICTOGRAMS.FAILURE:
       return state
-        .setIn(['search', action.searchText], action.data)
+        .set('error', action.error)
+        .set('loading', false)
     case AUTOCOMPLETE.REQUEST:
       return state
     case AUTOCOMPLETE.SUCCESS:

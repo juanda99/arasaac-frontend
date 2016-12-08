@@ -74,10 +74,12 @@ PictogramsView.propTypes = {
   // loadAutocomplete: PropTypes.func.isRequired,
   requestPictograms: PropTypes.func.isRequired,
   toggleShowFilter: PropTypes.func.isRequired,
+  requestAutocomplete: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   keywords: PropTypes.arrayOf(PropTypes.string),
-  showFilter: PropTypes.bool,
+  params: PropTypes.object.isRequired,
   filters: PropTypes.object.isRequired,
+  showFilter: PropTypes.bool,
   // Injected by React Router
   children: PropTypes.node,
   router: PropTypes.any.isRequired,

@@ -8,10 +8,10 @@ import { createRequestTypes, action } from 'utils/actions'
 
 // constants
 export const PICTOGRAMS = createRequestTypes('app/PictogramsView/PICTOGRAMS')
-export const LOAD_PICTOGRAMS = 'app/PictogramsView/LOAD_PICTOGRAMS'
+// export const LOAD_PICTOGRAMS = 'app/PictogramsView/LOAD_PICTOGRAMS'
 
 export const AUTOCOMPLETE = createRequestTypes('app/PictogramsView/AUTOCOMPLETE')
-export const LOAD_AUTOCOMPLETE = 'app/PictogramsView/LOAD_AUTOCOMPLETE'
+// export const LOAD_AUTOCOMPLETE = 'app/PictogramsView/LOAD_AUTOCOMPLETE'
 
 export const SHOW_FILTERS = 'app/PictogramsView/SHOW_FILTERS'
 
@@ -29,7 +29,7 @@ export const autocomplete = {
   failure: (error) => action(AUTOCOMPLETE.FAILURE, { error })
 }
 
-export const loadPictograms = (searchText) => action(LOAD_PICTOGRAMS, { searchText })
-export const loadAutocomplete = (searchText) => action(LOAD_AUTOCOMPLETE, { searchText })
+// export const loadPictograms = (searchText) => action(LOAD_PICTOGRAMS, { searchText })
+// export const loadAutocomplete = (searchText) => action(LOAD_AUTOCOMPLETE, { searchText })
 
 export const toggleShowFilter = () => action(SHOW_FILTERS)
