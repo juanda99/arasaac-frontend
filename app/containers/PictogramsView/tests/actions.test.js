@@ -1,6 +1,6 @@
 import expect from 'expect'
 
-import { SHOW_FILTERS, toggleShowFilter, PICTOGRAMS, pictograms } from '../actions'
+import { SHOW_FILTERS, PICTOGRAMS, AUTOCOMPLETE, toggleShowFilter, pictograms, autocomplete } from '../actions'
 
 describe('PictogramsView actions', () => {
   describe('Show filters', () => {
@@ -12,7 +12,7 @@ describe('PictogramsView actions', () => {
     })
   })
 
-  describe('Pictograms requests', () => {
+  describe('Pictograms request', () => {
     it('should return the correct type and the passed repos', () => {
       const searchText = 'Test'
       const expectedResult = {
@@ -42,6 +42,38 @@ describe('PictogramsView actions', () => {
         error
       }
       expect(pictograms.failure(error)).toEqual(expectedResult)
+    })
+  })
+  describe('Autocomplete request', () => {
+    it('should return the correct type and the passed repos', () => {
+      const searchText = 'Test'
+      const expectedResult = {
+        type: AUTOCOMPLETE.REQUEST,
+        searchText
+      }
+      expect(autocomplete.request(searchText)).toEqual(expectedResult)
+    })
+  })
+  describe('Autocomplete success', () => {
+    it('should return the correct type and the passed repos', () => {
+      const searchText = 'Test'
+      const data = 'Result data'
+      const expectedResult = {
+        type: AUTOCOMPLETE.SUCCESS,
+        searchText,
+        data
+      }
+      expect(autocomplete.success(searchText, data)).toEqual(expectedResult)
+    })
+  })
+  describe('Autocomplete failure', () => {
+    it('should return the correct type and the passed repos', () => {
+      const error = 'Test error'
+      const expectedResult = {
+        type: AUTOCOMPLETE.FAILURE,
+        error
+      }
+      expect(autocomplete.failure(error)).toEqual(expectedResult)
     })
   })
 })
