@@ -9,16 +9,16 @@
 
 <div align="center">
   <!-- Dependency Status -->
-  <a href="https://david-dm.org/mxstbr/react-boilerplate">
-    <img src="https://david-dm.org/mxstbr/react-boilerplate.svg" alt="Dependency Status" />
+  <a href="https://david-dm.org/juanda99/arasaac-frontend">
+    <img src="https://david-dm.org/juanda99/arasaac-frontend.svg" alt="Dependency Status" />
   </a>
   <!-- devDependency Status -->
-  <a href="https://david-dm.org/mxstbr/react-boilerplate#info=devDependencies">
-    <img src="https://david-dm.org/mxstbr/react-boilerplate/dev-status.svg" alt="devDependency Status" />
+  <a href="https://david-dm.org/juanda99/arasaac-frontend#info=devDependencies">
+    <img src="https://david-dm.org/juanda99/arasaac-frontend/dev-status.svg" alt="devDependency Status" />
   </a>
   <!-- Build Status -->
-  <a href="https://travis-ci.org/mxstbr/react-boilerplate">
-    <img src="https://travis-ci.org/mxstbr/react-boilerplate.svg" alt="Build Status" />
+  <a href="https://travis-ci.org/juanda99/arasaac-frontend">
+    <img src="https://travis-ci.org/juanda99/arasaac-frontend.svg" alt="Build Status" />
   </a>
   <!-- Test Coverage -->
   <a href="https://coveralls.io/r/mxstbr/react-boilerplate">
