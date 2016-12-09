@@ -4,7 +4,7 @@
 <br />
 
 <div align="center"><strong>New Arasaac website</strong></div>
-<div align="center">A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices</div>
+<div align="center">A highly scalable, single page app focus on performance and best practices</div>
 
 <br />
 
@@ -30,7 +30,7 @@
 <br />
 
 <div align="center">
-  <sub>Made with ❤︎ by <a href="https://twitter.com/mxstbr">Max Stoiber</a> and <a href="https://github.com/mxstbr/react-boilerplate/graphs/contributors">contributors</a>. <i>If you're using this boilerplate, we'd love to <a href="https://github.com/mxstbr/react-boilerplate/issues/115">hear from you</a>!</i></sub>
+  <sub>Made with ❤︎ by <a href="https://twitter.com/juanda99">juanda</a> and <a href="https://github.com/juanda99/arasaac-frontend/graphs/contributors">contributors</a></sub>
 </div>
 
 ## Features
@@ -51,6 +51,9 @@
 
   <dt>NodeJS for server side</dt>
   <dd>Express, Swagger for API</dd>
+
+  <dt>Presentation</dt>
+  <dd>Material-ui and flexbox-grid</dd>
 
   <dt>Data</dt>
   <dd>MongoDB</dd>
