@@ -1,10 +1,10 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.3.3",
+  "name": "Arasaac",
+  "version": "0.0.1",
   "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mxstbr/react-boilerplate.git"
+    "url": "https://github.com/juanda99/arasaac-frontend/"
   },
   "engines": {
     "npm": ">=3"
