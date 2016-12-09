@@ -1,4 +1,4 @@
-<img src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Welcome/arasaac-logo.svg" alt="Arasaac logo" align="center" />
+<img style="width: 400px" src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Welcome/arasaac-logo.svg" alt="Arasaac logo" align="center" />
 
 <br />
 
