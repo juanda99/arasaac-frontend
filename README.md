@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/juanda99/arasaac-frontend/master/app/components/Welcome/arasaac-logo.svg" alt="Arasaac logo" align="center" />
+<img src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Welcome/arasaac-logo.svg" alt="Arasaac logo" align="center" />
 
 <br />
 
@@ -65,9 +65,10 @@
 
 
 ## Supporters
+<div style="background: brown;">
 <img src="https://raw.githubusercontent.com/juanda99/arasaac-frontend/master/app/components/Footer/gobierno-aragon-logo.svg" alt="Arasaac logo" align="center" />
 <img src="https://github.com/juanda99/arasaac-frontend/blob/master/app/components/Footer/union-europea-horizontal-logo.png" alt="Arasaac logo" align="center" />
-
+</div>
 ## License
 
 This project is licensed under the MIT license, Copyright (c) 2016 . For more information see `LICENSE.md`.
