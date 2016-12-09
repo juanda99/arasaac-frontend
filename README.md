@@ -1,5 +1,6 @@
-<img width=400 src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Welcome/arasaac-logo.svg" alt="Arasaac logo" align="center" />
-
+<div align="center">
+  <img width=400 src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Welcome/arasaac-logo.svg" alt="Arasaac logo" align="center" />
+</div>
 <br />
 
 <div align="center"><strong>New Arasaac website</strong></div>
@@ -69,8 +70,8 @@
 
 
 ## Supporters
-<img width=400 src="http://arasaac.org/images/logoAragon.jpg" alt="Gobierno de Aragón" align="center" />
-<img width=400 src="http://arasaac.org/images/logo_fse.png" alt="European Union" align="center" />
+<img src="http://arasaac.org/images/logoAragon.jpg" alt="Gobierno de Aragón" align="center" />
+<img src="http://arasaac.org/images/logo_fse.jpg" alt="European Union" align="center" />
 
 ## License
 
