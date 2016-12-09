@@ -1,4 +1,4 @@
-<img style="width: 400px;" src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Welcome/arasaac-logo.svg" alt="Arasaac logo" align="center" />
+<img width=400 src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Welcome/arasaac-logo.svg" alt="Arasaac logo" align="center" />
 
 <br />
 
@@ -51,8 +51,12 @@
   <dt>NodeJS for server side</dt>
   <dd>Express, Swagger for API</dd>
 
-  <dt>Database</dt>
+  <dt>Data</dt>
   <dd>MongoDB</dd>
+
+  <dt>Authentication</dt>
+  <dd>JWT, user/password and social logins</dd>
+
 </dl>
 
 
@@ -65,10 +69,9 @@
 
 
 ## Supporters
-<div style="background-color: brown;">
-<img src="https://raw.githubusercontent.com/juanda99/arasaac-frontend/master/app/components/Footer/gobierno-aragon-logo.svg" alt="Arasaac logo" align="center" />
-<img src="https://github.com/juanda99/arasaac-frontend/blob/master/app/components/Footer/union-europea-horizontal-logo.png" alt="Arasaac logo" align="center" />
-</div>
+<img width=400 src="http://arasaac.org/images/logoAragon.jpg" alt="Gobierno de Aragón" align="center" />
+<img width=400 src="http://arasaac.org/images/logo_fse.png" alt="European Union" align="center" />
+
 ## License
 
 This project is licensed under the MIT license, Copyright (c) 2016 . For more information see `LICENSE.md`.
