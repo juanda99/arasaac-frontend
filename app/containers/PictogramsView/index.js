@@ -44,7 +44,8 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
   render() {
     const { children, showFilter, filters, keywords, pictoList } = this.props
     const searchText = this.props.params.searchText
-    const gallery = children ? React.cloneElement(children, { data: pictoList }) : null
+    console.log(pictoList.length)
+    const gallery = pictoList.length ? React.cloneElement(children, { data: pictoList }) : null
     // const gallery = React.cloneElement(children, { data: pictograms })
     return (
       <View>
