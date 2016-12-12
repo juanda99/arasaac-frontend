@@ -6,6 +6,7 @@
 import { combineReducers } from 'redux-immutable'
 import { fromJS } from 'immutable'
 import { LOCATION_CHANGE } from 'react-router-redux'
+import { reducer as form } from 'redux-form'
 import languageProviderReducer from 'containers/LanguageProvider/reducer'
 import configuration from 'containers/ConfigurationView/reducer'
 /*
@@ -75,6 +76,7 @@ export default function createReducer(asyncReducers) {
     route: routeReducer,
     language: languageProviderReducer,
     configuration,
+    form,
     ...asyncReducers
   })
 }

@@ -184,7 +184,9 @@
       "express",
       "ip",
       "minimist",
-      "sanitize.css"
+      "sanitize.css",
+      "swagger-express-mw",
+      "nodemailer"
     ],
     "include": [
       "core-js",
@@ -209,9 +211,11 @@
     "lodash": "4.16.4",
     "material-ui": "^0.16.1",
     "minimist": "1.2.0",
+    "nodemailer": "^2.7.0",
     "normalizr": "^2.2.1",
     "react": "15.3.2",
     "react-dom": "15.3.2",
+    "react-dropzone": "^3.7.3",
     "react-flexbox-grid": "git+https://github.com/juanda99/react-flexbox-grid.git",
     "react-helmet": "3.1.0",
     "react-intl": "2.1.5",
@@ -222,11 +226,14 @@
     "react-router-scroll": "0.3.3",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "3.6.0",
+    "redux-form": "6.0.2",
+    "redux-form-material-ui": "^4.1.2",
     "redux-immutable": "3.0.8",
     "redux-saga": "0.12.0",
     "reselect": "2.5.4",
     "sanitize.css": "4.1.0",
     "styled-components": "1.0.3",
+    "swagger-express-mw": "^0.7.0",
     "warning": "3.0.0",
     "whatwg-fetch": "1.0.0"
   },

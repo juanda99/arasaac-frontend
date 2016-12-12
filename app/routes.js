@@ -97,6 +97,14 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
+      path: '/uploadmaterial',
+      name: 'uploadMaterialView',
+      getComponent(location, cb) {
+        System.import('containers/UploadMaterialView')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
