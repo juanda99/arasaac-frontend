@@ -41,7 +41,7 @@ function pictogramsViewReducer(state = initialState, action) {
         .setIn(['autocomplete', action.searchText], action.data)
     case SHOW_FILTERS:
       return state
-        .set('showFilter', !state.showFilter)
+        .set('showFilter', !state.get('showFilter'))
     default:
       return state
   }

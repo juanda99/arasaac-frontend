@@ -31,6 +31,7 @@ const Gallery = ({ data }) => {
     </li>
     )
   )
+  const gallery = pictoList.length ? React.cloneElement(children, { data: pictoList }) : null
   return (
     <div>
       <Masonry

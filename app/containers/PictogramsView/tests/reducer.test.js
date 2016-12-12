@@ -1,7 +1,7 @@
 import expect from 'expect'
 import { fromJS } from 'immutable'
 import pictogramsViewReducer from '../reducer'
-import { pictograms } from '../actions'
+import { pictograms, toggleShowFilter } from '../actions'
 
 describe('pictogramsViewReducer', () => {
   let state
@@ -14,6 +14,25 @@ describe('pictogramsViewReducer', () => {
     })
   })
 
+  it('should return the initial state', () => {
+    const expectedResult = state
+    expect(pictogramsViewReducer(undefined, {})).toEqual(expectedResult)
+  })
+
+  it('should handle the showFilter action correcty', () => {
+    const expectedResult = state
+      .set('showFilter', true)
+      .set('loading', false)
+    expect(pictogramsViewReducer(state, toggleShowFilter())).toEqual(expectedResult)
+  })
+
+  it('should handle the showFilter action correcty: hide filters', () => {
+    const testState = fromJS({ showFilter: true })
+    const expectedResult = fromJS({ showFilter: false })
+    expect(pictogramsViewReducer(testState, toggleShowFilter())).toEqual(expectedResult)
+  })
+
+
   it('should handle the pictograms.failure action correctly', () => {
     const error = 'test error'
     const payload = { error }
@@ -22,11 +41,6 @@ describe('pictogramsViewReducer', () => {
       .set('loading', false)
 
     expect(pictogramsViewReducer(state, pictograms.failure(error))).toEqual(expectedResult)
-  })
-
-  it('should return the initial state', () => {
-    const expectedResult = state
-    expect(pictogramsViewReducer(undefined, {})).toEqual(expectedResult)
   })
 
   it('should handle the pictograms.request action correctly', () => {

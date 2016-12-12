@@ -9,11 +9,11 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 import SearchBox from 'components/SearchBox'
 import View from 'components/View'
-import { createSelector } from 'reselect'
+// import { createSelector } from 'reselect'
 import { withRouter } from 'react-router'
-import { selectFilters } from 'containers/ToggleFilter/selectors'
+// import { selectFilters } from 'containers/ToggleFilter/selectors'
 import { autocomplete, pictograms, toggleShowFilter } from './actions'
-import { selectShowFilter, selectPictogramsBySearchKey } from './selectors'
+// import { selectShowFilter, selectPictogramsBySearchKey } from './selectors'
 
 // import selectPictogramsView from './selectors'
 // import messages from './messages'
@@ -44,7 +44,8 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
   render() {
     const { children, showFilter, filters, keywords, pictoList } = this.props
     const searchText = this.props.params.searchText
-    const gallery = children ? React.cloneElement(children, { data: pictoList }) : null
+    console.log(pictoList.length)
+    const gallery = pictoList.length ? React.cloneElement(children, { data: pictoList }) : null
     // const gallery = React.cloneElement(children, { data: pictograms })
     return (
       <View>
@@ -87,9 +88,13 @@ PictogramsView.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const filters = createSelector(selectFilters(), (fltrs) => (fltrs))(state)
-  const showFilter = createSelector(selectShowFilter(), (shwFltrs) => (shwFltrs))(state)
-  const pictoList = createSelector(selectPictogramsBySearchKey(), (pctLst) => (pctLst))(state, ownProps)
+  const filters = state.getIn(['configuration', 'filters'])
+  // const filters = createSelector(selectFilters(), (fltrs) => (fltrs))(state)
+  // console.log (filters.toJS())
+  const showFilter = state.getIn(['pictogramsView', 'showFilter'])
+  // const showFilter = createSelector(selectShowFilter(), (shwFltrs) => (shwFltrs))(state)
+  const pictoList = state.getIn(['pictogramView', 'search', ownProps.params.searchText]) || []
+  // const pictoList = createSelector(selectPictogramsBySearchKey(), (pctLst) => (pctLst))(state, ownProps)
   return ({
     filters,
     showFilter,

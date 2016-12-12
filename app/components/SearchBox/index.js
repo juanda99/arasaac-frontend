@@ -8,6 +8,7 @@ import React, { PropTypes } from 'react'
 import { FormattedMessage } from 'react-intl'
 import Toggle from 'material-ui/Toggle'
 import FilterPictograms from 'components/Filters'
+import { Map } from 'immutable'
 import SearchField from './SearchField'
 
 
@@ -20,7 +21,7 @@ const SearchBox = ({ value, dataSource, onSubmit, onChange, onToggleFilter, filt
       onToggle={onToggleFilter} defaultToggled={showFilter}
     />
     <SearchField value={value} dataSource={dataSource} onSubmit={onSubmit} onChange={onChange} />
-    {showFilter ? <FilterPictograms filter={filters} /> : null}
+    {showFilter ? <FilterPictograms filters={filters} /> : null}
   </div>
 )
 
@@ -31,7 +32,7 @@ SearchBox.propTypes = {
   onChange: PropTypes.func.isRequired,
   onToggleFilter: PropTypes.func.isRequired,
   showFilter: React.PropTypes.bool.isRequired,
-  filters: PropTypes.object.isRequired
+  filters: PropTypes.instanceOf(Map)
 }
 SearchBox.defaultProps = {
   value: '',

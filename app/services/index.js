@@ -5,7 +5,7 @@ import { AUTH } from './config'
 
 const api = {
   fetchSearches: (searchText) => callApi(`searches/${searchText}`, searchSchema),
-  fetchPictograms: (searchText) => callApi(`searches/${searchText}`, searchSchema),
+  fetchPictograms: (searchText) => callApi(`pictograms/${searchText}`, pictogramsSchema),
   fetchUser: (login) => callApi(`users/${login}`, userSchema),
   fetchRepo: (fullName) => callApi(`repos/${fullName}`, repoSchema),
   fetchStarred: (url) => callApi(url, repoSchemaArray),
