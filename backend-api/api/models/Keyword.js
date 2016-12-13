@@ -1,11 +1,11 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-var keywordSchema = new Schema({
-  locale: String, 
+const keywordSchema = new Schema({
+  locale: String,
   keyword: String
 })
 
-var Keyword = mongoose.model('Keyword', keywordSchema, 'keywords')
+const Keyword = mongoose.model('Keyword', keywordSchema, 'keywords')
 
 module.exports = Keyword

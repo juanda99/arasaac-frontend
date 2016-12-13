@@ -1,14 +1,14 @@
-var User = require('../models/User')
-var mongoose = require('mongoose')
-var nev = require('email-verification')(mongoose)
-var TempUser = require('../models/TempUser')
-var bcrypt = require('bcryptjs')
+const User = require('../models/User')
+const mongoose = require('mongoose')
+const nev = require('email-verification')(mongoose)
+const TempUser = require('../models/TempUser')
+const bcrypt = require('bcryptjs')
 
-var myHasher = function(password, tempUserData, insertTempUser, callback) {
-  bcrypt.genSalt(8, function(err, salt) {
-    bcrypt.hash(password, salt, function(err, hash) {
-      return insertTempUser(hash, tempUserData, callback)
-    })
+const myHasher = function (password, tempUserData, insertTempUser, callback) {
+  bcrypt.genSalt(8, (err, salt) => {
+    bcrypt.hash(password, salt, (err, hash) =>
+       insertTempUser(hash, tempUserData, callback)
+    )
   })
 }
 
@@ -22,7 +22,7 @@ nev.configure({
   emailFieldName: 'email',
   passwordFieldName: 'password',
   URLFieldName: 'GENERATED_VERIFYING_URL',
-  expirationTime: 86400, //1 día
+  expirationTime: 86400, // 1 día
   // emailing options
   transportOptions: {
     service: 'Gmail',
@@ -45,12 +45,12 @@ nev.configure({
     text: 'Your account has been successfully verified.'
   },
   hashingFunction: myHasher
-}, function(err, options){
+}, (err, options) => {
   if (err) {
     console.log(err)
     return
   }
-  console.log('configured: ' + (typeof options === 'object'))
+  console.log(`configured: ${typeof options === 'object'}`)
 })
 
 module.exports = nev

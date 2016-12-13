@@ -1,15 +1,15 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-var cervezaSchema = new Schema({
-  Nombre: String, 
-  Descripción: String, 
+const cervezaSchema = new Schema({
+  Nombre: String,
+  Descripción: String,
   Graduacion: String,
   Envase: String,
-  Precio: String 
+  Precio: String
 })
 
-var Cerveza = mongoose.model('Cerveza', cervezaSchema)
+const Cerveza = mongoose.model('Cerveza', cervezaSchema)
 
 /*
 
@@ -19,11 +19,11 @@ cervezaSchema.pre('save', function (next) {
   Cerveza.count({cerveza: self.name}, function (err, count) {
     if (count>0){
       next(new Error('¡Ya existe esta cerveza!'))
-    }else{                
+    }else{
       next()
     }
   })
-}) 
+})
 
 */
 

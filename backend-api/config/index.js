@@ -9,7 +9,7 @@ const production = require('./env/production')
 const defaults = {
   host: process.env.HOST || 'localhost',
   port: process.env.PORT || 8000,
-  uploadsDir: path.join( __dirname, 'static', 'uploads' ),
+  uploadsDir: path.join(__dirname, 'static', 'uploads'),
   jwtSecret: 'asdfgASDFG12345'
 }
 

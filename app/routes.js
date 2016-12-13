@@ -102,8 +102,8 @@ export default function createRoutes(store) {
       getComponent(location, cb) {
         System.import('containers/UploadMaterialView')
           .then(loadModule(cb))
-          .catch(errorLoading);
-      },
+          .catch(errorLoading)
+      }
     }, {
       path: '*',
       name: 'notfound',

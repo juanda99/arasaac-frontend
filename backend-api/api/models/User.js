@@ -1,7 +1,7 @@
-var mongoose = require('mongoose')
+const mongoose = require('mongoose')
 const crypto = require('crypto')
 
-var Schema = mongoose.Schema
+const Schema = mongoose.Schema
 
 const oAuthTypes = [
   'github',
@@ -19,7 +19,7 @@ const userSchema = new Schema({
   hashed_password: { type: String, default: '' },
   salt: { type: String, default: '' },
   authToken: { type: String, default: '' },
-  lastlogin: { type : Date, default : Date.now },
+  lastlogin: { type: Date, default: Date.now },
   facebook: {},
   twitter: {},
   github: {},
@@ -27,7 +27,7 @@ const userSchema = new Schema({
   linkedin: {}
 })
 
-const validatePresenceOf = value => value && value.length
+const validatePresenceOf = (value) => value && value.length
 
 /**
  * Virtuals
@@ -66,7 +66,7 @@ userSchema.path('email').validate(function (email, fn) {
 
   // Check only when it is a new user or when email field is modified
   if (this.isNew || this.isModified('email')) {
-    User.find({ email: email }).exec(function (err, users) {
+    User.find({ email }).exec((err, users) => {
       fn(!err && users.length === 0)
     })
   } else fn(true)
@@ -111,7 +111,7 @@ userSchema.methods = {
    * @api public
    */
 
-  authenticate: function (plainText) {
+  authenticate(plainText) {
     return this.encryptPassword(plainText) === this.hashed_password
   },
 
@@ -122,8 +122,8 @@ userSchema.methods = {
    * @api public
    */
 
-  makeSalt: function () {
-    return Math.round((new Date().valueOf() * Math.random())) + ''
+  makeSalt() {
+    return `${Math.round((new Date().valueOf() * Math.random()))}`
   },
 
   /**
@@ -134,7 +134,7 @@ userSchema.methods = {
    * @api public
    */
 
-  encryptPassword: function (password) {
+  encryptPassword(password) {
     if (!password) return ''
     try {
       return crypto
@@ -150,7 +150,7 @@ userSchema.methods = {
    * Validation is not required if using OAuth
    */
 
-  skipValidation: function () {
+  skipValidation() {
     return ~oAuthTypes.indexOf(this.provider)
   }
 }
@@ -169,7 +169,7 @@ userSchema.statics = {
    * @api private
    */
 
-  load: function (options, cb) {
+  load(options, cb) {
     options.select = options.select || 'name username'
     return this.findOne(options.criteria)
       .select(options.select)
@@ -177,10 +177,7 @@ userSchema.statics = {
   }
 }
 
-var User = mongoose.model('User', userSchema, 'users')
+const User = mongoose.model('User', userSchema, 'users')
 
 module.exports = User
-
-
-
 

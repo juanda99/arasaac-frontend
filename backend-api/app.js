@@ -7,19 +7,18 @@ import config from './config'
 const errorhandler = require('errorhandler')
 
 
-var YAML = require('yamljs')
+const YAML = require('yamljs')
 const swaggerDocument = YAML.load('./api/swagger/swagger.yaml')
 
 
 module.exports = app // for testing
 
-var swaggerConfig = {
+const swaggerConfig = {
   appRoot: __dirname // required config,
 }
 
-/*bbdd configuration in its own file*/
+/* bbdd configuration in its own file*/
 require('./db')
-
 
 
 app.use(morgan('dev'))
@@ -27,19 +26,18 @@ app.use(morgan('dev'))
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 
-SwaggerExpress.create(swaggerConfig, function(err, swaggerExpress) {
+SwaggerExpress.create(swaggerConfig, (err, swaggerExpress) => {
   if (err) { throw err }
 
   // install middleware
   swaggerExpress.register(app)
 
 
-
-  var port = process.env.PORT || config.port
+  const port = process.env.PORT || config.port
   app.listen(port)
-  console.log('App running on port ' + port)
+  console.log(`App running on port ${port}`)
 
   if (swaggerExpress.runner.swagger.paths['/hello']) {
-    console.log('try this:\ncurl http://127.0.0.1:' + port + '/hello?name=Scott')
+    console.log(`try this:\ncurl http://127.0.0.1:${port}/hello?name=Scott`)
   }
 })
