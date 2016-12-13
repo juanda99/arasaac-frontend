@@ -119,10 +119,10 @@ renderAuthors.propTypes = {
   ...propTypes
 }
 
-const nameField = ({member}) => (
+const nameField = ({ member }) => (
   <Field
     name={`${member}.firstName`}
-    type="text"
+    type='text'
     component={renderField}
     dataSource={nameList}
     hintText='Introduce el nombre del autor'
@@ -130,7 +130,7 @@ const nameField = ({member}) => (
     floatingLabelText='Nombrerrr'
     openOnFocus={true}
     filter={MUIAutoComplete.fuzzyFilter}
-    />
+  />
 )
 
 class MaterialForm extends Component {
@@ -145,15 +145,16 @@ class MaterialForm extends Component {
     const { handleSubmit, pristine, reset, submitting } = this.props
     return (
       <form onSubmit={handleSubmit}>
-        <FieldArray name="authors" component={renderAuthors} />
+        <FieldArray name='authors' component={renderAuthors} />
         <div>
           <Field
-            name="notes"
+            name='notes'
             component={TextField}
-            hintText="Notes"
-            floatingLabelText="Notes"
+            hintText='Notes'
+            floatingLabelText='Notes'
             multiLine={true}
-            rows={2} />
+            rows={2}
+          />
         </div>
 
         <div>
@@ -163,8 +164,8 @@ class MaterialForm extends Component {
           />
         </div>
         <div>
-          <RaisedButton label="Submit" primary={true} disabled={pristine || submitting} />
-          <RaisedButton label="Reset" primary={true} disabled={pristine || submitting} onClick={reset}  />
+          <RaisedButton label='Submit' primary={true} disabled={pristine || submitting} />
+          <RaisedButton label='Reset' primary={true} disabled={pristine || submitting} onClick={reset} />
         </div>
       </form>
     )

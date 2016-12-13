@@ -74,10 +74,16 @@ module.exports = (options) => ({
       '.jsx',
       '.react.js'
     ],
+    // due to https://github.com/mxstbr/react-boilerplate/issues/868,
+    // we change the order, more info:
+    // https://webpack.js.org/configuration/resolve/#resolve-mainfiles
+    // 'jsnext:main',
+    // 'main'
+    // changed order next two lines
     mainFields: [
       'browser',
-      'jsnext:main',
-      'main'
+      'main',
+      'jsnext:main'
     ]
   },
   devtool: options.devtool,
