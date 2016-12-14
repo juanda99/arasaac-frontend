@@ -21,6 +21,11 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'Search Pictograms'
   },
+  searchMaterials: {
+    id: 'menu.searchMaterials',
+    description: 'Menu item',
+    defaultMessage: 'Search materials'
+  },
   api: {
     id: 'menu.api',
     description: 'Menu item',
@@ -85,6 +90,11 @@ export default defineMessages({
     id: 'menu.materials',
     description: 'Menu item',
     defaultMessage: 'Materials'
+  },
+  uploadMaterials: {
+    id: 'menu.uploadMaterials',
+    description: 'Menu item',
+    defaultMessage: 'Upload materials'
   },
   info: {
     id: 'menu.info',

@@ -97,7 +97,7 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
-      path: '/uploadmaterial',
+      path: '/materials/upload',
       name: 'uploadMaterialView',
       getComponent(location, cb) {
         System.import('containers/UploadMaterialView')

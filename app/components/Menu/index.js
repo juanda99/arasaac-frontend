@@ -86,8 +86,18 @@ class Menu extends Component {
             ]}
           />
           <ListItem
-            value='/materials'
             primaryText={<FormattedMessage {...messages.materials} />}
+            primaryTogglesNestedList
+            nestedItems={[
+              <ListItem
+                value='/materials/search'
+                primaryText={<FormattedMessage {...messages.searchMaterials} />}
+              />,
+              <ListItem
+                value='/materials/upload'
+                primaryText={<FormattedMessage {...messages.uploadMaterials} />}
+              />
+            ]}
           />
           <ListItem
             primaryText={<FormattedMessage {...messages.onlineTools} />}
