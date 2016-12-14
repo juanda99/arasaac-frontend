@@ -46,7 +46,7 @@
 
 ## Ingredients for the webapp
 <dl>
-  <dt>Based on [React boilerplate](https://github.com/mxstbr/react-boilerplate)</dt>
+<dt>Based on <a href="https://github.com/mxstbr/react-boilerplate">React boilerplate</a></dt>
   <dd>Using React, Redux, Immutable.js, Sagas and Reselect</dd>
 
   <dt>NodeJS for server side</dt>
