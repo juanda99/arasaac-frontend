@@ -4,29 +4,17 @@
 *
 */
 
-import React, { Component } from 'react'
+import React from 'react'
 import { Field, FieldArray, reduxForm, propTypes } from 'redux-form/immutable'
-import { RadioButton } from 'material-ui/RadioButton'
-import MenuItem from 'material-ui/MenuItem'
 import { AutoComplete as MUIAutoComplete, RaisedButton } from 'material-ui'
 import {
   AutoComplete,
-  Checkbox,
-  DatePicker,
-  RadioButtonGroup,
-  SelectField,
-  Slider,
-  TextField,
-  Toggle
+  TextField
 } from 'redux-form-material-ui'
+import Dropzone from 'react-dropzone'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
 import PersonAdd from 'material-ui/svg-icons/social/person-add'
 import Delete from 'material-ui/svg-icons/action/delete'
-import Dropzone from 'react-dropzone'
-import { FormattedMessage } from 'react-intl'
-import messages from './messages'
-
 
 const style = {
   marginRight: 20,
@@ -92,7 +80,17 @@ const renderAuthors = ({ fields }) => {
       </li>
       {fields.map((member, index) =>
         <li key={index}>
-          <nameField member={member} />
+          <Field
+            name={`${member}.firstName`}
+            type='text'
+            component={renderField}
+            dataSource={nameList}
+            hintText='Introduce el nombre del autor'
+            muiComponent={AutoComplete}
+            floatingLabelText='Nombrerrr'
+            openOnFocus={true}
+            filter={MUIAutoComplete.fuzzyFilter}
+          />
           <Field
             name={`${member}.lastName`}
             type='text'
@@ -119,57 +117,35 @@ renderAuthors.propTypes = {
   ...propTypes
 }
 
-const nameField = ({ member }) => (
-  <Field
-    name={`${member}.firstName`}
-    type='text'
-    component={renderField}
-    dataSource={nameList}
-    hintText='Introduce el nombre del autor'
-    muiComponent={AutoComplete}
-    floatingLabelText='Nombrerrr'
-    openOnFocus={true}
-    filter={MUIAutoComplete.fuzzyFilter}
-  />
-)
 
-class MaterialForm extends Component {
-  componentDidMount() {
-    this.refs.name            // the Field
-      .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
-      .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
-      .focus()                // on TextField
-  }
+const MaterialForm = (props) => {
+  const { handleSubmit, pristine, reset, submitting } = props
+  return (
+    <form onSubmit={handleSubmit}>
+      <FieldArray name='authors' component={renderAuthors} />
+      <div>
+        <Field
+          name='notes'
+          component={TextField}
+          hintText='Notes'
+          floatingLabelText='Notes'
+          multiLine={true}
+          rows={2}
+        />
+      </div>
 
-  render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props
-    return (
-      <form onSubmit={handleSubmit}>
-        <FieldArray name='authors' component={renderAuthors} />
-        <div>
-          <Field
-            name='notes'
-            component={TextField}
-            hintText='Notes'
-            floatingLabelText='Notes'
-            multiLine={true}
-            rows={2}
-          />
-        </div>
-
-        <div>
-          <Field
-            name={FILE_FIELD_NAME}
-            component={renderDropzoneInput}
-          />
-        </div>
-        <div>
-          <RaisedButton label='Submit' primary={true} disabled={pristine || submitting} />
-          <RaisedButton label='Reset' primary={true} disabled={pristine || submitting} onClick={reset} />
-        </div>
-      </form>
-    )
-  }
+      <div>
+        <Field
+          name={FILE_FIELD_NAME}
+          component={renderDropzoneInput}
+        />
+      </div>
+      <div>
+        <RaisedButton label='Submit' primary={true} disabled={pristine || submitting} />
+        <RaisedButton label='Reset' primary={true} disabled={pristine || submitting} onClick={reset} />
+      </div>
+    </form>
+  )
 }
 
 MaterialForm.propTypes = {
