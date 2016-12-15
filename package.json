@@ -220,6 +220,7 @@
     "jsonwebtoken": "^7.2.1",
     "lodash": "4.16.4",
     "material-ui": "^0.16.1",
+    "material-ui-chip-input": "^0.11.2",
     "minimist": "1.2.0",
     "mongoose": "^4.7.2",
     "normalizr": "^2.2.1",

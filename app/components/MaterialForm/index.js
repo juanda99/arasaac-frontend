@@ -4,9 +4,11 @@
 *
 */
 
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Field, FieldArray, reduxForm, propTypes } from 'redux-form/immutable'
 import { AutoComplete as MUIAutoComplete, RaisedButton } from 'material-ui'
+import ChipInput from 'material-ui-chip-input'
+import H3 from 'components/H3'
 import {
   AutoComplete,
   TextField
@@ -58,17 +60,21 @@ const surnameList = [
   'Pérez', 'Gracia', 'Gómez', 'Sanchez'
 ]
 
-const renderField = (props) => (
+const RenderField = (props) => (
   <span style={{ paddingRight: '30px' }}>
     <Field {...props} component={props.muiComponent} />
     { props.touched && props.error && <span>{props.error}</span> }
   </span>
 )
-renderField.propTypes = {
-  ...propTypes
+
+RenderField.propTypes = {
+  touched: PropTypes.bool,
+  error: PropTypes.string,
+  muiComponent: PropTypes.func.isRequired
 }
 
-const renderAuthors = ({ fields }) => {
+
+const RenderAuthors = ({ fields }) => {
   const addAuthorField = () => { fields.push({}) }
   return (
     <ul style={style.authorsList}>
@@ -83,7 +89,7 @@ const renderAuthors = ({ fields }) => {
           <Field
             name={`${member}.firstName`}
             type='text'
-            component={renderField}
+            component={RenderField}
             dataSource={nameList}
             hintText='Introduce el nombre del autor'
             muiComponent={AutoComplete}
@@ -94,7 +100,7 @@ const renderAuthors = ({ fields }) => {
           <Field
             name={`${member}.lastName`}
             type='text'
-            component={renderField}
+            component={RenderField}
             dataSource={surnameList}
             hintText='Introduce el apellido del autor'
             muiComponent={AutoComplete}
@@ -113,16 +119,46 @@ const renderAuthors = ({ fields }) => {
     </ul>
   )
 }
-renderAuthors.propTypes = {
-  ...propTypes
+
+RenderAuthors.propTypes = {
+  fields: PropTypes.object.isRequired
 }
 
+
+const RenderChip = ({ input, hintText, floatingLabelText }) => (
+  <ChipInput
+    {...input}
+    value={input.value || []}
+    onRequestAdd={(addedChip) => {
+      let values = input.value || []
+      values = values.slice()
+      values.push(addedChip)
+      input.onChange(values)
+    }}
+    onRequestDelete={(deletedChip) => {
+      let values = input.value || []
+      values = values.filter(v => v !== deletedChip)
+      input.onChange(values)
+    }}
+    onBlur={() => input.onBlur()}
+    hintText={hintText}
+    floatingLabelText={floatingLabelText}
+    fullWidth
+  />
+)
+
+RenderChip.propTypes = {
+  input: PropTypes.object.isRequired,
+  hintText: PropTypes.string.isRequired,
+  floatingLabelText: PropTypes.string.isRequired
+}
 
 const MaterialForm = (props) => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
-      <FieldArray name='authors' component={renderAuthors} />
+      <H3>Colaboradores del material</H3>
+      <FieldArray name='authors' component={RenderAuthors} />
       <div>
         <Field
           name='notes'
@@ -133,7 +169,9 @@ const MaterialForm = (props) => {
           rows={2}
         />
       </div>
-
+      <H3>Clasificación del material</H3>
+      <Field name='myValue' component={RenderChip} hintText='...' floatingLabelText='Value' />
+      <H3>Subir ficheros</H3>
       <div>
         <Field
           name={FILE_FIELD_NAME}
