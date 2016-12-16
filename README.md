@@ -49,8 +49,8 @@
 <dt>Based on <a href="https://github.com/mxstbr/react-boilerplate">React boilerplate</a></dt>
   <dd>Using React, Redux, Immutable.js, Sagas and Reselect</dd>
 
-  <dt>NodeJS for server side</dt>
-  <dd>Express, Swagger for API</dd>
+  <dt>NodeJS and Python on the server side</dt>
+  <dd>Express for testing, Swagger and Python Eve for the final API </dd>
 
   <dt>Presentation</dt>
   <dd>Material-ui and flexbox-grid</dd>
