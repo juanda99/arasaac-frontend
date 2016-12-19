@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Field } from 'redux-form/immutable'
 import MUIAutoComplete from 'material-ui/AutoComplete'
-import {
-  AutoComplete
-} from 'redux-form-material-ui'
+import { AutoComplete } from 'redux-form-material-ui'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import PersonAdd from 'material-ui/svg-icons/social/person-add'
 import Delete from 'material-ui/svg-icons/action/delete'

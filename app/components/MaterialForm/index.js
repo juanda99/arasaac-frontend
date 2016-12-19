@@ -4,45 +4,16 @@
 *
 */
 
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { Field, FieldArray, reduxForm, propTypes } from 'redux-form/immutable'
 import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper'
-import ChipInput from 'material-ui-chip-input'
-import { TextField } from 'redux-form-material-ui'
+import MenuItem from 'material-ui/MenuItem'
+import { SelectField } from 'redux-form-material-ui'
 import H3 from 'components/H3'
 import RenderAuthors from './RenderAuthors'
 import RenderDropzoneInput from './RenderDropzoneInput'
-
-const RenderChip = ({ input, hintText, floatingLabelText, dataSource }) => (
-  <ChipInput
-    {...input}
-    value={input.value || []}
-    onRequestAdd={(addedChip) => {
-      let values = input.value || []
-      values = values.slice()
-      values.push(addedChip)
-      input.onChange(values)
-    }}
-    onRequestDelete={(deletedChip) => {
-      let values = input.value || []
-      values = values.filter((v) => v !== deletedChip)
-      input.onChange(values)
-    }}
-    onBlur={() => input.onBlur()}
-    hintText={hintText}
-    floatingLabelText={floatingLabelText}
-    dataSource={dataSource}
-    fullWidth
-  />
-)
-
-RenderChip.propTypes = {
-  input: PropTypes.object.isRequired,
-  hintText: PropTypes.string.isRequired,
-  floatingLabelText: PropTypes.string.isRequired,
-  dataSource: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
-}
-
+import RenderChip from './RenderChip'
+import RenderLanguages from './RenderLanguages'
 
 class MaterialForm extends React.Component {
 
@@ -91,34 +62,41 @@ class MaterialForm extends React.Component {
             <StepContent>
               <p>Introduce el idioma del material, su título y la descripción del material.
               Si el material está en varios idiomas, rellena el título y la descripción en cada uno de ellos, así lo podremos procesar de forma automática.</p>
-              <Field
-                name='notes'
-                component={TextField}
-                hintText='Notes'
-                floatingLabelText='Notes'
-                multiLine={true}
-                rows={2}
-              />
-              <Field name='myValue' component={RenderChip} hintText='...' floatingLabelText='Value' />
+              <FieldArray name='authors' component={RenderLanguages} />
             </StepContent>
           </Step>
           <Step>
             <StepButton onTouchTap={() => this.setState({ stepIndex: 2 })}>
-              <H3>Clasificación del material</H3>
+              <H3>Capturas de pantalla</H3>
             </StepButton>
             <StepContent>
-              <Field name='myValue' component={RenderChip} hintText='...' floatingLabelText='Value' dataSource={['perro', 'casa', 'perra']} />
+              <p>Introduce alguna captura de pantalla para ver el aspecto visual del material sin necesidad de descargarlo.</p>
+              <Field name='files-upload' component={RenderDropzoneInput} />
             </StepContent>
           </Step>
           <Step>
             <StepButton onTouchTap={() => this.setState({ stepIndex: 3 })}>
+              <H3>Clasificación del material</H3>
+            </StepButton>
+            <StepContent>
+              <Field name='areas' component={RenderChip} hintText='Selecciona las áreas del material' floatingLabelText='Área' dataSource={['perro', 'casa', 'perra']} />
+              <Field name='actividades' component={RenderChip} hintText='Selecciona los tipos de actividad del material' floatingLabelText='Actividad' dataSource={['perro', 'casa', 'perra']} />
+              <Field name='licencia' component={SelectField} hintText='Selecciona el tipo de licencia' floatingLabelText='Licencia' fullWidth >
+                <MenuItem value='Sin definir' primaryText='Sin definir' disabled='true' />
+                <MenuItem value='Creative Commons BY-NC-SA' primaryText='Creative Commons BY-NC-SA' />
+                <MenuItem value='Software propietario' primaryText='Software propietario' disabled='true' />
+                <MenuItem value='GNU General Public License' primaryText='GNU General Public License' disabled='true' />
+                <MenuItem value='Mozilla Public License' primaryText='Mozilla Public License' disabled='true' />
+              </Field>
+            </StepContent>
+          </Step>
+          <Step>
+            <StepButton onTouchTap={() => this.setState({ stepIndex: 4 })}>
               <H3>Subir ficheros</H3>
             </StepButton>
             <StepContent>
-              <Field
-                name='files-upload'
-                component={RenderDropzoneInput}
-              />
+              <p>Utiliza un nombre descriptivo para los ficheros que subes, del tipo: </p>
+              <Field name='files-upload' component={RenderDropzoneInput} />
             </StepContent>
           </Step>
         </Stepper>
