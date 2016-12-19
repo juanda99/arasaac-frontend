@@ -6,126 +6,14 @@
 
 import React, { PropTypes } from 'react'
 import { Field, FieldArray, reduxForm, propTypes } from 'redux-form/immutable'
-import { AutoComplete as MUIAutoComplete, RaisedButton } from 'material-ui'
+import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper'
 import ChipInput from 'material-ui-chip-input'
+import { TextField } from 'redux-form-material-ui'
 import H3 from 'components/H3'
-import {
-  AutoComplete,
-  TextField
-} from 'redux-form-material-ui'
-import Dropzone from 'react-dropzone'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import PersonAdd from 'material-ui/svg-icons/social/person-add'
-import Delete from 'material-ui/svg-icons/action/delete'
+import RenderAuthors from './RenderAuthors'
+import RenderDropzoneInput from './RenderDropzoneInput'
 
-const style = {
-  marginRight: 20,
-  authorsList: {
-    listStyleType: 'none',
-    margin: 0,
-    padding: 0
-  }
-}
-
-
-const FILE_FIELD_NAME = 'files'
-
-
-const renderDropzoneInput = (field) => {
-  const files = field.input.value
-  return (
-    <div>
-      <Dropzone
-        name={field.name}
-        onDrop={(filesToUpload) => field.input.onChange(filesToUpload)}
-      >
-        <div>Try dropping some files here, or click to select files to upload.</div>
-      </Dropzone>
-      {field.meta.touched &&
-        field.meta.error &&
-        <span className='error'>{field.meta.error}</span>}
-      {files && Array.isArray(files) && (
-        <ul>
-          {files.map((file, i) => <li key={i}>{file.name}</li>)}
-        </ul>
-      )}
-    </div>
-  )
-}
-
-const nameList = [
-  'Juan', 'Pedro', 'Marcos'
-]
-const surnameList = [
-  'Pérez', 'Gracia', 'Gómez', 'Sanchez'
-]
-
-const RenderField = (props) => (
-  <span style={{ paddingRight: '30px' }}>
-    <Field {...props} component={props.muiComponent} />
-    { props.touched && props.error && <span>{props.error}</span> }
-  </span>
-)
-
-RenderField.propTypes = {
-  touched: PropTypes.bool,
-  error: PropTypes.string,
-  muiComponent: PropTypes.func.isRequired
-}
-
-
-const RenderAuthors = ({ fields }) => {
-  const addAuthorField = () => { fields.push({}) }
-  return (
-    <ul style={style.authorsList}>
-      <li>
-        <FloatingActionButton mini={true} onClick={addAuthorField} >
-          <PersonAdd />
-        </FloatingActionButton>
-
-      </li>
-      {fields.map((member, index) =>
-        <li key={index}>
-          <Field
-            name={`${member}.firstName`}
-            type='text'
-            component={RenderField}
-            dataSource={nameList}
-            hintText='Introduce el nombre del autor'
-            muiComponent={AutoComplete}
-            floatingLabelText='Nombrerrr'
-            openOnFocus={true}
-            filter={MUIAutoComplete.fuzzyFilter}
-          />
-          <Field
-            name={`${member}.lastName`}
-            type='text'
-            component={RenderField}
-            dataSource={surnameList}
-            hintText='Introduce el apellido del autor'
-            muiComponent={AutoComplete}
-            floatingLabelText='Apellido'
-            openOnFocus={true}
-            filter={MUIAutoComplete.fuzzyFilter}
-          />
-          <FloatingActionButton mini={true} style={style} onClick={() => fields.remove(index)} >
-            <Delete />
-          </FloatingActionButton>
-          <FloatingActionButton mini={true} onClick={addAuthorField} >
-            <PersonAdd />
-          </FloatingActionButton>
-        </li>
-      )}
-    </ul>
-  )
-}
-
-RenderAuthors.propTypes = {
-  fields: PropTypes.object.isRequired
-}
-
-
-const RenderChip = ({ input, hintText, floatingLabelText }) => (
+const RenderChip = ({ input, hintText, floatingLabelText, dataSource }) => (
   <ChipInput
     {...input}
     value={input.value || []}
@@ -143,6 +31,7 @@ const RenderChip = ({ input, hintText, floatingLabelText }) => (
     onBlur={() => input.onBlur()}
     hintText={hintText}
     floatingLabelText={floatingLabelText}
+    dataSource={dataSource}
     fullWidth
   />
 )
@@ -150,40 +39,92 @@ const RenderChip = ({ input, hintText, floatingLabelText }) => (
 RenderChip.propTypes = {
   input: PropTypes.object.isRequired,
   hintText: PropTypes.string.isRequired,
-  floatingLabelText: PropTypes.string.isRequired
+  floatingLabelText: PropTypes.string.isRequired,
+  dataSource: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 }
 
-const MaterialForm = (props) => {
-  const { handleSubmit, pristine, reset, submitting } = props
-  return (
-    <form onSubmit={handleSubmit}>
-      <H3>Colaboradores del material</H3>
-      <FieldArray name='authors' component={RenderAuthors} />
+
+class MaterialForm extends React.Component {
+
+  state = {
+    stepIndex: 0
+  }
+
+  handleNext = () => {
+    const { stepIndex } = this.state
+    if (stepIndex < 2) {
+      this.setState({ stepIndex: stepIndex + 1 })
+    }
+  }
+
+  handlePrev = () => {
+    const { stepIndex } = this.state
+    if (stepIndex > 0) {
+      this.setState({ stepIndex: stepIndex - 1 })
+    }
+  }
+
+
+  render() {
+    const { stepIndex } = this.state
+
+    return (
       <div>
-        <Field
-          name='notes'
-          component={TextField}
-          hintText='Notes'
-          floatingLabelText='Notes'
-          multiLine={true}
-          rows={2}
-        />
+        <Stepper
+          activeStep={stepIndex}
+          linear={false}
+          orientation='vertical'
+        >
+          <Step>
+            <StepButton onTouchTap={() => this.setState({ stepIndex: 0 })}>
+              <H3>Autores del material</H3>
+            </StepButton>
+            <StepContent>
+              <p>Introduce el nombre y los apellidos de los autores del material.</p>
+              <FieldArray name='authors' component={RenderAuthors} />
+            </StepContent>
+          </Step>
+          <Step>
+            <StepButton onTouchTap={() => this.setState({ stepIndex: 1 })}>
+              <H3>Idiomas y descripción del material</H3>
+            </StepButton>
+            <StepContent>
+              <p>Introduce el idioma del material, su título y la descripción del material.
+              Si el material está en varios idiomas, rellena el título y la descripción en cada uno de ellos, así lo podremos procesar de forma automática.</p>
+              <Field
+                name='notes'
+                component={TextField}
+                hintText='Notes'
+                floatingLabelText='Notes'
+                multiLine={true}
+                rows={2}
+              />
+              <Field name='myValue' component={RenderChip} hintText='...' floatingLabelText='Value' />
+            </StepContent>
+          </Step>
+          <Step>
+            <StepButton onTouchTap={() => this.setState({ stepIndex: 2 })}>
+              <H3>Clasificación del material</H3>
+            </StepButton>
+            <StepContent>
+              <Field name='myValue' component={RenderChip} hintText='...' floatingLabelText='Value' dataSource={['perro', 'casa', 'perra']} />
+            </StepContent>
+          </Step>
+          <Step>
+            <StepButton onTouchTap={() => this.setState({ stepIndex: 3 })}>
+              <H3>Subir ficheros</H3>
+            </StepButton>
+            <StepContent>
+              <Field
+                name='files-upload'
+                component={RenderDropzoneInput}
+              />
+            </StepContent>
+          </Step>
+        </Stepper>
       </div>
-      <H3>Clasificación del material</H3>
-      <Field name='myValue' component={RenderChip} hintText='...' floatingLabelText='Value' />
-      <H3>Subir ficheros</H3>
-      <div>
-        <Field
-          name={FILE_FIELD_NAME}
-          component={renderDropzoneInput}
-        />
-      </div>
-      <div>
-        <RaisedButton label='Submit' primary={true} disabled={pristine || submitting} />
-        <RaisedButton label='Reset' primary={true} disabled={pristine || submitting} onClick={reset} />
-      </div>
-    </form>
-  )
+    )
+  }
 }
 
 MaterialForm.propTypes = {
