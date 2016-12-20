@@ -186,7 +186,6 @@ class App extends Component {
           onChangeList={this.handleChangeList}
           open={menuOpen}
         />
-
         <Footer docked={docked} style={styles.footer} />
       </div>
     )
