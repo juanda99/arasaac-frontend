@@ -6,6 +6,7 @@ import { AutoComplete, TextField } from 'redux-form-material-ui'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import PersonAdd from 'material-ui/svg-icons/action/note-add'
 import Delete from 'material-ui/svg-icons/action/delete'
+import RenderChip from './RenderChip'
 
 const style = {
   marginRight: 20,
@@ -18,6 +19,10 @@ const style = {
 
 const languageList = [
   'Español', 'Inglés', 'Francés'
+]
+
+const labelList = [
+  'comida', 'mobiliario', 'casa'
 ]
 
 const RenderLanguages = ({ fields }) => {
@@ -57,6 +62,13 @@ const RenderLanguages = ({ fields }) => {
               multiLine={true}
               rows={2}
               fullWidth
+            />
+            <Field
+              name={`${member}.labels`}
+              component={RenderChip}
+              hintText='Selecciona las etiquetas'
+              floatingLabelText='Etiquetas'
+              dataSource={labelList}
             />
 
             <FloatingActionButton mini={true} style={{ position: 'absolute', top: -5, right: 53 }} onClick={() => fields.remove(index)} >
