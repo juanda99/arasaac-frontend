@@ -4,7 +4,7 @@ import MUIAutoComplete from 'material-ui/AutoComplete'
 import Paper from 'material-ui/Paper'
 import { AutoComplete, TextField } from 'redux-form-material-ui'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
-import PersonAdd from 'material-ui/svg-icons/social/person-add'
+import PersonAdd from 'material-ui/svg-icons/action/note-add'
 import Delete from 'material-ui/svg-icons/action/delete'
 
 const style = {
@@ -22,16 +22,11 @@ const languageList = [
 
 const RenderLanguages = ({ fields }) => {
   const addLanguage = () => { fields.push({}) }
+  if (fields.length === 0) addLanguage()
   return (
     <ul style={style.descriptionsList}>
-      <li>
-        <FloatingActionButton mini={true} onClick={addLanguage} >
-          <PersonAdd />
-        </FloatingActionButton>
-
-      </li>
       {fields.map((member, index) =>
-        <li key={index} style={{ minHeight: 400 }}>
+        <li key={index} style={{ minHeight: 400, float: 'left' }}>
           <Paper zDepth={2} style={{ position: 'relative', width: 400, marginLeft: 40, marginButton: 50, padding: 20 }}>
             <Field
               name={`${member}.language`}

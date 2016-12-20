@@ -24,14 +24,11 @@ const surnameList = [
 
 const RenderAuthors = ({ fields }) => {
   const addAuthorField = () => { fields.push({}) }
+  if (fields.length === 0) {
+    addAuthorField()
+  }
   return (
     <ul style={style.authorsList}>
-      <li>
-        <FloatingActionButton mini={true} onClick={addAuthorField} >
-          <PersonAdd />
-        </FloatingActionButton>
-
-      </li>
       {fields.map((member, index) =>
         <li key={index}>
           <Field
