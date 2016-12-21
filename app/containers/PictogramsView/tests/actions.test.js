@@ -13,7 +13,7 @@ describe('PictogramsView actions', () => {
   })
 
   describe('Pictograms request', () => {
-    it('should return the correct type and the passed repos', () => {
+    it('should return the correct type and  props', () => {
       const searchText = 'Test'
       const expectedResult = {
         type: PICTOGRAMS.REQUEST,
@@ -23,7 +23,7 @@ describe('PictogramsView actions', () => {
     })
   })
   describe('Pictograms success', () => {
-    it('should return the correct type and the passed repos', () => {
+    it('should return the correct type and props', () => {
       const searchText = 'Test'
       const data = 'Result data'
       const expectedResult = {
@@ -35,7 +35,7 @@ describe('PictogramsView actions', () => {
     })
   })
   describe('Pictograms failure', () => {
-    it('should return the correct type and the passed repos', () => {
+    it('should return the correct type and props', () => {
       const error = 'Test error'
       const expectedResult = {
         type: PICTOGRAMS.FAILURE,
@@ -45,7 +45,7 @@ describe('PictogramsView actions', () => {
     })
   })
   describe('Autocomplete request', () => {
-    it('should return the correct type and the passed repos', () => {
+    it('should return the correct type and repos', () => {
       const searchText = 'Test'
       const expectedResult = {
         type: AUTOCOMPLETE.REQUEST,
@@ -55,7 +55,7 @@ describe('PictogramsView actions', () => {
     })
   })
   describe('Autocomplete success', () => {
-    it('should return the correct type and the passed repos', () => {
+    it('should return the correct type and props', () => {
       const searchText = 'Test'
       const data = 'Result data'
       const expectedResult = {
@@ -67,7 +67,7 @@ describe('PictogramsView actions', () => {
     })
   })
   describe('Autocomplete failure', () => {
-    it('should return the correct type and the passed repos', () => {
+    it('should return the correct type and props', () => {
       const error = 'Test error'
       const expectedResult = {
         type: AUTOCOMPLETE.FAILURE,

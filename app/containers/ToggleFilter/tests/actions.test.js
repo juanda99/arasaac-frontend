@@ -1,18 +1,14 @@
 import expect from 'expect'
-import {
-  defaultAction
-} from '../actions'
-import {
-  DEFAULT_ACTION
-} from '../constants'
+import { TOGGLE_FILTER, toggleFilter } from '../actions'
 
-describe('ToggleFilter actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
-      const expected = {
-        type: DEFAULT_ACTION
-      }
-      expect(defaultAction()).toEqual(expected)
-    })
+
+describe('ToggleFilter action', () => {
+  it('Should return the correct type', () => {
+    const filter = 'catalog'
+    const expectedResult = {
+      type: TOGGLE_FILTER,
+      filter
+    }
+    expect(toggleFilter(filter)).toEqual(expectedResult)
   })
 })
