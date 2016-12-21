@@ -1,6 +1,6 @@
 {
-  "app.component.Participate.contact":"Contacta con nosotros",
-  "app.component.Participate.header":"Estamos costruyendo...",
+  "app.component.Participate.contact":"Contact us",
+  "app.component.Participate.header":"We are building Arasaac. Would you like to join us?",
   "app.components.Footer.header":"This is the Footer component !",
   "app.components.LanguageSelector.choose":"Choose your language",
   "app.components.LanguageSelector.english":"English",
