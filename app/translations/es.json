@@ -27,7 +27,7 @@
   "app.components.LanguageSelector.english":"English",
   "app.components.LanguageSelector.french":"French",
   "app.components.LanguageSelector.spanish":"Spanish",
-  "app.components.MaterialForm.authorsData":"Please, insert the author name and surname",
+  "app.components.MaterialForm.authorsData":"Por favor, introduce tu nombre y apellidos",
   "app.components.MaterialForm.authorsTitle":"Material authors",
   "app.components.MaterialForm.header":"This is the MaterialForm component !",
   "app.components.NotFoundPage.header":"This is NotFoundPage component !",
@@ -71,7 +71,7 @@
   "menu.pictograms":"Pictograms",
   "menu.prizes":"Prizes",
   "menu.scheduleGenerator":"Schedule Generator",
-  "menu.searchMaterials":"Search materials",
+  "menu.searchMaterials":"Buscar materiales",
   "menu.searchPictograms":"Search Pictograms",
   "menu.snakesAndLadders":"Snakes and Ladders",
   "menu.software":"Software",
@@ -83,7 +83,7 @@
   "userMenu.signin":"Sign in",
   "userMenu.signout":"Sign out",
   "userMenu.translateArasaac":"Translate Arasaac",
-  "userMenu.uploadMaterial":"Share material",
-  "userMenu.userMaterial":"My material",
+  "userMenu.uploadMaterial":"Compartir materiales",
+  "userMenu.userMaterial":"Mis materiales",
   "userMenu.userProfile":"My profile"
 }
