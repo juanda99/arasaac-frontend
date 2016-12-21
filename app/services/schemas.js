@@ -25,6 +25,10 @@ export const searchSchema = new Schema('searches', {
   idAttribute: 'searchKey'
 })
 
+export const pictogramsSchema = new Schema('searches', {
+  idAttribute: 'pictogramKey'
+})
+
 
 export const userSchemaArray = arrayOf(userSchema)
 export const repoSchemaArray = arrayOf(repoSchema)
