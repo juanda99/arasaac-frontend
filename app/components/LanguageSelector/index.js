@@ -21,6 +21,11 @@ const LanguageSelector = (props) => {
       <MenuItem value={'es'} primaryText={formatMessage(messages.spanish)} />
       <MenuItem value={'fr'} primaryText={formatMessage(messages.french)} />
       <MenuItem value={'en'} primaryText={formatMessage(messages.english)} />
+      <MenuItem value={'it'} primaryText={formatMessage(messages.italian)} />
+      <MenuItem value={'val'} primaryText={formatMessage(messages.valencian)} />
+      <MenuItem value={'de'} primaryText={formatMessage(messages.german)} />
+      <MenuItem value={'af'} primaryText={formatMessage(messages.translateOnline)} />
+
     </SelectField>
   )
 }

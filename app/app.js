@@ -123,7 +123,11 @@ if (!window.Intl) {
   }))
     .then(() => Promise.all([
       System.import('intl/locale-data/jsonp/en.js'),
-      System.import('intl/locale-data/jsonp/es.js')
+      System.import('intl/locale-data/jsonp/es.js'),
+      System.import('intl/locale-data/jsonp/fr.js'),
+      System.import('intl/locale-data/jsonp/it.js'),
+      System.import('intl/locale-data/jsonp/de.js'),
+      System.import('intl/locale-data/jsonp/af.js')
     ]))
     .then(() => render(translationMessages))
     .catch((err) => {

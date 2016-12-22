@@ -21,6 +21,27 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'French'
   },
+  italian: {
+    id: 'app.components.LanguageSelector.italian',
+    description: 'Select language',
+    defaultMessage: 'Italian'
+  },
+  valencian: {
+    id: 'app.components.LanguageSelector.valencian',
+    description: 'Select language',
+    defaultMessage: 'Valencian'
+  },
+  german: {
+    id: 'app.components.LanguageSelector.german',
+    description: 'Select language',
+    defaultMessage: 'German'
+  },
+  translateOnline: {
+    id: 'app.components.LanguageSelector.translateOnline',
+    description: 'Select language',
+    defaultMessage: 'Traslate online'
+  },
+
   chooseLanguage: {
     id: 'app.components.LanguageSelector.choose',
     description: 'Select language',

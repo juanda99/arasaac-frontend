@@ -26,6 +26,7 @@ import { connect } from 'react-redux'
 import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
 import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth'
+import { changeLocale } from 'containers/LanguageProvider/actions'
 
 
 class App extends Component {
@@ -33,7 +34,8 @@ class App extends Component {
     width: PropTypes.number.isRequired,
     children: PropTypes.node,
     location: PropTypes.object,
-    isAuthenticated: PropTypes.bool
+    isAuthenticated: PropTypes.bool,
+    changeLocale: PropTypes.func
   }
 
   static contextTypes = {
@@ -128,6 +130,14 @@ class App extends Component {
     return { docked, title }
   }
 
+  handleTranslate = () => {
+    if (this.props.locale=='af') {
+      this.props.changeLocale('es')
+    } else {
+      this.props.changeLocale('af')
+    }
+  }
+
 
   handleTouchTapLeftIconButton = () => {
     this.setState({
@@ -175,6 +185,7 @@ class App extends Component {
         <Header
           showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
+          translate = {this.handleTranslate}
         />
         <Wrapper docked={docked}>
           {children}
@@ -192,11 +203,14 @@ class App extends Component {
   }
 }
 // quitamos el state de mapStateToProps hasta que lo arreglemos:
-const mapStateToProps = () =>
+const mapStateToProps = (state) => {
   // const { auth: { isAuthenticated } } = state
-   ({
-     isAuthenticated: true
-   })
+  const locale = state.getIn(['language', 'locale']);
+  // const {language: {locale}} = state
+  return({
+     isAuthenticated: true,
+     locale
+  })
+}
 
-
-export default connect(mapStateToProps)(withWidth()(App))
+export default connect(mapStateToProps, {changeLocale})(withWidth()(App))

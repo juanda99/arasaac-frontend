@@ -18,8 +18,13 @@ import Title from './Title'
 const Header = (props) => {
   const handleTouchTapLeftIconButton = () => {
     props.touchTapLeftIconButton()
+    console.log('yyyyy')
   }
-  const { isAuthenticated, showMenuIconButton, title } = props
+  const { isAuthenticated, showMenuIconButton, title, translate } = props
+  const handleClick = () => {
+    console.log('kkkkk')
+    translate()
+  }
   return (
     <div>
       {(!isAuthenticated)
@@ -62,7 +67,7 @@ const Header = (props) => {
             <MenuItem primaryText={<FormattedMessage {...messages.userProfile} />} containerElement={<Link to='/profile' />} />
             <MenuItem primaryText={<FormattedMessage {...messages.userMaterial} />} containerElement={<Link to='/usermaterial' />} />
             <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} containerElement={<Link to='/upload' />} />
-            <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} containerElement={<Link to='/translate' />} />
+            <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} onClick={handleClick} checked={true} />
             <MenuItem primaryText={<FormattedMessage {...messages.signout} />} href='/signout' />
           </IconMenu>
           }
@@ -80,8 +85,8 @@ Header.propTypes = {
     PropTypes.string.isRequired,
     PropTypes.object.isRequired
   ]),
-  touchTapLeftIconButton: PropTypes.func.isRequired,
-  docked: React.PropTypes.bool.isRequired
+  docked: PropTypes.bool.isRequired,
+  translate: PropTypes.func.isRequired
 }
 
 export default Header
