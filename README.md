@@ -23,7 +23,7 @@
   </a>
   <!-- Test Coverage -->
   <a href='https://coveralls.io/github/juanda99/arasaac-frontend?branch=master'><img src='https://coveralls.io/repos/github/juanda99/arasaac-frontend/badge.svg?branch=master' alt='Coverage Status' /></a>
-
+  <a target="_blank" href="https://crowdin.com/project/arasaac"><img src="https://d322cqt584bo4o.cloudfront.net/arasaac/localized.svg"></a>
 
 </div>
 
