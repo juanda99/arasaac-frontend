@@ -1,4 +1,5 @@
 <div align="center">
+<p>WIP!!!!!</p>
   <img width=200 src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Welcome/arasaac-logo.svg" alt="Arasaac logo" align="center" />
 </div>
 <br />
