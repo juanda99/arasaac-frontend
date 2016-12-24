@@ -49,7 +49,8 @@
     "coveralls": "cat ./coverage/lcov/lcov.info | coveralls",
     "start-api": "cross-env NODE_ENV=development nodemon ./backend-api/app.js --exec babel-node --presets es2015,stage-2",
     "test-api": "swagger project test",
-    "compile-api": "yaml2json backend-api/api/swagger/swagger.yaml > swagger.json"
+    "compile-api": "yaml2json backend-api/api/swagger/swagger.yaml > swagger.json",
+    "swagger-edit": "swagger_swagger_fileName=backend-api/swagger.yaml swagger project edit"
   },
   "lint-staged": {
     "*.js": "lint:eslint"
