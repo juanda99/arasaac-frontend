@@ -19,6 +19,8 @@ import configuration from 'containers/ConfigurationView/reducer'
 
 import * as storage from './storage'
 
+/*
+
 export const INITIAL_LAYOUT = 'modules'
 export const INITIAL_FILTERS = ''
 export const PICTOGRAMS_LAYOUT = 'PICTOGRAMS_LAYOUT'
@@ -37,7 +39,7 @@ export const KEYWORDS_FAILURE = 'KEYWORDS_FAILURE'
 
 export const SHOW_FILTER = 'SHOW_FILTER'
 export const TOGGLE_FILTER = 'TOGGLE_FILTER'
-
+*/
 
 const storageState = {
   locationBeforeTransitions: null,

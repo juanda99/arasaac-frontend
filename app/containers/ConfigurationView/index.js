@@ -13,7 +13,7 @@ import messages from './messages'
 
 const ConfigurationView = () => (
   <View>
-  <Iframe url='http://localhost:8000/api-docs' />
+    <Iframe url='http://localhost:8000/api-docs' />
     <h1>{<FormattedMessage {...messages.appConfiguration} />}</h1>
     <PictogramsFiltersConf />
   </View>
