@@ -97,6 +97,14 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
+      path: '/pictograms/api',
+      name: 'ApiView',
+      getComponent(location, cb) {
+        System.import('containers/ApiView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
       path: '/materials/upload',
       name: 'uploadMaterialView',
       getComponent(location, cb) {

@@ -1,14 +1,14 @@
+import config from './config'
 const SwaggerExpress = require('swagger-express-mw')
 const app = require('express')()
 const morgan = require('morgan')
 const swaggerUi = require('swagger-ui-express')
 
-import config from './config'
-const errorhandler = require('errorhandler')
+// const errorhandler = require('errorhandler')
 
 
 const YAML = require('yamljs')
-const swaggerDocument = YAML.load('./api/swagger/swagger.yaml')
+const swaggerDocument = YAML.load('./backend-api/api/swagger/swagger.yaml')
 
 
 module.exports = app // for testing

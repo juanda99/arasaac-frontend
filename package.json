@@ -46,7 +46,10 @@
     "test:firefox": "npm run test -- --browsers Firefox",
     "test:safari": "npm run test -- --browsers Safari",
     "test:ie": "npm run test -- --browsers IE",
-    "coveralls": "cat ./coverage/lcov/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov/lcov.info | coveralls",
+    "start-api": "cross-env NODE_ENV=development nodemon ./backend-api/app.js --exec babel-node --presets es2015,stage-2",
+    "test-api": "swagger project test",
+    "compile-api": "yaml2json backend-api/api/swagger/swagger.yaml > swagger.json"
   },
   "lint-staged": {
     "*.js": "lint:eslint"
@@ -229,6 +232,7 @@
     "react-dropzone": "^3.7.3",
     "react-flexbox-grid": "git+https://github.com/juanda99/react-flexbox-grid.git",
     "react-helmet": "3.1.0",
+    "react-iframe": "0.0.4",
     "react-intl": "2.1.5",
     "react-masonry-component": "^4.4.0",
     "react-redux": "4.4.5",
@@ -271,6 +275,7 @@
     "coveralls": "2.11.14",
     "css-loader": "0.25.0",
     "enzyme": "2.5.1",
+    "errorhandler": "^1.5.0",
     "eslint": "3.9.1",
     "eslint-config-airbnb": "13.0.0",
     "eslint-config-airbnb-base": "9.0.0",
