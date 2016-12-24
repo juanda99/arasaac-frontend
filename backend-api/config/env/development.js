@@ -1,6 +1,6 @@
 module.exports = {
   env: 'development',
-  databaseUrl: process.env.MONGO_URL || 'mongodb://localhost/cervezas',
+  databaseUrl: process.env.MONGO_URL || 'mongodb://localhost/arasaac',
   jwt: { secret: process.env.JWT_SECRET || 'secret key for testing' },
   // https://developers.facebook.com/
   facebook: {
