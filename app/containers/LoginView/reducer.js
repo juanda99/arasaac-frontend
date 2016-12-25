@@ -4,61 +4,62 @@
  *
  */
 
-import { fromJS } from 'immutable';
+import { fromJS } from 'immutable'
 import { LOGIN, LOGOUT, ACTIVATION } from './actions'
 
 const initialState = fromJS({
-  userName: '',
+  username: '',
   token: '',
   isAuthenticated: false,
-  loading: false, 
-  error: ''
+  loading: false,
+  error: '',
+  profile: fromJS({})
 })
 
 
-// The auth reducer. The starting state sets authentication based on a token being in local storage. 
+// The auth reducer. The starting state sets authentication based on a token being in local storage.
 // TODO:
 // we would also want a util to check if the token is expired, it would update isAuthenticated key
 
-const auth = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
-  	case LOGIN.REQUEST:
+    case LOGIN.REQUEST:
       return state
         .set('loading', true)
-        .set('error', false)
+        .set('error', '')
     case LOGIN.SUCCESS:
       return state
-        .set('loading', false )
+        .set('loading', false)
         .set('username', action.username)
         .set('token', action.token)
     case LOGIN.FAILURE:
-   	  return state
-   	  	.set('loading', false)
+      return state
+        .set('loading', false)
         .set('error', action.error)
-  	case LOGOUT.REQUEST:
+    case LOGOUT.REQUEST:
       return state
         .set('loading', true)
-        .set('error', false)
+        .set('error', '')
     case LOGOUT.SUCCESS:
       return state
         .set('loading', false)
         .set('username', '')
-        .set('token', ''),
+        .set('token', '')
     case LOGOUT.FAILURE:
-   	  return state
-   	    .set('loading', false)
+      return state
+        .set('loading', false)
         .set('error', action.error)
     case ACTIVATION.REQUEST:
       return state
         .set('loading', true)
-        .set('error', false)
+        .set('error', '')
     case ACTIVATION.SUCCESS:
       return state
         .set('loading', false)
-        .set('error', false)
+        .set('error', '')
     case ACTIVATION.FAILURE:
-   	  return state
-   	    .set('loading', false)
+      return state
+        .set('loading', false)
         .set('error', action.error)
     default:
       return state

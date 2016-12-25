@@ -18,12 +18,13 @@ export const login = {
 }
 
 export const activation = {
-  request: () => action(ACTIVATION.REQUEST),
+  request: (profile) => action(ACTIVATION.REQUEST, { profile }),
   success: () => action(ACTIVATION.SUCCESS),
   failure: (error) => action(ACTIVATION.FAILURE, { error })
 }
 
 export const logout = {
-  request: (username, password) => action(LOGIN.REQUEST, { username, password }),
-  success: (username, token) => action(LOGIN.SUCCESS, { username, token })
+  request: () => action(LOGOUT.REQUEST),
+  success: () => action(LOGOUT.SUCCESS),
+  failure: (error) => action(LOGOUT.FAILURE, { error })
 }

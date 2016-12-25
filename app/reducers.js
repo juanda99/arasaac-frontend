@@ -9,6 +9,7 @@ import { LOCATION_CHANGE } from 'react-router-redux'
 import { reducer as form } from 'redux-form/immutable'
 import languageProviderReducer from 'containers/LanguageProvider/reducer'
 import configuration from 'containers/ConfigurationView/reducer'
+import auth from 'containers/LoginView/reducer'
 /*
  * routeReducer
  *
@@ -19,10 +20,9 @@ import configuration from 'containers/ConfigurationView/reducer'
 
 import * as storage from './storage'
 
-/*
-
 export const INITIAL_LAYOUT = 'modules'
 export const INITIAL_FILTERS = ''
+/*
 export const PICTOGRAMS_LAYOUT = 'PICTOGRAMS_LAYOUT'
 
 export const CHANGE_PICTOGRAMS_KEYWORD = 'CHANGE_PICTOGRAMS_KEYWORD'
@@ -78,6 +78,7 @@ export default function createReducer(asyncReducers) {
     route: routeReducer,
     language: languageProviderReducer,
     configuration,
+    auth,
     form,
     ...asyncReducers
   })

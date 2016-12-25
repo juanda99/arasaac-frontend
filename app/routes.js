@@ -98,9 +98,9 @@ export default function createRoutes(store) {
       }
     }, {
       path: '/pictograms/api',
-      name: 'ApiView',
+      name: 'LoginView',
       getComponent(location, cb) {
-        System.import('containers/ApiView')
+        System.import('containers/LoginView')
           .then(loadModule(cb))
           .catch(errorLoading)
       }
