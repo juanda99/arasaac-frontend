@@ -18,11 +18,9 @@ import Title from './Title'
 const Header = (props) => {
   const handleTouchTapLeftIconButton = () => {
     props.touchTapLeftIconButton()
-    console.log('yyyyy')
   }
   const { isAuthenticated, showMenuIconButton, title, translate } = props
   const handleClick = () => {
-    console.log('kkkkk')
     translate()
   }
   return (

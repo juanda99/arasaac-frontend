@@ -205,7 +205,7 @@ class App extends Component {
 // quitamos el state de mapStateToProps hasta que lo arreglemos:
 const mapStateToProps = (state) => {
   // const { auth: { isAuthenticated } } = state
-  const locale = state.getIn(['language', 'locale']);
+  const locale = state.getIn(['language', 'locale'])
   const isAuthenticated = state.getIn('auth', 'isAuthenticated')
   // const {language: {locale}} = state
   return({
