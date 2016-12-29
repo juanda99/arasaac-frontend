@@ -32,10 +32,12 @@ const authReducer = (state = initialState, action) => {
         .set('loading', false)
         .set('username', action.username)
         .set('token', action.token)
+        .set('isAuthenticated', true)
     case LOGIN.FAILURE:
       return state
         .set('loading', false)
         .set('error', action.error)
+        .set('isAuthenticated', false)
     case LOGOUT.REQUEST:
       return state
         .set('loading', true)

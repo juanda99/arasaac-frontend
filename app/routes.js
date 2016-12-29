@@ -98,9 +98,9 @@ export default function createRoutes(store) {
       }
     }, {
       path: '/pictograms/api',
-      name: 'LoginView',
+      name: 'ApiView',
       getComponent(location, cb) {
-        System.import('containers/LoginView')
+        System.import('containers/ApiView')
           .then(loadModule(cb))
           .catch(errorLoading)
       }
@@ -111,6 +111,66 @@ export default function createRoutes(store) {
         System.import('containers/UploadMaterialView')
           .then(loadModule(cb))
           .catch(errorLoading)
+      }
+    }, {
+      path: '/signin',
+      name: 'LoginView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/LoginView/reducer'),
+          // System.import('containers/LoginView/sagas'),
+          System.import('containers/LoginView')
+        ])
+
+        const renderRoute = loadModule(cb)
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('LoginView', reducer.default)
+          // injectSagas(sagas.default)
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      }
+    }, {
+      path: 'register',
+      name: 'LoginView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/LoginView/reducer'),
+          // System.import('containers/LoginView/sagas'),
+          System.import('containers/LoginView')
+        ])
+
+        const renderRoute = loadModule(cb)
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('LoginView', reducer.default)
+          // remove sagas parameter
+          // injectSagas(sagas.default)
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      }
+    }, {
+      path: '/register-options',
+      name: 'loginView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/LoginView/reducer'),
+          // System.import('containers/LoginView/sagas'),
+          System.import('containers/LoginView')
+        ])
+
+        const renderRoute = loadModule(cb)
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('loginView', reducer.default)
+          // injectSagas(sagas.default)
+          renderRoute(component)
+        })
+        importModules.catch(errorLoading)
       }
     }, {
       path: '*',

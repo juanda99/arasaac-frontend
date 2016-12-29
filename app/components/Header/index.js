@@ -41,7 +41,7 @@ const Header = (props) => {
             anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
           >
             <MenuItem primaryText={<FormattedMessage {...messages.signin} />} containerElement={<Link to='/signin' />} />
-            <MenuItem primaryText={<FormattedMessage {...messages.register} />} containerElement={<Link to='/register' />} />
+            <MenuItem primaryText={<FormattedMessage {...messages.register} />} containerElement={<Link to='/register-options' />} />
             <MenuItem primaryText={<FormattedMessage {...messages.appConfiguration} />} containerElement={<Link to='/configuration' />} />
             <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} containerElement={<Link to='/uploadmaterial' />} />
           </IconMenu>
