@@ -43,10 +43,10 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-  /sessions:
-    x-swagger-router-controller: sessions
+  /auth:
+    x-swagger-router-controller: auth
     post:
-      operationId: createSession
+      operationId: jwtAuth
       description: Obtains a token for the user
       # define the type of response for Success "200" and Error
       parameters:
