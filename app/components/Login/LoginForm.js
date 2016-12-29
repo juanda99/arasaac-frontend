@@ -49,21 +49,14 @@ let LoginForm = class LoginForm extends Component {
       .focus()                // on TextField
   }
 
-  handleClick() {
-  //  const username = this.refs.username
-  //   const password = this.refs.password
-  //  const creds = { username: username.value.trim(), password: password.value.trim() }
-  //  this.props.onLoginClick(creds)
-  }
-
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props
+    const { handleSubmit, submitting, pristine } = this.props
     return (
       <Paper zDepth={2} style={styles.paper}>
         <Logo />
         <SocialLogin />
         <Separator />
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <Div>
             <Field
               name='username'
@@ -106,10 +99,13 @@ let LoginForm = class LoginForm extends Component {
             </Row>
           </Div>
           <Div>
+          <button type="submit" disabled={submitting}>Submit</button>
             <RaisedButton
               style={styles.signinButton}
               label='SIGN IN'
               primary={true}
+              type='submit'
+              disabled={pristine || submitting}
             />
           </Div>
         </form>
@@ -122,8 +118,6 @@ let LoginForm = class LoginForm extends Component {
               style={styles.register}
               label={<FormattedMessage {...messages.signup} />}
               secondary={true}
-              onClick={this.handleClick}
-              type='button'
             />
           </Link>
         </Div>
@@ -132,15 +126,13 @@ let LoginForm = class LoginForm extends Component {
   }
 }
 LoginForm.propTypes = {
-  // fields: PropTypes.object.isRequired,
-  onLoginClick: PropTypes.func.isRequired
-  // resetForm: PropTypes.func.isRequired,
-  // submitting: PropTypes.bool.isRequired
+  // onSubmit: PropTypes.func.isRequired,
+  submitting: PropTypes.bool
 }
 LoginForm = reduxForm({
-  form: 'signin',
-  touchOnBlur: false,
-  touchOnChange: true
+  form: 'signin'
+  // touchOnBlur: false,
+  // touchOnChange: true
   // fields
 })(LoginForm)
 

@@ -9,23 +9,13 @@ import Div from './Div'
 import SocialLogin from './SocialLogin'
 import messages from './messages'
 import Separator from './Separator'
+import { required, email } from './validate'
 
 const styles = {
   paper: {
     padding: 20,
     width: 400,
     margin: '0 auto'
-  },
-  googleButton: {
-    width: '100%',
-    float: 'left',
-    marginBottom: 5
-  },
-  facebookButton: {
-    float: 'right',
-    width: '100%',
-    marginBottom: 30,
-    top: -10
   },
   checkbox: {
     left: 0
@@ -42,17 +32,9 @@ const styles = {
     position: 'absolute',
     right: 0,
     bottom: 10
-  },
-  svgLogo: {
-    width: 180,
-    marginLeft: 70
   }
 }
 
-// validation functions
-const required = (value) => (value == null ? 'Required' : undefined)
-const email = (value) => (value &&
-  !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email' : undefined)
 
 /* eslint-disable import/no-mutable-exports */
 let RegisterForm = class RegisterForm extends Component {
