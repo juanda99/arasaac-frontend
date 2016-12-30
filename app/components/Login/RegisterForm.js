@@ -80,6 +80,7 @@ let RegisterForm = class RegisterForm extends Component {
             <Field
               name='password'
               component={TextField}
+              type='password'
               hintText='What is your password?'
               value=''
               floatingLabelText='Password'

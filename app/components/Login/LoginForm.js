@@ -58,6 +58,7 @@ let LoginForm = class LoginForm extends Component {
           <Field
             name='password'
             component={TextField}
+            type='password'
             style={styles.text}
             hintText={<FormattedMessage {...messages.password} />}
             floatingLabelText={<FormattedMessage {...messages.password} />}
