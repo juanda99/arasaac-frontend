@@ -1,22 +1,14 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
 import RaisedButton from 'material-ui/RaisedButton'
-import Paper from 'material-ui/Paper'
 import { Link } from 'react-router'
-import { reduxForm, Field } from 'redux-form/immutable'
+import { reduxForm, Field, propTypes } from 'redux-form/immutable'
 import { TextField } from 'redux-form-material-ui'
-import Div from './Div'
-import SocialLogin from './SocialLogin'
+import Div from 'components/Div'
 import messages from './messages'
-import Separator from './Separator'
 import { required, email } from './validate'
 
 const styles = {
-  paper: {
-    padding: 20,
-    width: 400,
-    margin: '0 auto'
-  },
   checkbox: {
     left: 0
   },
@@ -44,25 +36,23 @@ let RegisterForm = class RegisterForm extends Component {
   }
 
   componentDidMount() {
-    this.refs.name            // the Field
+    this.firstField            // the Field
       .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
       .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
       .focus()                // on TextField
   }
 
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props
+    const { handleSubmit, pristine, submitting } = this.props
     /* en las propiedades estaba resetForm y submitting*/
     return (
-      <Paper zDepth={2} style={styles.paper}>
-        <SocialLogin />
-        <Separator />
+      <div>
         <Div>
           <form onSubmit={handleSubmit}>
             <Field
               name='name'
               component={TextField}
-              ref='name' withRef
+              ref={(input) => { this.firstField = input }} withRef
               hintText='What is your name?'
               value=''
               floatingLabelText='Name'
@@ -117,6 +107,7 @@ let RegisterForm = class RegisterForm extends Component {
               label='Sign up'
               primary={true}
               style={styles.signup}
+              disabled={pristine || submitting}
             />
           </form>
         </Div>
@@ -135,12 +126,12 @@ let RegisterForm = class RegisterForm extends Component {
             />
           </Link>
         </Div>
-      </Paper>
+      </div>
     )
   }
 }
 RegisterForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  ...propTypes
   // resetForm: PropTypes.func.isRequired,
   // submitting: PropTypes.bool.isRequired
 }

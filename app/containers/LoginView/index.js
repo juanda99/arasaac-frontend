@@ -7,39 +7,46 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import View from 'components/View'
-import { LoginForm, RegisterOptions, RegisterForm } from 'components/Login'
+import { LoginForm } from 'components/Login'
+import Paper from 'material-ui/Paper'
+import SocialLogin from 'components/SocialLogin'
+import Separator from 'components/Separator'
+import Logo from 'components/Logo'
 import { login } from './actions'
 
-export class LoginView extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-
-  handleClick = () => {
-    // this.props.login.request('pepito', 'password')
-    this.props.requestLogin('pepito', 'password')
-  }
-
-  render() {
-    let loginComponent
-    if ((this.props.location.pathname).toLowerCase() === '/signin') {
-      loginComponent = <LoginForm />
-    } else if ((this.props.location.pathname).toLowerCase() === '/register') {
-      loginComponent = <RegisterForm />
-    } else {
-      loginComponent = <RegisterOptions />
-    }
-
-    return (
-      <View>
-        {loginComponent}
-      </View>
-    )
+const styles = {
+  paper: {
+    padding: 20,
+    width: 400,
+    margin: '0 auto'
   }
 }
+
+const handleSubmit = (requestLogin, formData) => {
+  // this.props.login.request('pepito', 'password')
+  console.log(requestLogin)
+  console.log(FormData)
+  const user = formData.get('username')
+  const password = formData.get('password')
+  console.log(user)
+  console.log(password)
+  requestLogin(user, password)
+}
+
+const LoginView = ({ requestLogin }) => (
+  <View>
+    <Paper zDepth={2} style={styles.paper}>
+      <Logo />
+      <SocialLogin />
+      <Separator />
+      <LoginForm onSubmit={(formData) => (handleSubmit(requestLogin, formData))} />
+    </Paper>
+  </View>
+)
 
 LoginView.propTypes = {
-  requestLogin: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired
+  requestLogin: PropTypes.func.isRequired
 }
-
 
 const mapDispatchToProps = (dispatch) => ({
   requestLogin: (username, password) => {

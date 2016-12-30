@@ -6,6 +6,8 @@ import RaisedButton from 'material-ui/RaisedButton'
 import messages from './messages'
 import GoogleIcon from './icons/GoogleIcon'
 
+/* eslint no-param-reassign: 0 */
+// TODO refactor code so no eslint  needed
 
 const styles = {
   googleLogin: {

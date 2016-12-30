@@ -2,7 +2,7 @@ import expect from 'expect'
 import { shallow } from 'enzyme'
 import React from 'react'
 
-import Component from '../Div'
+import Component from '../index'
 
 const children = 'Text for testing'
 const renderComponent = (props = {}) => shallow(

@@ -1,6 +1,6 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import Div from './Div'
+import Div from 'components/Div'
 import messages from './messages'
 
 const styles = {

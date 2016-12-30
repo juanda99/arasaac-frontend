@@ -1,24 +1,15 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
-import { reduxForm, Field } from 'redux-form/immutable'
+import { reduxForm, Field, propTypes } from 'redux-form/immutable'
 import { TextField, Checkbox } from 'redux-form-material-ui'
 import RaisedButton from 'material-ui/RaisedButton'
-import Paper from 'material-ui/Paper'
 import { Row, Col } from 'react-flexbox-grid'
-import Div from './Div'
-import SocialLogin from './SocialLogin'
-import Separator from './Separator'
-import Logo from './Logo'
+import Div from 'components/Div'
 import messages from './messages'
 import { required, email } from './validate'
 
 const styles = {
-  paper: {
-    padding: 20,
-    width: 400,
-    margin: '0 auto'
-  },
   checkbox: {
     left: 0
   },
@@ -43,7 +34,8 @@ const styles = {
 /* eslint-disable import/no-mutable-exports */
 let LoginForm = class LoginForm extends Component {
   componentDidMount() {
-    this.refs.username            // the Field
+    console.log(this.firstField.getRenderedComponent().getRenderedComponent())
+    this.firstField            // the Field
       .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
       .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
       .focus()                // on TextField
@@ -52,63 +44,57 @@ let LoginForm = class LoginForm extends Component {
   render() {
     const { handleSubmit, submitting, pristine } = this.props
     return (
-      <Paper zDepth={2} style={styles.paper}>
-        <Logo />
-        <SocialLogin />
-        <Separator />
-        <form onSubmit={handleSubmit}>
-          <Div>
-            <Field
-              name='username'
-              component={TextField}
-              ref='username' withRef
-              style={styles.text}
-              hintText={<FormattedMessage {...messages.email} />}
-              floatingLabelText={<FormattedMessage {...messages.user} />}
-              validate={[required, email]}
-            />
-            <Field
-              name='password'
-              component={TextField}
-              style={styles.text}
-              hintText={<FormattedMessage {...messages.password} />}
-              floatingLabelText={<FormattedMessage {...messages.password} />}
-              validate={required}
-            />
-          </Div>
-          <Div>
-            <Row>
-              <Col xs={6}>
-                <Field
-                  name='remember'
-                  component={Checkbox}
-                  label={<FormattedMessage {...messages.remember} />}
-                  style={styles.checkbox}
-                  onCheck={(value) => {
-                    console.log('onCheck ', value) // eslint-disable-line no-console
-                  }}
-                />
-              </Col>
-              <Col xs={6}>
-                <Link to='http://localhost:3000/register'>
-                  <p style={styles.forgotPassword}>
-                    {<FormattedMessage {...messages.forgotPassword} />}
-                  </p>
-                </Link>
-              </Col>
-            </Row>
-          </Div>
-          <Div>
-          <button type="submit" disabled={submitting}>Submit</button>
-            <RaisedButton
-              style={styles.signinButton}
-              label='SIGN IN'
-              primary={true}
-              type='submit'
-              disabled={pristine || submitting}
-            />
-          </Div>
-        </form>
+      <form onSubmit={handleSubmit}>
+        <Div>
+          <Field
+            name='username'
+            component={TextField}
+            ref={(input) => { this.firstField = input }} withRef
+            style={styles.text}
+            hintText={<FormattedMessage {...messages.email} />}
+            floatingLabelText={<FormattedMessage {...messages.user} />}
+            validate={[required, email]}
+          />
+          <Field
+            name='password'
+            component={TextField}
+            style={styles.text}
+            hintText={<FormattedMessage {...messages.password} />}
+            floatingLabelText={<FormattedMessage {...messages.password} />}
+            validate={required}
+          />
+        </Div>
+        <Div>
+          <Row>
+            <Col xs={6}>
+              <Field
+                name='remember'
+                component={Checkbox}
+                label={<FormattedMessage {...messages.remember} />}
+                style={styles.checkbox}
+                onCheck={(value) => {
+                  console.log('onCheck ', value) // eslint-disable-line no-console
+                }}
+              />
+            </Col>
+            <Col xs={6}>
+              <Link to='http://localhost:3000/register'>
+                <p style={styles.forgotPassword}>
+                  {<FormattedMessage {...messages.forgotPassword} />}
+                </p>
+              </Link>
+            </Col>
+          </Row>
+        </Div>
+        <Div>
+          <RaisedButton
+            style={styles.signinButton}
+            label='SIGN IN'
+            primary={true}
+            type='submit'
+            disabled={pristine || submitting}
+          />
+        </Div>
         <Div>
           <p>
             {<FormattedMessage {...messages.offerAccount} />}
@@ -121,18 +107,17 @@ let LoginForm = class LoginForm extends Component {
             />
           </Link>
         </Div>
-      </Paper>
+      </form>
     )
   }
 }
 LoginForm.propTypes = {
-  // onSubmit: PropTypes.func.isRequired,
-  submitting: PropTypes.bool
+  ...propTypes
 }
 LoginForm = reduxForm({
-  form: 'signin'
-  // touchOnBlur: false,
-  // touchOnChange: true
+  form: 'signin',
+  touchOnBlur: false,
+  touchOnChange: true
   // fields
 })(LoginForm)
 

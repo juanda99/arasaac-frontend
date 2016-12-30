@@ -1,21 +1,12 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
-import Paper from 'material-ui/Paper'
 import EmailIcon from 'material-ui/svg-icons/communication/email'
 import { Link } from 'react-router'
 import { FormattedMessage } from 'react-intl'
-import Div from './Div'
+import Div from 'components/Div'
 import messages from './messages'
-import SocialLogin from './SocialLogin'
-import Logo from './Logo'
-import Separator from './Separator'
 
 const styles = {
-  paper: {
-    padding: 20,
-    width: 400,
-    margin: '0 auto'
-  },
   text: {
     textAlign: 'left',
     marginLeft: 5
@@ -30,23 +21,20 @@ const styles = {
   }
 }
 
-const RegisterOptions = () => (
-  <Paper zDepth={2} style={styles.paper}>
-    <Logo />
-    <SocialLogin />
-    <Separator />
+const RegisterOptions = ({ onClick }) => (
+  <div>
     <Div>
       <Link to='/register'>
         <RaisedButton
           style={styles.signupButton}
-          onClick={this.handleClick}
+          onClick={onClick}
           label={<FormattedMessage {...messages.signup} />}
           primary={true}
           icon={<EmailIcon />}
         />
       </Link>
     </Div>
-    <Div style={{ position: 'relative' }}>
+    <Div>
       <p style={styles.text}>
         {<FormattedMessage {...messages.offerSignin} />}
       </p>
@@ -58,7 +46,11 @@ const RegisterOptions = () => (
         />
       </Link>
     </Div>
-  </Paper>
+  </div>
 )
+
+RegisterOptions.propTypes = {
+  onClick: PropTypes.func.isRequired
+}
 
 export default RegisterOptions
