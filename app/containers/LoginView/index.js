@@ -24,12 +24,8 @@ const styles = {
 
 const handleSubmit = (requestLogin, formData) => {
   // this.props.login.request('pepito', 'password')
-  console.log(requestLogin)
-  console.log(FormData)
   const user = formData.get('username')
   const password = formData.get('password')
-  console.log(user)
-  console.log(password)
   requestLogin(user, password)
 }
 

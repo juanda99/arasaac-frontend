@@ -34,7 +34,6 @@ const styles = {
 /* eslint-disable import/no-mutable-exports */
 let LoginForm = class LoginForm extends Component {
   componentDidMount() {
-    console.log(this.firstField.getRenderedComponent().getRenderedComponent())
     this.firstField            // the Field
       .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
       .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
