@@ -1,24 +1,28 @@
 import config from './config'
+// TODO: decide between swagger-express-mw and swagger-express-middleware
 const SwaggerExpress = require('swagger-express-mw')
 const app = require('express')()
 const morgan = require('morgan')
 const swaggerUi = require('swagger-ui-express')
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
+const cors = require('cors')
+// import mongoose from 'mongoose'
 
 // const errorhandler = require('errorhandler')
 
 
 const YAML = require('yamljs')
-const swaggerDocument = YAML.load('./backend-api/api/swagger/swagger.yaml')
+const swaggerDocument = YAML.load('./backend-api/swagger.yaml')
 
 
 module.exports = app // for testing
 
 const swaggerConfig = {
-  appRoot: __dirname // required config,
+  appRoot: __dirname, // required config,
+  swaggerFile: './backend-api/swagger.yaml'
 }
 
-
+app.use(cors())
 app.use(morgan('dev'))
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 

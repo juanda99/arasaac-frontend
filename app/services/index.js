@@ -1,16 +1,16 @@
 import { put, get, remove } from 'storage'
 import { userSchema, repoSchema, userSchemaArray, repoSchemaArray, searchSchema, pictogramsSchema } from './schemas'
-import callApi from './api'
-import { AUTH } from './config'
+import callApi from './callApi'
+import { login } from './config'
 
 const api = {
   fetchSearches: (searchText) => callApi(`searches/${searchText}`, searchSchema),
   fetchPictograms: (searchText) => callApi(`pictograms/${searchText}`, pictogramsSchema),
-  fetchUser: (login) => callApi(`users/${login}`, userSchema),
+  fetchUser: (username) => callApi(`users/${username}`, userSchema),
   fetchRepo: (fullName) => callApi(`repos/${fullName}`, repoSchema),
   fetchStarred: (url) => callApi(url, repoSchemaArray),
   fetchStargazers: (url) => callApi(url, userSchemaArray),
-  authorize: (username, password) => callApi(AUTH.url, AUTH.config(username, password)),
+  login: (username, password) => callApi(login.url, login.config(username, password)),
   removeItem: (item) => remove(item),
   storeItem: (item, value) => put(item, value),
   getItem: (item) => get(item)

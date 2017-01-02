@@ -28,8 +28,7 @@ class RegisterView extends Component {
     this.state = { showOptions: true }
   }
   handleClick = () => {
-    const newState = !this.state.showOptions
-    this.setState({ showOptions: newState })
+    this.setState({ showOptions: !this.state.showOptions })
   }
   handleSubmit = (formData) => {
     console.log(formData.get('username'))

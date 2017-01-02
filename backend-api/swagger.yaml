@@ -46,20 +46,22 @@ paths:
   /auth:
     x-swagger-router-controller: auth
     post:
-      operationId: jwtAuth
-      description: Obtains a token for the user
+      operationId: authUserByPassword
+      description: Validate a user by username and password. Returns a JWT token for the session. 
       # define the type of response for Success "200" and Error
       parameters:
-        - name: username
-          in: formData
+        - name: user
+          in: body
           description: User name for login
-          required: true
-          type: string
-        - name: password
-          in: formData
-          description: User password 
-          required: true
-          type: string
+          schema:
+            required:
+              - username
+              - password
+            properties:
+              username:
+                type: string
+              password:
+                type: string
       responses:
         "200":
           description: Success
