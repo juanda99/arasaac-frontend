@@ -19,10 +19,7 @@ const Header = (props) => {
   const handleTouchTapLeftIconButton = () => {
     props.touchTapLeftIconButton()
   }
-  const { isAuthenticated, showMenuIconButton, title, translate } = props
-  const handleClick = () => {
-    translate()
-  }
+  const { isAuthenticated, showMenuIconButton, title, isTranslating, changeLocale } = props
   return (
     <div>
       {(!isAuthenticated)
@@ -64,8 +61,9 @@ const Header = (props) => {
             <MenuItem primaryText={<FormattedMessage {...messages.appConfiguration} />} containerElement={<Link to='/configuration' />} />
             <MenuItem primaryText={<FormattedMessage {...messages.userProfile} />} containerElement={<Link to='/profile' />} />
             <MenuItem primaryText={<FormattedMessage {...messages.userMaterial} />} containerElement={<Link to='/usermaterial' />} />
-            <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} containerElement={<Link to='/upload' />} />
-            <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} onClick={handleClick} checked={true} />
+            {(!isTranslating)
+            ? <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} onClick={changeLocale} />
+            : <MenuItem primaryText='Dejar de traducir' onClick={changeLocale} /> }
             <MenuItem primaryText={<FormattedMessage {...messages.signout} />} href='/signout' />
           </IconMenu>
           }
@@ -84,7 +82,9 @@ Header.propTypes = {
     PropTypes.object.isRequired
   ]),
   docked: PropTypes.bool.isRequired,
-  translate: PropTypes.func.isRequired
+  changeLocale: PropTypes.func.isRequired,
+  touchTapLeftIconButton: PropTypes.func.isRequired,
+  isTranslating: PropTypes.bool.isRequired
 }
 
 export default Header

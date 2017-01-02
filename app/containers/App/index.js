@@ -42,9 +42,45 @@ class App extends Component {
     router: PropTypes.object.isRequired
   }
 
-  state = {
-    menuOpen: false
+
+   constructor(props) {
+    super(props)
+    this.state = {     
+      menuOpen: false
+    }
+    console.log('again to the constructor')
   }
+
+
+  handleTranslate = () => {
+    if (!this.props.isTranslating) {
+      const script = document.createElement('script')
+      script.src = '//cdn.crowdin.com/jipt/jipt.js'
+      script.async = true
+      document.body.appendChild(script)
+      this.props.changeLocale('af')
+    }
+    else {
+      this.props.changeLocale('es')
+      window.location.href = "http://localhost:3000";
+    }
+    /*
+    if (!this.state.isTranslating) {
+      this.props.changeLocale('af')
+    }
+    else {
+      this.props.changeLocale('es')
+    }
+    console.log ('pasa por aquí')
+    */
+    /*
+    if (this.state.loadScripts) {
+
+      this.setState({loadScript: false})
+    }
+    */
+  }
+
 
   getStyles() {
     const styles = {
@@ -130,15 +166,6 @@ class App extends Component {
     return { docked, title }
   }
 
-  handleTranslate = () => {
-    if (this.props.locale=='af') {
-      this.props.changeLocale('es')
-    } else {
-      this.props.changeLocale('af')
-    }
-  }
-
-
   handleTouchTapLeftIconButton = () => {
     this.setState({
       menuOpen: !this.state.menuOpen
@@ -163,7 +190,8 @@ class App extends Component {
       location,
       children,
       isAuthenticated,
-      width
+      width,
+      isTranslating
     } = this.props
 
     let {
@@ -185,7 +213,7 @@ class App extends Component {
         <Header
           showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
-          translate = {this.handleTranslate}
+          changeLocale = {this.handleTranslate} isTranslating = {isTranslating}
         />
         <Wrapper docked={docked}>
           {children}
@@ -204,12 +232,14 @@ class App extends Component {
 }
 const mapStateToProps = (state) => {
   const locale = state.getIn(['language', 'locale'])
-  const isAuthenticated = state.getIn(['auth', 'token']) && true || false
+  const isTranslating = locale === 'af'
+  const isAuthenticated = true // state.getIn(['auth', 'token']) && true || false
   // TODO:
   // token needs validation!
   return({
      isAuthenticated,
-     locale
+     locale,
+     isTranslating
   })
 }
 
