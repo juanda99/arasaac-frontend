@@ -61,7 +61,7 @@ class App extends Component {
       this.props.changeLocale('af')
     }
     else {
-      this.props.changeLocale('es')
+      // this.props.changeLocale('es')
       window.location.href = "http://localhost:3000";
     }
     /*
