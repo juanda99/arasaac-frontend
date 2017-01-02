@@ -46,7 +46,7 @@ paths:
   /auth:
     x-swagger-router-controller: auth
     post:
-      operationId: authUserByPassword
+      operationId: signIn
       description: Validate a user by username and password. Returns a JWT token for the session. 
       # define the type of response for Success "200" and Error
       parameters:
@@ -61,6 +61,40 @@ paths:
               username:
                 type: string
               password:
+                type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /register:
+    x-swagger-router-controller: auth
+    post:
+      operationId: signUp
+      description: Create a user. Send an email for user activation. 
+      # define the type of response for Success "200" and Error
+      parameters:
+        - name: user
+          in: body
+          description: User data
+          schema:
+            required:
+              - username
+              - password
+              - name
+              - email
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+              name:
+                type: string
+              email:
                 type: string
       responses:
         "200":

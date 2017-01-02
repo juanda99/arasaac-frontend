@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const service = require('../services')
+const nev = require('../mail')
 
 const signIn = (req, res) => {
   // return res.status(200).json({ prueba: 'A ver si funciona' })
@@ -16,28 +17,48 @@ const signIn = (req, res) => {
     if (!user.authenticate(password)) {
       return res.status(401).send({ message: 'User unauthorized' })
     }
-    return res.status(201).send({ token: createToken(user) })
+    return res.status(201).send({ token: service.createToken(user) })
   })
 }
 
 const signUp = (req, res) => {
-  const User = new User({
-    username: req.swagger.params.username.value,
-    password: req.swagger.params.password.value
+  const userData = req.swagger.params.user.value
+  const user = new User(userData)
+  // console.log(req.body)
+  // console.log(userData)
+
+  nev.createTempUser(user, (err, existingPersistentUser, newTempUser) => {
+    if (err) {
+      return res.status(400).json(err)
+    }
+    // user already exists in persistent collection
+    if (existingPersistentUser) {
+      return res.json({
+        msg: 'You have already signed up and confirmed your account. Did you forget your password?'
+      })
+    }
+    // new user created
+    if (newTempUser) {
+      const URL = newTempUser[nev.options.URLFieldName]
+      nev.sendVerificationEmail(newTempUser.email, URL, (error, info) => {
+        console.log(info)
+        if (error) {
+          return res.status(500).json({ msg: 'ERROR: sending verification email FAILED' })
+        }
+        return res.status(200).json({ message: 'An email has been sent to you. Please check it to verify your account.' })
+      })
+
+    // user already exists in temporary collection!
+    } else {
+      return res.status(409).json({
+        message: 'You have already signed up. Please check your email to verify your account.' })
+    }
+    return 'kk'
   })
-
-  User.save((err) => {
-    if (err) res.sendStatus(500).json({error: `Error creating new user: ${err}`}) 
-    return res.status(201).json({token: service.createToken(User)})
-
-  })
-
-
 }
 
 
 module.exports = {
   signIn,
-
   signUp
 }

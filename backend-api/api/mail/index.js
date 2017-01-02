@@ -4,16 +4,16 @@ const nev = require('email-verification')(mongoose)
 const TempUser = require('../models/TempUser')
 const bcrypt = require('bcryptjs')
 
-const myHasher = function (password, tempUserData, insertTempUser, callback) {
+const myHasher = (password, tempUserData, insertTempUser, callback) => {
   bcrypt.genSalt(8, (err, salt) => {
-    bcrypt.hash(password, salt, (err, hash) =>
+    bcrypt.hash(password, salt, (error, hash) =>
        insertTempUser(hash, tempUserData, callback)
     )
   })
 }
-
+/* eslint no-template-curly-in-string: 0 */
 nev.configure({
-  verificationURL: 'http://localhost:4000/users/activate/${URL}',
+  verificationURL: 'http://localhost:8000/users/activate/${URL}',
   URLLength: 48,
   // mongo-stuff
   persistentUserModel: User,
@@ -21,7 +21,6 @@ nev.configure({
   tempUserCollection: 'tempusers',
   emailFieldName: 'email',
   passwordFieldName: 'password',
-  URLFieldName: 'GENERATED_VERIFYING_URL',
   expirationTime: 86400, // 1 día
   // emailing options
   transportOptions: {

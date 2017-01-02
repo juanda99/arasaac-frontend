@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const crypto = require('crypto')  // TODO: cahnge to bcrypt
+const bcrypt = require('bcryptjs')
 
 const Schema = mongoose.Schema
 
@@ -12,11 +12,10 @@ const oAuthTypes = [
 ]
 
 const userSchema = new Schema({
-  name: { type: String, default: '' },
+  name: { type: String },
   email: { type: String, unique: true, lowercase: true },
-  username: { type: String, default: '' },
-  // salt: { type: String, default: '' },
-  // authToken: { type: String, default: '' },
+  username: { type: String },
+  password: { type: String },
   signupDate: { type: Date, default: Date.now },
   lastlogin: { type: Date, default: Date.now },
   facebook: {},
@@ -26,7 +25,6 @@ const userSchema = new Schema({
   linkedin: {}
 })
 
-const validatePresenceOf = (value) => value && value.length
 
 /**
  * Virtuals
@@ -51,17 +49,17 @@ userSchema
 
 // the below 5 validations only apply if you are signing up traditionally
 
-userSchema.path('name').validate(function (name) {
+userSchema.path('name').validate((name) => {
   if (this.skipValidation()) return true
   return name.length
 }, 'Name cannot be blank')
 
-userSchema.path('email').validate(function (email) {
+userSchema.path('email').validate((email) => {
   if (this.skipValidation()) return true
   return email.length
 }, 'Email cannot be blank')
 
-userSchema.path('email').validate(function (email, fn) {
+userSchema.path('email').validate((email, fn) => {
   const User = mongoose.model('User')
   if (this.skipValidation()) fn(true)
 
@@ -73,109 +71,27 @@ userSchema.path('email').validate(function (email, fn) {
   } else fn(true)
 }, 'Email already exists')
 
-userSchema.path('username').validate(function (username) {
+userSchema.path('username').validate((username) => {
   if (this.skipValidation()) return true
   return username.length
 }, 'Username cannot be blank')
 
-userSchema.path('hashed_password').validate(function (hashed_password) {
-  if (this.skipValidation()) return true
-  return hashed_password.length && this._password.length
-}, 'Password cannot be blank')
-
-
-/**
- * Pre-save hook
- */
-
-userSchema.pre('save', (next) => {
-  let user = this
-  if (!user.isModified('password') return next()
-  bcrypt.hash(user.password, 10, function(err, hash) {
-    user.password=hash
-    next()
-  });  
-})
 
 /**
  * Methods
  */
 
+/* eslint no-bitwise: 0  */
 userSchema.methods = {
-
-  /**
-   * Authenticate - check if the passwords are the same
-   *
-   * @param {String} plainText
-   * @return {Boolean}
-   * @api public
-   */
-
   authenticate(plainText) {
-    return this.encryptPassword(plainText) === this.hashed_password
+    return bcrypt.compareSync(plainText, this.password)
   },
-
-  /**
-   * Make salt
-   *
-   * @return {String}
-   * @api public
-   */
-
-  makeSalt() {
-    return `${Math.round((new Date().valueOf() * Math.random()))}`
-  },
-
-  /**
-   * Encrypt password
-   *
-   * @param {String} password
-   * @return {String}
-   * @api public
-   */
-
-  encryptPassword(password) {
-    if (!password) return ''
-    try {
-      return crypto
-        .createHmac('sha1', this.salt)
-        .update(password)
-        .digest('hex')
-    } catch (err) {
-      return ''
-    }
-  },
-
-  /**
-   * Validation is not required if using OAuth
-   */
-
+  // validation isn't required using OAuth
   skipValidation() {
     return ~oAuthTypes.indexOf(this.provider)
   }
 }
 
-/**
- * Statics
- */
-
-userSchema.statics = {
-
-  /**
-   * Load
-   *
-   * @param {Object} options
-   * @param {Function} cb
-   * @api private
-   */
-
-  load(options, cb) {
-    options.select = options.select || 'name username'
-    return this.findOne(options.criteria)
-      .select(options.select)
-      .exec(cb)
-  }
-}
 
 const User = mongoose.model('User', userSchema, 'users')
 

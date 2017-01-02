@@ -1,6 +1,8 @@
-const jwt = require('jsonwebtoken')¡
-const config = require('../config')
+const jwt = require('jsonwebtoken')
+const config = require('../../config')
 
-const createToken = (user) => {
-  return jwt.sign({ user: user.name, profile: user.profile }, config.jwtSecret, { expiresInMinutes: 60 * 5 })
-}
+const createToken = (user) => (
+  jwt.sign({ user: user.name, profile: user.profile }, config.jwtSecret, { expiresInMinutes: 60 * 5 })
+)
+
+module.exports = createToken

@@ -44,6 +44,7 @@ module.exports = {
     const user = new TempUser(req.body)
     console.log(req.body)
     console.log(user)
+
     nev.createTempUser(user, (err, existingPersistentUser, newTempUser) => {
       if (err) {
         return res.status(400).json(err)
@@ -57,11 +58,12 @@ module.exports = {
       // new user created
       if (newTempUser) {
         const URL = newTempUser[nev.options.URLFieldName]
-        nev.sendVerificationEmail(newTempUser.email, URL, (err, info) => {
-          if (err) {
+        nev.sendVerificationEmail(newTempUser.email, URL, (error, info) => {
+          console.log(info)
+          if (error) {
             return res.status(500).json({ msg: 'ERROR: sending verification email FAILED' })
           }
-          res.status(200).json({ message: 'An email has been sent to you. Please check it to verify your account.' })
+          return res.status(200).json({ message: 'An email has been sent to you. Please check it to verify your account.' })
         })
 
       // user already exists in temporary collection!
@@ -69,6 +71,7 @@ module.exports = {
         return res.status(409).json({
           message: 'You have already signed up. Please check your email to verify your account.' })
       }
+      return 'kk'
     })
   },
   update(req, res) {
