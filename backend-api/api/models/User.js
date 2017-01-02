@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const crypto = require('crypto')
+const crypto = require('crypto')  // TODO: cahnge to bcrypt
 
 const Schema = mongoose.Schema
 
@@ -13,12 +13,11 @@ const oAuthTypes = [
 
 const userSchema = new Schema({
   name: { type: String, default: '' },
-  email: { type: String, default: '' },
+  email: { type: String, unique: true, lowercase: true },
   username: { type: String, default: '' },
-  provider: { type: String, default: '' },
-  hashed_password: { type: String, default: '' },
-  salt: { type: String, default: '' },
-  authToken: { type: String, default: '' },
+  // salt: { type: String, default: '' },
+  // authToken: { type: String, default: '' },
+  signupDate: { type: Date, default: Date.now },
   lastlogin: { type: Date, default: Date.now },
   facebook: {},
   twitter: {},
@@ -32,7 +31,7 @@ const validatePresenceOf = (value) => value && value.length
 /**
  * Virtuals
  */
-
+/*
 userSchema
   .virtual('password')
   .set(function (password) {
@@ -43,6 +42,8 @@ userSchema
   .get(function () {
     return this._password
   })
+
+  */
 
 /**
  * Validations
@@ -87,14 +88,13 @@ userSchema.path('hashed_password').validate(function (hashed_password) {
  * Pre-save hook
  */
 
-userSchema.pre('save', function (next) {
-  if (!this.isNew) return next()
-
-  if (!validatePresenceOf(this.password) && !this.skipValidation()) {
-    next(new Error('Invalid password'))
-  } else {
+userSchema.pre('save', (next) => {
+  let user = this
+  if (!user.isModified('password') return next()
+  bcrypt.hash(user.password, 10, function(err, hash) {
+    user.password=hash
     next()
-  }
+  });  
 })
 
 /**

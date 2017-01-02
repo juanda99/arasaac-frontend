@@ -1,12 +1,7 @@
-const jwt = require('jsonwebtoken')
 const User = require('../models/User')
-const config = require('../../config')
+const service = require('../services')
 
-function createToken(user) {
-  return jwt.sign({ user: user.name, profile: user.profile }, config.jwtSecret, { expiresInMinutes: 60 * 5 })
-}
-
-const authUserByPassword = (req, res) => {
+const signIn = (req, res) => {
   // return res.status(200).json({ prueba: 'A ver si funciona' })
   const username = req.swagger.params.username.value
   console.log(`user es :${username}`)
@@ -25,7 +20,24 @@ const authUserByPassword = (req, res) => {
   })
 }
 
+const signUp = (req, res) => {
+  const User = new User({
+    username: req.swagger.params.username.value,
+    password: req.swagger.params.password.value
+  })
+
+  User.save((err) => {
+    if (err) res.sendStatus(500).json({error: `Error creating new user: ${err}`}) 
+    return res.status(201).json({token: service.createToken(User)})
+
+  })
+
+
+}
+
 
 module.exports = {
-  authUserByPassword
+  signIn,
+
+  signUp
 }
