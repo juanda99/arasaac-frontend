@@ -5,6 +5,7 @@
 
 import { combineReducers } from 'redux-immutable'
 import { fromJS } from 'immutable'
+import { loadingBarReducer } from 'react-redux-loading-bar'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import { reducer as form } from 'redux-form/immutable'
 import languageProviderReducer from 'containers/LanguageProvider/reducer'
@@ -77,6 +78,7 @@ export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
     language: languageProviderReducer,
+    loadingBar: loadingBarReducer,
     configuration,
     auth,
     form,

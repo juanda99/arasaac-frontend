@@ -1,16 +1,20 @@
 import { fork, call, take, put } from 'redux-saga/effects'
 import { browserHistory } from 'react-router'
+// import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import { SIGNUP, signup } from 'containers/SignupView/actions'
 import api from 'services'
 
 
-function* signupCall(user) {
+function* signupCall(userData) {
   try {
-    const token = yield call(api.signup, user)
-    yield put(signup.success(token))
+    // yield put(showLoading())
+    yield call(api.signup, userData)
+    yield put(signup.success())
   } catch (error) {
     yield put(signup.failure(error))
     // forwardTo('/')
+  } finally {
+    // yield put(hideLoading())
   }
 }
 /* eslint no-constant-condition:0 */
@@ -26,6 +30,7 @@ function* signupFlow() {
     */
   }
 }
+
 /*
 function* activationFlow() {
   while (true) {
