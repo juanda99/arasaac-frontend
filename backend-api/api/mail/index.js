@@ -1,7 +1,6 @@
 const User = require('../models/User')
 const mongoose = require('mongoose')
 const nev = require('email-verification')(mongoose)
-const TempUser = require('../models/TempUser')
 const bcrypt = require('bcryptjs')
 
 const myHasher = (password, tempUserData, insertTempUser, callback) => {
@@ -11,13 +10,13 @@ const myHasher = (password, tempUserData, insertTempUser, callback) => {
     )
   })
 }
+
 /* eslint no-template-curly-in-string: 0 */
 nev.configure({
   verificationURL: 'http://localhost:8000/users/activate/${URL}',
   URLLength: 48,
   // mongo-stuff
   persistentUserModel: User,
-  tempUserModel: TempUser,
   tempUserCollection: 'tempusers',
   emailFieldName: 'email',
   passwordFieldName: 'password',
@@ -50,6 +49,15 @@ nev.configure({
     return
   }
   console.log(`configured: ${typeof options === 'object'}`)
+})
+
+nev.generateTempUserModel(User, (err, tempUserModel) => {
+  if (err) {
+    console.log(err)
+    return
+  }
+  /* eslint prefer-template:0 */
+  console.log('generated temp user model: ' + (typeof tempUserModel === 'function'))
 })
 
 module.exports = nev

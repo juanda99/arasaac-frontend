@@ -12,10 +12,12 @@ const oAuthTypes = [
 ]
 
 const userSchema = new Schema({
-  name: { type: String },
+  name: { type: String, default: '' },
+  surname: { type: String },
   email: { type: String, unique: true, lowercase: true },
   username: { type: String },
   password: { type: String },
+  locale: { type: String, default: 'es-ES' },
   signupDate: { type: Date, default: Date.now },
   lastlogin: { type: Date, default: Date.now },
   facebook: {},
@@ -25,23 +27,6 @@ const userSchema = new Schema({
   linkedin: {}
 })
 
-
-/**
- * Virtuals
- */
-/*
-userSchema
-  .virtual('password')
-  .set(function (password) {
-    this._password = password
-    this.salt = this.makeSalt()
-    this.hashed_password = this.encryptPassword(password)
-  })
-  .get(function () {
-    return this._password
-  })
-
-  */
 
 /**
  * Validations
