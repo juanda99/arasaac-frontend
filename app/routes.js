@@ -134,20 +134,19 @@ export default function createRoutes(store) {
       }
     }, {
       path: 'register',
-      name: 'RegisterView',
+      name: 'SignupView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/RegisterView/reducer'),
-          // System.import('containers/LoginView/sagas'),
-          System.import('containers/RegisterView')
+          System.import('containers/SignupView/reducer'),
+          System.import('containers/SignupView/sagas'),
+          System.import('containers/SignupView')
         ])
 
         const renderRoute = loadModule(cb)
 
-        importModules.then(([reducer, component]) => {
-          injectReducer('RegisterView', reducer.default)
-          // remove sagas parameter
-          // injectSagas(sagas.default)
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('register', reducer.default)
+          injectSagas(sagas.default)
           renderRoute(component)
         })
 

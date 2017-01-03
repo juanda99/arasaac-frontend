@@ -1,17 +1,18 @@
 /*
  *
- * RegisterView
+ * SignupView
  *
  */
 
-import React, { Component } from 'react'
-// import { connect } from 'react-redux'
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import View from 'components/View'
 import { RegisterForm, RegisterOptions } from 'components/Login'
 import Paper from 'material-ui/Paper'
 import SocialLogin from 'components/SocialLogin'
 import Separator from 'components/Separator'
 import Logo from 'components/Logo'
+import { signup } from './actions'
 // import selectRegisterView from './selectors'
 
 const styles = {
@@ -22,7 +23,7 @@ const styles = {
   }
 }
 
-class RegisterView extends Component {
+class SignupView extends Component {
   constructor(props) {
     super(props)
     this.state = { showOptions: true }
@@ -30,8 +31,12 @@ class RegisterView extends Component {
   handleClick = () => {
     this.setState({ showOptions: !this.state.showOptions })
   }
-  handleSubmit = (formData) => {
-    console.log(formData.get('username'))
+  handleSubmit = (userData) => {
+    console.log(this.props.loading)
+    console.log(this.props.error)
+    this.props.requestSignup(userData)
+    console.log(this.props.loading)
+    console.log(this.props.error)
   }
 
   render() {
@@ -59,15 +64,24 @@ class RegisterView extends Component {
 
 /*
 const mapStateToProps = selectRegisterView();
-
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterView);
 */
 
-export default RegisterView
+SignupView.propTypes = {
+  requestSignup: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+  error: PropTypes.string
+}
+
+const mapStateToProps = (state) => {
+  const loading = state.getIn(['register', 'loading'])
+  const error = state.getIn(['register', 'error'])
+  return ({ loading, error })
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  requestSignup: (userData) => {
+    dispatch(signup.request(userData))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupView)

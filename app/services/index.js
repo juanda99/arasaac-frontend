@@ -17,3 +17,10 @@ const api = {
 }
 
 export default api
+
+/*
+  signIn,
+  signUp,
+  sendVerificationEmail,
+  emailVerification
+*/

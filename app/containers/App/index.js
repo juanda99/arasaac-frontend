@@ -233,7 +233,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   const locale = state.getIn(['language', 'locale'])
   const isTranslating = locale === 'af'
-  const isAuthenticated = true // state.getIn(['auth', 'token']) && true || false
+  const isAuthenticated = state.getIn(['auth', 'token']) && true || false
   // TODO:
   // token needs validation!
   return({

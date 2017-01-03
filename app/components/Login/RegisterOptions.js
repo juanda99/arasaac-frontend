@@ -35,6 +35,9 @@ const RegisterOptions = ({ onClick }) => (
       </Link>
     </Div>
     <Div>
+      <p>Registrándote, estás de acuerdo los términos y condiciones del servicio y la política de privacidad.</p>
+    </Div>
+    <Div>
       <p style={styles.text}>
         {<FormattedMessage {...messages.offerSignin} />}
       </p>
@@ -46,6 +49,7 @@ const RegisterOptions = ({ onClick }) => (
         />
       </Link>
     </Div>
+
   </div>
 )
 
