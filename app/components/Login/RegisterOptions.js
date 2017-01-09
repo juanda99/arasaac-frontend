@@ -21,6 +21,9 @@ const styles = {
   }
 }
 
+const useConditions = <Link to='/register'><FormattedMessage {...messages.useConditions} /></Link>
+const privacyPolicy = <Link to='/privacypolicy'><FormattedMessage {...messages.privacyPolicy} /></Link>
+
 const RegisterOptions = ({ onClick }) => (
   <div>
     <Div>
@@ -35,7 +38,7 @@ const RegisterOptions = ({ onClick }) => (
       </Link>
     </Div>
     <Div>
-      <p>Registrándote, estás de acuerdo los términos y condiciones del servicio y la política de privacidad.</p>
+      <p>{<FormattedMessage {...messages.agreement} values={{ useConditions, privacyPolicy }} /> }</p>
     </Div>
     <Div>
       <p style={styles.text}>
