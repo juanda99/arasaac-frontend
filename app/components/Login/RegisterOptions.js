@@ -21,8 +21,8 @@ const styles = {
   }
 }
 
-const useConditions = <Link to='/register'><FormattedMessage {...messages.useConditions} /></Link>
-const privacyPolicy = <Link to='/privacypolicy'><FormattedMessage {...messages.privacyPolicy} /></Link>
+const useConditions = <Link to='/use-conditions'><FormattedMessage {...messages.useConditions} /></Link>
+const privacyPolicy = <Link to='/privacy-policy'><FormattedMessage {...messages.privacyPolicy} /></Link>
 
 const RegisterOptions = ({ onClick }) => (
   <div>

@@ -172,6 +172,22 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading)
       }
     }, {
+      path: 'use-conditions',
+      name: 'useConditions',
+      getComponent(location, cb) {
+        System.import('components/UseConditions')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
+      path: 'privacy-policy',
+      name: 'privacyPolicy',
+      getComponent(location, cb) {
+        System.import('components/PrivacyPolicy')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
