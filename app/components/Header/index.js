@@ -65,6 +65,8 @@ const Header = (props) => {
             ? <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} onClick={changeLocale} />
             : <MenuItem primaryText='Dejar de traducir' onClick={changeLocale} /> }
             <MenuItem primaryText={<FormattedMessage {...messages.signout} />} href='/signout' />
+            <MenuItem primaryText={<FormattedMessage {...messages.signin} />} containerElement={<Link to='/signin' />} />
+            <MenuItem primaryText={<FormattedMessage {...messages.register} />} containerElement={<Link to='/register' />} />
           </IconMenu>
           }
       />
