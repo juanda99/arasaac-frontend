@@ -1,6 +1,6 @@
 {
   "app.component.Participate.contact":"Contacta con nosotros",
-  "app.component.Participate.header":"Estamos construyendo Arasaac. ¿Te gustaría acompañarnos?",
+  "app.component.Participate.header":"Estamos construyendo Arasaac. ¿Te gustaría colaborar?",
   "app.components.Filters.SelectCatalog.all":"Todos los catálogos de",
   "app.components.Filters.SelectCatalog.blackAndWhitePictograms":"Pictogramas de blanco y negro",
   "app.components.Filters.SelectCatalog.catalog":"Catálogo",
@@ -91,8 +91,8 @@
   "signin.or":"or",
   "signin.remember":"Remember me",
   "signin.signup":"Sign up",
-  "signup.agreement":"By clicking on Sign up, you agree to {useConditions} and {privacyPolicy}",
-  "signup.privacyPolicy":"privacy policy",
+  "signup.agreement":"Al registrarte, aceptas las {useConditions} y nuestra {privacyPolicy}",
+  "signup.privacyPolicy":"política de privacidad",
   "signup.signin":"Sign in",
   "signup.useConditions":"condiciones de uso de Arasaac",
   "size.choose":"Tamaño",
