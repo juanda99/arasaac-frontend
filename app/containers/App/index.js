@@ -6,7 +6,7 @@
 
 
 import React, { PropTypes } from 'react'
-import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth'
+import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 // import LoadingBar from 'containers/LoadingBar'
 import Header from 'containers/Header'
 import Footer from 'containers/Footer'
