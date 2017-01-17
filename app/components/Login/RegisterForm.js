@@ -69,6 +69,15 @@ let RegisterForm = class RegisterForm extends Component {
               validate={required}
             />
             <Field
+              name='username'
+              component={TextField}
+              hintText='Choose a username'
+              value=''
+              floatingLabelText='Username'
+              style={{ width: '100%' }}
+              validate={required}
+            />
+            <Field
               name='email'
               component={TextField}
               hintText='What is your email?'
@@ -123,7 +132,7 @@ let RegisterForm = class RegisterForm extends Component {
               style={styles.signinButton}
               label={<FormattedMessage {...messages.signin} />}
               secondary={true}
-              onTouchTap={this.handleSubmit}
+              // onTouchTap={this.handleSubmit}
             />
           </Link>
         </Div>

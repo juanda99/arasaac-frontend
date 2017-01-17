@@ -32,9 +32,11 @@ class SignupView extends Component {
     this.setState({ showOptions: !this.state.showOptions })
   }
   handleSubmit = (userData) => {
+    console.log ('llamado x veces...')
     console.log(this.props.loading)
     console.log(this.props.error)
-    this.props.requestSignup(userData)
+    console.log(userData.toJS())
+    this.props.requestSignup(userData.toJS())
     console.log(this.props.loading)
     console.log(this.props.error)
   }

@@ -10,6 +10,7 @@ export function* defaultSaga() {
 function* pictogramsGetData() {
   while (true) { // eslint-disable-line no-constant-condition
     const { searchText } = yield take(PICTOGRAMS.REQUEST)
+    console.log('pictograms requsesteddddd')
     try {
       const response = yield call(api.fetchPictograms, searchText)
       yield put(pictograms.request(response))

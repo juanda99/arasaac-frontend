@@ -7,7 +7,7 @@ import api from 'services'
 
 function* signupCall(userData) {
   try {
-    // yield put(showLoading())
+    console.log ('ha entrado en signupCall')
     yield call(api.signup, userData)
     yield put(signup.success())
   } catch (error) {
@@ -20,14 +20,27 @@ function* signupCall(userData) {
 /* eslint no-constant-condition:0 */
 function* signupFlow() {
   while (true) {
-    const user = yield take(SIGNUP.REQUEST)
-    yield fork(signupCall, user)
+    const { payload: user } = yield take(SIGNUP.REQUEST)
+    const usuario = JSON.stringify(user)
+    console.log(`usuario: ${usuario}`)
+    console.log('ha entrado en signup request')
+    // yield fork(signupCall, user)
     /*
     const task = yield fork(signupCall, user)
+    *
     yield take(LOGOUT.REQUEST)
     yield cancel(task)
     yield put(logout.success())
     */
+  }
+}
+
+function* test() {
+  while (true) {
+    yield take(SIGNUP.REQUEST)
+    console.log('Ha entrado aquí')
+    yield take(SIGNUP.REQUEST)
+    console.log('Ha entrado aquí también')
   }
 }
 
@@ -49,4 +62,4 @@ function* activationFlow() {
 function forwardTo(location) {
   browserHistory.push(location)
 }
-export default [signupFlow]
+export default [test]

@@ -22,6 +22,7 @@ const signIn = (req, res) => {
 }
 
 const signUp = (req, res) => {
+  console.log('ha llegado aquí')
   const user = new User(req.swagger.params.user.value)
   /* eslint consistent-return: 0 */
   nev.createTempUser(user, (err, existingPersistentUser, newTempUser) => {
@@ -47,6 +48,7 @@ const signUp = (req, res) => {
 
     // user already exists in temporary collection!
     } else {
+      console.log('ha entrado aquí también...')
       return res.status(409).json({
         message: 'You have already signed up. Please check your email to verify your account.' })
     }
