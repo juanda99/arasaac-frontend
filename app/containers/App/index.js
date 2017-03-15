@@ -2,24 +2,121 @@
  *
  * App.react.js
  *
+ * This component is the skeleton around the actual pages, and should only
+ * contain code that should be seen on all pages. (e.g. navigation bar)
+ *
+ * NOTE: while this component should technically be a stateless functional
+ * component (SFC), hot reloading does not currently support SFCs. If hot
+ * reloading is not a necessity for you then you can refactor it and remove
+ * the linting exception.
  */
 
+/* eslint-disable */
 
-import React, { PropTypes } from 'react'
-import withWidth, { LARGE } from 'material-ui/utils/withWidth'
-// import LoadingBar from 'containers/LoadingBar'
-import Header from 'containers/Header'
-import Footer from 'containers/Footer'
+import React, { Component, PropTypes } from 'react'
+import { ImmutableLoadingBar as LoadingBar } from 'react-redux-loading-bar'
+// import Helmet from 'react-helmet'
+// import styled from 'styled-components'
+import Header from 'components/Header'
+import Footer from 'components/Footer'
+import Menu from 'components/Menu'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 import { FormattedMessage } from 'react-intl'
 import messages from './messages'
 import Wrapper from './Wrapper'
+import { connect } from 'react-redux'
+import spacing from 'material-ui/styles/spacing'
+import { white } from 'material-ui/styles/colors'
+import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth'
+import { changeLocale } from 'containers/LanguageProvider/actions'
 
-class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
+class App extends Component {
   static propTypes = {
-    children: PropTypes.node,
     width: PropTypes.number.isRequired,
-    location: PropTypes.object
+    children: PropTypes.node,
+    location: PropTypes.object,
+    isAuthenticated: PropTypes.bool,
+    changeLocale: PropTypes.func
+  }
+
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  }
+
+
+   constructor(props) {
+    super(props)
+    this.state = {     
+      menuOpen: false
+    }
+    console.log('again to the constructor')
+  }
+
+
+  handleTranslate = () => {
+    if (!this.props.isTranslating) {
+      const script = document.createElement('script')
+      script.src = '//cdn.crowdin.com/jipt/jipt.js'
+      script.async = true
+      document.body.appendChild(script)
+      this.props.changeLocale('af')
+    }
+    else {
+      // this.props.changeLocale('es')
+      window.location.href = "http://localhost:3000";
+    }
+    /*
+    if (!this.state.isTranslating) {
+      this.props.changeLocale('af')
+    }
+    else {
+      this.props.changeLocale('es')
+    }
+    console.log ('pasa por aquí')
+    */
+    /*
+    if (this.state.loadScripts) {
+
+      this.setState({loadScript: false})
+    }
+    */
+  }
+
+
+  getStyles() {
+    const styles = {
+      content: {
+        margin: spacing.desktopGutter
+      },
+      contentWhenMedium: {
+        margin: `${spacing.desktopGutter * 2}px ${spacing.desktopGutter * 3}px`
+      },
+      a: {
+        color: white
+      },
+      p: {
+        margin: '0 auto',
+        padding: 0,
+        color: white,
+        maxWidth: 450
+      },
+      iconButton: {
+        color: white
+      },
+      LoadingBar: {
+        position: 'fixed',
+        height: 2,
+        backgroundColor: 'darkGreen',
+        top: 64,
+        zIndex: 10000
+      }
+    }
+
+    if (this.props.width === MEDIUM || this.props.width === LARGE) {
+      styles.content = Object.assign(styles.content, styles.contentWhenMedium)
+    }
+    return styles
   }
 
   getViewProps(width) {
@@ -78,20 +175,82 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
     return { docked, title }
   }
 
+  handleTouchTapLeftIconButton = () => {
+    this.setState({
+      menuOpen: !this.state.menuOpen
+    })
+  }
+
+  handleChangeRequestNavDrawer = (open) => {
+    this.setState({
+      menuOpen: open
+    })
+  }
+
+  handleChangeList = (event, value) => {
+    this.context.router.push(value)
+    this.setState({
+      menuOpen: false
+    })
+  }
+
   render() {
-    const { children, width } = this.props
+    const {
+      location,
+      children,
+      isAuthenticated,
+      width,
+      isTranslating
+    } = this.props
+
+    let {
+      menuOpen
+    } = this.state
+
+
+    const styles = this.getStyles()
+
     const { title, docked } = this.getViewProps(width)
+
+    let showMenuIconButton = true
+    if (width === LARGE && docked) {
+      menuOpen = true
+      showMenuIconButton = false
+    }
     return (
       <div>
-        <Header title={title} docked={docked} />
+      <LoadingBar style={styles.LoadingBar}/>
+        <Header
+          showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
+          touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
+          changeLocale = {this.handleTranslate} isTranslating = {isTranslating}
+        />
         <Wrapper docked={docked}>
-          {React.Children.toArray(children)}
+          {children}
         </Wrapper>
-        <Footer />
+        <Menu
+          location={location}
+          docked={docked}
+          onRequestChangeNavDrawer={this.handleChangeRequestNavDrawer}
+          onChangeList={this.handleChangeList}
+          open={menuOpen}
+        />
+        <Footer docked={docked} style={styles.footer} />
       </div>
     )
   }
 }
+const mapStateToProps = (state) => {
+  const locale = state.getIn(['language', 'locale'])
+  const isTranslating = locale === 'af'
+  const isAuthenticated = true //state.getIn(['auth', 'token']) && true || false
+  // TODO:
+  // token needs validation!
+  return({
+     isAuthenticated,
+     locale,
+     isTranslating
+  })
+}
 
-
-export default (withWidth()(App))
+export default connect(mapStateToProps, {changeLocale})(withWidth()(App))

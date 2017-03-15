@@ -14,6 +14,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
+import FontFaceObserver from 'fontfaceobserver'
 import { useScroll } from 'react-router-scroll'
 import 'sanitize.css/sanitize.css'
 
@@ -26,12 +27,19 @@ import { makeSelectLocationState } from 'containers/App/selectors'
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider'
 
+// material-ui requirement
+import injectTapEventPlugin from 'react-tap-event-plugin'
+// theme:
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+// import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
+
 // Load the favicon, the manifest.json file and the .htaccess file
-/* eslint-disable import/no-unresolved, import/extensions */
+/* eslint-disable import/no-webpack-loader-syntax */
 import '!file-loader?name=[name].[ext]!./favicon.ico'
 import '!file-loader?name=[name].[ext]!./manifest.json'
-import 'file-loader?name=[name].[ext]!./.htaccess'
-/* eslint-enable import/no-unresolved, import/extensions */
+import 'file-loader?name=[name].[ext]!./.htaccess' // eslint-disable-line import/extensions
+/* eslint-enable import/no-webpack-loader-syntax */
 
 import configureStore from './store'
 
@@ -43,6 +51,24 @@ import './global-styles'
 
 // Import root routes
 import createRoutes from './routes'
+
+// Needed for onTouchTap
+// Can go away when react 1.0 release
+// Check this repo:
+// https://github.com/zilverline/react-tap-event-plugin
+injectTapEventPlugin()
+
+
+// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
+// the index.html file and this observer)
+const openSansObserver = new FontFaceObserver('Roboto', {})
+
+// When Open Sans is loaded, add a font-family using Open Sans to the body
+openSansObserver.load().then(() => {
+  document.body.classList.add('fontLoaded')
+}, () => {
+  document.body.classList.remove('fontLoaded')
+})
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
@@ -68,15 +94,17 @@ const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
-        <Router
-          history={history}
-          routes={rootRoute}
-          render={
-            // Scroll to top when going to a new page, imitating default browser
-            // behaviour
-            applyRouterMiddleware(useScroll())
-          }
-        />
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <Router
+            history={history}
+            routes={rootRoute}
+            render={
+              // Scroll to top when going to a new page, imitating default browser
+              // behaviour
+              applyRouterMiddleware(useScroll())
+            }
+          />
+        </MuiThemeProvider>
       </LanguageProvider>
     </Provider>,
     document.getElementById('app')
@@ -98,7 +126,12 @@ if (!window.Intl) {
     resolve(import('intl'))
   }))
     .then(() => Promise.all([
-      import('intl/locale-data/jsonp/en.js')
+      import('intl/locale-data/jsonp/en.js'),
+      import('intl/locale-data/jsonp/es.js'),
+      import('intl/locale-data/jsonp/fr.js'),
+      import('intl/locale-data/jsonp/it.js'),
+      import('intl/locale-data/jsonp/de.js'),
+      import('intl/locale-data/jsonp/af.js')
     ]))
     .then(() => render(translationMessages))
     .catch((err) => {
