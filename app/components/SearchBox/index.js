@@ -18,7 +18,7 @@ const SearchBox = ({ value, dataSource, onSubmit, onChange, onToggleFilter, filt
   <div>
     <Toggle
       label={<FormattedMessage {...messages.advancedSearch} />}
-      onToggle={onToggleFilter} defaultToggled={showFilter}
+      onToggle={onToggleFilter} defaultToggled={showFilter} style={{ width: '200px', float: 'right' }}
     />
     <SearchField value={value} dataSource={dataSource} onSubmit={onSubmit} onChange={onChange} />
     {showFilter ? <FilterPictograms filters={filters} /> : null}
