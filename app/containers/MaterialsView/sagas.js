@@ -9,11 +9,11 @@ export function* defaultSaga() {
 
 function* pictogramsGetData() {
   while (true) { // eslint-disable-line no-constant-condition
-    const { payload: { searchText } } = yield take(PICTOGRAMS.REQUEST)
+    const { searchText } = yield take(PICTOGRAMS.REQUEST)
+    console.log('pictograms requsesteddddd')
     try {
       const response = yield call(api.fetchPictograms, searchText)
-      console.log(response)
-      yield put(pictograms.success(response))
+      yield put(pictograms.request(response))
     } catch (error) {
       yield put(pictograms.failure(error.message))
     } finally {
@@ -25,12 +25,10 @@ function* pictogramsGetData() {
 
 function* autocompleteGetData() {
   while (true) { // eslint-disable-line no-constant-condition
-    const { payload: { locale } } = yield take(AUTOCOMPLETE.REQUEST)
+    const { searchText } = yield take(AUTOCOMPLETE.REQUEST)
     try {
-      console.log ("aaaaaaaaaaaaaaaaaaa" + locale)
-      const response = yield call(api.keywords, locale)
-      console.log(`Respuesta api: ${response}`)
-      yield put(autocomplete.success(response))
+      const response = yield call(api.fetchSearches, searchText)
+      yield put(autocomplete.request(response))
     } catch (error) {
       yield put(autocomplete.failure(error.message))
     } finally {

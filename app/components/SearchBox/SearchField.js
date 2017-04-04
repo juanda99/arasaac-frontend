@@ -34,7 +34,7 @@ class SearchField extends React.Component {
   handleUpdateInput = (t) => {
     if (t.keyCode === 13) {
       this.props.onSubmit(this.getInputValue())
-    } else {
+    } else if (this.props.onChange) {
       this.props.onChange(this.getInputValue())
     }
   }
@@ -74,7 +74,7 @@ SearchField.propTypes = {
   intl: intlShape.isRequired,
   value: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func || null
 }
 
 export default injectIntl(SearchField)
