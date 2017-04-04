@@ -29,7 +29,7 @@ SearchBox.propTypes = {
   value: PropTypes.string.isRequired,
   dataSource: PropTypes.arrayOf(PropTypes.string).isRequired,
   onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   onToggleFilter: PropTypes.func.isRequired,
   showFilter: React.PropTypes.bool.isRequired,
   filters: PropTypes.instanceOf(Map)

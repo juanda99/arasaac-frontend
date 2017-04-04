@@ -10,16 +10,16 @@ import Iframe from 'react-iframe'
 
 const container = {
   position: 'relative',
-  height: '0',
-  overflow: 'hidden',
+  // height: '1000',
+  overflow: 'auto',
   paddingBottom: '75%',
   zIndex: '10000'
 }
 
 const ApiView = () => (
-  <View>
+  <View style={{ height: '10000' }}>
     <div style={{ container }}>
-      <Iframe url='http://localhost:8000/api-docs' width={'100%'} height={'100%'} />
+      <Iframe url='http://localhost:8100/api-docs' width={'100%'} height={'100%'} />
     </div>
   </View>
 )
