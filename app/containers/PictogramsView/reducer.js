@@ -36,10 +36,11 @@ function pictogramsViewReducer(state = initialState, action) {
     case AUTOCOMPLETE.REQUEST:
       return state
     case AUTOCOMPLETE.SUCCESS:
-      return state
      // console.log('action:' + JSON.stringify(action))
-      // return state
-       // .setIn(['words', action.locale], action.data)
+     console.log ('***********************action.locale' + action.payload.locale)
+     console.log('************************action.data' + action.payload.data)
+      return state
+        .setIn(['words', action.payload.locale], action.payload.data)
     case AUTOCOMPLETE.FAILURE:
       return state
         .setIn(['words', action.locale], action.data)
