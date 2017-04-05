@@ -36,8 +36,8 @@ const callApi = (endpoint, config, schema) => {
     username: 'adsf',
     password: 'asdf'
   } */
-
-  return fetch(fullUrl, { method: 'GET', header: { Accept: 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+  return fetch(fullUrl, { method: 'GET', header: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+  // return fetch(fullUrl, { method: 'POST', header: { Accept: 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
     .then((response) => {
       console.log('respuesta:' + JSON.stringify(response))
       response.json().then((json) => ({ json, response }))

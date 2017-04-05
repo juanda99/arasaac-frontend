@@ -1,57 +1,59 @@
-import { take, call, put, fork } from 'redux-saga/effects'
+import { take, takeLatest, call, put, cancel, select } from 'redux-saga/effects'
+import { LOCATION_CHANGE } from 'react-router-redux'
 import api from 'services'
+import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
+import { selectSearchKey } from './selectors'
 import { PICTOGRAMS, pictograms, AUTOCOMPLETE, autocomplete } from './actions'
 
-// Individual exports for testing
-export function* defaultSaga() {
-  yield fork(pictogramsFlow)
-}
-
 function* pictogramsGetData() {
-  while (true) { // eslint-disable-line no-constant-condition
-    const { payload: { searchText } } = yield take(PICTOGRAMS.REQUEST)
-    try {
-      const response = yield call(api.fetchPictograms, searchText)
-      console.log(response)
-      yield put(pictograms.success(response))
-    } catch (error) {
-      yield put(pictograms.failure(error.message))
-    } finally {
-      // When done, we tell Redux we're not in the middle of a request any more
-      // yield put({type: SENDING_REQUEST, sending: false})
-    }
-  }
-}
-
-function* autocompleteGetData() {
-  while (true) { // eslint-disable-line no-constant-condition
-    const { payload: { locale } } = yield take(AUTOCOMPLETE.REQUEST)
-    try {
-      console.log ("aaaaaaaaaaaaaaaaaaa" + locale)
-      const response = yield call(api.keywords, locale)
-      console.log(`Respuesta api: ${response}`)
-      yield put(autocomplete.success(response))
-    } catch (error) {
-      yield put(autocomplete.failure(error.message))
-    } finally {
-      // When done, we tell Redux we're not in the middle of a request any more
-      // yield put({type: SENDING_REQUEST, sending: false})
-    }
+  try {
+    const searchText = yield select(selectSearchKey())
+    console.log ('searchText:' + searchText)
+    const response = yield call(api.fetchPictograms, searchText)
+    // console.log(' EN JSON:' + response.toJSON())
+    yield put(pictograms.success(response))
+  } catch (error) {
+    yield put(pictograms.failure(error.message))
+  } finally {
+    // When done, we tell Redux we're not in the middle of a request any more
+    // yield put({type: SENDING_REQUEST, sending: false})
   }
 }
 
 
-function* pictogramsFlow() {
-  yield fork(pictogramsGetData)
-  yield fork(autocompleteGetData)
-  // const watcher = yield fork(pictogramsGetData)
-  // Suspend execution until location changes,
-  // it should go in another fork
-  // yield take(LOCATION_CHANGE);
-  // yield cancel(watcher);
-  // o mejor: yield fork(takeLatest, SUBMIT_FILTER, fetchHotel);
-  // de: -------> https://github.com/yelouafi/redux-saga/issues/451
+function* autoCompleteGetData() {
+  try {
+    const locale = yield select(makeSelectLocale())
+    const response = yield call(api.keywords, locale)
+    const { words } = response
+    // console.log(' EN JSON:' + response.toJSON())
+    yield put(autocomplete.success(locale, words))
+  } catch (error) {
+    yield put(autocomplete.failure(error.message))
+  } finally {
+    // When done, we tell Redux we're not in the middle of a request any more
+    // yield put({type: SENDING_REQUEST, sending: false})
+  }
 }
+
+
+/**
+ * Root saga manages watcher lifecycle
+ */
+export function* autoCompleteData() {
+  const watcher = yield takeLatest(AUTOCOMPLETE.REQUEST, autoCompleteGetData)
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE)
+  yield cancel(watcher)
+}
+
+export function* pictogramsData() {
+  const watcher = yield takeLatest(PICTOGRAMS.REQUEST, pictogramsGetData)
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE)
+  yield cancel(watcher)
+}
+
 
 // All sagas to be loaded
-export default [defaultSaga]
+export default [pictogramsGetData, autoCompleteData]

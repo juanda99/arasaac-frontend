@@ -4,8 +4,7 @@ import callApi from './callApi'
 import { login, signup } from './config'
 
 const api = {
-  // keywords: (locale) => callApi(`keywords/${locale}`),
-  keywords: (searchText) => callApi(`pictograms/${searchText}`, pictogramsSchema),
+  keywords: (locale) => callApi(`keywords/${locale}`),
   fetchPictograms: (searchText) => callApi(`pictograms/${searchText}`, pictogramsSchema),
   fetchUser: (username) => callApi(`users/${username}`, userSchema),
   fetchRepo: (fullName) => callApi(`repos/${fullName}`, repoSchema),

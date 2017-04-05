@@ -11,7 +11,8 @@ const initialState = fromJS({
   showFilter: false,
   loading: false,
   error: false,
-  search: fromJS({})
+  search: fromJS({}),
+  words: fromJS({})
 })
 
 function pictogramsViewReducer(state = initialState, action) {
@@ -21,6 +22,7 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
+        .set('search', action.payload.searchText)
     case PICTOGRAMS.SUCCESS:
       newData[action.searchText] = action.data
       newData = fromJS({ search: newData })
@@ -35,10 +37,12 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
     case AUTOCOMPLETE.SUCCESS:
       return state
-        .setIn(['autocomplete', action.searchText], action.data)
+     // console.log('action:' + JSON.stringify(action))
+      // return state
+       // .setIn(['words', action.locale], action.data)
     case AUTOCOMPLETE.FAILURE:
       return state
-        .setIn(['autocomplete', action.searchText], action.data)
+        .setIn(['words', action.locale], action.data)
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))
