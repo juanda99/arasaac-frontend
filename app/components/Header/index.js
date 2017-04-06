@@ -3,6 +3,9 @@
 * Header
 *
 */
+
+/* eslint-disable jsx-a11y/anchor-has-content */
+
 import React, { PropTypes } from 'react'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'

@@ -15,25 +15,6 @@ function PrivacyPolicy() {
     <div>
       <FormattedMessage {...messages.header} />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
     </div>
   )
 }

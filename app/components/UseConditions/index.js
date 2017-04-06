@@ -9,9 +9,9 @@ import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import messages from './messages'
 
-const license = <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/' target='_blank'><FormattedMessage {...messages.license} /></a>
+// const license = <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/' target='_blank'><FormattedMessage {...messages.license} /></a>
 const owner = <a href='http://www.aragon.es/' target='_blank'><FormattedMessage {...messages.owner} /></a>
-const author = 'Sergio Palao'
+// const author = 'Sergio Palao'
 
 const UseConditions = () => (
   <View>
@@ -36,7 +36,7 @@ const UseConditions = () => (
     for any way or procedure.
     </p>
     <p> Responsibility’s exemption clause:</p>
-    <p> The Aragonese Portal of Augmentative and Alternative Communication has an informative and illustrative character, and tries to put at the disposal of any interested 
+    <p> The Aragonese Portal of Augmentative and Alternative Communication has an informative and illustrative character, and tries to put at the disposal of any interested
       person the information of the project. Nevertheless, it is necessary to specify the following thing:</p>
     <ul>
       <li>The information that offers is merely informative and lacks of any effect binding the Administration, so that we do not assume any responsibility of the content.</li>

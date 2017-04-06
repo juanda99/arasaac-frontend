@@ -6,7 +6,6 @@ node_js:
   - 5
 
 script:
-  - node ./internals/scripts/generate-templates-for-linting
   - npm run test
   - npm run build
 

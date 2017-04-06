@@ -3,6 +3,7 @@ import Div from 'components/Div'
 import GoogleLogin from './GoogleLogin'
 import FacebookLogin from './FacebookLogin'
 
+/* eslint-disable no-console */
 const responseFacebook = (response) => {
   console.log(response)
 }
