@@ -103,7 +103,7 @@ const mapStateToProps = (state, ownProps) => {
     showFilter,
     pictoList,
     locale,
-    keywords: ['prueba1', 'prueba2', 'prueba3']
+    keywords: state.getIn(['pictogramsView', 'words', locale])
   })
 }
 

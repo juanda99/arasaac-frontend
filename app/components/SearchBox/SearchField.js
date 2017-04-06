@@ -3,6 +3,7 @@ import AutoComplete from 'material-ui/AutoComplete'
 import RaisedButton from 'material-ui/RaisedButton'
 import { injectIntl, intlShape } from 'react-intl'
 import messages from './messages'
+import customFilter from './filter'
 
 const styles = {
   button: {
@@ -57,11 +58,12 @@ class SearchField extends React.Component {
         <AutoComplete
           ref={(ref) => (this.myInput = ref)}
           floatingLabelText={formatMessage(messages.search)}
-          filter={AutoComplete.fuzzyFilter}
+          filter={customFilter}
           dataSource={dataSource}
           onNewRequest={this.handleSubmit}
           onUpdateInput={this.handleUpdateInput}
           searchText={this.props.value}
+          maxSearchResults={10}
         />
         <RaisedButton label='Search' primary={true} style={styles.button} onClick={this.handleClick} />
       </div>
