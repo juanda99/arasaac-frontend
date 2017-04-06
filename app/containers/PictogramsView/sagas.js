@@ -24,6 +24,8 @@ function* autoCompleteGetData() {
     const locale = yield select(makeSelectLocale())
     const response = yield call(api.keywords, locale)
     const { words } = response
+    // order by lenght so autocomplete is better:
+    words.sort((a, b) => (a.length - b.length))
     yield put(autocomplete.success(locale, words))
   } catch (error) {
     yield put(autocomplete.failure(error.message))
