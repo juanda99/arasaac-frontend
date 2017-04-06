@@ -8,9 +8,7 @@ import { PICTOGRAMS, pictograms, AUTOCOMPLETE, autocomplete } from './actions'
 function* pictogramsGetData() {
   try {
     const searchText = yield select(selectSearchKey())
-    console.log ('searchText:' + searchText)
     const response = yield call(api.fetchPictograms, searchText)
-    // console.log(' EN JSON:' + response.toJSON())
     yield put(pictograms.success(response))
   } catch (error) {
     yield put(pictograms.failure(error.message))
@@ -26,7 +24,6 @@ function* autoCompleteGetData() {
     const locale = yield select(makeSelectLocale())
     const response = yield call(api.keywords, locale)
     const { words } = response
-    // console.log(' EN JSON:' + response.toJSON())
     yield put(autocomplete.success(locale, words))
   } catch (error) {
     yield put(autocomplete.failure(error.message))
