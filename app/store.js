@@ -5,7 +5,8 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { fromJS } from 'immutable'
 import { routerMiddleware } from 'react-router-redux'
-import { loadingBarMiddleware } from 'react-redux-loading-bar'
+// on sagas by hand, not automated:
+// import { loadingBarMiddleware } from 'react-redux-loading-bar'
 import createSagaMiddleware from 'redux-saga'
 import appSaga from 'containers/App/sagas'
 import createReducer from './reducers'

@@ -1,10 +1,11 @@
-import { fork, call, take, put } from 'redux-saga/effects'
-import { browserHistory } from 'react-router'
+import { take } from 'redux-saga/effects'
+// import { fork, call, take, put } from 'redux-saga/effects'
+// import { browserHistory } from 'react-router'
 // import { showLoading, hideLoading } from 'react-redux-loading-bar'
-import { SIGNUP, signup } from 'containers/SignupView/actions'
-import api from 'services'
+import { SIGNUP /* , signup */ } from 'containers/SignupView/actions'
+// import api from 'services'
 
-
+/*
 function* signupCall(userData) {
   try {
     console.log ('ha entrado en signupCall')
@@ -17,13 +18,15 @@ function* signupCall(userData) {
     // yield put(hideLoading())
   }
 }
+*/
+
 /* eslint no-constant-condition:0 */
+/* eslint-disable no-unused-vars */
 function* signupFlow() {
   while (true) {
     const { payload: user } = yield take(SIGNUP.REQUEST)
     const usuario = JSON.stringify(user)
-    console.log(`usuario: ${usuario}`)
-    console.log('ha entrado en signup request')
+    // console.log(`usuario: ${usuario}`)
     // yield fork(signupCall, user)
     /*
     const task = yield fork(signupCall, user)
@@ -38,9 +41,7 @@ function* signupFlow() {
 function* test() {
   while (true) {
     yield take(SIGNUP.REQUEST)
-    console.log('Ha entrado aquí')
     yield take(SIGNUP.REQUEST)
-    console.log('Ha entrado aquí también')
   }
 }
 
@@ -59,7 +60,9 @@ function* activationFlow() {
 */
 
 // Little helper function to abstract going to different pages
+/*
 function forwardTo(location) {
   browserHistory.push(location)
 }
+*/
 export default [test]

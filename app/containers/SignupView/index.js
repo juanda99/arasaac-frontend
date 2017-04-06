@@ -32,13 +32,13 @@ class SignupView extends Component {
     this.setState({ showOptions: !this.state.showOptions })
   }
   handleSubmit = (userData) => {
-    console.log ('llamado x veces...')
-    console.log(this.props.loading)
-    console.log(this.props.error)
-    console.log(userData.toJS())
+    // console.log('llamado x veces...')
+    // console.log(this.props.loading)
+    // console.log(this.props.error)
+    // console.log(userData.toJS())
     this.props.requestSignup(userData.toJS())
-    console.log(this.props.loading)
-    console.log(this.props.error)
+    // console.log(this.props.loading)
+    // console.log(this.props.error)
   }
 
   render() {
@@ -69,9 +69,9 @@ const mapStateToProps = selectRegisterView();
 */
 
 SignupView.propTypes = {
-  requestSignup: PropTypes.func.isRequired,
+  requestSignup: PropTypes.func.isRequired /* ,
   loading: PropTypes.bool,
-  error: PropTypes.string
+  error: PropTypes.string*/
 }
 
 const mapStateToProps = (state) => {

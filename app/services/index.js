@@ -1,5 +1,5 @@
 import { put, get, remove } from 'storage'
-import { userSchema, repoSchema, userSchemaArray, repoSchemaArray, searchSchema, pictogramsSchema } from './schemas'
+import { userSchema, repoSchema, userSchemaArray, repoSchemaArray, pictogramsSchema } from './schemas'
 import callApi from './callApi'
 import { login, signup } from './config'
 
