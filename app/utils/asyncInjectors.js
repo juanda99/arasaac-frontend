@@ -1,4 +1,8 @@
-import { conformsTo, isEmpty, isFunction, isObject, isString } from 'lodash'
+import conformsTo from 'lodash/conformsTo'
+import isEmpty from 'lodash/isEmpty'
+import isFunction from 'lodash/isFunction'
+import isObject from 'lodash/isObject'
+import isString from 'lodash/isString'
 import invariant from 'invariant'
 import warning from 'warning'
 import createReducer from 'reducers'
@@ -45,7 +49,6 @@ export function injectAsyncReducer(store, isValid) {
  */
 export function injectAsyncSagas(store, isValid) {
   return function injectSagas(sagas) {
-    console.log('inyectada saga.....' + sagas)
     if (!isValid) checkStore(store)
 
     invariant(

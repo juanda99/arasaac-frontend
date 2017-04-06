@@ -24,8 +24,8 @@ export const pictograms = {
 }
 
 export const autocomplete = {
-  request: (searchText) => action(AUTOCOMPLETE.REQUEST, { searchText }),
-  success: (searchText, data) => action(AUTOCOMPLETE.SUCCESS, { searchText, data }),
+  request: (locale) => action(AUTOCOMPLETE.REQUEST, { locale }),
+  success: (locale, data) => action(AUTOCOMPLETE.SUCCESS, { locale, data }),
   failure: (error) => action(AUTOCOMPLETE.FAILURE, { error })
 }
 

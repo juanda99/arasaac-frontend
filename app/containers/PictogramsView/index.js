@@ -21,6 +21,7 @@ import { autocomplete, pictograms, toggleShowFilter } from './actions'
 class PictogramsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   componentWillMount() {
+    this.props.requestAutocomplete(this.props.locale)
     if (this.props.params.searchText) {
       this.props.requestPictograms(this.props.params.searchText)
     }
@@ -37,14 +38,14 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
     }
   }
 
-  handleChange = (searchText) => {
-    this.props.requestAutocomplete(searchText)
-  }
+  // handleChange = (searchText) => {
+    // this.props.requestAutocomplete(searchText)
+  // }
 
   render() {
     const { children, showFilter, filters, keywords, pictoList } = this.props
     const searchText = this.props.params.searchText
-    console.log(pictoList.length)
+    // console.log(pictoList.length)
     const gallery = pictoList.length ? React.cloneElement(children, { data: pictoList }) : null
     // const gallery = React.cloneElement(children, { data: pictograms })
     return (
@@ -59,7 +60,6 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
           value={searchText}
           dataSource={keywords}
           onSubmit={this.handleSubmit}
-          onChange={this.handleChange}
           onToggleFilter={this.props.toggleShowFilter}
           filters={filters}
           showFilter={showFilter}
@@ -84,7 +84,8 @@ PictogramsView.propTypes = {
   // Injected by React Router
   children: PropTypes.node,
   router: PropTypes.any.isRequired,
-  pictoList: PropTypes.arrayOf(PropTypes.object)
+  pictoList: PropTypes.arrayOf(PropTypes.object),
+  locale: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -92,6 +93,8 @@ const mapStateToProps = (state, ownProps) => {
   // const filters = createSelector(selectFilters(), (fltrs) => (fltrs))(state)
   // console.log (filters.toJS())
   const showFilter = state.getIn(['pictogramsView', 'showFilter'])
+  const locale = state.get('language').get('locale')
+  // const locale = store.getState().get('language').get('locale')
   // const showFilter = createSelector(selectShowFilter(), (shwFltrs) => (shwFltrs))(state)
   const pictoList = state.getIn(['pictogramView', 'search', ownProps.params.searchText]) || []
   // const pictoList = createSelector(selectPictogramsBySearchKey(), (pctLst) => (pctLst))(state, ownProps)
@@ -99,7 +102,8 @@ const mapStateToProps = (state, ownProps) => {
     filters,
     showFilter,
     pictoList,
-    keywords: ['prueba1', 'prueba2', 'prueba3']
+    locale,
+    keywords: state.getIn(['pictogramsView', 'words', locale])
   })
 }
 

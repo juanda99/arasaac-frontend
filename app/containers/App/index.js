@@ -50,7 +50,6 @@ class App extends Component {
     this.state = {     
       menuOpen: false
     }
-    console.log('again to the constructor')
   }
 
 
@@ -66,21 +65,6 @@ class App extends Component {
       // this.props.changeLocale('es')
       window.location.href = "http://localhost:3000";
     }
-    /*
-    if (!this.state.isTranslating) {
-      this.props.changeLocale('af')
-    }
-    else {
-      this.props.changeLocale('es')
-    }
-    console.log ('pasa por aquí')
-    */
-    /*
-    if (this.state.loadScripts) {
-
-      this.setState({loadScript: false})
-    }
-    */
   }
 
 

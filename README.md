@@ -23,7 +23,7 @@
     <img src="https://travis-ci.org/juanda99/arasaac-frontend.svg" alt="Build Status" />
   </a>
   <!-- Test Coverage -->
-  <a href='https://coveralls.io/github/juanda99/arasaac-frontend?branch=master'><img src='https://coveralls.io/repos/github/juanda99/arasaac-frontend/badge.svg?branch=master' alt='Coverage Status' /></a>
+  <a href='https://coveralls.io/github/juanda99/arasaac-frontend?branch=boilerplate3.4'><img src='https://coveralls.io/repos/github/juanda99/arasaac-frontend/badge.svg?branch=boilerplate3.4' alt='Coverage Status' /></a>
   <a target="_blank" href="https://crowdin.com/project/arasaac"><img src="https://d322cqt584bo4o.cloudfront.net/arasaac/localized.svg"></a>
 
 </div>
