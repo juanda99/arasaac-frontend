@@ -25,7 +25,6 @@
     "build:clean": "npm run test:clean && rimraf ./build",
     "build:dll": "node ./internals/scripts/dependencies.js",
     "start": "cross-env NODE_ENV=development node server",
-    "start:api": "cross-env NODE_ENV=development nodemon ./backend-api/app.js --exec babel-node --presets es2015,stage-2",
     "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
     "start:production": "npm run test && npm run build && npm run start:prod",
     "start:prod": "cross-env NODE_ENV=production node server",
