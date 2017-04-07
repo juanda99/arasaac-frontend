@@ -4,6 +4,7 @@ import MenuItem from 'material-ui/MenuItem'
 import { FormattedMessage } from 'react-intl'
 import FilterIcon from './FilterIcon'
 import messages from './messages'
+import styles from './styles'
 
 class SelectLicense extends React.Component {
 
@@ -12,22 +13,11 @@ class SelectLicense extends React.Component {
     this.state = { value: 1 }
   }
 
-  getStyles() {
-    return {
-      select: {
-        fontSize: 13,
-        marginLeft: this.state.value !== 1 ? 0 : 48,
-        width: '350px'
-      }
-    }
-  }
-
   handleChange = (event, index, value) => this.setState({ value })
 
   render() {
-    const styles = this.getStyles()
     return (
-      <span>
+      <div style={styles.div}>
         {this.state.value !== 1 ? <FilterIcon /> : null}
         <SelectField autoWidth={true} value={this.state.value} onChange={this.handleChange} style={styles.select}>
           <MenuItem value={1} label={<FormattedMessage {...messages.choose} />} primaryText={<FormattedMessage {...messages.all} />} />
@@ -36,7 +26,7 @@ class SelectLicense extends React.Component {
           <MenuItem value={4} primaryText={<FormattedMessage {...messages.nonCommercialModified} />} />
           <MenuItem value={5} primaryText={<FormattedMessage {...messages.nonCommercial} />} />
         </SelectField>
-      </span>
+      </div>
     )
   }
 }

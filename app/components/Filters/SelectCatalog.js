@@ -4,6 +4,8 @@ import MenuItem from 'material-ui/MenuItem'
 import { FormattedMessage } from 'react-intl'
 import FilterIcon from './FilterIcon'
 import messages from './messages'
+import styles from './styles'
+
 
 class SelectCatalog extends React.Component {
 
@@ -12,22 +14,11 @@ class SelectCatalog extends React.Component {
     this.state = { value: 1 }
   }
 
-  getStyles() {
-    return {
-      select: {
-        fontSize: 13,
-        width: '350px',
-        marginLeft: this.state.value !== 1 ? 0 : 48
-      }
-    }
-  }
-
   handleChange = (event, index, value) => this.setState({ value })
 
   render() {
-    const styles = this.getStyles()
     return (
-      <span>
+      <div style={styles.div}>
         {this.state.value !== 1 ? <FilterIcon /> : null}
         <SelectField autoWidth={true} value={this.state.value} onChange={this.handleChange} style={styles.select}>
           <MenuItem value={1} label={<FormattedMessage {...messages.catalog} />} primaryText={<FormattedMessage {...messages.allCatalogs} />} />
@@ -37,7 +28,7 @@ class SelectCatalog extends React.Component {
           <MenuItem value={5} primaryText={<FormattedMessage {...messages.lseVideos} />} />
           <MenuItem value={5} primaryText={<FormattedMessage {...messages.lseColor} />} />
         </SelectField>
-      </span>
+      </div>
     )
   }
 }
