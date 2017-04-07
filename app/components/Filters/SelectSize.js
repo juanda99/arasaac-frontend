@@ -30,4 +30,5 @@ class SelectSize extends React.Component {
   }
 }
 
+
 export default SelectSize
