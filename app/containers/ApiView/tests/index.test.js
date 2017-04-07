@@ -1,11 +1,18 @@
 // import { ApiView } from '../index';
 
-import expect from 'expect'
-// import { shallow } from 'enzyme';
-// import React from 'react';
+import View from 'components/View'
+import Iframe from 'react-iframe'
+import { shallow } from 'enzyme'
+import React from 'react'
+import ApiView from '../index'
 
 describe('<ApiView />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false)
+  it('should render an Iframe', () => {
+    const wrapper = shallow(<ApiView />)
+    expect(wrapper.find(Iframe)).toHaveLength(1)
+  })
+  it('should render a View', () => {
+    const wrapper = shallow(<ApiView />)
+    expect(wrapper.find(View)).toHaveLength(1)
   })
 })
