@@ -5,6 +5,7 @@ describe('PictogramsView actions', () => {
   describe('Show filters', () => {
     it('should return de correct type', () => {
       const expected = {
+        payload: {},
         type: SHOW_FILTERS
       }
       expect(toggleShowFilter()).toEqual(expected)
@@ -16,7 +17,7 @@ describe('PictogramsView actions', () => {
       const searchText = 'Test'
       const expectedResult = {
         type: PICTOGRAMS.REQUEST,
-        searchText
+        payload: { searchText }
       }
       expect(pictograms.request(searchText)).toEqual(expectedResult)
     })
@@ -27,8 +28,7 @@ describe('PictogramsView actions', () => {
       const data = 'Result data'
       const expectedResult = {
         type: PICTOGRAMS.SUCCESS,
-        searchText,
-        data
+        payload: { searchText, data }
       }
       expect(pictograms.success(searchText, data)).toEqual(expectedResult)
     })
@@ -38,31 +38,30 @@ describe('PictogramsView actions', () => {
       const error = 'Test error'
       const expectedResult = {
         type: PICTOGRAMS.FAILURE,
-        error
+        payload: { error }
       }
       expect(pictograms.failure(error)).toEqual(expectedResult)
     })
   })
   describe('Autocomplete request', () => {
     it('should return the correct type and repos', () => {
-      const searchText = 'Test'
+      const locale = 'en'
       const expectedResult = {
         type: AUTOCOMPLETE.REQUEST,
-        searchText
+        payload: { locale }
       }
-      expect(autocomplete.request(searchText)).toEqual(expectedResult)
+      expect(autocomplete.request(locale)).toEqual(expectedResult)
     })
   })
   describe('Autocomplete success', () => {
     it('should return the correct type and props', () => {
-      const searchText = 'Test'
+      const locale = 'en'
       const data = 'Result data'
       const expectedResult = {
         type: AUTOCOMPLETE.SUCCESS,
-        searchText,
-        data
+        payload: { locale, data }
       }
-      expect(autocomplete.success(searchText, data)).toEqual(expectedResult)
+      expect(autocomplete.success(locale, data)).toEqual(expectedResult)
     })
   })
   describe('Autocomplete failure', () => {
@@ -70,7 +69,7 @@ describe('PictogramsView actions', () => {
       const error = 'Test error'
       const expectedResult = {
         type: AUTOCOMPLETE.FAILURE,
-        error
+        payload: { error }
       }
       expect(autocomplete.failure(error)).toEqual(expectedResult)
     })

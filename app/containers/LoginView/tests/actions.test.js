@@ -7,8 +7,7 @@ describe('Authentication actions', () => {
       const password = 'password'
       const expectedResult = {
         type: LOGIN.REQUEST,
-        username,
-        password
+        payload: { username, password }
       }
       expect(login.request(username, password)).toEqual(expectedResult)
     })
@@ -19,8 +18,7 @@ describe('Authentication actions', () => {
       const token = 'token'
       const expectedResult = {
         type: LOGIN.SUCCESS,
-        username,
-        token
+        payload: { username, token }
       }
       expect(login.success(username, token)).toEqual(expectedResult)
     })
@@ -30,7 +28,7 @@ describe('Authentication actions', () => {
       const error = 'Test error'
       const expectedResult = {
         type: LOGIN.FAILURE,
-        error
+        payload: { error }
       }
       expect(login.failure(error)).toEqual(expectedResult)
     })
@@ -41,7 +39,7 @@ describe('Authentication actions', () => {
       const profile = {}
       const expectedResult = {
         type: ACTIVATION.REQUEST,
-        profile
+        payload: { profile }
       }
       expect(activation.request(profile)).toEqual(expectedResult)
     })
@@ -49,7 +47,8 @@ describe('Authentication actions', () => {
   describe('Activaction success', () => {
     it('should return the correct type and props', () => {
       const expectedResult = {
-        type: ACTIVATION.SUCCESS
+        type: ACTIVATION.SUCCESS,
+        payload: {}
       }
       expect(activation.success()).toEqual(expectedResult)
     })
@@ -59,7 +58,7 @@ describe('Authentication actions', () => {
       const error = 'Test error'
       const expectedResult = {
         type: ACTIVATION.FAILURE,
-        error
+        payload: { error }
       }
       expect(activation.failure(error)).toEqual(expectedResult)
     })
