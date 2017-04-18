@@ -1,4 +1,3 @@
-import expect from 'expect'
 import {
   defaultAction
 } from '../actions'

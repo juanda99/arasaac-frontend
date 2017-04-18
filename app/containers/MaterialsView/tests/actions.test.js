@@ -1,4 +1,3 @@
-import expect from 'expect'
 
 import { SHOW_FILTERS, PICTOGRAMS, AUTOCOMPLETE, toggleShowFilter, pictograms, autocomplete } from '../actions'
 

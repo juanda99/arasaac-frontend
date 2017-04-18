@@ -1,6 +1,6 @@
 // import { selectPictogramsViewDomain } from '../selectors';
 // import { fromJS } from 'immutable';
-import expect from 'expect'
+
 
 // const selector = selectPictogramsViewDomain();
 

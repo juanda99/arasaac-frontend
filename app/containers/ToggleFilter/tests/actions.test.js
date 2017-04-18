@@ -1,4 +1,3 @@
-import expect from 'expect'
 import { TOGGLE_FILTER, toggleFilter } from '../actions'
 
 

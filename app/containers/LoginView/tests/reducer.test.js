@@ -1,4 +1,3 @@
-import expect from 'expect'
 import Immutable, { fromJS } from 'immutable'
 import authReducer from '../reducer'
 import { login } from '../actions'

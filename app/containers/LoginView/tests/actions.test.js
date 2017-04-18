@@ -1,5 +1,3 @@
-import expect from 'expect'
-
 import { LOGIN, LOGOUT, ACTIVATION, login, logout, activation } from '../actions'
 
 describe('Authentication actions', () => {

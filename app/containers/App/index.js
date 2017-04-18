@@ -203,7 +203,7 @@ class App extends Component {
     }
     return (
       <div>
-      <LoadingBar style={styles.LoadingBar}/>
+        <LoadingBar style={styles.LoadingBar}/>
         <Header
           showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}

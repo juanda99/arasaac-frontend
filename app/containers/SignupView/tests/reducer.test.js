@@ -1,4 +1,3 @@
-import expect from 'expect'
 import { fromJS } from 'immutable'
 import registerViewReducer from '../reducer'
 

@@ -1,4 +1,3 @@
-import expect from 'expect'
 import { shallow } from 'enzyme'
 import React from 'react'
 
@@ -23,7 +22,7 @@ describe('<H2 />', () => {
 
   it('should have a className attribute', () => {
     const renderedComponent = renderComponent()
-    expect(renderedComponent.prop('className')).toExist()
+    expect(renderedComponent.prop('className')).toBeDefined()
   })
   it('should render a valid attribute', () => {
     const id = 'test'
@@ -34,6 +33,6 @@ describe('<H2 />', () => {
   it('should not render an invalid attribute', () => {
     const attribute = 'test'
     const renderedComponent = renderComponent({ attribute })
-    expect(renderedComponent.prop('attribute')).toNotExist()
+    expect(renderedComponent.prop('attribute')).toBeUndefined()
   })
 })
