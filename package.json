@@ -1,10 +1,10 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.4.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "Arasaac",
+  "version": "0.0.1",
+  "description": "New arasaac frontend",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mxstbr/react-boilerplate.git"
+    "url": "git://github.com/juanda99/arasaac-frontend.git"
   },
   "engines": {
     "npm": ">=3",
@@ -257,7 +257,7 @@
     "react": "15.4.1",
     "react-dom": "15.4.1",
     "react-dropzone": "^3.12.1",
-    "react-flexbox-grid": "^1.0.0",
+    "react-flexbox-grid": "git+https://github.com/juanda99/react-flexbox-grid.git",
     "react-helmet": "3.2.2",
     "react-iframe": "^0.0.4",
     "react-intl": "2.1.5",
