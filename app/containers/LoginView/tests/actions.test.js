@@ -67,7 +67,8 @@ describe('Authentication actions', () => {
   describe('Logout request', () => {
     it('should return the correct type and  props', () => {
       const expectedResult = {
-        type: LOGOUT.REQUEST
+        type: LOGOUT.REQUEST,
+        payload: {}
       }
       expect(logout.request()).toEqual(expectedResult)
     })
@@ -77,7 +78,8 @@ describe('Authentication actions', () => {
       const username = 'testUser'
       const password = 'password'
       const expectedResult = {
-        type: LOGOUT.SUCCESS
+        type: LOGOUT.SUCCESS,
+        payload: {}
       }
       expect(logout.success(username, password)).toEqual(expectedResult)
     })
@@ -87,7 +89,7 @@ describe('Authentication actions', () => {
       const error = 'Test error'
       const expectedResult = {
         type: LOGOUT.FAILURE,
-        error
+        payload: { error }
       }
       expect(logout.failure(error)).toEqual(expectedResult)
     })

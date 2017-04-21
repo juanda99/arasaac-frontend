@@ -1,8 +1,7 @@
-import { fromJS } from 'immutable'
-import registerViewReducer from '../reducer'
+import registerViewReducer, { initialState } from '../reducer'
 
 describe('registerViewReducer', () => {
   it('returns the initial state', () => {
-    expect(registerViewReducer(undefined, {})).toEqual(fromJS({}))
+    expect(registerViewReducer(undefined, {})).toEqual(initialState)
   })
 })

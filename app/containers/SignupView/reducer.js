@@ -7,7 +7,7 @@
 import { fromJS } from 'immutable'
 import { SIGNUP } from './actions'
 
-const initialState = fromJS({
+export const initialState = fromJS({
   loading: false,
   error: ''
 })

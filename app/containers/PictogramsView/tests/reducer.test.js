@@ -1,21 +1,15 @@
 import { fromJS } from 'immutable'
-import pictogramsViewReducer from '../reducer'
+import pictogramsViewReducer, { initialState } from '../reducer'
 import { pictograms, toggleShowFilter } from '../actions'
 
 describe('pictogramsViewReducer', () => {
   let state
   beforeEach(() => {
-    state = fromJS({
-      showFilter: false,
-      loading: false,
-      error: false,
-      search: fromJS({})
-    })
+    state = initialState
   })
 
   it('should return the initial state', () => {
-    const expectedResult = state
-    expect(pictogramsViewReducer(undefined, {})).toEqual(expectedResult)
+    expect(pictogramsViewReducer(undefined, {})).toEqual(initialState)
   })
 
   it('should handle the showFilter action correcty', () => {

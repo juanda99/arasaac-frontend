@@ -7,7 +7,7 @@
 import { fromJS } from 'immutable'
 import { PICTOGRAMS, AUTOCOMPLETE, SHOW_FILTERS } from './actions'
 
-const initialState = fromJS({
+export const initialState = fromJS({
   showFilter: false,
   loading: false,
   error: false,
