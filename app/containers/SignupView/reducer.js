@@ -12,7 +12,7 @@ export const initialState = fromJS({
   error: ''
 })
 
-const signupReducer = (state = initialState, action) => {
+const signupViewReducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGNUP.REQUEST:
       return state
@@ -30,4 +30,4 @@ const signupReducer = (state = initialState, action) => {
   }
 }
 
-export default signupReducer
+export default signupViewReducer
