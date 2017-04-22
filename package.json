@@ -191,7 +191,8 @@
       "jsonwebtoken",
       "swagger-ui-express",
       "yamljs",
-      "email-verification"
+      "email-verification",
+      "react-flexbox-grid"
     ],
     "include": [
       "core-js",
@@ -257,7 +258,7 @@
     "react": "15.4.1",
     "react-dom": "15.4.1",
     "react-dropzone": "^3.12.1",
-    "react-flexbox-grid": "git+https://github.com/juanda99/react-flexbox-grid.git",
+    "react-flexbox-grid": "git+https://git@github.com/juanda99/react-flexbox-grid.git",
     "react-helmet": "3.2.2",
     "react-iframe": "^0.0.4",
     "react-intl": "2.1.5",

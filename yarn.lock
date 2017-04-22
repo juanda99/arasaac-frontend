@@ -7148,9 +7148,9 @@ react-event-listener@^0.4.0:
     react-addons-shallow-compare "^15.4.2"
     warning "^3.0.0"
 
-react-flexbox-grid@^1.0.0:
+"react-flexbox-grid@git+https://git@github.com/juanda99/react-flexbox-grid.git":
   version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-flexbox-grid/-/react-flexbox-grid-1.0.2.tgz#28e33b0d346427502ba454a7be51406266d78f9f"
+  resolved "git+https://git@github.com/juanda99/react-flexbox-grid.git#0724e495aeee61924db41edf6a33f8c56a4e98c8"
   dependencies:
     flexboxgrid "^6.3.0"
 
