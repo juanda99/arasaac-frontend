@@ -2,7 +2,7 @@ import { fromJS } from 'immutable'
 import signupViewReducer, { initialState } from '../reducer'
 import { signup } from '../actions'
 
-describe('pictogramsViewReducer', () => {
+describe('signupViewReducer', () => {
   let state
   beforeEach(() => {
     state = initialState
@@ -12,6 +12,14 @@ describe('pictogramsViewReducer', () => {
     expect(signupViewReducer(undefined, {})).toEqual(initialState)
   })
 
+  it('should handle the signup.request action correctly', () => {
+    const email = 'email@example.com'
+    const password = 'pass'
+    const expectedResult = state
+      .set('loading', true)
+      .set('error', '')
+    expect(signupViewReducer(state, signup.request(email, password))).toEqual(expectedResult)
+  })
 
   it('should handle the signup.failure action correctly', () => {
     const error = 'test error'
@@ -24,12 +32,6 @@ describe('pictogramsViewReducer', () => {
     expect(signupViewReducer(state, signup.failure(error))).toEqual(expectedResult)
   })
 
-  it('should handle the signup.request action correctly', () => {
-    const expectedResult = state
-      .set('loading', true)
-      .set('error', '')
-    expect(signupViewReducer(state, signup.request())).toEqual(expectedResult)
-  })
 
   it('should handle the signup.success action correctly', () => {
     const expectedResult = fromJS({

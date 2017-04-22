@@ -25,6 +25,15 @@ describe('pictogramsViewReducer', () => {
     expect(pictogramsViewReducer(testState, toggleShowFilter())).toEqual(expectedResult)
   })
 
+  it('should handle the pictograms.request action correctly', () => {
+    const searchText = 'test'
+    const expectedResult = state
+      .set('loading', true)
+      .set('error', false)
+      .set('searchText', searchText)
+    expect(pictogramsViewReducer(state, pictograms.request(searchText))).toEqual(expectedResult)
+  })
+
 
   it('should handle the pictograms.failure action correctly', () => {
     const error = 'test error'
@@ -36,13 +45,6 @@ describe('pictogramsViewReducer', () => {
     expect(pictogramsViewReducer(state, pictograms.failure(error))).toEqual(expectedResult)
   })
 
-  it('should handle the pictograms.request action correctly', () => {
-    const expectedResult = state
-      .set('loading', true)
-      .set('error', false)
-    expect(pictogramsViewReducer(state, pictograms.request())).toEqual(expectedResult)
-  })
-
   it('should handle the pictograms.success action correctly', () => {
     const searchText = 'test'
     const data = 'Data for test'
@@ -50,7 +52,9 @@ describe('pictogramsViewReducer', () => {
       showFilter: false,
       loading: false,
       error: false,
-      search: fromJS({ test: data })
+      search: fromJS({ test: data }),
+      words: {},
+      searchText: ''
     })
     expect(pictogramsViewReducer(state, pictograms.success(searchText, data))).toEqual(expectedResult)
   })

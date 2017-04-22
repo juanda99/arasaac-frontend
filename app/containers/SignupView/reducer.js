@@ -24,7 +24,7 @@ const signupViewReducer = (state = initialState, action) => {
     case SIGNUP.FAILURE:
       return state
         .set('loading', false)
-        .set('error', action.error)
+        .set('error', action.payload.error)
     default:
       return state
   }

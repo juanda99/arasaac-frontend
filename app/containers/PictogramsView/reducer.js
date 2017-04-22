@@ -12,7 +12,8 @@ export const initialState = fromJS({
   loading: false,
   error: false,
   search: fromJS({}),
-  words: fromJS({})
+  words: fromJS({}),
+  searchText: ''
 })
 
 function pictogramsViewReducer(state = initialState, action) {
@@ -22,16 +23,16 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
-        .set('search', action.payload.searchText)
+        .set('searchText', action.payload.searchText)
     case PICTOGRAMS.SUCCESS:
-      newData[action.searchText] = action.data
+      newData[action.payload.searchText] = action.payload.data
       newData = fromJS({ search: newData })
       return state
         .mergeDeep(newData)
         .set('loading', false)
     case PICTOGRAMS.FAILURE:
       return state
-        .set('error', action.error)
+        .set('error', action.payload.error)
         .set('loading', false)
     case AUTOCOMPLETE.REQUEST:
       return state
