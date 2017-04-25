@@ -11,7 +11,7 @@ import { typography } from 'material-ui/styles'
 import media from 'utils/mediaqueries'
 
 const H1 = styled.h1`
-  color: ${darkWhite};
+  // color: ${darkWhite};
   font-size: 5.6em;
   margin-bottom: 0.25em;
   font-weight: ${typography.fontWeightLight};
