@@ -50,7 +50,7 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
     return (
       <View>
         <Helmet
-          title='PictogramsView'
+          title='Materials View'
           meta={[
             { name: 'description', content: 'Description of PictogramsView' }
           ]}

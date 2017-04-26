@@ -22,7 +22,7 @@ export default function createRoutes(store) {
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/HomePage')
+          import('containers/HomePage')
         ])
 
         const renderRoute = loadModule(cb)
@@ -38,9 +38,9 @@ export default function createRoutes(store) {
       name: 'pictogramsView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/PictogramsView/reducer'),
-          System.import('containers/PictogramsView/sagas'),
-          System.import('containers/PictogramsView')
+          import('containers/PictogramsView/reducer'),
+          import('containers/PictogramsView/sagas'),
+          import('containers/PictogramsView')
         ])
 
         const renderRoute = loadModule(cb)
@@ -50,7 +50,6 @@ export default function createRoutes(store) {
           injectSagas(sagas.default)
           renderRoute(component)
         })
-
         importModules.catch(errorLoading)
       },
       childRoutes: [
@@ -59,7 +58,7 @@ export default function createRoutes(store) {
           name: 'gallery',
           getComponent(nextState, cb) {
             const importModules = Promise.all([
-              System.import('components/Gallery')
+              import('components/Gallery')
             ])
             const renderRoute = loadModule(cb)
             importModules.then(([component]) => {
@@ -70,12 +69,31 @@ export default function createRoutes(store) {
         }
       ]
     }, {
+      path: '/materials/search',
+      name: 'materialsView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/MaterialsView/reducer'),
+          import('containers/MaterialsView/sagas'),
+          import('containers/MaterialsView')
+        ])
+
+        const renderRoute = loadModule(cb)
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('MaterialsView', reducer.default)
+          injectSagas(sagas.default)
+          renderRoute(component)
+        })
+        importModules.catch(errorLoading)
+      }
+    }, {
       path: '/configuration',
       name: 'configurationView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          // System.import('containers/ConfigurationView/reducer'),
-          System.import('containers/ConfigurationView/')
+          // import('containers/ConfigurationView/reducer'),
+          import('containers/ConfigurationView/')
         ])
 
         const renderRoute = loadModule(cb)
@@ -92,7 +110,7 @@ export default function createRoutes(store) {
       path: '/configuration',
       name: 'configurationView',
       getComponent(location, cb) {
-        System.import('containers/ConfigurationView')
+        import('containers/ConfigurationView')
           .then(loadModule(cb))
           .catch(errorLoading)
       }
@@ -100,7 +118,7 @@ export default function createRoutes(store) {
       path: '/pictograms/api',
       name: 'ApiView',
       getComponent(location, cb) {
-        System.import('containers/ApiView')
+        import('containers/ApiView')
           .then(loadModule(cb))
           .catch(errorLoading)
       }
@@ -108,7 +126,7 @@ export default function createRoutes(store) {
       path: '/materials/upload',
       name: 'uploadMaterialView',
       getComponent(location, cb) {
-        System.import('containers/UploadMaterialView')
+        import('containers/UploadMaterialView')
           .then(loadModule(cb))
           .catch(errorLoading)
       }
@@ -117,9 +135,9 @@ export default function createRoutes(store) {
       name: 'LoginView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/LoginView/reducer'),
-          // System.import('containers/LoginView/sagas'),
-          System.import('containers/LoginView')
+          import('containers/LoginView/reducer'),
+          // import('containers/LoginView/sagas'),
+          import('containers/LoginView')
         ])
 
         const renderRoute = loadModule(cb)
@@ -137,9 +155,9 @@ export default function createRoutes(store) {
       name: 'SignupView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/SignupView/reducer'),
-          System.import('containers/SignupView/sagas'),
-          System.import('containers/SignupView')
+          import('containers/SignupView/reducer'),
+          import('containers/SignupView/sagas'),
+          import('containers/SignupView')
         ])
 
         const renderRoute = loadModule(cb)
@@ -157,9 +175,9 @@ export default function createRoutes(store) {
       name: 'loginView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          // System.import('containers/LoginView/reducer'),
-          // System.import('containers/LoginView/sagas'),
-          System.import('containers/LoginView')
+          // import('containers/LoginView/reducer'),
+          // import('containers/LoginView/sagas'),
+          import('containers/LoginView')
         ])
 
         const renderRoute = loadModule(cb)
@@ -175,7 +193,7 @@ export default function createRoutes(store) {
       path: 'use-conditions',
       name: 'useConditions',
       getComponent(location, cb) {
-        System.import('components/UseConditions')
+        import('components/UseConditions')
           .then(loadModule(cb))
           .catch(errorLoading)
       }
@@ -183,7 +201,7 @@ export default function createRoutes(store) {
       path: 'privacy-policy',
       name: 'privacyPolicy',
       getComponent(location, cb) {
-        System.import('components/PrivacyPolicy')
+        import('components/PrivacyPolicy')
           .then(loadModule(cb))
           .catch(errorLoading)
       }
@@ -191,7 +209,7 @@ export default function createRoutes(store) {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
-        System.import('containers/NotFoundPage')
+        import('containers/NotFoundPage')
           .then(loadModule(cb))
           .catch(errorLoading)
       }

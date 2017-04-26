@@ -20,8 +20,6 @@ import auth from 'containers/LoginView/reducer'
  *
  */
 
-import * as storage from './storage'
-
 export const INITIAL_LAYOUT = 'modules'
 export const INITIAL_FILTERS = ''
 /*
@@ -43,24 +41,30 @@ export const SHOW_FILTER = 'SHOW_FILTER'
 export const TOGGLE_FILTER = 'TOGGLE_FILTER'
 */
 
+/*
 const storageState = {
   locationBeforeTransitions: null,
-  locale: storage.get('locale') || 'en',
+  locale: 'en',
   gui: {
-    layout: storage.get('layout') || INITIAL_LAYOUT,
-    showFilter: storage.get('showFilter') === 'true',
-    filters: JSON.parse(storage.get('filters')) || INITIAL_FILTERS
+    layout: INITIAL_LAYOUT,
+    showFilter: true,
+    filters: INITIAL_FILTERS
   },
-  isAuthenticated: (storage.get('token') && true) || false
+  isAuthenticated: false
 }
-
+*/
 // The initial state of the App
-const initialState = fromJS(storageState)
+// const initialState = fromJS(storageState)
+
+// Initial routing state
+const routeInitialState = fromJS({
+  locationBeforeTransitions: null
+})
 
 /**
  * Merge route into the global application state
  */
-function routeReducer(state = initialState, action) {
+function routeReducer(state = routeInitialState, action) {
   switch (action.type) {
     /* istanbul ignore next */
     case LOCATION_CHANGE:
