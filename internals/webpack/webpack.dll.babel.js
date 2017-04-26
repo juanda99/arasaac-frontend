@@ -31,11 +31,14 @@ module.exports = require('./webpack.base.babel')({
   module: {
     loaders: [{
       test: /.css$/,
-      loader: 'style!css?modules',
+      loader: 'style-loader!css-loader?modules',
       include: /flexboxgrid/
     }]
   },
   plugins: [
     new webpack.DllPlugin({ name: '[name]', path: join(outputPath, '[name].json') }) // eslint-disable-line no-new
-  ]
+  ],
+  performance: {
+    hints: false
+  }
 })

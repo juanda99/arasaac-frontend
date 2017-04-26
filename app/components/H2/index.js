@@ -10,7 +10,7 @@ import { darkWhite } from 'material-ui/styles/colors'
 import media from 'utils/mediaqueries'
 
 const H2 = styled.h2`
-  color: ${darkWhite};
+  // color: ${darkWhite};
   font-size: 2.4em;
   margin-bottom: 0.25em;
   line-height: '2.8em';

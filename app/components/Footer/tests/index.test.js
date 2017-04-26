@@ -1,5 +1,4 @@
 import React from 'react'
-import expect from 'expect'
 import { shallow } from 'enzyme'
 import styles from '../styles'
 import GobiernoAragon from '../gobierno-aragon-logo.svg'

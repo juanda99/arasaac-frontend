@@ -1,15 +1,13 @@
 language: node_js
 
 node_js:
+  - 7
   - 6
   - 5
-  - 4
 
-script: npm run build
-
-install:
-  - npm i -g npm@latest
-  - npm install
+script:
+  - npm run test
+  - npm run build
 
 before_install:
   - export CHROME_BIN=chromium-browser
@@ -23,5 +21,6 @@ notifications:
 after_success: 'npm run coveralls'
 
 cache:
+  yarn: true
   directories:
     - node_modules

@@ -11,6 +11,11 @@ export default defineMessages({
     description: 'Header title',
     defaultMessage: 'Search pictograms'
   },
+  materialsSearch: {
+    id: 'header.materialsSearch',
+    description: 'Header title',
+    defaultMessage: 'Search materials'
+  },
   api: {
     id: 'header.api',
     description: 'Header title',

@@ -8,12 +8,14 @@ import React from 'react'
 import { Field, FieldArray, reduxForm, propTypes } from 'redux-form/immutable'
 import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper'
 import MenuItem from 'material-ui/MenuItem'
+import { FormattedMessage } from 'react-intl'
 import { SelectField } from 'redux-form-material-ui'
 import H3 from 'components/H3'
 import RenderAuthors from './RenderAuthors'
 import RenderDropzoneInput from './RenderDropzoneInput'
 import RenderChip from './RenderChip'
 import RenderLanguages from './RenderLanguages'
+import messages from './messages'
 
 class MaterialForm extends React.Component {
 
@@ -48,10 +50,10 @@ class MaterialForm extends React.Component {
         >
           <Step>
             <StepButton onTouchTap={() => this.setState({ stepIndex: 0 })}>
-              <H3>Autores del material</H3>
+              <H3><FormattedMessage {...messages.authorsTitle} /></H3>
             </StepButton>
             <StepContent>
-              <p>Introduce el nombre y los apellidos de los autores del material.</p>
+              <p><FormattedMessage {...messages.authorsData} /></p>
               <FieldArray name='authors' component={RenderAuthors} />
             </StepContent>
           </Step>

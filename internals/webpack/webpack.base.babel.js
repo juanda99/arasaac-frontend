@@ -14,7 +14,7 @@ module.exports = (options) => ({
   module: {
     loaders: [{
       test: /\.js$/, // Transform all .js files required somewhere with Babel
-      loader: 'babel',
+      loader: 'babel-loader',
       exclude: /node_modules/,
       query: options.babelQuery
     }, {
@@ -29,7 +29,7 @@ module.exports = (options) => ({
       exclude: /flexboxgrid/
     }, {
       test: /.css$/,
-      loader: 'style!css?modules',
+      loader: 'style-loader!css-loader?modules',
       include: /flexboxgrid/
     }, {
       test: /\.(eot|svg|ttf|woff|woff2)$/,
@@ -38,7 +38,18 @@ module.exports = (options) => ({
       test: /\.(jpg|png|gif)$/,
       loaders: [
         'file-loader',
-        'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+        {
+          loader: 'image-webpack-loader',
+          query: {
+            progressive: true,
+            optimizationLevel: 7,
+            interlaced: false,
+            pngquant: {
+              quality: '65-90',
+              speed: 4
+            }
+          }
+        }
       ]
     }, {
       test: /\.html$/,
@@ -48,13 +59,16 @@ module.exports = (options) => ({
       loader: 'json-loader'
     }, {
       test: /\.(mp4|webm)$/,
-      loader: 'url-loader?limit=10000'
+      loader: 'url-loader',
+      query: {
+        limit: 10000
+      }
     }]
   },
   plugins: options.plugins.concat([
     new webpack.ProvidePlugin({
       // make fetch available
-      fetch: 'exports?self.fetch!whatwg-fetch'
+      fetch: 'exports-loader?self.fetch!whatwg-fetch'
     }),
 
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
@@ -74,18 +88,13 @@ module.exports = (options) => ({
       '.jsx',
       '.react.js'
     ],
-    // due to https://github.com/mxstbr/react-boilerplate/issues/868,
-    // we change the order, more info:
-    // https://webpack.js.org/configuration/resolve/#resolve-mainfiles
-    // 'jsnext:main',
-    // 'main'
-    // changed order next two lines
     mainFields: [
       'browser',
-      'main',
-      'jsnext:main'
+      'jsnext:main',
+      'main'
     ]
   },
   devtool: options.devtool,
-  target: 'web' // Make web variables accessible to webpack, e.g. window
+  target: 'web', // Make web variables accessible to webpack, e.g. window
+  performance: options.performance || {}
 })

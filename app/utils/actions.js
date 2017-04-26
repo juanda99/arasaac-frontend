@@ -12,5 +12,5 @@ export function createRequestTypes(base) {
 /* eslint-enable no-param-reassign */
 
 export function action(type, payload = {}) {
-  return { type, ...payload }
+  return { type, payload }
 }

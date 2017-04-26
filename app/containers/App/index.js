@@ -14,11 +14,13 @@
 /* eslint-disable */
 
 import React, { Component, PropTypes } from 'react'
+import { ImmutableLoadingBar as LoadingBar } from 'react-redux-loading-bar'
 // import Helmet from 'react-helmet'
 // import styled from 'styled-components'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
 import Menu from 'components/Menu'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 import { FormattedMessage } from 'react-intl'
 import messages from './messages'
 import Wrapper from './Wrapper'
@@ -26,6 +28,7 @@ import { connect } from 'react-redux'
 import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
 import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth'
+import { changeLocale } from 'containers/LanguageProvider/actions'
 
 
 class App extends Component {
@@ -33,16 +36,37 @@ class App extends Component {
     width: PropTypes.number.isRequired,
     children: PropTypes.node,
     location: PropTypes.object,
-    isAuthenticated: PropTypes.bool
+    isAuthenticated: PropTypes.bool,
+    changeLocale: PropTypes.func
   }
 
   static contextTypes = {
     router: PropTypes.object.isRequired
   }
 
-  state = {
-    menuOpen: false
+
+   constructor(props) {
+    super(props)
+    this.state = {     
+      menuOpen: false
+    }
   }
+
+
+  handleTranslate = () => {
+    if (!this.props.isTranslating) {
+      const script = document.createElement('script')
+      script.src = '//cdn.crowdin.com/jipt/jipt.js'
+      script.async = true
+      document.body.appendChild(script)
+      this.props.changeLocale('af')
+    }
+    else {
+      // this.props.changeLocale('es')
+      window.location.href = "http://localhost:3000";
+    }
+  }
+
 
   getStyles() {
     const styles = {
@@ -63,6 +87,13 @@ class App extends Component {
       },
       iconButton: {
         color: white
+      },
+      LoadingBar: {
+        position: 'fixed',
+        height: 2,
+        backgroundColor: 'darkGreen',
+        top: 64,
+        zIndex: 10000
       }
     }
 
@@ -81,8 +112,12 @@ class App extends Component {
         title = <FormattedMessage {...messages.api} />
         docked = width === LARGE
         break
-      case /search/.test(url):
+      case /pictograms\/search/.test(url):
         title = <FormattedMessage {...messages.pictogramsSearch} />
+        docked = width === LARGE
+        break
+      case /materials\/search/.test(url):
+        title = <FormattedMessage {...messages.materialsSearch} />
         docked = width === LARGE
         break
       case /catalogs/.test(url):
@@ -128,7 +163,6 @@ class App extends Component {
     return { docked, title }
   }
 
-
   handleTouchTapLeftIconButton = () => {
     this.setState({
       menuOpen: !this.state.menuOpen
@@ -153,7 +187,8 @@ class App extends Component {
       location,
       children,
       isAuthenticated,
-      width
+      width,
+      isTranslating
     } = this.props
 
     let {
@@ -172,9 +207,11 @@ class App extends Component {
     }
     return (
       <div>
+        <LoadingBar style={styles.LoadingBar}/>
         <Header
           showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
+          changeLocale = {this.handleTranslate} isTranslating = {isTranslating}
         />
         <Wrapper docked={docked}>
           {children}
@@ -191,12 +228,17 @@ class App extends Component {
     )
   }
 }
-// quitamos el state de mapStateToProps hasta que lo arreglemos:
-const mapStateToProps = () =>
-  // const { auth: { isAuthenticated } } = state
-   ({
-     isAuthenticated: true
-   })
+const mapStateToProps = (state) => {
+  const locale = state.getIn(['language', 'locale'])
+  const isTranslating = locale === 'af'
+  const isAuthenticated = true //state.getIn(['auth', 'token']) && true || false
+  // TODO:
+  // token needs validation!
+  return({
+     isAuthenticated,
+     locale,
+     isTranslating
+  })
+}
 
-
-export default connect(mapStateToProps)(withWidth()(App))
+export default connect(mapStateToProps, {changeLocale})(withWidth()(App))

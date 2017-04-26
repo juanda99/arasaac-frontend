@@ -1,4 +1,3 @@
-import expect from 'expect'
 import { shallow } from 'enzyme'
 import React from 'react'
 
@@ -24,7 +23,7 @@ describe('<FullWidthSection />', () => {
 
   it('should have a className attribute', () => {
     const renderedComponent = renderComponent()
-    expect(renderedComponent.prop('className')).toExist()
+    expect(renderedComponent.prop('className')).toBeDefined()
   })
   it('should adopt a valid attribute', () => {
     const id = 'test'
@@ -34,6 +33,6 @@ describe('<FullWidthSection />', () => {
 
   it('should not adopt an invalid attribute', () => {
     const renderedComponent = shallow(<FullWidthSection attribute={'test'} />)
-    expect(renderedComponent.prop('attribute')).toNotExist()
+    expect(renderedComponent.prop('attribute')).toBeUndefined()
   })
 })

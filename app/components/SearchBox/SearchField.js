@@ -3,6 +3,7 @@ import AutoComplete from 'material-ui/AutoComplete'
 import RaisedButton from 'material-ui/RaisedButton'
 import { injectIntl, intlShape } from 'react-intl'
 import messages from './messages'
+import customFilter from './filter'
 
 const styles = {
   button: {
@@ -34,7 +35,7 @@ class SearchField extends React.Component {
   handleUpdateInput = (t) => {
     if (t.keyCode === 13) {
       this.props.onSubmit(this.getInputValue())
-    } else {
+    } else if (this.props.onChange) {
       this.props.onChange(this.getInputValue())
     }
   }
@@ -57,11 +58,12 @@ class SearchField extends React.Component {
         <AutoComplete
           ref={(ref) => (this.myInput = ref)}
           floatingLabelText={formatMessage(messages.search)}
-          filter={AutoComplete.fuzzyFilter}
+          filter={customFilter}
           dataSource={dataSource}
           onNewRequest={this.handleSubmit}
           onUpdateInput={this.handleUpdateInput}
           searchText={this.props.value}
+          maxSearchResults={10}
         />
         <RaisedButton label='Search' primary={true} style={styles.button} onClick={this.handleClick} />
       </div>
@@ -74,7 +76,7 @@ SearchField.propTypes = {
   intl: intlShape.isRequired,
   value: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func || null
 }
 
 export default injectIntl(SearchField)

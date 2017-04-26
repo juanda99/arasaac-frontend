@@ -7,11 +7,13 @@
 import { fromJS } from 'immutable'
 import { PICTOGRAMS, AUTOCOMPLETE, SHOW_FILTERS } from './actions'
 
-const initialState = fromJS({
+export const initialState = fromJS({
   showFilter: false,
   loading: false,
   error: false,
-  search: fromJS({})
+  search: fromJS({}),
+  words: fromJS({}),
+  searchText: ''
 })
 
 function pictogramsViewReducer(state = initialState, action) {
@@ -21,24 +23,25 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
+        .set('searchText', action.payload.searchText)
     case PICTOGRAMS.SUCCESS:
-      newData[action.searchText] = action.data
+      newData[action.payload.searchText] = action.payload.data
       newData = fromJS({ search: newData })
       return state
         .mergeDeep(newData)
         .set('loading', false)
     case PICTOGRAMS.FAILURE:
       return state
-        .set('error', action.error)
+        .set('error', action.payload.error)
         .set('loading', false)
     case AUTOCOMPLETE.REQUEST:
       return state
     case AUTOCOMPLETE.SUCCESS:
       return state
-        .setIn(['autocomplete', action.searchText], action.data)
+        .setIn(['words', action.payload.locale], action.payload.data)
     case AUTOCOMPLETE.FAILURE:
       return state
-        .setIn(['autocomplete', action.searchText], action.data)
+        .setIn(['words', action.locale], action.data)
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))

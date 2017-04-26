@@ -5,10 +5,13 @@
 
 import { combineReducers } from 'redux-immutable'
 import { fromJS } from 'immutable'
+// import { loadingBarReducer } from 'react-redux-loading-bar'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import { reducer as form } from 'redux-form/immutable'
 import languageProviderReducer from 'containers/LanguageProvider/reducer'
+import pictogramsViewReducer from 'containers/PictogramsView/reducer'
 import configuration from 'containers/ConfigurationView/reducer'
+import auth from 'containers/LoginView/reducer'
 /*
  * routeReducer
  *
@@ -17,10 +20,9 @@ import configuration from 'containers/ConfigurationView/reducer'
  *
  */
 
-import * as storage from './storage'
-
 export const INITIAL_LAYOUT = 'modules'
 export const INITIAL_FILTERS = ''
+/*
 export const PICTOGRAMS_LAYOUT = 'PICTOGRAMS_LAYOUT'
 
 export const CHANGE_PICTOGRAMS_KEYWORD = 'CHANGE_PICTOGRAMS_KEYWORD'
@@ -37,26 +39,32 @@ export const KEYWORDS_FAILURE = 'KEYWORDS_FAILURE'
 
 export const SHOW_FILTER = 'SHOW_FILTER'
 export const TOGGLE_FILTER = 'TOGGLE_FILTER'
+*/
 
-
+/*
 const storageState = {
   locationBeforeTransitions: null,
-  locale: storage.get('locale') || 'en',
+  locale: 'en',
   gui: {
-    layout: storage.get('layout') || INITIAL_LAYOUT,
-    showFilter: storage.get('showFilter') === 'true',
-    filters: JSON.parse(storage.get('filters')) || INITIAL_FILTERS
+    layout: INITIAL_LAYOUT,
+    showFilter: true,
+    filters: INITIAL_FILTERS
   },
-  isAuthenticated: (storage.get('token') && true) || false
+  isAuthenticated: false
 }
-
+*/
 // The initial state of the App
-const initialState = fromJS(storageState)
+// const initialState = fromJS(storageState)
+
+// Initial routing state
+const routeInitialState = fromJS({
+  locationBeforeTransitions: null
+})
 
 /**
  * Merge route into the global application state
  */
-function routeReducer(state = initialState, action) {
+function routeReducer(state = routeInitialState, action) {
   switch (action.type) {
     /* istanbul ignore next */
     case LOCATION_CHANGE:
@@ -75,8 +83,11 @@ export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
     language: languageProviderReducer,
+    // loadingBar: loadingBarReducer,
     configuration,
+    auth,
     form,
+    pictogramsView: pictogramsViewReducer,
     ...asyncReducers
   })
 }

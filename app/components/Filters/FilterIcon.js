@@ -3,7 +3,7 @@ import IconButton from 'material-ui/IconButton'
 import Filter from './images/Filter'
 
 const FilterIcon = () => (
-  <IconButton tooltip='bottom-right' touch={true} tooltipPosition='bottom-right'>
+  <IconButton style={{ position: 'absolute', Top: '50px' }} touch={false} >
     <Filter />
   </IconButton>
 )

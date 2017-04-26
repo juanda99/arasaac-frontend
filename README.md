@@ -1,4 +1,5 @@
 <div align="center">
+<p><strong>WIP!!!!!</strong></p>
   <img width=200 src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Welcome/arasaac-logo.svg" alt="Arasaac logo" align="center" />
 </div>
 <br />
@@ -22,8 +23,9 @@
     <img src="https://travis-ci.org/juanda99/arasaac-frontend.svg" alt="Build Status" />
   </a>
   <!-- Test Coverage -->
-  <a href='https://coveralls.io/github/juanda99/arasaac-frontend?branch=master'><img src='https://coveralls.io/repos/github/juanda99/arasaac-frontend/badge.svg?branch=master' alt='Coverage Status' /></a>
-
+    <a href='https://coveralls.io/github/juanda99/arasaac-frontend?branch=master'><img src='https://coveralls.io/repos/github/juanda99/arasaac-frontend/badge.svg?branch=master' alt='Coverage Status' /></a>
+  <!-- Localization -->
+  <a target="_blank" href="https://crowdin.com/project/arasaac"><img src="https://d322cqt584bo4o.cloudfront.net/arasaac/localized.svg"></a>
 
 </div>
 
