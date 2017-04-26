@@ -45,7 +45,7 @@
   "app.components.Welcome.header":"Portal {aragones} de comunicación aumentativa y alternativa",
   "app.components.showcase.news":"Noticias de ARASAAC",
   "app.components.showcase.saac":"¿Qué es el SAAC?",
-  "app.components.showcase.software":"Software",
+  "app.components.showcase.software":"Programa",
   "app.containers.ConfigurationView.title":"Configuración de ARASAAC",
   "app.containers.SearchBox.advancedSearch":"Búsqueda avanzada",
   "email.signin":"e-mail",
