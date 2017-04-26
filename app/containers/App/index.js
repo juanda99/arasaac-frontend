@@ -112,8 +112,12 @@ class App extends Component {
         title = <FormattedMessage {...messages.api} />
         docked = width === LARGE
         break
-      case /search/.test(url):
+      case /pictograms\/search/.test(url):
         title = <FormattedMessage {...messages.pictogramsSearch} />
+        docked = width === LARGE
+        break
+      case /materials\/search/.test(url):
+        title = <FormattedMessage {...messages.materialsSearch} />
         docked = width === LARGE
         break
       case /catalogs/.test(url):
