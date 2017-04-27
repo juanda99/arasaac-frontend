@@ -42,7 +42,7 @@ import 'file-loader?name=[name].[ext]!./.htaccess' // eslint-disable-line import
 /* eslint-enable import/no-webpack-loader-syntax */
 
 import configureStore from './store'
-
+    // console.log(pictoList.length)
 // Import i18n messages
 import { translationMessages } from './i18n'
 

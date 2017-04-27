@@ -12,7 +12,8 @@ export const initialState = fromJS({
   loading: false,
   error: false,
   search: fromJS({}),
-  searchText: ''
+  searchText: '',
+  filters: fromJS({})
 })
 
 function materialsViewReducer(state = initialState, action) {
@@ -33,7 +34,6 @@ function materialsViewReducer(state = initialState, action) {
       return state
         .set('error', action.payload.error)
         .set('loading', false)
-
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))

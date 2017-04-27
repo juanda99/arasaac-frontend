@@ -8,11 +8,11 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 import SearchBox from 'components/SearchBox'
+import MaterialList from 'components/MaterialList'
 import View from 'components/View'
 import { withRouter } from 'react-router'
+import { getFilteredItems } from 'utils'
 import { materials, toggleShowFilter } from './actions'
-
-import messages from './messages'
 
 class MaterialsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -33,33 +33,32 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
     }
   }
 
+
   render() {
-    const { children, showFilter, filters, pictoList } = this.props
+    const { showFilter, filters, visibleMaterials } = this.props
     const searchText = this.props.params.searchText
-    const gallery = pictoList.length ? React.cloneElement(children, { data: pictoList }) : null
     return (
       <View>
         <Helmet
-          title='Materials View'
+          title='PictogramsView'
           meta={[
             { name: 'description', content: 'Description of PictogramsView' }
           ]}
         />
         <SearchBox
           value={searchText}
-          dataSource={keywords}
           onSubmit={this.handleSubmit}
           onToggleFilter={this.props.toggleShowFilter}
           filters={filters}
           showFilter={showFilter}
         />
-        {gallery}
+        {visibleMaterials.length && <MaterialList materials={visibleMaterials} />}
       </View>
     )
   }
 }
 
-PictogramsView.propTypes = {
+MaterialsView.propTypes = {
   // Injected by React Redux
   // loadAutocomplete: PropTypes.func.isRequired,
   requestMaterials: PropTypes.func.isRequired,
@@ -68,31 +67,29 @@ PictogramsView.propTypes = {
   params: PropTypes.object.isRequired,
   filters: PropTypes.object.isRequired,
   showFilter: PropTypes.bool,
+  visibleMaterials: PropTypes.arrayOf(PropTypes.object),
   // Injected by React Router
-  children: PropTypes.node,
-  router: PropTypes.any.isRequired,
-  pictoList: PropTypes.arrayOf(PropTypes.object)
+  router: PropTypes.any.isRequired
 }
+
 
 const mapStateToProps = (state, ownProps) => {
   const filters = state.getIn(['configuration', 'filters'])
-  // const filters = createSelector(selectFilters(), (fltrs) => (fltrs))(state)
-  // console.log (filters.toJS())
-  const showFilter = state.getIn(['pictogramsView', 'showFilter'])
-  // const showFilter = createSelector(selectShowFilter(), (shwFltrs) => (shwFltrs))(state)
-  const pictoList = state.getIn(['pictogramView', 'search', ownProps.params.searchText]) || []
-  // const pictoList = createSelector(selectPictogramsBySearchKey(), (pctLst) => (pctLst))(state, ownProps)
+  const showFilter = state.getIn(['materialsView', 'showFilter'])
+  const activeFilters = state.getIn(['materialsView', 'filters'])
+  const materialList = state.getIn(['materialsView', 'search', ownProps.params.searchText]) || []
+  const visibleMaterials = getFilteredItems(materialList, activeFilters)
+  // const visibleMaterials = getVisibleMaterials (materials, )
   return ({
     filters,
     showFilter,
-    pictoList,
-    keywords: ['prueba1', 'prueba2', 'prueba3']
+    visibleMaterials
   })
 }
 
 const mapDispatchToProps = (dispatch) => ({
   requestMaterials: (searchText) => {
-    dispatch(pictograms.request(searchText))
+    dispatch(materials.request(searchText))
   },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())
