@@ -9,44 +9,34 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 import SearchBox from 'components/SearchBox'
 import View from 'components/View'
-// import { createSelector } from 'reselect'
 import { withRouter } from 'react-router'
-// import { selectFilters } from 'containers/ToggleFilter/selectors'
-import { autocomplete, pictograms, toggleShowFilter } from './actions'
-// import { selectShowFilter, selectPictogramsBySearchKey } from './selectors'
+import { materials, toggleShowFilter } from './actions'
 
-// import selectPictogramsView from './selectors'
-// import messages from './messages'
+import messages from './messages'
 
-class PictogramsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class MaterialsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   componentWillMount() {
     if (this.props.params.searchText) {
-      this.props.requestPictograms(this.props.params.searchText)
+      this.props.requestMaterials(this.props.params.searchText)
     }
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.params.searchText !== nextProps.params.searchText) {
-      this.props.requestPictograms(nextProps.params.searchText)
+      this.props.requestMaterials(nextProps.params.searchText)
     }
   }
 
   handleSubmit = (nextValue) => {
     if (this.props.params.searchText !== nextValue) {
-      this.props.router.push(`/pictograms/search/${nextValue}`)
+      this.props.router.push(`/materials/search/${nextValue}`)
     }
   }
 
-  handleChange = (searchText) => {
-    this.props.requestAutocomplete(searchText)
-  }
-
   render() {
-    const { children, showFilter, filters, keywords, pictoList } = this.props
+    const { children, showFilter, filters, pictoList } = this.props
     const searchText = this.props.params.searchText
-    // console.log(pictoList.length)
     const gallery = pictoList.length ? React.cloneElement(children, { data: pictoList }) : null
-    // const gallery = React.cloneElement(children, { data: pictograms })
     return (
       <View>
         <Helmet
@@ -59,7 +49,6 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
           value={searchText}
           dataSource={keywords}
           onSubmit={this.handleSubmit}
-          onChange={this.handleChange}
           onToggleFilter={this.props.toggleShowFilter}
           filters={filters}
           showFilter={showFilter}
@@ -73,11 +62,9 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
 PictogramsView.propTypes = {
   // Injected by React Redux
   // loadAutocomplete: PropTypes.func.isRequired,
-  requestPictograms: PropTypes.func.isRequired,
+  requestMaterials: PropTypes.func.isRequired,
   toggleShowFilter: PropTypes.func.isRequired,
-  requestAutocomplete: PropTypes.func.isRequired,
   searchText: PropTypes.string,
-  keywords: PropTypes.arrayOf(PropTypes.string),
   params: PropTypes.object.isRequired,
   filters: PropTypes.object.isRequired,
   showFilter: PropTypes.bool,
@@ -104,15 +91,12 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  requestPictograms: (searchText) => {
+  requestMaterials: (searchText) => {
     dispatch(pictograms.request(searchText))
   },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())
-  },
-  requestAutocomplete: (searchText) => {
-    dispatch(autocomplete.request(searchText))
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PictogramsView))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MaterialsView))
