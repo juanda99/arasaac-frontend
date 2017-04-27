@@ -1,11 +1,14 @@
 import React, { PropTypes } from 'react'
 
-const Material = (props) => (
+const Material = ({ material }) => (
   <li>
-    <h4> {props.material.title}</h4>
-    <p>{props.material.desc}</p>
+    <h4>{material.title}</h4>
+    <p>{material.desc}</p>
   </li>
 )
+
+// needed for tests: seee https://github.com/facebook/jest/issues/1824
+Material.displayName = 'Material'
 
 Material.propTypes = {
   // onClick: PropTypes.func.isRequired,
