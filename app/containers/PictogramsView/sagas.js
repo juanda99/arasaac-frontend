@@ -1,7 +1,6 @@
 import { take, takeLatest, call, put, cancel, select } from 'redux-saga/effects'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import api from 'services'
-import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import { selectSearchKey } from './selectors'
 import { PICTOGRAMS, pictograms, AUTOCOMPLETE, autocomplete } from './actions'
 
@@ -19,9 +18,9 @@ function* pictogramsGetData() {
 }
 
 
-function* autoCompleteGetData() {
+function* autoCompleteGetData(action) {
   try {
-    const locale = yield select(makeSelectLocale())
+    const { locale } = action.payload
     const response = yield call(api.keywords, locale)
     const { words } = response
     // order by lenght so autocomplete is better:
