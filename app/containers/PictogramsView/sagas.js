@@ -6,6 +6,7 @@ import { PICTOGRAMS, pictograms, AUTOCOMPLETE, autocomplete } from './actions'
 
 function* pictogramsGetData() {
   try {
+    // TODO: change using action as parameter!!!!!!!
     const searchText = yield select(selectSearchKey())
     const response = yield call(api.fetchPictograms, searchText)
     yield put(pictograms.success(response))
