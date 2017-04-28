@@ -1,14 +1,14 @@
-import { take, takeLatest, call, put, cancel, select } from 'redux-saga/effects'
+import { take, takeLatest, call, put, cancel } from 'redux-saga/effects'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import api from 'services'
-import { selectSearchKey } from './selectors'
 import { MATERIALS, materials } from './actions'
+// import { AUTOCOMPLETE } from '../PictogramsView/actions'
 
-function* materialsGetData() {
+function* materialsGetData(action) {
   try {
-    const searchText = yield select(selectSearchKey())
-    const response = yield call(api.fetchMaterials, searchText)
-    yield put(materials.success(response))
+    const { locale, searchText } = action.payload
+    const response = yield call(api.fetchMaterials, locale, searchText)
+    yield put(materials.success(locale, searchText, response))
   } catch (error) {
     yield put(materials.failure(error.message))
   } finally {
@@ -17,7 +17,6 @@ function* materialsGetData() {
   }
 }
 
-
 export function* materialsData() {
   const watcher = yield takeLatest(MATERIALS.REQUEST, materialsGetData)
   // Suspend execution until location changes
@@ -25,6 +24,5 @@ export function* materialsData() {
   yield cancel(watcher)
 }
 
-
 // All sagas to be loaded
-export default [materialsGetData]
+export default [materialsData]

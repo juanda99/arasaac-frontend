@@ -17,7 +17,6 @@ export const initialState = fromJS({
 })
 
 function materialsViewReducer(state = initialState, action) {
-  let newData = {}
   switch (action.type) {
     case MATERIALS.REQUEST:
       return state
@@ -25,11 +24,8 @@ function materialsViewReducer(state = initialState, action) {
         .set('error', false)
         .set('searchText', action.payload.searchText)
     case MATERIALS.SUCCESS:
-      newData[action.payload.searchText] = action.payload.data
-      newData = fromJS({ search: newData })
       return state
-        .mergeDeep(newData)
-        .set('loading', false)
+        .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data)
     case MATERIALS.FAILURE:
       return state
         .set('error', action.payload.error)

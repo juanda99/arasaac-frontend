@@ -1,6 +1,6 @@
 /*
  *
- * PictogramsView
+ * MaterialsView
  *
  */
 
@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 import SearchBox from 'components/SearchBox'
-import MaterialList from 'components/MaterialList'
+// import MaterialList from 'components/MaterialList'
 import View from 'components/View'
 import { withRouter } from 'react-router'
 import { getFilteredItems } from 'utils'
@@ -18,12 +18,12 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
 
   componentWillMount() {
     if (this.props.params.searchText) {
-      this.props.requestMaterials(this.props.params.searchText)
+      this.props.requestMaterials(this.props.locale, this.props.params.searchText)
     }
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.params.searchText !== nextProps.params.searchText) {
-      this.props.requestMaterials(nextProps.params.searchText)
+      this.props.requestMaterials(this.props.locale, nextProps.params.searchText)
     }
   }
 
@@ -35,8 +35,12 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
 
 
   render() {
-    const { showFilter, filters, visibleMaterials } = this.props
+    const { children, showFilter, filters, visibleMaterials } = this.props
     const searchText = this.props.params.searchText
+    const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials }) : null
+    // this code in return is not so good if children changes (search, categories...)
+    //  {visibleMaterials.length > 0 && <MaterialList materials={visibleMaterials} />}
+    //
     return (
       <View>
         <Helmet
@@ -52,7 +56,7 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
           filters={filters}
           showFilter={showFilter}
         />
-        {visibleMaterials.length && <MaterialList materials={visibleMaterials} />}
+        {gallery}
       </View>
     )
   }
@@ -69,27 +73,32 @@ MaterialsView.propTypes = {
   showFilter: PropTypes.bool,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
   // Injected by React Router
-  router: PropTypes.any.isRequired
+  children: PropTypes.node,
+  router: PropTypes.any.isRequired,
+  locale: PropTypes.string.isRequired
 }
 
 
 const mapStateToProps = (state, ownProps) => {
   const filters = state.getIn(['configuration', 'filters'])
   const showFilter = state.getIn(['materialsView', 'showFilter'])
+  const locale = state.get('language').get('locale')
   const activeFilters = state.getIn(['materialsView', 'filters'])
-  const materialList = state.getIn(['materialsView', 'search', ownProps.params.searchText]) || []
-  const visibleMaterials = getFilteredItems(materialList, activeFilters)
+  const materialList = state.getIn(['materialsView', 'search', locale, ownProps.params.searchText]) || []
+  const visibleMaterials = activeFilters && activeFilters.size > 0 ? getFilteredItems(materialList, activeFilters.toJS()) : materialList
+  // const visibleMaterials = getFilteredItems(materialList, activeFilters)
   // const visibleMaterials = getVisibleMaterials (materials, )
   return ({
     filters,
     showFilter,
-    visibleMaterials
+    visibleMaterials,
+    locale
   })
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  requestMaterials: (searchText) => {
-    dispatch(materials.request(searchText))
+  requestMaterials: (locale, searchText) => {
+    dispatch(materials.request(locale, searchText))
   },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())

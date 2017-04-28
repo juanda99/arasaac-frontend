@@ -41,7 +41,7 @@ function pictogramsViewReducer(state = initialState, action) {
         .setIn(['words', action.payload.locale], action.payload.data)
     case AUTOCOMPLETE.FAILURE:
       return state
-        .setIn(['words', action.locale], action.data)
+        .set('error', action.payload.error)
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))

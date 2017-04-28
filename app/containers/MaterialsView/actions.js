@@ -14,8 +14,8 @@ export const ENABLE_FILTER = 'app/MaterialsView/ENABLE_FILTER'
 // actions: pictograms.request/success/failure
 
 export const materials = {
-  request: (searchText) => action(MATERIALS.REQUEST, { searchText }),
-  success: (searchText, data) => action(MATERIALS.SUCCESS, { searchText, data }),
+  request: (locale, searchText) => action(MATERIALS.REQUEST, { locale, searchText }),
+  success: (locale, searchText, data) => action(MATERIALS.SUCCESS, { locale, searchText, data }),
   failure: (error) => action(MATERIALS.FAILURE, { error })
 }
 
