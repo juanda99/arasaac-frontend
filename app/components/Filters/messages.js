@@ -234,27 +234,27 @@ export default defineMessages({
   picaa: {
     id: 'app.components.Filters.SelectArea.picaa',
     description: 'Menu choose material activity',
-    defaultMessage: 'Picaa activity'
+    defaultMessage: 'Picaa'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  software: {
+    id: 'app.components.Filters.SelectArea.software',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Software'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  araBoard: {
+    id: 'app.components.Filters.SelectArea.araBoard',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'AraBoard'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  bingo: {
+    id: 'app.components.Filters.SelectArea.bingo',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Bingo'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  song: {
+    id: 'app.components.Filters.SelectArea.song',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Song'
   },
   signage: {
     id: 'app.components.Filters.SelectArea.signage',

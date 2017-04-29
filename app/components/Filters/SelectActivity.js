@@ -23,11 +23,11 @@ class SelectActivity extends React.Component {
         <SelectField autoWidth={true} value={this.state.value} onChange={this.handleChange} style={styles.select}>
           <MenuItem value={24} primaryText={<FormattedMessage {...messages.multimediaBook} />} />
           <MenuItem value={29} primaryText={<FormattedMessage {...messages.picaa} />} />
-          <MenuItem value={14} primaryText={<FormattedMessage {...messages.blackAndWhitePictograms} />} />
-          <MenuItem value={2} primaryText={<FormattedMessage {...messages.pictures} />} />
-          <MenuItem value={31} primaryText={<FormattedMessage {...messages.lseVideos} />} />
-          <MenuItem value={32} primaryText={<FormattedMessage {...messages.lseColor} />} />
-          <MenuItem value={20} primaryText={<FormattedMessage {...messages.pictures} />} />
+          <MenuItem value={14} primaryText={<FormattedMessage {...messages.animation  } />} />
+          <MenuItem value={2} primaryText={<FormattedMessage {...messages.software} />} />
+          <MenuItem value={31} primaryText={<FormattedMessage {...messages.araBoard} />} />
+          <MenuItem value={32} primaryText={<FormattedMessage {...messages.bingo} />} />
+          <MenuItem value={20} primaryText={<FormattedMessage {...messages.song} />} />
           <MenuItem value={19} primaryText={<FormattedMessage {...messages.lseVideos} />} />
           <MenuItem value={1} primaryText={<FormattedMessage {...messages.lseColor} />} />
           <MenuItem value={xx} primaryText={<FormattedMessage {...messages.pictures} />} />
