@@ -227,7 +227,7 @@
     "setupTestFrameworkScriptFile": "<rootDir>/internals/testing/test-bundler.js",
     "testRegex": "tests/.*\\.test\\.js$",
     "transformIgnorePatterns": [
-      "/!node_modules\/flexboxgrid/"
+      "/!node_modules/flexboxgrid/"
     ]
   },
   "dependencies": {
@@ -268,6 +268,8 @@
     "redux-form": "^6.5.0",
     "redux-form-material-ui": "^4.1.2",
     "redux-immutable": "3.0.8",
+    "redux-persist": "^4.7.1",
+    "redux-persist-immutable": "^4.2.0",
     "redux-saga": "0.14.0",
     "reselect": "2.5.4",
     "sanitize.css": "4.1.0",
