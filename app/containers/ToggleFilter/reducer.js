@@ -15,9 +15,9 @@ export const initialState = fromJS({
   },
   materials: {
     area: true,
-    language: true,
-    license: true,
-    activity: true
+    activity: true,
+    language: false,
+    license: false
   }
 })
 

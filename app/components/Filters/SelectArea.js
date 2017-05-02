@@ -44,7 +44,7 @@ class SelectArea extends React.Component {
           <MenuItem value={21} primaryText={<FormattedMessage {...messages.religion} />} />
           <MenuItem value={22} primaryText={<FormattedMessage {...messages.health} />} />
           <MenuItem value={23} primaryText={<FormattedMessage {...messages.leisure} />} />
-          <MenuItem value={24} primaryText={<FormattedMessage {...messages.signage} />} />
+          <MenuItem value={24} primaryText={<FormattedMessage {...messages.signalling} />} />
         </SelectField>
       </div>
     )
