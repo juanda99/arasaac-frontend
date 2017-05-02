@@ -81,12 +81,28 @@ export default function createRoutes(store) {
         const renderRoute = loadModule(cb)
 
         importModules.then(([reducer, sagas, component]) => {
-          injectReducer('MaterialsView', reducer.default)
+          injectReducer('materialsView', reducer.default)
           injectSagas(sagas.default)
           renderRoute(component)
         })
         importModules.catch(errorLoading)
-      }
+      },
+      childRoutes: [
+        {
+          path: '/materials/search/:searchText',
+          name: 'gallery',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('components/MaterialList')
+            ])
+            const renderRoute = loadModule(cb)
+            importModules.then(([component]) => {
+              renderRoute(component)
+            })
+            importModules.catch(errorLoading)
+          }
+        }
+      ]
     }, {
       path: '/configuration',
       name: 'configurationView',

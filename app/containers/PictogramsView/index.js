@@ -62,6 +62,7 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
           onSubmit={this.handleSubmit}
           onToggleFilter={this.props.toggleShowFilter}
           filters={filters}
+          type={'pictograms'}
           showFilter={showFilter}
         />
         {gallery}
@@ -89,7 +90,7 @@ PictogramsView.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const filters = state.getIn(['configuration', 'filters'])
+  const filters = state.getIn(['configuration', 'filters', 'pictograms'])
   // const filters = createSelector(selectFilters(), (fltrs) => (fltrs))(state)
   // console.log (filters.toJS())
   const showFilter = state.getIn(['pictogramsView', 'showFilter'])

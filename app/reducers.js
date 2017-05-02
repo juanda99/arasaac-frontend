@@ -10,6 +10,7 @@ import { LOCATION_CHANGE } from 'react-router-redux'
 import { reducer as form } from 'redux-form/immutable'
 import languageProviderReducer from 'containers/LanguageProvider/reducer'
 import pictogramsViewReducer from 'containers/PictogramsView/reducer'
+import materialsViewReducer from 'containers/MaterialsView/reducer'
 import configuration from 'containers/ConfigurationView/reducer'
 import auth from 'containers/LoginView/reducer'
 /*
@@ -88,6 +89,7 @@ export default function createReducer(asyncReducers) {
     auth,
     form,
     pictogramsView: pictogramsViewReducer,
+    materialsView: materialsViewReducer,
     ...asyncReducers
   })
 }

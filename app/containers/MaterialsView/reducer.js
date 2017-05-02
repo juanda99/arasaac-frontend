@@ -1,44 +1,35 @@
 /*
  *
- * PictogramsView reducer
+ * Materials View reducer
  *
  */
 
 import { fromJS } from 'immutable'
-import { PICTOGRAMS, AUTOCOMPLETE, SHOW_FILTERS } from './actions'
+import { MATERIALS, SHOW_FILTERS } from './actions'
 
-const initialState = fromJS({
+export const initialState = fromJS({
   showFilter: false,
   loading: false,
   error: false,
-  search: fromJS({})
+  search: fromJS({}),
+  searchText: '',
+  filters: fromJS({})
 })
 
-function pictogramsViewReducer(state = initialState, action) {
-  let newData = {}
+function materialsViewReducer(state = initialState, action) {
   switch (action.type) {
-    case PICTOGRAMS.REQUEST:
+    case MATERIALS.REQUEST:
       return state
         .set('loading', true)
         .set('error', false)
-    case PICTOGRAMS.SUCCESS:
-      newData[action.searchText] = action.data
-      newData = fromJS({ search: newData })
+        .set('searchText', action.payload.searchText)
+    case MATERIALS.SUCCESS:
       return state
-        .mergeDeep(newData)
+        .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data)
+    case MATERIALS.FAILURE:
+      return state
+        .set('error', action.payload.error)
         .set('loading', false)
-    case PICTOGRAMS.FAILURE:
-      return state
-        .set('error', action.error)
-        .set('loading', false)
-    case AUTOCOMPLETE.REQUEST:
-      return state
-    case AUTOCOMPLETE.SUCCESS:
-      return state
-        .setIn(['autocomplete', action.searchText], action.data)
-    case AUTOCOMPLETE.FAILURE:
-      return state
-        .setIn(['autocomplete', action.searchText], action.data)
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))
@@ -47,4 +38,4 @@ function pictogramsViewReducer(state = initialState, action) {
   }
 }
 
-export default pictogramsViewReducer
+export default materialsViewReducer

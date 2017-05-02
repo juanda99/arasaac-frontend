@@ -5,6 +5,8 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { fromJS } from 'immutable'
 import { routerMiddleware } from 'react-router-redux'
+// import { persistStore, autoRehydrate } from 'redux-persist'
+import { persistStore, autoRehydrate } from 'redux-persist-immutable'
 // on sagas by hand, not automated:
 // import { loadingBarMiddleware } from 'react-redux-loading-bar'
 import createSagaMiddleware from 'redux-saga'
@@ -26,7 +28,8 @@ export default function configureStore(initialState = {}, history) {
   ]
 
   const enhancers = [
-    applyMiddleware(...middlewares)
+    applyMiddleware(...middlewares),
+    autoRehydrate()
   ]
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
@@ -43,6 +46,9 @@ export default function configureStore(initialState = {}, history) {
     fromJS(initialState),
     composeEnhancers(...enhancers)
   )
+
+  // begin periodically persisting the store
+  persistStore(store, { blacklist: 'route' })
 
   // Extensions
 
