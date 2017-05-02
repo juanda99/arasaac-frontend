@@ -31,9 +31,9 @@ const ConfigurationView = () => (
         <Paper style={style} zDepth={2} rounded={false}>
           <H3>{<FormattedMessage {...messages.filters} />}</H3>
           <p>{<FormattedMessage {...messages.filtersDesc} />}</p>
-          <ToggleFilter label={<FormattedMessage {...messages.filterCatalog} />} filter='catalog' />
-          <ToggleFilter label={<FormattedMessage {...messages.filterLicense} />} filter='license' />
-          <ToggleFilter label={<FormattedMessage {...messages.filterSize} />} filter='size' />
+          <ToggleFilter label={<FormattedMessage {...messages.filterCatalog} />} type='pictograms' filter='catalog' />
+          <ToggleFilter label={<FormattedMessage {...messages.filterLicense} />} type='pictograms' filter='license' />
+          <ToggleFilter label={<FormattedMessage {...messages.filterSize} />} type='pictograms' filter='size' />
         </Paper>
       </Col>
     </Row>

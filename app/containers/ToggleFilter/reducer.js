@@ -8,9 +8,17 @@ import { fromJS } from 'immutable'
 import { TOGGLE_FILTER } from './actions'
 
 export const initialState = fromJS({
-  catalog: true,
-  license: true,
-  size: true
+  pictograms: {
+    catalog: true,
+    license: true,
+    size: true
+  },
+  materials: {
+    area: true,
+    language: true,
+    license: true,
+    activity: true
+  }
 })
 
 
@@ -18,7 +26,7 @@ function toggleFilterReducer(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_FILTER:
       return state
-        .set(action.payload.filter, !state.get(action.payload.filter))
+        .setIn([action.payload.type, action.payload.filter], !state.getIn([action.payload.type, action.payload.filter]))
     default:
       return state
   }

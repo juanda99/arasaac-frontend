@@ -11,14 +11,14 @@ import { toggleFilter } from './actions'
 
 const mapStateToProps = (state, ownProps) => (
   {
-    defaultToggled: state.getIn(['configuration', 'filters', ownProps.filter]),
+    defaultToggled: state.getIn(['configuration', 'filters', ownProps.type, ownProps.filter]),
     label: ownProps.label,
     style: { width: 100 }
   }
 )
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onToggle: () => {
-    dispatch(toggleFilter(ownProps.filter))
+    dispatch(toggleFilter(ownProps.type, ownProps.filter))
   }
 })
 
@@ -30,7 +30,8 @@ const ToggleFilter = connect(
 ToggleFilter.propTypes = {
   // object instead of string because of react-intl
   label: PropTypes.object.isRequired,
-  filter: PropTypes.string.isRequired
+  filter: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
 }
 
 export default ToggleFilter
