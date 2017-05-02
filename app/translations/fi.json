@@ -40,7 +40,7 @@
   "app.components.PictogramsFiltersConf.filterLicense":"Lisenssi",
   "app.components.PictogramsFiltersConf.filterSize":"Kokoa",
   "app.components.PictogramsFiltersConf.filters":"Suodattimet",
-  "app.components.PictogramsFiltersConf.filtersDesc":"Valitse lisättävän etsimiseen piktogrammit suodattimet",
+  "app.components.PictogramsFiltersConf.filtersDesc":"Select the filters you want to enable for searching pictograms",
   "app.components.PictogramsFiltersConf.searchPictograms":"Etsi kuvakkeita",
   "app.components.PrivatePolicy.header":"Tämä on PrivatePolicy osa!",
   "app.components.SearchBox.searchField":"Kirjoita Etsi teksti",
