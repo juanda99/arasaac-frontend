@@ -28,7 +28,7 @@ import { connect } from 'react-redux'
 import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
 import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth'
-import { changeLocale } from 'containers/LanguageProvider/actions'
+import { changeLocale, startTranslation, stopTranslation } from 'containers/LanguageProvider/actions'
 
 
 class App extends Component {
@@ -55,14 +55,14 @@ class App extends Component {
 
   handleTranslate = () => {
     if (!this.props.isTranslating) {
-      this.props.changeLocale('af')
+      this.props.startTranslation()
       const script = document.createElement('script')
       script.src = '//cdn.crowdin.com/jipt/jipt.js'
       script.async = true
       document.body.appendChild(script)
     }
     else {
-      this.props.changeLocale('en')
+      this.props.stopTranslation()
       // window.location.href = "http://localhost:3000";
     }
   }
@@ -241,4 +241,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps, {changeLocale})(withWidth()(App))
+export default connect(mapStateToProps, { changeLocale, startTranslation, stopTranslation })(withWidth()(App))
