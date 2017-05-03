@@ -20,7 +20,8 @@ const style = {
   padding: 20,
   textAlign: 'center',
   display: 'inline-block',
-  width: '100%'
+  width: '100%',
+  height: '250px'
 }
 
 const ConfigurationView = () => (
