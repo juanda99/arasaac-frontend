@@ -55,15 +55,15 @@ class App extends Component {
 
   handleTranslate = () => {
     if (!this.props.isTranslating) {
+      this.props.changeLocale('af')
       const script = document.createElement('script')
       script.src = '//cdn.crowdin.com/jipt/jipt.js'
       script.async = true
       document.body.appendChild(script)
-      this.props.changeLocale('af')
     }
     else {
-      // this.props.changeLocale('es')
-      window.location.href = "http://localhost:3000";
+      this.props.changeLocale('en')
+      // window.location.href = "http://localhost:3000";
     }
   }
 

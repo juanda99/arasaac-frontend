@@ -41,6 +41,11 @@ export default defineMessages({
     description: 'User menu item',
     defaultMessage: 'Translate Arasaac'
   },
+  stopTranslateArasaac: {
+    id: 'userMenu.stopTranslateArasaac',
+    description: 'User menu item',
+    defaultMessage: 'Stop translating Arasaac'
+  },
   signout: {
     id: 'userMenu.signout',
     description: 'User menu item',
