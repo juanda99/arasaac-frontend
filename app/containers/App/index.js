@@ -91,7 +91,7 @@ class App extends Component {
       LoadingBar: {
         position: 'fixed',
         height: 2,
-        backgroundColor: 'darkGreen',
+        backgroundColor: 'rgb(0, 188, 212)',
         top: 64,
         zIndex: 10000
       }
@@ -207,7 +207,7 @@ class App extends Component {
     }
     return (
       <div>
-        <LoadingBar style={styles.LoadingBar}/>
+        <LoadingBar updateTime={100} maxProgress={95} progressIncrease={20} style={styles.LoadingBar}/>
         <Header
           showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
