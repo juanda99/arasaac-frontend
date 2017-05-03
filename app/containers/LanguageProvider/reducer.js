@@ -8,7 +8,7 @@ import { fromJS } from 'immutable'
 import { CHANGE_LOCALE, START_TRANSLATION, STOP_TRANSLATION } from './actions'
 import { DEFAULT_LOCALE } from '../App/constants'
 
-const initialState = fromJS({
+export const initialState = fromJS({
   locale: DEFAULT_LOCALE,
   previousLocale: ''
 })

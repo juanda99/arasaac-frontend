@@ -17,9 +17,12 @@ describe('LanguageProviderReducer', () => {
     expect(reducer(initialState, startTranslation())).toEqual(expectedResult)
   })
   it('should handle stopTranslation action correctly', () => {
+    const state = initialState
+      .set('locale', 'af')
+      .set('previousLocale', 'en')
     const expectedResult = initialState
       .set('previousLocale', '')
       .set('locale', 'en')
-    expect(reducer(initialState, stopTranslation())).toEqual(expectedResult)
+    expect(reducer(state, stopTranslation())).toEqual(expectedResult)
   })
 })
