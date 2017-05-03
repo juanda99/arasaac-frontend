@@ -40,7 +40,7 @@
   "app.components.PictogramsFiltersConf.filterLicense":"Licentie",
   "app.components.PictogramsFiltersConf.filterSize":"Grootte",
   "app.components.PictogramsFiltersConf.filters":"Filters",
-  "app.components.PictogramsFiltersConf.filtersDesc":"Select the filters you want to enable for searching pictograms",
+  "app.components.PictogramsFiltersConf.filtersDesc":"De filters die u inschakelen wilt voor het zoeken van pictogrammen selecteren",
   "app.components.PictogramsFiltersConf.searchPictograms":"Zoek pictogrammen",
   "app.components.PrivatePolicy.header":"Dit is het onderdeel van de PrivatePolicy!",
   "app.components.SearchBox.searchField":"Voer zoektekst",
