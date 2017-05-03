@@ -40,7 +40,7 @@
   "app.components.PictogramsFiltersConf.filterLicense":"Lizenz",
   "app.components.PictogramsFiltersConf.filterSize":"Größe",
   "app.components.PictogramsFiltersConf.filters":"Filter",
-  "app.components.PictogramsFiltersConf.filtersDesc":"Select the filters you want to enable for searching pictograms",
+  "app.components.PictogramsFiltersConf.filtersDesc":"Wählen Sie die Filter, die Sie für die Suche Piktogramme aktivieren möchten",
   "app.components.PictogramsFiltersConf.searchPictograms":"Suche-Piktogramme",
   "app.components.PrivatePolicy.header":"Dies ist die PrivatePolicy Komponente!",
   "app.components.SearchBox.searchField":"Geben Sie Suchtext",
