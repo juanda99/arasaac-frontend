@@ -21,7 +21,10 @@ require('shelljs/global');
 
 // Glob to match all js files except test files
 const FILES_TO_PARSE = 'app/**/!(*.test).js';
-const locales = i18n.appLocales;
+// important:
+// just english language, rest of them via crowdin!!!!!!!!
+// const locales = i18n.appLocales;
+const locales = ['en']
 
 const newLine = () => process.stdout.write('\n');
 

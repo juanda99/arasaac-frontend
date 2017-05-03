@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => (
   {
     defaultToggled: state.getIn(['configuration', 'filters', ownProps.type, ownProps.filter]),
     label: ownProps.label,
-    style: { width: 100 }
+    style: { width: 200, margin: '0 auto' }
   }
 )
 const mapDispatchToProps = (dispatch, ownProps) => ({

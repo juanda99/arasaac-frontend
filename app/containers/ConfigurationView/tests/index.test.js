@@ -10,7 +10,7 @@ describe('<ConfigurationView />', () => {
       <ConfigurationView />
     )
     // console.log(renderedComponent.debug())
-    expect(renderedComponent.find('Connect(Toggle)').length).toEqual(3)
+    expect(renderedComponent.find('Connect(Toggle)').length).toEqual(7)
   })
 
   it('should render a View', () => {

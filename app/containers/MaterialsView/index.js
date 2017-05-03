@@ -80,7 +80,7 @@ MaterialsView.propTypes = {
 
 
 const mapStateToProps = (state, ownProps) => {
-  const filters = state.getIn(['configuration', 'materials', 'filters'])
+  const filters = state.getIn(['configuration', 'filters', 'materials'])
   const showFilter = state.getIn(['materialsView', 'showFilter'])
   const locale = state.get('language').get('locale')
   const activeFilters = state.getIn(['materialsView', 'filters'])

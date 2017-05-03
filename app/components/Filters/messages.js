@@ -119,42 +119,42 @@ export default defineMessages({
   visualdiscrimination: {
     id: 'app.components.Filters.SelectArea.visualdiscrimination',
     description: 'Menu choose material area',
-    defaultMessage: 'Language: Visual discrimination'
+    defaultMessage: 'Visual discrimination'
   },
   auditorydiscrimination: {
     id: 'app.components.Filters.SelectArea.auditorydiscrimination',
     description: 'Menu choose material area',
-    defaultMessage: 'Language: Auditory discrimination'
+    defaultMessage: 'Auditory discrimination'
   },
   phonology: {
     id: 'app.components.Filters.SelectArea.phonology',
     description: 'Menu choose material area',
-    defaultMessage: 'Language: Phonology'
+    defaultMessage: 'Phonology'
   },
   morphosyntax: {
     id: 'app.components.Filters.SelectArea.morphosyntax',
     description: 'Menu choose material area',
-    defaultMessage: 'Language: Morphosyntax'
+    defaultMessage: 'Morphosyntax'
   },
   semantics: {
     id: 'app.components.Filters.SelectArea.semantics',
     description: 'Menu choose material area',
-    defaultMessage: 'Language: Semantics'
+    defaultMessage: 'Semantics'
   },
   pragmatics: {
     id: 'app.components.Filters.SelectArea.pragmatics',
     description: 'Menu choose material area',
-    defaultMessage: 'Language: Pragmatics'
+    defaultMessage: 'Pragmatics'
   },
   reading: {
     id: 'app.components.Filters.SelectArea.reading',
     description: 'Menu choose material area',
-    defaultMessage: 'Language: Reading'
+    defaultMessage: 'Reading'
   },
   writing: {
     id: 'app.components.Filters.SelectArea.writing',
     description: 'Menu choose material area',
-    defaultMessage: 'Language: Writing'
+    defaultMessage: 'Writing'
   },
   literature: {
     id: 'app.components.Filters.SelectArea.literature',
@@ -174,17 +174,17 @@ export default defineMessages({
   basicOperations: {
     id: 'app.components.Filters.SelectArea.basicOperations',
     description: 'Menu choose material area',
-    defaultMessage: 'Math: Basic operations'
+    defaultMessage: 'Basic operations'
   },
   problems: {
     id: 'app.components.Filters.SelectArea.problems',
     description: 'Menu choose material area',
-    defaultMessage: 'Math: Problems'
+    defaultMessage: 'Problems'
   },
   geometry: {
     id: 'app.components.Filters.SelectArea.geometry',
     description: 'Menu choose material area',
-    defaultMessage: 'Math: Geometry'
+    defaultMessage: 'Geometry'
   },
   naturalSciences: {
     id: 'app.components.Filters.SelectArea.naturalSciences',
@@ -226,109 +226,159 @@ export default defineMessages({
     description: 'Menu choose material area',
     defaultMessage: 'Leisure and culture'
   },
-  multimediaBook: {
-    id: 'app.components.Filters.SelectArea.multimediaBook',
+  lim: {
+    id: 'app.components.Filters.SelectActivity.lim',
     description: 'Menu choose material activity',
-    defaultMessage: 'Multimedia Book'
+    defaultMessage: 'LIM'
   },
   picaa: {
-    id: 'app.components.Filters.SelectArea.picaa',
+    id: 'app.components.Filters.SelectActivity.picaa',
     description: 'Menu choose material activity',
     defaultMessage: 'Picaa'
   },
+  animation: {
+    id: 'app.components.Filters.SelectActivity.animation',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Animation'
+  },
   software: {
-    id: 'app.components.Filters.SelectArea.software',
+    id: 'app.components.Filters.SelectActivity.software',
     description: 'Menu choose material activity',
     defaultMessage: 'Software'
   },
   araBoard: {
-    id: 'app.components.Filters.SelectArea.araBoard',
+    id: 'app.components.Filters.SelecActivity.araBoard',
     description: 'Menu choose material activity',
     defaultMessage: 'AraBoard'
   },
+  board: {
+    id: 'app.components.Filters.SelecActivity.board',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Board'
+  },
   bingo: {
-    id: 'app.components.Filters.SelectArea.bingo',
+    id: 'app.components.Filters.SelecActivity.bingo',
     description: 'Menu choose material activity',
     defaultMessage: 'Bingo'
   },
   song: {
-    id: 'app.components.Filters.SelectArea.song',
+    id: 'app.components.Filters.SelectActivity.song',
     description: 'Menu choose material activity',
     defaultMessage: 'Song'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  notebook: {
+    id: 'app.components.Filters.SelectActivity.notebook',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Notebook'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  story: {
+    id: 'app.components.Filters.SelectActivity.story',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Story'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  multimedia: {
+    id: 'app.components.Filters.SelectActivity.multimedia',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Multimedia'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  domino: {
+    id: 'app.components.Filters.SelectActivity.domino',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Domino'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  game: {
+    id: 'app.components.Filters.SelectActivity.game',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Game'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  group: {
+    id: 'app.components.Filters.SelectActivity.group',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Group'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  exercise: {
+    id: 'app.components.Filters.SelectActivity.exercise',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Exercise'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  jClic: {
+    id: 'app.components.Filters.SelectActivity.jClic',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'JClic'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  goose: {
+    id: 'app.components.Filters.SelectActivity.goose',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Goose'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  book: {
+    id: 'app.components.Filters.SelectActivity.book',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Book'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  image: {
+    id: 'app.components.Filters.SelectActivity.image',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Image'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  video: {
+    id: 'app.components.Filters.SelectActivity.video',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Video'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  pictodroidLite: {
+    id: 'app.components.Filters.SelectActivity.pictodroidLite',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Pictodroid Lite'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  digitalBoard: {
+    id: 'app.components.Filters.SelectActivity.digitalBoard',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Digital Board'
   },
-  signage: {
-    id: 'app.components.Filters.SelectArea.signage',
+  slide: {
+    id: 'app.components.Filters.SelectActivity.slide',
     description: 'Menu choose material activity',
-    defaultMessage: 'Signage'
+    defaultMessage: 'Slide'
+  },
+  protocol: {
+    id: 'app.components.Filters.SelectActivity.protocol',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Protocol'
+  },
+  routine: {
+    id: 'app.components.Filters.SelectActivity.routine',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Routine'
+  },
+  signalling: {
+    id: 'app.components.Filters.SelectActivity.signalling',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Signalling'
+  },
+  sequence: {
+    id: 'app.components.Filters.SelectActivity.sequence',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Sequence'
+  },
+  smartNotebook: {
+    id: 'app.components.Filters.SelectActivity.smartNotebook',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Smart Notebook'
+  },
+  tico: {
+    id: 'app.components.Filters.SelectActivity.tico',
+    description: 'Menu choose material activity',
+    defaultMessage: 'TICO'
+  },
+  test: {
+    id: 'app.components.Filters.SelectActivity.test',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Test'
+  },
+  socialHistory: {
+    id: 'app.components.Filters.SelectActivity.socialHistory',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Social History'
   }
 })

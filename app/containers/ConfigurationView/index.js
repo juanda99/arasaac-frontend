@@ -20,7 +20,8 @@ const style = {
   padding: 20,
   textAlign: 'center',
   display: 'inline-block',
-  width: '100%'
+  width: '100%',
+  height: '250px'
 }
 
 const ConfigurationView = () => (
@@ -41,9 +42,10 @@ const ConfigurationView = () => (
         <Paper style={style} zDepth={2} rounded={false}>
           <H3>{<FormattedMessage {...messages.filters} />}</H3>
           <p>{<FormattedMessage {...messages.materialFiltersDesc} />}</p>
-          <ToggleFilter label={<FormattedMessage {...messages.filterCatalog} />} type='materials' filter='catalog' />
+          <ToggleFilter label={<FormattedMessage {...messages.filterArea} />} type='materials' filter='area' />
+          <ToggleFilter label={<FormattedMessage {...messages.filterActivity} />} type='materials' filter='activity' />
+          <ToggleFilter label={<FormattedMessage {...messages.filterLanguage} />} type='materials' filter='language' />
           <ToggleFilter label={<FormattedMessage {...messages.filterLicense} />} type='materials' filter='license' />
-          <ToggleFilter label={<FormattedMessage {...messages.filterSize} />} type='materials' filter='size' />
         </Paper>
       </Col>
     </Row>

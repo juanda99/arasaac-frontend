@@ -28,7 +28,7 @@ import { connect } from 'react-redux'
 import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
 import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth'
-import { changeLocale } from 'containers/LanguageProvider/actions'
+import { changeLocale, startTranslation, stopTranslation } from 'containers/LanguageProvider/actions'
 
 
 class App extends Component {
@@ -55,15 +55,15 @@ class App extends Component {
 
   handleTranslate = () => {
     if (!this.props.isTranslating) {
+      this.props.startTranslation()
       const script = document.createElement('script')
       script.src = '//cdn.crowdin.com/jipt/jipt.js'
       script.async = true
       document.body.appendChild(script)
-      this.props.changeLocale('af')
     }
     else {
-      // this.props.changeLocale('es')
-      window.location.href = "http://localhost:3000";
+      this.props.stopTranslation()
+      // window.location.href = "http://localhost:3000";
     }
   }
 
@@ -91,7 +91,7 @@ class App extends Component {
       LoadingBar: {
         position: 'fixed',
         height: 2,
-        backgroundColor: 'darkGreen',
+        backgroundColor: 'rgb(0, 188, 212)',
         top: 64,
         zIndex: 10000
       }
@@ -207,7 +207,7 @@ class App extends Component {
     }
     return (
       <div>
-        <LoadingBar style={styles.LoadingBar}/>
+        <LoadingBar updateTime={100} maxProgress={95} progressIncrease={20} style={styles.LoadingBar}/>
         <Header
           showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
@@ -241,4 +241,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps, {changeLocale})(withWidth()(App))
+export default connect(mapStateToProps, { changeLocale, startTranslation, stopTranslation })(withWidth()(App))

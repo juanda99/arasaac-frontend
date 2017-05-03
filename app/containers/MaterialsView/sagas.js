@@ -1,5 +1,6 @@
 import { take, takeLatest, call, put, cancel } from 'redux-saga/effects'
 import { LOCATION_CHANGE } from 'react-router-redux'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import api from 'services'
 import { MATERIALS, materials } from './actions'
 // import { AUTOCOMPLETE } from '../PictogramsView/actions'
@@ -7,8 +8,10 @@ import { MATERIALS, materials } from './actions'
 function* materialsGetData(action) {
   try {
     const { locale, searchText } = action.payload
+    yield put(showLoading())
     const response = yield call(api.fetchMaterials, locale, searchText)
     yield put(materials.success(locale, searchText, response))
+    yield put(hideLoading())
     /*
     const t0 = performance.now()
     // processs
@@ -19,6 +22,7 @@ function* materialsGetData(action) {
   } catch (error) {
     yield put(materials.failure(error.message))
   } finally {
+
     // When done, we tell Redux we're not in the middle of a request any more
     // yield put({type: SENDING_REQUEST, sending: false})
   }
