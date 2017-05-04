@@ -5,27 +5,25 @@
 */
 
 import React, { PropTypes } from 'react'
-import { Map } from 'immutable'
-import { Row, Col } from 'react-flexbox-grid'
-import SelectCatalog from './SelectCatalog'
-import SelectLicense from './SelectLicense'
-import SelectSize from './SelectSize'
-import SelectActivity from './SelectActivity'
-import SelectArea from './SelectArea'
-import SelectLanguage from './SelectLanguage'
+import { SelectCatalog as Catalog } from './SelectCatalog'
+import { SelectLicense as License } from './SelectLicense'
+import { SelectSize as Size } from './SelectSize'
+import { SelectActivity as Activity } from './SelectActivity'
+import { SelectArea as Area } from './SelectArea'
+import { SelectLanguage as Language } from './SelectLanguage'
 
 const Filters = ({ filters }) => (
-  <Row>
-    {filters.get('area') ? <Col xs={12} md={4}><SelectArea /></Col> : null}
-    {filters.get('activity') ? <Col xs={12} md={4}><SelectActivity /></Col> : null}
-    {filters.get('catalog') ? <Col xs={12} md={4}><SelectCatalog /></Col> : null}
-    {filters.get('size') ? <Col xs={12} md={4}><SelectSize /></Col> : null}
-    {filters.get('language') ? <Col xs={12} md={4}><SelectLanguage /></Col> : null}
-    {filters.get('license') ? <Col xs={12} md={4}><SelectLicense /></Col> : null}
-  </Row>
+  <div>
+    { filters.reverse().map((Filter, i) =>
+      <div>
+        <Filter key={i} />
+        <p>{Filter}</p>
+      </div>
+    )}
+  </div>
 )
 Filters.propTypes = {
-  filters: PropTypes.instanceOf(Map)
+  filters: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 export default Filters

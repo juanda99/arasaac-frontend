@@ -1,7 +1,9 @@
 import React from 'react'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-import FilterIcon from './FilterIcon'
+import { CardText } from 'material-ui/Card'
+import IconButton from 'material-ui/IconButton'
+import ActionHide from 'material-ui/svg-icons/action/highlight-off'
 import styles from './styles'
 
 class MultipleSelect extends React.Component {
@@ -28,12 +30,14 @@ class MultipleSelect extends React.Component {
     const { values } = this.state
     const { items } = this.props
     return (
-      <div style={styles.div}>
-        {values[0] ? <FilterIcon /> : null}
+      <CardText style={styles.card}>
+        <IconButton iconStyle={styles.icon} onTouchTap={this.handleHide} tooltip={''}>
+          <ActionHide />
+        </IconButton>
         <SelectField multiple={true} autoWidth={false} value={values} onChange={this.handleChange} style={styles.select}>
           {this.menuItems(values, items)}
         </SelectField>
-      </div>
+      </CardText>
     )
   }
 }

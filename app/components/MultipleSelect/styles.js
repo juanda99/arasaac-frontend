@@ -1,12 +1,9 @@
 const styles = {
   select: {
-    fontSize: 13,
-    width: '350px',
-    marginLeft: '48px'
+    fontSize: 13
   },
-  div: {
-    position: 'relative'
-  }
+  icon: { color: '#00bcd4' },
+  card: { marginTop: '-14px', paddingTop: 0, display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', flexWrap: 'wrap' }
 }
 
 export default styles
