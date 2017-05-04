@@ -41,7 +41,7 @@ class MultipleSelect extends React.Component {
     const { values } = this.state
     const { items } = this.props
     return (
-      <span>
+      <span style={styles.span}>
         <IconButton iconStyle={styles.icon} onTouchTap={this.handleHide} tooltip={''}>
           <ActionHide />
         </IconButton>
