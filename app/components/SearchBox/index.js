@@ -7,7 +7,7 @@
 import React, { PropTypes } from 'react'
 import { FormattedMessage } from 'react-intl'
 import Toggle from 'material-ui/Toggle'
-import Filters from 'components/Filters'
+import FilterList from 'components/Filters/FilterList'
 import { Map } from 'immutable'
 import SearchField from './SearchField'
 
@@ -21,7 +21,7 @@ const SearchBox = ({ value, dataSource, onSubmit, onChange, onToggleFilter, filt
       onToggle={onToggleFilter} defaultToggled={showFilter} style={{ width: '200px', float: 'right' }}
     />
     <SearchField value={value} dataSource={dataSource} onSubmit={onSubmit} onChange={onChange} />
-    {showFilter ? <Filters filters={['Area', 'Size']} /> : null}
+    {showFilter ? <FilterList types={['Catalog', 'Size', 'Activity', 'Area']} /> : null}
   </div>
 )
 

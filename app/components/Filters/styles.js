@@ -1,12 +1,6 @@
 const styles = {
-  select: {
-    fontSize: 13,
-    width: '350px',
-    marginLeft: '48px'
-  },
-  div: {
-    position: 'relative'
-  }
+  select: { fontSize: '14px', overflowY: 'hidden', verticalAlign: 'bottom' },
+  icon: { color: '#00bcd4', display: 'inline-flex', verticalAlign: 'bottom' }
 }
 
 export default styles
