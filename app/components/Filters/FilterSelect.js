@@ -3,13 +3,19 @@ import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
 import ActionHide from 'material-ui/svg-icons/action/highlight-off'
+import { FormattedMessage } from 'react-intl'
 import styles from './styles'
+import messages from './messages'
 
 class FilterSelect extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = { values: [] }
+  }
+
+  handle() {
+    this.setState({ values: [] })
   }
 
   handleChange = (event, index, values) => this.setState({ values })
@@ -52,7 +58,7 @@ class FilterSelect extends React.Component {
     if (multiple) multipleProps = { multiple }
     return (
       <span style={styles.span}>
-        <IconButton iconStyle={styles.icon} onTouchTap={this.handleHide} tooltip={''}>
+        <IconButton iconStyle={styles.icon} onTouchTap={this.handleHide} onClick={this.handleChange} tooltip={<FormattedMessage {...messages.filterTooltip} />}>
           <ActionHide />
         </IconButton>
         <SelectField

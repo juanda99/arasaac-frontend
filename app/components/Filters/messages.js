@@ -380,5 +380,10 @@ export default defineMessages({
     id: 'app.components.Filters.Language.chooseLanguage',
     description: 'Menu choose material language',
     defaultMessage: 'Language'
+  },
+  filterTooltip: {
+    id: 'app.components.Filters.filterTooltip',
+    description: 'Filter list of concepts',
+    defaultMessage: 'Clear filter'
   }
 })
