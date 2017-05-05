@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import { Row } from 'react-flexbox-grid'
 import Catalog from './Catalog'
 import License from './License'
 import Size from './Size'

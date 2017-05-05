@@ -1,51 +1,44 @@
 import React from 'react'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
-// import { FormattedMessage } from 'react-intl'
-import FilterIcon from './FilterIcon'
-// import messages from './messages'
-import styles from './styles'
+import { injectIntl, intlShape } from 'react-intl'
+import FilterSelect from './FilterSelect'
+import messages from './messages'
 
+const Language = ({ intl }) => {
+  const { formatMessage } = intl
+  const items = [
+    { value: 'da', primaryText: 'Dansk' },
+    { value: 'nl', primaryText: 'Nederlands' },
+    { value: 'en', primaryText: 'English' },
+    { value: 'fi', primaryText: 'Suomi' },
+    { value: 'fr', primaryText: 'Français' },
+    { value: 'de', primaryText: 'Deutsch' },
+    { value: 'hu', primaryText: 'Magyar' },
+    { value: 'it', primaryText: 'Italiano' },
+    { value: 'nb', primaryText: 'Norsk' },
+    { value: 'pt', primaryText: 'Português' },
+    { value: 'ro', primaryText: 'Român' },
+    { value: 'ru', primaryText: 'Русский язык' },
+    { value: 'es', primaryText: 'Español' },
+    { value: 'sv', primaryText: 'svenska' },
+    { value: 'tr', primaryText: 'Türkçe' },
+    { value: 'ara', primaryText: 'جزائري' },
+    { value: 'prs', primaryText: 'درى' },
+    { value: 'pes', primaryText: ' فارسى' },
+    { value: 'urd', primaryText: 'اردو' },
+    { value: 'zhs', primaryText: '简体中文' },
+    { value: 'zht', primaryText: '繁體中文' }
+  ]
 
-class SelectLanguage extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = { value: 1 }
+  const filterProps = {
+    floatingLabelText: formatMessage(messages.chooseLanguage),
+    multiple: false
   }
 
-  handleChange = (event, index, value) => this.setState({ value })
-
-  render() {
-    return (
-      <div style={styles.div}>
-        {this.state.value !== 1 ? <FilterIcon /> : null}
-        <SelectField autoWidth={true} value={this.state.value} onChange={this.handleChange} style={styles.select}>
-          <MenuItem value={'da'} primaryText='Dansk' />
-          <MenuItem value={'nl'} primaryText='Nederlands' />
-          <MenuItem value={'en'} primaryText='English' />
-          <MenuItem value={'fi'} primaryText='suomi' />
-          <MenuItem value={'fr'} primaryText='Français' />
-          <MenuItem value={'de'} primaryText='Deutsch' />
-          <MenuItem value={'hu'} primaryText='Magyar' />
-          <MenuItem value={'it'} primaryText='Italiano' />
-          <MenuItem value={'nb'} primaryText='Norsk' />
-          <MenuItem value={'pt'} primaryText='Português' />
-          <MenuItem value={'ro'} primaryText='Român' />
-          <MenuItem value={'ru'} primaryText='Русский язык' />
-          <MenuItem value={'es'} primaryText='Español' />
-          <MenuItem value={'sv'} primaryText='svenska' />
-          <MenuItem value={'tr'} primaryText='Türkçe' />
-          <MenuItem value={'ara'} primaryText='جزائري' />
-          <MenuItem value={'prs'} primaryText='درى' />
-          <MenuItem value={'pes'} primaryText=' فارسى' />
-          <MenuItem value={'urd'} primaryText='اردو' />
-          <MenuItem value={'zhs'} primaryText='简体中文' />
-          <MenuItem value={'zht'} primaryText='繁體中文' />
-        </SelectField>
-      </div>
-    )
-  }
+  return <FilterSelect items={items} {...filterProps} />
 }
 
-export default SelectLanguage
+Language.propTypes = {
+  intl: intlShape.isRequired
+}
+
+export default injectIntl(Language)

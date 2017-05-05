@@ -1,34 +1,26 @@
 import React from 'react'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
-import { FormattedMessage } from 'react-intl'
-import FilterIcon from './FilterIcon'
+import { injectIntl, intlShape } from 'react-intl'
+import FilterSelect from './FilterSelect'
 import messages from './messages'
-import styles from './styles'
 
-class SelectSize extends React.Component {
+const Size = ({ intl }) => {
+  const { formatMessage } = intl
+  const items = [
+    { value: 1, primaryText: formatMessage(messages.large) },
+    { value: 2, primaryText: formatMessage(messages.medium) },
+    { value: 3, primaryText: formatMessage(messages.small) }
+  ]
 
-  constructor(props) {
-    super(props)
-    this.state = { value: 1 }
+  const filterProps = {
+    floatingLabelText: formatMessage(messages.size),
+    multiple: false
   }
 
-  handleChange = (event, index, value) => this.setState({ value })
-
-  render() {
-    return (
-      <div style={styles.div}>
-        {this.state.value !== 1 ? <FilterIcon /> : null}
-        <SelectField autoWidth={true} value={this.state.value} onChange={this.handleChange} style={styles.select}>
-          <MenuItem value={1} label={<FormattedMessage {...messages.size} />} primaryText={<FormattedMessage {...messages.any} />} />
-          <MenuItem value={2} label={<FormattedMessage {...messages.large} />} primaryText={<FormattedMessage {...messages.largeChoose} />} />
-          <MenuItem value={3} label={<FormattedMessage {...messages.medium} />} primaryText={<FormattedMessage {...messages.mediumChoose} />} />
-          <MenuItem value={4} label={<FormattedMessage {...messages.small} />} primaryText={<FormattedMessage {...messages.smallChoose} />} />
-        </SelectField>
-      </div>
-    )
-  }
+  return <FilterSelect items={items} {...filterProps} />
 }
 
+Size.propTypes = {
+  intl: intlShape.isRequired
+}
 
-export default SelectSize
+export default injectIntl(Size)

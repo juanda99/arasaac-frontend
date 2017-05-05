@@ -6,70 +6,60 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  allCatalogs: {
-    id: 'app.components.Filters.SelectCatalog.all',
-    description: 'Menu choose catalog',
-    defaultMessage: 'All catalogs'
-  },
   catalog: {
-    id: 'app.components.Filters.SelectCatalog.catalog',
+    id: 'app.components.Filters.Catalog.catalog',
     description: 'Menu choose catalog initial text',
     defaultMessage: 'Catalog'
   },
   colorPictograms: {
-    id: 'app.components.Filters.SelectCatalog.colorPictograms',
+    id: 'app.components.Filters.Catalog.colorPictograms',
     description: 'Menu choose catalog',
     defaultMessage: 'Color pictograms'
   },
   blackAndWhitePictograms: {
-    id: 'app.components.Filters.SelectCatalog.blackAndWhitePictograms',
+    id: 'app.components.Filters.Catalog.blackAndWhitePictograms',
     description: 'Menu choose catalog',
     defaultMessage: 'Black and white pictograms'
   },
   pictures: {
-    id: 'app.components.Filters.SelectCatalog.pictures',
+    id: 'app.components.Filters.Catalog.pictures',
     description: 'Menu choose catalog',
     defaultMessage: 'Pictures'
   },
   lseVideos: {
-    id: 'app.components.Filters.SelectCatalog.lseVideos',
+    id: 'app.components.Filters.Catalog.lseVideos',
     description: 'Menu choose catalog',
     defaultMessage: 'LSE Videos'
   },
   lseColor: {
-    id: 'app.components.Filters.SelectCatalog.lseColor',
+    id: 'app.components.Filters.Catalog.lseColor',
     description: 'Menu choose catalog',
     defaultMessage: 'LSE Color'
   },
-  choose: {
-    id: 'app.components.Filters.SelectLicense.choose',
-    description: 'Menu choose license',
-    defaultMessage: 'Usage rights'
-  },
   reuseMofified: {
-    id: 'app.components.Filters.SelectLicense.reuseModified',
+    id: 'app.components.Filters.License.reuseModified',
     description: 'Menu choose license',
-    defaultMessage: 'Labeled for reuse with modification'
+    defaultMessage: 'Reuse with modification'
   },
   reuse: {
-    id: 'app.components.Filters.SelectLicense.reuse',
+    id: 'app.components.Filters.License.reuse',
     description: 'Menu choose license',
-    defaultMessage: 'Labeled for reuse'
+    defaultMessage: 'Reuse'
   },
   nonCommercialModified: {
-    id: 'app.components.Filters.SelectLicense.nonCommercialModified',
+    id: 'app.components.Filters.License.nonCommercialModified',
     description: 'Menu choose license',
-    defaultMessage: 'Labeled for noncommercial reuse with modification'
+    defaultMessage: 'Noncommercial reuse with modification'
   },
   nonCommercial: {
-    id: 'app.components.Filters.SelectLicense.nonCommercial',
+    id: 'app.components.Filters.License.nonCommercial',
     description: 'Menu choose license',
-    defaultMessage: 'Labeled for noncommercial reuse'
+    defaultMessage: 'Noncommercial reuse'
   },
-  all: {
-    id: 'app.components.Filters.SelectLicense.all',
+  license: {
+    id: 'app.components.Filters.License.license',
     description: 'Menu choose license',
-    defaultMessage: 'Not filtered by license'
+    defaultMessage: 'License'
   },
   size: {
     id: 'size.choose',
@@ -77,308 +67,318 @@ export default defineMessages({
     defaultMessage: 'Size'
   },
   any: {
-    id: 'app.components.Filters.SelectSize.any',
+    id: 'app.components.Filters.Size.any',
     description: 'Menu choose any Size',
     defaultMessage: 'Any size'
   },
   large: {
-    id: 'app.components.Filters.SelectSize.large',
+    id: 'app.components.Filters.Size.large',
     description: 'Menu display large size',
     defaultMessage: 'Large'
   },
   medium: {
-    id: 'app.components.Filters.SelectSize.medium',
+    id: 'app.components.Filters.Size.medium',
     description: 'Menu display medium size',
     defaultMessage: 'Medium'
   },
   small: {
-    id: 'app.components.Filters.SelectSize.small',
+    id: 'app.components.Filters.Size.small',
     description: 'Menu choose display small size',
     defaultMessage: 'Small'
   },
-  largeChoose: {
-    id: 'app.components.Filters.SelectSize.largeChoose',
-    description: 'Menu choose large size',
-    defaultMessage: 'Large, wider than 1000px'
-  },
-  mediumChoose: {
-    id: 'app.components.Filters.SelectSize.mediumChoose',
-    description: 'Menu choose meium size',
-    defaultMessage: 'Medium, width between 500px and 1000px'
-  },
-  smallChoose: {
-    id: 'app.components.Filters.SelectSize.smallChoose',
-    description: 'Menu choose small size',
-    defaultMessage: 'Small, wide less than 500px'
+  area: {
+    id: 'app.components.Filters.Area',
+    description: 'Menu choose material area',
+    defaultMessage: 'Area'
   },
   selfawareness: {
-    id: 'app.components.Filters.SelectArea.selfawareness',
+    id: 'app.components.Filters.Area.selfawareness',
     description: 'Menu choose material area',
     defaultMessage: 'Self-awareness and personal autonomy'
   },
   visualdiscrimination: {
-    id: 'app.components.Filters.SelectArea.visualdiscrimination',
+    id: 'app.components.Filters.Area.visualdiscrimination',
     description: 'Menu choose material area',
     defaultMessage: 'Visual discrimination'
   },
   auditorydiscrimination: {
-    id: 'app.components.Filters.SelectArea.auditorydiscrimination',
+    id: 'app.components.Filters.Area.auditorydiscrimination',
     description: 'Menu choose material area',
     defaultMessage: 'Auditory discrimination'
   },
+  language: {
+    id: 'app.components.Filters.Area.language',
+    description: 'Menu choose material area',
+    defaultMessage: 'Language'
+  },
   phonology: {
-    id: 'app.components.Filters.SelectArea.phonology',
+    id: 'app.components.Filters.Area.phonology',
     description: 'Menu choose material area',
     defaultMessage: 'Phonology'
   },
   morphosyntax: {
-    id: 'app.components.Filters.SelectArea.morphosyntax',
+    id: 'app.components.Filters.Area.morphosyntax',
     description: 'Menu choose material area',
     defaultMessage: 'Morphosyntax'
   },
   semantics: {
-    id: 'app.components.Filters.SelectArea.semantics',
+    id: 'app.components.Filters.Area.semantics',
     description: 'Menu choose material area',
     defaultMessage: 'Semantics'
   },
   pragmatics: {
-    id: 'app.components.Filters.SelectArea.pragmatics',
+    id: 'app.components.Filters.Area.pragmatics',
     description: 'Menu choose material area',
     defaultMessage: 'Pragmatics'
   },
   reading: {
-    id: 'app.components.Filters.SelectArea.reading',
+    id: 'app.components.Filters.Area.reading',
     description: 'Menu choose material area',
     defaultMessage: 'Reading'
   },
   writing: {
-    id: 'app.components.Filters.SelectArea.writing',
+    id: 'app.components.Filters.Area.writing',
     description: 'Menu choose material area',
     defaultMessage: 'Writing'
   },
   literature: {
-    id: 'app.components.Filters.SelectArea.literature',
+    id: 'app.components.Filters.Area.literature',
     description: 'Menu choose material area',
     defaultMessage: 'Literature'
   },
   languages: {
-    id: 'app.components.Filters.SelectArea.languages',
+    id: 'app.components.Filters.Area.languages',
     description: 'Menu choose material area',
     defaultMessage: 'Languages'
   },
-  numeration: {
-    id: 'app.components.Filters.SelectArea.numeration',
+  math: {
+    id: 'app.components.Filters.Area.math',
     description: 'Menu choose material area',
-    defaultMessage: 'Math: numeration'
+    defaultMessage: 'Math'
+  },
+  numeration: {
+    id: 'app.components.Filters.Area.numeration',
+    description: 'Menu choose material area',
+    defaultMessage: 'Numeration'
   },
   basicOperations: {
-    id: 'app.components.Filters.SelectArea.basicOperations',
+    id: 'app.components.Filters.Area.basicOperations',
     description: 'Menu choose material area',
     defaultMessage: 'Basic operations'
   },
   problems: {
-    id: 'app.components.Filters.SelectArea.problems',
+    id: 'app.components.Filters.Area.problems',
     description: 'Menu choose material area',
     defaultMessage: 'Problems'
   },
   geometry: {
-    id: 'app.components.Filters.SelectArea.geometry',
+    id: 'app.components.Filters.Area.geometry',
     description: 'Menu choose material area',
     defaultMessage: 'Geometry'
   },
   naturalSciences: {
-    id: 'app.components.Filters.SelectArea.naturalSciences',
+    id: 'app.components.Filters.Area.naturalSciences',
     description: 'Menu choose material area',
     defaultMessage: 'Natural Sciences'
   },
   socialSciences: {
-    id: 'app.components.Filters.SelectArea.socialSciences',
+    id: 'app.components.Filters.Area.socialSciences',
     description: 'Menu choose material area',
     defaultMessage: 'Social Sciences'
   },
   music: {
-    id: 'app.components.Filters.SelectArea.music',
+    id: 'app.components.Filters.Area.music',
     description: 'Menu choose material area',
     defaultMessage: 'Music'
   },
   art: {
-    id: 'app.components.Filters.SelectArea.art',
+    id: 'app.components.Filters.Area.art',
     description: 'Menu choose material area',
     defaultMessage: 'Art'
   },
   physicalEducation: {
-    id: 'app.components.Filters.SelectArea.physicalEducation',
+    id: 'app.components.Filters.Area.physicalEducation',
     description: 'Menu choose material area',
     defaultMessage: 'Physical Education'
   },
   religion: {
-    id: 'app.components.Filters.SelectArea.religion',
+    id: 'app.components.Filters.Area.religion',
     description: 'Menu choose material area',
     defaultMessage: 'Religion'
   },
   health: {
-    id: 'app.components.Filters.SelectArea.health',
+    id: 'app.components.Filters.Area.health',
     description: 'Menu choose material area',
     defaultMessage: 'Health'
   },
   leisure: {
-    id: 'app.components.Filters.SelectArea.leisure',
+    id: 'app.components.Filters.Area.leisure',
     description: 'Menu choose material area',
     defaultMessage: 'Leisure and culture'
   },
+  activity: {
+    id: 'app.components.Filters.Activity.activity',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Activity'
+  },
   lim: {
-    id: 'app.components.Filters.SelectActivity.lim',
+    id: 'app.components.Filters.Activity.lim',
     description: 'Menu choose material activity',
     defaultMessage: 'LIM'
   },
   picaa: {
-    id: 'app.components.Filters.SelectActivity.picaa',
+    id: 'app.components.Filters.Activity.picaa',
     description: 'Menu choose material activity',
     defaultMessage: 'Picaa'
   },
   animation: {
-    id: 'app.components.Filters.SelectActivity.animation',
+    id: 'app.components.Filters.Activity.animation',
     description: 'Menu choose material activity',
     defaultMessage: 'Animation'
   },
   software: {
-    id: 'app.components.Filters.SelectActivity.software',
+    id: 'app.components.Filters.Activity.software',
     description: 'Menu choose material activity',
     defaultMessage: 'Software'
   },
   araBoard: {
-    id: 'app.components.Filters.SelecActivity.araBoard',
+    id: 'app.components.Filters.Activity.araBoard',
     description: 'Menu choose material activity',
     defaultMessage: 'AraBoard'
   },
   board: {
-    id: 'app.components.Filters.SelecActivity.board',
+    id: 'app.components.Filters.Activity.board',
     description: 'Menu choose material activity',
     defaultMessage: 'Board'
   },
   bingo: {
-    id: 'app.components.Filters.SelecActivity.bingo',
+    id: 'app.components.Filters.Activity.bingo',
     description: 'Menu choose material activity',
     defaultMessage: 'Bingo'
   },
   song: {
-    id: 'app.components.Filters.SelectActivity.song',
+    id: 'app.components.Filters.Activity.song',
     description: 'Menu choose material activity',
     defaultMessage: 'Song'
   },
   notebook: {
-    id: 'app.components.Filters.SelectActivity.notebook',
+    id: 'app.components.Filters.Activity.notebook',
     description: 'Menu choose material activity',
     defaultMessage: 'Notebook'
   },
   story: {
-    id: 'app.components.Filters.SelectActivity.story',
+    id: 'app.components.Filters.Activity.story',
     description: 'Menu choose material activity',
     defaultMessage: 'Story'
   },
   multimedia: {
-    id: 'app.components.Filters.SelectActivity.multimedia',
+    id: 'app.components.Filters.Activity.multimedia',
     description: 'Menu choose material activity',
     defaultMessage: 'Multimedia'
   },
   domino: {
-    id: 'app.components.Filters.SelectActivity.domino',
+    id: 'app.components.Filters.Activity.domino',
     description: 'Menu choose material activity',
     defaultMessage: 'Domino'
   },
   game: {
-    id: 'app.components.Filters.SelectActivity.game',
+    id: 'app.components.Filters.Activity.game',
     description: 'Menu choose material activity',
     defaultMessage: 'Game'
   },
   group: {
-    id: 'app.components.Filters.SelectActivity.group',
+    id: 'app.components.Filters.Activity.group',
     description: 'Menu choose material activity',
     defaultMessage: 'Group'
   },
   exercise: {
-    id: 'app.components.Filters.SelectActivity.exercise',
+    id: 'app.components.Filters.Activity.exercise',
     description: 'Menu choose material activity',
     defaultMessage: 'Exercise'
   },
   jClic: {
-    id: 'app.components.Filters.SelectActivity.jClic',
+    id: 'app.components.Filters.Activity.jClic',
     description: 'Menu choose material activity',
     defaultMessage: 'JClic'
   },
   goose: {
-    id: 'app.components.Filters.SelectActivity.goose',
+    id: 'app.components.Filters.Activity.goose',
     description: 'Menu choose material activity',
     defaultMessage: 'Goose'
   },
   book: {
-    id: 'app.components.Filters.SelectActivity.book',
+    id: 'app.components.Filters.Activity.book',
     description: 'Menu choose material activity',
     defaultMessage: 'Book'
   },
   image: {
-    id: 'app.components.Filters.SelectActivity.image',
+    id: 'app.components.Filters.Activity.image',
     description: 'Menu choose material activity',
     defaultMessage: 'Image'
   },
   video: {
-    id: 'app.components.Filters.SelectActivity.video',
+    id: 'app.components.Filters.Activity.video',
     description: 'Menu choose material activity',
     defaultMessage: 'Video'
   },
   pictodroidLite: {
-    id: 'app.components.Filters.SelectActivity.pictodroidLite',
+    id: 'app.components.Filters.Activity.pictodroidLite',
     description: 'Menu choose material activity',
     defaultMessage: 'Pictodroid Lite'
   },
   digitalBoard: {
-    id: 'app.components.Filters.SelectActivity.digitalBoard',
+    id: 'app.components.Filters.Activity.digitalBoard',
     description: 'Menu choose material activity',
     defaultMessage: 'Digital Board'
   },
   slide: {
-    id: 'app.components.Filters.SelectActivity.slide',
+    id: 'app.components.Filters.Activity.slide',
     description: 'Menu choose material activity',
     defaultMessage: 'Slide'
   },
   protocol: {
-    id: 'app.components.Filters.SelectActivity.protocol',
+    id: 'app.components.Filters.Activity.protocol',
     description: 'Menu choose material activity',
     defaultMessage: 'Protocol'
   },
   routine: {
-    id: 'app.components.Filters.SelectActivity.routine',
+    id: 'app.components.Filters.Activity.routine',
     description: 'Menu choose material activity',
     defaultMessage: 'Routine'
   },
   signalling: {
-    id: 'app.components.Filters.SelectActivity.signalling',
+    id: 'app.components.Filters.Activity.signalling',
     description: 'Menu choose material activity',
     defaultMessage: 'Signalling'
   },
   sequence: {
-    id: 'app.components.Filters.SelectActivity.sequence',
+    id: 'app.components.Filters.Activity.sequence',
     description: 'Menu choose material activity',
     defaultMessage: 'Sequence'
   },
   smartNotebook: {
-    id: 'app.components.Filters.SelectActivity.smartNotebook',
+    id: 'app.components.Filters.Activity.smartNotebook',
     description: 'Menu choose material activity',
     defaultMessage: 'Smart Notebook'
   },
   tico: {
-    id: 'app.components.Filters.SelectActivity.tico',
+    id: 'app.components.Filters.Activity.tico',
     description: 'Menu choose material activity',
     defaultMessage: 'TICO'
   },
   test: {
-    id: 'app.components.Filters.SelectActivity.test',
+    id: 'app.components.Filters.Activity.test',
     description: 'Menu choose material activity',
     defaultMessage: 'Test'
   },
   socialHistory: {
-    id: 'app.components.Filters.SelectActivity.socialHistory',
+    id: 'app.components.Filters.Activity.socialHistory',
     description: 'Menu choose material activity',
     defaultMessage: 'Social History'
+  },
+  chooseLanguage: {
+    id: 'app.components.Filters.Language.chooseLanguage',
+    description: 'Menu choose material language',
+    defaultMessage: 'Language'
   }
 })

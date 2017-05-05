@@ -21,7 +21,8 @@ const SearchBox = ({ value, dataSource, onSubmit, onChange, onToggleFilter, filt
       onToggle={onToggleFilter} defaultToggled={showFilter} style={{ width: '200px', float: 'right' }}
     />
     <SearchField value={value} dataSource={dataSource} onSubmit={onSubmit} onChange={onChange} />
-    {showFilter ? <FilterList types={['Catalog', 'Size', 'Activity', 'Area']} /> : null}
+    {showFilter ? <FilterList types={['Catalog', 'Size', 'Activity', 'Area', 'License', 'Language']} /> : null}
+
   </div>
 )
 

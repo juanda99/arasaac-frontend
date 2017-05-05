@@ -1,34 +1,27 @@
 import React from 'react'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
-import { FormattedMessage } from 'react-intl'
-import FilterIcon from './FilterIcon'
+import { injectIntl, intlShape } from 'react-intl'
+import FilterSelect from './FilterSelect'
 import messages from './messages'
-import styles from './styles'
 
-class SelectLicense extends React.Component {
+const License = ({ intl }) => {
+  const { formatMessage } = intl
+  const items = [
+    { value: 1, primaryText: formatMessage(messages.reuseMofified) },
+    { value: 2, primaryText: formatMessage(messages.reuse) },
+    { value: 3, primaryText: formatMessage(messages.nonCommercialModified) },
+    { value: 4, primaryText: formatMessage(messages.nonCommercial) }
+  ]
 
-  constructor(props) {
-    super(props)
-    this.state = { value: 1 }
+  const filterProps = {
+    floatingLabelText: formatMessage(messages.license),
+    multiple: false
   }
 
-  handleChange = (event, index, value) => this.setState({ value })
-
-  render() {
-    return (
-      <div style={styles.div}>
-        {this.state.value !== 1 ? <FilterIcon /> : null}
-        <SelectField autoWidth={true} value={this.state.value} onChange={this.handleChange} style={styles.select}>
-          <MenuItem value={1} label={<FormattedMessage {...messages.choose} />} primaryText={<FormattedMessage {...messages.all} />} />
-          <MenuItem value={2} primaryText={<FormattedMessage {...messages.reuseMofified} />} />
-          <MenuItem value={3} primaryText={<FormattedMessage {...messages.reuse} />} />
-          <MenuItem value={4} primaryText={<FormattedMessage {...messages.nonCommercialModified} />} />
-          <MenuItem value={5} primaryText={<FormattedMessage {...messages.nonCommercial} />} />
-        </SelectField>
-      </div>
-    )
-  }
+  return <FilterSelect items={items} {...filterProps} />
 }
 
-export default SelectLicense
+License.propTypes = {
+  intl: intlShape.isRequired
+}
+
+export default injectIntl(License)

@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
 import ActionHide from 'material-ui/svg-icons/action/highlight-off'
 import styles from './styles'
 
-class MultipleSelect extends React.Component {
+class FilterSelect extends React.Component {
 
   constructor(props) {
     super(props)
@@ -15,39 +15,51 @@ class MultipleSelect extends React.Component {
   handleChange = (event, index, values) => this.setState({ values })
 
   menuItems(values, items) {
+    const { multiple } = this.props
     return items.map((item) => (
-      <MenuItem
+      multiple
+      ? <MenuItem
         key={item.primaryText}
         insetChildren={true}
         checked={values && values.includes(item.value)}
         {...item}
       />
-
+      : <MenuItem
+        key={item.primaryText}
+        {...item}
+      />
     ))
   }
-
-  selectionRenderer = (values) => {
-    switch (values.length) {
-      case 0:
-        return 'Areas'
-      case 1:
-        return this.props.items[values[0]].primaryText
-      default:
-        return `Areas: filtered (${values.length})`
-    }
+  /*
+  selectionRenderer = (values, item) => {
+    if (values[0]) {
+      switch (values.length) {
+        case 0:
+          return ''
+        case 1:
+          return this.props.items[values[0]].primaryText
+        default:
+          return `Areas: filtered (${values.length})`
+      }
+    } else return item
   }
-
+  */
   render() {
     const { values } = this.state
-    const { items } = this.props
+    const { items, floatingLabelText, multiple } = this.props
+    let multipleProps = {}
+    // useful for defining a selectionRenderer:
+    if (multiple) multipleProps = { multiple }
     return (
       <span style={styles.span}>
         <IconButton iconStyle={styles.icon} onTouchTap={this.handleHide} tooltip={''}>
           <ActionHide />
         </IconButton>
         <SelectField
-          multiple={true} autoWidth={true} value={values} onChange={this.handleChange}
-          style={styles.select} maxHeight={300} menuItemStyle={{ fontSize: '14px' }} selectionRenderer={this.selectionRenderer}
+          {...multipleProps}
+          autoWidth={true} value={values} onChange={this.handleChange}
+          style={styles.select} maxHeight={300} menuItemStyle={{ fontSize: '14px' }}
+          floatingLabelText={floatingLabelText}
         >
           {this.menuItems(values, items)}
         </SelectField>
@@ -56,11 +68,13 @@ class MultipleSelect extends React.Component {
   }
 }
 
-MultipleSelect.propTypes = {
-  items: React.PropTypes.arrayOf(React.PropTypes.shape({
-    value: React.PropTypes.number.isRequired,
-    primaryText: React.PropTypes.string.isRequired
-  })).isRequired
+FilterSelect.propTypes = {
+  items: PropTypes.arrayOf(React.PropTypes.shape({
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    primaryText: PropTypes.string.isRequired
+  })).isRequired,
+  multiple: PropTypes.bool,
+  floatingLabelText: PropTypes.string.isRequired
 }
 
-export default MultipleSelect
+export default FilterSelect

@@ -38,7 +38,11 @@ const Activity = ({ intl }) => {
     { value: 29, primaryText: formatMessage(messages.test) },
     { value: 30, primaryText: formatMessage(messages.socialHistory) }
   ]
-  return <FilterSelect items={items} />
+  const filterProps = {
+    floatingLabelText: formatMessage(messages.activity),
+    multiple: true
+  }
+  return <FilterSelect items={items} {...filterProps} />
 }
 
 Activity.propTypes = {
