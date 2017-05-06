@@ -3,16 +3,18 @@
  * MaterialsView
  *
  */
-
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Helmet from 'react-helmet'
-import SearchBox from 'components/SearchBox'
-// import MaterialList from 'components/MaterialList'
+import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
+import Helmet from 'react-helmet'
+import SearchField from 'components/SearchField'
+import Toggle from 'material-ui/Toggle'
+import FilterList from 'components/Filters'
 import { withRouter } from 'react-router'
 import { getFilteredItems } from 'utils'
 import { materials, toggleShowFilter } from './actions'
+import messages from './messages'
 
 class MaterialsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -49,13 +51,14 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
             { name: 'description', content: 'Description of PictogramsView' }
           ]}
         />
-        <SearchBox
-          value={searchText}
-          onSubmit={this.handleSubmit}
-          onToggleFilter={this.props.toggleShowFilter}
-          filters={filters}
-          showFilter={showFilter}
+        <Toggle
+          label={<FormattedMessage {...messages.advancedSearch} />}
+          onToggle={this.props.toggleShowFilter}
+          defaultToggled={showFilter}
+          style={{ width: '200px', float: 'right' }}
         />
+        <SearchField value={searchText} onSubmit={this.handleSubmit} />
+        {showFilter ? <FilterList filters={filters} /> : null}
         {gallery}
       </View>
     )
@@ -69,7 +72,7 @@ MaterialsView.propTypes = {
   toggleShowFilter: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   params: PropTypes.object.isRequired,
-  filters: PropTypes.object.isRequired,
+  filters: PropTypes.instanceOf(Map),
   showFilter: PropTypes.bool,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
   // Injected by React Router

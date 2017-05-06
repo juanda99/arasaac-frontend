@@ -3,44 +3,44 @@ import React from 'react'
 import { fromJS } from 'immutable'
 import Component from '../index'
 
-import SelectCatalog from '../SelectCatalog'
-import SelectLicense from '../SelectLicense'
-import SelectSize from '../SelectSize'
+import Catalog from '../Catalog'
+import License from '../License'
+import Size from '../Size'
 
 describe('<Filters />', () => {
-  it('should render a <SelectCatalog /> tag', () => {
+  it('should render a <Catalog /> tag', () => {
     const filters = fromJS({ catalog: true })
     const renderedComponent = shallow(<Component filters={filters} />)
-    expect(renderedComponent.contains(<SelectCatalog />)).toEqual(true)
+    expect(renderedComponent.contains(<Catalog />)).toEqual(true)
   })
-  it('should not render a <SelectCatalog /> tag', () => {
+  it('should not render a <Catalog /> tag', () => {
     const filters = fromJS({ catalog: false })
     // const renderedComponent = renderComponent({ filter })
     const renderedComponent = shallow(<Component filters={filters} />)
-    expect(renderedComponent.contains(<SelectCatalog />)).toEqual(false)
+    expect(renderedComponent.contains(<Catalog />)).toEqual(false)
   })
 
-  it('should render a <SelectSize /> tag', () => {
+  it('should render a <Size /> tag', () => {
     const filters = fromJS({ size: true })
     const renderedComponent = shallow(<Component filters={filters} />)
-    expect(renderedComponent.contains(<SelectSize />)).toEqual(true)
+    expect(renderedComponent.contains(<Size />)).toEqual(true)
   })
-  it('should not render a <SelectSize /> tag', () => {
+  it('should not render a <Size /> tag', () => {
     const filters = fromJS({ size: false })
     // const renderedComponent = renderComponent({ filter })
     const renderedComponent = shallow(<Component filters={filters} />)
-    expect(renderedComponent.contains(<SelectSize />)).toEqual(false)
+    expect(renderedComponent.contains(<Size />)).toEqual(false)
   })
 
   it('should render a <SelectLicense /> tag', () => {
     const filters = fromJS({ license: true })
     const renderedComponent = shallow(<Component filters={filters} />)
-    expect(renderedComponent.contains(<SelectLicense />)).toEqual(true)
+    expect(renderedComponent.contains(<License />)).toEqual(true)
   })
-  it('should not render a <SelectLicense /> tag', () => {
+  it('should not render a <License /> tag', () => {
     const filters = fromJS({ license: false })
     // const renderedComponent = renderComponent({ filter })
     const renderedComponent = shallow(<Component filters={filters} />)
-    expect(renderedComponent.contains(<SelectLicense />)).toEqual(false)
+    expect(renderedComponent.contains(<License />)).toEqual(false)
   })
 })

@@ -1,30 +1,42 @@
-  /**
-*
-* Filters
-*
-*/
-
 import React, { PropTypes } from 'react'
-import { SelectCatalog } from './SelectCatalog'
-import { SelectLicense } from './SelectLicense'
-import { SelectSize as Size } from './SelectSize'
-import { SelectActivity as Activity } from './SelectActivity'
-import { SelectArea as Area } from './SelectArea'
-import { SelectLanguage as Language } from './SelectLanguage'
+import { Map } from 'immutable'
+import Catalog from './Catalog'
+import License from './License'
+import Size from './Size'
+import Activity from './Activity'
+import Area from './Area'
+import Language from './Language'
 
-const Filters = ({ type }) => (
+const filters = { Catalog, License, Language, Size, Activity, Area }
+
+const FilterList = ({ filtersMap }) => (
   <div>
-    { types.reverse().map((type, i) =>
-      const Filter = 
-      <div>
-        <Filter key={i} />
-        <p>{Filter}</p>
-      </div>
-    )}
+    { filtersMap.reverse().mapKeys((type, values) => {
+      const Filter = filters[type]
+      return <Filter key={type} values={values} />
+    })}
   </div>
 )
-Filters.propTypes = {
-  type: PropTypes.arrayOf(PropTypes.string).isRequired
+
+FilterList.propTypes = {
+  filtersMap: PropTypes.instanceOf(Map)
 }
 
-export default Filters
+/*
+const filters = { Catalog, License, Language, Size, Activity, Area }
+
+const FilterList = ({ types }) => (
+  <div>
+    { types.reverse().map((type) => {
+      const Filter = filters[type]
+      return <Filter key={type} />
+    })}
+  </div>
+)
+
+FilterList.propTypes = {
+  types: PropTypes.arrayOf(PropTypes.string).isRequired
+}
+*/
+
+export default FilterList
