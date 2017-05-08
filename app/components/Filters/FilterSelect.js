@@ -52,12 +52,13 @@ class FilterSelect extends React.Component {
   */
   render() {
     const { values } = this.state
-    const { items, floatingLabelText, multiple } = this.props
+    const { items, floatingLabelText, multiple, key } = this.props
     let multipleProps = {}
     // useful for defining a selectionRenderer:
     if (multiple) multipleProps = { multiple }
+    console.log('key:' + key)
     return (
-      <span style={styles.span}>
+      <span key={key} style={styles.span}>
         <IconButton iconStyle={styles.icon} onTouchTap={this.handleHide} onClick={this.handleChange} tooltip={<FormattedMessage {...messages.filterTooltip} />}>
           <ActionHide />
         </IconButton>
@@ -80,7 +81,8 @@ FilterSelect.propTypes = {
     primaryText: PropTypes.string.isRequired
   })).isRequired,
   multiple: PropTypes.bool,
-  floatingLabelText: PropTypes.string.isRequired
+  floatingLabelText: PropTypes.string.isRequired,
+  key: PropTypes.string.isRequired
 }
 
 export default FilterSelect

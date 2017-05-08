@@ -15,9 +15,9 @@ export const initialState = fromJS({
   words: {},
   searchText: '',
   filters: {
-    license: [],
-    size: [],
-    catalog: []
+    License: [],
+    Size: [],
+    Catalog: []
   }
 })
 

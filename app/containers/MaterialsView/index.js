@@ -40,7 +40,6 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
     const { children, showFilter, filters, visibleMaterials } = this.props
     const searchText = this.props.params.searchText || ''
     const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials }) : null
-    console.log(filters.toJS())
     // this code in return is not so good if children changes (search, categories...)
     //  {visibleMaterials.length > 0 && <MaterialList materials={visibleMaterials} />}
     // {showFilter ? <FilterList filters={filters} /> : null}

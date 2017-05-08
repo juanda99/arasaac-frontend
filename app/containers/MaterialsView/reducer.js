@@ -16,10 +16,10 @@ export const initialState = fromJS({
   search: {},
   searchText: '',
   filters: {
-    activity: emptySet,
-    area: emptySet,
-    license: emptySet,
-    language: emptySet
+    Activity: emptySet,
+    Area: emptySet,
+    License: emptySet,
+    Language: emptySet
   }
 })
 

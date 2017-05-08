@@ -11,12 +11,15 @@ const filters = { Catalog, License, Language, Size, Activity, Area }
 
 const FilterList = ({ filtersMap }) => (
   <div>
-    { filtersMap.reverse().mapKeys((type, values) => {
-      console.log(type)
-      const Filter = filters[type]
+    { filtersMap.entrySeq().map((item) => {
+      const Filter = filters[item[0]]
+      console.log('item0: ' + item[0])
+      console.log('item1:' + item[1])
       // return <p key={type}></p>
-      return <Filter key={type} values={values} />
-    })}
+      // return <p>Ha entrado por aquí</p>
+      return <Filter values={item[1]} />
+    })
+    }
   </div>
 )
 
