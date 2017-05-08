@@ -13,7 +13,8 @@ const Size = ({ intl }) => {
 
   const filterProps = {
     floatingLabelText: formatMessage(messages.size),
-    multiple: false
+    multiple: false,
+    key: 'size'
   }
 
   return <FilterSelect items={items} {...filterProps} />

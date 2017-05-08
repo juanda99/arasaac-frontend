@@ -40,7 +40,8 @@ const Activity = ({ intl }) => {
   ]
   const filterProps = {
     floatingLabelText: formatMessage(messages.activity),
-    multiple: true
+    multiple: true,
+    key: 'activity'
   }
   return <FilterSelect items={items} {...filterProps} />
 }

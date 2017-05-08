@@ -13,7 +13,7 @@ import Toggle from 'material-ui/Toggle'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import { withRouter } from 'react-router'
-import { materials, toggleShowFilter } from './actions'
+import { materials, toggleShowFilter, addFilter, removeFilter } from './actions'
 import messages from './messages'
 
 class MaterialsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -40,10 +40,10 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
     const { children, showFilter, filters, visibleMaterials } = this.props
     const searchText = this.props.params.searchText || ''
     const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials }) : null
-    console.log(filters)
+    console.log(filters.toJS())
     // this code in return is not so good if children changes (search, categories...)
     //  {visibleMaterials.length > 0 && <MaterialList materials={visibleMaterials} />}
-    //
+    // {showFilter ? <FilterList filters={filters} /> : null}
     return (
       <View>
         <Helmet
@@ -59,7 +59,7 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
           style={{ width: '200px', float: 'right' }}
         />
         <SearchField value={searchText} onSubmit={this.handleSubmit} />
-        {showFilter ? <FilterList filters={filters} /> : null}
+        {showFilter ? <FilterList filtersMap={filters} /> : null}
         {gallery}
       </View>
     )
@@ -104,7 +104,13 @@ const mapDispatchToProps = (dispatch) => ({
   },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())
-  }
+  },
+  addFilter: (type, filterItem) => {
+    dispatch(addFilter(type, filterItem))
+  },
+  removeFilter: (type, filterItem) => {
+    dispatch(removeFilter(type, filterItem))
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MaterialsView))

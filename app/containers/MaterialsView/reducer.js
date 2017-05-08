@@ -4,8 +4,10 @@
  *
  */
 
-import { fromJS } from 'immutable'
-import { MATERIALS, SHOW_FILTERS } from './actions'
+import { fromJS, Set } from 'immutable'
+import { MATERIALS, SHOW_FILTERS, ADD_FILTER, REMOVE_FILTER } from './actions'
+
+const emptySet = Set(['prueba'])
 
 export const initialState = fromJS({
   showFilter: false,
@@ -14,14 +16,15 @@ export const initialState = fromJS({
   search: {},
   searchText: '',
   filters: {
-    activity: [],
-    area: [],
-    license: [],
-    language: []
+    activity: emptySet,
+    area: emptySet,
+    license: emptySet,
+    language: emptySet
   }
 })
 
 function materialsViewReducer(state = initialState, action) {
+  let filterSet
   switch (action.type) {
     case MATERIALS.REQUEST:
       return state
@@ -30,6 +33,7 @@ function materialsViewReducer(state = initialState, action) {
         .set('searchText', action.payload.searchText)
     case MATERIALS.SUCCESS:
       return state
+        .set('loading', false)
         .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data)
     case MATERIALS.FAILURE:
       return state
@@ -38,13 +42,14 @@ function materialsViewReducer(state = initialState, action) {
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))
-    case SHOW_FILTERS:
+    case ADD_FILTER:
+      filterSet = state.getIn(['filters', action.payload.type])
       return state
-        .set('showFilter', !state.get('showFilter'))
-    case SHOW_FILTERS:
+        .setIn(['filters', action.payload.type], filterSet.add(action.payload.value))
+    case REMOVE_FILTER:
+      filterSet = state.getIn(['filters', action.payload.type])
       return state
-        .set('showFilter', !state.get('showFilter'))
-
+        .setIn(['filters', action.payload.type], filterSet.remove(action.payload.value))
     default:
       return state
   }

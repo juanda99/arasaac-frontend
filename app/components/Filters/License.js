@@ -14,7 +14,8 @@ const License = ({ intl }) => {
 
   const filterProps = {
     floatingLabelText: formatMessage(messages.license),
-    multiple: false
+    multiple: false,
+    key: 'license'
   }
 
   return <FilterSelect items={items} {...filterProps} />

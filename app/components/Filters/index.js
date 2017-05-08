@@ -12,7 +12,9 @@ const filters = { Catalog, License, Language, Size, Activity, Area }
 const FilterList = ({ filtersMap }) => (
   <div>
     { filtersMap.reverse().mapKeys((type, values) => {
+      console.log(type)
       const Filter = filters[type]
+      // return <p key={type}></p>
       return <Filter key={type} values={values} />
     })}
   </div>

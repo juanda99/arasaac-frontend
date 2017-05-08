@@ -31,7 +31,8 @@ const Language = ({ intl }) => {
 
   const filterProps = {
     floatingLabelText: formatMessage(messages.chooseLanguage),
-    multiple: false
+    multiple: false,
+    key: 'language'
   }
 
   return <FilterSelect items={items} {...filterProps} />

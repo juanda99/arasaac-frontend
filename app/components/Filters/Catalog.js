@@ -4,7 +4,7 @@ import FilterSelect from './FilterSelect'
 import messages from './messages'
 
 const Catalog = ({ intl }) => {
-  const { formatMessage } = intl
+  const { formatMessage, key } = intl
   const items = [
     { value: 1, primaryText: formatMessage(messages.colorPictograms) },
     { value: 2, primaryText: formatMessage(messages.blackAndWhitePictograms) },
@@ -15,7 +15,8 @@ const Catalog = ({ intl }) => {
 
   const filterProps = {
     floatingLabelText: formatMessage(messages.catalog),
-    multiple: false
+    multiple: false,
+    key: 'catalog'
   }
 
   return <FilterSelect items={items} {...filterProps} />

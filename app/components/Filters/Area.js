@@ -35,7 +35,8 @@ const SelectArea = ({ intl }) => {
   ]
   const filterProps = {
     floatingLabelText: formatMessage(messages.area),
-    multiple: true
+    multiple: true,
+    key: 'area'
   }
   return <FilterSelect items={items} {...filterProps} />
 }
