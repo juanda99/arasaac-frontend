@@ -11,14 +11,14 @@ export const initialState = fromJS({
   showFilter: false,
   loading: false,
   error: false,
-  search: fromJS({}),
+  search: {},
   searchText: '',
-  filters: fromJS({
+  filters: {
     activity: [],
     area: [],
     license: [],
     language: []
-  })
+  }
 })
 
 function materialsViewReducer(state = initialState, action) {
@@ -38,6 +38,13 @@ function materialsViewReducer(state = initialState, action) {
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))
+    case SHOW_FILTERS:
+      return state
+        .set('showFilter', !state.get('showFilter'))
+    case SHOW_FILTERS:
+      return state
+        .set('showFilter', !state.get('showFilter'))
+
     default:
       return state
   }
