@@ -12,6 +12,7 @@ import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
 import Toggle from 'material-ui/Toggle'
 import FilterList from 'components/Filters'
+import { Map } from 'immutable'
 // import { createSelector } from 'reselect'
 import { withRouter } from 'react-router'
 import messages from './messages'
@@ -48,7 +49,7 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
 
   render() {
     const { children, showFilter, filters, keywords, pictoList } = this.props
-    const searchText = this.props.params.searchText
+    const searchText = this.props.params.searchText || ''
     // console.log(pictoList.length)
     const gallery = pictoList.length ? React.cloneElement(children, { data: pictoList }) : null
     // const gallery = React.cloneElement(children, { data: pictograms })
@@ -97,7 +98,7 @@ PictogramsView.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const filters = state.getIn(['configuration', 'filters', 'pictograms'])
+  const filters = state.getIn(['PictogramsView', 'filters'])
   // const filters = createSelector(selectFilters(), (fltrs) => (fltrs))(state)
   // console.log (filters.toJS())
   const showFilter = state.getIn(['pictogramsView', 'showFilter'])
@@ -111,7 +112,7 @@ const mapStateToProps = (state, ownProps) => {
     showFilter,
     pictoList,
     locale,
-    keywords: state.getIn(['pictogramsView', 'words', locale])
+    keywords: state.getIn(['pictogramsView', 'words', locale]) || []
   })
 }
 

@@ -50,7 +50,7 @@ class SearchField extends React.Component {
 
   render() {
     const { formatMessage } = this.props.intl
-    const dataSource = this.props.dataSource
+    const dataSource = this.props.dataSource || []
 
 
     return (
@@ -72,7 +72,7 @@ class SearchField extends React.Component {
 }
 
 SearchField.propTypes = {
-  dataSource: PropTypes.array.isRequired,
+  dataSource: PropTypes.array,
   intl: intlShape.isRequired,
   value: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,

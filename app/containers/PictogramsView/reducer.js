@@ -11,9 +11,14 @@ export const initialState = fromJS({
   showFilter: false,
   loading: false,
   error: false,
-  search: fromJS({}),
-  words: fromJS({}),
-  searchText: ''
+  search: {},
+  words: {},
+  searchText: '',
+  filters: {
+    license: [],
+    size: [],
+    catalog: []
+  }
 })
 
 function pictogramsViewReducer(state = initialState, action) {

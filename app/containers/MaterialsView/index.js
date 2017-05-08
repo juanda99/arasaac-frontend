@@ -10,9 +10,9 @@ import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
 import Toggle from 'material-ui/Toggle'
+import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import { withRouter } from 'react-router'
-import { getFilteredItems } from 'utils'
 import { materials, toggleShowFilter } from './actions'
 import messages from './messages'
 
@@ -38,8 +38,9 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
 
   render() {
     const { children, showFilter, filters, visibleMaterials } = this.props
-    const searchText = this.props.params.searchText
+    const searchText = this.props.params.searchText || ''
     const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials }) : null
+    console.log(filters)
     // this code in return is not so good if children changes (search, categories...)
     //  {visibleMaterials.length > 0 && <MaterialList materials={visibleMaterials} />}
     //
@@ -66,8 +67,6 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
 }
 
 MaterialsView.propTypes = {
-  // Injected by React Redux
-  // loadAutocomplete: PropTypes.func.isRequired,
   requestMaterials: PropTypes.func.isRequired,
   toggleShowFilter: PropTypes.func.isRequired,
   searchText: PropTypes.string,
@@ -83,14 +82,14 @@ MaterialsView.propTypes = {
 
 
 const mapStateToProps = (state, ownProps) => {
-  const filters = state.getIn(['configuration', 'filters', 'materials'])
+  const filters = state.getIn(['materialsView', 'filters'])
   const showFilter = state.getIn(['materialsView', 'showFilter'])
   const locale = state.get('language').get('locale')
-  const activeFilters = state.getIn(['materialsView', 'filters'])
+  // const activeFilters = state.getIn(['materialsView', 'filters'])
   const materialList = state.getIn(['materialsView', 'search', locale, ownProps.params.searchText]) || []
-  const visibleMaterials = activeFilters && activeFilters.size > 0 ? getFilteredItems(materialList, activeFilters.toJS()) : materialList
-  // const visibleMaterials = getFilteredItems(materialList, activeFilters)
-  // const visibleMaterials = getVisibleMaterials (materials, )
+  const visibleMaterials = materialList
+  // const visibleMaterials = activeFilters && activeFilters.size > 0 ? getFilteredItems(materialList, activeFilters.toJS()) : materialList
+
   return ({
     filters,
     showFilter,

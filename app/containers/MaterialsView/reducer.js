@@ -13,7 +13,12 @@ export const initialState = fromJS({
   error: false,
   search: fromJS({}),
   searchText: '',
-  filters: fromJS({})
+  filters: fromJS({
+    activity: [],
+    area: [],
+    license: [],
+    language: []
+  })
 })
 
 function materialsViewReducer(state = initialState, action) {
