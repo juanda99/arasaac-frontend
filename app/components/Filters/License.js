@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { injectIntl, intlShape } from 'react-intl'
 import FilterSelect from './FilterSelect'
 import messages from './messages'
 
-const License = ({ intl }) => {
+const License = ({ intl, addFilterItem, removeFilterItem, values }) => {
   const { formatMessage } = intl
   const items = [
     { value: 1, primaryText: formatMessage(messages.reuseMofified) },
@@ -15,14 +15,20 @@ const License = ({ intl }) => {
   const filterProps = {
     floatingLabelText: formatMessage(messages.license),
     multiple: false,
-    key: 'license'
+    addFilterItem,
+    removeFilterItem,
+    values,
+    filterType: 'License'
   }
 
   return <FilterSelect items={items} {...filterProps} />
 }
 
 License.propTypes = {
-  intl: intlShape.isRequired
+  intl: intlShape.isRequired,
+  addFilterItem: PropTypes.func.isRequired,
+  removeFilterItem: PropTypes.func.isRequired,
+  values: PropTypes.array
 }
 
 export default injectIntl(License)

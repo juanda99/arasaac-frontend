@@ -9,16 +9,11 @@ import messages from './messages'
 
 class FilterSelect extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = { values: [] }
-  }
 
-  handle() {
-    this.setState({ values: [] })
+  handleChange = (event, index, values) => {
+    console.log(values)
+    this.props.addFilterItem(this.props.filterType, values)
   }
-
-  handleChange = (event, index, values) => this.setState({ values })
 
   menuItems(values, items) {
     const { multiple } = this.props
@@ -51,15 +46,14 @@ class FilterSelect extends React.Component {
   }
   */
   render() {
-    const { values } = this.state
-    const { items, floatingLabelText, multiple, key } = this.props
+    const { values, items, floatingLabelText, multiple } = this.props
+    console.log('values:' + values)
     let multipleProps = {}
     // useful for defining a selectionRenderer:
     if (multiple) multipleProps = { multiple }
-    console.log('key:' + key)
     return (
-      <span key={key} style={styles.span}>
-        <IconButton iconStyle={styles.icon} onTouchTap={this.handleHide} onClick={this.handleChange} tooltip={<FormattedMessage {...messages.filterTooltip} />}>
+      <span style={styles.span}>
+        <IconButton iconStyle={styles.icon} onClick={this.handleChange} tooltip={<FormattedMessage {...messages.filterTooltip} />}>
           <ActionHide />
         </IconButton>
         <SelectField
@@ -82,7 +76,10 @@ FilterSelect.propTypes = {
   })).isRequired,
   multiple: PropTypes.bool,
   floatingLabelText: PropTypes.string.isRequired,
-  key: PropTypes.string.isRequired
+  values: PropTypes.array.isRequired,
+  addFilterItem: PropTypes.func.isRequired,
+  removeFilterItem: PropTypes.func.isRequired,
+  filterType: PropTypes.string.isRequired
 }
 
 export default FilterSelect

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { injectIntl, intlShape } from 'react-intl'
 import FilterSelect from './FilterSelect'
 import messages from './messages'
 
-const Activity = ({ intl }) => {
+const Activity = ({ intl, addFilterItem, removeFilterItem, values }) => {
   const { formatMessage } = intl
   const items = [
     { value: 0, primaryText: formatMessage(messages.lim) },
@@ -41,13 +41,20 @@ const Activity = ({ intl }) => {
   const filterProps = {
     floatingLabelText: formatMessage(messages.activity),
     multiple: true,
-    key: 'activity'
+    addFilterItem,
+    removeFilterItem,
+    values,
+    filterType: 'Activity'
+
   }
   return <FilterSelect items={items} {...filterProps} />
 }
 
 Activity.propTypes = {
-  intl: intlShape.isRequired
+  intl: intlShape.isRequired,
+  addFilterItem: PropTypes.func.isRequired,
+  removeFilterItem: PropTypes.func.isRequired,
+  values: PropTypes.array
 }
 
 export default injectIntl(Activity)

@@ -13,7 +13,7 @@ import Toggle from 'material-ui/Toggle'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import { withRouter } from 'react-router'
-import { materials, toggleShowFilter, addFilter, removeFilter } from './actions'
+import { materials, toggleShowFilter, addFilterItem, removeFilterItem } from './actions'
 import messages from './messages'
 
 class MaterialsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -42,7 +42,6 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
     const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials }) : null
     // this code in return is not so good if children changes (search, categories...)
     //  {visibleMaterials.length > 0 && <MaterialList materials={visibleMaterials} />}
-    // {showFilter ? <FilterList filters={filters} /> : null}
     return (
       <View>
         <Helmet
@@ -58,7 +57,7 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
           style={{ width: '200px', float: 'right' }}
         />
         <SearchField value={searchText} onSubmit={this.handleSubmit} />
-        {showFilter ? <FilterList filtersMap={filters} /> : null}
+        {showFilter ? <FilterList filtersMap={filters} addFilterItem={this.props.addFilterItem} removeFilterItem={this.props.removeFilterItem} /> : null}
         {gallery}
       </View>
     )
@@ -72,6 +71,8 @@ MaterialsView.propTypes = {
   params: PropTypes.object.isRequired,
   filters: PropTypes.instanceOf(Map),
   showFilter: PropTypes.bool,
+  addFilterItem: PropTypes.func.isRequired,
+  removeFilterItem: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
   // Injected by React Router
   children: PropTypes.node,
@@ -104,12 +105,12 @@ const mapDispatchToProps = (dispatch) => ({
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())
   },
-  addFilter: (type, filterItem) => {
-    dispatch(addFilter(type, filterItem))
+  addFilterItem: (type, filterItem) => {
+    dispatch(addFilterItem(type, filterItem))
   },
-  removeFilter: (type, filterItem) => {
-    dispatch(removeFilter(type, filterItem))
-  },
+  removeFilterItem: (type, filterItem) => {
+    dispatch(removeFilterItem(type, filterItem))
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MaterialsView))

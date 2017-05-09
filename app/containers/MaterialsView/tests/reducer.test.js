@@ -1,6 +1,6 @@
 import { fromJS, Set } from 'immutable'
 import materialsViewReducer, { initialState } from '../reducer'
-import { materials, toggleShowFilter, addFilter, removeFilter } from '../actions'
+import { materials, toggleShowFilter, addFilterItem, removeFilterItem } from '../actions'
 
 describe('materialsViewReducer', () => {
   let state
@@ -56,24 +56,24 @@ describe('materialsViewReducer', () => {
     expect(materialsViewReducer(state, materials.success(locale, searchText, data))).toEqual(expectedResult)
   })
 
-  it('should handle the addFilter action correctly', () => {
-    const type = 'license'
-    const filter = 'testLicense'
+  it('should handle the addFilterItem action correctly', () => {
+    const type = 'License'
+    const filterItem = 'testLicense'
     const expectedResult = state
       .set('loading', false)
-      .setIn(['filters', type], Set([filter]))
-    expect(materialsViewReducer(state, addFilter(type, filter))).toEqual(expectedResult)
+      .setIn(['filters', type], Set([filterItem]))
+    expect(materialsViewReducer(state, addFilterItem(type, filterItem))).toEqual(expectedResult)
   })
 
-  it('should handle the removeFilter action correctly', () => {
-    const type = 'license'
-    const actualFilter = ['testLicense', 'testToDelete']
-    const filter = 'testToDelete'
+  it('should handle the removeFilterItem action correctly', () => {
+    const filter = 'License'
+    const actualFilterItems = ['testLicense', 'testToDelete']
+    const filterItem = 'testToDelete'
     const testState = state
-      .setIn(['filters', type], Set(actualFilter))
+      .setIn(['filters', filter], Set(actualFilterItems))
     const expectedResult = state
       .set('loading', false)
-      .setIn(['filters', type], Set(['testLicense']))
-    expect(materialsViewReducer(testState, removeFilter(type, filter))).toEqual(expectedResult)
+      .setIn(['filters', filter], Set(['testLicense']))
+    expect(materialsViewReducer(testState, removeFilterItem(filter, filterItem))).toEqual(expectedResult)
   })
 })

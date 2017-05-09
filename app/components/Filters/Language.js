@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { injectIntl, intlShape } from 'react-intl'
 import FilterSelect from './FilterSelect'
 import messages from './messages'
 
-const Language = ({ intl }) => {
+const Language = ({ intl, addFilterItem, removeFilterItem, values }) => {
   const { formatMessage } = intl
   const items = [
     { value: 'da', primaryText: 'Dansk' },
@@ -32,14 +32,22 @@ const Language = ({ intl }) => {
   const filterProps = {
     floatingLabelText: formatMessage(messages.chooseLanguage),
     multiple: false,
-    key: 'language'
+    addFilterItem,
+    removeFilterItem,
+    values,
+    filterType: 'Language'
   }
 
   return <FilterSelect items={items} {...filterProps} />
 }
 
 Language.propTypes = {
-  intl: intlShape.isRequired
+  intl: intlShape.isRequired,
+  addFilterItem: PropTypes.func.isRequired,
+  removeFilterItem: PropTypes.func.isRequired,
+  values: PropTypes.array,
+  addFilterItem: PropTypes.func.isRequired,
+  removeFilterItem: PropTypes.func.isRequired
 }
 
 export default injectIntl(Language)

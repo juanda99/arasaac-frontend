@@ -9,22 +9,21 @@ import Language from './Language'
 
 const filters = { Catalog, License, Language, Size, Activity, Area }
 
-const FilterList = ({ filtersMap }) => (
+const FilterList = ({ filtersMap, addFilterItem, removeFilterItem }) => (
   <div>
     { filtersMap.entrySeq().map((item) => {
       const Filter = filters[item[0]]
-      console.log('item0: ' + item[0])
-      console.log('item1:' + item[1])
-      // return <p key={type}></p>
-      // return <p>Ha entrado por aquí</p>
-      return <Filter values={item[1]} />
+      const values = item[1].toJSON() // convert Immutable.Set to Array
+      return <Filter key={item[0]} values={values} addFilterItem={addFilterItem} removeFilterItem={removeFilterItem} />
     })
     }
   </div>
 )
 
 FilterList.propTypes = {
-  filtersMap: PropTypes.instanceOf(Map)
+  filtersMap: PropTypes.instanceOf(Map).isRequired,
+  addFilterItem: PropTypes.func.isRequired,
+  removeFilterItem: PropTypes.func.isRequired
 }
 
 /*

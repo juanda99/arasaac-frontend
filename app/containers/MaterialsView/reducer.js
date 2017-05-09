@@ -5,9 +5,9 @@
  */
 
 import { fromJS, Set } from 'immutable'
-import { MATERIALS, SHOW_FILTERS, ADD_FILTER, REMOVE_FILTER } from './actions'
+import { MATERIALS, SHOW_FILTERS, ADD_FILTER_ITEM, REMOVE_FILTER_ITEM } from './actions'
 
-const emptySet = Set(['prueba'])
+const emptySet = Set([])
 
 export const initialState = fromJS({
   showFilter: false,
@@ -42,14 +42,14 @@ function materialsViewReducer(state = initialState, action) {
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))
-    case ADD_FILTER:
-      filterSet = state.getIn(['filters', action.payload.type])
+    case ADD_FILTER_ITEM:
+      filterSet = state.getIn(['filters', action.payload.filter])
       return state
-        .setIn(['filters', action.payload.type], filterSet.add(action.payload.value))
-    case REMOVE_FILTER:
-      filterSet = state.getIn(['filters', action.payload.type])
+        .setIn(['filters', action.payload.filter], filterSet.add(action.payload.value))
+    case REMOVE_FILTER_ITEM:
+      filterSet = state.getIn(['filters', action.payload.filter])
       return state
-        .setIn(['filters', action.payload.type], filterSet.remove(action.payload.value))
+        .setIn(['filters', action.payload.filter], filterSet.remove(action.payload.value))
     default:
       return state
   }
