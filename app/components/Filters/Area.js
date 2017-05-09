@@ -3,7 +3,7 @@ import { injectIntl, intlShape } from 'react-intl'
 import FilterSelect from './FilterSelect'
 import messages from './messages'
 
-const SelectArea = ({ intl, addFilterItem, removeFilterItem, values }) => {
+const SelectArea = ({ intl, setFilterItems, values }) => {
   const { formatMessage } = intl
   const items = [
     { value: 0, primaryText: formatMessage(messages.selfawareness) },
@@ -36,8 +36,7 @@ const SelectArea = ({ intl, addFilterItem, removeFilterItem, values }) => {
   const filterProps = {
     floatingLabelText: formatMessage(messages.area),
     multiple: true,
-    addFilterItem,
-    removeFilterItem,
+    setFilterItems,
     values,
     filterType: 'Area'
   }
@@ -46,8 +45,7 @@ const SelectArea = ({ intl, addFilterItem, removeFilterItem, values }) => {
 
 SelectArea.propTypes = {
   intl: intlShape.isRequired,
-  addFilterItem: PropTypes.func.isRequired,
-  removeFilterItem: PropTypes.func.isRequired,
+  setFilterItems: PropTypes.func.isRequired,
   values: PropTypes.array
 }
 

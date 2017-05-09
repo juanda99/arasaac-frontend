@@ -10,10 +10,9 @@ import messages from './messages'
 class FilterSelect extends React.Component {
 
 
-  handleChange = (event, index, values) => {
-    console.log(values)
-    this.props.addFilterItem(this.props.filterType, values)
-  }
+  handleChange = (event, index, values) => { this.props.setFilterItems(this.props.filterType, values) }
+
+  handleReset = () => { this.props.setFilterItems(this.props.filterType, []) }
 
   menuItems(values, items) {
     const { multiple } = this.props
@@ -47,13 +46,12 @@ class FilterSelect extends React.Component {
   */
   render() {
     const { values, items, floatingLabelText, multiple } = this.props
-    console.log('values:' + values)
     let multipleProps = {}
     // useful for defining a selectionRenderer:
     if (multiple) multipleProps = { multiple }
     return (
       <span style={styles.span}>
-        <IconButton iconStyle={styles.icon} onClick={this.handleChange} tooltip={<FormattedMessage {...messages.filterTooltip} />}>
+        <IconButton iconStyle={styles.icon} onClick={this.handleReset} tooltip={<FormattedMessage {...messages.filterTooltip} />}>
           <ActionHide />
         </IconButton>
         <SelectField
@@ -76,9 +74,8 @@ FilterSelect.propTypes = {
   })).isRequired,
   multiple: PropTypes.bool,
   floatingLabelText: PropTypes.string.isRequired,
-  values: PropTypes.array.isRequired,
-  addFilterItem: PropTypes.func.isRequired,
-  removeFilterItem: PropTypes.func.isRequired,
+  values: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]).isRequired,
+  setFilterItems: PropTypes.func.isRequired,
   filterType: PropTypes.string.isRequired
 }
 

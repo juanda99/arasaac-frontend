@@ -11,13 +11,13 @@ import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
 import Toggle from 'material-ui/Toggle'
-import FilterList from 'components/Filters/index'
+import FilterList from 'components/Filters'
 import { Map } from 'immutable'
 // import { createSelector } from 'reselect'
 import { withRouter } from 'react-router'
 import messages from './messages'
 // import { selectFilters } from 'containers/ToggleFilter/selectors'
-import { autocomplete, pictograms, toggleShowFilter } from './actions'
+import { autocomplete, pictograms, toggleShowFilter, setFilterItems } from './actions'
 // import { selectShowFilter, selectPictogramsBySearchKey } from './selectors'
 
 // import selectPictogramsView from './selectors'
@@ -72,7 +72,7 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
           dataSource={keywords}
           onSubmit={this.handleSubmit}
         />
-        {showFilter ? <FilterList types={filters} /> : null}
+        {showFilter ? <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} /> : null}
         {gallery}
       </View>
     )
@@ -90,6 +90,7 @@ PictogramsView.propTypes = {
   params: PropTypes.object.isRequired,
   filters: PropTypes.instanceOf(Map),
   showFilter: PropTypes.bool,
+  setFilterItems: PropTypes.func.isRequired,
   // Injected by React Router
   children: PropTypes.node,
   router: PropTypes.any.isRequired,
@@ -98,7 +99,7 @@ PictogramsView.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const filters = state.getIn(['PictogramsView', 'filters'])
+  const filters = state.getIn(['pictogramsView', 'filters'])
   // const filters = createSelector(selectFilters(), (fltrs) => (fltrs))(state)
   // console.log (filters.toJS())
   const showFilter = state.getIn(['pictogramsView', 'showFilter'])
@@ -125,6 +126,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   requestAutocomplete: (searchText) => {
     dispatch(autocomplete.request(searchText))
+  },
+  setFilterItems: (filter, filterItem) => {
+    dispatch(setFilterItems(filter, filterItem))
   }
 })
 

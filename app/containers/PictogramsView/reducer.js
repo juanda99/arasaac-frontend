@@ -5,7 +5,7 @@
  */
 
 import { fromJS } from 'immutable'
-import { PICTOGRAMS, AUTOCOMPLETE, SHOW_FILTERS } from './actions'
+import { PICTOGRAMS, AUTOCOMPLETE, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
 
 export const initialState = fromJS({
   showFilter: false,
@@ -50,6 +50,9 @@ function pictogramsViewReducer(state = initialState, action) {
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))
+    case SET_FILTER_ITEMS:
+      return state
+        .setIn(['filters', action.payload.filter], action.payload.values)
     default:
       return state
   }

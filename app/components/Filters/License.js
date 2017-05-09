@@ -3,7 +3,7 @@ import { injectIntl, intlShape } from 'react-intl'
 import FilterSelect from './FilterSelect'
 import messages from './messages'
 
-const License = ({ intl, addFilterItem, removeFilterItem, values }) => {
+const License = ({ intl, setFilterItems, values }) => {
   const { formatMessage } = intl
   const items = [
     { value: 1, primaryText: formatMessage(messages.reuseMofified) },
@@ -15,8 +15,7 @@ const License = ({ intl, addFilterItem, removeFilterItem, values }) => {
   const filterProps = {
     floatingLabelText: formatMessage(messages.license),
     multiple: false,
-    addFilterItem,
-    removeFilterItem,
+    setFilterItems,
     values,
     filterType: 'License'
   }
@@ -26,9 +25,8 @@ const License = ({ intl, addFilterItem, removeFilterItem, values }) => {
 
 License.propTypes = {
   intl: intlShape.isRequired,
-  addFilterItem: PropTypes.func.isRequired,
-  removeFilterItem: PropTypes.func.isRequired,
-  values: PropTypes.array
+  setFilterItems: PropTypes.func.isRequired,
+  values: PropTypes.oneOfType([PropTypes.number, PropTypes.array]).isRequired
 }
 
 export default injectIntl(License)

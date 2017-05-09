@@ -4,10 +4,8 @@
  *
  */
 
-import { fromJS, Set } from 'immutable'
-import { MATERIALS, SHOW_FILTERS, ADD_FILTER_ITEM, REMOVE_FILTER_ITEM } from './actions'
-
-const emptySet = Set([])
+import { fromJS } from 'immutable'
+import { MATERIALS, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
 
 export const initialState = fromJS({
   showFilter: false,
@@ -16,15 +14,14 @@ export const initialState = fromJS({
   search: {},
   searchText: '',
   filters: {
-    Activity: emptySet,
-    Area: emptySet,
-    License: emptySet,
-    Language: emptySet
+    Activity: [],
+    Area: [],
+    License: '',
+    Language: ''
   }
 })
 
 function materialsViewReducer(state = initialState, action) {
-  let filterSet
   switch (action.type) {
     case MATERIALS.REQUEST:
       return state
@@ -42,14 +39,9 @@ function materialsViewReducer(state = initialState, action) {
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))
-    case ADD_FILTER_ITEM:
-      filterSet = state.getIn(['filters', action.payload.filter])
+    case SET_FILTER_ITEMS:
       return state
-        .setIn(['filters', action.payload.filter], filterSet.add(action.payload.value))
-    case REMOVE_FILTER_ITEM:
-      filterSet = state.getIn(['filters', action.payload.filter])
-      return state
-        .setIn(['filters', action.payload.filter], filterSet.remove(action.payload.value))
+        .setIn(['filters', action.payload.filter], action.payload.values)
     default:
       return state
   }

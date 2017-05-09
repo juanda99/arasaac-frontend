@@ -9,12 +9,12 @@ import Language from './Language'
 
 const filters = { Catalog, License, Language, Size, Activity, Area }
 
-const FilterList = ({ filtersMap, addFilterItem, removeFilterItem }) => (
+const FilterList = ({ filtersMap, setFilterItems }) => (
   <div>
     { filtersMap.entrySeq().map((item) => {
       const Filter = filters[item[0]]
-      const values = item[1].toJSON() // convert Immutable.Set to Array
-      return <Filter key={item[0]} values={values} addFilterItem={addFilterItem} removeFilterItem={removeFilterItem} />
+      // const values = item[1].toJSON() // convert Immutable.Set to Array
+      return <Filter key={item[0]} values={item[1]} setFilterItems={setFilterItems} />
     })
     }
   </div>
@@ -22,8 +22,7 @@ const FilterList = ({ filtersMap, addFilterItem, removeFilterItem }) => (
 
 FilterList.propTypes = {
   filtersMap: PropTypes.instanceOf(Map).isRequired,
-  addFilterItem: PropTypes.func.isRequired,
-  removeFilterItem: PropTypes.func.isRequired
+  setFilterItems: PropTypes.func.isRequired
 }
 
 /*

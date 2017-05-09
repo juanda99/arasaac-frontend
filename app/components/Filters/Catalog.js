@@ -3,7 +3,7 @@ import { injectIntl, intlShape } from 'react-intl'
 import FilterSelect from './FilterSelect'
 import messages from './messages'
 
-const Catalog = ({ intl, addFilterItem, removeFilterItem, values }) => {
+const Catalog = ({ intl, setFilterItems, values }) => {
   const { formatMessage } = intl
   const items = [
     { value: 1, primaryText: formatMessage(messages.colorPictograms) },
@@ -16,8 +16,7 @@ const Catalog = ({ intl, addFilterItem, removeFilterItem, values }) => {
   const filterProps = {
     floatingLabelText: formatMessage(messages.catalog),
     multiple: false,
-    addFilterItem,
-    removeFilterItem,
+    setFilterItems,
     values,
     filterType: 'Catalog'
   }
@@ -27,8 +26,7 @@ const Catalog = ({ intl, addFilterItem, removeFilterItem, values }) => {
 
 Catalog.propTypes = {
   intl: intlShape.isRequired,
-  addFilterItem: PropTypes.func.isRequired,
-  removeFilterItem: PropTypes.func.isRequired,
+  setFilterItems: PropTypes.func.isRequired,
   values: PropTypes.array
 }
 

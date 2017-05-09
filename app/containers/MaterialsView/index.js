@@ -13,7 +13,7 @@ import Toggle from 'material-ui/Toggle'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import { withRouter } from 'react-router'
-import { materials, toggleShowFilter, addFilterItem, removeFilterItem } from './actions'
+import { materials, toggleShowFilter, setFilterItems } from './actions'
 import messages from './messages'
 
 class MaterialsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -57,7 +57,7 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
           style={{ width: '200px', float: 'right' }}
         />
         <SearchField value={searchText} onSubmit={this.handleSubmit} />
-        {showFilter ? <FilterList filtersMap={filters} addFilterItem={this.props.addFilterItem} removeFilterItem={this.props.removeFilterItem} /> : null}
+        {showFilter ? <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} /> : null}
         {gallery}
       </View>
     )
@@ -71,8 +71,7 @@ MaterialsView.propTypes = {
   params: PropTypes.object.isRequired,
   filters: PropTypes.instanceOf(Map),
   showFilter: PropTypes.bool,
-  addFilterItem: PropTypes.func.isRequired,
-  removeFilterItem: PropTypes.func.isRequired,
+  setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
   // Injected by React Router
   children: PropTypes.node,
@@ -105,11 +104,8 @@ const mapDispatchToProps = (dispatch) => ({
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())
   },
-  addFilterItem: (type, filterItem) => {
-    dispatch(addFilterItem(type, filterItem))
-  },
-  removeFilterItem: (type, filterItem) => {
-    dispatch(removeFilterItem(type, filterItem))
+  setFilterItems: (filter, filterItem) => {
+    dispatch(setFilterItems(filter, filterItem))
   }
 })
 
