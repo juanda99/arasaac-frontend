@@ -214,6 +214,7 @@
     ],
     "moduleNameMapper": {
       ".*\\.(css|less|styl|scss|sass)$": "<rootDir>/internals/mocks/cssModule.js",
+      "^.+\\.css$": "identity-obj-proxy",
       ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/image.js"
     },
     "setupTestFrameworkScriptFile": "<rootDir>/internals/testing/test-bundler.js",
@@ -228,6 +229,7 @@
     "classnames": "^2.2.5",
     "compression": "1.6.2",
     "cross-env": "3.1.3",
+    "d": "^1.0.0",
     "express": "4.14.0",
     "flexboxgrid": "^6.3.1",
     "fontfaceobserver": "2.0.7",
@@ -305,6 +307,7 @@
     "file-loader": "0.9.0",
     "html-loader": "0.4.4",
     "html-webpack-plugin": "2.24.1",
+    "identity-obj-proxy": "^3.0.0",
     "image-webpack-loader": "2.0.0",
     "imports-loader": "0.6.5",
     "jest-cli": "18.0.0",
@@ -319,6 +322,7 @@
     "plop": "1.7.3",
     "pre-commit": "1.1.3",
     "react-addons-test-utils": "15.4.1",
+    "react-test-renderer": "^15.5.4",
     "rimraf": "2.5.4",
     "shelljs": "0.7.5",
     "sinon": "2.0.0-pre",
