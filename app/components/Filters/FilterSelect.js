@@ -45,7 +45,8 @@ class FilterSelect extends React.Component {
   }
   */
   render() {
-    const { values, items, floatingLabelText, multiple } = this.props
+    // filterType will be used also as id, see https://github.com/callemall/material-ui/issues/6834
+    const { values, items, floatingLabelText, multiple, filterType } = this.props
     let multipleProps = {}
     // useful for defining a selectionRenderer:
     if (multiple) multipleProps = { multiple }
@@ -59,6 +60,7 @@ class FilterSelect extends React.Component {
           autoWidth={true} value={values} onChange={this.handleChange}
           style={styles.select} maxHeight={300} menuItemStyle={{ fontSize: '14px' }}
           floatingLabelText={floatingLabelText}
+          id={filterType}
         >
           {this.menuItems(values, items)}
         </SelectField>

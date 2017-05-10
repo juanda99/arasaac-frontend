@@ -13,7 +13,6 @@ const FilterList = ({ filtersMap, setFilterItems }) => (
   <div>
     { filtersMap.entrySeq().map((item) => {
       const Filter = filters[item[0]]
-      // const values = item[1].toJSON() // convert Immutable.Set to Array
       return <Filter key={item[0]} values={item[1]} setFilterItems={setFilterItems} />
     })
     }
@@ -24,22 +23,5 @@ FilterList.propTypes = {
   filtersMap: PropTypes.instanceOf(Map).isRequired,
   setFilterItems: PropTypes.func.isRequired
 }
-
-/*
-const filters = { Catalog, License, Language, Size, Activity, Area }
-
-const FilterList = ({ types }) => (
-  <div>
-    { types.reverse().map((type) => {
-      const Filter = filters[type]
-      return <Filter key={type} />
-    })}
-  </div>
-)
-
-FilterList.propTypes = {
-  types: PropTypes.arrayOf(PropTypes.string).isRequired
-}
-*/
 
 export default FilterList
