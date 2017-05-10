@@ -214,7 +214,6 @@
     ],
     "moduleNameMapper": {
       ".*\\.(css|less|styl|scss|sass)$": "<rootDir>/internals/mocks/cssModule.js",
-      "^.+\\.css$": "identity-obj-proxy",
       ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/image.js"
     },
     "setupTestFrameworkScriptFile": "<rootDir>/internals/testing/test-bundler.js",
@@ -307,7 +306,6 @@
     "file-loader": "0.9.0",
     "html-loader": "0.4.4",
     "html-webpack-plugin": "2.24.1",
-    "identity-obj-proxy": "^3.0.0",
     "image-webpack-loader": "2.0.0",
     "imports-loader": "0.6.5",
     "jest-cli": "18.0.0",
