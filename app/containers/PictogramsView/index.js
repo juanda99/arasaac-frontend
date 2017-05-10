@@ -6,13 +6,18 @@
 
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Helmet from 'react-helmet'
-import SearchBox from 'components/SearchBox'
+import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
+import Helmet from 'react-helmet'
+import SearchField from 'components/SearchField'
+import Toggle from 'material-ui/Toggle'
+import FilterList from 'components/Filters'
+import { Map } from 'immutable'
 // import { createSelector } from 'reselect'
 import { withRouter } from 'react-router'
+import messages from './messages'
 // import { selectFilters } from 'containers/ToggleFilter/selectors'
-import { autocomplete, pictograms, toggleShowFilter } from './actions'
+import { autocomplete, pictograms, toggleShowFilter, setFilterItems } from './actions'
 // import { selectShowFilter, selectPictogramsBySearchKey } from './selectors'
 
 // import selectPictogramsView from './selectors'
@@ -44,7 +49,7 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
 
   render() {
     const { children, showFilter, filters, keywords, pictoList } = this.props
-    const searchText = this.props.params.searchText
+    const searchText = this.props.params.searchText || ''
     // console.log(pictoList.length)
     const gallery = pictoList.length ? React.cloneElement(children, { data: pictoList }) : null
     // const gallery = React.cloneElement(children, { data: pictograms })
@@ -56,15 +61,18 @@ class PictogramsView extends React.Component { // eslint-disable-line react/pref
             { name: 'description', content: 'Description of PictogramsView' }
           ]}
         />
-        <SearchBox
+        <Toggle
+          label={<FormattedMessage {...messages.advancedSearch} />}
+          onToggle={this.props.toggleShowFilter}
+          defaultToggled={showFilter}
+          style={{ width: '200px', float: 'right' }}
+        />
+        <SearchField
           value={searchText}
           dataSource={keywords}
           onSubmit={this.handleSubmit}
-          onToggleFilter={this.props.toggleShowFilter}
-          filters={filters}
-          type={'pictograms'}
-          showFilter={showFilter}
         />
+        {showFilter ? <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} /> : null}
         {gallery}
       </View>
     )
@@ -80,8 +88,9 @@ PictogramsView.propTypes = {
   searchText: PropTypes.string,
   keywords: PropTypes.arrayOf(PropTypes.string),
   params: PropTypes.object.isRequired,
-  filters: PropTypes.object.isRequired,
+  filters: PropTypes.instanceOf(Map),
   showFilter: PropTypes.bool,
+  setFilterItems: PropTypes.func.isRequired,
   // Injected by React Router
   children: PropTypes.node,
   router: PropTypes.any.isRequired,
@@ -90,7 +99,7 @@ PictogramsView.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const filters = state.getIn(['configuration', 'filters', 'pictograms'])
+  const filters = state.getIn(['pictogramsView', 'filters'])
   // const filters = createSelector(selectFilters(), (fltrs) => (fltrs))(state)
   // console.log (filters.toJS())
   const showFilter = state.getIn(['pictogramsView', 'showFilter'])
@@ -104,7 +113,7 @@ const mapStateToProps = (state, ownProps) => {
     showFilter,
     pictoList,
     locale,
-    keywords: state.getIn(['pictogramsView', 'words', locale])
+    keywords: state.getIn(['pictogramsView', 'words', locale]) || []
   })
 }
 
@@ -117,6 +126,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   requestAutocomplete: (searchText) => {
     dispatch(autocomplete.request(searchText))
+  },
+  setFilterItems: (filter, filterItem) => {
+    dispatch(setFilterItems(filter, filterItem))
   }
 })
 

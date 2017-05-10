@@ -10,10 +10,5 @@ export default defineMessages({
     id: 'app.components.SearchBox.searchField',
     description: 'searchBox message',
     defaultMessage: 'Enter search text'
-  },
-  advancedSearch: {
-    id: 'app.containers.SearchBox.advancedSearch',
-    description: 'Label for filtering Search',
-    defaultMessage: 'Advanced Search'
   }
 })

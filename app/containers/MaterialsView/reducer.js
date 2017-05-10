@@ -5,15 +5,20 @@
  */
 
 import { fromJS } from 'immutable'
-import { MATERIALS, SHOW_FILTERS } from './actions'
+import { MATERIALS, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
 
 export const initialState = fromJS({
   showFilter: false,
   loading: false,
   error: false,
-  search: fromJS({}),
+  search: {},
   searchText: '',
-  filters: fromJS({})
+  filters: {
+    Activity: [],
+    Area: [],
+    License: '',
+    Language: ''
+  }
 })
 
 function materialsViewReducer(state = initialState, action) {
@@ -25,6 +30,7 @@ function materialsViewReducer(state = initialState, action) {
         .set('searchText', action.payload.searchText)
     case MATERIALS.SUCCESS:
       return state
+        .set('loading', false)
         .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data)
     case MATERIALS.FAILURE:
       return state
@@ -33,6 +39,9 @@ function materialsViewReducer(state = initialState, action) {
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))
+    case SET_FILTER_ITEMS:
+      return state
+        .setIn(['filters', action.payload.filter], action.payload.values)
     default:
       return state
   }

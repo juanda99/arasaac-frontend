@@ -3,16 +3,18 @@
  * MaterialsView
  *
  */
-
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Helmet from 'react-helmet'
-import SearchBox from 'components/SearchBox'
-// import MaterialList from 'components/MaterialList'
+import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
+import Helmet from 'react-helmet'
+import SearchField from 'components/SearchField'
+import Toggle from 'material-ui/Toggle'
+import { Map } from 'immutable'
+import FilterList from 'components/Filters'
 import { withRouter } from 'react-router'
-import { getFilteredItems } from 'utils'
-import { materials, toggleShowFilter } from './actions'
+import { materials, toggleShowFilter, setFilterItems } from './actions'
+import messages from './messages'
 
 class MaterialsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -36,11 +38,10 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
 
   render() {
     const { children, showFilter, filters, visibleMaterials } = this.props
-    const searchText = this.props.params.searchText
+    const searchText = this.props.params.searchText || ''
     const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials }) : null
     // this code in return is not so good if children changes (search, categories...)
     //  {visibleMaterials.length > 0 && <MaterialList materials={visibleMaterials} />}
-    //
     return (
       <View>
         <Helmet
@@ -49,13 +50,14 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
             { name: 'description', content: 'Description of PictogramsView' }
           ]}
         />
-        <SearchBox
-          value={searchText}
-          onSubmit={this.handleSubmit}
-          onToggleFilter={this.props.toggleShowFilter}
-          filters={filters}
-          showFilter={showFilter}
+        <Toggle
+          label={<FormattedMessage {...messages.advancedSearch} />}
+          onToggle={this.props.toggleShowFilter}
+          defaultToggled={showFilter}
+          style={{ width: '200px', float: 'right' }}
         />
+        <SearchField value={searchText} onSubmit={this.handleSubmit} />
+        {showFilter ? <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} /> : null}
         {gallery}
       </View>
     )
@@ -63,14 +65,13 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
 }
 
 MaterialsView.propTypes = {
-  // Injected by React Redux
-  // loadAutocomplete: PropTypes.func.isRequired,
   requestMaterials: PropTypes.func.isRequired,
   toggleShowFilter: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   params: PropTypes.object.isRequired,
-  filters: PropTypes.object.isRequired,
+  filters: PropTypes.instanceOf(Map),
   showFilter: PropTypes.bool,
+  setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
   // Injected by React Router
   children: PropTypes.node,
@@ -80,14 +81,14 @@ MaterialsView.propTypes = {
 
 
 const mapStateToProps = (state, ownProps) => {
-  const filters = state.getIn(['configuration', 'filters', 'materials'])
+  const filters = state.getIn(['materialsView', 'filters'])
   const showFilter = state.getIn(['materialsView', 'showFilter'])
   const locale = state.get('language').get('locale')
-  const activeFilters = state.getIn(['materialsView', 'filters'])
+  // const activeFilters = state.getIn(['materialsView', 'filters'])
   const materialList = state.getIn(['materialsView', 'search', locale, ownProps.params.searchText]) || []
-  const visibleMaterials = activeFilters && activeFilters.size > 0 ? getFilteredItems(materialList, activeFilters.toJS()) : materialList
-  // const visibleMaterials = getFilteredItems(materialList, activeFilters)
-  // const visibleMaterials = getVisibleMaterials (materials, )
+  const visibleMaterials = materialList
+  // const visibleMaterials = activeFilters && activeFilters.size > 0 ? getFilteredItems(materialList, activeFilters.toJS()) : materialList
+
   return ({
     filters,
     showFilter,
@@ -102,6 +103,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())
+  },
+  setFilterItems: (filter, filterItem) => {
+    dispatch(setFilterItems(filter, filterItem))
   }
 })
 

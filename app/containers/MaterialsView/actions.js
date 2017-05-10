@@ -10,6 +10,7 @@ import { createRequestTypes, action } from 'utils/actions'
 export const MATERIALS = createRequestTypes('app/MaterialsView/MATERIALS')
 export const SHOW_FILTERS = 'app/MaterialsView/SHOW_FILTERS'
 export const ENABLE_FILTER = 'app/MaterialsView/ENABLE_FILTER'
+export const SET_FILTER_ITEMS = 'app/MaterialsView/SET_FILTER_ITEMS'
 
 // actions: pictograms.request/success/failure
 
@@ -21,4 +22,7 @@ export const materials = {
 
 export const toggleShowFilter = () => action(SHOW_FILTERS)
 
+// we don't use this action right now, maybe if we decide to show only some filters... mobile version?
 export const enableFilter = (field, value) => action(ENABLE_FILTER, { field, value })
+
+export const setFilterItems = (filter, values) => action(SET_FILTER_ITEMS, { filter, values })
