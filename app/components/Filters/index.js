@@ -10,7 +10,7 @@ import Language from './Language'
 const filters = { Catalog, License, Language, Size, Activity, Area }
 
 const FilterList = ({ filtersMap, setFilterItems }) => (
-  <div>
+  <div style={{ marginBottom: '3rem' }}>
     { filtersMap.entrySeq().map((item) => {
       const Filter = filters[item[0]]
       return <Filter key={item[0]} values={item[1]} setFilterItems={setFilterItems} />

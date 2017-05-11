@@ -1,9 +1,12 @@
 import React, { PropTypes } from 'react'
+import H1Section from 'components/H1Section'
 
 const Material = ({ material }) => (
   <li>
-    <h4>{material.title}</h4>
-    <p>{material.desc}</p>
+    <section>
+      <H1Section>{material.title}</H1Section>
+      <p>{material.desc}</p>
+    </section>
   </li>
 )
 
