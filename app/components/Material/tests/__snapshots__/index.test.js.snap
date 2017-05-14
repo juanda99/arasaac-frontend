@@ -1,0 +1,16 @@
+exports[`<Material /> renders correctly 1`] = `
+<li>
+  <section>
+    <p>
+      es
+    </p>
+    <h1
+      className="gufdDH">
+      Title test
+    </h1>
+    <p>
+      Description for test material
+    </p>
+  </section>
+</li>
+`;

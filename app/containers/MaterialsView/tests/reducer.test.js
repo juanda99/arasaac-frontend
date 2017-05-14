@@ -31,7 +31,6 @@ describe('materialsViewReducer', () => {
     const expectedResult = state
       .set('loading', true)
       .set('error', false)
-      .set('searchText', searchText)
     expect(materialsViewReducer(state, materials.request(locale, searchText))).toEqual(expectedResult)
   })
 

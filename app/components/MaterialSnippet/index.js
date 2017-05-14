@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react'
 import H1Section from 'components/H1Section'
 
-const Material = ({ material, locale }) => (
-  // we should show current locale and show other language if required
+const MaterialSnippet = ({ material, locale }) => (
   <li>
     <section>
       <p>{locale}</p>
@@ -13,12 +12,12 @@ const Material = ({ material, locale }) => (
 )
 
 // needed for tests: seee https://github.com/facebook/jest/issues/1824
-Material.displayName = 'Material'
+MaterialSnippet.displayName = 'MaterialSnippet'
 
-Material.propTypes = {
+MaterialSnippet.propTypes = {
   // onClick: PropTypes.func.isRequired,
   material: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired
 }
 
-export default Material
+export default MaterialSnippet

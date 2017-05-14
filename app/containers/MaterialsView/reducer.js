@@ -5,7 +5,7 @@
  */
 
 import { fromJS } from 'immutable'
-import { MATERIALS, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
+import { MATERIALS, MATERIAL, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
 
 export const initialState = fromJS({
   showFilter: false,
@@ -18,16 +18,30 @@ export const initialState = fromJS({
     Area: [],
     License: '',
     Language: ''
-  }
+  },
+  byId: []
 })
 
 function materialsViewReducer(state = initialState, action) {
   switch (action.type) {
+    case MATERIAL.REQUEST:
+      return state
+        .set('loading', true)
+        .set('error', false)
+    case MATERIAL.SUCCESS:
+      return state
+        .set('loading', false)
+        .setIn(['byId', action.payload.data.idMaterial], action.payload.data)
+    case MATERIAL.FAILURE:
+      return state
+        .set('error', action.payload.error)
+        .set('loading', false)
     case MATERIALS.REQUEST:
       return state
         .set('loading', true)
         .set('error', false)
-        .set('searchText', action.payload.searchText)
+        // it's not useful:
+        // .set('searchText', action.payload.searchText)
     case MATERIALS.SUCCESS:
       return state
         .set('loading', false)
