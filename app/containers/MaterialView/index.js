@@ -12,15 +12,21 @@ import Material from 'components/Material'
 import { material } from 'containers/MaterialsView/actions'
 import messages from './messages'
 
-class MaterialsView extends React.Component {
+class MaterialView extends React.Component {
 
   componentWillMount() {
+    console.log('kkkkkkkkkkk')
+    console.log(this.props)
     if (this.props.params.idMaterial) {
+      console.log('jjjjjj')
       this.props.requestMaterial(this.props.params.idMaterial)
     }
   }
   componentWillReceiveProps(nextProps) {
+    console.log('kkkkkkkkkkk')
+    console.log(this.props)
     if (this.props.params.idMaterial !== nextProps.params.idMaterial) {
+      console.log('zzzzzzzzzz')
       this.props.requestMaterial(nextProps.params.idMaterial)
     }
   }
@@ -41,7 +47,7 @@ class MaterialsView extends React.Component {
   }
 }
 
-MaterialsView.propTypes = {
+MaterialView.propTypes = {
   requestMaterial: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
@@ -64,4 +70,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(MaterialsView)
+export default connect(mapStateToProps, mapDispatchToProps)(MaterialView)

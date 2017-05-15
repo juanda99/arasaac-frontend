@@ -35,11 +35,15 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
     }
   }
 
+  viewMaterial = (idMaterial) => {
+    this.props.router.push(`/materials/${idMaterial}`)
+  }
+
 
   render() {
     const { children, showFilter, filters, visibleMaterials, locale } = this.props
     const searchText = this.props.params.searchText || ''
-    const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials, locale }) : null
+    const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials, locale, viewMaterial: this.viewMaterial }) : null
     // this code in return is not so good if children changes (search, categories...)
     //  {visibleMaterials.length > 0 && <MaterialList materials={visibleMaterials} />}
     return (

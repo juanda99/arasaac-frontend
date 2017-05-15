@@ -1,17 +1,18 @@
 import React, { PropTypes } from 'react'
-import Material from 'components/Material'
+import MaterialSnippet from 'components/MaterialSnippet'
 
-const MaterialList = ({ materials, locale }) => (
+const MaterialList = ({ materials, locale, viewMaterial }) => (
   <ul>
     { materials.map((material) =>
-      <Material key={material.id} material={material} locale={locale} />
+      <MaterialSnippet key={material.idMaterial} material={material} locale={locale} viewMaterial={viewMaterial} />
     )}
   </ul>
 )
 
 MaterialList.propTypes = {
   materials: PropTypes.arrayOf(PropTypes.object),
-  locale: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired,
+  viewMaterial: PropTypes.func.isRequired
 }
 
 export default MaterialList

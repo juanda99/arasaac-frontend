@@ -6,6 +6,7 @@ const api = {
   keywords: (locale) => callApi(`keywords/${locale}`),
   fetchPictograms: (searchText) => callApi(`pictograms/${searchText}`, pictogramsSchema),
   fetchMaterials: (locale, searchText) => callApi(`materials/${locale}/${searchText}`),
+  fetchMaterial: (idMaterial) => callApi(`materials/${idMaterial}`),
   fetchUser: (username) => callApi(`users/${username}`, userSchema),
   fetchRepo: (fullName) => callApi(`repos/${fullName}`, repoSchema),
   fetchStarred: (url) => callApi(url, repoSchemaArray),
