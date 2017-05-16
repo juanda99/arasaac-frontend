@@ -1,34 +1,10 @@
-import { Schema, arrayOf } from 'normalizr'
+import { schema } from 'normalizr'
 
-// We use this Normalizr schemas to transform API responses from a nested form
-// to a flat form where repos and users are placed in `entities`, and nested
-// JSON objects are replaced with their IDs. This is very convenient for
-// consumption by reducers, because we can easily build a normalized tree
-// and keep it updated as we fetch more data.
+const materialSchema = new schema.Entity('materials', {}, { idAttribute: 'idMaterial' })
+const searchMaterialSchema = [materialSchema]
 
-// Read more about Normalizr: https://github.com/gaearon/normalizr
+// export const pictogramsSchema = new Schema('searches', {
+//   idAttribute: 'pictogramKey'
+// })
 
-// Schemas for Github API responses.
-export const userSchema = new Schema('users', {
-  idAttribute: 'login'
-})
-
-export const repoSchema = new Schema('repos', {
-  idAttribute: 'fullName'
-})
-
-repoSchema.define({
-  owner: userSchema
-})
-
-export const searchSchema = new Schema('searches', {
-  idAttribute: 'searchKey'
-})
-
-export const pictogramsSchema = new Schema('searches', {
-  idAttribute: 'pictogramKey'
-})
-
-
-export const userSchemaArray = arrayOf(userSchema)
-export const repoSchemaArray = arrayOf(repoSchema)
+export default searchMaterialSchema

@@ -4,7 +4,7 @@
  *
  */
 
-import { fromJS } from 'immutable'
+import { fromJS, Map } from 'immutable'
 import { MATERIALS, MATERIAL, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
 
 export const initialState = fromJS({
@@ -19,10 +19,11 @@ export const initialState = fromJS({
     License: '',
     Language: ''
   },
-  byId: []
+  materials: {}
 })
 
 function materialsViewReducer(state = initialState, action) {
+  let newMaterial
   switch (action.type) {
     case MATERIAL.REQUEST:
       return state
@@ -43,9 +44,11 @@ function materialsViewReducer(state = initialState, action) {
         // it's not useful:
         // .set('searchText', action.payload.searchText)
     case MATERIALS.SUCCESS:
+      newMaterial = Map(action.payload.data.entities.materials || {})
       return state
         .set('loading', false)
-        .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data)
+        .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data.result)
+        .mergeIn(['materials'], newMaterial)
     case MATERIALS.FAILURE:
       return state
         .set('error', action.payload.error)
