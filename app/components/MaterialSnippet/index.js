@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import H1Section from 'components/H1Section'
+import FlatButton from 'material-ui/FlatButton'
 
 const MaterialSnippet = ({ material, locale, viewMaterial }) => {
   const handleClick = () => {
@@ -10,7 +10,7 @@ const MaterialSnippet = ({ material, locale, viewMaterial }) => {
     <li key={material.idMaterial}>
       <section>
         <p>{locale}</p>
-        <H1Section onClick={handleClick}>{material.title}</H1Section>
+        <FlatButton label={material.title} primary={true} onClick={handleClick} />
         <p>{material.desc}</p>
       </section>
     </li>

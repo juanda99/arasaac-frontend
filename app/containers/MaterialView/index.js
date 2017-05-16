@@ -15,18 +15,12 @@ import messages from './messages'
 class MaterialView extends React.Component {
 
   componentWillMount() {
-    console.log('kkkkkkkkkkk')
-    console.log(this.props)
     if (this.props.params.idMaterial) {
-      console.log('jjjjjj')
       this.props.requestMaterial(this.props.params.idMaterial)
     }
   }
   componentWillReceiveProps(nextProps) {
-    console.log('kkkkkkkkkkk')
-    console.log(this.props)
     if (this.props.params.idMaterial !== nextProps.params.idMaterial) {
-      console.log('zzzzzzzzzz')
       this.props.requestMaterial(nextProps.params.idMaterial)
     }
   }
