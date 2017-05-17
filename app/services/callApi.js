@@ -32,11 +32,7 @@ const callApi = (endpoint, schema) => {
         )
       })
       */
-        const resultado = normalize(json, schema)
-        console.log('jjjjjjjjjjjjjj#########')
-        console.log(resultado)
-        console.log('#################')
-        return resultado
+        return schema ? normalize(json, schema) : json
       })
   )
 }
