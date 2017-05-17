@@ -13,6 +13,8 @@ import Toggle from 'material-ui/Toggle'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import { withRouter } from 'react-router'
+import { denormalize } from 'normalizr'
+import { searchMaterialSchema } from 'services/schemas'
 import { materials, toggleShowFilter, setFilterItems } from './actions'
 import messages from './messages'
 
@@ -89,7 +91,13 @@ const mapStateToProps = (state, ownProps) => {
   const showFilter = state.getIn(['materialsView', 'showFilter'])
   const locale = state.get('language').get('locale')
   // const activeFilters = state.getIn(['materialsView', 'filters'])
-  const materialList = state.getIn(['materialsView', 'search', locale, ownProps.params.searchText]) || []
+  // denormalize: https://github.com/paularmstrong/normalizr/blob/master/docs/api.md#denormalizeinput-schema-entities
+  // const materialSchema = new schema.Entity('materials', {}, { idAttribute: 'idMaterial' })
+  // const searchMaterialSchema = [materialSchema]
+  const searchResults = state.getIn(['materialsView', 'search', locale, ownProps.params.searchText]) || []
+  const entities = {}
+  entities.materials = state.getIn(['materialsView', 'materials']).toJS()
+  const materialList = denormalize(searchResults, searchMaterialSchema, entities)
   const visibleMaterials = materialList
   // const visibleMaterials = activeFilters && activeFilters.size > 0 ? getFilteredItems(materialList, activeFilters.toJS()) : materialList
 

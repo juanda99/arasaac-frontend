@@ -1,4 +1,4 @@
-import searchMaterialSchema from './schemas'
+import { searchMaterialSchema } from './schemas'
 import callApi from './callApi'
 import { login, signup } from './config'
 

@@ -1,10 +1,8 @@
 import { schema } from 'normalizr'
 
-const materialSchema = new schema.Entity('materials', {}, { idAttribute: 'idMaterial' })
-const searchMaterialSchema = [materialSchema]
+export const materialSchema = new schema.Entity('materials', {}, { idAttribute: 'idMaterial' })
+export const searchMaterialSchema = [materialSchema]
 
 // export const pictogramsSchema = new Schema('searches', {
 //   idAttribute: 'pictogramKey'
 // })
-
-export default searchMaterialSchema
