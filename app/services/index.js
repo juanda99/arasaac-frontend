@@ -1,15 +1,12 @@
-import { userSchema, repoSchema, userSchemaArray, repoSchemaArray, pictogramsSchema } from './schemas'
+import { searchMaterialSchema } from './schemas'
 import callApi from './callApi'
 import { login, signup } from './config'
 
 const api = {
   keywords: (locale) => callApi(`keywords/${locale}`),
-  fetchPictograms: (searchText) => callApi(`pictograms/${searchText}`, pictogramsSchema),
-  fetchMaterials: (locale, searchText) => callApi(`materials/${locale}/${searchText}`),
-  fetchUser: (username) => callApi(`users/${username}`, userSchema),
-  fetchRepo: (fullName) => callApi(`repos/${fullName}`, repoSchema),
-  fetchStarred: (url) => callApi(url, repoSchemaArray),
-  fetchStargazers: (url) => callApi(url, userSchemaArray),
+  fetchPictograms: (searchText) => callApi(`pictograms/${searchText}`),
+  fetchMaterials: (locale, searchText) => callApi(`materials/${locale}/${searchText}`, searchMaterialSchema),
+  fetchMaterial: (idMaterial) => callApi(`materials/${idMaterial}`),
   login: (username, password) => callApi(login.url, login.config(username, password)),
   signup: (data) => callApi(signup.url, signup.config(data))
 }

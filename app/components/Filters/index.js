@@ -1,31 +1,27 @@
-  /**
-*
-* Filters
-*
-*/
-
 import React, { PropTypes } from 'react'
 import { Map } from 'immutable'
-import { Row, Col } from 'react-flexbox-grid'
-import SelectCatalog from './SelectCatalog'
-import SelectLicense from './SelectLicense'
-import SelectSize from './SelectSize'
-import SelectActivity from './SelectActivity'
-import SelectArea from './SelectArea'
-import SelectLanguage from './SelectLanguage'
+import Catalog from './Catalog'
+import License from './License'
+import Size from './Size'
+import Activity from './Activity'
+import Area from './Area'
+import Language from './Language'
 
-const Filters = ({ filters }) => (
-  <Row>
-    {filters.get('area') ? <Col xs={12} md={4}><SelectArea /></Col> : null}
-    {filters.get('activity') ? <Col xs={12} md={4}><SelectActivity /></Col> : null}
-    {filters.get('catalog') ? <Col xs={12} md={4}><SelectCatalog /></Col> : null}
-    {filters.get('size') ? <Col xs={12} md={4}><SelectSize /></Col> : null}
-    {filters.get('language') ? <Col xs={12} md={4}><SelectLanguage /></Col> : null}
-    {filters.get('license') ? <Col xs={12} md={4}><SelectLicense /></Col> : null}
-  </Row>
+const filters = { Catalog, License, Language, Size, Activity, Area }
+
+const FilterList = ({ filtersMap, setFilterItems }) => (
+  <div style={{ marginBottom: '3rem' }}>
+    { filtersMap.entrySeq().map((item) => {
+      const Filter = filters[item[0]]
+      return <Filter key={item[0]} values={item[1]} setFilterItems={setFilterItems} />
+    })
+    }
+  </div>
 )
-Filters.propTypes = {
-  filters: PropTypes.instanceOf(Map)
+
+FilterList.propTypes = {
+  filtersMap: PropTypes.instanceOf(Map).isRequired,
+  setFilterItems: PropTypes.func.isRequired
 }
 
-export default Filters
+export default FilterList

@@ -32,7 +32,7 @@
 <br />
 
 <div align="center">
-  <sub>Made with ❤︎ by <a href="https://twitter.com/juanda99">juanda</a> and <a href="https://github.com/juanda99/arasaac-frontend/graphs/contributors">contributors</a></sub>
+  <sub>Made with ❤︎ by <a href="https://twitter.com/juandawrite">juanda</a> and <a href="https://github.com/juanda99/arasaac-frontend/graphs/contributors">contributors</a></sub>
 </div>
 
 ## Features

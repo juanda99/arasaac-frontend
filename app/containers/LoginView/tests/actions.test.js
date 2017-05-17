@@ -1,4 +1,17 @@
-import { LOGIN, LOGOUT, ACTIVATION, login, logout, activation } from '../actions'
+import {
+  LOGIN,
+  LOGOUT,
+  ACTIVATION,
+  SOCIAL_LOGIN_PREPARE,
+  SOCIAL_LOGIN_REQUEST,
+  SOCIAL_LOGIN_SUCCESS,
+  SOCIAL_LOGIN_FAILURE,
+  SOCIAL_LOGOUT,
+  login,
+  logout,
+  socialLogin,
+  socialLogout,
+  activation } from '../actions'
 
 describe('Authentication actions', () => {
   describe('Login request', () => {
@@ -92,6 +105,36 @@ describe('Authentication actions', () => {
         payload: { error }
       }
       expect(logout.failure(error)).toEqual(expectedResult)
+    })
+  })
+
+  describe('Social Login actions', () => {
+    it('Login actions', () => {
+      expect(socialLogin.prepare('facebook', 1)).toEqual({
+        type: SOCIAL_LOGIN_PREPARE,
+        service: 'facebook',
+        options: 1
+      })
+
+      expect(socialLogin.request('facebook', 1)).toEqual({
+        type: SOCIAL_LOGIN_REQUEST,
+        service: 'facebook',
+        options: 1
+      })
+
+      expect(socialLogin.success(1)).toEqual({
+        type: SOCIAL_LOGIN_SUCCESS,
+        user: 1
+      })
+
+      expect(socialLogin.failure('test')).toEqual({
+        type: SOCIAL_LOGIN_FAILURE,
+        error: 'test'
+      })
+    })
+
+    it('Logout', () => {
+      expect(socialLogout()).toEqual({ type: SOCIAL_LOGOUT })
     })
   })
 })

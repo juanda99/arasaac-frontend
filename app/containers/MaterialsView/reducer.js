@@ -4,28 +4,51 @@
  *
  */
 
-import { fromJS } from 'immutable'
-import { MATERIALS, SHOW_FILTERS } from './actions'
+import { fromJS, Map } from 'immutable'
+import { MATERIALS, MATERIAL, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
 
 export const initialState = fromJS({
   showFilter: false,
   loading: false,
   error: false,
-  search: fromJS({}),
+  search: {},
   searchText: '',
-  filters: fromJS({})
+  filters: {
+    Activity: [],
+    Area: [],
+    License: '',
+    Language: ''
+  },
+  materials: {}
 })
 
 function materialsViewReducer(state = initialState, action) {
+  let newMaterial
   switch (action.type) {
+    case MATERIAL.REQUEST:
+      return state
+        .set('loading', true)
+        .set('error', false)
+    case MATERIAL.SUCCESS:
+      return state
+        .set('loading', false)
+        .setIn(['byId', action.payload.data.idMaterial], action.payload.data)
+    case MATERIAL.FAILURE:
+      return state
+        .set('error', action.payload.error)
+        .set('loading', false)
     case MATERIALS.REQUEST:
       return state
         .set('loading', true)
         .set('error', false)
-        .set('searchText', action.payload.searchText)
+        // it's not useful:
+        // .set('searchText', action.payload.searchText)
     case MATERIALS.SUCCESS:
+      newMaterial = Map(action.payload.data.entities.materials || {})
       return state
-        .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data)
+        .set('loading', false)
+        .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data.result)
+        .mergeIn(['materials'], newMaterial)
     case MATERIALS.FAILURE:
       return state
         .set('error', action.payload.error)
@@ -33,6 +56,9 @@ function materialsViewReducer(state = initialState, action) {
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))
+    case SET_FILTER_ITEMS:
+      return state
+        .setIn(['filters', action.payload.filter], action.payload.values)
     default:
       return state
   }

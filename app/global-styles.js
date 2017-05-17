@@ -17,6 +17,11 @@ injectGlobal`
   p, input, label {
     font-size: 1rem
   }
+
+  ul {
+    list-style-type: none
+  }
+
   
   body.fontLoaded {
     font-family: 'Roboto', sans-serif;

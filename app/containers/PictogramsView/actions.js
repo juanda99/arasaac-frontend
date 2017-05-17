@@ -15,6 +15,8 @@ export const AUTOCOMPLETE = createRequestTypes('app/PictogramsView/AUTOCOMPLETE'
 
 export const SHOW_FILTERS = 'app/PictogramsView/SHOW_FILTERS'
 
+export const SET_FILTER_ITEMS = 'app/PictogramsView/SET_FILTER_ITEMS'
+
 // actions: pictograms.request/success/failure
 
 export const pictograms = {
@@ -33,3 +35,5 @@ export const autocomplete = {
 // export const loadAutocomplete = (searchText) => action(LOAD_AUTOCOMPLETE, { searchText })
 
 export const toggleShowFilter = () => action(SHOW_FILTERS)
+
+export const setFilterItems = (filter, values) => action(SET_FILTER_ITEMS, { filter, values })
