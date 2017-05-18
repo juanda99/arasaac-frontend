@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import Material from 'components/Material'
-import { material } from 'containers/MaterialsView/actions'
+import { material } from 'containers/MaterialView/actions'
 import messages from './messages'
 
 class MaterialView extends React.Component {
@@ -48,10 +48,9 @@ MaterialView.propTypes = {
   materialData: PropTypes.object.isRequired
 }
 
-
 const mapStateToProps = (state, ownProps) => {
   const locale = state.get('language').get('locale')
-  const materialData = state.getIn(['materials', ownProps.params.idMaterial]) || {}
+  const materialData = state.getIn(['materialsView', 'materials', ownProps.params.idMaterial]) || {}
   return ({
     materialData,
     locale

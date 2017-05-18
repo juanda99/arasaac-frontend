@@ -32,7 +32,7 @@ function materialsViewReducer(state = initialState, action) {
     case MATERIAL.SUCCESS:
       return state
         .set('loading', false)
-        .setIn(['byId', action.payload.data.idMaterial], action.payload.data)
+        .setIn(['materials', action.payload.data.idMaterial], action.payload.data)
     case MATERIAL.FAILURE:
       return state
         .set('error', action.payload.error)

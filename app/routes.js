@@ -108,16 +108,16 @@ export default function createRoutes(store) {
       name: 'materialView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/MaterialsView/sagas'),
-          // import('containers/ConfigurationView/reducer'),
+          import('containers/MaterialsView/reducer'),
+          import('containers/MaterialView/sagas'),
           import('containers/MaterialView/')
         ])
 
         const renderRoute = loadModule(cb)
         // if reducer is async, render values:  defaultToggled:
         // state.configuration.filters[ownProps.filter] got undefined!!!
-        importModules.then(([sagas, component]) => {
-          // injectReducer('configuration', reducer.default)
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('materialsView', reducer.default)
           injectSagas(sagas.default)
           renderRoute(component)
         })

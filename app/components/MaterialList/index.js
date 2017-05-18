@@ -11,8 +11,10 @@ const MaterialList = ({ materials, locale, viewMaterial }) => (
 
 MaterialList.propTypes = {
   materials: PropTypes.arrayOf(PropTypes.object),
-  locale: PropTypes.string.isRequired,
-  viewMaterial: PropTypes.func.isRequired
+  // with optional parameters in the router is slower in my tests ????
+  // rollback from https://github.com/react-boilerplate/react-boilerplate/issues/1748
+  locale: PropTypes.string,
+  viewMaterial: PropTypes.func
 }
 
 export default MaterialList
