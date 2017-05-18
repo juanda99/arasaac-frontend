@@ -26,7 +26,7 @@ const License = ({ intl, setFilterItems, values }) => {
 License.propTypes = {
   intl: intlShape.isRequired,
   setFilterItems: PropTypes.func.isRequired,
-  values: PropTypes.oneOfType([PropTypes.number, PropTypes.array]).isRequired
+  values: PropTypes.string.isRequired
 }
 
 export default injectIntl(License)

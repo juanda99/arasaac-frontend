@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { Map } from 'immutable'
+import { Map, List } from 'immutable'
 import Catalog from './Catalog'
 import License from './License'
 import Size from './Size'
@@ -13,7 +13,8 @@ const FilterList = ({ filtersMap, setFilterItems }) => (
   <div style={{ marginBottom: '3rem' }}>
     { filtersMap.entrySeq().map((item) => {
       const Filter = filters[item[0]]
-      return <Filter key={item[0]} values={item[1]} setFilterItems={setFilterItems} />
+      const values = List.isList(item[1]) ? item[1].toArray() : item[1]
+      return <Filter key={item[0]} values={values} setFilterItems={setFilterItems} />
     })
     }
   </div>
