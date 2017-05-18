@@ -1,6 +1,6 @@
-import { put, call, fork } from 'redux-saga/effects'
+import { put, call } from 'redux-saga/effects'
 import * as actions from '../actions'
-import saga, * as sagas from '../sagas'
+import * as sagas from '../sagas'
 
 const profile = { getName: () => 'name', getImageUrl: () => 'imageUrl' }
 const user = { getBasicProfile: () => profile }
