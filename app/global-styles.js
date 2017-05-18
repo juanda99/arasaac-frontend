@@ -36,4 +36,8 @@ injectGlobal`
       margin-bottom: 15em;
     }
   }
+  svg {
+    /* for social icons, sanitize.css put it as currentColor */
+    fill: white !important;
+  }
 `

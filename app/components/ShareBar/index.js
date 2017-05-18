@@ -37,7 +37,7 @@ const ShareBar = ({ shareUrl, title, exampleImage }) => (
   <div>
     <OuterDiv>
       <FacebookShareButton url={shareUrl} title={title} picture={`${String(window.location)}/${exampleImage}`}>
-        <FacebookIcon size={32} round />
+        <FacebookIcon size={40} round logoFillColor={'yellow'} iconBgStyle={'fill'} />
       </FacebookShareButton>
 
       <FacebookShareCount url={shareUrl}>
@@ -47,7 +47,7 @@ const ShareBar = ({ shareUrl, title, exampleImage }) => (
 
     <OuterDiv>
       <TwitterShareButton url={shareUrl} title={title} >
-        <TwitterIcon size={32} round />
+        <TwitterIcon size={40} round />
       </TwitterShareButton>
 
       <div>
@@ -57,7 +57,7 @@ const ShareBar = ({ shareUrl, title, exampleImage }) => (
 
     <OuterDiv>
       <TelegramShareButton url={shareUrl} title={title} >
-        <TelegramIcon size={32} round />
+        <TelegramIcon size={40} round />
       </TelegramShareButton>
 
       <div>
@@ -67,7 +67,7 @@ const ShareBar = ({ shareUrl, title, exampleImage }) => (
 
     <OuterDiv>
       <WhatsappShareButton url={shareUrl} title={title} separator=':: '>
-        <WhatsappIcon size={32} round />
+        <WhatsappIcon size={40} round />
       </WhatsappShareButton>
 
       <div>
@@ -77,7 +77,7 @@ const ShareBar = ({ shareUrl, title, exampleImage }) => (
 
     <OuterDiv>
       <GooglePlusShareButton url={shareUrl}>
-        <GooglePlusIcon size={32} round />
+        <GooglePlusIcon size={40} round />
       </GooglePlusShareButton>
 
       <GooglePlusShareCount url={shareUrl} >
@@ -87,7 +87,7 @@ const ShareBar = ({ shareUrl, title, exampleImage }) => (
 
     <OuterDiv>
       <LinkedinShareButton url={shareUrl} title={title} windowWidth={750} windowHeight={600}>
-        <LinkedinIcon size={32} round />
+        <LinkedinIcon size={40} round />
       </LinkedinShareButton>
 
       <LinkedinShareCount url={shareUrl}>
@@ -97,7 +97,7 @@ const ShareBar = ({ shareUrl, title, exampleImage }) => (
 
     <OuterDiv>
       <PinterestShareButton url={String(window.location)} media={`${String(window.location)}/${exampleImage}`} windowWidth={1000} windowHeight={730}>
-        <PinterestIcon size={32} round />
+        <PinterestIcon size={40} round />
       </PinterestShareButton>
 
       <PinterestShareCount url={String(window.location)} />
@@ -105,7 +105,7 @@ const ShareBar = ({ shareUrl, title, exampleImage }) => (
 
     <OuterDiv>
       <VKShareButton url={shareUrl} image={`${String(window.location)}/${exampleImage}`} windowWidth={660} windowHeight={460}>
-        <VKIcon size={32} round />
+        <VKIcon size={40} round />
       </VKShareButton>
 
       <VKShareCount url={String(window.location)} />
@@ -113,7 +113,7 @@ const ShareBar = ({ shareUrl, title, exampleImage }) => (
 
     <OuterDiv>
       <OKShareButton url={shareUrl} image={`${String(window.location)}/${exampleImage}`} windowWidth={660} windowHeight={460} >
-        <OKIcon size={32} round />
+        <OKIcon size={40} round />
       </OKShareButton>
 
       <OKShareCount url={String(window.location)} />
