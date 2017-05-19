@@ -4,14 +4,12 @@ import ShareBar from 'components/ShareBar'
 
 const Material = ({ material, locale }) => (
   // we should show current locale and show other language if required
-  <li>
-    <section>
-      <H1Section>{material.title}</H1Section>
-      <p>{material.desc}</p>
-      <p>{locale}</p>
-      <ShareBar shareUrl={window.location.href} title={material.title} picture={'http://www.arasaac.org/images/arasaac_titulo.png'} />
-    </section>
-  </li>
+  <div>
+    <H1Section>{material.title}</H1Section>
+    <p>{material.desc}</p>
+    <p>{locale}</p>
+    <ShareBar shareUrl={window.location.href} title={material.title} image={material.images[0]} />
+  </div>
 )
 
 // needed for tests: seee https://github.com/facebook/jest/issues/1824

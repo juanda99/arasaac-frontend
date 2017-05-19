@@ -20,6 +20,7 @@ function* materialGetData(action) {
     console.log('Ha llevado ' + tiempo.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 4}) + ' segundos.')
     */
   } catch (error) {
+    yield put(hideLoading())
     yield put(material.failure(error.message))
   } finally {
 
