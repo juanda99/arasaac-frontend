@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme'
 import React from 'react'
 
-import Component from '../InnerDiv'
+import Component from '../Span'
 
 const children = 'Text for testing'
 const renderComponent = (props = {}) => shallow(
@@ -10,10 +10,10 @@ const renderComponent = (props = {}) => shallow(
   </Component>
 )
 
-describe('<InnerDiv />', () => {
-  it('should render a <div> tag', () => {
+describe('<Span />', () => {
+  it('should render a <span> tag', () => {
     const renderedComponent = renderComponent()
-    expect(renderedComponent.type()).toEqual('div')
+    expect(renderedComponent.type()).toEqual('span')
   })
   it('should have children', () => {
     const renderedComponent = renderComponent()

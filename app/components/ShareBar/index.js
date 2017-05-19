@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share'
 import OuterDiv from './OuterDiv'
+import Span from './Span'
 
 const {
   FacebookShareButton,
@@ -33,16 +34,17 @@ const OKIcon = generateShareIcon('ok')
 const TelegramIcon = generateShareIcon('telegram')
 const WhatsappIcon = generateShareIcon('whatsapp')
 
-const ShareBar = ({ shareUrl, title, exampleImage }) => (
+const ShareBar = ({ shareUrl, title, image }) => (
   <div>
     <OuterDiv>
-      <FacebookShareButton url={shareUrl} title={title} picture={`${String(window.location)}/${exampleImage}`}>
-        <FacebookIcon size={40} round logoFillColor={'yellow'} iconBgStyle={'fill'} />
+      <FacebookShareButton url={shareUrl} title={title} picture={`${String(window.location)}/${image}`}>
+        <FacebookIcon size={40} round />
       </FacebookShareButton>
-
-      <FacebookShareCount url={shareUrl}>
-        {(count) => count}
-      </FacebookShareCount>
+      <Span>
+        <FacebookShareCount url={shareUrl}>
+          {(count) => count}
+        </FacebookShareCount>
+      </Span>
     </OuterDiv>
 
     <OuterDiv>
@@ -79,44 +81,49 @@ const ShareBar = ({ shareUrl, title, exampleImage }) => (
       <GooglePlusShareButton url={shareUrl}>
         <GooglePlusIcon size={40} round />
       </GooglePlusShareButton>
-
-      <GooglePlusShareCount url={shareUrl} >
-        {(count) => count}
-      </GooglePlusShareCount>
+      <Span>
+        <GooglePlusShareCount url={shareUrl} >
+          {(count) => count}
+        </GooglePlusShareCount>
+      </Span>
     </OuterDiv>
 
     <OuterDiv>
       <LinkedinShareButton url={shareUrl} title={title} windowWidth={750} windowHeight={600}>
         <LinkedinIcon size={40} round />
       </LinkedinShareButton>
-
-      <LinkedinShareCount url={shareUrl}>
-        {(count) => count}
-      </LinkedinShareCount>
+      <Span>
+        <LinkedinShareCount url={shareUrl}>
+          {(count) => count}
+        </LinkedinShareCount>
+      </Span>
     </OuterDiv>
 
     <OuterDiv>
-      <PinterestShareButton url={String(window.location)} media={`${String(window.location)}/${exampleImage}`} windowWidth={1000} windowHeight={730}>
+      <PinterestShareButton url={String(window.location)} media={`${String(window.location)}/${image}`} windowWidth={1000} windowHeight={730}>
         <PinterestIcon size={40} round />
       </PinterestShareButton>
-
-      <PinterestShareCount url={String(window.location)} />
+      <Span>
+        <PinterestShareCount url={String(window.location)} />
+      </Span>
     </OuterDiv>
 
     <OuterDiv>
-      <VKShareButton url={shareUrl} image={`${String(window.location)}/${exampleImage}`} windowWidth={660} windowHeight={460}>
+      <VKShareButton url={shareUrl} image={`${String(window.location)}/${image}`} windowWidth={660} windowHeight={460}>
         <VKIcon size={40} round />
       </VKShareButton>
-
-      <VKShareCount url={String(window.location)} />
+      <Span>
+        <VKShareCount url={String(window.location)} />
+      </Span>
     </OuterDiv>
 
     <OuterDiv>
-      <OKShareButton url={shareUrl} image={`${String(window.location)}/${exampleImage}`} windowWidth={660} windowHeight={460} >
+      <OKShareButton url={shareUrl} image={`${String(window.location)}/${image}`} windowWidth={660} windowHeight={460} >
         <OKIcon size={40} round />
       </OKShareButton>
-
-      <OKShareCount url={String(window.location)} />
+      <Span>
+        <OKShareCount url={String(window.location)} />
+      </Span>
     </OuterDiv>
   </div>
 )
@@ -125,7 +132,7 @@ ShareBar.propTypes = {
   // onClick: PropTypes.func.isRequired,
   shareUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  exampleImage: PropTypes.string
+  image: PropTypes.string
 }
 
 export default ShareBar
