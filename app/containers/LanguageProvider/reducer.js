@@ -32,7 +32,7 @@ function languageProviderReducer(state = initialState, action) {
         .set('locale', previousLocale)
         .set('previousLocale', '')
     case REHYDRATE:
-      previousLocale = action.payload.language.get('previousLocale')
+      previousLocale = action.payload.language ? action.payload.language.get('previousLocale') : null
       return previousLocale
         ? state.set('locale', previousLocale).set('previousLocale', '')
         : state
