@@ -9,7 +9,7 @@
   "file": "1130.zip",
   "files": ["Las aventuras de Wilfred y Zoe.pdf"],
   "idMaterial": 1130,
-  "images": ['test1.png', 'test2.png'],
+  "images": ["test1.png", "test2.png"],
   "language": "es",
   "lastUpdate": "2014-01-29T10:41:29.000Z",
   "status": ["Publico"],

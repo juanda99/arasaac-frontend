@@ -48,10 +48,13 @@ describe('materialsViewReducer', () => {
   it('should handle the materials.success action correctly', () => {
     const locale = 'es'
     const searchText = 'test'
-    const data = 'Data for test'
+    const data = {}
+    data.entities.materials = { 123: { idMaterial: 123 } }
+    data.result = [123]
     const expectedResult = state
       .set('loading', false)
-      .setIn(['search', locale, searchText], data)
+      .setIn(['search', locale, searchText], data.result)
+      .mergeIn(['materials'], data.entities.materials)
     expect(materialsViewReducer(state, materials.success(locale, searchText, data))).toEqual(expectedResult)
   })
 

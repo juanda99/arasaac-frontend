@@ -5,7 +5,8 @@
  */
 
 import { fromJS, Map } from 'immutable'
-import { MATERIALS, MATERIAL, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
+import { MATERIAL } from 'containers/MaterialView/actions'
+import { MATERIALS, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
 
 export const initialState = fromJS({
   showFilter: false,

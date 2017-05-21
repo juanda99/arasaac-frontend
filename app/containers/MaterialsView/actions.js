@@ -7,18 +7,10 @@
 import { createRequestTypes, action } from 'utils/actions'
 
 // constants
-export const MATERIAL = createRequestTypes('app/MaterialView/MATERIAL')
 export const MATERIALS = createRequestTypes('app/MaterialsView/MATERIALS')
 export const SHOW_FILTERS = 'app/MaterialsView/SHOW_FILTERS'
 export const ENABLE_FILTER = 'app/MaterialsView/ENABLE_FILTER'
 export const SET_FILTER_ITEMS = 'app/MaterialsView/SET_FILTER_ITEMS'
-
-// actions: material.request/success/failure
-export const material = {
-  request: (idMaterial) => action(MATERIAL.REQUEST, { idMaterial }),
-  success: () => action(MATERIAL.SUCCESS, { }),
-  failure: (error) => action(MATERIAL.FAILURE, { error })
-}
 
 // actions: materials.request/success/failure
 export const materials = {
