@@ -24,6 +24,8 @@ const Catalog = ({ intl, setFilterItems, values }) => {
   return <FilterSelect items={items} {...filterProps} />
 }
 
+Catalog.displayName = 'Catalog'
+
 Catalog.propTypes = {
   intl: intlShape.isRequired,
   setFilterItems: PropTypes.func.isRequired,

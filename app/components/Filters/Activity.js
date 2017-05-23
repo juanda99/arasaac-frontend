@@ -48,6 +48,8 @@ const Activity = ({ intl, setFilterItems, values }) => {
   return <FilterSelect items={items} {...filterProps} />
 }
 
+Activity.displayName = 'Activity'
+
 Activity.propTypes = {
   intl: intlShape.isRequired,
   setFilterItems: PropTypes.func.isRequired,

@@ -4,7 +4,7 @@
  *
  */
 
-import { fromJS, Map } from 'immutable'
+import { fromJS } from 'immutable'
 import { MATERIAL } from 'containers/MaterialView/actions'
 import { MATERIALS, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
 
@@ -45,7 +45,7 @@ function materialsViewReducer(state = initialState, action) {
         // it's not useful:
         // .set('searchText', action.payload.searchText)
     case MATERIALS.SUCCESS:
-      newMaterial = Map(action.payload.data.entities.materials || {})
+      newMaterial = fromJS(action.payload.data.entities.materials || {})
       return state
         .set('loading', false)
         .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data.result)

@@ -40,6 +40,8 @@ const Language = ({ intl, setFilterItems, values }) => {
   return <FilterSelect items={items} {...filterProps} />
 }
 
+Language.displayName = 'Language'
+
 Language.propTypes = {
   intl: intlShape.isRequired,
   setFilterItems: PropTypes.func.isRequired,

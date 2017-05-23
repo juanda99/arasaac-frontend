@@ -22,6 +22,8 @@ const Size = ({ intl, setFilterItems, values }) => {
   return <FilterSelect items={items} {...filterProps} />
 }
 
+Size.displayName = 'Size'
+
 Size.propTypes = {
   intl: intlShape.isRequired,
   setFilterItems: PropTypes.func.isRequired,

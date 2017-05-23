@@ -10,7 +10,7 @@ describe('<License />', () => {
   it('renders correctly', () => {
     const tree = createComponentWithIntl(
       <MuiThemeProvider>
-        <Component setFilterItems={setFilterItems} values={1} />
+        <Component setFilterItems={setFilterItems} values={'1'} />
       </MuiThemeProvider>).toJSON()
     expect(tree).toMatchSnapshot()
   })

@@ -43,6 +43,8 @@ const SelectArea = ({ intl, setFilterItems, values }) => {
   return <FilterSelect items={items} {...filterProps} />
 }
 
+SelectArea.displayName = 'SelectArea'
+
 SelectArea.propTypes = {
   intl: intlShape.isRequired,
   setFilterItems: PropTypes.func.isRequired,

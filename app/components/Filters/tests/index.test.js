@@ -10,7 +10,7 @@ jest.mock('material-ui/internal/Tooltip')
 describe('<FilterList />', () => {
   const filtersMap = Map({
     Activity: [1, 2, 3],
-    License: 2,
+    License: '2',
     Language: 'es',
     Area: [1, 3, 5]
   })

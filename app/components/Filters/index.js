@@ -20,6 +20,8 @@ const FilterList = ({ filtersMap, setFilterItems }) => (
   </div>
 )
 
+FilterList.displayName = 'FilterList'
+
 FilterList.propTypes = {
   filtersMap: PropTypes.instanceOf(Map).isRequired,
   setFilterItems: PropTypes.func.isRequired

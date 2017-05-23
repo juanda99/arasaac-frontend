@@ -69,6 +69,8 @@ class FilterSelect extends React.Component {
   }
 }
 
+FilterSelect.displayName = 'FilterSelect'
+
 FilterSelect.propTypes = {
   items: PropTypes.arrayOf(React.PropTypes.shape({
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
