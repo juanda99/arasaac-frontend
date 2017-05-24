@@ -112,29 +112,30 @@ describe('Authentication actions', () => {
     it('Login actions', () => {
       expect(socialLogin.prepare('facebook', 1)).toEqual({
         type: SOCIAL_LOGIN_PREPARE,
-        service: 'facebook',
-        options: 1
+        payload: { service: 'facebook', options: 1 }
       })
 
       expect(socialLogin.request('facebook', 1)).toEqual({
         type: SOCIAL_LOGIN_REQUEST,
-        service: 'facebook',
-        options: 1
+        payload: { service: 'facebook', options: 1 }
       })
 
       expect(socialLogin.success(1)).toEqual({
         type: SOCIAL_LOGIN_SUCCESS,
-        user: 1
+        payload: { user: 1 }
       })
 
       expect(socialLogin.failure('test')).toEqual({
         type: SOCIAL_LOGIN_FAILURE,
-        error: 'test'
+        payload: { error: 'test' }
       })
     })
 
     it('Logout', () => {
-      expect(socialLogout()).toEqual({ type: SOCIAL_LOGOUT })
+      expect(socialLogout()).toEqual({
+        type: SOCIAL_LOGOUT,
+        payload: {}
+      })
     })
   })
 })

@@ -5,7 +5,15 @@
  */
 
 import { fromJS } from 'immutable'
-import { LOGIN, LOGOUT, ACTIVATION } from './actions'
+import {
+  LOGIN,
+  LOGOUT,
+  ACTIVATION,
+  SOCIAL_LOGIN_REQUEST,
+  SOCIAL_LOGIN_SUCCESS,
+  SOCIAL_LOGIN_FAILURE,
+  SOCIAL_LOGOUT
+} from './actions'
 
 const initialState = fromJS({
   username: '',
@@ -24,33 +32,28 @@ const initialState = fromJS({
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN.REQUEST:
+    case SOCIAL_LOGIN_REQUEST:
       return state
         .set('loading', true)
         .set('error', '')
     case LOGIN.SUCCESS:
+    case SOCIAL_LOGIN_SUCCESS:
       return state
         .set('loading', false)
-        .set('username', action.username)
+        .set('username', action.payload.username)
         .set('token', action.payload.token)
         .set('isAuthenticated', true)
     case LOGIN.FAILURE:
+    case SOCIAL_LOGIN_FAILURE:
       return state
         .set('loading', false)
         .set('error', action.payload.error)
         .set('isAuthenticated', false)
-    case LOGOUT.REQUEST:
+    case LOGOUT:
+    case SOCIAL_LOGOUT:
       return state
-        .set('loading', true)
-        .set('error', '')
-    case LOGOUT.SUCCESS:
-      return state
-        .set('loading', false)
         .set('username', '')
         .set('token', '')
-    case LOGOUT.FAILURE:
-      return state
-        .set('loading', false)
-        .set('error', action.error)
     case ACTIVATION.REQUEST:
       return state
         .set('loading', true)
