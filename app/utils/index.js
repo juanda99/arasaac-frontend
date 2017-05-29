@@ -5,7 +5,7 @@ function isArray(obj) {
 
 const checkLanguage = (items, language) =>
   items.some((item) => {
-    console.log(item[language])
+    console.log(item[LANGUAGE])
     return item[LANGUAGE] === language || (item.translations && item.translations.some((translation) => translation[LANGUAGE] === language))
   })
 
