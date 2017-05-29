@@ -15,6 +15,7 @@ import FilterList from 'components/Filters'
 import { withRouter } from 'react-router'
 import { denormalize } from 'normalizr'
 import { searchMaterialSchema } from 'services/schemas'
+// import { getFilteredItems } from 'utils'
 import { materials, toggleShowFilter, setFilterItems } from './actions'
 import messages from './messages'
 
@@ -98,8 +99,8 @@ const mapStateToProps = (state, ownProps) => {
   const entities = {}
   entities.materials = state.getIn(['materialsView', 'materials']).toJS()
   const materialList = denormalize(searchResults, searchMaterialSchema, entities)
+  // const visibleMaterials = getFilteredItems(materialList, filters.toJS())
   const visibleMaterials = materialList
-  // const visibleMaterials = activeFilters && activeFilters.size > 0 ? getFilteredItems(materialList, activeFilters.toJS()) : materialList
 
   return ({
     filters,
