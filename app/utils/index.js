@@ -1,27 +1,21 @@
-const LANGUAGE = 'language'
 function isArray(obj) {
   return !!obj && obj.constructor === Array
 }
 
-const checkLanguage = (items, language) =>
-  items.some((item) => {
-    console.log(item[LANGUAGE])
-    return item[LANGUAGE] === language || (item.translations && item.translations.some((translation) => translation[LANGUAGE] === language))
-  })
+const checkLanguage = (item, language) =>
+  language.length === 0 || language.includes(item.language) || (item.translations && item.translations.some((translation) => language.includes(translation.language)))
 
 export function getFilteredItems(items, filters) {
-  return items.filter((e) => {
+  return items.filter((item) => {
     const k = Object.keys(filters)
     return k.every((key) => {
-      /* for language... */
-      console.log(key)
-      if (key === LANGUAGE) {
-        return checkLanguage(items, filters[key])
+      if (key === 'Language') {
+        return checkLanguage(item, filters.Language)
       } else if (filters[key].length === 0 || filters[key] === '') return true /* no filter data */
-      else if (typeof e[key] === 'string' || typeof e[key] === 'number') {
-        return e[key] === filters[key]
-      } else if (isArray(e[key])) {
-        return e[key].includes(filters[key])
+      else if (typeof item[key] === 'string' || typeof item[key] === 'number') {
+        return item[key] === filters[key]
+      } else if (isArray(item[key])) {
+        return item[key].includes(filters[key])
       }
       return false
     })

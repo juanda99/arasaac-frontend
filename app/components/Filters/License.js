@@ -14,7 +14,7 @@ const License = ({ intl, setFilterItems, values }) => {
 
   const filterProps = {
     floatingLabelText: formatMessage(messages.license),
-    multiple: false,
+    multiple: true,
     setFilterItems,
     values,
     filterType: 'License'
@@ -28,7 +28,7 @@ License.displayName = 'License'
 License.propTypes = {
   intl: intlShape.isRequired,
   setFilterItems: PropTypes.func.isRequired,
-  values: PropTypes.string.isRequired
+  values: PropTypes.array
 }
 
 export default injectIntl(License)

@@ -17,8 +17,8 @@ export const initialState = fromJS({
   filters: {
     Activity: [],
     Area: [],
-    License: '',
-    Language: ''
+    License: [],
+    Language: []
   },
   materials: {}
 })

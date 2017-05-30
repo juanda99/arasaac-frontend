@@ -26,12 +26,19 @@ const Language = ({ intl, setFilterItems, values }) => {
     { value: 'pes', primaryText: ' فارسى' },
     { value: 'urd', primaryText: 'اردو' },
     { value: 'zhs', primaryText: '简体中文' },
-    { value: 'zht', primaryText: '繁體中文' }
+    { value: 'zht', primaryText: '繁體中文' },
+    { value: 'bg', primaryText: 'български' },
+    { value: 'br', primaryText: 'Brasileiro' },
+    { value: 'ca', primaryText: 'Català' },
+    { value: 'va', primaryText: 'Valencià' },
+    { value: 'ga', primaryText: 'Galego' },
+    { value: 'eu', primaryText: 'Euskal' },
+    { value: 'pl', primaryText: 'Polski' }
   ]
 
   const filterProps = {
     floatingLabelText: formatMessage(messages.chooseLanguage),
-    multiple: false,
+    multiple: true,
     setFilterItems,
     values,
     filterType: 'Language'
@@ -45,7 +52,8 @@ Language.displayName = 'Language'
 Language.propTypes = {
   intl: intlShape.isRequired,
   setFilterItems: PropTypes.func.isRequired,
-  values: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired
+  values: PropTypes.array
+  // values: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired
 }
 
 export default injectIntl(Language)
