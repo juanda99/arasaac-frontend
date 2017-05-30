@@ -104,6 +104,14 @@ export default function createRoutes(store) {
         }
       ]
     }, {
+      path: '/materials/upload',
+      name: 'uploadMaterialView',
+      getComponent(location, cb) {
+        import('containers/UploadMaterialView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
       path: '/materials/:idMaterial',
       name: 'materialView',
       getComponent(nextState, cb) {
@@ -156,14 +164,6 @@ export default function createRoutes(store) {
       name: 'ApiView',
       getComponent(location, cb) {
         import('containers/ApiView')
-          .then(loadModule(cb))
-          .catch(errorLoading)
-      }
-    }, {
-      path: '/materials/upload',
-      name: 'uploadMaterialView',
-      getComponent(location, cb) {
-        import('containers/UploadMaterialView')
           .then(loadModule(cb))
           .catch(errorLoading)
       }
