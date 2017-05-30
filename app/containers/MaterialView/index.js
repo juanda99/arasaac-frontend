@@ -10,12 +10,13 @@ import View from 'components/View'
 import Helmet from 'react-helmet'
 import Material from 'components/Material'
 import { material } from 'containers/MaterialView/actions'
+import { Map } from 'immutable'
 import messages from './messages'
 
 class MaterialView extends React.Component {
 
-  componentWillMount() {
-    if (this.props.params.idMaterial) {
+  componentDidMount() {
+    if (this.props.materialData.isEmpty()) {
       this.props.requestMaterial(this.props.params.idMaterial)
     }
   }
@@ -35,7 +36,7 @@ class MaterialView extends React.Component {
             { name: 'description', content: 'Description of MaterialView' }
           ]}
         />
-        {material ? <Material material={materialData} locale={locale} /> : <p><FormattedMessage {...messages.materialNotFound} /> </p>}
+        {materialData.isEmpty() ? <p><FormattedMessage {...messages.materialNotFound} /> </p> : <Material material={materialData} locale={locale} /> }
       </View>
     )
   }
@@ -45,12 +46,12 @@ MaterialView.propTypes = {
   requestMaterial: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
-  materialData: PropTypes.object.isRequired
+  materialData: PropTypes.object
 }
 
 const mapStateToProps = (state, ownProps) => {
   const locale = state.get('language').get('locale')
-  const materialData = state.getIn(['materialsView', 'materials', ownProps.params.idMaterial]) || {}
+  const materialData = state.getIn(['materialsView', 'materials', ownProps.params.idMaterial]) || Map()
   return ({
     materialData,
     locale

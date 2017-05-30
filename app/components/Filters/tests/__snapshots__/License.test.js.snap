@@ -177,7 +177,7 @@ exports[`<License /> renders correctly 1`] = `
               "whiteSpace": "nowrap",
             }
           }>
-          
+          Reuse with modification
         </div>
         <button
           disabled={false}

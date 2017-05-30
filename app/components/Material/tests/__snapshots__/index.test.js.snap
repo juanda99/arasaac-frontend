@@ -9,6 +9,14 @@ exports[`<Material /> renders correctly 1`] = `
   </p>
   <p>
     es
+     
+  </p>
+  <p>
+    <span>
+      Downloads:
+    </span>
+     
+    0
   </p>
   <div>
     <div

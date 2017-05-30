@@ -21,7 +21,7 @@ import messages from './messages'
 
 class MaterialsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.params.searchText) {
       this.props.requestMaterials(this.props.locale, this.props.params.searchText)
     }
@@ -44,9 +44,17 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
 
 
   render() {
-    const { children, showFilter, filters, visibleMaterials, locale } = this.props
+    const { children, showFilter, filters, visibleMaterials, locale, loading } = this.props
     const searchText = this.props.params.searchText || ''
-    const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials, locale, viewMaterial: this.viewMaterial }) : null
+    let gallery
+    if (loading) {
+      gallery = null
+    } else {
+      gallery = visibleMaterials.length > 0
+        ? React.cloneElement(children, { materials: visibleMaterials, locale, viewMaterial: this.viewMaterial })
+        : <p>{<FormattedMessage {...messages.materialsNotFound} />}</p>
+    }
+    // const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials, locale, viewMaterial: this.viewMaterial }) : null
     // this code in return is not so good if children changes (search, categories...)
     //  {visibleMaterials.length > 0 && <MaterialList materials={visibleMaterials} />}
     return (
@@ -75,6 +83,7 @@ MaterialsView.propTypes = {
   requestMaterials: PropTypes.func.isRequired,
   toggleShowFilter: PropTypes.func.isRequired,
   searchText: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired,
   filters: PropTypes.instanceOf(Map),
   showFilter: PropTypes.bool,
@@ -91,6 +100,7 @@ const mapStateToProps = (state, ownProps) => {
   const filters = state.getIn(['materialsView', 'filters'])
   const showFilter = state.getIn(['materialsView', 'showFilter'])
   const locale = state.get('language').get('locale')
+  const loading = state.getIn(['materialsView', 'loading'])
   // const activeFilters = state.getIn(['materialsView', 'filters'])
   // denormalize: https://github.com/paularmstrong/normalizr/blob/master/docs/api.md#denormalizeinput-schema-entities
   // const materialSchema = new schema.Entity('materials', {}, { idAttribute: 'idMaterial' })
@@ -106,7 +116,8 @@ const mapStateToProps = (state, ownProps) => {
     filters,
     showFilter,
     visibleMaterials,
-    locale
+    locale,
+    loading
   })
 }
 

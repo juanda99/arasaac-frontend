@@ -13,9 +13,9 @@ export function getFilteredItems(items, filters) {
         return checkLanguage(item, filters.Language)
       } else if (filters[key].length === 0 || filters[key] === '') return true /* no filter data */
       else if (typeof item[key] === 'string' || typeof item[key] === 'number') {
-        return item[key] === filters[key]
-      } else if (isArray(item[key])) {
-        return item[key].includes(filters[key])
+        return item[key] === filters[key] || filters[key].includes(item[key])
+      } else if (isArray(item[key]) && item[key].length) {
+        return item[key].some((keyItems) => filters[key].includes(keyItems))
       }
       return false
     })

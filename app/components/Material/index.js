@@ -1,16 +1,19 @@
 import React, { PropTypes } from 'react'
 import H1Section from 'components/H1Section'
 import ShareBar from 'components/ShareBar'
+// import { toJS } from 'immutable'
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
 
-const Material = ({ material, locale }) => (
-  // we should show current locale and show other language if required
+const Material = ({ material, locale }) =>
   <div>
-    <H1Section>{material.title}</H1Section>
-    <p>{material.desc}</p>
-    <p>{locale}</p>
-    <ShareBar shareUrl={window.location.href} title={material.title} image={material.images[0]} />
+    <H1Section>{material.get('title')}</H1Section>
+    <p>{material.get('desc')}</p>
+    <p>{locale} </p>
+    <p>{<FormattedMessage {...messages.downloads} />} {material.get('downloads')}</p>
+    <ShareBar shareUrl={window.location.href} title={material.get('title')} image={'http://www.arasaac.org/images/arasaac_titulo.png'} />
   </div>
-)
+
 
 // needed for tests: seee https://github.com/facebook/jest/issues/1824
 Material.displayName = 'Material'
