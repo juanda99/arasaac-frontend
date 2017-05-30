@@ -47,7 +47,7 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
     const { children, showFilter, filters, visibleMaterials, locale, loading } = this.props
     const searchText = this.props.params.searchText || ''
     let gallery
-    if (loading) {
+    if (loading || !searchText) {
       gallery = null
     } else {
       gallery = visibleMaterials.length > 0
