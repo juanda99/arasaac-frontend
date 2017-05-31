@@ -9,6 +9,7 @@ const MaterialList = ({ materials, locale, viewMaterial }) => (
   </ul>
 )
 
+
 MaterialList.propTypes = {
   materials: PropTypes.arrayOf(PropTypes.object),
   // with optional parameters in the router is slower in my tests ????
