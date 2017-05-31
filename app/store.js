@@ -5,8 +5,9 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { fromJS } from 'immutable'
 import { routerMiddleware } from 'react-router-redux'
-// import { persistStore, autoRehydrate } from 'redux-persist'
 import { persistStore, autoRehydrate } from 'redux-persist-immutable'
+import { REHYDRATE } from 'redux-persist/constants'
+import createActionBuffer from 'redux-action-buffer'
 // on sagas by hand, not automated:
 // import { loadingBarMiddleware } from 'react-redux-loading-bar'
 import createSagaMiddleware from 'redux-saga'
@@ -21,7 +22,8 @@ export default function configureStore(initialState = {}, history) {
   // 2. routerMiddleware: Syncs the location/URL path to the state
   const middlewares = [
     sagaMiddleware,
-    routerMiddleware(history) /* ,
+    routerMiddleware(history)
+     /* ,
     loadingBarMiddleware({
       promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE']
     }) */
@@ -29,7 +31,10 @@ export default function configureStore(initialState = {}, history) {
 
   const enhancers = [
     applyMiddleware(...middlewares),
-    autoRehydrate()
+    autoRehydrate({ log: true }),
+    applyMiddleware(
+      createActionBuffer(REHYDRATE) // make sure to apply this after redux-thunk et al.
+    )
   ]
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose

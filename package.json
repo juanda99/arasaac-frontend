@@ -257,6 +257,7 @@
     "react-share": "^1.13.2",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "3.6.0",
+    "redux-action-buffer": "^1.1.0",
     "redux-form": "^6.5.0",
     "redux-form-material-ui": "^4.1.2",
     "redux-immutable": "3.0.8",
