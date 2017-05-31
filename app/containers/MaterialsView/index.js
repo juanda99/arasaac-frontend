@@ -51,7 +51,7 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
       gallery = null
     } else {
       gallery = visibleMaterials.length > 0
-        ? React.cloneElement(children, { materials: visibleMaterials, locale, viewMaterial: this.viewMaterial })
+        ? React.cloneElement(children, { key: 'materialList', materials: visibleMaterials, locale, viewMaterial: this.viewMaterial })
         : <p>{<FormattedMessage {...messages.materialsNotFound} />}</p>
     }
     // const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials, locale, viewMaterial: this.viewMaterial }) : null
@@ -72,7 +72,7 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
           style={{ width: '200px', float: 'right' }}
         />
         <SearchField value={searchText} onSubmit={this.handleSubmit} />
-        {showFilter ? <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} /> : null}
+        {showFilter ? <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={this.props.filtersData} /> : null}
         {gallery}
       </View>
     )
@@ -86,6 +86,7 @@ MaterialsView.propTypes = {
   loading: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired,
   filters: PropTypes.instanceOf(Map),
+  filtersData: PropTypes.instanceOf(Map),
   showFilter: PropTypes.bool,
   setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
@@ -101,6 +102,7 @@ const mapStateToProps = (state, ownProps) => {
   const showFilter = state.getIn(['materialsView', 'showFilter'])
   const locale = state.get('language').get('locale')
   const loading = state.getIn(['materialsView', 'loading'])
+  const filtersData = state.getIn(['configuration', 'filtersData'])
   // const activeFilters = state.getIn(['materialsView', 'filters'])
   // denormalize: https://github.com/paularmstrong/normalizr/blob/master/docs/api.md#denormalizeinput-schema-entities
   // const materialSchema = new schema.Entity('materials', {}, { idAttribute: 'idMaterial' })
@@ -117,7 +119,8 @@ const mapStateToProps = (state, ownProps) => {
     showFilter,
     visibleMaterials,
     locale,
-    loading
+    loading,
+    filtersData
   })
 }
 

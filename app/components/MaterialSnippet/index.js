@@ -5,9 +5,14 @@ const MaterialSnippet = ({ material, locale, viewMaterial }) => {
   const handleClick = () => {
     viewMaterial(material.idMaterial)
   }
+  /* How we show messages...*/
+  /* catalan: ca, va, es, en, ...*/
+  /* br: pt, br, en, ....*/
+  /* eu: eu, es, en, ....*/
+  /* ga: ga, es, en, .....*/
 
   return (
-    <li key={material.idMaterial}>
+    <li>
       <section>
         <p>{locale}</p>
         <FlatButton label={material.title} primary={true} onClick={handleClick} />

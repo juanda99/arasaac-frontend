@@ -15,10 +15,9 @@ export const initialState = fromJS({
   search: {},
   searchText: '',
   filters: {
-    Activity: [],
-    Area: [],
-    License: [],
-    Language: []
+    activity: [],
+    area: [],
+    language: []
   },
   materials: {}
 })

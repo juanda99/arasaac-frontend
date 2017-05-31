@@ -7,15 +7,15 @@ const checkLanguage = (item, language) =>
 
 export function getFilteredItems(items, filters) {
   return items.filter((item) => {
-    const k = Object.keys(filters)
-    return k.every((key) => {
-      if (key === 'Language') {
-        return checkLanguage(item, filters.Language)
-      } else if (filters[key].length === 0 || filters[key] === '') return true /* no filter data */
-      else if (typeof item[key] === 'string' || typeof item[key] === 'number') {
-        return item[key] === filters[key] || filters[key].includes(item[key])
-      } else if (isArray(item[key]) && item[key].length) {
-        return item[key].some((keyItems) => filters[key].includes(keyItems))
+    const filterNames = Object.keys(filters)
+    return filterNames.every((filterName) => {
+      if (filterName === 'language') {
+        return checkLanguage(item, filters.language)
+      } else if (filters[filterName].length === 0 || filters[filterName] === '') return true /* no filter data */
+      else if (typeof item[filterName] === 'string' || typeof item[filterName] === 'number') {
+        return item[filterName] === filters[filterName] || filters[filterName].includes(item[filterName])
+      } else if (isArray(item[filterName]) && item[filterName].length) {
+        return item[filterName].some((keyItems) => filters[filterName].includes(keyItems))
       }
       return false
     })

@@ -1,0 +1,24 @@
+import React from 'react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { setFilterItems } from 'containers/MaterialsView/actions'
+import createComponentWithIntl from 'utils/createComponentWithIntl'
+import { fromJS } from 'immutable'
+import FilterSelectLoader from '../FilterSelectLoader'
+
+jest.mock('material-ui/internal/Tooltip')
+
+describe('<FilterList />', () => {
+  const filtersData = fromJS({
+    activity: { 1: 'act1', 2: 'act2', 3: 'act3' },
+    language: { es: 'spanish', it: 'italian' },
+    area: { 1: 'area1', 2: 'area2', 3: 'area3' }
+  })
+  const filterData = filtersData.get('activity')
+  it('renders correctly', () => {
+    const tree = createComponentWithIntl(
+      <MuiThemeProvider>
+        <FilterSelectLoader intl setFilterItems={setFilterItems} values={[1, 2]} filterData={filterData} type={'activity'} />
+      </MuiThemeProvider>).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+})

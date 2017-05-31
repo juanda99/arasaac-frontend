@@ -5,7 +5,7 @@
 import { memoryHistory } from 'react-router'
 import { put } from 'redux-saga/effects'
 import { fromJS } from 'immutable'
-
+import { REHYDRATE } from 'redux-persist/constants'
 import configureStore from 'store'
 
 import {
@@ -28,6 +28,9 @@ const reducer = (state = initialState, action) => {
 }
 
 function* testSaga() {
+  // fix tests as store configured with createActionBuffer
+  // add next line:
+  yield put({ type: REHYDRATE })
   yield put({ type: 'TEST', payload: 'yup' })
 }
 

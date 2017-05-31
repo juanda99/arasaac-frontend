@@ -30,20 +30,6 @@ class FilterSelect extends React.Component {
       />
     ))
   }
-  /*
-  selectionRenderer = (values, item) => {
-    if (values[0]) {
-      switch (values.length) {
-        case 0:
-          return ''
-        case 1:
-          return this.props.items[values[0]].primaryText
-        default:
-          return `Areas: filtered (${values.length})`
-      }
-    } else return item
-  }
-  */
   render() {
     // filterType will be used also as id, see https://github.com/callemall/material-ui/issues/6834
     const { values, items, floatingLabelText, multiple, filterType } = this.props
