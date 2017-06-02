@@ -146,4 +146,7 @@ if (!window.Intl) {
 // we do not want it installed
 if (process.env.NODE_ENV === 'production') {
   require('offline-plugin/runtime').install() // eslint-disable-line global-require
+} else {
+  const Perf = require('react-addons-perf') // eslint-disable-line global-require
+  window.Perf = Perf
 }
