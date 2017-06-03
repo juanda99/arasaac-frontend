@@ -3,19 +3,20 @@ function isArray(obj) {
 }
 
 const checkLanguage = (item, language) =>
-  language.length === 0 || language.includes(item.language) || (item.translations && item.translations.some((translation) => language.includes(translation.language)))
+  language.size === 0 || language.includes(item.language) || (item.translations && item.translations.some((translation) => language.includes(translation.language)))
 
 export function getFilteredItems(items, filters) {
   return items.filter((item) => {
-    const filterNames = Object.keys(filters)
+    const [...filterNames] = filters.keys()
     return filterNames.every((filterName) => {
       if (filterName === 'language') {
-        return checkLanguage(item, filters.language)
-      } else if (filters[filterName].length === 0 || filters[filterName] === '') return true /* no filter data */
-      else if (typeof item[filterName] === 'string' || typeof item[filterName] === 'number') {
-        return item[filterName] === filters[filterName] || filters[filterName].includes(item[filterName])
+        return checkLanguage(item, filters.get('language'))
+      } else if (filters.get(filterName).size === 0 || filters.get(filterName) === '') {
+        return true
+      } else if (typeof item[filterName] === 'string' || typeof item[filterName] === 'number') {
+        return item[filterName] === filters.get(filterName) || filters.get(filterName).includes(item[filterName])
       } else if (isArray(item[filterName]) && item[filterName].length) {
-        return item[filterName].some((keyItems) => filters[filterName].includes(keyItems))
+        return item[filterName].some((keyItems) => filters.get(filterName).includes(keyItems))
       }
       return false
     })

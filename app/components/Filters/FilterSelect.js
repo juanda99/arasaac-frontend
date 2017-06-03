@@ -4,15 +4,16 @@ import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
 import ActionHide from 'material-ui/svg-icons/action/highlight-off'
 import { FormattedMessage } from 'react-intl'
+import { List } from 'immutable'
 import styles from './styles'
 import messages from './messages'
 
 class FilterSelect extends React.Component {
 
 
-  handleChange = (event, index, values) => { this.props.setFilterItems(this.props.filterType, values) }
+  handleChange = (event, index, values) => { this.props.setFilterItems(this.props.filterType, List(values)) }
 
-  handleReset = () => { this.props.setFilterItems(this.props.filterType, []) }
+  handleReset = () => { this.props.setFilterItems(this.props.filterType, List()) }
 
   menuItems(values, items) {
     const { multiple } = this.props

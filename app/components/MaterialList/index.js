@@ -1,14 +1,20 @@
-import React, { PropTypes } from 'react'
+import React, { PureComponent, PropTypes } from 'react'
 import MaterialSnippet from 'components/MaterialSnippet'
 
-const MaterialList = ({ materials, locale, viewMaterial }) => (
-  <ul>
-    { materials.map((material) =>
-      <MaterialSnippet key={material.idMaterial} material={material} locale={locale} viewMaterial={viewMaterial} />
-    )}
-  </ul>
-)
 
+export class MaterialList extends PureComponent {
+
+  render() {
+    const { materials, locale, viewMaterial } = this.props
+    return (
+      <ul>
+        { materials.map((material) =>
+          <MaterialSnippet key={material.idMaterial} material={material} locale={locale} viewMaterial={viewMaterial} />
+        )}
+      </ul>
+    )
+  }
+}
 
 MaterialList.propTypes = {
   materials: PropTypes.arrayOf(PropTypes.object),

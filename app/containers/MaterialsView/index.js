@@ -3,7 +3,7 @@
  * MaterialsView
  *
  */
-import React, { PropTypes } from 'react'
+import React, { PureComponent, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
@@ -18,14 +18,16 @@ import { searchMaterialSchema } from 'services/schemas'
 import { getFilteredItems } from 'utils'
 import { materials, toggleShowFilter, setFilterItems } from './actions'
 import messages from './messages'
+import Prueba from './Prueba'
 
-class MaterialsView extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class MaterialsView extends PureComponent {
 
   componentDidMount() {
     if (this.props.params.searchText) {
       this.props.requestMaterials(this.props.locale, this.props.params.searchText)
     }
   }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.params.searchText !== nextProps.params.searchText) {
       this.props.requestMaterials(this.props.locale, nextProps.params.searchText)
@@ -65,6 +67,7 @@ class MaterialsView extends React.Component { // eslint-disable-line react/prefe
             { name: 'description', content: 'Description of PictogramsView' }
           ]}
         />
+        <Prueba materials={visibleMaterials} />
         <Toggle
           label={<FormattedMessage {...messages.advancedSearch} />}
           onToggle={this.props.toggleShowFilter}
@@ -103,16 +106,11 @@ const mapStateToProps = (state, ownProps) => {
   const locale = state.get('language').get('locale')
   const loading = state.getIn(['materialsView', 'loading'])
   const filtersData = state.getIn(['configuration', 'filtersData'])
-  // const activeFilters = state.getIn(['materialsView', 'filters'])
-  // denormalize: https://github.com/paularmstrong/normalizr/blob/master/docs/api.md#denormalizeinput-schema-entities
-  // const materialSchema = new schema.Entity('materials', {}, { idAttribute: 'idMaterial' })
-  // const searchMaterialSchema = [materialSchema]
   const searchResults = state.getIn(['materialsView', 'search', locale, ownProps.params.searchText]) || []
   const entities = {}
   entities.materials = state.getIn(['materialsView', 'materials']).toJS()
   const materialList = denormalize(searchResults, searchMaterialSchema, entities)
-  const visibleMaterials = getFilteredItems(materialList, filters.toJS())
-  // const visibleMaterials = materialList
+  const visibleMaterials = getFilteredItems(materialList, filters)
 
   return ({
     filters,
