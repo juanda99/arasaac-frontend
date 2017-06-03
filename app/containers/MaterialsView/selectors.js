@@ -1,47 +1,13 @@
 import { createSelector } from 'reselect'
 
-/**
- * Direct selector to the pictogramsView state domain
- */
-const selectPictogramsViewDomain = () => (state) => state.get('pictogramsView')
+const materialsSelector = (state) => state.getIn(['materialsView', 'materials'])
 
-/**
- * Other specific selectors
- */
-
-
-/**
- * Default selector used by PictogramsView
- */
-
-const selectPictogramsView = () => createSelector(
-  selectPictogramsViewDomain(),
-  (substate) => substate.toJS()
+export const entitiesSelector = createSelector(
+  materialsSelector, (materials) => {
+    console.log(materials)
+    const entities = {}
+    entities.materials = materials.toJS()
+    console.log('executed tojS')
+    return entities
+  }
 )
-
-const selectShowFilter = () => createSelector(
-  selectPictogramsViewDomain(),
-  (substate) => substate.get('showFilter')
-)
-
-const selectPictogramsList = () => createSelector(
-  selectPictogramsViewDomain(),
-  (substate) => substate.get('pictograms')
-)
-
-
-const selectSearchKey = () => createSelector(
-  selectPictogramsViewDomain(),
-  (substate) => substate.get('search')
-)
-
-const selectPictogramsBySearchKey = () => createSelector(
-  selectPictogramsList(),
-  selectSearchKey(),
-  (pictogramsList, searchKey) => (searchKey ? pictogramsList.get(searchKey) : [])
-)
-
-export default selectPictogramsView
-export {
-  selectPictogramsViewDomain, selectShowFilter, selectPictogramsList, selectSearchKey, selectPictogramsBySearchKey
-}

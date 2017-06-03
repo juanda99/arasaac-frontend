@@ -16,6 +16,7 @@ import { withRouter } from 'react-router'
 import { denormalize } from 'normalizr'
 import { searchMaterialSchema } from 'services/schemas'
 import { getFilteredItems } from 'utils'
+import { entitiesSelector } from './selectors'
 import { materials, toggleShowFilter, setFilterItems } from './actions'
 import messages from './messages'
 import Prueba from './Prueba'
@@ -23,7 +24,7 @@ import Prueba from './Prueba'
 class MaterialsView extends PureComponent {
 
   componentDidMount() {
-    if (this.props.params.searchText) {
+    if (this.props.params.searchText && !this.props.searchResults) {
       this.props.requestMaterials(this.props.locale, this.props.params.searchText)
     }
   }
@@ -96,7 +97,8 @@ MaterialsView.propTypes = {
   // Injected by React Router
   children: PropTypes.node,
   router: PropTypes.any.isRequired,
-  locale: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired,
+  searchResults: PropTypes.arrayOf(PropTypes.number)
 }
 
 
@@ -106,10 +108,10 @@ const mapStateToProps = (state, ownProps) => {
   const locale = state.get('language').get('locale')
   const loading = state.getIn(['materialsView', 'loading'])
   const filtersData = state.getIn(['configuration', 'filtersData'])
-  const searchResults = state.getIn(['materialsView', 'search', locale, ownProps.params.searchText]) || []
-  const entities = {}
-  entities.materials = state.getIn(['materialsView', 'materials']).toJS()
-  const materialList = denormalize(searchResults, searchMaterialSchema, entities)
+  const searchResults = state.getIn(['materialsView', 'search', locale, ownProps.params.searchText])
+  // entities.materials = materials.toJS()
+  const searchData = searchResults || []
+  const materialList = denormalize(searchData, searchMaterialSchema, entitiesSelector(state))
   const visibleMaterials = getFilteredItems(materialList, filters)
 
   return ({
@@ -118,7 +120,8 @@ const mapStateToProps = (state, ownProps) => {
     visibleMaterials,
     locale,
     loading,
-    filtersData
+    filtersData,
+    searchResults
   })
 }
 
