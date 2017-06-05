@@ -4,7 +4,7 @@
  *
  */
 
-import { fromJS } from 'immutable'
+import { fromJS, List } from 'immutable'
 import { MATERIAL } from 'containers/MaterialView/actions'
 import { MATERIALS, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
 
@@ -15,9 +15,9 @@ export const initialState = fromJS({
   search: {},
   searchText: '',
   filters: {
-    activity: [],
-    area: [],
-    language: []
+    activity: List(),
+    area: List(),
+    language: List()
   },
   materials: {}
 })

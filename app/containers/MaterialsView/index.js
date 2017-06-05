@@ -13,10 +13,14 @@ import Toggle from 'material-ui/Toggle'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import { withRouter } from 'react-router'
-import { denormalize } from 'normalizr'
-import { searchMaterialSchema } from 'services/schemas'
-import { getFilteredItems } from 'utils'
-import { entitiesSelector } from './selectors'
+import {
+  filtersSelector,
+  showFiltersSelector,
+  localeSelector,
+  loadingSelector,
+  searchResultsSelector,
+  visibleMaterialsSelector
+  } from './selectors'
 import { materials, toggleShowFilter, setFilterItems } from './actions'
 import messages from './messages'
 import Prueba from './Prueba'
@@ -24,7 +28,9 @@ import Prueba from './Prueba'
 class MaterialsView extends PureComponent {
 
   componentDidMount() {
+    console.log('mounted maerialsview')
     if (this.props.params.searchText && !this.props.searchResults) {
+      console.log('ajax requested')
       this.props.requestMaterials(this.props.locale, this.props.params.searchText)
     }
   }
@@ -47,6 +53,7 @@ class MaterialsView extends PureComponent {
 
 
   render() {
+    console.log('render materialsview')
     const { children, showFilter, filters, visibleMaterials, locale, loading } = this.props
     const searchText = this.props.params.searchText || ''
     let gallery
@@ -90,7 +97,6 @@ MaterialsView.propTypes = {
   loading: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired,
   filters: PropTypes.instanceOf(Map),
-  filtersData: PropTypes.instanceOf(Map),
   showFilter: PropTypes.bool,
   setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
@@ -98,32 +104,20 @@ MaterialsView.propTypes = {
   children: PropTypes.node,
   router: PropTypes.any.isRequired,
   locale: PropTypes.string.isRequired,
-  searchResults: PropTypes.arrayOf(PropTypes.number)
+  searchResults: PropTypes.arrayOf(PropTypes.number),
+  filtersData: PropTypes.instanceOf(Map)
 }
 
 
-const mapStateToProps = (state, ownProps) => {
-  const filters = state.getIn(['materialsView', 'filters'])
-  const showFilter = state.getIn(['materialsView', 'showFilter'])
-  const locale = state.get('language').get('locale')
-  const loading = state.getIn(['materialsView', 'loading'])
-  const filtersData = state.getIn(['configuration', 'filtersData'])
-  const searchResults = state.getIn(['materialsView', 'search', locale, ownProps.params.searchText])
-  // entities.materials = materials.toJS()
-  const searchData = searchResults || []
-  const materialList = denormalize(searchData, searchMaterialSchema, entitiesSelector(state))
-  const visibleMaterials = getFilteredItems(materialList, filters)
-
-  return ({
-    filters,
-    showFilter,
-    visibleMaterials,
-    locale,
-    loading,
-    filtersData,
-    searchResults
-  })
-}
+const mapStateToProps = (state, ownProps) => ({
+  filters: filtersSelector(state),
+  showFilter: showFiltersSelector(state),
+  locale: localeSelector(state),
+  loading: loadingSelector(state),
+  searchResults: searchResultsSelector(state, ownProps),
+  visibleMaterials: visibleMaterialsSelector(state, ownProps),
+  filtersData: state.getIn(['configuration', 'filtersData'])
+})
 
 const mapDispatchToProps = (dispatch) => ({
   requestMaterials: (locale, searchText) => {

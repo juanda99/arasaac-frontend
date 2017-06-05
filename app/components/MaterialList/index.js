@@ -5,6 +5,7 @@ import MaterialSnippet from 'components/MaterialSnippet'
 export class MaterialList extends PureComponent {
 
   render() {
+    console.log('materialList rendered!')
     const { materials, locale, viewMaterial } = this.props
     return (
       <ul>
