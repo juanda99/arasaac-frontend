@@ -5181,7 +5181,17 @@ material-ui-chip-input@^0.13.1:
   version "0.13.1"
   resolved "https://registry.yarnpkg.com/material-ui-chip-input/-/material-ui-chip-input-0.13.1.tgz#6998d29632799c30d90c8b5f250a242d0f223f43"
 
-material-ui@^0.18.1:
+material-ui-pagination@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/material-ui-pagination/-/material-ui-pagination-1.0.3.tgz#5d7633008e84332b13e03632ee358e58a08e766e"
+  dependencies:
+    material-ui "^0.18.0"
+    prop-types "^15.5.9"
+    react "^15.5.4"
+    react-dom "^15.5.4"
+    react-tap-event-plugin "^2.0.1"
+
+material-ui@^0.18.0, material-ui@^0.18.1:
   version "0.18.1"
   resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-0.18.1.tgz#1c8a47d7e930ff0b07064dd8633035984a5a3569"
   dependencies:
@@ -6329,7 +6339,7 @@ promise@^7.0.3, promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8:
+prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@~15.5.7:
   version "15.5.9"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.9.tgz#d478eef0e761396942f70c78e772f76e8be747c9"
   dependencies:
@@ -6453,6 +6463,15 @@ react-dom@15.4.1:
     fbjs "^0.8.1"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+
+react-dom@^15.5.4:
+  version "15.5.4"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.5.4.tgz#ba0c28786fd52ed7e4f2135fe0288d462aef93da"
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.0"
+    prop-types "~15.5.7"
 
 react-dropzone@^3.12.1:
   version "3.12.1"
@@ -6623,6 +6642,15 @@ react@15.4.1:
     fbjs "^0.8.4"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+
+react@^15.5.4:
+  version "15.5.4"
+  resolved "https://registry.yarnpkg.com/react/-/react-15.5.4.tgz#fa83eb01506ab237cdc1c8c3b1cea8de012bf047"
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.0"
+    prop-types "^15.5.7"
 
 read-all-stream@^3.0.0:
   version "3.1.0"

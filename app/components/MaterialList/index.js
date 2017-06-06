@@ -1,18 +1,58 @@
 import React, { PureComponent, PropTypes } from 'react'
+import { FormattedMessage } from 'react-intl'
 import MaterialSnippet from 'components/MaterialSnippet'
+import Pagination from 'material-ui-pagination'
+import messages from './messages'
 
+const itemsPerPage = 10
 
 export class MaterialList extends PureComponent {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      total: Math.ceil(this.props.materials.length / itemsPerPage),
+      display: 10,
+      currentPage: 1,
+      visibleMaterials: []
+    }
+  }
+
+  componentWillMount() {
+    this.loadData()
+  }
+
+  loadData = () => {
+    const { currentPage } = this.state
+    const offset = Math.ceil((currentPage - 1) * itemsPerPage)
+    const visibleMaterials = this.props.materials.slice(offset, offset + itemsPerPage)
+    this.setState({ visibleMaterials })
+  }
+
+  handlePageClick = (currentPage) => {
+    this.setState({ currentPage }, () => {
+      this.loadData()
+    })
+  }
+
   render() {
-    console.log('materialList rendered!')
-    const { materials, locale, viewMaterial } = this.props
+    const { locale, viewMaterial, materials } = this.props
+    const { visibleMaterials, total, currentPage, display } = this.state
     return (
-      <ul>
-        { materials.map((material) =>
-          <MaterialSnippet key={material.idMaterial} material={material} locale={locale} viewMaterial={viewMaterial} />
-        )}
-      </ul>
+      <div>
+        <p> Se han encontrado {materials.length} materiales </p>
+        <ul>
+          { visibleMaterials.map((material) =>
+            <MaterialSnippet key={material.idMaterial} material={material} locale={locale} viewMaterial={viewMaterial} />
+          )}
+        </ul>
+        <Pagination
+          total={total}
+          current={currentPage}
+          display={display}
+          onChange={this.handlePageClick}
+        />
+      </div>
     )
   }
 }
