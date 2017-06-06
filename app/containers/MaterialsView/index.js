@@ -61,7 +61,14 @@ class MaterialsView extends PureComponent {
       gallery = null
     } else {
       gallery = visibleMaterials.length > 0
-        ? React.cloneElement(children, { key: 'materialList', materials: visibleMaterials, locale, viewMaterial: this.viewMaterial })
+        ? React.cloneElement(children, {
+          key: 'materialList',
+          materials: visibleMaterials,
+          locale,
+          viewMaterial: this.viewMaterial,
+          filtersMap: filters,
+          setFilterItems: this.props.setFilterItems
+        })
         : <p>{<FormattedMessage {...messages.materialsNotFound} />}</p>
     }
     // const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials, locale, viewMaterial: this.viewMaterial }) : null
@@ -75,7 +82,6 @@ class MaterialsView extends PureComponent {
             { name: 'description', content: 'Description of PictogramsView' }
           ]}
         />
-        <Prueba materials={visibleMaterials} />
         <Toggle
           label={<FormattedMessage {...messages.advancedSearch} />}
           onToggle={this.props.toggleShowFilter}

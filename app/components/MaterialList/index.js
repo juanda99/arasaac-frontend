@@ -1,49 +1,52 @@
 import React, { PureComponent, PropTypes } from 'react'
-import { FormattedMessage } from 'react-intl'
+// import { FormattedMessage } from 'react-intl'
 import MaterialSnippet from 'components/MaterialSnippet'
+import { Map } from 'immutable'
 import Pagination from 'material-ui-pagination'
-import messages from './messages'
+// import messages from './messages'
 
-const itemsPerPage = 10
+const itemsPerPage = 10 /* number of items per page */
+const display = 10 /* number of pages to see in the paginator */
 
 export class MaterialList extends PureComponent {
 
   constructor(props) {
     super(props)
     this.state = {
-      total: Math.ceil(this.props.materials.length / itemsPerPage),
-      display: 10,
-      currentPage: 1,
-      visibleMaterials: []
+      currentPage: 1
     }
   }
 
-  componentWillMount() {
-    this.loadData()
-  }
-
-  loadData = () => {
-    const { currentPage } = this.state
-    const offset = Math.ceil((currentPage - 1) * itemsPerPage)
-    const visibleMaterials = this.props.materials.slice(offset, offset + itemsPerPage)
-    this.setState({ visibleMaterials })
-  }
-
   handlePageClick = (currentPage) => {
-    this.setState({ currentPage }, () => {
-      this.loadData()
-    })
+    this.setState({ currentPage })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.materials !== this.props.materials) {
+      // reset pagination, as data has changed:
+      this.setState({ currentPage: 1 })
+    }
   }
 
   render() {
-    const { locale, viewMaterial, materials } = this.props
-    const { visibleMaterials, total, currentPage, display } = this.state
+    const { locale, viewMaterial, materials, filtersMap, setFilterItems } = this.props
+    const { currentPage } = this.state
+    const total = Math.ceil(materials.length / itemsPerPage)
+    const offset = Math.ceil((currentPage - 1) * itemsPerPage)
+    const visibleMaterials = this.props.materials.slice(offset, offset + itemsPerPage)
     return (
       <div>
         <p> Se han encontrado {materials.length} materiales </p>
         <ul>
           { visibleMaterials.map((material) =>
-            <MaterialSnippet key={material.idMaterial} material={material} locale={locale} viewMaterial={viewMaterial} />
+            <MaterialSnippet
+              key={material.idMaterial}
+              material={material}
+              locale={locale}
+              viewMaterial={viewMaterial}
+              filtersMap={filtersMap}
+              setFilterItems={setFilterItems}
+            />
           )}
         </ul>
         <Pagination
@@ -62,7 +65,9 @@ MaterialList.propTypes = {
   // with optional parameters in the router is slower in my tests ????
   // rollback from https://github.com/react-boilerplate/react-boilerplate/issues/1748
   locale: PropTypes.string,
-  viewMaterial: PropTypes.func
+  viewMaterial: PropTypes.func,
+  filtersMap: PropTypes.instanceOf(Map).isRequired,
+  setFilterItems: PropTypes.func.isRequired
 }
 
 export default MaterialList
