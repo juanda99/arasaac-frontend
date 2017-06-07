@@ -34,12 +34,15 @@ export class MaterialSnippet extends PureComponent {
 
   handleRequestDelete = (filterName, filterItem) => {
     // we get all the values from the filter
-    alert('You clicked the Chip.')
+    alert('You clicked the Chipaaa.')
     // setFilterItems()
   }
 
-  handleTouchTap = () => alert('You clicked the Chip.')
-
+  handleTouchTap = (id) => {
+    if (id) {
+      alert('You clicked the Chip.')
+    }
+  }
   /* How we show messages...*/
   /* catalan: ca, va, es, en, ...*/
   /* br: pt, br, en, ....*/
@@ -54,7 +57,7 @@ export class MaterialSnippet extends PureComponent {
           <Chip
             backgroundColor={lightGreen400}
             style={styles.chip}
-            onRequestDelete={this.handleRequestDelete('activity', id)}
+            onRequestDelete={() => this.handleRequestDelete('activity', id)}
             key={id}
             onTouchTap={this.handleTouchTap}
           >
