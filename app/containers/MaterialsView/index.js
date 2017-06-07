@@ -12,6 +12,7 @@ import SearchField from 'components/SearchField'
 import Toggle from 'material-ui/Toggle'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
+import MaterialList from 'components/MaterialList'
 import { withRouter } from 'react-router'
 import {
   filtersSelector,
@@ -23,14 +24,11 @@ import {
   } from './selectors'
 import { materials, toggleShowFilter, setFilterItems } from './actions'
 import messages from './messages'
-import Prueba from './Prueba'
 
 class MaterialsView extends PureComponent {
 
   componentDidMount() {
-    console.log('mounted maerialsview')
     if (this.props.params.searchText && !this.props.searchResults) {
-      console.log('ajax requested')
       this.props.requestMaterials(this.props.locale, this.props.params.searchText)
     }
   }
@@ -53,27 +51,27 @@ class MaterialsView extends PureComponent {
 
 
   render() {
-    console.log('render materialsview')
-    const { children, showFilter, filters, visibleMaterials, locale, loading } = this.props
+    const { showFilter, filters, visibleMaterials, locale, loading, filtersData } = this.props
     const searchText = this.props.params.searchText || ''
     let gallery
-    if (loading || !searchText) {
+    if (loading) {
+      gallery = <p> Searching materials...</p>
+    } else if (!searchText) {
       gallery = null
     } else {
       gallery = visibleMaterials.length > 0
-        ? React.cloneElement(children, {
-          key: 'materialList',
-          materials: visibleMaterials,
-          locale,
-          viewMaterial: this.viewMaterial,
-          filtersMap: filters,
-          setFilterItems: this.props.setFilterItems
-        })
-        : <p>{<FormattedMessage {...messages.materialsNotFound} />}</p>
+      ? (
+        <MaterialList
+          materials={visibleMaterials}
+          locale={locale}
+          viewMaterial={this.viewMaterial}
+          filtersMap={filters}
+          setFilterItems={this.props.setFilterItems}
+          filtersData={filtersData}
+        />
+      )
+      : <p>{<FormattedMessage {...messages.materialsNotFound} />}</p>
     }
-    // const gallery = visibleMaterials.length > 0 ? React.cloneElement(children, { materials: visibleMaterials, locale, viewMaterial: this.viewMaterial }) : null
-    // this code in return is not so good if children changes (search, categories...)
-    //  {visibleMaterials.length > 0 && <MaterialList materials={visibleMaterials} />}
     return (
       <View>
         <Helmet
@@ -89,7 +87,7 @@ class MaterialsView extends PureComponent {
           style={{ width: '200px', float: 'right' }}
         />
         <SearchField value={searchText} onSubmit={this.handleSubmit} />
-        {showFilter ? <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={this.props.filtersData} /> : null}
+        {showFilter ? <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} /> : null}
         {gallery}
       </View>
     )
@@ -107,7 +105,6 @@ MaterialsView.propTypes = {
   setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
   // Injected by React Router
-  children: PropTypes.node,
   router: PropTypes.any.isRequired,
   locale: PropTypes.string.isRequired,
   searchResults: PropTypes.arrayOf(PropTypes.number),

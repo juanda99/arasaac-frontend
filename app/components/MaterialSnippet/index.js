@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, PureComponent } from 'react'
 import FlatButton from 'material-ui/FlatButton'
 import { Map } from 'immutable'
 import Chip from 'material-ui/Chip'
@@ -22,31 +22,43 @@ const styles = {
   }
 }
 
+export class MaterialSnippet extends PureComponent {
 
-const MaterialSnippet = ({ material, locale, viewMaterial, filtersMap, setFilterItems }) => {
-  const handleClick = () => {
+  constructor(props) {
+    super(props)
+  }
+
+  handleClick = () => {
     viewMaterial(material.idMaterial)
   }
 
-  const handleRequestDelete = (filterName, filterItem) => setFilterItems()
-  const handleTouchTap = () => alert('You clicked the Chip.')
+  handleRequestDelete = (filterName, filterItem) => {
+    // we get all the values from the filter
+    alert('You clicked the Chip.')
+    // setFilterItems()
+  }
+
+  handleTouchTap = () => alert('You clicked the Chip.')
+
   /* How we show messages...*/
   /* catalan: ca, va, es, en, ...*/
   /* br: pt, br, en, ....*/
   /* eu: eu, es, en, ....*/
   /* ga: ga, es, en, .....*/
-  const activityTags = material.activity.map(
-    (id) => {
+
+  render() {
+    const { material, locale, viewMaterial, filtersMap, setFilterItems, filtersData } = this.props
+    const activityTags = material.activity.map((id) => {
       if (filtersMap.get('activity').includes(id)) {
         return (
           <Chip
             backgroundColor={lightGreen400}
             style={styles.chip}
-            onRequestDelete={handleRequestDelete(id, 'activity')}
+            onRequestDelete={this.handleRequestDelete('activity', id)}
             key={id}
-            onTouchTap={handleTouchTap}
+            onTouchTap={this.handleTouchTap}
           >
-            <Avatar color={lightGreen800} icon={<ActivityIcon />} />
+            <Avatar color={'white'} backgroundColor={lightGreen800} icon={<ActivityIcon />} />
             {activity[id]}
           </Chip>
         )
@@ -55,32 +67,34 @@ const MaterialSnippet = ({ material, locale, viewMaterial, filtersMap, setFilter
         <Chip
           style={styles.chip}
           key={id}
-          onTouchTap={handleTouchTap}
+          onTouchTap={this.handleTouchTap}
         >
           <Avatar color='#444' icon={<ActivityIcon />} />
           {activity[id]}
         </Chip>
       )
-    }
-  )
-  const languageTags = material.translations.map((translation) => <Chip style={styles.chip} key={translation.language}><Avatar color='#444' icon={<LanguageIcon />} />{language[translation.language]}</Chip>)
-  languageTags.push(<Chip style={styles.chip} key={material.language}><Avatar color='#222' icon={<LanguageIcon />} />{language[material.language]}</Chip>)
-  const areaTags = material.area.map((id) => <Chip style={styles.chip} key={id}><Avatar color='#444' icon={<AreaIcon />} />{area[id]}</Chip>)
-  return (
-    <li>
-      <section>
-        <FlatButton label={material.title} primary={true} onClick={handleClick} />
-        <div style={styles.wrapper}>
-          {languageTags}
-          {activityTags}
-          {areaTags}
-        </div>
-        <p>{material.desc}</p>
-        <p>{locale}</p>
-      </section>
-    </li>
-  )
+    })
+    const languageTags = material.translations.map((translation) => <Chip style={styles.chip} key={translation.language}><Avatar color='#444' icon={<LanguageIcon />} />{language[translation.language]}</Chip>)
+    languageTags.push(<Chip style={styles.chip} key={material.language}><Avatar color='#222' icon={<LanguageIcon />} />{language[material.language]}</Chip>)
+    const areaTags = material.area.map((id) => <Chip style={styles.chip} key={id}><Avatar color='#444' icon={<AreaIcon />} />{area[id]}</Chip>)
+
+    return (
+      <li>
+        <section>
+          <FlatButton label={material.title} primary={true} onClick={this.handleClick} />
+          <div style={styles.wrapper}>
+            {languageTags}
+            {activityTags}
+            {areaTags}
+          </div>
+          <p>{material.desc}</p>
+          <p>{locale}</p>
+        </section>
+      </li>
+    )
+  }
 }
+
 
 // needed for tests: seee https://github.com/facebook/jest/issues/1824
 MaterialSnippet.displayName = 'MaterialSnippet'
@@ -91,6 +105,7 @@ MaterialSnippet.propTypes = {
   locale: PropTypes.string.isRequired,
   viewMaterial: PropTypes.func.isRequired,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
+  filtersData: PropTypes.instanceOf(Map).isRequired,
   setFilterItems: PropTypes.func.isRequired
 }
 
