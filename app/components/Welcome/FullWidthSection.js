@@ -3,7 +3,7 @@ import { lightGreen500 } from 'material-ui/styles/colors'
 
 const FullWidthSection = styled.div`
   backgroundColor: ${lightGreen500};
-  overflow: 'hidden';
+  overflow: auto;
   clear:both;
   padding-bottom: 2em;
 `

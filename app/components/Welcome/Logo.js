@@ -7,5 +7,6 @@ const Logo = styled.img`
   width: 300px;
   // if not, it seemed not to be centered
   left: -50px;
+  z-index: 100000;
 `
 export default Logo
