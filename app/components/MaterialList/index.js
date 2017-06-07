@@ -17,10 +17,6 @@ export class MaterialList extends PureComponent {
     }
   }
 
-  handlePageClick = (currentPage) => {
-    this.setState({ currentPage })
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.materials !== this.props.materials) {
       // reset pagination, as data has changed:
@@ -28,8 +24,12 @@ export class MaterialList extends PureComponent {
     }
   }
 
+  handlePageClick = (currentPage) => {
+    this.setState({ currentPage })
+  }
+
   render() {
-    const { locale, viewMaterial, materials, filtersMap, setFilterItems } = this.props
+    const { locale, viewMaterial, materials, filtersMap, setFilterItems, filtersData } = this.props
     const { currentPage } = this.state
     const total = Math.ceil(materials.length / itemsPerPage)
     const offset = Math.ceil((currentPage - 1) * itemsPerPage)
@@ -46,6 +46,7 @@ export class MaterialList extends PureComponent {
               viewMaterial={viewMaterial}
               filtersMap={filtersMap}
               setFilterItems={setFilterItems}
+              filtersData={filtersData}
             />
           )}
         </ul>
@@ -67,7 +68,8 @@ MaterialList.propTypes = {
   locale: PropTypes.string,
   viewMaterial: PropTypes.func,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
-  setFilterItems: PropTypes.func.isRequired
+  setFilterItems: PropTypes.func.isRequired,
+  filtersData: PropTypes.instanceOf(Map).isRequired
 }
 
 export default MaterialList
