@@ -72,6 +72,7 @@
 2. Run `npm install` or `yarn install` to install dependencies<br />
    *We auto-detect `yarn` for installing packages by default, if you wish to force `npm` usage do: `USE_YARN=false npm run setup`*<br />
 3. Run `npm start` to see the app running at `http://localhost:3000`.*
+4. See [how to instal the backend server](https://github.com/juanda99/api-arasaac) 
 
 ## License
 
