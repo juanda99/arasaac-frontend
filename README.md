@@ -73,11 +73,12 @@
    *We auto-detect `yarn` for installing packages by default, if you wish to force `npm` usage do: `USE_YARN=false npm run setup`*<br />
 3. Run `npm start` to see the app running at `http://localhost:3000`.*
 
-
-## Supporters
-<img src="http://arasaac.org/images/logoAragon.jpg" alt="Gobierno de Aragón" align="center" />
-<img src="http://arasaac.org/images/logo_fse.jpg" alt="European Union" align="center" />
-
 ## License
 
 This project is licensed under the MIT license, Copyright (c) 2016 . For more information see `LICENSE.md`.
+
+## Supporters
+<img src="http://arasaac.org/images/logoAragon.jpg" alt="Gobierno de Aragón" align="left" />
+<img src="http://arasaac.org/images/logo_fse.jpg" alt="European Union" align="right" />
+
+
