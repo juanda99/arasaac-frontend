@@ -51,14 +51,17 @@
 <dt>Based on <a href="https://github.com/mxstbr/react-boilerplate">React boilerplate</a></dt>
   <dd>Using React, Redux, Immutable.js, Sagas and Reselect</dd>
 
-  <dt>NodeJS and Python on the server side</dt>
-  <dd>Express for testing, Swagger and Python Eve for the final API </dd>
+  <dt>API with nodeJS and Express on the server side</dt>
+  <dd>Swagger API framework for docs and MongoDB as database</dd>
 
   <dt>Presentation</dt>
   <dd>Material-ui and flexbox-grid</dd>
 
   <dt>Data</dt>
   <dd>MongoDB</dd>
+
+  <dt>Crowdin</dt>
+  <dd>For all the translations workflow</dd>
 
   <dt>Authentication</dt>
   <dd>JWT, user/password and social logins</dd>
