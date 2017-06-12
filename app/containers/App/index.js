@@ -156,6 +156,10 @@ class App extends Component {
         title = <FormattedMessage {...messages.configurationTitle} />
         docked = width === LARGE
         break
+      case /contact-us/.test(url):
+        title = <FormattedMessage {...messages.contactusTitle} />
+        docked = width === LARGE
+        break
       default:
         docked = false
         break

@@ -227,6 +227,14 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
+      path: 'contact-us',
+      name: 'contact-us',
+      getComponent(location, cb) {
+        import('containers/ContactView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
