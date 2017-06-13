@@ -155,7 +155,7 @@ class Menu extends Component {
             primaryText={<FormattedMessage {...messages.prizes} />}
           />
           <ListItem
-            value='https://www.google.com/design/spec/material-design/introduction.html'
+            value='/contact-us'
             primaryText={<FormattedMessage {...messages.contact} />}
           />
         </SelectableList>
