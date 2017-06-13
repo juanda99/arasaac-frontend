@@ -6,6 +6,7 @@ export default {
     // Needed to overlap the examples
     // zIndex: this.state.muiTheme.zIndex.appBar + 1,
     top: 0,
-    backgroundColor: lightGreen500
+    backgroundColor: lightGreen500,
+    zIndex: 8
   }
 }
