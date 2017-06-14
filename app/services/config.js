@@ -1,4 +1,4 @@
-export const API_ROOT = 'http://localhost:8100/api/'
+export const API_ROOT = 'http://beta.arasaac.org:8100/api/'
 export const login = {
   url: 'auth/',
   config: (data) => ({
