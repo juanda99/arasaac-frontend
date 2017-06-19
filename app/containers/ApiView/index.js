@@ -17,9 +17,9 @@ const container = {
 }
 
 const ApiView = () => (
-  <View style={{ height: '10000' }}>
+  <View style={{ height: '10000px' }}>
     <div style={{ container }}>
-      <Iframe url='http://localhost:8100/api-docs' width={'100%'} height={'100%'} />
+      <Iframe url='//localhost:8100/api-docs' width={'100%'} height={'100%'} />
     </div>
   </View>
 )
