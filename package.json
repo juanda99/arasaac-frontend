@@ -190,7 +190,9 @@
       "ip",
       "minimist",
       "sanitize.css",
-      "react-flexbox-grid"
+      "react-flexbox-grid",
+      "yaml-js",
+      "swagger-ui"
     ],
     "include": [
       "core-js",
@@ -274,8 +276,10 @@
     "reselect": "2.5.4",
     "sanitize.css": "4.1.0",
     "styled-components": "1.1.2",
+    "swagger-ui": "^3.0.16",
     "warning": "3.0.0",
-    "whatwg-fetch": "2.0.1"
+    "whatwg-fetch": "2.0.1",
+    "yaml-js": "^0.1.5"
   },
   "devDependencies": {
     "babel-cli": "6.18.0",
