@@ -6,9 +6,9 @@ import Avatar from 'material-ui/Avatar'
 import { lightGreen400, lightGreen800 } from 'material-ui/styles/colors'
 import activity from 'data/activity'
 import area from 'data/area'
-import language from 'data/language'
+// import language from 'data/language'
 // import LanguageIcon from 'material-ui/svg-icons/action/translate'
-import LanguageIcon from 'material-ui/svg-icons/social/public'
+// import LanguageIcon from 'material-ui/svg-icons/social/public'
 import ActivityIcon from 'material-ui/svg-icons/action/input'
 import AreaIcon from 'material-ui/svg-icons/social/school'
 
@@ -66,6 +66,7 @@ export class MaterialSnippet extends PureComponent {
           </Chip>
         )
       }
+      /* if not in filter, return icons without backgroundColor */
       return (
         <Chip
           style={styles.chip}
@@ -86,11 +87,12 @@ export class MaterialSnippet extends PureComponent {
             key={id}
             onTouchTap={() => this.handleTouchTap('area', id, 0)}
           >
-            <Avatar color={'white'} backgroundColor={lightGreen800} icon={<ActivityIcon />} />
+            <Avatar color={'white'} backgroundColor={lightGreen800} icon={<AreaIcon />} />
             {area[id]}
           </Chip>
         )
       }
+      /* if not in filter, return icons without backgroundColor */
       return (
         <Chip
           style={styles.chip}
@@ -102,14 +104,13 @@ export class MaterialSnippet extends PureComponent {
         </Chip>
       )
     })
-    const languageTags = material.translations.map((translation) => <Chip style={styles.chip} key={translation.language}><Avatar color='#444' icon={<LanguageIcon />} />{language[translation.language]}</Chip>)
-    languageTags.push(<Chip style={styles.chip} key={material.language}><Avatar color='#222' icon={<LanguageIcon />} />{language[material.language]}</Chip>)
+    // const languageTags = material.translations.map((translation) => <Chip style={styles.chip} key={translation.language}><Avatar color='#444' icon={<LanguageIcon />} />{language[translation.language]}</Chip>)
+    // languageTags.push(<Chip style={styles.chip} key={material.language}><Avatar color='#222' icon={<LanguageIcon />} />{language[material.language]}</Chip>)
     return (
       <li>
         <section>
           <FlatButton label={material.title} primary={true} onClick={this.handleClick} />
           <div style={styles.wrapper}>
-            {languageTags}
             {activityTags}
             {areaTags}
           </div>
