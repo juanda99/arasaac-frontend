@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import pure from 'recompose/pure'
 import SvgIcon from 'material-ui/SvgIcon'
 /* eslint-disable import/no-mutable-exports */

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import RaisedButton from 'material-ui/RaisedButton'
 import EmailIcon from 'material-ui/svg-icons/communication/email'
 import { Link } from 'react-router'

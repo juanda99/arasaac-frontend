@@ -1,4 +1,5 @@
-import React, { PropTypes, PureComponent } from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import FlatButton from 'material-ui/FlatButton'
 import { Map, List } from 'immutable'
 import Chip from 'material-ui/Chip'
@@ -59,7 +60,7 @@ export class MaterialSnippet extends PureComponent {
             backgroundColor={lightGreen400}
             style={styles.chip}
             key={id}
-            onTouchTap={() => this.handleTouchTap('activity', id, 0)}
+            onClick={() => this.handleTouchTap('activity', id, 0)}
           >
             <Avatar color={'white'} backgroundColor={lightGreen800} icon={<ActivityIcon />} />
             {activity[id]}
@@ -71,7 +72,7 @@ export class MaterialSnippet extends PureComponent {
         <Chip
           style={styles.chip}
           key={id}
-          onTouchTap={() => this.handleTouchTap('activity', id, 1)}
+          onClick={() => this.handleTouchTap('activity', id, 1)}
         >
           <Avatar color='#444' icon={<ActivityIcon />} />
           {activity[id]}
@@ -85,7 +86,7 @@ export class MaterialSnippet extends PureComponent {
             backgroundColor={lightGreen400}
             style={styles.chip}
             key={id}
-            onTouchTap={() => this.handleTouchTap('area', id, 0)}
+            onClick={() => this.handleTouchTap('area', id, 0)}
           >
             <Avatar color={'white'} backgroundColor={lightGreen800} icon={<AreaIcon />} />
             {area[id]}
@@ -97,7 +98,7 @@ export class MaterialSnippet extends PureComponent {
         <Chip
           style={styles.chip}
           key={id}
-          onTouchTap={() => this.handleTouchTap('area', id, 1)}
+          onClick={() => this.handleTouchTap('area', id, 1)}
         >
           <Avatar color='#444' icon={<AreaIcon />} />
           {area[id]}

@@ -3,8 +3,7 @@
  * ToggleFilter
  *
  */
-
-import { PropTypes } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Toggle from 'material-ui/Toggle'
 import { toggleFilter } from './actions'

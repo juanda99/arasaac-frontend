@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Field } from 'redux-form/immutable'
 import MUIAutoComplete from 'material-ui/AutoComplete'
 import Paper from 'material-ui/Paper'

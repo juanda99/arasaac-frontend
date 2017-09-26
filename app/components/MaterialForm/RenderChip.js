@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import ChipInput from 'material-ui-chip-input'
 import AutoComplete from 'material-ui/AutoComplete'
 

@@ -52,13 +52,6 @@ import './global-styles'
 // Import root routes
 import createRoutes from './routes'
 
-// Needed for onTouchTap
-// Can go away when react 1.0 release
-// Check this repo:
-// https://github.com/zilverline/react-tap-event-plugin
-// injectTapEventPlugin()
-
-
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
 const openSansObserver = new FontFaceObserver('Roboto', {})

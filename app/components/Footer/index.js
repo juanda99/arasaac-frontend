@@ -5,6 +5,7 @@
 */
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import { lightGreen800 } from 'material-ui/styles/colors'
 import { Row, Col } from 'react-flexbox-grid'
 // import { FormattedMessage } from 'react-intl'
@@ -40,7 +41,7 @@ const Footer = ({ docked }) => (
 )
 
 Footer.propTypes = {
-  docked: React.PropTypes.bool.isRequired
+  docked: PropTypes.bool.isRequired
 }
 
 export default Footer

@@ -13,7 +13,8 @@
 
 /* eslint-disable */
 
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { ImmutableLoadingBar as LoadingBar } from 'react-redux-loading-bar'
 // import Helmet from 'react-helmet'
 // import styled from 'styled-components'

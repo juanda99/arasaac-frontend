@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
@@ -59,7 +60,7 @@ class FilterSelect extends React.Component {
 FilterSelect.displayName = 'FilterSelect'
 
 FilterSelect.propTypes = {
-  items: PropTypes.arrayOf(React.PropTypes.shape({
+  items: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     primaryText: PropTypes.string.isRequired
   })).isRequired,
