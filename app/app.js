@@ -28,7 +28,7 @@ import { makeSelectLocationState } from 'containers/App/selectors'
 import LanguageProvider from 'containers/LanguageProvider'
 
 // material-ui requirement
-import injectTapEventPlugin from 'react-tap-event-plugin'
+// import injectTapEventPlugin from 'react-tap-event-plugin'
 // theme:
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
@@ -56,7 +56,7 @@ import createRoutes from './routes'
 // Can go away when react 1.0 release
 // Check this repo:
 // https://github.com/zilverline/react-tap-event-plugin
-injectTapEventPlugin()
+// injectTapEventPlugin()
 
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in

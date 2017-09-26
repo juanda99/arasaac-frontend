@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import AutoComplete from 'material-ui/AutoComplete'
 import RaisedButton from 'material-ui/RaisedButton'
 import { injectIntl, intlShape } from 'react-intl'
@@ -12,31 +12,22 @@ const styles = {
   }
 }
 
-class SearchField extends React.Component {
+class SearchField extends Component {
+
+  state = { searchText: this.props.value }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
-      this.setInputValue(nextProps.value)
+      this.setState({ searchText: nextProps.value })
     }
-  }
-
-  getInputValue() {
-    return this.myInput.refs.searchTextField.props.value
-  }
-
-  setInputValue(val) {
-    // Generally mutating DOM is a bad idea in React components,
-    // but doing this for a single uncontrolled field is less fuss
-    // than making it controlled and maintaining a state for it.
-    this.myInput.value = val
   }
 
 
   handleUpdateInput = (t) => {
     if (t.keyCode === 13) {
-      this.props.onSubmit(this.getInputValue())
-    } else if (this.props.onChange) {
-      this.props.onChange(this.getInputValue())
+      this.props.onSubmit(this.state.searchText)
+    } else {
+      this.setState({ searchText: t })
     }
   }
 
@@ -45,7 +36,7 @@ class SearchField extends React.Component {
   }
 
   handleClick = () => {
-    this.props.onSubmit(this.getInputValue())
+    this.props.onSubmit(this.state.searchText)
   }
 
   render() {
@@ -62,7 +53,7 @@ class SearchField extends React.Component {
           dataSource={dataSource}
           onNewRequest={this.handleSubmit}
           onUpdateInput={this.handleUpdateInput}
-          searchText={this.props.value}
+          searchText={this.state.searchText}
           maxSearchResults={10}
         />
         <RaisedButton label='Search' primary={true} style={styles.button} onClick={this.handleClick} />
@@ -75,8 +66,7 @@ SearchField.propTypes = {
   dataSource: PropTypes.array,
   intl: intlShape.isRequired,
   value: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func || null
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default injectIntl(SearchField)

@@ -1,5 +1,5 @@
 {
-  "name": "Arasaac",
+  "name": "arasaac",
   "version": "0.0.1",
   "description": "New arasaac frontend",
   "repository": {
@@ -245,9 +245,9 @@
     "invariant": "2.2.2",
     "ip": "1.1.4",
     "lodash": "4.17.2",
-    "material-ui": "^0.18.1",
-    "material-ui-chip-input": "^0.13.1",
-    "material-ui-pagination": "^1.0.3",
+    "material-ui": "0.19.2",
+    "material-ui-chip-input": "^0.17.1",
+    "material-ui-pagination": "^1.1.6",
     "minimist": "1.2.0",
     "normalizr": "^3.2.2",
     "react": "15.4.1",

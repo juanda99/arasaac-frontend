@@ -52,7 +52,7 @@ class MaterialForm extends React.Component {
             orientation='vertical'
           >
             <Step>
-              <StepButton onTouchTap={() => this.setState({ stepIndex: 0 })}>
+              <StepButton onClick={() => this.setState({ stepIndex: 0 })}>
                 <H3><FormattedMessage {...messages.authorsTitle} /></H3>
               </StepButton>
               <StepContent>
@@ -61,7 +61,7 @@ class MaterialForm extends React.Component {
               </StepContent>
             </Step>
             <Step>
-              <StepButton onTouchTap={() => this.setState({ stepIndex: 1 })}>
+              <StepButton onClick={() => this.setState({ stepIndex: 1 })}>
                 <H3>Idiomas y descripción del material</H3>
               </StepButton>
               <StepContent>
@@ -71,7 +71,7 @@ class MaterialForm extends React.Component {
               </StepContent>
             </Step>
             <Step>
-              <StepButton onTouchTap={() => this.setState({ stepIndex: 2 })}>
+              <StepButton onClick={() => this.setState({ stepIndex: 2 })}>
                 <H3>Capturas de pantalla</H3>
               </StepButton>
               <StepContent>
@@ -80,23 +80,23 @@ class MaterialForm extends React.Component {
               </StepContent>
             </Step>
             <Step>
-              <StepButton onTouchTap={() => this.setState({ stepIndex: 3 })}>
+              <StepButton onClick={() => this.setState({ stepIndex: 3 })}>
                 <H3>Clasificación del material</H3>
               </StepButton>
               <StepContent>
                 <Field name='areas' component={RenderChip} hintText='Selecciona las áreas del material' floatingLabelText='Área' dataSource={['perro', 'casa', 'perra']} />
                 <Field name='actividades' component={RenderChip} hintText='Selecciona los tipos de actividad del material' floatingLabelText='Actividad' dataSource={['perro', 'casa', 'perra']} />
                 <Field name='licencia' component={SelectField} hintText='Selecciona el tipo de licencia' floatingLabelText='Licencia' fullWidth >
-                  <MenuItem value='Sin definir' primaryText='Sin definir' disabled='true' />
+                  <MenuItem value='Sin definir' primaryText='Sin definir' disabled={true} />
                   <MenuItem value='Creative Commons BY-NC-SA' primaryText='Creative Commons BY-NC-SA' />
-                  <MenuItem value='Software propietario' primaryText='Software propietario' disabled='true' />
-                  <MenuItem value='GNU General Public License' primaryText='GNU General Public License' disabled='true' />
-                  <MenuItem value='Mozilla Public License' primaryText='Mozilla Public License' disabled='true' />
+                  <MenuItem value='Software propietario' primaryText='Software propietario' disabled={true} />
+                  <MenuItem value='GNU General Public License' primaryText='GNU General Public License' disabled={true} />
+                  <MenuItem value='Mozilla Public License' primaryText='Mozilla Public License' disabled={true} />
                 </Field>
               </StepContent>
             </Step>
             <Step>
-              <StepButton onTouchTap={() => this.setState({ stepIndex: 4 })}>
+              <StepButton onClick={() => this.setState({ stepIndex: 4 })}>
                 <H3>Subir ficheros</H3>
               </StepButton>
               <StepContent>
@@ -105,13 +105,13 @@ class MaterialForm extends React.Component {
               </StepContent>
             </Step>
             <Step>
-              <StepButton onTouchTap={() => this.setState({ stepIndex: 5 })}>
+              <StepButton onClick={() => this.setState({ stepIndex: 5 })}>
                 <H3>Enviar material</H3>
               </StepButton>
               <StepContent>
-                <p>Almost finish! Click submit button to send the material. We will email you when it's published</p>
+                <p>Almost finish! Click submit button to send the material. We will email you when it is published</p>
                 <RaisedButton type='submit' disabled={pristine || submitting} label='Enviar' primary={true} />
-                <RaisedButton label='Clear values' disabled={pristine || submitting} disabled={true} onClick={reset} />
+                <RaisedButton label='Clear values' disabled={pristine || submitting} onClick={reset} />
               </StepContent>
             </Step>
           </Stepper>

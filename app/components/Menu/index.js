@@ -61,7 +61,7 @@ class Menu extends Component {
        // containerStyle={{zIndex: zIndex.drawer - 100}}
         containerStyle={{ Index: 1200 }}
       >
-        <div style={styles.logo} onTouchTap={this.handleTouchTapHeader}>
+        <div role='button' style={styles.logo} onClick={this.handleTouchTapHeader}>
           Arasaac
         </div>
         <SelectableList
@@ -69,7 +69,7 @@ class Menu extends Component {
         >
           <ListItem
             primaryText={<FormattedMessage {...messages.pictograms} />}
-            primaryTogglesNestedList
+            primaryTogglesNestedList={true}
             nestedItems={[
               <ListItem
                 value='/pictograms/search'
@@ -87,7 +87,7 @@ class Menu extends Component {
           />
           <ListItem
             primaryText={<FormattedMessage {...messages.materials} />}
-            primaryTogglesNestedList
+            primaryTogglesNestedList={true}
             nestedItems={[
               <ListItem
                 value='/materials/search'
@@ -101,7 +101,7 @@ class Menu extends Component {
           />
           <ListItem
             primaryText={<FormattedMessage {...messages.onlineTools} />}
-            primaryTogglesNestedList
+            primaryTogglesNestedList={true}
             nestedItems={[
               <ListItem
                 value='/onlinetools/animations-maker'

@@ -1,6 +1,6 @@
-// export const API_SERVER = 'https://api.arasaac.org'
-export const API_SERVER = 'http://api.arasaac.org:8002'
-export const API_ROOT = `${API_SERVER}/api`
+export const API_SERVER = 'https://api.arasaac.org'
+// export const API_SERVER = 'http://api.arasaac.org:8002'
+export const API_ROOT = `${API_SERVER}/api/`
 
 export const login = {
   url: 'auth/',
