@@ -5,6 +5,10 @@ import { Map, List } from 'immutable'
 import Chip from 'material-ui/Chip'
 import Avatar from 'material-ui/Avatar'
 import { lightGreen400, lightGreen800 } from 'material-ui/styles/colors'
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card'
+import Paper from 'material-ui/Paper'
+import testImage from './test.jpg'
+import Toggle from 'material-ui/Toggle'
 import activity from 'data/activity'
 import area from 'data/area'
 // import language from 'data/language'
@@ -20,10 +24,37 @@ const styles = {
   wrapper: {
     display: 'flex',
     flexWrap: 'wrap'
+  },
+  paper: {
+    overflow: 'auto',
+    borderColor: 'yellow'
   }
 }
 
 export class MaterialSnippet extends PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      expanded: false,
+    }
+  }
+
+  handleExpandChange = (expanded) => {
+    this.setState({expanded: expanded});
+  }
+
+  handleToggle = (event, toggle) => {
+    this.setState({expanded: toggle});
+  }
+
+  handleExpand = () => {
+    this.setState({expanded: true});
+  }
+
+  handleReduce = () => {
+    this.setState({expanded: false});
+  }
 
   handleClick = () => {
     const { viewMaterial, material } = this.props
@@ -109,7 +140,14 @@ export class MaterialSnippet extends PureComponent {
     // languageTags.push(<Chip style={styles.chip} key={material.language}><Avatar color='#222' icon={<LanguageIcon />} />{language[material.language]}</Chip>)
     return (
       <li>
-        <section>
+        <Paper zDepth={3} style={styles.paper}>
+          <div style={{width:'200px', height: '200px', float: 'left' }}>
+            <img src={testImage} alt="" style={{width: '100%'}}/>
+          </div>
+          <div>
+            <p>Prueba</p>
+          </div>
+        </Paper>
           <FlatButton label={material.title} primary={true} onClick={this.handleClick} />
           <div style={styles.wrapper}>
             {activityTags}
@@ -117,7 +155,6 @@ export class MaterialSnippet extends PureComponent {
           </div>
           <p>{material.desc}</p>
           <p>{locale}</p>
-        </section>
       </li>
     )
   }
