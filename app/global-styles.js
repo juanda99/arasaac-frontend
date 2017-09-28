@@ -17,11 +17,16 @@ injectGlobal`
   p, input, label {
     font-size: 1rem
   }
+  span {
+    font-size: inherit
+  }
 
   ul {
     list-style-type: none;
     padding: 0;
   }
+
+  a {text-decoration: none}
 
   
   body.fontLoaded {

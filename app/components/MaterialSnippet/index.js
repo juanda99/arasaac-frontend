@@ -1,21 +1,22 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import FlatButton from 'material-ui/FlatButton'
 import { Map, List } from 'immutable'
 import Chip from 'material-ui/Chip'
 import Avatar from 'material-ui/Avatar'
 import { lightGreen400, lightGreen800 } from 'material-ui/styles/colors'
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card'
-import Paper from 'material-ui/Paper'
-import testImage from './test.jpg'
-import Toggle from 'material-ui/Toggle'
+import { Row, Col } from 'react-flexbox-grid'
+import ActivityIcon from 'material-ui/svg-icons/action/input'
+import AreaIcon from 'material-ui/svg-icons/social/school'
+import ReadMore from 'components/ReadMore'
+import H2 from 'components/H2'
+import Item from './Item'
+import testImage from './prueba.png'
 import activity from 'data/activity'
 import area from 'data/area'
 // import language from 'data/language'
 // import LanguageIcon from 'material-ui/svg-icons/action/translate'
 // import LanguageIcon from 'material-ui/svg-icons/social/public'
-import ActivityIcon from 'material-ui/svg-icons/action/input'
-import AreaIcon from 'material-ui/svg-icons/social/school'
+
 
 const styles = {
   chip: {
@@ -26,34 +27,33 @@ const styles = {
     flexWrap: 'wrap'
   },
   paper: {
-    overflow: 'auto',
-    borderColor: 'yellow'
+    overflow: 'auto'
   }
 }
 
 export class MaterialSnippet extends PureComponent {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      expanded: false,
+      expanded: false
     }
   }
 
   handleExpandChange = (expanded) => {
-    this.setState({expanded: expanded});
+    this.setState({ expanded })
   }
 
   handleToggle = (event, toggle) => {
-    this.setState({expanded: toggle});
+    this.setState({ expanded })
   }
 
   handleExpand = () => {
-    this.setState({expanded: true});
+    this.setState({ expanded: true })
   }
 
   handleReduce = () => {
-    this.setState({expanded: false});
+    this.setState({ expanded: false })
   }
 
   handleClick = () => {
@@ -62,7 +62,9 @@ export class MaterialSnippet extends PureComponent {
   }
 
 // nextStatus 0 to desactivate the filter, 1 for activating
-  handleTouchTap = (filterName, filterItem, nextStatus) => {
+  handleTouchTap = (filterName, filterItem, nextStatus, e) => {
+    e.preventDefault()
+    e.stopPropagation()
     // we get all the values from the filter
     const { setFilterItems, filtersMap } = this.props
     const filterItems = filtersMap.get(filterName).toArray()
@@ -75,6 +77,7 @@ export class MaterialSnippet extends PureComponent {
       setFilterItems(filterName, List(filterItems))
     }
     // setFilterItems()
+    return false
   }
   /* How we show messages...*/
   /* catalan: ca, va, es, en, ...*/
@@ -91,7 +94,7 @@ export class MaterialSnippet extends PureComponent {
             backgroundColor={lightGreen400}
             style={styles.chip}
             key={id}
-            onClick={() => this.handleTouchTap('activity', id, 0)}
+            onClick={(e) => this.handleTouchTap('activity', id, 0, e)}
           >
             <Avatar color={'white'} backgroundColor={lightGreen800} icon={<ActivityIcon />} />
             {activity[id]}
@@ -103,7 +106,7 @@ export class MaterialSnippet extends PureComponent {
         <Chip
           style={styles.chip}
           key={id}
-          onClick={() => this.handleTouchTap('activity', id, 1)}
+          onClick={(e) => this.handleTouchTap('activity', id, 1, e)}
         >
           <Avatar color='#444' icon={<ActivityIcon />} />
           {activity[id]}
@@ -117,7 +120,7 @@ export class MaterialSnippet extends PureComponent {
             backgroundColor={lightGreen400}
             style={styles.chip}
             key={id}
-            onClick={() => this.handleTouchTap('area', id, 0)}
+            onClick={(e) => this.handleTouchTap('area', id, 0, e)}
           >
             <Avatar color={'white'} backgroundColor={lightGreen800} icon={<AreaIcon />} />
             {area[id]}
@@ -129,7 +132,7 @@ export class MaterialSnippet extends PureComponent {
         <Chip
           style={styles.chip}
           key={id}
-          onClick={() => this.handleTouchTap('area', id, 1)}
+          onClick={(e) => this.handleTouchTap('area', id, 1, e)}
         >
           <Avatar color='#444' icon={<AreaIcon />} />
           {area[id]}
@@ -139,22 +142,26 @@ export class MaterialSnippet extends PureComponent {
     // const languageTags = material.translations.map((translation) => <Chip style={styles.chip} key={translation.language}><Avatar color='#444' icon={<LanguageIcon />} />{language[translation.language]}</Chip>)
     // languageTags.push(<Chip style={styles.chip} key={material.language}><Avatar color='#222' icon={<LanguageIcon />} />{language[material.language]}</Chip>)
     return (
-      <li>
-        <Paper zDepth={3} style={styles.paper}>
-          <div style={{width:'200px', height: '200px', float: 'left' }}>
-            <img src={testImage} alt="" style={{width: '100%'}}/>
-          </div>
-          <div>
-            <p>Prueba</p>
-          </div>
-        </Paper>
-          <FlatButton label={material.title} primary={true} onClick={this.handleClick} />
-          <div style={styles.wrapper}>
-            {activityTags}
-            {areaTags}
-          </div>
-          <p>{material.desc}</p>
-          <p>{locale}</p>
+      <li style={{ marginTop: 20, cursor: 'pointer' }} onClick={this.handleClick}>
+        <Item>
+          <Row middle='xs'>
+            <Col sm={4}>
+              <img src={testImage} alt='' style={{ width: '90%', border: 'none' }} />
+            </Col>
+            <Col sm={8}>
+              <H2 primary ucase>{material.title}</H2>
+              <ReadMore>
+                {material.desc}
+              </ReadMore>
+              <div style={styles.wrapper}>
+                {activityTags}
+              </div>
+              <div style={styles.wrapper}>
+                {areaTags}
+              </div>
+            </Col>
+          </Row>
+        </Item>
       </li>
     )
   }

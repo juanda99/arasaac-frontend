@@ -26,6 +26,7 @@ export class MaterialList extends PureComponent {
   }
 
   handlePageClick = (currentPage) => {
+    console.log(currentPage + ' currentPage')
     this.setState({ currentPage })
   }
 

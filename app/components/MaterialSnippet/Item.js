@@ -6,22 +6,12 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router'
 import Paper from 'material-ui/Paper'
-import Image from 'components/Image'
-import H3 from 'components/H3'
-import { grey200 } from 'material-ui/styles/colors'
-import FullWidthSection from 'components/FullWidthSection'
 
 const styles = {
   paper: {
     width: '100%',
-    maxWidth: '370px',
-    margin: '0 auto'
-  },
-  H3: {
-    textAlign: 'center',
-    color: 'black'
+    padding: '20'
   }
 }
 
@@ -40,7 +30,7 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
 
   handleMouseEnter = () => {
     this.setState({
-      zDepth: 4
+      zDepth: 2
     })
   }
 
@@ -51,21 +41,16 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
   }
 
   render() {
-    const { title, route, image } = this.props
+    const { route, children } = this.props
     return (
-      <Link to={route}>
         <Paper
           style={styles.paper}
           zDepth={this.state.zDepth}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
         >
-          <FullWidthSection color={grey200}>
-            <H3 style={styles.H3}>{title}</H3>
-          </FullWidthSection>
-          <Image src={image} alt={title} />
+          {children}
         </Paper>
-      </Link>
     )
   }
 }
