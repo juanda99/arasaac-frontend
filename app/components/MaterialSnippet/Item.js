@@ -7,20 +7,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Paper from 'material-ui/Paper'
+import { Link } from 'react-router'
 
 const styles = {
   paper: {
     width: '100%',
-    padding: '20'
+    padding: '20px',
+    margin:'30px'
   }
 }
 
 class Item extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    title: PropTypes.object.isRequired,
-    route: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired
+    url: PropTypes.string.isRequired
   }
 
   constructor(props) {
@@ -41,8 +41,9 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
   }
 
   render() {
-    const { route, children } = this.props
+    const { children } = this.props
     return (
+      <Link to={this.props.url}>
         <Paper
           style={styles.paper}
           zDepth={this.state.zDepth}
@@ -51,6 +52,7 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
         >
           {children}
         </Paper>
+      </Link>
     )
   }
 }

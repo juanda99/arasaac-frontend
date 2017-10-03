@@ -63,7 +63,7 @@ class Menu extends Component {
         containerStyle={{ Index: 1200 }}
       >
         <div role='button' style={styles.logo} onClick={this.handleTouchTapHeader}>
-          Arasaac
+          ARASAAC
         </div>
         <SelectableList
           value={location.pathname} onChange={onChangeList}
