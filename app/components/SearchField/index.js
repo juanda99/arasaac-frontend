@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import AutoComplete from 'material-ui/AutoComplete'
-import RaisedButton from 'material-ui/RaisedButton'
+import SearchBar from 'material-ui-search-bar'
 import { injectIntl, intlShape } from 'react-intl'
 import messages from './messages'
 import customFilter from './filter'
 
 const styles = {
-  button: {
-    margin: 22,
-    border: 0
+  searchBar: {
+    maxWidth: '800px',
+    width: '100%'
   }
 }
 
@@ -32,10 +31,6 @@ class SearchField extends Component {
     }
   }
 
-  handleSubmit = (t) => {
-    this.props.onSubmit(t)
-  }
-
   handleClick = () => {
     this.props.onSubmit(this.state.searchText)
   }
@@ -44,20 +39,19 @@ class SearchField extends Component {
     const { formatMessage } = this.props.intl
     const dataSource = this.props.dataSource || []
 
-
     return (
       <div>
-        <AutoComplete
+        <SearchBar
+          style={styles.searchBar}
           ref={(ref) => (this.myInput = ref)}
-          floatingLabelText={formatMessage(messages.search)}
           filter={customFilter}
           dataSource={dataSource}
-          onNewRequest={this.handleSubmit}
-          onUpdateInput={this.handleUpdateInput}
-          searchText={this.state.searchText}
+          onChange={this.handleUpdateInput}
+          onRequestSearch={this.handleClick}
+          value={this.state.searchText}
           maxSearchResults={10}
+          hintText={formatMessage(messages.search)}
         />
-        <RaisedButton label='Search' primary={true} style={styles.button} onClick={this.handleClick} />
       </div>
     )
   }
