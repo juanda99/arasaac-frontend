@@ -7,14 +7,17 @@ import { lightGreen400, lightGreen800 } from 'material-ui/styles/colors'
 import { Row, Col } from 'react-flexbox-grid'
 import ActivityIcon from 'material-ui/svg-icons/action/input'
 import AreaIcon from 'material-ui/svg-icons/social/school'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 import ReactSlidy from 'react-slidy'
+import '!!style-loader!css-loader!./index.css'
 import ReadMore from 'components/ReadMore'
 import H2 from 'components/H2'
-import Item from './Item'
-import testImage from './prueba.png'
+import Ribbon from 'components/Ribbon'
 import activity from 'data/activity'
 import area from 'data/area'
-import '!!style-loader!css-loader!./index.css'
+import Item from './Item'
+import testImage from './prueba.png'
 // import language from 'data/language'
 // import LanguageIcon from 'material-ui/svg-icons/action/translate'
 // import LanguageIcon from 'material-ui/svg-icons/social/public'
@@ -23,9 +26,6 @@ import '!!style-loader!css-loader!./index.css'
 const styles = {
   chip: {
     margin: '4px'
-  },
-  img: {
-    width:'100%'
   },
   wrapper: {
     display: 'flex',
@@ -119,28 +119,32 @@ export class MaterialSnippet extends PureComponent {
     // const languageTags = material.translations.map((translation) => <Chip style={styles.chip} key={translation.language}><Avatar color='#444' icon={<LanguageIcon />} />{language[translation.language]}</Chip>)
     // languageTags.push(<Chip style={styles.chip} key={material.language}><Avatar color='#222' icon={<LanguageIcon />} />{language[material.language]}</Chip>)
     return (
-        <Item url={`materials/${material.idMaterial}`}>
-          <Row middle='xs'>
-            <Col sm={4}>
-              <ReactSlidy infinite={false}>
-                <img src={testImage} alt='' style={styles.img} />
-                <img src={testImage} alt='' style={styles.img} />
-              </ReactSlidy>
-            </Col>
-            <Col sm={8} style={styles.snippet}>
-              <H2 primary ucase>{material.title}</H2>
-              <ReadMore>
-                {material.desc}
-              </ReadMore>
-              <div style={styles.wrapper}>
-                {activityTags}
-              </div>
-              <div style={styles.wrapper}>
-                {areaTags}
-              </div>
-            </Col>
-          </Row>
-        </Item>
+      <Item url={`materials/${material.idMaterial}`}>
+        <Ribbon />
+        <Row middle='xs'>
+          <Col lg={7} style={styles.snippet}>
+            <H2 primary ucase>{material.title}</H2>
+            <ReadMore>
+              {material.desc}
+            </ReadMore>
+            <div style={styles.wrapper}>
+              {activityTags}
+            </div>
+            <div style={styles.wrapper}>
+              {areaTags}
+            </div>
+          </Col>
+          <Col lg={5} first='lg' style={{ position: 'relative' }}>
+            <ReactSlidy infinite={false}>
+              <img src={testImage} alt='' />
+              <img src={testImage} alt='' />
+            </ReactSlidy>
+            <FloatingActionButton mini={true} style={{ position: 'absolute', top: '-1 0px', left: '0px', zIndex: 10000 }}>
+              <ContentAdd />
+            </FloatingActionButton>
+          </Col>
+        </Row>
+      </Item>
     )
   }
 }

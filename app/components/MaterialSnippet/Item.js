@@ -11,16 +11,17 @@ import { Link } from 'react-router'
 
 const styles = {
   paper: {
-    width: '100%',
     padding: '20px',
-    margin:'30px'
+    margin: '30px',
+    position: 'relative'
   }
 }
 
 class Item extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    url: PropTypes.string.isRequired
+    url: PropTypes.string.isRequired,
+    children: PropTypes.node
   }
 
   constructor(props) {
