@@ -15,8 +15,8 @@ const H2 = styled.h2`
   line-height: '2.8em';
   font-weight: 800;
   font-weight: ${typography.fontWeightLight};
-  color: ${props => props.primary ? lightGreen700 : darkWhite};
-  text-transform: ${props => props.ucase ? 'uppercase' : 'none'};
+  color: ${(props) => props.primary ? lightGreen700 : darkWhite};
+  text-transform: ${(props) => props.ucase ? 'uppercase' : 'none'};
   ${media.lg} {
     font-size: 2.4em;
   }

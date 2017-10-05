@@ -7,8 +7,11 @@ import { lightGreen400, lightGreen800 } from 'material-ui/styles/colors'
 import { Row, Col } from 'react-flexbox-grid'
 import ActivityIcon from 'material-ui/svg-icons/action/input'
 import AreaIcon from 'material-ui/svg-icons/social/school'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
+import FilterList from 'material-ui/svg-icons/content/filter-list'
+import Favorite from 'material-ui/svg-icons/action/favorite'
+import IconButton from 'material-ui/IconButton'
+// import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
 import ReactSlidy from 'react-slidy'
 import '!!style-loader!css-loader!./index.css'
 import ReadMore from 'components/ReadMore'
@@ -25,14 +28,20 @@ import testImage from './prueba.png'
 
 const styles = {
   chip: {
-    margin: '4px'
+    margin: '4px',
+  },
+  labelChip: {
+    fontSize: '0.7rem',
+    paddingLeft: '8px',
+    paddingRight: '8px',
+    lineHeight: '1.8rem'
   },
   wrapper: {
     display: 'flex',
     flexWrap: 'wrap'
   },
   snippet: {
-    padding: '40px'
+    padding: '1rem'
   }
 }
 
@@ -71,9 +80,10 @@ export class MaterialSnippet extends PureComponent {
             backgroundColor={lightGreen400}
             style={styles.chip}
             key={id}
+            labelStyle={styles.labelChip}
             onClick={(e) => this.handleTouchTap('activity', id, 0, e)}
           >
-            <Avatar color={'white'} backgroundColor={lightGreen800} icon={<ActivityIcon />} />
+            <Avatar color={'white'} size={30} backgroundColor={lightGreen800} icon={<ActivityIcon />} />
             {activity[id]}
           </Chip>
         )
@@ -84,8 +94,9 @@ export class MaterialSnippet extends PureComponent {
           style={styles.chip}
           key={id}
           onClick={(e) => this.handleTouchTap('activity', id, 1, e)}
+          labelStyle={styles.labelChip}
         >
-          <Avatar color='#444' icon={<ActivityIcon />} />
+          <Avatar color='#444' size={30} icon={<ActivityIcon />} />
           {activity[id]}
         </Chip>
       )
@@ -98,8 +109,9 @@ export class MaterialSnippet extends PureComponent {
             style={styles.chip}
             key={id}
             onClick={(e) => this.handleTouchTap('area', id, 0, e)}
+            labelStyle={styles.labelChip}
           >
-            <Avatar color={'white'} backgroundColor={lightGreen800} icon={<AreaIcon />} />
+            <Avatar color={'white'} size={15} backgroundColor={lightGreen800} icon={<AreaIcon iconStyle={{width: '10px', height: '10px'}} />} />
             {area[id]}
           </Chip>
         )
@@ -110,8 +122,9 @@ export class MaterialSnippet extends PureComponent {
           style={styles.chip}
           key={id}
           onClick={(e) => this.handleTouchTap('area', id, 1, e)}
+          labelStyle={styles.labelChip}
         >
-          <Avatar color='#444' icon={<AreaIcon />} />
+          <Avatar color='#444' size={15} icon={<AreaIcon />} />
           {area[id]}
         </Chip>
       )
@@ -124,6 +137,12 @@ export class MaterialSnippet extends PureComponent {
         <Row middle='xs'>
           <Col lg={7} style={styles.snippet}>
             <H2 primary ucase>{material.title}</H2>
+            <IconButton>
+              <FilterList />
+            </IconButton>
+            <IconButton>
+              <Favorite />
+            </IconButton>
             <ReadMore>
               {material.desc}
             </ReadMore>
@@ -139,9 +158,9 @@ export class MaterialSnippet extends PureComponent {
               <img src={testImage} alt='' />
               <img src={testImage} alt='' />
             </ReactSlidy>
-            <FloatingActionButton mini={true} style={{ position: 'absolute', top: '-1 0px', left: '0px', zIndex: 10000 }}>
+            <IconButton mini={true} style={{ position: 'absolute', top: '-1 0px', left: '0px', zIndex: 10000 }}>
               <ContentAdd />
-            </FloatingActionButton>
+            </IconButton>
           </Col>
         </Row>
       </Item>

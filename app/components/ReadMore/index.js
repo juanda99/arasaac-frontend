@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Truncate from 'react-truncate'
+import Visibility from 'material-ui/svg-icons/action/visibility'
+import VisibilityOff from 'material-ui/svg-icons/action/visibility-off'
+import IconButton from 'material-ui/IconButton'
 
 class ReadMore extends Component {
   constructor(...args) {
@@ -41,9 +44,9 @@ class ReadMore extends Component {
           ellipsis={
             <span>
               ...{' '}
-              <a href='#' onClick={this.toggleLines}>
-                {more}
-              </a>
+              <IconButton>
+                <Visibility onClick={this.toggleLines} color={'green'}/>
+                </IconButton>
             </span>
           }
           onTruncate={this.handleTruncate}
@@ -54,9 +57,9 @@ class ReadMore extends Component {
         expanded && (
           <span>
             {' '}
-            <a href='#' onClick={this.toggleLines}>
-              {less}
-            </a>
+            <IconButton>
+              <VisibilityOff onClick={this.toggleLines} color={'green'}/>
+            </IconButton>
           </span>
         )}
       </div>

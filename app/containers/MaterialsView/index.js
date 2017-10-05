@@ -11,6 +11,11 @@ import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
 import Toggle from 'material-ui/Toggle'
+import {Tabs, Tab} from 'material-ui/Tabs'
+import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
+import SearchIcon from 'material-ui/svg-icons/action/search'
+import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
+import SwipeableViews from 'react-swipeable-views'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
@@ -24,9 +29,35 @@ import {
   visibleMaterialsSelector
   } from './selectors'
 import { materials, toggleShowFilter, setFilterItems } from './actions'
+import Slide from './Slide'
 import messages from './messages'
 
+const styles = {
+  headline: {
+    fontSize: 24,
+    paddingTop: 16,
+    marginBottom: 12,
+    fontWeight: 400
+  },
+  slide: {
+    padding: '2rem'
+  }
+}
+
 class MaterialsView extends PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      slideIndex: 0
+    }
+  }
+
+  handleChange = (value) => {
+    this.setState({
+      slideIndex: value
+    })
+  }
 
   componentDidMount() {
     if (this.props.params.searchText && !this.props.searchResults) {
@@ -68,23 +99,40 @@ class MaterialsView extends PureComponent {
       : <p>{<FormattedMessage {...messages.materialsNotFound} />}</p>
     }
     return (
-      <View>
-        <Helmet
-          title='PictogramsView'
-          meta={[
-            { name: 'description', content: 'Description of PictogramsView' }
-          ]}
-        />
-        <Toggle
-          label={<FormattedMessage {...messages.advancedSearch} />}
-          onToggle={this.props.toggleShowFilter}
-          defaultToggled={showFilter}
-          style={{ width: '200px', float: 'right' }}
-        />
-        <SearchField value={searchText} onSubmit={this.handleSubmit} />
-        {showFilter ? <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} /> : null}
-        {gallery}
+      <View left={false}>
+        <Tabs onChange={this.handleChange} value={this.state.slideIndex} >
+          <Tab label='Buscar' icon={<SearchIcon />} value={0} />
+          <Tab label='Novedades' icon={<NewReleasesIcon />} value={1} />
+          <Tab label='Favoritos' icon={<FavoriteIcon />} value={2} />
+        </Tabs>
+        <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange} >
+          <div>
+          <Slide>
+            <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
+            <Toggle
+              label={<FormattedMessage {...messages.advancedSearch} />}
+              onToggle={this.props.toggleShowFilter}
+              defaultToggled={showFilter}
+              style={{ width: '200px', float: 'right' }}
+            />
+            <SearchField value={searchText} onSubmit={this.handleSubmit} />
+            {showFilter ? <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} /> : null}
+            {gallery}
+          </Slide>
+          </div>
+          <div>
+          <Slide>
+            Sin implementar
+          </Slide>
+          </div>
+          <div>
+          <Slide>
+            También sin implementar
+          </Slide>
+          </div>
+        </SwipeableViews>
       </View>
+
     )
   }
 }
