@@ -265,11 +265,7 @@
     "react-router-redux": "4.0.6",
     "react-router-scroll": "0.4.2",
     "react-share": "1.16.0",
-<<<<<<< HEAD
-    "react-slick": "^0.15.4",
-=======
     "react-slidy": "^3.0.6",
->>>>>>> acc387d09b8e521294862c6d176627661463d7d5
     "react-truncate": "^2.1.5",
     "redux": "3.7.2",
     "redux-action-buffer": "^1.1.0",
