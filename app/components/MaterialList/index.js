@@ -31,7 +31,7 @@ export class MaterialList extends PureComponent {
   }
 
   render() {
-    const { locale, viewMaterial, materials, filtersMap, setFilterItems, filtersData } = this.props
+    const { locale, materials, filtersMap, setFilterItems, filtersData } = this.props
     const { currentPage } = this.state
     const total = Math.ceil(materials.length / itemsPerPage)
     const offset = Math.ceil((currentPage - 1) * itemsPerPage)
@@ -45,7 +45,6 @@ export class MaterialList extends PureComponent {
               key={material.idMaterial}
               material={material}
               locale={locale}
-              viewMaterial={viewMaterial}
               filtersMap={filtersMap}
               setFilterItems={setFilterItems}
               filtersData={filtersData}
@@ -68,7 +67,6 @@ MaterialList.propTypes = {
   // with optional parameters in the router is slower in my tests ????
   // rollback from https://github.com/react-boilerplate/react-boilerplate/issues/1748
   locale: PropTypes.string,
-  viewMaterial: PropTypes.func,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
   setFilterItems: PropTypes.func.isRequired,
   filtersData: PropTypes.instanceOf(Map).isRequired

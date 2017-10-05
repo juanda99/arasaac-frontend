@@ -2,6 +2,36 @@
 # yarn lockfile v1
 
 
+"@schibstedspain/rosetta@3":
+  version "3.10.2"
+  resolved "https://registry.yarnpkg.com/@schibstedspain/rosetta/-/rosetta-3.10.2.tgz#f1d56212a8e49d073da86bc191e9c2aadd31b96e"
+  dependencies:
+    node-polyglot "0.4.3"
+
+"@schibstedspain/sui-component-dependencies@1":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@schibstedspain/sui-component-dependencies/-/sui-component-dependencies-1.2.0.tgz#f2896e4d271c606f28e032a5067277b6da748b7a"
+  dependencies:
+    "@schibstedspain/rosetta" "3"
+    "@schibstedspain/theme-basic" "7"
+    classnames "2.2.5"
+
+"@schibstedspain/sui-spinner-basic@1":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@schibstedspain/sui-spinner-basic/-/sui-spinner-basic-1.2.0.tgz#46cca5aa69a88b994dcef90be0626414af0afee3"
+  dependencies:
+    "@schibstedspain/suistudio-fatigue-deps" "github:SUI-Components/suistudio-fatigue-deps"
+
+"@schibstedspain/suistudio-fatigue-deps@github:sui-components/suistudio-fatigue-deps":
+  version "1.3.0"
+  resolved "https://codeload.github.com/sui-components/suistudio-fatigue-deps/tar.gz/90e6dc4bb96fac52860819342f9992a25e23a430"
+  dependencies:
+    "@schibstedspain/sui-component-dependencies" "1"
+
+"@schibstedspain/theme-basic@7":
+  version "7.28.0"
+  resolved "https://registry.yarnpkg.com/@schibstedspain/theme-basic/-/theme-basic-7.28.0.tgz#95d28bd9395e8d2fdef3f3028bcf34b31491f82d"
+
 abab@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.3.tgz#b81de5f7274ec4e756d797cd834f303642724e5d"
@@ -1621,7 +1651,7 @@ clap@^1.0.9:
   dependencies:
     chalk "^1.1.3"
 
-classnames@^2.2.5:
+classnames@2.2.5, classnames@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -5930,6 +5960,10 @@ node-plop@0.5.4, node-plop@~0.5.4:
     mkdirp "^0.5.1"
     pify "^2.3.0"
 
+node-polyglot@0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/node-polyglot/-/node-polyglot-0.4.3.tgz#6affdb812e10cbaf3ce8648871444a05a78c046e"
+
 node-pre-gyp@^0.6.29:
   version "0.6.32"
   resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.6.32.tgz#fc452b376e7319b3d255f5f34853ef6fd8fe1fd5"
@@ -6986,6 +7020,12 @@ react-intl@2.1.5:
     intl-relativeformat "^1.3.0"
     invariant "^2.1.1"
 
+react-lazyload@2.2.7:
+  version "2.2.7"
+  resolved "https://registry.yarnpkg.com/react-lazyload/-/react-lazyload-2.2.7.tgz#6adf0713f32240a21c630ab5d1e8cf62d0c264af"
+  dependencies:
+    prop-types "^15.5.6"
+
 react-markdown@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-markdown/-/react-markdown-2.5.0.tgz#b1c61904fee5895886803bd9df7db23c3dc3a89e"
@@ -7084,6 +7124,7 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
+<<<<<<< HEAD
 react-slick@^0.15.4:
   version "0.15.4"
   resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.15.4.tgz#6709c87b06e7640feeacc06711be42cc2066aabe"
@@ -7095,6 +7136,14 @@ react-slick@^0.15.4:
     json2mq "^0.2.0"
     object-assign "^4.1.0"
     slick-carousel "^1.6.0"
+=======
+react-slidy@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/react-slidy/-/react-slidy-3.0.6.tgz#dc6b62df28cd9710c42aed0c2d51f2fecb99a5f7"
+  dependencies:
+    "@schibstedspain/sui-spinner-basic" "1"
+    react-lazyload "2.2.7"
+>>>>>>> acc387d09b8e521294862c6d176627661463d7d5
 
 react-split-pane@0.1.57:
   version "0.1.57"

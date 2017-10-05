@@ -7,12 +7,17 @@ import { lightGreen400, lightGreen800 } from 'material-ui/styles/colors'
 import { Row, Col } from 'react-flexbox-grid'
 import ActivityIcon from 'material-ui/svg-icons/action/input'
 import AreaIcon from 'material-ui/svg-icons/social/school'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
+import ReactSlidy from 'react-slidy'
+import '!!style-loader!css-loader!./index.css'
 import ReadMore from 'components/ReadMore'
 import H2 from 'components/H2'
-import Item from './Item'
-import testImage from './prueba.png'
+import Ribbon from 'components/Ribbon'
 import activity from 'data/activity'
 import area from 'data/area'
+import Item from './Item'
+import testImage from './prueba.png'
 // import language from 'data/language'
 // import LanguageIcon from 'material-ui/svg-icons/action/translate'
 // import LanguageIcon from 'material-ui/svg-icons/social/public'
@@ -20,46 +25,18 @@ import area from 'data/area'
 
 const styles = {
   chip: {
-    margin: 4
+    margin: '4px'
   },
   wrapper: {
     display: 'flex',
     flexWrap: 'wrap'
   },
-  paper: {
-    overflow: 'auto'
+  snippet: {
+    padding: '40px'
   }
 }
 
 export class MaterialSnippet extends PureComponent {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      expanded: false
-    }
-  }
-
-  handleExpandChange = (expanded) => {
-    this.setState({ expanded })
-  }
-
-  handleToggle = (event, toggle) => {
-    this.setState({ expanded })
-  }
-
-  handleExpand = () => {
-    this.setState({ expanded: true })
-  }
-
-  handleReduce = () => {
-    this.setState({ expanded: false })
-  }
-
-  handleClick = () => {
-    const { viewMaterial, material } = this.props
-    viewMaterial(material.idMaterial)
-  }
 
 // nextStatus 0 to desactivate the filter, 1 for activating
   handleTouchTap = (filterName, filterItem, nextStatus, e) => {
@@ -142,27 +119,32 @@ export class MaterialSnippet extends PureComponent {
     // const languageTags = material.translations.map((translation) => <Chip style={styles.chip} key={translation.language}><Avatar color='#444' icon={<LanguageIcon />} />{language[translation.language]}</Chip>)
     // languageTags.push(<Chip style={styles.chip} key={material.language}><Avatar color='#222' icon={<LanguageIcon />} />{language[material.language]}</Chip>)
     return (
-      <li style={{ marginTop: 20, cursor: 'pointer' }} onClick={this.handleClick}>
-        <Item>
-          <Row middle='xs'>
-            <Col sm={4}>
-              <img src={testImage} alt='' style={{ width: '90%', border: 'none' }} />
-            </Col>
-            <Col sm={8}>
-              <H2 primary ucase>{material.title}</H2>
-              <ReadMore>
-                {material.desc}
-              </ReadMore>
-              <div style={styles.wrapper}>
-                {activityTags}
-              </div>
-              <div style={styles.wrapper}>
-                {areaTags}
-              </div>
-            </Col>
-          </Row>
-        </Item>
-      </li>
+      <Item url={`materials/${material.idMaterial}`}>
+        <Ribbon />
+        <Row middle='xs'>
+          <Col lg={7} style={styles.snippet}>
+            <H2 primary ucase>{material.title}</H2>
+            <ReadMore>
+              {material.desc}
+            </ReadMore>
+            <div style={styles.wrapper}>
+              {activityTags}
+            </div>
+            <div style={styles.wrapper}>
+              {areaTags}
+            </div>
+          </Col>
+          <Col lg={5} first='lg' style={{ position: 'relative' }}>
+            <ReactSlidy infinite={false}>
+              <img src={testImage} alt='' />
+              <img src={testImage} alt='' />
+            </ReactSlidy>
+            <FloatingActionButton mini={true} style={{ position: 'absolute', top: '-1 0px', left: '0px', zIndex: 10000 }}>
+              <ContentAdd />
+            </FloatingActionButton>
+          </Col>
+        </Row>
+      </Item>
     )
   }
 }
@@ -175,7 +157,6 @@ MaterialSnippet.propTypes = {
   // onClick: PropTypes.func.isRequired,
   material: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
-  viewMaterial: PropTypes.func.isRequired,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
   setFilterItems: PropTypes.func.isRequired
 }

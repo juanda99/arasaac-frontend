@@ -46,11 +46,6 @@ class MaterialsView extends PureComponent {
     }
   }
 
-  viewMaterial = (idMaterial) => {
-    this.props.router.push(`/materials/${idMaterial}`)
-  }
-
-
   render() {
     const { showFilter, filters, visibleMaterials, locale, loading, filtersData } = this.props
     const searchText = this.props.params.searchText || ''
@@ -65,7 +60,6 @@ class MaterialsView extends PureComponent {
         <MaterialList
           materials={visibleMaterials}
           locale={locale}
-          viewMaterial={this.viewMaterial}
           filtersMap={filters}
           setFilterItems={this.props.setFilterItems}
           filtersData={filtersData}

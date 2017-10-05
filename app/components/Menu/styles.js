@@ -9,8 +9,7 @@ export default {
     lineHeight: `${spacing.desktopKeylineIncrement}px`,
     fontWeight: typography.fontWeightLight,
     backgroundColor: lightGreen500,
-    paddingLeft: spacing.desktopGutter,
-    marginBottom: 8
+    paddingLeft: 60 // spacing.desktopGutter,
   },
   menu: {
     zIndex: 10
