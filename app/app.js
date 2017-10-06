@@ -16,6 +16,7 @@ import { applyRouterMiddleware, Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import FontFaceObserver from 'fontfaceobserver'
 import { useScroll } from 'react-router-scroll'
+import { lightGreen700, lightGreen300, Gray100, orange200, orange800, grey400, grey500, white, darkBlack, fullBlack } from 'material-ui/styles/colors'
 import 'sanitize.css/sanitize.css'
 
 // Import root app
@@ -83,11 +84,23 @@ const rootRoute = {
   childRoutes: createRoutes(store)
 }
 
+const customTheme = {
+  palette: {
+    primary1Color: lightGreen700,
+    primary2Color: lightGreen300,
+    accent1Color: orange800,
+    textColor: darkBlack,
+    alternateTextColor: white,
+  }
+}
+
+const theme = getMuiTheme(customTheme)
+
 const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <MuiThemeProvider muiTheme={theme}>
           <Router
             history={history}
             routes={rootRoute}

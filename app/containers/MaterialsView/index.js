@@ -53,12 +53,6 @@ class MaterialsView extends PureComponent {
     }
   }
 
-  handleChange = (value) => {
-    this.setState({
-      slideIndex: value
-    })
-  }
-
   componentDidMount() {
     if (this.props.params.searchText && !this.props.searchResults) {
       this.props.requestMaterials(this.props.locale, this.props.params.searchText)
@@ -69,6 +63,12 @@ class MaterialsView extends PureComponent {
     if (this.props.params.searchText !== nextProps.params.searchText) {
       this.props.requestMaterials(this.props.locale, nextProps.params.searchText)
     }
+  }
+
+  handleChange = (value) => {
+    this.setState({
+      slideIndex: value
+    })
   }
 
   handleSubmit = (nextValue) => {
@@ -106,8 +106,7 @@ class MaterialsView extends PureComponent {
           <Tab label='Favoritos' icon={<FavoriteIcon />} value={2} />
         </Tabs>
         <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange} >
-          <div>
-          <Slide>
+          <View left={true} right={true}>
             <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
             <Toggle
               label={<FormattedMessage {...messages.advancedSearch} />}
@@ -118,18 +117,13 @@ class MaterialsView extends PureComponent {
             <SearchField value={searchText} onSubmit={this.handleSubmit} />
             {showFilter ? <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} /> : null}
             {gallery}
-          </Slide>
-          </div>
-          <div>
-          <Slide>
+          </View>
+          <View left={true} right={true}>
             Sin implementar
-          </Slide>
-          </div>
-          <div>
-          <Slide>
+          </View>
+          <View left={true} right={true}>
             También sin implementar
-          </Slide>
-          </div>
+          </View>
         </SwipeableViews>
       </View>
 

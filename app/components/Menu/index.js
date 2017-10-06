@@ -9,9 +9,15 @@ import Drawer from 'material-ui/Drawer'
 import { List, ListItem, makeSelectable } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import Subheader from 'material-ui/Subheader'
-
 import { FormattedMessage } from 'react-intl'
-
+import Accessibility from 'material-ui/svg-icons/action/accessibility'
+import PrizesIcon from 'material-ui/svg-icons/action/card-membership'
+import ToolsIcon from 'material-ui/svg-icons/action/build'
+import PictogramsIcon from 'material-ui/svg-icons/image/collections'
+import PeopleIcon from 'material-ui/svg-icons/social/people'
+import SoftwareIcon from 'material-ui/svg-icons/action/important-devices'
+import MaterialsIcon from 'material-ui/svg-icons/av/library-books'
+import ContactMail from 'material-ui/svg-icons/communication/message'
 import messages from './messages'
 import styles from './styles'
 
@@ -71,6 +77,7 @@ class Menu extends Component {
           <ListItem
             primaryText={<FormattedMessage {...messages.pictograms} />}
             primaryTogglesNestedList={true}
+            leftIcon={<PictogramsIcon />} 
             nestedItems={[
               <ListItem
                 value='/pictograms/search'
@@ -89,6 +96,7 @@ class Menu extends Component {
           <ListItem
             primaryText={<FormattedMessage {...messages.materials} />}
             primaryTogglesNestedList={true}
+            leftIcon={<MaterialsIcon />} 
             nestedItems={[
               <ListItem
                 value='/materials/search'
@@ -103,6 +111,7 @@ class Menu extends Component {
           <ListItem
             primaryText={<FormattedMessage {...messages.onlineTools} />}
             primaryTogglesNestedList={true}
+            leftIcon={<ToolsIcon />} 
             nestedItems={[
               <ListItem
                 value='/onlinetools/animations-maker'
@@ -142,6 +151,12 @@ class Menu extends Component {
         <ListItem
           value='https://www.google.com/design/spec/material-design/introduction.html'
           primaryText={<FormattedMessage {...messages.software} />}
+          leftIcon={<SoftwareIcon />}
+        />
+        <ListItem
+        value='/accessibility'
+        primaryText={<FormattedMessage {...messages.accessibility} />}
+        leftIcon={<Accessibility />} 
         />
         <Divider />
 
@@ -150,14 +165,22 @@ class Menu extends Component {
           <ListItem
             value='https://github.com/callemall/material-ui'
             primaryText={<FormattedMessage {...messages.news} />}
+            leftIcon={<PeopleIcon/>}
+          />
+          <ListItem
+            value='/arasaac-team'
+            primaryText={<FormattedMessage {...messages.whoWeAre} />}
+            leftIcon={<PeopleIcon/>}
           />
           <ListItem
             value='https://github.com/callemall/material-ui'
             primaryText={<FormattedMessage {...messages.prizes} />}
+            leftIcon={<PrizesIcon/>}
           />
           <ListItem
             value='/contact-us'
             primaryText={<FormattedMessage {...messages.contact} />}
+            leftIcon={<ContactMail />} 
           />
         </SelectableList>
       </Drawer>

@@ -158,7 +158,7 @@ export class MaterialSnippet extends PureComponent {
               <img src={testImage} alt='' />
               <img src={testImage} alt='' />
             </ReactSlidy>
-            <IconButton mini={true} style={{ position: 'absolute', top: '-1 0px', left: '0px', zIndex: 10000 }}>
+            <IconButton style={{ position: 'absolute', top: '-1 0px', left: '0px', zIndex: 10000 }}>
               <ContentAdd />
             </IconButton>
           </Col>
