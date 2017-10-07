@@ -227,6 +227,22 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
+      path: '/prizes',
+      name: 'prizes',
+      getComponent(location, cb) {
+        import('containers/PrizesView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
+      path: '/accessibility',
+      name: 'accesibility',
+      getComponent(location, cb) {
+        import('containers/AccessibilityView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
       path: 'contact-us',
       name: 'contact-us',
       getComponent(location, cb) {

@@ -65,5 +65,15 @@ export default defineMessages({
     id: 'header.contactusTitle',
     description: 'Header title',
     defaultMessage: 'Contact us'
+  },
+  accessibility: {
+    id: 'header.accessibilityTitle',
+    description: 'Header title',
+    defaultMessage: 'Accesibility'
+  },
+  prizes: {
+    id: 'header.prizesTitle',
+    description: 'Header title',
+    defaultMessage: 'Prizes'
   }
 })

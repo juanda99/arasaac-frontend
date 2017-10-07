@@ -28,7 +28,7 @@ import Wrapper from './Wrapper'
 import { connect } from 'react-redux'
 import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
-import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth'
+import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 import { changeLocale, startTranslation, stopTranslation } from 'containers/LanguageProvider/actions'
 
 
@@ -71,24 +71,6 @@ class App extends Component {
 
   getStyles() {
     const styles = {
-      content: {
-        margin: spacing.desktopGutter
-      },
-      contentWhenMedium: {
-        margin: `${spacing.desktopGutter * 2}px ${spacing.desktopGutter * 3}px`
-      },
-      a: {
-        color: white
-      },
-      p: {
-        margin: '0 auto',
-        padding: 0,
-        color: white,
-        maxWidth: 450
-      },
-      iconButton: {
-        color: white
-      },
       LoadingBar: {
         position: 'fixed',
         height: 2,
@@ -96,10 +78,6 @@ class App extends Component {
         top: 64,
         zIndex: 10000
       }
-    }
-
-    if (this.props.width === MEDIUM || this.props.width === LARGE) {
-      styles.content = Object.assign(styles.content, styles.contentWhenMedium)
     }
     return styles
   }
@@ -159,6 +137,16 @@ class App extends Component {
         break
       case /contact-us/.test(url):
         title = <FormattedMessage {...messages.contactusTitle} />
+        docked = width === LARGE
+        break
+      case /accessibility/.test(url):
+        title = <FormattedMessage {...messages.accessibility} />
+        console.log(width)
+        console.log(LARGE)
+        docked = width === LARGE
+        break
+      case /prizes/.test(url):
+        title = <FormattedMessage {...messages.prizes} />
         docked = width === LARGE
         break
       default:
@@ -230,7 +218,7 @@ class App extends Component {
           onChangeList={this.handleChangeList}
           open={menuOpen}
         />
-        <Footer docked={docked} style={styles.footer} />
+        <Footer docked={docked}/>
       </div>
     )
   }
