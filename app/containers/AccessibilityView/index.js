@@ -6,9 +6,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
+import Slider from 'material-ui/Slider'
 import View from 'components/View'
 import Helmet from 'react-helmet'
+import H2 from 'components/H2'
 import messages from './messages'
+
+/**
+ * The `defaultValue` property sets the initial position of the slider.
+ * The slider appearance changes when not at the starting position.
+ */
+const SliderExampleSimple = () => (
+  <div>
+    <Slider defaultValue={0.5} />
+  </div>
+)
 
 class AccessibilityView extends React.Component {
 
@@ -28,7 +40,10 @@ class AccessibilityView extends React.Component {
             { name: 'description', content: 'Description of MaterialView' }
           ]}
         />
-            <p>Hola a todos!</p>
+        <H2 primary={true}> Tamaño del texto </H2>
+        <SliderExampleSimple/>
+        <h2>Tamaño de fuente</h2>
+        <p>lorem.ipsum</p>
       </View>
     )
   }
