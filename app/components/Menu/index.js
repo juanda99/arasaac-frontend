@@ -10,6 +10,19 @@ import { List, ListItem, makeSelectable } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import Subheader from 'material-ui/Subheader'
 import { FormattedMessage } from 'react-intl'
+import AccessibilityIcon from 'material-ui/svg-icons/action/accessibility'
+import SearchIcon from 'material-ui/svg-icons/action/search'
+import PrizesIcon from 'material-ui/svg-icons/action/card-membership'
+import ToolsIcon from 'material-ui/svg-icons/action/build'
+import PictogramsIcon from 'material-ui/svg-icons/image/collections'
+import PeopleIcon from 'material-ui/svg-icons/social/people'
+import SoftwareIcon from 'material-ui/svg-icons/action/important-devices'
+import MaterialsIcon from 'material-ui/svg-icons/av/library-books'
+import NewsIcon from 'material-ui/svg-icons/communication/message'
+import ApiIcon from 'material-ui/svg-icons/communication/import-export'
+import ContactMailIcon from 'material-ui/svg-icons/communication/contact-mail'
+import FileUploadIcon from 'material-ui/svg-icons/file/file-upload'
+import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download'
 import messages from './messages'
 import styles from './styles'
 
@@ -69,38 +82,46 @@ class Menu extends Component {
           <ListItem
             primaryText={<FormattedMessage {...messages.pictograms} />}
             primaryTogglesNestedList={true}
+            leftIcon={<PictogramsIcon />}
             nestedItems={[
               <ListItem
                 value='/pictograms/search'
                 primaryText={<FormattedMessage {...messages.searchPictograms} />}
+                leftIcon={<SearchIcon />}
               />,
               <ListItem
                 value='/pictograms/api'
                 primaryText={<FormattedMessage {...messages.api} />}
+                leftIcon={<ApiIcon />}
               />,
               <ListItem
                 value='/pictograms/catalogs'
                 primaryText={<FormattedMessage {...messages.downloads} />}
+                leftIcon={<CloudDownloadIcon />}
               />
             ]}
           />
           <ListItem
             primaryText={<FormattedMessage {...messages.materials} />}
             primaryTogglesNestedList={true}
+            leftIcon={<MaterialsIcon />}
             nestedItems={[
               <ListItem
                 value='/materials/search'
                 primaryText={<FormattedMessage {...messages.searchMaterials} />}
+                leftIcon={<SearchIcon />}
               />,
               <ListItem
                 value='/materials/upload'
                 primaryText={<FormattedMessage {...messages.uploadMaterials} />}
+                leftIcon={<FileUploadIcon />}
               />
             ]}
           />
           <ListItem
             primaryText={<FormattedMessage {...messages.onlineTools} />}
             primaryTogglesNestedList={true}
+            leftIcon={<ToolsIcon />}
             nestedItems={[
               <ListItem
                 value='/onlinetools/animations-maker'
@@ -139,10 +160,12 @@ class Menu extends Component {
           <ListItem
             value='/software'
             primaryText={<FormattedMessage {...messages.software} />}
+            leftIcon={<SoftwareIcon />}
           />
           <ListItem
             value='/accessibility'
             primaryText={<FormattedMessage {...messages.accessibility} />}
+            leftIcon={<AccessibilityIcon />}
           />
         </SelectableList>
 
@@ -153,18 +176,22 @@ class Menu extends Component {
           <ListItem
             value='https://github.com/callemall/material-ui'
             primaryText={<FormattedMessage {...messages.news} />}
+            leftIcon={<NewsIcon />}
           />
           <ListItem
             value='/arasaac-team'
             primaryText={<FormattedMessage {...messages.whoWeAre} />}
+            leftIcon={<PeopleIcon />}
           />
           <ListItem
             value='/prizes'
             primaryText={<FormattedMessage {...messages.prizes} />}
+            leftIcon={<PrizesIcon />}
           />
           <ListItem
             value='/contact-us'
             primaryText={<FormattedMessage {...messages.contact} />}
+            leftIcon={<ContactMailIcon />}
           />
         </SelectableList>
       </Drawer>
