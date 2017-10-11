@@ -20,7 +20,7 @@ import Ribbon from 'components/Ribbon'
 import activity from 'data/activity'
 import area from 'data/area'
 import Item from './Item'
-import testImage from './prueba.png'
+// import testImage from './prueba.png'
 // import language from 'data/language'
 // import LanguageIcon from 'material-ui/svg-icons/action/translate'
 // import LanguageIcon from 'material-ui/svg-icons/social/public'
@@ -155,8 +155,11 @@ export class MaterialSnippet extends PureComponent {
           </Col>
           <Col lg={5} first='lg' style={{ position: 'relative' }}>
             <ReactSlidy infinite={false}>
-              <img src={testImage} alt='' />
-              <img src={testImage} alt='' />
+              {
+                material.images.map((image) => (
+                  <img src={`http://static.arasaac.org/${material.id}/screenshot/${image}`} alt='' />
+                ))
+              }
             </ReactSlidy>
             <IconButton style={{ position: 'absolute', top: '-1 0px', left: '0px', zIndex: 10000 }}>
               <ContentAdd />
