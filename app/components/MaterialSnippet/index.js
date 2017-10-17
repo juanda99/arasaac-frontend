@@ -73,6 +73,7 @@ export class MaterialSnippet extends PureComponent {
 
   render() {
     const { material, locale, filtersMap } = this.props
+
     const activityTags = material.activity.map((id) => {
       if (filtersMap.get('activity').includes(id)) {
         return (
@@ -157,7 +158,7 @@ export class MaterialSnippet extends PureComponent {
             <ReactSlidy infinite={false}>
               {
                 material.images.map((image) => (
-                  <img src={`http://static.arasaac.org/${material.id}/screenshot/${image}`} alt='' />
+                  <img src={`http://static.arasaac.org/${material.idMaterial}/screenshots/${image}`} alt='' />
                 ))
               }
             </ReactSlidy>
