@@ -2,7 +2,7 @@ import { lightGreen500 } from 'material-ui/styles/colors'
 
 export default {
   appBar: {
-    position: 'fixed',
+    // position: 'fixed',
     // Needed to overlap the examples
     // zIndex: this.state.muiTheme.zIndex.appBar + 1,
     top: 0,

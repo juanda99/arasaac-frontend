@@ -11,7 +11,7 @@ import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
 import Toggle from 'material-ui/Toggle'
-import {Tabs, Tab} from 'material-ui/Tabs'
+import { Tabs, Tab } from 'material-ui/Tabs'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
@@ -29,25 +29,12 @@ import {
   visibleMaterialsSelector
   } from './selectors'
 import { materials, toggleShowFilter, setFilterItems } from './actions'
-import Slide from './Slide'
 import messages from './messages'
-
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400
-  },
-  slide: {
-    padding: '2rem'
-  }
-}
 
 class MaterialsView extends PureComponent {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       slideIndex: 0
     }
@@ -99,7 +86,7 @@ class MaterialsView extends PureComponent {
       : <p>{<FormattedMessage {...messages.materialsNotFound} />}</p>
     }
     return (
-      <View left={false}>
+      <div>
         <Tabs onChange={this.handleChange} value={this.state.slideIndex} >
           <Tab label='Buscar' icon={<SearchIcon />} value={0} />
           <Tab label='Novedades' icon={<NewReleasesIcon />} value={1} />
@@ -125,8 +112,7 @@ class MaterialsView extends PureComponent {
             También sin implementar
           </View>
         </SwipeableViews>
-      </View>
-
+      </div>
     )
   }
 }
