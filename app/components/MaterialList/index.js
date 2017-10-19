@@ -47,6 +47,7 @@ export class MaterialList extends PureComponent {
               filtersMap={filtersMap}
               setFilterItems={setFilterItems}
               filtersData={filtersData}
+              showLabels={this.props.showLabels}
             />
           )}
         </ul>
@@ -66,6 +67,7 @@ MaterialList.propTypes = {
   // with optional parameters in the router is slower in my tests ????
   // rollback from https://github.com/react-boilerplate/react-boilerplate/issues/1748
   locale: PropTypes.string,
+  showLabels: PropTypes.bool.isRequired,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
   setFilterItems: PropTypes.func.isRequired,
   filtersData: PropTypes.instanceOf(Map).isRequired

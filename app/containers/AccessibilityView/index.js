@@ -18,7 +18,7 @@ import messages from './messages'
  */
 const SliderExampleSimple = () => (
   <div>
-    <Slider defaultValue={0.5} />
+    <Slider min={0} max={200} step={25} />
   </div>
 )
 

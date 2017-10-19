@@ -20,6 +20,7 @@ import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
 import { withRouter } from 'react-router'
+import ActionButtons from './ActionButtons'
 import {
   filtersSelector,
   showFiltersSelector,
@@ -31,13 +32,24 @@ import {
 import { materials, toggleShowFilter, setFilterItems } from './actions'
 import messages from './messages'
 
+
+const styles = {
+  searchBar: {
+    flexGrow: 1
+  },
+  container: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+    width: '100%'
+  }
+}
+
 class MaterialsView extends PureComponent {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      slideIndex: 0
-    }
+
+  state = {
+    visibleSettings: false,
+    visibleLabels: false
   }
 
   componentDidMount() {
@@ -64,9 +76,22 @@ class MaterialsView extends PureComponent {
     }
   }
 
+  showSettings = () => {
+    this.setState({
+      visibleSettings: !this.state.visibleSettings
+    })
+  }
+
+  showLabels = () => {
+    this.setState({
+      visibleLabels: !this.state.visibleLabels
+    })
+  }
+
   render() {
     const { showFilter, filters, visibleMaterials, locale, loading, filtersData } = this.props
     const searchText = this.props.params.searchText || ''
+    const { visibleLabels, visibleSettings, slideIndex } = this.state
     let gallery
     if (loading) {
       gallery = <p> Searching materials...</p>
@@ -81,28 +106,45 @@ class MaterialsView extends PureComponent {
           filtersMap={filters}
           setFilterItems={this.props.setFilterItems}
           filtersData={filtersData}
+          showLabels={visibleLabels}
         />
       )
       : <p>{<FormattedMessage {...messages.materialsNotFound} />}</p>
     }
+
     return (
       <div>
-        <Tabs onChange={this.handleChange} value={this.state.slideIndex} >
+        <Tabs onChange={this.handleChange} value={slideIndex} >
           <Tab label='Buscar' icon={<SearchIcon />} value={0} />
           <Tab label='Novedades' icon={<NewReleasesIcon />} value={1} />
           <Tab label='Favoritos' icon={<FavoriteIcon />} value={2} />
         </Tabs>
-        <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange} >
+        <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange} >
           <View left={true} right={true}>
             <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
-            <Toggle
-              label={<FormattedMessage {...messages.advancedSearch} />}
-              onToggle={this.props.toggleShowFilter}
-              defaultToggled={showFilter}
-              style={{ width: '200px', float: 'right' }}
-            />
-            <SearchField value={searchText} onSubmit={this.handleSubmit} />
-            {showFilter ? <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} /> : null}
+            <div style={styles.container}>
+              <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
+              <ActionButtons
+                onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
+                onLabelsClick={this.showLabels} labelsActive={visibleLabels}
+                onSettingsClick={this.showSettings} settingsActive={visibleSettings}
+              />
+            </div>
+            {visibleSettings ?
+              <div>
+                <Toggle
+                  label={<FormattedMessage {...messages.advancedSearch} />}
+                  onToggle={this.props.toggleShowFilter}
+                  defaultToggled={showFilter}
+                  style={{ width: '200px' }}
+                />
+              </div>
+              : null
+            }
+            {showFilter ?
+              <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} /> 
+              : null
+            }
             {gallery}
           </View>
           <View left={true} right={true}>

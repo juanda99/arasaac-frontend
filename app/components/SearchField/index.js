@@ -5,12 +5,6 @@ import { injectIntl, intlShape } from 'react-intl'
 import messages from './messages'
 import customFilter from './filter'
 
-const styles = {
-  searchBar: {
-    maxWidth: '800px',
-    width: '100%'
-  }
-}
 
 class SearchField extends Component {
 
@@ -40,9 +34,8 @@ class SearchField extends Component {
     const dataSource = this.props.dataSource || []
 
     return (
-      <div>
         <SearchBar
-          style={styles.searchBar}
+          style={this.props.style}
           ref={(ref) => (this.myInput = ref)}
           filter={customFilter}
           dataSource={dataSource}
@@ -52,13 +45,13 @@ class SearchField extends Component {
           maxSearchResults={10}
           hintText={formatMessage(messages.search)}
         />
-      </div>
     )
   }
 }
 
 SearchField.propTypes = {
   dataSource: PropTypes.array,
+  style: PropTypes.object,
   intl: intlShape.isRequired,
   value: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired

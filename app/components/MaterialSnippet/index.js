@@ -8,10 +8,7 @@ import { Row, Col } from 'react-flexbox-grid'
 import ActivityIcon from 'material-ui/svg-icons/action/input'
 import AreaIcon from 'material-ui/svg-icons/social/school'
 import ContentAdd from 'material-ui/svg-icons/content/add'
-import FilterList from 'material-ui/svg-icons/content/filter-list'
-import Favorite from 'material-ui/svg-icons/action/favorite'
 import IconButton from 'material-ui/IconButton'
-// import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
 import ReactSlidy from 'react-slidy'
 import '!!style-loader!css-loader!./index.css'
 import ReadMore from 'components/ReadMore'
@@ -28,7 +25,7 @@ import Item from './Item'
 
 const styles = {
   chip: {
-    margin: '4px',
+    margin: '4px'
   },
   labelChip: {
     fontSize: '0.7rem',
@@ -72,7 +69,7 @@ export class MaterialSnippet extends PureComponent {
   /* ga: ga, es, en, .....*/
 
   render() {
-    const { material, locale, filtersMap } = this.props
+    const { material, locale, filtersMap, showLabels } = this.props
 
     const activityTags = material.activity.map((id) => {
       if (filtersMap.get('activity').includes(id)) {
@@ -138,21 +135,14 @@ export class MaterialSnippet extends PureComponent {
         <Row middle='xs'>
           <Col lg={7} style={styles.snippet}>
             <H2 primary ucase>{material.title}</H2>
-            <IconButton>
-              <FilterList />
-            </IconButton>
-            <IconButton>
-              <Favorite />
-            </IconButton>
             <ReadMore>
               {material.desc}
             </ReadMore>
-            <div style={styles.wrapper}>
-              {activityTags}
-            </div>
-            <div style={styles.wrapper}>
-              {areaTags}
-            </div>
+            {showLabels ?
+              <div style={styles.wrapper}> {activityTags} {areaTags} </div>
+              : ''
+            }
+
           </Col>
           <Col lg={5} first='lg' style={{ position: 'relative' }}>
             <ReactSlidy infinite={false}>
@@ -181,7 +171,8 @@ MaterialSnippet.propTypes = {
   material: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
-  setFilterItems: PropTypes.func.isRequired
+  setFilterItems: PropTypes.func.isRequired,
+  showLabels: PropTypes.bool.isRequired
 }
 
 export default MaterialSnippet
