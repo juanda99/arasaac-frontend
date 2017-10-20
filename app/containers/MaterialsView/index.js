@@ -14,8 +14,10 @@ import Toggle from 'material-ui/Toggle'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import SearchIcon from 'material-ui/svg-icons/action/search'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
 import SwipeableViews from 'react-swipeable-views'
+import Paper from 'material-ui/Paper'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
@@ -89,7 +91,7 @@ class MaterialsView extends PureComponent {
   }
 
   render() {
-    const { showFilter, filters, visibleMaterials, locale, loading, filtersData } = this.props
+    const { showFilter, filters, visibleMaterials, locale, loading, filtersData, muiTheme } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
     let gallery
@@ -120,7 +122,8 @@ class MaterialsView extends PureComponent {
           <Tab label='Favoritos' icon={<FavoriteIcon />} value={2} />
         </Tabs>
         <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange} >
-          <View left={true} right={true}>
+          <Paper style={{ backgroundColor: muiTheme.palette.primary3Color }}>
+            <View left={true} right={true}>
             <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
             <div style={styles.container}>
               <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
@@ -145,6 +148,9 @@ class MaterialsView extends PureComponent {
               <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} /> 
               : null
             }
+            </View>
+          </Paper>
+          <View left={true} right={true}>
             {gallery}
           </View>
           <View left={true} right={true}>
@@ -166,6 +172,7 @@ MaterialsView.propTypes = {
   loading: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired,
   filters: PropTypes.instanceOf(Map),
+  muiTheme: PropTypes.object,
   showFilter: PropTypes.bool,
   setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
@@ -199,4 +206,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MaterialsView))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(muiThemeable()(MaterialsView)))
