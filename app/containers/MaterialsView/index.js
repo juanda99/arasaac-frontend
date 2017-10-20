@@ -116,43 +116,45 @@ class MaterialsView extends PureComponent {
 
     return (
       <div>
+        <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
         <Tabs onChange={this.handleChange} value={slideIndex} >
           <Tab label='Buscar' icon={<SearchIcon />} value={0} />
           <Tab label='Novedades' icon={<NewReleasesIcon />} value={1} />
           <Tab label='Favoritos' icon={<FavoriteIcon />} value={2} />
         </Tabs>
         <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange} >
-          <Paper style={{ backgroundColor: muiTheme.palette.primary3Color }}>
+          <div>
+            <Paper style={{ backgroundColor: muiTheme.palette.primary3Color }}>
+              <View left={true} right={true}>
+                <div style={styles.container}>
+                  <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
+                  <ActionButtons
+                    onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
+                    onLabelsClick={this.showLabels} labelsActive={visibleLabels}
+                    onSettingsClick={this.showSettings} settingsActive={visibleSettings}
+                  />
+                </div>
+                {visibleSettings ?
+                  <div>
+                    <Toggle
+                      label={<FormattedMessage {...messages.advancedSearch} />}
+                      onToggle={this.props.toggleShowFilter}
+                      defaultToggled={showFilter}
+                      style={{ width: '200px' }}
+                    />
+                  </div>
+                  : null
+                }
+                {showFilter ?
+                  <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
+                  : null
+                }
+              </View>
+            </Paper>
             <View left={true} right={true}>
-            <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
-            <div style={styles.container}>
-              <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
-              <ActionButtons
-                onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
-                onLabelsClick={this.showLabels} labelsActive={visibleLabels}
-                onSettingsClick={this.showSettings} settingsActive={visibleSettings}
-              />
-            </div>
-            {visibleSettings ?
-              <div>
-                <Toggle
-                  label={<FormattedMessage {...messages.advancedSearch} />}
-                  onToggle={this.props.toggleShowFilter}
-                  defaultToggled={showFilter}
-                  style={{ width: '200px' }}
-                />
-              </div>
-              : null
-            }
-            {showFilter ?
-              <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} /> 
-              : null
-            }
+              {gallery}
             </View>
-          </Paper>
-          <View left={true} right={true}>
-            {gallery}
-          </View>
+          </div>
           <View left={true} right={true}>
             Sin implementar
           </View>
