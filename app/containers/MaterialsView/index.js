@@ -16,9 +16,10 @@ import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
+import Divider from 'material-ui/Divider'
 import SwipeableViews from 'react-swipeable-views'
-import Paper from 'material-ui/Paper'
 import { Map } from 'immutable'
+import { grey300 } from 'material-ui/styles/colors'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
 import { withRouter } from 'react-router'
@@ -122,41 +123,40 @@ class MaterialsView extends PureComponent {
           <Tab label='Novedades' icon={<NewReleasesIcon />} value={1} />
           <Tab label='Favoritos' icon={<FavoriteIcon />} value={2} />
         </Tabs>
+        <Divider />
         <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange} >
           <div>
-            <Paper style={{ backgroundColor: muiTheme.palette.primary3Color }}>
-              <View left={true} right={true}>
-                <div style={styles.container}>
-                  <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
-                  <ActionButtons
-                    onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
-                    onLabelsClick={this.showLabels} labelsActive={visibleLabels}
-                    onSettingsClick={this.showSettings} settingsActive={visibleSettings}
+            <View left={true} right={true} style={{backgroundColor: grey300}}>
+              <div style={styles.container}>
+                <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
+                <ActionButtons
+                  onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
+                  onLabelsClick={this.showLabels} labelsActive={visibleLabels}
+                  onSettingsClick={this.showSettings} settingsActive={visibleSettings}
+                />
+              </div>
+              {visibleSettings ?
+                <div>
+                  <Toggle
+                    label={<FormattedMessage {...messages.advancedSearch} />}
+                    onToggle={this.props.toggleShowFilter}
+                    defaultToggled={showFilter}
+                    style={{ width: '200px' }}
                   />
                 </div>
-                {visibleSettings ?
-                  <div>
-                    <Toggle
-                      label={<FormattedMessage {...messages.advancedSearch} />}
-                      onToggle={this.props.toggleShowFilter}
-                      defaultToggled={showFilter}
-                      style={{ width: '200px' }}
-                    />
-                  </div>
-                  : null
-                }
-                {showFilter ?
-                  <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
-                  : null
-                }
-              </View>
-            </Paper>
+                : null
+              }
+              {showFilter ?
+                <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
+                : null
+              }
+            </View>
             <View left={true} right={true}>
               {gallery}
             </View>
           </div>
           <View left={true} right={true}>
-            Sin implementar
+            Sin implementardddd
           </View>
           <View left={true} right={true}>
             También sin implementar

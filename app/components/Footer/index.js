@@ -6,7 +6,7 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { lightGreen800 } from 'material-ui/styles/colors'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 import { Row, Col } from 'react-flexbox-grid'
 // import { FormattedMessage } from 'react-intl'
 // import messages from './messages'
@@ -16,8 +16,8 @@ import GobiernoAragon from './gobierno-aragon-logo.svg'
 import styles from './styles'
 import FooterSection from './FooterSection'
 
-const Footer = ({ docked }) => (
-  <FooterSection color={lightGreen800} docked={docked}>
+const Footer = ({ docked, muiTheme }) => (
+  <FooterSection color={muiTheme.palette.primary1Color} docked={docked}>
     <Row middle='xs'>
       <Col xs={12} md={7}>
         <p style={styles.p}>
@@ -41,7 +41,8 @@ const Footer = ({ docked }) => (
 )
 
 Footer.propTypes = {
-  docked: PropTypes.bool.isRequired
+  docked: PropTypes.bool.isRequired,
+  muiTheme: PropTypes.object.isRequired
 }
 
-export default Footer
+export default muiThemeable()(Footer)
