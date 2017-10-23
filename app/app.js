@@ -16,7 +16,7 @@ import { applyRouterMiddleware, Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import FontFaceObserver from 'fontfaceobserver'
 import { useScroll } from 'react-router-scroll'
-import { lightGreen500, lightGreen300, darkBlack, lightGreen100, white, blue800, grey200, grey300 } from 'material-ui/styles/colors'
+import { lightGreen500, lightGreen300, darkBlack, lightGreen700, white, grey100, grey500 } from 'material-ui/styles/colors'
 import 'sanitize.css/sanitize.css'
 
 // Import root app
@@ -89,8 +89,10 @@ const customTheme = {
   palette: {
     primary1Color: lightGreen500,
     primary2Color: lightGreen300,
-    primary3Color: lightGreen100,
+    primary3Color: lightGreen700,
     accent1Color: '#81388d',
+    accent2Color: grey100,
+    accent3Color: grey500,
     textColor: darkBlack,
     alternateTextColor: white
   }
@@ -98,9 +100,9 @@ const customTheme = {
 
 const componentsTheme = {
   tabs: {
-    backgroundColor: 'grey300',
-    textColor: fade(customTheme.palette.textColor, 0.3),
-    selectedTextColor: 'customTheme.palette.accent1Color'
+    backgroundColor: 'white',
+    textColor: fade(customTheme.palette.textColor, 0.5),
+    selectedTextColor: customTheme.palette.textColor
   }
 }
 

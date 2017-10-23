@@ -6,7 +6,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
-import { white } from 'material-ui/styles/colors'
 import ClassIcon from 'material-ui/svg-icons/action/class'
 import FilterListIcon from 'material-ui/svg-icons/content/filter-list'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
@@ -29,18 +28,18 @@ class ActionButtons extends PureComponent {
       <div>
         <IconButton style={styles.icon} onClick={onLabelsClick} tooltip={<FormattedMessage {...messages.showCategories} />}>
           { labelsActive ?
-            <ClassIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary1Color} />
-            : <ClassIcon color={muiTheme.palette.accent2Color} hoverColor={muiTheme.palette.primary1Color} /> }
+            <ClassIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
+            : <ClassIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} /> }
         </IconButton>
         <IconButton style={styles.icon} onClick={onFilterClick} tooltip={<FormattedMessage {...messages.showFilters} />}>
           { filterActive ?
-            <FilterListIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary1Color} />
-            : <FilterListIcon color={muiTheme.palette.accent2Color} hoverColor={muiTheme.palette.primary1Color} /> }
+            <FilterListIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
+            : <FilterListIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} /> }
         </IconButton>
         <IconButton style={styles.icon} onClick={onSettingsClick} tooltip={<FormattedMessage {...messages.showSettings} />} >
           { settingsActive ?
-            <SettingsIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary1Color} />
-            : <SettingsIcon color={muiTheme.palette.accent2Color} hoverColor={muiTheme.palette.primary1Color} /> }
+            <SettingsIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
+            : <SettingsIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} /> }
         </IconButton>
       </div>
     )

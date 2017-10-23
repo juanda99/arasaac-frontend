@@ -19,7 +19,6 @@ import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
 import Divider from 'material-ui/Divider'
 import SwipeableViews from 'react-swipeable-views'
 import { Map } from 'immutable'
-import { grey300 } from 'material-ui/styles/colors'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
 import { withRouter } from 'react-router'
@@ -126,7 +125,7 @@ class MaterialsView extends PureComponent {
         <Divider />
         <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange} >
           <div>
-            <View left={true} right={true} style={{backgroundColor: grey300}}>
+            <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
               <div style={styles.container}>
                 <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
                 <ActionButtons
@@ -151,7 +150,8 @@ class MaterialsView extends PureComponent {
                 : null
               }
             </View>
-            <View left={true} right={true}>
+            <Divider />
+            <View left={true} right={true} top={1} >
               {gallery}
             </View>
           </div>
