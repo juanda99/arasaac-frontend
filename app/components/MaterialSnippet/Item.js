@@ -47,7 +47,6 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
     return (
       <Link to={this.props.url}>
         <Paper 
-          className={`prueba`}
           style={styles.paper}
           zDepth={this.state.zDepth}
           onMouseEnter={this.handleMouseEnter}

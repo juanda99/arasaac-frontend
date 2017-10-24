@@ -51,7 +51,8 @@ class MaterialsView extends PureComponent {
 
   state = {
     visibleSettings: false,
-    visibleLabels: false
+    visibleLabels: false,
+    slideIndex: 0
   }
 
   componentDidMount() {
@@ -113,7 +114,6 @@ class MaterialsView extends PureComponent {
       )
       : <p>{<FormattedMessage {...messages.materialsNotFound} />}</p>
     }
-
     return (
       <div>
         <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
@@ -151,9 +151,6 @@ class MaterialsView extends PureComponent {
               }
             </View>
             <Divider />
-            <View left={true} right={true} top={1} >
-              {gallery}
-            </View>
           </div>
           <View left={true} right={true}>
             Sin implementardddd
@@ -162,6 +159,7 @@ class MaterialsView extends PureComponent {
             También sin implementar
           </View>
         </SwipeableViews>
+        { slideIndex===0 ? <View left={true} right={true} top={1} > {gallery} </View> : null }
       </div>
     )
   }

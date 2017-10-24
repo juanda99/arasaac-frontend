@@ -37,9 +37,52 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap'
   },
-  snippet: {
+  snippetText: {
+    flexGrow: 3,
+    width: '600px',
     padding: '1rem'
+  },
+  snippetImg: {
+    flexGrow: 1,
+    width: '300px'
+  },
+  snippet: {
+    display: 'flex',
+    flexWrap: 'wrap-reverse',
+    width: '100%'
   }
+}
+
+
+
+const prueba = (props) => {
+  console.log(props)
+}
+
+function SliderLeftButton(props) {
+  const style = {
+    opacity: 0.6,
+    position: 'absolute',
+    top: '50%',
+    left: 0,
+    transform: 'translate(1rem, -50%)',
+    zIndex: 10
+  }
+  if (props.currentSlide===0) return null
+  return <FloatingActionButton mini={true} onClick={props.onClick} style={style} className={'props.className'} ><LeftIcon /></FloatingActionButton>
+}
+
+
+function SliderRightButton(props) {
+  const style = {
+    opacity: 0.6,
+    position: 'absolute',
+    top: '50%',
+    right: 0,
+    transform: 'translate(-1rem, -50%)'
+  }
+  if (props.currentSlide>=props.slideCount -1) return null
+  return <FloatingActionButton mini={true} onClick={props.onClick} style={style} className={props.className} ><RightIcon /></FloatingActionButton>
 }
 
 export class MaterialSnippet extends PureComponent {
@@ -62,6 +105,10 @@ export class MaterialSnippet extends PureComponent {
     // setFilterItems()
     return false
   }
+
+
+
+
   /* How we show messages...*/
   /* catalan: ca, va, es, en, ...*/
   /* br: pt, br, en, ....*/
@@ -132,8 +179,20 @@ export class MaterialSnippet extends PureComponent {
     return (
       <Item url={`materials/${material.idMaterial}`}>
         <Ribbon />
-        <Row middle='xs'>
-          <Col lg={7} style={styles.snippet}>
+
+        <div style={styles.snippet}>
+          <div style={styles.snippetImg}>
+            <div style={{display: 'block'}}>
+              <ReactSlidy dynamicContent infinite={false}>
+                {
+                  material.images.map((image, key) => (
+                    <img key={key} src={`http://static.arasaac.org/${material.idMaterial}/screenshots/${image}`} alt='' />
+                  ))
+                }
+              </ReactSlidy>
+            </div>
+          </div>
+          <div style={styles.snippetText}>
             <H2 primary ucase>{material.title}</H2>
             <ReadMore>
               {material.desc}
@@ -142,22 +201,10 @@ export class MaterialSnippet extends PureComponent {
               <div style={styles.wrapper}> {activityTags} {areaTags} </div>
               : ''
             }
-
-          </Col>
-          <Col lg={5} first='lg' style={{ position: 'relative' }}>
-            <ReactSlidy infinite={false}>
-              {
-                material.images.map((image) => (
-                  <img src={`http://static.arasaac.org/${material.idMaterial}/screenshots/${image}`} alt='' />
-                ))
-              }
-            </ReactSlidy>
-            <IconButton style={{ position: 'absolute', top: '-1 0px', left: '0px', zIndex: 10000 }}>
-              <ContentAdd />
-            </IconButton>
-          </Col>
-        </Row>
+          </div>
+        </div>
       </Item>
+
     )
   }
 }
