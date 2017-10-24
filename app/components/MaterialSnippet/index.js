@@ -58,7 +58,7 @@ const styles = {
 const prueba = (props) => {
   console.log(props)
 }
-
+/*
 function SliderLeftButton(props) {
   const style = {
     opacity: 0.6,
@@ -84,6 +84,8 @@ function SliderRightButton(props) {
   if (props.currentSlide>=props.slideCount -1) return null
   return <FloatingActionButton mini={true} onClick={props.onClick} style={style} className={props.className} ><RightIcon /></FloatingActionButton>
 }
+
+*/
 
 export class MaterialSnippet extends PureComponent {
 
