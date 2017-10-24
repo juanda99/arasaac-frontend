@@ -39,9 +39,12 @@ const styles = {
   searchBar: {
     flexGrow: 1
   },
+  actionButtons: {
+    width: '150px'
+  },
   container: {
     display: 'flex',
-    flexWrap: 'nowrap',
+    flexWrap: 'wrap',
     width: '100%'
   }
 }
@@ -132,6 +135,7 @@ class MaterialsView extends PureComponent {
                   onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
                   onLabelsClick={this.showLabels} labelsActive={visibleLabels}
                   onSettingsClick={this.showSettings} settingsActive={visibleSettings}
+                  style={styles.actionButtons}
                 />
               </div>
               {visibleSettings ?
@@ -159,7 +163,7 @@ class MaterialsView extends PureComponent {
             También sin implementar
           </View>
         </SwipeableViews>
-        { slideIndex===0 ? <View left={true} right={true} top={1} > {gallery} </View> : null }
+        { slideIndex === 0 ? <View left={true} right={true} top={1} > {gallery} </View> : null }
       </div>
     )
   }
