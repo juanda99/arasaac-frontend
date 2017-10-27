@@ -3821,7 +3821,7 @@ hoist-non-react-statics@^1.0.0, hoist-non-react-statics@^1.0.3, hoist-non-react-
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
 
-hoist-non-react-statics@^2.2.1:
+hoist-non-react-statics@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
 
@@ -7364,17 +7364,17 @@ redux-action-buffer@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/redux-action-buffer/-/redux-action-buffer-1.1.0.tgz#9c692ab6532b042d0d43a9f01a48ada120fc941a"
 
-redux-form-material-ui@4.3.0:
+redux-form-material-ui@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/redux-form-material-ui/-/redux-form-material-ui-4.3.0.tgz#2b5a8f5ca2d6da771fb7c2c74be251f8b697db18"
 
-redux-form@7.0.4:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/redux-form/-/redux-form-7.0.4.tgz#2297b6bed40fda8bb58132e261ba0976fb4e530c"
+redux-form@^7.1.2:
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/redux-form/-/redux-form-7.1.2.tgz#6b0f25c57fd8130a05ce00f6435fe1b051f402af"
   dependencies:
     deep-equal "^1.0.1"
     es6-error "^4.0.0"
-    hoist-non-react-statics "^2.2.1"
+    hoist-non-react-statics "^2.3.1"
     invariant "^2.2.2"
     is-promise "^2.1.0"
     lodash "^4.17.3"

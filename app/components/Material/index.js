@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import H1Section from 'components/H1Section'
 import H2 from 'components/H2'
 import ShareBar from 'components/ShareBar'
 // import { toJS } from 'immutable'

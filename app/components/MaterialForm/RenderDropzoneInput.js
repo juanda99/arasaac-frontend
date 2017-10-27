@@ -1,16 +1,20 @@
 import React from 'react'
-import Dropzone from 'react-dropzone'
-
+// import Dropzone from 'react-dropzone'
+import CustomDropzone from './CustomDropzone'
 const RenderDropzoneInput = (field) => {
   const files = field.input.value
+  const hint = field.hint
   return (
     <div>
-      <Dropzone
+      <CustomDropzone
+        style={{
+
+        }}
         name={field.name}
         onDrop={(filesToUpload) => field.input.onChange(filesToUpload)}
       >
-        <div>Try dropping some files here, or click to select files to upload.</div>
-      </Dropzone>
+        <div><p>{hint}</p></div>
+      </CustomDropzone>
       {field.meta.touched &&
         field.meta.error &&
         <span className='error'>{field.meta.error}</span>}

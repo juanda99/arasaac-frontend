@@ -3,9 +3,11 @@ import PropTypes from 'prop-types'
 import { Field } from 'redux-form/immutable'
 import MUIAutoComplete from 'material-ui/AutoComplete'
 import { AutoComplete } from 'redux-form-material-ui'
+import { FormattedMessage } from 'react-intl'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import PersonAdd from 'material-ui/svg-icons/social/person-add'
 import Delete from 'material-ui/svg-icons/action/delete'
+import messages from './messages'
 
 const style = {
   marginRight: 20,
@@ -37,9 +39,9 @@ const RenderAuthors = ({ fields }) => {
             type='text'
             component={RenderField}
             dataSource={nameList}
-            hintText='Introduce el nombre del autor'
+            hintText={<FormattedMessage {...messages.nameHint} />}
             muiComponent={AutoComplete}
-            floatingLabelText='Nombre'
+            floatingLabelText={<FormattedMessage {...messages.name} />}
             openOnFocus={true}
             filter={MUIAutoComplete.fuzzyFilter}
           />
@@ -48,9 +50,9 @@ const RenderAuthors = ({ fields }) => {
             type='text'
             component={RenderField}
             dataSource={surnameList}
-            hintText='Introduce el apellido del autor'
+            hintText={<FormattedMessage {...messages.surnameHint} />}
             muiComponent={AutoComplete}
-            floatingLabelText='Apellido'
+            floatingLabelText={<FormattedMessage {...messages.surname} />}
             openOnFocus={true}
             filter={MUIAutoComplete.fuzzyFilter}
           />

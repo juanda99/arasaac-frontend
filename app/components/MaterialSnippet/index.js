@@ -4,11 +4,8 @@ import { Map, List } from 'immutable'
 import Chip from 'material-ui/Chip'
 import Avatar from 'material-ui/Avatar'
 import { lightGreen400, lightGreen800 } from 'material-ui/styles/colors'
-import { Row, Col } from 'react-flexbox-grid'
 import ActivityIcon from 'material-ui/svg-icons/action/input'
 import AreaIcon from 'material-ui/svg-icons/social/school'
-import ContentAdd from 'material-ui/svg-icons/content/add'
-import IconButton from 'material-ui/IconButton'
 import ReactSlidy from 'react-slidy'
 import '!!style-loader!css-loader!./index.css'
 import ReadMore from 'components/ReadMore'
@@ -17,11 +14,6 @@ import Ribbon from 'components/Ribbon'
 import activity from 'data/activity'
 import area from 'data/area'
 import Item from './Item'
-// import testImage from './prueba.png'
-// import language from 'data/language'
-// import LanguageIcon from 'material-ui/svg-icons/action/translate'
-// import LanguageIcon from 'material-ui/svg-icons/social/public'
-
 
 const styles = {
   chip: {
@@ -53,11 +45,6 @@ const styles = {
   }
 }
 
-
-
-const prueba = (props) => {
-  console.log(props)
-}
 /*
 function SliderLeftButton(props) {
   const style = {
@@ -187,9 +174,11 @@ export class MaterialSnippet extends PureComponent {
             <div style={{display: 'block'}}>
               <ReactSlidy dynamicContent infinite={false}>
                 {
-                  material.images.map((image, key) => (
-                    <img key={key} src={`http://static.arasaac.org/${material.idMaterial}/screenshots/${image}`} alt='' />
-                  ))
+                  material.images.length ?
+                    material.images.map((image, key) => (
+                      <img key={key} src={`//static.arasaac.org/${material.idMaterial}/screenshots/${image}`} alt={`${material.title}`} />
+                    ))
+                  : <img src={'//static.arasaac.org/noimage.png'} alt='Not available' />
                 }
               </ReactSlidy>
             </div>
