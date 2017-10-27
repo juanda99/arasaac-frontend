@@ -60,11 +60,11 @@ export default defineMessages({
   },
   languageHint: {
     id: 'app.components.MaterialForm.languageHint',
-    defaultMessage: 'Type the language, title and description of the material. Upload files and images of the material if they are specific to this language.'
+    defaultMessage: 'Enter the language, title and description of the material. Upload files and images of the material if they are specific to this language.'
   },
   chooseLanguage: {
     id: 'app.components.MaterialForm.chooseLanguage',
-    defaultMessage: 'Choose language'
+    defaultMessage: 'Select the material language'
   },
   title: {
     id: 'app.components.MaterialForm.title',
@@ -72,7 +72,7 @@ export default defineMessages({
   },
   titleHint: {
     id: 'app.components.MaterialForm.titleHint',
-    defaultMessage: 'Type the material title'
+    defaultMessage: 'Enter the material title'
   },
   description: {
     id: 'app.components.MaterialForm.description',
@@ -80,7 +80,7 @@ export default defineMessages({
   },
   descriptionHint: {
     id: 'app.components.MaterialForm.descriptionHint',
-    defaultMessage: 'Type the material description'
+    defaultMessage: 'Enter the material description'
   },
   languageFiles: {
     id: 'app.components.MaterialForm.languageFiles',
