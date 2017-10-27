@@ -16,7 +16,7 @@ export default defineMessages({
   },
   authorsData: {
     id: 'app.components.MaterialForm.authorsData',
-    defaultMessage: 'Please, enter the  name and surname of the authors'
+    defaultMessage: 'Please, enter the name and surname of the authors'
   },
   name: {
     id: 'app.components.MaterialForm.name',
