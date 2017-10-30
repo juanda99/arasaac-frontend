@@ -34,11 +34,6 @@ class FilterSelect extends React.Component {
     ))
   }
   render() {
-    console.log('-----------------------------------------------------------------*****')
-    console.log(styles)
-
-
-    
     // filterType will be used also as id, see https://github.com/callemall/material-ui/issues/6834
     const { values, items, floatingLabelText, multiple, filterType, muiTheme } = this.props
     let multipleProps = {}
@@ -46,7 +41,7 @@ class FilterSelect extends React.Component {
     if (multiple) multipleProps = { multiple }
     return (
       <span style={styles.span}>
-        <IconButton iconStyle={{ color: muiTheme.palette.accent1Color, verticalAlign: 'bottom'}} onClick={this.handleReset} tooltip={<FormattedMessage {...messages.filterTooltip} />}>
+        <IconButton iconStyle={{ color: muiTheme.palette.accent1Color, verticalAlign: 'bottom' }} onClick={this.handleReset} tooltip={<FormattedMessage {...messages.filterTooltip} />}>
           <ActionHide />
         </IconButton>
         <SelectField
