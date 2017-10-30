@@ -5,7 +5,7 @@
 */
 
 import React from 'react'
-import { Field, FieldArray, reduxForm, propTypes } from 'redux-form/immutable'
+import { Field, Fields, FieldArray, reduxForm, propTypes } from 'redux-form/immutable'
 import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper'
 import RaisedButton from 'material-ui/RaisedButton'
 import { FormattedMessage } from 'react-intl'
@@ -19,7 +19,8 @@ import messages from './messages'
 class MaterialForm extends React.Component {
 
   state = {
-    stepIndex: 0
+    stepIndex: 0,
+    files: []
   }
 
   handleNext = () => {
@@ -35,7 +36,6 @@ class MaterialForm extends React.Component {
       this.setState({ stepIndex: stepIndex - 1 })
     }
   }
-
 
   render() {
     const { handleSubmit, pristine, submitting, reset } = this.props
@@ -85,10 +85,19 @@ class MaterialForm extends React.Component {
               </StepButton>
               <StepContent>
                 <p><FormattedMessage {...messages.filesHint} /></p>
-                <Field
-                  name='files-upload'
+                <FieldArray
+                  name='files'
                   component={RenderDropzoneInput}
-                  props={{ hint: <FormattedMessage {...messages.filesUpload} /> }}
+                  props={{
+                    hint: <FormattedMessage {...messages.filesUpload} />,
+                    onDrop:  (files) => {
+                      this.setState({
+                        files: this.state.files.concat(files)
+                      })
+                      console.log(this.state.files)
+                    }
+                }}
+
                 />
               </StepContent>
             </Step>

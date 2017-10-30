@@ -10,14 +10,20 @@ import MaterialForm from 'components/MaterialForm'
 
 class UploadMaterialView extends PureComponent {
 
-  handleSubmit () {
+  handleSubmit (values) {
     console.log ('form submitted!')
+    console.log(values)
+  }
+
+  handleSubmit = (values) => {
+    console.log(values)
+    console.log('pepe')
   }
 
   render() {
     return (
       <View>
-        <MaterialForm handleSubmit={this.handleSubmit} />
+        <MaterialForm onSubmit={ (values) => this.handleSubmit(values)} />
       </View>
     )
   }

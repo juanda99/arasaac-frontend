@@ -45,10 +45,9 @@ const RenderLanguages = ({ fields }) => {
             <Field
               name={`${member}.language`}
               type='text'
-              component={RenderField}
+              component={AutoComplete}
               dataSource={languageList}
               hintText={<FormattedMessage {...messages.chooseLanguage} />}
-              muiComponent={AutoComplete}
               floatingLabelText={<FormattedMessage {...messages.language} />}
               openOnFocus={true}
               filter={MUIAutoComplete.fuzzyFilter}
@@ -103,17 +102,5 @@ RenderLanguages.propTypes = {
   fields: PropTypes.object.isRequired
 }
 
-const RenderField = (props) => (
-  <span style={{ paddingRight: '30px' }}>
-    <Field {...props} component={props.muiComponent} />
-    { props.touched && props.error && <span>{props.error}</span> }
-  </span>
-)
-
-RenderField.propTypes = {
-  touched: PropTypes.bool,
-  error: PropTypes.string,
-  muiComponent: PropTypes.func.isRequired
-}
 
 export default RenderLanguages

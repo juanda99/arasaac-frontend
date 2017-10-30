@@ -1,30 +1,44 @@
-import React from 'react'
-// import Dropzone from 'react-dropzone'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import CustomDropzone from './CustomDropzone'
-const RenderDropzoneInput = (field) => {
-  const files = field.input.value
-  const hint = field.hint
-  return (
-    <div>
-      <CustomDropzone
-        style={{
+import ImageProgress from './ImageProgress'
 
-        }}
-        name={field.name}
-        onDrop={(filesToUpload) => field.input.onChange(filesToUpload)}
-      >
-        <div><p>{hint}</p></div>
-      </CustomDropzone>
-      {field.meta.touched &&
-        field.meta.error &&
-        <span className='error'>{field.meta.error}</span>}
-      {files && Array.isArray(files) && (
-        <ul>
-          {files.map((file, i) => <li key={i}>{file.name}</li>)}
-        </ul>
-      )}
-    </div>
-  )
+
+const renderFiles = (files) => (
+    files.map((file) =>
+      <div style={{ position: 'relative' }}>
+        <img src={file.preview} style={{ width: '200px', maxWidth: '400px', flexGrow: 1, opacity: 0.5 }} alt='' />
+        <ImageProgress style={{ position: 'absolute', left: '-50%' }} />
+      </div>
+    )
+)
+
+class RenderDropZoneInput extends Component {
+  onDrop = (acceptedFiles, rejectedFiles) => {
+    acceptedFiles.map(
+      (file) => this.props.fields.push({ preview: file.preview, name: file.name, size: file.size, type: 'accepted' })
+    )
+    rejectedFiles.map(
+      (file) => this.props.fields.push({ preview: file.preview, name: file.name, size: file.size, type: 'rejected' })
+    )
+  }
+
+  render() {
+    const { hint, fields } = this.props
+    return (
+      <div>
+        <CustomDropzone name={fields.name} onDrop={this.onDrop} multiple={true}>
+          { fields.length ?
+            renderFiles(fields.getAll())
+            : <div><p>{ hint }</p></div> }
+        </CustomDropzone>
+      </div>
+    )
+  }
 }
 
-export default RenderDropzoneInput
+RenderDropZoneInput.propTypes = {
+  fields: PropTypes.array.isRequired
+}
+
+export default RenderDropZoneInput
