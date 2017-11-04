@@ -1,36 +1,35 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Immutable from 'immutable'
 import CustomDropzone from './CustomDropzone'
-import ImageProgress from './ImageProgress'
+const styles = {
+  img: {
+    width: '200px',
+    marginRight: '1rem',
+    maxWidth: '400px',
+    flexGrow: 1,
+    opacity: 0.5
 
-
-const renderFiles = (files) => (
-    files.map((file) =>
-      <div style={{ position: 'relative' }}>
-        <img src={file.preview} style={{ width: '200px', maxWidth: '400px', flexGrow: 1, opacity: 0.5 }} alt='' />
-        <ImageProgress style={{ position: 'absolute', left: '-50%' }} />
-      </div>
-    )
-)
+  }
+}
 
 class RenderDropZoneInput extends Component {
-  onDrop = (acceptedFiles, rejectedFiles) => {
-    acceptedFiles.map(
-      (file) => this.props.fields.push({ preview: file.preview, name: file.name, size: file.size, type: 'accepted' })
-    )
-    rejectedFiles.map(
-      (file) => this.props.fields.push({ preview: file.preview, name: file.name, size: file.size, type: 'rejected' })
-    )
+  onDrop = (acceptedFiles) => {
+    const { onChange } = this.props.input
+    const files = this.props.input.value || Immutable.List()
+    const newFiles = Immutable.List(acceptedFiles)
+    const allFiles = files.concat(newFiles)
+    onChange(allFiles)
   }
 
   render() {
-    const { hint, fields } = this.props
+    const files = this.props.input.value
     return (
       <div>
-        <CustomDropzone name={fields.name} onDrop={this.onDrop} multiple={true}>
-          { fields.length ?
-            renderFiles(fields.getAll())
-            : <div><p>{ hint }</p></div> }
+        <CustomDropzone name={name} onDrop={this.onDrop} multiple={true}>
+          { files.size ?
+            files.map((file) => <img key={file.name} src={file.preview} style={styles.img} alt='' / >)
+            : <div><p>{ this.props.hint }</p></div> }
         </CustomDropzone>
       </div>
     )
@@ -38,7 +37,8 @@ class RenderDropZoneInput extends Component {
 }
 
 RenderDropZoneInput.propTypes = {
-  fields: PropTypes.array.isRequired
+  input: PropTypes.object.isRequired,
+  hint: PropTypes.object.isRequired
 }
 
 export default RenderDropZoneInput

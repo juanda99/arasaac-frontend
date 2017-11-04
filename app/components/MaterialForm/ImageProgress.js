@@ -5,7 +5,7 @@ export default class ImageProgress extends Component {
 
   state = {
     completed: 0
-  } 
+  }
 
   componentDidMount() {
     this.timer = setTimeout(() => this.progress(5), 1000)

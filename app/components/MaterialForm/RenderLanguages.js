@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Field } from 'redux-form/immutable'
+import { Field, FieldArray } from 'redux-form/immutable'
 import MUIAutoComplete from 'material-ui/AutoComplete'
 import Paper from 'material-ui/Paper'
 import { AutoComplete, TextField } from 'redux-form-material-ui'
@@ -72,14 +72,14 @@ const RenderLanguages = ({ fields }) => {
               fullWidth
             />
             <div>
-              <Field
+              <FieldArray
                 name={`${member}.files`}
                 component={RenderDropzoneInput}
                 props={{ hint: <FormattedMessage {...messages.languageFiles} /> }}
               />
             </div>
             <div>
-              <Field
+              <FieldArray
                 name={`${member}.screenshots`}
                 component={RenderDropzoneInput}
                 props={{ hint: <FormattedMessage {...messages.languageScreenshots} /> }}
