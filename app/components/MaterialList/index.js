@@ -11,11 +11,8 @@ const display = 10 /* number of pages to see in the paginator */
 
 export class MaterialList extends PureComponent {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      currentPage: 1
-    }
+  state = {
+    currentPage: 1
   }
 
   componentWillReceiveProps(nextProps) {

@@ -27,17 +27,24 @@ class MaterialView extends React.Component {
     }
   }
 
+  renderContent() {
+    const { materialData, loading } = this.props
+    if (loading) return <p>Loading...</p>
+    return materialData.isEmpty()
+        ? <p><FormattedMessage {...messages.materialNotFound} /> </p>
+        : <Material material={materialData} locale={locale} />
+  }
+
   render() {
-    const { materialData, locale } = this.props
     return (
-      <View>
+      <View left={true}>
         <Helmet
           title='MaterialView'
           meta={[
             { name: 'description', content: 'Description of MaterialView' }
           ]}
         />
-        {materialData.isEmpty() ? <p><FormattedMessage {...messages.materialNotFound} /> </p> : <Material material={materialData} locale={locale} /> }
+        renderContent()
       </View>
     )
   }
@@ -47,15 +54,18 @@ MaterialView.propTypes = {
   requestMaterial: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
-  materialData: PropTypes.object
+  materialData: PropTypes.object,
+  loading: PropTypes.bool
 }
 
 const mapStateToProps = (state, ownProps) => {
   const locale = state.get('language').get('locale')
   const materialData = state.getIn(['materialsView', 'materials', ownProps.params.idMaterial]) || Map()
+  const loading = state.getIn(['materialsView', 'loading'])
   return ({
     materialData,
-    locale
+    locale,
+    loading
   })
 }
 

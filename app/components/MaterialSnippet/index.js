@@ -166,7 +166,7 @@ export class MaterialSnippet extends PureComponent {
     // const languageTags = material.translations.map((translation) => <Chip style={styles.chip} key={translation.language}><Avatar color='#444' icon={<LanguageIcon />} />{language[translation.language]}</Chip>)
     // languageTags.push(<Chip style={styles.chip} key={material.language}><Avatar color='#222' icon={<LanguageIcon />} />{language[material.language]}</Chip>)
     return (
-      <Item url={`materials/${material.idMaterial}`}>
+      <Item url={`/materials/${material.idMaterial}`}>
         <Ribbon />
 
         <div style={styles.snippet}>
@@ -199,10 +199,6 @@ export class MaterialSnippet extends PureComponent {
     )
   }
 }
-
-
-// needed for tests: seee https://github.com/facebook/jest/issues/1824
-MaterialSnippet.displayName = 'MaterialSnippet'
 
 MaterialSnippet.propTypes = {
   // onClick: PropTypes.func.isRequired,
