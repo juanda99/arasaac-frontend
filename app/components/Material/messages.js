@@ -7,8 +7,18 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   downloads: {
-    id: 'app.components..Material.downloads',
+    id: 'app.components.Material.downloads',
     description: 'Label for number of downloads of a material',
     defaultMessage: 'Downloads:'
-  }
+  },
+  authors: {
+    id: 'app.components.Material.authors',
+    description: 'Label for authors',
+    defaultMessage: 'Authors'
+  },
+  files: {
+    id: 'app.components.Material.files',
+    description: 'Label for files',
+    defaultMessage: 'files'
+  },
 })

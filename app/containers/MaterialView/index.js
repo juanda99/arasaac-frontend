@@ -28,7 +28,7 @@ class MaterialView extends React.Component {
   }
 
   renderContent() {
-    const { materialData, loading } = this.props
+    const { materialData, loading, locale } = this.props
     if (loading) return <p>Loading...</p>
     return materialData.isEmpty()
         ? <p><FormattedMessage {...messages.materialNotFound} /> </p>
@@ -37,14 +37,14 @@ class MaterialView extends React.Component {
 
   render() {
     return (
-      <View left={true}>
+      <View left={true} right={true}>
         <Helmet
           title='MaterialView'
           meta={[
             { name: 'description', content: 'Description of MaterialView' }
           ]}
         />
-        renderContent()
+        { this.renderContent() }
       </View>
     )
   }
