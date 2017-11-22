@@ -251,7 +251,6 @@
     "material-ui-search-bar": "^0.4.0",
     "minimist": "1.2.0",
     "normalizr": "^3.2.2",
-    "package.json": "^2.0.1",
     "prop-types": "^15.6.0",
     "react": "15.6.2",
     "react-dom": "15.6.2",
