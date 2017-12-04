@@ -34,36 +34,7 @@ const styles = {
   }
 }
 
-/*
-function SliderLeftButton(props) {
-  const style = {
-    opacity: 0.6,
-    position: 'absolute',
-    top: '50%',
-    left: 0,
-    transform: 'translate(1rem, -50%)',
-    zIndex: 10
-  }
-  if (props.currentSlide===0) return null
-  return <FloatingActionButton mini={true} onClick={props.onClick} style={style} className={'props.className'} ><LeftIcon /></FloatingActionButton>
-}
-
-
-function SliderRightButton(props) {
-  const style = {
-    opacity: 0.6,
-    position: 'absolute',
-    top: '50%',
-    right: 0,
-    transform: 'translate(-1rem, -50%)'
-  }
-  if (props.currentSlide>=props.slideCount -1) return null
-  return <FloatingActionButton mini={true} onClick={props.onClick} style={style} className={props.className} ><RightIcon /></FloatingActionButton>
-}
-
-*/
-
-export class MaterialSnippet extends PureComponent {
+class MaterialSnippet extends PureComponent {
 
 // nextStatus 0 to desactivate the filter, 1 for activating
   handleTouchTap = (filterName, filterItem, nextStatus, e) => {
@@ -156,8 +127,7 @@ export class MaterialSnippet extends PureComponent {
     // languageTags.push(<Chip style={styles.chip} key={material.language}><Avatar color='#222' icon={<LanguageIcon />} />{language[material.language]}</Chip>)
     return (
       <Item url={`/materials/${material.idMaterial}`}>
-        <Ribbon />
-
+        { material.favorite ? <Ribbon /> : '' }
         <div style={styles.snippet}>
           <SnippetImg images={images} id={material.idMaterial} />
           <div style={styles.snippetText}>

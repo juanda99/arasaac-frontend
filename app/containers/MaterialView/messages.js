@@ -10,5 +10,10 @@ export default defineMessages({
     id: 'app.containers.MaterialView.materialNotFound',
     description: 'Message when there is not material with the identifier provided',
     defaultMessage: 'Sorry, the material you are looking for does not exist'
+  },
+  materialLoading: {
+    id: 'app.containers.MaterialView.materialLoading',
+    description: 'Message when loading material',
+    defaultMessage: 'Loading material...'
   }
 })

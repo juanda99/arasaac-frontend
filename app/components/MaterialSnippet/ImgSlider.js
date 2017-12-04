@@ -21,9 +21,9 @@ class ImgSlider extends Component {
             {
               images.length ?
                 images.map((image, key) => (
-                  <img key={key} src={`//static.arasaac.org/${id}/screenshots/${image}`} alt='screenshot' />
+                  <img key={key} src={`//static.arasaac.org/${id}/screenshots/${image}`} alt='Screenshot' />
                 ))
-              : <img src={'//static.arasaac.org/noimage.png'} alt='Not available' />
+              : <img src={'//static.arasaac.org/noimage.png'} alt='Screenshot not available' />
             }
           </ReactSlidy>
         </div>

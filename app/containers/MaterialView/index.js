@@ -29,7 +29,7 @@ class MaterialView extends React.Component {
 
   renderContent() {
     const { materialData, loading, locale } = this.props
-    if (loading) return <p>Loading...</p>
+    if (loading) return <p><FormattedMessage {...messages.materialLoading} /></p>
     return materialData.isEmpty()
         ? <p><FormattedMessage {...messages.materialNotFound} /> </p>
         : <Material material={materialData} locale={locale} />
