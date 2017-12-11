@@ -1,61 +1,30 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ArrowBackIcon from 'material-ui/svg-icons/navigation/arrow-back'
-import ArrowForwardIcon from 'material-ui/svg-icons/navigation/arrow-forward'
-import { yellow500 } from 'material-ui/styles/colors'
-
-function SampleNextArrow(props) {
-    const {className, style, onClick} = props
-  return (
-    <div
-      className={className}
-      style={{...style, display: 'block', background: 'green'}}
-      onClick={onClick}
-    ></div>
-  )
-}
-
-function SamplePrevArrow(props) {
-  const {className, style, onClick} = props
-  return (
-    <div
-      className={className}
-      style={{...style, display: 'block', background: 'green'}}
-      onClick={onClick}
-    ></div> 
-  )
-}
+import ReactSlidy from 'react-slidy'
+import '!!style-loader!css-loader!./index.css'
 
 class ImageSlider extends Component {
   render() {
-    const settings = {
-      dots: true,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />
-    }
-    const carousel = this.props.images.map((image) => (
-      <div>
-        <img src={image} alt='' style={{width: '100%'}} />
-      </div>
-    ))
+    const { id, images, style } = this.props
     return (
-      <div>
-        <Slider {...settings} >{carousel}</Slider>
+      <div style={style}>
+        <ReactSlidy dynamicContent infinite={false}>
+          {
+            images.length ?
+              images.map((image, key) => (
+                <img key={key} src={`//static.arasaac.org/${id}/screenshots/${image}`} alt='Screenshot' />
+              ))
+            : <img src={'//static.arasaac.org/noimage.png'} alt='Screenshot not available' />
+          }
+        </ReactSlidy>
       </div>
     )
   }
 }
 
 ImageSlider.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object).isRequired
+  images: PropTypes.array,
+  id: PropTypes.number.isRequired
 }
 
 export default ImageSlider

@@ -11,7 +11,7 @@ import H2 from 'components/H2'
 import Ribbon from 'components/Ribbon'
 import activity from 'data/activity'
 import area from 'data/area'
-import SnippetImg from './ImgSlider'
+import ImageSlider from 'components/ImageSlider'
 import Item from './Item'
 
 const styles = {
@@ -31,6 +31,10 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap-reverse',
     width: '100%'
+  },
+  snippetImg: {
+    flexGrow: 1,
+    width: '300px'
   }
 }
 
@@ -129,7 +133,7 @@ class MaterialSnippet extends PureComponent {
       <Item url={`/materials/${material.idMaterial}`}>
         { material.favorite ? <Ribbon /> : '' }
         <div style={styles.snippet}>
-          <SnippetImg images={images} id={material.idMaterial} />
+          <ImageSlider images={images} id={material.idMaterial} style={styles.snippetImg} />
           <div style={styles.snippetText}>
             <H2 primary ucase>{material.title}</H2>
             <ReadMore>
