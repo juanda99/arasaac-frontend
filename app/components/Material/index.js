@@ -17,7 +17,7 @@ class Material extends Component {
 
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />
-        {material.get('authors').map((author) => <p key={author.get('id')}>{author.get('name')}</p>)}
+        {material.get('authors').valueSeq().map((author) => <p key={author.get('id')}>{author.get('name')}</p>)}
         <H3 primary={true}>{<FormattedMessage {...messages.files} />}</H3>
         <Divider />
         {material.get('files').map((file) => <p key={file}>{file}</p>)}
