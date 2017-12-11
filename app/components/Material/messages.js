@@ -18,7 +18,17 @@ export default defineMessages({
   },
   files: {
     id: 'app.components.Material.files',
-    description: 'Label for files',
-    defaultMessage: 'files'
+    description: 'Title for files to download',
+    defaultMessage: 'Download files'
   },
+  zipFileLabel: {
+    id: 'app.components.Material.zipFileLabel',
+    description: 'Label for zip file with all the material files',
+    defaultMessage: 'Download all files'
+  },
+  shareMaterial: {
+    id: 'app.components.Material.shareMaterial',
+    description: 'Title for list of icons for sharing mateiral',
+    defaultMessage: 'Share it!'
+  }
 })

@@ -7103,9 +7103,9 @@ react-router@3.0.5:
     prop-types "^15.5.6"
     warning "^3.0.0"
 
-react-share@1.16.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/react-share/-/react-share-1.16.0.tgz#4d5da774bc982d15612bb7d42179eeeb84ca94d7"
+react-share@1.18.0:
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/react-share/-/react-share-1.18.0.tgz#1b60611251b936b73eab366c7bc739634fb301a9"
   dependencies:
     babel-runtime "^6.6.1"
     classnames "^2.2.5"
