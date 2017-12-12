@@ -58,10 +58,6 @@ class MaterialSnippet extends PureComponent {
     // setFilterItems()
     return false
   }
-
-
-
-
   /* How we show messages...*/
   /* catalan: ca, va, es, en, ...*/
   /* br: pt, br, en, ....*/
@@ -90,7 +86,6 @@ class MaterialSnippet extends PureComponent {
           style={styles.chip}
           key={id}
           onClick={(e) => this.handleTouchTap('activity', id, 1, e)}
-          labelStyle={styles.labelChip}
         >
           <Avatar color='#444' size={30} icon={<ActivityIcon />} />
           {activity[id]}
@@ -105,7 +100,6 @@ class MaterialSnippet extends PureComponent {
             style={styles.chip}
             key={id}
             onClick={(e) => this.handleTouchTap('area', id, 0, e)}
-            labelStyle={styles.labelChip}
           >
             <Avatar color={'white'} size={15} backgroundColor={lightGreen800} icon={<AreaIcon iconStyle={{ width: '10px', height: '10px' }} />} />
             {area[id]}
@@ -118,7 +112,6 @@ class MaterialSnippet extends PureComponent {
           style={styles.chip}
           key={id}
           onClick={(e) => this.handleTouchTap('area', id, 1, e)}
-          labelStyle={styles.labelChip}
         >
           <Avatar color='#444' size={15} icon={<AreaIcon />} />
           {area[id]}

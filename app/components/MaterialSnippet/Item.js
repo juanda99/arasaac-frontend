@@ -8,7 +8,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import Paper from 'material-ui/Paper'
-import '!!style-loader!css-loader!./item.css'
 
 const styles = {
   paper: {
@@ -25,10 +24,7 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
     children: PropTypes.node
   }
 
-  constructor(props) {
-    super(props)
-    this.state = { zDepth: 1 }
-  }
+  state = { zDepth: 1 }
 
   handleMouseEnter = () => {
     this.setState({
