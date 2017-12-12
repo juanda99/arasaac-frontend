@@ -12,7 +12,7 @@ class ImageSlider extends Component {
           {
             images.length ?
               images.map((image, key) => (
-                <img key={key} src={`//static.arasaac.org/${id}/screenshots/${image}`} alt='Screenshot' />
+                <img key={key} src={`//static.arasaac.org/${id}/screenshots_300/${image}`} alt='Screenshot' />
               ))
             : <img src={'//static.arasaac.org/noimage.png'} alt='Screenshot not available' />
           }
@@ -24,7 +24,8 @@ class ImageSlider extends Component {
 
 ImageSlider.propTypes = {
   images: PropTypes.array,
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
+  style: PropTypes.object
 }
 
 export default ImageSlider
