@@ -34,7 +34,6 @@ export class MaterialList extends PureComponent {
     const visibleMaterials = this.props.materials.slice(offset, offset + itemsPerPage)
     return (
       <div>
-        <p> Se han encontrado {materials.length} materiales </p>
         <ul>
           { visibleMaterials.map((material) =>
             <MaterialSnippet

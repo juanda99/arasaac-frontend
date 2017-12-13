@@ -29,9 +29,10 @@ import {
   localeSelector,
   loadingSelector,
   searchResultsSelector,
-  visibleMaterialsSelector
+  visibleMaterialsSelector,
+  newMaterialsSelector
   } from './selectors'
-import { materials, toggleShowFilter, setFilterItems } from './actions'
+import { materials, newMaterials, toggleShowFilter, setFilterItems } from './actions'
 import messages from './messages'
 
 
@@ -62,6 +63,7 @@ class MaterialsView extends PureComponent {
     if (this.props.params.searchText && !this.props.searchResults) {
       this.props.requestMaterials(this.props.locale, this.props.params.searchText)
     }
+    this.props.requestNewMaterials()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -74,9 +76,13 @@ class MaterialsView extends PureComponent {
     this.setState({
       slideIndex: value
     })
+    // if (value === 1) this.props.requestNewMaterials()
   }
 
   handleSubmit = (nextValue) => {
+    this.setState({
+      slideIndex: 0
+    })
     if (this.props.params.searchText !== nextValue) {
       this.props.router.push(`/materials/search/${nextValue}`)
     }
@@ -95,25 +101,33 @@ class MaterialsView extends PureComponent {
   }
 
   render() {
-    const { showFilter, filters, visibleMaterials, locale, loading, filtersData, muiTheme } = this.props
+    const { showFilter, filters, visibleMaterials, newMaterialsList, locale, loading, filtersData, muiTheme } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
+    let materialsCounter
+    // depending on which slide we are, we show one or another list */
+    let materialsList
+    if (slideIndex === 0) materialsList = visibleMaterials
+    else materialsList = newMaterialsList
     let gallery
     if (loading) {
-      gallery = <p> Searching materials...</p>
-    } else if (!searchText) {
+      gallery = <p> Loading materials...</p>
+    } else if (!searchText && slideIndex === 0) {
       gallery = null
     } else {
-      gallery = visibleMaterials.length > 0
+      materialsCounter = materialsList.length
+      gallery = materialsCounter
       ? (
-        <MaterialList
-          materials={visibleMaterials}
-          locale={locale}
-          filtersMap={filters}
-          setFilterItems={this.props.setFilterItems}
-          filtersData={filtersData}
-          showLabels={visibleLabels}
-        />
+        <div>
+          <MaterialList
+            materials={materialsList}
+            locale={locale}
+            filtersMap={filters}
+            setFilterItems={this.props.setFilterItems}
+            filtersData={filtersData}
+            showLabels={visibleLabels}
+          />
+        </div>
       )
       : <p>{<FormattedMessage {...messages.materialsNotFound} />}</p>
     }
@@ -155,11 +169,44 @@ class MaterialsView extends PureComponent {
               }
             </View>
             <Divider />
-            <View left={true} right={true} top={1} > {gallery} </View>
+            <View left={true} right={true} top={1} >
+              {materialsCounter ? <p> <FormattedMessage {...messages.materialsFound} values={{ materialsCounter }} /> </p> : ''}
+              {gallery} 
+             </View>
           </div>
-          <View left={true} right={true}>
-            Sin implementar
-          </View>
+          <div>
+            <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+              <div style={styles.container}>
+                <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
+                <ActionButtons
+                  onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
+                  onLabelsClick={this.showLabels} labelsActive={visibleLabels}
+                  onSettingsClick={this.showSettings} settingsActive={visibleSettings}
+                  style={styles.actionButtons}
+                />
+              </div>
+              {visibleSettings ?
+                <div>
+                  <Toggle
+                    label={<FormattedMessage {...messages.advancedSearch} />}
+                    onToggle={this.props.toggleShowFilter}
+                    defaultToggled={showFilter}
+                    style={{ width: '200px' }}
+                  />
+                </div>
+                : null
+              }
+              {showFilter ?
+                <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
+                : null
+              }
+            </View>
+            <Divider />
+            <View left={true} right={true} top={1} >
+              {materialsCounter ? <p> <FormattedMessage {...messages.newMaterialsFound} values={{ materialsCounter }} /> </p> : ''}
+              {gallery} 
+            </View>
+          </div>
           <View left={true} right={true}>
             También sin implementar
           </View>
@@ -171,6 +218,7 @@ class MaterialsView extends PureComponent {
 
 MaterialsView.propTypes = {
   requestMaterials: PropTypes.func.isRequired,
+  requestNewMaterials: PropTypes.func.isRequired,
   toggleShowFilter: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   loading: PropTypes.bool.isRequired,
@@ -180,6 +228,7 @@ MaterialsView.propTypes = {
   showFilter: PropTypes.bool,
   setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
+  newMaterialsList: PropTypes.arrayOf(PropTypes.object),
   // Injected by React Router
   router: PropTypes.any.isRequired,
   locale: PropTypes.string.isRequired,
@@ -195,12 +244,16 @@ const mapStateToProps = (state, ownProps) => ({
   loading: loadingSelector(state),
   searchResults: searchResultsSelector(state, ownProps),
   visibleMaterials: visibleMaterialsSelector(state, ownProps),
-  filtersData: state.getIn(['configuration', 'filtersData'])
+  filtersData: state.getIn(['configuration', 'filtersData']),
+  newMaterialsList: newMaterialsSelector(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
   requestMaterials: (locale, searchText) => {
     dispatch(materials.request(locale, searchText))
+  },
+  requestNewMaterials: () => {
+    dispatch(newMaterials.request())
   },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())

@@ -31,7 +31,8 @@ const styles = {
   },
   slides: {
     flexGrow: 1,
-    width: '600px'
+    width: '600px',
+    position: 'relative'
   },
   snippet: {
     display: 'flex',

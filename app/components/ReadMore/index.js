@@ -38,7 +38,7 @@ class ReadMore extends Component {
     const { expanded, truncated } = this.state
 
     return (
-      <div style={ {fontSize: '1rem'} }>
+      <div style={{ fontSize: '1rem' }}>
         <Truncate
           lines={!expanded && lines}
           ellipsis={ <span>{' '}<A onClick={this.toggleLines}>{<FormattedMessage {...messages.readmore} />}</A></span>}
