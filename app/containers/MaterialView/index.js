@@ -60,7 +60,7 @@ MaterialView.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const locale = state.get('language').get('locale')
-  const materialData = state.getIn(['materialsView', 'materials', ownProps.params.idMaterial]) || Map()
+  const materialData = state.getIn(['materialsView', 'materials', parseInt(ownProps.params.idMaterial, 10)]) || Map()
   const loading = state.getIn(['materialsView', 'loading'])
   return ({
     materialData,
