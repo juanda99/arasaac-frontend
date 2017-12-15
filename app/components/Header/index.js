@@ -21,6 +21,7 @@ const Header = (props) => {
       onLeftIconButtonTouchTap={handleTouchTapLeftIconButton}
       title={<Title docked={props.docked}>{title}</Title>}
       zDepth={0}
+      id='header'
       style={styles.appBar}
       showMenuIconButton={showMenuIconButton}
       iconElementRight={isAuthenticated ? <UserMenu isTranslating={isTranslating} changeLocale={changeLocale} /> : <GuestMenu />}

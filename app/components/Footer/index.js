@@ -17,7 +17,7 @@ import styles from './styles'
 import FooterSection from './FooterSection'
 
 const Footer = ({ docked, muiTheme }) => (
-  <FooterSection color={muiTheme.palette.primary1Color} docked={docked}>
+  <FooterSection id='footer' color={muiTheme.palette.primary1Color} docked={docked}>
     <Row middle='xs'>
       <Col xs={12} md={7}>
         <p style={styles.p}>

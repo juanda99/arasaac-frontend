@@ -69,17 +69,19 @@ class Menu extends Component {
         style={styles.menu}
         docked={docked}
         open={open}
+        id='menu'
         onRequestChange={onRequestChangeNavDrawer}
        // containerStyle={{zIndex: zIndex.drawer - 100}}
-        containerStyle={{ Index: 1200 }}
+        // containerStyle={{ Index: 1200 }}
       >
-        <div role='button' style={styles.logo} onClick={this.handleTouchTapHeader}>
+        {
+          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+        } <div role='button' style={styles.logo} onClick={this.handleTouchTapHeader}>
           ARASAAC
         </div>
-        <SelectableList
-          value={location.pathname} onChange={onChangeList}
-        >
+        <SelectableList value={location.pathname} onChange={onChangeList}>
           <ListItem
+            id='lstpictograms'
             primaryText={<FormattedMessage {...messages.pictograms} />}
             primaryTogglesNestedList={true}
             leftIcon={<PictogramsIcon />}
@@ -102,6 +104,7 @@ class Menu extends Component {
             ]}
           />
           <ListItem
+            id='lstmaterials'
             primaryText={<FormattedMessage {...messages.materials} />}
             primaryTogglesNestedList={true}
             leftIcon={<MaterialsIcon />}
@@ -119,6 +122,7 @@ class Menu extends Component {
             ]}
           />
           <ListItem
+            id='lstonlinetools'
             primaryText={<FormattedMessage {...messages.onlineTools} />}
             primaryTogglesNestedList={true}
             leftIcon={<ToolsIcon />}
@@ -158,11 +162,13 @@ class Menu extends Component {
             ]}
           />
           <ListItem
+            id='lstsoftware'
             value='/software'
             primaryText={<FormattedMessage {...messages.software} />}
             leftIcon={<SoftwareIcon />}
           />
           <ListItem
+            id='lstaccesibility'
             value='/accessibility'
             primaryText={<FormattedMessage {...messages.accessibility} />}
             leftIcon={<AccessibilityIcon />}
@@ -174,16 +180,19 @@ class Menu extends Component {
         <SelectableList value='' onChange={this.handleRequestChangeLink} >
           <Subheader>{<FormattedMessage {...messages.info} />}</Subheader>
           <ListItem
+            id='lstnews'
             value='https://github.com/callemall/material-ui'
             primaryText={<FormattedMessage {...messages.news} />}
             leftIcon={<NewsIcon />}
           />
           <ListItem
+            id='lstarasaacteam'
             value='/arasaac-team'
             primaryText={<FormattedMessage {...messages.whoWeAre} />}
             leftIcon={<PeopleIcon />}
           />
           <ListItem
+            id='lstprizes'
             value='/prizes'
             primaryText={<FormattedMessage {...messages.prizes} />}
             leftIcon={<PrizesIcon />}
