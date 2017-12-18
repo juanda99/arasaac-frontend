@@ -12,7 +12,7 @@ import it from 'react-intl/locale-data/it'
 import de from 'react-intl/locale-data/de'
 import af from 'react-intl/locale-data/af'
 
-import { DEFAULT_LOCALE } from './containers/App/constants'; // eslint-disable-line
+import { DEFAULT_LOCALE, appLocales } from './containers/App/constants'
 import enTranslationMessages from './translations/en.json'
 import esTranslationMessages from './translations/es.json'
 import frTranslationMessages from './translations/fr.json'
@@ -20,15 +20,6 @@ import itTranslationMessages from './translations/it.json'
 import deTranslationMessages from './translations/de.json'
 import valTranslationMessages from './translations/val.json'
 import afTranslationMessages from './translations/af.json'
-
-export const appLocales = [
-  'en',
-  'es',
-  'fr',
-  'it',
-  'de',
-  'af'
-]
 
 addLocaleData([...en, ...es, ...fr, ...it, ...de, ...af])
 

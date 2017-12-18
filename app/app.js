@@ -28,11 +28,8 @@ import { makeSelectLocationState } from 'containers/App/selectors'
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider'
 
-// material-ui requirement
-// import injectTapEventPlugin from 'react-tap-event-plugin'
-// theme:
-import theme from 'config/theme'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+// Import Theme Provider
+import ThemeProvider from 'containers/ThemeProvider'
 
 // import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
 
@@ -89,7 +86,7 @@ const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
-        <MuiThemeProvider muiTheme={theme}>
+        <ThemeProvider>
           <Router
             history={history}
             routes={rootRoute}
@@ -99,7 +96,7 @@ const render = (messages) => {
               applyRouterMiddleware(useScroll())
             }
           />
-        </MuiThemeProvider>
+        </ThemeProvider>
       </LanguageProvider>
     </Provider>,
     document.getElementById('app')

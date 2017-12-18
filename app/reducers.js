@@ -11,6 +11,7 @@ import { reducer as form } from 'redux-form/immutable'
 import languageProviderReducer from 'containers/LanguageProvider/reducer'
 import pictogramsViewReducer from 'containers/PictogramsView/reducer'
 import materialsViewReducer from 'containers/MaterialsView/reducer'
+import themeProviderReducer from 'containers/ThemeProvider/reducer'
 import configuration from 'containers/ConfigurationView/reducer'
 import auth from 'containers/LoginView/reducer'
 /*
@@ -83,6 +84,7 @@ function routeReducer(state = routeInitialState, action) {
 export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
+    theme: themeProviderReducer,
     language: languageProviderReducer,
     loadingBar: loadingBarReducer,
     configuration,
