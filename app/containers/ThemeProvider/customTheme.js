@@ -5,6 +5,7 @@ import { THEMES, DEFAULT_THEME } from './actions'
 
 const themes = {}
 themes[THEMES.LIGHT] = {
+  color: 'yellow',
   palette: {
     primary1Color: lightGreen500,
     primary2Color: lightGreen300,
@@ -13,20 +14,23 @@ themes[THEMES.LIGHT] = {
     accent2Color: grey100,
     accent3Color: grey500,
     textColor: darkBlack,
-    alternateTextColor: white
+    alternateTextColor: white,
+    canvasColor: white // sidebar drawer
   }
 }
 
 themes[THEMES.DARK] = {
+  color: 'red',
   palette: {
-    primary1Color: darkBlack,
-    primary2Color: darkBlack,
-    primary3Color: darkBlack,
-    accent1Color: darkBlack,
+    primary1Color: white,
+    primary2Color: white,
+    primary3Color: white,
+    accent1Color: '#81388d',
     accent2Color: grey100,
     accent3Color: grey500,
     textColor: white,
-    alternateTextColor: darkBlack
+    alternateTextColor: darkBlack,
+    canvasColor: darkBlack // sidebar drawer
   }
 }
 
@@ -39,6 +43,9 @@ const componentsTheme = (currentTheme) => (
       backgroundColor: 'white',
       textColor: fade(currentTheme.palette.textColor, 0.5),
       selectedTextColor: currentTheme.palette.textColor
+    },
+    menu: {
+      backgroundColor: currentTheme.palette.alternateTextColor
     }
   }
 )

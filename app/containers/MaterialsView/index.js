@@ -101,6 +101,9 @@ class MaterialsView extends PureComponent {
   }
 
   render() {
+
+
+    console.log(`***************************${this.props.muiTheme.palette.canvasColor}`)
     const { showFilter, filters, visibleMaterials, newMaterialsList, locale, loading, filtersData, muiTheme } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
