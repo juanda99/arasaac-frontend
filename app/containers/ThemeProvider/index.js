@@ -3,7 +3,7 @@
  * ThemeProvider
  *
  * this component connects the redux state theme to the
- * 
+ *
  */
 
 import React from 'react'
@@ -15,9 +15,6 @@ import customTheme from './customTheme'
 export class ThemeProvider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     const theme = customTheme(this.props.theme)
-    console.log('***************************** render again*************************')
-    console.log(this.props.theme)
-    console.log('***********************************************************')
     return (
       <MuiThemeProvider muiTheme={theme}>
         {React.Children.only(this.props.children)}

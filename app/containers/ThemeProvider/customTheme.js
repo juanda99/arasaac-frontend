@@ -1,10 +1,10 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import { fade } from 'material-ui/utils/colorManipulator'
 import { lightGreen500, lightGreen300, darkBlack, lightGreen700, white, grey100, grey500 } from 'material-ui/styles/colors'
-import { THEMES, DEFAULT_THEME } from './actions'
+import { THEME_NAMES, DEFAULT_THEME } from './actions'
 
 const themes = {}
-themes[THEMES.LIGHT] = {
+themes[THEME_NAMES.LIGHT] = {
   color: 'yellow',
   palette: {
     primary1Color: lightGreen500,
@@ -19,7 +19,7 @@ themes[THEMES.LIGHT] = {
   }
 }
 
-themes[THEMES.DARK] = {
+themes[THEME_NAMES.DARK] = {
   color: 'red',
   palette: {
     primary1Color: white,
@@ -33,8 +33,6 @@ themes[THEMES.DARK] = {
     canvasColor: darkBlack // sidebar drawer
   }
 }
-
-
 
 /* global theme */
 const componentsTheme = (currentTheme) => (
