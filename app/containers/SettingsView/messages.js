@@ -1,9 +1,14 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  pictograms: {
-    id: 'header.pictograms',
-    description: 'Header title',
-    defaultMessage: 'Pictograms'
+  colortheme: {
+    id: 'app.containers.SettingsView.colortheme',
+    description: 'Title for color theme area buttons',
+    defaultMessage: 'Color theme'
+  },
+  language: {
+    id: 'app.containers.SettingsView.language',
+    description: 'Title for languages area buttons',
+    defaultMessage: 'Language'
   }
 })
