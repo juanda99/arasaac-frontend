@@ -66,10 +66,10 @@ export default defineMessages({
     description: 'Header title',
     defaultMessage: 'Contact us'
   },
-  accessibility: {
-    id: 'header.accessibilityTitle',
+  settings: {
+    id: 'header.settingsTitle',
     description: 'Header title',
-    defaultMessage: 'Accesibility'
+    defaultMessage: 'Settings'
   },
   prizes: {
     id: 'header.prizesTitle',

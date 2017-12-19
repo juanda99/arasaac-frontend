@@ -10,7 +10,7 @@ import { List, ListItem, makeSelectable } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import Subheader from 'material-ui/Subheader'
 import { FormattedMessage } from 'react-intl'
-import AccessibilityIcon from 'material-ui/svg-icons/action/accessibility'
+import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import PrizesIcon from 'material-ui/svg-icons/action/card-membership'
 import ToolsIcon from 'material-ui/svg-icons/action/build'
@@ -168,10 +168,10 @@ class Menu extends Component {
             leftIcon={<SoftwareIcon />}
           />
           <ListItem
-            id='lstaccesibility'
-            value='/accessibility'
-            primaryText={<FormattedMessage {...messages.accessibility} />}
-            leftIcon={<AccessibilityIcon />}
+            id='lstsettings'
+            value='/settings'
+            primaryText={<FormattedMessage {...messages.settings} />}
+            leftIcon={<SettingsIcon />}
           />
         </SelectableList>
 

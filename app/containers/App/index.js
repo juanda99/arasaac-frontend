@@ -180,8 +180,8 @@ class App extends Component {
         title = <FormattedMessage {...messages.contactusTitle} />
         docked = width === LARGE
         break
-      case /accessibility/.test(url):
-        title = <FormattedMessage {...messages.accessibility} />
+      case /settings/.test(url):
+        title = <FormattedMessage {...messages.settings} />
         console.log(width)
         console.log(LARGE)
         docked = width === LARGE

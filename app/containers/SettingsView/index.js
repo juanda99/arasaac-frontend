@@ -28,7 +28,7 @@ const SliderExampleSimple = () => (
   </div>
 )
 
-class AccessibilityView extends React.Component {
+class SettingsView extends React.Component {
 
   handleClick = (theme) => { this.props.changeTheme(theme) }
 
@@ -37,7 +37,7 @@ class AccessibilityView extends React.Component {
     return (
       <View left={true} right={true}>
         <Helmet
-          title='Accessibility'
+          title='Settings'
           meta={[
             { name: 'description', content: 'Description of MaterialView' }
           ]}
@@ -79,11 +79,11 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-AccessibilityView.propTypes = {
+SettingsView.propTypes = {
   changeLocale: PropTypes.func.isRequired,
   changeTheme: PropTypes.func.isRequired,
   locale: PropTypes.string.isRequired,
   theme: PropTypes.string
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccessibilityView)
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsView)

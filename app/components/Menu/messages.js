@@ -116,10 +116,10 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'Contact us'
   },
-  accessibility: {
-    id: 'menu.accessibility',
+  settings: {
+    id: 'menu.settings',
     description: 'Menu item',
-    defaultMessage: 'Accessibility'
+    defaultMessage: 'Settings'
   },
   whoWeAre: {
     id: 'menu.whoWeAre',
