@@ -3,7 +3,7 @@ import media from 'utils/mediaqueries'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 
 const View = styled.div`
-  background-color: ${(props) => props.muiTheme.palette.canvasColor};
+  background-color: ${(props) => props.muiTheme.palette.bodyColor};
   padding: 4rem 1rem;
   padding-left: ${(props) => props.left ? '0.5rem' : '0rem'};
   padding-right: ${(props) => props.right ? '0.5rem' : '0rem'};

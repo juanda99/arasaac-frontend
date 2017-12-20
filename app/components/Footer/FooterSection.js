@@ -3,8 +3,7 @@ import FullWidthSection from 'components/FullWidthSection'
 import media from 'utils/mediaqueries'
 
 const FooterSection = styled(FullWidthSection)`
-  position: absolute;
-  bottom: 0;
+  flex: none;
   ${media.md} {
     padding-left: ${(props) => (props.docked ? '16rem' : '0em')};
   }

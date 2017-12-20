@@ -87,7 +87,7 @@ class MaterialSnippet extends PureComponent {
           key={id}
           onClick={(e) => this.handleTouchTap('activity', id, 1, e)}
         >
-          <Avatar color='#444' size={30} icon={<ActivityIcon />} />
+          <Avatar icon={<ActivityIcon />} />
           {activity[id]}
         </Chip>
       )
@@ -101,7 +101,7 @@ class MaterialSnippet extends PureComponent {
             key={id}
             onClick={(e) => this.handleTouchTap('area', id, 0, e)}
           >
-            <Avatar color={'white'} size={15} backgroundColor={lightGreen800} icon={<AreaIcon iconStyle={{ width: '10px', height: '10px' }} />} />
+            <Avatar color={'white'}  backgroundColor={lightGreen800} icon={<AreaIcon iconStyle={{ width: '10px', height: '10px' }} />} />
             {area[id]}
           </Chip>
         )
@@ -113,7 +113,7 @@ class MaterialSnippet extends PureComponent {
           key={id}
           onClick={(e) => this.handleTouchTap('area', id, 1, e)}
         >
-          <Avatar color='#444' size={15} icon={<AreaIcon />} />
+          <Avatar icon={<AreaIcon />} />
           {area[id]}
         </Chip>
       )
