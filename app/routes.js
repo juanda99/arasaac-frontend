@@ -235,10 +235,10 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
-      path: '/accessibility',
-      name: 'accesibility',
+      path: '/settings',
+      name: 'settings',
       getComponent(location, cb) {
-        import('containers/AccessibilityView')
+        import('containers/SettingsView')
           .then(loadModule(cb))
           .catch(errorLoading)
       }

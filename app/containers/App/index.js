@@ -180,8 +180,8 @@ class App extends Component {
         title = <FormattedMessage {...messages.contactusTitle} />
         docked = width === LARGE
         break
-      case /accessibility/.test(url):
-        title = <FormattedMessage {...messages.accessibility} />
+      case /settings/.test(url):
+        title = <FormattedMessage {...messages.settings} />
         console.log(width)
         console.log(LARGE)
         docked = width === LARGE
@@ -257,13 +257,11 @@ class App extends Component {
       menuOpen
     } = this.state
 
-    console.log('ñ-----')
     const { joyride } = this.props
-    console.log('----')
     const joyrideProps = {
       autoStart: joyride.autoStart || this.state.autoStart,
       callback: this.handleJoyrideCallback,
-      debug: true,
+      // debug: true,
       disableOverlay: this.state.step === 1,
       resizeDebounce: joyride.resizeDebounce,
       run: joyride.run || this.state.running,

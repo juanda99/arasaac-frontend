@@ -7,15 +7,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
-import RaisedButton from 'material-ui/RaisedButton'
+import Div from 'components/Div'
 import Slider from 'material-ui/Slider'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import H2 from 'components/H2'
+import Button from 'components/Button'
+import Divider from 'material-ui/Divider'
 import { THEMES, changeTheme } from 'containers/ThemeProvider/actions'
+import LanguageSelector from 'components/LanguageSelector'
 import { changeLocale } from 'containers/LanguageProvider/actions'
 import messages from './messages'
-
 
 
 /**
@@ -28,34 +30,43 @@ const SliderExampleSimple = () => (
   </div>
 )
 
-class AccessibilityView extends React.Component {
+class SettingsView extends React.Component {
 
   handleClick = (theme) => { this.props.changeTheme(theme) }
 
   render() {
+    const { changeTheme, theme, changeLocale, locale } = this.props
     return (
       <View left={true} right={true}>
         <Helmet
-          title='Accessibility'
+          title='Settings'
           meta={[
             { name: 'description', content: 'Description of MaterialView' }
           ]}
         />
-        <H2 primary={true}> Tamaño del texto </H2>
-        <SliderExampleSimple/>
-        <h2>Tamaño de fuente</h2>
-        <p>lorem.ipsum</p>
-        <h2>Theme</h2>
-        <RaisedButton label={THEMES.DARK} primary={true} onClick={() => { this.handleClick(THEMES.DARK) }} />
-        <RaisedButton label={THEMES.LIGHT} primary={true} onClick={() => { this.handleClick(THEMES.LIGHT) }} />
+        <Div bottom={3}>
+          <H2 primary={true}> <FormattedMessage {...messages.colortheme} /> </H2>
+          {
+            THEMES.map((value) =>
+              <Button
+                key={value}
+                label={value}
+                value={value}
+                onClick={changeTheme}
+                style={{ margin: 12 }}
+                curval={theme}
+              />)
+          }
+        </Div>
+        <Divider style={{ margin: '4px' }} />
+        <Div top={3}>
+          <H2 primary={true}> <FormattedMessage {...messages.language} /> </H2>
+          <LanguageSelector value={locale} onChange={changeLocale} />
+        </Div>
       </View>
     )
   }
 }
-
-
-
-
 const mapStateToProps = (state) => {
   const locale = state.getIn(['language', 'locale'])
   const theme = state.get('theme')
@@ -65,17 +76,11 @@ const mapStateToProps = (state) => {
   })
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  changeTheme: (theme) => {
-    dispatch(changeTheme(theme))
-  }
-})
-
-
-AccessibilityView.propTypes = {
+SettingsView.propTypes = {
   changeLocale: PropTypes.func.isRequired,
   changeTheme: PropTypes.func.isRequired,
-  locale: PropTypes.string.isRequired
+  locale: PropTypes.string,
+  theme: PropTypes.string
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccessibilityView)
+export default connect(mapStateToProps, { changeLocale, changeTheme })(SettingsView)

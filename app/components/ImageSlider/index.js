@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactSlidy from 'react-slidy'
-import '!!style-loader!css-loader!./index.css'
+import './index.css'
 import Counter from './Counter'
 
 class ImageSlider extends Component {
