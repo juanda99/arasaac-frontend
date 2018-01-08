@@ -41,7 +41,24 @@ Arasaac is a website that offers ARASAAC graphic resources and materials to faci
 
 It's used  worldwide and everyday by thousands of users, so we decided to improve its usability and performance.[See new website, still in development](https://beta.arasaac.org)
 
-## Features
+
+## Demo
+You can check our development status at https://beta.arasaac.org.
+
+
+## Quick start
+
+1. Clone this repo using `git clone https://github.com/juanda99/arasaac-frontend.git`
+2. Run `npm install` or `yarn install` to install dependencies<br />
+   *We auto-detect `yarn` for installing packages by default, if you wish to force `npm` usage do: `USE_YARN=false npm run setup`*<br />
+3. Run `npm start` or `yarn start` to see the app running at `http://localhost:3000`.*
+4. This app use some backend points:
+  - *static.arasaac.org* for getting static data files (pictogram images, materials)
+  - *api.arasaac.org* for getting json data from the server
+  
+  Our backend server is dockerized, you can install it locally: see [how to instal the backend server](https://github.com/juanda99/arasaac-docker) 
+
+## Features and current status
 
 - Pictograms
   - Search pictograms (Not started)
@@ -71,9 +88,9 @@ It's used  worldwide and everyday by thousands of users, so we decided to improv
 
 
 
-## Ingredients for the webapp
+## Technical summary
 <dl>
-<dt>Based on <a href="https://github.com/mxstbr/react-boilerplate">React boilerplate</a></dt>
+<dt>Boilerplate based on <a href="https://github.com/mxstbr/react-boilerplate">React boilerplate</a></dt>
   <dd>Using React, Redux, Immutable.js, Sagas and Reselect</dd>
 
   <dt>API with nodeJS and Express on the server side</dt>
@@ -92,23 +109,6 @@ It's used  worldwide and everyday by thousands of users, so we decided to improv
   <dd>JWT, user/password and social logins</dd>
 
 </dl>
-
-## Demo
-You can check our development status at https://beta.arasaac.org.
-
-
-## Quick start
-
-1. Clone this repo using `git clone https://github.com/juanda99/arasaac-frontend.git`
-2. Run `npm install` or `yarn install` to install dependencies<br />
-   *We auto-detect `yarn` for installing packages by default, if you wish to force `npm` usage do: `USE_YARN=false npm run setup`*<br />
-3. Run `npm start` or `yarn start` to see the app running at `http://localhost:3000`.*
-4. This app use some backend points:
-  - *static.arasaac.org* for getting static data files (pictogram images, materials)
-  - *api.arasaac.org* for getting json data from the server
-  
-  Our backend server is dockerized, you can install it locally: see [how to instal the backend server](https://github.com/juanda99/arasaac-docker) 
-
 
 ## License
 
