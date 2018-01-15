@@ -84,7 +84,7 @@ You can check our development status at https://beta.arasaac.org.
   - Tour guide (WIP)
   - General settings (WIP)
 
-- Translations (WIP)
+- [Translations](docs/translations.md) (WIP)
 
 
 
