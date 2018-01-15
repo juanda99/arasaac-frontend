@@ -1,14 +1,12 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import { darken, fade, emphasize, lighten } from 'material-ui/utils/colorManipulator'
+import { fade } from 'material-ui/utils/colorManipulator'
 import {
   lightGreen500, lightGreen300, lightGreen700,
   darkBlack, white, fullBlack, fullWhite,
   pinkA100, pinkA200, pinkA400,
-  grey100, grey300, grey500, grey600, grey800, grey900,
-  cyan500, cyan700,
-  yellowA200, yellowA400, yellowA700
+  grey100, grey300, grey500, grey800, grey900,
+  cyan500
 } from 'material-ui/styles/colors'
-import typography from 'material-ui/styles/typography'
 import { THEME_NAMES, DEFAULT_THEME } from './actions'
 
 const themes = {}
@@ -45,7 +43,7 @@ themes[THEME_NAMES.DARK] = {
     secondaryTextColor: fade(fullWhite, 0.7),
     alternateTextColor: '#303030',
     canvasColor: grey900,
-    borderColor: fullWhite,
+    borderColor: fullWhite, // divider
     disabledColor: fade(fullWhite, 0.3),
     pickerHeaderColor: fade(fullWhite, 0.12),
     clockCircleColor: fade(fullWhite, 0.12),
@@ -53,6 +51,8 @@ themes[THEME_NAMES.DARK] = {
     bodyColor: grey800
   }
 }
+
+// logoColor for ARASAAC text should be black if high contrast
 
 themes[THEME_NAMES.HIGH_CONTRAST] = {
   palette: {
@@ -62,15 +62,17 @@ themes[THEME_NAMES.HIGH_CONTRAST] = {
     accent1Color: pinkA200,
     accent2Color: pinkA400,
     accent3Color: pinkA100,
-    textColor: fullWhite,
-    secondaryTextColor: fade(fullWhite, 0.7),
-    alternateTextColor: '#303030',
-    canvasColor: darkBlack,
-    borderColor: fade(fullWhite, 0.3),
-    disabledColor: fade(fullWhite, 0.3),
-    pickerHeaderColor: fade(fullWhite, 0.12),
-    clockCircleColor: fade(fullWhite, 0.12),
-    shadowColor: fullWhite
+    textColor: fullBlack,
+    secondaryTextColor: fade(darkBlack, 0.54),
+    alternateTextColor: fullWhite,
+    canvasColor: white, // sidebar drawer
+    borderColor: fullBlack, // divider
+    disabledColor: fade(darkBlack, 0.3),
+    pickerHeaderColor: cyan500,
+    clockCircleColor: fade(darkBlack, 0.07),
+    shadowColor: fullBlack,
+    bodyColor: fullWhite,
+    logoColor: fullBlack
   }
 }
 
@@ -83,7 +85,7 @@ const commonComponentsTheme = (currentTheme) => (
       backgroundColor: currentTheme.palette.canvasColor,
       textColor: fade(currentTheme.palette.textColor, 0.5),
       selectedTextColor: currentTheme.palette.textColor
-    }/*,
+    } /* ,
     menu: {
       backgroundColor: currentTheme.palette.alternateTextColor
     },
@@ -108,10 +110,10 @@ const commonComponentsTheme = (currentTheme) => (
   }
 )
 const componentsTheme = {}
-componentsTheme[THEME_NAMES.LIGHT] = (currentTheme) => (
+componentsTheme[THEME_NAMES.LIGHT] = (currentTheme) => ( // eslint-disable-line no-unused-vars
   {}
 )
-componentsTheme[THEME_NAMES.DARK] = (currentTheme) => (
+componentsTheme[THEME_NAMES.DARK] = (currentTheme) => ( // eslint-disable-line no-unused-vars
   {
     listItem: {
       leftIconColor: 'white',
@@ -127,7 +129,7 @@ componentsTheme[THEME_NAMES.DARK] = (currentTheme) => (
     }
   }
 )
-componentsTheme[THEME_NAMES.HIGH_CONTRAST] = (currentTheme) => (
+componentsTheme[THEME_NAMES.HIGH_CONTRAST] = (currentTheme) => ( // eslint-disable-line no-unused-vars
   {}
 )
 
