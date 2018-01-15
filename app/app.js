@@ -16,6 +16,7 @@ import { applyRouterMiddleware, Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import FontFaceObserver from 'fontfaceobserver'
 import { useScroll } from 'react-router-scroll'
+
 import 'sanitize.css/sanitize.css'
 
 // Import root app
@@ -27,11 +28,9 @@ import { makeSelectLocationState } from 'containers/App/selectors'
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider'
 
-// material-ui requirement
-import injectTapEventPlugin from 'react-tap-event-plugin'
-// theme:
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
+// Import Theme Provider
+import ThemeProvider from 'containers/ThemeProvider'
+
 // import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
 
 // Load the favicon, the manifest.json file and the .htaccess file
@@ -51,13 +50,6 @@ import './global-styles'
 
 // Import root routes
 import createRoutes from './routes'
-
-// Needed for onTouchTap
-// Can go away when react 1.0 release
-// Check this repo:
-// https://github.com/zilverline/react-tap-event-plugin
-injectTapEventPlugin()
-
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
@@ -94,7 +86,7 @@ const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <ThemeProvider>
           <Router
             history={history}
             routes={rootRoute}
@@ -104,7 +96,7 @@ const render = (messages) => {
               applyRouterMiddleware(useScroll())
             }
           />
-        </MuiThemeProvider>
+        </ThemeProvider>
       </LanguageProvider>
     </Provider>,
     document.getElementById('app')

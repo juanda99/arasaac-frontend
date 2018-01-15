@@ -24,7 +24,6 @@ module.exports = (options) => ({
       // they will be a part of our compilation either way.
       // So, no need for ExtractTextPlugin here.
       test: /\.css$/,
-      include: /node_modules/,
       loaders: ['style-loader', 'css-loader'],
       exclude: /flexboxgrid/
     }, {
@@ -34,6 +33,10 @@ module.exports = (options) => ({
     }, {
       test: /\.(eot|svg|ttf|woff|woff2)$/,
       loader: 'file-loader'
+    }, {
+      test: /\.scss$/,
+      include: /node_modules/,
+      loaders: ['style-loader', 'css-loader', 'sass-loader']
     }, {
       test: /\.(jpg|png|gif)$/,
       loaders: [
@@ -96,5 +99,9 @@ module.exports = (options) => ({
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window
-  performance: options.performance || {}
+  performance: options.performance || {},
+   // yaml-js has a reference to `fs`, this is a workaround
+  node: {
+    fs: 'empty'
+  }
 })

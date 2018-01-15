@@ -47,7 +47,7 @@ let RegisterForm = class RegisterForm extends Component {
     /* en las propiedades estaba resetForm y submitting*/
     return (
       <div>
-        <Div>
+        <Div top={2}>
           <form onSubmit={handleSubmit}>
             <Field
               name='name'
@@ -121,7 +121,7 @@ let RegisterForm = class RegisterForm extends Component {
             />
           </form>
         </Div>
-        <Div>
+        <Div top={2}>
           <Link to='/signin'>
             <p>
               {<FormattedMessage {...messages.offerSignin} />}

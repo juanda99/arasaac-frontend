@@ -1,5 +1,6 @@
 // @flow
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import RaisedButton from 'material-ui/RaisedButton'
 import { FormattedMessage } from 'react-intl'
 import { blue500 } from 'material-ui/styles/colors'

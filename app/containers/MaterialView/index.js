@@ -3,13 +3,15 @@
  * MaterialsView
  *
  */
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import Material from 'components/Material'
 import { material } from 'containers/MaterialView/actions'
+import P from 'components/P'
 import { Map } from 'immutable'
 import messages from './messages'
 
@@ -26,17 +28,24 @@ class MaterialView extends React.Component {
     }
   }
 
+  renderContent() {
+    const { materialData, loading, locale } = this.props
+    if (loading) return <p><FormattedMessage {...messages.materialLoading} /></p>
+    return materialData.isEmpty()
+        ? <P><FormattedMessage {...messages.materialNotFound} /> </P>
+        : <Material material={materialData} locale={locale} />
+  }
+
   render() {
-    const { materialData, locale } = this.props
     return (
-      <View>
+      <View left={true} right={true}>
         <Helmet
           title='MaterialView'
           meta={[
             { name: 'description', content: 'Description of MaterialView' }
           ]}
         />
-        {materialData.isEmpty() ? <p><FormattedMessage {...messages.materialNotFound} /> </p> : <Material material={materialData} locale={locale} /> }
+        { this.renderContent() }
       </View>
     )
   }
@@ -46,15 +55,18 @@ MaterialView.propTypes = {
   requestMaterial: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
-  materialData: PropTypes.object
+  materialData: PropTypes.object,
+  loading: PropTypes.bool
 }
 
 const mapStateToProps = (state, ownProps) => {
   const locale = state.get('language').get('locale')
-  const materialData = state.getIn(['materialsView', 'materials', ownProps.params.idMaterial]) || Map()
+  const materialData = state.getIn(['materialsView', 'materials', parseInt(ownProps.params.idMaterial, 10)]) || Map()
+  const loading = state.getIn(['materialsView', 'loading'])
   return ({
     materialData,
-    locale
+    locale,
+    loading
   })
 }
 

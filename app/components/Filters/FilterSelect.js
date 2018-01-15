@@ -1,6 +1,8 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 import IconButton from 'material-ui/IconButton'
 import ActionHide from 'material-ui/svg-icons/action/highlight-off'
 import { FormattedMessage } from 'react-intl'
@@ -33,13 +35,13 @@ class FilterSelect extends React.Component {
   }
   render() {
     // filterType will be used also as id, see https://github.com/callemall/material-ui/issues/6834
-    const { values, items, floatingLabelText, multiple, filterType } = this.props
+    const { values, items, floatingLabelText, multiple, filterType, muiTheme } = this.props
     let multipleProps = {}
     // useful for defining a selectionRenderer:
     if (multiple) multipleProps = { multiple }
     return (
       <span style={styles.span}>
-        <IconButton iconStyle={styles.icon} onClick={this.handleReset} tooltip={<FormattedMessage {...messages.filterTooltip} />}>
+        <IconButton iconStyle={{ color: muiTheme.palette.accent1Color, verticalAlign: 'bottom' }} onClick={this.handleReset} tooltip={<FormattedMessage {...messages.filterTooltip} />}>
           <ActionHide />
         </IconButton>
         <SelectField
@@ -59,15 +61,16 @@ class FilterSelect extends React.Component {
 FilterSelect.displayName = 'FilterSelect'
 
 FilterSelect.propTypes = {
-  items: PropTypes.arrayOf(React.PropTypes.shape({
+  items: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     primaryText: PropTypes.string.isRequired
   })).isRequired,
   multiple: PropTypes.bool,
+  muiTheme: PropTypes.object,
   floatingLabelText: PropTypes.string.isRequired,
   values: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]).isRequired,
   setFilterItems: PropTypes.func.isRequired,
   filterType: PropTypes.string.isRequired
 }
 
-export default FilterSelect
+export default muiThemeable()(FilterSelect)

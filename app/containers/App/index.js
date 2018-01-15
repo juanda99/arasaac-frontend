@@ -13,7 +13,8 @@
 
 /* eslint-disable */
 
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { ImmutableLoadingBar as LoadingBar } from 'react-redux-loading-bar'
 // import Helmet from 'react-helmet'
 // import styled from 'styled-components'
@@ -22,36 +23,79 @@ import Footer from 'components/Footer'
 import Menu from 'components/Menu'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { FormattedMessage } from 'react-intl'
+import Joyride from 'react-joyride'
+import Div from 'components/Div'
+import 'react-joyride/lib/react-joyride.scss'
 import messages from './messages'
 import Wrapper from './Wrapper'
 import { connect } from 'react-redux'
 import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
-import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth'
+import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 import { changeLocale, startTranslation, stopTranslation } from 'containers/LanguageProvider/actions'
 
 
 class App extends Component {
+
   static propTypes = {
     width: PropTypes.number.isRequired,
     children: PropTypes.node,
     location: PropTypes.object,
     isAuthenticated: PropTypes.bool,
-    changeLocale: PropTypes.func
+    changeLocale: PropTypes.func,
+    joyride: PropTypes.shape({
+      autoStart: PropTypes.bool,
+      callback: PropTypes.func,
+      run: PropTypes.bool
+    })
   }
+
+  static defaultProps = {
+    joyride: {
+      autoStart: false,
+      resizeDebounce: false,
+      run: true
+    }
+  }  
 
   static contextTypes = {
     router: PropTypes.object.isRequired
   }
 
-
-   constructor(props) {
-    super(props)
-    this.state = {     
-      menuOpen: false
-    }
+  state = {
+    menuOpen: false,
+    /* react-joyride state */
+    autoStart: false,
+    running: false,
+    step: 0,
+    steps: [
+      {
+        title: 'Open menu',
+        text: 'Click the button to navigate through ARASAAC website',
+        textAlign: 'center',
+        selector: '#header button',
+        position: 'bottom'
+      }, 
+      {
+        title: 'User menu',
+        text: 'User specific actions: profile, registration...',
+        selector: '#header div button',
+        position: 'bottom'
+      },
+      {
+        title: 'Pictograms',
+        text: 'Search and select pictograms',
+        selector: '#lstpictograms',
+        position: 'right'
+      },
+      {
+        title: 'Materials',
+        text: 'Search or upload&share materials',
+        selector: '#lstmaterials',
+        position: 'right'
+      }
+    ]
   }
-
 
   handleTranslate = () => {
     if (!this.props.isTranslating) {
@@ -70,24 +114,6 @@ class App extends Component {
 
   getStyles() {
     const styles = {
-      content: {
-        margin: spacing.desktopGutter
-      },
-      contentWhenMedium: {
-        margin: `${spacing.desktopGutter * 2}px ${spacing.desktopGutter * 3}px`
-      },
-      a: {
-        color: white
-      },
-      p: {
-        margin: '0 auto',
-        padding: 0,
-        color: white,
-        maxWidth: 450
-      },
-      iconButton: {
-        color: white
-      },
       LoadingBar: {
         position: 'fixed',
         height: 2,
@@ -95,10 +121,6 @@ class App extends Component {
         top: 64,
         zIndex: 10000
       }
-    }
-
-    if (this.props.width === MEDIUM || this.props.width === LARGE) {
-      styles.content = Object.assign(styles.content, styles.contentWhenMedium)
     }
     return styles
   }
@@ -156,6 +178,20 @@ class App extends Component {
         title = <FormattedMessage {...messages.configurationTitle} />
         docked = width === LARGE
         break
+      case /contact-us/.test(url):
+        title = <FormattedMessage {...messages.contactusTitle} />
+        docked = width === LARGE
+        break
+      case /settings/.test(url):
+        title = <FormattedMessage {...messages.settings} />
+        console.log(width)
+        console.log(LARGE)
+        docked = width === LARGE
+        break
+      case /prizes/.test(url):
+        title = <FormattedMessage {...messages.prizes} />
+        docked = width === LARGE
+        break
       default:
         docked = false
         break
@@ -176,10 +212,38 @@ class App extends Component {
   }
 
   handleChangeList = (event, value) => {
-    this.context.router.push(value)
-    this.setState({
-      menuOpen: false
-    })
+    if (value) {
+      this.context.router.push(value)
+      this.setState({
+        menuOpen: false
+      })
+    }
+  }
+
+  handleJoyrideCallback = (result) => {
+    const { joyride } = this.props
+
+    if (result.type === 'step:before') {
+      // Keep internal state in sync with joyride
+      this.setState({ step: result.index })
+      if (result.index===1) this.setState({menuOpen: true})
+    }
+
+    if (result.type === 'finished' && this.state.running) {
+      // Need to set our running state to false, so we can restart if we click start again.
+      this.setState({ running: false })
+    }
+
+    if (result.type === 'error:target_not_found') {
+      this.setState({
+        step: result.action === 'back' ? result.index - 1 : result.index + 1,
+        autoStart: result.action !== 'close' && result.action !== 'esc',
+      })
+    }
+
+    if (typeof joyride.callback === 'function') {
+      joyride.callback()
+    }
   }
 
   render() {
@@ -195,6 +259,21 @@ class App extends Component {
       menuOpen
     } = this.state
 
+    const { joyride } = this.props
+    const joyrideProps = {
+      autoStart: joyride.autoStart || this.state.autoStart,
+      callback: this.handleJoyrideCallback,
+      // debug: true,
+      disableOverlay: this.state.step === 1,
+      resizeDebounce: joyride.resizeDebounce,
+      run: joyride.run || this.state.running,
+      scrollToFirstStep: joyride.scrollToFirstStep || false,
+      stepIndex: joyride.stepIndex || this.state.step,
+      steps: joyride.steps || this.state.steps,
+      type: joyride.type || 'continuous',
+      scrollOffset: 200
+    }
+
 
     const styles = this.getStyles()
 
@@ -206,14 +285,17 @@ class App extends Component {
       showMenuIconButton = false
     }
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <LoadingBar updateTime={100} maxProgress={95} progressIncrease={20} style={styles.LoadingBar}/>
+        <Joyride
+          {...joyrideProps}
+          ref={c => (this.joyride = c)} />
         <Header
           showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
           changeLocale = {this.handleTranslate} isTranslating = {isTranslating}
         />
-        <Wrapper docked={docked}>
+        <Wrapper id='wrapper' docked={docked}>
           {children}
         </Wrapper>
         <Menu
@@ -223,7 +305,7 @@ class App extends Component {
           onChangeList={this.handleChangeList}
           open={menuOpen}
         />
-        <Footer docked={docked} style={styles.footer} />
+        <Footer docked={docked}/>
       </div>
     )
   }

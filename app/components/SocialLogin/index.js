@@ -17,7 +17,7 @@ const error = (response) => {
 }
 
 const SocialLogin = () => (
-  <Div>
+  <Div top={2} >
     <GoogleLogin
       clientId={'856321241205-djlltqe6cpo9vm3hp392giboofdp44ha.apps.googleusercontent.com'}
       onSuccess={success}

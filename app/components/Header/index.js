@@ -3,7 +3,8 @@
 * Header
 *
 */
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import AppBar from 'material-ui/AppBar'
 import styles from './styles'
 import Title from './Title'
@@ -20,6 +21,7 @@ const Header = (props) => {
       onLeftIconButtonTouchTap={handleTouchTapLeftIconButton}
       title={<Title docked={props.docked}>{title}</Title>}
       zDepth={0}
+      id='header'
       style={styles.appBar}
       showMenuIconButton={showMenuIconButton}
       iconElementRight={isAuthenticated ? <UserMenu isTranslating={isTranslating} changeLocale={changeLocale} /> : <GuestMenu />}

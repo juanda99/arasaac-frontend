@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share'
 import OuterDiv from './OuterDiv'
 import Span from './Span'

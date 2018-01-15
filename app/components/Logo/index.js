@@ -8,7 +8,7 @@ const style = {
 }
 
 const Logo = () => (
-  <Div>
+  <Div top={2}>
     <img alt='Arasaac logo' style={style} src={ArasaacLogo} />
   </Div>
 )

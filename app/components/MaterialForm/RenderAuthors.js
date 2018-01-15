@@ -1,17 +1,32 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Field } from 'redux-form/immutable'
 import MUIAutoComplete from 'material-ui/AutoComplete'
 import { AutoComplete } from 'redux-form-material-ui'
+import { FormattedMessage } from 'react-intl'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import PersonAdd from 'material-ui/svg-icons/social/person-add'
 import Delete from 'material-ui/svg-icons/action/delete'
+import messages from './messages'
 
-const style = {
+const styles = {
   marginRight: 20,
   authorsList: {
     listStyleType: 'none',
-    margin: 0,
-    padding: 0
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  field: {
+    marginRight: '2rem'
+  },
+  icons: {
+    flexGrow: 0,
+    width: '120px',
+    alignSelf: 'flex-end'
+  },
+  icon: {
+    marginRight: '1rem'
   }
 }
 
@@ -28,37 +43,39 @@ const RenderAuthors = ({ fields }) => {
     addAuthorField()
   }
   return (
-    <ul style={style.authorsList}>
+    <ul>
       {fields.map((member, index) =>
-        <li key={index}>
+        <li key={index} style={styles.authorsList}>
           <Field
             name={`${member}.firstName`}
             type='text'
-            component={RenderField}
+            component={AutoComplete}
             dataSource={nameList}
-            hintText='Introduce el nombre del autor'
-            muiComponent={AutoComplete}
-            floatingLabelText='Nombre'
+            hintText={<FormattedMessage {...messages.nameHint} />}
+            floatingLabelText={<FormattedMessage {...messages.name} />}
             openOnFocus={true}
             filter={MUIAutoComplete.fuzzyFilter}
+            style={styles.field}
           />
           <Field
             name={`${member}.lastName`}
             type='text'
-            component={RenderField}
+            component={AutoComplete}
             dataSource={surnameList}
-            hintText='Introduce el apellido del autor'
-            muiComponent={AutoComplete}
-            floatingLabelText='Apellido'
+            hintText={<FormattedMessage {...messages.surnameHint} />}
+            floatingLabelText={<FormattedMessage {...messages.surname} />}
             openOnFocus={true}
             filter={MUIAutoComplete.fuzzyFilter}
+            style={styles.field}
           />
-          <FloatingActionButton mini={true} style={style} onClick={() => fields.remove(index)} >
-            <Delete />
-          </FloatingActionButton>
-          <FloatingActionButton mini={true} onClick={addAuthorField} >
-            <PersonAdd />
-          </FloatingActionButton>
+          <div style={styles.icons}>
+            <FloatingActionButton mini={true} style={styles.icon} onClick={() => fields.remove(index)} >
+              <Delete />
+            </FloatingActionButton>
+            <FloatingActionButton mini={true} style={styles.icon} onClick={addAuthorField} >
+              <PersonAdd />
+            </FloatingActionButton>
+          </div>
         </li>
       )}
     </ul>
@@ -67,19 +84,6 @@ const RenderAuthors = ({ fields }) => {
 
 RenderAuthors.propTypes = {
   fields: PropTypes.object.isRequired
-}
-
-const RenderField = (props) => (
-  <span style={{ paddingRight: '30px' }}>
-    <Field {...props} component={props.muiComponent} />
-    { props.touched && props.error && <span>{props.error}</span> }
-  </span>
-)
-
-RenderField.propTypes = {
-  touched: PropTypes.bool,
-  error: PropTypes.string,
-  muiComponent: PropTypes.func.isRequired
 }
 
 export default RenderAuthors

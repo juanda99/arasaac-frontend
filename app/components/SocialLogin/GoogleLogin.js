@@ -1,5 +1,6 @@
 // based on: https://github.com/anthonyjgrove/react-google-login
-import React, { PropTypes, Component } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { red500 } from 'material-ui/styles/colors'
 import { FormattedMessage } from 'react-intl'
 import RaisedButton from 'material-ui/RaisedButton'

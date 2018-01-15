@@ -1,10 +1,11 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from 'react-intl'
 import { Map } from 'immutable'
 import FilterSelect from './FilterSelect'
 import messages from './messages'
 
-export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, type }) => {
+export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, type, ...other }) => {
   const { formatMessage } = intl
   const [...selectItems] = filterData.entries()
   const items = selectItems.map((selectItem) => {
@@ -20,7 +21,7 @@ export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, t
     values,
     filterType: type
   }
-  return <FilterSelect items={sortItems} {...filterProps} />
+  return <FilterSelect {...other} items={sortItems} {...filterProps} />
 }
 
 FilterSelectLoader.displayName = 'FilterSelectLoader'

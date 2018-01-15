@@ -4,9 +4,9 @@ const Logo = styled.img`
   display: block;
   margin: 0 auto;
   position: relative;
-  width: 300px;
+  width: 290px;
   // if not, it seemed not to be centered
-  left: -50px;
-  z-index: 100000;
+  left: -51px;
+  z-index: 9;
 `
 export default Logo

@@ -60,5 +60,20 @@ export default defineMessages({
     id: 'header.configurationTitle',
     description: 'Header title',
     defaultMessage: 'Arasaac configuration'
+  },
+  contactusTitle: {
+    id: 'header.contactusTitle',
+    description: 'Header title',
+    defaultMessage: 'Contact us'
+  },
+  settings: {
+    id: 'header.settingsTitle',
+    description: 'Header title',
+    defaultMessage: 'Settings'
+  },
+  prizes: {
+    id: 'header.prizesTitle',
+    description: 'Header title',
+    defaultMessage: 'Prizes'
   }
 })

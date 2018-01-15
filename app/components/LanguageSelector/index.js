@@ -6,6 +6,7 @@
 
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import { injectIntl, intlShape } from 'react-intl'
@@ -30,8 +31,8 @@ const LanguageSelector = (props) => {
 
 LanguageSelector.propTypes = {
   intl: intlShape.isRequired,
-  onChange: React.PropTypes.func,
-  value: React.PropTypes.string
+  onChange: PropTypes.func,
+  value: PropTypes.string
 }
 
 export default injectIntl(LanguageSelector)

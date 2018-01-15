@@ -1,26 +1,35 @@
 import { injectGlobal } from 'styled-components'
-import media from 'utils/mediaqueries'
 
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
-  html {
-    position: relative;
-    min-height: 100%;
+  html,
+  body {
+    height: 100%;
+    width: 100%;
   }
   body {
-    /* Margin bottom by footer height */
-    margin-bottom: 22em;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 62.5%;
+  }
+
+  #app {
+    background-color: #fafafa;
+    min-height: 100vh;
+    flex: 1;
   }
 
   p, input, label {
     font-size: 1rem
   }
+  span {
+    font-size: inherit
+  }
 
   ul {
-    list-style-type: none
+    list-style-type: none;
+    padding: 0;
   }
+
+  a {text-decoration: none}
 
   
   body.fontLoaded {
@@ -29,11 +38,4 @@ injectGlobal`
   button, html [type="button"],[type="reset"], [type="submit"] {
     -webkit-appearance: none;
   }  
-
-
-  ${media.md} {
-    body {
-      margin-bottom: 15em;
-    }
-  }
 `

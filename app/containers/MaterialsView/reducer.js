@@ -6,7 +6,7 @@
 
 import { fromJS, List } from 'immutable'
 import { MATERIAL } from 'containers/MaterialView/actions'
-import { MATERIALS, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
+import { MATERIALS, NEW_MATERIALS, SHOW_FILTERS, SET_FILTER_ITEMS } from './actions'
 
 export const initialState = fromJS({
   showFilter: false,
@@ -19,7 +19,8 @@ export const initialState = fromJS({
     area: List(),
     language: List()
   },
-  materials: {}
+  materials: {},
+  newMaterials: []
 })
 
 function materialsViewReducer(state = initialState, action) {
@@ -30,9 +31,10 @@ function materialsViewReducer(state = initialState, action) {
         .set('loading', true)
         .set('error', false)
     case MATERIAL.SUCCESS:
+      newMaterial = fromJS(action.payload.data || {})
       return state
         .set('loading', false)
-        .setIn(['materials', action.payload.data.idMaterial], action.payload.data)
+        .setIn(['materials', action.payload.data.idMaterial], newMaterial)
     case MATERIAL.FAILURE:
       return state
         .set('error', action.payload.error)
@@ -50,6 +52,20 @@ function materialsViewReducer(state = initialState, action) {
         .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data.result)
         .mergeIn(['materials'], newMaterial)
     case MATERIALS.FAILURE:
+      return state
+        .set('error', action.payload.error)
+        .set('loading', false)
+    case NEW_MATERIALS.REQUEST:
+      return state
+        .set('loading', true)
+        .set('error', false)
+    case NEW_MATERIALS.SUCCESS:
+      newMaterial = fromJS(action.payload.data.entities.materials || {})
+      return state
+        .set('loading', false)
+        .set('newMaterials', action.payload.data.result)
+        .mergeIn(['materials'], newMaterial)
+    case NEW_MATERIALS.FAILURE:
       return state
         .set('error', action.payload.error)
         .set('loading', false)

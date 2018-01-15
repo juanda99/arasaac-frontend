@@ -1,71 +1,57 @@
-import React, { PropTypes } from 'react'
-import AutoComplete from 'material-ui/AutoComplete'
-import RaisedButton from 'material-ui/RaisedButton'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import SearchBar from 'material-ui-search-bar'
 import { injectIntl, intlShape } from 'react-intl'
+import RaisedButton from 'material-ui/RaisedButton'
+import SearchIcon from 'material-ui/svg-icons/action/search'
 import messages from './messages'
 import customFilter from './filter'
 
-const styles = {
-  button: {
-    margin: 22,
-    border: 0
-  }
-}
+class SearchField extends Component {
 
-class SearchField extends React.Component {
+  state = { searchText: this.props.value }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
-      this.setInputValue(nextProps.value)
+      this.setState({ searchText: nextProps.value })
     }
-  }
-
-  getInputValue() {
-    return this.myInput.refs.searchTextField.props.value
-  }
-
-  setInputValue(val) {
-    // Generally mutating DOM is a bad idea in React components,
-    // but doing this for a single uncontrolled field is less fuss
-    // than making it controlled and maintaining a state for it.
-    this.myInput.value = val
   }
 
 
   handleUpdateInput = (t) => {
     if (t.keyCode === 13) {
-      this.props.onSubmit(this.getInputValue())
-    } else if (this.props.onChange) {
-      this.props.onChange(this.getInputValue())
+      this.props.onSubmit(this.state.searchText)
+    } else {
+      this.setState({ searchText: t })
     }
   }
 
-  handleSubmit = (t) => {
-    this.props.onSubmit(t)
-  }
-
   handleClick = () => {
-    this.props.onSubmit(this.getInputValue())
+    this.props.onSubmit(this.state.searchText)
   }
 
   render() {
     const { formatMessage } = this.props.intl
     const dataSource = this.props.dataSource || []
-
-
     return (
-      <div>
-        <AutoComplete
-          ref={(ref) => (this.myInput = ref)}
-          floatingLabelText={formatMessage(messages.search)}
-          filter={customFilter}
-          dataSource={dataSource}
-          onNewRequest={this.handleSubmit}
-          onUpdateInput={this.handleUpdateInput}
-          searchText={this.props.value}
-          maxSearchResults={10}
-        />
-        <RaisedButton label='Search' primary={true} style={styles.button} onClick={this.handleClick} />
+      <div style={this.props.style}>
+        <div style={{ display: 'flex', wrap: 'nowrap' }}>
+          <SearchBar
+            style={this.props.style}
+            ref={(ref) => (this.myInput = ref)}
+            filter={customFilter}
+            dataSource={dataSource}
+            onChange={this.handleUpdateInput}
+            onRequestSearch={this.handleClick}
+            value={this.state.searchText}
+            maxSearchResults={10}
+            hintText={formatMessage(messages.search)}
+          />
+          { this.state.searchText ?
+            <RaisedButton label='' primary={true} onClick={this.handleClick} icon={<SearchIcon style={{ height: '48px' }} />} style={{ height: '48px' }} />
+            : null
+          }
+        </div>
       </div>
     )
   }
@@ -73,10 +59,10 @@ class SearchField extends React.Component {
 
 SearchField.propTypes = {
   dataSource: PropTypes.array,
+  style: PropTypes.object,
   intl: intlShape.isRequired,
   value: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func || null
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default injectIntl(SearchField)

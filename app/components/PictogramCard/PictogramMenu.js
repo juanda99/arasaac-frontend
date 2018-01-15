@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import Visibility from 'material-ui/svg-icons/action/visibility'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
 import Share from 'material-ui/svg-icons/social/share'

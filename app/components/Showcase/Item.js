@@ -4,7 +4,8 @@
 *
 */
 
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import Paper from 'material-ui/Paper'
 import Image from 'components/Image'
@@ -19,7 +20,8 @@ const styles = {
     margin: '0 auto'
   },
   H3: {
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'black'
   }
 }
 
@@ -33,7 +35,7 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
 
   constructor(props) {
     super(props)
-    this.state = { zDepth: 0 }
+    this.state = { zDepth: 1 }
   }
 
   handleMouseEnter = () => {
@@ -44,26 +46,26 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
 
   handleMouseLeave = () => {
     this.setState({
-      zDepth: 0
+      zDepth: 1
     })
   }
 
   render() {
     const { title, route, image } = this.props
     return (
-      <Paper
-        style={styles.paper}
-        zDepth={this.state.zDepth}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-      >
-        <FullWidthSection color={grey200}>
-          <H3 style={styles.H3}>{title}</H3>
-        </FullWidthSection>
-        <Link to={route}>
+      <Link to={route}>
+        <Paper
+          style={styles.paper}
+          zDepth={this.state.zDepth}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+        >
+          <FullWidthSection color={grey200}>
+            <H3 style={styles.H3}>{title}</H3>
+          </FullWidthSection>
           <Image src={image} alt={title} />
-        </Link>
-      </Paper>
+        </Paper>
+      </Link>
     )
   }
 }

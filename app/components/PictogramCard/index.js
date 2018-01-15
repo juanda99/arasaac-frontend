@@ -4,7 +4,8 @@
 *
 */
 
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 // import { FormattedMessage } from 'react-intl'
 import { Card, CardActions, CardHeader, CardMedia, CardText } from 'material-ui/Card'
 import FlatButton from 'material-ui/FlatButton'

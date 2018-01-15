@@ -44,7 +44,7 @@ let LoginForm = class LoginForm extends Component {
     const { handleSubmit, submitting, pristine } = this.props
     return (
       <form onSubmit={handleSubmit}>
-        <Div>
+        <Div top={2}>
           <Field
             name='username'
             component={TextField}
@@ -64,7 +64,7 @@ let LoginForm = class LoginForm extends Component {
             validate={required}
           />
         </Div>
-        <Div>
+        <Div top={2}>
           <Row>
             <Col xs={6}>
               <Field
@@ -86,7 +86,7 @@ let LoginForm = class LoginForm extends Component {
             </Col>
           </Row>
         </Div>
-        <Div>
+        <Div top={2}>
           <RaisedButton
             style={styles.signinButton}
             label='SIGN IN'
@@ -95,7 +95,7 @@ let LoginForm = class LoginForm extends Component {
             disabled={pristine || submitting}
           />
         </Div>
-        <Div>
+        <Div top={2}>
           <p>
             {<FormattedMessage {...messages.offerAccount} />}
           </p>

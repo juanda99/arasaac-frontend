@@ -144,7 +144,7 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
-      path: '/pictograms/api',
+      path: '/developers/api',
       name: 'ApiView',
       getComponent(location, cb) {
         import('containers/ApiView')
@@ -223,6 +223,30 @@ export default function createRoutes(store) {
       name: 'privacyPolicy',
       getComponent(location, cb) {
         import('components/PrivacyPolicy')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
+      path: '/prizes',
+      name: 'prizes',
+      getComponent(location, cb) {
+        import('containers/PrizesView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
+      path: '/settings',
+      name: 'settings',
+      getComponent(location, cb) {
+        import('containers/SettingsView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
+      path: 'contact-us',
+      name: 'contact-us',
+      getComponent(location, cb) {
+        import('containers/ContactView')
           .then(loadModule(cb))
           .catch(errorLoading)
       }

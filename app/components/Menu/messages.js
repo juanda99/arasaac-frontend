@@ -115,5 +115,15 @@ export default defineMessages({
     id: 'menu.contact',
     description: 'Menu item',
     defaultMessage: 'Contact us'
+  },
+  settings: {
+    id: 'menu.settings',
+    description: 'Menu item',
+    defaultMessage: 'Settings'
+  },
+  whoWeAre: {
+    id: 'menu.whoWeAre',
+    description: 'Menu item',
+    defaultMessage: 'Arasaac Team'
   }
 })
