@@ -14,8 +14,10 @@ const pkg = require('../../package.json');
 const presets = pkg.babel.presets;
 const plugins = pkg.babel.plugins || [];
 
-const i18n = require('../../app/i18n');
-import { DEFAULT_LOCALE } from '../../app/containers/App/constants';
+// const i18n = require('../../app/i18n');
+// default locale for translations management, not for users!!
+const DEFAULT_LOCALE='en'; 
+// import { DEFAULT_LOCALE } from '../../app/containers/App/constants';
 
 require('shelljs/global');
 

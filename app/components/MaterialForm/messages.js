@@ -95,7 +95,7 @@ export default defineMessages({
     defaultMessage: 'Classification'
   },
   files: {
-    id: 'app.components.MaterialForm.filesUpload',
+    id: 'app.components.MaterialForm.files',
     defaultMessage: 'Files'
   },
   filesUpload: {
@@ -103,7 +103,7 @@ export default defineMessages({
     defaultMessage: 'Files upload'
   },
   filesHint: {
-    id: 'app.components.MaterialForm.files',
+    id: 'app.components.MaterialForm.filesHint',
     defaultMessage: 'Please use descriptive file names to facilitate downloading'
   },
   screenshots: {
@@ -111,7 +111,7 @@ export default defineMessages({
     defaultMessage: 'Screenshots'
   },
   screenshotsDesc: {
-    id: 'app.components.MaterialForm.screenshots',
+    id: 'app.components.MaterialForm.screenshotsDesc',
     defaultMessage: 'Please, upload some images of the material to show to the users without downloading'
   },
   screenshotsHint: {
