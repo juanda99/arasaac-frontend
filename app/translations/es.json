@@ -170,7 +170,7 @@
   "app.containers.MaterialView.materialLoading": "Loading material...",
   "app.containers.MaterialView.materialNotFound": "Lo sentimos, el material que usted está buscando no existe",
   "app.containers.MaterialsView.materialsFound": "We have found {materialsCounter} materials",
-  "app.containers.MaterialsView.materialsNotFound": "We are sorry, we cannot find any material",
+  "app.containers.MaterialsView.materialsNotFound": "Lo sentimos, no hemos encontrado ningún material",
   "app.containers.MaterialsView.newMaterialsFound": "We have found {materialsCounter} new or updated materials in the last 30 days",
   "app.containers.MaterialsView.showCategories": "Show categories in search results",
   "app.containers.MaterialsView.showFilters": "Show filters",
