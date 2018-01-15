@@ -66,6 +66,7 @@ class Menu extends Component {
       open,
       muiTheme
     } = this.props
+    console.log(muiTheme.palette)
 
     return (
       <Drawer
@@ -79,7 +80,7 @@ class Menu extends Component {
       >
         {
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-        } <Div bg={muiTheme.palette.primary1Color} role='button' style={styles.logo} onClick={this.handleTouchTapHeader}>
+        } <Div bg={muiTheme.palette.primary1Color} color={muiTheme.palette.logoColor} role='button' style={styles.logo} onClick={this.handleTouchTapHeader}>
           ARASAAC
         </Div>
         <SelectableList value={location.pathname} onChange={onChangeList}>
@@ -95,7 +96,7 @@ class Menu extends Component {
                 leftIcon={<SearchIcon />}
               />,
               <ListItem
-                value='/pictograms/api'
+                value='/developers/api'
                 primaryText={<FormattedMessage {...messages.api} />}
                 leftIcon={<ApiIcon />}
               />,
