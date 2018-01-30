@@ -7,7 +7,7 @@ export default {
   },
   p: {
     margin: '0 auto',
-    maxWidth: 300,
+    maxWidth: 500,
     color: white,
     fontWeight: 'normal',
     fontSize: '15px'
