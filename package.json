@@ -281,7 +281,7 @@
     "reselect": "3.0.1",
     "sanitize.css": "4.1.0",
     "styled-components": "2.2.0",
-    "swagger-ui": "3.2.2",
+    "swagger-ui": "^3.9.3",
     "warning": "3.0.0",
     "whatwg-fetch": "2.0.1",
     "yaml-js": "^0.1.5"
