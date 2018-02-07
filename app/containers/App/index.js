@@ -24,6 +24,7 @@ import Menu from 'components/Menu'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { FormattedMessage } from 'react-intl'
 import Joyride from 'react-joyride'
+import Div from 'components/Div'
 import 'react-joyride/lib/react-joyride.scss'
 import messages from './messages'
 import Wrapper from './Wrapper'
@@ -32,6 +33,7 @@ import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
 import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 import { changeLocale, startTranslation, stopTranslation } from 'containers/LanguageProvider/actions'
+
 
 class App extends Component {
 
@@ -283,7 +285,7 @@ class App extends Component {
       showMenuIconButton = false
     }
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <LoadingBar updateTime={100} maxProgress={95} progressIncrease={20} style={styles.LoadingBar}/>
         <Joyride
           {...joyrideProps}
@@ -293,7 +295,7 @@ class App extends Component {
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
           changeLocale = {this.handleTranslate} isTranslating = {isTranslating}
         />
-        <Wrapper docked={docked}>
+        <Wrapper id='wrapper' docked={docked}>
           {children}
         </Wrapper>
         <Menu

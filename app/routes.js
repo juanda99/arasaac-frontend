@@ -144,7 +144,7 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
-      path: '/pictograms/api',
+      path: '/developers/api',
       name: 'ApiView',
       getComponent(location, cb) {
         import('containers/ApiView')

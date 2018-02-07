@@ -15,6 +15,8 @@ import Person from 'material-ui/svg-icons/social/person'
 import { FormattedMessage } from 'react-intl'
 import RaisedButton from 'material-ui/RaisedButton'
 import ImageSlider from 'components/ImageSlider'
+import muiThemeable from 'material-ui/styles/muiThemeable'
+import P from 'components/P'
 import activity from 'data/activity'
 import area from 'data/area'
 import messages from './messages'
@@ -72,13 +74,13 @@ class Material extends Component {
     )
     const activityTags = material.get('activity').map((id) => (
       <Chip style={styles.chip} key={id}>
-        <Avatar color='#444' size={15} icon={<ActivityIcon />} />
+        <Avatar icon={<ActivityIcon />} />
         {activity[id]}
       </Chip>
     ))
     const areaTags = material.get('area').map((id) => (
       <Chip style={styles.chip} key={id}>
-        <Avatar color='#444' size={15} icon={<AreaIcon />} />
+        <Avatar icon={<AreaIcon />} />
         {area[id]}
       </Chip>
     ))
@@ -90,7 +92,7 @@ class Material extends Component {
         <div style={styles.snippet}>
           <ImageSlider images={images} id={idMaterial} style={styles.slides} />
           <div style={styles.desc}>
-            <p>{material.get('desc')}</p>
+            <P>{material.get('desc')}</P>
             <p style={{ textAlign: 'center' }}>
               <a href={`http://static.arasaac.org/${idMaterial}/${zipFile}`}>
                 <RaisedButton label={<FormattedMessage {...messages.zipFileLabel} />} primary={true} style={styles.button} />
@@ -131,7 +133,7 @@ class Material extends Component {
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />
         {authors.valueSeq().map((author) =>
-          <p>
+          <P>
             <FlatButton
               key={author.get('id')}
               label={author.get('name')}
@@ -139,7 +141,7 @@ class Material extends Component {
               icon={<Person />}
               href={`http://static.arasaac.org/${author}`}
             />
-          </p>
+          </P>
         )}
         <H3 primary={true}>{<FormattedMessage {...messages.files} />}</H3>
         <Divider />
@@ -164,4 +166,4 @@ Material.propTypes = {
   locale: PropTypes.string.isRequired
 }
 
-export default Material
+export default muiThemeable()(Material)

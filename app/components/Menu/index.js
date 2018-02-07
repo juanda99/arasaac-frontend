@@ -10,6 +10,7 @@ import { List, ListItem, makeSelectable } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import Subheader from 'material-ui/Subheader'
 import { FormattedMessage } from 'react-intl'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import PrizesIcon from 'material-ui/svg-icons/action/card-membership'
@@ -23,6 +24,7 @@ import ApiIcon from 'material-ui/svg-icons/communication/import-export'
 import ContactMailIcon from 'material-ui/svg-icons/communication/contact-mail'
 import FileUploadIcon from 'material-ui/svg-icons/file/file-upload'
 import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download'
+import Div from 'components/Div'
 import messages from './messages'
 import styles from './styles'
 
@@ -34,13 +36,13 @@ class Menu extends Component {
     location: PropTypes.object.isRequired,
     onChangeList: PropTypes.func.isRequired,
     onRequestChangeNavDrawer: PropTypes.func.isRequired,
-    open: PropTypes.bool.isRequired
+    open: PropTypes.bool.isRequired,
+    muiTheme: PropTypes.object.isRequired
   }
 
   static contextTypes = {
-    muiTheme: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired
-  };
+  }
 
   state = {
     muiVersions: []
@@ -61,8 +63,10 @@ class Menu extends Component {
       docked,
       onRequestChangeNavDrawer,
       onChangeList,
-      open
+      open,
+      muiTheme
     } = this.props
+    console.log(muiTheme.palette)
 
     return (
       <Drawer
@@ -76,9 +80,9 @@ class Menu extends Component {
       >
         {
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-        } <div role='button' style={styles.logo} onClick={this.handleTouchTapHeader}>
+        } <Div bg={muiTheme.palette.primary1Color} color={muiTheme.palette.logoColor} role='button' style={styles.logo} onClick={this.handleTouchTapHeader}>
           ARASAAC
-        </div>
+        </Div>
         <SelectableList value={location.pathname} onChange={onChangeList}>
           <ListItem
             id='lstpictograms'
@@ -92,7 +96,7 @@ class Menu extends Component {
                 leftIcon={<SearchIcon />}
               />,
               <ListItem
-                value='/pictograms/api'
+                value='/developers/api'
                 primaryText={<FormattedMessage {...messages.api} />}
                 leftIcon={<ApiIcon />}
               />,
@@ -208,5 +212,5 @@ class Menu extends Component {
   }
 }
 
-export default Menu
+export default muiThemeable()(Menu)
 

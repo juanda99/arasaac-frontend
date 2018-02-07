@@ -11,6 +11,7 @@ import View from 'components/View'
 import Helmet from 'react-helmet'
 import Material from 'components/Material'
 import { material } from 'containers/MaterialView/actions'
+import P from 'components/P'
 import { Map } from 'immutable'
 import messages from './messages'
 
@@ -31,7 +32,7 @@ class MaterialView extends React.Component {
     const { materialData, loading, locale } = this.props
     if (loading) return <p><FormattedMessage {...messages.materialLoading} /></p>
     return materialData.isEmpty()
-        ? <p><FormattedMessage {...messages.materialNotFound} /> </p>
+        ? <P><FormattedMessage {...messages.materialNotFound} /> </P>
         : <Material material={materialData} locale={locale} />
   }
 

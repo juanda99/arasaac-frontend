@@ -21,6 +21,7 @@ import SwipeableViews from 'react-swipeable-views'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
+import P from 'components/P'
 import { withRouter } from 'react-router'
 import ActionButtons from './ActionButtons'
 import {
@@ -101,9 +102,6 @@ class MaterialsView extends PureComponent {
   }
 
   render() {
-
-
-    console.log(`***************************${this.props.muiTheme.palette.canvasColor}`)
     const { showFilter, filters, visibleMaterials, newMaterialsList, locale, loading, filtersData, muiTheme } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
@@ -132,7 +130,7 @@ class MaterialsView extends PureComponent {
           />
         </div>
       )
-      : <p>{<FormattedMessage {...messages.materialsNotFound} />}</p>
+      : <P>{<FormattedMessage {...messages.materialsNotFound} />}</P>
     }
     return (
       <div>
@@ -173,9 +171,9 @@ class MaterialsView extends PureComponent {
             </View>
             <Divider />
             <View left={true} right={true} top={1} >
-              {materialsCounter ? <p> <FormattedMessage {...messages.materialsFound} values={{ materialsCounter }} /> </p> : ''}
-              {gallery} 
-             </View>
+              {materialsCounter ? <P> <FormattedMessage {...messages.materialsFound} values={{ materialsCounter }} /> </P> : ''}
+              {gallery}
+            </View>
           </div>
           <div>
             <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
@@ -207,7 +205,7 @@ class MaterialsView extends PureComponent {
             <Divider />
             <View left={true} right={true} top={1} >
               {materialsCounter ? <p> <FormattedMessage {...messages.newMaterialsFound} values={{ materialsCounter }} /> </p> : ''}
-              {gallery} 
+              {gallery}
             </View>
           </div>
           <View left={true} right={true}>
