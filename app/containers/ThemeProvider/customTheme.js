@@ -27,7 +27,8 @@ themes[THEME_NAMES.LIGHT] = {
     pickerHeaderColor: cyan500,
     clockCircleColor: fade(darkBlack, 0.07),
     shadowColor: fullBlack,
-    bodyColor: fullWhite
+    bodyColor: fullWhite,
+    logoColor: fullWhite
   }
 }
 
@@ -48,7 +49,8 @@ themes[THEME_NAMES.DARK] = {
     pickerHeaderColor: fade(fullWhite, 0.12),
     clockCircleColor: fade(fullWhite, 0.12),
     shadowColor: fullWhite,
-    bodyColor: grey800
+    bodyColor: grey800,
+    logoColor: fullBlack
   }
 }
 
@@ -130,7 +132,11 @@ componentsTheme[THEME_NAMES.DARK] = (currentTheme) => ( // eslint-disable-line n
   }
 )
 componentsTheme[THEME_NAMES.HIGH_CONTRAST] = (currentTheme) => ( // eslint-disable-line no-unused-vars
-  {}
+  {
+    appBar: {
+      textColor: 'black'
+    }
+  }
 )
 
 const customComponentsTheme = (theme, currentTheme) => (
