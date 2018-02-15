@@ -8,6 +8,7 @@ import { createRequestTypes, action } from 'utils/actions'
 
 // constants
 export const LOGIN = createRequestTypes('LOGIN')
+export const PROFILE = createRequestTypes('PROFILE')
 export const LOGOUT = 'app/LoginView/LOGOUT'
 export const ACTIVATION = createRequestTypes('ACTIVATION')
 
@@ -15,6 +16,12 @@ export const login = {
   request: (username, password) => action(LOGIN.REQUEST, { username, password }),
   success: (username, token) => action(LOGIN.SUCCESS, { username, token }),
   failure: (error) => action(LOGIN.FAILURE, { error })
+}
+
+export const profile = {
+  request: (token) => action(PROFILE.REQUEST, { token }),
+  success: (userProfile) => action(PROFILE.SUCCESS, { userProfile }),
+  failure: (error) => action(PROFILE.FAILURE, { error })
 }
 
 export const activation = {

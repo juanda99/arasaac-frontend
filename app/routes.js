@@ -152,7 +152,7 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
-      path: '/signin',
+      path: '/signin(#:access_token)(#:prueba)',
       name: 'LoginView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([

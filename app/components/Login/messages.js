@@ -5,26 +5,6 @@ const messages = defineMessages({
     description: 'Or, because it offers two posibilities',
     defaultMessage: 'or'
   },
-  user: {
-    id: 'user.signin',
-    description: 'Username field default text for login',
-    defaultMessage: 'User'
-  },
-  email: {
-    id: 'email.signin',
-    description: 'Hint for username login field',
-    defaultMessage: 'e-mail'
-  },
-  password: {
-    id: 'password.signin',
-    description: 'Password field for login, default text',
-    defaultMessage: 'Password'
-  },
-  remember: {
-    id: 'signin.remember',
-    description: 'Signin checkbox option for remembering password',
-    defaultMessage: 'Remember me'
-  },
   forgotPassword: {
     id: 'signin.forgotPassword',
     description: 'Link for password reset if passwords is forgotten',
@@ -48,7 +28,7 @@ const messages = defineMessages({
   signin: {
     id: 'signup.signin',
     description: 'Button for going to sign in view',
-    defaultMessage: 'Sign in'
+    defaultMessage: 'Sign in with ARASAAC'
   },
   agreement: {
     id: 'signup.agreement',
