@@ -1,4 +1,8 @@
-import { fork, call, take, put, cancel } from 'redux-saga/effects'
+// export default function* root() {
+  // do nothing
+// }
+
+import { fork, call, take, takeLatest, put, cancel } from 'redux-saga/effects'
 import { LOGIN, LOGOUT, login, logout } from 'containers/LoginView/actions'
 import api from 'services'
 
@@ -28,10 +32,11 @@ export const fetchStarred    = fetchEntity.bind(null, starred, api.fetchStarred)
 export const fetchStargazers = fetchEntity.bind(null, stargazers, api.fetchStargazers)
 */
 
-function* authorize(username, password) {
+function* authorize(action) {
   try {
-    const token = yield call(api.login, username, password)
-    yield put(login.success(token))
+    const { username, password } = action.payload
+    const token = yield call(api.fetchMaterials, username, password)
+    // yield put(login.success())
     // en localstorage almacenaremos datos mediante un middleware:
     // yield call(API.storeItem, {TOKEN: token, USERNAME: username})
   } catch (error) {
@@ -41,15 +46,13 @@ function* authorize(username, password) {
   }
 }
 
-function* loginFlow() {
-  while (true) {
-    const { username, password } = yield take(LOGIN.REQUEST)
-    // fork return a Task object
-    const task = yield fork(authorize, username, password)
-    yield take(LOGOUT.REQUEST)
-    yield cancel(task)
-    yield put(logout.success())
-  }
+export default function* loginFlow() {
+  const watcher = yield takeLatest(LOGIN.REQUEST, authorize)
+  // fork return a Task object
+  // const task = yield fork(authorize, username, password)
+  yield take('LOGOUT.REQUEST')
+  yield cancel(watcher)
+  yield put(logout.success())
 }
 /*
 function* activationFlow() {
@@ -64,10 +67,4 @@ function* activationFlow() {
   }
 }
 */
-export default function* root() {
-  /* yield [
-    fork(loginFlow),
-    fork(activationFlow)
-  ] */
-  yield fork(loginFlow)
-}
+
