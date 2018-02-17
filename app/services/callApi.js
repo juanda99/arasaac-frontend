@@ -22,8 +22,6 @@ const callApi = (endpoint, options) => {
     username: 'adsf',
     password: 'asdf'
   } */
-  console.log(`CONFIG************ ${JSON.stringify(options)}`);
-  console.log(`CONFIG************ ${JSON.stringify(config)}`);
   // const options = { method: 'GET', header: { Accept: 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(data) }
   return fetch(fullUrl, config) // could have options!
     .then((response) =>

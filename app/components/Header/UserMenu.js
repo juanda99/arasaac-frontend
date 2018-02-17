@@ -27,11 +27,8 @@ const UserMenu = ({ isTranslating, changeLocale, muiTheme }) => (
       {(!isTranslating)
       ? <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} onClick={changeLocale} />
       : <MenuItem primaryText={<FormattedMessage {...messages.stopTranslateArasaac} />} onClick={changeLocale} /> }
-      <MenuItem primaryText={<FormattedMessage {...messages.signout} />} href='/signout' />
-      <MenuItem primaryText={<FormattedMessage {...messages.signin} />} containerElement={<Link to='/signin' />} />
-      <MenuItem primaryText={<FormattedMessage {...messages.register} />} containerElement={<Link to='/register' />} />
       <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} containerElement={<Link to='/uploadmaterial' />} />
-
+      <MenuItem primaryText={<FormattedMessage {...messages.signout} />} href='/signout' />
 
     </IconMenu>
   </span>

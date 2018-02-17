@@ -54,6 +54,7 @@ const authReducer = (state = initialState, action) => {
       return state
         .set('username', '')
         .set('token', '')
+        .set('isAuthenticated', false)
     case ACTIVATION.REQUEST:
       return state
         .set('loading', true)

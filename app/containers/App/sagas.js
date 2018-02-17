@@ -35,8 +35,8 @@ export const fetchStargazers = fetchEntity.bind(null, stargazers, api.fetchStarg
 function* authorize(action) {
   try {
     const { username, password } = action.payload
-    const token = yield call(api.login, username, password)
-    // yield put(login.success())
+    const {access_token, expires_in, token_type, refresh_token} = yield call(api.login, username, password)
+    yield put(login.success())
     // en localstorage almacenaremos datos mediante un middleware:
     // yield call(API.storeItem, {TOKEN: token, USERNAME: username})
   } catch (error) {
