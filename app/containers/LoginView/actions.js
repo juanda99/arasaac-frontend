@@ -29,6 +29,8 @@ export const logout = {
   failure: (error) => action(LOGOUT.FAILURE, { error })
 }
 
+export const resetError = () => action(RESET_ERROR)
+
 /* Social login */
 
 export const SOCIAL_LOGIN = 'app/LoginView/SOCIAL_LOGIN'
@@ -37,6 +39,7 @@ export const SOCIAL_LOGIN_REQUEST = 'app/LoginView/SOCIAL_LOGIN_REQUEST'
 export const SOCIAL_LOGIN_SUCCESS = 'app/LoginView/SOCIAL_LOGIN_SUCCESS'
 export const SOCIAL_LOGIN_FAILURE = 'app/LoginView/SOCIAL_LOGIN_FAILURE'
 export const SOCIAL_LOGOUT = 'app/LoginView/SOCIAL_LOGOUT'
+export const RESET_ERROR = 'app/LoginView/RESET_ERROR'
 
 export const socialLogin = {
   prepare: (service, options) => action(SOCIAL_LOGIN_PREPARE, { service, options }),

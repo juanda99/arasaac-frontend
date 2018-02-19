@@ -1,91 +1,68 @@
-import { take, put, call } from 'redux-saga/effects'
-import { socialLogin } from './actions'
 
-/* eslint no-constant-condition: ["error", { "checkLoops": false }] */
+import { fork, call, take, takeLatest, put, cancel } from 'redux-saga/effects'
+import { LOGIN, LOGOUT, login, logout } from 'containers/LoginView/actions'
+import api from 'services'
 
-export const promises = {
-  fbLogin: (options) => new Promise((resolve, reject) => {
-    window.FB.login((response) => {
-      // istanbul ignore else
-      if (response.authResponse) {
-        resolve(response.authResponse)
-      } else {
-        reject(response.status)
-      }
-    }, options)
-  }),
-  fbGetMe: (options) => new Promise((resolve) => {
-    window.FB.api('/me', options, (me) => resolve(me))
-  }),
-  loadGoogleAuth2: () => new Promise((resolve) => {
-    window.gapi.load('auth2', resolve)
-  }),
-  loadScript: (src) => new Promise((resolve, reject) => {
-    const js = document.createElement('script')
-    js.src = src
-    js.onload = resolve
-    js.onerror = reject
-    document.head.appendChild(js)
-  })
+/* eslint no-constant-condition:0 */
+
+// resuable fetch Subroutine
+// entity :  user | repo | starred | stargazers
+// apiFn  : api.fetchUser | api.fetchRepo | ...
+// id     : login | fullName
+// url    : next page url. If not provided will use pass it to apiFn
+/*
+function* fetchEntity(entity, apiFn, id, url) {
+  yield put( entity.request(id) )
+  const {response, error} = yield call(apiFn, url || id)
+  if(response)
+    yield put( entity.success(id, response) )
+  else
+    yield put( entity.failure(id, error) )
 }
 
-export const appendFbRoot = () => {
-  const fbRoot = document.createElement('div')
-  fbRoot.id = 'fb-root'
-  document.body.appendChild(fbRoot)
-}
+*/
+// yeah! we can also bind Generators
+/*
+export const fetchUser       = fetchEntity.bind(null, user, api.fetchUser)
+export const fetchRepo       = fetchEntity.bind(null, repo, api.fetchRepo)
+export const fetchStarred    = fetchEntity.bind(null, starred, api.fetchStarred)
+export const fetchStargazers = fetchEntity.bind(null, stargazers, api.fetchStargazers)
+*/
 
-export const serviceAction = (suffix, service) => (action) =>
-  action.type === `SOCIAL_LOGIN_${suffix}` && action.service === service
-
-export function* loginFacebook({ scope = 'public_profile', fields = 'id,name', ...options } = {}) {
+function* authorize(action) {
   try {
-    yield call(promises.fbLogin, { scope, ...options })
-    const data = yield call(promises.fbGetMe, { fields })
-    const picture = `https://graph.facebook.com/${data.id}/picture?type=normal`
-    yield put(socialLogin.success({ ...data, picture }))
-  } catch (e) {
-    yield put(socialLogin.failure(e))
+    const { username, password } = action.payload
+    const { access_token, expires_in, token_type, refresh_token } = yield call(api.login, username, password)
+    yield put(login.success())
+    // en localstorage almacenaremos datos mediante un middleware:
+    // yield call(API.storeItem, {TOKEN: token, USERNAME: username})
+  } catch (error) {
+    yield put(login.failure(error))
+    // yield call(API.removeItem, TOKEN)
+    // yield call(API.removeItem, USERNAME)
   }
 }
 
-export function* prepareFacebook({ appId, version = 'v2.8', ...options }) {
-  yield call(appendFbRoot)
-  yield call(promises.loadScript, '//connect.facebook.net/en_US/sdk.js')
-  yield call([window.FB, window.FB.init], { appId, version, ...options })
+function* loginFlow() {
+  const watcher = yield takeLatest(LOGIN.REQUEST, authorize)
+  // fork return a Task object
+  // const task = yield fork(authorize, username, password)
+  yield take('LOGOUT.REQUEST')
+  yield cancel(watcher)
+  yield put(logout.success())
 }
-
-export function* watchSocialLoginFacebook() {
-  const { options } = yield take(serviceAction('PREPARE', 'facebook'))
-  yield call(prepareFacebook, options)
+/*
+function* activationFlow() {
   while (true) {
-    const { loginOptions } = yield take(serviceAction('REQUEST', 'facebook'))
-    yield call(loginFacebook, loginOptions)
+    try {
+      const { urlActivation } = yield take(ACTIVATION.REQUEST)
+      yield call(API.userActivation, { urlActivation })
+      yield put(activate.success())
+    } catch (error) {
+      yield put(activate.failure(error))
+    }
   }
 }
+*/
 
-export function* loginGoogle({ scope = 'profile', ...options } = {}) {
-  const auth2 = yield call(window.gapi.auth2.getAuthInstance)
-  const user = yield call([auth2, auth2.signIn], { scope, ...options })
-  const profile = yield call([user, user.getBasicProfile])
-  const name = yield call([profile, profile.getName])
-  const picture = yield call([profile, profile.getImageUrl])
-  yield put(socialLogin.success({ name, picture }))
-}
-
-export function* prepareGoogle({ client_id, ...options }) {
-  yield call(promises.loadScript, '//apis.google.com/js/platform.js')
-  yield call(promises.loadGoogleAuth2)
-  yield call(window.gapi.auth2.init, { client_id, ...options })
-}
-
-export function* watchSocialLoginGoogle() {
-  const { options } = yield take(serviceAction('PREPARE', 'google'))
-  yield call(prepareGoogle, options)
-  while (true) {
-    const { loginOptions } = yield take(serviceAction('REQUEST', 'google'))
-    yield call(loginGoogle, loginOptions)
-  }
-}
-
-export default [watchSocialLoginFacebook, watchSocialLoginGoogle]
+export default [loginFlow]

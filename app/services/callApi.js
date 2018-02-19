@@ -15,32 +15,16 @@ const callApi = (endpoint, options) => {
     config = options.config || {}
   }
   const fullUrl = (endpoint.indexOf(AUTH_ROOT) === -1) ? API_ROOT + endpoint : endpoint
-  /* const data = { type: 'SIGNUP_REQUEST',
-    name: 'JUAN D. BURRO ALAEZ',
-    surname: 'ALAEZ',
-    email: 'juandacorreo@gmail.com',
-    username: 'adsf',
-    password: 'asdf'
-  } */
-  // const options = { method: 'GET', header: { Accept: 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(data) }
-  return fetch(fullUrl, config) // could have options!
-    .then((response) =>
-      response.json().then((json) => {
-        if (!response.ok) {
-          return Promise.reject(json)
-        }
-      // const camelizedJson = camelizeKeys(json)
-      // const nextPageUrl = getNextPageUrl(response)
-      /*
-        return Object.assign({},
-          normalize(camelizedJson, schema),
-          { nextPageUrl }
-        )
-      })
-      */
-        return schema ? normalize(json, schema) : json
-      })
-  )
+  return fetch(fullUrl, config)
+    .then((response) => {
+      if (response.status >= 400) {
+        return Promise.reject(response.status)
+        // throw new Error('Bad response from server')
+      }
+      return response.json()
+    })
+    .then((json) => (schema ? normalize(json, schema) : json)
+    )
 }
 
 export default callApi

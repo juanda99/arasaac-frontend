@@ -12,7 +12,8 @@ import {
   SOCIAL_LOGIN_REQUEST,
   SOCIAL_LOGIN_SUCCESS,
   SOCIAL_LOGIN_FAILURE,
-  SOCIAL_LOGOUT
+  SOCIAL_LOGOUT,
+  RESET_ERROR
 } from './actions'
 
 const initialState = fromJS({
@@ -67,6 +68,9 @@ const authReducer = (state = initialState, action) => {
       return state
         .set('loading', false)
         .set('error', action.error)
+    case RESET_ERROR:
+      return state
+        .set('error', '')
     default:
       return state
   }
