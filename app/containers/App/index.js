@@ -130,10 +130,6 @@ class App extends Component {
     let docked = false
     const url = this.props.location.pathname
     switch (true) {
-      case /api/.test(url):
-        title = <FormattedMessage {...messages.api} />
-        docked = width === LARGE
-        break
       case /pictograms\/search/.test(url):
         title = <FormattedMessage {...messages.pictogramsSearch} />
         docked = width === LARGE
@@ -172,6 +168,18 @@ class App extends Component {
         break
       case /configuration/.test(url):
         title = <FormattedMessage {...messages.configurationTitle} />
+        docked = width === LARGE
+        break
+      case /developers\/api/.test(url):
+        title = <FormattedMessage {...messages.api} />
+        docked = width === LARGE
+        break
+      case /developers\/accounts/.test(url):
+        title = <FormattedMessage {...messages.devAccounts} />
+        docked = width === LARGE
+        break
+      case /developers/.test(url):
+        title = <FormattedMessage {...messages.howto} />
         docked = width === LARGE
         break
       case /uploadmaterial/.test(url):

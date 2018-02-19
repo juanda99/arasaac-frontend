@@ -31,6 +31,21 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'API for developers'
   },
+  dev: {
+    id: 'menu.dev',
+    description: 'Menu item',
+    defaultMessage: 'Developers'
+  },
+  devAccount: {
+    id: 'menu.devAccount',
+    description: 'Menu item',
+    defaultMessage: 'Signup'
+  },
+  devInfo: {
+    id: 'menu.devInfo',
+    description: 'Menu item',
+    defaultMessage: 'How-to'
+  },
   software: {
     id: 'menu.software',
     description: 'Menu item',

@@ -144,6 +144,23 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
+      path: '/developers',
+      name: 'DevelopersView',
+      getComponent(location, cb) {
+        import('containers/DevelopersView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
+      path: '/developers/accounts',
+      name: 'DevAccountView',
+      getComponent(location, cb) {
+        import('containers/DevAccountView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+
+    }, {
       path: '/developers/api',
       name: 'ApiView',
       getComponent(location, cb) {
