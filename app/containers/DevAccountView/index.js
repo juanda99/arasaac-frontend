@@ -5,8 +5,8 @@ class DevAccountView extends Component {
 
   render() {
     return (
-      <View>
-        <h1> ARASAAC Developers </h1>
+      <View left={true} right={true}>
+        <h2> Create a developer account </h2>
       </View>
     )
   }
