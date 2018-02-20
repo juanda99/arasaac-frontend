@@ -14,7 +14,7 @@ import SocialLogin from 'components/SocialLogin'
 import Separator from 'components/Separator'
 import Logo from 'components/Logo'
 import ErrorWindow from 'components/ErrorWindow'
-import { login, resetError } from './actions'
+import { login, socialLogin, resetError } from './actions'
 
 const styles = {
   paper: {
@@ -33,9 +33,9 @@ const handleSubmit = (requestLogin, formData) => {
 
 
 class LoginView extends Component {
-  
+
   render() {
-    const { error, requestLogin, resetError } = this.props
+    const { error, requestLogin, resetError, requestAppToken } = this.props
     let showError = null
     if (error) showError = <ErrorWindow title='Autenticación' desc='Usuario no válido' onReset={resetError} />
     return (
@@ -43,7 +43,7 @@ class LoginView extends Component {
         {showError}
         <Paper zDepth={2} style={styles.paper}>
           <Logo />
-          <SocialLogin />
+          <SocialLogin onSuccess={requestAppToken} />
           <Separator />
           <LoginForm onSubmit={(formData) => (handleSubmit(requestLogin, formData))} message={error} />
         </Paper>
@@ -68,7 +68,8 @@ const LoginView = ({ requestLogin, error }) => (
 LoginView.propTypes = {
   requestLogin: PropTypes.func.isRequired,
   error: PropTypes.number,
-  resetError: PropTypes.func.isRequired
+  resetError: PropTypes.func.isRequired,
+  requestAppToken: PropTypes.func.isRequired
 }
 
 
@@ -83,6 +84,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   resetError: () => {
     dispatch(resetError())
+  },
+  requestAppToken: (token, socialNetwork) => {
+    dispatch(socialLogin.request(token, socialNetwork))
   }
 })
 

@@ -3,10 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import RaisedButton from 'material-ui/RaisedButton'
 import { FormattedMessage } from 'react-intl'
-import { blue500 } from 'material-ui/styles/colors'
+import { blue500, white } from 'material-ui/styles/colors'
 import messages from './messages'
 import FacebookIcon from './icons/FacebookIcon'
 import objectToParams from './objectToParams'
+
 
 const styles = {
   facebookButton: {
@@ -182,7 +183,7 @@ class FacebookLogin extends React.Component {
         label={<FormattedMessage {...messages.facebook} />}
         icon={<FacebookIcon />}
         onClick={this.handleClick}
-        labelColor='white'
+        labelColor={white}
       />
     )
   }

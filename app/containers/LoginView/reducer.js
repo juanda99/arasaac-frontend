@@ -9,10 +9,7 @@ import {
   LOGIN,
   LOGOUT,
   ACTIVATION,
-  SOCIAL_LOGIN_REQUEST,
-  SOCIAL_LOGIN_SUCCESS,
-  SOCIAL_LOGIN_FAILURE,
-  SOCIAL_LOGOUT,
+  SOCIAL_LOGIN,
   RESET_ERROR
 } from './actions'
 
@@ -33,25 +30,24 @@ const initialState = fromJS({
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN.REQUEST:
-    case SOCIAL_LOGIN_REQUEST:
+    case SOCIAL_LOGIN.REQUEST:
       return state
         .set('loading', true)
         .set('error', '')
     case LOGIN.SUCCESS:
-    case SOCIAL_LOGIN_SUCCESS:
+    case SOCIAL_LOGIN.SUCCESS:
       return state
         .set('loading', false)
-        .set('username', action.payload.username)
+        // .set('username', action.payload.username)
         .set('token', action.payload.token)
         .set('isAuthenticated', true)
     case LOGIN.FAILURE:
-    case SOCIAL_LOGIN_FAILURE:
+    case SOCIAL_LOGIN.FAILURE:
       return state
         .set('loading', false)
         .set('error', action.payload.error)
         .set('isAuthenticated', false)
     case LOGOUT:
-    case SOCIAL_LOGOUT:
       return state
         .set('username', '')
         .set('token', '')

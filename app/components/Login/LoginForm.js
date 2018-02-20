@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
 import { reduxForm, Field, propTypes } from 'redux-form/immutable'
@@ -97,7 +96,7 @@ let LoginForm = class LoginForm extends Component {
               disabled={pristine || submitting}
             />
           </Div>
-          <Div top={2} style={{position: 'relative'}}>
+          <Div top={2} style={{ position: 'relative' }}>
             <p>
               {<FormattedMessage {...messages.offerAccount} />}
             </p>

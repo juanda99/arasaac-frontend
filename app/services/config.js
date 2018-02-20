@@ -27,6 +27,24 @@ export const login = {
     }
   })
 }
+export const socialLogin = {
+  url: `${AUTH_ROOT}/social/token`,
+  options: (token, socialNetwork) => ({
+    config: {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(
+        {
+          token,
+          client_id: CLIENT_ID,
+          client_secret: CLIENT_ID,
+          grant_type: socialNetwork,
+          scope: 'offline_access'
+        }
+      )
+    }
+  })
+}
 export const signup = {
   url: 'register/',
   config: (data) => ({
