@@ -3,16 +3,21 @@ import { normalize } from 'normalizr'
 import 'isomorphic-fetch'
 import { API_ROOT, AUTH_ROOT } from './config'
 
-
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
 // const callApi = (endpoint, config, schema) => {
-const callApi = (endpoint, options) => {
+const callApi = (endpoint, options, token) => {
   let schema = null
   let config = {}
   if (options) {
     schema = options.schema || null
     config = options.config || {}
+  }
+
+  // if token we add it as header
+  if (token) {
+    const authHeader = { Authorization: `Bearer ${token}` }
+    config = { ...config || {}, ...authHeader }
   }
   const fullUrl = (endpoint.indexOf(AUTH_ROOT) === -1) ? API_ROOT + endpoint : endpoint
   return fetch(fullUrl, config)

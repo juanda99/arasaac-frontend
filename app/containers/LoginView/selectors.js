@@ -5,6 +5,7 @@ import { createSelector } from 'reselect'
  */
 const selectLoginViewDomain = () => (state) => state.get('auth')
 const getToken = (state) => state.getIn(['auth', 'token'])
+const getRefreshToken = (state) => state.getIn(['auth', 'refreshToken'])
 
 /**
  * Other specific selectors
@@ -22,5 +23,8 @@ const selectLoginView = () => createSelector(
 
 export default selectLoginView
 export {
-  selectLoginViewDomain
+  selectLoginViewDomain,
+  getToken,
+  getRefreshToken
+
 }
