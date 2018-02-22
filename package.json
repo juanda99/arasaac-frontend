@@ -246,6 +246,7 @@
     "intl": "1.2.5",
     "invariant": "2.2.2",
     "ip": "1.1.4",
+    "jwt-decode": "^2.2.0",
     "lodash": "4.17.2",
     "material-ui": "^0.19.4",
     "material-ui-chip-input": "^0.17.1",

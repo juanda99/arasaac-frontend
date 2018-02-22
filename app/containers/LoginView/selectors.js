@@ -3,7 +3,8 @@ import { createSelector } from 'reselect'
 /**
  * Direct selector to the loginView state domain
  */
-const selectLoginViewDomain = () => (state) => state.get('loginView')
+const selectLoginViewDomain = () => (state) => state.get('auth')
+const getToken = (state) => state.getIn(['auth', 'token'])
 
 /**
  * Other specific selectors
