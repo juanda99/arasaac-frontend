@@ -11,17 +11,19 @@ export const LOGIN = createRequestTypes('LOGIN')
 export const SOCIAL_LOGIN = createRequestTypes('SOCIAL_LOGIN')
 export const LOGOUT = 'app/LoginView/LOGOUT'
 export const ACTIVATION = createRequestTypes('ACTIVATION')
+export const TOKEN_VALIDATION = createRequestTypes('TOKEN_VALIDATION')
+export const TOKEN_REFRESH = createRequestTypes('TOKEN_REFRESH')
 export const RESET_ERROR = 'app/LoginView/RESET_ERROR'
 
 export const login = {
   request: (username, password) => action(LOGIN.REQUEST, { username, password }),
-  success: (username, token) => action(LOGIN.SUCCESS, { username, token }),
+  success: (token, refreshToken) => action(LOGIN.SUCCESS, { token, refreshToken }),
   failure: (error) => action(LOGIN.FAILURE, { error })
 }
 
 export const socialLogin = {
   request: (socialToken, socialNetwork) => action(SOCIAL_LOGIN.REQUEST, { socialToken, socialNetwork }),
-  success: (token) => action(SOCIAL_LOGIN.SUCCESS, { token }),
+  success: (token, refreshToken) => action(SOCIAL_LOGIN.SUCCESS, { token, refreshToken }),
   failure: (error) => action(SOCIAL_LOGIN.FAILURE, { error })
 }
 
@@ -29,6 +31,18 @@ export const activation = {
   request: (profile) => action(ACTIVATION.REQUEST, { profile }),
   success: () => action(ACTIVATION.SUCCESS),
   failure: (error) => action(ACTIVATION.FAILURE, { error })
+}
+
+export const tokenValidation = {
+  request: (token) => action(TOKEN_VALIDATION.REQUEST, { token }),
+  success: () => action(TOKEN_VALIDATION.SUCCESS),
+  failure: (error) => action(TOKEN_VALIDATION.FAILURE, { error })
+}
+
+export const tokenRefresh = {
+  request: (refreshToken) => action(TOKEN_REFRESH.REQUEST, { refreshToken }),
+  success: (token) => action(TOKEN_REFRESH.SUCCESS, { token }),
+  failure: (error) => action(TOKEN_REFRESH.FAILURE, { error })
 }
 
 export const logout = {
