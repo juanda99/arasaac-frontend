@@ -13,7 +13,7 @@ import pictogramsViewReducer from 'containers/PictogramsView/reducer'
 import materialsViewReducer from 'containers/MaterialsView/reducer'
 import themeProviderReducer from 'containers/ThemeProvider/reducer'
 import configuration from 'containers/ConfigurationView/reducer'
-import auth from 'containers/LoginView/reducer'
+import auth from 'containers/App/reducer'
 /*
  * routeReducer
  *

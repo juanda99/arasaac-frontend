@@ -4,12 +4,12 @@ import { login, signup } from './config'
 
 const api = {
   keywords: (locale) => callApi(`keywords/${locale}`),
-  fetchPictograms: (searchText) => callApi(`pictograms/${searchText}`),
-  fetchMaterials: (locale, searchText) => callApi(`materials/${locale}/${searchText}`, { schema: searchMaterialSchema }),
+  fetchPictograms: ({ searchText }) => callApi(`pictograms/${searchText}`),
+  fetchMaterials: ({ locale, searchText }) => callApi(`materials/${locale}/${searchText}`, { schema: searchMaterialSchema }),
   fetchNewMaterials: () => callApi('materials/days/30', { schema: searchMaterialSchema }),
-  fetchMaterial: (idMaterial) => callApi(`materials/${idMaterial}`),
-  login: (username, password) => callApi(login.url, login.options(username, password)),
-  signup: (data) => callApi(signup.url, signup.config(data))
+  fetchMaterial: ({ idMaterial }) => callApi(`materials/${idMaterial}`),
+  login: ({ username, password }) => callApi(login.url, login.options(username, password)),
+  signup: ({ data }) => callApi(signup.url, signup.config(data))
 }
 
 export default api

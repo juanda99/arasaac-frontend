@@ -14,7 +14,7 @@ import SocialLogin from 'components/SocialLogin'
 import Separator from 'components/Separator'
 import Logo from 'components/Logo'
 import ErrorWindow from 'components/ErrorWindow'
-import { login, socialLogin, resetError } from './actions'
+import { login, socialLogin, resetError } from 'containers/App/actions'
 
 const styles = {
   paper: {

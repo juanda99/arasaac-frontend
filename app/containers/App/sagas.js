@@ -11,7 +11,7 @@ import { call, put, select, take, race } from 'redux-saga/effects'
 import api from 'services'
 import { setError } from 'containers/App/actions'
 
-import { authorize, refresh } from './authentication'
+// import { authorize, refresh } from './authentication'
 import { makeSelectTokens, makeSelectHasUser, makeSelectRefreshing } from './selectors'
 import { 
   TOKEN_VALIDATION,
@@ -87,14 +87,14 @@ function* loginAuth(username, password) {
  */
 function* authenticate() {
   const onError = (error) => error.statusCode >= 500
-    ? put(tokenValidationError(error))
+    ? put(tokenValidation.failure(error))
     : call(logout)
 
   yield makeAuthenticatedRequest({
     payload: {
       url: '/me',
       options: { method: 'GET' },
-      onSuccess: (response) => put(tokenValidationSuccess(response)),
+      onSuccess: (response) => put(tokenValidation.success(response)),
       onError,
     },
   })
@@ -153,12 +153,12 @@ function* refreshTokens() {
   }
 
   // Dispatch an action indicating that the application is waiting for new tokens.
-  yield put(tokenRefreshStart())
+  yield put(tokenRefresh.request())
 
   try {
     const { refreshToken } = yield select(makeSelectTokens())
     const tokens = yield call(refresh, refreshToken)
-    yield put(tokenRefreshSuccess(tokens))
+    yield put(tokenRefresh.success(tokens))
     return null
   } catch (err) {
     yield call(logout)
@@ -192,13 +192,13 @@ function* makeAuthenticatedRequest(action, accessToken) {
       && error.message === 'Invalid token: access token has expired'
 
   const tokens = yield select(makeSelectTokens())
-  const { payload } = action
+  const { type, payload } = action
 
   // add Bearer token if available
   const token = accessToken || tokens.accessToken
 
   try {
-    const response = yield call api[payload.item](payload.params, token)
+    const response = yield call(api[type], payload, token)
     yield payload.onSuccess(response)
   } catch (err) {
     const error = yield parseError(err)

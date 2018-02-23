@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect'
+
 // makeSelectLocationState expects a plain JS object for the routing state
 const makeSelectLocationState = () => {
   let prevRoutingState
@@ -15,6 +17,26 @@ const makeSelectLocationState = () => {
   }
 }
 
+const selectAuth = (state) => state.get('auth')
+
+const makeSelectToken = () => createSelector(
+  selectAuth(),
+  (auth) => auth.get('token')
+)
+
+const makeSelectRefreshToken = () => createSelector(
+  selectAuth(),
+  (auth) => auth.get('refreshToken')
+)
+
+const makeSelectTokens = () => createSelector(
+  makeSelectToken, makeSelectRefreshToken, (token, refreshToken) => ({ token, refreshToken })
+)
+
 export {
-  makeSelectLocationState
+  makeSelectLocationState,
+  selectAuth,
+  makeSelectToken,
+  makeSelectRefreshToken,
+  makeSelectTokens
 }
