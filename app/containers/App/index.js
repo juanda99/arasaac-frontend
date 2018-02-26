@@ -33,7 +33,8 @@ import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
 import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 import { changeLocale, startTranslation, stopTranslation } from 'containers/LanguageProvider/actions'
-
+import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
+import { makeSelectRefreshing } from './selectors'
 
 class App extends Component {
 
@@ -319,6 +320,11 @@ class App extends Component {
   }
 }
 const mapStateToProps = (state) => {
+  const auth = state.getIn(['auth', 'isActivating'])
+ // console.log('111111111111111111111111111111111111')
+ //  console.log(makeSelectLocale()(state))
+ //  console.log(makeSelectRefreshing()(state))
+ // console.log('22222222222222222222222222222222222222222')
   const locale = state.getIn(['language', 'locale'])
   const isTranslating = locale === 'af'
   const isAuthenticated = state.getIn(['auth', 'isAuthenticated']) && true || false

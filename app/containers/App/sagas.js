@@ -9,11 +9,12 @@ import { delay } from 'redux-saga'
 import { call, put, select, take, race } from 'redux-saga/effects'
 
 import api from 'services'
-import { setError } from 'containers/App/actions'
+
+import { REHYDRATE } from 'redux-persist/constants'
 
 // import { authorize, refresh } from './authentication'
-import { makeSelectTokens, makeSelectHasUser, makeSelectRefreshing } from './selectors'
-import { 
+import { makeSelectTokens, makeSelectHasUser, makeSelectRefreshing, selectAuth } from './selectors'
+import {
   TOKEN_VALIDATION,
   TOKEN_REFRESH,
   LOGIN,
@@ -21,7 +22,8 @@ import {
   tokenValidation,
   tokenRefresh,
   login,
-  logout
+  logout,
+  setError
 } from './actions'
 
 /**
@@ -31,14 +33,15 @@ import {
  *  until the user logs out.
  *  @return  {Generator}
  */
-function* authFlowSaga() {
+/* eslint no-constant-condition:0 */
+function* authFlow() {
+  // first rehydrate before reading from state....
   while (true) {
     const hasUser = yield select(makeSelectHasUser())
-
+    console.log(`hasUser: ${hasUser}`)
     while (!hasUser) {
       yield call(loggedOutFlowSaga)
     }
-
     if (hasUser) {
       yield take(LOGOUT, logout)
     }
@@ -55,26 +58,26 @@ function* loggedOutFlowSaga() {
     credentials: take(LOGIN.REQUEST),
     tokens: take(TOKEN_VALIDATION.REQUEST)
   })
-  if (credentials) yield call(loginAuth, credentials.payload.login, credentials.payload.password)
+  // if (credentials) yield call(loginAuth, credentials.payload.username, credentials.payload.password)
+  console.log(`CREDENTIALS: ${JSON.stringify(credentials)}`)
+  if (credentials) yield call(loginAuth, credentials.type, credentials.payload)
   if (tokens) yield call(authenticate)
-
-  yield call(authFlowSaga)
 }
 
 /**
  *  API login request/response handler
- *  @param   {String}     username
- *  @param   {String}     password
+ *  @param   {String}     name of api service (same as action type)
+ *  @param   {Object}     payload for api call, username and password
  *  @return  {Generator}
  */
-function* loginAuth(username, password) {
+function* loginAuth(type, payload) {
   try {
-    const { access_token, refresh_token } = yield call(api.login, username, password)
+    const { access_token, refresh_token } = yield call(api[type], payload)
     yield put(login.success(access_token, refresh_token))
     yield call(authenticate)
   } catch (err) {
-    const error = yield parseError(err)
-    yield put(login.failure(error))
+    // const error = yield parseError(err)
+    yield put(login.failure(err))
   }
 }
 
@@ -95,8 +98,8 @@ function* authenticate() {
       url: '/me',
       options: { method: 'GET' },
       onSuccess: (response) => put(tokenValidation.success(response)),
-      onError,
-    },
+      onError
+    }
   })
 }
 
@@ -146,8 +149,8 @@ function* refreshTokens() {
   // completion of that request instead of creating a new one.
   if (isRefreshing) {
     const { error } = yield race({
-      success: TOKEN_REFRESH.SUCCESS,
-      error: TOKEN_REFRESH.FAILURE
+      success: take(TOKEN_REFRESH.SUCCESS),
+      error: take(TOKEN_REFRESH.FAILURE)
     })
     return error
   }
@@ -211,9 +214,12 @@ function* makeAuthenticatedRequest(action, accessToken) {
     } else {
       // 50x errors are handled by the root container, as these are specific server
       // issues and are not page-specific.
+      /*
+      we'll see....
       yield error.statusCode >= 500
         ? put(setError(error))
         : payload.onError(error)
+      */
     }
   }
 }
@@ -239,4 +245,11 @@ function* parseError(error) {
 }
 
 // All sagas to be loaded
-export default [fetchListener, authFlowSaga]
+// export default [fetchListener, authFlowSaga]
+
+function* authFlowSaga() {
+  yield take(REHYDRATE)
+  yield call(authFlow)
+}
+
+export default authFlowSaga

@@ -7,6 +7,9 @@ import { API_ROOT, AUTH_ROOT } from './config'
 // This makes every API response have the same shape, regardless of how nested it was.
 // const callApi = (endpoint, config, schema) => {
 const callApi = (endpoint, options, token) => {
+  console.log(endpoint)
+  console.log(options)
+  console.log(token)
   let schema = null
   let config = {}
   if (options) {

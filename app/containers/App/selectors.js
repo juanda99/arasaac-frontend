@@ -19,24 +19,31 @@ const makeSelectLocationState = () => {
 
 const selectAuth = (state) => state.get('auth')
 
-const makeSelectToken = () => createSelector(
-  selectAuth(),
+// we use Token as User
+const makeSelectHasUser = () => createSelector(
+  selectAuth,
   (auth) => auth.get('token')
 )
 
 const makeSelectRefreshToken = () => createSelector(
-  selectAuth(),
+  selectAuth,
   (auth) => auth.get('refreshToken')
 )
 
+const makeSelectRefreshing = () => createSelector(
+  selectAuth,
+  (auth) => auth.get('isRefreshing')
+)
+
 const makeSelectTokens = () => createSelector(
-  makeSelectToken, makeSelectRefreshToken, (token, refreshToken) => ({ token, refreshToken })
+  makeSelectHasUser(), makeSelectRefreshToken(), (token, refreshToken) => ({ token, refreshToken })
 )
 
 export {
   makeSelectLocationState,
   selectAuth,
-  makeSelectToken,
+  makeSelectHasUser,
   makeSelectRefreshToken,
-  makeSelectTokens
+  makeSelectTokens,
+  makeSelectRefreshing
 }

@@ -67,7 +67,10 @@ const LoginView = ({ requestLogin, error }) => (
 
 LoginView.propTypes = {
   requestLogin: PropTypes.func.isRequired,
-  error: PropTypes.number,
+  error: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   resetError: PropTypes.func.isRequired,
   requestAppToken: PropTypes.func.isRequired
 }
