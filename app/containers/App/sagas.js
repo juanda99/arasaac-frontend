@@ -14,16 +14,18 @@ import { push } from 'react-router-redux'
 import { REHYDRATE } from 'redux-persist/constants'
 
 // import { authorize, refresh } from './authentication'
-import { makeSelectTokens, makeSelectHasUser, makeSelectRefreshing, selectAuth } from './selectors'
+import { makeSelectTokens, makeSelectHasUser, makeSelectRefreshing } from './selectors'
 import {
   TOKEN_VALIDATION,
   TOKEN_REFRESH,
   LOGIN,
+  SOCIAL_LOGIN,
   LOGOUT,
   tokenValidation,
   tokenRefresh,
   login,
   logout,
+  socialLogin,
   setError
 } from './actions'
 
@@ -51,13 +53,15 @@ function* authFlow() {
  *  @return  {Generator}
  */
 function* loggedOutFlowSaga() {
-  const { credentials, tokens } = yield race({
+  const { credentials, tokens, socialCredentials } = yield race({
     credentials: take(LOGIN.REQUEST),
-    tokens: take(TOKEN_VALIDATION.REQUEST)
+    tokens: take(TOKEN_VALIDATION.REQUEST),
+    socialCredentials: take(SOCIAL_LOGIN.REQUEST)
   })
   // if (credentials) yield call(loginAuth, credentials.payload.username, credentials.payload.password)
   if (credentials) yield call(loginAuth, credentials.type, credentials.payload)
-  if (tokens) yield call(authenticate)
+  else if (tokens) yield call(authenticate)
+  else if (socialCredentials) yield call(socialLoginAuth, credentials)
   yield call(authFlow)
 }
 
@@ -71,6 +75,18 @@ function* loginAuth(type, payload) {
   try {
     const { access_token, refresh_token } = yield call(api[type], payload)
     yield put(login.success(access_token, refresh_token))
+    yield call(authenticate)
+    yield put(push('/profile'))
+  } catch (err) {
+    // const error = yield parseError(err)
+    yield put(login.failure(err))
+  }
+}
+
+function* socialLoginAuth(type, payload) {
+  try {
+    const { access_token, refresh_token } = yield call(api[type], payload)
+    yield put(socialLogin.success(access_token, refresh_token))
     yield call(authenticate)
     yield put(push('/profile'))
   } catch (err) {
@@ -172,7 +188,7 @@ function* logoutSaga() {
   /* we go to frontend page */
   yield put(push('/'))
   yield call(authFlow)
-} 
+}
 
 /**
  *  Make a signed api call with refresh token process support. The action.payload
