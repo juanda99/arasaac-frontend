@@ -15,7 +15,7 @@ const Header = (props) => {
   const handleTouchTapLeftIconButton = () => {
     props.touchTapLeftIconButton()
   }
-  const { isAuthenticated, showMenuIconButton, title, isTranslating, changeLocale } = props
+  const { isAuthenticated, showMenuIconButton, title, isTranslating, changeLocale, signout } = props
   return (
     <AppBar
       onLeftIconButtonTouchTap={handleTouchTapLeftIconButton}
@@ -24,7 +24,7 @@ const Header = (props) => {
       id='header'
       style={styles.appBar}
       showMenuIconButton={showMenuIconButton}
-      iconElementRight={isAuthenticated ? <UserMenu isTranslating={isTranslating} changeLocale={changeLocale} /> : <GuestMenu />}
+      iconElementRight={isAuthenticated ? <UserMenu isTranslating={isTranslating} changeLocale={changeLocale} signout={signout} /> : <GuestMenu />}
     />
   )
 }
@@ -39,6 +39,7 @@ Header.propTypes = {
   ]),
   docked: PropTypes.bool.isRequired,
   changeLocale: PropTypes.func.isRequired,
+  signout: PropTypes.func.isRequired,
   touchTapLeftIconButton: PropTypes.func.isRequired,
   isTranslating: PropTypes.bool.isRequired
 }

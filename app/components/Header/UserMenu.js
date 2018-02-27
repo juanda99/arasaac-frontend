@@ -12,7 +12,7 @@ import messages from './messages'
 /* eslint-disable jsx-a11y/anchor-has-content */
 
 
-const UserMenu = ({ isTranslating, changeLocale, muiTheme }) => (
+const UserMenu = ({ isTranslating, changeLocale, muiTheme, signout }) => (
   <span>
     <IconMenu
       iconButtonElement={
@@ -28,7 +28,7 @@ const UserMenu = ({ isTranslating, changeLocale, muiTheme }) => (
       ? <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} onClick={changeLocale} />
       : <MenuItem primaryText={<FormattedMessage {...messages.stopTranslateArasaac} />} onClick={changeLocale} /> }
       <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} containerElement={<Link to='/uploadmaterial' />} />
-      <MenuItem primaryText={<FormattedMessage {...messages.signout} />} href='/signout' />
+      <MenuItem primaryText={<FormattedMessage {...messages.signout} />} onClick={signout} />
 
     </IconMenu>
   </span>
@@ -37,6 +37,7 @@ const UserMenu = ({ isTranslating, changeLocale, muiTheme }) => (
 UserMenu.propTypes = {
   isTranslating: PropTypes.bool.isRequired,
   changeLocale: PropTypes.func.isRequired,
+  signout: PropTypes.func.isRequired,
   muiTheme: PropTypes.object.isRequired
 }
 

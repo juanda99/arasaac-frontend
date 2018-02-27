@@ -17,13 +17,13 @@ export const RESET_ERROR = 'app/LoginView/RESET_ERROR'
 
 export const login = {
   request: (username, password) => action(LOGIN.REQUEST, { username, password }),
-  success: (token, refreshToken) => action(LOGIN.SUCCESS, { token, refreshToken }),
+  success: (accessToken, refreshToken) => action(LOGIN.SUCCESS, { accessToken, refreshToken }),
   failure: (error) => action(LOGIN.FAILURE, { error })
 }
 
 export const socialLogin = {
   request: (socialToken, socialNetwork) => action(SOCIAL_LOGIN.REQUEST, { socialToken, socialNetwork }),
-  success: (token, refreshToken) => action(SOCIAL_LOGIN.SUCCESS, { token, refreshToken }),
+  success: (accessToken, refreshToken) => action(SOCIAL_LOGIN.SUCCESS, { accessToken, refreshToken }),
   failure: (error) => action(SOCIAL_LOGIN.FAILURE, { error })
 }
 
@@ -34,22 +34,18 @@ export const activation = {
 }
 
 export const tokenValidation = {
-  request: (token) => action(TOKEN_VALIDATION.REQUEST, { token }),
-  success: () => action(TOKEN_VALIDATION.SUCCESS),
+  request: (accessToken) => action(TOKEN_VALIDATION.REQUEST, { accessToken }),
+  success: (authData) => action(TOKEN_VALIDATION.SUCCESS, { authData }),
   failure: (error) => action(TOKEN_VALIDATION.FAILURE, { error })
 }
 
 export const tokenRefresh = {
   request: (refreshToken) => action(TOKEN_REFRESH.REQUEST, { refreshToken }),
-  success: (token) => action(TOKEN_REFRESH.SUCCESS, { token }),
+  success: (accessToken) => action(TOKEN_REFRESH.SUCCESS, { accessToken }),
   failure: (error) => action(TOKEN_REFRESH.FAILURE, { error })
 }
 
-export const logout = {
-  request: () => action(LOGOUT.REQUEST),
-  success: () => action(LOGOUT.SUCCESS),
-  failure: (error) => action(LOGOUT.FAILURE, { error })
-}
+export const logout = () => action(LOGOUT)
 
 export const resetError = () => action(RESET_ERROR)
 

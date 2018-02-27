@@ -19,7 +19,7 @@ const callApi = (endpoint, options, token) => {
 
   // if token we add it as header
   if (token) {
-    const authHeader = { Authorization: `Bearer ${token}` }
+    const authHeader = { headers: { Authorization: `Bearer ${token}` }}
     config = { ...config || {}, ...authHeader }
   }
   const fullUrl = (endpoint.indexOf(AUTH_ROOT) === -1) ? API_ROOT + endpoint : endpoint

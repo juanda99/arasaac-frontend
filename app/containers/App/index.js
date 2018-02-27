@@ -33,8 +33,8 @@ import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
 import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 import { changeLocale, startTranslation, stopTranslation } from 'containers/LanguageProvider/actions'
-import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
-import { makeSelectRefreshing } from './selectors'
+import { logout } from './actions'
+import { makeSelectHasUser } from './selectors'
 
 class App extends Component {
 
@@ -61,7 +61,7 @@ class App extends Component {
 
   static contextTypes = {
     router: PropTypes.object.isRequired
-  }
+  }// import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 
   state = {
     menuOpen: false,
@@ -261,7 +261,8 @@ class App extends Component {
       children,
       isAuthenticated,
       width,
-      isTranslating
+      isTranslating,
+      logout
     } = this.props
 
     let {
@@ -302,7 +303,7 @@ class App extends Component {
         <Header
           showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
-          changeLocale = {this.handleTranslate} isTranslating = {isTranslating}
+          changeLocale = {this.handleTranslate} signout={logout} isTranslating = {isTranslating}
         />
         <Wrapper id='wrapper' docked={docked}>
           {children}
@@ -321,15 +322,9 @@ class App extends Component {
 }
 const mapStateToProps = (state) => {
   const auth = state.getIn(['auth', 'isActivating'])
- // console.log('111111111111111111111111111111111111')
- //  console.log(makeSelectLocale()(state))
- //  console.log(makeSelectRefreshing()(state))
- // console.log('22222222222222222222222222222222222222222')
   const locale = state.getIn(['language', 'locale'])
   const isTranslating = locale === 'af'
-  const isAuthenticated = state.getIn(['auth', 'isAuthenticated']) && true || false
-  // TODO:
-  // token needs validation!
+  const isAuthenticated = makeSelectHasUser()(state) && true || false
   return({
      isAuthenticated,
      locale,
@@ -337,4 +332,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps, { changeLocale, startTranslation, stopTranslation })(withWidth()(App))
+export default connect(mapStateToProps, { changeLocale, logout, startTranslation, stopTranslation })(withWidth()(App))

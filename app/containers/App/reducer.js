@@ -42,13 +42,15 @@ import {
 
 const initialState = fromJS({
   username: '',
-  token: '',
+  accessToken: '',
   refreshToken: '',
   loading: false,
   error: '',
   profile: fromJS({}),
   isRefreshing: false,
-  isActivating: false
+  isActivating: false,
+  provider: fromJS({})
+
 })
 
 
@@ -73,16 +75,18 @@ const authReducer = (state = initialState, action) => {
       return state
         .set('loading', false)
         // .set('username', action.payload.username)
-        .set('token', action.payload.token)
+        .set('accessToken', action.payload.accessToken)
         .set('refreshToken', action.payload.refreshToken)
     case TOKEN_VALIDATION.SUCCESS:
       // token & refreshToken get not altered as they are valid
+      // we upgrade user profile
       return state
         .set('loading', false)
+        .mergeDeep(action.payload.authData)
     case TOKEN_REFRESH.SUCCESS:
       return state
         .set('isRefreshing', false)
-        .set('token', action.payload.token)
+        .set('accessToken', action.payload.accessToken)
     case LOGIN.FAILURE:
     case SOCIAL_LOGIN.FAILURE:
       return state
@@ -91,17 +95,14 @@ const authReducer = (state = initialState, action) => {
     case TOKEN_VALIDATION.FAILURE:
       return state
         .set('loading', false)
-        .set('token', '')
+        .set('accessToken', '')
         .set('error', action.payload.error)
     case TOKEN_REFRESH.FAILURE:
       return state
         .set('isRefreshing', false)
         .set('refreshToken', '')
     case LOGOUT:
-      return state
-        .set('profile, fromJS({})')
-        .set('token', '')
-        .set('refreshToken', '')
+      return initialState
     case ACTIVATION.REQUEST:
       return state
         .set('isActivating', true)

@@ -6,10 +6,11 @@ export default function* root() {
 
 */
 import { delay } from 'redux-saga'
-import { call, put, select, take, race } from 'redux-saga/effects'
+import { call, put, select, take, race, takeEvery } from 'redux-saga/effects'
 
 import api from 'services'
-
+import callApi from 'services/callApi'
+import { push } from 'react-router-redux'
 import { REHYDRATE } from 'redux-persist/constants'
 
 // import { authorize, refresh } from './authentication'
@@ -35,16 +36,12 @@ import {
  */
 /* eslint no-constant-condition:0 */
 function* authFlow() {
-  // first rehydrate before reading from state....
-  while (true) {
-    const hasUser = yield select(makeSelectHasUser())
-    console.log(`hasUser: ${hasUser}`)
-    while (!hasUser) {
-      yield call(loggedOutFlowSaga)
-    }
-    if (hasUser) {
-      yield take(LOGOUT, logout)
-    }
+  const hasUser = yield select(makeSelectHasUser())
+  while (!hasUser) {
+    yield call(loggedOutFlowSaga)
+  }
+  if (hasUser) {
+    yield takeEvery(LOGOUT, logoutSaga)
   }
 }
 
@@ -59,9 +56,9 @@ function* loggedOutFlowSaga() {
     tokens: take(TOKEN_VALIDATION.REQUEST)
   })
   // if (credentials) yield call(loginAuth, credentials.payload.username, credentials.payload.password)
-  console.log(`CREDENTIALS: ${JSON.stringify(credentials)}`)
   if (credentials) yield call(loginAuth, credentials.type, credentials.payload)
   if (tokens) yield call(authenticate)
+  yield call(authFlow)
 }
 
 /**
@@ -75,6 +72,7 @@ function* loginAuth(type, payload) {
     const { access_token, refresh_token } = yield call(api[type], payload)
     yield put(login.success(access_token, refresh_token))
     yield call(authenticate)
+    yield put(push('/profile'))
   } catch (err) {
     // const error = yield parseError(err)
     yield put(login.failure(err))
@@ -91,12 +89,12 @@ function* loginAuth(type, payload) {
 function* authenticate() {
   const onError = (error) => error.statusCode >= 500
     ? put(tokenValidation.failure(error))
-    : call(logout)
+    : call(logoutSaga)
 
   yield makeAuthenticatedRequest({
     payload: {
-      url: '/me',
-      options: { method: 'GET' },
+      url: 'users/profile',
+      options: { config: { method: 'GET' } },
       onSuccess: (response) => put(tokenValidation.success(response)),
       onError
     }
@@ -108,7 +106,7 @@ function* authenticate() {
  *  token and a refresh mecanism).
  *  @return  {Generator}
  */
-function* fetchListener(action) {
+export function* fetchListener(action) {
   const shouldRefresh = yield call(needRefresh)
 
   if (!shouldRefresh) yield call(makeAuthenticatedRequest, action)
@@ -164,10 +162,17 @@ function* refreshTokens() {
     yield put(tokenRefresh.success(tokens))
     return null
   } catch (err) {
-    yield call(logout)
+    yield call(logoutSaga)
     return err
   }
 }
+
+function* logoutSaga() {
+  yield call(logout)
+  /* we go to frontend page */
+  yield put(push('/'))
+  yield call(authFlow)
+} 
 
 /**
  *  Make a signed api call with refresh token process support. The action.payload
@@ -185,7 +190,7 @@ function* refreshTokens() {
  *  @param   {Object}     action
  *  @return  {Generator}
  */
-function* makeAuthenticatedRequest(action, accessToken) {
+function* makeAuthenticatedRequest(action) {
   // Check for a specific outdated access token error. If the error matches, the
   // saga will try to refresh the access token then retry the initial request if
   // the refresh succeeds.
@@ -195,13 +200,13 @@ function* makeAuthenticatedRequest(action, accessToken) {
       && error.message === 'Invalid token: access token has expired'
 
   const tokens = yield select(makeSelectTokens())
-  const { type, payload } = action
+  const { payload } = action
 
-  // add Bearer token if available
-  const token = accessToken || tokens.accessToken
+  // add Bearer token if available Bearer token if available
+  const token = tokens.accessToken
 
   try {
-    const response = yield call(api[type], payload, token)
+    const response = yield callApi(payload.url, payload.options, token)
     yield payload.onSuccess(response)
   } catch (err) {
     const error = yield parseError(err)
@@ -248,6 +253,7 @@ function* parseError(error) {
 // export default [fetchListener, authFlowSaga]
 
 function* authFlowSaga() {
+  // first time rehydrate before reading from state....
   yield take(REHYDRATE)
   yield call(authFlow)
 }

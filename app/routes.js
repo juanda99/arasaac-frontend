@@ -169,6 +169,20 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
+      path: '/profile',
+      name: 'ProfileView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/ProfileView')
+        ])
+        const renderRoute = loadModule(cb)
+        importModules.then(([component]) => {
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      }
+    }, {
       path: '/signin',
       name: 'LoginView',
       getComponent(nextState, cb) {

@@ -22,7 +22,7 @@ const selectAuth = (state) => state.get('auth')
 // we use Token as User
 const makeSelectHasUser = () => createSelector(
   selectAuth,
-  (auth) => auth.get('token')
+  (auth) => auth.get('accessToken')
 )
 
 const makeSelectRefreshToken = () => createSelector(
@@ -36,7 +36,7 @@ const makeSelectRefreshing = () => createSelector(
 )
 
 const makeSelectTokens = () => createSelector(
-  makeSelectHasUser(), makeSelectRefreshToken(), (token, refreshToken) => ({ token, refreshToken })
+  makeSelectHasUser(), makeSelectRefreshToken(), (accessToken, refreshToken) => ({ accessToken, refreshToken })
 )
 
 export {
