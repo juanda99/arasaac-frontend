@@ -1,6 +1,7 @@
 import { searchMaterialSchema } from './schemas'
 import callApi from './callApi'
-import { login, signup } from './config'
+import { login, signup, socialLogin } from './config'
+
 
 const api = {
   keywords: (locale) => callApi(`keywords/${locale}`),
@@ -9,6 +10,7 @@ const api = {
   fetchNewMaterials: () => callApi('materials/days/30', { schema: searchMaterialSchema }),
   fetchMaterial: ({ idMaterial }) => callApi(`materials/${idMaterial}`),
   LOGIN_REQUEST: ({ username, password }) => callApi(login.url, login.options(username, password)),
+  SOCIAL_LOGIN_REQUEST: ({ socialToken, provider }) => callApi(socialLogin.url, socialLogin.options(socialToken, provider)),
   signup: ({ data }) => callApi(signup.url, signup.config(data))
 }
 

@@ -20,13 +20,14 @@ class ProfileView extends PureComponent {
 
   render() {
     const { auth } = this.props
-    const lastlogin = auth.get('lastlogin')
+    const lastLogin = auth.get('lastlogin')
+    console.log(`LASTLOGIN: ${lastLogin}`)
     return (
       <View left={true} right={true}>
         <p>Hooola {auth.get('name')}</p>
         <p>Última conexión:&nbsp;
-          <FormattedDate value={lastlogin} day='numeric' month='long' year='numeric' />
-          <FormattedTime value={lastlogin} />
+          <FormattedDate value={lastLogin} day='numeric' month='long' year='numeric' />
+          <FormattedTime value={lastLogin} />
         </p>
       </View>
     )

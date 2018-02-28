@@ -28,8 +28,8 @@ export const login = {
   })
 }
 export const socialLogin = {
-  url: `${AUTH_ROOT}/social/token`,
-  options: (token, socialNetwork) => ({
+  url: `${AUTH_ROOT}/oauth/token`,
+  options: (token, provider) => ({
     config: {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -38,7 +38,7 @@ export const socialLogin = {
           token,
           client_id: CLIENT_ID,
           client_secret: CLIENT_ID,
-          grant_type: socialNetwork,
+          grant_type: provider,
           scope: 'offline_access'
         }
       )

@@ -22,7 +22,7 @@ export const login = {
 }
 
 export const socialLogin = {
-  request: (socialToken, socialNetwork) => action(SOCIAL_LOGIN.REQUEST, { socialToken, socialNetwork }),
+  request: (socialToken, provider) => action(SOCIAL_LOGIN.REQUEST, { socialToken, provider }),
   success: (accessToken, refreshToken) => action(SOCIAL_LOGIN.SUCCESS, { accessToken, refreshToken }),
   failure: (error) => action(SOCIAL_LOGIN.FAILURE, { error })
 }

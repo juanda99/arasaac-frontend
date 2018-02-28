@@ -6,11 +6,11 @@ export default function* root() {
 
 */
 import { delay } from 'redux-saga'
-import { call, put, select, take, race, takeEvery } from 'redux-saga/effects'
+import { call, put, select, take, cancel, race, takeEvery, fork } from 'redux-saga/effects'
 
 import api from 'services'
 import callApi from 'services/callApi'
-import { push } from 'react-router-redux'
+import { push, LOCATION_CHANGE } from 'react-router-redux'
 import { REHYDRATE } from 'redux-persist/constants'
 
 // import { authorize, refresh } from './authentication'
@@ -61,7 +61,7 @@ function* loggedOutFlowSaga() {
   // if (credentials) yield call(loginAuth, credentials.payload.username, credentials.payload.password)
   if (credentials) yield call(loginAuth, credentials.type, credentials.payload)
   else if (tokens) yield call(authenticate)
-  else if (socialCredentials) yield call(socialLoginAuth, credentials)
+  else if (socialCredentials) yield call(socialLoginAuth, socialCredentials.type, socialCredentials.payload)
   yield call(authFlow)
 }
 
@@ -91,7 +91,7 @@ function* socialLoginAuth(type, payload) {
     yield put(push('/profile'))
   } catch (err) {
     // const error = yield parseError(err)
-    yield put(login.failure(err))
+    yield put(socialLogin.failure(err))
   }
 }
 
@@ -271,7 +271,12 @@ function* parseError(error) {
 function* authFlowSaga() {
   // first time rehydrate before reading from state....
   yield take(REHYDRATE)
-  yield call(authFlow)
+  while (true) {
+    const watcher = yield fork(authFlow)
+    yield take(LOCATION_CHANGE)
+    yield cancel(watcher)
+    // watcher = yield fork(authFlow)
+  }
 }
 
 export default authFlowSaga
