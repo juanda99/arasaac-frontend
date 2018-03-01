@@ -34,7 +34,7 @@ class ImageSlider extends Component {
                   <img src={`//static.arasaac.org/${id}/screenshots_300/${image}`} alt='Screenshot' />
                 </div>
               ))
-            : <img src={'//static.arasaac.org/noimage.png'} alt='Screenshot not available' />
+            : <img src={'//static.arasaac.org/images/noimage.png'} alt='Screenshot not available' />
           }
         </ReactSlidy>
       </div>
