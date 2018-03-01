@@ -4,13 +4,16 @@
  *
  */
 
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import SwaggerUi, { presets } from 'swagger-ui'
-import 'swagger-ui/dist/swagger-ui.css'
+// import 'swagger-ui/dist/swagger-ui.css'
 import View from 'components/View'
 import { API_SERVER } from 'services/config'
+import './theme-material.css'
 
-class ApiView extends Component {
+class ApiView extends PureComponent {
   componentDidMount() {
     SwaggerUi({
       dom_id: '#swaggerContainer',
@@ -20,6 +23,7 @@ class ApiView extends Component {
   }
 
   render() {
+    // console.log(this.props.theme)
     return (
       <View>
         <div id='swaggerContainer'>
@@ -29,4 +33,12 @@ class ApiView extends Component {
   }
 }
 
-export default ApiView
+ApiView.propTypes = {
+  theme: PropTypes.string.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  theme: state.get('theme')
+})
+
+export default connect(mapStateToProps)(ApiView)
