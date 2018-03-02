@@ -13,7 +13,8 @@ class SocialLogin extends PureComponent {
   }
 
   success = (response) => {
-    console.log(response)
+    const token = response.accessToken
+    this.props.onSuccess(token, 'google')
   }
 
   error = (response) => {
