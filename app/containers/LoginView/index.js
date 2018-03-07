@@ -9,20 +9,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import View from 'components/View'
 import { LoginForm } from 'components/Login'
-import Paper from 'material-ui/Paper'
 import SocialLogin from 'components/SocialLogin'
 import Separator from 'components/Separator'
 import Logo from 'components/Logo'
 import ErrorWindow from 'components/ErrorWindow'
 import { login, socialLogin, resetError } from 'containers/App/actions'
-
-const styles = {
-  paper: {
-    padding: 20,
-    width: 400,
-    margin: '0 auto'
-  }
-}
+import ConditionalPaper from 'components/ConditionalPaper'
 
 const handleSubmit = (requestLogin, formData) => {
   // this.props.login.request('pepito', 'password')
@@ -30,7 +22,6 @@ const handleSubmit = (requestLogin, formData) => {
   const password = formData.get('password')
   requestLogin(user, password)
 }
-
 
 class LoginView extends Component {
 
@@ -41,12 +32,12 @@ class LoginView extends Component {
     return (
       <View>
         {showError}
-        <Paper zDepth={2} style={styles.paper}>
+        <ConditionalPaper>
           <Logo />
           <SocialLogin onSuccess={requestAppToken} />
           <Separator />
           <LoginForm onSubmit={(formData) => (handleSubmit(requestLogin, formData))} message={error} />
-        </Paper>
+        </ConditionalPaper>
       </View>
     )
   }
@@ -66,7 +57,6 @@ LoginView.propTypes = {
 const mapStateToProps = (state) => ({
   error: state.getIn(['auth', 'error'])
 })
-
 
 const mapDispatchToProps = (dispatch) => ({
   requestLogin: (username, password) => {

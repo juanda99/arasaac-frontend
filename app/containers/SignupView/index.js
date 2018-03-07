@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import View from 'components/View'
 import { RegisterForm, RegisterOptions } from 'components/Login'
-import Paper from 'material-ui/Paper'
+import ConditionalPaper from 'components/ConditionalPaper'
 import SocialLogin from 'components/SocialLogin'
 import Separator from 'components/Separator'
 import Logo from 'components/Logo'
@@ -49,12 +49,12 @@ class SignupView extends Component {
     }
     return (
       <View>
-        <Paper zDepth={2} style={styles.paper}>
+        <ConditionalPaper>
           {logo}
           <SocialLogin onSuccess={this.props.requestAppToken} />
           <Separator />
           {form}
-        </Paper>
+        </ConditionalPaper>
       </View>
     )
   }

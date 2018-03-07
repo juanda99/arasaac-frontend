@@ -3,8 +3,9 @@ import Div from 'components/Div'
 import ArasaacLogo from './arasaac-logo.svg'
 
 const style = {
-  width: 180,
-  marginLeft: 70
+  width: 250,
+  display: 'flex',
+  margin: '0 auto'
 }
 
 const Logo = () => (
