@@ -14,6 +14,7 @@ import SocialLogin from 'components/SocialLogin'
 import Separator from 'components/Separator'
 import Logo from 'components/Logo'
 import { signup } from './actions'
+import { socialLogin } from 'containers/App/actions'
 // import selectRegisterView from './selectors'
 
 const styles = {
@@ -33,13 +34,7 @@ class SignupView extends Component {
     this.setState({ showOptions: !this.state.showOptions })
   }
   handleSubmit = (userData) => {
-    // console.log('llamado x veces...')
-    // console.log(this.props.loading)
-    // console.log(this.props.error)
-    // console.log(userData.toJS())
     this.props.requestSignup(userData.toJS())
-    // console.log(this.props.loading)
-    // console.log(this.props.error)
   }
 
   render() {
@@ -56,7 +51,7 @@ class SignupView extends Component {
       <View>
         <Paper zDepth={2} style={styles.paper}>
           {logo}
-          <SocialLogin />
+          <SocialLogin onSuccess={this.props.requestAppToken} />
           <Separator />
           {form}
         </Paper>
@@ -70,9 +65,8 @@ const mapStateToProps = selectRegisterView();
 */
 
 SignupView.propTypes = {
-  requestSignup: PropTypes.func.isRequired /* ,
-  loading: PropTypes.bool,
-  error: PropTypes.string*/
+  requestSignup: PropTypes.func.isRequired,
+  requestAppToken: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -84,6 +78,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   requestSignup: (userData) => {
     dispatch(signup.request(userData))
+  },
+  requestAppToken: (token, socialNetwork) => {
+    dispatch(socialLogin.request(token, socialNetwork))
   }
 })
 

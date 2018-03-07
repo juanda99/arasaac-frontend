@@ -10,7 +10,7 @@ const styles = {
   },
   separatorText: {
     display: 'inlineBlock',
-    padding: 8,
+    padding: 4,
     position: 'relative',
     backgroundColor: '#fff'
   },

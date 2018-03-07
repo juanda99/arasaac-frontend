@@ -193,8 +193,6 @@ class App extends Component {
         break
       case /settings/.test(url):
         title = <FormattedMessage {...messages.settings} />
-        console.log(width)
-        console.log(LARGE)
         docked = width === LARGE
         break
       case /prizes/.test(url):

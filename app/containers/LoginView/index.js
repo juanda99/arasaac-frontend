@@ -52,19 +52,6 @@ class LoginView extends Component {
   }
 }
 
-/*
-const LoginView = ({ requestLogin, error }) => (
-  <View>
-    <Paper zDepth={2} style={styles.paper}>
-      <Logo />
-      <SocialLogin />
-      <Separator />
-      <LoginForm onSubmit={(formData) => (handleSubmit(requestLogin, formData))} error={error} />
-    </Paper>
-  </View>
-)
-*/
-
 LoginView.propTypes = {
   requestLogin: PropTypes.func.isRequired,
   error: PropTypes.oneOfType([
