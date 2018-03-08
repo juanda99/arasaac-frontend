@@ -14,6 +14,7 @@ import materialsViewReducer from 'containers/MaterialsView/reducer'
 import themeProviderReducer from 'containers/ThemeProvider/reducer'
 import configuration from 'containers/ConfigurationView/reducer'
 import auth from 'containers/App/reducer'
+// import register from 'containers/SignupView/reducer'
 /*
  * routeReducer
  *

@@ -7,9 +7,6 @@ import { API_ROOT, AUTH_ROOT } from './config'
 // This makes every API response have the same shape, regardless of how nested it was.
 // const callApi = (endpoint, config, schema) => {
 const callApi = (endpoint, options, token) => {
-  console.log(endpoint)
-  console.log(options)
-  console.log(token)
   let schema = null
   let config = {}
   if (options) {
@@ -19,7 +16,7 @@ const callApi = (endpoint, options, token) => {
 
   // if token we add it as header
   if (token) {
-    const authHeader = { headers: { Authorization: `Bearer ${token}` }}
+    const authHeader = { headers: { Authorization: `Bearer ${token}` } }
     config = { ...config || {}, ...authHeader }
   }
   const fullUrl = (endpoint.indexOf(AUTH_ROOT) === -1) ? API_ROOT + endpoint : endpoint

@@ -53,7 +53,7 @@ export default function configureStore(initialState = {}, history) {
   )
 
   // begin periodically persisting the store
-  persistStore(store, { blacklist: ['route', 'loadingBar', 'form'] })
+  persistStore(store, { blacklist: ['route', 'loadingBar', 'form', 'register'] })
 
   // Extensions
 

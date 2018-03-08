@@ -9,18 +9,25 @@ import { SIGNUP } from './actions'
 
 export const initialState = fromJS({
   loading: false,
-  error: ''
+  error: '',
+  send: false,
+  name: '',
+  email: ''
 })
 
-const signupViewReducer = (state = initialState, action) => {
+const register = (state = initialState, action) => {
   switch (action.type) {
     case SIGNUP.REQUEST:
       return state
         .set('loading', true)
         .set('error', '')
+        .set('send', 'false')
+        .set('name', action.payload.name)
+        .set('email', action.payload.email)
     case SIGNUP.SUCCESS:
       return state
         .set('loading', false)
+        .set('send', true)
     case SIGNUP.FAILURE:
       return state
         .set('loading', false)
@@ -30,4 +37,4 @@ const signupViewReducer = (state = initialState, action) => {
   }
 }
 
-export default signupViewReducer
+export default register

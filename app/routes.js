@@ -187,16 +187,10 @@ export default function createRoutes(store) {
       name: 'LoginView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          // import('containers/LoginView/reducer'),
-          // import('containers/LoginView/sagas'),
           import('containers/LoginView')
         ])
-
         const renderRoute = loadModule(cb)
-
-        importModules.then(([/* reducer, sagas,*/ component]) => {
-          // injectReducer('LoginView', reducer.default)
-          // injectSagas(sagas.default)
+        importModules.then(([component]) => {
           renderRoute(component)
         })
 
@@ -207,10 +201,14 @@ export default function createRoutes(store) {
       name: 'SignupView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
+          import('containers/SignupView/reducer'),
+          import('containers/SignupView/sagas'),
           import('containers/SignupView')
         ])
         const renderRoute = loadModule(cb)
-        importModules.then(([component]) => {
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('register', reducer.default)
+          injectSagas(sagas.default)
           renderRoute(component)
         })
         importModules.catch(errorLoading)

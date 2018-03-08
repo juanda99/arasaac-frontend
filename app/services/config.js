@@ -46,18 +46,12 @@ export const socialLogin = {
   })
 }
 export const signup = {
-  url: 'register/',
-  config: (data) => ({
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body:
-    {
-      username: data.username,
-      password: data.password,
-      client_id: CLIENT_ID,
-      client_secret: CLIENT_ID,
-      grant_type: 'password',
-      scope: 'offline_access'
+  url: 'users',
+  options: (userData) => ({
+    config: {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData)
     }
   })
 }

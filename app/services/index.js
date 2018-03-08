@@ -11,7 +11,7 @@ const api = {
   fetchMaterial: ({ idMaterial }) => callApi(`materials/${idMaterial}`),
   LOGIN_REQUEST: ({ username, password }) => callApi(login.url, login.options(username, password)),
   SOCIAL_LOGIN_REQUEST: ({ socialToken, provider }) => callApi(socialLogin.url, socialLogin.options(socialToken, provider)),
-  signup: ({ data }) => callApi(signup.url, signup.config(data))
+  SIGNUP_REQUEST: (userData) => callApi(signup.url, signup.options(userData))
 }
 
 export default api
