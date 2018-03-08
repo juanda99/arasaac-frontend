@@ -25,13 +25,6 @@ const Footer = ({ docked, muiTheme }) => (
         </p>
         <p style={styles.p}>{'Code licensed MIT, docs'} <a style={styles.a} href='https://creativecommons.org/licenses/by/3.0/'>{'CC BY 3.0.'}</a>
         </p>
-        <p style={styles.p}> Thanks to: </p>
-        <a href='//auth0.com/' target='_blank'>
-          <img style={{ margin: '10px' }} width='150' height='50' alt='JWT Auth for open source projects' src='//cdn.auth0.com/oss/badges/a0-badge-light.png' />
-        </a>
-        <a href='//crowdin.com/' target='_blank'>
-          <img width='150' height='50' alt='Crowdin translation service for open source projects' src='//d2srrzh48sp2nh.cloudfront.net/48702683/images/crowdin-logo-white.png' />
-        </a>
       </Col>
       <Col xs={6} md={2} first='md'>
         <img alt='Arasaac Logo' style={styles.logoGA} src={GobiernoAragon} />
