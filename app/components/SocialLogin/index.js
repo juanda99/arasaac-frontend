@@ -40,7 +40,7 @@ class SocialLogin extends PureComponent {
       <Div top={2} >
         <FacebookLogin
           appId='1687810071473822'
-          autoLoad={true}
+          autoLoad={false}
           fields='name,email,picture'
           callback={this.responseFacebook}
           render={(renderProps) => (
