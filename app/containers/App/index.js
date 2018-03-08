@@ -31,7 +31,7 @@ import Wrapper from './Wrapper'
 import { connect } from 'react-redux'
 import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
-import withWidth, { LARGE } from 'material-ui/utils/withWidth'
+import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth'
 import { changeLocale, startTranslation, stopTranslation } from 'containers/LanguageProvider/actions'
 import { logout } from './actions'
 import { makeSelectHasUser } from './selectors'
@@ -288,6 +288,7 @@ class App extends Component {
     const { title, docked } = this.getViewProps(width)
 
     let showMenuIconButton = true
+    let hideIconText = (width === SMALL)
     if (width === LARGE && docked) {
       menuOpen = true
       showMenuIconButton = false
@@ -302,6 +303,7 @@ class App extends Component {
           showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
           changeLocale = {this.handleTranslate} signout={logout} isTranslating = {isTranslating}
+          hideIconText={hideIconText}
         />
         <Wrapper id='wrapper' docked={docked}>
           {children}

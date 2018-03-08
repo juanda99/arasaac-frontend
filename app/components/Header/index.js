@@ -15,7 +15,7 @@ const Header = (props) => {
   const handleTouchTapLeftIconButton = () => {
     props.touchTapLeftIconButton()
   }
-  const { isAuthenticated, showMenuIconButton, title, isTranslating, changeLocale, signout } = props
+  const { isAuthenticated, showMenuIconButton, title, isTranslating, changeLocale, signout, hideIconText } = props
   return (
     <AppBar
       onLeftIconButtonTouchTap={handleTouchTapLeftIconButton}
@@ -24,13 +24,14 @@ const Header = (props) => {
       id='header'
       style={styles.appBar}
       showMenuIconButton={showMenuIconButton}
-      iconElementRight={isAuthenticated ? <UserMenu isTranslating={isTranslating} changeLocale={changeLocale} signout={signout} /> : <GuestMenu />}
+      iconElementRight={isAuthenticated ? <UserMenu isTranslating={isTranslating} changeLocale={changeLocale} signout={signout} /> : <GuestMenu hideIconText={hideIconText} />}
     />
   )
 }
 
 Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
+  // we use it both for menu icon and for
   showMenuIconButton: PropTypes.bool.isRequired,
   // será un string
   title: PropTypes.oneOfType([
@@ -41,7 +42,8 @@ Header.propTypes = {
   changeLocale: PropTypes.func.isRequired,
   signout: PropTypes.func.isRequired,
   touchTapLeftIconButton: PropTypes.func.isRequired,
-  isTranslating: PropTypes.bool.isRequired
+  isTranslating: PropTypes.bool.isRequired,
+  hideIconText: PropTypes.bool.isRequired
 }
 
 export default Header
