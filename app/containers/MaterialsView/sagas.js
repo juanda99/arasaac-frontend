@@ -27,10 +27,10 @@ function* materialsGetData(action) {
   }
 }
 
-function* newMaterialsGetData() {
+function* newMaterialsGetData(action) {
   try {
     yield put(showLoading())
-    const response = yield call(api.fetchNewMaterials)
+    const response = yield call(api[action.type], action.payload)
     yield put(newMaterials.success(response))
   } catch (error) {
     yield put(newMaterials.failure(error.message))
