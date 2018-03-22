@@ -101,7 +101,7 @@ class MaterialSnippet extends PureComponent {
             key={id}
             onClick={(e) => this.handleTouchTap('area', id, 0, e)}
           >
-            <Avatar color={'white'}  backgroundColor={lightGreen800} icon={<AreaIcon iconStyle={{ width: '10px', height: '10px' }} />} />
+            <Avatar color={'white'} backgroundColor={lightGreen800} icon={<AreaIcon iconStyle={{ width: '10px', height: '10px' }} />} />
             {area[id]}
           </Chip>
         )

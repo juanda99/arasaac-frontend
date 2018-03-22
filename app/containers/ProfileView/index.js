@@ -20,6 +20,8 @@ class ProfileView extends PureComponent {
 
   render() {
     const { lastLogin, name, picture } = this.props
+    console.log(`picture: ${picture}`)
+
     return (
       <View left={true} right={true}>
         <p>Hooola {name}</p>

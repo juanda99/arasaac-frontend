@@ -8,7 +8,8 @@ function* materialsGetData(action) {
   try {
     const { locale, searchText } = action.payload
     yield put(showLoading())
-    const response = yield call(api.fetchMaterials, locale, searchText)
+
+    const response = yield call(api[action.type], action.payload)
     yield put(materials.success(locale, searchText, response))
     /*
     const t0 = performance.now()
