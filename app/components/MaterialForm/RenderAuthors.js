@@ -7,6 +7,7 @@ import { FormattedMessage } from 'react-intl'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import PersonAdd from 'material-ui/svg-icons/social/person-add'
 import Delete from 'material-ui/svg-icons/action/delete'
+import { Map } from 'immutable'
 import messages from './messages'
 
 const styles = {
@@ -38,7 +39,7 @@ const surnameList = [
 ]
 
 const RenderAuthors = ({ fields }) => {
-  const addAuthorField = () => { fields.push({}) }
+  const addAuthorField = () => { fields.push(new Map()) }
   if (fields.length === 0) {
     addAuthorField()
   }

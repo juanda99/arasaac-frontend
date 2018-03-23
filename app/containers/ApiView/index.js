@@ -15,9 +15,10 @@ import './theme-material.css'
 
 class ApiView extends PureComponent {
   componentDidMount() {
+    console.log(`JJJJJJJJJJJJJJJJJJ: ${API_SERVER}/public/arasaac.json`)
     SwaggerUi({
       dom_id: '#swaggerContainer',
-      url: `${API_SERVER}/arasaac.json`,
+      url: `${API_SERVER}/public/arasaac.json`,
       presets: [presets.apis]
     })
   }

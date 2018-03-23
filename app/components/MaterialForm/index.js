@@ -44,11 +44,7 @@ class MaterialForm extends React.Component {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <Stepper
-            activeStep={stepIndex}
-            linear={false}
-            orientation='vertical'
-          >
+          <Stepper activeStep={stepIndex} linear={false} orientation='vertical'>
             <Step>
               <StepButton onClick={() => this.setState({ stepIndex: 0 })}>
                 <H3><FormattedMessage {...messages.authors} /></H3>
@@ -88,9 +84,7 @@ class MaterialForm extends React.Component {
                 <Field
                   name='files'
                   component={RenderDropzoneInput}
-                  props={{
-                    hint: <FormattedMessage {...messages.filesUpload} />
-                  }}
+                  props={{ hint: <FormattedMessage {...messages.filesUpload} /> }}
                 />
               </StepContent>
             </Step>

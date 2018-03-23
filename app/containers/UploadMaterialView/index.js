@@ -23,7 +23,7 @@ class UploadMaterialView extends PureComponent {
   render() {
     return (
       <View>
-        <MaterialForm onSubmit={ (values) => this.handleSubmit(values)} />
+        <MaterialForm onSubmit={(values) => this.handleSubmit(values)} />
       </View>
     )
   }

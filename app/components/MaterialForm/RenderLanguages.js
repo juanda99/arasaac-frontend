@@ -80,10 +80,10 @@ const RenderLanguages = ({ fields }) => {
             </div>
             <div>
               <FieldArray
-                name={`${member}.screenshots`}
-                component={RenderDropzoneInput}
-                props={{ hint: <FormattedMessage {...messages.languageScreenshots} /> }}
-              />
+                  name={`${member}.screenshots`}
+                  component={RenderDropzoneInput}
+                  props={{ hint: <FormattedMessage {...messages.languageScreenshots} /> }}
+                />
             </div>
             <FloatingActionButton mini={true} style={{ position: 'absolute', top: -5, right: 53 }} onClick={() => fields.remove(index)} >
               <Delete />
