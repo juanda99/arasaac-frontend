@@ -8,6 +8,7 @@ import { FormattedMessage } from 'react-intl'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import PersonAdd from 'material-ui/svg-icons/action/note-add'
 import Delete from 'material-ui/svg-icons/action/delete'
+import { Map } from 'immutable'
 import RenderDropzoneInput from './RenderDropzoneInput'
 import messages from './messages'
 
@@ -35,7 +36,7 @@ const languageList = [
 ]
 
 const RenderLanguages = ({ fields }) => {
-  const addLanguage = () => { fields.push({}) }
+  const addLanguage = () => { fields.push(new Map()) }
   if (fields.length === 0) addLanguage()
   return (
     <ul style={styles.list}>
@@ -72,18 +73,18 @@ const RenderLanguages = ({ fields }) => {
               fullWidth
             />
             <div>
-              <FieldArray
+              <Field
                 name={`${member}.files`}
                 component={RenderDropzoneInput}
                 props={{ hint: <FormattedMessage {...messages.languageFiles} /> }}
               />
             </div>
             <div>
-              <FieldArray
-                  name={`${member}.screenshots`}
-                  component={RenderDropzoneInput}
-                  props={{ hint: <FormattedMessage {...messages.languageScreenshots} /> }}
-                />
+              <Field
+                name={`${member}.screenshots`}
+                component={RenderDropzoneInput}
+                props={{ hint: <FormattedMessage {...messages.languageScreenshots} /> }}
+              />
             </div>
             <FloatingActionButton mini={true} style={{ position: 'absolute', top: -5, right: 53 }} onClick={() => fields.remove(index)} >
               <Delete />

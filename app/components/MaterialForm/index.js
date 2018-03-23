@@ -94,7 +94,7 @@ class MaterialForm extends React.Component {
               </StepButton>
               <StepContent>
                 <p><FormattedMessage {...messages.screenshotsDesc} /></p>
-                <FieldArray
+                <Field
                   name='screenshots'
                   component={RenderDropzoneInput}
                   props={{ hint: <FormattedMessage {...messages.screenshotsUpload} /> }}
