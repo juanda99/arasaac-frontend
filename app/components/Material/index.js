@@ -19,6 +19,7 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 import P from 'components/P'
 import activity from 'data/activity'
 import area from 'data/area'
+import { MATERIALS_URL } from 'services/config'
 import messages from './messages'
 
 const styles = {
@@ -94,7 +95,7 @@ class Material extends Component {
           <div style={styles.desc}>
             <P>{material.get('desc')}</P>
             <p style={{ textAlign: 'center' }}>
-              <a href={`http://static.arasaac.org/${idMaterial}/${zipFile}`}>
+              <a href={`${MATERIALS_URL}/${idMaterial}/${zipFile}`}>
                 <RaisedButton label={<FormattedMessage {...messages.zipFileLabel} />} primary={true} style={styles.button} />
               </a>
             </p>
@@ -151,7 +152,7 @@ class Material extends Component {
             label={file}
             labelPosition='after'
             icon={<Download />}
-            href={`http://static.arasaac.org/${idMaterial}/${file}`}
+            href={`${MATERIALS_URL}/${idMaterial}/${file}`}
           />
         )}
       </div>

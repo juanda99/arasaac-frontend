@@ -141,17 +141,17 @@ class MaterialsView extends PureComponent {
         <Tabs onChange={this.handleChange} value={slideIndex} >
           <Tab
             label={hideIconText ? '' : <FormattedMessage {...messages.search} />}
-            icon={<IconButton tooltip={hideIconText ? <FormattedMessage {...messages.search} /> : ''}><SearchIcon /></IconButton>}
+            icon={<IconButton><SearchIcon /></IconButton>}
             value={0}
           />
           <Tab
             label={hideIconText ? '' : <FormattedMessage {...messages.new} />}
-            icon={<IconButton tooltip={hideIconText ? <FormattedMessage {...messages.new} /> : ''}><NewReleasesIcon /></IconButton>}
+            icon={<IconButton><NewReleasesIcon /></IconButton>}
             value={1}
           />
           <Tab
             label={hideIconText ? '' : <FormattedMessage {...messages.favorites} />}
-            icon={<IconButton tooltip={hideIconText ? <FormattedMessage {...messages.favorites} /> : ''}><FavoriteIcon /></IconButton>}
+            icon={<IconButton><FavoriteIcon /></IconButton>}
             value={2}
           />
         </Tabs>

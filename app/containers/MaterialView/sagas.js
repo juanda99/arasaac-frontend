@@ -7,9 +7,8 @@ import { MATERIAL, material } from './actions'
 
 function* materialGetData(action) {
   try {
-    const { idMaterial } = action.payload
     yield put(showLoading())
-    const response = yield call(api.fetchMaterial, idMaterial)
+    const response = yield call(api[action.type], action.payload)
     yield put(material.success(response))
     yield put(hideLoading())
     /*

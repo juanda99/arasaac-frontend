@@ -27,6 +27,7 @@ export class MaterialList extends PureComponent {
   }
 
   render() {
+    window.scroll(0, 0)
     const { locale, materials, filtersMap, setFilterItems, filtersData } = this.props
     const { currentPage } = this.state
     const total = Math.ceil(materials.length / itemsPerPage)
@@ -34,6 +35,12 @@ export class MaterialList extends PureComponent {
     const visibleMaterials = this.props.materials.slice(offset, offset + itemsPerPage)
     return (
       <div>
+        <Pagination
+          total={total}
+          current={currentPage}
+          display={display}
+          onChange={this.handlePageClick}
+        />
         <ul>
           { visibleMaterials.map((material) =>
             <MaterialSnippet

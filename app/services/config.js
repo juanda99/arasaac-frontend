@@ -1,5 +1,5 @@
 const CLIENT_ID = '12345'
-export const WEB_URL = 'http://localhost:3000'
+export const WEB_URL = 'https://localhost:3000'
 const STATIC_SERVER = 'https://static.arasaac.org'
 export const IMAGES_URL = `${STATIC_SERVER}/images`
 export const MATERIALS_URL = `${STATIC_SERVER}/materials`

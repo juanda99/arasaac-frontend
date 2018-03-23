@@ -7,7 +7,7 @@
 import { createRequestTypes, action } from 'utils/actions'
 
 // constants
-export const MATERIAL = createRequestTypes('app/MaterialView/MATERIAL')
+export const MATERIAL = createRequestTypes('MATERIAL')
 
 // actions: material.request/success/failure
 export const material = {

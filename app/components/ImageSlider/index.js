@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactSlidy from 'react-slidy'
+import { MATERIALS_URL } from 'services/config'
 import './index.css'
 import Counter from './Counter'
 
@@ -31,7 +32,7 @@ class ImageSlider extends Component {
               images.map((image, key) => (
                 <div key={key}>
                   <Counter>{`${key + 1}/${imagesCount}`}</Counter>
-                  <img src={`//static.arasaac.org/${id}/screenshots_300/${image}`} alt='Screenshot' />
+                  <img src={`${MATERIALS_URL}/${id}/screenshots_300/${image}`} alt='Screenshot' />
                 </div>
               ))
             : <img src={'//static.arasaac.org/images/noimage.png'} alt='Screenshot not available' />
