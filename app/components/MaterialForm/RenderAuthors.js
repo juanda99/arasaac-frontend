@@ -8,6 +8,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import PersonAdd from 'material-ui/svg-icons/social/person-add'
 import Delete from 'material-ui/svg-icons/action/delete'
 import { Map } from 'immutable'
+import { required, email } from 'redux-form-validators'
 import messages from './messages'
 
 const styles = {
@@ -57,6 +58,7 @@ const RenderAuthors = ({ fields }) => {
             openOnFocus={true}
             filter={MUIAutoComplete.fuzzyFilter}
             style={styles.field}
+            validate={[required(), email()]}
           />
           <Field
             name={`${member}.lastName`}
