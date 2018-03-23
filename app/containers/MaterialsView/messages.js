@@ -48,8 +48,8 @@ export default defineMessages({
   },
   materialsFound: {
     id: 'app.containers.MaterialsView.materialsFound',
-    description: 'Message when no materials for a specific search',
-    defaultMessage: 'We have found {materialsCounter} materials'
+    description: 'Message when materials found',
+    defaultMessage: '{materialsCounter, plural, one {We have found just one material} other {We have found {materialsCounter} materials}}'
   },
   newMaterialsFound: {
     id: 'app.containers.MaterialsView.newMaterialsFound',
