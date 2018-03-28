@@ -60,17 +60,7 @@ const RenderAuthors = ({ fields }) => {
             style={styles.field}
             validate={[required(), email()]}
           />
-          <Field
-            name={`${member}.lastName`}
-            type='text'
-            component={AutoComplete}
-            dataSource={surnameList}
-            hintText={<FormattedMessage {...messages.surnameHint} />}
-            floatingLabelText={<FormattedMessage {...messages.surname} />}
-            openOnFocus={true}
-            filter={MUIAutoComplete.fuzzyFilter}
-            style={styles.field}
-          />
+
           <div style={styles.icons}>
             <FloatingActionButton mini={true} style={styles.icon} onClick={() => fields.remove(index)} >
               <Delete />
