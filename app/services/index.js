@@ -1,6 +1,6 @@
 import { searchMaterialSchema } from './schemas'
 import callApi from './callApi'
-import { login, signup, socialLogin } from './config'
+import { login, signup, socialLogin, uploadMaterial } from './config'
 
 
 const api = {
@@ -8,6 +8,7 @@ const api = {
   fetchPictograms: ({ searchText }) => callApi(`pictograms/${searchText}`),
   MATERIALS_REQUEST: ({ locale, searchText }) => callApi(`materials/${locale}/${searchText}`, { schema: searchMaterialSchema }),
   fetchNewMaterials: () => callApi('materials/days/30', { schema: searchMaterialSchema }),
+  UPLOAD_MATERIAL_REQUEST: (formData) => callApi(uploadMaterial.url, uploadMaterial.options(formData)),
   MATERIAL_REQUEST: ({ idMaterial }) => callApi(`materials/${idMaterial}`),
   LOGIN_REQUEST: ({ username, password }) => callApi(login.url, login.options(username, password)),
   SOCIAL_LOGIN_REQUEST: ({ socialToken, provider }) => callApi(socialLogin.url, socialLogin.options(socialToken, provider)),

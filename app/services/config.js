@@ -55,3 +55,46 @@ export const signup = {
     }
   })
 }
+
+
+/* this is what we get:
+    activities: [Number],
+    areas: [Number],
+    authors: [author],
+    files: [file],
+    languages: [language],
+    screenshots: [file]
+    author: {id, name}
+    language: {language(string), title (string), description(string), screenshots[file], files[file]}
+*/
+
+export const uploadMaterial = {
+  url: `${AUTH_ROOT}/oauth/token`,
+  options: (data) => {
+    const formData = new FormData()
+    let translations
+    const { files, screenshots, languages, activities, areas, authors } = data
+
+    if (files) files.map((file) => formData.append('files', file))
+    if (screenshots) screenshots.map((screenshot) => formData.append('screenshots', screenshot))
+    if (languages) {
+      translations = languages.map((language) => {
+        if (language.files) {
+          language.files.map((langFile) => formData.append(`${language}_files`, langFile))
+        }
+        if (language.screenshots) {
+          language.screenshots.map((langFile) => formData.append(`${language}_screenshotfiles`, langFile))
+        }
+        return { title: language.title, desc: language.desc, language }
+      })
+    }
+    formData.append('formData', JSON.stringify({ areas, activities, authors, translations }))
+    return {
+      config: {
+        method: 'PUT',
+        body: formData
+      }
+    }
+  }
+
+}
