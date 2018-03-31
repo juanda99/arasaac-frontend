@@ -64,14 +64,14 @@ class MaterialForm extends React.Component {
                   component={RenderChip}
                   hintText={<FormattedMessage {...messages.areasHint} />}
                   floatingLabelText={<FormattedMessage {...messages.areas} />}
-                  dataSource={['perro', 'casa', 'perra']}
+                  dataSource={[{ text: 'perro', value: 0 }, { text: 'gato', value: 1 }, { text: 'pájaro', value: 2 }]}
                 />
                 <Field
                   name='actividades'
                   component={RenderChip}
                   hintText={<FormattedMessage {...messages.activitiesHint} />}
                   floatingLabelText={<FormattedMessage {...messages.activities} />}
-                  dataSource={['perro', 'casa', 'perra']}
+                  dataSource={[{ text: 'perro', value: 0 }, { text: 'gato', value: 1 }, { text: 'pájaro', value: 2 }]}
                 />
               </StepContent>
             </Step>
