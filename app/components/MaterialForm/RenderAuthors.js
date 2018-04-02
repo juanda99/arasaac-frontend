@@ -49,7 +49,7 @@ const RenderAuthors = ({ fields }) => {
       {fields.map((member, index) =>
         <li key={index} style={styles.authorsList}>
           <Field
-            name={`${member}.firstName`}
+            name={`${member}.name`}
             type='text'
             component={AutoComplete}
             dataSource={nameList}

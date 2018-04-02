@@ -90,10 +90,21 @@ export default function createRoutes(store) {
     }, {
       path: '/materials/upload',
       name: 'uploadMaterialView',
-      getComponent(location, cb) {
-        import('containers/UploadMaterialView')
-          .then(loadModule(cb))
-          .catch(errorLoading)
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/uploadMaterialView/reducer'),
+          import('containers/uploadMaterialView/sagas'),
+          import('containers/uploadMaterialView/')
+        ])
+        const renderRoute = loadModule(cb)
+        // if reducer is async, render values:  defaultToggled:
+        // state.configuration.filters[ownProps.filter] got undefined!!!
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('uploadMaterialView', reducer.default)
+          injectSagas(sagas.default)
+          renderRoute(component)
+        })
+        importModules.catch(errorLoading)
       }
     }, {
       path: '/materials/:idMaterial',

@@ -19,8 +19,8 @@ const callApi = (endpoint, options, token) => {
     const authHeader = { headers: { Authorization: `Bearer ${token}` } }
     config = { ...config || {}, ...authHeader }
   }
-  const fullUrl = (endpoint.indexOf(AUTH_ROOT) === -1) ? API_ROOT + endpoint : endpoint
-  return fetch(fullUrl, config)
+  // const fullUrl = (endpoint.indexOf(AUTH_ROOT) === -1) ? API_ROOT + endpoint : endpoint
+  return fetch(endpoint, config)
     .then((response) => {
       if (response.status >= 400) {
         return Promise.reject(response.status)

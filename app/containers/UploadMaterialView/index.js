@@ -14,14 +14,23 @@ import { uploadMaterial } from './actions'
 class UploadMaterialView extends PureComponent {
 
   handleSubmit(values) {
-    console.log ('form submitted!')
-    console.log(values.toJS())
-    this.props.uploadMaterial(values.toJS())
+    const formValues = values.toJS()
+
+    // change activities, areas from [{key1, value1}, {key2, value2}].. to [key1, key2...]
+    const activities = formValues.activities ?
+      formValues.activities.map((activity) => (activity.value))
+      : []
+    const areas = formValues.areas ?
+      formValues.areas.map((area) => (area.value))
+      : []
+    formValues.activities = activities
+    formValues.areas = areas
+    this.props.uploadMaterial(formValues)
   }
 
   render() {
     return (
-      <View>
+      <View left={true} right={true}>
         <MaterialForm onSubmit={(values) => this.handleSubmit(values)} />
       </View>
     )

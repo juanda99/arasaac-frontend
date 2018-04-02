@@ -67,7 +67,7 @@ class MaterialForm extends React.Component {
                   dataSource={[{ text: 'perro', value: 0 }, { text: 'gato', value: 1 }, { text: 'pájaro', value: 2 }]}
                 />
                 <Field
-                  name='actividades'
+                  name='activities'
                   component={RenderChip}
                   hintText={<FormattedMessage {...messages.activitiesHint} />}
                   floatingLabelText={<FormattedMessage {...messages.activities} />}
@@ -111,17 +111,9 @@ class MaterialForm extends React.Component {
               </StepContent>
             </Step>
 
-            <Step>
-              <StepButton onClick={() => this.setState({ stepIndex: 5 })}>
-                <H3><FormattedMessage {...messages.submit} /></H3>
-              </StepButton>
-              <StepContent>
-                <p>Almost finish! Click submit button to send the material. We will email you when it is published</p>
-                <RaisedButton type='submit' disabled={pristine || submitting} label='Enviar' primary={true} />
-                <RaisedButton label='Clear values' disabled={pristine || submitting} onClick={reset} />
-              </StepContent>
-            </Step>
           </Stepper>
+          <RaisedButton type='submit' disabled={pristine || submitting} label='Enviar' primary={true} />
+          <RaisedButton label='Clear values' disabled={pristine || submitting} onClick={reset} />
         </form>
       </div>
     )

@@ -69,7 +69,7 @@ export const signup = {
 */
 
 export const uploadMaterial = {
-  url: `${AUTH_ROOT}/oauth/token`,
+  url: `http://localhost:4000/api/materials`,
   options: (data) => {
     const formData = new FormData()
     let translations
@@ -91,7 +91,7 @@ export const uploadMaterial = {
     formData.append('formData', JSON.stringify({ areas, activities, authors, translations }))
     return {
       config: {
-        method: 'PUT',
+        method: 'POST',
         body: formData
       }
     }
