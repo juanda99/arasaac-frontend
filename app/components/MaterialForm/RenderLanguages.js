@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Field, FieldArray } from 'redux-form/immutable'
-import MUIAutoComplete from 'material-ui/AutoComplete'
+import { Field } from 'redux-form/immutable'
 import Paper from 'material-ui/Paper'
-import { AutoComplete, TextField } from 'redux-form-material-ui'
+import { SelectField, TextField } from 'redux-form-material-ui'
 import { FormattedMessage } from 'react-intl'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import PersonAdd from 'material-ui/svg-icons/action/note-add'
 import Delete from 'material-ui/svg-icons/action/delete'
+import MenuItem from 'material-ui/MenuItem'
 import { Map } from 'immutable'
 import RenderDropzoneInput from './RenderDropzoneInput'
 import messages from './messages'
@@ -31,10 +31,6 @@ const styles = {
   }
 }
 
-const languageList = [
-  'Español', 'Inglés', 'Francés'
-]
-
 const RenderLanguages = ({ fields }) => {
   const addLanguage = () => { fields.push(new Map()) }
   if (fields.length === 0) addLanguage()
@@ -45,15 +41,15 @@ const RenderLanguages = ({ fields }) => {
           <Paper zDepth={2} style={styles.paper} >
             <Field
               name={`${member}.language`}
-              type='text'
-              component={AutoComplete}
-              dataSource={languageList}
+              component={SelectField}
               hintText={<FormattedMessage {...messages.chooseLanguage} />}
               floatingLabelText={<FormattedMessage {...messages.language} />}
-              openOnFocus={true}
-              filter={MUIAutoComplete.fuzzyFilter}
               fullWidth
-            />
+            >
+              <MenuItem value='es' primaryText='Español' />
+              <MenuItem value='en' primaryText='Inglés' />
+              <MenuItem value='fr' primaryText='Frandés' />
+            </Field>
             <Field
               name={`${member}.title`}
               type='text'
@@ -63,7 +59,7 @@ const RenderLanguages = ({ fields }) => {
               fullWidth
             />
             <Field
-              name={`${member}.description`}
+              name={`${member}.desc`}
               type='text'
               component={TextField}
               hintText={<FormattedMessage {...messages.descriptionHint} />}
