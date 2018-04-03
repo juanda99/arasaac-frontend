@@ -25,10 +25,12 @@ class UploadMaterialView extends PureComponent {
       : []
     formValues.activities = activities
     formValues.areas = areas
+    console.log('executed!!!!!')
     this.props.uploadMaterial(formValues)
   }
 
   render() {
+    console.log('Rendered!!!!')
     return (
       <View left={true} right={true}>
         <MaterialForm onSubmit={(values) => this.handleSubmit(values)} />

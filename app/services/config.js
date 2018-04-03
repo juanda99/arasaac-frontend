@@ -4,9 +4,9 @@ const STATIC_SERVER = 'https://static.arasaac.org'
 export const IMAGES_URL = `${STATIC_SERVER}/images`
 export const MATERIALS_URL = `${STATIC_SERVER}/materials`
 export const API_SERVER = 'https://api.arasaac.org'
-export const API_ROOT = `${API_SERVER}/api/`
+export const API_ROOT = `${API_SERVER}/api`
 export const AUTH_ROOT = 'https://auth.arasaac.org'
-
+export const PRIVATE_API_ROOT = 'http://localhost:4000/api'
 
 export const login = {
   url: `${AUTH_ROOT}/oauth/token`,
@@ -69,7 +69,7 @@ export const signup = {
 */
 
 export const uploadMaterial = {
-  url: `http://localhost:4000/api/materials`,
+  url: `${PRIVATE_API_ROOT}/materials`,
   options: (data) => {
     const formData = new FormData()
     let translations
@@ -85,9 +85,10 @@ export const uploadMaterial = {
         if (language.screenshots) {
           language.screenshots.map((langFile) => formData.append(`${language}_screenshotfiles`, langFile))
         }
-        return { title: language.title, desc: language.desc, language }
+        return { title: language.title, desc: language.desc, language: language.language }
       })
     }
+    console.log(JSON.stringify({ areas, activities, authors, translations }))
     formData.append('formData', JSON.stringify({ areas, activities, authors, translations }))
     return {
       config: {

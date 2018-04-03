@@ -7,6 +7,7 @@ import { UPLOAD_MATERIAL, uploadMaterial } from './actions'
 function* uploadMaterialProcess(action) {
   try {
     yield put(showLoading())
+    console.log('CALL API UPLOAD MATERIAL')
     const response = yield call(api[action.type], action.payload)
     console.log(response)
     yield put(uploadMaterial.success())
