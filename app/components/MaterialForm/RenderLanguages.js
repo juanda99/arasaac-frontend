@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import { Field } from 'redux-form/immutable'
 import Paper from 'material-ui/Paper'
 import { SelectField, TextField } from 'redux-form-material-ui'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import PersonAdd from 'material-ui/svg-icons/action/note-add'
 import Delete from 'material-ui/svg-icons/action/delete'
 import MenuItem from 'material-ui/MenuItem'
 import { Map } from 'immutable'
+import languages from 'components/LanguageSelector/messages'
 import RenderDropzoneInput from './RenderDropzoneInput'
 import messages from './messages'
 
@@ -31,7 +32,8 @@ const styles = {
   }
 }
 
-const RenderLanguages = ({ fields }) => {
+const RenderLanguages = ({ fields, intl }) => {
+  const { formatMessage } = intl
   const addLanguage = () => { fields.push(new Map()) }
   if (fields.length === 0) addLanguage()
   return (
@@ -46,9 +48,12 @@ const RenderLanguages = ({ fields }) => {
               floatingLabelText={<FormattedMessage {...messages.language} />}
               fullWidth
             >
-              <MenuItem value='es' primaryText='Español' />
-              <MenuItem value='en' primaryText='Inglés' />
-              <MenuItem value='fr' primaryText='Frandés' />
+              <MenuItem value={'es'} primaryText={formatMessage(languages.spanish)} />
+              <MenuItem value={'fr'} primaryText={formatMessage(languages.french)} />
+              <MenuItem value={'en'} primaryText={formatMessage(languages.english)} />
+              <MenuItem value={'it'} primaryText={formatMessage(languages.italian)} />
+              <MenuItem value={'val'} primaryText={formatMessage(languages.valencian)} />
+              <MenuItem value={'de'} primaryText={formatMessage(languages.german)} />
             </Field>
             <Field
               name={`${member}.title`}
@@ -96,8 +101,9 @@ const RenderLanguages = ({ fields }) => {
 }
 
 RenderLanguages.propTypes = {
+  intl: intlShape.isRequired,
   fields: PropTypes.object.isRequired
 }
 
 
-export default RenderLanguages
+export default injectIntl(RenderLanguages)
