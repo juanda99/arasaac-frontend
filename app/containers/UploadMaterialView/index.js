@@ -25,12 +25,10 @@ class UploadMaterialView extends PureComponent {
       : []
     formValues.activities = activities
     formValues.areas = areas
-    console.log('executed!!!!!')
     this.props.uploadMaterial(formValues)
   }
 
   render() {
-    console.log('Rendered!!!!')
     return (
       <View left={true} right={true}>
         <MaterialForm onSubmit={(values) => this.handleSubmit(values)} />
@@ -43,10 +41,14 @@ UploadMaterialView.propTypes = {
   uploadMaterial: PropTypes.func.isRequired
 }
 
+const mapStateToProps = (state) => ({
+  filtersData: state.getIn(['configuration', 'filtersData'])
+})
+
 const mapDispatchToProps = (dispatch) => ({
   uploadMaterial: (formData) => {
     dispatch(uploadMaterial.request(formData))
   }
 })
 
-export default connect(null, mapDispatchToProps)(UploadMaterialView)
+export default connect(mapStateToProps, mapDispatchToProps)(UploadMaterialView)

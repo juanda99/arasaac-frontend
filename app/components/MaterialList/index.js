@@ -28,7 +28,7 @@ export class MaterialList extends PureComponent {
 
   render() {
     window.scroll(0, 0)
-    const { locale, materials, filtersMap, setFilterItems, filtersData } = this.props
+    const { locale, materials, filtersMap, setFilterItems } = this.props
     const { currentPage } = this.state
     const total = Math.ceil(materials.length / itemsPerPage)
     const offset = Math.ceil((currentPage - 1) * itemsPerPage)
@@ -49,7 +49,6 @@ export class MaterialList extends PureComponent {
               locale={locale}
               filtersMap={filtersMap}
               setFilterItems={setFilterItems}
-              filtersData={filtersData}
               showLabels={this.props.showLabels}
             />
           )}
@@ -72,8 +71,7 @@ MaterialList.propTypes = {
   locale: PropTypes.string,
   showLabels: PropTypes.bool.isRequired,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
-  setFilterItems: PropTypes.func.isRequired,
-  filtersData: PropTypes.instanceOf(Map).isRequired
+  setFilterItems: PropTypes.func.isRequired
 }
 
 export default MaterialList
