@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import View from 'components/View'
 import MaterialForm from 'components/MaterialForm'
+import { Map } from 'immutable'
 import { uploadMaterial } from './actions'
 
 class UploadMaterialView extends PureComponent {
@@ -29,20 +30,31 @@ class UploadMaterialView extends PureComponent {
   }
 
   render() {
+    const { activities, areas, languages } = this.props
     return (
       <View left={true} right={true}>
-        <MaterialForm onSubmit={(values) => this.handleSubmit(values)} />
+        <MaterialForm
+          onSubmit={(values) => this.handleSubmit(values)}
+          activities={activities}
+          areas={areas}
+          languages={languages}
+        />
       </View>
     )
   }
 }
 
 UploadMaterialView.propTypes = {
-  uploadMaterial: PropTypes.func.isRequired
+  uploadMaterial: PropTypes.func.isRequired,
+  activities: PropTypes.instanceOf(Map),
+  areas: PropTypes.instanceOf(Map),
+  languages: PropTypes.instanceOf(Map)
 }
 
 const mapStateToProps = (state) => ({
-  filtersData: state.getIn(['configuration', 'filtersData'])
+  activities: state.getIn(['configuration', 'filtersData', 'activity']),
+  areas: state.getIn(['configuration', 'filtersData', 'area']),
+  languages: state.getIn(['configuration', 'filtersData', 'language'])
 })
 
 const mapDispatchToProps = (dispatch) => ({

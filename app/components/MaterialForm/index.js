@@ -5,11 +5,14 @@
 */
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Field, FieldArray, reduxForm, propTypes } from 'redux-form/immutable'
 import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper'
 import RaisedButton from 'material-ui/RaisedButton'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import H3 from 'components/H3'
+import { Map } from 'immutable'
+import filterMessages from 'components/Filters/messages'
 import RenderAuthors from './RenderAuthors'
 import RenderDropzoneInput from './RenderDropzoneInput'
 import RenderChip from './RenderChip'
@@ -38,9 +41,17 @@ class MaterialForm extends React.Component {
   }
 
   render() {
-    const { handleSubmit, pristine, submitting, reset } = this.props
+    const { handleSubmit, pristine, submitting, reset, activities, areas, intl } = this.props
     const { stepIndex } = this.state
-
+    const { formatMessage } = intl
+    const listActivities = [...activities.entries()].map(
+      (selectItem) => ({ value: parseInt(selectItem[0], 10), text: formatMessage(filterMessages[selectItem[1]]) })
+    )
+    const listAreas = [...areas.entries()].map(
+      (selectItem) => ({ value: parseInt(selectItem[0], 10), text: formatMessage(filterMessages[selectItem[1]]) })
+    )
+    const sortListActivities = listActivities.sort((a, b) => a.text.localeCompare(b.text))
+    const sortListAreas = listAreas.sort((a, b) => a.text.localeCompare(b.text))
     return (
       <div>
         <form onSubmit={handleSubmit}>
@@ -64,14 +75,14 @@ class MaterialForm extends React.Component {
                   component={RenderChip}
                   hintText={<FormattedMessage {...messages.areasHint} />}
                   floatingLabelText={<FormattedMessage {...messages.areas} />}
-                  dataSource={[{ text: 'perro', value: 0 }, { text: 'gato', value: 1 }, { text: 'pájaro', value: 2 }]}
+                  dataSource={sortListAreas}
                 />
                 <Field
                   name='activities'
                   component={RenderChip}
                   hintText={<FormattedMessage {...messages.activitiesHint} />}
                   floatingLabelText={<FormattedMessage {...messages.activities} />}
-                  dataSource={[{ text: 'perro', value: 0 }, { text: 'gato', value: 1 }, { text: 'pájaro', value: 2 }]}
+                  dataSource={sortListActivities}
                 />
               </StepContent>
             </Step>
@@ -121,9 +132,13 @@ class MaterialForm extends React.Component {
 }
 
 MaterialForm.propTypes = {
-  ...propTypes
+  ...propTypes,
+  activities: PropTypes.instanceOf(Map),
+  areas: PropTypes.instanceOf(Map),
+  languages: PropTypes.instanceOf(Map),
+  intl: intlShape.isRequired
 }
 
 export default reduxForm({
   form: 'MaterialForm'
-})(MaterialForm)
+})(injectIntl(MaterialForm))

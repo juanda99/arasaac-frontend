@@ -42,6 +42,7 @@ class CustomChipInput extends React.Component {
         floatingLabelText={floatingLabelText}
         filter={AutoComplete.fuzzyFilter}
         fullWidth
+        listStyle={{ maxHeight: 300, overflow: 'auto', width: 400 }}
         openOnFocus
       />
     )
