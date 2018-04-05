@@ -11,21 +11,6 @@ export default defineMessages({
     description: 'Label for filtering Search',
     defaultMessage: 'Advanced Search'
   },
-  search: {
-    id: 'app.containers.MaterialsView.search',
-    description: 'Label for search tab',
-    defaultMessage: 'Search'
-  },
-  new: {
-    id: 'app.containers.MaterialsView.new',
-    description: 'Label for new materials tab',
-    defaultMessage: 'New'
-  },
-  favorites: {
-    id: 'app.containers.MaterialsView.favorites',
-    description: 'Label for favorites tab',
-    defaultMessage: 'Favorites'
-  },
   materialsNotFound: {
     id: 'app.containers.MaterialsView.materialsNotFound',
     description: 'Message when no materials for a specific search',

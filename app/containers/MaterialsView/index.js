@@ -11,16 +11,11 @@ import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
 import Toggle from 'material-ui/Toggle'
-import { Tabs, Tab } from 'material-ui/Tabs'
-import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
-import SearchIcon from 'material-ui/svg-icons/action/search'
+import TabsHeader from 'components/TabsHeader'
 import muiThemeable from 'material-ui/styles/muiThemeable'
-import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
 import Divider from 'material-ui/Divider'
-import IconButton from 'material-ui/IconButton'
 import SwipeableViews from 'react-swipeable-views'
 import { Map } from 'immutable'
-import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
 import P from 'components/P'
@@ -104,13 +99,13 @@ class MaterialsView extends PureComponent {
   }
 
   render() {
-    const { width, showFilter, filters, visibleMaterials, newMaterialsList, locale, loading, filtersData, muiTheme } = this.props
+    const { showFilter, filters, visibleMaterials, newMaterialsList, locale, loading, filtersData, muiTheme } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
     let materialsCounter
     // depending on which slide we are, we show one or another list */
     let materialsList
-    const hideIconText = (width === SMALL)
+
     if (slideIndex === 0) materialsList = visibleMaterials
     else materialsList = newMaterialsList
     let gallery
@@ -137,23 +132,7 @@ class MaterialsView extends PureComponent {
     return (
       <div>
         <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
-        <Tabs onChange={this.handleChange} value={slideIndex} >
-          <Tab
-            label={hideIconText ? '' : <FormattedMessage {...messages.search} />}
-            icon={<IconButton><SearchIcon /></IconButton>}
-            value={0}
-          />
-          <Tab
-            label={hideIconText ? '' : <FormattedMessage {...messages.new} />}
-            icon={<IconButton><NewReleasesIcon /></IconButton>}
-            value={1}
-          />
-          <Tab
-            label={hideIconText ? '' : <FormattedMessage {...messages.favorites} />}
-            icon={<IconButton><FavoriteIcon /></IconButton>}
-            value={2}
-          />
-        </Tabs>
+        <TabsHeader onChange={this.handleChange} value={slideIndex} />
         <Divider />
         <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange} >
           <div>
@@ -244,7 +223,6 @@ MaterialsView.propTypes = {
   setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
   newMaterialsList: PropTypes.arrayOf(PropTypes.object),
-  width: PropTypes.number.isRequired,
   // Injected by React Router
   router: PropTypes.any.isRequired,
   locale: PropTypes.string.isRequired,
@@ -279,4 +257,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(muiThemeable()(withWidth()(MaterialsView))))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(muiThemeable()(MaterialsView)))
