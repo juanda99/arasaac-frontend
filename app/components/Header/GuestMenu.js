@@ -30,7 +30,6 @@ const GuestMenu = (props) => {
         label={<FormattedMessage {...messages.signin} />}
         {...this.props}
         icon={<UserIcon />}
-        href='/signin'
       />
     </Link>
   )
