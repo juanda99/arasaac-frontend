@@ -12,7 +12,6 @@ import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
-import IconButton from 'material-ui/IconButton'
 import { FormattedMessage } from 'react-intl'
 import messages from './messages'
 
@@ -29,17 +28,17 @@ class TabsHeader extends PureComponent {
       <Tabs onChange={this.handleChange} value={value} >
         <Tab
           label={hideIconText ? '' : <FormattedMessage {...messages.search} />}
-          icon={<IconButton><SearchIcon /></IconButton>}
+          icon={<SearchIcon />}
           value={0}
         />
         <Tab
           label={hideIconText ? '' : <FormattedMessage {...messages.new} />}
-          icon={<IconButton><NewReleasesIcon /></IconButton>}
+          icon={<NewReleasesIcon />}
           value={1}
         />
         <Tab
           label={hideIconText ? '' : <FormattedMessage {...messages.favorites} />}
-          icon={<IconButton><FavoriteIcon /></IconButton>}
+          icon={<FavoriteIcon />}
           value={2}
         />
       </Tabs>
