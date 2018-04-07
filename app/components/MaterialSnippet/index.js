@@ -12,6 +12,8 @@ import Ribbon from 'components/Ribbon'
 import activity from 'data/activity'
 import area from 'data/area'
 import ImageSlider from 'components/ImageSlider'
+import { FormattedMessage } from 'react-intl'
+import messages from 'components/Filters/messages'
 import Item from './Item'
 
 const styles = {
@@ -76,7 +78,7 @@ class MaterialSnippet extends PureComponent {
             onClick={(e) => this.handleTouchTap('activity', id, 0, e)}
           >
             <Avatar color={'white'} size={30} backgroundColor={lightGreen800} icon={<ActivityIcon />} />
-            {activity[id]}
+            {<FormattedMessage {...messages[activity[id]]} />}
           </Chip>
         )
       }
@@ -88,7 +90,7 @@ class MaterialSnippet extends PureComponent {
           onClick={(e) => this.handleTouchTap('activity', id, 1, e)}
         >
           <Avatar icon={<ActivityIcon />} />
-          {activity[id]}
+          {<FormattedMessage {...messages[activity[id]]} />}
         </Chip>
       )
     })
@@ -102,7 +104,7 @@ class MaterialSnippet extends PureComponent {
             onClick={(e) => this.handleTouchTap('area', id, 0, e)}
           >
             <Avatar color={'white'} backgroundColor={lightGreen800} icon={<AreaIcon iconStyle={{ width: '10px', height: '10px' }} />} />
-            {area[id]}
+            {<FormattedMessage {...messages[area[id]]} />}
           </Chip>
         )
       }
@@ -114,7 +116,7 @@ class MaterialSnippet extends PureComponent {
           onClick={(e) => this.handleTouchTap('area', id, 1, e)}
         >
           <Avatar icon={<AreaIcon />} />
-          {area[id]}
+          {<FormattedMessage {...messages[area[id]]} />}
         </Chip>
       )
     })
