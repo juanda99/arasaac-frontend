@@ -31,13 +31,13 @@ const makeSearchSelector = () => createSelector(
   (substate) => substate.get('search')
 )
 
-const searchTextSelector = (_, ownProps) => ownProps.params.searchText
+const makeSearchTextSelector = () => (_, ownProps) => ownProps.params.searchText
 
 /* get materials id's from a material search (specific for locale and search keywords) */
   /* if undefined, it means it's necessary to make an ajax call */
 
 export const makeSearchResultsSelector = () => createSelector(
-  makeSearchSelector(), makeSelectLocale(), searchTextSelector, (materials, locale, searchText) => (
+  makeSearchSelector(), makeSelectLocale(), makeSearchTextSelector(), (materials, locale, searchText) => (
     materials.getIn([locale, searchText])
   )
 
