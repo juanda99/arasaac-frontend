@@ -15,24 +15,24 @@ import TabsHeader from 'components/TabsHeader'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import Divider from 'material-ui/Divider'
 import SwipeableViews from 'react-swipeable-views'
-import { Map } from 'immutable'
+import { Map, List } from 'immutable'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
 import P from 'components/P'
 import { withRouter } from 'react-router'
+import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ActionButtons from './ActionButtons'
 import {
-  filtersSelector,
-  showFiltersSelector,
-  localeSelector,
-  loadingSelector,
-  searchResultsSelector,
-  visibleMaterialsSelector,
-  newMaterialsSelector
+  makeFiltersSelector,
+  makeShowFiltersSelector,
+  makeLoadingSelector,
+  makeSearchResultsSelector,
+  makeVisibleMaterialsSelector,
+  makeNewMaterialsSelector
   } from './selectors'
+
 import { materials, newMaterials, toggleShowFilter, setFilterItems } from './actions'
 import messages from './messages'
-
 
 const styles = {
   searchBar: {
@@ -105,7 +105,6 @@ class MaterialsView extends PureComponent {
     let materialsCounter
     // depending on which slide we are, we show one or another list */
     let materialsList
-
     if (slideIndex === 0) materialsList = visibleMaterials
     else materialsList = newMaterialsList
     let gallery
@@ -122,7 +121,7 @@ class MaterialsView extends PureComponent {
             materials={materialsList}
             locale={locale}
             filtersMap={filters}
-            setFilterItems={this.props.setFilterItems}
+            setFilterItems={setFilterItems}
             showLabels={visibleLabels}
           />
         </div>
@@ -222,7 +221,7 @@ MaterialsView.propTypes = {
   showFilter: PropTypes.bool,
   setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
-  newMaterialsList: PropTypes.arrayOf(PropTypes.object),
+  newMaterialsList: PropTypes.instanceOf(List),
   // Injected by React Router
   router: PropTypes.any.isRequired,
   locale: PropTypes.string.isRequired,
@@ -232,14 +231,14 @@ MaterialsView.propTypes = {
 
 
 const mapStateToProps = (state, ownProps) => ({
-  filters: filtersSelector(state),
-  showFilter: showFiltersSelector(state),
-  locale: localeSelector(state),
-  loading: loadingSelector(state),
-  searchResults: searchResultsSelector(state, ownProps),
-  visibleMaterials: visibleMaterialsSelector(state, ownProps),
+  filters: makeFiltersSelector()(state),
+  showFilter: makeShowFiltersSelector()(state),
+  locale: makeSelectLocale()(state),
+  loading: makeLoadingSelector()(state),
+  searchResults: makeSearchResultsSelector()(state, ownProps),
+  visibleMaterials: makeVisibleMaterialsSelector()(state, ownProps),
   filtersData: state.getIn(['configuration', 'filtersData']),
-  newMaterialsList: newMaterialsSelector(state)
+  newMaterialsList: makeNewMaterialsSelector()(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
