@@ -33,7 +33,7 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading)
       }
-    }, {
+    }, /* {
       path: '/pictograms/search(/:searchText)',
       name: 'pictogramsView',
       getComponent(nextState, cb) {
@@ -52,7 +52,7 @@ export default function createRoutes(store) {
         })
         importModules.catch(errorLoading)
       }
-    }, {
+    }, */ {
       path: '/materials/search',
       name: 'materialsView',
       getComponent(nextState, cb) {
