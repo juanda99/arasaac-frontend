@@ -88,6 +88,50 @@ export default function createRoutes(store) {
         }
       ]
     }, {
+      path: '/news/upload',
+      onEnter(nextState, replace, callback) {
+        // onEnter gets called when we visit a route
+        // childRoute changes do not trigger onEnter, which is a desired behavior
+        // Prevent saga reinjection if they are running
+        if (this.loadedSagas) {
+          callback()
+          return
+        }
+
+        // Inject sagas as usual
+        const importModules = System.import('containers/UploadNewsView/sagas')
+
+        importModules.then((sagas) => {
+          this.loadedSagas = injectSagas(sagas.default)
+          callback()
+        })
+
+        importModules.catch(errorLoading)
+      },
+      onLeave() {
+        // onLeave gets called when we leave the route
+        // Cancel the sagas if they are running
+        if (this.loadedSagas) {
+          this.loadedSagas.forEach((saga) => saga.cancel())
+          delete this.loadedSagas
+        }
+      },
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/UploadNewsView'),
+          System.import('containers/UploadNewsView/reducer')
+        ])
+
+        const renderRoute = loadModule(cb)
+
+        importModules.then(([component, reducer]) => {
+          injectReducer('uploadNewsView', reducer.default)
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      }
+    }, {
       path: '/materials/upload',
       onEnter(nextState, replace, callback) {
         // onEnter gets called when we visit a route
