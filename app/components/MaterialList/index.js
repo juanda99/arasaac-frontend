@@ -33,14 +33,17 @@ export class MaterialList extends PureComponent {
     const total = Math.ceil(materials.length / itemsPerPage)
     const offset = Math.ceil((currentPage - 1) * itemsPerPage)
     const visibleMaterials = this.props.materials.slice(offset, offset + itemsPerPage)
+    const pagination = (materials.length >= itemsPerPage) ?
+      (<Pagination
+        total={total}
+        current={currentPage}
+        display={display}
+        onChange={this.handlePageClick}
+      />)
+    : null
     return (
       <div>
-        <Pagination
-          total={total}
-          current={currentPage}
-          display={display}
-          onChange={this.handlePageClick}
-        />
+        {pagination}
         <ul>
           { visibleMaterials.map((material) =>
             <MaterialSnippet
@@ -53,12 +56,7 @@ export class MaterialList extends PureComponent {
             />
           )}
         </ul>
-        <Pagination
-          total={total}
-          current={currentPage}
-          display={display}
-          onChange={this.handlePageClick}
-        />
+        {pagination}
       </div>
     )
   }

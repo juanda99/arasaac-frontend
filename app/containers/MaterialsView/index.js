@@ -15,7 +15,7 @@ import TabsHeader from 'components/TabsHeader'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import Divider from 'material-ui/Divider'
 import SwipeableViews from 'react-swipeable-views'
-import { Map, List } from 'immutable'
+import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
 import P from 'components/P'
@@ -221,7 +221,7 @@ MaterialsView.propTypes = {
   showFilter: PropTypes.bool,
   setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
-  newMaterialsList: PropTypes.instanceOf(List),
+  newMaterialsList: PropTypes.array.isRequired,
   // Injected by React Router
   router: PropTypes.any.isRequired,
   locale: PropTypes.string.isRequired,

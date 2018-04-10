@@ -20,7 +20,7 @@ const styles = {
 class Item extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    url: PropTypes.string.isRequired,
+    url: PropTypes.string,
     children: PropTypes.node
   }
 
@@ -39,9 +39,9 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
   }
 
   render() {
-    const { children } = this.props
-    return (
-      <Link to={this.props.url}>
+    const { children, url } = this.props
+    const rendered = url ? (
+      <Link to={url}>
         <Paper
           style={styles.paper}
           zDepth={this.state.zDepth}
@@ -51,6 +51,20 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
           {children}
         </Paper>
       </Link>
+    ) : (
+      <Paper
+        style={styles.paper}
+        zDepth={this.state.zDepth}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
+        {children}
+      </Paper>
+    )
+    return (
+      <div>
+        { rendered }
+      </div>
     )
   }
 }

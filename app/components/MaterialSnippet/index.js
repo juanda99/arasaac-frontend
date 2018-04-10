@@ -13,6 +13,7 @@ import activity from 'data/activity'
 import area from 'data/area'
 import ImageSlider from 'components/ImageSlider'
 import { FormattedMessage } from 'react-intl'
+import { Link } from 'react-router'
 import messages from 'components/Filters/messages'
 import Item from './Item'
 
@@ -125,12 +126,14 @@ class MaterialSnippet extends PureComponent {
     // const languageTags = material.translations.map((translation) => <Chip style={styles.chip} key={translation.language}><Avatar color='#444' icon={<LanguageIcon />} />{language[translation.language]}</Chip>)
     // languageTags.push(<Chip style={styles.chip} key={material.language}><Avatar color='#222' icon={<LanguageIcon />} />{language[material.language]}</Chip>)
     return (
-      <Item url={`/materials/${material.idMaterial}`}>
+      <Item>
         { material.favorite ? <Ribbon /> : '' }
         <div style={styles.snippet}>
           <ImageSlider images={images} id={material.idMaterial} style={styles.snippetImg} />
           <div style={styles.snippetText}>
-            <H2 primary ucase>{material.title}</H2>
+            <Link to={`/materials/${material.idMaterial}`}>
+              <H2 primary ucase>{material.title}</H2>
+            </Link>
             <ReadMore style={{ textAlign: 'justify' }}>
               {material.desc}
             </ReadMore>
