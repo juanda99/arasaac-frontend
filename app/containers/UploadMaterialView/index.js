@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 import View from 'components/View'
 import MaterialForm from 'components/MaterialForm'
 import { Map } from 'immutable'
+import userIsAuthenticated from 'utils/auth'
 import { uploadMaterial } from './actions'
 
 class UploadMaterialView extends PureComponent {
@@ -63,4 +64,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(UploadMaterialView)
+export default connect(mapStateToProps, mapDispatchToProps)(userIsAuthenticated(UploadMaterialView))

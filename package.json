@@ -276,6 +276,7 @@
     "react-truncate": "^2.1.5",
     "redux": "3.7.2",
     "redux-action-buffer": "^1.1.0",
+    "redux-auth-wrapper": "^2.0.2",
     "redux-form": "^7.1.2",
     "redux-form-material-ui": "^4.3.0",
     "redux-form-validators": "2.4.3",
