@@ -16,7 +16,7 @@ const QuillConf = {
   modules: {
     toolbar: [
       [{ header: [1, 2, false] }],
-      ['bold', 'italic', 'underline','strike', 'blockquote'],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
       [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
       ['link', 'image'],
       ['clean']
@@ -42,12 +42,13 @@ class UploadNewsView extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <View left={true} right={true}>
         <ReactQuill
           value={this.state.text}
           onChange={this.handleChange}
-          modules={QuillConf.modules}
+          modules={QuillConf.modules} 
           formats={QuillConf.formats}
         />
       </View>
