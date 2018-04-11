@@ -80,15 +80,14 @@ export const uploadMaterial = {
     if (languages) {
       translations = languages.map((language) => {
         if (language.files) {
-          language.files.map((langFile) => formData.append(`${language}_files`, langFile))
+          language.files.map((langFile) => formData.append(`${language.language}_files`, langFile))
         }
         if (language.screenshots) {
-          language.screenshots.map((langFile) => formData.append(`${language}_screenshotfiles`, langFile))
+          language.screenshots.map((langFile) => formData.append(`${language.language}_screenshotfiles`, langFile))
         }
         return { title: language.title, desc: language.desc, language: language.language }
       })
     }
-    console.log(JSON.stringify({ areas, activities, authors, translations }))
     formData.append('formData', JSON.stringify({ areas, activities, authors, translations }))
     return {
       config: {
