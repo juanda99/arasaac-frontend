@@ -121,7 +121,7 @@ class MaterialsView extends PureComponent {
             materials={materialsList}
             locale={locale}
             filtersMap={filters}
-            setFilterItems={setFilterItems}
+            setFilterItems={this.props.setFilterItems}
             showLabels={visibleLabels}
           />
         </div>
