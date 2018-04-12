@@ -6,7 +6,7 @@ export const MATERIALS_URL = `${STATIC_SERVER}/materials`
 export const API_SERVER = 'https://api.arasaac.org'
 export const API_ROOT = `${API_SERVER}/api`
 export const AUTH_ROOT = 'https://auth.arasaac.org'
-export const PRIVATE_API_ROOT = 'http://localhost:4000/api'
+export const PRIVATE_API_ROOT = 'https://privateapi.arasaac.org/api'
 
 export const login = {
   url: `${AUTH_ROOT}/oauth/token`,
