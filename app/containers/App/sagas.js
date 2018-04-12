@@ -9,6 +9,7 @@ import { delay } from 'redux-saga'
 import { call, put, select, take, cancel, race, takeEvery, fork } from 'redux-saga/effects'
 
 import api from 'services'
+import { API_ROOT } from 'services/config'
 import callApi from 'services/callApi'
 import { push, LOCATION_CHANGE } from 'react-router-redux'
 import { REHYDRATE } from 'redux-persist/constants'
@@ -109,7 +110,7 @@ function* authenticate() {
 
   yield makeAuthenticatedRequest({
     payload: {
-      url: 'users/profile',
+      url: `${API_ROOT}/users/profile`,
       options: { config: { method: 'GET' } },
       onSuccess: (response) => put(tokenValidation.success(response)),
       onError
@@ -210,6 +211,7 @@ function* makeAuthenticatedRequest(action) {
   // Check for a specific outdated access token error. If the error matches, the
   // saga will try to refresh the access token then retry the initial request if
   // the refresh succeeds.
+
   const isAccessExpired = (error) => error.error && error.message && error.statusCode
       && error.statusCode === 401
       && error.error === 'Unauthorized'
