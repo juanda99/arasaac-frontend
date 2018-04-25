@@ -58,10 +58,11 @@ class MaterialsView extends PureComponent {
   }
 
   componentDidMount() {
+    const { requestMaterials, requestNewMaterials, locale } = this.props
     if (this.props.params.searchText && !this.props.searchResults) {
-      this.props.requestMaterials(this.props.locale, this.props.params.searchText)
+      requestMaterials(locale, this.props.params.searchText)
     }
-    this.props.requestNewMaterials()
+    requestNewMaterials()
   }
 
   componentWillReceiveProps(nextProps) {

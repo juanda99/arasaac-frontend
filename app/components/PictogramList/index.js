@@ -20,30 +20,38 @@ export class PictogramList extends PureComponent {
     }
   }
 
+  setTopRef = (element) => {
+    this.topPosition = element
+  }
+
   handlePageClick = (currentPage) => {
     this.setState({ currentPage })
+    this.topPosition.scrollIntoView()
+    // window.scroll(0, 0)
   }
 
   render() {
-    window.scroll(0, 0)
     const { locale, pictograms, filtersMap, setFilterItems } = this.props
     const { currentPage } = this.state
     const total = Math.ceil(pictograms.length / itemsPerPage)
     const offset = Math.ceil((currentPage - 1) * itemsPerPage)
     const visiblePictograms = this.props.pictograms.slice(offset, offset + itemsPerPage)
+    const pagination = (pictograms.length >= itemsPerPage) ?
+      (<Pagination
+        total={total}
+        current={currentPage}
+        display={display}
+        onChange={this.handlePageClick}
+      />)
+      : null
     return (
-      <div>
-        <Pagination
-          total={total}
-          current={currentPage}
-          display={display}
-          onChange={this.handlePageClick}
-        />
+      <div ref={this.setTopRef}>
+        {pagination}
         <ul>
           { visiblePictograms.map((pictogram) =>
             <PictogramSnippet
               key={pictogram.idPictogram}
-              pictogram={pictograms}
+              pictogram={pictogram}
               locale={locale}
               filtersMap={filtersMap}
               setFilterItems={setFilterItems}
@@ -51,12 +59,7 @@ export class PictogramList extends PureComponent {
             />
           )}
         </ul>
-        <Pagination
-          total={total}
-          current={currentPage}
-          display={display}
-          onChange={this.handlePageClick}
-        />
+        {pagination}
       </div>
     )
   }

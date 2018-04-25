@@ -33,8 +33,8 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading)
       }
-    }, /* {
-      path: '/pictograms/search(/:searchText)',
+    }, {
+      path: '/pictograms/search',
       name: 'pictogramsView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
@@ -51,8 +51,24 @@ export default function createRoutes(store) {
           renderRoute(component)
         })
         importModules.catch(errorLoading)
-      }
-    }, */ {
+      },
+      childRoutes: [
+        {
+          path: '/pictograms/search/:searchText',
+          name: 'gallery',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('components/PictogramList')
+            ])
+            const renderRoute = loadModule(cb)
+            importModules.then(([component]) => {
+              renderRoute(component)
+            })
+            importModules.catch(errorLoading)
+          }
+        }
+      ]
+    }, {
       path: '/materials/search',
       name: 'materialsView',
       getComponent(nextState, cb) {

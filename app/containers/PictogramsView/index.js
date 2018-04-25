@@ -20,15 +20,16 @@ import FilterList from 'components/Filters'
 import PictogramList from 'components/PictogramList'
 import P from 'components/P'
 import { withRouter } from 'react-router'
-import ActionButtons from './ActionButtons'
+import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
+import ActionButtons from 'containers/MaterialsView/ActionButtons'
 import {
-  filtersSelector,
-  showFiltersSelector,
-  localeSelector,
-  loadingSelector,
-  searchResultsSelector,
-  visiblePictogramsSelector,
-  newPictogramsSelector
+  makeFiltersSelector,
+  makeShowFiltersSelector,
+  makeLoadingSelector,
+  makeSearchResultsSelector,
+  makeVisiblePictogramsSelector,
+  makeNewPictogramsSelector,
+  makeKeywordsSelectorByLocale
 } from './selectors'
 import {
   autocomplete,
@@ -61,14 +62,17 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
   }
 
   componentDidMount() {
+    const { requestPictograms, requestNewPictograms, requestAutocomplete, locale } = this.props
     if (this.props.params.searchText && !this.props.searchResults) {
-      this.props.requestPictograms(this.props.locale, this.props.params.searchText)
+      requestPictograms(locale, this.props.params.searchText)
     }
-    this.props.requestNewPictograms()
+    requestNewPictograms(locale)
+    requestAutocomplete(locale)
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.params.searchText !== nextProps.params.searchText) {
-      this.props.requestPictograms(this.props.locale, nextProps.params.searchText)
+      const { requestPictograms, locale } = this.props
+      requestPictograms(locale, nextProps.params.searchText)
     }
   }
 
@@ -100,11 +104,12 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
   }
 
   render() {
-    const { showFilter, filters, visiblePictograms, newPictogramsList, locale, loading, filtersData, muiTheme } = this.props
+    const { showFilter, filters, visiblePictograms, newPictogramsList, locale, loading, filtersData, muiTheme, keywords } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
     let pictogramsCounter
-    let pictogramsList
+    let pictogramsList  
+    console.log(`**********${visiblePictograms}`)
     if (slideIndex === 0) pictogramsList = visiblePictograms
     else pictogramsList = newPictogramsList
     let gallery
@@ -137,7 +142,7 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
           <div>
             <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
               <div style={styles.container}>
-                <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
+                <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} dataSource={keywords} />
                 <ActionButtons
                   onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
                   onLabelsClick={this.showLabels} labelsActive={visibleLabels}
@@ -147,12 +152,7 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
               </div>
               {visibleSettings ?
                 <div>
-                  <Toggle
-                    label={<FormattedMessage {...messages.advancedSearch} />}
-                    onToggle={this.props.toggleShowFilter}
-                    defaultToggled={showFilter}
-                    style={{ width: '200px' }}
-                  />
+                  // todo
                 </div>
                 : null
               }
@@ -170,7 +170,7 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
           <div>
             <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
               <div style={styles.container}>
-                <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
+                <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} dataSource={keywords}/>
                 <ActionButtons
                   onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
                   onLabelsClick={this.showLabels} labelsActive={visibleLabels}
@@ -232,15 +232,15 @@ PictogramsView.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  filters: filtersSelector(state),
-  showFilter: showFiltersSelector(state),
-  locale: localeSelector(state),
-  loading: loadingSelector(state),
-  searchResults: searchResultsSelector(state, ownProps),
-  visiblePictograms: visiblePictogramsSelector(state, ownProps),
+  filters: makeFiltersSelector()(state),
+  showFilter: makeShowFiltersSelector()(state),
+  locale: makeSelectLocale()(state),
+  loading: makeLoadingSelector()(state),
+  searchResults: makeSearchResultsSelector()(state, ownProps),
+  visiblePictograms: makeVisiblePictogramsSelector()(state, ownProps),
   filtersData: state.getIn(['configuration', 'filtersData']),
-  newPictogramsList: newPictogramsSelector(state),
-  keywords: state.getIn(['pictogramsView', 'words', locale]) || []
+  newPictogramsList: makeNewPictogramsSelector(state),
+  keywords: makeKeywordsSelectorByLocale()(state)
 })
 // const pictoList = state.getIn(['pictogramView', 'search', ownProps.params.searchText]) || []
 
@@ -249,8 +249,8 @@ const mapDispatchToProps = (dispatch) => ({
   requestPictograms: (locale, searchText) => {
     dispatch(pictograms.request(locale, searchText))
   },
-  requestNewPictograms: () => {
-    dispatch(newPictograms.request())
+  requestNewPictograms: (locale) => {
+    dispatch(newPictograms.request(locale))
   },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())
@@ -258,8 +258,8 @@ const mapDispatchToProps = (dispatch) => ({
   setFilterItems: (filter, filterItem) => {
     dispatch(setFilterItems(filter, filterItem))
   },
-  requestAutocomplete: (searchText) => {
-    dispatch(autocomplete.request(searchText))
+  requestAutocomplete: (locale) => {
+    dispatch(autocomplete.request(locale))
   }
 })
 

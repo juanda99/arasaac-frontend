@@ -8,17 +8,23 @@ import { createRequestTypes, action } from 'utils/actions'
 
 // constants
 export const PICTOGRAMS = createRequestTypes('PICTOGRAMS')
-export const AUTOCOMPLETE = createRequestTypes('AUTOCOMPLETE')
-export const ENABLE_FILTER = 'PICTOGRAMS_ENABLE_FILTER'
+export const NEW_PICTOGRAMS = createRequestTypes('NEW_PICTOGRAMS')
 export const SHOW_FILTERS = 'PICTOGRAMS_SHOW_FILTERS'
+export const ENABLE_FILTER = 'PICTOGRAMS_ENABLE_FILTER'
 export const SET_FILTER_ITEMS = 'PICTOGRAMS_SET_FILTER_ITEMS'
-
+export const AUTOCOMPLETE = createRequestTypes('AUTOCOMPLETE')
 // actions: pictograms.request/success/failure
 
 export const pictograms = {
-  request: (locale, searchText) => action(PICTOGRAMS.REQUEST, { searchText }),
+  request: (locale, searchText) => action(PICTOGRAMS.REQUEST, { locale, searchText }),
   success: (locale, searchText, data) => action(PICTOGRAMS.SUCCESS, { locale, searchText, data }),
   failure: (error) => action(PICTOGRAMS.FAILURE, { error })
+}
+
+export const newPictograms = {
+  request: (locale) => action(NEW_PICTOGRAMS.REQUEST, { locale }),
+  success: (data) => action(NEW_PICTOGRAMS.SUCCESS, { data }),
+  failure: (error) => action(NEW_PICTOGRAMS.FAILURE, { error })
 }
 
 export const autocomplete = {

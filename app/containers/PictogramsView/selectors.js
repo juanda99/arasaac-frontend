@@ -11,6 +11,16 @@ export const makeLoadingSelector = () => createSelector(
   (substate) => substate.get('loading')
 )
 
+const makeKeywordsSelector = () => createSelector(
+  selectPictogramsViewDomain,
+  (substate) => substate.get('words')
+)
+
+export const makeKeywordsSelectorByLocale = () => createSelector(
+  makeKeywordsSelector(), makeSelectLocale(),
+  (substate, locale) => substate.get(locale)
+)
+
 export const makeShowFiltersSelector = () => createSelector(
   selectPictogramsViewDomain,
   (substate) => substate.get('showFilter')
@@ -37,7 +47,11 @@ export const makeSearchResultsSelector = () => createSelector(
   makeSearchSelector(), makeSelectLocale(), makeSearchTextSelector(), (pictograms, locale, searchText) => (
     pictograms.getIn([locale, searchText])
   )
+)
 
+const makeSearchNewPictogramsSelector = () => createSelector(
+  selectPictogramsViewDomain,
+  (substate) => substate.get('newPictograms')
 )
 
 const makeEntitiesSelector = () => createSelector(
@@ -55,6 +69,15 @@ export const makeVisiblePictogramsSelector = () => createSelector(
     if (searchData == null) return []
     const pictogramList = denormalize(searchData, searchPictogramSchema, entities)
     return getFilteredItems(pictogramList, filters)
+  }
+)
+
+export const makeNewPictogramsSelector = () => createSelector(
+  makeSearchNewPictogramsSelector(), makeEntitiesSelector(), (searchData, entities) => {
+    /* searchData could be undefined */
+    if (searchData == null) return []
+    const materialList = denormalize(searchData, searchPictogramSchema, entities)
+    return materialList
   }
 )
 

@@ -1,10 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-// import { FormattedMessage } from 'react-intl'
 import MaterialSnippet from 'components/MaterialSnippet'
 import { Map } from 'immutable'
 import Pagination from 'material-ui-pagination'
-// import messages from './messages'
 
 const itemsPerPage = 10 /* number of items per page */
 const display = 10 /* number of pages to see in the paginator */
@@ -22,12 +20,17 @@ export class MaterialList extends PureComponent {
     }
   }
 
+  setTopRef = (element) => {
+    this.topPosition = element
+  }
+
   handlePageClick = (currentPage) => {
     this.setState({ currentPage })
+    this.topPosition.scrollIntoView()
+    // window.scroll(0, 0)
   }
 
   render() {
-    window.scroll(0, 0)
     const { locale, materials, filtersMap, setFilterItems } = this.props
     const { currentPage } = this.state
     const total = Math.ceil(materials.length / itemsPerPage)
@@ -42,7 +45,7 @@ export class MaterialList extends PureComponent {
       />)
     : null
     return (
-      <div>
+      <div ref={this.setTopRef}>
         {pagination}
         <ul>
           { visibleMaterials.map((material) =>

@@ -52,7 +52,7 @@ class TagsRenderer extends Component {
 
   handleClick = (filterItem, nextStatus, e) => {
     const { onClick, type } = this.props
-    onClick(type, filterItem, nextStatus, e)
+    if (onClick) onClick(type, filterItem, nextStatus, e)
   }
 
   render() {
@@ -66,7 +66,7 @@ class TagsRenderer extends Component {
             backgroundColor={lightGreen400}
             style={styles.chip}
             key={tag}
-            onClick={(e) => this.props.onClick(type, tag, 0, e)}
+            onClick={(e) => this.handleClick(tag, 0, e)}
           >
             <Avatar
               color={'white'}
@@ -82,7 +82,7 @@ class TagsRenderer extends Component {
         <Chip
           style={styles.chip}
           key={tag}
-          onClick={(e) => this.props.onClick(type, tag, 1, e)}
+          onClick={(e) => this.handleClick(tag, 1, e)}
         >
           <Avatar icon={customIcon} />
           {<FormattedMessage {...messages[selectedArray[tag]]} />}
@@ -94,11 +94,10 @@ class TagsRenderer extends Component {
 }
 
 TagsRenderer.propTypes = {
-  // onClick: PropTypes.func.isRequired,
   tags: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
   selected: PropTypes.instanceOf(List),
-  onClick: PropTypes.func
+  onClick: PropTypes.func 
 }
 
 export default muiThemeable()(TagsRenderer)

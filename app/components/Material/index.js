@@ -89,7 +89,7 @@ class Material extends Component {
 
     return (
       <div>
-        <H2 primary ucase>{material.get('title')}</H2>
+        <H2 primary ucase>{title}</H2>
         <div style={styles.snippet}>
           <ImageSlider images={images} id={idMaterial} style={styles.slides} />
           <div style={styles.desc}>

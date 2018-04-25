@@ -116,7 +116,7 @@ class App extends Component {
   getStyles() {
     const styles = {
       LoadingBar: {
-        position: 'fixed',
+        position: 'relative',
         height: 2,
         backgroundColor: 'rgb(0, 188, 212)',
         top: 64,

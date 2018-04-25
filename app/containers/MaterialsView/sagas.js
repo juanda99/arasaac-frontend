@@ -11,13 +11,6 @@ function* materialsGetData(action) {
 
     const response = yield call(api[action.type], action.payload)
     yield put(materials.success(locale, searchText, response))
-    /*
-    const t0 = performance.now()
-    // processs
-    const t1 = performance.now()
-    let tiempo = (t1 - t0) / 1000
-    console.log('Ha llevado ' + tiempo.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 4}) + ' segundos.')
-    */
   } catch (error) {
     yield put(materials.failure(error.message))
   } finally {

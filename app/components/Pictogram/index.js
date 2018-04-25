@@ -5,21 +5,10 @@ import H3 from 'components/H3'
 import ShareBar from 'components/ShareBar'
 import Divider from 'material-ui/Divider'
 import FlatButton from 'material-ui/FlatButton'
-import Chip from 'material-ui/Chip'
-import Avatar from 'material-ui/Avatar'
-import ActivityIcon from 'material-ui/svg-icons/action/input'
-import AreaIcon from 'material-ui/svg-icons/social/school'
-import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
-import Download from 'material-ui/svg-icons/action/get-app'
 import Person from 'material-ui/svg-icons/social/person'
 import { FormattedMessage } from 'react-intl'
-import RaisedButton from 'material-ui/RaisedButton'
-import ImageSlider from 'components/ImageSlider'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import P from 'components/P'
-import activity from 'data/activity'
-import area from 'data/area'
-import { MATERIALS_URL } from 'services/config'
 import messages from './messages'
 
 const styles = {
@@ -28,14 +17,6 @@ const styles = {
     width: '500px',
     padding: '2rem',
     textAlign: 'justify'
-  },
-  chip: {
-    margin: '4px'
-  },
-  slides: {
-    flexGrow: 1,
-    width: '600px',
-    position: 'relative'
   },
   snippet: {
     display: 'flex',
@@ -59,27 +40,17 @@ class Material extends Component {
   handleChange = (event, value) => { this.setState({ language: value }) }
 
   render() {
-    const { material, locale } = this.props
-
-    const zipFile = material.getIn(['file', locale]) || material.getIn(['file', 'xx'])
-    const authors = material.get('authors')
-    const idMaterial = material.get('idMaterial')
-    const title = material.get('title')
+    const { pictogram } = this.props
+    const { desc, authors } = pictogram
+    const title = pictogram.get('title')
 
 
     return (
       <div>
-        <H2 primary ucase>{material.get('title')}</H2>
+        <H2 primary ucase>{title}</H2>
         <div style={styles.snippet}>
-          <ImageSlider images={images} id={idMaterial} style={styles.slides} />
           <div style={styles.desc}>
-            <P>{material.get('desc')}</P>
-            <p style={{ textAlign: 'center' }}>
-              <a href={`${MATERIALS_URL}/${idMaterial}/${zipFile}`}>
-                <RaisedButton label={<FormattedMessage {...messages.zipFileLabel} />} primary={true} style={styles.button} />
-              </a>
-            </p>
-
+            <P>{desc}</P>
           </div>
         </div>
         <H3 primary={true}>{<FormattedMessage {...messages.shareMaterial} />}</H3>
@@ -87,30 +58,9 @@ class Material extends Component {
         <p>
           <ShareBar shareUrl={window.location.href} title={title} image={'http://www.arasaac.org/images/arasaac_titulo.png'} />
         </p>
-        <H3 primary={true}>{<FormattedMessage {...messages.activities} />}</H3>
         <Divider />
-        <div style={styles.wrapper}>
-          {activityTags}
-        </div>
-        <H3 primary={true}>{<FormattedMessage {...messages.areas} />}</H3>
-        <Divider />
-        <div style={styles.wrapper}>
-          {areaTags}
-        </div>
         <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
         <Divider />
-        <RadioButtonGroup name='languages' defaultSelected={this.state.language} onChange={this.handleChange}>
-          {languages.map((language) =>
-            <RadioButton
-              key={language}
-              value={language}
-              label={<FormattedMessage {...messages[language]} />}
-              style={styles.radioButton}
-            />
-          )}
-        </RadioButtonGroup>
-
-
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />
         {authors.valueSeq().map((author) =>
@@ -124,17 +74,6 @@ class Material extends Component {
             />
           </P>
         )}
-        <H3 primary={true}>{<FormattedMessage {...messages.files} />}</H3>
-        <Divider />
-        {files.map((file) =>
-          <FlatButton
-            key={file}
-            label={file}
-            labelPosition='after'
-            icon={<Download />}
-            href={`${MATERIALS_URL}/${idMaterial}/${file}`}
-          />
-        )}
       </div>
     )
   }
@@ -143,7 +82,7 @@ class Material extends Component {
 
 Material.propTypes = {
   // onClick: PropTypes.func.isRequired,
-  material: PropTypes.object.isRequired,
+  pictogram: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired
 }
 
