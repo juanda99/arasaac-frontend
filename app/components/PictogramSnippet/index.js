@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import ReadMore from 'components/ReadMore'
 import H2 from 'components/H2'
 import { Link } from 'react-router'
+import { PICTOGRAMS_URL } from 'services/config'
 import Item from './Item'
 
 const styles = {
@@ -35,12 +36,9 @@ class PictogramSnippet extends PureComponent {
       <Item>
         <div style={styles.snippet}>
           <div style={styles.snippetText}>
-            <Link to={`/materials/${pictogram.idMaterial}`}>
-              <H2 primary ucase>{pictogram.title}</H2>
+            <Link to={`/pictograms/${pictogram.idPictogram}`}>
+              <img src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} />
             </Link>
-            <ReadMore style={{ textAlign: 'justify' }}>
-              {pictogram.desc}
-            </ReadMore>
             {showLabels ?
               <div style={styles.wrapper}> Tags would be here </div>
               : ''
