@@ -1,72 +1,65 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import PictogramSnippet from 'components/PictogramSnippet'
 import { Map } from 'immutable'
-import Pagination from 'material-ui-pagination'
+import { PICTOGRAMS_URL } from 'services/config'
+import Item from './Item'
 
-const itemsPerPage = 10 /* number of items per page */
-const display = 10 /* number of pages to see in the paginator */
+const Masonry = require('react-masonry-component')
+
+
+
+const masonryOptions = {
+  transitionDuration: '1s'
+}
+
+const styles = {
+  masonry: {
+    listStyleType: 'none',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around'
+  }
+}
 
 export class PictogramList extends PureComponent {
 
-  state = {
-    currentPage: 1
-  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.pictograms !== this.props.pictograms) {
-      // reset pagination, as data has changed:
-      this.setState({ currentPage: 1 })
     }
   }
 
-  setTopRef = (element) => {
-    this.topPosition = element
-  }
-
-  handlePageClick = (currentPage) => {
-    this.setState({ currentPage })
-    this.topPosition.scrollIntoView()
-    // window.scroll(0, 0)
-  }
 
   render() {
     const { locale, pictograms, filtersMap, setFilterItems } = this.props
-    const { currentPage } = this.state
-    const total = Math.ceil(pictograms.length / itemsPerPage)
-    const offset = Math.ceil((currentPage - 1) * itemsPerPage)
-    const visiblePictograms = this.props.pictograms.slice(offset, offset + itemsPerPage)
-    const pagination = (pictograms.length >= itemsPerPage) ?
-      (<Pagination
-        total={total}
-        current={currentPage}
-        display={display}
-        onChange={this.handlePageClick}
-      />)
-      : null
+    const renderPictograms = pictograms.map((pictogram) => (
+      <li style={{ margin: 5 }} key={pictogram.id} className='image-element-class'>
+        <Item>
+          <img src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt='prueba' style={{ width: '100%', height: 'auto' }} />
+        </Item>
+      </li>
+    )
+    )
+
     return (
-      <div ref={this.setTopRef}>
-        {pagination}
-        <ul>
-          { visiblePictograms.map((pictogram) =>
-            <PictogramSnippet
-              key={pictogram.idPictogram}
-              pictogram={pictogram}
-              locale={locale}
-              filtersMap={filtersMap}
-              setFilterItems={setFilterItems}
-              showLabels={this.props.showLabels}
-            />
-          )}
-        </ul>
-        {pagination}
+      <div>
+        <Masonry
+          className={'my-gallery-class'} // default ''
+          elementType={'ul'} // default 'div'
+          options={masonryOptions} // default {}
+          disableImagesLoaded={false} // default false
+          onClick={this.handleClick}
+          style={styles.masonry}
+        >
+          {renderPictograms}
+        </Masonry>
       </div>
     )
   }
 }
 
 PictogramList.propTypes = {
-  pictograms: PropTypes.arrayOf(PropTypes.object),
+  pictograms: PropTypes.arrayOf(PropTypes.object).isRequired,
   // with optional parameters in the router is slower in my tests ????
   // rollback from https://github.com/react-boilerplate/react-boilerplate/issues/1748
   locale: PropTypes.string,
