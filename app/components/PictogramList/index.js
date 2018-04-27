@@ -33,8 +33,8 @@ export class PictogramList extends PureComponent {
   render() {
     const { locale, pictograms, filtersMap, setFilterItems } = this.props
     const renderPictograms = pictograms.map((pictogram) => (
-      <li style={{ margin: 5 }} key={pictogram.id} className='image-element-class'>
-        <Item>
+      <li style={{ margin: 5 }} key={pictogram.idPictogram} className='image-element-class'>
+        <Item url={`/pictograms/${pictogram.idPictogram}`}>
           <img src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt='prueba' style={{ width: '100%', height: 'auto' }} />
         </Item>
       </li>

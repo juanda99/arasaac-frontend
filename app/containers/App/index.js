@@ -147,6 +147,10 @@ class App extends Component {
         title = <FormattedMessage {...messages.materials} />
         docked = width === LARGE
         break
+      case /pictograms/.test(url):
+        title = <FormattedMessage {...messages.pictograms} />
+        docked = width === LARGE
+        break
       case /onlinetools/.test(url):
         title = <FormattedMessage {...messages.onlineTools} />
         docked = width === LARGE
