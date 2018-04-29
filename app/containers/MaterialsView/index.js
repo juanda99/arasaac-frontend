@@ -11,11 +11,8 @@ import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
 import Toggle from 'material-ui/Toggle'
-import { Tabs, Tab } from 'material-ui/Tabs'
-import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
-import SearchIcon from 'material-ui/svg-icons/action/search'
+import TabsHeader from 'components/TabsHeader'
 import muiThemeable from 'material-ui/styles/muiThemeable'
-import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
 import Divider from 'material-ui/Divider'
 import SwipeableViews from 'react-swipeable-views'
 import { Map } from 'immutable'
@@ -23,19 +20,19 @@ import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
 import P from 'components/P'
 import { withRouter } from 'react-router'
+import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ActionButtons from './ActionButtons'
 import {
-  filtersSelector,
-  showFiltersSelector,
-  localeSelector,
-  loadingSelector,
-  searchResultsSelector,
-  visibleMaterialsSelector,
-  newMaterialsSelector
+  makeFiltersSelector,
+  makeShowFiltersSelector,
+  makeLoadingSelector,
+  makeSearchResultsSelector,
+  makeVisibleMaterialsSelector,
+  makeNewMaterialsSelector
   } from './selectors'
+
 import { materials, newMaterials, toggleShowFilter, setFilterItems } from './actions'
 import messages from './messages'
-
 
 const styles = {
   searchBar: {
@@ -61,10 +58,11 @@ class MaterialsView extends PureComponent {
   }
 
   componentDidMount() {
+    const { requestMaterials, requestNewMaterials, locale } = this.props
     if (this.props.params.searchText && !this.props.searchResults) {
-      this.props.requestMaterials(this.props.locale, this.props.params.searchText)
+      requestMaterials(locale, this.props.params.searchText)
     }
-    this.props.requestNewMaterials()
+    requestNewMaterials()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -125,7 +123,6 @@ class MaterialsView extends PureComponent {
             locale={locale}
             filtersMap={filters}
             setFilterItems={this.props.setFilterItems}
-            filtersData={filtersData}
             showLabels={visibleLabels}
           />
         </div>
@@ -135,11 +132,7 @@ class MaterialsView extends PureComponent {
     return (
       <div>
         <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
-        <Tabs onChange={this.handleChange} value={slideIndex} >
-          <Tab label='Buscar' icon={<SearchIcon />} value={0} />
-          <Tab label='Novedades' icon={<NewReleasesIcon />} value={1} />
-          <Tab label='Favoritos' icon={<FavoriteIcon />} value={2} />
-        </Tabs>
+        <TabsHeader onChange={this.handleChange} value={slideIndex} />
         <Divider />
         <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange} >
           <div>
@@ -229,7 +222,7 @@ MaterialsView.propTypes = {
   showFilter: PropTypes.bool,
   setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
-  newMaterialsList: PropTypes.arrayOf(PropTypes.object),
+  newMaterialsList: PropTypes.array.isRequired,
   // Injected by React Router
   router: PropTypes.any.isRequired,
   locale: PropTypes.string.isRequired,
@@ -239,14 +232,14 @@ MaterialsView.propTypes = {
 
 
 const mapStateToProps = (state, ownProps) => ({
-  filters: filtersSelector(state),
-  showFilter: showFiltersSelector(state),
-  locale: localeSelector(state),
-  loading: loadingSelector(state),
-  searchResults: searchResultsSelector(state, ownProps),
-  visibleMaterials: visibleMaterialsSelector(state, ownProps),
+  filters: makeFiltersSelector()(state),
+  showFilter: makeShowFiltersSelector()(state),
+  locale: makeSelectLocale()(state),
+  loading: makeLoadingSelector()(state),
+  searchResults: makeSearchResultsSelector()(state, ownProps),
+  visibleMaterials: makeVisibleMaterialsSelector()(state, ownProps),
   filtersData: state.getIn(['configuration', 'filtersData']),
-  newMaterialsList: newMaterialsSelector(state)
+  newMaterialsList: makeNewMaterialsSelector()(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({

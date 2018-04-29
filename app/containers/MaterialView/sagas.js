@@ -7,18 +7,10 @@ import { MATERIAL, material } from './actions'
 
 function* materialGetData(action) {
   try {
-    const { idMaterial } = action.payload
     yield put(showLoading())
-    const response = yield call(api.fetchMaterial, idMaterial)
+    const response = yield call(api[action.type], action.payload)
     yield put(material.success(response))
     yield put(hideLoading())
-    /*
-    const t0 = performance.now()
-    // processs
-    const t1 = performance.now()
-    let tiempo = (t1 - t0) / 1000
-    console.log('Ha llevado ' + tiempo.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 4}) + ' segundos.')
-    */
   } catch (error) {
     yield put(hideLoading())
     yield put(material.failure(error.message))

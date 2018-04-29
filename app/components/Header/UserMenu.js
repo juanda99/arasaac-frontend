@@ -4,17 +4,19 @@ import IconButton from 'material-ui/IconButton'
 import IconMenu from 'material-ui/IconMenu'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import MenuItem from 'material-ui/MenuItem'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 import { FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
+import messages from './messages'
 
 /* eslint-disable jsx-a11y/anchor-has-content */
 
-import messages from './messages'
-const UserMenu = ({ isTranslating, changeLocale }) => (
+
+const UserMenu = ({ isTranslating, changeLocale, muiTheme, signout }) => (
   <span>
     <IconMenu
       iconButtonElement={
-        <IconButton><MoreVertIcon color={'white'} /></IconButton>
+        <IconButton><MoreVertIcon color={muiTheme.appBar.textColor} /></IconButton>
       }
       targetOrigin={{ horizontal: 'right', vertical: 'top' }}
       anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
@@ -25,16 +27,18 @@ const UserMenu = ({ isTranslating, changeLocale }) => (
       {(!isTranslating)
       ? <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} onClick={changeLocale} />
       : <MenuItem primaryText={<FormattedMessage {...messages.stopTranslateArasaac} />} onClick={changeLocale} /> }
-      <MenuItem primaryText={<FormattedMessage {...messages.signout} />} href='/signout' />
-      <MenuItem primaryText={<FormattedMessage {...messages.signin} />} containerElement={<Link to='/signin' />} />
-      <MenuItem primaryText={<FormattedMessage {...messages.register} />} containerElement={<Link to='/register' />} />
+      <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} containerElement={<Link to='/uploadmaterial' />} />
+      <MenuItem primaryText={<FormattedMessage {...messages.signout} />} onClick={signout} />
+
     </IconMenu>
   </span>
 )
 
 UserMenu.propTypes = {
   isTranslating: PropTypes.bool.isRequired,
-  changeLocale: PropTypes.func.isRequired
+  changeLocale: PropTypes.func.isRequired,
+  signout: PropTypes.func.isRequired,
+  muiTheme: PropTypes.object.isRequired
 }
 
-export default UserMenu
+export default muiThemeable()(UserMenu)

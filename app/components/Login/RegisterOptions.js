@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import EmailIcon from 'material-ui/svg-icons/communication/email'
 import { Link } from 'react-router'
 import { FormattedMessage } from 'react-intl'
+import FlatButton from 'material-ui/FlatButton'
 import Div from 'components/Div'
 import messages from './messages'
 
@@ -14,11 +15,6 @@ const styles = {
   },
   signupButton: {
     width: '100%'
-  },
-  signin: {
-    position: 'absolute',
-    right: 0,
-    bottom: 10
   }
 }
 
@@ -41,16 +37,9 @@ const RegisterOptions = ({ onClick }) => (
     <Div>
       <p>{<FormattedMessage {...messages.agreement} values={{ useConditions, privacyPolicy }} /> }</p>
     </Div>
-    <Div>
-      <p style={styles.text}>
-        {<FormattedMessage {...messages.offerSignin} />}
-      </p>
+    <Div top={2}>
       <Link to='/signin'>
-        <RaisedButton
-          style={styles.signin}
-          label={<FormattedMessage {...messages.signin} />}
-          secondary={true}
-        />
+        <FlatButton label={<FormattedMessage {...messages.offerSignin} />} secondary={true} fullWidth={true} />
       </Link>
     </Div>
 

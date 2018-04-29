@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { Link } from 'react-router'
 import { reduxForm, Field, propTypes } from 'redux-form/immutable'
 import { TextField } from 'redux-form-material-ui'
+import FlatButton from 'material-ui/FlatButton'
 import Div from 'components/Div'
 import messages from './messages'
 import { required, email } from './validate'
@@ -19,11 +20,6 @@ const styles = {
     width: '100%',
     marginTop: 10,
     marginBottom: 10
-  },
-  signinButton: {
-    position: 'absolute',
-    right: 0,
-    bottom: 10
   }
 }
 
@@ -56,24 +52,6 @@ let RegisterForm = class RegisterForm extends Component {
               hintText='What is your name?'
               value=''
               floatingLabelText='Name'
-              style={{ width: '100%' }}
-              validate={required}
-            />
-            <Field
-              name='surname'
-              component={TextField}
-              hintText='What is your surname?'
-              value=''
-              floatingLabelText='Surname'
-              style={{ width: '100%' }}
-              validate={required}
-            />
-            <Field
-              name='username'
-              component={TextField}
-              hintText='Choose a username'
-              value=''
-              floatingLabelText='Username'
               style={{ width: '100%' }}
               validate={required}
             />
@@ -123,17 +101,7 @@ let RegisterForm = class RegisterForm extends Component {
         </Div>
         <Div top={2}>
           <Link to='/signin'>
-            <p>
-              {<FormattedMessage {...messages.offerSignin} />}
-            </p>
-          </Link>
-          <Link to='/signin'>
-            <RaisedButton
-              style={styles.signinButton}
-              label={<FormattedMessage {...messages.signin} />}
-              secondary={true}
-              // onTouchTap={this.handleSubmit}
-            />
+            <FlatButton label={<FormattedMessage {...messages.offerSignin} />} secondary={true} fullWidth={true} />
           </Link>
         </Div>
       </div>

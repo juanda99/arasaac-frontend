@@ -5,11 +5,14 @@
 */
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Field, FieldArray, reduxForm, propTypes } from 'redux-form/immutable'
 import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper'
 import RaisedButton from 'material-ui/RaisedButton'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import H3 from 'components/H3'
+import { Map } from 'immutable'
+import filterMessages from 'components/Filters/messages'
 import RenderAuthors from './RenderAuthors'
 import RenderDropzoneInput from './RenderDropzoneInput'
 import RenderChip from './RenderChip'
@@ -38,17 +41,21 @@ class MaterialForm extends React.Component {
   }
 
   render() {
-    const { handleSubmit, pristine, submitting, reset } = this.props
+    const { handleSubmit, pristine, submitting, reset, activities, areas, intl } = this.props
     const { stepIndex } = this.state
-
+    const { formatMessage } = intl
+    const listActivities = [...activities.entries()].map(
+      (selectItem) => ({ value: parseInt(selectItem[0], 10), text: formatMessage(filterMessages[selectItem[1]]) })
+    )
+    const listAreas = [...areas.entries()].map(
+      (selectItem) => ({ value: parseInt(selectItem[0], 10), text: formatMessage(filterMessages[selectItem[1]]) })
+    )
+    const sortListActivities = listActivities.sort((a, b) => a.text.localeCompare(b.text))
+    const sortListAreas = listAreas.sort((a, b) => a.text.localeCompare(b.text))
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <Stepper
-            activeStep={stepIndex}
-            linear={false}
-            orientation='vertical'
-          >
+          <Stepper activeStep={stepIndex} linear={false} orientation='vertical'>
             <Step>
               <StepButton onClick={() => this.setState({ stepIndex: 0 })}>
                 <H3><FormattedMessage {...messages.authors} /></H3>
@@ -68,14 +75,14 @@ class MaterialForm extends React.Component {
                   component={RenderChip}
                   hintText={<FormattedMessage {...messages.areasHint} />}
                   floatingLabelText={<FormattedMessage {...messages.areas} />}
-                  dataSource={['perro', 'casa', 'perra']}
+                  dataSource={sortListAreas}
                 />
                 <Field
-                  name='actividades'
+                  name='activities'
                   component={RenderChip}
                   hintText={<FormattedMessage {...messages.activitiesHint} />}
                   floatingLabelText={<FormattedMessage {...messages.activities} />}
-                  dataSource={['perro', 'casa', 'perra']}
+                  dataSource={sortListActivities}
                 />
               </StepContent>
             </Step>
@@ -88,9 +95,7 @@ class MaterialForm extends React.Component {
                 <Field
                   name='files'
                   component={RenderDropzoneInput}
-                  props={{
-                    hint: <FormattedMessage {...messages.filesUpload} />
-                  }}
+                  props={{ hint: <FormattedMessage {...messages.filesUpload} /> }}
                 />
               </StepContent>
             </Step>
@@ -100,7 +105,7 @@ class MaterialForm extends React.Component {
               </StepButton>
               <StepContent>
                 <p><FormattedMessage {...messages.screenshotsDesc} /></p>
-                <FieldArray
+                <Field
                   name='screenshots'
                   component={RenderDropzoneInput}
                   props={{ hint: <FormattedMessage {...messages.screenshotsUpload} /> }}
@@ -117,17 +122,9 @@ class MaterialForm extends React.Component {
               </StepContent>
             </Step>
 
-            <Step>
-              <StepButton onClick={() => this.setState({ stepIndex: 5 })}>
-                <H3><FormattedMessage {...messages.submit} /></H3>
-              </StepButton>
-              <StepContent>
-                <p>Almost finish! Click submit button to send the material. We will email you when it is published</p>
-                <RaisedButton type='submit' disabled={pristine || submitting} label='Enviar' primary={true} />
-                <RaisedButton label='Clear values' disabled={pristine || submitting} onClick={reset} />
-              </StepContent>
-            </Step>
           </Stepper>
+          <RaisedButton type='submit' disabled={pristine || submitting} label='Enviar' primary={true} />
+          <RaisedButton label='Clear values' disabled={pristine || submitting} onClick={reset} />
         </form>
       </div>
     )
@@ -135,9 +132,13 @@ class MaterialForm extends React.Component {
 }
 
 MaterialForm.propTypes = {
-  ...propTypes
+  ...propTypes,
+  activities: PropTypes.instanceOf(Map),
+  areas: PropTypes.instanceOf(Map),
+  languages: PropTypes.instanceOf(Map),
+  intl: intlShape.isRequired
 }
 
 export default reduxForm({
   form: 'MaterialForm'
-})(MaterialForm)
+})(injectIntl(MaterialForm))

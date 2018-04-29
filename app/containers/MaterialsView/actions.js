@@ -7,11 +7,11 @@
 import { createRequestTypes, action } from 'utils/actions'
 
 // constants
-export const MATERIALS = createRequestTypes('app/MaterialsView/MATERIALS')
-export const NEW_MATERIALS = createRequestTypes('app/MaterialsView/NEW_MATERIALS')
-export const SHOW_FILTERS = 'app/MaterialsView/SHOW_FILTERS'
-export const ENABLE_FILTER = 'app/MaterialsView/ENABLE_FILTER'
-export const SET_FILTER_ITEMS = 'app/MaterialsView/SET_FILTER_ITEMS'
+export const MATERIALS = createRequestTypes('MATERIALS')
+export const NEW_MATERIALS = createRequestTypes('NEW_MATERIALS')
+export const SHOW_FILTERS = 'MATERIALS_SHOW_FILTERS'
+export const ENABLE_FILTER = 'MATERIALS_ENABLE_FILTER'
+export const SET_FILTER_ITEMS = 'MATERIALS_SET_FILTER_ITEMS'
 
 // actions: materials.request/success/failure
 export const materials = {

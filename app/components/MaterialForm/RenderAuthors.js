@@ -7,6 +7,8 @@ import { FormattedMessage } from 'react-intl'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import PersonAdd from 'material-ui/svg-icons/social/person-add'
 import Delete from 'material-ui/svg-icons/action/delete'
+import { Map } from 'immutable'
+import { required, email } from 'redux-form-validators'
 import messages from './messages'
 
 const styles = {
@@ -38,7 +40,7 @@ const surnameList = [
 ]
 
 const RenderAuthors = ({ fields }) => {
-  const addAuthorField = () => { fields.push({}) }
+  const addAuthorField = () => { fields.push(new Map()) }
   if (fields.length === 0) {
     addAuthorField()
   }
@@ -47,7 +49,7 @@ const RenderAuthors = ({ fields }) => {
       {fields.map((member, index) =>
         <li key={index} style={styles.authorsList}>
           <Field
-            name={`${member}.firstName`}
+            name={`${member}.name`}
             type='text'
             component={AutoComplete}
             dataSource={nameList}
@@ -56,18 +58,9 @@ const RenderAuthors = ({ fields }) => {
             openOnFocus={true}
             filter={MUIAutoComplete.fuzzyFilter}
             style={styles.field}
+            validate={[required(), email()]}
           />
-          <Field
-            name={`${member}.lastName`}
-            type='text'
-            component={AutoComplete}
-            dataSource={surnameList}
-            hintText={<FormattedMessage {...messages.surnameHint} />}
-            floatingLabelText={<FormattedMessage {...messages.surname} />}
-            openOnFocus={true}
-            filter={MUIAutoComplete.fuzzyFilter}
-            style={styles.field}
-          />
+
           <div style={styles.icons}>
             <FloatingActionButton mini={true} style={styles.icon} onClick={() => fields.remove(index)} >
               <Delete />

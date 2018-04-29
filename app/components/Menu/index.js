@@ -15,6 +15,9 @@ import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import PrizesIcon from 'material-ui/svg-icons/action/card-membership'
 import ToolsIcon from 'material-ui/svg-icons/action/build'
+import AppsIcon from 'material-ui/svg-icons/navigation/apps'
+import AccountIcon from 'material-ui/svg-icons/social/person-add'
+import InfoIcon from 'material-ui/svg-icons/action/info'
 import PictogramsIcon from 'material-ui/svg-icons/image/collections'
 import PeopleIcon from 'material-ui/svg-icons/social/people'
 import SoftwareIcon from 'material-ui/svg-icons/action/important-devices'
@@ -66,7 +69,7 @@ class Menu extends Component {
       open,
       muiTheme
     } = this.props
-    console.log(muiTheme.palette)
+
 
     return (
       <Drawer
@@ -94,11 +97,6 @@ class Menu extends Component {
                 value='/pictograms/search'
                 primaryText={<FormattedMessage {...messages.searchPictograms} />}
                 leftIcon={<SearchIcon />}
-              />,
-              <ListItem
-                value='/developers/api'
-                primaryText={<FormattedMessage {...messages.api} />}
-                leftIcon={<ApiIcon />}
               />,
               <ListItem
                 value='/pictograms/catalogs'
@@ -129,7 +127,7 @@ class Menu extends Component {
             id='lstonlinetools'
             primaryText={<FormattedMessage {...messages.onlineTools} />}
             primaryTogglesNestedList={true}
-            leftIcon={<ToolsIcon />}
+            leftIcon={<AppsIcon />}
             nestedItems={[
               <ListItem
                 value='/onlinetools/animations-maker'
@@ -170,6 +168,29 @@ class Menu extends Component {
             value='/software'
             primaryText={<FormattedMessage {...messages.software} />}
             leftIcon={<SoftwareIcon />}
+          />
+          <ListItem
+            id='lstdevelopers'
+            primaryText={<FormattedMessage {...messages.dev} />}
+            primaryTogglesNestedList={true}
+            leftIcon={<ToolsIcon />}
+            nestedItems={[
+              <ListItem
+                value='/developers'
+                primaryText={<FormattedMessage {...messages.devInfo} />}
+                leftIcon={<InfoIcon />}
+              />,
+              <ListItem
+                value='/developers/api'
+                primaryText={<FormattedMessage {...messages.api} />}
+                leftIcon={<ApiIcon />}
+              />,
+              <ListItem
+                value='/developers/accounts'
+                primaryText={<FormattedMessage {...messages.devAccount} />}
+                leftIcon={<AccountIcon />}
+              />
+            ]}
           />
           <ListItem
             id='lstsettings'

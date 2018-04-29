@@ -10,7 +10,7 @@ import { createRequestTypes, action } from 'utils/actions'
 export const SIGNUP = createRequestTypes('SIGNUP')
 
 export const signup = {
-  request: (email, password) => action(SIGNUP.REQUEST, { email, password }),
+  request: ({ name, email, password, company, website }) => action(SIGNUP.REQUEST, { name, email, password, company, website }),
   success: () => action(SIGNUP.SUCCESS),
   failure: (error) => action(SIGNUP.FAILURE, { error })
 }

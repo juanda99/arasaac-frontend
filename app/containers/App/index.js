@@ -31,9 +31,10 @@ import Wrapper from './Wrapper'
 import { connect } from 'react-redux'
 import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
-import withWidth, { LARGE } from 'material-ui/utils/withWidth'
+import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth'
 import { changeLocale, startTranslation, stopTranslation } from 'containers/LanguageProvider/actions'
-
+import { logout } from './actions'
+import { makeSelectHasUser } from './selectors'
 
 class App extends Component {
 
@@ -60,7 +61,7 @@ class App extends Component {
 
   static contextTypes = {
     router: PropTypes.object.isRequired
-  }
+  }// import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 
   state = {
     menuOpen: false,
@@ -115,7 +116,7 @@ class App extends Component {
   getStyles() {
     const styles = {
       LoadingBar: {
-        position: 'fixed',
+        position: 'relative',
         height: 2,
         backgroundColor: 'rgb(0, 188, 212)',
         top: 64,
@@ -130,10 +131,6 @@ class App extends Component {
     let docked = false
     const url = this.props.location.pathname
     switch (true) {
-      case /api/.test(url):
-        title = <FormattedMessage {...messages.api} />
-        docked = width === LARGE
-        break
       case /pictograms\/search/.test(url):
         title = <FormattedMessage {...messages.pictogramsSearch} />
         docked = width === LARGE
@@ -148,6 +145,10 @@ class App extends Component {
         break
       case /materials/.test(url):
         title = <FormattedMessage {...messages.materials} />
+        docked = width === LARGE
+        break
+      case /pictograms/.test(url):
+        title = <FormattedMessage {...messages.pictograms} />
         docked = width === LARGE
         break
       case /onlinetools/.test(url):
@@ -174,6 +175,18 @@ class App extends Component {
         title = <FormattedMessage {...messages.configurationTitle} />
         docked = width === LARGE
         break
+      case /developers\/api/.test(url):
+        title = <FormattedMessage {...messages.api} />
+        docked = width === LARGE
+        break
+      case /developers\/accounts/.test(url):
+        title = <FormattedMessage {...messages.devAccounts} />
+        docked = width === LARGE
+        break
+      case /developers/.test(url):
+        title = <FormattedMessage {...messages.howto} />
+        docked = width === LARGE
+        break
       case /uploadmaterial/.test(url):
         title = <FormattedMessage {...messages.configurationTitle} />
         docked = width === LARGE
@@ -184,8 +197,6 @@ class App extends Component {
         break
       case /settings/.test(url):
         title = <FormattedMessage {...messages.settings} />
-        console.log(width)
-        console.log(LARGE)
         docked = width === LARGE
         break
       case /prizes/.test(url):
@@ -252,7 +263,8 @@ class App extends Component {
       children,
       isAuthenticated,
       width,
-      isTranslating
+      isTranslating,
+      logout
     } = this.props
 
     let {
@@ -280,6 +292,7 @@ class App extends Component {
     const { title, docked } = this.getViewProps(width)
 
     let showMenuIconButton = true
+    let hideIconText = (width === SMALL)
     if (width === LARGE && docked) {
       menuOpen = true
       showMenuIconButton = false
@@ -293,7 +306,8 @@ class App extends Component {
         <Header
           showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
-          changeLocale = {this.handleTranslate} isTranslating = {isTranslating}
+          changeLocale = {this.handleTranslate} signout={logout} isTranslating = {isTranslating}
+          hideIconText={hideIconText}
         />
         <Wrapper id='wrapper' docked={docked}>
           {children}
@@ -311,11 +325,10 @@ class App extends Component {
   }
 }
 const mapStateToProps = (state) => {
+  const auth = state.getIn(['auth', 'isActivating'])
   const locale = state.getIn(['language', 'locale'])
   const isTranslating = locale === 'af'
-  const isAuthenticated = true //state.getIn(['auth', 'token']) && true || false
-  // TODO:
-  // token needs validation!
+  const isAuthenticated = makeSelectHasUser()(state) && true || false
   return({
      isAuthenticated,
      locale,
@@ -323,4 +336,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps, { changeLocale, startTranslation, stopTranslation })(withWidth()(App))
+export default connect(mapStateToProps, { changeLocale, logout, startTranslation, stopTranslation })(withWidth()(App))

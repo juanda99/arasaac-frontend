@@ -1,7 +1,7 @@
 /*
- * Filters Messages
+ * Material Messages
  *
- * This contains all the text for the Filters component.
+ * This contains all the text for the Material component.
  */
 import { defineMessages } from 'react-intl'
 

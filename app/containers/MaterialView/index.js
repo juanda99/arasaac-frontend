@@ -1,9 +1,9 @@
 /*
  *
- * MaterialsView
+ * MaterialView
  *
  */
-import React from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
@@ -15,7 +15,7 @@ import P from 'components/P'
 import { Map } from 'immutable'
 import messages from './messages'
 
-class MaterialView extends React.Component {
+class MaterialView extends PureComponent {
 
   componentDidMount() {
     if (this.props.materialData.isEmpty()) {

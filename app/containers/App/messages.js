@@ -21,6 +21,16 @@ export default defineMessages({
     description: 'Header title',
     defaultMessage: 'Api for developers'
   },
+  devAccounts: {
+    id: 'header.devAccounts',
+    description: 'Header title',
+    defaultMessage: 'Create a dev account'
+  },
+  howto: {
+    id: 'header.howto',
+    description: 'Header title',
+    defaultMessage: 'How-to for developers'
+  },
   catalogs: {
     id: 'header.catalogs',
     description: 'Header title',

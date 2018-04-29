@@ -34,7 +34,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading)
       }
     }, {
-      path: '/pictograms/search(/:searchText)',
+      path: '/pictograms/search',
       name: 'pictogramsView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
@@ -50,6 +50,41 @@ export default function createRoutes(store) {
           injectSagas(sagas.default)
           renderRoute(component)
         })
+        importModules.catch(errorLoading)
+      },
+      childRoutes: [
+        {
+          path: '/pictograms/search/:searchText',
+          name: 'gallery',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('components/PictogramList')
+            ])
+            const renderRoute = loadModule(cb)
+            importModules.then(([component]) => {
+              renderRoute(component)
+            })
+            importModules.catch(errorLoading)
+          }
+        }
+      ]
+    }, {
+      path: '/pictograms/:idPictogram',
+      name: 'pictogramView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/PictogramView/sagas'),
+          import('containers/PictogramView/')
+        ])
+
+        const renderRoute = loadModule(cb)
+        // if reducer is async, render values:  defaultToggled:
+        // state.configuration.filters[ownProps.filter] got undefined!!!
+        importModules.then(([sagas, component]) => {
+          injectSagas(sagas.default)
+          renderRoute(component)
+        })
+
         importModules.catch(errorLoading)
       }
     }, {
@@ -88,12 +123,92 @@ export default function createRoutes(store) {
         }
       ]
     }, {
+      path: '/news/upload',
+      onEnter(nextState, replace, callback) {
+        // onEnter gets called when we visit a route
+        // childRoute changes do not trigger onEnter, which is a desired behavior
+        // Prevent saga reinjection if they are running
+        if (this.loadedSagas) {
+          callback()
+          return
+        }
+
+        // Inject sagas as usual
+        const importModules = System.import('containers/UploadNewsView/sagas')
+
+        importModules.then((sagas) => {
+          this.loadedSagas = injectSagas(sagas.default)
+          callback()
+        })
+
+        importModules.catch(errorLoading)
+      },
+      onLeave() {
+        // onLeave gets called when we leave the route
+        // Cancel the sagas if they are running
+        if (this.loadedSagas) {
+          this.loadedSagas.forEach((saga) => saga.cancel())
+          delete this.loadedSagas
+        }
+      },
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/UploadNewsView'),
+          System.import('containers/UploadNewsView/reducer')
+        ])
+
+        const renderRoute = loadModule(cb)
+
+        importModules.then(([component, reducer]) => {
+          injectReducer('uploadNewsView', reducer.default)
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      }
+    }, {
       path: '/materials/upload',
-      name: 'uploadMaterialView',
-      getComponent(location, cb) {
-        import('containers/UploadMaterialView')
-          .then(loadModule(cb))
-          .catch(errorLoading)
+      onEnter(nextState, replace, callback) {
+        // onEnter gets called when we visit a route
+        // childRoute changes do not trigger onEnter, which is a desired behavior
+        // Prevent saga reinjection if they are running
+        if (this.loadedSagas) {
+          callback()
+          return
+        }
+
+        // Inject sagas as usual
+        const importModules = System.import('containers/UploadMaterialView/sagas')
+
+        importModules.then((sagas) => {
+          this.loadedSagas = injectSagas(sagas.default)
+          callback()
+        })
+
+        importModules.catch(errorLoading)
+      },
+      onLeave() {
+        // onLeave gets called when we leave the route
+        // Cancel the sagas if they are running
+        if (this.loadedSagas) {
+          this.loadedSagas.forEach((saga) => saga.cancel())
+          delete this.loadedSagas
+        }
+      },
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/UploadMaterialView'),
+          System.import('containers/UploadMaterialView/reducer')
+        ])
+
+        const renderRoute = loadModule(cb)
+
+        importModules.then(([component, reducer]) => {
+          injectReducer('uploadMaterialView', reducer.default)
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
       }
     }, {
       path: '/materials/:idMaterial',
@@ -144,6 +259,23 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
+      path: '/developers',
+      name: 'DevelopersView',
+      getComponent(location, cb) {
+        import('containers/DevelopersView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    }, {
+      path: '/developers/accounts',
+      name: 'DevAccountView',
+      getComponent(location, cb) {
+        import('containers/DevAccountView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+
+    }, {
       path: '/developers/api',
       name: 'ApiView',
       getComponent(location, cb) {
@@ -152,20 +284,28 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     }, {
+      path: '/profile',
+      name: 'ProfileView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/ProfileView')
+        ])
+        const renderRoute = loadModule(cb)
+        importModules.then(([component]) => {
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      }
+    }, {
       path: '/signin',
       name: 'LoginView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/LoginView/reducer'),
-          // import('containers/LoginView/sagas'),
           import('containers/LoginView')
         ])
-
         const renderRoute = loadModule(cb)
-
-        importModules.then(([reducer, component]) => {
-          injectReducer('LoginView', reducer.default)
-          // injectSagas(sagas.default)
+        importModules.then(([component]) => {
           renderRoute(component)
         })
 
@@ -180,15 +320,12 @@ export default function createRoutes(store) {
           import('containers/SignupView/sagas'),
           import('containers/SignupView')
         ])
-
         const renderRoute = loadModule(cb)
-
         importModules.then(([reducer, sagas, component]) => {
           injectReducer('register', reducer.default)
           injectSagas(sagas.default)
           renderRoute(component)
         })
-
         importModules.catch(errorLoading)
       }
     }, {

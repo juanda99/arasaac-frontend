@@ -1,47 +1,83 @@
+import { denormalize } from 'normalizr'
 import { createSelector } from 'reselect'
+import { searchPictogramSchema } from 'services/schemas'
+import { getFilteredItems } from 'utils'
+import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 
-/**
- * Direct selector to the pictogramsView state domain
- */
-const selectPictogramsViewDomain = () => (state) => state.get('pictogramsView')
+export const selectPictogramsViewDomain = (state) => state.get('pictogramsView')
 
-/**
- * Other specific selectors
- */
-
-
-/**
- * Default selector used by PictogramsView
- */
-
-const selectPictogramsView = () => createSelector(
-  selectPictogramsViewDomain(),
-  (substate) => substate.toJS()
+export const makeLoadingSelector = () => createSelector(
+  selectPictogramsViewDomain,
+  (substate) => substate.get('loading')
 )
 
-const selectShowFilter = () => createSelector(
-  selectPictogramsViewDomain(),
+const makeKeywordsSelector = () => createSelector(
+  selectPictogramsViewDomain,
+  (substate) => substate.get('words')
+)
+
+export const makeKeywordsSelectorByLocale = () => createSelector(
+  makeKeywordsSelector(), makeSelectLocale(),
+  (substate, locale) => substate.get(locale)
+)
+
+export const makeShowFiltersSelector = () => createSelector(
+  selectPictogramsViewDomain,
   (substate) => substate.get('showFilter')
 )
 
-const selectPictogramsList = () => createSelector(
-  selectPictogramsViewDomain(),
+export const makeFiltersSelector = () => createSelector(
+  selectPictogramsViewDomain,
+  (substate) => substate.get('filters')
+)
+
+const makePictogramsSelector = () => createSelector(
+  selectPictogramsViewDomain,
   (substate) => substate.get('pictograms')
 )
 
-
-const selectSearchKey = () => createSelector(
-  selectPictogramsViewDomain(),
+const makeSearchSelector = () => createSelector(
+  selectPictogramsViewDomain,
   (substate) => substate.get('search')
 )
 
-const selectPictogramsBySearchKey = () => createSelector(
-  selectPictogramsList(),
-  selectSearchKey(),
-  (pictogramsList, searchKey) => (searchKey ? pictogramsList.get(searchKey) : [])
+const makeSearchTextSelector = () => (_, ownProps) => ownProps.params.searchText
+
+export const makeSearchResultsSelector = () => createSelector(
+  makeSearchSelector(), makeSelectLocale(), makeSearchTextSelector(), (pictograms, locale, searchText) => (
+    pictograms.getIn([locale, searchText])
+  )
 )
 
-export default selectPictogramsView
-export {
-  selectPictogramsViewDomain, selectShowFilter, selectPictogramsList, selectSearchKey, selectPictogramsBySearchKey
-}
+const makeSearchNewPictogramsSelector = () => createSelector(
+  selectPictogramsViewDomain,
+  (substate) => substate.get('newPictograms')
+)
+
+const makeEntitiesSelector = () => createSelector(
+  makePictogramsSelector(),
+  (pictograms) => {
+    const entities = {}
+    entities.pictograms = pictograms.toJS()
+    return entities
+  }
+)
+
+export const makeVisiblePictogramsSelector = () => createSelector(
+  makeSearchResultsSelector(), makeEntitiesSelector(), makeFiltersSelector(), (searchData, entities, filters) => {
+    /* searchData could be undefined */
+    if (searchData == null) return []
+    const pictogramList = denormalize(searchData, searchPictogramSchema, entities)
+    return getFilteredItems(pictogramList, filters)
+  }
+)
+
+export const makeNewPictogramsSelector = () => createSelector(
+  makeSearchNewPictogramsSelector(), makeEntitiesSelector(), (searchData, entities) => {
+    /* searchData could be undefined */
+    if (searchData == null) return []
+    const materialList = denormalize(searchData, searchPictogramSchema, entities)
+    return materialList
+  }
+)
+

@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Field, FieldArray } from 'redux-form/immutable'
-import MUIAutoComplete from 'material-ui/AutoComplete'
+import { Field } from 'redux-form/immutable'
 import Paper from 'material-ui/Paper'
-import { AutoComplete, TextField } from 'redux-form-material-ui'
-import { FormattedMessage } from 'react-intl'
+import { SelectField, TextField } from 'redux-form-material-ui'
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import PersonAdd from 'material-ui/svg-icons/action/note-add'
 import Delete from 'material-ui/svg-icons/action/delete'
+import MenuItem from 'material-ui/MenuItem'
+import { Map } from 'immutable'
+import languages from 'components/LanguageSelector/messages'
 import RenderDropzoneInput from './RenderDropzoneInput'
 import messages from './messages'
 
@@ -30,12 +32,9 @@ const styles = {
   }
 }
 
-const languageList = [
-  'Español', 'Inglés', 'Francés'
-]
-
-const RenderLanguages = ({ fields }) => {
-  const addLanguage = () => { fields.push({}) }
+const RenderLanguages = ({ fields, intl }) => {
+  const { formatMessage } = intl
+  const addLanguage = () => { fields.push(new Map()) }
   if (fields.length === 0) addLanguage()
   return (
     <ul style={styles.list}>
@@ -44,15 +43,18 @@ const RenderLanguages = ({ fields }) => {
           <Paper zDepth={2} style={styles.paper} >
             <Field
               name={`${member}.language`}
-              type='text'
-              component={AutoComplete}
-              dataSource={languageList}
+              component={SelectField}
               hintText={<FormattedMessage {...messages.chooseLanguage} />}
               floatingLabelText={<FormattedMessage {...messages.language} />}
-              openOnFocus={true}
-              filter={MUIAutoComplete.fuzzyFilter}
               fullWidth
-            />
+            >
+              <MenuItem value={'es'} primaryText={formatMessage(languages.spanish)} />
+              <MenuItem value={'fr'} primaryText={formatMessage(languages.french)} />
+              <MenuItem value={'en'} primaryText={formatMessage(languages.english)} />
+              <MenuItem value={'it'} primaryText={formatMessage(languages.italian)} />
+              <MenuItem value={'val'} primaryText={formatMessage(languages.valencian)} />
+              <MenuItem value={'de'} primaryText={formatMessage(languages.german)} />
+            </Field>
             <Field
               name={`${member}.title`}
               type='text'
@@ -62,7 +64,7 @@ const RenderLanguages = ({ fields }) => {
               fullWidth
             />
             <Field
-              name={`${member}.description`}
+              name={`${member}.desc`}
               type='text'
               component={TextField}
               hintText={<FormattedMessage {...messages.descriptionHint} />}
@@ -72,14 +74,14 @@ const RenderLanguages = ({ fields }) => {
               fullWidth
             />
             <div>
-              <FieldArray
+              <Field
                 name={`${member}.files`}
                 component={RenderDropzoneInput}
                 props={{ hint: <FormattedMessage {...messages.languageFiles} /> }}
               />
             </div>
             <div>
-              <FieldArray
+              <Field
                 name={`${member}.screenshots`}
                 component={RenderDropzoneInput}
                 props={{ hint: <FormattedMessage {...messages.languageScreenshots} /> }}
@@ -99,8 +101,9 @@ const RenderLanguages = ({ fields }) => {
 }
 
 RenderLanguages.propTypes = {
+  intl: intlShape.isRequired,
   fields: PropTypes.object.isRequired
 }
 
 
-export default RenderLanguages
+export default injectIntl(RenderLanguages)

@@ -8,15 +8,9 @@ function* materialsGetData(action) {
   try {
     const { locale, searchText } = action.payload
     yield put(showLoading())
-    const response = yield call(api.fetchMaterials, locale, searchText)
+
+    const response = yield call(api[action.type], action.payload)
     yield put(materials.success(locale, searchText, response))
-    /*
-    const t0 = performance.now()
-    // processs
-    const t1 = performance.now()
-    let tiempo = (t1 - t0) / 1000
-    console.log('Ha llevado ' + tiempo.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 4}) + ' segundos.')
-    */
   } catch (error) {
     yield put(materials.failure(error.message))
   } finally {
@@ -26,10 +20,10 @@ function* materialsGetData(action) {
   }
 }
 
-function* newMaterialsGetData() {
+function* newMaterialsGetData(action) {
   try {
     yield put(showLoading())
-    const response = yield call(api.fetchNewMaterials)
+    const response = yield call(api[action.type], action.payload)
     yield put(newMaterials.success(response))
   } catch (error) {
     yield put(newMaterials.failure(error.message))

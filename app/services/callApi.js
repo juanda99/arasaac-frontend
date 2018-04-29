@@ -1,40 +1,35 @@
 import { normalize } from 'normalizr'
 // import { camelizeKeys } from 'humps'
 import 'isomorphic-fetch'
-import { API_ROOT } from './config'
 
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
 // const callApi = (endpoint, config, schema) => {
-const callApi = (endpoint, schema) => {
-  const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
-  /* const data = { type: 'SIGNUP_REQUEST',
-    name: 'JUAN D. BURRO ALAEZ',
-    surname: 'ALAEZ',
-    email: 'juandacorreo@gmail.com',
-    username: 'adsf',
-    password: 'asdf'
-  } */
-  // const options = { method: 'GET', header: { Accept: 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(data) }
-  return fetch(fullUrl) // could have options!
-    .then((response) =>
-      response.json().then((json) => {
-        if (!response.ok) {
-          return Promise.reject(json)
-        }
-      // const camelizedJson = camelizeKeys(json)
-      // const nextPageUrl = getNextPageUrl(response)
-      /*
-        return Object.assign({},
-          normalize(camelizedJson, schema),
-          { nextPageUrl }
-        )
-      })
-      */
-        return schema ? normalize(json, schema) : json
-      })
-  )
+const callApi = (endpoint, options, token) => {
+  let schema = null
+  let config = {}
+  if (options) {
+    schema = options.schema || null
+    config = options.config || {}
+  }
+
+  // if token we add it as header
+  if (token) {
+    const authHeader = { headers: { Authorization: `Bearer ${token}` } }
+    config = { ...config || {}, ...authHeader }
+  }
+  // const fullUrl = (endpoint.indexOf(AUTH_ROOT) === -1) ? API_ROOT + endpoint : endpoint
+  return fetch(endpoint, config)
+    .then((response) => {
+      if (response.status >= 400) {
+        return Promise.reject(response.status)
+        // throw new Error('Bad response from server')
+      }
+      return response.json()
+    })
+    .then((json) => (schema ? normalize(json, schema) : json)
+    )
 }
 
 export default callApi

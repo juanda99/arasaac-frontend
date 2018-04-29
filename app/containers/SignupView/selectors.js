@@ -1,25 +1,37 @@
 import { createSelector } from 'reselect'
 
-/**
- * Direct selector to the registerView state domain
- */
-const selectRegisterViewDomain = () => (state) => state.get('registerView')
 
-/**
- * Other specific selectors
- */
+const selectRegister = (state) => state.get('register')
 
-
-/**
- * Default selector used by RegisterView
- */
-
-const selectRegisterView = () => createSelector(
-  selectRegisterViewDomain(),
-  (substate) => substate.toJS()
+const makeSelectName = () => createSelector(
+  selectRegister,
+  (register) => register.get('name')
 )
 
-export default selectRegisterView
+const makeSelectEmail = () => createSelector(
+  selectRegister,
+  (register) => register.get('email')
+)
+
+const makeSelectSend = () => createSelector(
+  selectRegister,
+  (register) => register.get('send')
+)
+
+const makeSelectError = () => createSelector(
+  selectRegister,
+  (register) => register.get('error')
+)
+
+const makeSelectLoading = () => createSelector(
+  selectRegister,
+  (register) => register.get('loading')
+)
+
 export {
-  selectRegisterViewDomain
+  makeSelectName,
+  makeSelectEmail,
+  makeSelectSend,
+  makeSelectError,
+  makeSelectLoading
 }

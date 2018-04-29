@@ -1,0 +1,60 @@
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import ReadMore from 'components/ReadMore'
+import H2 from 'components/H2'
+import { Link } from 'react-router'
+import { PICTOGRAMS_URL } from 'services/config'
+import Item from './Item'
+
+const styles = {
+
+  wrapper: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
+  snippetText: {
+    flexGrow: 3,
+    width: '600px',
+    padding: '1rem'
+  },
+  snippet: {
+    display: 'flex',
+    flexWrap: 'wrap-reverse',
+    width: '100%'
+  }
+}
+
+class PictogramSnippet extends PureComponent {
+
+
+  render() {
+    const { pictogram, locale, showLabels } = this.props
+    console.log(pictogram)
+    console.log('-----------')
+
+    return (
+      <Item>
+        <div style={styles.snippet}>
+          <div style={styles.snippetText}>
+            <Link to={`/pictograms/${pictogram.idPictogram}`}>
+              <img src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} />
+            </Link>
+            {showLabels ?
+              <div style={styles.wrapper}> Tags would be here </div>
+              : ''
+            }
+          </div>
+        </div>
+      </Item>
+    )
+  }
+}
+
+PictogramSnippet.propTypes = {
+  // onClick: PropTypes.func.isRequired,
+  pictogram: PropTypes.object.isRequired,
+  locale: PropTypes.string.isRequired,
+  showLabels: PropTypes.bool.isRequired
+}
+
+export default PictogramSnippet

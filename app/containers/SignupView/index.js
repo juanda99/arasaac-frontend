@@ -8,21 +8,23 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import View from 'components/View'
+import { createSelector } from 'reselect'
 import { RegisterForm, RegisterOptions } from 'components/Login'
-import Paper from 'material-ui/Paper'
+import ConditionalPaper from 'components/ConditionalPaper'
 import SocialLogin from 'components/SocialLogin'
 import Separator from 'components/Separator'
 import Logo from 'components/Logo'
+import { socialLogin } from 'containers/App/actions'
+import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import { signup } from './actions'
-// import selectRegisterView from './selectors'
+import {
+  makeSelectName,
+  makeSelectEmail,
+  makeSelectSend,
+  makeSelectError,
+  makeSelectLoading
+} from './selectors'
 
-const styles = {
-  paper: {
-    padding: 20,
-    width: 400,
-    margin: '0 auto'
-  }
-}
 
 class SignupView extends Component {
   constructor(props) {
@@ -33,57 +35,67 @@ class SignupView extends Component {
     this.setState({ showOptions: !this.state.showOptions })
   }
   handleSubmit = (userData) => {
-    // console.log('llamado x veces...')
-    // console.log(this.props.loading)
-    // console.log(this.props.error)
-    // console.log(userData.toJS())
-    this.props.requestSignup(userData.toJS())
-    // console.log(this.props.loading)
-    // console.log(this.props.error)
+    // we add locale so we send the message in the proper language
+    this.props.requestSignup({...userData.toJS(), locale: this.props.locale })
   }
 
   render() {
-    let logo
-    let form
+    // const { name, email, send, error, loading, locale } = this.props
+    let renderView
     if (this.state.showOptions) {
-      form = <RegisterOptions onClick={this.handleClick} />
-      logo = <Logo />
+      renderView = (
+        <div>
+          <Logo />
+          <SocialLogin onSuccess={this.props.requestAppToken} />
+          <Separator />
+          <RegisterOptions onClick={this.handleClick} />
+        </div>
+      )
     } else {
-      form = <RegisterForm onSubmit={this.handleSubmit} />
-      logo = null
+      renderView = (
+        <div>
+          <SocialLogin onSuccess={this.props.requestAppToken} />
+          <Separator />
+          <RegisterForm onSubmit={this.handleSubmit} />
+        </div>
+      )
     }
     return (
+
       <View>
-        <Paper zDepth={2} style={styles.paper}>
-          {logo}
-          <SocialLogin />
-          <Separator />
-          {form}
-        </Paper>
+        <ConditionalPaper>
+          {renderView}
+        </ConditionalPaper>
       </View>
     )
   }
 }
 
-/*
-const mapStateToProps = selectRegisterView();
-*/
 
 SignupView.propTypes = {
-  requestSignup: PropTypes.func.isRequired /* ,
-  loading: PropTypes.bool,
-  error: PropTypes.string*/
+  requestSignup: PropTypes.func.isRequired,
+  requestAppToken: PropTypes.func.isRequired,
+  name: PropTypes.string,
+  email: PropTypes.string,
+  send: PropTypes.bool,
+  error: PropTypes.string,
+  loading: PropTypes.string,
+  locale: PropTypes.string
 }
 
-const mapStateToProps = (state) => {
-  const loading = state.getIn(['register', 'loading'])
-  const error = state.getIn(['register', 'error'])
-  return ({ loading, error })
-}
+
+const mapStateToProps = createSelector(
+  makeSelectLocale(), makeSelectName(), makeSelectEmail(), makeSelectSend(), makeSelectError(), makeSelectLoading(),
+  (locale, name, email, send, error, loading) => ({ locale, name, email, send, error, loading })
+)
+
 
 const mapDispatchToProps = (dispatch) => ({
   requestSignup: (userData) => {
     dispatch(signup.request(userData))
+  },
+  requestAppToken: (token, socialNetwork) => {
+    dispatch(socialLogin.request(token, socialNetwork))
   }
 })
 

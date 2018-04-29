@@ -1,10 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-// import { FormattedMessage } from 'react-intl'
 import MaterialSnippet from 'components/MaterialSnippet'
 import { Map } from 'immutable'
 import Pagination from 'material-ui-pagination'
-// import messages from './messages'
 
 const itemsPerPage = 10 /* number of items per page */
 const display = 10 /* number of pages to see in the paginator */
@@ -22,18 +20,33 @@ export class MaterialList extends PureComponent {
     }
   }
 
+  setTopRef = (element) => {
+    this.topPosition = element
+  }
+
   handlePageClick = (currentPage) => {
     this.setState({ currentPage })
+    this.topPosition.scrollIntoView()
+    // window.scroll(0, 0)
   }
 
   render() {
-    const { locale, materials, filtersMap, setFilterItems, filtersData } = this.props
+    const { locale, materials, filtersMap, setFilterItems } = this.props
     const { currentPage } = this.state
     const total = Math.ceil(materials.length / itemsPerPage)
     const offset = Math.ceil((currentPage - 1) * itemsPerPage)
     const visibleMaterials = this.props.materials.slice(offset, offset + itemsPerPage)
+    const pagination = (materials.length >= itemsPerPage) ?
+      (<Pagination
+        total={total}
+        current={currentPage}
+        display={display}
+        onChange={this.handlePageClick}
+      />)
+    : null
     return (
-      <div>
+      <div ref={this.setTopRef}>
+        {pagination}
         <ul>
           { visibleMaterials.map((material) =>
             <MaterialSnippet
@@ -42,17 +55,11 @@ export class MaterialList extends PureComponent {
               locale={locale}
               filtersMap={filtersMap}
               setFilterItems={setFilterItems}
-              filtersData={filtersData}
               showLabels={this.props.showLabels}
             />
           )}
         </ul>
-        <Pagination
-          total={total}
-          current={currentPage}
-          display={display}
-          onChange={this.handlePageClick}
-        />
+        {pagination}
       </div>
     )
   }
@@ -65,8 +72,7 @@ MaterialList.propTypes = {
   locale: PropTypes.string,
   showLabels: PropTypes.bool.isRequired,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
-  setFilterItems: PropTypes.func.isRequired,
-  filtersData: PropTypes.instanceOf(Map).isRequired
+  setFilterItems: PropTypes.func.isRequired
 }
 
 export default MaterialList

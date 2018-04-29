@@ -19,13 +19,9 @@ import FooterSection from './FooterSection'
 const Footer = ({ docked, muiTheme }) => (
   <FooterSection id='footer' color={muiTheme.palette.primary1Color} docked={docked}>
     <Row middle='xs'>
-      <Col xs={12} md={7}>
+      <Col xs={12} md={8}>
         <p style={styles.p}>
           {'© ARASAAC - Gobierno de Aragón, 2016'}
-        </p>
-        <p style={styles.p}>
-          {'Designed and built with all the love in the world by'} <a style={styles.a} href='https://github.com/orgs/Arasaac/people'>
-            {'the Arasaac team.'}</a>
         </p>
         <p style={styles.p}>{'Code licensed MIT, docs'} <a style={styles.a} href='https://creativecommons.org/licenses/by/3.0/'>{'CC BY 3.0.'}</a>
         </p>

@@ -1,20 +1,34 @@
-import { take, takeLatest, call, put, cancel, select } from 'redux-saga/effects'
+import { take, takeLatest, call, put, cancel } from 'redux-saga/effects'
 import { LOCATION_CHANGE } from 'react-router-redux'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import api from 'services'
-import { selectSearchKey } from './selectors'
-import { PICTOGRAMS, pictograms, AUTOCOMPLETE, autocomplete } from './actions'
+import { PICTOGRAMS, NEW_PICTOGRAMS, pictograms, newPictograms, AUTOCOMPLETE, autocomplete } from './actions'
 
-function* pictogramsGetData() {
+function* pictogramsGetData(action) {
   try {
-    // TODO: change using action as parameter!!!!!!!
-    const searchText = yield select(selectSearchKey())
-    const response = yield call(api.fetchPictograms, searchText)
-    yield put(pictograms.success(response))
+    const { locale, searchText } = action.payload
+    yield put(showLoading())
+
+    const response = yield call(api[action.type], action.payload)
+    yield put(pictograms.success(locale, searchText, response))
   } catch (error) {
     yield put(pictograms.failure(error.message))
   } finally {
+    yield put(hideLoading())
     // When done, we tell Redux we're not in the middle of a request any more
     // yield put({type: SENDING_REQUEST, sending: false})
+  }
+}
+
+function* newPictogramsGetData(action) {
+  try {
+    yield put(showLoading())
+    const response = yield call(api[action.type], action.payload)
+    yield put(newPictograms.success(response))
+  } catch (error) {
+    yield put(newPictograms.failure(error.message))
+  } finally {
+    yield put(hideLoading())
   }
 }
 
@@ -22,7 +36,7 @@ function* pictogramsGetData() {
 function* autoCompleteGetData(action) {
   try {
     const { locale } = action.payload
-    const response = yield call(api.keywords, locale)
+    const response = yield call(api[action.type], action.payload)
     const { words } = response
     // order by lenght so autocomplete is better:
     words.sort((a, b) => (a.length - b.length))
@@ -53,6 +67,13 @@ export function* pictogramsData() {
   yield cancel(watcher)
 }
 
+export function* newPictogramsData() {
+  const watcher = yield takeLatest(NEW_PICTOGRAMS.REQUEST, newPictogramsGetData)
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE)
+  yield cancel(watcher)
+}
+
 
 // All sagas to be loaded
-export default [pictogramsGetData, autoCompleteData]
+export default [pictogramsData, newPictogramsData, autoCompleteData]

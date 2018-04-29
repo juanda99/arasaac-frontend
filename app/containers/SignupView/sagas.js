@@ -1,68 +1,25 @@
-import { take } from 'redux-saga/effects'
-// import { fork, call, take, put } from 'redux-saga/effects'
-// import { browserHistory } from 'react-router'
+import { take, takeLatest, call, put, cancel } from 'redux-saga/effects'
+import { LOCATION_CHANGE } from 'react-router-redux'
 // import { showLoading, hideLoading } from 'react-redux-loading-bar'
-import { SIGNUP /* , signup */ } from 'containers/SignupView/actions'
-// import api from 'services'
+import api from 'services'
+import { SIGNUP, signup } from './actions'
 
-/*
-function* signupCall(userData) {
+function* userSignup(action) {
+  const { type, payload } = action
   try {
-    console.log ('ha entrado en signupCall')
-    yield call(api.signup, userData)
+    yield call(api[type], payload)
     yield put(signup.success())
-  } catch (error) {
-    yield put(signup.failure(error))
-    // forwardTo('/')
-  } finally {
-    // yield put(hideLoading())
-  }
-}
-*/
-
-/* eslint no-constant-condition:0 */
-/* eslint-disable no-unused-vars */
-function* signupFlow() {
-  while (true) {
-    const { payload: user } = yield take(SIGNUP.REQUEST)
-    const usuario = JSON.stringify(user)
-    // console.log(`usuario: ${usuario}`)
-    // yield fork(signupCall, user)
-    /*
-    const task = yield fork(signupCall, user)
-    *
-    yield take(LOGOUT.REQUEST)
-    yield cancel(task)
-    yield put(logout.success())
-    */
+  } catch (err) {
+    yield put(signup.failure(err))
   }
 }
 
-function* test() {
-  while (true) {
-    yield take(SIGNUP.REQUEST)
-    yield take(SIGNUP.REQUEST)
-  }
+function* userSignupSaga() {
+  const watcher = yield takeLatest(SIGNUP.REQUEST, userSignup)
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE)
+  yield cancel(watcher)
 }
 
-/*
-function* activationFlow() {
-  while (true) {
-    try {
-      const { urlActivation } = yield take(ACTIVATION.REQUEST)
-      yield call(API.userActivation, { urlActivation })
-      yield put(activate.success())
-    } catch (error) {
-      yield put(activate.failure(error))
-    }
-  }
-}
-*/
-
-// Little helper function to abstract going to different pages
-/*
-function forwardTo(location) {
-  browserHistory.push(location)
-}
-*/
-export default [test]
+// All sagas to be loaded
+export default [userSignupSaga]
