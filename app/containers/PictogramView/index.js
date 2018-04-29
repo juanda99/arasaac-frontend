@@ -18,8 +18,11 @@ import messages from './messages'
 class PictogramView extends PureComponent {
 
   componentDidMount() {
-    if (this.props.pictogramData.isEmpty()) {
-      this.props.requestPictogram(this.props.params.idPictogram)
+    const { locale, pictogramData } = this.props
+    console.log(`data: ${pictogramData}`)
+    if (pictogramData.isEmpty()) {
+      console.log('Está vacío')
+      this.props.requestPictogram(this.props.params.idPictogram, locale)
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -30,7 +33,7 @@ class PictogramView extends PureComponent {
 
   renderContent() {
     const { pictogramData, loading, locale } = this.props
-    if (loading) return <p><FormattedMessage {...messages.materialLoading} /></p>
+    if (loading) return <p><FormattedMessage {...messages.pictogramLoading} /></p>
     return pictogramData.isEmpty()
         ? <P><FormattedMessage {...messages.pictogramNotFound} /> </P>
         : <Pictogram pictogram={pictogramData} locale={locale} />
@@ -71,8 +74,8 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  requestPictogram: (idPictogram) => {
-    dispatch(pictogram.request(idPictogram))
+  requestPictogram: (idPictogram, locale) => {
+    dispatch(pictogram.request(idPictogram, locale))
   }
 })
 

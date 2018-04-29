@@ -32,7 +32,7 @@ const styles = {
     flexWrap: 'wrap'
   }
 }
-class Material extends Component {
+class Pictogram extends Component {
   state = {
     language: this.props.locale
   }
@@ -40,10 +40,10 @@ class Material extends Component {
   handleChange = (event, value) => { this.setState({ language: value }) }
 
   render() {
+    console.log(this.props.pictogram)
     const { pictogram } = this.props
     const { desc, authors } = pictogram
     const title = pictogram.get('title')
-
 
     return (
       <div>
@@ -80,10 +80,10 @@ class Material extends Component {
 }
 
 
-Material.propTypes = {
+Pictogram.propTypes = {
   // onClick: PropTypes.func.isRequired,
   pictogram: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired
 }
 
-export default muiThemeable()(Material)
+export default muiThemeable()(Pictogram)

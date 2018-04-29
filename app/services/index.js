@@ -10,6 +10,7 @@ const api = {
   NEW_MATERIALS_REQUEST: () => callApi(`${API_ROOT}/materials/new/30`, { schema: searchMaterialSchema }),
   UPLOAD_MATERIAL_REQUEST: (formData) => callApi(uploadMaterial.url, uploadMaterial.options(formData)),
   MATERIAL_REQUEST: ({ idMaterial }) => callApi(`${API_ROOT}/materials/${idMaterial}`),
+  PICTOGRAM_REQUEST: ({ idPictogram, locale }) => callApi(`${API_ROOT}/pictograms/${locale}/${idPictogram}`),
   LOGIN_REQUEST: ({ username, password }) => callApi(login.url, login.options(username, password)),
   SOCIAL_LOGIN_REQUEST: ({ socialToken, provider }) => callApi(socialLogin.url, socialLogin.options(socialToken, provider)),
   SIGNUP_REQUEST: (userData) => callApi(signup.url, signup.options(userData))
