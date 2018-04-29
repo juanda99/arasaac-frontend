@@ -108,8 +108,8 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
     let pictogramsCounter
-    let pictogramsList  
-    console.log(`**********${visiblePictograms}`)
+    let pictogramsList
+    console.log(newPictogramsList)
     if (slideIndex === 0) pictogramsList = visiblePictograms
     else pictogramsList = newPictogramsList
     let gallery
@@ -239,7 +239,7 @@ const mapStateToProps = (state, ownProps) => ({
   searchResults: makeSearchResultsSelector()(state, ownProps),
   visiblePictograms: makeVisiblePictogramsSelector()(state, ownProps),
   filtersData: state.getIn(['configuration', 'filtersData']),
-  newPictogramsList: makeNewPictogramsSelector(state),
+  newPictogramsList: makeNewPictogramsSelector()(state),
   keywords: makeKeywordsSelectorByLocale()(state)
 })
 // const pictoList = state.getIn(['pictogramView', 'search', ownProps.params.searchText]) || []
