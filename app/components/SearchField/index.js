@@ -42,6 +42,7 @@ class SearchField extends Component {
             filter={customFilter}
             dataSource={dataSource}
             onChange={this.handleUpdateInput}
+            onNewRequest={this.handleClick}
             onRequestSearch={this.handleClick}
             value={this.state.searchText}
             maxSearchResults={10}
