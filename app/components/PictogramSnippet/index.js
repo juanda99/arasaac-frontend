@@ -8,11 +8,11 @@ import { PICTOGRAMS_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
 import ActionSetFavorite from 'material-ui/svg-icons/action/favorite-border'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
+import { FormattedMessage } from 'react-intl'
 import StyledPaper from './StyledPaper'
 import Image from './Image'
 import Item from './Item'
-
-
+import messages from './messages'
 
 class PictogramSnippet extends PureComponent {
 
@@ -104,7 +104,7 @@ class PictogramSnippet extends PureComponent {
               zDepth={this.state.zDepth}
             >
               <Item url={`/pictograms/${pictogram.idPictogram}`}>
-                <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt='prueba' />
+                <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt={keywordSelector.keyword} />
               </Item>
             </StyledPaper>
           </div>
@@ -112,12 +112,12 @@ class PictogramSnippet extends PureComponent {
             <StyledPaper zDepth={this.state.zDepth}>
               <Item url={`/pictograms/${pictogram.idPictogram}`}>
                 <div style={{ position: 'relative;' }}>
-                  <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt='prueba' />
+                  <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt={keywordSelector.keyword} />
                   <div style={this.styles.cardContainer}>
-                    <IconButton touch={true} tooltip='Download' iconStyle={this.styles.icon} style={this.styles.leftIconButton}>
+                    <IconButton touch={true} tooltip={<FormattedMessage {...messages.addFavorite} />} iconStyle={this.styles.icon} style={this.styles.leftIconButton}>
                       <ActionSetFavorite color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
                     </IconButton>
-                    <IconButton touch={true} tooltip='Download' iconStyle={this.styles.icon} style={this.styles.rightIconButton} >
+                    <IconButton touch={true} tooltip={<FormattedMessage {...messages.download} />} iconStyle={this.styles.icon} style={this.styles.rightIconButton} >
                       <FileDownload color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
                     </IconButton>
                     <p style={this.styles.cardTitle}>{keywordSelector.keyword}</p>
