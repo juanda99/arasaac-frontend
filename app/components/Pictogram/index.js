@@ -7,7 +7,6 @@ import Divider from 'material-ui/Divider'
 import FlatButton from 'material-ui/FlatButton'
 import Person from 'material-ui/svg-icons/social/person'
 import { FormattedMessage } from 'react-intl'
-import muiThemeable from 'material-ui/styles/muiThemeable'
 import P from 'components/P'
 import messages from './messages'
 
@@ -32,7 +31,7 @@ const styles = {
     flexWrap: 'wrap'
   }
 }
-class Material extends Component {
+class Pictogram extends Component {
   state = {
     language: this.props.locale
   }
@@ -43,7 +42,6 @@ class Material extends Component {
     const { pictogram } = this.props
     const { desc, authors } = pictogram
     const title = pictogram.get('title')
-
 
     return (
       <div>
@@ -80,10 +78,10 @@ class Material extends Component {
 }
 
 
-Material.propTypes = {
+Pictogram.propTypes = {
   // onClick: PropTypes.func.isRequired,
   pictogram: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired
 }
 
-export default muiThemeable()(Material)
+export default muiThemeable()(Pictogram)

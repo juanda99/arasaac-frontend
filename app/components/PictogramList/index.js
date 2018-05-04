@@ -1,13 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Map } from 'immutable'
-import { PICTOGRAMS_URL } from 'services/config'
-import Item from './Item'
-
+import PictogramSnippet from '../PictogramSnippet'
 const Masonry = require('react-masonry-component')
-
-
-
 const masonryOptions = {
   transitionDuration: '1s'
 }
@@ -31,13 +26,9 @@ export class PictogramList extends PureComponent {
 
 
   render() {
-    const { locale, pictograms, filtersMap, setFilterItems } = this.props
+    const { locale, pictograms, filtersMap, setFilterItems, searchText } = this.props
     const renderPictograms = pictograms.map((pictogram) => (
-      <li style={{ margin: 5 }} key={pictogram.idPictogram} className='image-element-class'>
-        <Item url={`/pictograms/${pictogram.idPictogram}`}>
-          <img src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt='prueba' style={{ width: '100%', height: 'auto' }} />
-        </Item>
-      </li>
+        <PictogramSnippet pictogram={pictogram} searchText={searchText} />
     )
     )
 
@@ -65,7 +56,8 @@ PictogramList.propTypes = {
   locale: PropTypes.string,
   showLabels: PropTypes.bool.isRequired,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
-  setFilterItems: PropTypes.func.isRequired
+  setFilterItems: PropTypes.func.isRequired,
+  searchText: PropTypes.string
 }
 
 export default PictogramList

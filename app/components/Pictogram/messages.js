@@ -11,9 +11,9 @@ export default defineMessages({
     description: 'Label for authors',
     defaultMessage: 'Authors'
   },
-  shareMaterial: {
-    id: 'app.components.Pictogram.shareMaterial',
-    description: 'Title for list of icons for sharing material',
+  sharePictogram: {
+    id: 'app.components.Pictogram.sharePictogram',
+    description: 'Title for list of icons for sharing pictograms',
     defaultMessage: 'Share it!'
   },
   languages: {
