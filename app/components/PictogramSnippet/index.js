@@ -8,7 +8,6 @@ import { PICTOGRAMS_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
 import ActionSetFavorite from 'material-ui/svg-icons/action/favorite-border'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
-import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import StyledPaper from './StyledPaper'
 import Image from './Image'
 import Item from './Item'
@@ -77,15 +76,8 @@ class PictogramSnippet extends PureComponent {
     })
   }
 
-  handleTouchStart = () => {
-    this.setState({
-      isFlipped: !this.state.isFlipped
-    })
-  }
-
   render() {
-    const { pictogram, searchText, muiTheme, width } = this.props
-    const isSmall = SMALL === width
+    const { pictogram, searchText, muiTheme } = this.props
     const searchTextArray = searchText.split(' ')
     let keywordSelector = pictogram.keywords.find(
       (keywordsItem) => {
@@ -100,16 +92,17 @@ class PictogramSnippet extends PureComponent {
     if (!keywordSelector) keywordSelector = pictogram.keywords[0]
     return (
       <li
-        style={{ margin: 5, width: '250px', height: '250px' }} 
+        style={{ margin: 5, width: '250px', height: '250px' }}
         key={pictogram.idPictogram}
         className='image-element-class'
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
-        onTouchStart={this.handleTouchStart}
       >
         <ReactCardFlip isFlipped={this.state.isFlipped}>
           <div key='front'>
-            <StyledPaper zDepth={this.state.zDepth}>
+            <StyledPaper
+              zDepth={this.state.zDepth}
+            >
               <Item url={`/pictograms/${pictogram.idPictogram}`}>
                 <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt='prueba' />
               </Item>
@@ -118,18 +111,21 @@ class PictogramSnippet extends PureComponent {
           <div key='back'>
             <StyledPaper zDepth={this.state.zDepth}>
               <Item url={`/pictograms/${pictogram.idPictogram}`}>
-                <div style={{ position: 'relative;'}}>
+                <div style={{ position: 'relative;' }}>
                   <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt='prueba' />
-                    <div style={this.styles.cardContainer}>
-                      <IconButton touch={true} tooltip='Download' iconStyle={this.styles.icon} style={this.styles.leftIconButton}>
-                        <ActionSetFavorite color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
-                      </IconButton>
-                      <IconButton touch={true} tooltip='Download' iconStyle={this.styles.icon} style={this.styles.rightIconButton} >
-                        <FileDownload color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
-                      </IconButton>
-                      <p style={this.styles.cardTitle}>{keywordSelector.keyword}</p>
+                  <div style={this.styles.cardContainer}>
+                    <IconButton touch={true} tooltip='Download' iconStyle={this.styles.icon} style={this.styles.leftIconButton}>
+                      <ActionSetFavorite color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
+                    </IconButton>
+                    <IconButton touch={true} tooltip='Download' iconStyle={this.styles.icon} style={this.styles.rightIconButton} >
+                      <FileDownload color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
+                    </IconButton>
+                    <p style={this.styles.cardTitle}>{keywordSelector.keyword}</p>
                   </div>
                 </div>
+              </Item>
+              <Item url={`/pictograms/${pictogram.idPictogram}`}>
+
               </Item>
             </StyledPaper>
           </div>
@@ -142,8 +138,7 @@ class PictogramSnippet extends PureComponent {
 PictogramSnippet.propTypes = {
   pictogram: PropTypes.object.isRequired,
   searchText: PropTypes.string,
-  muiTheme: PropTypes.object,
-  width: PropTypes.number.isRequired
+  muiTheme: PropTypes.object
 }
 
-export default withWidth()(muiThemeable()(PictogramSnippet))
+export default muiThemeable()(PictogramSnippet)
