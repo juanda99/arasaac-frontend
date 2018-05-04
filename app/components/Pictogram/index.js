@@ -7,7 +7,6 @@ import Divider from 'material-ui/Divider'
 import FlatButton from 'material-ui/FlatButton'
 import Person from 'material-ui/svg-icons/social/person'
 import { FormattedMessage } from 'react-intl'
-import muiThemeable from 'material-ui/styles/muiThemeable'
 import P from 'components/P'
 import messages from './messages'
 
@@ -40,7 +39,6 @@ class Pictogram extends Component {
   handleChange = (event, value) => { this.setState({ language: value }) }
 
   render() {
-    console.log(this.props.pictogram)
     const { pictogram } = this.props
     const { desc, authors } = pictogram
     const title = pictogram.get('title')

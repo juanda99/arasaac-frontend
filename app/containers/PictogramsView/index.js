@@ -128,6 +128,7 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
               filtersMap={filters}
               setFilterItems={this.props.setFilterItems}
               showLabels={visibleLabels}
+              searchText={searchText}
             />
           </div>
         )
