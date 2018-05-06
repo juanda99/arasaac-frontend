@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import ReactCardFlip from 'react-card-flip'
+import CardActions from './CardActions'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { PICTOGRAMS_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
@@ -47,18 +47,6 @@ class PictogramSnippet extends PureComponent {
       textTransform: 'uppercase',
       color: this.props.muiTheme.appBar.textColor,
       fontWeight: '900'
-    },
-    cardContainer: {
-      position: 'absolute',
-      top: '0',
-      button: '0',
-      opacity: '0.93',
-      width: '250px',
-      height: '250px',
-      backgroundColor: this.props.muiTheme.palette.primary1Color,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
     }
   }
 
@@ -98,38 +86,26 @@ class PictogramSnippet extends PureComponent {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <ReactCardFlip isFlipped={this.state.isFlipped}>
-          <div key='front'>
-            <StyledPaper
-              zDepth={this.state.zDepth}
-            >
-              <Item url={`/pictograms/${pictogram.idPictogram}`}>
-                <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt={keywordSelector.keyword} />
-              </Item>
-            </StyledPaper>
-          </div>
-          <div key='back'>
-            <StyledPaper zDepth={this.state.zDepth}>
-              <Item url={`/pictograms/${pictogram.idPictogram}`}>
-                <div style={{ position: 'relative;' }}>
-                  <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt={keywordSelector.keyword} />
-                  <div style={this.styles.cardContainer}>
-                    <IconButton touch={true} tooltip={<FormattedMessage {...messages.addFavorite} />} iconStyle={this.styles.icon} style={this.styles.leftIconButton}>
-                      <ActionSetFavorite color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
-                    </IconButton>
-                    <IconButton touch={true} tooltip={<FormattedMessage {...messages.download} />} iconStyle={this.styles.icon} style={this.styles.rightIconButton} >
-                      <FileDownload color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
-                    </IconButton>
-                    <p style={this.styles.cardTitle}>{keywordSelector.keyword}</p>
-                  </div>
-                </div>
-              </Item>
-              <Item url={`/pictograms/${pictogram.idPictogram}`}>
 
-              </Item>
-            </StyledPaper>
-          </div>
-        </ReactCardFlip>
+        <StyledPaper zDepth={this.state.zDepth}>
+          <Item url={`/pictograms/${pictogram.idPictogram}`}>
+            <div style={{ position: 'relative;' }}>
+              <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt={keywordSelector.keyword} />
+              <CardActions>
+                <IconButton touch={true} tooltip={<FormattedMessage {...messages.addFavorite} />} iconStyle={this.styles.icon} style={this.styles.leftIconButton}>
+                  <ActionSetFavorite color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
+                </IconButton>
+                <IconButton touch={true} tooltip={<FormattedMessage {...messages.download} />} iconStyle={this.styles.icon} style={this.styles.rightIconButton} >
+                  <FileDownload color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
+                </IconButton>
+                <p style={this.styles.cardTitle}>{keywordSelector.keyword}</p>
+              </CardActions>
+            </div>
+          </Item>
+          <Item url={`/pictograms/${pictogram.idPictogram}`}>
+
+          </Item>
+        </StyledPaper>
       </li>
     )
   }
