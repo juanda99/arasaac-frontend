@@ -19,9 +19,7 @@ class PictogramView extends PureComponent {
 
   componentDidMount() {
     const { locale, pictogramData } = this.props
-    console.log(`data: ${pictogramData}`)
     if (pictogramData.isEmpty()) {
-      console.log('Está vacío')
       this.props.requestPictogram(this.props.params.idPictogram, locale)
     }
   }

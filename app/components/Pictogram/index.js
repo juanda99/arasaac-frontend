@@ -9,6 +9,7 @@ import Person from 'material-ui/svg-icons/social/person'
 import { PICTOGRAMS_URL } from 'services/config'
 import { FormattedMessage } from 'react-intl'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
+import SoundPlayer from 'components/SoundPlayer'
 import P from 'components/P'
 import messages from './messages'
 
@@ -46,6 +47,8 @@ class Pictogram extends Component {
     const { pictogram } = this.props
     const authors = pictogram.get('authors')
     const keywords = pictogram.get('keywords')
+    // audio source
+    const streamUrl = 'https://s3-eu-west-1.amazonaws.com/react-soundplayer-examples/ksmtk-reborn-edit.mp3'
 
     return (
       <div>
@@ -75,6 +78,7 @@ class Pictogram extends Component {
             style={styles.radioButton}
           />
         </RadioButtonGroup>
+        <SoundPlayer streamUrl={streamUrl} preloadType='auto'/>
 
         <H3 primary={true}>{<FormattedMessage {...messages.sharePictogram} />}</H3>
         <Divider />
