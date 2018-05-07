@@ -8,7 +8,7 @@ import FlatButton from 'material-ui/FlatButton'
 import Person from 'material-ui/svg-icons/social/person'
 import { PICTOGRAMS_URL } from 'services/config'
 import { FormattedMessage } from 'react-intl'
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton'
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import P from 'components/P'
 import messages from './messages'
 
@@ -17,17 +17,22 @@ const styles = {
   wrapper: {
     display: 'flex',
     width: '100%',
-    flexWrap: 'nowrap',
+    flexWrap: 'wrap',
     alignItems: 'center'
   },
   picto: {
-    width: '500px',
-    height: '500px',
-    marginRight: '60px'
+    width: '400px',
+    height: 'auto',
+    marginRight: '60px',
+    flexGrow: 1
   },
   radioButton: {
     marginBottom: 16,
     marginTop: 16
+  },
+  desc: {
+    flexGrow: 3,
+    width: '300px'
   }
 }
 class Pictogram extends Component {
@@ -46,7 +51,7 @@ class Pictogram extends Component {
       <div>
         <div style={styles.wrapper}>
           <img src={`${PICTOGRAMS_URL}/${pictogram.get('idPictogram')}_500.png`} alt={'alt'} style={styles.picto} />
-          <div>
+          <div style={styles.desc}>
             <H2 primary ucase>{<FormattedMessage {...messages.description} />}</H2>
             {keywords.valueSeq().map((keyword) =>
               <div key={keyword.idKeyword}>
