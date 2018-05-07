@@ -21,7 +21,7 @@ class SoundPlayer extends PureComponent {
 
   state = {
     play: false
-  }
+  
 
   render() {
     const { play } = this.state
