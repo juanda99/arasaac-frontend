@@ -23,7 +23,7 @@ export const pictograms = {
 
 export const newPictograms = {
   request: (locale) => action(NEW_PICTOGRAMS.REQUEST, { locale }),
-  success: (data) => action(NEW_PICTOGRAMS.SUCCESS, { data }),
+  success: (locale, data) => action(NEW_PICTOGRAMS.SUCCESS, { locale, data }),
   failure: (error) => action(NEW_PICTOGRAMS.FAILURE, { error })
 }
 

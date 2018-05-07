@@ -3,6 +3,7 @@ import { createSelector } from 'reselect'
 import { searchPictogramSchema } from 'services/schemas'
 import { getFilteredItems } from 'utils'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
+import { Map } from 'immutable'
 
 export const selectPictogramsViewDomain = (state) => state.get('pictogramsView')
 
@@ -32,8 +33,10 @@ export const makeFiltersSelector = () => createSelector(
 )
 
 const makePictogramsSelector = () => createSelector(
-  selectPictogramsViewDomain,
-  (substate) => substate.get('pictograms')
+  selectPictogramsViewDomain, makeSelectLocale(),
+  (substate, locale) =>
+    // pictograms.locale does not exists first time, just pictograms
+    substate.getIn(['pictograms', locale]) || new Map()
 )
 
 const makeSearchSelector = () => createSelector(

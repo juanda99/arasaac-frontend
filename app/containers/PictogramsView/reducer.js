@@ -48,7 +48,7 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data.result)
-        .mergeIn(['pictograms'], newPictogram)
+        .mergeIn(['pictograms', action.payload.locale], newPictogram)
     case PICTOGRAMS.FAILURE:
       return state
         .set('error', action.payload.error)
@@ -62,7 +62,7 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .set('newPictograms', action.payload.data.result)
-        .mergeIn(['pictograms'], newPictogram)
+        .mergeIn(['pictograms', action.payload.locale], newPictogram)
     case NEW_PICTOGRAMS.FAILURE:
       return state
         .set('error', action.payload.error)

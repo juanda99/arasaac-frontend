@@ -23,6 +23,7 @@ const styles = {
   },
   picto: {
     width: '400px',
+    maxWidth: '100%',
     height: 'auto',
     marginRight: '60px',
     flexGrow: 1
@@ -78,7 +79,7 @@ class Pictogram extends Component {
             style={styles.radioButton}
           />
         </RadioButtonGroup>
-        <SoundPlayer streamUrl={streamUrl} preloadType='auto'/>
+        <SoundPlayer streamUrl={streamUrl} preloadType='auto' />
 
         <H3 primary={true}>{<FormattedMessage {...messages.sharePictogram} />}</H3>
         <Divider />
