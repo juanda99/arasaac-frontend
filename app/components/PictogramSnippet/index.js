@@ -52,24 +52,21 @@ class PictogramSnippet extends PureComponent {
 
   handleMouseEnter = () => {
     this.setState({
-      isFlipped: true,
       zDepth: 3
     })
   }
 
   handleMouseLeave = () => {
     this.setState({
-      isFlipped: false,
       zDepth: 1
     })
   }
 
   render() {
-    const { pictogram, searchText, muiTheme } = this.props
+    const { pictogram, searchText, muiTheme, locale } = this.props
     const searchTextArray = searchText.split(' ')
     let keywordSelector = pictogram.keywords.find(
       (keywordsItem) => {
-
         const keywordArray = keywordsItem.keyword.split(' ')
         const found = searchTextArray.some(
           (word) => keywordArray.includes(word)
@@ -86,9 +83,8 @@ class PictogramSnippet extends PureComponent {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-
         <StyledPaper zDepth={this.state.zDepth}>
-          <Item url={`/pictograms/${pictogram.idPictogram}`}>
+          <Item url={`/pictograms/${locale}/${pictogram.idPictogram}`}>
             <div style={{ position: 'relative;' }}>
               <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt={keywordSelector.keyword} />
               <CardActions>
@@ -102,9 +98,6 @@ class PictogramSnippet extends PureComponent {
               </CardActions>
             </div>
           </Item>
-          <Item url={`/pictograms/${pictogram.idPictogram}`}>
-
-          </Item>
         </StyledPaper>
       </li>
     )
@@ -114,7 +107,8 @@ class PictogramSnippet extends PureComponent {
 PictogramSnippet.propTypes = {
   pictogram: PropTypes.object.isRequired,
   searchText: PropTypes.string,
-  muiTheme: PropTypes.object
+  muiTheme: PropTypes.object,
+  locale: PropTypes.string.isRequired
 }
 
 export default muiThemeable()(PictogramSnippet)

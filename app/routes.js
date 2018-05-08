@@ -69,25 +69,6 @@ export default function createRoutes(store) {
         }
       ]
     }, {
-      path: '/pictograms/:idPictogram',
-      name: 'pictogramView',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/PictogramView/sagas'),
-          import('containers/PictogramView/')
-        ])
-
-        const renderRoute = loadModule(cb)
-        // if reducer is async, render values:  defaultToggled:
-        // state.configuration.filters[ownProps.filter] got undefined!!!
-        importModules.then(([sagas, component]) => {
-          injectSagas(sagas.default)
-          renderRoute(component)
-        })
-
-        importModules.catch(errorLoading)
-      }
-    }, {
       path: '/materials/search',
       name: 'materialsView',
       getComponent(nextState, cb) {
@@ -225,6 +206,25 @@ export default function createRoutes(store) {
         // state.configuration.filters[ownProps.filter] got undefined!!!
         importModules.then(([reducer, sagas, component]) => {
           injectReducer('materialsView', reducer.default)
+          injectSagas(sagas.default)
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      }
+    }, {
+      path: '/pictograms/:locale/:idPictogram',
+      name: 'pictogramView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/PictogramView/sagas'),
+          import('containers/PictogramView/')
+        ])
+
+        const renderRoute = loadModule(cb)
+        // if reducer is async, render values:  defaultToggled:
+        // state.configuration.filters[ownProps.filter] got undefined!!!
+        importModules.then(([sagas, component]) => {
           injectSagas(sagas.default)
           renderRoute(component)
         })

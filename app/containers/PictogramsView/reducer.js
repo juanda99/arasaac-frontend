@@ -34,7 +34,7 @@ function pictogramsViewReducer(state = initialState, action) {
       newPictogram = fromJS(action.payload.data || {})
       return state
         .set('loading', false)
-        .setIn(['pictograms', action.payload.data.idPictogram], newPictogram)
+        .setIn(['pictograms', action.payload.locale, action.payload.data.idPictogram], newPictogram)
     case PICTOGRAM.FAILURE:
       return state
         .set('error', action.payload.error)

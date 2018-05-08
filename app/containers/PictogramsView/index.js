@@ -109,7 +109,6 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
     const { visibleLabels, visibleSettings, slideIndex } = this.state
     let pictogramsCounter
     let pictogramsList
-    console.log(newPictogramsList)
     if (slideIndex === 0) pictogramsList = visiblePictograms
     else pictogramsList = newPictogramsList
     let gallery
@@ -153,7 +152,7 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
               </div>
               {visibleSettings ?
                 <div>
-                  // todo
+                  <p>todo</p>
                 </div>
                 : null
               }
@@ -171,7 +170,7 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
           <div>
             <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
               <div style={styles.container}>
-                <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} dataSource={keywords}/>
+                <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} dataSource={keywords} />
                 <ActionButtons
                   onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
                   onLabelsClick={this.showLabels} labelsActive={visibleLabels}

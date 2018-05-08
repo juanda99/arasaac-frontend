@@ -7,9 +7,10 @@ import { PICTOGRAM, pictogram } from './actions'
 
 function* pictogramGetData(action) {
   try {
+    const { locale } = action.payload
     yield put(showLoading())
     const response = yield call(api[action.type], action.payload)
-    yield put(pictogram.success(response))
+    yield put(pictogram.success(locale, response))
     yield put(hideLoading())
   } catch (error) {
     yield put(hideLoading())
