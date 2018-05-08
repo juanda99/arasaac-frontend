@@ -49,7 +49,7 @@ class Pictogram extends Component {
     const authors = pictogram.get('authors')
     const keywords = pictogram.get('keywords')
     // audio source
-    const streamUrl = 'https://s3-eu-west-1.amazonaws.com/react-soundplayer-examples/ksmtk-reborn-edit.mp3'
+    const streamUrl = 'http://www.arasaac.org/repositorio/locuciones/0/2139.mp3'
 
     return (
       <div>
@@ -79,7 +79,8 @@ class Pictogram extends Component {
             style={styles.radioButton}
           />
         </RadioButtonGroup>
-        <SoundPlayer streamUrl={streamUrl} preloadType='auto' />
+
+        <SoundPlayer streamUrl={streamUrl} preloadType='metadata' />
 
         <H3 primary={true}>{<FormattedMessage {...messages.sharePictogram} />}</H3>
         <Divider />
