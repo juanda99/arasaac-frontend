@@ -213,7 +213,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading)
       }
     }, {
-      path: '/pictograms/:locale/:idPictogram',
+      path: '/pictograms/:locale/:idPictogram(/:searchText)',
       name: 'pictogramView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([

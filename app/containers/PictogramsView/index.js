@@ -112,7 +112,7 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
     if (slideIndex === 0) pictogramsList = visiblePictograms
     else pictogramsList = newPictogramsList
     let gallery
-    if (loading) {
+    if ((loading && searchText) || (loading && slideIndex !== 0)) {
       gallery = <p> Loading pictograms...</p>
     } else if (!searchText && slideIndex === 0) {
       gallery = null

@@ -10,6 +10,7 @@ import { PICTOGRAMS_URL } from 'services/config'
 import { FormattedMessage } from 'react-intl'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import SoundPlayer from 'components/SoundPlayer'
+import { keywordSelector } from 'utils'
 import P from 'components/P'
 import messages from './messages'
 
@@ -26,7 +27,8 @@ const styles = {
     maxWidth: '100%',
     height: 'auto',
     marginRight: '60px',
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: 'white'
   },
   radioButton: {
     marginBottom: 16,
@@ -43,22 +45,25 @@ class Pictogram extends Component {
   }
 
   handleChange = (event, value) => { this.setState({ language: value }) }
-
   render() {
-    const { pictogram } = this.props
-    const authors = pictogram.get('authors')
+    const { pictogram, searchText } = this.props
     const keywords = pictogram.get('keywords')
+    const idPictogram = pictogram.get('idPictogram')
+    const { keyword } = keywordSelector(searchText, keywords.toJS())
+    const authors = pictogram.get('authors')
+    // const keywords = pictogram.get('keywords')
     // audio source
     const streamUrl = 'http://www.arasaac.org/repositorio/locuciones/0/2139.mp3'
 
     return (
       <div>
+        <H2 primary ucase>{keyword}</H2>
         <div style={styles.wrapper}>
-          <img src={`${PICTOGRAMS_URL}/${pictogram.get('idPictogram')}_500.png`} alt={'alt'} style={styles.picto} />
+          <img src={`${PICTOGRAMS_URL}/${idPictogram}_500.png`} alt={'alt'} style={styles.picto} />
           <div style={styles.desc}>
             <H2 primary ucase>{<FormattedMessage {...messages.description} />}</H2>
             {keywords.valueSeq().map((keyword) =>
-              <div key={keyword.idKeyword}>
+              <div key={keyword}>
                 <H3 primary ucase>{keyword.get('keyword')}</H3>
                 <p>{<FormattedMessage {...messages.meaning} />}: {keyword.get('meaning')}</p>
               </div>
@@ -113,7 +118,8 @@ class Pictogram extends Component {
 Pictogram.propTypes = {
   // onClick: PropTypes.func.isRequired,
   pictogram: PropTypes.object.isRequired,
-  locale: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired,
+  searchText: PropTypes.string.isRequired
 }
 
 export default Pictogram

@@ -8,6 +8,7 @@ import IconButton from 'material-ui/IconButton'
 import ActionSetFavorite from 'material-ui/svg-icons/action/favorite-border'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
 import { FormattedMessage } from 'react-intl'
+import { keywordSelector } from 'utils'
 import CardActions from './CardActions'
 import StyledPaper from './StyledPaper'
 import Image from './Image'
@@ -63,30 +64,20 @@ class PictogramSnippet extends PureComponent {
   }
 
   render() {
-    const { pictogram, searchText, muiTheme, locale } = this.props
-    const searchTextArray = searchText.split(' ')
-    let keywordSelector = pictogram.keywords.find(
-      (keywordsItem) => {
-        const keywordArray = keywordsItem.keyword.split(' ')
-        const found = searchTextArray.some(
-          (word) => keywordArray.includes(word)
-        )
-        return found
-      }
-    )
-    if (!keywordSelector) keywordSelector = pictogram.keywords[0]
+    const { pictogram: { idPictogram, keywords }, searchText, muiTheme, locale } = this.props
+    const { keyword } = keywordSelector(searchText, keywords)
     return (
       <li
         style={{ margin: 5, width: '250px', height: '250px' }}
-        key={pictogram.idPictogram}
+        key={idPictogram}
         className='image-element-class'
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
         <StyledPaper zDepth={this.state.zDepth}>
-          <Item url={`/pictograms/${locale}/${pictogram.idPictogram}`}>
-            <div style={{ position: 'relative;' }}>
-              <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt={keywordSelector.keyword} />
+          <Item url={`/pictograms/${locale}/${idPictogram}/${keyword}`}>
+            <div style={{ position: 'relative' }}>
+              <Image src={`${PICTOGRAMS_URL}/${idPictogram}_300.png`} alt={keyword} />
               <CardActions>
                 <IconButton touch={true} tooltip={<FormattedMessage {...messages.addFavorite} />} iconStyle={this.styles.icon} style={this.styles.leftIconButton}>
                   <ActionSetFavorite color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
@@ -94,7 +85,7 @@ class PictogramSnippet extends PureComponent {
                 <IconButton touch={true} tooltip={<FormattedMessage {...messages.download} />} iconStyle={this.styles.icon} style={this.styles.rightIconButton} >
                   <FileDownload color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
                 </IconButton>
-                <p style={this.styles.cardTitle}>{keywordSelector.keyword}</p>
+                <p style={this.styles.cardTitle}>{keyword}</p>
               </CardActions>
             </div>
           </Item>

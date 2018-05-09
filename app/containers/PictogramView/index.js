@@ -12,7 +12,7 @@ import Helmet from 'react-helmet'
 import Pictogram from 'components/Pictogram'
 import { pictogram } from 'containers/PictogramView/actions'
 import P from 'components/P'
-import { Map } from 'immutable'
+import { makePictogramByIdSelector } from './selectors'
 import messages from './messages'
 
 class PictogramView extends PureComponent {
@@ -30,11 +30,11 @@ class PictogramView extends PureComponent {
   }
 
   renderContent() {
-    const { pictogramData, loading, params } = this.props
+    const { pictogramData, loading, params: { locale, searchText } } = this.props
     if (loading) return <p><FormattedMessage {...messages.pictogramLoading} /></p>
     return pictogramData.isEmpty()
-        ? <P><FormattedMessage {...messages.pictogramNotFound} /> </P>
-        : <Pictogram pictogram={pictogramData} locale={params.locale} />
+      ? <P><FormattedMessage {...messages.pictogramNotFound} /> </P>
+      : <Pictogram pictogram={pictogramData} locale={locale} searchText={searchText || ''} />
   }
 
   render() {
@@ -60,8 +60,7 @@ PictogramView.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  // const locale = state.get('language').get('locale')
-  const pictogramData = state.getIn(['pictogramsView', 'pictograms', ownProps.params.locale, parseInt(ownProps.params.idPictogram, 10)]) || Map()
+  const pictogramData = makePictogramByIdSelector()(state, ownProps)
   const loading = state.getIn(['pictogramsView', 'loading'])
   return ({
     pictogramData,
