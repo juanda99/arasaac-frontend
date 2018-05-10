@@ -23,8 +23,8 @@ export default defineMessages({
   },
   description: {
     id: 'app.components.Pictogram.description',
-    description: 'Pictogram description: keyword, meaning...',
-    defaultMessage: 'Description'
+    description: 'Title for pictogram description: keyword, meaning...',
+    defaultMessage: 'Related words'
   },
   meaning: {
     id: 'app.components.Pictogram.meaning',
@@ -41,14 +41,29 @@ export default defineMessages({
     description: 'Title for the area of picto modifications',
     defaultMessage: 'Modify pictogram'
   },
-  singular: {
-    id: 'app.components.Pictogram.singular',
-    description: 'Radiobutton to set the pictogram as singular',
-    defaultMessage: 'Singular'
+  color: {
+    id: 'app.components.Pictogram.color',
+    description: 'Toggle button to color the pictogram',
+    defaultMessage: 'Color'
   },
   plural: {
     id: 'app.components.Pictogram.plural',
-    description: 'Radiobutton to set the pictogram as plural',
+    description: 'Toggle button to set the pictogram in plural',
     defaultMessage: 'Plural'
-  }
+  },
+  backgroundColor: {
+    id: 'app.components.Pictogram.backgroundColor',
+    description: 'Toggle button to set a backgroundColor, by default transparent',
+    defaultMessage: 'Background color'
+  },
+  past: {
+    id: 'app.components.Pictogram.past',
+    description: 'Toggle button to set the pictogram in past',
+    defaultMessage: 'Past'
+  },
+  future: {
+    id: 'app.components.Pictogram.future',
+    description: 'Toggle button to set the pictogram in future',
+    defaultMessage: 'Future'
+  },
 })
