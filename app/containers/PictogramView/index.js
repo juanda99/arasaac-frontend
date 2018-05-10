@@ -12,31 +12,29 @@ import Helmet from 'react-helmet'
 import Pictogram from 'components/Pictogram'
 import { pictogram } from 'containers/PictogramView/actions'
 import P from 'components/P'
-import { Map } from 'immutable'
+import { makePictogramByIdSelector } from './selectors'
 import messages from './messages'
 
 class PictogramView extends PureComponent {
 
   componentDidMount() {
-    const { locale, pictogramData } = this.props
-    console.log(`data: ${pictogramData}`)
+    const { params, pictogramData } = this.props
     if (pictogramData.isEmpty()) {
-      console.log('Está vacío')
-      this.props.requestPictogram(this.props.params.idPictogram, locale)
+      this.props.requestPictogram(params.idPictogram, params.locale)
     }
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.params.idPictogram !== nextProps.params.idPictogram) {
-      this.props.requestPictogram(nextProps.params.idPictogram)
+      this.props.requestPictogram(nextProps.params.idPictogram, this.props.params.locale)
     }
   }
 
   renderContent() {
-    const { pictogramData, loading, locale } = this.props
+    const { pictogramData, loading, params: { locale, searchText } } = this.props
     if (loading) return <p><FormattedMessage {...messages.pictogramLoading} /></p>
     return pictogramData.isEmpty()
-        ? <P><FormattedMessage {...messages.pictogramNotFound} /> </P>
-        : <Pictogram pictogram={pictogramData} locale={locale} />
+      ? <P><FormattedMessage {...messages.pictogramNotFound} /> </P>
+      : <Pictogram pictogram={pictogramData} locale={locale} searchText={searchText || ''} />
   }
 
   render() {
@@ -57,25 +55,22 @@ class PictogramView extends PureComponent {
 PictogramView.propTypes = {
   requestPictogram: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
-  locale: PropTypes.string.isRequired,
   pictogramData: PropTypes.object,
   loading: PropTypes.bool
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const locale = state.get('language').get('locale')
-  const pictogramData = state.getIn(['pictogramsView', 'pictograms', parseInt(ownProps.params.idPictogram, 10)]) || Map()
+  const pictogramData = makePictogramByIdSelector()(state, ownProps)
   const loading = state.getIn(['pictogramsView', 'loading'])
   return ({
     pictogramData,
-    locale,
     loading
   })
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  requestPictogram: (idPictogram, locale) => {
-    dispatch(pictogram.request(idPictogram, locale))
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  requestPictogram: (idPictogram) => {
+    dispatch(pictogram.request(idPictogram, ownProps.params.locale))
   }
 })
 

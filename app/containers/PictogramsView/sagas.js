@@ -8,7 +8,6 @@ function* pictogramsGetData(action) {
   try {
     const { locale, searchText } = action.payload
     yield put(showLoading())
-
     const response = yield call(api[action.type], action.payload)
     yield put(pictograms.success(locale, searchText, response))
   } catch (error) {
@@ -22,9 +21,10 @@ function* pictogramsGetData(action) {
 
 function* newPictogramsGetData(action) {
   try {
+    const { locale } = action.payload
     yield put(showLoading())
     const response = yield call(api[action.type], action.payload)
-    yield put(newPictograms.success(response))
+    yield put(newPictograms.success(locale, response))
   } catch (error) {
     yield put(newPictograms.failure(error.message))
   } finally {

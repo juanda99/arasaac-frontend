@@ -18,7 +18,8 @@ const H3 = styled.h3`
   text-transform: ${(props) => props.ucase ? 'uppercase' : 'none'};
   ${media.lg} {
     font-size: 1.25rem;
-  }
+  };
+  clear: both;
 `
 
 export default muiThemeable()(H3)

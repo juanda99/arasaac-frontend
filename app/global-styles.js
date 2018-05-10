@@ -37,5 +37,9 @@ injectGlobal`
   }
   button, html [type="button"],[type="reset"], [type="submit"] {
     -webkit-appearance: none;
-  }  
+  }
+  /*remove x in input types*/
+  ::-ms-clear {
+    display: none;
+  }
 `

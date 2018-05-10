@@ -19,12 +19,13 @@ export const initialState = fromJS({
     License: []
     // maybe filter by tags???
   },
-  pictograms: {},
+  pictograms: { es: {}, en: {}, fr: {} },
   newPictograms: []
 })
 
 function pictogramsViewReducer(state = initialState, action) {
   let newPictogram = {}
+  let idPictogram
   switch (action.type) {
     case PICTOGRAM.REQUEST:
       return state
@@ -32,9 +33,10 @@ function pictogramsViewReducer(state = initialState, action) {
         .set('error', false)
     case PICTOGRAM.SUCCESS:
       newPictogram = fromJS(action.payload.data || {})
+      idPictogram = action.payload.data.idPictogram.toString()
       return state
         .set('loading', false)
-        .setIn(['pictograms', action.payload.data.idPictogram], newPictogram)
+        .setIn(['pictograms', action.payload.locale, idPictogram], newPictogram)
     case PICTOGRAM.FAILURE:
       return state
         .set('error', action.payload.error)
@@ -48,7 +50,7 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data.result)
-        .mergeIn(['pictograms'], newPictogram)
+        .mergeIn(['pictograms', action.payload.locale], newPictogram)
     case PICTOGRAMS.FAILURE:
       return state
         .set('error', action.payload.error)
@@ -62,7 +64,7 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .set('newPictograms', action.payload.data.result)
-        .mergeIn(['pictograms'], newPictogram)
+        .mergeIn(['pictograms', action.payload.locale], newPictogram)
     case NEW_PICTOGRAMS.FAILURE:
       return state
         .set('error', action.payload.error)

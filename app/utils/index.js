@@ -5,8 +5,8 @@ function isArray(obj) {
 const checkLanguage = (item, language) =>
   language.size === 0 || language.includes(item.language) || (item.translations && item.translations.some((translation) => language.includes(translation.language)))
 
-export function getFilteredItems(items, filters) {
-  return items.filter((item) => {
+export const getFilteredItems = (items, filters) =>
+  items.filter((item) => {
     const [...filterNames] = filters.keys()
     return filterNames.every((filterName) => {
       if (filterName === 'language') {
@@ -21,5 +21,18 @@ export function getFilteredItems(items, filters) {
       return false
     })
   })
-}
 
+/* inside pictograms, check which keywords meets an specific searchText */
+export const keywordSelector = (searchText, keywords) => {
+  const searchTextArray = searchText.split(' ')
+  if (!searchTextArray.length) return keywords[0]
+  return keywords.find(
+    (keywordsItem) => {
+      const keywordArray = keywordsItem.keyword.split(' ')
+      const found = searchTextArray.some(
+        (word) => keywordArray.includes(word)
+      )
+      return found
+    }
+  ) || keywords[0] /* in case find doesn't get any results, we get first one */
+}

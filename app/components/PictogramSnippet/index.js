@@ -2,17 +2,18 @@
 
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import ReactCardFlip from 'react-card-flip'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { PICTOGRAMS_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
 import ActionSetFavorite from 'material-ui/svg-icons/action/favorite-border'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
+import { FormattedMessage } from 'react-intl'
+import { keywordSelector } from 'utils'
+import CardActions from './CardActions'
 import StyledPaper from './StyledPaper'
 import Image from './Image'
 import Item from './Item'
-
-
+import messages from './messages'
 
 class PictogramSnippet extends PureComponent {
 
@@ -47,89 +48,48 @@ class PictogramSnippet extends PureComponent {
       textTransform: 'uppercase',
       color: this.props.muiTheme.appBar.textColor,
       fontWeight: '900'
-    },
-    cardContainer: {
-      position: 'absolute',
-      top: '0',
-      button: '0',
-      opacity: '0.93',
-      width: '250px',
-      height: '250px',
-      backgroundColor: this.props.muiTheme.palette.primary1Color,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
     }
   }
 
   handleMouseEnter = () => {
     this.setState({
-      isFlipped: true,
       zDepth: 3
     })
   }
 
   handleMouseLeave = () => {
     this.setState({
-      isFlipped: false,
       zDepth: 1
     })
   }
 
   render() {
-    const { pictogram, searchText, muiTheme } = this.props
-    const searchTextArray = searchText.split(' ')
-    let keywordSelector = pictogram.keywords.find(
-      (keywordsItem) => {
-
-        const keywordArray = keywordsItem.keyword.split(' ')
-        const found = searchTextArray.some(
-          (word) => keywordArray.includes(word)
-        )
-        return found
-      }
-    )
-    if (!keywordSelector) keywordSelector = pictogram.keywords[0]
+    const { pictogram: { idPictogram, keywords }, searchText, muiTheme, locale } = this.props
+    const { keyword } = keywordSelector(searchText, keywords)
     return (
       <li
         style={{ margin: 5, width: '250px', height: '250px' }}
-        key={pictogram.idPictogram}
+        key={idPictogram}
         className='image-element-class'
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <ReactCardFlip isFlipped={this.state.isFlipped}>
-          <div key='front'>
-            <StyledPaper
-              zDepth={this.state.zDepth}
-            >
-              <Item url={`/pictograms/${pictogram.idPictogram}`}>
-                <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt='prueba' />
-              </Item>
-            </StyledPaper>
-          </div>
-          <div key='back'>
-            <StyledPaper zDepth={this.state.zDepth}>
-              <Item url={`/pictograms/${pictogram.idPictogram}`}>
-                <div style={{ position: 'relative;' }}>
-                  <Image src={`${PICTOGRAMS_URL}/${pictogram.idPictogram}_300.png`} alt='prueba' />
-                  <div style={this.styles.cardContainer}>
-                    <IconButton touch={true} tooltip='Download' iconStyle={this.styles.icon} style={this.styles.leftIconButton}>
-                      <ActionSetFavorite color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
-                    </IconButton>
-                    <IconButton touch={true} tooltip='Download' iconStyle={this.styles.icon} style={this.styles.rightIconButton} >
-                      <FileDownload color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
-                    </IconButton>
-                    <p style={this.styles.cardTitle}>{keywordSelector.keyword}</p>
-                  </div>
-                </div>
-              </Item>
-              <Item url={`/pictograms/${pictogram.idPictogram}`}>
-
-              </Item>
-            </StyledPaper>
-          </div>
-        </ReactCardFlip>
+        <StyledPaper zDepth={this.state.zDepth}>
+          <Item url={`/pictograms/${locale}/${idPictogram}/${keyword}`}>
+            <div style={{ position: 'relative' }}>
+              <Image src={`${PICTOGRAMS_URL}/${idPictogram}_300.png`} alt={keyword} />
+              <CardActions>
+                <IconButton touch={true} tooltip={<FormattedMessage {...messages.addFavorite} />} iconStyle={this.styles.icon} style={this.styles.leftIconButton}>
+                  <ActionSetFavorite color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
+                </IconButton>
+                <IconButton touch={true} tooltip={<FormattedMessage {...messages.download} />} iconStyle={this.styles.icon} style={this.styles.rightIconButton} >
+                  <FileDownload color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
+                </IconButton>
+                <p style={this.styles.cardTitle}>{keyword}</p>
+              </CardActions>
+            </div>
+          </Item>
+        </StyledPaper>
       </li>
     )
   }
@@ -138,7 +98,8 @@ class PictogramSnippet extends PureComponent {
 PictogramSnippet.propTypes = {
   pictogram: PropTypes.object.isRequired,
   searchText: PropTypes.string,
-  muiTheme: PropTypes.object
+  muiTheme: PropTypes.object,
+  locale: PropTypes.string.isRequired
 }
 
 export default muiThemeable()(PictogramSnippet)

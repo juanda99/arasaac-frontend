@@ -28,9 +28,8 @@ export class PictogramList extends PureComponent {
   render() {
     const { locale, pictograms, filtersMap, setFilterItems, searchText } = this.props
     const renderPictograms = pictograms.map((pictogram) => (
-        <PictogramSnippet pictogram={pictogram} searchText={searchText} />
-    )
-    )
+      <PictogramSnippet pictogram={pictogram} searchText={searchText} locale={locale} key={pictogram.idPictogram} />
+    ))
 
     return (
       <div>
