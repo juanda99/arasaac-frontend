@@ -13,5 +13,5 @@ export default defineMessages({
   download: {
     id: 'app.components.PictogramSnippet.download tooltip',
     defaultMessage: 'Download pictogram'
-  },
+  }
 })

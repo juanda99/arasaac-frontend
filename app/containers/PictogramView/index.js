@@ -39,7 +39,7 @@ class PictogramView extends PureComponent {
 
   render() {
     return (
-      <View left={true} right={true}>
+      <View left={true} right={true} top={1}>
         <Helmet
           title='PictogramView'
           meta={[

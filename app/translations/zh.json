@@ -142,7 +142,7 @@
   "app.components.MaterialForm.surnameHint": "Enter the  surname of the author",
   "app.components.MaterialForm.title": "Title",
   "app.components.MaterialForm.titleHint": "Enter the material title",
-  "app.components.NotFoundPage.header": "這是 NotFoundPage 元件 ！",
+  "app.components.NotFoundPage.header": "这是 NotFoundPage 组件 ！",
   "app.components.Pictogram.authors": "Authors",
   "app.components.Pictogram.changePictoLanguage": "Choose a language to see the pictogram description in another language",
   "app.components.Pictogram.description": "Description",
@@ -205,9 +205,9 @@
   "app.containers.TabsHeader.favorites": "Favorites",
   "app.containers.TabsHeader.new": "New",
   "app.containers.TabsHeader.search": "Search",
-  "email.signin": "電子郵件",
-  "header.api": "Api 的開發人員",
-  "header.catalogs": "下載目錄",
+  "email.signin": "电子邮件",
+  "header.api": "Api 的开发人员",
+  "header.catalogs": "下载目录",
   "header.configurationTitle": "Arasaac 配置",
   "header.contactusTitle": "Contact us",
   "header.devAccounts": "Create a dev account",
@@ -275,5 +275,5 @@
   "userMenu.translateArasaac": "翻譯 Arasaac",
   "userMenu.uploadMaterial": "分享材料",
   "userMenu.userMaterial": "我的材料",
-  "userMenu.userProfile": "我的設定檔"
+  "userMenu.userProfile": "我的配置文件"
 }

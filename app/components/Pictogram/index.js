@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
 import ShareBar from 'components/ShareBar'
+import ConditionalPaper from './ConditionalPaper'
 import Divider from 'material-ui/Divider'
 import FlatButton from 'material-ui/FlatButton'
 import Person from 'material-ui/svg-icons/social/person'
@@ -14,10 +15,9 @@ import { FormattedMessage } from 'react-intl'
 import SoundPlayer from 'components/SoundPlayer'
 import Toggle from 'material-ui/Toggle'
 import { keywordSelector } from 'utils'
-import { SketchPicker } from 'react-color'
-import IconButton from 'material-ui/IconButton'
-import IconMenu from 'material-ui/IconMenu'
-import FileFileDownload from 'material-ui/svg-icons/file/file-download'
+import { TwitterPicker } from 'react-color'
+import DownloadIcon from 'material-ui/svg-icons/file/file-download'
+import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import VisibilityOn from 'material-ui/svg-icons/action/visibility'
 import VisibilityOff from 'material-ui/svg-icons/action/visibility-off'
 import P from 'components/P'
@@ -32,12 +32,16 @@ const styles = {
     alignItems: 'center'
   },
   picto: {
+    width: '100%',
+    height: 'auto',
+    backgroundColor: 'white'
+  },
+  pictoWrapper: {
     width: '400px',
     maxWidth: '100%',
     height: 'auto',
     marginRight: '60px',
-    flexGrow: 1,
-    backgroundColor: 'white'
+    flexGrow: 1
   },
   radioButton: {
     margin: 16
@@ -47,6 +51,10 @@ const styles = {
     width: '300px'
   },
   toggle: {
+    margin: 16,
+    width: 250
+  },
+  button: {
     margin: 16,
     width: 250
   }
@@ -105,92 +113,89 @@ class Pictogram extends Component {
 
     return (
       <div>
-        <H2 primary ucase>{keyword}</H2>
+        
         <div style={styles.wrapper}>
-          <img src={`${PICTOGRAMS_URL}/${idPictogram}_500.png`} alt={'alt'} style={styles.picto} />
-          <div style={styles.desc}>
-            <H2 primary>{<FormattedMessage {...messages.description} />}</H2>
-            <Divider />
-            {keywords.valueSeq().map((keyword) =>
-              <div key={keyword}>
-                <p style={{fontWeight: '900'}}>{keyword.get('keyword')}</p>
-                <p>{<FormattedMessage {...messages.meaning} />}: {keyword.get('meaning')}</p>
+          <div style={styles.pictoWrapper}>
+            <H2 center={true} primary ucase>{keyword}</H2>
+            <ConditionalPaper>
+              
+              <img src={`${PICTOGRAMS_URL}/${idPictogram}_500.png`} alt={'alt'} style={styles.picto} />
+              </ConditionalPaper>
+              <div style={{ display: 'flex', textAlign: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <RaisedButton label={<FormattedMessage {...messages.addFavoriteLabel} />} secondary={true} style={styles.button} icon={<FavoriteIcon />} />
+                <RaisedButton onClick={this.handleOpenMenu} label={<FormattedMessage {...messages.downloadLabel} />} primary={true} style={styles.button} icon={<DownloadIcon />} />
               </div>
-            )}
-            <SoundPlayer streamUrl={streamUrl} preloadType='metadata' />
-            <IconMenu
-              iconButtonElement={<IconButton><FileFileDownload /></IconButton>}
-              open={this.state.openMenu}
-              onRequestChange={this.handleOnRequestChange}
-            >
-              <MenuItem value='1' primaryText='Download big size (2000px)' />
-              <MenuItem value='2' primaryText='Download medium size (500px)' />
-            </IconMenu>
+            
+          </div>
+          <div style={styles.desc}>
+            <H3 primary={true}>{<FormattedMessage {...messages.modifyPicto} />}</H3>
+            <Divider />
+            <div style={{ display: 'flex', width: '500', flexWrap: 'wrap', alignItems: 'center' }}>
+              <Toggle
+                label={<FormattedMessage {...messages.plural} />}
+                labelPosition='right'
+                onToggle={this.handlePlural}
+                style={styles.toggle}
+              />
+              <Toggle
+                label={<FormattedMessage {...messages.color} />}
+                labelPosition='right'
+                onToggle={this.handleColor}
+                defaultToggled={true}
+                style={styles.toggle}
+              />
+              <Toggle
+                label={<FormattedMessage {...messages.backgroundColor} />}
+                labelPosition='right'
+                style={styles.toggle}
+                onToggle={this.handlebgColor}
+              />
+              { bgColor ?
+                <div style={{ width: '100px' }}>
+                  <button onClick={this.onTogglePicker}>
+                    {this.state.pickerVisible ? this.hidePicker : this.showPicker }
+                  </button>
+
+                  { this.state.pickerVisible && (
+                    <div style={{ position: 'absolute' }}>
+                      <TwitterPicker
+                        color='#333'
+                        onChangeComplete={this.handleColorChange}
+                      />
+                    </div>
+                  ) }
+                </div>
+                : ''
+              }
+              <Toggle
+                label={<FormattedMessage {...messages.past} />}
+                labelPosition='right'
+                onToggle={this.handleColor}
+                defaultToggled={true}
+                style={styles.toggle}
+              />
+              <Toggle
+                label={<FormattedMessage {...messages.future} />}
+                labelPosition='right'
+                style={styles.toggle}
+                onToggle={this.handlebgColor}
+              />
+            </div>
+
           </div>
         </div>
-        <H3 primary={true}>{<FormattedMessage {...messages.modifyPicto} />}</H3>
+        <H3 primary>{<FormattedMessage {...messages.description} />}</H3>
         <Divider />
-        <div style={{ display: 'flex', width: '500', flexWrap: 'wrap', alignItems: 'center' }}>
-          <Toggle
-            label={<FormattedMessage {...messages.plural} />}
-            labelPosition='right'
-            onToggle={this.handlePlural}
-            style={styles.toggle}
-          />
-          <Toggle
-            label={<FormattedMessage {...messages.color} />}
-            labelPosition='right'
-            onToggle={this.handleColor}
-            defaultToggled={true}
-            style={styles.toggle}
-          />
-          <Toggle
-            label={<FormattedMessage {...messages.backgroundColor} />}
-            labelPosition='right'
-            style={styles.toggle}
-            onToggle={this.handlebgColor}
-          />
-          { bgColor ?
-            <div style={{ width: '100px' }}>
-              <button onClick={this.onTogglePicker}>
-                {this.state.pickerVisible ? this.hidePicker : this.showPicker }
-              </button>
-
-              { this.state.pickerVisible && (
-                <div style={{ position: 'absolute' }}>
-                  <SketchPicker
-                    color='#333'
-                    onChangeComplete={this.handleColorChange}
-                  />
-                </div>
-              ) }
-            </div>
-            : ''
-          }
-          <Toggle
-            label={<FormattedMessage {...messages.past} />}
-            labelPosition='right'
-            onToggle={this.handleColor}
-            defaultToggled={true}
-            style={styles.toggle}
-          />
-          <Toggle
-            label={<FormattedMessage {...messages.future} />}
-            labelPosition='right'
-            style={styles.toggle}
-            onToggle={this.handlebgColor}
-          />
-        </div>
-
-        <H3 primary={true}>{<FormattedMessage {...messages.sharePictogram} />}</H3>
-        <Divider />
-        <p>
-          <ShareBar shareUrl={window.location.href} title={'title'} image={'http://www.arasaac.org/images/arasaac_titulo.png'} />
-        </p>
-        <Divider />
+        {keywords.valueSeq().map((keyword) =>
+          <div key={keyword}>
+            <P important={true}>{keyword.get('keyword')}</P>
+            <P>{<FormattedMessage {...messages.meaning} />}: {keyword.get('meaning')}</P>
+          </div>
+        )}
+        <SoundPlayer streamUrl={streamUrl} preloadType='metadata' />
         <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
-        <p>{<FormattedMessage {...messages.changePictoLanguage} />}</p>
         <Divider />
+        <P>{<FormattedMessage {...messages.changePictoLanguage} />}</P>
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />
         {authors.valueSeq().map((author) =>
@@ -204,6 +209,11 @@ class Pictogram extends Component {
             />
           </P>
         )}
+        <H3 primary={true}>{<FormattedMessage {...messages.sharePictogram} />}</H3>
+        <Divider />
+        <p>
+          <ShareBar shareUrl={window.location.href} title={'title'} image={'http://www.arasaac.org/images/arasaac_titulo.png'} />
+        </p>
       </div>
     )
   }

@@ -21,6 +21,7 @@ const H2 = styled.h2`
   ${media.lg} {
     font-size: 2.4em;
   }
+  text-align:  ${(props) => props.center ? 'center' : 'left'};
 `
 
 export default muiThemeable()(H2)
