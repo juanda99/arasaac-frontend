@@ -24,7 +24,7 @@ const Welcome = () => {
     <FullWidthSection color={lightGreen500}>
       <Logo />
       <H1>ARA<Strong>SAAC</Strong></H1>
-      <H2>
+      <H2 center={true}>
         <FormattedMessage {...messages.header} values={{ aragones }} />
       </H2>
       <LocaleToggle />

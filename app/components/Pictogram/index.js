@@ -116,14 +116,16 @@ class Pictogram extends Component {
         
         <div style={styles.wrapper}>
           <div style={styles.pictoWrapper}>
+            <H2 center={true} primary ucase>{keyword}</H2>
             <ConditionalPaper>
-              <H2 center={true} primary ucase>{keyword}</H2>
+              
               <img src={`${PICTOGRAMS_URL}/${idPictogram}_500.png`} alt={'alt'} style={styles.picto} />
+              </ConditionalPaper>
               <div style={{ display: 'flex', textAlign: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <RaisedButton label={<FormattedMessage {...messages.addFavoriteLabel} />} secondary={true} style={styles.button} icon={<FavoriteIcon />} />
                 <RaisedButton onClick={this.handleOpenMenu} label={<FormattedMessage {...messages.downloadLabel} />} primary={true} style={styles.button} icon={<DownloadIcon />} />
               </div>
-            </ConditionalPaper>
+            
           </div>
           <div style={styles.desc}>
             <H3 primary={true}>{<FormattedMessage {...messages.modifyPicto} />}</H3>
