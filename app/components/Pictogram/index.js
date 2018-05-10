@@ -16,9 +16,8 @@ import SoundPlayer from 'components/SoundPlayer'
 import Toggle from 'material-ui/Toggle'
 import { keywordSelector } from 'utils'
 import { TwitterPicker } from 'react-color'
-import IconButton from 'material-ui/IconButton'
-import IconMenu from 'material-ui/IconMenu'
-import FileFileDownload from 'material-ui/svg-icons/file/file-download'
+import DownloadIcon from 'material-ui/svg-icons/file/file-download'
+import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import VisibilityOn from 'material-ui/svg-icons/action/visibility'
 import VisibilityOff from 'material-ui/svg-icons/action/visibility-off'
 import P from 'components/P'
@@ -121,8 +120,8 @@ class Pictogram extends Component {
               <H2 center={true} primary ucase>{keyword}</H2>
               <img src={`${PICTOGRAMS_URL}/${idPictogram}_500.png`} alt={'alt'} style={styles.picto} />
               <div style={{ display: 'flex', textAlign: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <RaisedButton label={<FormattedMessage {...messages.addFavoriteLabel} />} secondary={true} style={styles.button} icon={<FileFileDownload />} />
-                <RaisedButton label={<FormattedMessage {...messages.downloadLabel} />} primary={true} style={styles.button} icon={<FileFileDownload />} />
+                <RaisedButton label={<FormattedMessage {...messages.addFavoriteLabel} />} secondary={true} style={styles.button} icon={<FavoriteIcon />} />
+                <RaisedButton onClick={this.handleOpenMenu} label={<FormattedMessage {...messages.downloadLabel} />} primary={true} style={styles.button} icon={<DownloadIcon />} />
               </div>
             </ConditionalPaper>
           </div>
@@ -192,14 +191,6 @@ class Pictogram extends Component {
           </div>
         )}
         <SoundPlayer streamUrl={streamUrl} preloadType='metadata' />
-        <IconMenu
-          iconButtonElement={<IconButton><FileFileDownload /></IconButton>}
-          open={this.state.openMenu}
-          onRequestChange={this.handleOnRequestChange}
-        >
-          <MenuItem value='1' primaryText='Download medium size (500px)' />
-          <MenuItem value='2' primaryText='Download big size (2000px)' />
-        </IconMenu>
         <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
         <Divider />
         <P>{<FormattedMessage {...messages.changePictoLanguage} />}</P>
