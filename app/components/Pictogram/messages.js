@@ -66,4 +66,20 @@ export default defineMessages({
     description: 'Toggle button to set the pictogram in future',
     defaultMessage: 'Future'
   },
+  addFavorite: {
+    id: 'app.components.PictogramSnippet.addFavoriteTooltip',
+    defaultMessage: 'Add pictogram to the favorites tab'
+  },
+  download: {
+    id: 'app.components.PictogramSnippet.downloadTooltip',
+    defaultMessage: 'Download pictogram'
+  },
+  addFavoriteLabel: {
+    id: 'app.components.Pictogram.addFavoriteLabel',
+    defaultMessage: 'Add to favorites'
+  },
+  downloadLabel: {
+    id: 'app.components.Pictogram.downloadLabel',
+    defaultMessage: 'Download'
+  },
 })
