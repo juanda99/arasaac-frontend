@@ -3,8 +3,8 @@ import { fade } from 'material-ui/utils/colorManipulator'
 import {
   lightGreen500, lightGreen300, lightGreen700,
   darkBlack, white, fullBlack, fullWhite,
-  pinkA100, pinkA200, pinkA400,
-  grey100, grey300, grey500, grey800, grey900,
+  pinkA100, pinkA200,
+  grey100, grey200, grey300, grey500, grey800, grey900,
   cyan500
 } from 'material-ui/styles/colors'
 import { THEME_NAMES, DEFAULT_THEME } from './actions'
@@ -16,7 +16,7 @@ themes[THEME_NAMES.LIGHT] = {
     primary2Color: lightGreen300,
     primary3Color: lightGreen700,
     accent1Color: '#81388d',
-    accent2Color: grey100,
+    accent2Color: grey200,
     accent3Color: grey500,
     textColor: darkBlack,
     secondaryTextColor: fade(darkBlack, 0.54),
@@ -62,8 +62,8 @@ themes[THEME_NAMES.HIGH_CONTRAST] = {
     primary2Color: lightGreen300,
     primary3Color: lightGreen700,
     accent1Color: pinkA200,
-    accent2Color: pinkA400,
-    accent3Color: pinkA100,
+    accent2Color: grey100,
+    accent3Color: grey500,
     textColor: fullBlack,
     secondaryTextColor: fade(darkBlack, 0.54),
     alternateTextColor: fullWhite,

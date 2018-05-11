@@ -3,11 +3,9 @@ import PropTypes from 'prop-types'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
 import ShareBar from 'components/ShareBar'
-import ConditionalPaper from './ConditionalPaper'
 import Divider from 'material-ui/Divider'
 import FlatButton from 'material-ui/FlatButton'
 import Person from 'material-ui/svg-icons/social/person'
-import MenuItem from 'material-ui/MenuItem'
 import RaisedButton from 'material-ui/RaisedButton'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { PICTOGRAMS_URL } from 'services/config'
@@ -21,6 +19,7 @@ import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import VisibilityOn from 'material-ui/svg-icons/action/visibility'
 import VisibilityOff from 'material-ui/svg-icons/action/visibility-off'
 import P from 'components/P'
+import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
 
 const styles = {
@@ -52,7 +51,7 @@ const styles = {
   },
   toggle: {
     margin: 16,
-    width: 250
+    width: 200
   },
   button: {
     margin: 16,
@@ -101,7 +100,7 @@ class Pictogram extends Component {
   )
 
   render() {
-    const { pictogram, searchText} = this.props
+    const { pictogram, searchText, muiTheme} = this.props
     const { color, bgColor, plural } = this.state
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
@@ -113,24 +112,25 @@ class Pictogram extends Component {
 
     return (
       <div>
-        
         <div style={styles.wrapper}>
           <div style={styles.pictoWrapper}>
-            <H2 center={true} primary ucase>{keyword}</H2>
             <ConditionalPaper>
-              
+              <div style={{ backgroundColor: muiTheme.palette.accent2Color, display: 'flex', alignItems: 'center' }} >
+                <SoundPlayer streamUrl={streamUrl} preloadType='metadata' showProgress={false} showTimer={false} />
+                <H2 center={true} primary ucase noMargin>{keyword}</H2>
+              </div>
               <img src={`${PICTOGRAMS_URL}/${idPictogram}_500.png`} alt={'alt'} style={styles.picto} />
-              </ConditionalPaper>
-              <div style={{ display: 'flex', textAlign: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', textAlign: 'center', justifyContent: 'center', flexWrap: 'wrap', backgroundColor: muiTheme.palette.accent2Color }}>
                 <RaisedButton label={<FormattedMessage {...messages.addFavoriteLabel} />} secondary={true} style={styles.button} icon={<FavoriteIcon />} />
                 <RaisedButton onClick={this.handleOpenMenu} label={<FormattedMessage {...messages.downloadLabel} />} primary={true} style={styles.button} icon={<DownloadIcon />} />
               </div>
-            
+            </ConditionalPaper>
           </div>
           <div style={styles.desc}>
             <H3 primary={true}>{<FormattedMessage {...messages.modifyPicto} />}</H3>
             <Divider />
-            <div style={{ display: 'flex', width: '500', flexWrap: 'wrap', alignItems: 'center' }}>
+            <P>Common options</P>
+            <div style={{ display: 'flex', width: '100%', flexWrap: 'wrap', alignItems: 'center' }}>
               <Toggle
                 label={<FormattedMessage {...messages.plural} />}
                 labelPosition='right'
@@ -182,6 +182,58 @@ class Pictogram extends Component {
               />
             </div>
 
+            <P>Advanced options</P>
+            <div style={{ display: 'flex', width: '100%', flexWrap: 'wrap', alignItems: 'center' }}>
+            <Toggle
+              label={<FormattedMessage {...messages.plural} />}
+              labelPosition='right'
+              onToggle={this.handlePlural}
+              style={styles.toggle}
+            />
+            <Toggle
+              label={<FormattedMessage {...messages.color} />}
+              labelPosition='right'
+              onToggle={this.handleColor}
+              defaultToggled={true}
+              style={styles.toggle}
+            />
+            <Toggle
+              label={<FormattedMessage {...messages.backgroundColor} />}
+              labelPosition='right'
+              style={styles.toggle}
+              onToggle={this.handlebgColor}
+            />
+            { bgColor ?
+              <div style={{ width: '100px' }}>
+                <button onClick={this.onTogglePicker}>
+                  {this.state.pickerVisible ? this.hidePicker : this.showPicker }
+                </button>
+
+                { this.state.pickerVisible && (
+                  <div style={{ position: 'absolute' }}>
+                    <TwitterPicker
+                      color='#333'
+                      onChangeComplete={this.handleColorChange}
+                    />
+                  </div>
+                ) }
+              </div>
+              : ''
+            }
+            <Toggle
+              label={<FormattedMessage {...messages.past} />}
+              labelPosition='right'
+              onToggle={this.handleColor}
+              defaultToggled={true}
+              style={styles.toggle}
+            />
+            <Toggle
+              label={<FormattedMessage {...messages.future} />}
+              labelPosition='right'
+              style={styles.toggle}
+              onToggle={this.handlebgColor}
+            />
+          </div>
           </div>
         </div>
         <H3 primary>{<FormattedMessage {...messages.description} />}</H3>
@@ -192,7 +244,7 @@ class Pictogram extends Component {
             <P>{<FormattedMessage {...messages.meaning} />}: {keyword.get('meaning')}</P>
           </div>
         )}
-        <SoundPlayer streamUrl={streamUrl} preloadType='metadata' />
+        
         <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
         <Divider />
         <P>{<FormattedMessage {...messages.changePictoLanguage} />}</P>

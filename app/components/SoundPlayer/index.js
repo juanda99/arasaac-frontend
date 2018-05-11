@@ -27,12 +27,12 @@ class SoundPlayer extends PureComponent {
       outline: 'none'
     },
     container: {
-      width: '300px'
+      width: this.props.showProgress ? '300px' : 'auto'
     }
   }
 
   render() {
-    const { playing, seeking, currentTime, duration } = this.props
+    const { playing, seeking, currentTime, duration, showProgress, showTimer } = this.props
     const { progressInner, progress, timer, button, container } = this.styles
     return (
       <div style={container}>
@@ -46,15 +46,19 @@ class SoundPlayer extends PureComponent {
           />
 
         </SoundButton>
-        <Timer {...this.props} style={timer} />
+        { showTimer ? <Timer {...this.props} style={timer} /> : ''}
+        { showProgress ?
+          <Progress
+            value={(currentTime / duration) * 100 || 0}
+            style={progress}
+            innerStyle={progressInner}
+            {...this.props}
+            color='blue'
+          />
+          : ''
+        }
 
-        <Progress
-          value={(currentTime / duration) * 100 || 0}
-          style={progress}
-          innerStyle={progressInner}
-          {...this.props}
-          color='blue'
-        />
+        
       </div>
     )
   }
@@ -67,5 +71,7 @@ SoundPlayer.propTypes = {
   seeking: PropTypes.bool.isRequired,
   currentTime: PropTypes.number.isRequired,
   duration: PropTypes.number.isRequired,
-  muiTheme: PropTypes.object.isRequired
+  muiTheme: PropTypes.object.isRequired,
+  showProgress: PropTypes.bool,
+  showTimer: PropTypes.bool
 }
