@@ -11,13 +11,14 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 import { PICTOGRAMS_URL } from 'services/config'
 import { FormattedMessage } from 'react-intl'
 import SoundPlayer from 'components/SoundPlayer'
+import IconButton from 'material-ui/IconButton'
 import Toggle from 'material-ui/Toggle'
 import { keywordSelector } from 'utils'
 import { TwitterPicker } from 'react-color'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
-import VisibilityOn from 'material-ui/svg-icons/action/visibility'
-import VisibilityOff from 'material-ui/svg-icons/action/visibility-off'
+import VisibilityOn from 'material-ui/svg-icons/navigation/chevron-right'
+import VisibilityOff from 'material-ui/svg-icons/navigation/expand-more'
 import P from 'components/P'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
@@ -51,7 +52,7 @@ const styles = {
   },
   toggle: {
     margin: 16,
-    width: 200
+    width: '200px'
   },
   button: {
     margin: 16,
@@ -70,7 +71,9 @@ class Pictogram extends Component {
   onTogglePicker = () => this.setState({ pickerVisible: !this.state.pickerVisible })
   handleChange = (event, value) => { this.setState({ language: value }) }
   handleColor = (event, color) => { this.setState({ color }) }
-  handlebgColor = (event, bgColor) => { this.setState({ bgColor, pickerVisible: bgColor }) }
+  handlebgColor = (event, bgColor) => {
+    this.setState({ bgColor, pickerVisible: bgColor })
+  }
   handlePlural = (event, plural) => { this.setState({ plural }) }
   handleColorChange = ({ hex }) => {
     console.log(hex)
@@ -84,19 +87,15 @@ class Pictogram extends Component {
   }
 
   showPicker = (
-    <FlatButton
-      backgroundColor={this.props.muiTheme.palette.primary1Color}
-      hoverColor={this.props.muiTheme.palette.primary3Color}
-      icon={<VisibilityOff color={'white'} />}
-    />
+    <IconButton>
+      <VisibilityOff color={this.props.muiTheme.palette.primary1Color} />
+    </IconButton>
   )
 
   hidePicker = (
-    <FlatButton
-      backgroundColor={this.props.muiTheme.palette.primary1Color}
-      hoverColor={this.props.muiTheme.palette.primary3Color}
-      icon={<VisibilityOn color={'white'} />}
-    />
+    <IconButton>
+      <VisibilityOn color={this.props.muiTheme.palette.primary1Color} />
+    </IconButton>
   )
 
   render() {
@@ -150,23 +149,6 @@ class Pictogram extends Component {
                 style={styles.toggle}
                 onToggle={this.handlebgColor}
               />
-              { bgColor ?
-                <div style={{ width: '100px' }}>
-                  <button onClick={this.onTogglePicker}>
-                    {this.state.pickerVisible ? this.hidePicker : this.showPicker }
-                  </button>
-
-                  { this.state.pickerVisible && (
-                    <div style={{ position: 'absolute' }}>
-                      <TwitterPicker
-                        color='#333'
-                        onChangeComplete={this.handleColorChange}
-                      />
-                    </div>
-                  ) }
-                </div>
-                : ''
-              }
               <Toggle
                 label={<FormattedMessage {...messages.past} />}
                 labelPosition='right'
@@ -200,26 +182,25 @@ class Pictogram extends Component {
             <Toggle
               label={<FormattedMessage {...messages.backgroundColor} />}
               labelPosition='right'
-              style={styles.toggle}
+              style={{ width: '200px', margin: '16' }}
               onToggle={this.handlebgColor}
             />
-            { bgColor ?
-              <div style={{ width: '100px' }}>
-                <button onClick={this.onTogglePicker}>
-                  {this.state.pickerVisible ? this.hidePicker : this.showPicker }
-                </button>
-
-                { this.state.pickerVisible && (
-                  <div style={{ position: 'absolute' }}>
-                    <TwitterPicker
-                      color='#333'
-                      onChangeComplete={this.handleColorChange}
-                    />
-                  </div>
-                ) }
-              </div>
+              {bgColor ?
+                this.state.pickerVisible ? this.showPicker : this.hidePicker
+                : ''
+              }
+              {bgColor ?
+                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
+                  <TwitterPicker
+                    triangle='hide'
+                    color='#333'
+                    onChangeComplete={this.handleColorChange}
+                  />
+                </div>
               : ''
-            }
+
+              }
+
             <Toggle
               label={<FormattedMessage {...messages.past} />}
               labelPosition='right'
