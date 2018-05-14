@@ -11,13 +11,12 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 import { PICTOGRAMS_URL } from 'services/config'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import SoundPlayer from 'components/SoundPlayer'
-import IconButton from 'material-ui/IconButton'
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import Toggle from 'material-ui/Toggle'
 import { keywordSelector } from 'utils'
 import { TwitterPicker } from 'react-color'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
-
 import P from 'components/P'
 import ToggleDropDown from './ToggleDropdown'
 import ConditionalPaper from './ConditionalPaper'
@@ -62,18 +61,19 @@ const styles = {
 class Pictogram extends Component {
   state = {
     language: this.props.locale,
+    plural: false,
     color: true,
     bgColor: false,
-    plural: false,
+    showBgColor: false,
+    verbalTense: false,
+    showVerbalTense: false,
     openMenu: false
   }
 
   onTogglePicker = () => this.setState({ pickerVisible: !this.state.pickerVisible })
   handleChange = (event, value) => { this.setState({ language: value }) }
   handleColor = (event, color) => { this.setState({ color }) }
-  handlebgColor = (event, bgColor) => {
-    this.setState({ bgColor, pickerVisible: bgColor })
-  }
+
   handlePlural = (event, plural) => { this.setState({ plural }) }
   handleColorChange = ({ hex }) => {
     console.log(hex)
@@ -86,16 +86,32 @@ class Pictogram extends Component {
     })
   }
 
+  handlebgColor = (bgColor) => {
+    this.setState({ bgColor, showBgColor: bgColor })
+  }
+
+  handlebgColorClick = () => {
+    this.setState({
+      showBgColor: !this.state.showBgColor
+    })
+  }
+
+  handleVerbalTense = (verbalTense) => {
+    this.setState({ verbalTense, showVerbalTense: verbalTense })
+  }
+
+  handleVerbalTenseClick = () => {
+    this.setState({
+      showVerbalTense: !this.state.showVerbalTense
+    })
+  }
 
 
   render() {
+    console.log(this.state)
     const { pictogram, searchText, muiTheme, intl } = this.props
     const { formatMessage } = intl
-    console.log('+++++++++++++++++++++++++++++++++++++++++++')
-    console.log(intl)
-    console.log(formatMessage)
-    console.log('-------------------------')
-    const { color, bgColor, plural } = this.state
+    const { color, bgColor, showBgColor, plural, verbalTense, showVerbalTense } = this.state
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
     const { keyword } = keywordSelector(searchText, keywords.toJS())
@@ -103,7 +119,7 @@ class Pictogram extends Component {
     // const keywords = pictogram.get('keywords')
     // audio source
     const streamUrl = 'http://www.arasaac.org/repositorio/locuciones/0/2139.mp3'
-
+    console.log(`bgColor: ${this.state.bgColor}`)
     return (
       <div>
         <div style={styles.wrapper}>
@@ -140,55 +156,60 @@ class Pictogram extends Component {
               />
 
               <ToggleDropDown
-                toggled={false}
+                toggled={bgColor}
                 onToggle={this.handlebgColor}
                 label={formatMessage(messages.backgroundColor)}
                 style={styles.toggle}
-                showExtra={true}
+                showOptions={showBgColor}
+                onClick={this.handlebgColorClick}
               />
-
-              <div style={{ position: 'relative', width: '200px', display: 'flex', textAlign: 'center' }} >
-                <Toggle
-                  label={<FormattedMessage {...messages.backgroundColor} />}
-                  labelPosition='right'
-                  style={{ width: '200px', margin: '16' }}
-                  onToggle={this.handlebgColor}
-                />
-                  {bgColor ?
-                    this.state.pickerVisible ? this.showPicker : this.hidePicker
-                    : ''
-                  }
-              </div>
-                {bgColor ?
-                  <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
-                    <TwitterPicker
-                      triangle='hide'
-                      color='#333'
-                      onChangeComplete={this.handleColorChange}
+              { showBgColor ?
+                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
+                  <TwitterPicker
+                    triangle='hide'
+                    color='#333'
+                    onChangeComplete={this.handleColorChange}
+                  />
+                </div>
+              : ''
+              }
+              <ToggleDropDown
+                toggled={verbalTense}
+                onToggle={this.handleVerbalTense}
+                label={formatMessage(messages.verbalTense)}
+                style={styles.toggle}
+                showOptions={showVerbalTense}
+                onClick={this.handleVerbalTenseClick}
+              />
+              { showVerbalTense ?
+                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%' }}>
+                  <RadioButtonGroup name='verbalTense' defaultSelected='present'>
+                    <RadioButton
+                      value='past'
+                      label={<FormattedMessage {...messages.past} />}
+                      style={styles.radioButton}
                     />
-                  </div>
-                : ''
-                }
+                    <RadioButton
+                      value='present'
+                      label={<FormattedMessage {...messages.present} />}
+                      style={styles.radioButton}
+                    />
+                    <RadioButton
+                      value='future'
+                      label={<FormattedMessage {...messages.future} />}
+                      style={styles.radioButton}
+                    />
+                  </RadioButtonGroup>
+                </div>
+              : ''
+              }
 
-              <Toggle
-                label={<FormattedMessage {...messages.past} />}
-                labelPosition='right'
-                onToggle={this.handleColor}
-                defaultToggled={true}
-                style={styles.toggle}
-              />
-              <Toggle
-                label={<FormattedMessage {...messages.future} />}
-                labelPosition='right'
-                style={styles.toggle}
-                onToggle={this.handlebgColor}
-              />
             </div>
 
             <P>Advanced options</P>
             <div style={{ display: 'flex', width: '100%', flexWrap: 'wrap', alignItems: 'center' }}>
               <Toggle
-                label={<FormattedMessage {...messages.plural} />}
+                label={<FormattedMessage {...messages.addText} />}
                 labelPosition='right'
                 onToggle={this.handlePlural}
                 style={styles.toggle}
@@ -200,28 +221,6 @@ class Pictogram extends Component {
                 defaultToggled={true}
                 style={styles.toggle}
               />
-              <div style={{ position: 'relative', width: '200px', display: 'flex', textAlign: 'center' }} >
-                <Toggle
-                  label={<FormattedMessage {...messages.backgroundColor} />}
-                  labelPosition='right'
-                  style={{ width: '200px', margin: '16' }}
-                  onToggle={this.handlebgColor}
-                />
-                  {bgColor ?
-                    this.state.pickerVisible ? this.showPicker : this.hidePicker
-                    : ''
-                  }
-              </div>
-                {bgColor ?
-                  <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
-                    <TwitterPicker
-                      triangle='hide'
-                      color='#333'
-                      onChangeComplete={this.handleColorChange}
-                    />
-                  </div>
-                : ''
-                }
 
               <Toggle
                 label={<FormattedMessage {...messages.past} />}
@@ -234,7 +233,7 @@ class Pictogram extends Component {
                 label={<FormattedMessage {...messages.future} />}
                 labelPosition='right'
                 style={styles.toggle}
-                onToggle={this.handlebgColor}
+                onToggle={this.handleColor}
               />
             </div>
           </div>
@@ -284,4 +283,4 @@ Pictogram.propTypes = {
   intl: intlShape.isRequired
 }
 
-export default muiThemeable()(Pictogram)
+export default injectIntl(muiThemeable()(Pictogram))

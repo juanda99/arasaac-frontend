@@ -56,10 +56,20 @@ export default defineMessages({
     description: 'Toggle button to set a backgroundColor, by default transparent',
     defaultMessage: 'Background color'
   },
+  verbalTense: {
+    id: 'app.components.Pictogram.verbalTense',
+    description: 'Toggle button to select the verbal tense of the pictogram',
+    defaultMessage: 'Verbal tense'
+  },
   past: {
     id: 'app.components.Pictogram.past',
     description: 'Toggle button to set the pictogram in past',
     defaultMessage: 'Past'
+  },
+  present: {
+    id: 'app.components.Pictogram.present',
+    description: 'Toggle button to set the pictogram in present',
+    defaultMessage: 'Present'
   },
   future: {
     id: 'app.components.Pictogram.future',
@@ -81,5 +91,5 @@ export default defineMessages({
   downloadLabel: {
     id: 'app.components.Pictogram.downloadLabel',
     defaultMessage: 'Download'
-  },
+  }
 })
