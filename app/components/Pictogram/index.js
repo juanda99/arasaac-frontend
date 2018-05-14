@@ -209,7 +209,7 @@ class Pictogram extends Component {
             <P>Advanced options</P>
             <div style={{ display: 'flex', width: '100%', flexWrap: 'wrap', alignItems: 'center' }}>
               <Toggle
-                label={<FormattedMessage {...messages.addText} />}
+                label={<FormattedMessage {...messages.plural} />}
                 labelPosition='right'
                 onToggle={this.handlePlural}
                 style={styles.toggle}
