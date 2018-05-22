@@ -56,6 +56,26 @@ export default defineMessages({
     description: 'Toggle button to set a backgroundColor, by default transparent',
     defaultMessage: 'Background color'
   },
+  identifier: {
+    id: 'app.components.Pictogram.identifier',
+    description: 'Toggle button to set an identifier, none by default',
+    defaultMessage: 'Identifier'
+  },
+  text: {
+    id: 'app.components.Pictogram.text',
+    description: 'Toggle button to set a text, none by default ',
+    defaultMessage: 'Text'
+  },
+  peopleAppearance: {
+    id: 'app.components.Pictogram.peopleAppearance',
+    description: 'Toggle button to show options for people appearance in pictos: hair, skin..',
+    defaultMessage: 'People appearance'
+  },
+  frame: {
+    id: 'app.components.Pictogram.frame',
+    description: 'Toggle button to set a frame, none by default ',
+    defaultMessage: 'Frame'
+  },
   verbalTense: {
     id: 'app.components.Pictogram.verbalTense',
     description: 'Toggle button to select the verbal tense of the pictogram',

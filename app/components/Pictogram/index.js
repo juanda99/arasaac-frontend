@@ -64,9 +64,17 @@ class Pictogram extends Component {
     plural: false,
     color: true,
     bgColor: false,
+    identifier: false,
+    text: false,
+    frame: false,
+    peopleAppearance: false,
     showBgColor: false,
     verbalTense: false,
     showVerbalTense: false,
+    showIdentifier: false,
+    showText: false,
+    showFrame: false,
+    showPeopleAppearance: false,
     openMenu: false
   }
 
@@ -89,7 +97,7 @@ class Pictogram extends Component {
   handlebgColor = (bgColor) => {
     this.setState({ bgColor, showBgColor: bgColor })
   }
-
+  
   handlebgColorClick = () => {
     this.setState({
       showBgColor: !this.state.showBgColor
@@ -106,12 +114,66 @@ class Pictogram extends Component {
     })
   }
 
+  handleIdentifier = (identifier) => {
+    this.setState({ identifier, showIdentifier: identifier })
+  }
+
+  handleIdentifierClick = () => {
+    this.setState({
+      showIdentifier: !this.state.showIdentifier
+    })
+  }
+
+  handleText = (text) => {
+    this.setState({ text, showText: text })
+  }
+
+  handleTextClick = () => {
+    this.setState({
+      showText: !this.state.showText
+    })
+  }
+
+  handlePeopleAppearance = (peopleAppearance) => {
+    this.setState({ peopleAppearance, showPeopleAppearance: peopleAppearance })
+  }
+
+  handlePeopleAppearanceClick = () => {
+    this.setState({
+      showPeopleAppearance: !this.state.showPeopleAppearance
+    })
+  }
+
+  handleFrame = (frame) => {
+    this.setState({ frame, showFrame: frame })
+  }
+
+  handleFrameClick = () => {
+    this.setState({
+      showFrame: !this.state.showFrame
+    })
+  }
 
   render() {
     console.log(this.state)
     const { pictogram, searchText, muiTheme, intl } = this.props
     const { formatMessage } = intl
-    const { color, bgColor, showBgColor, plural, verbalTense, showVerbalTense } = this.state
+    const {
+      color,
+      bgColor,
+      showBgColor,
+      plural,
+      identifier,
+      showIdentifier,
+      text,
+      showText,
+      verbalTense,
+      showVerbalTense,
+      frame,
+      showFrame,
+      peopleAppearance,
+      showPeopleAppearance
+    } = this.state
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
     const { keyword } = keywordSelector(searchText, keywords.toJS())
@@ -208,33 +270,66 @@ class Pictogram extends Component {
 
             <P>Advanced options</P>
             <div style={{ display: 'flex', width: '100%', flexWrap: 'wrap', alignItems: 'center' }}>
-              <Toggle
-                label={<FormattedMessage {...messages.plural} />}
-                labelPosition='right'
-                onToggle={this.handlePlural}
+            <ToggleDropDown
+                toggled={identifier}
+                onToggle={this.handleIdentifier}
+                label={formatMessage(messages.identifier)}
                 style={styles.toggle}
+                showOptions={showIdentifier}
+                onClick={this.handleIdentifierClick}
               />
-              <Toggle
-                label={<FormattedMessage {...messages.color} />}
-                labelPosition='right'
-                onToggle={this.handleColor}
-                defaultToggled={true}
+              { showIdentifier ?
+                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
+                    <p>WIP!!!! Here we'll choose our identifier</p>
+                </div>
+              : ''
+              }
+              <ToggleDropDown
+                toggled={text}
+                onToggle={this.handleText}
+                label={formatMessage(messages.text)}
                 style={styles.toggle}
+                showOptions={showText}
+                onClick={this.handleTextClick}
               />
+              { showText ?
+                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
+                    <p>WIP!!!! Here we'll write our text for the pictogram</p>
+                </div>
+              : ''
+              }
 
-              <Toggle
-                label={<FormattedMessage {...messages.past} />}
-                labelPosition='right'
-                onToggle={this.handleColor}
-                defaultToggled={true}
+              <ToggleDropDown
+                toggled={peopleAppearance}
+                onToggle={this.handlePeopleAppearance}
+                label={formatMessage(messages.peopleAppearance)}
                 style={styles.toggle}
+                showOptions={showPeopleAppearance}
+                onClick={this.handlePeopleAppearanceClick}
               />
-              <Toggle
-                label={<FormattedMessage {...messages.future} />}
-                labelPosition='right'
+              { showPeopleAppearance ?
+                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
+                    <p>WIP!!!! Here we'll change skin and hair</p>
+                </div>
+              : ''
+              }
+
+
+              <ToggleDropDown
+                toggled={frame}
+                onToggle={this.handleFrame}
+                label={formatMessage(messages.frame)}
                 style={styles.toggle}
-                onToggle={this.handleColor}
+                showOptions={showFrame}
+                onClick={this.handleFrameClick}
               />
+              { showFrame ?
+                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
+                    <p>WIP!!!! Here we'll choose color and width for a picto frame</p>
+                </div>
+              : ''
+              }
+
             </div>
           </div>
         </div>
