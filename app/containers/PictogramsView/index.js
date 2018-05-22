@@ -168,7 +168,7 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
             </View>
           </div>
           <div>
-            <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+            <View left={true} right={true} style={{ backgroundColor: 'muiTheme.palette.accent2Color' }}>
               <div style={styles.container}>
                 <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} dataSource={keywords} />
                 <ActionButtons

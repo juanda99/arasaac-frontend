@@ -6,9 +6,9 @@ const SoundButton = styled.div`
   color: ${(props) => props.muiTheme.palette.primary1Color};
   align-items: center;
   justify-content: center;
-  border: ${(props) => `1px solid ${props.muiTheme.palette.primary1Color}`};
+  border: ${(props) => `0px solid ${props.muiTheme.palette.primary1Color}`};
   &:hover{
-    background-color: ${(props) => props.muiTheme.palette.accent2Color};
+    background-color: ${(props) => props.muiTheme.palette.accent3Color};
   }
   width: 50px;
   padding: 15px;

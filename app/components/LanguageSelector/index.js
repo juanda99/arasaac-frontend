@@ -18,7 +18,7 @@ const LanguageSelector = (props) => {
     props.onChange(value)
   }
   return (
-    <SelectField style={{ textAlign: 'left', width: '400px' }} maxHeight={400} value={props.value} onChange={handleChange} floatingLabelText='Choose your language'>
+    <SelectField style={{ textAlign: 'left', width: '330px', maxWidth: '98%' }} maxHeight={400} value={props.value} onChange={handleChange} floatingLabelText='Choose your language'>
       <MenuItem value={'ca'} primaryText={`Català - ${formatMessage(messages.catalan)}`} />
       <MenuItem value={'de'} primaryText={`Deutsche - ${formatMessage(messages.german)}`} />
       <MenuItem value={'es'} primaryText={`Español - ${formatMessage(messages.spanish)}`} />
