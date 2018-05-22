@@ -181,7 +181,6 @@ class Pictogram extends Component {
     // const keywords = pictogram.get('keywords')
     // audio source
     const streamUrl = 'http://www.arasaac.org/repositorio/locuciones/0/2139.mp3'
-    console.log(`bgColor: ${this.state.bgColor}`)
     return (
       <div>
         <div style={styles.wrapper}>
