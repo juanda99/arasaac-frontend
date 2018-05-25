@@ -3,6 +3,7 @@ export const WEB_URL = 'https://localhost:3000'
 const STATIC_SERVER = 'https://static.arasaac.org'
 export const IMAGES_URL = `${STATIC_SERVER}/images`
 export const PICTOGRAMS_URL = `${STATIC_SERVER}/pictograms`
+export const LOCUTIONS_URL = `${STATIC_SERVER}/locutions`
 export const MATERIALS_URL = `${STATIC_SERVER}/materials`
 export const API_SERVER = 'https://api.arasaac.org'
 export const API_ROOT = `${API_SERVER}/api`
