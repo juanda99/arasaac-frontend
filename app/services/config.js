@@ -1,3 +1,5 @@
+import queryString from 'query-string'
+
 const CLIENT_ID = '12345'
 export const WEB_URL = 'https://localhost:3000'
 const STATIC_SERVER = 'https://static.arasaac.org'
@@ -56,6 +58,12 @@ export const signup = {
       body: JSON.stringify(userData)
     }
   })
+}
+export const customPictogram = {
+  url: (idPictogram, options) => {
+    const getString = queryString.stringify(options)
+    return `${API_ROOT}/pictograms/${idPictogram}?${getString}`
+  }
 }
 
 

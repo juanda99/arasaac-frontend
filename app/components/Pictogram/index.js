@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import queryString from 'query-string'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
 import ShareBar from 'components/ShareBar'
@@ -8,7 +9,7 @@ import FlatButton from 'material-ui/FlatButton'
 import Person from 'material-ui/svg-icons/social/person'
 import RaisedButton from 'material-ui/RaisedButton'
 import muiThemeable from 'material-ui/styles/muiThemeable'
-import { PICTOGRAMS_URL, LOCUTIONS_URL } from 'services/config'
+import { PICTOGRAMS_URL, LOCUTIONS_URL, API_ROOT } from 'services/config'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import SoundPlayer from 'components/SoundPlayer'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
@@ -75,14 +76,36 @@ class Pictogram extends Component {
     showText: false,
     showFrame: false,
     showPeopleAppearance: false,
-    openMenu: false
+    openMenu: false,
+    url: ''
   }
 
   onTogglePicker = () => this.setState({ pickerVisible: !this.state.pickerVisible })
-  handleChange = (event, value) => { this.setState({ language: value }) }
-  handleColor = (event, color) => { this.setState({ color }) }
 
-  handlePlural = (event, plural) => { this.setState({ plural }) }
+  apiState = { url: true }
+
+  buildOptionsRequest = () => {
+    const { pictogram } = this.props
+    const idPictogram = pictogram.get('idPictogram')
+    const getString = queryString.stringify(this.apiState)
+    const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${getString}`
+    fetch(endPoint).then((data) => data.json()).then((data) => this.setState({ url: data.image }))
+  }
+
+  handleColor = (event, color) => { 
+    this.setState({ color })
+    if (color) delete this.apiState.color
+    else this.apiState.color = false
+    this.buildOptionsRequest()
+  }
+
+  handlePlural = (event, plural) => {
+    this.setState({ plural })
+    if (!plural) delete this.apiState.plural
+    else this.apiState.plural = true
+    this.buildOptionsRequest()
+  }
+
   handleColorChange = ({ hex }) => {
     console.log(hex)
     this.setState({ pickerVisible: 0 })
@@ -97,7 +120,7 @@ class Pictogram extends Component {
   handlebgColor = (bgColor) => {
     this.setState({ bgColor, showBgColor: bgColor })
   }
-  
+
   handlebgColorClick = () => {
     this.setState({
       showBgColor: !this.state.showBgColor
@@ -171,22 +194,21 @@ class Pictogram extends Component {
       frame,
       showFrame,
       peopleAppearance,
-      showPeopleAppearance
+      showPeopleAppearance,
+      url
     } = this.state
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
     const { keyword, idLocution } = keywordSelector(searchText, keywords.toJS())
-    const prueba = keywordSelector(searchText, keywords.toJS())
-    console.log(prueba)
     const authors = pictogram.get('authors')
-    // const keywords = pictogram.get('keywords')
-    // audio source
     let soundPlayer = ''
     if (idLocution) {
       const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
-      console.log(streamUrl)
       soundPlayer = <SoundPlayer crossOrigin='anonymous' streamUrl={streamUrl} preloadType='metadata' showProgress={false} showTimer={false} />
-    } 
+    }
+    console.log('render again!')
+    console.log(this.state.url)
+    console.log('----------------')
     return (
       <div>
         <div style={styles.wrapper}>
@@ -196,7 +218,7 @@ class Pictogram extends Component {
                 {soundPlayer}
                 <H2 center={true} primary ucase noMargin>{keyword}</H2>
               </div>
-              <img src={`${PICTOGRAMS_URL}/${idPictogram}_500.png`} alt={'alt'} style={styles.picto} />
+              <img src={url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`} alt={'alt'} style={styles.picto} />
               <div style={{ display: 'flex', textAlign: 'center', justifyContent: 'center', flexWrap: 'wrap', backgroundColor: muiTheme.palette.accent2Color }}>
                 <RaisedButton label={<FormattedMessage {...messages.addFavoriteLabel} />} secondary={true} style={styles.button} icon={<FavoriteIcon />} />
                 <RaisedButton onClick={this.handleOpenMenu} label={<FormattedMessage {...messages.downloadLabel} />} primary={true} style={styles.button} icon={<DownloadIcon />} />
