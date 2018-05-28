@@ -54,6 +54,7 @@ let LoginForm = class LoginForm extends Component {
               hintText={<FormattedMessage {...messages.email} />}
               floatingLabelText={<FormattedMessage {...messages.user} />}
               validate={[required, email]}
+              autoComplete='email'
             />
             <Field
               name='password'
@@ -63,6 +64,7 @@ let LoginForm = class LoginForm extends Component {
               hintText={<FormattedMessage {...messages.password} />}
               floatingLabelText={<FormattedMessage {...messages.password} />}
               validate={required}
+              autoComplete='current-password'
             />
           </Div>
           <Div top={2}>
