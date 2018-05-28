@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import queryString from 'query-string'
+// import queryString from 'query-string'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
 import ShareBar from 'components/ShareBar'
@@ -87,8 +87,9 @@ class Pictogram extends Component {
   buildOptionsRequest = () => {
     const { pictogram } = this.props
     const idPictogram = pictogram.get('idPictogram')
-    const getString = queryString.stringify(this.apiState)
-    const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${getString}`
+    const urlParameters = Object.entries(this.apiState).map((param) => param.join('=')).join('&')
+    console.log(urlParameters)
+    const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}`
     fetch(endPoint).then((data) => data.json()).then((data) => this.setState({ url: data.image }))
   }
 

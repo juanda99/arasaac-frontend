@@ -1,4 +1,4 @@
-import queryString from 'query-string'
+// import queryString from 'query-string'
 
 const CLIENT_ID = '12345'
 export const WEB_URL = 'https://localhost:3000'
@@ -59,13 +59,14 @@ export const signup = {
     }
   })
 }
+/*
 export const customPictogram = {
   url: (idPictogram, options) => {
     const getString = queryString.stringify(options)
     return `${API_ROOT}/pictograms/${idPictogram}?${getString}`
   }
 }
-
+*/
 
 /* this is what we get:
     activities: [Number],
