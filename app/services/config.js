@@ -50,7 +50,7 @@ export const socialLogin = {
   })
 }
 export const signup = {
-  url: 'users',
+  url: `${PRIVATE_API_ROOT}/users`,
   options: (userData) => ({
     config: {
       method: 'POST',
