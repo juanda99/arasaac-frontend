@@ -5,7 +5,7 @@
  */
 
 import { fromJS } from 'immutable'
-import { SIGNUP } from './actions'
+import { SIGNUP, RESET_ERROR } from './actions'
 
 export const initialState = fromJS({
   loading: false,
@@ -21,6 +21,7 @@ const register = (state = initialState, action) => {
       return state
         .set('loading', true)
         .set('error', '')
+        .set('errorMessage', '')
         .set('send', 'false')
         .set('name', action.payload.name)
         .set('email', action.payload.email)
@@ -32,6 +33,9 @@ const register = (state = initialState, action) => {
       return state
         .set('loading', false)
         .set('error', action.payload.error)
+    case RESET_ERROR:
+      return state
+        .set('error', '')
     default:
       return state
   }
