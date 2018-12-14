@@ -24,7 +24,6 @@ import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
 
 const styles = {
-
   wrapper: {
     display: 'flex',
     width: '100%',
@@ -77,23 +76,31 @@ class Pictogram extends Component {
     showFrame: false,
     showPeopleAppearance: false,
     openMenu: false,
-    url: ''
+    url: '',
+    downloadUrl: ''
   }
 
-  onTogglePicker = () => this.setState({ pickerVisible: !this.state.pickerVisible })
+  onTogglePicker = () =>
+    this.setState({ pickerVisible: !this.state.pickerVisible })
 
-  apiState = { url: true }
+  apiState = {}
 
   buildOptionsRequest = () => {
     const { pictogram } = this.props
     const idPictogram = pictogram.get('idPictogram')
-    const urlParameters = Object.entries(this.apiState).map((param) => param.join('=')).join('&')
+    const urlParameters = Object.entries(this.apiState)
+      .map((param) => param.join('='))
+      .join('&')
     console.log(urlParameters)
-    const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}`
-    fetch(endPoint).then((data) => data.json()).then((data) => this.setState({ url: data.image }))
+    const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=true`
+    const downloadUrl = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=false&download=true`
+    console.log(`url descarga: ${downloadUrl}`)
+    fetch(endPoint)
+      .then((data) => data.json())
+      .then((data) => this.setState({ url: data.image, downloadUrl }))
   }
 
-  handleColor = (event, color) => { 
+  handleColor = (event, color) => {
     this.setState({ color })
     if (color) delete this.apiState.color
     else this.apiState.color = false
@@ -178,6 +185,19 @@ class Pictogram extends Component {
     })
   }
 
+  handleOpenMenu = () => {
+    console.log('kkkkkk')
+    console.log(this.props)
+    const { pictogram } = this.props
+    const idPictogram = pictogram.get('idPictogram')
+    const urlParameters = Object.entries(this.apiState)
+      .map((param) => param.join('='))
+      .join('&')
+    console.log(urlParameters)
+    const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=false&download=true`
+    fetch(endPoint)
+  }
+
   render() {
     const { pictogram, searchText, muiTheme, intl, locale } = this.props
     const { formatMessage } = intl
@@ -196,8 +216,10 @@ class Pictogram extends Component {
       showFrame,
       peopleAppearance,
       showPeopleAppearance,
-      url
+      url,
+      downloadUrl
     } = this.state
+    console.log(`DownloadURL: ${downloadUrl}`)
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
     const { keyword, idLocution } = keywordSelector(searchText, keywords.toJS())
@@ -205,32 +227,76 @@ class Pictogram extends Component {
     let soundPlayer = ''
     if (idLocution) {
       const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
-      soundPlayer = <SoundPlayer crossOrigin='anonymous' streamUrl={streamUrl} preloadType='metadata' showProgress={false} showTimer={false} />
+      soundPlayer = (
+        <SoundPlayer
+          crossOrigin='anonymous'
+          streamUrl={streamUrl}
+          preloadType='metadata'
+          showProgress={false}
+          showTimer={false}
+        />
+      )
     }
-    console.log('render again!')
-    console.log(this.state.url)
-    console.log('----------------')
+    const pictoFile = url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`
     return (
       <div>
         <div style={styles.wrapper}>
           <div style={styles.pictoWrapper}>
             <ConditionalPaper>
-              <div style={{ backgroundColor: muiTheme.palette.accent2Color, display: 'flex', alignItems: 'center' }} >
+              <div
+                style={{
+                  backgroundColor: muiTheme.palette.accent2Color,
+                  display: 'flex',
+                  alignItems: 'center'
+                }}
+              >
                 {soundPlayer}
-                <H2 center={true} primary ucase noMargin>{keyword}</H2>
+                <H2 center={true} primary ucase noMargin>
+                  {keyword}
+                </H2>
               </div>
-              <img src={url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`} alt={'alt'} style={styles.picto} />
-              <div style={{ display: 'flex', textAlign: 'center', justifyContent: 'center', flexWrap: 'wrap', backgroundColor: muiTheme.palette.accent2Color }}>
-                <RaisedButton label={<FormattedMessage {...messages.addFavoriteLabel} />} secondary={true} style={styles.button} icon={<FavoriteIcon />} />
-                <RaisedButton onClick={this.handleOpenMenu} label={<FormattedMessage {...messages.downloadLabel} />} primary={true} style={styles.button} icon={<DownloadIcon />} />
+              <img src={pictoFile} alt={'alt'} style={styles.picto} />
+              <div
+                style={{
+                  display: 'flex',
+                  textAlign: 'center',
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                  backgroundColor: muiTheme.palette.accent2Color
+                }}
+              >
+                <RaisedButton
+                  label={<FormattedMessage {...messages.addFavoriteLabel} />}
+                  secondary={true}
+                  style={styles.button}
+                  icon={<FavoriteIcon />}
+                />
+                <a href={downloadUrl}>
+                  <RaisedButton
+                    onClick={this.handleOpenMenu}
+                    label={<FormattedMessage {...messages.downloadLabel} />}
+                    primary={true}
+                    style={styles.button}
+                    icon={<DownloadIcon />}
+                  />
+                </a>
               </div>
             </ConditionalPaper>
           </div>
           <div style={styles.desc}>
-            <H3 primary={true}>{<FormattedMessage {...messages.modifyPicto} />}</H3>
+            <H3 primary={true}>
+              {<FormattedMessage {...messages.modifyPicto} />}
+            </H3>
             <Divider />
             <P>Common options</P>
-            <div style={{ display: 'flex', width: '100%', flexWrap: 'wrap', alignItems: 'center' }}>
+            <div
+              style={{
+                display: 'flex',
+                width: '100%',
+                flexWrap: 'wrap',
+                alignItems: 'center'
+              }}
+            >
               <Toggle
                 label={<FormattedMessage {...messages.plural} />}
                 labelPosition='right'
@@ -253,16 +319,24 @@ class Pictogram extends Component {
                 showOptions={showBgColor}
                 onClick={this.handlebgColorClick}
               />
-              { showBgColor ?
-                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
+              {showBgColor ? (
+                <div
+                  style={{
+                    padding: '10px',
+                    border: '1px dashed lightgrey',
+                    width: '100%',
+                    height: '120px'
+                  }}
+                >
                   <TwitterPicker
                     triangle='hide'
                     color='#333'
                     onChangeComplete={this.handleColorChange}
                   />
                 </div>
-              : ''
-              }
+              ) : (
+                ''
+              )}
               <ToggleDropDown
                 toggled={verbalTense}
                 onToggle={this.handleVerbalTense}
@@ -271,9 +345,18 @@ class Pictogram extends Component {
                 showOptions={showVerbalTense}
                 onClick={this.handleVerbalTenseClick}
               />
-              { showVerbalTense ?
-                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%' }}>
-                  <RadioButtonGroup name='verbalTense' defaultSelected='present'>
+              {showVerbalTense ? (
+                <div
+                  style={{
+                    padding: '10px',
+                    border: '1px dashed lightgrey',
+                    width: '100%'
+                  }}
+                >
+                  <RadioButtonGroup
+                    name='verbalTense'
+                    defaultSelected='present'
+                  >
                     <RadioButton
                       value='past'
                       label={<FormattedMessage {...messages.past} />}
@@ -291,13 +374,20 @@ class Pictogram extends Component {
                     />
                   </RadioButtonGroup>
                 </div>
-              : ''
-              }
-
+              ) : (
+                ''
+              )}
             </div>
 
             <P>Advanced options</P>
-            <div style={{ display: 'flex', width: '100%', flexWrap: 'wrap', alignItems: 'center' }}>
+            <div
+              style={{
+                display: 'flex',
+                width: '100%',
+                flexWrap: 'wrap',
+                alignItems: 'center'
+              }}
+            >
               <ToggleDropDown
                 toggled={identifier}
                 onToggle={this.handleIdentifier}
@@ -306,12 +396,20 @@ class Pictogram extends Component {
                 showOptions={showIdentifier}
                 onClick={this.handleIdentifierClick}
               />
-              { showIdentifier ?
-                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
+              {showIdentifier ? (
+                <div
+                  style={{
+                    padding: '10px',
+                    border: '1px dashed lightgrey',
+                    width: '100%',
+                    height: '120px'
+                  }}
+                >
                   <p>WIP!!!! Here we'll choose our identifier</p>
                 </div>
-              : ''
-              }
+              ) : (
+                ''
+              )}
               <ToggleDropDown
                 toggled={text}
                 onToggle={this.handleText}
@@ -320,12 +418,20 @@ class Pictogram extends Component {
                 showOptions={showText}
                 onClick={this.handleTextClick}
               />
-              { showText ?
-                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
-                    <p>WIP!!!! Here we'll write our text for the pictogram</p>
+              {showText ? (
+                <div
+                  style={{
+                    padding: '10px',
+                    border: '1px dashed lightgrey',
+                    width: '100%',
+                    height: '120px'
+                  }}
+                >
+                  <p>WIP!!!! Here we'll write our text for the pictogram</p>
                 </div>
-              : ''
-              }
+              ) : (
+                ''
+              )}
 
               <ToggleDropDown
                 toggled={peopleAppearance}
@@ -335,13 +441,20 @@ class Pictogram extends Component {
                 showOptions={showPeopleAppearance}
                 onClick={this.handlePeopleAppearanceClick}
               />
-              { showPeopleAppearance ?
-                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
-                    <p>WIP!!!! Here we'll change skin and hair</p>
+              {showPeopleAppearance ? (
+                <div
+                  style={{
+                    padding: '10px',
+                    border: '1px dashed lightgrey',
+                    width: '100%',
+                    height: '120px'
+                  }}
+                >
+                  <p>WIP!!!! Here we'll change skin and hair</p>
                 </div>
-              : ''
-              }
-
+              ) : (
+                ''
+              )}
 
               <ToggleDropDown
                 toggled={frame}
@@ -351,31 +464,43 @@ class Pictogram extends Component {
                 showOptions={showFrame}
                 onClick={this.handleFrameClick}
               />
-              { showFrame ?
-                <div style={{ padding: '10px', border: '1px dashed lightgrey', width: '100%', height: '120px' }}>
-                  <p>WIP!!!! Here we'll choose color and width for a picto frame</p>
+              {showFrame ? (
+                <div
+                  style={{
+                    padding: '10px',
+                    border: '1px dashed lightgrey',
+                    width: '100%',
+                    height: '120px'
+                  }}
+                >
+                  <p>
+                    WIP!!!! Here we'll choose color and width for a picto frame
+                  </p>
                 </div>
-              : ''
-              }
-
+              ) : (
+                ''
+              )}
             </div>
           </div>
         </div>
         <H3 primary>{<FormattedMessage {...messages.description} />}</H3>
         <Divider />
-        {keywords.valueSeq().map((keyword) =>
+        {keywords.valueSeq().map((keyword) => (
           <div key={keyword}>
             <P important={true}>{keyword.get('keyword')}</P>
-            <P>{<FormattedMessage {...messages.meaning} />}: {keyword.get('meaning')}</P>
+            <P>
+              {<FormattedMessage {...messages.meaning} />}:{' '}
+              {keyword.get('meaning')}
+            </P>
           </div>
-        )}
-        
+        ))}
+
         <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
         <Divider />
         <P>{<FormattedMessage {...messages.changePictoLanguage} />}</P>
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />
-        {authors.valueSeq().map((author) =>
+        {authors.valueSeq().map((author) => (
           <P key={author.get('id')}>
             <FlatButton
               key={author.get('id')}
@@ -385,17 +510,22 @@ class Pictogram extends Component {
               href={`http://static.arasaac.org/${author}`}
             />
           </P>
-        )}
-        <H3 primary={true}>{<FormattedMessage {...messages.sharePictogram} />}</H3>
+        ))}
+        <H3 primary={true}>
+          {<FormattedMessage {...messages.sharePictogram} />}
+        </H3>
         <Divider />
         <p>
-          <ShareBar shareUrl={window.location.href} title={'title'} image={'http://www.arasaac.org/images/arasaac_titulo.png'} />
+          <ShareBar
+            shareUrl={window.location.href}
+            title={'title'}
+            image={'http://www.arasaac.org/images/arasaac_titulo.png'}
+          />
         </p>
       </div>
     )
   }
 }
-
 
 Pictogram.propTypes = {
   // onClick: PropTypes.func.isRequired,
