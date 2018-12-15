@@ -8,6 +8,7 @@ import Divider from 'material-ui/Divider'
 import FlatButton from 'material-ui/FlatButton'
 import Person from 'material-ui/svg-icons/social/person'
 import RaisedButton from 'material-ui/RaisedButton'
+import SelectField from 'material-ui/SelectField'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { PICTOGRAMS_URL, LOCUTIONS_URL, API_ROOT } from 'services/config'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
@@ -116,7 +117,7 @@ class Pictogram extends Component {
 
   handleColorChange = ({ hex }) => {
     console.log(hex)
-    this.setState({ pickerVisible: 0 })
+    this.setState({ hex })
   }
 
   handleOnRequestChange = (value) => {
@@ -217,7 +218,8 @@ class Pictogram extends Component {
       peopleAppearance,
       showPeopleAppearance,
       url,
-      downloadUrl
+      downloadUrl,
+      hex
     } = this.state
     console.log(`DownloadURL: ${downloadUrl}`)
     const keywords = pictogram.get('keywords')
@@ -330,7 +332,7 @@ class Pictogram extends Component {
                 >
                   <TwitterPicker
                     triangle='hide'
-                    color='#333'
+                    color={hex}
                     onChangeComplete={this.handleColorChange}
                   />
                 </div>
