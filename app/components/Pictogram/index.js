@@ -9,6 +9,7 @@ import FlatButton from 'material-ui/FlatButton'
 import Person from 'material-ui/svg-icons/social/person'
 import RaisedButton from 'material-ui/RaisedButton'
 import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { PICTOGRAMS_URL, LOCUTIONS_URL, API_ROOT } from 'services/config'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
@@ -69,6 +70,8 @@ class Pictogram extends Component {
     text: false,
     frame: false,
     peopleAppearance: false,
+    hair: '',
+    skin: '',
     showBgColor: false,
     verbalTense: false,
     showVerbalTense: false,
@@ -86,11 +89,13 @@ class Pictogram extends Component {
 
   buildOptionsRequest = () => {
     const { pictogram } = this.props
-    const { color, plural, backgroundColor, bgColor } = this.state
+    const { color, plural, backgroundColor, bgColor, hair, skin } = this.state
     const idPictogram = pictogram.get('idPictogram')
     const parameters = { color, plural }
     // only if active hair, skin, backgroundColor we add it to the request. Otherwise we take default image values
     if (bgColor) parameters.backgroundColor = backgroundColor
+    if (hair) parameters.hair = hair
+    if (skin) parameters.skin = skin
     const urlParameters = Object.entries(parameters)
       .map((param) => param.join('='))
       .join('&')
@@ -141,6 +146,13 @@ class Pictogram extends Component {
     this.setState({
       showBgColor: !this.state.showBgColor
     })
+  }
+
+  handleHairChange = (event, index, hair) => {
+    this.setState({ hair }, () => this.buildOptionsRequest())
+  }
+  handleSkinChange = (event, index, skin) => {
+    this.setState({ skin }, () => this.buildOptionsRequest())
   }
 
   handleVerbalTense = (verbalTense) => {
@@ -454,10 +466,72 @@ class Pictogram extends Component {
                     padding: '10px',
                     border: '1px dashed lightgrey',
                     width: '100%',
-                    height: '120px'
+                    minHeight: '120px'
                   }}
                 >
-                  <p>WIP!!!! Here we'll change skin and hair</p>
+                  <SelectField
+                    style={{ marginRight: '40px' }}
+                    floatingLabelText={formatMessage(messages.skinColor)}
+                    value={this.state.skin}
+                    onChange={this.handleSkinChange}
+                  >
+                    <MenuItem value={null} primaryText='' />
+                    <MenuItem
+                      value='white'
+                      primaryText={formatMessage(messages.whiteSkin)}
+                    />
+                    <MenuItem
+                      value='black'
+                      primaryText={formatMessage(messages.blackSkin)}
+                    />
+                    <MenuItem
+                      value='assian'
+                      primaryText={formatMessage(messages.assianSkin)}
+                    />
+                    <MenuItem
+                      value='mulatto'
+                      primaryText={formatMessage(messages.mulattoSkin)}
+                    />
+                    <MenuItem
+                      value='aztec'
+                      primaryText={formatMessage(messages.aztecSkin)}
+                    />
+                  </SelectField>
+                  <SelectField
+                    floatingLabelText={formatMessage(messages.hairColor)}
+                    value={this.state.hair}
+                    onChange={this.handleHairChange}
+                  >
+                    <MenuItem value={null} primaryText='' />
+                    <MenuItem
+                      value='blonde'
+                      primaryText={formatMessage(messages.blondeHair)}
+                    />
+                    <MenuItem
+                      value='brown'
+                      primaryText={formatMessage(messages.brownHair)}
+                    />
+                    <MenuItem
+                      value='darkBrown'
+                      primaryText={formatMessage(messages.darkBrownHair)}
+                    />
+                    <MenuItem
+                      value='gray'
+                      primaryText={formatMessage(messages.grayHair)}
+                    />
+                    <MenuItem
+                      value='darkGray'
+                      primaryText={formatMessage(messages.darkGrayHair)}
+                    />
+                    <MenuItem
+                      value='red'
+                      primaryText={formatMessage(messages.redHair)}
+                    />
+                    <MenuItem
+                      value='black'
+                      primaryText={formatMessage(messages.blackHair)}
+                    />
+                  </SelectField>
                 </div>
               ) : (
                 ''
