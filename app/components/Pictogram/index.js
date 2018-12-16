@@ -64,7 +64,7 @@ class Pictogram extends Component {
     language: this.props.locale,
     plural: false,
     color: true,
-    bgColor: false,
+    backgroundColor: '',
     identifier: false,
     text: false,
     frame: false,
@@ -84,40 +84,35 @@ class Pictogram extends Component {
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible })
 
-  apiState = {}
-
   buildOptionsRequest = () => {
     const { pictogram } = this.props
+    const { color, plural, backgroundColor, bgColor } = this.state
     const idPictogram = pictogram.get('idPictogram')
-    const urlParameters = Object.entries(this.apiState)
+    const parameters = { color, plural }
+    // only if active hair, skin, backgroundColor we add it to the request. Otherwise we take default image values
+    if (bgColor) parameters.backgroundColor = backgroundColor
+    const urlParameters = Object.entries(parameters)
       .map((param) => param.join('='))
       .join('&')
-    console.log(urlParameters)
     const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=true`
     const downloadUrl = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=false&download=true`
-    console.log(`url descarga: ${downloadUrl}`)
     fetch(endPoint)
       .then((data) => data.json())
       .then((data) => this.setState({ url: data.image, downloadUrl }))
   }
 
   handleColor = (event, color) => {
-    this.setState({ color })
-    if (color) delete this.apiState.color
-    else this.apiState.color = false
-    this.buildOptionsRequest()
+    this.setState({ color }, () => this.buildOptionsRequest())
   }
 
   handlePlural = (event, plural) => {
-    this.setState({ plural })
-    if (!plural) delete this.apiState.plural
-    else this.apiState.plural = true
-    this.buildOptionsRequest()
+    this.setState({ plural }, () => this.buildOptionsRequest())
   }
 
   handleColorChange = ({ hex }) => {
-    console.log(hex)
-    this.setState({ hex })
+    this.setState({ backgroundColor: hex.replace('#', '%23') }, () =>
+      this.buildOptionsRequest()
+    )
   }
 
   handleOnRequestChange = (value) => {
@@ -126,10 +121,22 @@ class Pictogram extends Component {
     })
   }
 
+  // bgColor means isInputChecked
   handlebgColor = (bgColor) => {
-    this.setState({ bgColor, showBgColor: bgColor })
+    if (bgColor) this.setState({ bgColor, showBgColor: !this.state.bgColor })
+    else {
+      this.setState(
+        {
+          bgColor,
+          showBgColor: !this.state.bgColor,
+          backgroundColor: '%23FFF'
+        },
+        () => this.buildOptionsRequest()
+      )
+    }
   }
 
+  // when clicking we show/hide selectors
   handlebgColorClick = () => {
     this.setState({
       showBgColor: !this.state.showBgColor
@@ -187,14 +194,12 @@ class Pictogram extends Component {
   }
 
   handleOpenMenu = () => {
-    console.log('kkkkkk')
-    console.log(this.props)
     const { pictogram } = this.props
+    const { color, plural } = this.state
     const idPictogram = pictogram.get('idPictogram')
-    const urlParameters = Object.entries(this.apiState)
+    const urlParameters = Object.entries({ color, plural })
       .map((param) => param.join('='))
       .join('&')
-    console.log(urlParameters)
     const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=false&download=true`
     fetch(endPoint)
   }
@@ -203,10 +208,8 @@ class Pictogram extends Component {
     const { pictogram, searchText, muiTheme, intl, locale } = this.props
     const { formatMessage } = intl
     const {
-      color,
       bgColor,
       showBgColor,
-      plural,
       identifier,
       showIdentifier,
       text,
@@ -217,13 +220,15 @@ class Pictogram extends Component {
       showFrame,
       peopleAppearance,
       showPeopleAppearance,
-      url,
-      downloadUrl,
-      hex
+      url
     } = this.state
-    console.log(`DownloadURL: ${downloadUrl}`)
+    const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
+    // first time downloadUrl is default png
+    const downloadUrl =
+      this.state.downloadUrl ||
+      `${API_ROOT}/pictograms/${idPictogram}?&url=false&download=true`
     const { keyword, idLocution } = keywordSelector(searchText, keywords.toJS())
     const authors = pictogram.get('authors')
     let soundPlayer = ''
@@ -332,7 +337,7 @@ class Pictogram extends Component {
                 >
                   <TwitterPicker
                     triangle='hide'
-                    color={hex}
+                    color={backgroundColor}
                     onChangeComplete={this.handleColorChange}
                   />
                 </div>
@@ -475,9 +480,7 @@ class Pictogram extends Component {
                     height: '120px'
                   }}
                 >
-                  <p>
-                    WIP!!!! Here we'll choose color and width for a picto frame
-                  </p>
+                  <p>WIP! Not ready yet :-(</p>
                 </div>
               ) : (
                 ''
