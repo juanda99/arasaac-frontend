@@ -66,6 +66,7 @@ class Pictogram extends Component {
     plural: false,
     color: true,
     backgroundColor: '',
+    action: '', // for verbs: future, past, or present = ''
     identifier: false,
     text: false,
     frame: false,
@@ -89,13 +90,22 @@ class Pictogram extends Component {
 
   buildOptionsRequest = () => {
     const { pictogram } = this.props
-    const { color, plural, backgroundColor, bgColor, hair, skin } = this.state
+    const {
+      color,
+      plural,
+      backgroundColor,
+      bgColor,
+      hair,
+      skin,
+      action
+    } = this.state
     const idPictogram = pictogram.get('idPictogram')
     const parameters = { color, plural }
     // only if active hair, skin, backgroundColor we add it to the request. Otherwise we take default image values
     if (bgColor) parameters.backgroundColor = backgroundColor
     if (hair) parameters.hair = hair
     if (skin) parameters.skin = skin
+    if (action) parameters.action = action
     const urlParameters = Object.entries(parameters)
       .map((param) => param.join('='))
       .join('&')
@@ -165,6 +175,10 @@ class Pictogram extends Component {
     })
   }
 
+  handleVerbalTenseChange = (event, action) => {
+    this.setState({ action }, () => this.buildOptionsRequest())
+  }
+
   handleIdentifier = (identifier) => {
     this.setState({ identifier, showIdentifier: identifier })
   }
@@ -228,6 +242,7 @@ class Pictogram extends Component {
       showText,
       verbalTense,
       showVerbalTense,
+      action,
       frame,
       showFrame,
       peopleAppearance,
@@ -374,7 +389,9 @@ class Pictogram extends Component {
                 >
                   <RadioButtonGroup
                     name='verbalTense'
-                    defaultSelected='present'
+                    // defaultSelected='present'
+                    valueSelected={action}
+                    onChange={this.handleVerbalTenseChange}
                   >
                     <RadioButton
                       value='past'
@@ -382,7 +399,7 @@ class Pictogram extends Component {
                       style={styles.radioButton}
                     />
                     <RadioButton
-                      value='present'
+                      value=''
                       label={<FormattedMessage {...messages.present} />}
                       style={styles.radioButton}
                     />
@@ -424,7 +441,7 @@ class Pictogram extends Component {
                     height: '120px'
                   }}
                 >
-                  <p>WIP!!!! Here we'll choose our identifier</p>
+                  <p>WIP!!!! Here we will choose our identifier</p>
                 </div>
               ) : (
                 ''
@@ -446,7 +463,7 @@ class Pictogram extends Component {
                     height: '120px'
                   }}
                 >
-                  <p>WIP!!!! Here we'll write our text for the pictogram</p>
+                  <p>WIP!!!! Here we will write our text for the pictogram</p>
                 </div>
               ) : (
                 ''
