@@ -74,6 +74,41 @@ export default defineMessages({
       'Toggle button to show options for people appearance in pictos: hair, skin..',
     defaultMessage: 'People appearance'
   },
+  classroom: {
+    id: 'app.components.Pictogram.classroom',
+    description: 'Identifier option',
+    defaultMessage: 'Classroom'
+  },
+  health: {
+    id: 'app.components.Pictogram.health',
+    description: 'Identifier option',
+    defaultMessage: 'Health'
+  },
+  office: {
+    id: 'app.components.Pictogram.office',
+    description: 'Identifier option',
+    defaultMessage: 'Office'
+  },
+  library: {
+    id: 'app.components.Pictogram.library',
+    description: 'Identifier option',
+    defaultMessage: 'Library'
+  },
+  identifierPosition: {
+    id: 'app.components.Pictogram.identifierPosition',
+    description: 'Identifier position',
+    defaultMessage: 'Position'
+  },
+  left: {
+    id: 'app.components.Pictogram.left',
+    description: 'Identifier position',
+    defaultMessage: 'Left'
+  },
+  right: {
+    id: 'app.components.Pictogram.right',
+    description: 'Identifier position',
+    defaultMessage: 'Right'
+  },
   skinColor: {
     id: 'app.components.Pictogram.skinColor',
     description: 'Help text for color of the skin selector',

@@ -21,45 +21,11 @@ import { TwitterPicker } from 'react-color'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import P from 'components/P'
+import styles from './styles'
 import ToggleDropDown from './ToggleDropdown'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
 
-const styles = {
-  wrapper: {
-    display: 'flex',
-    width: '100%',
-    flexWrap: 'wrap',
-    alignItems: 'top'
-  },
-  picto: {
-    width: '100%',
-    height: 'auto',
-    backgroundColor: 'white'
-  },
-  pictoWrapper: {
-    width: '400px',
-    maxWidth: '100%',
-    height: 'auto',
-    marginRight: '60px',
-    flexGrow: 1
-  },
-  radioButton: {
-    margin: 16
-  },
-  desc: {
-    flexGrow: 3,
-    width: '300px'
-  },
-  toggle: {
-    margin: 16,
-    width: 200
-  },
-  button: {
-    margin: 16,
-    width: 250
-  }
-}
 class Pictogram extends Component {
   state = {
     language: this.props.locale,
@@ -67,10 +33,10 @@ class Pictogram extends Component {
     color: true,
     backgroundColor: '',
     action: '', // for verbs: future, past, or present = ''
-    identifier: false,
+    identifier: '',
     text: false,
-    frame: false,
     peopleAppearance: false,
+    identifierToggle: false,
     hair: '',
     skin: '',
     showBgColor: false,
@@ -78,7 +44,6 @@ class Pictogram extends Component {
     showVerbalTense: false,
     showIdentifier: false,
     showText: false,
-    showFrame: false,
     showPeopleAppearance: false,
     openMenu: false,
     url: '',
@@ -97,7 +62,9 @@ class Pictogram extends Component {
       bgColor,
       hair,
       skin,
-      action
+      action,
+      identifier,
+      identifierPosition
     } = this.state
     const idPictogram = pictogram.get('idPictogram')
     const parameters = { color, plural }
@@ -106,6 +73,9 @@ class Pictogram extends Component {
     if (hair) parameters.hair = hair
     if (skin) parameters.skin = skin
     if (action) parameters.action = action
+    if (identifier) parameters.identifier = identifier
+    if (identifierPosition) parameters.identifierPosition = identifierPosition
+
     const urlParameters = Object.entries(parameters)
       .map((param) => param.join('='))
       .join('&')
@@ -179,8 +149,8 @@ class Pictogram extends Component {
     this.setState({ action }, () => this.buildOptionsRequest())
   }
 
-  handleIdentifier = (identifier) => {
-    this.setState({ identifier, showIdentifier: identifier })
+  handleIdentifier = (identifierToggle) => {
+    this.setState({ identifierToggle, showIdentifier: identifierToggle })
   }
 
   handleIdentifierClick = () => {
@@ -189,14 +159,15 @@ class Pictogram extends Component {
     })
   }
 
-  handleText = (text) => {
-    this.setState({ text, showText: text })
+  handleIdentifierChange = (event, index, identifier) => {
+    this.setState({ identifier }, () => this.buildOptionsRequest())
   }
 
-  handleTextClick = () => {
-    this.setState({
-      showText: !this.state.showText
-    })
+  handleIdentifierPositionChange = (event, index, identifierPosition) => {
+    if (this.state.identifier) {
+      this.setState({ identifierPosition }, () => this.buildOptionsRequest())
+    }
+    this.setState({ identifierPosition })
   }
 
   handlePeopleAppearance = (peopleAppearance) => {
@@ -206,16 +177,6 @@ class Pictogram extends Component {
   handlePeopleAppearanceClick = () => {
     this.setState({
       showPeopleAppearance: !this.state.showPeopleAppearance
-    })
-  }
-
-  handleFrame = (frame) => {
-    this.setState({ frame, showFrame: frame })
-  }
-
-  handleFrameClick = () => {
-    this.setState({
-      showFrame: !this.state.showFrame
     })
   }
 
@@ -236,15 +197,11 @@ class Pictogram extends Component {
     const {
       bgColor,
       showBgColor,
-      identifier,
+      identifierToggle,
       showIdentifier,
-      text,
-      showText,
       verbalTense,
       showVerbalTense,
       action,
-      frame,
-      showFrame,
       peopleAppearance,
       showPeopleAppearance,
       url
@@ -323,14 +280,7 @@ class Pictogram extends Component {
             </H3>
             <Divider />
             <P>Common options</P>
-            <div
-              style={{
-                display: 'flex',
-                width: '100%',
-                flexWrap: 'wrap',
-                alignItems: 'center'
-              }}
-            >
+            <div style={styles.optionsWrapper}>
               <Toggle
                 label={<FormattedMessage {...messages.plural} />}
                 labelPosition='right'
@@ -354,14 +304,7 @@ class Pictogram extends Component {
                 onClick={this.handlebgColorClick}
               />
               {showBgColor ? (
-                <div
-                  style={{
-                    padding: '10px',
-                    border: '1px dashed lightgrey',
-                    width: '100%',
-                    height: '120px'
-                  }}
-                >
+                <div style={styles.optionBox}>
                   <TwitterPicker
                     triangle='hide'
                     color={backgroundColor}
@@ -380,13 +323,7 @@ class Pictogram extends Component {
                 onClick={this.handleVerbalTenseClick}
               />
               {showVerbalTense ? (
-                <div
-                  style={{
-                    padding: '10px',
-                    border: '1px dashed lightgrey',
-                    width: '100%'
-                  }}
-                >
+                <div style={styles.optionBox}>
                   <RadioButtonGroup
                     name='verbalTense'
                     // defaultSelected='present'
@@ -416,16 +353,9 @@ class Pictogram extends Component {
             </div>
 
             <P>Advanced options</P>
-            <div
-              style={{
-                display: 'flex',
-                width: '100%',
-                flexWrap: 'wrap',
-                alignItems: 'center'
-              }}
-            >
+            <div style={styles.optionsWrapper}>
               <ToggleDropDown
-                toggled={identifier}
+                toggled={identifierToggle}
                 onToggle={this.handleIdentifier}
                 label={formatMessage(messages.identifier)}
                 style={styles.toggle}
@@ -433,37 +363,49 @@ class Pictogram extends Component {
                 onClick={this.handleIdentifierClick}
               />
               {showIdentifier ? (
-                <div
-                  style={{
-                    padding: '10px',
-                    border: '1px dashed lightgrey',
-                    width: '100%',
-                    height: '120px'
-                  }}
-                >
-                  <p>WIP!!!! Here we will choose our identifier</p>
-                </div>
-              ) : (
-                ''
-              )}
-              <ToggleDropDown
-                toggled={text}
-                onToggle={this.handleText}
-                label={formatMessage(messages.text)}
-                style={styles.toggle}
-                showOptions={showText}
-                onClick={this.handleTextClick}
-              />
-              {showText ? (
-                <div
-                  style={{
-                    padding: '10px',
-                    border: '1px dashed lightgrey',
-                    width: '100%',
-                    height: '120px'
-                  }}
-                >
-                  <p>WIP!!!! Here we will write our text for the pictogram</p>
+                <div style={styles.optionBox}>
+                  <SelectField
+                    style={{ marginRight: '40px' }}
+                    floatingLabelText={formatMessage(messages.identifier)}
+                    value={this.state.identifier}
+                    onChange={this.handleIdentifierChange}
+                  >
+                    <MenuItem value={null} primaryText='' />
+                    <MenuItem
+                      value='classroom'
+                      primaryText={formatMessage(messages.classroom)}
+                    />
+                    <MenuItem
+                      value='health'
+                      primaryText={formatMessage(messages.health)}
+                    />
+                    <MenuItem
+                      value='library'
+                      primaryText={formatMessage(messages.library)}
+                    />
+                    <MenuItem
+                      value='office'
+                      primaryText={formatMessage(messages.office)}
+                    />
+                  </SelectField>
+                  <SelectField
+                    style={{ marginRight: '40px' }}
+                    floatingLabelText={formatMessage(
+                      messages.identifierPosition
+                    )}
+                    value={this.state.identifierPosition}
+                    onChange={this.handleIdentifierPositionChange}
+                  >
+                    <MenuItem value={null} primaryText='' />
+                    <MenuItem
+                      value='left'
+                      primaryText={formatMessage(messages.left)}
+                    />
+                    <MenuItem
+                      value='right'
+                      primaryText={formatMessage(messages.right)}
+                    />
+                  </SelectField>
                 </div>
               ) : (
                 ''
@@ -478,14 +420,7 @@ class Pictogram extends Component {
                 onClick={this.handlePeopleAppearanceClick}
               />
               {showPeopleAppearance ? (
-                <div
-                  style={{
-                    padding: '10px',
-                    border: '1px dashed lightgrey',
-                    width: '100%',
-                    minHeight: '120px'
-                  }}
-                >
+                <div style={styles.optionBox}>
                   <SelectField
                     style={{ marginRight: '40px' }}
                     floatingLabelText={formatMessage(messages.skinColor)}
@@ -549,29 +484,6 @@ class Pictogram extends Component {
                       primaryText={formatMessage(messages.blackHair)}
                     />
                   </SelectField>
-                </div>
-              ) : (
-                ''
-              )}
-
-              <ToggleDropDown
-                toggled={frame}
-                onToggle={this.handleFrame}
-                label={formatMessage(messages.frame)}
-                style={styles.toggle}
-                showOptions={showFrame}
-                onClick={this.handleFrameClick}
-              />
-              {showFrame ? (
-                <div
-                  style={{
-                    padding: '10px',
-                    border: '1px dashed lightgrey',
-                    width: '100%',
-                    height: '120px'
-                  }}
-                >
-                  <p>WIP! Not ready yet :-(</p>
                 </div>
               ) : (
                 ''
