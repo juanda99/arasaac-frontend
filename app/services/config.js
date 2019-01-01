@@ -1,8 +1,11 @@
+// import queryString from 'query-string'
+
 const CLIENT_ID = '12345'
 export const WEB_URL = 'https://localhost:3000'
 const STATIC_SERVER = 'https://static.arasaac.org'
 export const IMAGES_URL = `${STATIC_SERVER}/images`
 export const PICTOGRAMS_URL = `${STATIC_SERVER}/pictograms`
+export const LOCUTIONS_URL = `${STATIC_SERVER}/locutions`
 export const MATERIALS_URL = `${STATIC_SERVER}/materials`
 export const API_SERVER = 'https://api.arasaac.org'
 export const API_ROOT = `${API_SERVER}/api`
@@ -47,7 +50,7 @@ export const socialLogin = {
   })
 }
 export const signup = {
-  url: 'users',
+  url: `${PRIVATE_API_ROOT}/users`,
   options: (userData) => ({
     config: {
       method: 'POST',
@@ -56,7 +59,14 @@ export const signup = {
     }
   })
 }
-
+/*
+export const customPictogram = {
+  url: (idPictogram, options) => {
+    const getString = queryString.stringify(options)
+    return `${API_ROOT}/pictograms/${idPictogram}?${getString}`
+  }
+}
+*/
 
 /* this is what we get:
     activities: [Number],

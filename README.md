@@ -1,14 +1,13 @@
 <div align="center">
 <p><strong>WIP!!!!!</strong></p>
-  <img width=200 src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Welcome/arasaac-logo.svg" alt="Arasaac logo" align="center" />
+  <img width=200 src="https://raw.githubusercontent.com/juanda99/arasaac-frontend/master/app/components/Footer/arasaac-logo.svg" alt="Arasaac logo" align="center" />
 </div>
 <br />
 
-<div align="center"><strong>New Arasaac website</strong></div>
-<div align="center">A highly scalable, single page app focus on performance and best practices</div>
+<div align="center"><strong>Arasaac website</strong></div>
+<div align="center">A single page app focus on performance. You can check it out <a href="https://www.beta.arasaac.org">here</a></div>
 
 <br />
-
 <div align="center">
   <!-- Dependency Status -->
   <a href="https://david-dm.org/juanda99/arasaac-frontend">
@@ -47,11 +46,15 @@ You can check our development status at https://beta.arasaac.org.
 
 
 ## Quick start
+1. Install requirements:
+
+  ```bash
+  apt install libpng-dev apt install python-minimal
+  ```
 
 1. Clone this repo using `git clone https://github.com/juanda99/arasaac-frontend.git`
-2. Run `npm install` or `yarn install` to install dependencies<br />
-   *We auto-detect `yarn` for installing packages by default, if you wish to force `npm` usage do: `USE_YARN=false npm run setup`*<br />
-3. Run `npm start` or `yarn start` to see the app running at `http://localhost:3000`.*
+2. Run `npm install` to install dependencies<br />
+3. Run `npm start` to see the app running at `http://localhost:3000`.*
 4. This app use some backend points:
   - *static.arasaac.org* for getting static data files (pictogram images, materials)
   - *api.arasaac.org* for getting json data from the server
@@ -61,8 +64,8 @@ You can check our development status at https://beta.arasaac.org.
 ## Features and current status
 
 - Pictograms
-  - Search pictograms (Not started)
-  - Download full catalog of pictos (Not started)
+  - Search pictograms (WIP)
+  - Download full catalog of pictos (WIP)
 
 - Online Tools (Not started)
 
@@ -77,10 +80,10 @@ You can check our development status at https://beta.arasaac.org.
 - Users
   - User creations and login (WIP)
   - User roles (Not started)
-  - Social logins (Not started)
+  - Social logins (WIP)
 
 - GUI Look and feel
-  - Themes (WIP)
+  - Themes (Almost ready)
   - Tour guide (WIP)
   - General settings (WIP)
 

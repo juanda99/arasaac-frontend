@@ -54,6 +54,7 @@ let RegisterForm = class RegisterForm extends Component {
               floatingLabelText='Name'
               style={{ width: '100%' }}
               validate={required}
+              autoComplete='name'
             />
             <Field
               name='email'
@@ -63,6 +64,7 @@ let RegisterForm = class RegisterForm extends Component {
               floatingLabelText='Email'
               style={{ width: '100%' }}
               validate={[required, email]}
+              autoComplete='email'
             />
             <Field
               name='password'
@@ -73,6 +75,7 @@ let RegisterForm = class RegisterForm extends Component {
               floatingLabelText='Password'
               style={{ width: '100%' }}
               validate={required}
+              autoComplete='new-password'
             />
             <Field
               name='company'
@@ -81,6 +84,7 @@ let RegisterForm = class RegisterForm extends Component {
               value=''
               floatingLabelText='Company (optional)'
               style={{ width: '100%' }}
+              autoComplete='organization'
             />
             <Field
               name='website'

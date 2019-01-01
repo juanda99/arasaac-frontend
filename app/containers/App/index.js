@@ -116,11 +116,9 @@ class App extends Component {
   getStyles() {
     const styles = {
       LoadingBar: {
-        position: 'relative',
         height: 2,
         backgroundColor: 'rgb(0, 188, 212)',
-        top: 64,
-        zIndex: 10000
+        zIndex: 100000
       }
     }
     return styles
@@ -299,7 +297,6 @@ class App extends Component {
     }
     return (
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <LoadingBar updateTime={100} maxProgress={95} progressIncrease={20} style={styles.LoadingBar}/>
         <Joyride
           {...joyrideProps}
           ref={c => (this.joyride = c)} />
@@ -309,6 +306,7 @@ class App extends Component {
           changeLocale = {this.handleTranslate} signout={logout} isTranslating = {isTranslating}
           hideIconText={hideIconText}
         />
+        <LoadingBar updateTime={100} maxProgress={95} progressIncrease={20} style={styles.LoadingBar}/>
         <Wrapper id='wrapper' docked={docked}>
           {children}
         </Wrapper>

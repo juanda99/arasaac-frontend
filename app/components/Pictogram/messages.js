@@ -34,7 +34,8 @@ export default defineMessages({
   changePictoLanguage: {
     id: 'app.components.Pictogram.changePictoLanguage',
     description: 'Dropdown to select pictogram language',
-    defaultMessage: 'Choose a language to see the pictogram description in another language'
+    defaultMessage:
+      'Choose a language to see the pictogram description in another language'
   },
   modifyPicto: {
     id: 'app.components.Pictogram.modifyPicto',
@@ -53,8 +54,136 @@ export default defineMessages({
   },
   backgroundColor: {
     id: 'app.components.Pictogram.backgroundColor',
-    description: 'Toggle button to set a backgroundColor, by default transparent',
+    description:
+      'Toggle button to set a backgroundColor, by default transparent',
     defaultMessage: 'Background color'
+  },
+  identifier: {
+    id: 'app.components.Pictogram.identifier',
+    description: 'Toggle button to set an identifier, none by default',
+    defaultMessage: 'Identifier'
+  },
+  text: {
+    id: 'app.components.Pictogram.text',
+    description: 'Toggle button to set a text, none by default ',
+    defaultMessage: 'Text'
+  },
+  peopleAppearance: {
+    id: 'app.components.Pictogram.peopleAppearance',
+    description:
+      'Toggle button to show options for people appearance in pictos: hair, skin..',
+    defaultMessage: 'People appearance'
+  },
+  classroom: {
+    id: 'app.components.Pictogram.classroom',
+    description: 'Identifier option',
+    defaultMessage: 'Classroom'
+  },
+  health: {
+    id: 'app.components.Pictogram.health',
+    description: 'Identifier option',
+    defaultMessage: 'Health'
+  },
+  office: {
+    id: 'app.components.Pictogram.office',
+    description: 'Identifier option',
+    defaultMessage: 'Office'
+  },
+  library: {
+    id: 'app.components.Pictogram.library',
+    description: 'Identifier option',
+    defaultMessage: 'Library'
+  },
+  identifierPosition: {
+    id: 'app.components.Pictogram.identifierPosition',
+    description: 'Identifier position',
+    defaultMessage: 'Position'
+  },
+  left: {
+    id: 'app.components.Pictogram.left',
+    description: 'Identifier position',
+    defaultMessage: 'Left'
+  },
+  right: {
+    id: 'app.components.Pictogram.right',
+    description: 'Identifier position',
+    defaultMessage: 'Right'
+  },
+  skinColor: {
+    id: 'app.components.Pictogram.skinColor',
+    description: 'Help text for color of the skin selector',
+    defaultMessage: 'Choose skin color'
+  },
+  whiteSkin: {
+    id: 'app.components.Pictogram.whiteSkin',
+    description: 'Option for skin color',
+    defaultMessage: 'White'
+  },
+  blackSkin: {
+    id: 'app.components.Pictogram.blackSkin',
+    description: 'Option for skin color',
+    defaultMessage: 'Black'
+  },
+  assianSkin: {
+    id: 'app.components.Pictogram.assianSkin',
+    description: 'Option for skin color',
+    defaultMessage: 'Assian'
+  },
+  mulattoSkin: {
+    id: 'app.components.Pictogram.mulattoSkin',
+    description: 'Option for skin color',
+    defaultMessage: 'Mulatto'
+  },
+  aztecSkin: {
+    id: 'app.components.Pictogram.aztecSkin',
+    description: 'Option for skin color',
+    defaultMessage: 'Aztec'
+  },
+  hairColor: {
+    id: 'app.components.Pictogram.hairColor',
+    description: 'Help text for color of the hair selector',
+    defaultMessage: 'Choose hair color'
+  },
+  blondeHair: {
+    id: 'app.components.Pictogram.blondeHair',
+    description: 'Option for hair color',
+    defaultMessage: 'Blonde'
+  },
+  brownHair: {
+    id: 'app.components.Pictogram.brownHair',
+    description: 'Option for hair color',
+    defaultMessage: 'Brown'
+  },
+  darkBrownHair: {
+    id: 'app.components.Pictogram.darkBrownHair',
+    description: 'Option for hair color',
+    defaultMessage: 'Dark brown'
+  },
+  grayHair: {
+    id: 'app.components.Pictogram.grayHair',
+    description: 'Option for hair color',
+    defaultMessage: 'Gray'
+  },
+  darkGrayHair: {
+    id: 'app.components.Pictogram.darkGrayHair',
+    description: 'Option for hair color',
+    defaultMessage: 'Dark Gray'
+  },
+  redHair: {
+    id: 'app.components.Pictogram.redHair',
+    description: 'Option for hair color',
+    defaultMessage: 'Red'
+  },
+  blackHair: {
+    id: 'app.components.Pictogram.blackHair',
+    description: 'Option for hair color',
+    defaultMessage: 'Black'
+  },
+
+  frame: {
+    id: 'app.components.Pictogram.frame',
+    description: 'Toggle button to set a frame, none by default ',
+    defaultMessage: 'Frame'
   },
   verbalTense: {
     id: 'app.components.Pictogram.verbalTense',
