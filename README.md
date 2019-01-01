@@ -1,6 +1,6 @@
 <div align="center">
 <p><strong>WIP!!!!!</strong></p>
-  <img width=200 src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Footer/arasaac-logo.svg" alt="Arasaac logo" align="center" />
+  <img width=200 src="https://raw.githubusercontent.com/juanda99/arasaac-frontend/master/app/components/Footer/arasaac-logo.svg" alt="Arasaac logo" align="center" />
 </div>
 <br />
 
