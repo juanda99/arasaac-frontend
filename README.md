@@ -1,14 +1,13 @@
 <div align="center">
 <p><strong>WIP!!!!!</strong></p>
-  <img width=200 src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Welcome/arasaac-logo.svg" alt="Arasaac logo" align="center" />
+  <img width=200 src="https://cdn.rawgit.com/juanda99/arasaac-frontend/master/app/components/Footer/arasaac-logo.svg" alt="Arasaac logo" align="center" />
 </div>
 <br />
 
-<div align="center"><strong>New Arasaac website</strong></div>
-<div align="center">A highly scalable, single page app focus on performance and best practices</div>
+<div align="center"><strong>Arasaac website</strong></div>
+<div align="center">A single page app focus on performance. You can check it out <a href="https://www.beta.arasaac.org">here</a></div>
 
 <br />
-
 <div align="center">
   <!-- Dependency Status -->
   <a href="https://david-dm.org/juanda99/arasaac-frontend">
@@ -47,7 +46,7 @@ You can check our development status at https://beta.arasaac.org.
 
 
 ## Quick start
-0. Install requirements:
+1. Install requirements:
 
   ```bash
   apt install libpng-dev apt install python-minimal
@@ -65,8 +64,8 @@ You can check our development status at https://beta.arasaac.org.
 ## Features and current status
 
 - Pictograms
-  - Search pictograms (Not started)
-  - Download full catalog of pictos (Not started)
+  - Search pictograms (WIP)
+  - Download full catalog of pictos (WIP)
 
 - Online Tools (Not started)
 
@@ -81,10 +80,10 @@ You can check our development status at https://beta.arasaac.org.
 - Users
   - User creations and login (WIP)
   - User roles (Not started)
-  - Social logins (Not started)
+  - Social logins (WIP)
 
 - GUI Look and feel
-  - Themes (WIP)
+  - Themes (Almost ready)
   - Tour guide (WIP)
   - General settings (WIP)
 
