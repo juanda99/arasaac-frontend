@@ -20,6 +20,8 @@ import { keywordSelector } from 'utils'
 import { TwitterPicker } from 'react-color'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
+import { Stage, Layer, Rect, Text } from 'react-konva'
+import Konva from 'konva'
 import P from 'components/P'
 import styles from './styles'
 import ToggleDropDown from './ToggleDropdown'
@@ -171,7 +173,22 @@ class Pictogram extends Component {
   }
 
   handlePeopleAppearance = (peopleAppearance) => {
-    this.setState({ peopleAppearance, showPeopleAppearance: peopleAppearance })
+    if (peopleAppearance) {
+      this.setState({
+        peopleAppearance,
+        showPeopleAppearance: peopleAppearance
+      })
+    } else {
+      this.setState(
+        {
+          hair: '',
+          skin: '',
+          peopleAppearance,
+          showPeopleAppearance: peopleAppearance
+        },
+        () => this.buildOptionsRequest()
+      )
+    }
   }
 
   handlePeopleAppearanceClick = () => {
