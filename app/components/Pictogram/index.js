@@ -212,12 +212,13 @@ class Pictogram extends Component {
 
   handleExportClick = () => {
     const imageBase64 = this.stageRef.getStage().toDataURL()
+    console.log(imageBase64)
 
     const url = imageBase64.replace(
       /^data:image\/[^;]+/,
       'data:application/octet-stream'
     )
-    window.open(url, 'test')
+    // window.open(url, 'test')
 
     // to convert into image file and send it to the server, but better in the server side:
     // https://gist.github.com/madhums/e749dca107e26d72b64d
@@ -271,7 +272,8 @@ class Pictogram extends Component {
         />
       )
     }
-    const pictoFile = `/${idPictogram}_500.png`
+    // const pictoFile = `/${idPictogram}_500.png`
+    const pictoFile = url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`
     return (
       <div>
         <div style={styles.wrapper}>
