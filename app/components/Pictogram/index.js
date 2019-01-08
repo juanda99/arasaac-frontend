@@ -20,10 +20,12 @@ import { keywordSelector } from 'utils'
 import { TwitterPicker } from 'react-color'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
-import { Stage, Layer, Rect, Text } from 'react-konva'
+import { Stage, Layer, Rect } from 'react-konva'
 import Konva from 'konva'
 import P from 'components/P'
 import styles from './styles'
+import Caption from './Caption'
+import Img from './Img'
 import ToggleDropDown from './ToggleDropdown'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
@@ -208,6 +210,30 @@ class Pictogram extends Component {
     fetch(endPoint)
   }
 
+  handleExportClick = () => {
+    const imageBase64 = this.stageRef.getStage().toDataURL()
+
+    const url = imageBase64.replace(
+      /^data:image\/[^;]+/,
+      'data:application/octet-stream'
+    )
+    window.open(url, 'test')
+
+    // to convert into image file and send it to the server, but better in the server side:
+    // https://gist.github.com/madhums/e749dca107e26d72b64d
+
+    /*
+    const block = imageBase64.split(';')
+    // Get the content type of the image
+    const contentType = block[0].split(':')[1] // In this case "image/gif"
+    // get the real base64 content of the file
+    const realData = block[1].split(',')[1] // In this case "R0lGODlhPQBEAPeoAJosM...."
+
+    // Convert it to a blob to upload
+    return b64toBlob(realData, contentType)
+    */
+  }
+
   render() {
     const { pictogram, searchText, muiTheme, intl, locale } = this.props
     const { formatMessage } = intl
@@ -245,7 +271,7 @@ class Pictogram extends Component {
         />
       )
     }
-    const pictoFile = url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`
+    const pictoFile = `/${idPictogram}_500.png`
     return (
       <div>
         <div style={styles.wrapper}>
@@ -263,7 +289,21 @@ class Pictogram extends Component {
                   {keyword}
                 </H2>
               </div>
-              <img src={pictoFile} alt={'alt'} style={styles.picto} />
+              <Stage
+                width={500}
+                height={500}
+                ref={(node) => {
+                  this.stageRef = node
+                }}
+              >
+                <Layer>
+                  <Img src={pictoFile} /* alt={'alt'} style={styles.picto} */ />
+                </Layer>
+                <Layer>
+                  <Caption text='prueba' />
+                </Layer>
+              </Stage>
+
               <div
                 style={{
                   display: 'flex',
@@ -279,15 +319,15 @@ class Pictogram extends Component {
                   style={styles.button}
                   icon={<FavoriteIcon />}
                 />
-                <a href={downloadUrl}>
-                  <RaisedButton
-                    onClick={this.handleOpenMenu}
-                    label={<FormattedMessage {...messages.downloadLabel} />}
-                    primary={true}
-                    style={styles.button}
-                    icon={<DownloadIcon />}
-                  />
-                </a>
+                {/* <a href={downloadUrl}> */}
+                <RaisedButton
+                  onClick={this.handleExportClick}
+                  label={<FormattedMessage {...messages.downloadLabel} />}
+                  primary={true}
+                  style={styles.button}
+                  icon={<DownloadIcon />}
+                />
+                {/* </a>*/}
               </div>
             </ConditionalPaper>
           </div>
@@ -552,6 +592,30 @@ class Pictogram extends Component {
   }
 }
 
+class ColoredRect extends React.Component {
+  state = {
+    color: 'green'
+  }
+  handleClick = () => {
+    this.setState({
+      color: Konva.Util.getRandomColor()
+    })
+  }
+  render() {
+    return (
+      <Rect
+        x={20}
+        y={20}
+        width={450}
+        height={450}
+        fill={this.state.color}
+        shadowBlur={5}
+        onClick={this.handleClick}
+      />
+    )
+  }
+}
+
 Pictogram.propTypes = {
   // onClick: PropTypes.func.isRequired,
   pictogram: PropTypes.object.isRequired,
@@ -562,3 +626,27 @@ Pictogram.propTypes = {
 }
 
 export default injectIntl(muiThemeable()(Pictogram))
+
+function b64toBlob(b64Data, contentType, sliceSize) {
+  contentType = contentType || ''
+  sliceSize = sliceSize || 512
+
+  const byteCharacters = atob(b64Data)
+  const byteArrays = []
+
+  for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+    const slice = byteCharacters.slice(offset, offset + sliceSize)
+
+    const byteNumbers = new Array(slice.length)
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i)
+    }
+
+    const byteArray = new Uint8Array(byteNumbers)
+
+    byteArrays.push(byteArray)
+  }
+
+  const blob = new Blob(byteArrays, { type: contentType })
+  return blob
+}

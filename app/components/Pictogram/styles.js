@@ -23,11 +23,11 @@ const styles = {
     alignItems: 'center'
   },
   pictoWrapper: {
-    width: '400px',
+    width: '500px',
     maxWidth: '100%',
     height: 'auto',
     marginRight: '60px',
-    flexGrow: 1
+    flexGrow: 0
   },
   radioButton: {
     margin: 16
