@@ -20,15 +20,19 @@ import { keywordSelector } from 'utils'
 import { TwitterPicker } from 'react-color'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
-import { Stage, Layer, Rect } from 'react-konva'
-import Konva from 'konva'
+import { Stage, Layer } from 'react-konva'
 import P from 'components/P'
 import styles from './styles'
 import Caption from './Caption'
+import Frame from './Frame'
 import Img from './Img'
 import ToggleDropDown from './ToggleDropdown'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
+
+const THIN = 10
+const MEDIUM = 20
+const THICK = 40
 
 class Pictogram extends Component {
   state = {
@@ -36,6 +40,9 @@ class Pictogram extends Component {
     plural: false,
     color: true,
     backgroundColor: '',
+    frameWidth: '',
+    frameColor: '',
+    frame: false,
     action: '', // for verbs: future, past, or present = ''
     identifier: '',
     text: false,
@@ -49,6 +56,7 @@ class Pictogram extends Component {
     showIdentifier: false,
     showText: false,
     showPeopleAppearance: false,
+    showFrameOptions: false,
     openMenu: false,
     url: '',
     downloadUrl: ''
@@ -130,6 +138,38 @@ class Pictogram extends Component {
     this.setState({
       showBgColor: !this.state.showBgColor
     })
+  }
+
+  // Frames
+  handleFrame = (frame) => {
+    if (frame) {
+      this.setState({
+        frame,
+        showFrame: !this.state.frame,
+        frameWidth: this.state.frameWidth || MEDIUM
+      })
+    } else {
+      this.setState({
+        frame,
+        showFrame: !this.state.frame,
+        frameColor: '%23000'
+      })
+    }
+  }
+
+  // when clicking we show/hide selectors
+  handleFrameClick = () => {
+    this.setState({
+      showFrame: !this.state.showFrame
+    })
+  }
+
+  handleFrameWidthChange = (event, index, frameWidth) => {
+    this.setState({ frameWidth })
+  }
+
+  handleFrameColorChange = ({ hex }) => {
+    this.setState({ frameColor: hex })
   }
 
   handleHairChange = (event, index, hair) => {
@@ -248,7 +288,11 @@ class Pictogram extends Component {
       action,
       peopleAppearance,
       showPeopleAppearance,
-      url
+      url,
+      frameWidth,
+      frameColor,
+      frame,
+      showFrame
     } = this.state
     const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
@@ -299,11 +343,18 @@ class Pictogram extends Component {
                 }}
               >
                 <Layer>
-                  <Img src={pictoFile} /* alt={'alt'} style={styles.picto} */ />
+                  <Frame color={frameColor} width={frameWidth} enable={frame} />
+                  <Img
+                    src={pictoFile}
+                    frameWidth={
+                      frameWidth
+                    } /* alt={'alt'} style={styles.picto} */
+                  />
                 </Layer>
                 <Layer>
                   <Caption text='prueba' />
                 </Layer>
+                <Layer />
               </Stage>
 
               <div
@@ -373,6 +424,48 @@ class Pictogram extends Component {
               ) : (
                 ''
               )}
+
+              <ToggleDropDown
+                toggled={frame}
+                onToggle={this.handleFrame}
+                label={formatMessage(messages.frame)}
+                style={styles.toggle}
+                showOptions={showFrame}
+                onClick={this.handleFrameClick}
+              />
+              {showFrame ? (
+                <div style={styles.optionBox}>
+                  <TwitterPicker
+                    triangle='hide'
+                    color={frameColor}
+                    onChangeComplete={this.handleFrameColorChange}
+                  />
+
+                  <SelectField
+                    style={{ marginRight: '40px' }}
+                    floatingLabelText={formatMessage(messages.frameWidth)}
+                    value={this.state.frameWidth}
+                    onChange={this.handleFrameWidthChange}
+                  >
+                    <MenuItem value={null} primaryText='' />
+                    <MenuItem
+                      value={THIN}
+                      primaryText={formatMessage(messages.thin)}
+                    />
+                    <MenuItem
+                      value={MEDIUM}
+                      primaryText={formatMessage(messages.medium)}
+                    />
+                    <MenuItem
+                      value={THICK}
+                      primaryText={formatMessage(messages.thick)}
+                    />
+                  </SelectField>
+                </div>
+              ) : (
+                ''
+              )}
+
               <ToggleDropDown
                 toggled={verbalTense}
                 onToggle={this.handleVerbalTense}
@@ -590,30 +683,6 @@ class Pictogram extends Component {
           />
         </p>
       </div>
-    )
-  }
-}
-
-class ColoredRect extends React.Component {
-  state = {
-    color: 'green'
-  }
-  handleClick = () => {
-    this.setState({
-      color: Konva.Util.getRandomColor()
-    })
-  }
-  render() {
-    return (
-      <Rect
-        x={20}
-        y={20}
-        width={450}
-        height={450}
-        fill={this.state.color}
-        shadowBlur={5}
-        onClick={this.handleClick}
-      />
     )
   }
 }

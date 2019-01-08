@@ -1,7 +1,5 @@
-/* Gist taken from https://gist.github.com/andrewluetgers/7c4a90cbe6341c401d0b7975a8ceeedb */
-
 import React, { Component } from 'react'
-import Konva from 'konva'
+import PropTypes from 'prop-types'
 import { Image } from 'react-konva'
 
 const image = new window.Image()
@@ -31,23 +29,37 @@ class Img extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    const { src } = this.props
+    const { src, frameWidth } = this.props
     if (src !== prevProps.src) image.src = src
+    else if (frameWidth !== prevProps.frameWidth) {
+      this.myImage.cache()
+      this.myImage.getLayer().draw()
+    }
   }
 
   render() {
+    const { frameWidth } = this.props
+    // eslint-disable-next-line no-mixed-operators
+    const width = 500 - parseInt(frameWidth, 0)
     return (
       <Image
         image={this.state.image}
-        filters={[Konva.Filters.Grayscale]}
         ref={(node) => {
           this.myImage = node
         }}
-        width={500}
-        height={500}
+        width={width}
+        height={width}
+        x={frameWidth / 2}
+        y={frameWidth / 2}
       />
     )
   }
+}
+
+Img.propTypes = {
+  // onClick: PropTypes.func.isRequired,
+  frameWidth: PropTypes.number,
+  src: PropTypes.string.isRequired
 }
 
 export default Img

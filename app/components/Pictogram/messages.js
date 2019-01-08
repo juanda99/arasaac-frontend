@@ -185,6 +185,31 @@ export default defineMessages({
     description: 'Toggle button to set a frame, none by default ',
     defaultMessage: 'Frame'
   },
+  frameWidth: {
+    id: 'app.components.Pictogram.frameWidth',
+    description: 'Frame Width',
+    defaultMessage: 'Frame Width'
+  },
+  frameColor: {
+    id: 'app.components.Pictogram.frameColor',
+    description: 'Frame Color',
+    defaultMessage: 'Frame Color'
+  },
+  thin: {
+    id: 'app.components.Pictogram.thin',
+    description: 'Frame width value',
+    defaultMessage: 'Thin'
+  },
+  medium: {
+    id: 'app.components.Pictogram.medium',
+    description: 'Frame width value',
+    defaultMessage: 'Medium'
+  },
+  thick: {
+    id: 'app.components.Pictogram.thick',
+    description: 'Frame width value',
+    defaultMessage: 'Thick'
+  },
   verbalTense: {
     id: 'app.components.Pictogram.verbalTense',
     description: 'Toggle button to select the verbal tense of the pictogram',
