@@ -1,3 +1,4 @@
+/* eslint no-mixed-operators: 0 */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 // import queryString from 'query-string'
@@ -20,19 +21,23 @@ import { keywordSelector } from 'utils'
 import { TwitterPicker } from 'react-color'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
-import { Stage, Layer } from 'react-konva'
+import { Stage, Layer, Text, Rect, Line } from 'react-konva'
+import FontPicker from 'font-picker-react'
 import P from 'components/P'
 import styles from './styles'
 import Caption from './Caption'
-import Frame from './Frame'
 import Img from './Img'
 import ToggleDropDown from './ToggleDropdown'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
-
-const THIN = 10
-const MEDIUM = 20
-const THICK = 40
+import {
+  THIN,
+  MEDIUM,
+  THICK,
+  CAPTION_SIZE,
+  getCanvasSize,
+  PICTO_SIZE
+} from './constants'
 
 class Pictogram extends Component {
   state = {
@@ -59,17 +64,64 @@ class Pictogram extends Component {
     showFrameOptions: false,
     openMenu: false,
     url: '',
-    downloadUrl: ''
+    downloadUrl: '',
+    activeFont: 'Open Sans',
+    topCaption: false,
+    buttonCaption: false
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.activeFont !== this.state.activeFont) {
+      // setInterval(() => this.textLayer.draw(), 1000)
+    }
   }
 
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible })
 
+  getPluralLayer = () => {
+    const { frameWidth, frame, topCaption } = this.state
+    const iconSize = 55
+    // same as pictoOrigin duplicatedCode?
+    let y = topCaption ? CAPTION_SIZE : 0
+    y = frame ? y + frameWidth / 2 : y
+    const x = frame
+      ? PICTO_SIZE - iconSize - frameWidth / 2
+      : PICTO_SIZE - iconSize
+    const strokeWidth = 17
+    return (
+      <Layer>
+        <Line
+          stroke='black'
+          strokeWidth={strokeWidth}
+          points={[x, y + iconSize / 2, x + iconSize, y + iconSize / 2]}
+        />
+        <Line
+          stroke='black'
+          strokeWidth={strokeWidth}
+          points={[x + iconSize / 2, y, x + iconSize / 2, y + iconSize]}
+        />
+        <Rect x={x} y={y} width={iconSize} height={iconSize} />
+      </Layer>
+    )
+  }
+
+  getBackgroundColorLayer = () => {
+    const { topCaption, backgroundColor } = this.state
+    const iconSize = 55
+    // same as pictoOrigin duplicatedCode?
+    const y = topCaption ? CAPTION_SIZE : 0
+    return (
+      <Layer>
+        <Rect fill={backgroundColor} x={0} y={y} width={PICTO_SIZE} height={PICTO_SIZE} />
+      </Layer>
+    )
+  }
+
   buildOptionsRequest = () => {
     const { pictogram } = this.props
     const {
       color,
-      plural,
       backgroundColor,
       bgColor,
       hair,
@@ -79,7 +131,7 @@ class Pictogram extends Component {
       identifierPosition
     } = this.state
     const idPictogram = pictogram.get('idPictogram')
-    const parameters = { color, plural }
+    const parameters = { color }
     // only if active hair, skin, backgroundColor we add it to the request. Otherwise we take default image values
     if (bgColor) parameters.backgroundColor = backgroundColor
     if (hair) parameters.hair = hair
@@ -98,19 +150,18 @@ class Pictogram extends Component {
       .then((data) => this.setState({ url: data.image, downloadUrl }))
   }
 
-  handleColor = (event, color) => {
+  handleColor = (event, color) =>
     this.setState({ color }, () => this.buildOptionsRequest())
-  }
 
-  handlePlural = (event, plural) => {
-    this.setState({ plural }, () => this.buildOptionsRequest())
-  }
+  // handlePlural = (event, plural) => this.setState({ plural }, () => this.buildOptionsRequest())
 
-  handleColorChange = ({ hex }) => {
-    this.setState({ backgroundColor: hex.replace('#', '%23') }, () =>
+  handlePlural = (event, plural) => this.setState({ plural })
+
+  handleColorChange = ({ hex }) => this.setState({backgroundColor: hex })
+    /* this.setState({ backgroundColor: hex.replace('#', '%23') }, () =>
       this.buildOptionsRequest()
-    )
-  }
+    ) 
+} */
 
   handleOnRequestChange = (value) => {
     this.setState({
@@ -127,8 +178,7 @@ class Pictogram extends Component {
           bgColor,
           showBgColor: !this.state.bgColor,
           backgroundColor: '%23FFF'
-        },
-        () => this.buildOptionsRequest()
+        }
       )
     }
   }
@@ -258,7 +308,7 @@ class Pictogram extends Component {
       /^data:image\/[^;]+/,
       'data:application/octet-stream'
     )
-    // window.open(url, 'test')
+    window.open(url)
 
     // to convert into image file and send it to the server, but better in the server side:
     // https://gist.github.com/madhums/e749dca107e26d72b64d
@@ -292,8 +342,13 @@ class Pictogram extends Component {
       frameWidth,
       frameColor,
       frame,
-      showFrame
+      showFrame,
+      topCaption,
+      buttonCaption,
+      plural
     } = this.state
+    const canvasSize = getCanvasSize(false, false)
+    const pictoOrigin = topCaption ? CAPTION_SIZE : 0
     const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
@@ -336,25 +391,39 @@ class Pictogram extends Component {
                 </H2>
               </div>
               <Stage
-                width={500}
-                height={500}
+                width={canvasSize}
+                height={canvasSize}
                 ref={(node) => {
                   this.stageRef = node
                 }}
+                style={{
+                  position: 'relative',
+                  top: CAPTION_SIZE,
+                  left: CAPTION_SIZE,
+                  marginBottom: 2 * CAPTION_SIZE
+                }}
               >
-                <Layer>
-                  <Frame color={frameColor} width={frameWidth} enable={frame} />
-                  <Img
-                    src={pictoFile}
-                    frameWidth={
-                      frameWidth
-                    } /* alt={'alt'} style={styles.picto} */
+                {bgColor && this.getBackgroundColorLayer()}
+                <Img
+                  src={pictoFile}
+                  frameWidth={frameWidth}
+                  enableFrame={frame} /* alt={'alt'} style={styles.picto} */
+                  frameColor={frameColor}
+                  origin={pictoOrigin}
+                />
+                <Layer
+                  ref={(node) => {
+                    this.textLayer = node
+                  }}
+                >
+                  <Text
+                    fontFamily={this.state.activeFont}
+                    text='Try to drag a star'
+                    fontSize={20}
                   />
-                </Layer>
-                <Layer>
                   <Caption text='prueba' />
                 </Layer>
-                <Layer />
+                {plural && this.getPluralLayer()}
               </Stage>
 
               <div
@@ -502,6 +571,18 @@ class Pictogram extends Component {
               ) : (
                 ''
               )}
+            </div>
+            <div>
+              <FontPicker
+                apiKey='AIzaSyCLxWCWpaWqXdBFuqfsvnzxOUzJI0JFPOE'
+                activeFont={this.state.activeFont}
+                onChange={(nextFont) =>
+                  this.setState({ activeFont: nextFont.family })
+                }
+              />
+              <p className='apply-font'>
+                The font will be applied to this text.
+              </p>
             </div>
 
             <P>Advanced options</P>

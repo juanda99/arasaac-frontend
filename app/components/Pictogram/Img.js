@@ -1,6 +1,9 @@
+/* eslint no-mixed-operators: 0 */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Image } from 'react-konva'
+import { Image, Layer } from 'react-konva'
+import Frame from './Frame'
+import { PICTO_SIZE, PICTO_ORIGIN } from './constants'
 
 const image = new window.Image()
 
@@ -38,20 +41,30 @@ class Img extends Component {
   }
 
   render() {
-    const { frameWidth } = this.props
-    // eslint-disable-next-line no-mixed-operators
-    const width = 500 - parseInt(frameWidth, 0)
+    const { frameWidth, enableFrame, frameColor, origin } = this.props
+    const width = enableFrame
+      ? PICTO_SIZE - parseInt(frameWidth, 0)
+      : PICTO_SIZE
     return (
-      <Image
-        image={this.state.image}
-        ref={(node) => {
-          this.myImage = node
-        }}
-        width={width}
-        height={width}
-        x={frameWidth / 2}
-        y={frameWidth / 2}
-      />
+      <Layer>
+        <Frame
+          color={frameColor}
+          width={frameWidth}
+          enable={enableFrame}
+          x={origin}
+          y={origin}
+        />
+        <Image
+          image={this.state.image}
+          ref={(node) => {
+            this.myImage = node
+          }}
+          width={width}
+          height={width}
+          x={frameWidth / 2 + origin}
+          y={frameWidth / 2 + origin}
+        />
+      </Layer>
     )
   }
 }
@@ -59,7 +72,10 @@ class Img extends Component {
 Img.propTypes = {
   // onClick: PropTypes.func.isRequired,
   frameWidth: PropTypes.number,
-  src: PropTypes.string.isRequired
+  src: PropTypes.string.isRequired,
+  enableFrame: PropTypes.bool.isRequired,
+  frameColor: PropTypes.string.isRequired,
+  origin: PropTypes.number.isRequired
 }
 
 export default Img

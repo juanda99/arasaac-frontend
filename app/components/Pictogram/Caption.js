@@ -8,8 +8,8 @@ class Caption extends Component {
   }
 
   state = {
-    x: 0,
-    y: 0
+    x: 30,
+    y: 30
   }
   handleDragEnd = (e) => {
     this.setState({
