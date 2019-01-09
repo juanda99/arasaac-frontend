@@ -21,23 +21,19 @@ import { keywordSelector } from 'utils'
 import { TwitterPicker } from 'react-color'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
-import { Stage, Layer, Text, Rect, Line } from 'react-konva'
+import { Stage, Layer, Text, Rect } from 'react-konva'
 import FontPicker from 'font-picker-react'
 import P from 'components/P'
+import PluralLayer from './PluralLayer'
+import BackgroundLayer from './BackgroundLayer'
+import FrameLayer from './FrameLayer'
 import styles from './styles'
 import Caption from './Caption'
 import Img from './Img'
 import ToggleDropDown from './ToggleDropdown'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
-import {
-  THIN,
-  MEDIUM,
-  THICK,
-  CAPTION_SIZE,
-  getCanvasSize,
-  PICTO_SIZE
-} from './constants'
+import { THIN, MEDIUM, THICK, CAPTION_SIZE, CANVAS_SIZE } from './constants'
 
 class Pictogram extends Component {
   state = {
@@ -79,51 +75,10 @@ class Pictogram extends Component {
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible })
 
-  getPluralLayer = () => {
-    const { frameWidth, frame, topCaption } = this.state
-    const iconSize = 55
-    // same as pictoOrigin duplicatedCode?
-    let y = topCaption ? CAPTION_SIZE : 0
-    y = frame ? y + frameWidth / 2 : y
-    const x = frame
-      ? PICTO_SIZE - iconSize - frameWidth / 2
-      : PICTO_SIZE - iconSize
-    const strokeWidth = 17
-    return (
-      <Layer>
-        <Line
-          stroke='black'
-          strokeWidth={strokeWidth}
-          points={[x, y + iconSize / 2, x + iconSize, y + iconSize / 2]}
-        />
-        <Line
-          stroke='black'
-          strokeWidth={strokeWidth}
-          points={[x + iconSize / 2, y, x + iconSize / 2, y + iconSize]}
-        />
-        <Rect x={x} y={y} width={iconSize} height={iconSize} />
-      </Layer>
-    )
-  }
-
-  getBackgroundColorLayer = () => {
-    const { topCaption, backgroundColor } = this.state
-    const iconSize = 55
-    // same as pictoOrigin duplicatedCode?
-    const y = topCaption ? CAPTION_SIZE : 0
-    return (
-      <Layer>
-        <Rect fill={backgroundColor} x={0} y={y} width={PICTO_SIZE} height={PICTO_SIZE} />
-      </Layer>
-    )
-  }
-
   buildOptionsRequest = () => {
     const { pictogram } = this.props
     const {
       color,
-      backgroundColor,
-      bgColor,
       hair,
       skin,
       action,
@@ -133,7 +88,6 @@ class Pictogram extends Component {
     const idPictogram = pictogram.get('idPictogram')
     const parameters = { color }
     // only if active hair, skin, backgroundColor we add it to the request. Otherwise we take default image values
-    if (bgColor) parameters.backgroundColor = backgroundColor
     if (hair) parameters.hair = hair
     if (skin) parameters.skin = skin
     if (action) parameters.action = action
@@ -157,10 +111,10 @@ class Pictogram extends Component {
 
   handlePlural = (event, plural) => this.setState({ plural })
 
-  handleColorChange = ({ hex }) => this.setState({backgroundColor: hex })
-    /* this.setState({ backgroundColor: hex.replace('#', '%23') }, () =>
+  handleColorChange = ({ hex }) => this.setState({ backgroundColor: hex })
+  /* this.setState({ backgroundColor: hex.replace('#', '%23') }, () =>
       this.buildOptionsRequest()
-    ) 
+    )
 } */
 
   handleOnRequestChange = (value) => {
@@ -173,13 +127,11 @@ class Pictogram extends Component {
   handlebgColor = (bgColor) => {
     if (bgColor) this.setState({ bgColor, showBgColor: !this.state.bgColor })
     else {
-      this.setState(
-        {
-          bgColor,
-          showBgColor: !this.state.bgColor,
-          backgroundColor: '%23FFF'
-        }
-      )
+      this.setState({
+        bgColor,
+        showBgColor: !this.state.bgColor,
+        backgroundColor: '%23FFF'
+      })
     }
   }
 
@@ -347,7 +299,6 @@ class Pictogram extends Component {
       buttonCaption,
       plural
     } = this.state
-    const canvasSize = getCanvasSize(false, false)
     const pictoOrigin = topCaption ? CAPTION_SIZE : 0
     const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
@@ -391,19 +342,14 @@ class Pictogram extends Component {
                 </H2>
               </div>
               <Stage
-                width={canvasSize}
-                height={canvasSize}
+                width={CANVAS_SIZE}
+                height={CANVAS_SIZE}
                 ref={(node) => {
                   this.stageRef = node
                 }}
-                style={{
-                  position: 'relative',
-                  top: CAPTION_SIZE,
-                  left: CAPTION_SIZE,
-                  marginBottom: 2 * CAPTION_SIZE
-                }}
               >
-                {bgColor && this.getBackgroundColorLayer()}
+                {bgColor && <BackgroundLayer color={backgroundColor} />}
+                {frame && <FrameLayer color={frameColor} width={frameWidth} />}
                 <Img
                   src={pictoFile}
                   frameWidth={frameWidth}
@@ -423,7 +369,7 @@ class Pictogram extends Component {
                   />
                   <Caption text='prueba' />
                 </Layer>
-                {plural && this.getPluralLayer()}
+                {plural && <PluralLayer />}
               </Stage>
 
               <div

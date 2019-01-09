@@ -23,7 +23,7 @@ const styles = {
     alignItems: 'center'
   },
   pictoWrapper: {
-    width: '600px',
+    width: '500px',
     maxWidth: '100%',
     height: 'auto',
     marginRight: '60px',
@@ -42,7 +42,7 @@ const styles = {
   },
   button: {
     margin: 16,
-    width: 250
+    minWidth: 200
   }
 }
 

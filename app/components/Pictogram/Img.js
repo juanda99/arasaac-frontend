@@ -2,8 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Image, Layer } from 'react-konva'
-import Frame from './Frame'
-import { PICTO_SIZE, PICTO_ORIGIN } from './constants'
+import { CANVAS_SIZE } from './constants'
 
 const image = new window.Image()
 
@@ -41,19 +40,12 @@ class Img extends Component {
   }
 
   render() {
-    const { frameWidth, enableFrame, frameColor, origin } = this.props
+    const { frameWidth, enableFrame, origin } = this.props
     const width = enableFrame
-      ? PICTO_SIZE - parseInt(frameWidth, 0)
-      : PICTO_SIZE
+      ? CANVAS_SIZE - parseInt(frameWidth, 0)
+      : CANVAS_SIZE
     return (
       <Layer>
-        <Frame
-          color={frameColor}
-          width={frameWidth}
-          enable={enableFrame}
-          x={origin}
-          y={origin}
-        />
         <Image
           image={this.state.image}
           ref={(node) => {

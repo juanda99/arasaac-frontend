@@ -2,13 +2,14 @@
 export const THIN = 10
 export const MEDIUM = 20
 export const THICK = 40
-export const PICTO_SIZE = 500
+export const CANVAS_SIZE = 500
 export const CAPTION_SIZE = 50
-export const getCanvasSize = (topCaption, buttonCaption) => {
-  let canvasSize = PICTO_SIZE
+export const ICON_SIZE = 55
+export const getPictoSize = (topCaption, buttonCaption) => {
+  let pictoSize = CANVAS_SIZE
   // increase canvasSize if topCaption
-  canvasSize = topCaption ? canvasSize + CAPTION_SIZE : canvasSize
-  // increase canvasSize if buttonCaption
-  canvasSize = buttonCaption ? canvasSize + CAPTION_SIZE : canvasSize
-  return canvasSize
+  pictoSize = topCaption ? pictoSize + CAPTION_SIZE : pictoSize
+  // increase pictoSize if buttonCaption
+  pictoSize = buttonCaption ? pictoSize + CAPTION_SIZE : pictoSize
+  return pictoSize
 }
