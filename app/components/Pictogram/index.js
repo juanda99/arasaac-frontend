@@ -21,7 +21,7 @@ import { keywordSelector } from 'utils'
 import { TwitterPicker } from 'react-color'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
-import { Stage, Layer, Text, Rect } from 'react-konva'
+import { Stage, Layer, Text } from 'react-konva'
 import FontPicker from 'font-picker-react'
 import P from 'components/P'
 import PluralLayer from './PluralLayer'
@@ -34,6 +34,7 @@ import ToggleDropDown from './ToggleDropdown'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
 import { THIN, MEDIUM, THICK, CAPTION_SIZE, CANVAS_SIZE } from './constants'
+import BackgroundColorOption from './BackgroundColorOption'
 
 class Pictogram extends Component {
   state = {
@@ -41,6 +42,7 @@ class Pictogram extends Component {
     plural: false,
     color: true,
     backgroundColor: '',
+    bgColorActive: false,
     frameWidth: '',
     frameColor: '',
     frame: false,
@@ -111,34 +113,17 @@ class Pictogram extends Component {
 
   handlePlural = (event, plural) => this.setState({ plural })
 
-  handleColorChange = ({ hex }) => this.setState({ backgroundColor: hex })
-  /* this.setState({ backgroundColor: hex.replace('#', '%23') }, () =>
+  handleBgColorChange = (backgroundColor) => this.setState({ backgroundColor })
+  /* this.setState({ backgroundColor: backgroundColor.replace('#', '%23') }, () =>
       this.buildOptionsRequest()
     )
 } */
 
+  handleBgColorActive = (bgColorActive) => this.setState({bgColorActive})
+
   handleOnRequestChange = (value) => {
     this.setState({
       openMenu: value
-    })
-  }
-
-  // bgColor means isInputChecked
-  handlebgColor = (bgColor) => {
-    if (bgColor) this.setState({ bgColor, showBgColor: !this.state.bgColor })
-    else {
-      this.setState({
-        bgColor,
-        showBgColor: !this.state.bgColor,
-        backgroundColor: '%23FFF'
-      })
-    }
-  }
-
-  // when clicking we show/hide selectors
-  handlebgColorClick = () => {
-    this.setState({
-      showBgColor: !this.state.showBgColor
     })
   }
 
@@ -281,8 +266,8 @@ class Pictogram extends Component {
     const { pictogram, searchText, muiTheme, intl, locale } = this.props
     const { formatMessage } = intl
     const {
-      bgColor,
-      showBgColor,
+      backgroundColor,
+      bgColorActive,
       identifierToggle,
       showIdentifier,
       verbalTense,
@@ -300,7 +285,7 @@ class Pictogram extends Component {
       plural
     } = this.state
     const pictoOrigin = topCaption ? CAPTION_SIZE : 0
-    const backgroundColor = this.state.backgroundColor.replace('%23', '')
+    // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
     // first time downloadUrl is default png
@@ -348,13 +333,12 @@ class Pictogram extends Component {
                   this.stageRef = node
                 }}
               >
-                {bgColor && <BackgroundLayer color={backgroundColor} />}
+                {bgColorActive && <BackgroundLayer color={backgroundColor}/>}
                 {frame && <FrameLayer color={frameColor} width={frameWidth} />}
                 <Img
                   src={pictoFile}
                   frameWidth={frameWidth}
                   enableFrame={frame} /* alt={'alt'} style={styles.picto} */
-                  frameColor={frameColor}
                   origin={pictoOrigin}
                 />
                 <Layer
@@ -420,25 +404,12 @@ class Pictogram extends Component {
                 style={styles.toggle}
               />
 
-              <ToggleDropDown
-                toggled={bgColor}
-                onToggle={this.handlebgColor}
-                label={formatMessage(messages.backgroundColor)}
-                style={styles.toggle}
-                showOptions={showBgColor}
-                onClick={this.handlebgColorClick}
+              <BackgroundColorOption
+                onChoose={this.handleBgColorChange}
+                color={backgroundColor}
+                onActive={this.handleBgColorActive}
+                active={bgColorActive}
               />
-              {showBgColor ? (
-                <div style={styles.optionBox}>
-                  <TwitterPicker
-                    triangle='hide'
-                    color={backgroundColor}
-                    onChangeComplete={this.handleColorChange}
-                  />
-                </div>
-              ) : (
-                ''
-              )}
 
               <ToggleDropDown
                 toggled={frame}

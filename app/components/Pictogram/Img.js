@@ -66,7 +66,6 @@ Img.propTypes = {
   frameWidth: PropTypes.number,
   src: PropTypes.string.isRequired,
   enableFrame: PropTypes.bool.isRequired,
-  frameColor: PropTypes.string.isRequired,
   origin: PropTypes.number.isRequired
 }
 

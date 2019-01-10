@@ -14,6 +14,7 @@ export default class BackgroundLayer extends Component {
   }
 
   render() {
+    console.log('se renderiza de nuevo la capa de fondo')
     const { color } = this.props
     return (
       <Layer>
