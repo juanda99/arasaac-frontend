@@ -4,7 +4,9 @@ import { Text } from 'react-konva'
 
 class Caption extends Component {
   static propTypes = {
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    fontFamily: PropTypes.string,
+    fontSize: PropTypes.number
   }
 
   state = {
@@ -19,10 +21,10 @@ class Caption extends Component {
   }
 
   render() {
-    const { text } = this.props
+    const { text, fontFamily, fontSize } = this.props
     const { x, y } = this.state
     return (
-      <Text text={text} x={x} y={y} onDragEnd={this.handleDragEnd} draggable />
+      <Text fontFamily={fontFamily} fontSize={fontSize} text={text} x={x} y={y} onDragEnd={this.handleDragEnd} draggable />
     )
   }
 }

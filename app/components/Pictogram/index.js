@@ -18,7 +18,6 @@ import { keywordSelector } from 'utils'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import { Stage, Layer, Text } from 'react-konva'
-import FontPicker from 'font-picker-react'
 import P from 'components/P'
 import PluralLayer from './PluralLayer'
 import BackgroundLayer from './BackgroundLayer'
@@ -34,6 +33,7 @@ import FrameOptions from './FrameOptions'
 import VerbalTenseOptions from './VerbalTenseOptions'
 import PeopleAppearanceOptions from './PeopleAppearanceOptions'
 import IdentifierOptions from './IdentifierOptions'
+import TextOptions from './TextOptions'
 
 class Pictogram extends Component {
   state = {
@@ -64,8 +64,12 @@ class Pictogram extends Component {
     url: '',
     downloadUrl: '',
     activeFont: 'Open Sans',
-    topCaption: false,
-    buttonCaption: false
+    buttonCaption: false,
+    mainTextActive,
+    mainText,
+    mainTextFont,
+    mainTextFontSize,
+    mainTextColor
   }
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -275,11 +279,14 @@ class Pictogram extends Component {
       frameColor,
       frameActive,
       frameOptionsShow,
-      topCaption,
-      buttonCaption,
-      plural
+      plural,
+      mainTextActive,
+      mainText,
+      mainTextFont,
+      mainTextFontSize,
+      mainTextColor
     } = this.state
-    let pictoOrigin = topCaption ? CAPTION_SIZE : 0
+    let pictoOrigin = mainText ? CAPTION_SIZE : 0
     pictoOrigin = frameActive ? pictoOrigin + frameWidth / 2 : pictoOrigin
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
@@ -432,18 +439,19 @@ class Pictogram extends Component {
                 onOptionsShow={this.handleVerbalTenseOptionsShow}
                 showOptions={verbalTenseOptionsShow}
               />
-            </div>
-            <div>
-              <FontPicker
-                apiKey='AIzaSyCLxWCWpaWqXdBFuqfsvnzxOUzJI0JFPOE'
-                activeFont={this.state.activeFont}
-                onChange={(nextFont) =>
-                  this.setState({ activeFont: nextFont.family })
-                }
+              <TextOptions
+                onActive={this.handleMainTextActive}
+                active={mainTextActive}
+                text={mainText}
+                font={mainTextFont}
+                size={mainTextFontSize}
+                color={mainTextColor}
+                onFontChange={this.handleMainTextFontChange}
+                onSizeChange={this.handleMainTextFontSizeChange}
+                onColorChange={this.handleMainTextColorChange}
+                onOptionsShow={this.handleMainTextOptionsShow}
+                showOptions={mainTextOptionsShow}
               />
-              <p className='apply-font'>
-                The font will be applied to this text.
-              </p>
             </div>
 
             <P>Advanced options</P>
