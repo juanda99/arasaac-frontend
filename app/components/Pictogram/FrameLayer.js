@@ -28,8 +28,7 @@ class FrameLayer extends Component {
 FrameLayer.propTypes = {
   // onClick: PropTypes.func.isRequired,
   color: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  enable: PropTypes.bool.isRequired
+  width: PropTypes.number.isRequired
 }
 
 export default FrameLayer

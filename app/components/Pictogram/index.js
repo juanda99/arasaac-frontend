@@ -18,7 +18,7 @@ import SoundPlayer from 'components/SoundPlayer'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import Toggle from 'material-ui/Toggle'
 import { keywordSelector } from 'utils'
-import { TwitterPicker } from 'react-color'
+
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import { Stage, Layer, Text } from 'react-konva'
@@ -33,8 +33,9 @@ import Img from './Img'
 import ToggleDropDown from './ToggleDropdown'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
-import { THIN, MEDIUM, THICK, CAPTION_SIZE, CANVAS_SIZE } from './constants'
-import BackgroundColorOption from './BackgroundColorOption'
+import { MEDIUM, CAPTION_SIZE, CANVAS_SIZE } from './constants'
+import BackgroundColorOptions from './BackgroundColorOptions'
+import FrameOptions from './FrameOptions'
 
 class Pictogram extends Component {
   state = {
@@ -43,9 +44,10 @@ class Pictogram extends Component {
     color: true,
     backgroundColor: '',
     bgColorActive: false,
-    frameWidth: '',
+    frameWidth: MEDIUM,
     frameColor: '',
-    frame: false,
+    frameActive: false,
+    frameOptionsShow: false,
     action: '', // for verbs: future, past, or present = ''
     identifier: '',
     text: false,
@@ -59,7 +61,6 @@ class Pictogram extends Component {
     showIdentifier: false,
     showText: false,
     showPeopleAppearance: false,
-    showFrameOptions: false,
     openMenu: false,
     url: '',
     downloadUrl: '',
@@ -119,45 +120,16 @@ class Pictogram extends Component {
     )
 } */
 
-  handleBgColorActive = (bgColorActive) => this.setState({bgColorActive})
+  handleBgColorActive = (bgColorActive) => this.setState({ bgColorActive })
 
-  handleOnRequestChange = (value) => {
-    this.setState({
-      openMenu: value
-    })
-  }
+  handleFrameActive = (frameActive) => this.setState({ frameActive, frameOptionsShow: frameActive })
 
-  // Frames
-  handleFrame = (frame) => {
-    if (frame) {
-      this.setState({
-        frame,
-        showFrame: !this.state.frame,
-        frameWidth: this.state.frameWidth || MEDIUM
-      })
-    } else {
-      this.setState({
-        frame,
-        showFrame: !this.state.frame,
-        frameColor: '%23000'
-      })
-    }
-  }
+  handleFrameWidthChange = (frameWidth) => this.setState({ frameWidth })
 
-  // when clicking we show/hide selectors
-  handleFrameClick = () => {
-    this.setState({
-      showFrame: !this.state.showFrame
-    })
-  }
+  handleFrameColorChange = (frameColor) => this.setState({ frameColor })
 
-  handleFrameWidthChange = (event, index, frameWidth) => {
-    this.setState({ frameWidth })
-  }
-
-  handleFrameColorChange = ({ hex }) => {
-    this.setState({ frameColor: hex })
-  }
+  handleFrameOptionsShow = (frameOptionsShow) =>
+    this.setState({ frameOptionsShow })
 
   handleHairChange = (event, index, hair) => {
     this.setState({ hair }, () => this.buildOptionsRequest())
@@ -278,13 +250,14 @@ class Pictogram extends Component {
       url,
       frameWidth,
       frameColor,
-      frame,
-      showFrame,
+      frameActive,
+      frameOptionsShow,
       topCaption,
       buttonCaption,
       plural
     } = this.state
-    const pictoOrigin = topCaption ? CAPTION_SIZE : 0
+    let pictoOrigin = topCaption ? CAPTION_SIZE : 0
+    pictoOrigin = frameActive ? pictoOrigin + frameWidth/2 : pictoOrigin
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
@@ -333,12 +306,16 @@ class Pictogram extends Component {
                   this.stageRef = node
                 }}
               >
-                {bgColorActive && <BackgroundLayer color={backgroundColor}/>}
-                {frame && <FrameLayer color={frameColor} width={frameWidth} />}
+                {bgColorActive && <BackgroundLayer color={backgroundColor} />}
+                {frameActive && (
+                  <FrameLayer color={frameColor} width={frameWidth} />
+                )}
                 <Img
                   src={pictoFile}
                   frameWidth={frameWidth}
-                  enableFrame={frame} /* alt={'alt'} style={styles.picto} */
+                  enableFrame={
+                    frameActive
+                  } /* alt={'alt'} style={styles.picto} */
                   origin={pictoOrigin}
                 />
                 <Layer
@@ -391,12 +368,6 @@ class Pictogram extends Component {
             <P>Common options</P>
             <div style={styles.optionsWrapper}>
               <Toggle
-                label={<FormattedMessage {...messages.plural} />}
-                labelPosition='right'
-                onToggle={this.handlePlural}
-                style={styles.toggle}
-              />
-              <Toggle
                 label={<FormattedMessage {...messages.color} />}
                 labelPosition='right'
                 onToggle={this.handleColor}
@@ -404,53 +375,30 @@ class Pictogram extends Component {
                 style={styles.toggle}
               />
 
-              <BackgroundColorOption
+              <BackgroundColorOptions
                 onChoose={this.handleBgColorChange}
                 color={backgroundColor}
                 onActive={this.handleBgColorActive}
                 active={bgColorActive}
               />
 
-              <ToggleDropDown
-                toggled={frame}
-                onToggle={this.handleFrame}
-                label={formatMessage(messages.frame)}
-                style={styles.toggle}
-                showOptions={showFrame}
-                onClick={this.handleFrameClick}
+              <FrameOptions
+                onChooseColor={this.handleFrameColorChange}
+                color={frameColor}
+                onActive={this.handleFrameActive}
+                active={frameActive}
+                width={frameWidth}
+                onChooseWidth={this.handleFrameWidthChange}
+                onOptionsShow={this.handleFrameOptionsShow}
+                showOptions={frameOptionsShow}
               />
-              {showFrame ? (
-                <div style={styles.optionBox}>
-                  <TwitterPicker
-                    triangle='hide'
-                    color={frameColor}
-                    onChangeComplete={this.handleFrameColorChange}
-                  />
 
-                  <SelectField
-                    style={{ marginRight: '40px' }}
-                    floatingLabelText={formatMessage(messages.frameWidth)}
-                    value={this.state.frameWidth}
-                    onChange={this.handleFrameWidthChange}
-                  >
-                    <MenuItem value={null} primaryText='' />
-                    <MenuItem
-                      value={THIN}
-                      primaryText={formatMessage(messages.thin)}
-                    />
-                    <MenuItem
-                      value={MEDIUM}
-                      primaryText={formatMessage(messages.medium)}
-                    />
-                    <MenuItem
-                      value={THICK}
-                      primaryText={formatMessage(messages.thick)}
-                    />
-                  </SelectField>
-                </div>
-              ) : (
-                ''
-              )}
+              <Toggle
+                label={<FormattedMessage {...messages.plural} />}
+                labelPosition='right'
+                onToggle={this.handlePlural}
+                style={styles.toggle}
+              />
 
               <ToggleDropDown
                 toggled={verbalTense}
@@ -643,8 +591,9 @@ class Pictogram extends Component {
         </div>
         <H3 primary>{<FormattedMessage {...messages.description} />}</H3>
         <Divider />
-        {keywords.valueSeq().map((keyword) => (
-          <div key={keyword}>
+        {/* index for keyword will not be necessary if load data is ok */}
+        {keywords.valueSeq().map((keyword, index) => (
+          <div key={`${keyword.get('keyword')}-${index}`}>
             <P important={true}>{keyword.get('keyword')}</P>
             <P>
               {<FormattedMessage {...messages.meaning} />}:{' '}
@@ -652,16 +601,14 @@ class Pictogram extends Component {
             </P>
           </div>
         ))}
-
         <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
         <Divider />
         <P>{<FormattedMessage {...messages.changePictoLanguage} />}</P>
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />
         {authors.valueSeq().map((author) => (
-          <P key={author.get('id')}>
+          <P key={`${author.get('id')}`}>
             <FlatButton
-              key={author.get('id')}
               label={author.get('name')}
               labelPosition='after'
               icon={<Person />}

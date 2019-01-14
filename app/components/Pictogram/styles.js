@@ -3,7 +3,7 @@ const styles = {
     display: 'flex',
     width: '100%',
     flexWrap: 'wrap',
-    alignItems: 'top'
+    alignContent: 'top'
   },
   picto: {
     width: '100%',
@@ -13,14 +13,16 @@ const styles = {
   optionBox: {
     padding: '10px',
     border: '1px dashed lightgrey',
-    width: '100%',
-    minHeight: '120px'
+    width: '400px',
+    minHeight: '120px',
+    position: 'absolute'
   },
   optionsWrapper: {
     display: 'flex',
     width: '100%',
     flexWrap: 'wrap',
-    alignItems: 'center'
+    alignItems: 'center',
+    position: 'relative'
   },
   pictoWrapper: {
     width: '500px',
@@ -38,7 +40,8 @@ const styles = {
   },
   toggle: {
     margin: 16,
-    width: 200
+    width: 200,
+    alignSelf: 'baseline'
   },
   button: {
     margin: 16,

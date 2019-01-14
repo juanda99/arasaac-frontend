@@ -34,6 +34,7 @@ class Img extends Component {
     const { src, frameWidth } = this.props
     if (src !== prevProps.src) image.src = src
     else if (frameWidth !== prevProps.frameWidth) {
+      console.log('redrawwwwww')
       this.myImage.cache()
       this.myImage.getLayer().draw()
     }
@@ -44,6 +45,8 @@ class Img extends Component {
     const width = enableFrame
       ? CANVAS_SIZE - parseInt(frameWidth, 0)
       : CANVAS_SIZE
+    console.log(width)
+    console.log(origin)
     return (
       <Layer>
         <Image
@@ -53,8 +56,8 @@ class Img extends Component {
           }}
           width={width}
           height={width}
-          x={frameWidth / 2 + origin}
-          y={frameWidth / 2 + origin}
+          x={origin}
+          y={origin}
         />
       </Layer>
     )
