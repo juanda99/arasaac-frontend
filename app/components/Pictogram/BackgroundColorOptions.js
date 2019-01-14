@@ -13,38 +13,21 @@ class BackgroundColorOptions extends Component {
     intl: intlShape.isRequired,
     onChoose: PropTypes.func.isRequired,
     onActive: PropTypes.func.isRequired,
-    active: PropTypes.bool.isRequired
-  }
-
-  state = {
-    showOptions: false
-  }
-
-  componentWillUpdate = (nextProps, nextState) => {
-    const { active } = this.props
-    if (
-      nextProps.active !== active &&
-      nextState.showOptions !== nextProps.active
-    ) {
-      if (this.state.showOptions) this.setState({ showOptions: false })
-      else this.setState({ showOptions: true })
-    }
+    active: PropTypes.bool.isRequired,
+    showOptions: PropTypes.bool.isRequired,
+    onOptionsShow: PropTypes.func.isRequired
   }
 
   handleActive = (active) => this.props.onActive(active)
 
-  handleShowOptions = () =>
-    this.setState({
-      showOptions: !this.state.showOptions
-    })
+  handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions)
 
   handleColorChange = ({ hex }) => this.props.onChoose(hex)
 
   render() {
-    const { intl, color, active } = this.props
+    const { intl, color, active, showOptions } = this.props
     const { formatMessage } = intl
-    const { showOptions } = this.state
-    const marginBottom = this.state.showOptions ? '140px' : 'auto'
+    const marginBottom = showOptions ? '140px' : 'auto'
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown
@@ -53,7 +36,7 @@ class BackgroundColorOptions extends Component {
           label={formatMessage(messages.backgroundColor)}
           style={styles.toggle}
           showOptions={showOptions}
-          onClick={this.handleShowOptions}
+          onClick={this.handleOptionsShow}
         />
         {showOptions ? (
           <div style={styles.optionBox}>

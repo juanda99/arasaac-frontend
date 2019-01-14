@@ -9,16 +9,12 @@ import Divider from 'material-ui/Divider'
 import FlatButton from 'material-ui/FlatButton'
 import Person from 'material-ui/svg-icons/social/person'
 import RaisedButton from 'material-ui/RaisedButton'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { PICTOGRAMS_URL, LOCUTIONS_URL, API_ROOT } from 'services/config'
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import SoundPlayer from 'components/SoundPlayer'
-import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import Toggle from 'material-ui/Toggle'
 import { keywordSelector } from 'utils'
-
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import { Stage, Layer, Text } from 'react-konva'
@@ -30,12 +26,14 @@ import FrameLayer from './FrameLayer'
 import styles from './styles'
 import Caption from './Caption'
 import Img from './Img'
-import ToggleDropDown from './ToggleDropdown'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
 import { MEDIUM, CAPTION_SIZE, CANVAS_SIZE } from './constants'
 import BackgroundColorOptions from './BackgroundColorOptions'
 import FrameOptions from './FrameOptions'
+import VerbalTenseOptions from './VerbalTenseOptions'
+import PeopleAppearanceOptions from './PeopleAppearanceOptions'
+import IdentifierOptions from './IdentifierOptions'
 
 class Pictogram extends Component {
   state = {
@@ -44,23 +42,24 @@ class Pictogram extends Component {
     color: true,
     backgroundColor: '',
     bgColorActive: false,
+    bgColorOptionsShow: false,
     frameWidth: MEDIUM,
     frameColor: '',
     frameActive: false,
     frameOptionsShow: false,
-    action: '', // for verbs: future, past, or present = ''
+    identifierActive: false,
+    identifierShow: false,
     identifier: '',
+    identifierPosition: '',
     text: false,
-    peopleAppearance: false,
-    identifierToggle: false,
+    peopleAppearanceActive: false,
+    peopleAppearanceOptionsShow: false,
     hair: '',
     skin: '',
-    showBgColor: false,
-    verbalTense: false,
-    showVerbalTense: false,
-    showIdentifier: false,
+    verbalTenseActive: false,
+    verbalTense: '',
+    verbalTenseOptionsShow: false,
     showText: false,
-    showPeopleAppearance: false,
     openMenu: false,
     url: '',
     downloadUrl: '',
@@ -78,14 +77,23 @@ class Pictogram extends Component {
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible })
 
+  hideOptions = () =>
+    this.setState({
+      bgColorOptionsShow: false,
+      frameOptionsShow: false,
+      verbalTenseOptionsShow: false,
+      peopleAppearanceOptionsShow: false,
+      identifierOptionsShow: false
+    })
+
   buildOptionsRequest = () => {
     const { pictogram } = this.props
     const {
       color,
       hair,
       skin,
-      action,
       identifier,
+      identifierActive,
       identifierPosition
     } = this.state
     const idPictogram = pictogram.get('idPictogram')
@@ -93,8 +101,7 @@ class Pictogram extends Component {
     // only if active hair, skin, backgroundColor we add it to the request. Otherwise we take default image values
     if (hair) parameters.hair = hair
     if (skin) parameters.skin = skin
-    if (action) parameters.action = action
-    if (identifier) parameters.identifier = identifier
+    if (identifierActive) parameters.identifier = identifier
     if (identifierPosition) parameters.identifierPosition = identifierPosition
 
     const urlParameters = Object.entries(parameters)
@@ -107,12 +114,17 @@ class Pictogram extends Component {
       .then((data) => this.setState({ url: data.image, downloadUrl }))
   }
 
-  handleColor = (event, color) =>
+  handleColor = (event, color) => {
     this.setState({ color }, () => this.buildOptionsRequest())
+    this.hideOptions()
+  }
 
   // handlePlural = (event, plural) => this.setState({ plural }, () => this.buildOptionsRequest())
 
-  handlePlural = (event, plural) => this.setState({ plural })
+  handlePlural = (event, plural) => {
+    this.setState({ plural })
+    this.hideOptions()
+  }
 
   handleBgColorChange = (backgroundColor) => this.setState({ backgroundColor })
   /* this.setState({ backgroundColor: backgroundColor.replace('#', '%23') }, () =>
@@ -120,83 +132,90 @@ class Pictogram extends Component {
     )
 } */
 
-  handleBgColorActive = (bgColorActive) => this.setState({ bgColorActive })
+  handleBgColorOptionsShow = (bgColorOptionsShow) => {
+    this.hideOptions()
+    this.setState({ bgColorOptionsShow })
+  }
 
-  handleFrameActive = (frameActive) => this.setState({ frameActive, frameOptionsShow: frameActive })
-
+  handleBgColorActive = (bgColorActive) => {
+    this.hideOptions()
+    this.setState({ bgColorActive, bgColorOptionsShow: bgColorActive })
+  }
+  handleFrameActive = (frameActive) => {
+    this.hideOptions()
+    this.setState({ frameActive, frameOptionsShow: frameActive })
+  }
   handleFrameWidthChange = (frameWidth) => this.setState({ frameWidth })
 
   handleFrameColorChange = (frameColor) => this.setState({ frameColor })
 
-  handleFrameOptionsShow = (frameOptionsShow) =>
+  handleFrameOptionsShow = (frameOptionsShow) => {
+    this.hideOptions()
     this.setState({ frameOptionsShow })
+  }
 
-  handleHairChange = (event, index, hair) => {
+  handleHairChange = (hair) => {
     this.setState({ hair }, () => this.buildOptionsRequest())
   }
-  handleSkinChange = (event, index, skin) => {
+  handleSkinChange = (skin) => {
     this.setState({ skin }, () => this.buildOptionsRequest())
   }
 
-  handleVerbalTense = (verbalTense) => {
-    this.setState({ verbalTense, showVerbalTense: verbalTense })
+  handlePeopleAppearanceActive = (peopleAppearanceActive) => {
+    this.hideOptions()
+    this.setState(
+      {
+        peopleAppearanceActive,
+        peopleAppearanceOptionsShow: peopleAppearanceActive,
+        hair: '',
+        skin: ''
+      },
+      () => this.buildOptionsRequest()
+    )
   }
 
-  handleVerbalTenseClick = () => {
+  handlePeopleAppearanceOptionsShow = (peopleAppearanceOptionsShow) => {
+    this.hideOptions()
+    this.setState({ peopleAppearanceOptionsShow })
+  }
+
+  handleVerbalTenseActive = (verbalTenseActive) => {
+    this.hideOptions()
     this.setState({
-      showVerbalTense: !this.state.showVerbalTense
+      verbalTenseActive,
+      verbalTenseOptionsShow: verbalTenseActive
     })
   }
 
-  handleVerbalTenseChange = (event, action) => {
-    this.setState({ action }, () => this.buildOptionsRequest())
+  handleVerbalTenseOptionsShow = (verbalTenseOptionsShow) => {
+    this.hideOptions()
+    this.setState({ verbalTenseOptionsShow })
   }
 
-  handleIdentifier = (identifierToggle) => {
-    this.setState({ identifierToggle, showIdentifier: identifierToggle })
+  handleVerbalTenseChange = (verbalTense) => {
+    this.hideOptions()
+    this.setState({ verbalTense })
   }
 
-  handleIdentifierClick = () => {
-    this.setState({
-      showIdentifier: !this.state.showIdentifier
-    })
+  handleIdentifierActive = (identifierActive) => {
+    this.hideOptions()
+    this.setState(
+      { identifierActive, identifierOptionsShow: identifierActive },
+      () => this.buildOptionsRequest()
+    )
   }
 
-  handleIdentifierChange = (event, index, identifier) => {
+  handleIdentifierOptionsShow = (identifierOptionsShow) => {
+    this.hideOptions()
+    this.setState({ identifierOptionsShow })
+  }
+
+  handleIdentifierChange = (identifier) => {
     this.setState({ identifier }, () => this.buildOptionsRequest())
   }
 
-  handleIdentifierPositionChange = (event, index, identifierPosition) => {
-    if (this.state.identifier) {
-      this.setState({ identifierPosition }, () => this.buildOptionsRequest())
-    }
-    this.setState({ identifierPosition })
-  }
-
-  handlePeopleAppearance = (peopleAppearance) => {
-    if (peopleAppearance) {
-      this.setState({
-        peopleAppearance,
-        showPeopleAppearance: peopleAppearance
-      })
-    } else {
-      this.setState(
-        {
-          hair: '',
-          skin: '',
-          peopleAppearance,
-          showPeopleAppearance: peopleAppearance
-        },
-        () => this.buildOptionsRequest()
-      )
-    }
-  }
-
-  handlePeopleAppearanceClick = () => {
-    this.setState({
-      showPeopleAppearance: !this.state.showPeopleAppearance
-    })
-  }
+  handleIdentifierPositionChange = (identifierPosition) =>
+    this.setState({ identifierPosition }, () => this.buildOptionsRequest())
 
   handleOpenMenu = () => {
     const { pictogram } = this.props
@@ -235,18 +254,22 @@ class Pictogram extends Component {
   }
 
   render() {
-    const { pictogram, searchText, muiTheme, intl, locale } = this.props
-    const { formatMessage } = intl
+    const { pictogram, searchText, muiTheme, locale } = this.props
     const {
       backgroundColor,
       bgColorActive,
-      identifierToggle,
-      showIdentifier,
+      bgColorOptionsShow,
+      identifierActive,
+      identifierOptionsShow,
+      identifier,
+      identifierPosition,
       verbalTense,
-      showVerbalTense,
-      action,
-      peopleAppearance,
-      showPeopleAppearance,
+      verbalTenseOptionsShow,
+      verbalTenseActive,
+      peopleAppearanceActive,
+      peopleAppearanceOptionsShow,
+      hair,
+      skin,
       url,
       frameWidth,
       frameColor,
@@ -257,7 +280,7 @@ class Pictogram extends Component {
       plural
     } = this.state
     let pictoOrigin = topCaption ? CAPTION_SIZE : 0
-    pictoOrigin = frameActive ? pictoOrigin + frameWidth/2 : pictoOrigin
+    pictoOrigin = frameActive ? pictoOrigin + frameWidth / 2 : pictoOrigin
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
@@ -380,6 +403,8 @@ class Pictogram extends Component {
                 color={backgroundColor}
                 onActive={this.handleBgColorActive}
                 active={bgColorActive}
+                onOptionsShow={this.handleBgColorOptionsShow}
+                showOptions={bgColorOptionsShow}
               />
 
               <FrameOptions
@@ -399,43 +424,14 @@ class Pictogram extends Component {
                 onToggle={this.handlePlural}
                 style={styles.toggle}
               />
-
-              <ToggleDropDown
-                toggled={verbalTense}
-                onToggle={this.handleVerbalTense}
-                label={formatMessage(messages.verbalTense)}
-                style={styles.toggle}
-                showOptions={showVerbalTense}
-                onClick={this.handleVerbalTenseClick}
+              <VerbalTenseOptions
+                onActive={this.handleVerbalTenseActive}
+                active={verbalTenseActive}
+                verbalTense={verbalTense}
+                onVerbalTenseChange={this.handleVerbalTenseChange}
+                onOptionsShow={this.handleVerbalTenseOptionsShow}
+                showOptions={verbalTenseOptionsShow}
               />
-              {showVerbalTense ? (
-                <div style={styles.optionBox}>
-                  <RadioButtonGroup
-                    name='verbalTense'
-                    // defaultSelected='present'
-                    valueSelected={action}
-                    onChange={this.handleVerbalTenseChange}
-                  >
-                    <RadioButton
-                      value='past'
-                      label={<FormattedMessage {...messages.past} />}
-                      style={styles.radioButton}
-                    />
-                    <RadioButton
-                      value=''
-                      label={<FormattedMessage {...messages.present} />}
-                      style={styles.radioButton}
-                    />
-                    <RadioButton
-                      value='future'
-                      label={<FormattedMessage {...messages.future} />}
-                      style={styles.radioButton}
-                    />
-                  </RadioButtonGroup>
-                </div>
-              ) : (
-                ''
-              )}
             </div>
             <div>
               <FontPicker
@@ -452,140 +448,26 @@ class Pictogram extends Component {
 
             <P>Advanced options</P>
             <div style={styles.optionsWrapper}>
-              <ToggleDropDown
-                toggled={identifierToggle}
-                onToggle={this.handleIdentifier}
-                label={formatMessage(messages.identifier)}
-                style={styles.toggle}
-                showOptions={showIdentifier}
-                onClick={this.handleIdentifierClick}
+              <PeopleAppearanceOptions
+                skin={skin}
+                onSkinChange={this.handleSkinChange}
+                onActive={this.handlePeopleAppearanceActive}
+                active={peopleAppearanceActive}
+                hair={hair}
+                onHairChange={this.handleHairChange}
+                onOptionsShow={this.handlePeopleAppearanceOptionsShow}
+                showOptions={peopleAppearanceOptionsShow}
               />
-              {showIdentifier ? (
-                <div style={styles.optionBox}>
-                  <SelectField
-                    style={{ marginRight: '40px' }}
-                    floatingLabelText={formatMessage(messages.identifier)}
-                    value={this.state.identifier}
-                    onChange={this.handleIdentifierChange}
-                  >
-                    <MenuItem value={null} primaryText='' />
-                    <MenuItem
-                      value='classroom'
-                      primaryText={formatMessage(messages.classroom)}
-                    />
-                    <MenuItem
-                      value='health'
-                      primaryText={formatMessage(messages.health)}
-                    />
-                    <MenuItem
-                      value='library'
-                      primaryText={formatMessage(messages.library)}
-                    />
-                    <MenuItem
-                      value='office'
-                      primaryText={formatMessage(messages.office)}
-                    />
-                  </SelectField>
-                  <SelectField
-                    style={{ marginRight: '40px' }}
-                    floatingLabelText={formatMessage(
-                      messages.identifierPosition
-                    )}
-                    value={this.state.identifierPosition}
-                    onChange={this.handleIdentifierPositionChange}
-                  >
-                    <MenuItem value={null} primaryText='' />
-                    <MenuItem
-                      value='left'
-                      primaryText={formatMessage(messages.left)}
-                    />
-                    <MenuItem
-                      value='right'
-                      primaryText={formatMessage(messages.right)}
-                    />
-                  </SelectField>
-                </div>
-              ) : (
-                ''
-              )}
-
-              <ToggleDropDown
-                toggled={peopleAppearance}
-                onToggle={this.handlePeopleAppearance}
-                label={formatMessage(messages.peopleAppearance)}
-                style={styles.toggle}
-                showOptions={showPeopleAppearance}
-                onClick={this.handlePeopleAppearanceClick}
+              <IdentifierOptions
+                identifier={identifier}
+                identifierPosition={identifierPosition}
+                onIdentifierChange={this.handleIdentifierChange}
+                onIdentifierPositionChange={this.handleIdentifierPositionChange}
+                onActive={this.handleIdentifierActive}
+                active={identifierActive}
+                onOptionsShow={this.handleIdentifierOptionsShow}
+                showOptions={identifierOptionsShow}
               />
-              {showPeopleAppearance ? (
-                <div style={styles.optionBox}>
-                  <SelectField
-                    style={{ marginRight: '40px' }}
-                    floatingLabelText={formatMessage(messages.skinColor)}
-                    value={this.state.skin}
-                    onChange={this.handleSkinChange}
-                  >
-                    <MenuItem value={null} primaryText='' />
-                    <MenuItem
-                      value='white'
-                      primaryText={formatMessage(messages.whiteSkin)}
-                    />
-                    <MenuItem
-                      value='black'
-                      primaryText={formatMessage(messages.blackSkin)}
-                    />
-                    <MenuItem
-                      value='assian'
-                      primaryText={formatMessage(messages.assianSkin)}
-                    />
-                    <MenuItem
-                      value='mulatto'
-                      primaryText={formatMessage(messages.mulattoSkin)}
-                    />
-                    <MenuItem
-                      value='aztec'
-                      primaryText={formatMessage(messages.aztecSkin)}
-                    />
-                  </SelectField>
-                  <SelectField
-                    floatingLabelText={formatMessage(messages.hairColor)}
-                    value={this.state.hair}
-                    onChange={this.handleHairChange}
-                  >
-                    <MenuItem value={null} primaryText='' />
-                    <MenuItem
-                      value='blonde'
-                      primaryText={formatMessage(messages.blondeHair)}
-                    />
-                    <MenuItem
-                      value='brown'
-                      primaryText={formatMessage(messages.brownHair)}
-                    />
-                    <MenuItem
-                      value='darkBrown'
-                      primaryText={formatMessage(messages.darkBrownHair)}
-                    />
-                    <MenuItem
-                      value='gray'
-                      primaryText={formatMessage(messages.grayHair)}
-                    />
-                    <MenuItem
-                      value='darkGray'
-                      primaryText={formatMessage(messages.darkGrayHair)}
-                    />
-                    <MenuItem
-                      value='red'
-                      primaryText={formatMessage(messages.redHair)}
-                    />
-                    <MenuItem
-                      value='black'
-                      primaryText={formatMessage(messages.blackHair)}
-                    />
-                  </SelectField>
-                </div>
-              ) : (
-                ''
-              )}
             </div>
           </div>
         </div>
@@ -637,11 +519,10 @@ Pictogram.propTypes = {
   pictogram: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
   searchText: PropTypes.string.isRequired,
-  muiTheme: PropTypes.object.isRequired,
-  intl: intlShape.isRequired
+  muiTheme: PropTypes.object.isRequired
 }
 
-export default injectIntl(muiThemeable()(Pictogram))
+export default muiThemeable()(Pictogram)
 
 function b64toBlob(b64Data, contentType, sliceSize) {
   contentType = contentType || ''

@@ -26,9 +26,7 @@ class FrameOptions extends Component {
   // bgColor means isInputChecked
   handleActive = (active) => this.props.onActive(active)
 
-  handleOptionsShow = () => {
-    this.props.onOptionsShow(!this.props.showOptions)
-  }
+  handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions)
 
   handleFrameWidthChange = (event, index, frameWidth) =>
     this.props.onChooseWidth(frameWidth)
