@@ -230,6 +230,26 @@ export default defineMessages({
     description: 'Toggle button to set the pictogram in future',
     defaultMessage: 'Future'
   },
+  topText: {
+    id: 'app.components.Pictogram.topTextToggleLabel',
+    description: 'Toggle button label',
+    defaultMessage: 'Top text'
+  },
+  lowerText: {
+    id: 'app.components.Pictogram.lowerTextToggleLabel',
+    description: 'Toggle button label',
+    defaultMessage: 'Lower text'
+  },
+  enterText: {
+    id: 'app.components.Pictogram.TextOptions.enterText',
+    description: 'Hint label for text input',
+    defaultMessage: 'Enter text'
+  },
+  zoomLevel: {
+    id: 'app.components.Pictogram.ZoomOptions.zoomLevel',
+    description: 'Toggle button label',
+    defaultMessage: 'Zoom level'
+  },
   addFavorite: {
     id: 'app.components.PictogramSnippet.addFavoriteTooltip',
     defaultMessage: 'Add pictogram to the favorites tab'

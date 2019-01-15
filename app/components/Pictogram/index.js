@@ -17,13 +17,13 @@ import Toggle from 'material-ui/Toggle'
 import { keywordSelector } from 'utils'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
-import { Stage, Layer, Text } from 'react-konva'
+import { Stage } from 'react-konva'
 import P from 'components/P'
 import PluralLayer from './PluralLayer'
 import BackgroundLayer from './BackgroundLayer'
 import FrameLayer from './FrameLayer'
 import styles from './styles'
-import Caption from './Caption'
+import TextLayer from './TextLayer'
 import Img from './Img'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
@@ -34,6 +34,7 @@ import VerbalTenseOptions from './VerbalTenseOptions'
 import PeopleAppearanceOptions from './PeopleAppearanceOptions'
 import IdentifierOptions from './IdentifierOptions'
 import TextOptions from './TextOptions'
+import ZoomOptions from './ZoomOptions'
 
 class Pictogram extends Component {
   state = {
@@ -48,7 +49,7 @@ class Pictogram extends Component {
     frameActive: false,
     frameOptionsShow: false,
     identifierActive: false,
-    identifierShow: false,
+    identifierOptionsShow: false,
     identifier: '',
     identifierPosition: '',
     text: false,
@@ -65,11 +66,15 @@ class Pictogram extends Component {
     downloadUrl: '',
     activeFont: 'Open Sans',
     buttonCaption: false,
-    mainTextActive,
-    mainText,
-    mainTextFont,
-    mainTextFontSize,
-    mainTextColor
+    topTextActive: false,
+    topTextOptionsShow: false,
+    topText: '',
+    topTextFont: 'Roboto',
+    topTextFontSize: 12,
+    topTextFontColor: 'black',
+    zoomLevel: 0,
+    zoomActive: false,
+    zoomOptionsShow: false
   }
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -87,7 +92,9 @@ class Pictogram extends Component {
       frameOptionsShow: false,
       verbalTenseOptionsShow: false,
       peopleAppearanceOptionsShow: false,
-      identifierOptionsShow: false
+      identifierOptionsShow: false,
+      topTextOptionsShow: false,
+      zoomOptionsShow: false
     })
 
   buildOptionsRequest = () => {
@@ -145,6 +152,19 @@ class Pictogram extends Component {
     this.hideOptions()
     this.setState({ bgColorActive, bgColorOptionsShow: bgColorActive })
   }
+
+  handleZoomChange = (zoomLevel) => this.setState({ zoomLevel })
+
+  handleZoomOptionsShow = (zoomOptionsShow) => {
+    this.hideOptions()
+    this.setState({ zoomOptionsShow })
+  }
+
+  handleZoomActive = (zoomActive) => {
+    this.hideOptions()
+    this.setState({ zoomActive, zoomOptionsShow: zoomActive, zoomLevel: 0 })
+  }
+
   handleFrameActive = (frameActive) => {
     this.hideOptions()
     this.setState({ frameActive, frameOptionsShow: frameActive })
@@ -221,6 +241,26 @@ class Pictogram extends Component {
   handleIdentifierPositionChange = (identifierPosition) =>
     this.setState({ identifierPosition }, () => this.buildOptionsRequest())
 
+  handleMainTextActive = (topTextActive) => {
+    this.hideOptions()
+    this.setState({ topTextActive, topTextOptionsShow: topTextActive })
+  }
+
+  handleMainTextChange = (topText) => this.setState({ topText })
+
+  handleMainTextFontChange = (topTextFont) => this.setState({ topTextFont })
+
+  handleMainTextFontSizeChange = (topTextFontSize) =>
+    this.setState({ topTextFontSize })
+
+  handleMainTextFontColorChange = (topTextFontColor) =>
+    this.setState({ topTextFontColor })
+
+  handleMainTextOptionsShow = (topTextOptionsShow) => {
+    this.hideOptions()
+    this.setState({ topTextOptionsShow })
+  }
+
   handleOpenMenu = () => {
     const { pictogram } = this.props
     const { color, plural } = this.state
@@ -280,13 +320,17 @@ class Pictogram extends Component {
       frameActive,
       frameOptionsShow,
       plural,
-      mainTextActive,
-      mainText,
-      mainTextFont,
-      mainTextFontSize,
-      mainTextColor
+      topTextActive,
+      topTextOptionsShow,
+      topText,
+      topTextFont,
+      topTextFontSize,
+      topTextFontColor,
+      zoomLevel,
+      zoomActive,
+      zoomOptionsShow
     } = this.state
-    let pictoOrigin = mainText ? CAPTION_SIZE : 0
+    let pictoOrigin = topText ? CAPTION_SIZE : 0
     pictoOrigin = frameActive ? pictoOrigin + frameWidth / 2 : pictoOrigin
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
@@ -312,6 +356,7 @@ class Pictogram extends Component {
     }
     // const pictoFile = `/${idPictogram}_500.png`
     const pictoFile = url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`
+    console.log(zoomLevel)
     return (
       <div>
         <div style={styles.wrapper}>
@@ -347,19 +392,16 @@ class Pictogram extends Component {
                     frameActive
                   } /* alt={'alt'} style={styles.picto} */
                   origin={pictoOrigin}
+                  zoomLevel={zoomLevel}
                 />
-                <Layer
-                  ref={(node) => {
-                    this.textLayer = node
-                  }}
-                >
-                  <Text
-                    fontFamily={this.state.activeFont}
-                    text='Try to drag a star'
-                    fontSize={20}
+                {topTextActive && (
+                  <TextLayer
+                    font={topTextFont}
+                    text={topText}
+                    fontSize={topTextFontSize}
+                    fontColor={topTextFontColor}
                   />
-                  <Caption text='prueba' />
-                </Layer>
+                )}
                 {plural && <PluralLayer />}
               </Stage>
 
@@ -439,23 +481,33 @@ class Pictogram extends Component {
                 onOptionsShow={this.handleVerbalTenseOptionsShow}
                 showOptions={verbalTenseOptionsShow}
               />
-              <TextOptions
-                onActive={this.handleMainTextActive}
-                active={mainTextActive}
-                text={mainText}
-                font={mainTextFont}
-                size={mainTextFontSize}
-                color={mainTextColor}
-                onFontChange={this.handleMainTextFontChange}
-                onSizeChange={this.handleMainTextFontSizeChange}
-                onColorChange={this.handleMainTextColorChange}
-                onOptionsShow={this.handleMainTextOptionsShow}
-                showOptions={mainTextOptionsShow}
-              />
             </div>
 
             <P>Advanced options</P>
             <div style={styles.optionsWrapper}>
+              <TextOptions
+                textLabel={<FormattedMessage {...messages.topText} />}
+                onActive={this.handleMainTextActive}
+                active={topTextActive}
+                text={topText}
+                font={topTextFont}
+                fontSize={topTextFontSize}
+                color={topTextFontColor}
+                onTextChange={this.handleMainTextChange}
+                onFontChange={this.handleMainTextFontChange}
+                onFontSizeChange={this.handleMainTextFontSizeChange}
+                onFontColorChange={this.handleMainTextFontColorChange}
+                onOptionsShow={this.handleMainTextOptionsShow}
+                showOptions={topTextOptionsShow}
+              />
+              <ZoomOptions
+                zoomLevel={zoomLevel}
+                onZoomChange={this.handleZoomChange}
+                onActive={this.handleZoomActive}
+                active={zoomActive}
+                onOptionsShow={this.handleZoomOptionsShow}
+                showOptions={zoomOptionsShow}
+              />
               <PeopleAppearanceOptions
                 skin={skin}
                 onSkinChange={this.handleSkinChange}

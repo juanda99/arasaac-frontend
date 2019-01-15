@@ -8,7 +8,9 @@ const image = new window.Image()
 
 class Img extends Component {
   state = {
-    image: null
+    image: null,
+    x: 0,
+    y: 0
   }
 
   componentDidMount() {
@@ -31,33 +33,44 @@ class Img extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    const { src, frameWidth } = this.props
+    const { src, frameWidth, zoomLevel } = this.props
     if (src !== prevProps.src) image.src = src
     else if (frameWidth !== prevProps.frameWidth) {
-      console.log('redrawwwwww')
+      this.myImage.cache()
+      this.myImage.getLayer().draw()
+    } else if (zoomLevel !== prevProps.zoomLevel) {
       this.myImage.cache()
       this.myImage.getLayer().draw()
     }
   }
 
+  handleDragEnd = (e) => {
+    this.setState({
+      x: e.target.x(),
+      y: e.target.y()
+    })
+  }
+
   render() {
-    const { frameWidth, enableFrame, origin } = this.props
+    const { frameWidth, enableFrame, zoomLevel } = this.props
+    const { x, y } = this.state
     const width = enableFrame
       ? CANVAS_SIZE - parseInt(frameWidth, 0)
       : CANVAS_SIZE
-    console.log(width)
-    console.log(origin)
     return (
       <Layer>
         <Image
+          name='pictoImage'
           image={this.state.image}
           ref={(node) => {
             this.myImage = node
           }}
-          width={width}
-          height={width}
-          x={origin}
-          y={origin}
+          width={width + zoomLevel}
+          height={width + zoomLevel}
+          x={x}
+          y={y}
+          onDragEnd={this.handleDragEnd}
+          draggable
         />
       </Layer>
     )
@@ -69,7 +82,8 @@ Img.propTypes = {
   frameWidth: PropTypes.number,
   src: PropTypes.string.isRequired,
   enableFrame: PropTypes.bool.isRequired,
-  origin: PropTypes.number.isRequired
+  origin: PropTypes.number.isRequired,
+  zoomLevel: PropTypes.number.isRequired
 }
 
 export default Img
