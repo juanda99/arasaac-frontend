@@ -2,11 +2,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Layer, Rect } from 'react-konva'
-import { CANVAS_SIZE } from './constants'
 
 export default class BackgroundLayer extends Component {
   static propTypes = {
-    color: PropTypes.string.isRequired
+    color: PropTypes.string.isRequired,
+    size: PropTypes.number.isRequired
   }
 
   state = {
@@ -14,10 +14,10 @@ export default class BackgroundLayer extends Component {
   }
 
   render() {
-    const { color } = this.props
+    const { color, size } = this.props
     return (
       <Layer>
-        <Rect fill={color} width={CANVAS_SIZE} height={CANVAS_SIZE} />
+        <Rect fill={color} width={size} height={size} />
       </Layer>
     )
   }

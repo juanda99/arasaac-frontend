@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Image, Layer } from 'react-konva'
-import { CANVAS_SIZE } from './constants'
 
 const image = new window.Image()
 
@@ -33,7 +32,7 @@ class Img extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    const { src, frameWidth, zoomLevel } = this.props
+    const { src, frameWidth, zoomLevel, canvasSize } = this.props
     if (src !== prevProps.src) image.src = src
     else if (frameWidth !== prevProps.frameWidth) {
       this.myImage.cache()
@@ -41,7 +40,18 @@ class Img extends Component {
     } else if (zoomLevel !== prevProps.zoomLevel) {
       this.myImage.cache()
       this.myImage.getLayer().draw()
+    } else if (canvasSize !== prevProps.canvasSize) {
+      this.myImage.cache()
+      this.myImage.getLayer().draw()
     }
+  }
+
+  handleMouseEnter = () => {
+    document.body.style.cursor = 'pointer'
+  }
+
+  handleMouseOut = () => {
+    document.body.style.cursor = 'default'
   }
 
   handleDragEnd = (e) => {
@@ -52,11 +62,9 @@ class Img extends Component {
   }
 
   render() {
-    const { frameWidth, enableFrame, zoomLevel } = this.props
+    const { frameWidth, enableFrame, zoomLevel, canvasSize } = this.props
     const { x, y } = this.state
-    const width = enableFrame
-      ? CANVAS_SIZE - parseInt(frameWidth, 0)
-      : CANVAS_SIZE
+    const size = enableFrame ? canvasSize - parseInt(frameWidth, 0) : canvasSize
     return (
       <Layer>
         <Image
@@ -65,12 +73,15 @@ class Img extends Component {
           ref={(node) => {
             this.myImage = node
           }}
-          width={width + zoomLevel}
-          height={width + zoomLevel}
+          width={size + zoomLevel}
+          height={size + zoomLevel}
           x={x}
           y={y}
           onDragEnd={this.handleDragEnd}
           draggable
+          onMouseEnter={this.handleMouseEnter}
+          onMouseOut={this.handleMouseOut}
+          scale={canvasSize / 500}
         />
       </Layer>
     )
@@ -82,8 +93,8 @@ Img.propTypes = {
   frameWidth: PropTypes.number,
   src: PropTypes.string.isRequired,
   enableFrame: PropTypes.bool.isRequired,
-  origin: PropTypes.number.isRequired,
-  zoomLevel: PropTypes.number.isRequired
+  zoomLevel: PropTypes.number.isRequired,
+  canvasSize: PropTypes.number.isRequired
 }
 
 export default Img

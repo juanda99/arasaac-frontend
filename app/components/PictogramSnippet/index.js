@@ -1,5 +1,3 @@
-
-
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import muiThemeable from 'material-ui/styles/muiThemeable'
@@ -16,7 +14,6 @@ import Item from './Item'
 import messages from './messages'
 
 class PictogramSnippet extends PureComponent {
-
   state = {
     isFlipped: false
   }
@@ -64,7 +61,12 @@ class PictogramSnippet extends PureComponent {
   }
 
   render() {
-    const { pictogram: { idPictogram, keywords }, searchText, muiTheme, locale } = this.props
+    const {
+      pictogram: { idPictogram, keywords },
+      searchText,
+      muiTheme,
+      locale
+    } = this.props
     const { keyword } = keywordSelector(searchText, keywords)
     return (
       <li
@@ -77,13 +79,32 @@ class PictogramSnippet extends PureComponent {
         <StyledPaper zDepth={this.state.zDepth}>
           <Item url={`/pictograms/${locale}/${idPictogram}/${keyword}`}>
             <div style={{ position: 'relative' }}>
-              <Image src={`${PICTOGRAMS_URL}/${idPictogram}_300.png`} alt={keyword} />
+              <Image
+                src={`${PICTOGRAMS_URL}/${idPictogram}_300.png`}
+                alt={keyword}
+              />
               <CardActions>
-                <IconButton touch={true} tooltip={<FormattedMessage {...messages.addFavorite} />} iconStyle={this.styles.icon} style={this.styles.leftIconButton}>
-                  <ActionSetFavorite color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
+                <IconButton
+                  touch={true}
+                  tooltip={<FormattedMessage {...messages.addFavorite} />}
+                  iconStyle={this.styles.icon}
+                  style={this.styles.leftIconButton}
+                >
+                  <ActionSetFavorite
+                    color={muiTheme.appBar.textColor}
+                    hoverColor={muiTheme.palette.accent1Color}
+                  />
                 </IconButton>
-                <IconButton touch={true} tooltip={<FormattedMessage {...messages.download} />} iconStyle={this.styles.icon} style={this.styles.rightIconButton} >
-                  <FileDownload color={muiTheme.appBar.textColor} hoverColor={muiTheme.palette.accent1Color} />
+                <IconButton
+                  touch={true}
+                  tooltip={<FormattedMessage {...messages.download} />}
+                  iconStyle={this.styles.icon}
+                  style={this.styles.rightIconButton}
+                >
+                  <FileDownload
+                    color={muiTheme.appBar.textColor}
+                    hoverColor={muiTheme.palette.accent1Color}
+                  />
                 </IconButton>
                 <p style={this.styles.cardTitle}>{keyword}</p>
               </CardActions>

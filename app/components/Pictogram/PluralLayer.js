@@ -8,7 +8,8 @@ import { Layer, Rect, Line } from 'react-konva'
 export default class PluralLayer extends Component {
   static propTypes = {
     frameWidth: PropTypes.number.isRequired,
-    frame: PropTypes.bool.isRequired
+    frame: PropTypes.bool.isRequired,
+    canvasSize: PropTypes.number.isRequired
   }
 
   state = {
@@ -17,11 +18,11 @@ export default class PluralLayer extends Component {
 
   render() {
     const strokeWidth = 16
-    const { frameWidth, frame } = this.props
+    const { frameWidth, frame, canvasSize } = this.props
     const y = frame ? frameWidth / 2 : 0
     const x = frame
-      ? CANVAS_SIZE - ICON_SIZE - frameWidth / 2
-      : CANVAS_SIZE - ICON_SIZE
+      ? canvasSize - ICON_SIZE - frameWidth / 2
+      : canvasSize - ICON_SIZE
     return (
       <Layer>
         <Line

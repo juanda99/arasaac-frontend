@@ -25,18 +25,16 @@ const styles = {
     position: 'relative'
   },
   pictoWrapper: {
-    width: '500px',
-    maxWidth: '100%',
-    height: 'auto',
-    marginRight: '60px',
-    flexGrow: 0
+    maxWidth: '500px',
+    marginRight: '60px'
   },
   radioButton: {
     margin: 16
   },
-  desc: {
+  options: {
     flexGrow: 3,
-    width: '300px'
+    width: '200px',
+    padding: '5px'
   },
   toggle: {
     margin: 16,

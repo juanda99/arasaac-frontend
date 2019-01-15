@@ -27,7 +27,7 @@ import TextLayer from './TextLayer'
 import Img from './Img'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
-import { MEDIUM, CAPTION_SIZE, CANVAS_SIZE } from './constants'
+import { MEDIUM, CAPTION_SIZE, MAX_CANVAS_SIZE } from './constants'
 import BackgroundColorOptions from './BackgroundColorOptions'
 import FrameOptions from './FrameOptions'
 import VerbalTenseOptions from './VerbalTenseOptions'
@@ -35,6 +35,7 @@ import PeopleAppearanceOptions from './PeopleAppearanceOptions'
 import IdentifierOptions from './IdentifierOptions'
 import TextOptions from './TextOptions'
 import ZoomOptions from './ZoomOptions'
+import PictoWrapper from './PictoWrapper'
 
 class Pictogram extends Component {
   state = {
@@ -77,14 +78,26 @@ class Pictogram extends Component {
     zoomOptionsShow: false
   }
 
+  componentDidMount() {
+    this.updateWindowDimensions()
+    window.addEventListener('resize', this.updateWindowDimensions)
+  }
+
   componentDidUpdate = (prevProps, prevState) => {
     if (prevState.activeFont !== this.state.activeFont) {
       // setInterval(() => this.textLayer.draw(), 1000)
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions)
+  }
+
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible })
+
+  updateWindowDimensions = () =>
+    this.setState({ width: window.innerWidth, height: window.innerHeight })
 
   hideOptions = () =>
     this.setState({
@@ -328,8 +341,11 @@ class Pictogram extends Component {
       topTextFontColor,
       zoomLevel,
       zoomActive,
-      zoomOptionsShow
+      zoomOptionsShow,
+      width
     } = this.state
+
+    const canvasSize = width < MAX_CANVAS_SIZE ? width : MAX_CANVAS_SIZE
     let pictoOrigin = topText ? CAPTION_SIZE : 0
     pictoOrigin = frameActive ? pictoOrigin + frameWidth / 2 : pictoOrigin
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
@@ -356,11 +372,10 @@ class Pictogram extends Component {
     }
     // const pictoFile = `/${idPictogram}_500.png`
     const pictoFile = url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`
-    console.log(zoomLevel)
     return (
       <div>
         <div style={styles.wrapper}>
-          <div style={styles.pictoWrapper}>
+          <PictoWrapper>
             <ConditionalPaper>
               <div
                 style={{
@@ -375,15 +390,21 @@ class Pictogram extends Component {
                 </H2>
               </div>
               <Stage
-                width={CANVAS_SIZE}
-                height={CANVAS_SIZE}
+                width={canvasSize}
+                height={canvasSize}
                 ref={(node) => {
                   this.stageRef = node
                 }}
               >
-                {bgColorActive && <BackgroundLayer color={backgroundColor} />}
+                {bgColorActive && (
+                  <BackgroundLayer color={backgroundColor} size={canvasSize} />
+                )}
                 {frameActive && (
-                  <FrameLayer color={frameColor} width={frameWidth} />
+                  <FrameLayer
+                    color={frameColor}
+                    frameWidth={frameWidth}
+                    size={canvasSize}
+                  />
                 )}
                 <Img
                   src={pictoFile}
@@ -391,8 +412,8 @@ class Pictogram extends Component {
                   enableFrame={
                     frameActive
                   } /* alt={'alt'} style={styles.picto} */
-                  origin={pictoOrigin}
                   zoomLevel={zoomLevel}
+                  canvasSize={canvasSize}
                 />
                 {topTextActive && (
                   <TextLayer
@@ -402,7 +423,13 @@ class Pictogram extends Component {
                     fontColor={topTextFontColor}
                   />
                 )}
-                {plural && <PluralLayer />}
+                {plural && (
+                  <PluralLayer
+                    frame={frameActive}
+                    frameWidth={frameWidth}
+                    canvasSize={canvasSize}
+                  />
+                )}
               </Stage>
 
               <div
@@ -431,8 +458,8 @@ class Pictogram extends Component {
                 {/* </a>*/}
               </div>
             </ConditionalPaper>
-          </div>
-          <div style={styles.desc}>
+          </PictoWrapper>
+          <div style={styles.options}>
             <H3 primary={true}>
               {<FormattedMessage {...messages.modifyPicto} />}
             </H3>

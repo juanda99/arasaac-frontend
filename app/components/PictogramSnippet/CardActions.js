@@ -1,4 +1,3 @@
-
 import styled from 'styled-components'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 
@@ -12,7 +11,7 @@ const CardActions = styled.div`
   &:hover {
     opacity: 0.93;
   }
-  background-color:  ${(props) => props.muiTheme.palette.primary1Color};
+  background-color: ${(props) => props.muiTheme.palette.primary1Color};
   display: flex;
   align-items: center;
   justify-content: center;

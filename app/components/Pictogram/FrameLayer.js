@@ -3,11 +3,10 @@ import PropTypes from 'prop-types'
 import { Rect, Layer } from 'react-konva'
 import Konva from 'konva'
 
-import { CANVAS_SIZE } from './constants'
-
 class FrameLayer extends Component {
   state = {
-    color: 'green'
+    color: 'green',
+    size: PropTypes.number.isRequired
   }
   handleClick = () => {
     this.setState({
@@ -15,11 +14,16 @@ class FrameLayer extends Component {
     })
   }
   render() {
-    const { color, width } = this.props
-    const size = width ? CANVAS_SIZE : 0
+    const { color, size, frameWidth } = this.props
+    const width = frameWidth ? size : 0
     return (
       <Layer>
-        <Rect width={size} height={size} stroke={color} strokeWidth={width} />
+        <Rect
+          width={width}
+          height={width}
+          stroke={color}
+          strokeWidth={frameWidth}
+        />
       </Layer>
     )
   }
@@ -28,7 +32,8 @@ class FrameLayer extends Component {
 FrameLayer.propTypes = {
   // onClick: PropTypes.func.isRequired,
   color: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired
+  frameWidth: PropTypes.number.isRequired,
+  size: PropTypes.number.isRequired
 }
 
 export default FrameLayer
