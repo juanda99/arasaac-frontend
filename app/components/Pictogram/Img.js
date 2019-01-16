@@ -35,7 +35,10 @@ class Img extends Component {
   componentDidUpdate = (prevProps) => {
     const { src, frameWidth, zoomLevel, enableFrame, canvasSize } = this.props
     if (src !== prevProps.src) image.src = src
-    else if (frameWidth !== prevProps.frameWidth || enableFrame !== prevProps.enableFrame) {
+    else if (
+      frameWidth !== prevProps.frameWidth ||
+      enableFrame !== prevProps.enableFrame
+    ) {
       this.myImage.cache()
       this.myImage.getLayer().draw()
     } else if (zoomLevel !== prevProps.zoomLevel) {
@@ -55,9 +58,14 @@ class Img extends Component {
     })
   }
 
-
   render() {
-    const { zoomLevel, canvasSize, enableFrame, frameWidth } = this.props
+    const {
+      zoomLevel,
+      canvasSize,
+      enableFrame,
+      frameWidth,
+      dragAndDrop
+    } = this.props
     let { x, y } = this.state
     const size = enableFrame ? canvasSize - parseInt(frameWidth, 0) : canvasSize
     if (!this.state.moved) {
@@ -77,7 +85,7 @@ class Img extends Component {
           x={x}
           y={y}
           onDragEnd={this.handleDragEnd}
-          draggable
+          draggable={dragAndDrop}
           scale={canvasSize / 500}
         />
       </Layer>
@@ -91,7 +99,8 @@ Img.propTypes = {
   src: PropTypes.string.isRequired,
   enableFrame: PropTypes.bool.isRequired,
   zoomLevel: PropTypes.number.isRequired,
-  canvasSize: PropTypes.number.isRequired
+  canvasSize: PropTypes.number.isRequired,
+  dragAndDrop: PropTypes.bool.isRequired
 }
 
 export default Img

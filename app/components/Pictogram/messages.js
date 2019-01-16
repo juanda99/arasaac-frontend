@@ -74,6 +74,11 @@ export default defineMessages({
       'Toggle button to show options for people appearance in pictos: hair, skin..',
     defaultMessage: 'People appearance'
   },
+  dragAndDrop: {
+    id: 'app.components.Pictogram.DragAndDrop',
+    description: 'Toggle button to enable drag and drop',
+    defaultMessage: 'Drap and drop'
+  },
   classroom: {
     id: 'app.components.Pictogram.classroom',
     description: 'Identifier option',

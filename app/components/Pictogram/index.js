@@ -77,7 +77,8 @@ class Pictogram extends Component {
     zoomLevel: 0,
     zoomActive: false,
     zoomOptionsShow: false,
-    windowWidth: 0
+    windowWidth: 0,
+    dragAndDrop: false
   }
 
   componentDidMount() {
@@ -142,6 +143,12 @@ class Pictogram extends Component {
 
   handleColor = (event, color) => {
     this.setState({ color }, () => this.buildOptionsRequest())
+    this.hideOptions()
+  }
+
+  handleDragAndDrop = (event, dragAndDrop) => {
+    console.log(`DragAndDrop: ${dragAndDrop}`)
+    this.setState({ dragAndDrop })
     this.hideOptions()
   }
 
@@ -341,9 +348,11 @@ class Pictogram extends Component {
       zoomLevel,
       zoomActive,
       zoomOptionsShow,
-      windowWidth
+      windowWidth,
+      dragAndDrop
     } = this.state
-    const canvasSize = windowWidth < MAX_CANVAS_SIZE ? windowWidth : MAX_CANVAS_SIZE
+    const canvasSize =
+      windowWidth < MAX_CANVAS_SIZE ? windowWidth : MAX_CANVAS_SIZE
 
     console.log(`CanvasSize: ${canvasSize}`)
 
@@ -414,6 +423,7 @@ class Pictogram extends Component {
                   } /* alt={'alt'} style={styles.picto} */
                   zoomLevel={zoomLevel}
                   canvasSize={canvasSize}
+                  dragAndDrop={dragAndDrop}
                 />
                 {topTextActive && (
                   <TextLayer
@@ -421,6 +431,7 @@ class Pictogram extends Component {
                     text={topText}
                     fontSize={topTextFontSize}
                     fontColor={topTextFontColor}
+                    dragAndDrop={dragAndDrop}
                   />
                 )}
                 {plural && (
@@ -501,7 +512,6 @@ class Pictogram extends Component {
                 onOptionsShow={this.handleFrameOptionsShow}
                 showOptions={frameOptionsShow}
               />
-
               <Toggle
                 label={<FormattedMessage {...messages.plural} />}
                 labelPosition='right'
@@ -516,10 +526,6 @@ class Pictogram extends Component {
                 onOptionsShow={this.handleVerbalTenseOptionsShow}
                 showOptions={verbalTenseOptionsShow}
               />
-            </div>
-
-            <P>Advanced options</P>
-            <div style={styles.optionsWrapper}>
               <TextOptions
                 textLabel={<FormattedMessage {...messages.topText} />}
                 onActive={this.handleMainTextActive}
@@ -534,14 +540,6 @@ class Pictogram extends Component {
                 onFontColorChange={this.handleMainTextFontColorChange}
                 onOptionsShow={this.handleMainTextOptionsShow}
                 showOptions={topTextOptionsShow}
-              />
-              <ZoomOptions
-                zoomLevel={zoomLevel}
-                onZoomChange={this.handleZoomChange}
-                onActive={this.handleZoomActive}
-                active={zoomActive}
-                onOptionsShow={this.handleZoomOptionsShow}
-                showOptions={zoomOptionsShow}
               />
               <PeopleAppearanceOptions
                 skin={skin}
@@ -564,6 +562,23 @@ class Pictogram extends Component {
                 showOptions={identifierOptionsShow}
               />
             </div>
+            <P>Advanced options</P>
+            <div style={styles.optionsWrapper}>
+              <ZoomOptions
+                zoomLevel={zoomLevel}
+                onZoomChange={this.handleZoomChange}
+                onActive={this.handleZoomActive}
+                active={zoomActive}
+                onOptionsShow={this.handleZoomOptionsShow}
+                showOptions={zoomOptionsShow}
+              />
+            </div>
+            <Toggle
+              label={<FormattedMessage {...messages.dragAndDrop} />}
+              labelPosition='right'
+              onToggle={this.handleDragAndDrop}
+              style={styles.toggle}
+            />
           </div>
         </div>
         <H3 primary>{<FormattedMessage {...messages.description} />}</H3>

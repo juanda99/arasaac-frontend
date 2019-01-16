@@ -7,12 +7,13 @@ class TextLayer extends Component {
     text: PropTypes.string.isRequired,
     font: PropTypes.string,
     fontSize: PropTypes.number,
-    fontColor: PropTypes.string
+    fontColor: PropTypes.string,
+    dragAndDrop: PropTypes.bool.isRequired
   }
 
   state = {
-    x: 30,
-    y: 30
+    x: 200,
+    y: 200
   }
   handleDragEnd = (e) => {
     this.setState({
@@ -22,7 +23,7 @@ class TextLayer extends Component {
   }
 
   render() {
-    const { text, font, fontSize, fontColor } = this.props
+    const { text, font, fontSize, fontColor, dragAndDrop } = this.props
     const { x, y } = this.state
     return (
       <Layer>
@@ -34,7 +35,7 @@ class TextLayer extends Component {
           x={x}
           y={y}
           onDragEnd={this.handleDragEnd}
-          draggable
+          draggable={dragAndDrop}
         />
       </Layer>
     )
