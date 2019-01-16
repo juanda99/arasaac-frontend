@@ -16,7 +16,6 @@ import { makePictogramByIdSelector } from './selectors'
 import messages from './messages'
 
 class PictogramView extends PureComponent {
-
   componentDidMount() {
     const { params, pictogramData } = this.props
     if (pictogramData.isEmpty()) {
@@ -25,28 +24,49 @@ class PictogramView extends PureComponent {
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.params.idPictogram !== nextProps.params.idPictogram) {
-      this.props.requestPictogram(nextProps.params.idPictogram, this.props.params.locale)
+      this.props.requestPictogram(
+        nextProps.params.idPictogram,
+        this.props.params.locale
+      )
     }
   }
 
   renderContent() {
-    const { pictogramData, loading, params: { locale, searchText } } = this.props
-    if (loading) return <p><FormattedMessage {...messages.pictogramLoading} /></p>
-    return pictogramData.isEmpty()
-      ? <P><FormattedMessage {...messages.pictogramNotFound} /> </P>
-      : <Pictogram pictogram={pictogramData} locale={locale} searchText={searchText || ''} />
+    const {
+      pictogramData,
+      loading,
+      params: { locale, searchText }
+    } = this.props
+    if (loading) {
+      return (
+        <p>
+          <FormattedMessage {...messages.pictogramLoading} />
+        </p>
+      )
+    }
+    return pictogramData.isEmpty() ? (
+      <P>
+        <FormattedMessage {...messages.pictogramNotFound} />{' '}
+      </P>
+    ) : (
+      <Pictogram
+        pictogram={pictogramData}
+        locale={locale}
+        searchText={searchText || ''}
+      />
+    )
   }
 
   render() {
     return (
-      <View left={true} right={true} top={1}>
+      <View left={true} right={true} top={0}>
         <Helmet
           title='PictogramView'
           meta={[
             { name: 'description', content: 'Description of PictogramView' }
           ]}
         />
-        { this.renderContent() }
+        {this.renderContent()}
       </View>
     )
   }
@@ -62,10 +82,10 @@ PictogramView.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const pictogramData = makePictogramByIdSelector()(state, ownProps)
   const loading = state.getIn(['pictogramsView', 'loading'])
-  return ({
+  return {
     pictogramData,
     loading
-  })
+  }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -74,4 +94,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PictogramView)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PictogramView)
