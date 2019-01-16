@@ -9,7 +9,8 @@ class Img extends Component {
   state = {
     image: null,
     x: 0,
-    y: 0
+    y: 0,
+    moved: false
   }
 
   componentDidMount() {
@@ -32,9 +33,9 @@ class Img extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    const { src, frameWidth, zoomLevel, canvasSize } = this.props
+    const { src, frameWidth, zoomLevel, enableFrame, canvasSize } = this.props
     if (src !== prevProps.src) image.src = src
-    else if (frameWidth !== prevProps.frameWidth) {
+    else if (frameWidth !== prevProps.frameWidth || enableFrame !== prevProps.enableFrame) {
       this.myImage.cache()
       this.myImage.getLayer().draw()
     } else if (zoomLevel !== prevProps.zoomLevel) {
@@ -46,25 +47,23 @@ class Img extends Component {
     }
   }
 
-  handleMouseEnter = () => {
-    document.body.style.cursor = 'pointer'
-  }
-
-  handleMouseOut = () => {
-    document.body.style.cursor = 'default'
-  }
-
   handleDragEnd = (e) => {
     this.setState({
       x: e.target.x(),
-      y: e.target.y()
+      y: e.target.y(),
+      moved: true
     })
   }
 
+
   render() {
-    const { frameWidth, enableFrame, zoomLevel, canvasSize } = this.props
-    const { x, y } = this.state
+    const { zoomLevel, canvasSize, enableFrame, frameWidth } = this.props
+    let { x, y } = this.state
     const size = enableFrame ? canvasSize - parseInt(frameWidth, 0) : canvasSize
+    if (!this.state.moved) {
+      x = enableFrame ? x + frameWidth / 2 - zoomLevel / 2 : x - zoomLevel / 2
+      y = enableFrame ? y + frameWidth / 2 - zoomLevel / 2 : y - zoomLevel / 2
+    }
     return (
       <Layer>
         <Image
@@ -79,8 +78,6 @@ class Img extends Component {
           y={y}
           onDragEnd={this.handleDragEnd}
           draggable
-          onMouseEnter={this.handleMouseEnter}
-          onMouseOut={this.handleMouseOut}
           scale={canvasSize / 500}
         />
       </Layer>

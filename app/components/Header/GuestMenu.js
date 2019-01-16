@@ -14,7 +14,7 @@ const GuestMenu = (props) => {
     return (
       <Link to='/signin'>
         <IconButton
-          style={{ color: props.muiTheme.appBar.textColor, marginTop: 4 }}
+          style={{ color: props.muiTheme.appBar.textColor, marginTop: 4, padding: 0 }}
           {...this.props}
           tooltip={<FormattedMessage {...messages.signin} />}
         >

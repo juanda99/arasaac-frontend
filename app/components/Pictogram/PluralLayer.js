@@ -1,9 +1,8 @@
 /* eslint no-mixed-operators: 0 */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CANVAS_SIZE, ICON_SIZE } from './constants'
-
 import { Layer, Rect, Line } from 'react-konva'
+import { ICON_SIZE } from './constants'
 
 export default class PluralLayer extends Component {
   static propTypes = {
@@ -40,10 +39,3 @@ export default class PluralLayer extends Component {
     )
   }
 }
-
-/*
-const futureSVGCode =
-  '\n<rect x="390" y="147" style="fill:#FFFFFF;" width="55" height="55"/>\n<line style="fill:none;stroke:#000000;stroke-width:12;" x1="393.1" y1="174.7" x2="423.5" y2="174.7"/>\n<polygon points="413,156.9 413,192.1 443,174.5"/>'
-const pastSVGCode =
-  '\n<rect x="-55" y="147" style="fill:#FFFFFF;" width="55" height="55"/>\n<line style="fill:none;stroke:#000000;stroke-width:12;" x1="-33.5" y1="174.7" x2="-3.1" y2="174.7"/>\n<polygon points="-53,174.5 -23,192.1 -23,156.9"/>'
-*/

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
+import { FUTURE, PAST, PRESENT } from './constants'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
@@ -23,10 +24,7 @@ class VerbalTenseOptions extends Component {
 
   handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions)
 
-  handleVerbalTenseChange = (event, verbalTense) => {
-    console.log(verbalTense)
-    this.props.onVerbalTenseChange(verbalTense)
-  }
+  handleVerbalTenseChange = (event, verbalTense) => this.props.onVerbalTenseChange(verbalTense)
 
   render() {
     const { intl, active, showOptions, verbalTense } = this.props
@@ -51,17 +49,17 @@ class VerbalTenseOptions extends Component {
               onChange={this.handleVerbalTenseChange}
             >
               <RadioButton
-                value='past'
+                value={PAST}
                 label={<FormattedMessage {...messages.past} />}
                 style={styles.radioButton}
               />
               <RadioButton
-                value=''
+                value={PRESENT}
                 label={<FormattedMessage {...messages.present} />}
                 style={styles.radioButton}
               />
               <RadioButton
-                value='future'
+                value={FUTURE}
                 label={<FormattedMessage {...messages.future} />}
                 style={styles.radioButton}
               />

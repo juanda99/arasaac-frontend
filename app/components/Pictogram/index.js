@@ -20,6 +20,7 @@ import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import { Stage } from 'react-konva'
 import P from 'components/P'
 import PluralLayer from './PluralLayer'
+import VerbalTenseLayer from './VerbalTenseLayer'
 import BackgroundLayer from './BackgroundLayer'
 import FrameLayer from './FrameLayer'
 import styles from './styles'
@@ -27,7 +28,7 @@ import TextLayer from './TextLayer'
 import Img from './Img'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
-import { MEDIUM, CAPTION_SIZE, MAX_CANVAS_SIZE } from './constants'
+import { MEDIUM, MAX_CANVAS_SIZE, PRESENT } from './constants'
 import BackgroundColorOptions from './BackgroundColorOptions'
 import FrameOptions from './FrameOptions'
 import VerbalTenseOptions from './VerbalTenseOptions'
@@ -59,7 +60,7 @@ class Pictogram extends Component {
     hair: '',
     skin: '',
     verbalTenseActive: false,
-    verbalTense: '',
+    verbalTense: PRESENT,
     verbalTenseOptionsShow: false,
     showText: false,
     openMenu: false,
@@ -75,7 +76,8 @@ class Pictogram extends Component {
     topTextFontColor: 'black',
     zoomLevel: 0,
     zoomActive: false,
-    zoomOptionsShow: false
+    zoomOptionsShow: false,
+    windowWidth: 0
   }
 
   componentDidMount() {
@@ -96,9 +98,9 @@ class Pictogram extends Component {
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible })
 
-  updateWindowDimensions = () =>
-    this.setState({ width: window.innerWidth, height: window.innerHeight })
-
+  updateWindowDimensions = () => {
+    this.setState({ windowWidth: document.body.clientWidth })
+  }
   hideOptions = () =>
     this.setState({
       bgColorOptionsShow: false,
@@ -229,10 +231,7 @@ class Pictogram extends Component {
     this.setState({ verbalTenseOptionsShow })
   }
 
-  handleVerbalTenseChange = (verbalTense) => {
-    this.hideOptions()
-    this.setState({ verbalTense })
-  }
+  handleVerbalTenseChange = (verbalTense) => this.setState({ verbalTense })
 
   handleIdentifierActive = (identifierActive) => {
     this.hideOptions()
@@ -342,12 +341,13 @@ class Pictogram extends Component {
       zoomLevel,
       zoomActive,
       zoomOptionsShow,
-      width
+      windowWidth
     } = this.state
+    const canvasSize = windowWidth < MAX_CANVAS_SIZE ? windowWidth : MAX_CANVAS_SIZE
 
-    const canvasSize = width < MAX_CANVAS_SIZE ? width : MAX_CANVAS_SIZE
-    let pictoOrigin = topText ? CAPTION_SIZE : 0
-    pictoOrigin = frameActive ? pictoOrigin + frameWidth / 2 : pictoOrigin
+    console.log(`CanvasSize: ${canvasSize}`)
+
+    const imgOffsetY = topText ? topTextFontSize : 0
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
@@ -428,6 +428,14 @@ class Pictogram extends Component {
                     frame={frameActive}
                     frameWidth={frameWidth}
                     canvasSize={canvasSize}
+                  />
+                )}
+                {verbalTenseActive && (
+                  <VerbalTenseLayer
+                    frame={frameActive}
+                    frameWidth={frameWidth}
+                    canvasSize={canvasSize}
+                    verbalTense={verbalTense}
                   />
                 )}
               </Stage>

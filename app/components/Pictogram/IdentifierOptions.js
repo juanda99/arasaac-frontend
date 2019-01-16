@@ -42,7 +42,6 @@ class IdentifierOptions extends Component {
     } = this.props
     const { formatMessage } = intl
     const marginBottom = showOptions ? '200px' : 'auto'
-    console.log('render!!!')
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown

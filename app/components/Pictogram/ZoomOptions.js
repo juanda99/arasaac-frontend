@@ -41,8 +41,8 @@ class ZoomOptions extends Component {
         {showOptions ? (
           <div style={styles.optionBox}>
             <Slider
-              min={-200}
-              max={+200}
+              min={-400}
+              max={+800}
               step={1}
               value={zoomLevel}
               onChange={this.handleZoomChange}

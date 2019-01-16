@@ -4,7 +4,6 @@ export default {
     // Needed to overlap the examples
     // zIndex: this.state.muiTheme.zIndex.appBar + 1,
     top: 0,
-    zIndex: 8,
-    width: '100vw'
+    zIndex: 8
   }
 }
