@@ -147,7 +147,6 @@ class Pictogram extends Component {
   }
 
   handleDragAndDrop = (event, dragAndDrop) => {
-    console.log(`DragAndDrop: ${dragAndDrop}`)
     this.setState({ dragAndDrop })
     this.hideOptions()
   }
@@ -291,29 +290,12 @@ class Pictogram extends Component {
     fetch(endPoint)
   }
 
-  handleExportClick = () => {
-    const imageBase64 = this.stageRef.getStage().toDataURL()
-    console.log(imageBase64)
-
-    const url = imageBase64.replace(
-      /^data:image\/[^;]+/,
-      'data:application/octet-stream'
-    )
-    window.open(url)
-
-    // to convert into image file and send it to the server, but better in the server side:
-    // https://gist.github.com/madhums/e749dca107e26d72b64d
-
-    /*
-    const block = imageBase64.split(';')
-    // Get the content type of the image
-    const contentType = block[0].split(':')[1] // In this case "image/gif"
-    // get the real base64 content of the file
-    const realData = block[1].split(',')[1] // In this case "R0lGODlhPQBEAPeoAJosM...."
-
-    // Convert it to a blob to upload
-    return b64toBlob(realData, contentType)
-    */
+  handleDownload = () => {
+    const { searchText, pictogram, onDownload } = this.props
+    const dataBase64 = this.stageRef.getStage().toDataURL()
+    const keywords = pictogram.get('keywords')
+    const { keyword } = keywordSelector(searchText, keywords.toJS())
+    onDownload(keyword, dataBase64)
   }
 
   render() {
@@ -353,8 +335,6 @@ class Pictogram extends Component {
     } = this.state
     const canvasSize =
       windowWidth < MAX_CANVAS_SIZE ? windowWidth : MAX_CANVAS_SIZE
-
-    console.log(`CanvasSize: ${canvasSize}`)
 
     const imgOffsetY = topText ? topTextFontSize : 0
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
@@ -468,7 +448,7 @@ class Pictogram extends Component {
                 />
                 {/* <a href={downloadUrl}> */}
                 <RaisedButton
-                  onClick={this.handleExportClick}
+                  onClick={this.handleDownload}
                   label={<FormattedMessage {...messages.downloadLabel} />}
                   primary={true}
                   style={styles.button}
@@ -629,31 +609,8 @@ Pictogram.propTypes = {
   pictogram: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
   searchText: PropTypes.string.isRequired,
-  muiTheme: PropTypes.object.isRequired
+  muiTheme: PropTypes.object.isRequired,
+  onDownload: PropTypes.func.isRequired
 }
 
 export default muiThemeable()(Pictogram)
-
-function b64toBlob(b64Data, contentType, sliceSize) {
-  contentType = contentType || ''
-  sliceSize = sliceSize || 512
-
-  const byteCharacters = atob(b64Data)
-  const byteArrays = []
-
-  for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-    const slice = byteCharacters.slice(offset, offset + sliceSize)
-
-    const byteNumbers = new Array(slice.length)
-    for (let i = 0; i < slice.length; i++) {
-      byteNumbers[i] = slice.charCodeAt(i)
-    }
-
-    const byteArray = new Uint8Array(byteNumbers)
-
-    byteArrays.push(byteArray)
-  }
-
-  const blob = new Blob(byteArrays, { type: contentType })
-  return blob
-}

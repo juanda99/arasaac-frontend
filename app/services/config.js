@@ -18,16 +18,14 @@ export const login = {
     config: {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(
-        {
-          username,
-          password,
-          client_id: CLIENT_ID,
-          client_secret: CLIENT_ID,
-          grant_type: 'password',
-          scope: 'offline_access'
-        }
-      )
+      body: JSON.stringify({
+        username,
+        password,
+        client_id: CLIENT_ID,
+        client_secret: CLIENT_ID,
+        grant_type: 'password',
+        scope: 'offline_access'
+      })
     }
   })
 }
@@ -37,15 +35,13 @@ export const socialLogin = {
     config: {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(
-        {
-          token,
-          client_id: CLIENT_ID,
-          client_secret: CLIENT_ID,
-          grant_type: provider,
-          scope: 'offline_access'
-        }
-      )
+      body: JSON.stringify({
+        token,
+        client_id: CLIENT_ID,
+        client_secret: CLIENT_ID,
+        grant_type: provider,
+        scope: 'offline_access'
+      })
     }
   })
 }
@@ -59,6 +55,17 @@ export const signup = {
     }
   })
 }
+export const customPicto = {
+  url: `${PRIVATE_API_ROOT}/pictograms/custom/base64/`,
+  options: (parameters) => ({
+    config: {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(parameters)
+    }
+  })
+}
+
 /*
 export const customPictogram = {
   url: (idPictogram, options) => {
@@ -87,19 +94,34 @@ export const uploadMaterial = {
     const { files, screenshots, languages, activities, areas, authors } = data
 
     if (files) files.map((file) => formData.append('files', file))
-    if (screenshots) screenshots.map((screenshot) => formData.append('screenshots', screenshot))
+    if (screenshots) {
+      screenshots.map((screenshot) =>
+        formData.append('screenshots', screenshot)
+      )
+    }
     if (languages) {
       translations = languages.map((language) => {
         if (language.files) {
-          language.files.map((langFile) => formData.append(`${language.language}_files`, langFile))
+          language.files.map((langFile) =>
+            formData.append(`${language.language}_files`, langFile)
+          )
         }
         if (language.screenshots) {
-          language.screenshots.map((langFile) => formData.append(`${language.language}_screenshotfiles`, langFile))
+          language.screenshots.map((langFile) =>
+            formData.append(`${language.language}_screenshotfiles`, langFile)
+          )
         }
-        return { title: language.title, desc: language.desc, language: language.language }
+        return {
+          title: language.title,
+          desc: language.desc,
+          language: language.language
+        }
       })
     }
-    formData.append('formData', JSON.stringify({ areas, activities, authors, translations }))
+    formData.append(
+      'formData',
+      JSON.stringify({ areas, activities, authors, translations })
+    )
     return {
       config: {
         method: 'POST',
@@ -107,5 +129,4 @@ export const uploadMaterial = {
       }
     }
   }
-
 }

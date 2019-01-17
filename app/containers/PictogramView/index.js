@@ -12,6 +12,7 @@ import Helmet from 'react-helmet'
 import Pictogram from 'components/Pictogram'
 import { pictogram } from 'containers/PictogramView/actions'
 import P from 'components/P'
+import api, { downloadCustomPictogram } from 'services'
 import { makePictogramByIdSelector } from './selectors'
 import messages from './messages'
 
@@ -29,6 +30,15 @@ class PictogramView extends PureComponent {
         this.props.params.locale
       )
     }
+  }
+  handleDownload = (fileName, base64Data) => {
+    const promiseFileName = api.GENERATE_CUSTOM_PICTOGRAM({
+      fileName,
+      base64Data
+    })
+    promiseFileName.then((data) =>
+      window.open(downloadCustomPictogram(data.fileName), '_blank')
+    )
   }
 
   renderContent() {
@@ -53,6 +63,7 @@ class PictogramView extends PureComponent {
         pictogram={pictogramData}
         locale={locale}
         searchText={searchText || ''}
+        onDownload={this.handleDownload}
       />
     )
   }
