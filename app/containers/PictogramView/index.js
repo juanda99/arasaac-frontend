@@ -36,9 +36,11 @@ class PictogramView extends PureComponent {
       fileName,
       base64Data
     })
-    promiseFileName.then((data) =>
-      window.open(downloadCustomPictogram(data.fileName), '_blank')
-    )
+    promiseFileName.then((data) => {
+      const location = downloadCustomPictogram(data.fileName)
+      window.location = location
+      // window.open(downloadCustomPictogram(data.fileName), '_blank')
+    })
   }
 
   renderContent() {
