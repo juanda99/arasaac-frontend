@@ -75,11 +75,15 @@ class Img extends Component {
       bottomMargin
     } = this.props
     let { x, y } = this.state
+    console.log(`topMargin: ${topMargin}`)
+    console.log(`bm: ${bottomMargin}`)
     const size = enableFrame ? canvasSize - parseInt(frameWidth, 0) - topMargin - bottomMargin : canvasSize - topMargin - bottomMargin
     if (!this.state.moved) {
-      x = enableFrame ? x + frameWidth / 2 - zoomLevel / 2 + topMargin / 2 + bottomMargin / 2 : x + zoomLevel / 2 + topMargin / 2 + bottomMargin / 2
+      x = enableFrame ? x + frameWidth / 2 - zoomLevel / 2 + topMargin / 2 + bottomMargin / 2 : x - zoomLevel / 2 + topMargin / 2 + bottomMargin / 2
       y = enableFrame ? y + frameWidth / 2 - zoomLevel / 2 + topMargin : y - zoomLevel / 2 + topMargin
     }
+    console.log(x)
+    console.log(y)
     return (
       <Layer>
         <Image
