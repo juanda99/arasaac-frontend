@@ -72,8 +72,14 @@ class Pictogram extends Component {
     topTextOptionsShow: false,
     topText: '',
     topTextFont: 'Roboto',
-    topTextFontSize: 12,
+    topTextFontSize: 50,
     topTextFontColor: 'black',
+    bottomTextActive: false,
+    bottomTextOptionsShow: false,
+    bottomText: '',
+    bottomTextFont: 'Roboto',
+    bottomTextFontSize: 50,
+    bottomTextFontColor: 'black',
     zoomLevel: 0,
     zoomActive: false,
     zoomOptionsShow: false,
@@ -110,6 +116,7 @@ class Pictogram extends Component {
       peopleAppearanceOptionsShow: false,
       identifierOptionsShow: false,
       topTextOptionsShow: false,
+      bottomTextOptionsShow: false,
       zoomOptionsShow: false
     })
 
@@ -259,24 +266,42 @@ class Pictogram extends Component {
   handleIdentifierPositionChange = (identifierPosition) =>
     this.setState({ identifierPosition }, () => this.buildOptionsRequest())
 
-  handleMainTextActive = (topTextActive) => {
+  handleTopTextActive = (topTextActive) => {
     this.hideOptions()
     this.setState({ topTextActive, topTextOptionsShow: topTextActive })
   }
 
-  handleMainTextChange = (topText) => this.setState({ topText })
+  handleTopTextChange = (topText) => this.setState({ topText })
 
-  handleMainTextFontChange = (topTextFont) => this.setState({ topTextFont })
+  handleTopTextFontChange = (topTextFont) => this.setState({ topTextFont })
 
-  handleMainTextFontSizeChange = (topTextFontSize) =>
-    this.setState({ topTextFontSize })
+  handleTopTextFontSizeChange = (topTextFontSize) => this.setState({ topTextFontSize })
 
-  handleMainTextFontColorChange = (topTextFontColor) =>
+  handleTopTextFontColorChange = (topTextFontColor) =>
     this.setState({ topTextFontColor })
 
-  handleMainTextOptionsShow = (topTextOptionsShow) => {
+  handleTopTextOptionsShow = (topTextOptionsShow) => {
     this.hideOptions()
     this.setState({ topTextOptionsShow })
+  }
+
+  handleBottomTextActive = (bottomTextActive) => {
+    this.hideOptions()
+    this.setState({ bottomTextActive, bottomTextOptionsShow: bottomTextActive })
+  }
+
+  handleBottomTextChange = (bottomText) => this.setState({ bottomText })
+
+  handleBottomTextFontChange = (bottomTextFont) => this.setState({ bottomTextFont })
+
+  handleBottomTextFontSizeChange = (bottomTextFontSize) => this.setState({ bottomTextFontSize })
+
+  handleBottomTextFontColorChange = (bottomTextFontColor) =>
+    this.setState({ bottomTextFontColor })
+
+  handleBottomTextOptionsShow = (bottomTextOptionsShow) => {
+    this.hideOptions()
+    this.setState({ bottomTextOptionsShow })
   }
 
   handleOpenMenu = () => {
@@ -327,6 +352,12 @@ class Pictogram extends Component {
       topTextFont,
       topTextFontSize,
       topTextFontColor,
+      bottomTextActive,
+      bottomTextOptionsShow,
+      bottomText,
+      bottomTextFont,
+      bottomTextFontSize,
+      bottomTextFontColor,
       zoomLevel,
       zoomActive,
       zoomOptionsShow,
@@ -361,6 +392,7 @@ class Pictogram extends Component {
     }
     // const pictoFile = `/${idPictogram}_500.png`
     const pictoFile = url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`
+    console.log(bottomTextFontSize)
     return (
       <div>
         <div style={styles.wrapper}>
@@ -404,6 +436,8 @@ class Pictogram extends Component {
                   zoomLevel={zoomLevel}
                   canvasSize={canvasSize}
                   dragAndDrop={dragAndDrop}
+                  topMargin={topTextActive ? 50 : 0}
+                  bottomMargin={bottomTextActive ? 50 : 0}
                 />
                 {topTextActive && (
                   <TextLayer
@@ -413,7 +447,18 @@ class Pictogram extends Component {
                     fontColor={topTextFontColor}
                     dragAndDrop={dragAndDrop}
                     canvasSize={canvasSize}
-                    y={20}
+                    y={5}
+                  />
+                )}
+                {bottomTextActive && (
+                  <TextLayer
+                    font={bottomTextFont}
+                    text={bottomText}
+                    fontSize={bottomTextFontSize}
+                    fontColor={bottomTextFontColor}
+                    dragAndDrop={dragAndDrop}
+                    canvasSize={canvasSize}
+                    y={canvasSize - bottomTextFontSize - 10}
                   />
                 )}
                 {plural && (
@@ -510,18 +555,33 @@ class Pictogram extends Component {
               />
               <TextOptions
                 textLabel={<FormattedMessage {...messages.topText} />}
-                onActive={this.handleMainTextActive}
+                onActive={this.handleTopTextActive}
                 active={topTextActive}
                 text={topText}
                 font={topTextFont}
                 fontSize={topTextFontSize}
                 color={topTextFontColor}
-                onTextChange={this.handleMainTextChange}
-                onFontChange={this.handleMainTextFontChange}
-                onFontSizeChange={this.handleMainTextFontSizeChange}
-                onFontColorChange={this.handleMainTextFontColorChange}
-                onOptionsShow={this.handleMainTextOptionsShow}
+                onTextChange={this.handleTopTextChange}
+                onFontChange={this.handleTopTextFontChange}
+                onFontSizeChange={this.handleTopTextFontSizeChange}
+                onFontColorChange={this.handleTopTextFontColorChange}
+                onOptionsShow={this.handleTopTextOptionsShow}
                 showOptions={topTextOptionsShow}
+              />
+              <TextOptions
+                textLabel={<FormattedMessage {...messages.bottomText} />}
+                onActive={this.handleBottomTextActive}
+                active={bottomTextActive}
+                text={bottomText}
+                font={bottomTextFont}
+                fontSize={bottomTextFontSize}
+                color={bottomTextFontColor}
+                onTextChange={this.handleBottomTextChange}
+                onFontChange={this.handleBottomTextFontChange}
+                onFontSizeChange={this.handleBottomTextFontSizeChange}
+                onFontColorChange={this.handleBottomTextFontColorChange}
+                onOptionsShow={this.handleBottomTextOptionsShow}
+                showOptions={bottomTextOptionsShow}
               />
               <PeopleAppearanceOptions
                 skin={skin}

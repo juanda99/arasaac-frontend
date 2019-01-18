@@ -240,6 +240,11 @@ export default defineMessages({
     description: 'Toggle button label',
     defaultMessage: 'Top text'
   },
+  bottomText: {
+    id: 'app.components.Pictogram.bottomTextToggleLabel',
+    description: 'Toggle button label',
+    defaultMessage: 'Bottom text'
+  },
   lowerText: {
     id: 'app.components.Pictogram.lowerTextToggleLabel',
     description: 'Toggle button label',

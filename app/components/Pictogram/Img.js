@@ -33,7 +33,7 @@ class Img extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    const { src, frameWidth, zoomLevel, enableFrame, canvasSize } = this.props
+    const { src, frameWidth, zoomLevel, enableFrame, canvasSize, topMargin, bottomMargin } = this.props
     if (src !== prevProps.src) image.src = src
     else if (
       frameWidth !== prevProps.frameWidth ||
@@ -45,6 +45,12 @@ class Img extends Component {
       this.myImage.cache()
       this.myImage.getLayer().draw()
     } else if (canvasSize !== prevProps.canvasSize) {
+      this.myImage.cache()
+      this.myImage.getLayer().draw()
+    } else if (topMargin !== prevProps.topMargin) {
+      this.myImage.cache()
+      this.myImage.getLayer().draw()
+    } else if (bottomMargin !== prevProps.bottomMargin) {
       this.myImage.cache()
       this.myImage.getLayer().draw()
     }
@@ -64,13 +70,15 @@ class Img extends Component {
       canvasSize,
       enableFrame,
       frameWidth,
-      dragAndDrop
+      dragAndDrop,
+      topMargin,
+      bottomMargin
     } = this.props
     let { x, y } = this.state
-    const size = enableFrame ? canvasSize - parseInt(frameWidth, 0) : canvasSize
+    const size = enableFrame ? canvasSize - parseInt(frameWidth, 0) - topMargin - bottomMargin : canvasSize - topMargin - bottomMargin
     if (!this.state.moved) {
-      x = enableFrame ? x + frameWidth / 2 - zoomLevel / 2 : x - zoomLevel / 2
-      y = enableFrame ? y + frameWidth / 2 - zoomLevel / 2 : y - zoomLevel / 2
+      x = enableFrame ? x + frameWidth / 2 - zoomLevel / 2 + topMargin / 2 + bottomMargin / 2 : x + zoomLevel / 2 + topMargin / 2 + bottomMargin / 2
+      y = enableFrame ? y + frameWidth / 2 - zoomLevel / 2 + topMargin : y - zoomLevel / 2 + topMargin
     }
     return (
       <Layer>
@@ -100,7 +108,9 @@ Img.propTypes = {
   enableFrame: PropTypes.bool.isRequired,
   zoomLevel: PropTypes.number.isRequired,
   canvasSize: PropTypes.number.isRequired,
-  dragAndDrop: PropTypes.bool.isRequired
+  dragAndDrop: PropTypes.bool.isRequired,
+  topMargin: PropTypes.number.isRequired,
+  bottomMargin: PropTypes.number.isRequired
 }
 
 export default Img

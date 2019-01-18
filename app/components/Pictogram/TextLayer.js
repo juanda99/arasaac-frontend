@@ -41,7 +41,6 @@ class TextLayer extends Component {
   render() {
     const { text, font, fontSize, fontColor, dragAndDrop, canvasSize } = this.props
     const { x, y, width, height } = this.state
-    // console.log(height)
     return (
       <Layer>
         <Text
