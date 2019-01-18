@@ -8,13 +8,29 @@ class TextLayer extends Component {
     font: PropTypes.string,
     fontSize: PropTypes.number,
     fontColor: PropTypes.string,
-    dragAndDrop: PropTypes.bool.isRequired
+    dragAndDrop: PropTypes.bool.isRequired,
+    canvasSize: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired
   }
 
   state = {
-    x: 200,
-    y: 200
+    x: this.props.canvasSize / 2,
+    y: this.props.y,
+    width: 0,
+    height: 0
   }
+
+  componentDidUpdate = () => {
+    const currentWidth = this.myText ? this.myText.textWidth : 0
+    const currentHeight = this.myText ? this.myText.textHeight : 0
+    if (this.state.height !== currentHeight) {
+      this.setState({ height: currentHeight })
+    }
+    if (this.state.width !== currentWidth) {
+      this.setState({ width: currentWidth })
+    }
+  }
+
   handleDragEnd = (e) => {
     this.setState({
       x: e.target.x(),
@@ -23,8 +39,9 @@ class TextLayer extends Component {
   }
 
   render() {
-    const { text, font, fontSize, fontColor, dragAndDrop } = this.props
-    const { x, y } = this.state
+    const { text, font, fontSize, fontColor, dragAndDrop, canvasSize } = this.props
+    const { x, y, width, height } = this.state
+    // console.log(height)
     return (
       <Layer>
         <Text
@@ -34,8 +51,14 @@ class TextLayer extends Component {
           text={text}
           x={x}
           y={y}
+          offsetX={width / 2}
           onDragEnd={this.handleDragEnd}
           draggable={dragAndDrop}
+          ref={(node) => {
+            this.myText = node
+          }}
+          wrap='word'
+          width={canvasSize}
         />
       </Layer>
     )
