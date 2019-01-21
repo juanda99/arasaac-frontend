@@ -90,6 +90,7 @@ class Pictogram extends Component {
       bottomTextActive: false,
       bottomTextOptionsShow: false,
       bottomText: keyword,
+      bottomTextKeywords: keywordsArray,
       bottomTextFont: 'Roboto',
       bottomTextFontSize: 50,
       bottomTextFontColor: 'black',
@@ -371,6 +372,7 @@ class Pictogram extends Component {
       topTextFontSize,
       topTextFontColor,
       bottomTextActive,
+      bottomTextKeywords,
       bottomTextOptionsShow,
       bottomText,
       bottomTextFont,
@@ -590,6 +592,7 @@ class Pictogram extends Component {
               />
               <TextOptions
                 textLabel={<FormattedMessage {...messages.bottomText} />}
+                keywords={bottomTextKeywords}
                 onActive={this.handleBottomTextActive}
                 active={bottomTextActive}
                 text={bottomText}
@@ -602,6 +605,7 @@ class Pictogram extends Component {
                 onFontColorChange={this.handleBottomTextFontColorChange}
                 onOptionsShow={this.handleBottomTextOptionsShow}
                 showOptions={bottomTextOptionsShow}
+                idPictogram={idPictogram}
               />
               <PeopleAppearanceOptions
                 skin={skin}

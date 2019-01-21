@@ -13,7 +13,7 @@ const styles = {
   optionBox: {
     padding: '10px',
     border: '1px dashed lightgrey',
-    width: '400px',
+    width: '300px',
     minHeight: '120px',
     position: 'absolute'
   },

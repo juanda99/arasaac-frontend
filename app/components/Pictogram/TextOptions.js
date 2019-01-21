@@ -6,9 +6,11 @@ import FontPicker from 'font-picker-react'
 import Slider from 'material-ui/Slider'
 import AutoComplete from 'material-ui/AutoComplete'
 import api from 'services'
-import ToggleDropDown from './ToggleDropdown'
 import LanguageSelector from 'components/LanguageSelector'
+import RaisedButton from 'material-ui/RaisedButton'
+import ToggleDropDown from './ToggleDropdown'
 import styles from './styles'
+import Subheader from 'material-ui/Subheader'
 
 class TextOptions extends Component {
   static propTypes = {
@@ -32,7 +34,8 @@ class TextOptions extends Component {
 
   state = {
     language: this.props.locale,
-    keywords: this.props.keywords
+    keywords: this.props.keywords,
+    editText: true
   }
 
   handleFontChange = (nextFont) => {
@@ -61,6 +64,8 @@ class TextOptions extends Component {
     })
   }
 
+  toggleVisibility = () => this.setState({ editText: !this.state.editText })
+
   render() {
     const {
       text,
@@ -71,8 +76,11 @@ class TextOptions extends Component {
       active,
       textLabel
     } = this.props
-    const { keywords } = this.state
-    const marginBottom = showOptions ? '550px' : 'auto'
+    const { keywords, editText } = this.state
+    let marginBottom = 'auto'
+    if (showOptions) {
+      marginBottom = editText ? '320px' : '410px'
+    }
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown
@@ -83,18 +91,19 @@ class TextOptions extends Component {
           showOptions={showOptions}
           onClick={this.handleOptionsShow}
         />
-        {showOptions ? (
+        {showOptions && editText && (
           <div style={styles.optionBox}>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <p
-                style={{
-                  width: '100px',
-                  position: 'relative',
-                  top: '20px'
-                }}
-              >
-                Text:
-              </p>
+              <p>Change suggestions language:</p>
+              <div style={{ position: 'relative', top: '-30px' }}>
+                <LanguageSelector
+                  value={this.state.language}
+                  onChange={this.handleLanguageChange}
+                  shortOption={true}
+                />
+              </div>
+              <p>Write text or select suggestion:</p>
+
               <AutoComplete
                 hintText="Type 'r', case insensitive"
                 searchText={text}
@@ -104,27 +113,31 @@ class TextOptions extends Component {
                 filter={() => true}
                 openOnFocus={true}
               />
-              <LanguageSelector
-                value={this.state.language}
-                onChange={this.handleLanguageChange}
-                shortOption={true}
+              <RaisedButton
+                label='Text format'
+                primary={true}
+                onClick={this.toggleVisibility}
+                style={{ marginTop: '20', width: '100%' }}
               />
             </div>
+          </div>
+        )}
+        {showOptions && !editText && (
+          <div style={styles.optionBox}>
             <div
               style={{
                 display: 'flex',
-                flexDirection: 'column',
-                marginTop: '10px'
+                flexDirection: 'column'
               }}
             >
-              <p style={{ width: '100px' }}>Color:</p>
+              <p style={{ width: '100px' }}>Font Color:</p>
               <TwitterPicker
                 triangle='hide'
                 color={fontColor}
                 onChangeComplete={this.handleFontColorChange}
               />
             </div>
-            <div style={{ display: 'flex', marginTop: '10px', clear: 'both' }}>
+            <div>
               <p style={{ width: '100px' }}>Font Size:</p>
               <Slider
                 min={1}
@@ -132,30 +145,38 @@ class TextOptions extends Component {
                 step={1}
                 value={fontSize}
                 onChange={this.handleFontSizeChange}
-                style={{ width: '200px' }}
+                style={{ width: '200px', marginBottom: '0' }}
               />
             </div>
-            <div>
+            <div style={{ marginTop: '-48px' }}>
               <p
                 style={{
                   width: '100px',
                   float: 'left'
                 }}
               >
-                Font:
+                Font family:
               </p>
-              <div style={{ float: 'left', width: '200px' }}>
-                <FontPicker
-                  apiKey='AIzaSyCLxWCWpaWqXdBFuqfsvnzxOUzJI0JFPOE'
-                  activeFont={font}
-                  onChange={this.handleFontChange}
-                  style={{ display: 'inlineBlock' }}
-                />
-              </div>
+
+              <FontPicker
+                apiKey='AIzaSyCLxWCWpaWqXdBFuqfsvnzxOUzJI0JFPOE'
+                activeFont={font}
+                onChange={this.handleFontChange}
+                style={{ display: 'inlineBlock' }}
+              />
+
+              <RaisedButton
+                label='Edit text'
+                primary={true}
+                onClick={this.toggleVisibility}
+                style={{
+                  marginTop: '20',
+                  width: '100%',
+                  marginBottom: '-30px'
+                }}
+              />
             </div>
           </div>
-        ) : (
-          ''
         )}
       </div>
     )
