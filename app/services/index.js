@@ -39,7 +39,11 @@ const api = {
     callApi(socialLogin.url, socialLogin.options(socialToken, provider)),
   SIGNUP_REQUEST: (userData) => callApi(signup.url, signup.options(userData)),
   GENERATE_CUSTOM_PICTOGRAM: (parameters) =>
-    callApi(customPicto.url, customPicto.options(parameters))
+    callApi(customPicto.url, customPicto.options(parameters)),
+  GET_KEYWORDS_BY_PICTOID: ({ language, idPictogram }) =>
+    callApi(
+      `${PRIVATE_API_ROOT}/pictograms/keywords/${language}/${idPictogram}`
+    )
 
   /* CUSTOM_PICTOGRAM_REQUEST: (idPictogram, options) => callApi(customPictogram.url(idPictogram, options))*/
 }

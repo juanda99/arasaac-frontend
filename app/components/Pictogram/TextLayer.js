@@ -20,7 +20,16 @@ class TextLayer extends Component {
     height: 0
   }
 
+  componentDidMount = () => {
+    // first time is needed, if text exits by default
+    this.centerText()
+  }
+
   componentDidUpdate = () => {
+    this.centerText()
+  }
+
+  centerText = () => {
     const currentWidth = this.myText ? this.myText.textWidth : 0
     const currentHeight = this.myText ? this.myText.textHeight : 0
     if (this.state.height !== currentHeight) {
@@ -39,7 +48,14 @@ class TextLayer extends Component {
   }
 
   render() {
-    const { text, font, fontSize, fontColor, dragAndDrop, canvasSize } = this.props
+    const {
+      text,
+      font,
+      fontSize,
+      fontColor,
+      dragAndDrop,
+      canvasSize
+    } = this.props
     const { x, y, width, height } = this.state
     return (
       <Layer>

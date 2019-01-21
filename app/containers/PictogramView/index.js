@@ -66,6 +66,7 @@ class PictogramView extends PureComponent {
         locale={locale}
         searchText={searchText || ''}
         onDownload={this.handleDownload}
+        onLanguageChange={this.handleLanguageChange}
       />
     )
   }

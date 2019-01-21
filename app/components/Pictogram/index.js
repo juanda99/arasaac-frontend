@@ -39,52 +39,66 @@ import ZoomOptions from './ZoomOptions'
 import PictoWrapper from './PictoWrapper'
 
 class Pictogram extends Component {
-  state = {
-    language: this.props.locale,
-    plural: false,
-    color: true,
-    backgroundColor: '',
-    bgColorActive: false,
-    bgColorOptionsShow: false,
-    frameWidth: MEDIUM,
-    frameColor: '',
-    frameActive: false,
-    frameOptionsShow: false,
-    identifierActive: false,
-    identifierOptionsShow: false,
-    identifier: '',
-    identifierPosition: '',
-    text: false,
-    peopleAppearanceActive: false,
-    peopleAppearanceOptionsShow: false,
-    hair: '',
-    skin: '',
-    verbalTenseActive: false,
-    verbalTense: PRESENT,
-    verbalTenseOptionsShow: false,
-    showText: false,
-    openMenu: false,
-    url: '',
-    downloadUrl: '',
-    activeFont: 'Open Sans',
-    buttonCaption: false,
-    topTextActive: false,
-    topTextOptionsShow: false,
-    topText: '',
-    topTextFont: 'Roboto',
-    topTextFontSize: 50,
-    topTextFontColor: 'black',
-    bottomTextActive: false,
-    bottomTextOptionsShow: false,
-    bottomText: '',
-    bottomTextFont: 'Roboto',
-    bottomTextFontSize: 50,
-    bottomTextFontColor: 'black',
-    zoomLevel: 0,
-    zoomActive: false,
-    zoomOptionsShow: false,
-    windowWidth: 0,
-    dragAndDrop: false
+  constructor(props) {
+    super(props)
+    const { pictogram, searchText } = this.props
+    const keywords = pictogram.get('keywords')
+    const { keyword } = keywordSelector(searchText, keywords.toJS())
+    const keywordsArray = keywords
+      .valueSeq()
+      .map((keyword) => keyword.get('keyword'))
+      .toArray()
+
+    console.log(keywordsArray)
+
+    this.state = {
+      language: this.props.locale,
+      plural: false,
+      color: true,
+      backgroundColor: '',
+      bgColorActive: false,
+      bgColorOptionsShow: false,
+      frameWidth: MEDIUM,
+      frameColor: '',
+      frameActive: false,
+      frameOptionsShow: false,
+      identifierActive: false,
+      identifierOptionsShow: false,
+      identifier: '',
+      identifierPosition: '',
+      text: false,
+      peopleAppearanceActive: false,
+      peopleAppearanceOptionsShow: false,
+      hair: '',
+      skin: '',
+      verbalTenseActive: false,
+      verbalTense: PRESENT,
+      verbalTenseOptionsShow: false,
+      showText: false,
+      openMenu: false,
+      url: '',
+      downloadUrl: '',
+      activeFont: 'Open Sans',
+      buttonCaption: false,
+      topTextActive: false,
+      topTextOptionsShow: false,
+      topText: keyword,
+      topTextKeywords: keywordsArray,
+      topTextFont: 'Roboto',
+      topTextFontSize: 50,
+      topTextFontColor: 'black',
+      bottomTextActive: false,
+      bottomTextOptionsShow: false,
+      bottomText: keyword,
+      bottomTextFont: 'Roboto',
+      bottomTextFontSize: 50,
+      bottomTextFontColor: 'black',
+      zoomLevel: 0,
+      zoomActive: false,
+      zoomOptionsShow: false,
+      windowWidth: 0,
+      dragAndDrop: false
+    }
   }
 
   componentDidMount() {
@@ -275,7 +289,8 @@ class Pictogram extends Component {
 
   handleTopTextFontChange = (topTextFont) => this.setState({ topTextFont })
 
-  handleTopTextFontSizeChange = (topTextFontSize) => this.setState({ topTextFontSize })
+  handleTopTextFontSizeChange = (topTextFontSize) =>
+    this.setState({ topTextFontSize })
 
   handleTopTextFontColorChange = (topTextFontColor) =>
     this.setState({ topTextFontColor })
@@ -292,9 +307,11 @@ class Pictogram extends Component {
 
   handleBottomTextChange = (bottomText) => this.setState({ bottomText })
 
-  handleBottomTextFontChange = (bottomTextFont) => this.setState({ bottomTextFont })
+  handleBottomTextFontChange = (bottomTextFont) =>
+    this.setState({ bottomTextFont })
 
-  handleBottomTextFontSizeChange = (bottomTextFontSize) => this.setState({ bottomTextFontSize })
+  handleBottomTextFontSizeChange = (bottomTextFontSize) =>
+    this.setState({ bottomTextFontSize })
 
   handleBottomTextFontColorChange = (bottomTextFontColor) =>
     this.setState({ bottomTextFontColor })
@@ -347,6 +364,7 @@ class Pictogram extends Component {
       frameOptionsShow,
       plural,
       topTextActive,
+      topTextKeywords,
       topTextOptionsShow,
       topText,
       topTextFont,
@@ -392,7 +410,6 @@ class Pictogram extends Component {
     }
     // const pictoFile = `/${idPictogram}_500.png`
     const pictoFile = url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`
-    console.log(bottomTextFontSize)
     return (
       <div>
         <div style={styles.wrapper}>
@@ -555,6 +572,8 @@ class Pictogram extends Component {
               />
               <TextOptions
                 textLabel={<FormattedMessage {...messages.topText} />}
+                keywords={topTextKeywords}
+                defaultLanguage={locale}
                 onActive={this.handleTopTextActive}
                 active={topTextActive}
                 text={topText}
@@ -567,6 +586,7 @@ class Pictogram extends Component {
                 onFontColorChange={this.handleTopTextFontColorChange}
                 onOptionsShow={this.handleTopTextOptionsShow}
                 showOptions={topTextOptionsShow}
+                idPictogram={idPictogram}
               />
               <TextOptions
                 textLabel={<FormattedMessage {...messages.bottomText} />}
@@ -672,7 +692,8 @@ Pictogram.propTypes = {
   locale: PropTypes.string.isRequired,
   searchText: PropTypes.string.isRequired,
   muiTheme: PropTypes.object.isRequired,
-  onDownload: PropTypes.func.isRequired
+  onDownload: PropTypes.func.isRequired,
+  onLanguageChange: PropTypes.func.isRequired
 }
 
 export default muiThemeable()(Pictogram)

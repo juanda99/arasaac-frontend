@@ -1,13 +1,13 @@
 /* eslint no-mixed-operators: 0 */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { FormattedMessage } from 'react-intl'
 import { TwitterPicker } from 'react-color'
 import FontPicker from 'font-picker-react'
 import Slider from 'material-ui/Slider'
-import TextField from 'material-ui/TextField'
+import AutoComplete from 'material-ui/AutoComplete'
+import api from 'services'
 import ToggleDropDown from './ToggleDropdown'
-import messages from './messages'
+import LanguageSelector from 'components/LanguageSelector'
 import styles from './styles'
 
 class TextOptions extends Component {
@@ -17,6 +17,8 @@ class TextOptions extends Component {
     font: PropTypes.string,
     fontSize: PropTypes.number,
     text: PropTypes.string,
+    locale: PropTypes.string.isRequired,
+    keywords: PropTypes.arrayOf(PropTypes.string),
     onActive: PropTypes.func.isRequired,
     onFontChange: PropTypes.func.isRequired,
     onFontColorChange: PropTypes.func.isRequired,
@@ -24,15 +26,21 @@ class TextOptions extends Component {
     onTextChange: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
     showOptions: PropTypes.bool.isRequired,
-    onOptionsShow: PropTypes.func.isRequired
+    onOptionsShow: PropTypes.func.isRequired,
+    idPictogram: PropTypes.number.isRequired
+  }
+
+  state = {
+    language: this.props.locale,
+    keywords: this.props.keywords
   }
 
   handleFontChange = (nextFont) => {
     this.props.onFontChange(nextFont.family)
   }
 
-  handleTextChange = (event) => {
-    this.props.onTextChange(event.target.value)
+  handleUpdateInput = (searchText) => {
+    this.props.onTextChange(searchText)
   }
 
   handleFontSizeChange = (event, value) => {
@@ -45,6 +53,14 @@ class TextOptions extends Component {
 
   handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions)
 
+  handleLanguageChange = (language) => {
+    const { idPictogram } = this.props
+    api.GET_KEYWORDS_BY_PICTOID({ language, idPictogram }).then((data) => {
+      this.setState({ keywords: data.keywords, language })
+      this.props.onTextChange(data.keywords[0] || '')
+    })
+  }
+
   render() {
     const {
       text,
@@ -55,7 +71,8 @@ class TextOptions extends Component {
       active,
       textLabel
     } = this.props
-    const marginBottom = showOptions ? '350px' : 'auto'
+    const { keywords } = this.state
+    const marginBottom = showOptions ? '550px' : 'auto'
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown
@@ -68,7 +85,7 @@ class TextOptions extends Component {
         />
         {showOptions ? (
           <div style={styles.optionBox}>
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
               <p
                 style={{
                   width: '100px',
@@ -78,15 +95,28 @@ class TextOptions extends Component {
               >
                 Text:
               </p>
-              <TextField
-                className='apply-font'
-                hintText={<FormattedMessage {...messages.enterText} />}
-                floatingLabelText={textLabel}
-                onChange={this.handleTextChange}
-                value={text}
+              <AutoComplete
+                hintText="Type 'r', case insensitive"
+                searchText={text}
+                onUpdateInput={this.handleUpdateInput}
+                onNewRequest={this.handleNewRequest}
+                dataSource={keywords}
+                filter={() => true}
+                openOnFocus={true}
+              />
+              <LanguageSelector
+                value={this.state.language}
+                onChange={this.handleLanguageChange}
+                shortOption={true}
               />
             </div>
-            <div style={{ display: 'flex', marginTop: '10px' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                marginTop: '10px'
+              }}
+            >
               <p style={{ width: '100px' }}>Color:</p>
               <TwitterPicker
                 triangle='hide'
