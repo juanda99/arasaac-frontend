@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
-import { TwitterPicker } from 'react-color'
+import { CompactPicker } from 'react-color'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
@@ -39,8 +39,16 @@ class BackgroundColorOptions extends Component {
           onClick={this.handleOptionsShow}
         />
         {showOptions ? (
-          <div style={styles.optionBox}>
-            <TwitterPicker
+          <div
+            style={{
+              padding: '10px',
+              border: '1px dashed lightgrey',
+              width: '270px',
+              minHeight: '120px',
+              position: 'absolute'
+            }}
+          >
+            <CompactPicker
               triangle='hide'
               color={color}
               onChangeComplete={this.handleColorChange}

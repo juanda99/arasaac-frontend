@@ -387,6 +387,8 @@ class Pictogram extends Component {
     const canvasSize =
       windowWidth < MAX_CANVAS_SIZE ? windowWidth : MAX_CANVAS_SIZE
 
+    console.log(`Prueba: ${this.state.topTextFontColor}`)
+
     const imgOffsetY = topText ? topTextFontSize : 0
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
@@ -581,7 +583,7 @@ class Pictogram extends Component {
                 text={topText}
                 font={topTextFont}
                 fontSize={topTextFontSize}
-                color={topTextFontColor}
+                fontColor={topTextFontColor}
                 onTextChange={this.handleTopTextChange}
                 onFontChange={this.handleTopTextFontChange}
                 onFontSizeChange={this.handleTopTextFontSizeChange}
@@ -598,7 +600,7 @@ class Pictogram extends Component {
                 text={bottomText}
                 font={bottomTextFont}
                 fontSize={bottomTextFontSize}
-                color={bottomTextFontColor}
+                fontColor={bottomTextFontColor}
                 onTextChange={this.handleBottomTextChange}
                 onFontChange={this.handleBottomTextFontChange}
                 onFontSizeChange={this.handleBottomTextFontSizeChange}

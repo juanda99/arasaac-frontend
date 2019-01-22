@@ -16,6 +16,10 @@ injectGlobal`
     flex: 1;
   }
 
+  #font-picker {
+    width: 100%;
+  }
+
   p, input, label {
     font-size: 1rem
   }

@@ -1,7 +1,7 @@
 /* eslint no-mixed-operators: 0 */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { TwitterPicker } from 'react-color'
+import { CompactPicker } from 'react-color'
 import FontPicker from 'font-picker-react'
 import Slider from 'material-ui/Slider'
 import AutoComplete from 'material-ui/AutoComplete'
@@ -10,12 +10,11 @@ import LanguageSelector from 'components/LanguageSelector'
 import RaisedButton from 'material-ui/RaisedButton'
 import ToggleDropDown from './ToggleDropdown'
 import styles from './styles'
-import Subheader from 'material-ui/Subheader'
 
 class TextOptions extends Component {
   static propTypes = {
     textLabel: PropTypes.object.isRequired,
-    fontColor: PropTypes.string,
+    fontColor: PropTypes.string.isRequired,
     font: PropTypes.string,
     fontSize: PropTypes.number,
     text: PropTypes.string,
@@ -81,6 +80,8 @@ class TextOptions extends Component {
     if (showOptions) {
       marginBottom = editText ? '320px' : '410px'
     }
+    console.log(this.props)
+    console.log(`Color final: ${this.props.fontColor}`)
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown
@@ -123,7 +124,15 @@ class TextOptions extends Component {
           </div>
         )}
         {showOptions && !editText && (
-          <div style={styles.optionBox}>
+          <div
+            style={{
+              padding: '10px',
+              border: '1px dashed lightgrey',
+              width: '270px',
+              minHeight: '120px',
+              position: 'absolute'
+            }}
+          >
             <div
               style={{
                 display: 'flex',
@@ -131,7 +140,7 @@ class TextOptions extends Component {
               }}
             >
               <p style={{ width: '100px' }}>Font Color:</p>
-              <TwitterPicker
+              <CompactPicker
                 triangle='hide'
                 color={fontColor}
                 onChangeComplete={this.handleFontColorChange}
@@ -145,7 +154,7 @@ class TextOptions extends Component {
                 step={1}
                 value={fontSize}
                 onChange={this.handleFontSizeChange}
-                style={{ width: '200px', marginBottom: '0' }}
+                style={{ width: '100%', marginBottom: '0' }}
               />
             </div>
             <div style={{ marginTop: '-48px' }}>
@@ -162,7 +171,7 @@ class TextOptions extends Component {
                 apiKey='AIzaSyCLxWCWpaWqXdBFuqfsvnzxOUzJI0JFPOE'
                 activeFont={font}
                 onChange={this.handleFontChange}
-                style={{ display: 'inlineBlock' }}
+                style={{ display: 'inlineBlock', width: '100%' }}
               />
 
               <RaisedButton
