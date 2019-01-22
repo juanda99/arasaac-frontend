@@ -2,8 +2,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
+import { CirclePicker } from 'react-color'
+import { getKeyByValue } from 'utils'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
@@ -26,9 +26,34 @@ class PeopleAppearanceOptions extends Component {
 
   handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions)
 
-  handleSkinChange = (event, index, skin) => this.props.onSkinChange(skin)
+  handleSkinChange = ({ hex }) => {
+    const skin = getKeyByValue(this.skin, hex.toUpperCase())
+    this.props.onSkinChange(skin)
+  }
 
-  handleHairChange = (event, index, hair) => this.props.onHairChange(hair)
+  handleHairChange = ({ hex }) => {
+    const hair = getKeyByValue(this.hair, hex.toUpperCase())
+    this.props.onHairChange(hair)
+  }
+
+  skin = {
+    white: '#F5E5DE',
+    black: '#A65C17',
+    assian: '#F4ECAD',
+    mulatto: '#E3AB72',
+    aztec: '#CF9D7C',
+    schematic: '#FEFEFE'
+  }
+
+  hair = {
+    brown: '#A65E26',
+    blonde: '#FDD700',
+    red: '#ED4120',
+    black: '#020100',
+    gray: '#EFEFEF',
+    darkGray: '#AAABAB',
+    darkBrown: '#6A2703'
+  }
 
   render() {
     const { intl, skin, active, showOptions, hair } = this.props
@@ -46,69 +71,20 @@ class PeopleAppearanceOptions extends Component {
         />
         {showOptions ? (
           <div style={styles.optionBox}>
-            <SelectField
-              style={{ marginRight: '40px' }}
-              floatingLabelText={formatMessage(messages.skinColor)}
-              value={skin}
-              onChange={this.handleSkinChange}
-            >
-              <MenuItem value={null} primaryText='' />
-              <MenuItem
-                value='white'
-                primaryText={formatMessage(messages.whiteSkin)}
-              />
-              <MenuItem
-                value='black'
-                primaryText={formatMessage(messages.blackSkin)}
-              />
-              <MenuItem
-                value='assian'
-                primaryText={formatMessage(messages.assianSkin)}
-              />
-              <MenuItem
-                value='mulatto'
-                primaryText={formatMessage(messages.mulattoSkin)}
-              />
-              <MenuItem
-                value='aztec'
-                primaryText={formatMessage(messages.aztecSkin)}
-              />
-            </SelectField>
-            <SelectField
-              floatingLabelText={formatMessage(messages.hairColor)}
-              value={hair}
-              onChange={this.handleHairChange}
-            >
-              <MenuItem value={null} primaryText='' />
-              <MenuItem
-                value='blonde'
-                primaryText={formatMessage(messages.blondeHair)}
-              />
-              <MenuItem
-                value='brown'
-                primaryText={formatMessage(messages.brownHair)}
-              />
-              <MenuItem
-                value='darkBrown'
-                primaryText={formatMessage(messages.darkBrownHair)}
-              />
-              <MenuItem
-                value='gray'
-                primaryText={formatMessage(messages.grayHair)}
-              />
-              <MenuItem
-                value='darkGray'
-                primaryText={formatMessage(messages.darkGrayHair)}
-              />
-              <MenuItem
-                value='red'
-                primaryText={formatMessage(messages.redHair)}
-              />
-              <MenuItem
-                value='black'
-                primaryText={formatMessage(messages.blackHair)}
-              />
-            </SelectField>
+            <p>{formatMessage(messages.skinColor)}</p>
+            <CirclePicker
+              color={this.skin[skin]}
+              colors={Object.values(this.skin)}
+              onChangeComplete={this.handleSkinChange}
+              width={250}
+            />
+            <p>{formatMessage(messages.hairColor)}</p>
+            <CirclePicker
+              color={this.hair[hair]}
+              colors={Object.values(this.hair)}
+              onChangeComplete={this.handleHairChange}
+              width={250}
+            />
           </div>
         ) : (
           ''

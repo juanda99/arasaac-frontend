@@ -117,7 +117,7 @@ export default defineMessages({
   skinColor: {
     id: 'app.components.Pictogram.skinColor',
     description: 'Help text for color of the skin selector',
-    defaultMessage: 'Choose skin color'
+    defaultMessage: 'Choose skin color:'
   },
   whiteSkin: {
     id: 'app.components.Pictogram.whiteSkin',
@@ -147,7 +147,7 @@ export default defineMessages({
   hairColor: {
     id: 'app.components.Pictogram.hairColor',
     description: 'Help text for color of the hair selector',
-    defaultMessage: 'Choose hair color'
+    defaultMessage: 'Choose hair color:'
   },
   blondeHair: {
     id: 'app.components.Pictogram.blondeHair',

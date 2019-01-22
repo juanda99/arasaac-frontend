@@ -80,8 +80,6 @@ class TextOptions extends Component {
     if (showOptions) {
       marginBottom = editText ? '320px' : '410px'
     }
-    console.log(this.props)
-    console.log(`Color final: ${this.props.fontColor}`)
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown
