@@ -7,9 +7,11 @@ import Slider from 'material-ui/Slider'
 import AutoComplete from 'material-ui/AutoComplete'
 import api from 'services'
 import LanguageSelector from 'components/LanguageSelector'
+import P from 'components/P'
 import RaisedButton from 'material-ui/RaisedButton'
 import ToggleDropDown from './ToggleDropdown'
 import styles from './styles'
+
 
 class TextOptions extends Component {
   static propTypes = {
@@ -80,6 +82,7 @@ class TextOptions extends Component {
     if (showOptions) {
       marginBottom = editText ? '320px' : '410px'
     }
+
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown
@@ -93,15 +96,16 @@ class TextOptions extends Component {
         {showOptions && editText && (
           <div style={styles.optionBox}>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <p>Change suggestions language:</p>
+              <P marginBottom='25px'>Change suggestions language:</P>
               <div style={{ position: 'relative', top: '-30px' }}>
                 <LanguageSelector
                   value={this.state.language}
                   onChange={this.handleLanguageChange}
                   shortOption={true}
+                  showToolTip={false}
                 />
               </div>
-              <p>Write text or select suggestion:</p>
+              <P marginTop='0px' marginBottom='0px'>Write text or select suggestion:</P>
 
               <AutoComplete
                 hintText="Type 'r', case insensitive"
@@ -137,7 +141,7 @@ class TextOptions extends Component {
                 flexDirection: 'column'
               }}
             >
-              <p style={{ width: '100px' }}>Font Color:</p>
+              <P style={{ width: '100px' }}>Font Color:</P>
               <CompactPicker
                 triangle='hide'
                 color={fontColor}
@@ -145,7 +149,7 @@ class TextOptions extends Component {
               />
             </div>
             <div>
-              <p style={{ width: '100px' }}>Font Size:</p>
+              <P style={{ width: '100px' }}>Font Size:</P>
               <Slider
                 min={1}
                 max={100}
@@ -155,15 +159,10 @@ class TextOptions extends Component {
                 style={{ width: '100%', marginBottom: '0' }}
               />
             </div>
-            <div style={{ marginTop: '-48px' }}>
-              <p
-                style={{
-                  width: '100px',
-                  float: 'left'
-                }}
-              >
+            <div style={{ marginTop: '-30px' }}>
+              <P>
                 Font family:
-              </p>
+              </P>
 
               <FontPicker
                 apiKey='AIzaSyCLxWCWpaWqXdBFuqfsvnzxOUzJI0JFPOE'

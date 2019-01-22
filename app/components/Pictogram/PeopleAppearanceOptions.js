@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import { CirclePicker } from 'react-color'
 import { getKeyByValue } from 'utils'
+import P from 'components/P'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
@@ -71,14 +72,14 @@ class PeopleAppearanceOptions extends Component {
         />
         {showOptions ? (
           <div style={styles.optionBox}>
-            <p>{formatMessage(messages.skinColor)}</p>
+            <P>{formatMessage(messages.skinColor)}</P>
             <CirclePicker
               color={this.skin[skin]}
               colors={Object.values(this.skin)}
               onChangeComplete={this.handleSkinChange}
               width={250}
             />
-            <p>{formatMessage(messages.hairColor)}</p>
+            <P>{formatMessage(messages.hairColor)}</P>
             <CirclePicker
               color={this.hair[hair]}
               colors={Object.values(this.hair)}

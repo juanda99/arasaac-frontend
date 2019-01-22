@@ -25,7 +25,7 @@ const LanguageSelector = (props) => {
       maxHeight={400}
       value={props.value}
       onChange={handleChange}
-      floatingLabelText='Choose your language'
+      floatingLabelText={props.showToolTip && 'Choose your language'}
     >
       <MenuItem
         value={'es'}
@@ -142,7 +142,8 @@ LanguageSelector.propTypes = {
   intl: intlShape.isRequired,
   onChange: PropTypes.func,
   value: PropTypes.string,
-  shortOption: PropTypes.bool
+  shortOption: PropTypes.bool,
+  showToolTip: PropTypes.bool
 }
 
 export default injectIntl(LanguageSelector)

@@ -531,7 +531,7 @@ class Pictogram extends Component {
               {<FormattedMessage {...messages.modifyPicto} />}
             </H3>
             <Divider />
-            <P>Common options</P>
+            <P>Image options</P>
             <div style={styles.optionsWrapper}>
               <Toggle
                 label={<FormattedMessage {...messages.color} />}
@@ -574,6 +574,29 @@ class Pictogram extends Component {
                 onOptionsShow={this.handleVerbalTenseOptionsShow}
                 showOptions={verbalTenseOptionsShow}
               />
+              <IdentifierOptions
+                identifier={identifier}
+                identifierPosition={identifierPosition}
+                onIdentifierChange={this.handleIdentifierChange}
+                onIdentifierPositionChange={this.handleIdentifierPositionChange}
+                onActive={this.handleIdentifierActive}
+                active={identifierActive}
+                onOptionsShow={this.handleIdentifierOptionsShow}
+                showOptions={identifierOptionsShow}
+              />
+              <PeopleAppearanceOptions
+                skin={skin}
+                onSkinChange={this.handleSkinChange}
+                onActive={this.handlePeopleAppearanceActive}
+                active={peopleAppearanceActive}
+                hair={hair}
+                onHairChange={this.handleHairChange}
+                onOptionsShow={this.handlePeopleAppearanceOptionsShow}
+                showOptions={peopleAppearanceOptionsShow}
+              />
+            </div>
+            <P>Text options</P>
+            <div style={styles.optionsWrapper}>
               <TextOptions
                 textLabel={<FormattedMessage {...messages.topText} />}
                 keywords={topTextKeywords}
@@ -591,6 +614,7 @@ class Pictogram extends Component {
                 onOptionsShow={this.handleTopTextOptionsShow}
                 showOptions={topTextOptionsShow}
                 idPictogram={idPictogram}
+                locale={locale}
               />
               <TextOptions
                 textLabel={<FormattedMessage {...messages.bottomText} />}
@@ -608,26 +632,7 @@ class Pictogram extends Component {
                 onOptionsShow={this.handleBottomTextOptionsShow}
                 showOptions={bottomTextOptionsShow}
                 idPictogram={idPictogram}
-              />
-              <PeopleAppearanceOptions
-                skin={skin}
-                onSkinChange={this.handleSkinChange}
-                onActive={this.handlePeopleAppearanceActive}
-                active={peopleAppearanceActive}
-                hair={hair}
-                onHairChange={this.handleHairChange}
-                onOptionsShow={this.handlePeopleAppearanceOptionsShow}
-                showOptions={peopleAppearanceOptionsShow}
-              />
-              <IdentifierOptions
-                identifier={identifier}
-                identifierPosition={identifierPosition}
-                onIdentifierChange={this.handleIdentifierChange}
-                onIdentifierPositionChange={this.handleIdentifierPositionChange}
-                onActive={this.handleIdentifierActive}
-                active={identifierActive}
-                onOptionsShow={this.handleIdentifierOptionsShow}
-                showOptions={identifierOptionsShow}
+                locale={locale}
               />
             </div>
             <P>Advanced options</P>
@@ -640,13 +645,13 @@ class Pictogram extends Component {
                 onOptionsShow={this.handleZoomOptionsShow}
                 showOptions={zoomOptionsShow}
               />
+              <Toggle
+                label={<FormattedMessage {...messages.dragAndDrop} />}
+                labelPosition='right'
+                onToggle={this.handleDragAndDrop}
+                style={styles.toggle}
+              />
             </div>
-            <Toggle
-              label={<FormattedMessage {...messages.dragAndDrop} />}
-              labelPosition='right'
-              onToggle={this.handleDragAndDrop}
-              style={styles.toggle}
-            />
           </div>
         </div>
         <H3 primary>{<FormattedMessage {...messages.description} />}</H3>
