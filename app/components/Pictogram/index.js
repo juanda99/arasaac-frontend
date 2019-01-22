@@ -531,7 +531,7 @@ class Pictogram extends Component {
               {<FormattedMessage {...messages.modifyPicto} />}
             </H3>
             <Divider />
-            <P>Image options</P>
+            <P>{<FormattedMessage {...messages.pictogramOptions} />}</P>
             <div style={styles.optionsWrapper}>
               <Toggle
                 label={<FormattedMessage {...messages.color} />}
@@ -595,7 +595,7 @@ class Pictogram extends Component {
                 showOptions={peopleAppearanceOptionsShow}
               />
             </div>
-            <P>Text options</P>
+            <P>{<FormattedMessage {...messages.textOptions} />}</P>
             <div style={styles.optionsWrapper}>
               <TextOptions
                 textLabel={<FormattedMessage {...messages.topText} />}
@@ -635,7 +635,7 @@ class Pictogram extends Component {
                 locale={locale}
               />
             </div>
-            <P>Advanced options</P>
+            <P>{<FormattedMessage {...messages.advancedOptions} />}</P>
             <div style={styles.optionsWrapper}>
               <ZoomOptions
                 zoomLevel={zoomLevel}

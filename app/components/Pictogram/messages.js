@@ -119,72 +119,11 @@ export default defineMessages({
     description: 'Help text for color of the skin selector',
     defaultMessage: 'Choose skin color:'
   },
-  whiteSkin: {
-    id: 'app.components.Pictogram.whiteSkin',
-    description: 'Option for skin color',
-    defaultMessage: 'White'
-  },
-  blackSkin: {
-    id: 'app.components.Pictogram.blackSkin',
-    description: 'Option for skin color',
-    defaultMessage: 'Black'
-  },
-  assianSkin: {
-    id: 'app.components.Pictogram.assianSkin',
-    description: 'Option for skin color',
-    defaultMessage: 'Assian'
-  },
-  mulattoSkin: {
-    id: 'app.components.Pictogram.mulattoSkin',
-    description: 'Option for skin color',
-    defaultMessage: 'Mulatto'
-  },
-  aztecSkin: {
-    id: 'app.components.Pictogram.aztecSkin',
-    description: 'Option for skin color',
-    defaultMessage: 'Aztec'
-  },
   hairColor: {
     id: 'app.components.Pictogram.hairColor',
     description: 'Help text for color of the hair selector',
     defaultMessage: 'Choose hair color:'
   },
-  blondeHair: {
-    id: 'app.components.Pictogram.blondeHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Blonde'
-  },
-  brownHair: {
-    id: 'app.components.Pictogram.brownHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Brown'
-  },
-  darkBrownHair: {
-    id: 'app.components.Pictogram.darkBrownHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Dark brown'
-  },
-  grayHair: {
-    id: 'app.components.Pictogram.grayHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Gray'
-  },
-  darkGrayHair: {
-    id: 'app.components.Pictogram.darkGrayHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Dark Gray'
-  },
-  redHair: {
-    id: 'app.components.Pictogram.redHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Red'
-  },
-  blackHair: {
-    id: 'app.components.Pictogram.blackHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Black'
-  },
-
   frame: {
     id: 'app.components.Pictogram.frame',
     description: 'Toggle button to set a frame, none by default ',
@@ -275,5 +214,18 @@ export default defineMessages({
   downloadLabel: {
     id: 'app.components.Pictogram.downloadLabel',
     defaultMessage: 'Download'
+  },
+  pictogramOptions: {
+    id: 'app.components.Pictogram.areaTitle',
+    defaultMessage: 'Pictogram options'
+  },
+  textOptions: {
+    id: 'app.components.Pictogram.areaTitle',
+    defaultMessage: 'Text options'
+  },
+  advancedOptions: {
+    id: 'app.components.Pictogram.areaTitle',
+    defaultMessage: 'Advanced options'
   }
+
 })
