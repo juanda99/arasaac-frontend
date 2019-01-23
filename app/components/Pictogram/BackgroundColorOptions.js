@@ -2,10 +2,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
-import { CompactPicker } from 'react-color'
+import { CirclePicker } from 'react-color'
+import { white, yellow, orange, red, green, blue } from 'utils/colors'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
+
+const colors = [white, yellow, orange, red, green, green, blue]
 
 class BackgroundColorOptions extends Component {
   static propTypes = {
@@ -39,19 +42,12 @@ class BackgroundColorOptions extends Component {
           onClick={this.handleOptionsShow}
         />
         {showOptions ? (
-          <div
-            style={{
-              padding: '10px',
-              border: '1px dashed lightgrey',
-              width: '270px',
-              minHeight: '120px',
-              position: 'absolute'
-            }}
-          >
-            <CompactPicker
-              triangle='hide'
+          <div style={styles.optionBox}>
+            <CirclePicker
               color={color}
+              colors={colors}
               onChangeComplete={this.handleColorChange}
+              width={300}
             />
           </div>
         ) : (
