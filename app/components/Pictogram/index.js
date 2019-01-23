@@ -126,7 +126,7 @@ class Pictogram extends Component {
     this.setState({ windowWidth: document.body.clientWidth })
   }
 
-  needHideOptions = (e) => {
+  needHideOptions = (event) => {
     // add data-hide to elements where if click options should hide
     if (event.target.dataset.hide) this.hideOptions()
   }
@@ -394,8 +394,6 @@ class Pictogram extends Component {
     } = this.state
     const canvasSize =
       windowWidth < MAX_CANVAS_SIZE ? windowWidth : MAX_CANVAS_SIZE
-
-    console.log(`Prueba: ${this.state.topTextFontColor}`)
 
     const imgOffsetY = topText ? topTextFontSize : 0
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')

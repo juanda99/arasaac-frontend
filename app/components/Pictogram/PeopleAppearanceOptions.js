@@ -42,8 +42,7 @@ class PeopleAppearanceOptions extends Component {
     black: '#A65C17',
     assian: '#F4ECAD',
     mulatto: '#E3AB72',
-    aztec: '#CF9D7C',
-    schematic: '#FEFEFE'
+    aztec: '#CF9D7C'
   }
 
   hair = {

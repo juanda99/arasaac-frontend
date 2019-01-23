@@ -16,7 +16,7 @@ const styles = {
     width: '300px',
     minHeight: '120px',
     position: 'absolute',
-    backgroundColor: '#fafafa'
+    backgroundColor: '#f5f5f5'
   },
   optionsWrapper: {
     display: 'flex',

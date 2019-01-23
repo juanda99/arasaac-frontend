@@ -6,13 +6,15 @@ import { CirclePicker } from 'react-color'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import P from 'components/P'
-import { THIN, MEDIUM, THICK } from './constants'
+import Slider from 'material-ui/Slider'
+import { THIN, MEDIUM, THICK, EXTRA_THICK } from './constants'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
 
 
 const white = '#ffffff'
+const darkWhite = '#fafafa'
 const grey = '#9e9e9e'
 const black = '#000000'
 
@@ -41,7 +43,7 @@ const deepPurple = '#673ab7'
 const cyan = '#00bcd4'
 
 
-const colors = [white, yellow, lime, amber, lightBlue, grey, blueGrey, black, orange, deepOrange, red, pink, brown, lightGreen, green, cyan, teal, blue, purple, deepPurple]
+const colors = [white, yellow, orange, red, green, green, blue]
 
 
 class FrameOptions extends Component {
@@ -62,10 +64,11 @@ class FrameOptions extends Component {
 
   handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions)
 
-  handleFrameWidthChange = (event, index, frameWidth) =>
+  handleFrameWidthChange = (event, frameWidth) =>
     this.props.onChooseWidth(frameWidth)
 
-  handleColorChange = ({ hex }) => this.props.onChooseColor(hex)
+  // hack we use darkWhite circle color to see it with white body background
+  handleColorChange = ({ hex }) => hex === darkWhite ? this.props.onChooseColor(white) : this.props.onChooseColor(hex)
 
   render() {
     const { intl, color, active, showOptions, width } = this.props
@@ -91,24 +94,13 @@ class FrameOptions extends Component {
               width={300}
             />
             <P marginBottom='0px' >{formatMessage(messages.frameWidth)}</P>
-            <SelectField
+            <Slider
+              min={THIN}
+              max={EXTRA_THICK}
+              step={MEDIUM - THIN}
               value={width}
               onChange={this.handleFrameWidthChange}
-            >
-              <MenuItem value={null} primaryText='' />
-              <MenuItem
-                value={THIN}
-                primaryText={formatMessage(messages.thin)}
-              />
-              <MenuItem
-                value={MEDIUM}
-                primaryText={formatMessage(messages.medium)}
-              />
-              <MenuItem
-                value={THICK}
-                primaryText={formatMessage(messages.thick)}
-              />
-            </SelectField>
+            />
           </div>
         ) : (
           ''
