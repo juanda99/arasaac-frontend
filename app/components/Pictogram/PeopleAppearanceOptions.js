@@ -77,14 +77,14 @@ class PeopleAppearanceOptions extends Component {
               color={this.skin[skin]}
               colors={Object.values(this.skin)}
               onChangeComplete={this.handleSkinChange}
-              width={250}
+              width={300}
             />
             <P>{formatMessage(messages.hairColor)}</P>
             <CirclePicker
               color={this.hair[hair]}
               colors={Object.values(this.hair)}
               onChangeComplete={this.handleHairChange}
-              width={250}
+              width={300}
             />
           </div>
         ) : (

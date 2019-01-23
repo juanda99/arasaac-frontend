@@ -124,6 +124,11 @@ export default defineMessages({
     description: 'Help text for color of the hair selector',
     defaultMessage: 'Choose hair color:'
   },
+  chooseColor: {
+    id: 'app.components.Pictogram.chooseColor',
+    description: 'Help text for color of the background, font and frame selector',
+    defaultMessage: 'Choose color:'
+  },
   frame: {
     id: 'app.components.Pictogram.frame',
     description: 'Toggle button to set a frame, none by default ',
@@ -132,7 +137,7 @@ export default defineMessages({
   frameWidth: {
     id: 'app.components.Pictogram.frameWidth',
     description: 'Frame Width',
-    defaultMessage: 'Frame Width'
+    defaultMessage: 'Choose width:'
   },
   frameColor: {
     id: 'app.components.Pictogram.frameColor',

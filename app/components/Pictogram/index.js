@@ -105,6 +105,7 @@ class Pictogram extends Component {
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
+    document.body.addEventListener('click', this.needHideOptions)
   }
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -115,6 +116,7 @@ class Pictogram extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions)
+    document.body.removeEventListener('click', this.needHideOptions)
   }
 
   onTogglePicker = () =>
@@ -123,6 +125,12 @@ class Pictogram extends Component {
   updateWindowDimensions = () => {
     this.setState({ windowWidth: document.body.clientWidth })
   }
+
+  needHideOptions = (e) => {
+    // add data-hide to elements where if click options should hide
+    if (event.target.dataset.hide) this.hideOptions()
+  }
+
   hideOptions = () =>
     this.setState({
       bgColorOptionsShow: false,
@@ -526,13 +534,13 @@ class Pictogram extends Component {
               </div>
             </ConditionalPaper>
           </PictoWrapper>
-          <div style={styles.options}>
+          <div style={styles.options} data-hide={true}>
             <H3 primary={true}>
               {<FormattedMessage {...messages.modifyPicto} />}
             </H3>
             <Divider />
-            <P>{<FormattedMessage {...messages.pictogramOptions} />}</P>
-            <div style={styles.optionsWrapper}>
+            <P data-hide={true}>{<FormattedMessage {...messages.pictogramOptions} />}</P>
+            <div style={styles.optionsWrapper} data-hide={true}>
               <Toggle
                 label={<FormattedMessage {...messages.color} />}
                 labelPosition='right'
@@ -595,8 +603,8 @@ class Pictogram extends Component {
                 showOptions={peopleAppearanceOptionsShow}
               />
             </div>
-            <P>{<FormattedMessage {...messages.textOptions} />}</P>
-            <div style={styles.optionsWrapper}>
+            <P data-hide={true}>{<FormattedMessage {...messages.textOptions} />}</P>
+            <div style={styles.optionsWrapper} data-hide={true}>
               <TextOptions
                 textLabel={<FormattedMessage {...messages.topText} />}
                 keywords={topTextKeywords}
@@ -635,8 +643,8 @@ class Pictogram extends Component {
                 locale={locale}
               />
             </div>
-            <P>{<FormattedMessage {...messages.advancedOptions} />}</P>
-            <div style={styles.optionsWrapper}>
+            <P data-hide={true}>{<FormattedMessage {...messages.advancedOptions} />}</P>
+            <div style={styles.optionsWrapper} data-hide={true}>
               <ZoomOptions
                 zoomLevel={zoomLevel}
                 onZoomChange={this.handleZoomChange}
