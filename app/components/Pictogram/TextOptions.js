@@ -95,7 +95,7 @@ class TextOptions extends Component {
     const { keywords, editText } = this.state
     let marginBottom = 'auto'
     if (showOptions) {
-      marginBottom = editText ? '320px' : '410px'
+      marginBottom = editText ? '330px' : '410px'
     }
 
     return (
@@ -111,7 +111,7 @@ class TextOptions extends Component {
         {showOptions && editText && (
           <BoxOptions>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <P marginBottom='25px'>Change suggestions language:</P>
+              <P marginBottom='25px'>{<FormattedMessage {...messages.chooseSuggestionsLanguage} />}</P>
               <div style={{ position: 'relative', top: '-30px' }}>
                 <LanguageSelector
                   value={this.state.language}
@@ -120,7 +120,7 @@ class TextOptions extends Component {
                   showToolTip={false}
                 />
               </div>
-              <P marginTop='0px' marginBottom='0px'>Write text or select suggestion:</P>
+              <P marginTop='0px' marginBottom='0px'>{<FormattedMessage {...messages.writeText} />}</P>
 
               <AutoComplete
                 searchText={text}
@@ -130,16 +130,17 @@ class TextOptions extends Component {
                 filter={() => true}
                 openOnFocus={true}
               />
-
-              <Toggle
-                label={<FormattedMessage {...messages.upperCase} />}
-                labelPosition='right'
-                onToggle={this.handleUpperCase}
-                toggled={upperCase}
-                style={styles.toggle}
-              />
+              <div style={{ position: 'relative', left: '-13px' }}>
+                <Toggle
+                  label={<FormattedMessage {...messages.upperCase} />}
+                  labelPosition='right'
+                  onToggle={this.handleUpperCase}
+                  toggled={upperCase}
+                  style={styles.toggle}
+                />
+              </div>
               <RaisedButton
-                label='Text format'
+                label={<FormattedMessage {...messages.textFormat} />}
                 primary={true}
                 onClick={this.toggleVisibility}
                 style={{ marginTop: '20', width: '100%' }}
@@ -155,7 +156,7 @@ class TextOptions extends Component {
                 flexDirection: 'column'
               }}
             >
-              <P style={{ width: '100px' }}>Font Color:</P>
+              <P style={{ width: '100px' }}>{<FormattedMessage {...messages.fontColor} />}</P>
               <ColorPicker
                 color={fontColor}
                 colors={textColorSet}
@@ -165,7 +166,7 @@ class TextOptions extends Component {
               />
             </div>
             <div>
-              <P>Font Size: {fontSize}px</P>
+              <P>{<FormattedMessage {...messages.fontSize} />} {fontSize}px</P>
               <Slider
                 min={1}
                 max={100}
@@ -176,10 +177,7 @@ class TextOptions extends Component {
               />
             </div>
             <div style={{ marginTop: '-30px' }}>
-              <P>
-                Font family:
-              </P>
-
+              <P>{<FormattedMessage {...messages.fontFamily} />}</P>
               <FontPicker
                 apiKey='AIzaSyCLxWCWpaWqXdBFuqfsvnzxOUzJI0JFPOE'
                 activeFont={font}
@@ -188,7 +186,7 @@ class TextOptions extends Component {
               />
 
               <RaisedButton
-                label='Edit text'
+                label={<FormattedMessage {...messages.editText} />}
                 primary={true}
                 onClick={this.toggleVisibility}
                 style={{

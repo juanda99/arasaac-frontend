@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CirclePicker, ChromePicker } from 'react-color'
 import RaisedButton from 'material-ui/RaisedButton'
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
 
 class ColorPicker extends Component {
   static propTypes = {
@@ -32,7 +34,7 @@ class ColorPicker extends Component {
               />
             </div>
             <RaisedButton
-              label='Show less colors'
+              label={<FormattedMessage {...messages.showLessColors} />}
               primary={true}
               onClick={this.handleClick}
               style={{ marginTop: '20', width: '100%' }}
@@ -50,7 +52,7 @@ class ColorPicker extends Component {
             </div>
             { enableMoreColors && (
             <RaisedButton
-              label='Show more colors'
+              label={<FormattedMessage {...messages.showMoreColors} />}
               primary={true}
               onClick={this.handleClick}
               style={{ marginTop: '20', width: '100%' }}

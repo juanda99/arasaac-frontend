@@ -242,5 +242,51 @@ export default defineMessages({
     id: 'app.components.Pictogram.upperCase',
     description: 'Toggle button label',
     defaultMessage: 'Uppercase'
+  },
+  showLessColors: {
+    id: 'app.components.Pictogram.ColorPicker.showLessColors',
+    description: 'Button text',
+    defaultMessage: 'Show less colors'
+  },
+  showMoreColors: {
+    id: 'app.components.Pictogram.ColorPicker.showMoreColors',
+    description: 'Button text',
+    defaultMessage: 'Show more colors'
+  },
+  chooseSuggestionsLanguage: {
+    id: 'app.components.Pictogram.TextOptions.chooseSuggestionsLanguage',
+    description: 'Label text',
+    defaultMessage: 'Choose suggestions language:'
+  },
+  writeText: {
+    id: 'app.components.Pictogram.TextOptions.writeText',
+    description: 'Label text',
+    defaultMessage: 'Write text or select suggestion:'
+  },
+  textFormat: {
+    id: 'app.components.Pictogram.TextOptions.textFormat',
+    description: 'Button text',
+    defaultMessage: 'Text format'
+  },
+  editText: {
+    id: 'app.components.Pictogram.TextOptions.editText',
+    description: 'Button text',
+    defaultMessage: 'Edit text'
+  },
+  fontColor: {
+    id: 'app.components.Pictogram.TextOptions.fontColor',
+    description: 'Label text',
+    defaultMessage: 'Font color:'
+  },
+  fontSize: {
+    id: 'app.components.Pictogram.TextOptions.fontSize',
+    description: 'Label text',
+    defaultMessage: 'Font size:'
+  },
+  fontFamily: {
+    id: 'app.components.Pictogram.TextOptions.fontFamily',
+    description: 'Label text',
+    defaultMessage: 'Font family:'
   }
+
 })
