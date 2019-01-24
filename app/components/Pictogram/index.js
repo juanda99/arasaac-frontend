@@ -435,36 +435,45 @@ class Pictogram extends Component {
                   {keyword}
                 </H2>
               </div>
-              <Stage
-                width={canvasSize}
-                height={canvasSize}
-                ref={(node) => {
-                  this.stageRef = node
+              <div
+                style={{
+                  backgroundColor: '#FEFEFE',
+                  backgroundImage: 'linear-gradient(45deg, #CBCBCB 25%, transparent 25%, transparent 75%, #CBCBCB 75%, #CBCBCB), linear-gradient(45deg, #CBCBCB 25%, transparent 25%, transparent 75%, #CBCBCB 75%, #CBCBCB)',
+                  backgroundSize: '10px 10px',
+                  backgroundPosition: '0 0, 5px 5px',
+                  backgroundRepeat: 'repeat'
                 }}
               >
-                {bgColorActive && (
+                <Stage
+                  width={canvasSize}
+                  height={canvasSize}
+                  ref={(node) => {
+                    this.stageRef = node
+                  }}
+                >
+                  {bgColorActive && (
                   <BackgroundLayer color={backgroundColor} size={canvasSize} />
                 )}
-                {frameActive && (
+                  {frameActive && (
                   <FrameLayer
                     color={frameColor}
                     frameWidth={frameWidth}
                     size={canvasSize}
                   />
                 )}
-                <Img
-                  src={pictoFile}
-                  frameWidth={frameWidth}
-                  enableFrame={
+                  <Img
+                    src={pictoFile}
+                    frameWidth={frameWidth}
+                    enableFrame={
                     frameActive
                   } /* alt={'alt'} style={styles.picto} */
-                  zoomLevel={zoomLevel}
-                  canvasSize={canvasSize}
-                  dragAndDrop={dragAndDrop}
-                  topMargin={topTextActive ? 50 : 0}
-                  bottomMargin={bottomTextActive ? 50 : 0}
-                />
-                {topTextActive && (
+                    zoomLevel={zoomLevel}
+                    canvasSize={canvasSize}
+                    dragAndDrop={dragAndDrop}
+                    topMargin={topTextActive ? 50 : 0}
+                    bottomMargin={bottomTextActive ? 50 : 0}
+                  />
+                  {topTextActive && (
                   <TextLayer
                     font={topTextFont}
                     text={topText}
@@ -475,7 +484,7 @@ class Pictogram extends Component {
                     y={5}
                   />
                 )}
-                {bottomTextActive && (
+                  {bottomTextActive && (
                   <TextLayer
                     font={bottomTextFont}
                     text={bottomText}
@@ -486,14 +495,14 @@ class Pictogram extends Component {
                     y={canvasSize - bottomTextFontSize - 10}
                   />
                 )}
-                {plural && (
+                  {plural && (
                   <PluralLayer
                     frame={frameActive}
                     frameWidth={frameWidth}
                     canvasSize={canvasSize}
                   />
                 )}
-                {verbalTenseActive && (
+                  {verbalTenseActive && (
                   <VerbalTenseLayer
                     frame={frameActive}
                     frameWidth={frameWidth}
@@ -501,7 +510,8 @@ class Pictogram extends Component {
                     verbalTense={verbalTense}
                   />
                 )}
-              </Stage>
+                </Stage>
+              </div>
 
               <div
                 style={{
