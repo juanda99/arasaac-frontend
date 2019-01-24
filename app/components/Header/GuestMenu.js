@@ -10,6 +10,7 @@ import messages from './messages'
 
 
 const GuestMenu = (props) => {
+  console.log(props.muiTheme)
   if (props.hideIconText) {
     return (
       <Link to='/signin'>

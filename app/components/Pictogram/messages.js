@@ -58,11 +58,6 @@ export default defineMessages({
       'Toggle button to set a backgroundColor, by default transparent',
     defaultMessage: 'Background color'
   },
-  identifier: {
-    id: 'app.components.Pictogram.identifier',
-    description: 'Toggle button to set an identifier, none by default',
-    defaultMessage: 'Identifier'
-  },
   text: {
     id: 'app.components.Pictogram.text',
     description: 'Toggle button to set a text, none by default ',
@@ -89,20 +84,21 @@ export default defineMessages({
     description: 'Identifier option',
     defaultMessage: 'Health'
   },
-  office: {
-    id: 'app.components.Pictogram.office',
-    description: 'Identifier option',
-    defaultMessage: 'Office'
-  },
+
   library: {
     id: 'app.components.Pictogram.library',
     description: 'Identifier option',
     defaultMessage: 'Library'
   },
-  identifierPosition: {
-    id: 'app.components.Pictogram.identifierPosition',
-    description: 'Identifier position',
-    defaultMessage: 'Position'
+  choosePosition: {
+    id: 'app.components.Pictogram.choosePosition',
+    description: 'Help text for identifier position',
+    defaultMessage: 'Choose position:'
+  },
+  identifier: {
+    id: 'app.components.Pictogram.identifier',
+    description: 'Toggle label',
+    defaultMessage: 'identifier'
   },
   left: {
     id: 'app.components.Pictogram.left',
@@ -128,6 +124,16 @@ export default defineMessages({
     id: 'app.components.Pictogram.chooseColor',
     description: 'Help text for color of the background, font and frame selector',
     defaultMessage: 'Choose color:'
+  },
+  chooseZoom: {
+    id: 'app.components.Pictogram.chooseZoom',
+    description: 'Help text for zoom options',
+    defaultMessage: 'Choose zoom level:'
+  },
+  chooseIdentifier: {
+    id: 'app.components.Pictogram.chooseIdentifier',
+    description: 'Help text for identifier icon',
+    defaultMessage: 'Choose identifier:'
   },
   frame: {
     id: 'app.components.Pictogram.frame',

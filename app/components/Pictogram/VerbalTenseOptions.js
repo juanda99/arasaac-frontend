@@ -7,6 +7,7 @@ import { FUTURE, PAST, PRESENT } from './constants'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
+import BoxOptions from './BoxOptions'
 
 class VerbalTenseOptions extends Component {
   static propTypes = {
@@ -29,7 +30,7 @@ class VerbalTenseOptions extends Component {
   render() {
     const { intl, active, showOptions, verbalTense } = this.props
     const { formatMessage } = intl
-    const marginBottom = showOptions ? '200px' : 'auto'
+    const marginBottom = showOptions ? '160px' : 'auto'
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown
@@ -41,7 +42,7 @@ class VerbalTenseOptions extends Component {
           onClick={this.handleOptionsShow}
         />
         {showOptions ? (
-          <div style={styles.optionBox}>
+          <BoxOptions>
             <RadioButtonGroup
               name='verbalTense'
               // defaultSelected='present'
@@ -64,7 +65,7 @@ class VerbalTenseOptions extends Component {
                 style={styles.radioButton}
               />
             </RadioButtonGroup>
-          </div>
+          </BoxOptions>
         ) : (
           ''
         )}

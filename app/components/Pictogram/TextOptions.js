@@ -11,6 +11,7 @@ import P from 'components/P'
 import RaisedButton from 'material-ui/RaisedButton'
 import ToggleDropDown from './ToggleDropdown'
 import styles from './styles'
+import BoxOptions from './BoxOptions'
 
 
 class TextOptions extends Component {
@@ -94,7 +95,7 @@ class TextOptions extends Component {
           onClick={this.handleOptionsShow}
         />
         {showOptions && editText && (
-          <div style={styles.optionBox}>
+          <BoxOptions>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <P marginBottom='25px'>Change suggestions language:</P>
               <div style={{ position: 'relative', top: '-30px' }}>
@@ -123,18 +124,10 @@ class TextOptions extends Component {
                 style={{ marginTop: '20', width: '100%' }}
               />
             </div>
-          </div>
+          </BoxOptions>
         )}
         {showOptions && !editText && (
-          <div
-            style={{
-              padding: '10px',
-              border: '1px dashed lightgrey',
-              width: '270px',
-              minHeight: '120px',
-              position: 'absolute'
-            }}
-          >
+          <BoxOptions>
             <div
               style={{
                 display: 'flex',
@@ -182,7 +175,7 @@ class TextOptions extends Component {
                 }}
               />
             </div>
-          </div>
+          </BoxOptions>
         )}
       </div>
     )

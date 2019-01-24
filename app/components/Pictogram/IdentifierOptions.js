@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
+import P from 'components/P'
+import BoxOptions from './BoxOptions'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
@@ -41,7 +43,7 @@ class IdentifierOptions extends Component {
       identifierPosition
     } = this.props
     const { formatMessage } = intl
-    const marginBottom = showOptions ? '200px' : 'auto'
+    const marginBottom = showOptions ? '240px' : 'auto'
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown
@@ -53,14 +55,13 @@ class IdentifierOptions extends Component {
           onClick={this.handleOptionsShow}
         />
         {showOptions ? (
-          <div style={styles.optionBox}>
+          <BoxOptions>
+            <P marginBottom='0px'>{formatMessage(messages.chooseIdentifier)}</P>
             <SelectField
               style={{ marginRight: '40px' }}
-              floatingLabelText={formatMessage(messages.identifier)}
               value={identifier}
               onChange={this.handleIdentifierChange}
             >
-              <MenuItem value={null} primaryText='' />
               <MenuItem
                 value='classroom'
                 primaryText={formatMessage(messages.classroom)}
@@ -73,14 +74,10 @@ class IdentifierOptions extends Component {
                 value='library'
                 primaryText={formatMessage(messages.library)}
               />
-              <MenuItem
-                value='office'
-                primaryText={formatMessage(messages.office)}
-              />
             </SelectField>
+            <P marginBottom='0px'>{formatMessage(messages.choosePosition)}</P>
             <SelectField
               style={{ marginRight: '40px' }}
-              floatingLabelText={formatMessage(messages.identifierPosition)}
               value={identifierPosition}
               onChange={this.handleIdentifierPositionChange}
             >
@@ -94,7 +91,7 @@ class IdentifierOptions extends Component {
                 primaryText={formatMessage(messages.right)}
               />
             </SelectField>
-          </div>
+          </BoxOptions>
         ) : (
           ''
         )}

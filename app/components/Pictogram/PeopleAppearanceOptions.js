@@ -2,12 +2,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
-import { CirclePicker } from 'react-color'
 import { getKeyByValue } from 'utils'
 import P from 'components/P'
+import ColorPicker from './ColorPicker'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
+import BoxOptions from './BoxOptions'
 
 class PeopleAppearanceOptions extends Component {
   static propTypes = {
@@ -70,22 +71,23 @@ class PeopleAppearanceOptions extends Component {
           onClick={this.handleOptionsShow}
         />
         {showOptions ? (
-          <div style={styles.optionBox}>
+          <BoxOptions>
             <P>{formatMessage(messages.skinColor)}</P>
-            <CirclePicker
+            <ColorPicker
               color={this.skin[skin]}
               colors={Object.values(this.skin)}
-              onChangeComplete={this.handleSkinChange}
-              width={300}
+              onChooseColor={this.handleSkinChange}
+              enableMoreColors={false}
             />
             <P>{formatMessage(messages.hairColor)}</P>
-            <CirclePicker
+            <ColorPicker
               color={this.hair[hair]}
               colors={Object.values(this.hair)}
-              onChangeComplete={this.handleHairChange}
-              width={300}
+              onChooseColor={this.handleHairChange}
+              enableMoreColors={false}
+              width={310}
             />
-          </div>
+          </BoxOptions>
         ) : (
           ''
         )}

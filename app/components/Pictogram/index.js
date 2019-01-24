@@ -49,8 +49,6 @@ class Pictogram extends Component {
       .map((keyword) => keyword.get('keyword'))
       .toArray()
 
-    console.log(keywordsArray)
-
     this.state = {
       language: this.props.locale,
       plural: false,
@@ -64,8 +62,8 @@ class Pictogram extends Component {
       frameOptionsShow: false,
       identifierActive: false,
       identifierOptionsShow: false,
-      identifier: '',
-      identifierPosition: '',
+      identifier: 'classroom',
+      identifierPosition: 'right',
       text: false,
       peopleAppearanceActive: false,
       peopleAppearanceOptionsShow: false,
