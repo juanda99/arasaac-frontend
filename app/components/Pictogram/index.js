@@ -38,6 +38,7 @@ import TextOptions from './TextOptions'
 import ZoomOptions from './ZoomOptions'
 import PictoWrapper from './PictoWrapper'
 import Canvas from './Canvas'
+import PictogramTitle from './PictogramTitle'
 
 class Pictogram extends Component {
   constructor(props) {
@@ -424,18 +425,12 @@ class Pictogram extends Component {
         <div style={styles.wrapper}>
           <PictoWrapper>
             <ConditionalPaper>
-              <div
-                style={{
-                  backgroundColor: muiTheme.palette.accent2Color,
-                  display: 'flex',
-                  alignItems: 'center'
-                }}
-              >
+              <PictogramTitle>
                 {soundPlayer}
                 <H2 center={true} primary ucase noMargin>
                   {keyword}
                 </H2>
-              </div>
+              </PictogramTitle>
               <Canvas>
                 <Stage
                   width={canvasSize}
@@ -505,15 +500,7 @@ class Pictogram extends Component {
                 )}
                 </Stage>
               </Canvas>
-              <div
-                style={{
-                  display: 'flex',
-                  textAlign: 'center',
-                  justifyContent: 'center',
-                  flexWrap: 'wrap',
-                  backgroundColor: muiTheme.palette.accent2Color
-                }}
-              >
+              <PictogramTitle>
                 <RaisedButton
                   label={<FormattedMessage {...messages.addFavoriteLabel} />}
                   secondary={true}
@@ -529,7 +516,7 @@ class Pictogram extends Component {
                   icon={<DownloadIcon />}
                 />
                 {/* </a>*/}
-              </div>
+              </PictogramTitle>
             </ConditionalPaper>
           </PictoWrapper>
           <div style={styles.options} data-hide={true}>
