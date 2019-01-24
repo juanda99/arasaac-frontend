@@ -227,15 +227,15 @@ export default defineMessages({
     defaultMessage: 'Download'
   },
   pictogramOptions: {
-    id: 'app.components.Pictogram.areaTitle',
+    id: 'app.components.Pictogram.pictogramOptions',
     defaultMessage: 'Pictogram options'
   },
   textOptions: {
-    id: 'app.components.Pictogram.areaTitle',
+    id: 'app.components.Pictogram.textOptions',
     defaultMessage: 'Text options'
   },
   advancedOptions: {
-    id: 'app.components.Pictogram.areaTitle',
+    id: 'app.components.Pictogram.advancedOptions',
     defaultMessage: 'Advanced options'
   },
   upperCase: {
