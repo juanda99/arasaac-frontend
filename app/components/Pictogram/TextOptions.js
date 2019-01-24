@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import FontPicker from 'font-picker-react'
 import Slider from 'material-ui/Slider'
 import AutoComplete from 'material-ui/AutoComplete'
+import Toggle from 'material-ui/Toggle'
+import { FormattedMessage } from 'react-intl'
 import api from 'services'
 import LanguageSelector from 'components/LanguageSelector'
 import P from 'components/P'
@@ -13,7 +15,9 @@ import ColorPicker from './ColorPicker'
 import ToggleDropDown from './ToggleDropdown'
 import styles from './styles'
 import BoxOptions from './BoxOptions'
+import messages from './messages'
 
+const auxText = ''
 
 class TextOptions extends Component {
   static propTypes = {
@@ -32,7 +36,9 @@ class TextOptions extends Component {
     active: PropTypes.bool.isRequired,
     showOptions: PropTypes.bool.isRequired,
     onOptionsShow: PropTypes.func.isRequired,
-    idPictogram: PropTypes.number.isRequired
+    idPictogram: PropTypes.number.isRequired,
+    upperCase: PropTypes.bool.isRequired,
+    onUpperCase: PropTypes.func.isRequired
   }
 
   state = {
@@ -45,10 +51,15 @@ class TextOptions extends Component {
     this.props.onFontChange(nextFont.family)
   }
 
-  handleUpdateInput = (searchText) => {
-    this.props.onTextChange(searchText)
-  }
+  handleUpdateInput = (searchText) =>
+    this.props.upperCase
+      ? this.props.onTextChange(searchText.toUpperCase())
+      : this.props.onTextChange(searchText)
 
+  handleUpperCase = (event, uppercase) => {
+    this.props.onUpperCase(uppercase)
+    if (uppercase) this.props.onTextChange(this.props.text.toUpperCase())
+  }
   handleFontSizeChange = (event, value) => {
     this.props.onFontSizeChange(value)
   }
@@ -77,8 +88,10 @@ class TextOptions extends Component {
       font,
       showOptions,
       active,
-      textLabel
+      textLabel,
+      upperCase
     } = this.props
+
     const { keywords, editText } = this.state
     let marginBottom = 'auto'
     if (showOptions) {
@@ -110,13 +123,20 @@ class TextOptions extends Component {
               <P marginTop='0px' marginBottom='0px'>Write text or select suggestion:</P>
 
               <AutoComplete
-                hintText="Type 'r', case insensitive"
                 searchText={text}
                 onUpdateInput={this.handleUpdateInput}
                 onNewRequest={this.handleNewRequest}
                 dataSource={keywords}
                 filter={() => true}
                 openOnFocus={true}
+              />
+
+              <Toggle
+                label={<FormattedMessage {...messages.upperCase} />}
+                labelPosition='right'
+                onToggle={this.handleUpperCase}
+                toggled={upperCase}
+                style={styles.toggle}
               />
               <RaisedButton
                 label='Text format'

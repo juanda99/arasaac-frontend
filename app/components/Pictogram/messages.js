@@ -237,6 +237,10 @@ export default defineMessages({
   advancedOptions: {
     id: 'app.components.Pictogram.areaTitle',
     defaultMessage: 'Advanced options'
+  },
+  upperCase: {
+    id: 'app.components.Pictogram.upperCase',
+    description: 'Toggle button label',
+    defaultMessage: 'Uppercase'
   }
-
 })

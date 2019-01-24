@@ -81,7 +81,6 @@ export default class VerbalTenseLayer extends Component {
 
   render() {
     const { verbalTense } = this.props
-    console.log(verbalTense)
     return (
       <Layer>
         { verbalTense === FUTURE && this.getFutureCode() }

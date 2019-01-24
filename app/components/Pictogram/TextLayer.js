@@ -56,7 +56,7 @@ class TextLayer extends Component {
       dragAndDrop,
       canvasSize
     } = this.props
-    const { x, y, width, height } = this.state
+    const { x, y, width } = this.state
     return (
       <Layer>
         <Text

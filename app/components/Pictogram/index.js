@@ -9,7 +9,6 @@ import Divider from 'material-ui/Divider'
 import FlatButton from 'material-ui/FlatButton'
 import Person from 'material-ui/svg-icons/social/person'
 import RaisedButton from 'material-ui/RaisedButton'
-import muiThemeable from 'material-ui/styles/muiThemeable'
 import { PICTOGRAMS_URL, LOCUTIONS_URL, API_ROOT } from 'services/config'
 import { FormattedMessage } from 'react-intl'
 import SoundPlayer from 'components/SoundPlayer'
@@ -87,6 +86,7 @@ class Pictogram extends Component {
       topTextFont: 'Roboto',
       topTextFontSize: 50,
       topTextFontColor: 'black',
+      topTextUpperCase: false,
       bottomTextActive: false,
       bottomTextOptionsShow: false,
       bottomText: keyword,
@@ -94,6 +94,7 @@ class Pictogram extends Component {
       bottomTextFont: 'Roboto',
       bottomTextFontSize: 50,
       bottomTextFontColor: 'black',
+      bottomTextUpperCase: false,
       zoomLevel: 0,
       zoomActive: false,
       zoomOptionsShow: false,
@@ -309,6 +310,8 @@ class Pictogram extends Component {
     this.setState({ topTextOptionsShow })
   }
 
+  handleTopTextUpperCase = (uppercase) => this.setState({ topTextUpperCase: uppercase })
+
   handleBottomTextActive = (bottomTextActive) => {
     this.hideOptions()
     this.setState({ bottomTextActive, bottomTextOptionsShow: bottomTextActive })
@@ -329,6 +332,7 @@ class Pictogram extends Component {
     this.hideOptions()
     this.setState({ bottomTextOptionsShow })
   }
+  handleBottomTextUpperCase = (uppercase) => this.setState({ bottomTextUpperCase: uppercase })
 
   handleOpenMenu = () => {
     const { pictogram } = this.props
@@ -350,7 +354,7 @@ class Pictogram extends Component {
   }
 
   render() {
-    const { pictogram, searchText, muiTheme, locale } = this.props
+    const { pictogram, searchText, locale } = this.props
     const {
       backgroundColor,
       bgColorActive,
@@ -379,6 +383,7 @@ class Pictogram extends Component {
       topTextFont,
       topTextFontSize,
       topTextFontColor,
+      topTextUpperCase,
       bottomTextActive,
       bottomTextKeywords,
       bottomTextOptionsShow,
@@ -386,12 +391,14 @@ class Pictogram extends Component {
       bottomTextFont,
       bottomTextFontSize,
       bottomTextFontColor,
+      bottomTextUpperCase,
       zoomLevel,
       zoomActive,
       zoomOptionsShow,
       windowWidth,
       dragAndDrop
     } = this.state
+
     const canvasSize =
       windowWidth < MAX_CANVAS_SIZE ? windowWidth : MAX_CANVAS_SIZE
 
@@ -608,6 +615,8 @@ class Pictogram extends Component {
                 showOptions={topTextOptionsShow}
                 idPictogram={idPictogram}
                 locale={locale}
+                upperCase={topTextUpperCase}
+                onUpperCase={this.handleTopTextUpperCase}
               />
               <TextOptions
                 textLabel={<FormattedMessage {...messages.bottomText} />}
@@ -626,6 +635,8 @@ class Pictogram extends Component {
                 showOptions={bottomTextOptionsShow}
                 idPictogram={idPictogram}
                 locale={locale}
+                upperCase={bottomTextUpperCase}
+                onUpperCase={this.handleBottomTextUpperCase}
               />
             </div>
             <P data-hide={true}>{<FormattedMessage {...messages.advancedOptions} />}</P>
@@ -695,9 +706,8 @@ Pictogram.propTypes = {
   pictogram: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
   searchText: PropTypes.string.isRequired,
-  muiTheme: PropTypes.object.isRequired,
   onDownload: PropTypes.func.isRequired,
   onLanguageChange: PropTypes.func.isRequired
 }
 
-export default muiThemeable()(Pictogram)
+export default Pictogram
