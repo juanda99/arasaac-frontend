@@ -18,3 +18,6 @@ export const lightBlue = '#03a9f4'
 export const purple = '#9c27b0'
 export const deepPurple = '#673ab7'
 export const cyan = '#00bcd4'
+
+export const colorSet = [white, yellow, orange, pink, green, blue]
+export const textColorSet = [white, grey, blueGrey, black, lightGreen, green, teal, yellow, orange, pink, red, brown, blue, purple]

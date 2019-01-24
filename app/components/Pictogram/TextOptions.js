@@ -1,7 +1,6 @@
 /* eslint no-mixed-operators: 0 */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CompactPicker } from 'react-color'
 import FontPicker from 'font-picker-react'
 import Slider from 'material-ui/Slider'
 import AutoComplete from 'material-ui/AutoComplete'
@@ -9,6 +8,8 @@ import api from 'services'
 import LanguageSelector from 'components/LanguageSelector'
 import P from 'components/P'
 import RaisedButton from 'material-ui/RaisedButton'
+import { textColorSet } from 'utils/colors'
+import ColorPicker from './ColorPicker'
 import ToggleDropDown from './ToggleDropdown'
 import styles from './styles'
 import BoxOptions from './BoxOptions'
@@ -52,7 +53,7 @@ class TextOptions extends Component {
     this.props.onFontSizeChange(value)
   }
 
-  handleFontColorChange = ({ hex }) => this.props.onFontColorChange(hex)
+  handleFontColorChange = (color) => this.props.onFontColorChange(color)
 
   handleActive = (active) => this.props.onActive(active)
 
@@ -135,10 +136,12 @@ class TextOptions extends Component {
               }}
             >
               <P style={{ width: '100px' }}>Font Color:</P>
-              <CompactPicker
-                triangle='hide'
+              <ColorPicker
                 color={fontColor}
-                onChangeComplete={this.handleFontColorChange}
+                colors={textColorSet}
+                onChooseColor={this.handleFontColorChange}
+                enableMoreColors={false}
+                width={310}
               />
             </div>
             <div>

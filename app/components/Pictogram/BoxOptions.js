@@ -1,6 +1,5 @@
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import styled from 'styled-components'
-import { darkWhite } from 'material-ui/styles/colors'
 
 const BoxOptions = styled.div`
 padding: 10px;

@@ -3,14 +3,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import P from 'components/P'
-import { white, yellow, orange, pink, green, blue } from 'utils/colors'
+import { colorSet } from 'utils/colors'
 import ColorPicker from './ColorPicker'
 import BoxOptions from './BoxOptions'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
 
-const colors = [white, yellow, orange, pink, green, green, blue]
 
 class BackgroundColorOptions extends Component {
   static propTypes = {
@@ -59,7 +58,7 @@ class BackgroundColorOptions extends Component {
             <P>{formatMessage(messages.chooseColor)}</P>
             <ColorPicker
               color={color}
-              colors={colors}
+              colors={colorSet}
               onChooseColor={this.handleColorChange}
               showMoreColors={showMoreColors}
               onShowMoreColors={this.handleShowMoreColors}

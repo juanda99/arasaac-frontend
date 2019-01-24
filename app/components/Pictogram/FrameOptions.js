@@ -4,15 +4,13 @@ import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import P from 'components/P'
 import Slider from 'material-ui/Slider'
-import { white, yellow, orange, red, green, blue } from 'utils/colors'
+import { colorSet } from 'utils/colors'
 import BoxOptions from './BoxOptions'
 import ColorPicker from './ColorPicker'
 import { THIN, MEDIUM, EXTRA_THICK } from './constants'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
-
-const colors = [white, yellow, orange, red, green, blue]
 
 class FrameOptions extends Component {
   static propTypes = {
@@ -77,7 +75,7 @@ class FrameOptions extends Component {
             <P>{formatMessage(messages.chooseColor)}</P>
             <ColorPicker
               color={color}
-              colors={colors}
+              colors={colorSet}
               onChooseColor={this.handleColorChange}
               showMoreColors={showMoreColors}
               onShowMoreColors={this.handleShowMoreColors}
