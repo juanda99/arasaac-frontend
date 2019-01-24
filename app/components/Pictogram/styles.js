@@ -10,14 +10,6 @@ const styles = {
     height: 'auto',
     backgroundColor: 'white'
   },
-  optionBox: {
-    padding: '10px',
-    border: '1px dashed lightgrey',
-    width: '300px',
-    minHeight: '120px',
-    position: 'absolute',
-    backgroundColor: '#f5f5f5'
-  },
   optionsWrapper: {
     display: 'flex',
     width: '100%',

@@ -7,12 +7,13 @@ import ReactTooltip from 'react-tooltip'
 import P from 'components/P'
 import Slider from 'material-ui/Slider'
 import { white, yellow, orange, red, green, blue } from 'utils/colors'
+import BoxOptions from './BoxOptions'
 import { THIN, MEDIUM, EXTRA_THICK } from './constants'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
 
-const colors = [white, yellow, orange, red, green, green, blue]
+const colors = [white, yellow, orange, red, green, blue]
 
 
 class FrameOptions extends Component {
@@ -55,7 +56,7 @@ class FrameOptions extends Component {
           onClick={this.handleOptionsShow}
         />
         {showOptions ? (
-          <div style={styles.optionBox}>
+          <BoxOptions>
             <P>{formatMessage(messages.chooseColor)}</P>
             <CirclePicker
               color={color}
@@ -72,7 +73,7 @@ class FrameOptions extends Component {
               data-tip='hello world'
               onChange={this.handleFrameWidthChange}
             />
-          </div>
+          </BoxOptions>
         ) : (
           ''
         )}
