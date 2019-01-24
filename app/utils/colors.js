@@ -8,7 +8,7 @@ export const blueGrey = '#607d8b'
 export const amber = '#ffc107'
 export const deepOrange = '#ff5722'
 export const red = '#f44336'
-export const pink = '#FFC0CB'
+export const pink = '#FDA1FF'
 export const brown = '#795548'
 export const lime = '#cddc39'
 export const lightGreen = '#8bc34a'
@@ -19,5 +19,5 @@ export const purple = '#9c27b0'
 export const deepPurple = '#673ab7'
 export const cyan = '#00bcd4'
 
-export const colorSet = [white, yellow, orange, pink, green, blue]
+export const colorSet = [yellow, orange, green, blue, pink, white]
 export const textColorSet = [white, grey, blueGrey, black, lightGreen, green, teal, yellow, orange, pink, red, brown, blue, purple]

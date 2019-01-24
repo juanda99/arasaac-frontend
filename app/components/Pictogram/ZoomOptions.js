@@ -44,7 +44,7 @@ class ZoomOptions extends Component {
         />
         {showOptions ? (
           <BoxOptions>
-            <P>{formatMessage(messages.chooseZoom)}</P>
+            <P>{formatMessage(messages.chooseZoom)} {zoomLevel}%</P>
             <Slider
               min={-400}
               max={+800}

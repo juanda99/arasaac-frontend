@@ -145,7 +145,7 @@ class TextOptions extends Component {
               />
             </div>
             <div>
-              <P style={{ width: '100px' }}>Font Size:</P>
+              <P>Font Size: {fontSize}px</P>
               <Slider
                 min={1}
                 max={100}

@@ -37,6 +37,7 @@ import IdentifierOptions from './IdentifierOptions'
 import TextOptions from './TextOptions'
 import ZoomOptions from './ZoomOptions'
 import PictoWrapper from './PictoWrapper'
+import Canvas from './Canvas'
 
 class Pictogram extends Component {
   constructor(props) {
@@ -435,15 +436,7 @@ class Pictogram extends Component {
                   {keyword}
                 </H2>
               </div>
-              <div
-                style={{
-                  backgroundColor: '#FEFEFE',
-                  backgroundImage: 'linear-gradient(45deg, #CBCBCB 25%, transparent 25%, transparent 75%, #CBCBCB 75%, #CBCBCB), linear-gradient(45deg, #CBCBCB 25%, transparent 25%, transparent 75%, #CBCBCB 75%, #CBCBCB)',
-                  backgroundSize: '10px 10px',
-                  backgroundPosition: '0 0, 5px 5px',
-                  backgroundRepeat: 'repeat'
-                }}
-              >
+              <Canvas>
                 <Stage
                   width={canvasSize}
                   height={canvasSize}
@@ -511,8 +504,7 @@ class Pictogram extends Component {
                   />
                 )}
                 </Stage>
-              </div>
-
+              </Canvas>
               <div
                 style={{
                   display: 'flex',
