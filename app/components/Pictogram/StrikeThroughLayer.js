@@ -16,7 +16,7 @@ export default class STrikeThroughLayer extends Component {
   }
 
   render() {
-    const strokeWidth = 16
+    const strokeWidth = 28
     const { canvasSize } = this.props
     const { x, y, color } = this.state
     return (
