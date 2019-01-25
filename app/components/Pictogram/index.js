@@ -18,6 +18,7 @@ import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import { Stage } from 'react-konva'
 import P from 'components/P'
+import { colorSet } from 'utils/colors'
 import PluralLayer from './PluralLayer'
 import StrikeThroughLayer from './StrikeThroughLayer'
 import VerbalTenseLayer from './VerbalTenseLayer'
@@ -45,22 +46,22 @@ class Pictogram extends Component {
     super(props)
     const { pictogram, searchText } = this.props
     const keywords = pictogram.get('keywords')
-    const { keyword } = keywordSelector(searchText, keywords.toJS())
+    const { keyword, type } = keywordSelector(searchText, keywords.toJS())
     const keywordsArray = keywords
       .valueSeq()
       .map((keyword) => keyword.get('keyword'))
       .toArray()
-
+    const defaultColor = (type >= 0 && type < 7) ? colorSet[type - 1] : ''
     this.state = {
       language: this.props.locale,
       plural: false,
       color: true,
-      backgroundColor: '',
+      backgroundColor: defaultColor,
       bgColorActive: false,
       bgColorOptionsShow: false,
       strikeThrough: false,
       frameWidth: MEDIUM,
-      frameColor: '',
+      frameColor: defaultColor,
       frameActive: false,
       frameOptionsShow: false,
       identifierActive: false,
@@ -410,15 +411,11 @@ class Pictogram extends Component {
     const canvasSize =
       windowWidth < MAX_CANVAS_SIZE ? windowWidth : MAX_CANVAS_SIZE
 
-    const imgOffsetY = topText ? topTextFontSize : 0
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
     // first time downloadUrl is default png
-    const downloadUrl =
-      this.state.downloadUrl ||
-      `${API_ROOT}/pictograms/${idPictogram}?&url=false&download=true`
-    const { keyword, idLocution } = keywordSelector(searchText, keywords.toJS())
+    const { keyword, idLocution, type } = keywordSelector(searchText, keywords.toJS())
     const authors = pictogram.get('authors')
     let soundPlayer = ''
     if (idLocution) {
