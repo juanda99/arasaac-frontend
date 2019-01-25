@@ -157,7 +157,7 @@
   "app.components.NotFoundPage.header": "Componente no encontrado!",
   "app.components.Pictogram.ColorPicker.showLessColors": "Mostrar menos colores",
   "app.components.Pictogram.ColorPicker.showMoreColors": "Mostrar más colores",
-  "app.components.Pictogram.DragAndDrop": "Mover\/Fijar pictograma",
+  "app.components.Pictogram.DragAndDrop": "Mover pictograma",
   "app.components.Pictogram.TextOptions.chooseSuggestionsLanguage": "Selecciona idioma para sugerencias:",
   "app.components.Pictogram.TextOptions.editText": "Editar texto",
   "app.components.Pictogram.TextOptions.enterText": "Introduce texto",
