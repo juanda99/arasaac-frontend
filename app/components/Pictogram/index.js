@@ -455,6 +455,7 @@ class Pictogram extends Component {
                   {bgColorActive && (
                   <BackgroundLayer color={backgroundColor} size={canvasSize} />
                 )}
+
                   <Img
                     src={pictoFile}
                     frameWidth={frameWidth}
@@ -467,6 +468,15 @@ class Pictogram extends Component {
                     topMargin={topTextActive ? 50 : 0}
                     bottomMargin={bottomTextActive ? 50 : 0}
                   />
+
+                  {frameActive && (
+                  <FrameLayer
+                    color={frameColor}
+                    frameWidth={frameWidth}
+                    size={canvasSize}
+                  />
+                )}
+
                   {topTextActive && (
                   <TextLayer
                     font={topTextFont}
@@ -512,13 +522,7 @@ class Pictogram extends Component {
                     canvasSize={canvasSize}
                   />
                 )}
-                  {frameActive && (
-                  <FrameLayer
-                    color={frameColor}
-                    frameWidth={frameWidth}
-                    size={canvasSize}
-                  />
-                )}
+
                 </Stage>
               </Canvas>
               <PictogramTitle>

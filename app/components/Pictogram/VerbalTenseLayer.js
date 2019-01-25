@@ -17,24 +17,10 @@ export default class VerbalTenseLayer extends Component {
     color: 'black'
   }
 
-  getX = (frame, frameWidth, canvasSize, verbalTense) => {
-    if (verbalTense === FUTURE) {
-      return frame
-        ? canvasSize - ICON_SIZE - frameWidth / 2
-        : canvasSize - ICON_SIZE
-    } else if (verbalTense === PAST) {
-      return frame
-        ? frameWidth / 2
-        : 0
-    } else {
-      return 0
-    }
-  }
-
   getPastCode = () => {
     const { frame, frameWidth } = this.props
     const x = frame ? frameWidth / 2 : 0
-    const y = 0
+    const y = frame ? frameWidth / 2 : 0
     const strokeWidth = 16
     return (
       <Group>
@@ -58,7 +44,7 @@ export default class VerbalTenseLayer extends Component {
   getFutureCode = () => {
     const { frame, frameWidth, canvasSize } = this.props
     const x = frame ? canvasSize - ICON_SIZE - frameWidth / 2 : canvasSize - ICON_SIZE
-    const y = 0
+    const y = frame ? frameWidth / 2 : 0
     const strokeWidth = 16
     return (
       <Group>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Rect, Layer } from 'react-konva'
+import { Line, Layer, Group } from 'react-konva'
 import Konva from 'konva'
 
 class FrameLayer extends Component {
@@ -18,16 +18,62 @@ class FrameLayer extends Component {
     const width = frameWidth ? size : 0
     return (
       <Layer>
-        <Rect
-          width={width}
-          height={width}
-          stroke={color}
-          strokeWidth={frameWidth}
-        />
+        { frameWidth ? (
+          <Group>
+            <Line
+              stroke={color}
+              strokeWidth={frameWidth}
+              points={[0, 0, size, 0]}
+            />
+            <Line
+              stroke={color}
+              strokeWidth={frameWidth}
+              points={[size, 0, size, size]}
+            />
+            <Line
+              stroke={color}
+              strokeWidth={frameWidth}
+              points={[size, size, 0, size]}
+            />
+            <Line
+              stroke={color}
+              strokeWidth={frameWidth}
+              points={[0, size, 0, 0]}
+            />
+          </Group>
+          ) :
+          ''
+        }
+
       </Layer>
     )
   }
 }
+
+/*
+      <Layer>
+        <Line
+          stroke={color}
+          strokeWidth={frameWidth}
+          points={[0, 0, size, 0]}
+        />
+        <Line
+          stroke={color}
+          strokeWidth={frameWidth}
+          points={[size, 0, size, size]}
+        />
+        <Line
+          stroke={color}
+          strokeWidth={frameWidth}
+          points={[size, size, 0, size]}
+        />
+        <Line
+          stroke={color}
+          strokeWidth={frameWidth}
+          points={[0, size, 0, 0]}
+        />
+      </Layer>
+*/
 
 FrameLayer.propTypes = {
   // onClick: PropTypes.func.isRequired,
