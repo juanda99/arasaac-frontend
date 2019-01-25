@@ -25,11 +25,13 @@ export default class STrikeThroughLayer extends Component {
           stroke={color}
           strokeWidth={strokeWidth}
           points={[x, y, x + canvasSize, y + canvasSize]}
+          opacity='0.8'
         />
         <Line
           stroke={color}
           strokeWidth={strokeWidth}
           points={[x + canvasSize, y, x, y + canvasSize]}
+          opacity='0.8'
         />
       </Layer>
     )
