@@ -57,6 +57,8 @@ class TextLayer extends Component {
       canvasSize
     } = this.props
     const { x, y, width } = this.state
+    console.log(y)
+    console.log(this.props.y)
     return (
       <Layer>
         <Text

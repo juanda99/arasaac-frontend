@@ -415,7 +415,7 @@ class Pictogram extends Component {
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
     // first time downloadUrl is default png
-    const { keyword, idLocution, type } = keywordSelector(searchText, keywords.toJS())
+    const { keyword, idLocution } = keywordSelector(searchText, keywords.toJS())
     const authors = pictogram.get('authors')
     let soundPlayer = ''
     if (idLocution) {
@@ -469,14 +469,6 @@ class Pictogram extends Component {
                     bottomMargin={bottomTextActive ? 50 : 0}
                   />
 
-                  {frameActive && (
-                  <FrameLayer
-                    color={frameColor}
-                    frameWidth={frameWidth}
-                    size={canvasSize}
-                  />
-                )}
-
                   {topTextActive && (
                   <TextLayer
                     font={topTextFont}
@@ -485,7 +477,7 @@ class Pictogram extends Component {
                     fontColor={topTextFontColor}
                     dragAndDrop={dragAndDrop}
                     canvasSize={canvasSize}
-                    y={5}
+                    y={frameWidth / 2}
                   />
                 )}
                   {bottomTextActive && (
@@ -496,7 +488,7 @@ class Pictogram extends Component {
                     fontColor={bottomTextFontColor}
                     dragAndDrop={dragAndDrop}
                     canvasSize={canvasSize}
-                    y={canvasSize - bottomTextFontSize - 10}
+                    y={canvasSize - bottomTextFontSize - 10 - frameWidth}
                   />
                 )}
                   {plural && (
@@ -520,6 +512,14 @@ class Pictogram extends Component {
                     frame={frameActive}
                     frameWidth={frameWidth}
                     canvasSize={canvasSize}
+                  />
+                )}
+
+                  {frameActive && (
+                  <FrameLayer
+                    color={frameColor}
+                    frameWidth={frameWidth}
+                    size={canvasSize}
                   />
                 )}
 
