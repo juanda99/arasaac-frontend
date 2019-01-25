@@ -1,9 +1,8 @@
 /**
-*
-* LanguageSelector
-*
-*/
-
+ *
+ * LanguageSelector
+ *
+ */
 
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -17,26 +16,124 @@ const LanguageSelector = (props) => {
   const handleChange = (event, index, value) => {
     props.onChange(value)
   }
+
+  const showOriginal = (original) => (props.shortOption ? '' : `${original} - `)
+
   return (
-    <SelectField style={{ textAlign: 'left', width: '330px', maxWidth: '98%' }} maxHeight={400} value={props.value} onChange={handleChange} floatingLabelText='Choose your language'>
-      <MenuItem value={'ca'} primaryText={`Català - ${formatMessage(messages.catalan)}`} />
-      <MenuItem value={'de'} primaryText={`Deutsche - ${formatMessage(messages.german)}`} />
-      <MenuItem value={'es'} primaryText={`Español - ${formatMessage(messages.spanish)}`} />
-      <MenuItem value={'en'} primaryText={`English - ${formatMessage(messages.english)}`} />
-      <MenuItem value={'eu'} primaryText={`Euskal - ${formatMessage(messages.basque)}`} />
-      <MenuItem value={'fr'} primaryText={`Français - ${formatMessage(messages.french)}`} />
-      <MenuItem value={'ga'} primaryText={`Galego - ${formatMessage(messages.galician)}`} />
-      <MenuItem value={'cr'} primaryText={`Hrvatski - ${formatMessage(messages.croatian)}`} />
-      <MenuItem value={'it'} primaryText={`Italiano - ${formatMessage(messages.italian)}`} />
-      <MenuItem value={'bg'} primaryText={`български - ${formatMessage(messages.bulgarian)}`} />
-      <MenuItem value={'pl'} primaryText={`Polskie - ${formatMessage(messages.polish)}`} />
-      <MenuItem value={'pt'} primaryText={`Português - ${formatMessage(messages.portuguese)}`} />
-      <MenuItem value={'br'} primaryText={`Português do Brasil - ${formatMessage(messages.brazilian)}`} />
-      <MenuItem value={'ro'} primaryText={`Română - ${formatMessage(messages.romanian)}`} />
-      <MenuItem value={'ru'} primaryText={`Pусский - ${formatMessage(messages.russian)}`} />
-      <MenuItem value={'val'} primaryText={`Valencia - ${formatMessage(messages.valencian)}`} />
-      <MenuItem value={'ara'} primaryText={`عربى - ${formatMessage(messages.arabic)}`} />
-      <MenuItem value={'zhs'} primaryText={`简体中文） - ${formatMessage(messages.chineseSimplified)}`} />
+    <SelectField
+      style={{ textAlign: 'left', width: '330px', maxWidth: '98%' }}
+      maxHeight={400}
+      value={props.value}
+      onChange={handleChange}
+      floatingLabelText={props.showToolTip && 'Choose your language'}
+    >
+      <MenuItem
+        value={'es'}
+        primaryText={`${showOriginal('Español')}${formatMessage(
+          messages.spanish
+        )}`}
+      />
+      <MenuItem
+        value={'en'}
+        primaryText={`${showOriginal('English')}${formatMessage(
+          messages.english
+        )}`}
+      />
+      <MenuItem
+        value={'fr'}
+        primaryText={`${showOriginal('Français')}${formatMessage(
+          messages.french
+        )}`}
+      />
+      <MenuItem
+        value={'de'}
+        primaryText={`${showOriginal('Deutsche')}${formatMessage(
+          messages.german
+        )}`}
+      />
+      <MenuItem
+        value={'cr'}
+        primaryText={`${showOriginal('Hrvatski')}${formatMessage(
+          messages.croatian
+        )}`}
+      />
+      <MenuItem
+        value={'it'}
+        primaryText={`${showOriginal('Italiano')}${formatMessage(
+          messages.italian
+        )}`}
+      />
+      <MenuItem
+        value={'bg'}
+        primaryText={`${showOriginal('български')}${formatMessage(
+          messages.bulgarian
+        )}`}
+      />
+      <MenuItem
+        value={'pl'}
+        primaryText={`${showOriginal('Polskie')}${formatMessage(
+          messages.polish
+        )}`}
+      />
+      <MenuItem
+        value={'pt'}
+        primaryText={`${showOriginal('Português')}${formatMessage(
+          messages.portuguese
+        )}`}
+      />
+      <MenuItem
+        value={'br'}
+        primaryText={`${showOriginal('Português do Brasil')}${formatMessage(
+          messages.brazilian
+        )}`}
+      />
+      <MenuItem
+        value={'ro'}
+        primaryText={`${showOriginal('Română')}${formatMessage(
+          messages.romanian
+        )}`}
+      />
+      <MenuItem
+        value={'ru'}
+        primaryText={`${showOriginal('Pусский')}${formatMessage(
+          messages.russian
+        )}`}
+      />
+      <MenuItem
+        value={'ara'}
+        primaryText={`${showOriginal('عربى')}${formatMessage(messages.arabic)}`}
+      />
+      <MenuItem
+        value={'zhs'}
+        primaryText={`${showOriginal('简体中文')}${formatMessage(
+          messages.chineseSimplified
+        )}`}
+      />
+      <MenuItem
+        value={'ga'}
+        primaryText={`${showOriginal('Galego')}${formatMessage(
+          messages.galician
+        )}`}
+      />
+      <MenuItem
+        value={'ca'}
+        primaryText={`${showOriginal('Català')}${formatMessage(
+          messages.catalan
+        )}`}
+      />
+      <MenuItem
+        value={'eu'}
+        primaryText={`${showOriginal('Euskal')}${formatMessage(
+          messages.basque
+        )}`}
+      />
+
+      <MenuItem
+        value={'val'}
+        primaryText={`${showOriginal('Valencia')}${formatMessage(
+          messages.valencian
+        )}`}
+      />
     </SelectField>
   )
 }
@@ -44,8 +141,9 @@ const LanguageSelector = (props) => {
 LanguageSelector.propTypes = {
   intl: intlShape.isRequired,
   onChange: PropTypes.func,
-  value: PropTypes.string
+  value: PropTypes.string,
+  shortOption: PropTypes.bool,
+  showToolTip: PropTypes.bool
 }
 
 export default injectIntl(LanguageSelector)
-

@@ -14,8 +14,6 @@ class ToggleDropdown extends PureComponent {
     this.props.onToggle(toggled)
   }
   handleClick = () => {
-    console.log('llamamos a onClick')
-    console.log(this.props.onClick())
     this.props.onClick()
   }
 
@@ -31,7 +29,7 @@ class ToggleDropdown extends PureComponent {
   )
 
   render() {
-    const { onToggle, toggled, style, label, children } = this.props
+    const { toggled, style, label } = this.props
     return (
       <div style={{ display: 'flex', flexWrap: 'wrap', position: 'relative' }}>
         <Toggle
@@ -54,11 +52,7 @@ ToggleDropdown.propTypes = {
   toggled: PropTypes.bool.isRequired,
   showOptions: PropTypes.bool.isRequired,
   style: PropTypes.object.isRequired,
-  label: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([
-    React.PropTypes.arrayOf(React.PropTypes.node),
-    React.PropTypes.node
-  ])
+  label: PropTypes.string.isRequired
 }
 
 export default muiThemeable()(ToggleDropdown)

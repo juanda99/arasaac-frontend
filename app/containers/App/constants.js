@@ -14,12 +14,8 @@
 // export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
 
 /* default locale from browser */
-export const appLocales = [
-  'en',
-  'es',
-  'fr',
-  'it',
-  'de',
-  'af'
-]
-export const DEFAULT_LOCALE = appLocales.includes(navigator.language) ? navigator.language : 'en'
+export const appLocales = ['en', 'es', 'fr', 'it', 'de', 'af']
+const navigatorLanguage = navigator.language.split('-')[0] // es-ES get reduced to es
+export const DEFAULT_LOCALE = appLocales.includes(navigatorLanguage)
+  ? navigatorLanguage
+  : 'en'

@@ -14,11 +14,16 @@ import Wrapper from './Wrapper'
 import { changeLocale } from '../LanguageProvider/actions'
 import { makeSelectLocale } from '../LanguageProvider/selectors'
 
-export class LocaleToggle extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class LocaleToggle extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <Wrapper>
-        <LanguageSelector value={this.props.locale} onChange={this.props.changeLocale} />
+        <LanguageSelector
+          value={this.props.locale}
+          onChange={this.props.changeLocale}
+          shortOption={false}
+        />
       </Wrapper>
     )
   }
@@ -34,6 +39,7 @@ const mapStateToProps = createSelector(
   (locale) => ({ locale })
 )
 
-
-export default connect(mapStateToProps, { changeLocale })(LocaleToggle)
-
+export default connect(
+  mapStateToProps,
+  { changeLocale }
+)(LocaleToggle)
