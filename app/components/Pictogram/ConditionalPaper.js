@@ -3,10 +3,8 @@ import PropTypes from 'prop-types'
 import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import Paper from 'material-ui/Paper'
 
-
 class ConditionalPaper extends PureComponent {
-
-  state= {
+  state = {
     zDepth: 1
   }
 
@@ -27,10 +25,17 @@ class ConditionalPaper extends PureComponent {
     const isSmall = SMALL === width
     return (
       <div>
-        { isSmall ? (
+        {isSmall ? (
           <div> {children} </div>
         ) : (
-          <Paper zDepth={this.state.zDepth} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}> {children} </Paper>
+          <Paper
+            zDepth={this.state.zDepth}
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.handleMouseLeave}
+          >
+            {' '}
+            {children}{' '}
+          </Paper>
         )}
       </div>
     )
@@ -45,4 +50,4 @@ ConditionalPaper.propTypes = {
   width: PropTypes.number.isRequired
 }
 
-export default (withWidth()(ConditionalPaper))
+export default withWidth()(ConditionalPaper)

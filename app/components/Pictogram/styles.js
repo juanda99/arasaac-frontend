@@ -3,46 +3,40 @@ const styles = {
     display: 'flex',
     width: '100%',
     flexWrap: 'wrap',
-    alignItems: 'top'
+    alignContent: 'top'
   },
   picto: {
     width: '100%',
     height: 'auto',
     backgroundColor: 'white'
   },
-  optionBox: {
-    padding: '10px',
-    border: '1px dashed lightgrey',
-    width: '100%',
-    minHeight: '120px'
-  },
   optionsWrapper: {
     display: 'flex',
     width: '100%',
     flexWrap: 'wrap',
-    alignItems: 'center'
+    alignItems: 'center',
+    position: 'relative'
   },
   pictoWrapper: {
-    width: '400px',
-    maxWidth: '100%',
-    height: 'auto',
-    marginRight: '60px',
-    flexGrow: 1
+    maxWidth: '500px',
+    marginRight: '60px'
   },
   radioButton: {
     margin: 16
   },
-  desc: {
+  options: {
     flexGrow: 3,
-    width: '300px'
+    width: '200px',
+    padding: '5px'
   },
   toggle: {
     margin: 16,
-    width: 200
+    width: 200,
+    alignSelf: 'baseline'
   },
   button: {
     margin: 16,
-    width: 250
+    minWidth: 200
   }
 }
 

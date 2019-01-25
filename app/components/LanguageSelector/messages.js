@@ -5,6 +5,8 @@
  */
 import { defineMessages } from 'react-intl'
 
+/* Also used for changing language in custom pictos (top and bottom text) !!!! */
+
 export default defineMessages({
   catalan: {
     id: 'app.components.LanguageSelector.catalan',

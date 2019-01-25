@@ -12,23 +12,32 @@ const styles = {
     listStyleType: 'none',
     display: 'flex',
     flexWrap: 'wrap',
+    flexGrow: 2,
     justifyContent: 'space-around'
   }
 }
 
 export class PictogramList extends PureComponent {
-
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.pictograms !== this.props.pictograms) {
     }
   }
 
-
   render() {
-    const { locale, pictograms, filtersMap, setFilterItems, searchText } = this.props
+    const {
+      locale,
+      pictograms,
+      filtersMap,
+      setFilterItems,
+      searchText
+    } = this.props
     const renderPictograms = pictograms.map((pictogram) => (
-      <PictogramSnippet pictogram={pictogram} searchText={searchText} locale={locale} key={pictogram.idPictogram} />
+      <PictogramSnippet
+        pictogram={pictogram}
+        searchText={searchText}
+        locale={locale}
+        key={pictogram.idPictogram}
+      />
     ))
 
     return (

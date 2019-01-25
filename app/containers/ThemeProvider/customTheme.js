@@ -113,7 +113,12 @@ const commonComponentsTheme = (currentTheme) => (
 )
 const componentsTheme = {}
 componentsTheme[THEME_NAMES.LIGHT] = (currentTheme) => ( // eslint-disable-line no-unused-vars
-  {}
+  {
+    optionBox: {
+      backgroundColor: '#f5f5f5'
+    }
+
+  }
 )
 componentsTheme[THEME_NAMES.DARK] = (currentTheme) => ( // eslint-disable-line no-unused-vars
   {
@@ -128,6 +133,9 @@ componentsTheme[THEME_NAMES.DARK] = (currentTheme) => ( // eslint-disable-line n
     menu: {
       backgroundColor: 'white',
       containerBackgroundColor: 'white'
+    },
+    optionBox: {
+      backgroundColor: grey900
     }
   }
 )
@@ -135,6 +143,9 @@ componentsTheme[THEME_NAMES.HIGH_CONTRAST] = (currentTheme) => ( // eslint-disab
   {
     appBar: {
       textColor: 'black'
+    },
+    optionBox: {
+      backgroundColor: grey900
     }
   }
 )

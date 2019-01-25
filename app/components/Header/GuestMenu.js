@@ -10,11 +10,12 @@ import messages from './messages'
 
 
 const GuestMenu = (props) => {
+  console.log(props.muiTheme)
   if (props.hideIconText) {
     return (
       <Link to='/signin'>
         <IconButton
-          style={{ color: props.muiTheme.appBar.textColor, marginTop: 4 }}
+          style={{ color: props.muiTheme.appBar.textColor, marginTop: 4, padding: 0 }}
           {...this.props}
           tooltip={<FormattedMessage {...messages.signin} />}
         >

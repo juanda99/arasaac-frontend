@@ -58,11 +58,6 @@ export default defineMessages({
       'Toggle button to set a backgroundColor, by default transparent',
     defaultMessage: 'Background color'
   },
-  identifier: {
-    id: 'app.components.Pictogram.identifier',
-    description: 'Toggle button to set an identifier, none by default',
-    defaultMessage: 'Identifier'
-  },
   text: {
     id: 'app.components.Pictogram.text',
     description: 'Toggle button to set a text, none by default ',
@@ -74,6 +69,11 @@ export default defineMessages({
       'Toggle button to show options for people appearance in pictos: hair, skin..',
     defaultMessage: 'People appearance'
   },
+  dragAndDrop: {
+    id: 'app.components.Pictogram.DragAndDrop',
+    description: 'Toggle button to enable drag and drop',
+    defaultMessage: 'Drap and drop'
+  },
   classroom: {
     id: 'app.components.Pictogram.classroom',
     description: 'Identifier option',
@@ -84,20 +84,21 @@ export default defineMessages({
     description: 'Identifier option',
     defaultMessage: 'Health'
   },
-  office: {
-    id: 'app.components.Pictogram.office',
-    description: 'Identifier option',
-    defaultMessage: 'Office'
-  },
+
   library: {
     id: 'app.components.Pictogram.library',
     description: 'Identifier option',
     defaultMessage: 'Library'
   },
-  identifierPosition: {
-    id: 'app.components.Pictogram.identifierPosition',
-    description: 'Identifier position',
-    defaultMessage: 'Position'
+  choosePosition: {
+    id: 'app.components.Pictogram.choosePosition',
+    description: 'Help text for identifier position',
+    defaultMessage: 'Choose position:'
+  },
+  identifier: {
+    id: 'app.components.Pictogram.identifier',
+    description: 'Toggle label',
+    defaultMessage: 'identifier'
   },
   left: {
     id: 'app.components.Pictogram.left',
@@ -112,78 +113,57 @@ export default defineMessages({
   skinColor: {
     id: 'app.components.Pictogram.skinColor',
     description: 'Help text for color of the skin selector',
-    defaultMessage: 'Choose skin color'
-  },
-  whiteSkin: {
-    id: 'app.components.Pictogram.whiteSkin',
-    description: 'Option for skin color',
-    defaultMessage: 'White'
-  },
-  blackSkin: {
-    id: 'app.components.Pictogram.blackSkin',
-    description: 'Option for skin color',
-    defaultMessage: 'Black'
-  },
-  assianSkin: {
-    id: 'app.components.Pictogram.assianSkin',
-    description: 'Option for skin color',
-    defaultMessage: 'Assian'
-  },
-  mulattoSkin: {
-    id: 'app.components.Pictogram.mulattoSkin',
-    description: 'Option for skin color',
-    defaultMessage: 'Mulatto'
-  },
-  aztecSkin: {
-    id: 'app.components.Pictogram.aztecSkin',
-    description: 'Option for skin color',
-    defaultMessage: 'Aztec'
+    defaultMessage: 'Choose skin color:'
   },
   hairColor: {
     id: 'app.components.Pictogram.hairColor',
     description: 'Help text for color of the hair selector',
-    defaultMessage: 'Choose hair color'
+    defaultMessage: 'Choose hair color:'
   },
-  blondeHair: {
-    id: 'app.components.Pictogram.blondeHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Blonde'
+  chooseColor: {
+    id: 'app.components.Pictogram.chooseColor',
+    description: 'Help text for color of the background, font and frame selector',
+    defaultMessage: 'Choose color:'
   },
-  brownHair: {
-    id: 'app.components.Pictogram.brownHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Brown'
+  chooseZoom: {
+    id: 'app.components.Pictogram.chooseZoom',
+    description: 'Help text for zoom options',
+    defaultMessage: 'Choose zoom level:'
   },
-  darkBrownHair: {
-    id: 'app.components.Pictogram.darkBrownHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Dark brown'
+  chooseIdentifier: {
+    id: 'app.components.Pictogram.chooseIdentifier',
+    description: 'Help text for identifier icon',
+    defaultMessage: 'Choose identifier:'
   },
-  grayHair: {
-    id: 'app.components.Pictogram.grayHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Gray'
-  },
-  darkGrayHair: {
-    id: 'app.components.Pictogram.darkGrayHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Dark Gray'
-  },
-  redHair: {
-    id: 'app.components.Pictogram.redHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Red'
-  },
-  blackHair: {
-    id: 'app.components.Pictogram.blackHair',
-    description: 'Option for hair color',
-    defaultMessage: 'Black'
-  },
-
   frame: {
     id: 'app.components.Pictogram.frame',
     description: 'Toggle button to set a frame, none by default ',
     defaultMessage: 'Frame'
+  },
+  frameWidth: {
+    id: 'app.components.Pictogram.frameWidth',
+    description: 'Frame Width',
+    defaultMessage: 'Choose width:'
+  },
+  frameColor: {
+    id: 'app.components.Pictogram.frameColor',
+    description: 'Frame Color',
+    defaultMessage: 'Frame Color'
+  },
+  thin: {
+    id: 'app.components.Pictogram.thin',
+    description: 'Frame width value',
+    defaultMessage: 'Thin'
+  },
+  medium: {
+    id: 'app.components.Pictogram.medium',
+    description: 'Frame width value',
+    defaultMessage: 'Medium'
+  },
+  thick: {
+    id: 'app.components.Pictogram.thick',
+    description: 'Frame width value',
+    defaultMessage: 'Thick'
   },
   verbalTense: {
     id: 'app.components.Pictogram.verbalTense',
@@ -205,6 +185,31 @@ export default defineMessages({
     description: 'Toggle button to set the pictogram in future',
     defaultMessage: 'Future'
   },
+  topText: {
+    id: 'app.components.Pictogram.topTextToggleLabel',
+    description: 'Toggle button label',
+    defaultMessage: 'Top text'
+  },
+  bottomText: {
+    id: 'app.components.Pictogram.bottomTextToggleLabel',
+    description: 'Toggle button label',
+    defaultMessage: 'Bottom text'
+  },
+  lowerText: {
+    id: 'app.components.Pictogram.lowerTextToggleLabel',
+    description: 'Toggle button label',
+    defaultMessage: 'Lower text'
+  },
+  enterText: {
+    id: 'app.components.Pictogram.TextOptions.enterText',
+    description: 'Hint label for text input',
+    defaultMessage: 'Enter text'
+  },
+  zoomLevel: {
+    id: 'app.components.Pictogram.ZoomOptions.zoomLevel',
+    description: 'Toggle button label',
+    defaultMessage: 'Zoom level'
+  },
   addFavorite: {
     id: 'app.components.PictogramSnippet.addFavoriteTooltip',
     defaultMessage: 'Add pictogram to the favorites tab'
@@ -220,5 +225,68 @@ export default defineMessages({
   downloadLabel: {
     id: 'app.components.Pictogram.downloadLabel',
     defaultMessage: 'Download'
+  },
+  pictogramOptions: {
+    id: 'app.components.Pictogram.pictogramOptions',
+    defaultMessage: 'Pictogram options'
+  },
+  textOptions: {
+    id: 'app.components.Pictogram.textOptions',
+    defaultMessage: 'Text options'
+  },
+  advancedOptions: {
+    id: 'app.components.Pictogram.advancedOptions',
+    defaultMessage: 'Advanced options'
+  },
+  upperCase: {
+    id: 'app.components.Pictogram.upperCase',
+    description: 'Toggle button label',
+    defaultMessage: 'Uppercase'
+  },
+  showLessColors: {
+    id: 'app.components.Pictogram.ColorPicker.showLessColors',
+    description: 'Button text',
+    defaultMessage: 'Show less colors'
+  },
+  showMoreColors: {
+    id: 'app.components.Pictogram.ColorPicker.showMoreColors',
+    description: 'Button text',
+    defaultMessage: 'Show more colors'
+  },
+  chooseSuggestionsLanguage: {
+    id: 'app.components.Pictogram.TextOptions.chooseSuggestionsLanguage',
+    description: 'Label text',
+    defaultMessage: 'Choose suggestions language:'
+  },
+  writeText: {
+    id: 'app.components.Pictogram.TextOptions.writeText',
+    description: 'Label text',
+    defaultMessage: 'Write text or select suggestion:'
+  },
+  textFormat: {
+    id: 'app.components.Pictogram.TextOptions.textFormat',
+    description: 'Button text',
+    defaultMessage: 'Text format'
+  },
+  editText: {
+    id: 'app.components.Pictogram.TextOptions.editText',
+    description: 'Button text',
+    defaultMessage: 'Edit text'
+  },
+  fontColor: {
+    id: 'app.components.Pictogram.TextOptions.fontColor',
+    description: 'Label text',
+    defaultMessage: 'Font color:'
+  },
+  fontSize: {
+    id: 'app.components.Pictogram.TextOptions.fontSize',
+    description: 'Label text',
+    defaultMessage: 'Font size:'
+  },
+  fontFamily: {
+    id: 'app.components.Pictogram.TextOptions.fontFamily',
+    description: 'Label text',
+    defaultMessage: 'Font family:'
   }
+
 })
