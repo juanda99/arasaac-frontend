@@ -52,6 +52,11 @@ export default defineMessages({
     description: 'Toggle button to set the pictogram in plural',
     defaultMessage: 'Plural'
   },
+  strikeThrough: {
+    id: 'app.components.Pictogram.strikeThrough',
+    description: 'Toggle button to strikeThrough the pictogram',
+    defaultMessage: 'Strikethrough'
+  },
   backgroundColor: {
     id: 'app.components.Pictogram.backgroundColor',
     description:

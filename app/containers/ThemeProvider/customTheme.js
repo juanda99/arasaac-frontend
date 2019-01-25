@@ -115,7 +115,7 @@ const componentsTheme = {}
 componentsTheme[THEME_NAMES.LIGHT] = (currentTheme) => ( // eslint-disable-line no-unused-vars
   {
     optionBox: {
-      backgroundColor: '#f5f5f5'
+      backgroundColor: grey100
     }
 
   }

@@ -26,7 +26,6 @@ export default class PluralLayer extends Component {
       nextProps.canvasSize !== canvasSize ||
       nextProps.frameWidth !== frameWidth
     ) {
-      console.log('he entrado....')
       this.setState({
         x: nextProps.frame
           ? nextProps.canvasSize - ICON_SIZE - nextProps.frameWidth / 2
@@ -37,16 +36,12 @@ export default class PluralLayer extends Component {
   }
 
   handleDragEnd = (e) => {
-    console.log(e)
-    console.log(e.target.x())
-    console.log(e.target.y())
     this.setState(
       {
         x: this.state.x + e.target.x(),
         y: this.state.y + e.target.y()
       },
       () => {
-        console.log(`stado: ${this.state.x} ${this.state.y}`)
         this.pluralSign.cache()
         this.pluralSign.getLayer().draw()
       }
@@ -56,7 +51,6 @@ export default class PluralLayer extends Component {
   render() {
     const strokeWidth = 16
     const { x, y } = this.state
-    console.log(x, y)
     return (
       <Layer>
         <Group

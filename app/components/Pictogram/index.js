@@ -19,6 +19,7 @@ import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import { Stage } from 'react-konva'
 import P from 'components/P'
 import PluralLayer from './PluralLayer'
+import StrikeThroughLayer from './StrikeThroughLayer'
 import VerbalTenseLayer from './VerbalTenseLayer'
 import BackgroundLayer from './BackgroundLayer'
 import FrameLayer from './FrameLayer'
@@ -57,6 +58,7 @@ class Pictogram extends Component {
       backgroundColor: '',
       bgColorActive: false,
       bgColorOptionsShow: false,
+      strikeThrough: false,
       frameWidth: MEDIUM,
       frameColor: '',
       frameActive: false,
@@ -186,6 +188,11 @@ class Pictogram extends Component {
 
   handlePlural = (event, plural) => {
     this.setState({ plural })
+    this.hideOptions()
+  }
+
+  handleStrikeThrough = (event, strikeThrough) => {
+    this.setState({ strikeThrough })
     this.hideOptions()
   }
 
@@ -359,6 +366,7 @@ class Pictogram extends Component {
       backgroundColor,
       bgColorActive,
       bgColorOptionsShow,
+      strikeThrough,
       identifierActive,
       identifierOptionsShow,
       identifier,
@@ -446,15 +454,9 @@ class Pictogram extends Component {
                     this.stageRef = node
                   }}
                 >
+
                   {bgColorActive && (
                   <BackgroundLayer color={backgroundColor} size={canvasSize} />
-                )}
-                  {frameActive && (
-                  <FrameLayer
-                    color={frameColor}
-                    frameWidth={frameWidth}
-                    size={canvasSize}
-                  />
                 )}
                   <Img
                     src={pictoFile}
@@ -497,12 +499,27 @@ class Pictogram extends Component {
                     canvasSize={canvasSize}
                   />
                 )}
+
                   {verbalTenseActive && (
                   <VerbalTenseLayer
                     frame={frameActive}
                     frameWidth={frameWidth}
                     canvasSize={canvasSize}
                     verbalTense={verbalTense}
+                  />
+                )}
+                  {strikeThrough && (
+                  <StrikeThroughLayer
+                    frame={frameActive}
+                    frameWidth={frameWidth}
+                    canvasSize={canvasSize}
+                  />
+                )}
+                  {frameActive && (
+                  <FrameLayer
+                    color={frameColor}
+                    frameWidth={frameWidth}
+                    size={canvasSize}
                   />
                 )}
                 </Stage>
@@ -564,6 +581,12 @@ class Pictogram extends Component {
                 label={<FormattedMessage {...messages.plural} />}
                 labelPosition='right'
                 onToggle={this.handlePlural}
+                style={styles.toggle}
+              />
+              <Toggle
+                label={<FormattedMessage {...messages.strikeThrough} />}
+                labelPosition='right'
+                onToggle={this.handleStrikeThrough}
                 style={styles.toggle}
               />
               <VerbalTenseOptions
