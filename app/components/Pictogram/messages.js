@@ -103,7 +103,7 @@ export default defineMessages({
   identifier: {
     id: 'app.components.Pictogram.identifier',
     description: 'Toggle label',
-    defaultMessage: 'identifier'
+    defaultMessage: 'Identifier'
   },
   left: {
     id: 'app.components.Pictogram.left',
