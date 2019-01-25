@@ -166,7 +166,7 @@
   "app.components.Pictogram.TextOptions.fontSize": "Tamaño de fuente:",
   "app.components.Pictogram.TextOptions.textFormat": "Formato de texto",
   "app.components.Pictogram.TextOptions.writeText": "Escribe texto o selecciona sugerencia:",
-  "app.components.Pictogram.ZoomOptions.zoomLevel": "Aumentar\/Disminuir pictograma",
+  "app.components.Pictogram.ZoomOptions.zoomLevel": "Zoom pictograma",
   "app.components.Pictogram.addFavoriteLabel": "Añadir a favoritos",
   "app.components.Pictogram.advancedOptions": "Opciones avanzadas",
   "app.components.Pictogram.authors": "Autores",
