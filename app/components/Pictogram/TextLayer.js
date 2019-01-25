@@ -17,7 +17,8 @@ class TextLayer extends Component {
     x: this.props.canvasSize / 2,
     y: this.props.y,
     width: 0,
-    height: 0
+    height: 0,
+    move: false
   }
 
   componentDidMount = () => {
@@ -43,7 +44,8 @@ class TextLayer extends Component {
   handleDragEnd = (e) => {
     this.setState({
       x: e.target.x(),
-      y: e.target.y()
+      y: e.target.y(),
+      move: true
     })
   }
 
@@ -56,9 +58,8 @@ class TextLayer extends Component {
       dragAndDrop,
       canvasSize
     } = this.props
-    const { x, y, width } = this.state
-    console.log(y)
-    console.log(this.props.y)
+    const { x, width, move } = this.state
+    const y = move ? this.state.y : this.props.y
     return (
       <Layer>
         <Text

@@ -488,7 +488,7 @@ class Pictogram extends Component {
                     fontColor={bottomTextFontColor}
                     dragAndDrop={dragAndDrop}
                     canvasSize={canvasSize}
-                    y={canvasSize - bottomTextFontSize - 10 - frameWidth}
+                    y={canvasSize - bottomTextFontSize - frameWidth / 2}
                   />
                 )}
                   {plural && (
