@@ -1,6 +1,6 @@
 {
-  "app.component.Participate.contact": "Contact us",
-  "app.component.Participate.header": "We are building Arasaac. Would you like to join us?",
+  "app.component.Participate.contact": "Contacta con nosotros",
+  "app.component.Participate.header": "Estamos construyendo Arasaac. ¿Te gustaría colaborar?",
   "app.components.Filters.Activity.activity": "Activity",
   "app.components.Filters.Activity.animation": "Animation",
   "app.components.Filters.Activity.araBoard": "AraBoard",
@@ -211,7 +211,9 @@
   "app.components.Pictogram.upperCase": "Uppercase",
   "app.components.Pictogram.verbalTense": "Verbal tense",
   "app.components.PictogramSnippet.addFavorite tooltip": "Add pictogram to the favorites tab",
+  "app.components.PictogramSnippet.addFavoriteTooltip": "Add pictogram to the favorites tab",
   "app.components.PictogramSnippet.download tooltip": "Download pictogram",
+  "app.components.PictogramSnippet.downloadTooltip": "Download pictogram",
   "app.components.PrivatePolicy.header": "This is the PrivatePolicy component !",
   "app.components.SearchBox.searchField": "Enter search text",
   "app.components.UseConditions.license": "Creative Commons License (BY-NC-SA)",
@@ -299,7 +301,7 @@
   "menu.pictograms": "Pictograms",
   "menu.prizes": "Prizes",
   "menu.scheduleGenerator": "Schedule Generator",
-  "menu.searchMaterials": "Search materials",
+  "menu.searchMaterials": "Buscar materiales",
   "menu.searchPictograms": "Search Pictograms",
   "menu.settings": "Settings",
   "menu.snakesAndLadders": "Snakes and Ladders",
@@ -336,7 +338,7 @@
   "userMenu.signout": "Sign out",
   "userMenu.stopTranslateArasaac": "Stop translating ARASAAC",
   "userMenu.translateArasaac": "Translate ARASAAC",
-  "userMenu.uploadMaterial": "Share material",
-  "userMenu.userMaterial": "My material",
+  "userMenu.uploadMaterial": "Compartir materiales",
+  "userMenu.userMaterial": "Mis materiales",
   "userMenu.userProfile": "My profile"
 }
