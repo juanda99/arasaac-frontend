@@ -81,7 +81,6 @@ class IdentifierOptions extends Component {
               value={identifierPosition}
               onChange={this.handleIdentifierPositionChange}
             >
-              <MenuItem value={null} primaryText='' />
               <MenuItem
                 value='left'
                 primaryText={formatMessage(messages.left)}
