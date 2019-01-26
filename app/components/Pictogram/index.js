@@ -9,7 +9,12 @@ import Divider from 'material-ui/Divider'
 import FlatButton from 'material-ui/FlatButton'
 import Person from 'material-ui/svg-icons/social/person'
 import RaisedButton from 'material-ui/RaisedButton'
-import { PICTOGRAMS_URL, LOCUTIONS_URL, API_ROOT } from 'services/config'
+import {
+  PICTOGRAMS_URL,
+  LOCUTIONS_URL,
+  API_ROOT,
+  IMAGES_URL
+} from 'services/config'
 import { FormattedMessage } from 'react-intl'
 import SoundPlayer from 'components/SoundPlayer'
 import Toggle from 'material-ui/Toggle'
@@ -24,6 +29,7 @@ import StrikeThroughLayer from './StrikeThroughLayer'
 import VerbalTenseLayer from './VerbalTenseLayer'
 import BackgroundLayer from './BackgroundLayer'
 import FrameLayer from './FrameLayer'
+import IdentifierLayer from './IdentifierLayer'
 import styles from './styles'
 import TextLayer from './TextLayer'
 import Img from './Img'
@@ -51,7 +57,7 @@ class Pictogram extends Component {
       .valueSeq()
       .map((keyword) => keyword.get('keyword'))
       .toArray()
-    const defaultColor = (type >= 0 && type < 7) ? colorSet[type - 1] : ''
+    const defaultColor = type >= 0 && type < 7 ? colorSet[type - 1] : ''
     this.state = {
       language: this.props.locale,
       plural: false,
@@ -152,18 +158,13 @@ class Pictogram extends Component {
     const {
       color,
       hair,
-      skin,
-      identifier,
-      identifierActive,
-      identifierPosition
+      skin
     } = this.state
     const idPictogram = pictogram.get('idPictogram')
     const parameters = { color }
     // only if active hair, skin, backgroundColor we add it to the request. Otherwise we take default image values
     if (hair) parameters.hair = hair
     if (skin) parameters.skin = skin
-    if (identifierActive) parameters.identifier = identifier
-    if (identifierPosition) parameters.identifierPosition = identifierPosition
 
     const urlParameters = Object.entries(parameters)
       .map((param) => param.join('='))
@@ -280,10 +281,7 @@ class Pictogram extends Component {
 
   handleIdentifierActive = (identifierActive) => {
     this.hideOptions()
-    this.setState(
-      { identifierActive, identifierOptionsShow: identifierActive },
-      () => this.buildOptionsRequest()
-    )
+    this.setState({ identifierActive, identifierOptionsShow: identifierActive })
   }
 
   handleIdentifierOptionsShow = (identifierOptionsShow) => {
@@ -291,12 +289,9 @@ class Pictogram extends Component {
     this.setState({ identifierOptionsShow })
   }
 
-  handleIdentifierChange = (identifier) => {
-    this.setState({ identifier }, () => this.buildOptionsRequest())
-  }
+  handleIdentifierChange = (identifier) => this.setState({ identifier })
 
-  handleIdentifierPositionChange = (identifierPosition) =>
-    this.setState({ identifierPosition }, () => this.buildOptionsRequest())
+  handleIdentifierPositionChange = (identifierPosition) => this.setState({ identifierPosition })
 
   handleTopTextActive = (topTextActive) => {
     this.hideOptions()
@@ -318,7 +313,8 @@ class Pictogram extends Component {
     this.setState({ topTextOptionsShow })
   }
 
-  handleTopTextUpperCase = (uppercase) => this.setState({ topTextUpperCase: uppercase })
+  handleTopTextUpperCase = (uppercase) =>
+    this.setState({ topTextUpperCase: uppercase })
 
   handleBottomTextActive = (bottomTextActive) => {
     this.hideOptions()
@@ -340,7 +336,8 @@ class Pictogram extends Component {
     this.hideOptions()
     this.setState({ bottomTextOptionsShow })
   }
-  handleBottomTextUpperCase = (uppercase) => this.setState({ bottomTextUpperCase: uppercase })
+  handleBottomTextUpperCase = (uppercase) =>
+    this.setState({ bottomTextUpperCase: uppercase })
 
   handleOpenMenu = () => {
     const { pictogram } = this.props
@@ -432,6 +429,7 @@ class Pictogram extends Component {
     }
     // const pictoFile = `/${idPictogram}_500.png`
     const pictoFile = url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`
+    const identifierFile = `${IMAGES_URL}/identifiers/${identifier}.png`
     return (
       <div>
         <div style={styles.wrapper}>
@@ -451,17 +449,19 @@ class Pictogram extends Component {
                     this.stageRef = node
                   }}
                 >
-
                   {bgColorActive && (
-                  <BackgroundLayer color={backgroundColor} size={canvasSize} />
-                )}
+                    <BackgroundLayer
+                      color={backgroundColor}
+                      size={canvasSize}
+                    />
+                  )}
 
                   <Img
                     src={pictoFile}
                     frameWidth={frameWidth}
                     enableFrame={
-                    frameActive
-                  } /* alt={'alt'} style={styles.picto} */
+                      frameActive
+                    } /* alt={'alt'} style={styles.picto} */
                     zoomLevel={zoomLevel}
                     canvasSize={canvasSize}
                     dragAndDrop={dragAndDrop}
@@ -470,59 +470,68 @@ class Pictogram extends Component {
                   />
 
                   {topTextActive && (
-                  <TextLayer
-                    font={topTextFont}
-                    text={topText}
-                    fontSize={topTextFontSize}
-                    fontColor={topTextFontColor}
-                    dragAndDrop={dragAndDrop}
-                    canvasSize={canvasSize}
-                    y={frameWidth / 2}
-                  />
-                )}
+                    <TextLayer
+                      font={topTextFont}
+                      text={topText}
+                      fontSize={topTextFontSize}
+                      fontColor={topTextFontColor}
+                      dragAndDrop={dragAndDrop}
+                      canvasSize={canvasSize}
+                      y={frameWidth / 2}
+                    />
+                  )}
                   {bottomTextActive && (
-                  <TextLayer
-                    font={bottomTextFont}
-                    text={bottomText}
-                    fontSize={bottomTextFontSize}
-                    fontColor={bottomTextFontColor}
-                    dragAndDrop={dragAndDrop}
-                    canvasSize={canvasSize}
-                    y={canvasSize - bottomTextFontSize - frameWidth / 2}
-                  />
-                )}
+                    <TextLayer
+                      font={bottomTextFont}
+                      text={bottomText}
+                      fontSize={bottomTextFontSize}
+                      fontColor={bottomTextFontColor}
+                      dragAndDrop={dragAndDrop}
+                      canvasSize={canvasSize}
+                      y={canvasSize - bottomTextFontSize - frameWidth / 2}
+                    />
+                  )}
                   {plural && (
-                  <PluralLayer
-                    frame={frameActive}
-                    frameWidth={frameWidth}
-                    canvasSize={canvasSize}
-                  />
-                )}
+                    <PluralLayer
+                      frame={frameActive}
+                      frameWidth={frameWidth}
+                      canvasSize={canvasSize}
+                    />
+                  )}
 
                   {verbalTenseActive && (
-                  <VerbalTenseLayer
-                    frame={frameActive}
-                    frameWidth={frameWidth}
-                    canvasSize={canvasSize}
-                    verbalTense={verbalTense}
-                  />
-                )}
+                    <VerbalTenseLayer
+                      frame={frameActive}
+                      frameWidth={frameWidth}
+                      canvasSize={canvasSize}
+                      verbalTense={verbalTense}
+                    />
+                  )}
                   {strikeThrough && (
-                  <StrikeThroughLayer
-                    frame={frameActive}
-                    frameWidth={frameWidth}
-                    canvasSize={canvasSize}
-                  />
-                )}
+                    <StrikeThroughLayer
+                      frame={frameActive}
+                      frameWidth={frameWidth}
+                      canvasSize={canvasSize}
+                    />
+                  )}
+                  {identifierActive && (
+                    <IdentifierLayer
+                      enableFrame={frameActive}
+                      frameWidth={frameWidth}
+                      canvasSize={canvasSize}
+                      position={identifierPosition}
+                      src={identifierFile}
+                      dragAndDrop={dragAndDrop}
+                    />
+                  )}
 
                   {frameActive && (
-                  <FrameLayer
-                    color={frameColor}
-                    frameWidth={frameWidth}
-                    size={canvasSize}
-                  />
-                )}
-
+                    <FrameLayer
+                      color={frameColor}
+                      frameWidth={frameWidth}
+                      size={canvasSize}
+                    />
+                  )}
                 </Stage>
               </Canvas>
               <PictogramTitle>
@@ -549,7 +558,9 @@ class Pictogram extends Component {
               {<FormattedMessage {...messages.modifyPicto} />}
             </H3>
             <Divider />
-            <P data-hide={true}>{<FormattedMessage {...messages.pictogramOptions} />}</P>
+            <P data-hide={true}>
+              {<FormattedMessage {...messages.pictogramOptions} />}
+            </P>
             <div style={styles.optionsWrapper} data-hide={true}>
               <Toggle
                 label={<FormattedMessage {...messages.color} />}
@@ -619,7 +630,9 @@ class Pictogram extends Component {
                 showOptions={peopleAppearanceOptionsShow}
               />
             </div>
-            <P data-hide={true}>{<FormattedMessage {...messages.textOptions} />}</P>
+            <P data-hide={true}>
+              {<FormattedMessage {...messages.textOptions} />}
+            </P>
             <div style={styles.optionsWrapper} data-hide={true}>
               <TextOptions
                 textLabel={<FormattedMessage {...messages.topText} />}
@@ -663,7 +676,9 @@ class Pictogram extends Component {
                 onUpperCase={this.handleBottomTextUpperCase}
               />
             </div>
-            <P data-hide={true}>{<FormattedMessage {...messages.advancedOptions} />}</P>
+            <P data-hide={true}>
+              {<FormattedMessage {...messages.advancedOptions} />}
+            </P>
             <div style={styles.optionsWrapper} data-hide={true}>
               <ZoomOptions
                 zoomLevel={zoomLevel}

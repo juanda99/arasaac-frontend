@@ -95,6 +95,11 @@ export default defineMessages({
     description: 'Identifier option',
     defaultMessage: 'Library'
   },
+  office: {
+    id: 'app.components.Pictogram.office',
+    description: 'Identifier option',
+    defaultMessage: 'Office'
+  },
   choosePosition: {
     id: 'app.components.Pictogram.choosePosition',
     description: 'Help text for identifier position',
@@ -127,7 +132,8 @@ export default defineMessages({
   },
   chooseColor: {
     id: 'app.components.Pictogram.chooseColor',
-    description: 'Help text for color of the background, font and frame selector',
+    description:
+      'Help text for color of the background, font and frame selector',
     defaultMessage: 'Choose color:'
   },
   chooseZoom: {
@@ -293,5 +299,4 @@ export default defineMessages({
     description: 'Label text',
     defaultMessage: 'Font family:'
   }
-
 })

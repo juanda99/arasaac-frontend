@@ -74,6 +74,10 @@ class IdentifierOptions extends Component {
                 value='library'
                 primaryText={formatMessage(messages.library)}
               />
+              <MenuItem
+                value='office'
+                primaryText={formatMessage(messages.office)}
+              />
             </SelectField>
             <P marginBottom='0px'>{formatMessage(messages.choosePosition)}</P>
             <SelectField
