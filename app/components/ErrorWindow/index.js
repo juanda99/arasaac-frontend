@@ -5,7 +5,6 @@ import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import messages from './messages'
 
-
 export default class ErrorWindow extends PureComponent {
   state = {
     open: true
@@ -29,7 +28,6 @@ export default class ErrorWindow extends PureComponent {
         onClick={this.handleClose}
       />
     ]
-    console.log(this.props)
     const { title, desc } = this.props
 
     return (

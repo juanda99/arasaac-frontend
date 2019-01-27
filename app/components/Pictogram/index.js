@@ -24,6 +24,7 @@ import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import { Stage } from 'react-konva'
 import P from 'components/P'
 import { colorSet } from 'utils/colors'
+import LanguageSelector from 'components/LanguageSelector'
 import PluralLayer from './PluralLayer'
 import StrikeThroughLayer from './StrikeThroughLayer'
 import VerbalTenseLayer from './VerbalTenseLayer'
@@ -316,15 +317,20 @@ class Pictogram extends Component {
     const { pictogram } = this.props
     const keywords = pictogram.get('keywords')
     if (uppercase) {
-      this.setState({ topTextUpperCase: uppercase, topText: topText.toUpperCase() })
-    }
-    else {
+      this.setState({
+        topTextUpperCase: uppercase,
+        topText: topText.toUpperCase()
+      })
+    } else {
       const { keyword } = keywordSelector(topText, keywords.toJS())
       // if not found we'll return first match
       if (topText.toLowerCase() === keyword.toLowerCase()) {
         this.setState({ topTextUpperCase: uppercase, topText: keyword })
       } else {
-        this.setState({ topTextUpperCase: uppercase, topText: topText.toLowerCase() })
+        this.setState({
+          topTextUpperCase: uppercase,
+          topText: topText.toLowerCase()
+        })
       }
     }
   }
@@ -726,6 +732,12 @@ class Pictogram extends Component {
         <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
         <Divider />
         <P>{<FormattedMessage {...messages.changePictoLanguage} />}</P>
+        <LanguageSelector
+          value={this.state.language}
+          onChange={this.handleLanguageChange}
+          shortOption={true}
+          showToolTip={false}
+        />
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />
         {authors.valueSeq().map((author) => (
