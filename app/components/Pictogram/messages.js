@@ -26,11 +26,6 @@ export default defineMessages({
     description: 'Title for pictogram description: keyword, meaning...',
     defaultMessage: 'Related words'
   },
-  meaning: {
-    id: 'app.components.Pictogram.meaning',
-    description: 'Meaning of pictogram associated keyword',
-    defaultMessage: 'Meaning'
-  },
   changePictoLanguage: {
     id: 'app.components.Pictogram.changePictoLanguage',
     description: 'Dropdown to select pictogram language',

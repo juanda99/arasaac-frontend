@@ -24,7 +24,6 @@ import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import { Stage } from 'react-konva'
 import P from 'components/P'
 import { colorSet } from 'utils/colors'
-import LanguageSelector from 'components/LanguageSelector'
 import PluralLayer from './PluralLayer'
 import StrikeThroughLayer from './StrikeThroughLayer'
 import VerbalTenseLayer from './VerbalTenseLayer'
@@ -47,11 +46,12 @@ import ZoomOptions from './ZoomOptions'
 import PictoWrapper from './PictoWrapper'
 import Canvas from './Canvas'
 import PictogramTitle from './PictogramTitle'
+import Translations from './Translations'
 
 class Pictogram extends Component {
   constructor(props) {
     super(props)
-    const { pictogram, searchText } = this.props
+    const { pictogram, searchText, locale } = this.props
     const keywords = pictogram.get('keywords')
     const { keyword, type } = keywordSelector(searchText, keywords.toJS())
     const keywordsArray = keywords
@@ -60,7 +60,7 @@ class Pictogram extends Component {
       .toArray()
     const defaultColor = type >= 0 && type < 7 ? colorSet[type - 1] : ''
     this.state = {
-      language: this.props.locale,
+      language: locale === 'en' ? 'es' : 'en',
       plural: false,
       color: true,
       backgroundColor: defaultColor,
@@ -133,10 +133,6 @@ class Pictogram extends Component {
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible })
 
-  updateWindowDimensions = () => {
-    this.setState({ windowWidth: document.body.clientWidth })
-  }
-
   needHideOptions = (event) => {
     // add data-hide to elements where if click options should hide
     if (event.target.dataset.hide) this.hideOptions()
@@ -171,6 +167,10 @@ class Pictogram extends Component {
     fetch(endPoint)
       .then((data) => data.json())
       .then((data) => this.setState({ url: data.image, downloadUrl }))
+  }
+
+  handleLanguageChange = (language) => {
+    this.setState({ language })
   }
 
   handleColor = (event, color) => {
@@ -377,9 +377,22 @@ class Pictogram extends Component {
     onDownload(keyword, dataBase64)
   }
 
+  getSoundPlayer = (idLocution, locale) => (
+    <SoundPlayer
+      crossOrigin='anonymous'
+      streamUrl={`${LOCUTIONS_URL}/${locale}/${idLocution}`}
+      preloadType='metadata'
+      showProgress={false}
+      showTimer={false}
+    />
+  )
+  updateWindowDimensions = () =>
+    this.setState({ windowWidth: document.body.clientWidth })
+
   render() {
     const { pictogram, searchText, locale } = this.props
     const {
+      language,
       backgroundColor,
       bgColorActive,
       bgColorOptionsShow,
@@ -433,19 +446,6 @@ class Pictogram extends Component {
     // first time downloadUrl is default png
     const { keyword, idLocution } = keywordSelector(searchText, keywords.toJS())
     const authors = pictogram.get('authors')
-    let soundPlayer = ''
-    if (idLocution) {
-      const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
-      soundPlayer = (
-        <SoundPlayer
-          crossOrigin='anonymous'
-          streamUrl={streamUrl}
-          preloadType='metadata'
-          showProgress={false}
-          showTimer={false}
-        />
-      )
-    }
     // const pictoFile = `/${idPictogram}_500.png`
     const pictoFile = url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`
     const identifierFile = `${IMAGES_URL}/identifiers/${identifier}.png`
@@ -455,7 +455,7 @@ class Pictogram extends Component {
           <PictoWrapper>
             <ConditionalPaper>
               <PictogramTitle>
-                {soundPlayer}
+                {this.getSoundPlayer(idLocution, locale)}
                 <H2 center={true} primary ucase noMargin>
                   {keyword}
                 </H2>
@@ -722,21 +722,20 @@ class Pictogram extends Component {
         {/* index for keyword will not be necessary if load data is ok */}
         {keywords.valueSeq().map((keyword, index) => (
           <div key={`${keyword.get('keyword')}-${index}`}>
-            <P important={true}>{keyword.get('keyword')}</P>
-            <P>
-              {<FormattedMessage {...messages.meaning} />}:{' '}
-              {keyword.get('meaning')}
-            </P>
+            <div style={{ display: 'flex' }}>
+              {this.getSoundPlayer(keyword.get('idLocution'), locale)}
+              <P important={true} marginRight={'10px'}>
+                {keyword.get('keyword')}{' '}
+              </P>
+              <P>{keyword.get('meaning')}</P>
+            </div>
           </div>
         ))}
-        <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
-        <Divider />
-        <P>{<FormattedMessage {...messages.changePictoLanguage} />}</P>
-        <LanguageSelector
-          value={this.state.language}
-          onChange={this.handleLanguageChange}
-          shortOption={true}
-          showToolTip={false}
+        <Translations
+          locale={locale}
+          language={language}
+          idPictogram={idPictogram}
+          onLanguageChange={this.handleLanguageChange}
         />
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />

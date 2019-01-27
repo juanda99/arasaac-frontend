@@ -69,8 +69,9 @@ class TextOptions extends Component {
   handleLanguageChange = (language) => {
     const { idPictogram } = this.props
     api.GET_KEYWORDS_BY_PICTOID({ language, idPictogram }).then((data) => {
-      this.setState({ keywords: data.keywords, language })
-      this.props.onTextChange(data.keywords[0] || '')
+      const keywords = data.map((keyword) => keyword.keyword)
+      this.setState({ keywords, language })
+      this.props.onTextChange(keywords[0] || '')
     })
   }
 
