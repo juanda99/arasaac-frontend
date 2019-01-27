@@ -33,7 +33,15 @@ class Img extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    const { src, frameWidth, zoomLevel, enableFrame, canvasSize, topMargin, bottomMargin } = this.props
+    const {
+      src,
+      frameWidth,
+      zoomLevel,
+      enableFrame,
+      canvasSize,
+      topMargin,
+      bottomMargin
+    } = this.props
     if (src !== prevProps.src) image.src = src
     else if (
       frameWidth !== prevProps.frameWidth ||
@@ -75,10 +83,16 @@ class Img extends Component {
       bottomMargin
     } = this.props
     let { x, y } = this.state
-    const size = enableFrame ? canvasSize - parseInt(frameWidth, 0) - topMargin - bottomMargin : canvasSize - topMargin - bottomMargin
+    const size = enableFrame
+      ? canvasSize - parseInt(frameWidth, 0) - topMargin - bottomMargin
+      : canvasSize - topMargin - bottomMargin
     if (!this.state.moved) {
-      x = enableFrame ? x + frameWidth / 2 - zoomLevel / 2 + topMargin / 2 + bottomMargin / 2 : x - zoomLevel / 2 + topMargin / 2 + bottomMargin / 2
-      y = enableFrame ? y + frameWidth / 2 - zoomLevel / 2 + topMargin : y - zoomLevel / 2 + topMargin
+      x = enableFrame
+        ? x + frameWidth / 2 - zoomLevel / 2 + topMargin / 2 + bottomMargin / 2
+        : x - zoomLevel / 2 + topMargin / 2 + bottomMargin / 2
+      y = enableFrame
+        ? y + frameWidth / 2 - zoomLevel / 2 + topMargin
+        : y - zoomLevel / 2 + topMargin
     }
     return (
       <Layer>
@@ -95,6 +109,7 @@ class Img extends Component {
           onDragEnd={this.handleDragEnd}
           draggable={dragAndDrop}
           scale={canvasSize / 500}
+          preventDefault={false}
         />
       </Layer>
     )
