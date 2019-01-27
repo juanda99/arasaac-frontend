@@ -93,7 +93,7 @@ class Pictogram extends Component {
       topText: keyword,
       topTextKeywords: keywordsArray,
       topTextFont: 'Roboto',
-      topTextFontSize: 50,
+      topTextFontSize: 46,
       topTextFontColor: 'black',
       topTextUpperCase: false,
       bottomTextActive: false,
@@ -101,7 +101,7 @@ class Pictogram extends Component {
       bottomText: keyword,
       bottomTextKeywords: keywordsArray,
       bottomTextFont: 'Roboto',
-      bottomTextFontSize: 50,
+      bottomTextFontSize: 46,
       bottomTextFontColor: 'black',
       bottomTextUpperCase: false,
       zoomLevel: 0,
@@ -155,11 +155,7 @@ class Pictogram extends Component {
 
   buildOptionsRequest = () => {
     const { pictogram } = this.props
-    const {
-      color,
-      hair,
-      skin
-    } = this.state
+    const { color, hair, skin } = this.state
     const idPictogram = pictogram.get('idPictogram')
     const parameters = { color }
     // only if active hair, skin, backgroundColor we add it to the request. Otherwise we take default image values
@@ -291,7 +287,8 @@ class Pictogram extends Component {
 
   handleIdentifierChange = (identifier) => this.setState({ identifier })
 
-  handleIdentifierPositionChange = (identifierPosition) => this.setState({ identifierPosition })
+  handleIdentifierPositionChange = (identifierPosition) =>
+    this.setState({ identifierPosition })
 
   handleTopTextActive = (topTextActive) => {
     this.hideOptions()
@@ -448,6 +445,7 @@ class Pictogram extends Component {
                   ref={(node) => {
                     this.stageRef = node
                   }}
+                  onContextMenu={(e) => e.evt.preventDefault()}
                 >
                   {bgColorActive && (
                     <BackgroundLayer
@@ -477,7 +475,7 @@ class Pictogram extends Component {
                       fontColor={topTextFontColor}
                       dragAndDrop={dragAndDrop}
                       canvasSize={canvasSize}
-                      y={frameWidth / 2}
+                      y={frameWidth / 2 + 8}
                     />
                   )}
                   {bottomTextActive && (
