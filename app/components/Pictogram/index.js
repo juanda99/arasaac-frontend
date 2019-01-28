@@ -381,8 +381,30 @@ class Pictogram extends Component {
     this.hideOptions()
     this.setState({ bottomTextOptionsShow })
   }
-  handleBottomTextUpperCase = (uppercase) =>
-    this.setState({ bottomTextUpperCase: uppercase })
+
+  handleBottomTextUpperCase = (uppercase) => {
+    // if word is in our list, and uppercase is false, put it back
+    const { bottomText } = this.state
+    const { pictogram } = this.props
+    const keywords = pictogram.get('keywords')
+    if (uppercase) {
+      this.setState({
+        bottomTextUpperCase: uppercase,
+        bottomText: bottomText.toUpperCase()
+      })
+    } else {
+      const { keyword } = keywordSelector(bottomText, keywords.toJS())
+      // if not found we'll return first match
+      if (bottomText.toLowerCase() === keyword.toLowerCase()) {
+        this.setState({ bottomTextUpperCase: uppercase, bottomText: keyword })
+      } else {
+        this.setState({
+          bottomTextUpperCase: uppercase,
+          bottomText: bottomText.toLowerCase()
+        })
+      }
+    }
+  }
 
   handleOpenMenu = () => {
     const { pictogram } = this.props
