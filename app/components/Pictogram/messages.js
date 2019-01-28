@@ -84,7 +84,11 @@ export default defineMessages({
     description: 'Identifier option',
     defaultMessage: 'Health'
   },
-
+  healthColor: {
+    id: 'app.components.Pictogram.healthColor',
+    description: 'Identifier option',
+    defaultMessage: 'Health with color'
+  },
   library: {
     id: 'app.components.Pictogram.library',
     description: 'Identifier option',

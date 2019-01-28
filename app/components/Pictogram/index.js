@@ -77,6 +77,7 @@ class Pictogram extends Component {
       identifierOptionsShow: false,
       identifier: 'classroom',
       identifierPosition: 'right',
+      identifierColor: '#000000',
       text: false,
       peopleAppearanceActive: false,
       peopleAppearanceOptionsShow: false,
@@ -317,6 +318,9 @@ class Pictogram extends Component {
   handleIdentifierPositionChange = (identifierPosition) =>
     this.setState({ identifierPosition })
 
+  handleIdentifierColorChange = (identifierColor) =>
+    this.setState({ identifierColor })
+
   handleTopTextActive = (topTextActive) => {
     this.hideOptions()
     this.setState({ topTextActive, topTextOptionsShow: topTextActive })
@@ -440,6 +444,7 @@ class Pictogram extends Component {
       identifierOptionsShow,
       identifier,
       identifierPosition,
+      identifierColor,
       verbalTense,
       verbalTenseOptionsShow,
       verbalTenseActive,
@@ -488,7 +493,10 @@ class Pictogram extends Component {
     const authors = pictogram.get('authors')
     // const pictoFile = `/${idPictogram}_500.png`
     const pictoFile = url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`
-    const identifierFile = `${IMAGES_URL}/identifiers/${identifier}.png`
+    // remove # character in identifierColor for url
+    const identifierFile = `${IMAGES_URL}/identifiers/${identifier}_${identifierColor.substr(
+      1
+    )}.png`
     return (
       <div>
         <div style={styles.wrapper}>
@@ -685,6 +693,8 @@ class Pictogram extends Component {
                 active={identifierActive}
                 onOptionsShow={this.handleIdentifierOptionsShow}
                 showOptions={identifierOptionsShow}
+                color={identifierColor}
+                onColorChange={this.handleIdentifierColorChange}
               />
               <PeopleAppearanceOptions
                 skin={skin}

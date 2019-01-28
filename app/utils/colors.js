@@ -1,3 +1,4 @@
+/* DO NOT MODIFY: identifiers have the hex code hardcoded in their filenames */
 export const white = '#ffffff'
 export const blue = '#2196f3'
 export const yellow = '#ffeb3b'
