@@ -139,22 +139,20 @@ class Pictogram extends Component {
   getSoundPlayer = (idLocution, locale) => {
     const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
     return (
-      (
-        <div style={{display: 'flex' }}>
-          <SoundPlayer
-            crossOrigin='anonymous'
-            streamUrl={streamUrl}
-            preloadType='metadata'
-            showProgress={false}
-            showTimer={false}
-          />
-          <a href={streamUrl}>
-            <IconButton touch={true}>
-              <CloudDownloadIcon />
-            </IconButton>
-          </a>
-        </div>
-      )
+      <div style={{ display: 'flex' }}>
+        <SoundPlayer
+          crossOrigin='anonymous'
+          streamUrl={streamUrl}
+          preloadType='metadata'
+          showProgress={false}
+          showTimer={false}
+        />
+        <a href={streamUrl}>
+          <IconButton touch={true}>
+            <CloudDownloadIcon />
+          </IconButton>
+        </a>
+      </div>
     )
   }
 
@@ -517,7 +515,7 @@ class Pictogram extends Component {
                       fontColor={topTextFontColor}
                       dragAndDrop={dragAndDrop}
                       canvasSize={canvasSize}
-                      y={frameWidth / 2 + 8}
+                      y={frameActive ? frameWidth / 2 + 8 : 8}
                     />
                   )}
                   {bottomTextActive && (
@@ -528,7 +526,11 @@ class Pictogram extends Component {
                       fontColor={bottomTextFontColor}
                       dragAndDrop={dragAndDrop}
                       canvasSize={canvasSize}
-                      y={canvasSize - bottomTextFontSize - frameWidth / 2}
+                      y={
+                        frameActive
+                          ? canvasSize - bottomTextFontSize - frameWidth / 2 + 2
+                          : canvasSize - bottomTextFontSize + 2
+                      }
                     />
                   )}
                   {plural && (
