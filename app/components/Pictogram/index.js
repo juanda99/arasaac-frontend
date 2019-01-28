@@ -24,6 +24,8 @@ import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import { Stage } from 'react-konva'
 import P from 'components/P'
 import { colorSet } from 'utils/colors'
+import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download'
+import IconButton from 'material-ui/IconButton'
 import PluralLayer from './PluralLayer'
 import StrikeThroughLayer from './StrikeThroughLayer'
 import VerbalTenseLayer from './VerbalTenseLayer'
@@ -134,15 +136,27 @@ class Pictogram extends Component {
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible })
 
-  getSoundPlayer = (idLocution, locale) => (
-    <SoundPlayer
-      crossOrigin='anonymous'
-      streamUrl={`${LOCUTIONS_URL}/${locale}/${idLocution}`}
-      preloadType='metadata'
-      showProgress={false}
-      showTimer={false}
-    />
-  )
+  getSoundPlayer = (idLocution, locale) => {
+    const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
+    return (
+      (
+        <div style={{display: 'flex' }}>
+          <SoundPlayer
+            crossOrigin='anonymous'
+            streamUrl={streamUrl}
+            preloadType='metadata'
+            showProgress={false}
+            showTimer={false}
+          />
+          <a href={streamUrl}>
+            <IconButton touch={true}>
+              <CloudDownloadIcon />
+            </IconButton>
+          </a>
+        </div>
+      )
+    )
+  }
 
   needHideOptions = (event) => {
     // add data-hide to elements where if click options should hide
@@ -287,8 +301,9 @@ class Pictogram extends Component {
 
   handleVerbalTenseChange = (verbalTense) => this.setState({ verbalTense })
 
-  handleVerbalTenseColorChange = (verbalTenseColor) => this.setState({ verbalTenseColor })
-  
+  handleVerbalTenseColorChange = (verbalTenseColor) =>
+    this.setState({ verbalTenseColor })
+
   handleIdentifierActive = (identifierActive) => {
     this.hideOptions()
     this.setState({ identifierActive, identifierOptionsShow: identifierActive })
