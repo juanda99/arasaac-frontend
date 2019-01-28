@@ -49,7 +49,6 @@ export default class Translations extends Component {
   render() {
     const { keywords } = this.state
     const { language } = this.props
-    console.log(keywords)
     return (
       <div>
         <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>

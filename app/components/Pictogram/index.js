@@ -23,7 +23,7 @@ import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import { Stage } from 'react-konva'
 import P from 'components/P'
-import { colorSet } from 'utils/colors'
+import { colorSet, black } from 'utils/colors'
 import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download'
 import IconButton from 'material-ui/IconButton'
 import PluralLayer from './PluralLayer'
@@ -42,6 +42,7 @@ import BackgroundColorOptions from './BackgroundColorOptions'
 import FrameOptions from './FrameOptions'
 import VerbalTenseOptions from './VerbalTenseOptions'
 import PeopleAppearanceOptions from './PeopleAppearanceOptions'
+import PluralOptions from './PluralOptions'
 import IdentifierOptions from './IdentifierOptions'
 import TextOptions from './TextOptions'
 import ZoomOptions from './ZoomOptions'
@@ -64,6 +65,9 @@ class Pictogram extends Component {
     this.state = {
       language: locale === 'en' ? 'es' : 'en',
       plural: false,
+      pluralActive: false,
+      pluralOptionsShow: false,
+      pluralColor: black,
       color: true,
       backgroundColor: defaultColor,
       bgColorActive: false,
@@ -171,7 +175,8 @@ class Pictogram extends Component {
       identifierOptionsShow: false,
       topTextOptionsShow: false,
       bottomTextOptionsShow: false,
-      zoomOptionsShow: false
+      zoomOptionsShow: false,
+      pluralOptionsShow: false
     })
 
   buildOptionsRequest = () => {
@@ -209,9 +214,16 @@ class Pictogram extends Component {
 
   // handlePlural = (event, plural) => this.setState({ plural }, () => this.buildOptionsRequest())
 
-  handlePlural = (event, plural) => {
-    this.setState({ plural })
+  handlePluralChange = (plural) => {
     this.hideOptions()
+    this.setState({ plural, pluralOptionsShow: plural })
+  }
+
+  handlePluralColorChange = (pluralColor) => this.setState({ pluralColor })
+
+  handlePluralOptionsShow = (pluralOptionsShow) => {
+    this.hideOptions()
+    this.setState({ pluralOptionsShow })
   }
 
   handleStrikeThrough = (event, strikeThrough) => {
@@ -459,6 +471,8 @@ class Pictogram extends Component {
       frameActive,
       frameOptionsShow,
       plural,
+      pluralOptionsShow,
+      pluralColor,
       topTextActive,
       topTextKeywords,
       topTextOptionsShow,
@@ -568,6 +582,7 @@ class Pictogram extends Component {
                       frame={frameActive}
                       frameWidth={frameWidth}
                       canvasSize={canvasSize}
+                      color={pluralColor}
                     />
                   )}
 
@@ -662,11 +677,13 @@ class Pictogram extends Component {
                 onOptionsShow={this.handleFrameOptionsShow}
                 showOptions={frameOptionsShow}
               />
-              <Toggle
-                label={<FormattedMessage {...messages.plural} />}
-                labelPosition='right'
-                onToggle={this.handlePlural}
-                style={styles.toggle}
+              <PluralOptions
+                active={plural}
+                onActive={this.handlePluralChange}
+                onOptionsShow={this.handlePluralOptionsShow}
+                showOptions={pluralOptionsShow}
+                color={pluralColor}
+                onColorChange={this.handlePluralColorChange}
               />
               <Toggle
                 label={<FormattedMessage {...messages.strikeThrough} />}

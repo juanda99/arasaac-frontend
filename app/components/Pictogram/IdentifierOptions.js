@@ -105,7 +105,7 @@ class IdentifierOptions extends Component {
                 primaryText={formatMessage(messages.right)}
               />
             </SelectField>
-            {identifier === 'health-color' ? (
+            {identifier === 'health_color' ? (
               ''
             ) : (
               <div>
