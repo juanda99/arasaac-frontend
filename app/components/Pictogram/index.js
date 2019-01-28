@@ -83,6 +83,7 @@ class Pictogram extends Component {
       verbalTenseActive: false,
       verbalTense: PRESENT,
       verbalTenseOptionsShow: false,
+      verbalTenseColor: 'black',
       showText: false,
       openMenu: false,
       url: '',
@@ -132,6 +133,16 @@ class Pictogram extends Component {
 
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible })
+
+  getSoundPlayer = (idLocution, locale) => (
+    <SoundPlayer
+      crossOrigin='anonymous'
+      streamUrl={`${LOCUTIONS_URL}/${locale}/${idLocution}`}
+      preloadType='metadata'
+      showProgress={false}
+      showTimer={false}
+    />
+  )
 
   needHideOptions = (event) => {
     // add data-hide to elements where if click options should hide
@@ -276,6 +287,8 @@ class Pictogram extends Component {
 
   handleVerbalTenseChange = (verbalTense) => this.setState({ verbalTense })
 
+  handleVerbalTenseColorChange = (verbalTenseColor) => this.setState({ verbalTenseColor })
+  
   handleIdentifierActive = (identifierActive) => {
     this.hideOptions()
     this.setState({ identifierActive, identifierOptionsShow: identifierActive })
@@ -377,15 +390,6 @@ class Pictogram extends Component {
     onDownload(keyword, dataBase64)
   }
 
-  getSoundPlayer = (idLocution, locale) => (
-    <SoundPlayer
-      crossOrigin='anonymous'
-      streamUrl={`${LOCUTIONS_URL}/${locale}/${idLocution}`}
-      preloadType='metadata'
-      showProgress={false}
-      showTimer={false}
-    />
-  )
   updateWindowDimensions = () =>
     this.setState({ windowWidth: document.body.clientWidth })
 
@@ -404,6 +408,7 @@ class Pictogram extends Component {
       verbalTense,
       verbalTenseOptionsShow,
       verbalTenseActive,
+      verbalTenseColor,
       peopleAppearanceActive,
       peopleAppearanceOptionsShow,
       hair,
@@ -525,6 +530,7 @@ class Pictogram extends Component {
                       frameWidth={frameWidth}
                       canvasSize={canvasSize}
                       verbalTense={verbalTense}
+                      color={verbalTenseColor}
                     />
                   )}
                   {strikeThrough && (
@@ -628,6 +634,8 @@ class Pictogram extends Component {
                 onVerbalTenseChange={this.handleVerbalTenseChange}
                 onOptionsShow={this.handleVerbalTenseOptionsShow}
                 showOptions={verbalTenseOptionsShow}
+                color={verbalTenseColor}
+                onColorChange={this.handleVerbalTenseColorChange}
               />
               <IdentifierOptions
                 identifier={identifier}

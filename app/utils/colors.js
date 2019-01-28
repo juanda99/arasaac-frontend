@@ -22,4 +22,21 @@ export const cyan = '#00bcd4'
 // order matters! word type for frame and background color in picto editor
 export const colorSet = [yellow, orange, green, blue, pink, white]
 
-export const textColorSet = [white, grey, blueGrey, black, lightGreen, green, teal, yellow, orange, pink, red, brown, blue, purple]
+export const smallColorSet = [black, white, yellow]
+
+export const textColorSet = [
+  white,
+  grey,
+  blueGrey,
+  black,
+  lightGreen,
+  green,
+  teal,
+  yellow,
+  orange,
+  pink,
+  red,
+  brown,
+  blue,
+  purple
+]

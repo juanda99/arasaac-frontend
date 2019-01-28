@@ -138,8 +138,13 @@ export default defineMessages({
   },
   chooseIdentifier: {
     id: 'app.components.Pictogram.chooseIdentifier',
-    description: 'Help text for identifier icon',
+    description: 'Help text for identifier options',
     defaultMessage: 'Choose identifier:'
+  },
+  chooseVerbalTense: {
+    id: 'app.components.Pictogram.chooseVerbalTense',
+    description: 'Help text for verbal tense options',
+    defaultMessage: 'Choose verbal tense:'
   },
   frame: {
     id: 'app.components.Pictogram.frame',
