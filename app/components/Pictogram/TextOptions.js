@@ -72,6 +72,7 @@ class TextOptions extends Component {
       const keywords = data.map((keyword) => keyword.keyword)
       this.setState({ keywords, language })
       this.props.onTextChange(keywords[0] || '')
+      this.suggestions.focus()
     })
   }
 
@@ -124,12 +125,16 @@ class TextOptions extends Component {
               </P>
 
               <AutoComplete
+                ref={(input) => {
+                  this.suggestions = input
+                }}
                 searchText={text}
                 onUpdateInput={this.handleUpdateInput}
                 onNewRequest={this.handleNewRequest}
                 dataSource={keywords}
                 filter={() => true}
                 openOnFocus={true}
+                fullWidth={true}
               />
               <div style={{ position: 'relative', left: '-13px' }}>
                 <Toggle
