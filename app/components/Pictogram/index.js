@@ -141,7 +141,7 @@ class Pictogram extends Component {
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible })
 
-  getSoundPlayer = (idLocution, locale) => {
+  getSoundPlayer = (idLocution, locale, keyword) => {
     const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
     return (
       <div style={{ display: 'flex' }}>
@@ -152,11 +152,12 @@ class Pictogram extends Component {
           showProgress={false}
           showTimer={false}
         />
-        <a href={streamUrl}>
-          <IconButton touch={true}>
+        { keyword && (
+          <IconButton touch={true} onClick={() => this.props.onDownloadLocution(idLocution, locale, keyword)}>
             <CloudDownloadIcon />
           </IconButton>
-        </a>
+        )}
+
       </div>
     )
   }
@@ -797,7 +798,7 @@ class Pictogram extends Component {
         {keywords.valueSeq().map((keyword, index) => (
           <div key={`${keyword.get('keyword')}-${index}`}>
             <div style={{ display: 'flex' }}>
-              {this.getSoundPlayer(keyword.get('idLocution'), locale)}
+              {this.getSoundPlayer(keyword.get('idLocution'), locale, keyword.get('keyword'))}
               <P important={true} marginRight={'10px'}>
                 {keyword.get('keyword')}{' '}
               </P>
@@ -845,6 +846,7 @@ Pictogram.propTypes = {
   locale: PropTypes.string.isRequired,
   searchText: PropTypes.string.isRequired,
   onDownload: PropTypes.func.isRequired,
+  onDownloadLocution: PropTypes.func.isRequired,
   onLanguageChange: PropTypes.func.isRequired
 }
 

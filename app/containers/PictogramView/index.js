@@ -12,7 +12,7 @@ import Helmet from 'react-helmet'
 import Pictogram from 'components/Pictogram'
 import { pictogram } from 'containers/PictogramView/actions'
 import P from 'components/P'
-import api, { downloadCustomPictogram } from 'services'
+import api, { downloadCustomPictogram, downloadLocution } from 'services'
 import { makePictogramByIdSelector } from './selectors'
 import messages from './messages'
 
@@ -43,6 +43,9 @@ class PictogramView extends PureComponent {
     })
   }
 
+  handleDownloadLocution = (id, locale, keyword) =>
+    (window.location = downloadLocution(id, locale, keyword))
+
   renderContent() {
     const {
       pictogramData,
@@ -66,6 +69,7 @@ class PictogramView extends PureComponent {
         locale={locale}
         searchText={searchText || ''}
         onDownload={this.handleDownload}
+        onDownloadLocution={this.handleDownloadLocution}
       />
     )
   }

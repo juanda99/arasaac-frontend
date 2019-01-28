@@ -51,6 +51,9 @@ const api = {
 export const downloadCustomPictogram = (fileName) =>
   `${PRIVATE_API_ROOT}/pictograms/custom/${fileName}`
 
+export const downloadLocution = (id, locale, keyword) =>
+  `${PRIVATE_API_ROOT}/locutions/${id}/${locale}/${keyword}`
+
 export default api
 
 /*
