@@ -19,7 +19,7 @@ import messages from './messages'
 
 class TextOptions extends Component {
   static propTypes = {
-    textLabel: PropTypes.object.isRequired,
+    textLabel: PropTypes.string.isRequired,
     fontColor: PropTypes.string.isRequired,
     font: PropTypes.string,
     fontSize: PropTypes.number,

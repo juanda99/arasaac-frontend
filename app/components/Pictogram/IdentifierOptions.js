@@ -23,7 +23,7 @@ class IdentifierOptions extends Component {
     active: PropTypes.bool.isRequired,
     showOptions: PropTypes.bool.isRequired,
     onOptionsShow: PropTypes.func.isRequired,
-    color: PropTypes.func.isRequired,
+    color: PropTypes.string.isRequired,
     onColorChange: PropTypes.func.isRequired
   }
 

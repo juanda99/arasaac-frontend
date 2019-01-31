@@ -8,4 +8,6 @@ export const ICON_SIZE = 55
 export const PAST = 'PAST'
 export const PRESENT = 'PRESENT'
 export const FUTURE = 'FUTURE'
-
+export const LOW_RESOLUTION = 300
+export const STANDARD_RESOLUTION = 500
+export const HIGH_RESOLUTION = 2500

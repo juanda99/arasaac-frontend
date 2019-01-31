@@ -15,10 +15,10 @@ import {
   API_ROOT,
   IMAGES_URL
 } from 'services/config'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import SoundPlayer from 'components/SoundPlayer'
 import Toggle from 'material-ui/Toggle'
-import { keywordSelector } from 'utils'
+import { keywordSelector, isEmptyObject } from 'utils'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import { Stage } from 'react-konva'
@@ -37,7 +37,13 @@ import TextLayer from './TextLayer'
 import Img from './Img'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
-import { MEDIUM, MAX_CANVAS_SIZE, PRESENT } from './constants'
+import {
+  MEDIUM,
+  MAX_CANVAS_SIZE,
+  PRESENT,
+  STANDARD_RESOLUTION,
+  HIGH_RESOLUTION
+} from './constants'
 import BackgroundColorOptions from './BackgroundColorOptions'
 import FrameOptions from './FrameOptions'
 import VerbalTenseOptions from './VerbalTenseOptions'
@@ -56,6 +62,7 @@ class Pictogram extends Component {
     super(props)
     const { pictogram, searchText, locale } = this.props
     const keywords = pictogram.get('keywords')
+    const idPictogram = pictogram.get('idPictogram')
     const { keyword, type } = keywordSelector(searchText, keywords.toJS())
     const keywordsArray = keywords
       .valueSeq()
@@ -64,6 +71,7 @@ class Pictogram extends Component {
     const defaultColor = type >= 0 && type < 7 ? colorSet[type - 1] : ''
     this.state = {
       language: locale === 'en' ? 'es' : 'en',
+      highResolution: false, // true for photoResolution
       plural: false,
       pluralActive: false,
       pluralOptionsShow: false,
@@ -93,7 +101,7 @@ class Pictogram extends Component {
       verbalTenseColor: 'black',
       showText: false,
       openMenu: false,
-      url: '',
+      url: `${PICTOGRAMS_URL}/${idPictogram}_500.png`,
       downloadUrl: '',
       activeFont: 'Open Sans',
       buttonCaption: false,
@@ -152,16 +160,19 @@ class Pictogram extends Component {
           showProgress={false}
           showTimer={false}
         />
-        { keyword && (
-          <IconButton touch={true} onClick={() => this.props.onDownloadLocution(idLocution, locale, keyword)}>
+        {keyword && (
+          <IconButton
+            touch={true}
+            onClick={() =>
+              this.props.onDownloadLocution(idLocution, locale, keyword)
+            }
+          >
             <CloudDownloadIcon />
           </IconButton>
         )}
-
       </div>
     )
   }
-
   needHideOptions = (event) => {
     // add data-hide to elements where if click options should hide
     if (event.target.dataset.hide) this.hideOptions()
@@ -182,21 +193,29 @@ class Pictogram extends Component {
 
   buildOptionsRequest = () => {
     const { pictogram } = this.props
-    const { color, hair, skin } = this.state
+    const { color, hair, skin, highResolution } = this.state
     const idPictogram = pictogram.get('idPictogram')
-    const parameters = { color }
+    const parameters = color ? {} : { color }
+
     // only if active hair, skin, backgroundColor we add it to the request. Otherwise we take default image values
     if (hair) parameters.hair = hair
     if (skin) parameters.skin = skin
-
-    const urlParameters = Object.entries(parameters)
-      .map((param) => param.join('='))
-      .join('&')
-    const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=true`
-    const downloadUrl = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=false&download=true`
-    fetch(endPoint)
-      .then((data) => data.json())
-      .then((data) => this.setState({ url: data.image, downloadUrl }))
+    if (isEmptyObject(parameters)) {
+      const url = highResolution
+        ? `${PICTOGRAMS_URL}/${idPictogram}_${HIGH_RESOLUTION}.png`
+        : `${PICTOGRAMS_URL}/${idPictogram}_${STANDARD_RESOLUTION}.png`
+      this.setState({ url })
+    } else {
+      if (highResolution) parameters.resolution = HIGH_RESOLUTION
+      const urlParameters = Object.entries(parameters)
+        .map((param) => param.join('='))
+        .join('&')
+      const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=true`
+      const downloadUrl = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=false&download=true`
+      fetch(endPoint)
+        .then((data) => data.json())
+        .then((data) => this.setState({ url: data.image, downloadUrl }))
+    }
   }
 
   handleLanguageChange = (language) => {
@@ -205,6 +224,11 @@ class Pictogram extends Component {
 
   handleColor = (event, color) => {
     this.setState({ color }, () => this.buildOptionsRequest())
+    this.hideOptions()
+  }
+
+  handleHighResolution = (event, highResolution) => {
+    this.setState({ highResolution }, () => this.buildOptionsRequest())
     this.hideOptions()
   }
 
@@ -436,17 +460,24 @@ class Pictogram extends Component {
 
   handleDownload = () => {
     const { searchText, pictogram, onDownload } = this.props
-    const dataBase64 = this.stageRef.getStage().toDataURL()
+    const { highResolution } = this.state
+    const pixelRatio = highResolution
+      ? Math.ceil(HIGH_RESOLUTION / STANDARD_RESOLUTION)
+      : 1
+    const dataBase64 = this.stageRef.getStage().toDataURL({ pixelRatio })
     const keywords = pictogram.get('keywords')
     const { keyword } = keywordSelector(searchText, keywords.toJS())
-    onDownload(keyword, dataBase64)
+    // onDownload(keyword, dataBase64)
+    this.downloadButton.href = dataBase64
+    this.downloadButton.download = keyword
+    return true
   }
 
   updateWindowDimensions = () =>
     this.setState({ windowWidth: document.body.clientWidth })
 
   render() {
-    const { pictogram, searchText, locale } = this.props
+    const { pictogram, searchText, locale, intl } = this.props
     const {
       language,
       backgroundColor,
@@ -506,12 +537,11 @@ class Pictogram extends Component {
     // first time downloadUrl is default png
     const { keyword, idLocution } = keywordSelector(searchText, keywords.toJS())
     const authors = pictogram.get('authors')
-    // const pictoFile = `/${idPictogram}_500.png`
-    const pictoFile = url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`
     // remove # character in identifierColor for url
     const identifierFile = `${IMAGES_URL}/identifiers/${identifier}_${identifierColor.substr(
       1
     )}.png`
+    const { formatMessage } = intl
     return (
       <div>
         <div style={styles.wrapper}>
@@ -540,7 +570,7 @@ class Pictogram extends Component {
                   )}
 
                   <Img
-                    src={pictoFile}
+                    src={url}
                     frameWidth={frameWidth}
                     enableFrame={
                       frameActive
@@ -630,15 +660,14 @@ class Pictogram extends Component {
                   style={styles.button}
                   icon={<FavoriteIcon />}
                 />
-                {/* <a href={downloadUrl}> */}
-                <RaisedButton
-                  onClick={this.handleDownload}
-                  label={<FormattedMessage {...messages.downloadLabel} />}
-                  primary={true}
-                  style={styles.button}
-                  icon={<DownloadIcon />}
-                />
-                {/* </a>*/}
+                <a href='' onClick={this.handleDownload} ref={(node) => { this.downloadButton = node }}>
+                  <RaisedButton
+                    label={<FormattedMessage {...messages.downloadLabel} />}
+                    primary={true}
+                    style={styles.button}
+                    icon={<DownloadIcon />}
+                  />
+                </a>
               </PictogramTitle>
             </ConditionalPaper>
           </PictoWrapper>
@@ -730,7 +759,7 @@ class Pictogram extends Component {
             </P>
             <div style={styles.optionsWrapper} data-hide={true}>
               <TextOptions
-                textLabel={<FormattedMessage {...messages.topText} />}
+                textLabel={formatMessage(messages.topText)}
                 keywords={topTextKeywords}
                 defaultLanguage={locale}
                 onActive={this.handleTopTextActive}
@@ -751,7 +780,7 @@ class Pictogram extends Component {
                 onUpperCase={this.handleTopTextUpperCase}
               />
               <TextOptions
-                textLabel={<FormattedMessage {...messages.bottomText} />}
+                textLabel={formatMessage(messages.bottomText)}
                 keywords={bottomTextKeywords}
                 onActive={this.handleBottomTextActive}
                 active={bottomTextActive}
@@ -789,6 +818,13 @@ class Pictogram extends Component {
                 onToggle={this.handleDragAndDrop}
                 style={styles.toggle}
               />
+              <Toggle
+                label={<FormattedMessage {...messages.highResolution} />}
+                labelPosition='right'
+                onToggle={this.handleHighResolution}
+                defaultToggled={false}
+                style={styles.toggle}
+              />
             </div>
           </div>
         </div>
@@ -798,7 +834,11 @@ class Pictogram extends Component {
         {keywords.valueSeq().map((keyword, index) => (
           <div key={`${keyword.get('keyword')}-${index}`}>
             <div style={{ display: 'flex' }}>
-              {this.getSoundPlayer(keyword.get('idLocution'), locale, keyword.get('keyword'))}
+              {this.getSoundPlayer(
+                keyword.get('idLocution'),
+                locale,
+                keyword.get('keyword')
+              )}
               <P important={true} marginRight={'10px'}>
                 {keyword.get('keyword')}{' '}
               </P>
@@ -847,7 +887,7 @@ Pictogram.propTypes = {
   searchText: PropTypes.string.isRequired,
   onDownload: PropTypes.func.isRequired,
   onDownloadLocution: PropTypes.func.isRequired,
-  onLanguageChange: PropTypes.func.isRequired
+  intl: intlShape.isRequired
 }
 
-export default Pictogram
+export default injectIntl(Pictogram)

@@ -58,6 +58,11 @@ export default defineMessages({
       'Toggle button to set a backgroundColor, by default transparent',
     defaultMessage: 'Background color'
   },
+  highResolution: {
+    id: 'app.components.Pictogram.highResolution',
+    description: 'Toggle button to activate high resolution',
+    defaultMessage: 'High resolution'
+  },
   text: {
     id: 'app.components.Pictogram.text',
     description: 'Toggle button to set a text, none by default ',
