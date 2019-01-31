@@ -458,7 +458,7 @@ class Pictogram extends Component {
     fetch(endPoint)
   }
 
-  handleDownload = () => {
+  handleDownloadFromClient = (event) => {
     const { searchText, pictogram, onDownload } = this.props
     const { highResolution } = this.state
     const pixelRatio = highResolution
@@ -467,10 +467,46 @@ class Pictogram extends Component {
     const dataBase64 = this.stageRef.getStage().toDataURL({ pixelRatio })
     const keywords = pictogram.get('keywords')
     const { keyword } = keywordSelector(searchText, keywords.toJS())
-    // onDownload(keyword, dataBase64)
     this.downloadButton.href = dataBase64
     this.downloadButton.download = keyword
-    return true
+  }
+
+  handleDownloadFromServer = () => {
+    const { searchText, pictogram, onDownload } = this.props
+    const { highResolution } = this.state
+    const pixelRatio = highResolution
+      ? Math.ceil(HIGH_RESOLUTION / STANDARD_RESOLUTION)
+      : 1
+    const dataBase64 = this.stageRef.getStage().toDataURL({ pixelRatio })
+    const keywords = pictogram.get('keywords')
+    const { keyword } = keywordSelector(searchText, keywords.toJS())
+    onDownload(keyword, dataBase64)
+  }
+
+  renderDownloadButton = () => {
+    const userAgent = window.navigator.userAgent.toLowerCase()
+    const isIOS = /iphone|ipod|ipad/.test(userAgent)
+    const isSAFARI = /^((?!chrome|android).)*safari/i.test(userAgent)
+    return (isIOS || isSAFARI) ?
+      (
+        <RaisedButton
+          label={<FormattedMessage {...messages.downloadLabel} />}
+          onClick={this.handleDownloadFromServer}
+          primary={true}
+          style={styles.button}
+          icon={<DownloadIcon />}
+        />
+      ) :
+      (
+        <a href='' onClick={this.handleDownloadFromClient} ref={(node) => { this.downloadButton = node }}>
+          <RaisedButton
+            label={<FormattedMessage {...messages.downloadLabel} />}
+            primary={true}
+            style={styles.button}
+            icon={<DownloadIcon />}
+          />
+        </a>
+      )
   }
 
   updateWindowDimensions = () =>
@@ -660,14 +696,7 @@ class Pictogram extends Component {
                   style={styles.button}
                   icon={<FavoriteIcon />}
                 />
-                <a href='' onClick={this.handleDownload} ref={(node) => { this.downloadButton = node }}>
-                  <RaisedButton
-                    label={<FormattedMessage {...messages.downloadLabel} />}
-                    primary={true}
-                    style={styles.button}
-                    icon={<DownloadIcon />}
-                  />
-                </a>
+                {this.renderDownloadButton()}
               </PictogramTitle>
             </ConditionalPaper>
           </PictoWrapper>
