@@ -8,13 +8,16 @@ import api from 'services'
 import P from 'components/P'
 import SoundPlayer from 'components/SoundPlayer'
 import { LOCUTIONS_URL } from 'services/config'
+import IconButton from 'material-ui/IconButton'
+import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download'
 import messages from './messages'
 
-export default class Translations extends Component {
+export default class RelatedWords extends Component {
   static propTypes = {
     language: PropTypes.string,
     idPictogram: PropTypes.number.isRequired,
-    onLanguageChange: PropTypes.func.isRequired
+    onLanguageChange: PropTypes.func.isRequired,
+    onDownloadLocution: PropTypes.func.isRequired
   }
 
   state = {
@@ -38,6 +41,31 @@ export default class Translations extends Component {
     />
   )
 
+  getSoundPlayer = (idLocution, locale, keyword) => {
+    const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
+    return (
+      <div style={{ display: 'flex' }}>
+        <SoundPlayer
+          crossOrigin='anonymous'
+          streamUrl={streamUrl}
+          preloadType='metadata'
+          showProgress={false}
+          showTimer={false}
+        />
+        {keyword && (
+          <IconButton
+            touch={true}
+            onClick={() =>
+              this.props.onDownloadLocution(idLocution, locale, keyword)
+            }
+          >
+            <CloudDownloadIcon />
+          </IconButton>
+        )}
+      </div>
+    )
+  }
+
   handleLanguageChange = (language) => {
     const { idPictogram, onLanguageChange } = this.props
     onLanguageChange(language)
@@ -51,7 +79,7 @@ export default class Translations extends Component {
     const { language } = this.props
     return (
       <div>
-        <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
+        <H3 primary>{<FormattedMessage {...messages.description} />}</H3>
         <Divider />
         <P>{<FormattedMessage {...messages.changePictoLanguage} />}</P>
         <LanguageSelector
@@ -62,13 +90,18 @@ export default class Translations extends Component {
         />
 
         {keywords.map((keyword, index) => (
-          <div key={`${keyword.keyword}-${index}`} style={{ display: 'flex' }}>
-            {keyword.idLocution &&
-              this.getSoundPlayer(keyword.idLocution, language)}
-            <P important={true} marginRight={'10px'}>
-              {keyword.keyword}
-            </P>
-            <P>{keyword.meaning}</P>
+          <div key={`${keyword.keyword}-${index}`}>
+            <div style={{ display: 'flex' }}>
+              {this.getSoundPlayer(
+                keyword.idLocution,
+                language,
+                keyword.keyword
+              )}
+              <P important={true} marginRight={'10px'}>
+                {keyword.keyword}{' '}
+              </P>
+              <P>{keyword.meaning}</P>
+            </div>
           </div>
         ))}
       </div>

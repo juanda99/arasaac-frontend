@@ -16,11 +16,6 @@ export default defineMessages({
     description: 'Title for list of icons for sharing pictograms',
     defaultMessage: 'Share it!'
   },
-  languages: {
-    id: 'app.components.Pictogram.languages',
-    description: 'Title for list of languages',
-    defaultMessage: 'Languages'
-  },
   description: {
     id: 'app.components.Pictogram.description',
     description: 'Title for pictogram description: keyword, meaning...',

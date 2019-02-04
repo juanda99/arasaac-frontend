@@ -21,6 +21,7 @@ import Toggle from 'material-ui/Toggle'
 import { keywordSelector, isEmptyObject } from 'utils'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
+import Konva from 'konva'
 import { Stage } from 'react-konva'
 import P from 'components/P'
 import { colorSet, black } from 'utils/colors'
@@ -55,11 +56,12 @@ import ZoomOptions from './ZoomOptions'
 import PictoWrapper from './PictoWrapper'
 import Canvas from './Canvas'
 import PictogramTitle from './PictogramTitle'
-import Translations from './Translations'
+import RelatedWords from './RelatedWords'
 
 class Pictogram extends Component {
   constructor(props) {
     super(props)
+    Konva.pixelRatio = 2
     const { pictogram, searchText, locale } = this.props
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
@@ -70,7 +72,7 @@ class Pictogram extends Component {
       .toArray()
     const defaultColor = type >= 0 && type < 7 ? colorSet[type - 1] : ''
     this.state = {
-      language: locale === 'en' ? 'es' : 'en',
+      language: locale,
       highResolution: false, // true for photoResolution
       plural: false,
       pluralActive: false,
@@ -101,7 +103,7 @@ class Pictogram extends Component {
       verbalTenseColor: 'black',
       showText: false,
       openMenu: false,
-      url: `${PICTOGRAMS_URL}/${idPictogram}_500.png`,
+      url: `${PICTOGRAMS_URL}/${idPictogram}_2500.png`,
       downloadUrl: '',
       activeFont: 'Open Sans',
       buttonCaption: false,
@@ -477,40 +479,29 @@ class Pictogram extends Component {
     const pixelRatio = highResolution
       ? Math.ceil(HIGH_RESOLUTION / STANDARD_RESOLUTION)
       : 1
-    const dataBase64 = this.stageRef.getStage().toDataURL({ pixelRatio })
+    const dataBase64 = this.stageRef.getStage().toDataURL({ pixelRatio: 5 })
     const keywords = pictogram.get('keywords')
     const { keyword } = keywordSelector(searchText, keywords.toJS())
     onDownload(keyword, dataBase64)
   }
 
+  updateWindowDimensions = () =>
+    this.setState({ windowWidth: document.body.clientWidth })
+
   renderDownloadButton = () => {
     const userAgent = window.navigator.userAgent.toLowerCase()
     const isIOS = /iphone|ipod|ipad/.test(userAgent)
     const isSAFARI = /^((?!chrome|android).)*safari/i.test(userAgent)
-    return (isIOS || isSAFARI) ?
-      (
-        <RaisedButton
-          label={<FormattedMessage {...messages.downloadLabel} />}
-          onClick={this.handleDownloadFromServer}
-          primary={true}
-          style={styles.button}
-          icon={<DownloadIcon />}
-        />
-      ) :
-      (
-        <a href='' onClick={this.handleDownloadFromClient} ref={(node) => { this.downloadButton = node }}>
-          <RaisedButton
-            label={<FormattedMessage {...messages.downloadLabel} />}
-            primary={true}
-            style={styles.button}
-            icon={<DownloadIcon />}
-          />
-        </a>
-      )
+    return  (
+      <RaisedButton
+        label={<FormattedMessage {...messages.downloadLabel} />}
+        onClick={this.handleDownloadFromServer}
+        primary={true}
+        style={styles.button}
+        icon={<DownloadIcon />}
+      />
+    )
   }
-
-  updateWindowDimensions = () =>
-    this.setState({ windowWidth: document.body.clientWidth })
 
   render() {
     const { pictogram, searchText, locale, intl } = this.props
@@ -596,6 +587,7 @@ class Pictogram extends Component {
                   ref={(node) => {
                     this.stageRef = node
                   }}
+
                   onContextMenu={(e) => e.evt.preventDefault()}
                 >
                   {bgColorActive && (
@@ -857,29 +849,12 @@ class Pictogram extends Component {
             </div>
           </div>
         </div>
-        <H3 primary>{<FormattedMessage {...messages.description} />}</H3>
-        <Divider />
-        {/* index for keyword will not be necessary if load data is ok */}
-        {keywords.valueSeq().map((keyword, index) => (
-          <div key={`${keyword.get('keyword')}-${index}`}>
-            <div style={{ display: 'flex' }}>
-              {this.getSoundPlayer(
-                keyword.get('idLocution'),
-                locale,
-                keyword.get('keyword')
-              )}
-              <P important={true} marginRight={'10px'}>
-                {keyword.get('keyword')}{' '}
-              </P>
-              <P>{keyword.get('meaning')}</P>
-            </div>
-          </div>
-        ))}
-        <Translations
+        <RelatedWords
           locale={locale}
           language={language}
           idPictogram={idPictogram}
           onLanguageChange={this.handleLanguageChange}
+          onDownloadLocution={this.props.onDownloadLocution}
         />
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />
