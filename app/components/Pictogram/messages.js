@@ -210,11 +210,6 @@ export default defineMessages({
     description: 'Toggle button label',
     defaultMessage: 'Bottom text'
   },
-  lowerText: {
-    id: 'app.components.Pictogram.lowerTextToggleLabel',
-    description: 'Toggle button label',
-    defaultMessage: 'Lower text'
-  },
   enterText: {
     id: 'app.components.Pictogram.TextOptions.enterText',
     description: 'Hint label for text input',
