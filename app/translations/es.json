@@ -215,7 +215,7 @@
   "app.components.PictogramSnippet.addFavorite tooltip": "Añadir pictograma a la pestaña de favoritos",
   "app.components.PictogramSnippet.addFavoriteTooltip": "Añadir pictograma a favoritos",
   "app.components.PictogramSnippet.download tooltip": "Descargar pictograma",
-  "app.components.PictogramSnippet.downloadTooltip": "Download pictogram",
+  "app.components.PictogramSnippet.downloadTooltip": "Descargar pictograma",
   "app.components.PrivatePolicy.header": "¡Este es el componente de PrivatePolicy!",
   "app.components.SearchBox.searchField": "Introduzca texto a buscar",
   "app.components.UseConditions.license": "Licencia de Creative Commons (BY-NC-SA)",
