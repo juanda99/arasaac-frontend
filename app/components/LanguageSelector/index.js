@@ -52,7 +52,7 @@ const LanguageSelector = (props) => {
         )}`}
       />
       <MenuItem
-        value={'cr'}
+        value={'hr'}
         primaryText={`${showOriginal('Hrvatski')}${formatMessage(
           messages.croatian
         )}`}
@@ -100,11 +100,11 @@ const LanguageSelector = (props) => {
         )}`}
       />
       <MenuItem
-        value={'ara'}
+        value={'ar'}
         primaryText={`${showOriginal('عربى')}${formatMessage(messages.arabic)}`}
       />
       <MenuItem
-        value={'zhs'}
+        value={'zh'}
         primaryText={`${showOriginal('简体中文')}${formatMessage(
           messages.chineseSimplified
         )}`}
