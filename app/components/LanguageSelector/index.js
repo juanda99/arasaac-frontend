@@ -110,7 +110,7 @@ const LanguageSelector = (props) => {
         )}`}
       />
       <MenuItem
-        value={'ga'}
+        value={'gl'}
         primaryText={`${showOriginal('Galego')}${formatMessage(
           messages.galician
         )}`}
