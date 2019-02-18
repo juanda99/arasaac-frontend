@@ -5,8 +5,10 @@ import { PICTOGRAMS_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
 import ActionSetFavorite from 'material-ui/svg-icons/action/favorite-border'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
+import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 import { FormattedMessage } from 'react-intl'
 import { keywordSelector } from 'utils'
+import StyledList from './StyledList'
 import CardActions from './CardActions'
 import StyledPaper from './StyledPaper'
 import Image from './Image'
@@ -65,12 +67,12 @@ class PictogramSnippet extends PureComponent {
       pictogram: { idPictogram, keywords },
       searchText,
       muiTheme,
-      locale
+      locale,
+      width
     } = this.props
     const { keyword } = keywordSelector(searchText, keywords)
     return (
-      <li
-        style={{ margin: 5, width: '250px', height: '250px' }}
+      <StyledList
         key={idPictogram}
         className='image-element-class'
         onMouseEnter={this.handleMouseEnter}
@@ -83,35 +85,37 @@ class PictogramSnippet extends PureComponent {
                 src={`${PICTOGRAMS_URL}/${idPictogram}_300.png`}
                 alt={keyword}
               />
-              <CardActions>
-                <IconButton
-                  touch={true}
-                  tooltip={<FormattedMessage {...messages.addFavorite} />}
-                  iconStyle={this.styles.icon}
-                  style={this.styles.leftIconButton}
-                >
-                  <ActionSetFavorite
-                    color={muiTheme.appBar.textColor}
-                    hoverColor={muiTheme.palette.accent1Color}
-                  />
-                </IconButton>
-                <IconButton
-                  touch={true}
-                  tooltip={<FormattedMessage {...messages.download} />}
-                  iconStyle={this.styles.icon}
-                  style={this.styles.rightIconButton}
-                >
-                  <FileDownload
-                    color={muiTheme.appBar.textColor}
-                    hoverColor={muiTheme.palette.accent1Color}
-                  />
-                </IconButton>
-                <p style={this.styles.cardTitle}>{keyword}</p>
-              </CardActions>
+              {width === LARGE && (
+                <CardActions>
+                  <IconButton
+                    touch={true}
+                    tooltip={<FormattedMessage {...messages.addFavorite} />}
+                    iconStyle={this.styles.icon}
+                    style={this.styles.leftIconButton}
+                  >
+                    <ActionSetFavorite
+                      color={muiTheme.appBar.textColor}
+                      hoverColor={muiTheme.palette.accent1Color}
+                    />
+                  </IconButton>
+                  <IconButton
+                    touch={true}
+                    tooltip={<FormattedMessage {...messages.download} />}
+                    iconStyle={this.styles.icon}
+                    style={this.styles.rightIconButton}
+                  >
+                    <FileDownload
+                      color={muiTheme.appBar.textColor}
+                      hoverColor={muiTheme.palette.accent1Color}
+                    />
+                  </IconButton>
+                  <p style={this.styles.cardTitle}>{keyword}</p>
+                </CardActions>
+              )}
             </div>
           </Item>
         </StyledPaper>
-      </li>
+      </StyledList>
     )
   }
 }
@@ -120,7 +124,8 @@ PictogramSnippet.propTypes = {
   pictogram: PropTypes.object.isRequired,
   searchText: PropTypes.string,
   muiTheme: PropTypes.object,
-  locale: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired
 }
 
-export default muiThemeable()(PictogramSnippet)
+export default muiThemeable()(withWidth()(PictogramSnippet))
