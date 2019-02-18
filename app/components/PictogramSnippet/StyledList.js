@@ -9,7 +9,7 @@ const StyledList = styled.li`
     box-sizing: border-box;
     width: 95%;
     height: auto;
-    margin: 10px auto;
+    margin: 20px auto;
   }
 `
 
