@@ -61,7 +61,6 @@ import RelatedWords from './RelatedWords'
 class Pictogram extends Component {
   constructor(props) {
     super(props)
-    Konva.pixelRatio = 2
     const { pictogram, searchText, locale } = this.props
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
@@ -70,6 +69,7 @@ class Pictogram extends Component {
       .valueSeq()
       .map((keyword) => keyword.get('keyword'))
       .toArray()
+    Konva.pixelRatio = Math.ceil(HIGH_RESOLUTION / STANDARD_RESOLUTION)
     const defaultColor = type >= 0 && type < 7 ? colorSet[type - 1] : ''
     this.state = {
       language: locale,
@@ -103,7 +103,7 @@ class Pictogram extends Component {
       verbalTenseColor: 'black',
       showText: false,
       openMenu: false,
-      url: `${PICTOGRAMS_URL}/${idPictogram}_2500.png`,
+      url: `${PICTOGRAMS_URL}/${idPictogram}_${STANDARD_RESOLUTION}.png`,
       downloadUrl: '',
       activeFont: 'Open Sans',
       buttonCaption: false,
@@ -479,7 +479,7 @@ class Pictogram extends Component {
     const pixelRatio = highResolution
       ? Math.ceil(HIGH_RESOLUTION / STANDARD_RESOLUTION)
       : 1
-    const dataBase64 = this.stageRef.getStage().toDataURL({ pixelRatio: 5 })
+    const dataBase64 = this.stageRef.getStage().toDataURL({ pixelRatio })
     const keywords = pictogram.get('keywords')
     const { keyword } = keywordSelector(searchText, keywords.toJS())
     onDownload(keyword, dataBase64)
@@ -492,7 +492,7 @@ class Pictogram extends Component {
     const userAgent = window.navigator.userAgent.toLowerCase()
     const isIOS = /iphone|ipod|ipad/.test(userAgent)
     const isSAFARI = /^((?!chrome|android).)*safari/i.test(userAgent)
-    return  (
+    return (
       <RaisedButton
         label={<FormattedMessage {...messages.downloadLabel} />}
         onClick={this.handleDownloadFromServer}
@@ -587,7 +587,6 @@ class Pictogram extends Component {
                   ref={(node) => {
                     this.stageRef = node
                   }}
-
                   onContextMenu={(e) => e.evt.preventDefault()}
                 >
                   {bgColorActive && (
@@ -596,7 +595,6 @@ class Pictogram extends Component {
                       size={canvasSize}
                     />
                   )}
-
                   <Img
                     src={url}
                     frameWidth={frameWidth}
@@ -609,7 +607,6 @@ class Pictogram extends Component {
                     topMargin={topTextActive ? 50 : 0}
                     bottomMargin={bottomTextActive ? 50 : 0}
                   />
-
                   {topTextActive && (
                     <TextLayer
                       font={topTextFont}
@@ -644,7 +641,6 @@ class Pictogram extends Component {
                       color={pluralColor}
                     />
                   )}
-
                   {verbalTenseActive && (
                     <VerbalTenseLayer
                       frame={frameActive}
@@ -671,7 +667,6 @@ class Pictogram extends Component {
                       dragAndDrop={dragAndDrop}
                     />
                   )}
-
                   {frameActive && (
                     <FrameLayer
                       color={frameColor}
