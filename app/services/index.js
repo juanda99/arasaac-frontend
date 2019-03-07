@@ -43,7 +43,8 @@ const api = {
   GET_KEYWORDS_BY_PICTOID: ({ language, idPictogram }) =>
     callApi(
       `${PRIVATE_API_ROOT}/pictograms/keywords/${language}/${idPictogram}`
-    )
+    ),
+  CATALOGS_REQUEST: () => callApi(`${PRIVATE_API_ROOT}/catalogs`)
 
   /* CUSTOM_PICTOGRAM_REQUEST: (idPictogram, options) => callApi(customPictogram.url(idPictogram, options))*/
 }

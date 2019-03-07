@@ -11,6 +11,7 @@ export const API_SERVER = 'https://api.arasaac.org'
 export const API_ROOT = `${API_SERVER}/api`
 export const AUTH_ROOT = 'https://auth.arasaac.org'
 export const PRIVATE_API_ROOT = 'https://privateapi.arasaac.org/api'
+export const STORAGE_URL = 'https://storage.arasaac.org'
 
 export const login = {
   url: `${AUTH_ROOT}/oauth/token`,

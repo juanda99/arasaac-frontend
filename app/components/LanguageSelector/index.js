@@ -11,21 +11,27 @@ import MenuItem from 'material-ui/MenuItem'
 import { injectIntl, intlShape } from 'react-intl'
 import messages from './messages'
 
-const LanguageSelector = (props) => {
-  const { formatMessage } = props.intl
+const LanguageSelector = ({
+  onChange,
+  intl,
+  value,
+  shortOption,
+  showToolTip
+}) => {
+  const { formatMessage } = intl
   const handleChange = (event, index, value) => {
-    props.onChange(value)
+    onChange(value)
   }
 
-  const showOriginal = (original) => (props.shortOption ? '' : `${original} - `)
+  const showOriginal = (original) => (shortOption ? '' : `${original} - `)
 
   return (
     <SelectField
       style={{ textAlign: 'left', width: '330px', maxWidth: '98%' }}
       maxHeight={400}
-      value={props.value}
+      value={value}
       onChange={handleChange}
-      floatingLabelText={props.showToolTip && 'Choose your language'}
+      floatingLabelText={showToolTip && 'Choose your language'}
     >
       <MenuItem
         value={'es'}

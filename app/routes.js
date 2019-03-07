@@ -21,9 +21,7 @@ export default function createRoutes(store) {
       path: '/',
       name: 'home',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/HomePage')
-        ])
+        const importModules = Promise.all([import('containers/HomePage')])
 
         const renderRoute = loadModule(cb)
 
@@ -33,7 +31,8 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/pictograms/search',
       name: 'pictogramsView',
       getComponent(nextState, cb) {
@@ -68,7 +67,17 @@ export default function createRoutes(store) {
           }
         }
       ]
-    }, {
+    },
+    {
+      path: '/pictograms/catalogs',
+      name: 'catalogs',
+      getComponent(location, cb) {
+        import('containers/CatalogsView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    },
+    {
       path: '/materials/search',
       name: 'materialsView',
       getComponent(nextState, cb) {
@@ -103,7 +112,8 @@ export default function createRoutes(store) {
           }
         }
       ]
-    }, {
+    },
+    {
       path: '/news/upload',
       onEnter(nextState, replace, callback) {
         // onEnter gets called when we visit a route
@@ -147,7 +157,8 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/materials/upload',
       onEnter(nextState, replace, callback) {
         // onEnter gets called when we visit a route
@@ -159,7 +170,9 @@ export default function createRoutes(store) {
         }
 
         // Inject sagas as usual
-        const importModules = System.import('containers/UploadMaterialView/sagas')
+        const importModules = System.import(
+          'containers/UploadMaterialView/sagas'
+        )
 
         importModules.then((sagas) => {
           this.loadedSagas = injectSagas(sagas.default)
@@ -191,7 +204,8 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/materials/:idMaterial',
       name: 'materialView',
       getComponent(nextState, cb) {
@@ -212,7 +226,8 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/pictograms/:locale/:idPictogram(/:searchText)',
       name: 'pictogramView',
       getComponent(nextState, cb) {
@@ -231,13 +246,14 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/configuration',
       name: 'configurationView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          // import('containers/ConfigurationView/reducer'),
-          import('containers/ConfigurationView/')
+          import(// import('containers/ConfigurationView/reducer'),
+          'containers/ConfigurationView/')
         ])
 
         const renderRoute = loadModule(cb)
@@ -250,7 +266,8 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/configuration',
       name: 'configurationView',
       getComponent(location, cb) {
@@ -258,7 +275,8 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/developers',
       name: 'DevelopersView',
       getComponent(location, cb) {
@@ -266,7 +284,8 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/developers/accounts',
       name: 'DevAccountView',
       getComponent(location, cb) {
@@ -274,8 +293,8 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading)
       }
-
-    }, {
+    },
+    {
       path: '/developers/api',
       name: 'ApiView',
       getComponent(location, cb) {
@@ -283,13 +302,12 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/profile',
       name: 'ProfileView',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/ProfileView')
-        ])
+        const importModules = Promise.all([import('containers/ProfileView')])
         const renderRoute = loadModule(cb)
         importModules.then(([component]) => {
           renderRoute(component)
@@ -297,13 +315,12 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/signin',
       name: 'LoginView',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/LoginView')
-        ])
+        const importModules = Promise.all([import('containers/LoginView')])
         const renderRoute = loadModule(cb)
         importModules.then(([component]) => {
           renderRoute(component)
@@ -311,7 +328,8 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: 'register',
       name: 'SignupView',
       getComponent(nextState, cb) {
@@ -328,14 +346,15 @@ export default function createRoutes(store) {
         })
         importModules.catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/register-options',
       name: 'loginView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          // import('containers/LoginView/reducer'),
+          import(// import('containers/LoginView/reducer'),
           // import('containers/LoginView/sagas'),
-          import('containers/LoginView')
+          'containers/LoginView')
         ])
 
         const renderRoute = loadModule(cb)
@@ -347,7 +366,8 @@ export default function createRoutes(store) {
         })
         importModules.catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: 'use-conditions',
       name: 'useConditions',
       getComponent(location, cb) {
@@ -355,7 +375,8 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: 'privacy-policy',
       name: 'privacyPolicy',
       getComponent(location, cb) {
@@ -363,7 +384,8 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/prizes',
       name: 'prizes',
       getComponent(location, cb) {
@@ -371,7 +393,8 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '/settings',
       name: 'settings',
       getComponent(location, cb) {
@@ -379,7 +402,8 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: 'contact-us',
       name: 'contact-us',
       getComponent(location, cb) {
@@ -387,7 +411,8 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading)
       }
-    }, {
+    },
+    {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
