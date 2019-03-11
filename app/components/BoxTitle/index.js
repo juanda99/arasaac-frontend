@@ -1,7 +1,7 @@
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import styled from 'styled-components'
 
-const PictogramTitle = styled.div`
+const BoxTitle = styled.div`
   background-color: ${(props) => props.muiTheme.optionBox.backgroundColor};
   display: flex;
   align-items: center;
@@ -9,4 +9,4 @@ const PictogramTitle = styled.div`
   flex-wrap: wrap;
 `
 
-export default muiThemeable()(PictogramTitle)
+export default muiThemeable()(BoxTitle)

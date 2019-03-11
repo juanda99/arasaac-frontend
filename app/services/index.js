@@ -43,13 +43,17 @@ const api = {
   GET_KEYWORDS_BY_PICTOID: ({ language, idPictogram }) =>
     callApi(
       `${PRIVATE_API_ROOT}/pictograms/keywords/${language}/${idPictogram}`
-    )
+    ),
+  CATALOGS_REQUEST: () => callApi(`${PRIVATE_API_ROOT}/catalogs`)
 
   /* CUSTOM_PICTOGRAM_REQUEST: (idPictogram, options) => callApi(customPictogram.url(idPictogram, options))*/
 }
 
 export const downloadCustomPictogram = (fileName) =>
   `${PRIVATE_API_ROOT}/pictograms/custom/${fileName}`
+
+export const downloadLocution = (id, locale, keyword) =>
+  `${PRIVATE_API_ROOT}/locutions/${id}/${locale}/${keyword}`
 
 export default api
 

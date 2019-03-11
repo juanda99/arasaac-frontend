@@ -16,20 +16,10 @@ export default defineMessages({
     description: 'Title for list of icons for sharing pictograms',
     defaultMessage: 'Share it!'
   },
-  languages: {
-    id: 'app.components.Pictogram.languages',
-    description: 'Title for list of languages',
-    defaultMessage: 'Languages'
-  },
   description: {
     id: 'app.components.Pictogram.description',
     description: 'Title for pictogram description: keyword, meaning...',
     defaultMessage: 'Related words'
-  },
-  meaning: {
-    id: 'app.components.Pictogram.meaning',
-    description: 'Meaning of pictogram associated keyword',
-    defaultMessage: 'Meaning'
   },
   changePictoLanguage: {
     id: 'app.components.Pictogram.changePictoLanguage',
@@ -63,6 +53,11 @@ export default defineMessages({
       'Toggle button to set a backgroundColor, by default transparent',
     defaultMessage: 'Background color'
   },
+  highResolution: {
+    id: 'app.components.Pictogram.highResolution',
+    description: 'Toggle button to activate high resolution',
+    defaultMessage: 'High resolution'
+  },
   text: {
     id: 'app.components.Pictogram.text',
     description: 'Toggle button to set a text, none by default ',
@@ -89,11 +84,20 @@ export default defineMessages({
     description: 'Identifier option',
     defaultMessage: 'Health'
   },
-
+  healthColor: {
+    id: 'app.components.Pictogram.healthColor',
+    description: 'Identifier option',
+    defaultMessage: 'Health with color'
+  },
   library: {
     id: 'app.components.Pictogram.library',
     description: 'Identifier option',
     defaultMessage: 'Library'
+  },
+  office: {
+    id: 'app.components.Pictogram.office',
+    description: 'Identifier option',
+    defaultMessage: 'Office'
   },
   choosePosition: {
     id: 'app.components.Pictogram.choosePosition',
@@ -127,7 +131,8 @@ export default defineMessages({
   },
   chooseColor: {
     id: 'app.components.Pictogram.chooseColor',
-    description: 'Help text for color of the background, font and frame selector',
+    description:
+      'Help text for color of the background, font and frame selector',
     defaultMessage: 'Choose color:'
   },
   chooseZoom: {
@@ -137,8 +142,13 @@ export default defineMessages({
   },
   chooseIdentifier: {
     id: 'app.components.Pictogram.chooseIdentifier',
-    description: 'Help text for identifier icon',
+    description: 'Help text for identifier options',
     defaultMessage: 'Choose identifier:'
+  },
+  chooseVerbalTense: {
+    id: 'app.components.Pictogram.chooseVerbalTense',
+    description: 'Help text for verbal tense options',
+    defaultMessage: 'Choose verbal tense:'
   },
   frame: {
     id: 'app.components.Pictogram.frame',
@@ -199,11 +209,6 @@ export default defineMessages({
     id: 'app.components.Pictogram.bottomTextToggleLabel',
     description: 'Toggle button label',
     defaultMessage: 'Bottom text'
-  },
-  lowerText: {
-    id: 'app.components.Pictogram.lowerTextToggleLabel',
-    description: 'Toggle button label',
-    defaultMessage: 'Lower text'
   },
   enterText: {
     id: 'app.components.Pictogram.TextOptions.enterText',
@@ -293,5 +298,4 @@ export default defineMessages({
     description: 'Label text',
     defaultMessage: 'Font family:'
   }
-
 })

@@ -1,14 +1,16 @@
 /* eslint no-mixed-operators: 0 */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { injectIntl, intlShape } from 'react-intl'
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
+import { smallColorSet } from 'utils/colors'
 import P from 'components/P'
 import BoxOptions from './BoxOptions'
 import ToggleDropDown from './ToggleDropdown'
 import messages from './messages'
 import styles from './styles'
+import ColorPicker from './ColorPicker'
 
 class IdentifierOptions extends Component {
   static propTypes = {
@@ -20,7 +22,9 @@ class IdentifierOptions extends Component {
     onActive: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
     showOptions: PropTypes.bool.isRequired,
-    onOptionsShow: PropTypes.func.isRequired
+    onOptionsShow: PropTypes.func.isRequired,
+    color: PropTypes.string.isRequired,
+    onColorChange: PropTypes.func.isRequired
   }
 
   // bgColor means isInputChecked
@@ -34,16 +38,19 @@ class IdentifierOptions extends Component {
   handleIdentifierPositionChange = (event, index, identifierPosition) =>
     this.props.onIdentifierPositionChange(identifierPosition)
 
+  handleColorChange = (color) => this.props.onColorChange(color)
+
   render() {
     const {
       intl,
       identifier,
       active,
       showOptions,
-      identifierPosition
+      identifierPosition,
+      color
     } = this.props
     const { formatMessage } = intl
-    const marginBottom = showOptions ? '240px' : 'auto'
+    const marginBottom = showOptions ? '310px' : 'auto'
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown
@@ -71,8 +78,16 @@ class IdentifierOptions extends Component {
                 primaryText={formatMessage(messages.health)}
               />
               <MenuItem
+                value='health_color'
+                primaryText={formatMessage(messages.healthColor)}
+              />
+              <MenuItem
                 value='library'
                 primaryText={formatMessage(messages.library)}
+              />
+              <MenuItem
+                value='office'
+                primaryText={formatMessage(messages.office)}
               />
             </SelectField>
             <P marginBottom='0px'>{formatMessage(messages.choosePosition)}</P>
@@ -81,7 +96,6 @@ class IdentifierOptions extends Component {
               value={identifierPosition}
               onChange={this.handleIdentifierPositionChange}
             >
-              <MenuItem value={null} primaryText='' />
               <MenuItem
                 value='left'
                 primaryText={formatMessage(messages.left)}
@@ -91,6 +105,19 @@ class IdentifierOptions extends Component {
                 primaryText={formatMessage(messages.right)}
               />
             </SelectField>
+            {identifier === 'health_color' ? (
+              ''
+            ) : (
+              <div>
+                <P>{<FormattedMessage {...messages.chooseColor} />}</P>
+                <ColorPicker
+                  color={color}
+                  colors={smallColorSet}
+                  onChooseColor={this.handleColorChange}
+                  enableMoreColors={false}
+                />
+              </div>
+            )}
           </BoxOptions>
         ) : (
           ''

@@ -32,12 +32,15 @@ import { connect } from 'react-redux'
 import spacing from 'material-ui/styles/spacing'
 import { white } from 'material-ui/styles/colors'
 import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth'
-import { changeLocale, startTranslation, stopTranslation } from 'containers/LanguageProvider/actions'
+import {
+  changeLocale,
+  startTranslation,
+  stopTranslation
+} from 'containers/LanguageProvider/actions'
 import { logout } from './actions'
 import { makeSelectHasUser } from './selectors'
 
 class App extends Component {
-
   static propTypes = {
     width: PropTypes.number.isRequired,
     children: PropTypes.node,
@@ -57,11 +60,11 @@ class App extends Component {
       resizeDebounce: false,
       run: true
     }
-  }  
+  }
 
   static contextTypes = {
     router: PropTypes.object.isRequired
-  }// import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
+  } // import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 
   state = {
     menuOpen: false,
@@ -76,7 +79,7 @@ class App extends Component {
         textAlign: 'center',
         selector: '#header button',
         position: 'bottom'
-      }, 
+      },
       {
         title: 'User menu',
         text: 'User specific actions: profile, registration...',
@@ -105,13 +108,11 @@ class App extends Component {
       script.src = '//cdn.crowdin.com/jipt/jipt.js'
       script.async = true
       document.body.appendChild(script)
-    }
-    else {
+    } else {
       this.props.stopTranslation()
       // window.location.href = "http://localhost:3000";
     }
   }
-
 
   getStyles() {
     const styles = {
@@ -235,7 +236,7 @@ class App extends Component {
     if (result.type === 'step:before') {
       // Keep internal state in sync with joyride
       this.setState({ step: result.index })
-      if (result.index===1) this.setState({menuOpen: true})
+      if (result.index === 1) this.setState({ menuOpen: true })
     }
 
     if (result.type === 'finished' && this.state.running) {
@@ -246,7 +247,7 @@ class App extends Component {
     if (result.type === 'error:target_not_found') {
       this.setState({
         step: result.action === 'back' ? result.index - 1 : result.index + 1,
-        autoStart: result.action !== 'close' && result.action !== 'esc',
+        autoStart: result.action !== 'close' && result.action !== 'esc'
       })
     }
 
@@ -265,9 +266,7 @@ class App extends Component {
       logout
     } = this.props
 
-    let {
-      menuOpen
-    } = this.state
+    let { menuOpen } = this.state
 
     const { joyride } = this.props
     const joyrideProps = {
@@ -284,30 +283,40 @@ class App extends Component {
       scrollOffset: 200
     }
 
-
     const styles = this.getStyles()
 
     const { title, docked } = this.getViewProps(width)
 
     let showMenuIconButton = true
-    let hideIconText = (width === SMALL)
+    let hideIconText = width === SMALL
     if (width === LARGE && docked) {
       menuOpen = true
       showMenuIconButton = false
     }
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <Joyride
-          {...joyrideProps}
-          ref={c => (this.joyride = c)} />
+      <div
+        style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
+      >
+        <Joyride {...joyrideProps} ref={(c) => (this.joyride = c)} />
         <Header
-          showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
-          touchTapLeftIconButton={this.handleTouchTapLeftIconButton} zDepth={0} docked={docked}
-          changeLocale = {this.handleTranslate} signout={logout} isTranslating = {isTranslating}
+          showMenuIconButton={showMenuIconButton}
+          isAuthenticated={isAuthenticated}
+          title={title}
+          touchTapLeftIconButton={this.handleTouchTapLeftIconButton}
+          zDepth={0}
+          docked={docked}
+          changeLocale={this.handleTranslate}
+          signout={logout}
+          isTranslating={isTranslating}
           hideIconText={hideIconText}
         />
-        <LoadingBar updateTime={100} maxProgress={95} progressIncrease={20} style={styles.LoadingBar}/>
-        <Wrapper id='wrapper' docked={docked}>
+        <LoadingBar
+          updateTime={100}
+          maxProgress={95}
+          progressIncrease={20}
+          style={styles.LoadingBar}
+        />
+        <Wrapper id="wrapper" docked={docked}>
           {children}
         </Wrapper>
         <Menu
@@ -317,7 +326,7 @@ class App extends Component {
           onChangeList={this.handleChangeList}
           open={menuOpen}
         />
-        <Footer docked={docked}/>
+        <Footer docked={docked} />
       </div>
     )
   }
@@ -326,12 +335,15 @@ const mapStateToProps = (state) => {
   const auth = state.getIn(['auth', 'isActivating'])
   const locale = state.getIn(['language', 'locale'])
   const isTranslating = locale === 'af'
-  const isAuthenticated = makeSelectHasUser()(state) && true || false
-  return({
-     isAuthenticated,
-     locale,
-     isTranslating
-  })
+  const isAuthenticated = (makeSelectHasUser()(state) && true) || false
+  return {
+    isAuthenticated,
+    locale,
+    isTranslating
+  }
 }
 
-export default connect(mapStateToProps, { changeLocale, logout, startTranslation, stopTranslation })(withWidth()(App))
+export default connect(
+  mapStateToProps,
+  { changeLocale, logout, startTranslation, stopTranslation }
+)(withWidth()(App))

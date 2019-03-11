@@ -28,13 +28,13 @@ class PeopleAppearanceOptions extends Component {
 
   handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions)
 
-  handleSkinChange = ({ hex }) => {
-    const skin = getKeyByValue(this.skin, hex.toUpperCase())
+  handleSkinChange = (color) => {
+    const skin = getKeyByValue(this.skin, color.toUpperCase())
     this.props.onSkinChange(skin)
   }
 
-  handleHairChange = ({ hex }) => {
-    const hair = getKeyByValue(this.hair, hex.toUpperCase())
+  handleHairChange = (color) => {
+    const hair = getKeyByValue(this.hair, color.toUpperCase())
     this.props.onHairChange(hair)
   }
 

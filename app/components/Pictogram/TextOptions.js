@@ -17,11 +17,9 @@ import styles from './styles'
 import BoxOptions from './BoxOptions'
 import messages from './messages'
 
-const auxText = ''
-
 class TextOptions extends Component {
   static propTypes = {
-    textLabel: PropTypes.object.isRequired,
+    textLabel: PropTypes.string.isRequired,
     fontColor: PropTypes.string.isRequired,
     font: PropTypes.string,
     fontSize: PropTypes.number,
@@ -56,10 +54,8 @@ class TextOptions extends Component {
       ? this.props.onTextChange(searchText.toUpperCase())
       : this.props.onTextChange(searchText)
 
-  handleUpperCase = (event, uppercase) => {
-    this.props.onUpperCase(uppercase)
-    if (uppercase) this.props.onTextChange(this.props.text.toUpperCase())
-  }
+  handleUpperCase = (event, uppercase) => this.props.onUpperCase(uppercase)
+
   handleFontSizeChange = (event, value) => {
     this.props.onFontSizeChange(value)
   }
@@ -73,8 +69,10 @@ class TextOptions extends Component {
   handleLanguageChange = (language) => {
     const { idPictogram } = this.props
     api.GET_KEYWORDS_BY_PICTOID({ language, idPictogram }).then((data) => {
-      this.setState({ keywords: data.keywords, language })
-      this.props.onTextChange(data.keywords[0] || '')
+      const keywords = data.map((keyword) => keyword.keyword)
+      this.setState({ keywords, language })
+      this.props.onTextChange(keywords[0] || '')
+      this.suggestions.focus()
     })
   }
 
@@ -111,7 +109,9 @@ class TextOptions extends Component {
         {showOptions && editText && (
           <BoxOptions>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <P marginBottom='25px'>{<FormattedMessage {...messages.chooseSuggestionsLanguage} />}</P>
+              <P marginBottom='25px'>
+                {<FormattedMessage {...messages.chooseSuggestionsLanguage} />}
+              </P>
               <div style={{ position: 'relative', top: '-30px' }}>
                 <LanguageSelector
                   value={this.state.language}
@@ -120,15 +120,21 @@ class TextOptions extends Component {
                   showToolTip={false}
                 />
               </div>
-              <P marginTop='0px' marginBottom='0px'>{<FormattedMessage {...messages.writeText} />}</P>
+              <P marginTop='0px' marginBottom='0px'>
+                {<FormattedMessage {...messages.writeText} />}
+              </P>
 
               <AutoComplete
+                ref={(input) => {
+                  this.suggestions = input
+                }}
                 searchText={text}
                 onUpdateInput={this.handleUpdateInput}
                 onNewRequest={this.handleNewRequest}
                 dataSource={keywords}
                 filter={() => true}
                 openOnFocus={true}
+                fullWidth={true}
               />
               <div style={{ position: 'relative', left: '-13px' }}>
                 <Toggle
@@ -156,7 +162,9 @@ class TextOptions extends Component {
                 flexDirection: 'column'
               }}
             >
-              <P style={{ width: '100px' }}>{<FormattedMessage {...messages.fontColor} />}</P>
+              <P style={{ width: '100px' }}>
+                {<FormattedMessage {...messages.fontColor} />}
+              </P>
               <ColorPicker
                 color={fontColor}
                 colors={textColorSet}
@@ -166,7 +174,9 @@ class TextOptions extends Component {
               />
             </div>
             <div>
-              <P>{<FormattedMessage {...messages.fontSize} />} {fontSize}px</P>
+              <P>
+                {<FormattedMessage {...messages.fontSize} />} {fontSize}px
+              </P>
               <Slider
                 min={1}
                 max={100}

@@ -8,93 +8,93 @@ import { defineMessages } from 'react-intl'
 /* Also used for changing language in custom pictos (top and bottom text) !!!! */
 
 export default defineMessages({
-  catalan: {
-    id: 'app.components.LanguageSelector.catalan',
+  ca: {
+    id: 'app.components.LanguageSelector.ca',
     description: 'Select language',
     defaultMessage: 'Catalan'
   },
-  spanish: {
-    id: 'app.components.LanguageSelector.spanish',
+  es: {
+    id: 'app.components.LanguageSelector.es',
     description: 'Select language',
     defaultMessage: 'Spanish'
   },
-  english: {
-    id: 'app.components.LanguageSelector.english',
+  en: {
+    id: 'app.components.LanguageSelector.en',
     description: 'Select language',
     defaultMessage: 'English'
   },
-  basque: {
-    id: 'app.components.LanguageSelector.basque',
+  eu: {
+    id: 'app.components.LanguageSelector.eu',
     description: 'Select language',
     defaultMessage: 'Basque'
   },
-  french: {
-    id: 'app.components.LanguageSelector.french',
+  fr: {
+    id: 'app.components.LanguageSelector.fr',
     description: 'Select language',
     defaultMessage: 'French'
   },
-  galician: {
-    id: 'app.components.LanguageSelector.galician',
+  gl: {
+    id: 'app.components.LanguageSelector.gl',
     description: 'Select language',
     defaultMessage: 'Galician'
   },
-  croatian: {
-    id: 'app.components.LanguageSelector.croatian',
+  hr: {
+    id: 'app.components.LanguageSelector.hr',
     description: 'Select language',
     defaultMessage: 'Croatian'
   },
-  italian: {
-    id: 'app.components.LanguageSelector.italian',
+  it: {
+    id: 'app.components.LanguageSelector.it',
     description: 'Select language',
     defaultMessage: 'Italian'
   },
-  bulgarian: {
-    id: 'app.components.LanguageSelector.bulgarian',
+  bg: {
+    id: 'app.components.LanguageSelector.bg',
     description: 'Select language',
     defaultMessage: 'Bulgarian'
   },
-  polish: {
-    id: 'app.components.LanguageSelector.polish',
+  pl: {
+    id: 'app.components.LanguageSelector.pl',
     description: 'Select language',
     defaultMessage: 'Polish'
   },
-  portuguese: {
-    id: 'app.components.LanguageSelector.portuguese',
+  pt: {
+    id: 'app.components.LanguageSelector.pt',
     description: 'Select language',
     defaultMessage: 'Portuguese'
   },
-  brazilian: {
-    id: 'app.components.LanguageSelector.brazilian',
+  br: {
+    id: 'app.components.LanguageSelector.br',
     description: 'Select language',
     defaultMessage: 'Brazil Portuguese'
   },
-  valencian: {
-    id: 'app.components.LanguageSelector.valencian',
+  val: {
+    id: 'app.components.LanguageSelector.val',
     description: 'Select language',
     defaultMessage: 'Valencian'
   },
-  german: {
-    id: 'app.components.LanguageSelector.german',
+  de: {
+    id: 'app.components.LanguageSelector.de',
     description: 'Select language',
     defaultMessage: 'German'
   },
-  romanian: {
-    id: 'app.components.LanguageSelector.romanian',
+  ro: {
+    id: 'app.components.LanguageSelector.ro',
     description: 'Select language',
     defaultMessage: 'Romanian'
   },
-  russian: {
-    id: 'app.components.LanguageSelector.russian',
+  ru: {
+    id: 'app.components.LanguageSelector.ru',
     description: 'Select language',
     defaultMessage: 'Russian'
   },
-  arabic: {
-    id: 'app.components.LanguageSelector.arabic',
+  ar: {
+    id: 'app.components.LanguageSelector.ar',
     description: 'Select language',
     defaultMessage: 'Arabic'
   },
-  chineseSimplified: {
-    id: 'app.components.LanguageSelector.chineseSimplified',
+  zh: {
+    id: 'app.components.LanguageSelector.zh',
     description: 'Select language',
     defaultMessage: 'Chinese (Simplified)'
   },

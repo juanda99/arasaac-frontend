@@ -8,11 +8,11 @@ export default class PluralLayer extends Component {
   static propTypes = {
     frameWidth: PropTypes.number.isRequired,
     frame: PropTypes.bool.isRequired,
-    canvasSize: PropTypes.number.isRequired
+    canvasSize: PropTypes.number.isRequired,
+    color: PropTypes.string.isRequired
   }
 
   state = {
-    color: 'black',
     x: this.props.frame
       ? this.props.canvasSize - ICON_SIZE - this.props.frameWidth / 2
       : this.props.canvasSize - ICON_SIZE,
@@ -50,6 +50,7 @@ export default class PluralLayer extends Component {
 
   render() {
     const strokeWidth = 16
+    const { color } = this.props
     const { x, y } = this.state
     return (
       <Layer>
@@ -61,12 +62,12 @@ export default class PluralLayer extends Component {
           }}
         >
           <Line
-            stroke='black'
+            stroke={color}
             strokeWidth={strokeWidth}
             points={[x, y + ICON_SIZE / 2, x + ICON_SIZE, y + ICON_SIZE / 2]}
           />
           <Line
-            stroke='black'
+            stroke={color}
             strokeWidth={strokeWidth}
             points={[x + ICON_SIZE / 2, y, x + ICON_SIZE / 2, y + ICON_SIZE]}
           />

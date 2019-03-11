@@ -2,6 +2,8 @@ function isArray(obj) {
   return !!obj && obj.constructor === Array
 }
 
+export const isEmptyObject = (object) => Object.entries(object).length === 0
+
 const checkLanguage = (item, language) =>
   language.size === 0 ||
   language.includes(item.language) ||
@@ -42,13 +44,23 @@ export const getFilteredItems = (items, filters) =>
 export const keywordSelector = (searchText, keywords) => {
   const searchTextArray = searchText.split(' ')
   if (!searchTextArray.length) return keywords[0]
+  // if same keyword exists, return it
+  const keyword = keywords.find(
+    (keywordsItem) =>
+      keywordsItem.keyword.toLowerCase() === searchText.toLowerCase()
+  )
+  if (keyword) return keyword
+  // otherwise, return first partial match or fist keyword if no matches
   return (
     keywords.find((keywordsItem) => {
-      const keywordArray = keywordsItem.keyword.split(' ')
-      const found = searchTextArray.some((word) => keywordArray.includes(word))
-      return found
+      const keywordArray = keywordsItem.keyword
+        .split(' ')
+        .map((keyword) => keyword.toLowerCase())
+      return searchTextArray.some((word) =>
+        keywordArray.includes(word.toLowerCase())
+      )
     }) || keywords[0]
-  ) /* in case find doesn't get any results, we get first one */
+  )
 }
 
 /* for hair and skin options, get object key for a given value */

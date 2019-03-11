@@ -9,9 +9,8 @@ const StyledPaper = styled(Paper)`
   ${media.xs} {
     width: inherit;
     height: auto;
+    margin: 10px auto;
   }
-
-  minwidth: 250px;
 `
 
 export default StyledPaper

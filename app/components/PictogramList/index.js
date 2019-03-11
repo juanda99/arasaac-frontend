@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Map } from 'immutable'
+import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import PictogramSnippet from '../PictogramSnippet'
+
 const Masonry = require('react-masonry-component')
 const masonryOptions = {
   transitionDuration: '1s'
@@ -29,6 +31,7 @@ export class PictogramList extends PureComponent {
       pictograms,
       filtersMap,
       setFilterItems,
+      width,
       searchText
     } = this.props
     const renderPictograms = pictograms.map((pictogram) => (
@@ -42,16 +45,19 @@ export class PictogramList extends PureComponent {
 
     return (
       <div>
-        <Masonry
-          className={'my-gallery-class'} // default ''
-          elementType={'ul'} // default 'div'
-          options={masonryOptions} // default {}
-          disableImagesLoaded={false} // default false
-          onClick={this.handleClick}
-          style={styles.masonry}
-        >
-          {renderPictograms}
-        </Masonry>
+        {width !== SMALL ? (
+          <Masonry
+            className={'my-gallery-class'} // default ''
+            elementType={'ul'} // default 'div'
+            options={masonryOptions} // default {}
+            disableImagesLoaded={false} // default false
+            style={styles.masonry}
+          >
+            {renderPictograms}
+          </Masonry>
+        ) : (
+          <ul>{renderPictograms}</ul>
+        )}
       </div>
     )
   }
@@ -68,4 +74,4 @@ PictogramList.propTypes = {
   searchText: PropTypes.string
 }
 
-export default PictogramList
+export default withWidth()(PictogramList)

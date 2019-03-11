@@ -11,127 +11,106 @@ import MenuItem from 'material-ui/MenuItem'
 import { injectIntl, intlShape } from 'react-intl'
 import messages from './messages'
 
-const LanguageSelector = (props) => {
-  const { formatMessage } = props.intl
+const LanguageSelector = ({
+  onChange,
+  intl,
+  value,
+  shortOption,
+  showToolTip
+}) => {
+  const { formatMessage } = intl
   const handleChange = (event, index, value) => {
-    props.onChange(value)
+    onChange(value)
   }
 
-  const showOriginal = (original) => (props.shortOption ? '' : `${original} - `)
+  const showOriginal = (original) => (shortOption ? '' : `${original} - `)
 
   return (
     <SelectField
       style={{ textAlign: 'left', width: '330px', maxWidth: '98%' }}
       maxHeight={400}
-      value={props.value}
+      value={value}
       onChange={handleChange}
-      floatingLabelText={props.showToolTip && 'Choose your language'}
+      floatingLabelText={showToolTip && 'Choose your language'}
     >
       <MenuItem
         value={'es'}
-        primaryText={`${showOriginal('Español')}${formatMessage(
-          messages.spanish
-        )}`}
+        primaryText={`${showOriginal('Español')}${formatMessage(messages.es)}`}
       />
       <MenuItem
         value={'en'}
-        primaryText={`${showOriginal('English')}${formatMessage(
-          messages.english
-        )}`}
+        primaryText={`${showOriginal('English')}${formatMessage(messages.en)}`}
       />
       <MenuItem
         value={'fr'}
-        primaryText={`${showOriginal('Français')}${formatMessage(
-          messages.french
-        )}`}
+        primaryText={`${showOriginal('Français')}${formatMessage(messages.fr)}`}
       />
       <MenuItem
         value={'de'}
-        primaryText={`${showOriginal('Deutsche')}${formatMessage(
-          messages.german
-        )}`}
+        primaryText={`${showOriginal('Deutsche')}${formatMessage(messages.de)}`}
       />
       <MenuItem
-        value={'cr'}
-        primaryText={`${showOriginal('Hrvatski')}${formatMessage(
-          messages.croatian
-        )}`}
+        value={'hr'}
+        primaryText={`${showOriginal('Hrvatski')}${formatMessage(messages.hr)}`}
       />
       <MenuItem
         value={'it'}
-        primaryText={`${showOriginal('Italiano')}${formatMessage(
-          messages.italian
-        )}`}
+        primaryText={`${showOriginal('Italiano')}${formatMessage(messages.it)}`}
       />
       <MenuItem
         value={'bg'}
         primaryText={`${showOriginal('български')}${formatMessage(
-          messages.bulgarian
+          messages.bg
         )}`}
       />
       <MenuItem
         value={'pl'}
-        primaryText={`${showOriginal('Polskie')}${formatMessage(
-          messages.polish
-        )}`}
+        primaryText={`${showOriginal('Polskie')}${formatMessage(messages.pl)}`}
       />
       <MenuItem
         value={'pt'}
         primaryText={`${showOriginal('Português')}${formatMessage(
-          messages.portuguese
+          messages.pt
         )}`}
       />
       <MenuItem
         value={'br'}
         primaryText={`${showOriginal('Português do Brasil')}${formatMessage(
-          messages.brazilian
+          messages.br
         )}`}
       />
       <MenuItem
         value={'ro'}
-        primaryText={`${showOriginal('Română')}${formatMessage(
-          messages.romanian
-        )}`}
+        primaryText={`${showOriginal('Română')}${formatMessage(messages.ro)}`}
       />
       <MenuItem
         value={'ru'}
-        primaryText={`${showOriginal('Pусский')}${formatMessage(
-          messages.russian
-        )}`}
+        primaryText={`${showOriginal('Pусский')}${formatMessage(messages.ru)}`}
       />
       <MenuItem
-        value={'ara'}
-        primaryText={`${showOriginal('عربى')}${formatMessage(messages.arabic)}`}
+        value={'ar'}
+        primaryText={`${showOriginal('عربى')}${formatMessage(messages.ar)}`}
       />
       <MenuItem
-        value={'zhs'}
-        primaryText={`${showOriginal('简体中文')}${formatMessage(
-          messages.chineseSimplified
-        )}`}
+        value={'zh'}
+        primaryText={`${showOriginal('简体中文')}${formatMessage(messages.zh)}`}
       />
       <MenuItem
-        value={'ga'}
-        primaryText={`${showOriginal('Galego')}${formatMessage(
-          messages.galician
-        )}`}
+        value={'gl'}
+        primaryText={`${showOriginal('Galego')}${formatMessage(messages.gl)}`}
       />
       <MenuItem
         value={'ca'}
-        primaryText={`${showOriginal('Català')}${formatMessage(
-          messages.catalan
-        )}`}
+        primaryText={`${showOriginal('Català')}${formatMessage(messages.ca)}`}
       />
       <MenuItem
         value={'eu'}
-        primaryText={`${showOriginal('Euskal')}${formatMessage(
-          messages.basque
-        )}`}
+        primaryText={`${showOriginal('Euskal')}${formatMessage(messages.eu)}`}
       />
-
       <MenuItem
         value={'val'}
         primaryText={`${showOriginal('Valencia')}${formatMessage(
-          messages.valencian
+          messages.val
         )}`}
       />
     </SelectField>

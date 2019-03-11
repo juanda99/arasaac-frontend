@@ -9,64 +9,89 @@ import Divider from 'material-ui/Divider'
 import FlatButton from 'material-ui/FlatButton'
 import Person from 'material-ui/svg-icons/social/person'
 import RaisedButton from 'material-ui/RaisedButton'
-import { PICTOGRAMS_URL, LOCUTIONS_URL, API_ROOT } from 'services/config'
-import { FormattedMessage } from 'react-intl'
+import {
+  PICTOGRAMS_URL,
+  LOCUTIONS_URL,
+  API_ROOT,
+  IMAGES_URL
+} from 'services/config'
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import SoundPlayer from 'components/SoundPlayer'
 import Toggle from 'material-ui/Toggle'
-import { keywordSelector } from 'utils'
+import { keywordSelector, isEmptyObject } from 'utils'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
+import Konva from 'konva'
 import { Stage } from 'react-konva'
 import P from 'components/P'
+import { colorSet, black } from 'utils/colors'
+import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download'
+import IconButton from 'material-ui/IconButton'
 import PluralLayer from './PluralLayer'
 import StrikeThroughLayer from './StrikeThroughLayer'
 import VerbalTenseLayer from './VerbalTenseLayer'
 import BackgroundLayer from './BackgroundLayer'
 import FrameLayer from './FrameLayer'
+import IdentifierLayer from './IdentifierLayer'
 import styles from './styles'
 import TextLayer from './TextLayer'
 import Img from './Img'
 import ConditionalPaper from './ConditionalPaper'
 import messages from './messages'
-import { MEDIUM, MAX_CANVAS_SIZE, PRESENT } from './constants'
+import {
+  MEDIUM,
+  MAX_CANVAS_SIZE,
+  PRESENT,
+  STANDARD_RESOLUTION,
+  HIGH_RESOLUTION
+} from './constants'
 import BackgroundColorOptions from './BackgroundColorOptions'
 import FrameOptions from './FrameOptions'
 import VerbalTenseOptions from './VerbalTenseOptions'
 import PeopleAppearanceOptions from './PeopleAppearanceOptions'
+import PluralOptions from './PluralOptions'
 import IdentifierOptions from './IdentifierOptions'
 import TextOptions from './TextOptions'
 import ZoomOptions from './ZoomOptions'
 import PictoWrapper from './PictoWrapper'
 import Canvas from './Canvas'
-import PictogramTitle from './PictogramTitle'
+import PictogramTitle from '../BoxTitle'
+import RelatedWords from './RelatedWords'
 
 class Pictogram extends Component {
   constructor(props) {
     super(props)
-    const { pictogram, searchText } = this.props
+    const { pictogram, searchText, locale } = this.props
     const keywords = pictogram.get('keywords')
-    const { keyword } = keywordSelector(searchText, keywords.toJS())
+    const idPictogram = pictogram.get('idPictogram')
+    const { keyword, type } = keywordSelector(searchText, keywords.toJS())
     const keywordsArray = keywords
       .valueSeq()
       .map((keyword) => keyword.get('keyword'))
       .toArray()
-
+    Konva.pixelRatio = Math.ceil(HIGH_RESOLUTION / STANDARD_RESOLUTION)
+    const defaultColor = type >= 0 && type < 7 ? colorSet[type - 1] : ''
     this.state = {
-      language: this.props.locale,
+      language: locale,
+      highResolution: false, // true for photoResolution
       plural: false,
+      pluralActive: false,
+      pluralOptionsShow: false,
+      pluralColor: black,
       color: true,
-      backgroundColor: '',
+      backgroundColor: defaultColor,
       bgColorActive: false,
       bgColorOptionsShow: false,
       strikeThrough: false,
       frameWidth: MEDIUM,
-      frameColor: '',
+      frameColor: defaultColor,
       frameActive: false,
       frameOptionsShow: false,
       identifierActive: false,
       identifierOptionsShow: false,
       identifier: 'classroom',
       identifierPosition: 'right',
+      identifierColor: '#000000',
       text: false,
       peopleAppearanceActive: false,
       peopleAppearanceOptionsShow: false,
@@ -75,9 +100,10 @@ class Pictogram extends Component {
       verbalTenseActive: false,
       verbalTense: PRESENT,
       verbalTenseOptionsShow: false,
+      verbalTenseColor: 'black',
       showText: false,
       openMenu: false,
-      url: '',
+      url: `${PICTOGRAMS_URL}/${idPictogram}_${STANDARD_RESOLUTION}.png`,
       downloadUrl: '',
       activeFont: 'Open Sans',
       buttonCaption: false,
@@ -86,7 +112,7 @@ class Pictogram extends Component {
       topText: keyword,
       topTextKeywords: keywordsArray,
       topTextFont: 'Roboto',
-      topTextFontSize: 50,
+      topTextFontSize: 46,
       topTextFontColor: 'black',
       topTextUpperCase: false,
       bottomTextActive: false,
@@ -94,7 +120,7 @@ class Pictogram extends Component {
       bottomText: keyword,
       bottomTextKeywords: keywordsArray,
       bottomTextFont: 'Roboto',
-      bottomTextFontSize: 50,
+      bottomTextFontSize: 46,
       bottomTextFontColor: 'black',
       bottomTextUpperCase: false,
       zoomLevel: 0,
@@ -125,10 +151,30 @@ class Pictogram extends Component {
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible })
 
-  updateWindowDimensions = () => {
-    this.setState({ windowWidth: document.body.clientWidth })
+  getSoundPlayer = (idLocution, locale, keyword) => {
+    const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
+    return (
+      <div style={{ display: 'flex' }}>
+        <SoundPlayer
+          crossOrigin='anonymous'
+          streamUrl={streamUrl}
+          preloadType='metadata'
+          showProgress={false}
+          showTimer={false}
+        />
+        {keyword && (
+          <IconButton
+            touch={true}
+            onClick={() =>
+              this.props.onDownloadLocution(idLocution, locale, keyword)
+            }
+          >
+            <CloudDownloadIcon />
+          </IconButton>
+        )}
+      </div>
+    )
   }
-
   needHideOptions = (event) => {
     // add data-hide to elements where if click options should hide
     if (event.target.dataset.hide) this.hideOptions()
@@ -143,39 +189,48 @@ class Pictogram extends Component {
       identifierOptionsShow: false,
       topTextOptionsShow: false,
       bottomTextOptionsShow: false,
-      zoomOptionsShow: false
+      zoomOptionsShow: false,
+      pluralOptionsShow: false
     })
 
   buildOptionsRequest = () => {
     const { pictogram } = this.props
-    const {
-      color,
-      hair,
-      skin,
-      identifier,
-      identifierActive,
-      identifierPosition
-    } = this.state
+    const { color, hair, skin, highResolution } = this.state
     const idPictogram = pictogram.get('idPictogram')
-    const parameters = { color }
+    const parameters = color ? {} : { color }
+
     // only if active hair, skin, backgroundColor we add it to the request. Otherwise we take default image values
     if (hair) parameters.hair = hair
     if (skin) parameters.skin = skin
-    if (identifierActive) parameters.identifier = identifier
-    if (identifierPosition) parameters.identifierPosition = identifierPosition
+    if (isEmptyObject(parameters)) {
+      const url = highResolution
+        ? `${PICTOGRAMS_URL}/${idPictogram}_${HIGH_RESOLUTION}.png`
+        : `${PICTOGRAMS_URL}/${idPictogram}_${STANDARD_RESOLUTION}.png`
+      this.setState({ url })
+    } else {
+      if (highResolution) parameters.resolution = HIGH_RESOLUTION
+      const urlParameters = Object.entries(parameters)
+        .map((param) => param.join('='))
+        .join('&')
+      const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=true`
+      const downloadUrl = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=false&download=true`
+      fetch(endPoint)
+        .then((data) => data.json())
+        .then((data) => this.setState({ url: data.image, downloadUrl }))
+    }
+  }
 
-    const urlParameters = Object.entries(parameters)
-      .map((param) => param.join('='))
-      .join('&')
-    const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=true`
-    const downloadUrl = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=false&download=true`
-    fetch(endPoint)
-      .then((data) => data.json())
-      .then((data) => this.setState({ url: data.image, downloadUrl }))
+  handleLanguageChange = (language) => {
+    this.setState({ language })
   }
 
   handleColor = (event, color) => {
     this.setState({ color }, () => this.buildOptionsRequest())
+    this.hideOptions()
+  }
+
+  handleHighResolution = (event, highResolution) => {
+    this.setState({ highResolution }, () => this.buildOptionsRequest())
     this.hideOptions()
   }
 
@@ -186,9 +241,16 @@ class Pictogram extends Component {
 
   // handlePlural = (event, plural) => this.setState({ plural }, () => this.buildOptionsRequest())
 
-  handlePlural = (event, plural) => {
-    this.setState({ plural })
+  handlePluralChange = (plural) => {
     this.hideOptions()
+    this.setState({ plural, pluralOptionsShow: plural })
+  }
+
+  handlePluralColorChange = (pluralColor) => this.setState({ pluralColor })
+
+  handlePluralOptionsShow = (pluralOptionsShow) => {
+    this.hideOptions()
+    this.setState({ pluralOptionsShow })
   }
 
   handleStrikeThrough = (event, strikeThrough) => {
@@ -277,12 +339,12 @@ class Pictogram extends Component {
 
   handleVerbalTenseChange = (verbalTense) => this.setState({ verbalTense })
 
+  handleVerbalTenseColorChange = (verbalTenseColor) =>
+    this.setState({ verbalTenseColor })
+
   handleIdentifierActive = (identifierActive) => {
     this.hideOptions()
-    this.setState(
-      { identifierActive, identifierOptionsShow: identifierActive },
-      () => this.buildOptionsRequest()
-    )
+    this.setState({ identifierActive, identifierOptionsShow: identifierActive })
   }
 
   handleIdentifierOptionsShow = (identifierOptionsShow) => {
@@ -290,12 +352,13 @@ class Pictogram extends Component {
     this.setState({ identifierOptionsShow })
   }
 
-  handleIdentifierChange = (identifier) => {
-    this.setState({ identifier }, () => this.buildOptionsRequest())
-  }
+  handleIdentifierChange = (identifier) => this.setState({ identifier })
 
   handleIdentifierPositionChange = (identifierPosition) =>
-    this.setState({ identifierPosition }, () => this.buildOptionsRequest())
+    this.setState({ identifierPosition })
+
+  handleIdentifierColorChange = (identifierColor) =>
+    this.setState({ identifierColor })
 
   handleTopTextActive = (topTextActive) => {
     this.hideOptions()
@@ -317,7 +380,29 @@ class Pictogram extends Component {
     this.setState({ topTextOptionsShow })
   }
 
-  handleTopTextUpperCase = (uppercase) => this.setState({ topTextUpperCase: uppercase })
+  handleTopTextUpperCase = (uppercase) => {
+    // if word is in our list, and uppercase is false, put it back
+    const { topText } = this.state
+    const { pictogram } = this.props
+    const keywords = pictogram.get('keywords')
+    if (uppercase) {
+      this.setState({
+        topTextUpperCase: uppercase,
+        topText: topText.toUpperCase()
+      })
+    } else {
+      const { keyword } = keywordSelector(topText, keywords.toJS())
+      // if not found we'll return first match
+      if (topText.toLowerCase() === keyword.toLowerCase()) {
+        this.setState({ topTextUpperCase: uppercase, topText: keyword })
+      } else {
+        this.setState({
+          topTextUpperCase: uppercase,
+          topText: topText.toLowerCase()
+        })
+      }
+    }
+  }
 
   handleBottomTextActive = (bottomTextActive) => {
     this.hideOptions()
@@ -339,7 +424,30 @@ class Pictogram extends Component {
     this.hideOptions()
     this.setState({ bottomTextOptionsShow })
   }
-  handleBottomTextUpperCase = (uppercase) => this.setState({ bottomTextUpperCase: uppercase })
+
+  handleBottomTextUpperCase = (uppercase) => {
+    // if word is in our list, and uppercase is false, put it back
+    const { bottomText } = this.state
+    const { pictogram } = this.props
+    const keywords = pictogram.get('keywords')
+    if (uppercase) {
+      this.setState({
+        bottomTextUpperCase: uppercase,
+        bottomText: bottomText.toUpperCase()
+      })
+    } else {
+      const { keyword } = keywordSelector(bottomText, keywords.toJS())
+      // if not found we'll return first match
+      if (bottomText.toLowerCase() === keyword.toLowerCase()) {
+        this.setState({ bottomTextUpperCase: uppercase, bottomText: keyword })
+      } else {
+        this.setState({
+          bottomTextUpperCase: uppercase,
+          bottomText: bottomText.toLowerCase()
+        })
+      }
+    }
+  }
 
   handleOpenMenu = () => {
     const { pictogram } = this.props
@@ -352,17 +460,53 @@ class Pictogram extends Component {
     fetch(endPoint)
   }
 
-  handleDownload = () => {
+  handleDownloadFromClient = (event) => {
     const { searchText, pictogram, onDownload } = this.props
-    const dataBase64 = this.stageRef.getStage().toDataURL()
+    const { highResolution } = this.state
+    const pixelRatio = highResolution
+      ? Math.ceil(HIGH_RESOLUTION / STANDARD_RESOLUTION)
+      : 1
+    const dataBase64 = this.stageRef.getStage().toDataURL({ pixelRatio })
+    const keywords = pictogram.get('keywords')
+    const { keyword } = keywordSelector(searchText, keywords.toJS())
+    this.downloadButton.href = dataBase64
+    this.downloadButton.download = keyword
+  }
+
+  handleDownloadFromServer = () => {
+    const { searchText, pictogram, onDownload } = this.props
+    const { highResolution } = this.state
+    const pixelRatio = highResolution
+      ? Math.ceil(HIGH_RESOLUTION / STANDARD_RESOLUTION)
+      : 1
+    const dataBase64 = this.stageRef.getStage().toDataURL({ pixelRatio })
     const keywords = pictogram.get('keywords')
     const { keyword } = keywordSelector(searchText, keywords.toJS())
     onDownload(keyword, dataBase64)
   }
 
+  updateWindowDimensions = () =>
+    this.setState({ windowWidth: document.body.clientWidth })
+
+  renderDownloadButton = () => {
+    const userAgent = window.navigator.userAgent.toLowerCase()
+    const isIOS = /iphone|ipod|ipad/.test(userAgent)
+    const isSAFARI = /^((?!chrome|android).)*safari/i.test(userAgent)
+    return (
+      <RaisedButton
+        label={<FormattedMessage {...messages.downloadLabel} />}
+        onClick={this.handleDownloadFromServer}
+        primary={true}
+        style={styles.button}
+        icon={<DownloadIcon />}
+      />
+    )
+  }
+
   render() {
-    const { pictogram, searchText, locale } = this.props
+    const { pictogram, searchText, locale, intl } = this.props
     const {
+      language,
       backgroundColor,
       bgColorActive,
       bgColorOptionsShow,
@@ -371,9 +515,11 @@ class Pictogram extends Component {
       identifierOptionsShow,
       identifier,
       identifierPosition,
+      identifierColor,
       verbalTense,
       verbalTenseOptionsShow,
       verbalTenseActive,
+      verbalTenseColor,
       peopleAppearanceActive,
       peopleAppearanceOptionsShow,
       hair,
@@ -384,6 +530,8 @@ class Pictogram extends Component {
       frameActive,
       frameOptionsShow,
       plural,
+      pluralOptionsShow,
+      pluralColor,
       topTextActive,
       topTextKeywords,
       topTextOptionsShow,
@@ -410,38 +558,24 @@ class Pictogram extends Component {
     const canvasSize =
       windowWidth < MAX_CANVAS_SIZE ? windowWidth : MAX_CANVAS_SIZE
 
-    const imgOffsetY = topText ? topTextFontSize : 0
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('idPictogram')
     // first time downloadUrl is default png
-    const downloadUrl =
-      this.state.downloadUrl ||
-      `${API_ROOT}/pictograms/${idPictogram}?&url=false&download=true`
     const { keyword, idLocution } = keywordSelector(searchText, keywords.toJS())
     const authors = pictogram.get('authors')
-    let soundPlayer = ''
-    if (idLocution) {
-      const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
-      soundPlayer = (
-        <SoundPlayer
-          crossOrigin='anonymous'
-          streamUrl={streamUrl}
-          preloadType='metadata'
-          showProgress={false}
-          showTimer={false}
-        />
-      )
-    }
-    // const pictoFile = `/${idPictogram}_500.png`
-    const pictoFile = url || `${PICTOGRAMS_URL}/${idPictogram}_500.png`
+    // remove # character in identifierColor for url
+    const identifierFile = `${IMAGES_URL}/identifiers/${identifier}_${identifierColor.substr(
+      1
+    )}.png`
+    const { formatMessage } = intl
     return (
       <div>
         <div style={styles.wrapper}>
           <PictoWrapper>
             <ConditionalPaper>
               <PictogramTitle>
-                {soundPlayer}
+                {this.getSoundPlayer(idLocution, locale)}
                 <H2 center={true} primary ucase noMargin>
                   {keyword}
                 </H2>
@@ -453,17 +587,20 @@ class Pictogram extends Component {
                   ref={(node) => {
                     this.stageRef = node
                   }}
+                  onContextMenu={(e) => e.evt.preventDefault()}
                 >
-
                   {bgColorActive && (
-                  <BackgroundLayer color={backgroundColor} size={canvasSize} />
-                )}
+                    <BackgroundLayer
+                      color={backgroundColor}
+                      size={canvasSize}
+                    />
+                  )}
                   <Img
-                    src={pictoFile}
+                    src={url}
                     frameWidth={frameWidth}
                     enableFrame={
-                    frameActive
-                  } /* alt={'alt'} style={styles.picto} */
+                      frameActive
+                    } /* alt={'alt'} style={styles.picto} */
                     zoomLevel={zoomLevel}
                     canvasSize={canvasSize}
                     dragAndDrop={dragAndDrop}
@@ -471,57 +608,72 @@ class Pictogram extends Component {
                     bottomMargin={bottomTextActive ? 50 : 0}
                   />
                   {topTextActive && (
-                  <TextLayer
-                    font={topTextFont}
-                    text={topText}
-                    fontSize={topTextFontSize}
-                    fontColor={topTextFontColor}
-                    dragAndDrop={dragAndDrop}
-                    canvasSize={canvasSize}
-                    y={5}
-                  />
-                )}
+                    <TextLayer
+                      font={topTextFont}
+                      text={topText}
+                      fontSize={topTextFontSize}
+                      fontColor={topTextFontColor}
+                      dragAndDrop={dragAndDrop}
+                      canvasSize={canvasSize}
+                      y={frameActive ? frameWidth / 2 + 8 : 8}
+                    />
+                  )}
                   {bottomTextActive && (
-                  <TextLayer
-                    font={bottomTextFont}
-                    text={bottomText}
-                    fontSize={bottomTextFontSize}
-                    fontColor={bottomTextFontColor}
-                    dragAndDrop={dragAndDrop}
-                    canvasSize={canvasSize}
-                    y={canvasSize - bottomTextFontSize - 10}
-                  />
-                )}
+                    <TextLayer
+                      font={bottomTextFont}
+                      text={bottomText}
+                      fontSize={bottomTextFontSize}
+                      fontColor={bottomTextFontColor}
+                      dragAndDrop={dragAndDrop}
+                      canvasSize={canvasSize}
+                      y={
+                        frameActive
+                          ? canvasSize - bottomTextFontSize - frameWidth / 2 + 2
+                          : canvasSize - bottomTextFontSize + 2
+                      }
+                    />
+                  )}
                   {plural && (
-                  <PluralLayer
-                    frame={frameActive}
-                    frameWidth={frameWidth}
-                    canvasSize={canvasSize}
-                  />
-                )}
-
+                    <PluralLayer
+                      frame={frameActive}
+                      frameWidth={frameWidth}
+                      canvasSize={canvasSize}
+                      color={pluralColor}
+                    />
+                  )}
                   {verbalTenseActive && (
-                  <VerbalTenseLayer
-                    frame={frameActive}
-                    frameWidth={frameWidth}
-                    canvasSize={canvasSize}
-                    verbalTense={verbalTense}
-                  />
-                )}
+                    <VerbalTenseLayer
+                      frame={frameActive}
+                      frameWidth={frameWidth}
+                      canvasSize={canvasSize}
+                      verbalTense={verbalTense}
+                      color={verbalTenseColor}
+                    />
+                  )}
                   {strikeThrough && (
-                  <StrikeThroughLayer
-                    frame={frameActive}
-                    frameWidth={frameWidth}
-                    canvasSize={canvasSize}
-                  />
-                )}
+                    <StrikeThroughLayer
+                      frame={frameActive}
+                      frameWidth={frameWidth}
+                      canvasSize={canvasSize}
+                    />
+                  )}
+                  {identifierActive && (
+                    <IdentifierLayer
+                      enableFrame={frameActive}
+                      frameWidth={frameWidth}
+                      canvasSize={canvasSize}
+                      position={identifierPosition}
+                      src={identifierFile}
+                      dragAndDrop={dragAndDrop}
+                    />
+                  )}
                   {frameActive && (
-                  <FrameLayer
-                    color={frameColor}
-                    frameWidth={frameWidth}
-                    size={canvasSize}
-                  />
-                )}
+                    <FrameLayer
+                      color={frameColor}
+                      frameWidth={frameWidth}
+                      size={canvasSize}
+                    />
+                  )}
                 </Stage>
               </Canvas>
               <PictogramTitle>
@@ -531,15 +683,7 @@ class Pictogram extends Component {
                   style={styles.button}
                   icon={<FavoriteIcon />}
                 />
-                {/* <a href={downloadUrl}> */}
-                <RaisedButton
-                  onClick={this.handleDownload}
-                  label={<FormattedMessage {...messages.downloadLabel} />}
-                  primary={true}
-                  style={styles.button}
-                  icon={<DownloadIcon />}
-                />
-                {/* </a>*/}
+                {this.renderDownloadButton()}
               </PictogramTitle>
             </ConditionalPaper>
           </PictoWrapper>
@@ -548,7 +692,9 @@ class Pictogram extends Component {
               {<FormattedMessage {...messages.modifyPicto} />}
             </H3>
             <Divider />
-            <P data-hide={true}>{<FormattedMessage {...messages.pictogramOptions} />}</P>
+            <P data-hide={true}>
+              {<FormattedMessage {...messages.pictogramOptions} />}
+            </P>
             <div style={styles.optionsWrapper} data-hide={true}>
               <Toggle
                 label={<FormattedMessage {...messages.color} />}
@@ -577,11 +723,13 @@ class Pictogram extends Component {
                 onOptionsShow={this.handleFrameOptionsShow}
                 showOptions={frameOptionsShow}
               />
-              <Toggle
-                label={<FormattedMessage {...messages.plural} />}
-                labelPosition='right'
-                onToggle={this.handlePlural}
-                style={styles.toggle}
+              <PluralOptions
+                active={plural}
+                onActive={this.handlePluralChange}
+                onOptionsShow={this.handlePluralOptionsShow}
+                showOptions={pluralOptionsShow}
+                color={pluralColor}
+                onColorChange={this.handlePluralColorChange}
               />
               <Toggle
                 label={<FormattedMessage {...messages.strikeThrough} />}
@@ -596,6 +744,8 @@ class Pictogram extends Component {
                 onVerbalTenseChange={this.handleVerbalTenseChange}
                 onOptionsShow={this.handleVerbalTenseOptionsShow}
                 showOptions={verbalTenseOptionsShow}
+                color={verbalTenseColor}
+                onColorChange={this.handleVerbalTenseColorChange}
               />
               <IdentifierOptions
                 identifier={identifier}
@@ -606,6 +756,8 @@ class Pictogram extends Component {
                 active={identifierActive}
                 onOptionsShow={this.handleIdentifierOptionsShow}
                 showOptions={identifierOptionsShow}
+                color={identifierColor}
+                onColorChange={this.handleIdentifierColorChange}
               />
               <PeopleAppearanceOptions
                 skin={skin}
@@ -618,10 +770,12 @@ class Pictogram extends Component {
                 showOptions={peopleAppearanceOptionsShow}
               />
             </div>
-            <P data-hide={true}>{<FormattedMessage {...messages.textOptions} />}</P>
+            <P data-hide={true}>
+              {<FormattedMessage {...messages.textOptions} />}
+            </P>
             <div style={styles.optionsWrapper} data-hide={true}>
               <TextOptions
-                textLabel={<FormattedMessage {...messages.topText} />}
+                textLabel={formatMessage(messages.topText)}
                 keywords={topTextKeywords}
                 defaultLanguage={locale}
                 onActive={this.handleTopTextActive}
@@ -642,7 +796,7 @@ class Pictogram extends Component {
                 onUpperCase={this.handleTopTextUpperCase}
               />
               <TextOptions
-                textLabel={<FormattedMessage {...messages.bottomText} />}
+                textLabel={formatMessage(messages.bottomText)}
                 keywords={bottomTextKeywords}
                 onActive={this.handleBottomTextActive}
                 active={bottomTextActive}
@@ -662,7 +816,9 @@ class Pictogram extends Component {
                 onUpperCase={this.handleBottomTextUpperCase}
               />
             </div>
-            <P data-hide={true}>{<FormattedMessage {...messages.advancedOptions} />}</P>
+            <P data-hide={true}>
+              {<FormattedMessage {...messages.advancedOptions} />}
+            </P>
             <div style={styles.optionsWrapper} data-hide={true}>
               <ZoomOptions
                 zoomLevel={zoomLevel}
@@ -678,24 +834,23 @@ class Pictogram extends Component {
                 onToggle={this.handleDragAndDrop}
                 style={styles.toggle}
               />
+              <Toggle
+                label={<FormattedMessage {...messages.highResolution} />}
+                labelPosition='right'
+                onToggle={this.handleHighResolution}
+                defaultToggled={false}
+                style={styles.toggle}
+              />
             </div>
           </div>
         </div>
-        <H3 primary>{<FormattedMessage {...messages.description} />}</H3>
-        <Divider />
-        {/* index for keyword will not be necessary if load data is ok */}
-        {keywords.valueSeq().map((keyword, index) => (
-          <div key={`${keyword.get('keyword')}-${index}`}>
-            <P important={true}>{keyword.get('keyword')}</P>
-            <P>
-              {<FormattedMessage {...messages.meaning} />}:{' '}
-              {keyword.get('meaning')}
-            </P>
-          </div>
-        ))}
-        <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
-        <Divider />
-        <P>{<FormattedMessage {...messages.changePictoLanguage} />}</P>
+        <RelatedWords
+          locale={locale}
+          language={language}
+          idPictogram={idPictogram}
+          onLanguageChange={this.handleLanguageChange}
+          onDownloadLocution={this.props.onDownloadLocution}
+        />
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />
         {authors.valueSeq().map((author) => (
@@ -730,7 +885,8 @@ Pictogram.propTypes = {
   locale: PropTypes.string.isRequired,
   searchText: PropTypes.string.isRequired,
   onDownload: PropTypes.func.isRequired,
-  onLanguageChange: PropTypes.func.isRequired
+  onDownloadLocution: PropTypes.func.isRequired,
+  intl: intlShape.isRequired
 }
 
-export default Pictogram
+export default injectIntl(Pictogram)

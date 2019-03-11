@@ -5,7 +5,7 @@ import { Image, Layer } from 'react-konva'
 
 const image = new window.Image()
 
-class Img extends Component {
+class IdentifierLayer extends Component {
   state = {
     image: null,
     x: 0,
@@ -33,15 +33,7 @@ class Img extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    const {
-      src,
-      frameWidth,
-      zoomLevel,
-      enableFrame,
-      canvasSize,
-      topMargin,
-      bottomMargin
-    } = this.props
+    const { src, frameWidth, enableFrame, canvasSize } = this.props
     if (src !== prevProps.src) image.src = src
     else if (
       frameWidth !== prevProps.frameWidth ||
@@ -49,16 +41,7 @@ class Img extends Component {
     ) {
       this.myImage.cache()
       this.myImage.getLayer().draw()
-    } else if (zoomLevel !== prevProps.zoomLevel) {
-      this.myImage.cache()
-      this.myImage.getLayer().draw()
     } else if (canvasSize !== prevProps.canvasSize) {
-      this.myImage.cache()
-      this.myImage.getLayer().draw()
-    } else if (topMargin !== prevProps.topMargin) {
-      this.myImage.cache()
-      this.myImage.getLayer().draw()
-    } else if (bottomMargin !== prevProps.bottomMargin) {
       this.myImage.cache()
       this.myImage.getLayer().draw()
     }
@@ -74,58 +57,50 @@ class Img extends Component {
 
   render() {
     const {
-      zoomLevel,
       canvasSize,
       enableFrame,
       frameWidth,
       dragAndDrop,
-      topMargin,
-      bottomMargin
+      position
     } = this.props
     let { x, y } = this.state
-    const size = enableFrame
-      ? canvasSize - parseInt(frameWidth, 0) - topMargin - bottomMargin
-      : canvasSize - topMargin - bottomMargin
     if (!this.state.moved) {
-      x = enableFrame
-        ? x + frameWidth / 2 - zoomLevel / 2 + topMargin / 2 + bottomMargin / 2
-        : x - zoomLevel / 2 + topMargin / 2 + bottomMargin / 2
-      y = enableFrame
-        ? y + frameWidth / 2 - zoomLevel / 2 + topMargin
-        : y - zoomLevel / 2 + topMargin
+      y = enableFrame ? y + frameWidth / 2 : y
+      if (position === 'left') {
+        x = enableFrame ? x + frameWidth / 2 : x
+      } else {
+        x = enableFrame ? canvasSize - 55 - frameWidth / 2 : canvasSize - 55
+      }
     }
     return (
       <Layer>
         <Image
-          name='pictoImage'
+          name='pictoIdentifier'
           image={this.state.image}
           ref={(node) => {
             this.myImage = node
           }}
-          width={size + zoomLevel}
-          height={size + zoomLevel}
+          width={55}
+          height={55}
           x={x}
           y={y}
           onDragEnd={this.handleDragEnd}
           draggable={dragAndDrop}
           scale={canvasSize / 500}
-          preventDefault={false}
         />
       </Layer>
     )
   }
 }
 
-Img.propTypes = {
+IdentifierLayer.propTypes = {
   // onClick: PropTypes.func.isRequired,
   frameWidth: PropTypes.number,
   src: PropTypes.string.isRequired,
   enableFrame: PropTypes.bool.isRequired,
-  zoomLevel: PropTypes.number.isRequired,
   canvasSize: PropTypes.number.isRequired,
   dragAndDrop: PropTypes.bool.isRequired,
-  topMargin: PropTypes.number.isRequired,
-  bottomMargin: PropTypes.number.isRequired
+  position: PropTypes.string
 }
 
-export default Img
+export default IdentifierLayer

@@ -1,3 +1,4 @@
+/* DO NOT MODIFY: identifiers have the hex code hardcoded in their filenames */
 export const white = '#ffffff'
 export const blue = '#2196f3'
 export const yellow = '#ffeb3b'
@@ -19,5 +20,24 @@ export const purple = '#9c27b0'
 export const deepPurple = '#673ab7'
 export const cyan = '#00bcd4'
 
+// order matters! word type for frame and background color in picto editor
 export const colorSet = [yellow, orange, green, blue, pink, white]
-export const textColorSet = [white, grey, blueGrey, black, lightGreen, green, teal, yellow, orange, pink, red, brown, blue, purple]
+
+export const smallColorSet = [black, white, yellow]
+
+export const textColorSet = [
+  white,
+  grey,
+  blueGrey,
+  black,
+  lightGreen,
+  green,
+  teal,
+  yellow,
+  orange,
+  pink,
+  red,
+  brown,
+  blue,
+  purple
+]
