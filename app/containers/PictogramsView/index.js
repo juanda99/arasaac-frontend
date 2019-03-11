@@ -53,7 +53,8 @@ const styles = {
     width: '100%'
   }
 }
-class PictogramsView extends PureComponent { // eslint-disable-line react/prefer-stateless-function
+class PictogramsView extends PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
 
   state = {
     visibleSettings: false,
@@ -62,7 +63,12 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
   }
 
   componentDidMount() {
-    const { requestPictograms, requestNewPictograms, requestAutocomplete, locale } = this.props
+    const {
+      requestPictograms,
+      requestNewPictograms,
+      requestAutocomplete,
+      locale
+    } = this.props
     if (this.props.params.searchText && !this.props.searchResults) {
       requestPictograms(locale, this.props.params.searchText)
     }
@@ -104,7 +110,17 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
   }
 
   render() {
-    const { showFilter, filters, visiblePictograms, newPictogramsList, locale, loading, filtersData, muiTheme, keywords } = this.props
+    const {
+      showFilter,
+      filters,
+      visiblePictograms,
+      newPictogramsList,
+      locale,
+      loading,
+      filtersData,
+      muiTheme,
+      keywords
+    } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
     let pictogramsCounter
@@ -118,67 +134,106 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
       gallery = null
     } else {
       pictogramsCounter = pictogramsList.length
-      gallery = pictogramsCounter
-        ? (
-          <div>
-            <PictogramList
-              pictograms={pictogramsList}
-              locale={locale}
-              filtersMap={filters}
-              setFilterItems={this.props.setFilterItems}
-              showLabels={visibleLabels}
-              searchText={searchText}
-            />
-          </div>
-        )
-        : <P>{<FormattedMessage {...messages.pictogramsNotFound} />}</P>
+      gallery = pictogramsCounter ? (
+        <PictogramList
+          pictograms={pictogramsList}
+          locale={locale}
+          filtersMap={filters}
+          setFilterItems={this.props.setFilterItems}
+          showLabels={visibleLabels}
+          searchText={searchText}
+        />
+      ) : (
+        <P>{<FormattedMessage {...messages.pictogramsNotFound} />}</P>
+      )
     }
     return (
       <div>
-        <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
+        <Helmet
+          title='PictogramsView'
+          meta={[
+            { name: 'description', content: 'Description of PictogramsView' }
+          ]}
+        />
         <TabsHeader onChange={this.handleChange} value={slideIndex} />
         <Divider />
-        <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange} >
+        <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange}>
           <div>
-            <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+            <View
+              left={true}
+              right={true}
+              style={{ backgroundColor: muiTheme.palette.accent2Color }}
+            >
               <div style={styles.container}>
-                <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} dataSource={keywords} />
+                <SearchField
+                  value={searchText}
+                  onSubmit={this.handleSubmit}
+                  style={styles.searchBar}
+                  dataSource={keywords}
+                />
                 <ActionButtons
-                  onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
-                  onLabelsClick={this.showLabels} labelsActive={visibleLabels}
-                  onSettingsClick={this.showSettings} settingsActive={visibleSettings}
+                  onFilterClick={this.props.toggleShowFilter}
+                  filterActive={showFilter}
+                  onLabelsClick={this.showLabels}
+                  labelsActive={visibleLabels}
+                  onSettingsClick={this.showSettings}
+                  settingsActive={visibleSettings}
                   style={styles.actionButtons}
                 />
               </div>
-              {visibleSettings ?
+              {visibleSettings ? (
                 <div>
                   <p>todo</p>
                 </div>
-                : null
-              }
-              {showFilter ?
-                <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
-                : null
-              }
+              ) : null}
+              {showFilter ? (
+                <FilterList
+                  filtersMap={filters}
+                  setFilterItems={this.props.setFilterItems}
+                  filtersData={filtersData}
+                />
+              ) : null}
             </View>
             <Divider />
-            <View left={true} right={true} top={1} >
-              {pictogramsCounter ? <P> <FormattedMessage {...messages.pictogramsFound} values={{ pictogramsCounter }} /> </P> : ''}
+            <View left={true} right={true} top={1}>
+              {pictogramsCounter ? (
+                <P>
+                  {' '}
+                  <FormattedMessage
+                    {...messages.pictogramsFound}
+                    values={{ pictogramsCounter }}
+                  />{' '}
+                </P>
+              ) : (
+                ''
+              )}
               {gallery}
             </View>
           </div>
           <div>
-            <View left={true} right={true} style={{ backgroundColor: 'muiTheme.palette.accent2Color' }}>
+            <View
+              left={true}
+              right={true}
+              style={{ backgroundColor: 'muiTheme.palette.accent2Color' }}
+            >
               <div style={styles.container}>
-                <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} dataSource={keywords} />
+                <SearchField
+                  value={searchText}
+                  onSubmit={this.handleSubmit}
+                  style={styles.searchBar}
+                  dataSource={keywords}
+                />
                 <ActionButtons
-                  onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
-                  onLabelsClick={this.showLabels} labelsActive={visibleLabels}
-                  onSettingsClick={this.showSettings} settingsActive={visibleSettings}
+                  onFilterClick={this.props.toggleShowFilter}
+                  filterActive={showFilter}
+                  onLabelsClick={this.showLabels}
+                  labelsActive={visibleLabels}
+                  onSettingsClick={this.showSettings}
+                  settingsActive={visibleSettings}
                   style={styles.actionButtons}
                 />
               </div>
-              {visibleSettings ?
+              {visibleSettings ? (
                 <div>
                   <Toggle
                     label={<FormattedMessage {...messages.advancedSearch} />}
@@ -187,16 +242,28 @@ class PictogramsView extends PureComponent { // eslint-disable-line react/prefer
                     style={{ width: '200px' }}
                   />
                 </div>
-                : null
-              }
-              {showFilter ?
-                <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
-                : null
-              }
+              ) : null}
+              {showFilter ? (
+                <FilterList
+                  filtersMap={filters}
+                  setFilterItems={this.props.setFilterItems}
+                  filtersData={filtersData}
+                />
+              ) : null}
             </View>
             <Divider />
-            <View left={true} right={true} top={1} >
-              {pictogramsCounter ? <p> <FormattedMessage {...messages.newPictogramsFound} values={{ pictogramsCounter }} /> </p> : ''}
+            <View left={true} right={true} top={1}>
+              {pictogramsCounter ? (
+                <p>
+                  {' '}
+                  <FormattedMessage
+                    {...messages.newPictogramsFound}
+                    values={{ pictogramsCounter }}
+                  />{' '}
+                </p>
+              ) : (
+                ''
+              )}
               {gallery}
             </View>
           </div>
@@ -244,7 +311,6 @@ const mapStateToProps = (state, ownProps) => ({
 })
 // const pictoList = state.getIn(['pictogramView', 'search', ownProps.params.searchText]) || []
 
-
 const mapDispatchToProps = (dispatch) => ({
   requestPictograms: (locale, searchText) => {
     dispatch(pictograms.request(locale, searchText))
@@ -263,4 +329,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(muiThemeable()(PictogramsView)))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(muiThemeable()(PictogramsView)))
