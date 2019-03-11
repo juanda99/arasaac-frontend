@@ -13,7 +13,6 @@ import messages from './messages'
 const isValidDate = (d) => d instanceof Date && !isNaN(d)
 
 const DateFormatter = (value) => {
-  if (value === 'Now') return <BuildingIcon />
   const date = new Date(value)
   if (!isValidDate(date)) {
     return (
