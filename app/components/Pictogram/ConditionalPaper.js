@@ -3,6 +3,16 @@ import PropTypes from 'prop-types'
 import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import Paper from 'material-ui/Paper'
 
+/**
+ *
+ * ConditionalPaper.js
+ *
+ * This component is used for pictogram snippets and for Catalog component.
+ * Should also be used for login
+ */
+
+// TODO: Move ConditionalPaper out of here
+
 class ConditionalPaper extends PureComponent {
   state = {
     zDepth: 1
@@ -21,7 +31,7 @@ class ConditionalPaper extends PureComponent {
   }
 
   render() {
-    const { width, children } = this.props
+    const { width, children, style } = this.props
     const isSmall = SMALL === width
     return (
       <div>
@@ -32,6 +42,7 @@ class ConditionalPaper extends PureComponent {
             zDepth={this.state.zDepth}
             onMouseEnter={this.handleMouseEnter}
             onMouseLeave={this.handleMouseLeave}
+            style={style}
           >
             {' '}
             {children}{' '}
@@ -47,7 +58,8 @@ ConditionalPaper.propTypes = {
     React.PropTypes.arrayOf(React.PropTypes.node),
     React.PropTypes.node
   ]),
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  style: PropTypes.object
 }
 
 export default withWidth()(ConditionalPaper)

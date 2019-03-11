@@ -55,7 +55,7 @@ import TextOptions from './TextOptions'
 import ZoomOptions from './ZoomOptions'
 import PictoWrapper from './PictoWrapper'
 import Canvas from './Canvas'
-import PictogramTitle from './PictogramTitle'
+import PictogramTitle from '../BoxTitle'
 import RelatedWords from './RelatedWords'
 
 class Pictogram extends Component {
