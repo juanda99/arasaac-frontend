@@ -33,7 +33,7 @@ class CatalogsView extends PureComponent {
 
   getCatalog = (language) => {
     const { catalogs } = this.state
-    return catalogs.filter((catalog) => catalog.language === language) || {}
+    return catalogs.filter((catalog) => catalog.language === language)[0]
   }
 
   handleChange = (language) => {
@@ -62,7 +62,7 @@ class CatalogsView extends PureComponent {
           showToolTip={false}
           onChange={this.handleChange}
         />
-        <Catalog catalog={catalog} />
+        {catalog && <Catalog catalog={catalog} />}
       </View>
     )
   }

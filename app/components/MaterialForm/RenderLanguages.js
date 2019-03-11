@@ -34,13 +34,15 @@ const styles = {
 
 const RenderLanguages = ({ fields, intl }) => {
   const { formatMessage } = intl
-  const addLanguage = () => { fields.push(new Map()) }
+  const addLanguage = () => {
+    fields.push(new Map())
+  }
   if (fields.length === 0) addLanguage()
   return (
     <ul style={styles.list}>
-      {fields.map((member, index) =>
+      {fields.map((member, index) => (
         <li key={index} style={styles.listItem}>
-          <Paper zDepth={2} style={styles.paper} >
+          <Paper zDepth={2} style={styles.paper}>
             <Field
               name={`${member}.language`}
               component={SelectField}
@@ -48,12 +50,30 @@ const RenderLanguages = ({ fields, intl }) => {
               floatingLabelText={<FormattedMessage {...messages.language} />}
               fullWidth
             >
-              <MenuItem value={'es'} primaryText={formatMessage(languages.spanish)} />
-              <MenuItem value={'fr'} primaryText={formatMessage(languages.french)} />
-              <MenuItem value={'en'} primaryText={formatMessage(languages.english)} />
-              <MenuItem value={'it'} primaryText={formatMessage(languages.italian)} />
-              <MenuItem value={'val'} primaryText={formatMessage(languages.valencian)} />
-              <MenuItem value={'de'} primaryText={formatMessage(languages.german)} />
+              <MenuItem
+                value={'es'}
+                primaryText={formatMessage(languages.es)}
+              />
+              <MenuItem
+                value={'fr'}
+                primaryText={formatMessage(languages.fr)}
+              />
+              <MenuItem
+                value={'en'}
+                primaryText={formatMessage(languages.en)}
+              />
+              <MenuItem
+                value={'it'}
+                primaryText={formatMessage(languages.it)}
+              />
+              <MenuItem
+                value={'val'}
+                primaryText={formatMessage(languages.val)}
+              />
+              <MenuItem
+                value={'de'}
+                primaryText={formatMessage(languages.de)}
+              />
             </Field>
             <Field
               name={`${member}.title`}
@@ -77,25 +97,37 @@ const RenderLanguages = ({ fields, intl }) => {
               <Field
                 name={`${member}.files`}
                 component={RenderDropzoneInput}
-                props={{ hint: <FormattedMessage {...messages.languageFiles} /> }}
+                props={{
+                  hint: <FormattedMessage {...messages.languageFiles} />
+                }}
               />
             </div>
             <div>
               <Field
                 name={`${member}.screenshots`}
                 component={RenderDropzoneInput}
-                props={{ hint: <FormattedMessage {...messages.languageScreenshots} /> }}
+                props={{
+                  hint: <FormattedMessage {...messages.languageScreenshots} />
+                }}
               />
             </div>
-            <FloatingActionButton mini={true} style={{ position: 'absolute', top: -5, right: 53 }} onClick={() => fields.remove(index)} >
+            <FloatingActionButton
+              mini={true}
+              style={{ position: 'absolute', top: -5, right: 53 }}
+              onClick={() => fields.remove(index)}
+            >
               <Delete />
             </FloatingActionButton>
-            <FloatingActionButton mini={true} style={{ position: 'absolute', top: -5, right: 3 }} onClick={addLanguage} >
+            <FloatingActionButton
+              mini={true}
+              style={{ position: 'absolute', top: -5, right: 3 }}
+              onClick={addLanguage}
+            >
               <PersonAdd />
             </FloatingActionButton>
           </Paper>
         </li>
-      )}
+      ))}
     </ul>
   )
 }
@@ -104,6 +136,5 @@ RenderLanguages.propTypes = {
   intl: intlShape.isRequired,
   fields: PropTypes.object.isRequired
 }
-
 
 export default injectIntl(RenderLanguages)
