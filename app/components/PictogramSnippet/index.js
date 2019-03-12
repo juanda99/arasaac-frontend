@@ -5,12 +5,11 @@ import { PICTOGRAMS_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
 import ActionSetFavorite from 'material-ui/svg-icons/action/favorite-border'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
-import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 import { FormattedMessage } from 'react-intl'
 import { keywordSelector } from 'utils'
-import StyledList from './StyledList'
 import CardActions from './CardActions'
 import StyledPaper from './StyledPaper'
+import StyledList from './StyledList'
 import Image from './Image'
 import Item from './Item'
 import messages from './messages'
@@ -68,7 +67,7 @@ class PictogramSnippet extends PureComponent {
       searchText,
       muiTheme,
       locale,
-      width
+      showExtra
     } = this.props
     const { keyword } = keywordSelector(searchText, keywords)
     return (
@@ -85,7 +84,7 @@ class PictogramSnippet extends PureComponent {
                 src={`${PICTOGRAMS_URL}/${idPictogram}_300.png`}
                 alt={keyword}
               />
-              {width === LARGE && (
+              {showExtra && (
                 <CardActions>
                   <IconButton
                     touch={true}
@@ -125,7 +124,7 @@ PictogramSnippet.propTypes = {
   searchText: PropTypes.string,
   muiTheme: PropTypes.object,
   locale: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired
+  showExtra: PropTypes.bool
 }
 
-export default muiThemeable()(withWidth()(PictogramSnippet))
+export default muiThemeable()(PictogramSnippet)
