@@ -155,6 +155,7 @@ class Pictogram extends Component {
     const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
     return (
       <div style={{ display: 'flex' }}>
+        {idLocution && (
         <SoundPlayer
           crossOrigin='anonymous'
           streamUrl={streamUrl}
@@ -162,6 +163,7 @@ class Pictogram extends Component {
           showProgress={false}
           showTimer={false}
         />
+        )}
         {keyword && (
           <IconButton
             touch={true}
