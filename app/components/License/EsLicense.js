@@ -51,8 +51,8 @@ const EsLicense = () => (
     <P>
       <em>
         Los símbolos pictográficos utilizados son propiedad del Gobierno de
-        Aragón y han sido creados por Sergio Palao para <Arasaac link={true} />{' '}
-        , que los distribuye bajo <CreativeCommons locale='es' />.
+        Aragón y han sido creados por Sergio Palao para <Arasaac link={true} />,
+        que los distribuye bajo <CreativeCommons locale='es' />.
       </em>
     </P>
     <P>O de modo breve:</P>
