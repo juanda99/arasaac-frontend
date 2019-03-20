@@ -49,7 +49,7 @@ const EnLicense = () => (
       <em>
         The pictographic symbols used are the property of the Government of
         Aragón and have been created by Sergio Palao for <Arasaac link={true} />
-        that distributes them under <CreativeCommons locale='en' />.
+        , that distributes them under <CreativeCommons locale='en' />.
       </em>
     </P>
 
