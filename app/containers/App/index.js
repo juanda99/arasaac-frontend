@@ -266,6 +266,19 @@ class App extends Component {
       logout
     } = this.props
 
+    if (location.hash) {
+      const authData = location.hash.substring(1)
+      const data = JSON.parse(
+        '{"' +
+          decodeURI(authData)
+            .replace(/"/g, '\\"')
+            .replace(/&/g, '","')
+            .replace(/=/g, '":"') +
+          '"}'
+      )
+      console.log(JSON.stringify(data))
+    }
+
     let { menuOpen } = this.state
 
     const { joyride } = this.props
