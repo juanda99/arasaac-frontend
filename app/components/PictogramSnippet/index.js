@@ -70,6 +70,7 @@ class PictogramSnippet extends PureComponent {
       showExtra
     } = this.props
     const { keyword } = keywordSelector(searchText, keywords)
+    const { isAuthenticated } = this.context
     return (
       <StyledList
         key={idPictogram}
@@ -81,11 +82,11 @@ class PictogramSnippet extends PureComponent {
           <Item url={`/pictograms/${locale}/${idPictogram}/${keyword}`}>
             <div style={{ position: 'relative' }}>
               <Image
-                src={`${PICTOGRAMS_URL}/${idPictogram}_300.png`}
+                src={`${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_300.png`}
                 alt={keyword}
               />
-              {showExtra && (
-                <CardActions>
+              <CardActions>
+                {showExtra && isAuthenticated && (
                   <IconButton
                     touch={true}
                     tooltip={<FormattedMessage {...messages.addFavorite} />}
@@ -97,6 +98,8 @@ class PictogramSnippet extends PureComponent {
                       hoverColor={muiTheme.palette.accent1Color}
                     />
                   </IconButton>
+                )}
+                {showExtra && (
                   <IconButton
                     touch={true}
                     tooltip={<FormattedMessage {...messages.download} />}
@@ -108,15 +111,19 @@ class PictogramSnippet extends PureComponent {
                       hoverColor={muiTheme.palette.accent1Color}
                     />
                   </IconButton>
-                  <p style={this.styles.cardTitle}>{keyword}</p>
-                </CardActions>
-              )}
+                )}
+                <p style={this.styles.cardTitle}>{keyword}</p>
+              </CardActions>
             </div>
           </Item>
         </StyledPaper>
       </StyledList>
     )
   }
+}
+
+PictogramSnippet.contextTypes = {
+  isAuthenticated: PropTypes.bool
 }
 
 PictogramSnippet.propTypes = {
