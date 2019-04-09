@@ -19,7 +19,7 @@ import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import PictogramList from 'components/PictogramList'
 import P from 'components/P'
-import { withRouter } from 'react-router'
+import { withRouter, Link } from 'react-router'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ActionButtons from 'containers/MaterialsView/ActionButtons'
 import {
@@ -121,16 +121,17 @@ class PictogramsView extends PureComponent {
       muiTheme,
       keywords
     } = this.props
+    const { isAuthenticated } = this.context
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
     let pictogramsCounter
     let pictogramsList
     if (slideIndex === 0) pictogramsList = visiblePictograms
-    else pictogramsList = newPictogramsList
+    else if (slideIndex === 1) pictogramsList = newPictogramsList
     let gallery
     if ((loading && searchText) || (loading && slideIndex !== 0)) {
       gallery = <p> Loading pictograms...</p>
-    } else if (!searchText && slideIndex === 0) {
+    } else if (!searchText && slideIndex !== 1) {
       gallery = null
     } else {
       pictogramsCounter = pictogramsList.length
@@ -268,7 +269,15 @@ class PictogramsView extends PureComponent {
             </View>
           </div>
           <View left={true} right={true}>
-            También sin implementar
+            {isAuthenticated ? (
+              <p>Autenticado!</p>
+            ) : (
+              <Link to='/signin'>
+                <FormattedMessage
+                  {...messages.contentNotAvailableWithoutAuth}
+                />
+              </Link>
+            )}
           </View>
         </SwipeableViews>
       </div>
@@ -296,6 +305,10 @@ PictogramsView.propTypes = {
   locale: PropTypes.string.isRequired,
   searchResults: PropTypes.arrayOf(PropTypes.number),
   filtersData: PropTypes.instanceOf(Map)
+}
+
+PictogramsView.contextTypes = {
+  isAuthenticated: PropTypes.bool
 }
 
 const mapStateToProps = (state, ownProps) => ({

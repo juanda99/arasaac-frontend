@@ -221,6 +221,10 @@ class App extends Component {
     })
   }
 
+  getChildContext() {
+    return { isAuthenticated: this.props.isAuthenticated }
+  }
+
   handleChangeList = (event, value) => {
     if (value) {
       this.context.router.push(value)
@@ -360,3 +364,7 @@ export default connect(
   mapStateToProps,
   { changeLocale, logout, startTranslation, stopTranslation }
 )(withWidth()(App))
+
+App.childContextTypes = {
+  isAuthenticated: PropTypes.bool
+}

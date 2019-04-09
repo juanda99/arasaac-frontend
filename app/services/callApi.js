@@ -23,7 +23,6 @@ const callApi = async (endpoint, options, token) => {
   const response = await fetch(endpoint, config)
   const data = await response.json()
   if (response.status >= 400) {
-    console.log(data)
     throw new Error(data.error)
     // throw new Error()
   }
