@@ -10,27 +10,25 @@ import { createRequestTypes, action } from 'utils/actions'
 export const LOGIN = createRequestTypes('LOGIN')
 export const SOCIAL_LOGIN = createRequestTypes('SOCIAL_LOGIN')
 export const LOGOUT = 'app/LoginView/LOGOUT'
-export const ACTIVATION = createRequestTypes('ACTIVATION')
 export const TOKEN_VALIDATION = createRequestTypes('TOKEN_VALIDATION')
 export const TOKEN_REFRESH = createRequestTypes('TOKEN_REFRESH')
 export const RESET_ERROR = 'app/LoginView/RESET_ERROR'
+export const ACTIVATION = createRequestTypes('ACTIVATION')
 
 export const login = {
-  request: (username, password) => action(LOGIN.REQUEST, { username, password }),
-  success: (accessToken, refreshToken) => action(LOGIN.SUCCESS, { accessToken, refreshToken }),
+  request: (username, password) =>
+    action(LOGIN.REQUEST, { username, password }),
+  success: (accessToken, refreshToken) =>
+    action(LOGIN.SUCCESS, { accessToken, refreshToken }),
   failure: (error) => action(LOGIN.FAILURE, { error })
 }
 
 export const socialLogin = {
-  request: (socialToken, provider) => action(SOCIAL_LOGIN.REQUEST, { socialToken, provider }),
-  success: (accessToken, refreshToken) => action(SOCIAL_LOGIN.SUCCESS, { accessToken, refreshToken }),
+  request: (socialToken, provider) =>
+    action(SOCIAL_LOGIN.REQUEST, { socialToken, provider }),
+  success: (accessToken, refreshToken) =>
+    action(SOCIAL_LOGIN.SUCCESS, { accessToken, refreshToken }),
   failure: (error) => action(SOCIAL_LOGIN.FAILURE, { error })
-}
-
-export const activation = {
-  request: (profile) => action(ACTIVATION.REQUEST, { profile }),
-  success: () => action(ACTIVATION.SUCCESS),
-  failure: (error) => action(ACTIVATION.FAILURE, { error })
 }
 
 export const tokenValidation = {
@@ -43,6 +41,12 @@ export const tokenRefresh = {
   request: (refreshToken) => action(TOKEN_REFRESH.REQUEST, { refreshToken }),
   success: (accessToken) => action(TOKEN_REFRESH.SUCCESS, { accessToken }),
   failure: (error) => action(TOKEN_REFRESH.FAILURE, { error })
+}
+
+export const activation = {
+  request: (code) => action(ACTIVATION.REQUEST, { code }),
+  success: (accessToken) => action(ACTIVATION.SUCCESS, { accessToken }),
+  failure: (error) => action(ACTIVATION.FAILURE, { error })
 }
 
 export const logout = () => action(LOGOUT)

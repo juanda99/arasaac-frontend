@@ -198,6 +198,10 @@ class App extends Component {
         title = <FormattedMessage {...messages.settings} />
         docked = width === LARGE
         break
+      case /activate/.test(url):
+        title = <FormattedMessage {...messages.userActivation} />
+        docked = width === LARGE
+        break
       case /prizes/.test(url):
         title = <FormattedMessage {...messages.prizes} />
         docked = width === LARGE

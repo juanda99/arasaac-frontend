@@ -78,6 +78,15 @@ export default function createRoutes(store) {
       }
     },
     {
+      path: '/activate/:activationCode',
+      name: 'activateView',
+      getComponent(location, cb) {
+        import('containers/ActivateView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    },
+    {
       path: '/materials/search',
       name: 'materialsView',
       getComponent(nextState, cb) {

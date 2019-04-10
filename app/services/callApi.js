@@ -16,13 +16,16 @@ const callApi = async (endpoint, options, token) => {
   // if token we add it as header
   if (token) {
     const authHeader = { headers: { Authorization: `Bearer ${token}` } }
-    config = { ...config || {}, ...authHeader }
+    config = { ...(config || {}), ...authHeader }
   }
   // const fullUrl = (endpoint.indexOf(AUTH_ROOT) === -1) ? API_ROOT + endpoint : endpoint
 
   const response = await fetch(endpoint, config)
   const data = await response.json()
   if (response.status >= 400) {
+    console.log('--------------------------------------')
+    console.log(`****************************${JSON.stringify(data)}`)
+    console.log('--------------------------------------')
     throw new Error(data.error)
     // throw new Error()
   }
