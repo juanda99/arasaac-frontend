@@ -276,6 +276,7 @@ class PictogramsView extends PureComponent {
                 <FormattedMessage
                   {...messages.contentNotAvailableWithoutAuth}
                 />
+                <p>No autenticado!</p>
               </Link>
             )}
           </View>

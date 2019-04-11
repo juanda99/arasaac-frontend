@@ -43,11 +43,7 @@ const initialState = fromJS({
   accessToken: '',
   refreshToken: '',
   loading: false,
-  error: '',
-  profile: fromJS({}),
-  isRefreshing: false,
-  isActivating: false,
-  provider: fromJS({})
+  error: ''
 })
 
 // The auth reducer. The starting state sets authentication based on a token being in local storage.
@@ -55,33 +51,27 @@ const initialState = fromJS({
 // we would also want a util to check if the token is expired, it would update isAuthenticated key
 
 const authReducer = (state = initialState, action) => {
-  console.log(action)
-  console.log(action.payload)
   switch (action.type) {
     case LOGIN.REQUEST:
     case SOCIAL_LOGIN.REQUEST:
     case TOKEN_VALIDATION.REQUEST:
     case ACTIVATION.REQUEST:
-      return state.set('loading', true).set('error', '')
     case TOKEN_REFRESH.REQUEST:
-      return state.set('isRefreshing', true).set('error', '')
+      return state.set('loading', true).set('error', '')
     case LOGIN.SUCCESS:
     case SOCIAL_LOGIN.SUCCESS:
     case ACTIVATION.SUCCESS:
-      return (
-        state
-          .set('loading', false)
-          // .set('username', action.payload.username)
-          .set('accessToken', action.payload.accessToken)
-        // .set('refreshToken', action.payload.refreshToken)
-      )
+      return state
+        .set('loading', false)
+        .set('accessToken', action.payload.accessToken)
     case TOKEN_VALIDATION.SUCCESS:
+      // after login ok, we test token asking for profile
       // token & refreshToken get not altered as they are valid
       // we upgrade user profile
       return state.set('loading', false).mergeDeep(action.payload.authData)
     case TOKEN_REFRESH.SUCCESS:
       return state
-        .set('isRefreshing', false)
+        .set('loading', false)
         .set('accessToken', action.payload.accessToken)
     case LOGIN.FAILURE:
     case SOCIAL_LOGIN.FAILURE:
@@ -92,7 +82,7 @@ const authReducer = (state = initialState, action) => {
         .set('accessToken', '')
         .set('error', action.payload.error)
     case TOKEN_REFRESH.FAILURE:
-      return state.set('isRefreshing', false).set('refreshToken', '')
+      return state.set('loading', false).set('refreshToken', '')
     case LOGOUT:
       return initialState
     case RESET_ERROR:
