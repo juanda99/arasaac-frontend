@@ -10,12 +10,9 @@ import { connect } from 'react-redux'
 import api from 'services'
 import View from 'components/View'
 import { createSelector } from 'reselect'
-import { withRouter } from 'react-router'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
-import { RegisterForm } from 'components/Login'
+import { RecoverPasswordForm } from 'components/Login'
 import ConditionalPaper from 'components/ConditionalPaper'
-import SocialLogin from 'components/SocialLogin'
-import Separator from 'components/Separator'
 import Logo from 'components/Logo'
 import P from 'components/P'
 import { socialLogin } from 'containers/App/actions'
@@ -23,14 +20,13 @@ import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ErrorWindow from 'components/ErrorWindow'
 import messages from './messages'
 
-class SignupView extends Component {
+class RecoverPasswordView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showOptions: true,
       loading: false,
       error: '',
-      registered: false
+      sent: false
     }
   }
 
@@ -38,16 +34,11 @@ class SignupView extends Component {
     this.setState({ error: '' })
   }
 
-  recoverPassword = () => {
-    const { router } = this.props
-    router.push('recoverpassword/')
-  }
-
   handleSubmit = async (userData) => {
     try {
       const data = { ...userData.toJS(), locale: this.props.locale }
       await api.SIGNUP_REQUEST(data)
-      this.setState({ registered: true })
+      this.setState({ sent: true })
     } catch (error) {
       this.setState({ error: error.message })
     }
@@ -55,48 +46,45 @@ class SignupView extends Component {
 
   render() {
     const { intl } = this.props
-    const { error, registered } = this.state
+    const { email } = this.props.params
+    const { error, sent } = this.state
     const { formatMessage } = intl
     let showError = null
     if (error === 'NOT_ACTIVATED_USER') {
       showError = (
         <ErrorWindow
-          title={formatMessage(messages.createUser)}
+          title={formatMessage(messages.resetPassword)}
           desc={formatMessage(messages.userNotActivated)}
           onReset={this.resetError}
         />
       )
-    } else if (error === 'ALREADY_USER') {
+    } else if (error === 'NOT_USER') {
       showError = (
         <ErrorWindow
-          title={formatMessage(messages.createUser)}
-          desc={formatMessage(messages.userConflict)}
-          onSolution={this.recoverPassword}
-          onSolutionText={formatMessage(messages.recoverPassword)}
+          title={formatMessage(messages.resetPassword)}
+          desc={formatMessage(messages.userNotExists)}
           onReset={this.resetError}
         />
       )
     } else {
       showError = (
         <ErrorWindow
-          title={formatMessage(messages.createUser)}
-          desc={formatMessage(messages.userNotCreated)}
+          title={formatMessage(messages.resetPassword)}
+          desc={formatMessage(messages.passwordNotReset)}
           onReset={this.resetError}
         />
       )
     }
-    const renderView = registered ? (
+    const renderView = sent ? (
       <div>
         <Logo src='https://static.arasaac.org/pictograms/5432/5432_300.png' />
         <P>
-          <FormattedMessage {...messages.userCreated} />
+          <FormattedMessage {...messages.passwordResetSent} />
         </P>
       </div>
     ) : (
       <div>
-        <SocialLogin onSuccess={this.props.requestAppToken} />
-        <Separator />
-        <RegisterForm onSubmit={this.handleSubmit} />
+        <RecoverPasswordForm onSubmit={this.handleSubmit} email={email} />
         {error && showError}
       </div>
     )
@@ -109,11 +97,10 @@ class SignupView extends Component {
   }
 }
 
-SignupView.propTypes = {
+RecoverPasswordView.propTypes = {
   intl: intlShape.isRequired,
-  requestAppToken: PropTypes.func.isRequired,
   locale: PropTypes.string,
-  router: PropTypes.any.isRequired
+  params: PropTypes.object.isRequired
 }
 
 const mapStateToProps = createSelector(
@@ -121,13 +108,4 @@ const mapStateToProps = createSelector(
   (locale) => ({ locale })
 )
 
-const mapDispatchToProps = (dispatch) => ({
-  requestAppToken: (token, socialNetwork) => {
-    dispatch(socialLogin.request(token, socialNetwork))
-  }
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectIntl(withRouter(SignupView)))
+export default connect(mapStateToProps)(injectIntl(RecoverPasswordView))

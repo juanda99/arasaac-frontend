@@ -31,7 +31,13 @@ class ErrorWindow extends PureComponent {
         onClick={this.handleClose}
       />
     ]
-    const { title, desc } = this.props
+    const { title, desc, onSolution, onSolutionText } = this.props
+
+    if (onSolution) {
+      actions.unshift(
+        <FlatButton label={onSolutionText} onClick={onSolution} />
+      )
+    }
 
     return (
       <Dialog
@@ -52,7 +58,9 @@ ErrorWindow.propTypes = {
   desc: PropTypes.string.isRequired,
   onReset: PropTypes.func.isRequired,
   url: PropTypes.string,
-  router: PropTypes.any.isRequired
+  router: PropTypes.any.isRequired,
+  onSolution: PropTypes.func,
+  onSolutionText: PropTypes.string
 }
 
 export default withRouter(ErrorWindow)

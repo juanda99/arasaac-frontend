@@ -19,17 +19,16 @@ const callApi = async (endpoint, options, token) => {
     config = { ...(config || {}), ...authHeader }
   }
   // const fullUrl = (endpoint.indexOf(AUTH_ROOT) === -1) ? API_ROOT + endpoint : endpoint
-
-  const response = await fetch(endpoint, config)
-  const data = await response.json()
-  if (response.status >= 400) {
-    console.log('--------------------------------------')
-    console.log(`****************************${JSON.stringify(data)}`)
-    console.log('--------------------------------------')
-    throw new Error(data.error)
-    // throw new Error()
+  try {
+    const response = await fetch(endpoint, config)
+    const data = await response.json()
+    if (response.status >= 400) {
+      throw new Error(data.error)
+    }
+    return schema ? normalize(data, schema) : data
+  } catch (error) {
+    throw new Error(error.message)
   }
-  return schema ? normalize(data, schema) : data
 }
 
 /*

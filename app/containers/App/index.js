@@ -127,8 +127,10 @@ class App extends Component {
 
   getViewProps(width) {
     let title = ''
-    let docked = false
+    let docked = width === LARGE
     const url = this.props.location.pathname
+    if (url === '/') docked = false
+    /*
     switch (true) {
       case /pictograms\/search/.test(url):
         title = <FormattedMessage {...messages.pictogramsSearch} />
@@ -210,6 +212,7 @@ class App extends Component {
         docked = false
         break
     }
+    */
     return { docked, title }
   }
 
@@ -274,18 +277,18 @@ class App extends Component {
       logout
     } = this.props
 
-    if (location.hash) {
-      const authData = location.hash.substring(1)
-      const data = JSON.parse(
-        '{"' +
-          decodeURI(authData)
-            .replace(/"/g, '\\"')
-            .replace(/&/g, '","')
-            .replace(/=/g, '":"') +
-          '"}'
-      )
-      console.log(JSON.stringify(data))
-    }
+    // if (location.hash) {
+    //   const authData = location.hash.substring(1)
+    //   const data = JSON.parse(
+    //     '{"' +
+    //       decodeURI(authData)
+    //         .replace(/"/g, '\\"')
+    //         .replace(/&/g, '","')
+    //         .replace(/=/g, '":"') +
+    //       '"}'
+    //   )
+    //   console.log(JSON.stringify(data))
+    // }
 
     let { menuOpen } = this.state
 
@@ -309,7 +312,7 @@ class App extends Component {
     const { title, docked } = this.getViewProps(width)
 
     let showMenuIconButton = true
-    let hideIconText = width === SMALL
+    let isMobile = width === SMALL
     if (width === LARGE && docked) {
       menuOpen = true
       showMenuIconButton = false
@@ -329,7 +332,7 @@ class App extends Component {
           changeLocale={this.handleTranslate}
           signout={logout}
           isTranslating={isTranslating}
-          hideIconText={hideIconText}
+          isMobile={isMobile}
         />
         <LoadingBar
           updateTime={100}

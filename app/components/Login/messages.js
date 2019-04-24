@@ -15,25 +15,40 @@ const messages = defineMessages({
     description: 'Hint for username login field',
     defaultMessage: 'e-mail'
   },
+  invalidEmail: {
+    id: 'Login.invalidEmail',
+    description: 'Error message',
+    defaultMessage: 'Invalid email'
+  },
+  required: {
+    id: 'Login.required',
+    description: 'Error message',
+    defaultMessage: 'Required'
+  },
   password: {
     id: 'password.signin',
     description: 'Password field for login, default text',
     defaultMessage: 'Password'
   },
-  remember: {
-    id: 'signin.remember',
-    description: 'Signin checkbox option for remembering password',
-    defaultMessage: 'Remember me'
-  },
   forgotPassword: {
     id: 'signin.forgotPassword',
-    description: 'Link for password reset if passwords is forgotten',
+    description: 'Text for password reset if passwords is forgotten',
     defaultMessage: 'Forgot password?'
+  },
+  recoverPassword: {
+    id: 'signin.recoverPassword',
+    description: 'Button text for password reset if passwords is forgotten',
+    defaultMessage: 'Recover password'
+  },
+  recoverPasswordInfo: {
+    id: 'signin.recoverPassword',
+    description: 'Instructions if passwords is forgotten',
+    defaultMessage: 'Fill your email to receive a link to change your password'
   },
   offerAccount: {
     id: 'signin.offerAccount',
     description: 'Text inviting for creating an account',
-    defaultMessage: 'Don\'t have an account?'
+    defaultMessage: "Don't have an account?"
   },
   signup: {
     id: 'signin.signup',
@@ -53,12 +68,13 @@ const messages = defineMessages({
   agreement: {
     id: 'signup.agreement',
     description: 'Link to the use conditions and the privacy policy',
-    defaultMessage: 'By clicking on Sign up, you agree to {useConditions} and {privacyPolicy}'
+    defaultMessage:
+      'By clicking on Sign up, you agree to {useConditions} and {privacyPolicy}'
   },
   useConditions: {
     id: 'signup.useConditions',
     description: 'Arasaac use conditions',
-    defaultMessage: 'Arasaac\'s use conditions'
+    defaultMessage: "Arasaac's use conditions"
   },
   privacyPolicy: {
     id: 'signup.privacyPolicy',

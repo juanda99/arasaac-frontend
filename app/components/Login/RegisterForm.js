@@ -7,7 +7,9 @@ import { TextField } from 'redux-form-material-ui'
 import FlatButton from 'material-ui/FlatButton'
 import Div from 'components/Div'
 import messages from './messages'
-import { required, email } from './validate'
+import { email } from './validate'
+
+// TODO: validate password minlength?????
 
 const styles = {
   checkbox: {
@@ -23,20 +25,24 @@ const styles = {
   }
 }
 
-
 /* eslint-disable import/no-mutable-exports */
 let RegisterForm = class RegisterForm extends Component {
-
   handleSubmit() {
     // ?????
   }
 
   componentDidMount() {
-    this.firstField            // the Field
+    this.firstField // the Field
       .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
       .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
-      .focus()                // on TextField
+      .focus() // on TextField
   }
+
+  email = (value) =>
+    email(value) ? <FormattedMessage {...messages.invalidEmail} /> : undefined
+
+  required = (value) =>
+    value == null ? <FormattedMessage {...messages.required} /> : undefined
 
   render() {
     const { handleSubmit, pristine, submitting } = this.props
@@ -48,12 +54,15 @@ let RegisterForm = class RegisterForm extends Component {
             <Field
               name='name'
               component={TextField}
-              ref={(input) => { this.firstField = input }} withRef
+              ref={(input) => {
+                this.firstField = input
+              }}
+              withRef
               hintText='What is your name?'
               value=''
               floatingLabelText='Name'
               style={{ width: '100%' }}
-              validate={required}
+              validate={this.required}
               autoComplete='name'
             />
             <Field
@@ -63,7 +72,7 @@ let RegisterForm = class RegisterForm extends Component {
               value=''
               floatingLabelText='Email'
               style={{ width: '100%' }}
-              validate={[required, email]}
+              validate={[this.required, this.email]}
               autoComplete='email'
             />
             <Field
@@ -74,7 +83,7 @@ let RegisterForm = class RegisterForm extends Component {
               value=''
               floatingLabelText='Password'
               style={{ width: '100%' }}
-              validate={required}
+              validate={this.required}
               autoComplete='new-password'
             />
             <Field
@@ -105,7 +114,11 @@ let RegisterForm = class RegisterForm extends Component {
         </Div>
         <Div top={2}>
           <Link to='/signin'>
-            <FlatButton label={<FormattedMessage {...messages.offerSignin} />} secondary={true} fullWidth={true} />
+            <FlatButton
+              label={<FormattedMessage {...messages.offerSignin} />}
+              secondary={true}
+              fullWidth={true}
+            />
           </Link>
         </Div>
       </div>
@@ -125,4 +138,3 @@ RegisterForm = reduxForm({
 })(RegisterForm)
 
 export default RegisterForm
-

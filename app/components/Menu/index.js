@@ -1,8 +1,8 @@
 /**
-*
-* Menu
-*
-*/
+ *
+ * Menu
+ *
+ */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Drawer from 'material-ui/Drawer'
@@ -17,6 +17,7 @@ import PrizesIcon from 'material-ui/svg-icons/action/card-membership'
 import ToolsIcon from 'material-ui/svg-icons/action/build'
 import AppsIcon from 'material-ui/svg-icons/navigation/apps'
 import AccountIcon from 'material-ui/svg-icons/social/person-add'
+import LoginIcon from 'material-ui/svg-icons/social/person'
 import InfoIcon from 'material-ui/svg-icons/action/info'
 import PictogramsIcon from 'material-ui/svg-icons/image/collections'
 import PeopleIcon from 'material-ui/svg-icons/social/people'
@@ -70,7 +71,6 @@ class Menu extends Component {
       muiTheme
     } = this.props
 
-
     return (
       <Drawer
         style={styles.menu}
@@ -78,12 +78,19 @@ class Menu extends Component {
         open={open}
         id='menu'
         onRequestChange={onRequestChangeNavDrawer}
-       // containerStyle={{zIndex: zIndex.drawer - 100}}
+        // containerStyle={{zIndex: zIndex.drawer - 100}}
         // containerStyle={{ Index: 1200 }}
       >
         {
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-        } <Div bg={muiTheme.palette.primary1Color} color={muiTheme.palette.logoColor} role='button' style={styles.logo} onClick={this.handleTouchTapHeader}>
+        }{' '}
+        <Div
+          bg={muiTheme.palette.primary1Color}
+          color={muiTheme.palette.logoColor}
+          role='button'
+          style={styles.logo}
+          onClick={this.handleTouchTapHeader}
+        >
           ARASAAC
         </Div>
         <SelectableList value={location.pathname} onChange={onChangeList}>
@@ -95,7 +102,9 @@ class Menu extends Component {
             nestedItems={[
               <ListItem
                 value='/pictograms/search'
-                primaryText={<FormattedMessage {...messages.searchPictograms} />}
+                primaryText={
+                  <FormattedMessage {...messages.searchPictograms} />
+                }
                 leftIcon={<SearchIcon />}
               />,
               <ListItem
@@ -139,11 +148,15 @@ class Menu extends Component {
               />,
               <ListItem
                 value='/onlinetools/schedule-generator'
-                primaryText={<FormattedMessage {...messages.scheduleGenerator} />}
+                primaryText={
+                  <FormattedMessage {...messages.scheduleGenerator} />
+                }
               />,
               <ListItem
                 value='/onlinetools/calendar-generator'
-                primaryText={<FormattedMessage {...messages.calendarGenerator} />}
+                primaryText={
+                  <FormattedMessage {...messages.calendarGenerator} />
+                }
               />,
               <ListItem
                 value='/onlinetools/bingos-creator'
@@ -151,7 +164,9 @@ class Menu extends Component {
               />,
               <ListItem
                 value='/onlinetools/snakes-and-ladders'
-                primaryText={<FormattedMessage {...messages.snakesAndLadders} />}
+                primaryText={
+                  <FormattedMessage {...messages.snakesAndLadders} />
+                }
               />,
               <ListItem
                 value='/onlinetools/dominos'
@@ -159,7 +174,9 @@ class Menu extends Component {
               />,
               <ListItem
                 value='/onlinetools/dominos-encadenados'
-                primaryText={<FormattedMessage {...messages.dominosencadenados} />}
+                primaryText={
+                  <FormattedMessage {...messages.dominosencadenados} />
+                }
               />
             ]}
           />
@@ -199,10 +216,24 @@ class Menu extends Component {
             leftIcon={<SettingsIcon />}
           />
         </SelectableList>
-
         <Divider />
-
-        <SelectableList value='' onChange={this.handleRequestChangeLink} >
+        <SelectableList value={location.pathname} onChange={onChangeList}>
+          <Subheader>{<FormattedMessage {...messages.user} />}</Subheader>
+          <ListItem
+            id='lstlogin'
+            value='/signin'
+            primaryText={<FormattedMessage {...messages.signin} />}
+            leftIcon={<LoginIcon />}
+          />
+          <ListItem
+            id='lstregister'
+            value='/register'
+            primaryText={<FormattedMessage {...messages.register} />}
+            leftIcon={<AccountIcon />}
+          />
+        </SelectableList>
+        <Divider />
+        <SelectableList value='' onChange={this.handleRequestChangeLink}>
           <Subheader>{<FormattedMessage {...messages.info} />}</Subheader>
           <ListItem
             id='lstnews'
@@ -234,4 +265,3 @@ class Menu extends Component {
 }
 
 export default muiThemeable()(Menu)
-

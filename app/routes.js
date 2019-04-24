@@ -339,38 +339,42 @@ export default function createRoutes(store) {
       }
     },
     {
-      path: 'register',
+      path: '/registerform',
       name: 'SignupView',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/SignupView/reducer'),
-          import('containers/SignupView/sagas'),
-          import('containers/SignupView')
-        ])
+        const importModules = Promise.all([import('containers/SignupView')])
         const renderRoute = loadModule(cb)
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('register', reducer.default)
-          injectSagas(sagas.default)
+        importModules.then(([component]) => {
           renderRoute(component)
         })
         importModules.catch(errorLoading)
       }
     },
     {
-      path: '/register-options',
-      name: 'loginView',
+      path: '/recoverpassword(/:email)',
+      name: 'RecoverPasswordView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import(// import('containers/LoginView/reducer'),
-          // import('containers/LoginView/sagas'),
-          'containers/LoginView')
+          import('containers/RecoverPasswordView')
+        ])
+        const renderRoute = loadModule(cb)
+        importModules.then(([component]) => {
+          renderRoute(component)
+        })
+        importModules.catch(errorLoading)
+      }
+    },
+    {
+      path: '/register',
+      name: 'SignupOptionsView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/SignupOptionsView')
         ])
 
         const renderRoute = loadModule(cb)
 
         importModules.then(([component]) => {
-          // injectReducer('loginView', reducer.default)
-          // injectSagas(sagas.default)
           renderRoute(component)
         })
         importModules.catch(errorLoading)

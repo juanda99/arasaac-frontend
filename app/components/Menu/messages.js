@@ -116,6 +116,21 @@ export default defineMessages({
     description: 'Menu division title',
     defaultMessage: 'About us'
   },
+  user: {
+    id: 'menu.user',
+    description: 'Menu division title',
+    defaultMessage: 'User'
+  },
+  register: {
+    id: 'menu.register',
+    description: 'Menu item',
+    defaultMessage: 'Register'
+  },
+  signin: {
+    id: 'menu.signin',
+    description: 'Menu item',
+    defaultMessage: 'Sign in'
+  },
   downloads: {
     id: 'menu.downloads',
     description: 'Menu item',

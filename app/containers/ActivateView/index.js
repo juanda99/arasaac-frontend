@@ -8,6 +8,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import View from 'components/View'
+import { injectIntl, intlShape } from 'react-intl'
 import { activation, resetError } from 'containers/App/actions'
 import ErrorWindow from 'components/ErrorWindow'
 import { withRouter } from 'react-router'
@@ -16,6 +17,7 @@ import {
   makeSelectLoading,
   makeSelectError
 } from 'containers/App//selectors'
+import messages from './messages'
 
 class ActivateView extends Component {
   componentDidMount() {
@@ -32,23 +34,39 @@ class ActivateView extends Component {
   }
 
   render() {
-    const { isLoading, isAuthenticated, error, resetError } = this.props
+    const { isLoading, isAuthenticated, error, resetError, intl } = this.props
+    const { formatMessage } = intl
     let showError = null
-    if (error) {
+    if (error === 'INVALID_CODE') {
       showError = (
         <ErrorWindow
-          title='Activación de usuario'
-          desc='Usuario no válido'
+          title={formatMessage(messages.activateUser)}
+          desc={formatMessage(messages.invalidCode)}
+          onReset={resetError}
+        />
+      )
+    } else if (error === 'EXPIRED_CODE') {
+      showError = (
+        <ErrorWindow
+          title={formatMessage(messages.activateUser)}
+          desc={formatMessage(messages.expiredCode)}
+          onReset={resetError}
+        />
+      )
+    } else {
+      showError = (
+        <ErrorWindow
+          title={formatMessage(messages.activateUser)}
+          desc={formatMessage(messages.userNotActivated)}
           onReset={resetError}
         />
       )
     }
     return (
       <View>
-        {showError}
-        {isLoading && <p>Cargando usuario...</p>}
+        {isLoading && <p>Activating user...</p>}
         {isAuthenticated && <p>¡Usuario autenticado!</p>}
-        {error && error === 'INVALID_CODE' && <p>El código es inválido</p>}
+        {error && showError}
       </View>
     )
   }
@@ -61,7 +79,8 @@ ActivateView.propTypes = {
   isLoading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   resetError: PropTypes.func.isRequired,
-  router: PropTypes.any.isRequired
+  router: PropTypes.any.isRequired,
+  intl: intlShape.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -82,4 +101,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(ActivateView))
+)(withRouter(injectIntl(ActivateView)))

@@ -25,6 +25,10 @@ export default defineMessages({
     id: 'app.components.Catalog.colorPictograms',
     defaultMessage: 'Color pictograms:'
   },
+  never: {
+    id: 'app.components.Catalog.never',
+    defaultMessage: 'Never:'
+  },
   noColorPictograms: {
     id: 'app.components.Catalog.noColorPictograms',
     defaultMessage: 'Black and white pictograms:'
