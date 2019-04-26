@@ -69,12 +69,18 @@ function* authFlow() {
  *  @return  {Generator}
  */
 function* loggedOutFlowSaga() {
-  const { activation, credentials, tokens, socialCredentials } = yield race({
+  // const { activation, credentials, tokens, socialCredentials } = yield race({
+  console.log('-------------------')
+  console.log(ACTIVATION.REQUEST)
+  const prueba = yield race({
     credentials: take(LOGIN.REQUEST),
     activation: take(ACTIVATION.REQUEST),
     tokens: take(TOKEN_VALIDATION.REQUEST),
     socialCredentials: take(SOCIAL_LOGIN.REQUEST)
   })
+  const { credentials } = prueba
+  console.log(prueba)
+  console.log('*****************************')
   // if (credentials) yield call(loginAuth, credentials.payload.username, credentials.payload.password)
   if (credentials) yield call(loginAuth, credentials.type, credentials.payload)
   if (activation) {
@@ -110,6 +116,7 @@ function* loginAuth(type, payload) {
 
 function* activationAuth(type, payload) {
   try {
+    console.log('ha entrado......')
     const { access_token } = yield call(api[type], payload)
     yield put(activation.success(access_token))
     yield call(authenticate)
