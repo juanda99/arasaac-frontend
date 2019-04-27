@@ -1,11 +1,11 @@
 <div align="center">
 <p><strong>WIP!!!!!</strong></p>
-  <img width=200 src="https://raw.githubusercontent.com/juanda99/arasaac-frontend/master/app/components/Footer/arasaac-logo.svg" alt="Arasaac logo" align="center" />
+  <img width=200 src="https://static.arasaac.org/images/arasaac-logo.png" alt="Arasaac logo" align="center" />
 </div>
 <br />
 
-<div align="center"><strong>Arasaac website</strong></div>
-<div align="center">A single page app focus on performance. You can check it out <a href="https://www.beta.arasaac.org">here</a></div>
+<div align="center"><strong>Arasaac beta website</strong></div>
+<div align="center">We offer graphic resources and materials to facilitate for people who suffer problems of communication. You can check it out <a href="https://www.beta.arasaac.org">here</a></div>
 
 <br />
 <div align="center">
