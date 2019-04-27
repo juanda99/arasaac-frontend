@@ -17,7 +17,7 @@ import Logo from 'components/Logo'
 import P from 'components/P'
 import { socialLogin } from 'containers/App/actions'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
-import ErrorWindow from 'components/ErrorWindow'
+import AlertWindow from 'components/AlertWindow'
 import messages from './messages'
 
 class RecoverPasswordView extends Component {
@@ -52,7 +52,7 @@ class RecoverPasswordView extends Component {
     let showError = null
     if (error === 'NOT_ACTIVATED_USER') {
       showError = (
-        <ErrorWindow
+        <AlertWindow
           title={formatMessage(messages.resetPassword)}
           desc={formatMessage(messages.userNotActivated)}
           onReset={this.resetError}
@@ -60,7 +60,7 @@ class RecoverPasswordView extends Component {
       )
     } else if (error === 'NOT_USER') {
       showError = (
-        <ErrorWindow
+        <AlertWindow
           title={formatMessage(messages.resetPassword)}
           desc={formatMessage(messages.userNotExists)}
           onReset={this.resetError}
@@ -68,7 +68,7 @@ class RecoverPasswordView extends Component {
       )
     } else {
       showError = (
-        <ErrorWindow
+        <AlertWindow
           title={formatMessage(messages.resetPassword)}
           desc={formatMessage(messages.passwordNotReset)}
           onReset={this.resetError}

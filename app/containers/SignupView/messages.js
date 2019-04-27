@@ -34,6 +34,11 @@ export default defineMessages({
     description: 'User creation title',
     defaultMessage: 'New Arasaac user'
   },
+  creatingUser: {
+    id: 'signup.creatingUser',
+    description: 'info message',
+    defaultMessage: 'Creating new Arasaac account...'
+  },
   recoverPassword: {
     id: 'signup.recoverPassword',
     description: 'Recover password text button',

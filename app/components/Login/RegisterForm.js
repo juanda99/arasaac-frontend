@@ -58,9 +58,9 @@ let RegisterForm = class RegisterForm extends Component {
                 this.firstField = input
               }}
               withRef
-              hintText='What is your name?'
+              hintText={<FormattedMessage {...messages.hintName} />}
               value=''
-              floatingLabelText='Name'
+              floatingLabelText={<FormattedMessage {...messages.labelName} />}
               style={{ width: '100%' }}
               validate={this.required}
               autoComplete='name'
@@ -68,9 +68,9 @@ let RegisterForm = class RegisterForm extends Component {
             <Field
               name='email'
               component={TextField}
-              hintText='What is your email?'
+              hintText={<FormattedMessage {...messages.hintEmail} />}
               value=''
-              floatingLabelText='Email'
+              floatingLabelText={<FormattedMessage {...messages.labelEmail} />}
               style={{ width: '100%' }}
               validate={[this.required, this.email]}
               autoComplete='email'
@@ -79,9 +79,11 @@ let RegisterForm = class RegisterForm extends Component {
               name='password'
               component={TextField}
               type='password'
-              hintText='What is your password?'
+              hintText={<FormattedMessage {...messages.hintPassword} />}
               value=''
-              floatingLabelText='Password'
+              floatingLabelText={
+                <FormattedMessage {...messages.labelPassword} />
+              }
               style={{ width: '100%' }}
               validate={this.required}
               autoComplete='new-password'
@@ -89,23 +91,27 @@ let RegisterForm = class RegisterForm extends Component {
             <Field
               name='company'
               component={TextField}
-              hintText='What is your company?'
+              hintText={<FormattedMessage {...messages.hintCompany} />}
               value=''
-              floatingLabelText='Company (optional)'
+              floatingLabelText={
+                <FormattedMessage {...messages.labelCompany} />
+              }
               style={{ width: '100%' }}
               autoComplete='organization'
             />
             <Field
               name='website'
               component={TextField}
-              hintText='http://www.example.com'
+              hintText={<FormattedMessage {...messages.hintWebsite} />}
               value=''
-              floatingLabelText='Website (optional)'
+              floatingLabelText={
+                <FormattedMessage {...messages.labelWebsite} />
+              }
               style={{ width: '100%' }}
             />
             <RaisedButton
               type='submit'
-              label='Sign up'
+              label={<FormattedMessage {...messages.buttonSignUp} />}
               primary={true}
               style={styles.signup}
               disabled={pristine || submitting}

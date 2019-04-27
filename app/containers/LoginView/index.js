@@ -12,7 +12,7 @@ import { LoginForm } from 'components/Login'
 import SocialLogin from 'components/SocialLogin'
 import Separator from 'components/Separator'
 import Logo from 'components/Logo'
-import ErrorWindow from 'components/ErrorWindow'
+import AlertWindow from 'components/AlertWindow'
 import { login, socialLogin, resetError } from 'containers/App/actions'
 import ConditionalPaper from 'components/ConditionalPaper'
 
@@ -24,11 +24,18 @@ const handleSubmit = (requestLogin, formData) => {
 }
 
 class LoginView extends Component {
-
   render() {
     const { error, requestLogin, resetError, requestAppToken } = this.props
     let showError = null
-    if (error) showError = <ErrorWindow title='Autenticación' desc='Usuario no válido' onReset={resetError} />
+    if (error) {
+      showError = (
+        <AlertWindow
+          title='Autenticación'
+          desc='Usuario no válido'
+          onReset={resetError}
+        />
+      )
+    }
     return (
       <View>
         {showError}
@@ -36,7 +43,10 @@ class LoginView extends Component {
           <Logo />
           <SocialLogin onSuccess={requestAppToken} />
           <Separator />
-          <LoginForm onSubmit={(formData) => (handleSubmit(requestLogin, formData))} message={error} />
+          <LoginForm
+            onSubmit={(formData) => handleSubmit(requestLogin, formData)}
+            message={error}
+          />
         </ConditionalPaper>
       </View>
     )
@@ -45,14 +55,10 @@ class LoginView extends Component {
 
 LoginView.propTypes = {
   requestLogin: PropTypes.func.isRequired,
-  error: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   resetError: PropTypes.func.isRequired,
   requestAppToken: PropTypes.func.isRequired
 }
-
 
 const mapStateToProps = (state) => ({
   error: state.getIn(['auth', 'error'])
@@ -70,4 +76,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginView)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginView)

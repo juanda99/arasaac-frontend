@@ -37,7 +37,7 @@ import {
   startTranslation,
   stopTranslation
 } from 'containers/LanguageProvider/actions'
-import { logout } from './actions'
+import { logout, activation } from './actions'
 import { makeSelectHasUser } from './selectors'
 
 class App extends Component {
@@ -267,6 +267,14 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    const { activationCode } = this.props.params
+    if (activationCode) {
+      console.log('asking for data....')
+      this.props.requestActivation(activationCode)
+    }
+  }
+
   render() {
     const {
       location,
@@ -367,9 +375,19 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  changeLocale,
+  logout,
+  startTranslation,
+  stopTranslation,
+  requestActivation: (code) => {
+    dispatch(activation.request(code))
+  }
+})
+
 export default connect(
   mapStateToProps,
-  { changeLocale, logout, startTranslation, stopTranslation }
+  mapDispatchToProps
 )(withWidth()(App))
 
 App.childContextTypes = {

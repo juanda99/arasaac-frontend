@@ -7,6 +7,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import api from 'services'
 import View from 'components/View'
 import { createSelector } from 'reselect'
@@ -18,9 +19,10 @@ import SocialLogin from 'components/SocialLogin'
 import Separator from 'components/Separator'
 import Logo from 'components/Logo'
 import P from 'components/P'
+import H3 from 'components/H3'
 import { socialLogin } from 'containers/App/actions'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
-import ErrorWindow from 'components/ErrorWindow'
+import AlertWindow from 'components/AlertWindow'
 import messages from './messages'
 
 class SignupView extends Component {
@@ -44,23 +46,28 @@ class SignupView extends Component {
   }
 
   handleSubmit = async (userData) => {
+    const { showProgressBar, hideProgressBar } = this.props
     try {
+      this.setState({ loading: true })
+      showProgressBar()
       const data = { ...userData.toJS(), locale: this.props.locale }
       await api.SIGNUP_REQUEST(data)
-      this.setState({ registered: true })
+      hideProgressBar()
+      this.setState({ registered: true, loading: false })
     } catch (error) {
-      this.setState({ error: error.message })
+      hideProgressBar()
+      this.setState({ error: error.message, loading: false })
     }
   }
 
   render() {
     const { intl } = this.props
-    const { error, registered } = this.state
+    const { error, registered, loading } = this.state
     const { formatMessage } = intl
     let showError = null
     if (error === 'NOT_ACTIVATED_USER') {
       showError = (
-        <ErrorWindow
+        <AlertWindow
           title={formatMessage(messages.createUser)}
           desc={formatMessage(messages.userNotActivated)}
           onReset={this.resetError}
@@ -68,7 +75,7 @@ class SignupView extends Component {
       )
     } else if (error === 'ALREADY_USER') {
       showError = (
-        <ErrorWindow
+        <AlertWindow
           title={formatMessage(messages.createUser)}
           desc={formatMessage(messages.userConflict)}
           onSolution={this.recoverPassword}
@@ -78,7 +85,7 @@ class SignupView extends Component {
       )
     } else {
       showError = (
-        <ErrorWindow
+        <AlertWindow
           title={formatMessage(messages.createUser)}
           desc={formatMessage(messages.userNotCreated)}
           onReset={this.resetError}
@@ -96,7 +103,14 @@ class SignupView extends Component {
       <div>
         <SocialLogin onSuccess={this.props.requestAppToken} />
         <Separator />
-        <RegisterForm onSubmit={this.handleSubmit} />
+        {loading ? (
+          <H3>
+            <FormattedMessage {...messages.creatingUser} />
+          </H3>
+        ) : (
+          <RegisterForm onSubmit={this.handleSubmit} />
+        )}
+
         {error && showError}
       </div>
     )
@@ -124,7 +138,9 @@ const mapStateToProps = createSelector(
 const mapDispatchToProps = (dispatch) => ({
   requestAppToken: (token, socialNetwork) => {
     dispatch(socialLogin.request(token, socialNetwork))
-  }
+  },
+  showProgressBar: () => dispatch(showLoading()),
+  hideProgressBar: () => dispatch(hideLoading())
 })
 
 export default connect(

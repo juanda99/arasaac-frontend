@@ -88,7 +88,7 @@ let LoginForm = class LoginForm extends Component {
           <Div top={2}>
             <RaisedButton
               style={styles.signinButton}
-              label='SIGN IN'
+              label={<FormattedMessage {...messages.signin} />}
               primary={true}
               type='submit'
               disabled={pristine || submitting}

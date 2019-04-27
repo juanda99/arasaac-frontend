@@ -80,6 +80,61 @@ const messages = defineMessages({
     id: 'signup.privacyPolicy',
     description: 'Arasaac privacy policy',
     defaultMessage: 'privacy policy'
+  },
+  hintName: {
+    id: 'signup.hintName',
+    description: 'Hint name text box',
+    defaultMessage: 'What is your name?'
+  },
+  hintEmail: {
+    id: 'signup.hintEmail',
+    description: 'Hint email text box',
+    defaultMessage: 'What is your email?'
+  },
+  hintPassword: {
+    id: 'signup.hintPassword',
+    description: 'Hint passwordtext box',
+    defaultMessage: 'What is your password?'
+  },
+  hintCompany: {
+    id: 'signup.hintCompany',
+    description: 'Hint company text box',
+    defaultMessage: 'What is your company?'
+  },
+  hintWebsite: {
+    id: 'signup.hintName',
+    description: 'Hint website text box',
+    defaultMessage: 'What is your website?'
+  },
+  labelName: {
+    id: 'signup.labelName',
+    description: 'Label text box',
+    defaultMessage: 'Name'
+  },
+  labelEmail: {
+    id: 'signup.labelEmail',
+    description: 'Label text box',
+    defaultMessage: 'Email'
+  },
+  labelPassword: {
+    id: 'signup.labelPassword',
+    description: 'Label text box',
+    defaultMessage: 'Password'
+  },
+  labelCompany: {
+    id: 'signup.labelCompany',
+    description: 'Label text box',
+    defaultMessage: 'Company (optional)'
+  },
+  labelWebsite: {
+    id: 'signup.labelWebsite',
+    description: 'Label text box',
+    defaultMessage: 'Website (optional)'
+  },
+  buttonSignUp: {
+    id: 'signup.buttonSignUp',
+    description: 'Button text box',
+    defaultMessage: 'Sign up'
   }
 })
 

@@ -33,16 +33,13 @@ import {
   TOKEN_VALIDATION,
   TOKEN_REFRESH,
   LOGIN,
-  ACTIVATION,
   SOCIAL_LOGIN,
   LOGOUT,
   tokenValidation,
   tokenRefresh,
   login,
   logout,
-  activation,
-  socialLogin,
-  setError
+  socialLogin
 } from './actions'
 
 /**
@@ -69,23 +66,15 @@ function* authFlow() {
  *  @return  {Generator}
  */
 function* loggedOutFlowSaga() {
-  // const { activation, credentials, tokens, socialCredentials } = yield race({
-  console.log('-------------------')
-  console.log(ACTIVATION.REQUEST)
-  const prueba = yield race({
+  const { credentials, tokens, socialCredentials } = yield race({
     credentials: take(LOGIN.REQUEST),
-    activation: take(ACTIVATION.REQUEST),
     tokens: take(TOKEN_VALIDATION.REQUEST),
     socialCredentials: take(SOCIAL_LOGIN.REQUEST)
   })
-  const { credentials } = prueba
-  console.log(prueba)
-  console.log('*****************************')
+
   // if (credentials) yield call(loginAuth, credentials.payload.username, credentials.payload.password)
   if (credentials) yield call(loginAuth, credentials.type, credentials.payload)
-  if (activation) {
-    yield call(activationAuth, activation.type, activation.payload)
-  } else if (tokens) yield call(authenticate)
+  else if (tokens) yield call(authenticate)
   else if (socialCredentials) {
     yield call(
       socialLoginAuth,
@@ -111,18 +100,6 @@ function* loginAuth(type, payload) {
   } catch (err) {
     // const error = yield parseError(err)
     yield put(login.failure(err))
-  }
-}
-
-function* activationAuth(type, payload) {
-  try {
-    console.log('ha entrado......')
-    const { access_token } = yield call(api[type], payload)
-    yield put(activation.success(access_token))
-    yield call(authenticate)
-    yield put(push('/profile'))
-  } catch (err) {
-    yield put(activation.failure(err.message))
   }
 }
 

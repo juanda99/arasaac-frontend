@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton'
 import { withRouter } from 'react-router'
 import messages from './messages'
 
-class ErrorWindow extends PureComponent {
+class AlertWindow extends PureComponent {
   state = {
     open: true
   }
@@ -53,7 +53,7 @@ class ErrorWindow extends PureComponent {
   }
 }
 
-ErrorWindow.propTypes = {
+AlertWindow.propTypes = {
   title: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
   onReset: PropTypes.func.isRequired,
@@ -63,4 +63,4 @@ ErrorWindow.propTypes = {
   onSolutionText: PropTypes.string
 }
 
-export default withRouter(ErrorWindow)
+export default withRouter(AlertWindow)

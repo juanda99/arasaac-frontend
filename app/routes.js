@@ -86,6 +86,29 @@ export default function createRoutes(store) {
           .catch(errorLoading)
       }
     },
+    // {
+    //   path: '/activate/:activationCode',
+    //   name: 'activateView',
+    //   getComponent(nextState, cb) {
+    //     const importModules = Promise.all([
+    //       import('containers/App/reducer'),
+    //       import('containers/App/sagas'),
+    //       import('containers/ActivateView/')
+    //     ])
+
+    //     const renderRoute = loadModule(cb)
+    //     // if reducer is async, render values:  defaultToggled:
+    //     // state.configuration.filters[ownProps.filter] got undefined!!!
+    //     importModules.then(([reducer, sagas, component]) => {
+    //       // injectReducer('aux', reducer.default)
+    //       injectSagas(sagas.default)
+    //       renderRoute(component)
+    //     })
+
+    //     importModules.catch(errorLoading)
+    //   }
+    // },
+
     {
       path: '/materials/search',
       name: 'materialsView',
@@ -261,8 +284,10 @@ export default function createRoutes(store) {
       name: 'configurationView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import(// import('containers/ConfigurationView/reducer'),
-          'containers/ConfigurationView/')
+          import(
+            // import('containers/ConfigurationView/reducer'),
+            'containers/ConfigurationView/'
+          )
         ])
 
         const renderRoute = loadModule(cb)

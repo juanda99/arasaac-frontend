@@ -20,7 +20,7 @@ export default defineMessages({
   userActivated: {
     id: 'activate.userActivated',
     description: 'Activated new user',
-    defaultMessage: 'Your user has been activated.'
+    defaultMessage: 'Your user has been activated. You can sign in.'
   },
   activateUser: {
     id: 'activate.activateUser',
