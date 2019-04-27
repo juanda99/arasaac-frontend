@@ -41,7 +41,7 @@ const messages = defineMessages({
     defaultMessage: 'Recover password'
   },
   recoverPasswordInfo: {
-    id: 'signin.recoverPassword',
+    id: 'signin.recoverPasswordInfo',
     description: 'Instructions if passwords is forgotten',
     defaultMessage: 'Fill your email to receive a link to change your password'
   },
@@ -102,7 +102,7 @@ const messages = defineMessages({
     defaultMessage: 'What is your company?'
   },
   hintWebsite: {
-    id: 'signup.hintName',
+    id: 'signup.hintWebsite',
     description: 'Hint website text box',
     defaultMessage: 'What is your website?'
   },
