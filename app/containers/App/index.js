@@ -351,19 +351,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  changeLocale,
-  logout,
-  startTranslation,
-  stopTranslation,
-  requestActivation: (code) => {
-    dispatch(activation.request(code))
-  }
-})
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { changeLocale, logout, startTranslation, stopTranslation }
 )(withWidth()(App))
 
 App.childContextTypes = {
