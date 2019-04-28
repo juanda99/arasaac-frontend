@@ -9,7 +9,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import View from 'components/View'
 import { injectIntl, intlShape } from 'react-intl'
-import { login, resetError } from 'containers/App/actions'
 import AlertWindow from 'components/AlertWindow'
 import { withRouter } from 'react-router'
 import { makeSelectHasUser } from 'containers/App//selectors'
@@ -31,7 +30,6 @@ class ActivateView extends Component {
         // all ok:
         this.setState({ loading: false, userActive: true })
       } catch (error) {
-        console.log(error.message)
         // eslint-disable-next-line react/no-did-mount-set-state
         this.setState({ error: error.message })
       }
@@ -48,6 +46,11 @@ class ActivateView extends Component {
     this.props.router.push('/signin')
   }
 
+  handleError = () => {
+    this.setState({ error: null })
+    this.props.router.push('/register')
+  }
+
   showSuccess = () => {
     const { intl } = this.props
     const { formatMessage } = intl
@@ -61,7 +64,7 @@ class ActivateView extends Component {
   }
 
   render() {
-    const { resetError, intl } = this.props
+    const { intl } = this.props
     const { error, isLoading, userActive } = this.state
     const { formatMessage } = intl
     let showError = null
@@ -70,7 +73,7 @@ class ActivateView extends Component {
         <AlertWindow
           title={formatMessage(messages.activateUser)}
           desc={formatMessage(messages.invalidCode)}
-          onReset={resetError}
+          onReset={this.handleError}
         />
       )
     } else if (error === 'EXPIRED_CODE') {
@@ -78,7 +81,7 @@ class ActivateView extends Component {
         <AlertWindow
           title={formatMessage(messages.activateUser)}
           desc={formatMessage(messages.expiredCode)}
-          onReset={resetError}
+          onReset={this.handleError}
         />
       )
     } else {
@@ -86,7 +89,7 @@ class ActivateView extends Component {
         <AlertWindow
           title={formatMessage(messages.activateUser)}
           desc={formatMessage(messages.userNotActivated)}
-          onReset={resetError}
+          onReset={this.handleError}
         />
       )
     }
@@ -102,9 +105,6 @@ class ActivateView extends Component {
 
 ActivateView.propTypes = {
   params: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool,
-  resetError: PropTypes.func.isRequired,
   router: PropTypes.any.isRequired,
   intl: intlShape.isRequired
 }
@@ -113,16 +113,7 @@ const mapStateToProps = (state) => ({
   isAuthenticated: (makeSelectHasUser()(state) && true) || false
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  loginSuccess: (code) => {
-    dispatch(activation.request(code))
-  },
-  resetError: () => {
-    dispatch(resetError())
-  }
-})
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(withRouter(injectIntl(ActivateView)))

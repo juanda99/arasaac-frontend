@@ -130,35 +130,30 @@ class App extends Component {
     let docked = width === LARGE
     const url = this.props.location.pathname
     if (url === '/') docked = false
-    /*
     switch (true) {
       case /pictograms\/search/.test(url):
         title = <FormattedMessage {...messages.pictogramsSearch} />
-        docked = width === LARGE
         break
       case /materials\/search/.test(url):
         title = <FormattedMessage {...messages.materialsSearch} />
-        docked = width === LARGE
         break
       case /catalogs/.test(url):
         title = <FormattedMessage {...messages.catalogs} />
-        docked = width === LARGE
         break
       case /materials/.test(url):
         title = <FormattedMessage {...messages.materials} />
-        docked = width === LARGE
         break
       case /pictograms/.test(url):
         title = <FormattedMessage {...messages.pictograms} />
-        docked = width === LARGE
+        break
+      case /activate/.test(url):
+        title = <FormattedMessage {...messages.userActivation} />
         break
       case /onlinetools/.test(url):
         title = <FormattedMessage {...messages.onlineTools} />
-        docked = width === LARGE
         break
       case /software/.test(url):
         title = <FormattedMessage {...messages.software} />
-        docked = width === LARGE
         break
       case /signin/.test(url):
         title = <FormattedMessage {...messages.signinTitle} />
@@ -170,49 +165,38 @@ class App extends Component {
         break
       case /profile/.test(url):
         title = <FormattedMessage {...messages.userProfileTitle} />
-        docked = width === LARGE
         break
       case /configuration/.test(url):
         title = <FormattedMessage {...messages.configurationTitle} />
-        docked = width === LARGE
         break
       case /developers\/api/.test(url):
         title = <FormattedMessage {...messages.api} />
-        docked = width === LARGE
         break
       case /developers\/accounts/.test(url):
         title = <FormattedMessage {...messages.devAccounts} />
-        docked = width === LARGE
         break
       case /developers/.test(url):
         title = <FormattedMessage {...messages.howto} />
-        docked = width === LARGE
         break
       case /uploadmaterial/.test(url):
         title = <FormattedMessage {...messages.configurationTitle} />
-        docked = width === LARGE
         break
       case /contact-us/.test(url):
         title = <FormattedMessage {...messages.contactusTitle} />
-        docked = width === LARGE
         break
       case /settings/.test(url):
         title = <FormattedMessage {...messages.settings} />
-        docked = width === LARGE
         break
       case /activate/.test(url):
         title = <FormattedMessage {...messages.userActivation} />
-        docked = width === LARGE
         break
       case /prizes/.test(url):
         title = <FormattedMessage {...messages.prizes} />
-        docked = width === LARGE
         break
       default:
         docked = false
         break
     }
-    */
     return { docked, title }
   }
 
@@ -264,14 +248,6 @@ class App extends Component {
 
     if (typeof joyride.callback === 'function') {
       joyride.callback()
-    }
-  }
-
-  componentDidMount() {
-    const { activationCode } = this.props.params
-    if (activationCode) {
-      console.log('asking for data....')
-      this.props.requestActivation(activationCode)
     }
   }
 
