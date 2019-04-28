@@ -33,6 +33,8 @@ const styles = {
 // based on: https://github.com/erikras/redux-form-material-ui/blob/master/example/src/Form.js
 /* eslint-disable import/no-mutable-exports */
 let RecoverPasswordForm = class RecoverPasswordForm extends Component {
+  state = { errors: false }
+
   componentDidMount() {
     this.firstField // the Field
       .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
@@ -46,8 +48,16 @@ let RecoverPasswordForm = class RecoverPasswordForm extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.invalid) {
+      this.setState({ errors: true })
+    } else {
+      this.setState({ errors: false })
+    }
+  }
+
   email = (value) =>
-    email(value) ? <FormattedMessage {...messages.invalidEmail} /> : undefined
+    email(value) ? <FormattedMessage {...messages.invalidEmail} /> : ''
 
   required = (value) =>
     value == null ? <FormattedMessage {...messages.required} /> : undefined
@@ -80,7 +90,7 @@ let RecoverPasswordForm = class RecoverPasswordForm extends Component {
               primary={true}
               icon={<EmailIcon />}
               type='submit'
-              disabled={pristine || submitting}
+              disabled={this.state.errors || submitting}
             />
           </Div>
         </form>
@@ -93,7 +103,7 @@ RecoverPasswordForm.propTypes = {
   ...propTypes
 }
 RecoverPasswordForm = reduxForm({
-  form: 'signin',
+  form: 'recoverPassword',
   touchOnBlur: false,
   touchOnChange: true
   // enableReinitialize: true
