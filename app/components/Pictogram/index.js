@@ -103,7 +103,7 @@ class Pictogram extends Component {
       verbalTenseColor: 'black',
       showText: false,
       openMenu: false,
-      url: `${PICTOGRAMS_URL}/${idPictogram}_${STANDARD_RESOLUTION}.png`,
+      url: `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${STANDARD_RESOLUTION}.png`,
       downloadUrl: '',
       activeFont: 'Open Sans',
       buttonCaption: false,
@@ -155,6 +155,7 @@ class Pictogram extends Component {
     const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
     return (
       <div style={{ display: 'flex' }}>
+        {idLocution && (
         <SoundPlayer
           crossOrigin='anonymous'
           streamUrl={streamUrl}
@@ -162,6 +163,7 @@ class Pictogram extends Component {
           showProgress={false}
           showTimer={false}
         />
+        )}
         {keyword && (
           <IconButton
             touch={true}
@@ -204,8 +206,8 @@ class Pictogram extends Component {
     if (skin) parameters.skin = skin
     if (isEmptyObject(parameters)) {
       const url = highResolution
-        ? `${PICTOGRAMS_URL}/${idPictogram}_${HIGH_RESOLUTION}.png`
-        : `${PICTOGRAMS_URL}/${idPictogram}_${STANDARD_RESOLUTION}.png`
+        ? `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${HIGH_RESOLUTION}.png`
+        : `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${STANDARD_RESOLUTION}.png`
       this.setState({ url })
     } else {
       if (highResolution) parameters.resolution = HIGH_RESOLUTION

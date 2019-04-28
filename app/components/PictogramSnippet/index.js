@@ -5,12 +5,11 @@ import { PICTOGRAMS_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
 import ActionSetFavorite from 'material-ui/svg-icons/action/favorite-border'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
-import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 import { FormattedMessage } from 'react-intl'
 import { keywordSelector } from 'utils'
-import StyledList from './StyledList'
 import CardActions from './CardActions'
 import StyledPaper from './StyledPaper'
+import StyledList from './StyledList'
 import Image from './Image'
 import Item from './Item'
 import messages from './messages'
@@ -68,9 +67,10 @@ class PictogramSnippet extends PureComponent {
       searchText,
       muiTheme,
       locale,
-      width
+      showExtra
     } = this.props
     const { keyword } = keywordSelector(searchText, keywords)
+    const { isAuthenticated } = this.context
     return (
       <StyledList
         key={idPictogram}
@@ -82,11 +82,11 @@ class PictogramSnippet extends PureComponent {
           <Item url={`/pictograms/${locale}/${idPictogram}/${keyword}`}>
             <div style={{ position: 'relative' }}>
               <Image
-                src={`${PICTOGRAMS_URL}/${idPictogram}_300.png`}
+                src={`${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_300.png`}
                 alt={keyword}
               />
-              {width === LARGE && (
-                <CardActions>
+              <CardActions>
+                {showExtra && isAuthenticated && (
                   <IconButton
                     touch={true}
                     tooltip={<FormattedMessage {...messages.addFavorite} />}
@@ -98,6 +98,8 @@ class PictogramSnippet extends PureComponent {
                       hoverColor={muiTheme.palette.accent1Color}
                     />
                   </IconButton>
+                )}
+                {showExtra && (
                   <IconButton
                     touch={true}
                     tooltip={<FormattedMessage {...messages.download} />}
@@ -109,9 +111,9 @@ class PictogramSnippet extends PureComponent {
                       hoverColor={muiTheme.palette.accent1Color}
                     />
                   </IconButton>
-                  <p style={this.styles.cardTitle}>{keyword}</p>
-                </CardActions>
-              )}
+                )}
+                <p style={this.styles.cardTitle}>{keyword}</p>
+              </CardActions>
             </div>
           </Item>
         </StyledPaper>
@@ -120,12 +122,16 @@ class PictogramSnippet extends PureComponent {
   }
 }
 
+PictogramSnippet.contextTypes = {
+  isAuthenticated: PropTypes.bool
+}
+
 PictogramSnippet.propTypes = {
   pictogram: PropTypes.object.isRequired,
   searchText: PropTypes.string,
   muiTheme: PropTypes.object,
   locale: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired
+  showExtra: PropTypes.bool
 }
 
-export default muiThemeable()(withWidth()(PictogramSnippet))
+export default muiThemeable()(PictogramSnippet)

@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
+import { withRouter } from 'react-router'
 import messages from './messages'
 
-export default class ErrorWindow extends PureComponent {
+class AlertWindow extends PureComponent {
   state = {
     open: true
   }
@@ -15,8 +16,10 @@ export default class ErrorWindow extends PureComponent {
   }
 
   handleClose = () => {
+    const { url, router } = this.props
     this.props.onReset()
     this.setState({ open: false })
+    if (url) router.push('/marca.es')
   }
 
   render() {
@@ -28,7 +31,13 @@ export default class ErrorWindow extends PureComponent {
         onClick={this.handleClose}
       />
     ]
-    const { title, desc } = this.props
+    const { title, desc, onSolution, onSolutionText } = this.props
+
+    if (onSolution) {
+      actions.unshift(
+        <FlatButton label={onSolutionText} onClick={onSolution} />
+      )
+    }
 
     return (
       <Dialog
@@ -44,8 +53,14 @@ export default class ErrorWindow extends PureComponent {
   }
 }
 
-ErrorWindow.propTypes = {
+AlertWindow.propTypes = {
   title: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
-  onReset: PropTypes.func.isRequired
+  onReset: PropTypes.func.isRequired,
+  url: PropTypes.string,
+  router: PropTypes.any.isRequired,
+  onSolution: PropTypes.func,
+  onSolutionText: PropTypes.string
 }
+
+export default withRouter(AlertWindow)

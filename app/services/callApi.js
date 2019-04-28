@@ -2,7 +2,6 @@ import { normalize } from 'normalizr'
 // import { camelizeKeys } from 'humps'
 import 'isomorphic-fetch'
 
-
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
 // const callApi = (endpoint, config, schema) => {
@@ -17,13 +16,19 @@ const callApi = async (endpoint, options, token) => {
   // if token we add it as header
   if (token) {
     const authHeader = { headers: { Authorization: `Bearer ${token}` } }
-    config = { ...config || {}, ...authHeader }
+    config = { ...(config || {}), ...authHeader }
   }
   // const fullUrl = (endpoint.indexOf(AUTH_ROOT) === -1) ? API_ROOT + endpoint : endpoint
-
-  const response = await fetch(endpoint, config)
-  const json = await response.json()
-  return (schema ? normalize(json, schema) : json)
+  try {
+    const response = await fetch(endpoint, config)
+    const data = await response.json()
+    if (response.status >= 400) {
+      throw new Error(data.error)
+    }
+    return schema ? normalize(data, schema) : data
+  } catch (error) {
+    throw new Error(error.message)
+  }
 }
 
 /*

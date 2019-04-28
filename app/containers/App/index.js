@@ -37,7 +37,7 @@ import {
   startTranslation,
   stopTranslation
 } from 'containers/LanguageProvider/actions'
-import { logout } from './actions'
+import { logout, activation } from './actions'
 import { makeSelectHasUser } from './selectors'
 
 class App extends Component {
@@ -127,8 +127,10 @@ class App extends Component {
 
   getViewProps(width) {
     let title = ''
-    let docked = false
+    let docked = width === LARGE
     const url = this.props.location.pathname
+    if (url === '/') docked = false
+    /*
     switch (true) {
       case /pictograms\/search/.test(url):
         title = <FormattedMessage {...messages.pictogramsSearch} />
@@ -198,6 +200,10 @@ class App extends Component {
         title = <FormattedMessage {...messages.settings} />
         docked = width === LARGE
         break
+      case /activate/.test(url):
+        title = <FormattedMessage {...messages.userActivation} />
+        docked = width === LARGE
+        break
       case /prizes/.test(url):
         title = <FormattedMessage {...messages.prizes} />
         docked = width === LARGE
@@ -206,6 +212,7 @@ class App extends Component {
         docked = false
         break
     }
+    */
     return { docked, title }
   }
 
@@ -219,6 +226,10 @@ class App extends Component {
     this.setState({
       menuOpen: open
     })
+  }
+
+  getChildContext() {
+    return { isAuthenticated: this.props.isAuthenticated }
   }
 
   handleChangeList = (event, value) => {
@@ -256,6 +267,14 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    const { activationCode } = this.props.params
+    if (activationCode) {
+      console.log('asking for data....')
+      this.props.requestActivation(activationCode)
+    }
+  }
+
   render() {
     const {
       location,
@@ -265,6 +284,19 @@ class App extends Component {
       isTranslating,
       logout
     } = this.props
+
+    // if (location.hash) {
+    //   const authData = location.hash.substring(1)
+    //   const data = JSON.parse(
+    //     '{"' +
+    //       decodeURI(authData)
+    //         .replace(/"/g, '\\"')
+    //         .replace(/&/g, '","')
+    //         .replace(/=/g, '":"') +
+    //       '"}'
+    //   )
+    //   console.log(JSON.stringify(data))
+    // }
 
     let { menuOpen } = this.state
 
@@ -288,7 +320,7 @@ class App extends Component {
     const { title, docked } = this.getViewProps(width)
 
     let showMenuIconButton = true
-    let hideIconText = width === SMALL
+    let isMobile = width === SMALL
     if (width === LARGE && docked) {
       menuOpen = true
       showMenuIconButton = false
@@ -308,7 +340,7 @@ class App extends Component {
           changeLocale={this.handleTranslate}
           signout={logout}
           isTranslating={isTranslating}
-          hideIconText={hideIconText}
+          isMobile={isMobile}
         />
         <LoadingBar
           updateTime={100}
@@ -343,7 +375,21 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  changeLocale,
+  logout,
+  startTranslation,
+  stopTranslation,
+  requestActivation: (code) => {
+    dispatch(activation.request(code))
+  }
+})
+
 export default connect(
   mapStateToProps,
-  { changeLocale, logout, startTranslation, stopTranslation }
+  mapDispatchToProps
 )(withWidth()(App))
+
+App.childContextTypes = {
+  isAuthenticated: PropTypes.bool
+}

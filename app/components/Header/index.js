@@ -1,8 +1,8 @@
 /**
-*
-* Header
-*
-*/
+ *
+ * Header
+ *
+ */
 import React from 'react'
 import PropTypes from 'prop-types'
 import AppBar from 'material-ui/AppBar'
@@ -15,7 +15,15 @@ const Header = (props) => {
   const handleTouchTapLeftIconButton = () => {
     props.touchTapLeftIconButton()
   }
-  const { isAuthenticated, showMenuIconButton, title, isTranslating, changeLocale, signout, hideIconText } = props
+  const {
+    isAuthenticated,
+    showMenuIconButton,
+    title,
+    isTranslating,
+    changeLocale,
+    signout,
+    isMobile
+  } = props
   return (
     <AppBar
       onLeftIconButtonTouchTap={handleTouchTapLeftIconButton}
@@ -24,7 +32,17 @@ const Header = (props) => {
       id='header'
       style={styles.appBar}
       showMenuIconButton={showMenuIconButton}
-      iconElementRight={isAuthenticated ? <UserMenu isTranslating={isTranslating} changeLocale={changeLocale} signout={signout} /> : <GuestMenu hideIconText={hideIconText} />}
+      iconElementRight={
+        isAuthenticated ? (
+          <UserMenu
+            isTranslating={isTranslating}
+            changeLocale={changeLocale}
+            signout={signout}
+          />
+        ) : (
+          <GuestMenu isMobile={isMobile} />
+        )
+      }
     />
   )
 }
@@ -43,7 +61,7 @@ Header.propTypes = {
   signout: PropTypes.func.isRequired,
   touchTapLeftIconButton: PropTypes.func.isRequired,
   isTranslating: PropTypes.bool.isRequired,
-  hideIconText: PropTypes.bool.isRequired
+  isMobile: PropTypes.bool.isRequired
 }
 
 export default Header

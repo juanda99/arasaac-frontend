@@ -7,108 +7,143 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
+import api from 'services'
 import View from 'components/View'
 import { createSelector } from 'reselect'
-import { injectIntl, intlShape } from 'react-intl'
-import { RegisterForm, RegisterOptions } from 'components/Login'
+import { withRouter } from 'react-router'
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
+import { RegisterForm } from 'components/Login'
 import ConditionalPaper from 'components/ConditionalPaper'
 import SocialLogin from 'components/SocialLogin'
 import Separator from 'components/Separator'
 import Logo from 'components/Logo'
+import P from 'components/P'
+import H3 from 'components/H3'
 import { socialLogin } from 'containers/App/actions'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
-import ErrorWindow from 'components/ErrorWindow'
+import AlertWindow from 'components/AlertWindow'
 import messages from './messages'
-import { signup, resetError } from './actions'
-import {
-  makeSelectName,
-  makeSelectEmail,
-  makeSelectSend,
-  makeSelectError,
-  makeSelectLoading
-} from './selectors'
-
 
 class SignupView extends Component {
   constructor(props) {
     super(props)
-    this.state = { showOptions: true }
+    this.state = {
+      showOptions: true,
+      loading: false,
+      error: '',
+      registered: false
+    }
   }
-  handleClick = () => {
-    this.setState({ showOptions: !this.state.showOptions })
+
+  resetError = () => {
+    this.setState({ error: '' })
   }
-  handleSubmit = (userData) => {
-    // we add locale so we send the message in the proper language
-    this.props.requestSignup({ ...userData.toJS(), locale: this.props.locale })
+
+  recoverPassword = () => {
+    const { router } = this.props
+    router.push('recoverpassword/')
+  }
+
+  handleSubmit = async (userData) => {
+    const { showProgressBar, hideProgressBar } = this.props
+    try {
+      this.setState({ loading: true })
+      showProgressBar()
+      const data = { ...userData.toJS(), locale: this.props.locale }
+      await api.SIGNUP_REQUEST(data)
+      hideProgressBar()
+      this.setState({ registered: true, loading: false })
+    } catch (error) {
+      hideProgressBar()
+      this.setState({ error: error.message, loading: false })
+    }
   }
 
   render() {
-    // const { name, email, send, error, lo  intl: intlShape.isRequired,ading, locale } = this.props
-    const { error, intl } = this.props
+    const { intl } = this.props
+    const { error, registered, loading } = this.state
     const { formatMessage } = intl
     let showError = null
-    if (error === 403) showError = <ErrorWindow title={formatMessage(messages.createUser)} desc={formatMessage(messages.userNotActivated)} onReset={resetError} />
-    else if (error === 409) showError = <ErrorWindow title={formatMessage(messages.createUser)} desc={formatMessage(messages.userConflict)} onReset={resetError} />
-    else if (error === 500) showError = <ErrorWindow title={formatMessage(messages.createUser)} desc={formatMessage(messages.userNotCreated)} onReset={resetError} />
-    let renderView
-    if (this.state.showOptions) {
-      renderView = (
-        <div>
-          <Logo />
-          <SocialLogin onSuccess={this.props.requestAppToken} />
-          <Separator />
-          <RegisterOptions onClick={this.handleClick} />
-        </div>
+    if (error === 'NOT_ACTIVATED_USER') {
+      showError = (
+        <AlertWindow
+          title={formatMessage(messages.createUser)}
+          desc={formatMessage(messages.userNotActivated)}
+          onReset={this.resetError}
+        />
+      )
+    } else if (error === 'ALREADY_USER') {
+      showError = (
+        <AlertWindow
+          title={formatMessage(messages.createUser)}
+          desc={formatMessage(messages.userConflict)}
+          onSolution={this.recoverPassword}
+          onSolutionText={formatMessage(messages.recoverPassword)}
+          onReset={this.resetError}
+        />
       )
     } else {
-      renderView = (
-        <div>
-          <SocialLogin onSuccess={this.props.requestAppToken} />
-          <Separator />
-          <RegisterForm onSubmit={this.handleSubmit} />
-          { this.props.error === 403 ? <p>El usuario ya existe en la base de datos</p> : '' }
-        </div>
+      showError = (
+        <AlertWindow
+          title={formatMessage(messages.createUser)}
+          desc={formatMessage(messages.userNotCreated)}
+          onReset={this.resetError}
+        />
       )
     }
-    return (
+    const renderView = registered ? (
+      <div>
+        <Logo src='https://static.arasaac.org/pictograms/5432/5432_300.png' />
+        <P>
+          <FormattedMessage {...messages.userCreated} />
+        </P>
+      </div>
+    ) : (
+      <div>
+        <SocialLogin onSuccess={this.props.requestAppToken} />
+        <Separator />
+        {loading ? (
+          <H3>
+            <FormattedMessage {...messages.creatingUser} />
+          </H3>
+        ) : (
+          <RegisterForm onSubmit={this.handleSubmit} />
+        )}
 
+        {error && showError}
+      </div>
+    )
+
+    return (
       <View>
-        {showError}
-        <ConditionalPaper>
-          {renderView}
-        </ConditionalPaper>
+        <ConditionalPaper>{renderView}</ConditionalPaper>
       </View>
     )
   }
 }
 
-
 SignupView.propTypes = {
   intl: intlShape.isRequired,
-  requestSignup: PropTypes.func.isRequired,
   requestAppToken: PropTypes.func.isRequired,
-  name: PropTypes.string,
-  email: PropTypes.string,
-  send: PropTypes.bool,
-  error: PropTypes.string,
-  loading: PropTypes.string,
-  locale: PropTypes.string
+  locale: PropTypes.string,
+  router: PropTypes.any.isRequired
 }
 
-
 const mapStateToProps = createSelector(
-  makeSelectLocale(), makeSelectName(), makeSelectEmail(), makeSelectSend(), makeSelectError(), makeSelectLoading(),
-  (locale, name, email, send, error, loading) => ({ locale, name, email, send, error, loading })
+  makeSelectLocale(),
+  (locale) => ({ locale })
 )
 
-
 const mapDispatchToProps = (dispatch) => ({
-  requestSignup: (userData) => {
-    dispatch(signup.request(userData))
-  },
   requestAppToken: (token, socialNetwork) => {
     dispatch(socialLogin.request(token, socialNetwork))
-  }
+  },
+  showProgressBar: () => dispatch(showLoading()),
+  hideProgressBar: () => dispatch(hideLoading())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(SignupView))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectIntl(withRouter(SignupView)))

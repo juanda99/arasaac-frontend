@@ -1,19 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import RaisedButton from 'material-ui/RaisedButton'
 import ConditionalPaper from 'components/Pictogram/ConditionalPaper'
-import { STORAGE_URL } from 'services/config'
 import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl'
 import localeMessages from 'components/LanguageSelector/messages'
 import CatalogTitle from 'components/BoxTitle'
 import H2 from 'components/H2'
 import P from 'components/P'
+import License from 'components/License'
 import messages from './messages'
 
 const isValidDate = (d) => d instanceof Date && !isNaN(d)
 
 const DateFormatter = (value) => {
-  if (value === 'Now') return <BuildingIcon />
   const date = new Date(value)
   if (!isValidDate(date)) {
     return (
@@ -38,7 +37,7 @@ const style = {
   leftItem: {
     flexGrow: 0,
     flexShrink: 0,
-    flexBasis: '250px'
+    flexBasis: '350px'
   },
   items: {
     display: 'flex',
@@ -46,113 +45,129 @@ const style = {
   }
 }
 
-const Catalog = ({ catalog }) => {
-  const {
-    colorPictograms,
-    noColorPictograms,
-    variations,
-    size,
-    totalPictograms,
-    lastUpdated,
-    language
-  } = catalog
-  const catalogURL = `${STORAGE_URL}/catalog_${language}.zip`
-  return (
-    <ConditionalPaper style={style.paper}>
-      <CatalogTitle>
-        <H2 center={true} primary ucase noMargin>
-          <FormattedMessage {...messages.catalogData} />
-        </H2>
-      </CatalogTitle>
-      <div style={style.items}>
-        <div style={style.leftItem}>
-          <P marginTop={'30px'} marginBottom={'10px'}>
-            Catalog language:{' '}
-          </P>
-        </div>
-        <P important={true} marginTop={'30px'} marginBottom={'10px'}>
-          <FormattedMessage {...localeMessages[language]} />
-        </P>
-      </div>
-      <div style={style.items}>
-        <div style={style.leftItem}>
-          <P marginTop={'10px'} marginBottom={'10px'}>
-            <FormattedMessage {...messages.size} />
-          </P>
-        </div>
-        <P important={true} marginTop={'10px'} marginBottom={'10px'}>
-          {size}
-        </P>
-      </div>
-      <div style={style.items}>
-        <div style={style.leftItem}>
-          <P marginTop={'10px'} marginBottom={'10px'}>
-            <FormattedMessage {...messages.lastUpdated} />
-          </P>
-        </div>
-        <P important={true} marginTop={'10px'} marginBottom={'10px'}>
-          {DateFormatter(lastUpdated)}
-        </P>
-      </div>
-      <div style={style.items}>
-        <div style={style.leftItem}>
-          <P marginTop={'10px'} marginBottom={'10px'}>
-            <FormattedMessage {...messages.numberPictograms} />
-          </P>
-        </div>
-        <P important={true} marginTop={'10px'} marginBottom={'10px'}>
-          {totalPictograms}
-        </P>
-      </div>
+class Catalog extends Component {
+  state = {
+    open: false
+  }
 
-      <div style={style.items}>
-        <div style={style.leftItem}>
-          <P marginTop={'10px'} marginBottom={'10px'}>
-            <FormattedMessage {...messages.colorPictograms} />
-          </P>
-        </div>
-        <P important={true} marginTop={'10px'} marginBottom={'10px'}>
-          {colorPictograms}
-        </P>
-      </div>
+  handleClick = () => this.setState({ open: !this.state.open })
 
-      <div style={style.items}>
-        <div style={style.leftItem}>
-          <P marginTop={'10px'} marginBottom={'10px'}>
-            <FormattedMessage {...messages.noColorPictograms} />
-          </P>
-        </div>
-        <P important={true} marginTop={'10px'} marginBottom={'10px'}>
-          {noColorPictograms}
-        </P>
-      </div>
+  render() {
+    const {
+      colorPictograms,
+      noColorPictograms,
+      variations,
+      size,
+      totalPictograms,
+      lastUpdated,
+      language
+    } = this.props.catalog
 
-      <div style={style.items}>
-        <div style={style.leftItem}>
-          <P marginTop={'10px'} marginBottom={'20px'}>
-            <FormattedMessage {...messages.noColorPictograms} />
+    const { open } = this.state
+
+    return (
+      <ConditionalPaper style={style.paper}>
+        <CatalogTitle>
+          <H2 center={true} primary ucase noMargin>
+            <FormattedMessage {...messages.catalogData} />
+          </H2>
+        </CatalogTitle>
+        <div style={style.items}>
+          <div style={style.leftItem}>
+            <P marginTop={'30px'} marginBottom={'10px'}>
+              Catalog language:{' '}
+            </P>
+          </div>
+          <P important={true} marginTop={'30px'} marginBottom={'10px'}>
+            <FormattedMessage {...localeMessages[language]} />
           </P>
         </div>
-        <P important={true} marginTop={'10px'} marginBottom={'20px'}>
-          {variations}
-        </P>
-      </div>
-      <div style={style.items}>
-        <div style={style.leftItem} />
-        <a href={catalogURL}>
+        <div style={style.items}>
+          <div style={style.leftItem}>
+            <P marginTop={'10px'} marginBottom={'10px'}>
+              <FormattedMessage {...messages.size} />
+            </P>
+          </div>
+          <P important={true} marginTop={'10px'} marginBottom={'10px'}>
+            {size}
+          </P>
+        </div>
+        <div style={style.items}>
+          <div style={style.leftItem}>
+            <P marginTop={'10px'} marginBottom={'10px'}>
+              <FormattedMessage {...messages.lastUpdated} />
+            </P>
+          </div>
+          <P important={true} marginTop={'10px'} marginBottom={'10px'}>
+            {DateFormatter(lastUpdated)}
+          </P>
+        </div>
+        <div style={style.items}>
+          <div style={style.leftItem}>
+            <P marginTop={'10px'} marginBottom={'10px'}>
+              <FormattedMessage {...messages.numberPictograms} />
+            </P>
+          </div>
+          <P important={true} marginTop={'10px'} marginBottom={'10px'}>
+            {totalPictograms}
+          </P>
+        </div>
+
+        <div style={style.items}>
+          <div style={style.leftItem}>
+            <P marginTop={'10px'} marginBottom={'10px'}>
+              <FormattedMessage {...messages.colorPictograms} />
+            </P>
+          </div>
+          <P important={true} marginTop={'10px'} marginBottom={'10px'}>
+            {colorPictograms}
+          </P>
+        </div>
+
+        <div style={style.items}>
+          <div style={style.leftItem}>
+            <P marginTop={'10px'} marginBottom={'10px'}>
+              <FormattedMessage {...messages.noColorPictograms} />
+            </P>
+          </div>
+          <P important={true} marginTop={'10px'} marginBottom={'10px'}>
+            {noColorPictograms}
+          </P>
+        </div>
+
+        <div style={style.items}>
+          <div style={style.leftItem}>
+            <P marginTop={'10px'} marginBottom={'20px'}>
+              <FormattedMessage {...messages.variations} />
+            </P>
+          </div>
+          <P important={true} marginTop={'10px'} marginBottom={'20px'}>
+            {variations}
+          </P>
+        </div>
+        <div style={style.items}>
+          <div style={style.leftItem} />
           <RaisedButton
             label={<FormattedMessage {...messages.download} />}
             primary={true}
             style={style}
+            onClick={this.handleClick}
           />
-        </a>
-      </div>
-    </ConditionalPaper>
-  )
+        </div>
+        <License
+          open={open}
+          language={language}
+          locale={this.props.locale}
+          closeDialog={this.handleClick}
+        />
+      </ConditionalPaper>
+    )
+  }
 }
 
 Catalog.propTypes = {
-  catalog: PropTypes.object
+  catalog: PropTypes.object,
+  locale: PropTypes.string.isRequired
 }
 
 export default Catalog

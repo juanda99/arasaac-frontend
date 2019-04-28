@@ -81,6 +81,11 @@ export default defineMessages({
     description: 'Header title',
     defaultMessage: 'Settings'
   },
+  userActivation: {
+    id: 'header.userActivation',
+    description: 'Header title',
+    defaultMessage: 'User activation'
+  },
   prizes: {
     id: 'header.prizesTitle',
     description: 'Header title',

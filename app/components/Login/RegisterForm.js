@@ -7,7 +7,9 @@ import { TextField } from 'redux-form-material-ui'
 import FlatButton from 'material-ui/FlatButton'
 import Div from 'components/Div'
 import messages from './messages'
-import { required, email } from './validate'
+import { email } from './validate'
+
+// TODO: validate password minlength?????
 
 const styles = {
   checkbox: {
@@ -23,20 +25,24 @@ const styles = {
   }
 }
 
-
 /* eslint-disable import/no-mutable-exports */
 let RegisterForm = class RegisterForm extends Component {
-
   handleSubmit() {
     // ?????
   }
 
   componentDidMount() {
-    this.firstField            // the Field
+    this.firstField // the Field
       .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
       .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
-      .focus()                // on TextField
+      .focus() // on TextField
   }
+
+  email = (value) =>
+    email(value) ? <FormattedMessage {...messages.invalidEmail} /> : undefined
+
+  required = (value) =>
+    value == null ? <FormattedMessage {...messages.required} /> : undefined
 
   render() {
     const { handleSubmit, pristine, submitting } = this.props
@@ -48,55 +54,64 @@ let RegisterForm = class RegisterForm extends Component {
             <Field
               name='name'
               component={TextField}
-              ref={(input) => { this.firstField = input }} withRef
-              hintText='What is your name?'
+              ref={(input) => {
+                this.firstField = input
+              }}
+              withRef
+              hintText={<FormattedMessage {...messages.hintName} />}
               value=''
-              floatingLabelText='Name'
+              floatingLabelText={<FormattedMessage {...messages.labelName} />}
               style={{ width: '100%' }}
-              validate={required}
+              validate={this.required}
               autoComplete='name'
             />
             <Field
               name='email'
               component={TextField}
-              hintText='What is your email?'
+              hintText={<FormattedMessage {...messages.hintEmail} />}
               value=''
-              floatingLabelText='Email'
+              floatingLabelText={<FormattedMessage {...messages.labelEmail} />}
               style={{ width: '100%' }}
-              validate={[required, email]}
+              validate={[this.required, this.email]}
               autoComplete='email'
             />
             <Field
               name='password'
               component={TextField}
               type='password'
-              hintText='What is your password?'
+              hintText={<FormattedMessage {...messages.hintPassword} />}
               value=''
-              floatingLabelText='Password'
+              floatingLabelText={
+                <FormattedMessage {...messages.labelPassword} />
+              }
               style={{ width: '100%' }}
-              validate={required}
+              validate={this.required}
               autoComplete='new-password'
             />
             <Field
               name='company'
               component={TextField}
-              hintText='What is your company?'
+              hintText={<FormattedMessage {...messages.hintCompany} />}
               value=''
-              floatingLabelText='Company (optional)'
+              floatingLabelText={
+                <FormattedMessage {...messages.labelCompany} />
+              }
               style={{ width: '100%' }}
               autoComplete='organization'
             />
             <Field
               name='website'
               component={TextField}
-              hintText='http://www.example.com'
+              hintText={<FormattedMessage {...messages.hintWebsite} />}
               value=''
-              floatingLabelText='Website (optional)'
+              floatingLabelText={
+                <FormattedMessage {...messages.labelWebsite} />
+              }
               style={{ width: '100%' }}
             />
             <RaisedButton
               type='submit'
-              label='Sign up'
+              label={<FormattedMessage {...messages.buttonSignUp} />}
               primary={true}
               style={styles.signup}
               disabled={pristine || submitting}
@@ -105,7 +120,11 @@ let RegisterForm = class RegisterForm extends Component {
         </Div>
         <Div top={2}>
           <Link to='/signin'>
-            <FlatButton label={<FormattedMessage {...messages.offerSignin} />} secondary={true} fullWidth={true} />
+            <FlatButton
+              label={<FormattedMessage {...messages.offerSignin} />}
+              secondary={true}
+              fullWidth={true}
+            />
           </Link>
         </Div>
       </div>
@@ -125,4 +144,3 @@ RegisterForm = reduxForm({
 })(RegisterForm)
 
 export default RegisterForm
-

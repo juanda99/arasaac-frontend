@@ -1,11 +1,9 @@
 <div align="center">
-<p><strong>WIP!!!!!</strong></p>
-  <img width=200 src="https://raw.githubusercontent.com/juanda99/arasaac-frontend/master/app/components/Footer/arasaac-logo.svg" alt="Arasaac logo" align="center" />
+  <img width=200 src="https://static.arasaac.org/images/arasaac-logo.png" alt="Arasaac logo" align="center" />
 </div>
 <br />
 
-<div align="center"><strong>Arasaac website</strong></div>
-<div align="center">A single page app focus on performance. You can check it out <a href="https://www.beta.arasaac.org">here</a></div>
+<div align="center"><strong>Arasaac beta website</strong></div>
 
 <br />
 <div align="center">
@@ -36,7 +34,7 @@
 
 
 ## What is Arasaac
-Arasaac is a website that offers ARASAAC graphic resources and materials to facilitate communication for those with some sort of problem in this area. [See current website](http://www.arasaac.org)
+Arasaac is a website that offers graphic resources and materials to facilitate communication for those with some sort of problem in this area. [See current website](http://www.arasaac.org)
 
 It's used  worldwide and everyday by thousands of users, so we decided to improve its usability and performance.[See new website, still in development](https://beta.arasaac.org)
 
@@ -55,17 +53,19 @@ You can check our development status at https://beta.arasaac.org.
 1. Clone this repo using `git clone https://github.com/juanda99/arasaac-frontend.git`
 2. Run `npm install` to install dependencies<br />
 3. Run `npm start` to see the app running at `http://localhost:3000`.*
-4. This app use some backend points:
+4. This app uses some backend points:
   - *static.arasaac.org* for getting static data files (pictogram images, materials)
   - *api.arasaac.org* for getting json data from the server
+  - *privateapi.arasaac.org* for getting json data from the server
+  - *auth.arasaac.org* for oauth2 authentication
   
   Our backend server is dockerized, you can install it locally: see [how to instal the backend server](https://github.com/juanda99/arasaac-docker) 
 
 ## Features and current status
 
 - Pictograms
-  - Search pictograms (WIP)
-  - Download full catalog of pictos (WIP)
+  - Search pictograms (Almost ready)
+  - Download full catalog of pictos (Almost ready)
 
 - Online Tools (Not started)
 
@@ -78,7 +78,7 @@ You can check our development status at https://beta.arasaac.org.
   - Upload materials (WIP)
 
 - Users
-  - User creations and login (WIP)
+  - User creation and login (Almost ready)
   - User roles (Not started)
   - Social logins (WIP)
 

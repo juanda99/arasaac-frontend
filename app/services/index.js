@@ -11,6 +11,8 @@ import {
 } from './config'
 
 const api = {
+  ACTIVATION_REQUEST: ({ code }) =>
+    callApi(`${PRIVATE_API_ROOT}/users/activate/${code}`),
   AUTOCOMPLETE_REQUEST: ({ locale }) =>
     callApi(`${API_ROOT}/keywords/${locale}`),
   PICTOGRAMS_REQUEST: ({ locale, searchText }) =>
