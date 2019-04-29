@@ -11,25 +11,48 @@ import messages from './messages'
 
 /* eslint-disable jsx-a11y/anchor-has-content */
 
-
 const UserMenu = ({ isTranslating, changeLocale, muiTheme, signout }) => (
   <span>
     <IconMenu
       iconButtonElement={
-        <IconButton><MoreVertIcon color={muiTheme.appBar.textColor} /></IconButton>
+        <IconButton>
+          <MoreVertIcon color={muiTheme.appBar.textColor} />
+        </IconButton>
       }
       targetOrigin={{ horizontal: 'right', vertical: 'top' }}
       anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
     >
-      <MenuItem primaryText={<FormattedMessage {...messages.appConfiguration} />} containerElement={<Link to='/configuration' />} />
-      <MenuItem primaryText={<FormattedMessage {...messages.userProfile} />} containerElement={<Link to='/profile' />} />
-      <MenuItem primaryText={<FormattedMessage {...messages.userMaterial} />} containerElement={<Link to='/usermaterial' />} />
-      {(!isTranslating)
-      ? <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} onClick={changeLocale} />
-      : <MenuItem primaryText={<FormattedMessage {...messages.stopTranslateArasaac} />} onClick={changeLocale} /> }
-      <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} containerElement={<Link to='/uploadmaterial' />} />
-      <MenuItem primaryText={<FormattedMessage {...messages.signout} />} onClick={signout} />
-
+      <MenuItem
+        primaryText={<FormattedMessage {...messages.appConfiguration} />}
+        containerElement={<Link to='/configuration' />}
+      />
+      <MenuItem
+        primaryText={<FormattedMessage {...messages.userProfile} />}
+        containerElement={<Link to='/profile' />}
+      />
+      <MenuItem
+        primaryText={<FormattedMessage {...messages.userMaterial} />}
+        containerElement={<Link to='/usermaterial' />}
+      />
+      {!isTranslating ? (
+        <MenuItem
+          primaryText={<FormattedMessage {...messages.translateArasaac} />}
+          onClick={changeLocale}
+        />
+      ) : (
+        <MenuItem
+          primaryText={<FormattedMessage {...messages.stopTranslateArasaac} />}
+          onClick={changeLocale}
+        />
+      )}
+      <MenuItem
+        primaryText={<FormattedMessage {...messages.uploadMaterial} />}
+        containerElement={<Link to='/uploadmaterial' />}
+      />
+      <MenuItem
+        primaryText={<FormattedMessage {...messages.signout} />}
+        onClick={signout}
+      />
     </IconMenu>
   </span>
 )

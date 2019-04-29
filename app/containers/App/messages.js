@@ -21,6 +21,11 @@ export default defineMessages({
     description: 'Header title',
     defaultMessage: 'Api for developers'
   },
+  userActivation: {
+    id: 'header.userActivation',
+    description: 'Header title',
+    defaultMessage: 'User activation'
+  },
   devAccounts: {
     id: 'header.devAccounts',
     description: 'Header title',
@@ -80,6 +85,11 @@ export default defineMessages({
     id: 'header.settingsTitle',
     description: 'Header title',
     defaultMessage: 'Settings'
+  },
+  userActivation: {
+    id: 'header.userActivation',
+    description: 'Header title',
+    defaultMessage: 'User activation'
   },
   prizes: {
     id: 'header.prizesTitle',

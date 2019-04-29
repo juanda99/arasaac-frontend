@@ -18,13 +18,21 @@ const styles = {
   }
 }
 
-const useConditions = <Link to='/use-conditions'><FormattedMessage {...messages.useConditions} /></Link>
-const privacyPolicy = <Link to='/privacy-policy'><FormattedMessage {...messages.privacyPolicy} /></Link>
+const useConditions = (
+  <Link to='/use-conditions'>
+    <FormattedMessage {...messages.useConditions} />
+  </Link>
+)
+const privacyPolicy = (
+  <Link to='/privacy-policy'>
+    <FormattedMessage {...messages.privacyPolicy} />
+  </Link>
+)
 
 const RegisterOptions = ({ onClick }) => (
   <div>
     <Div>
-      <Link to='/register'>
+      <Link to='/registerform'>
         <RaisedButton
           style={styles.signupButton}
           onClick={onClick}
@@ -35,19 +43,29 @@ const RegisterOptions = ({ onClick }) => (
       </Link>
     </Div>
     <Div>
-      <p>{<FormattedMessage {...messages.agreement} values={{ useConditions, privacyPolicy }} /> }</p>
+      <p>
+        {
+          <FormattedMessage
+            {...messages.agreement}
+            values={{ useConditions, privacyPolicy }}
+          />
+        }
+      </p>
     </Div>
     <Div top={2}>
       <Link to='/signin'>
-        <FlatButton label={<FormattedMessage {...messages.offerSignin} />} secondary={true} fullWidth={true} />
+        <FlatButton
+          label={<FormattedMessage {...messages.offerSignin} />}
+          secondary={true}
+          fullWidth={true}
+        />
       </Link>
     </Div>
-
   </div>
 )
 
 RegisterOptions.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func
 }
 
 export default RegisterOptions

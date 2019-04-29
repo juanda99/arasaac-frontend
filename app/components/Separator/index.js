@@ -6,7 +6,7 @@ import messages from './messages'
 const styles = {
   separator: {
     textAlign: 'center',
-    padding: 20,
+    paddingTop: 20,
     clear: 'both'
   },
   separatorText: {
@@ -16,7 +16,7 @@ const styles = {
     backgroundColor: '#fff'
   },
   separatorLine: {
-    margin: '-10px auto 10px'
+    marginTop: '-10px'
   }
 }
 

@@ -6,7 +6,16 @@ export default function* root() {
 
 */
 import { delay } from 'redux-saga'
-import { call, put, select, take, cancel, race, takeEvery, fork } from 'redux-saga/effects'
+import {
+  call,
+  put,
+  select,
+  take,
+  cancel,
+  race,
+  takeEvery,
+  fork
+} from 'redux-saga/effects'
 
 import api from 'services'
 import { API_ROOT } from 'services/config'
@@ -15,7 +24,11 @@ import { push, LOCATION_CHANGE } from 'react-router-redux'
 import { REHYDRATE } from 'redux-persist/constants'
 
 // import { authorize, refresh } from './authentication'
-import { makeSelectTokens, makeSelectHasUser, makeSelectRefreshing } from './selectors'
+import {
+  makeSelectTokens,
+  makeSelectHasUser,
+  makeSelectRefreshing
+} from './selectors'
 import {
   TOKEN_VALIDATION,
   TOKEN_REFRESH,
@@ -26,8 +39,7 @@ import {
   tokenRefresh,
   login,
   logout,
-  socialLogin,
-  setError
+  socialLogin
 } from './actions'
 
 /**
@@ -48,7 +60,7 @@ function* authFlow() {
   }
 }
 
- /**
+/**
  *  Authentication starts either with classic login or with tokens fetched from
  *  localStorage
  *  @return  {Generator}
@@ -59,10 +71,17 @@ function* loggedOutFlowSaga() {
     tokens: take(TOKEN_VALIDATION.REQUEST),
     socialCredentials: take(SOCIAL_LOGIN.REQUEST)
   })
+
   // if (credentials) yield call(loginAuth, credentials.payload.username, credentials.payload.password)
   if (credentials) yield call(loginAuth, credentials.type, credentials.payload)
   else if (tokens) yield call(authenticate)
-  else if (socialCredentials) yield call(socialLoginAuth, socialCredentials.type, socialCredentials.payload)
+  else if (socialCredentials) {
+    yield call(
+      socialLoginAuth,
+      socialCredentials.type,
+      socialCredentials.payload
+    )
+  }
   yield call(authFlow)
 }
 
@@ -96,7 +115,6 @@ function* socialLoginAuth(type, payload) {
   }
 }
 
-
 /**
  *  API authentication request/response handler. Used to validate the access token
  *  and/or get the user object. If an `invalid_token` error is returned, tries to
@@ -104,9 +122,10 @@ function* socialLoginAuth(type, payload) {
  *  @return  {Generator}
  */
 function* authenticate() {
-  const onError = (error) => error.statusCode >= 500
-    ? put(tokenValidation.failure(error))
-    : call(logoutSaga)
+  const onError = (error) =>
+    error.statusCode >= 500
+      ? put(tokenValidation.failure(error))
+      : call(logoutSaga)
 
   yield makeAuthenticatedRequest({
     payload: {
@@ -146,7 +165,7 @@ export function* fetchListener(action) {
  */
 function* needRefresh() {
   const { accessTokenExpiresAt } = yield select(makeSelectTokens())
-  const accessExpiration = (new Date(accessTokenExpiresAt)).getTime()
+  const accessExpiration = new Date(accessTokenExpiresAt).getTime()
 
   return Date.now() >= accessExpiration
 }
@@ -212,10 +231,13 @@ function* makeAuthenticatedRequest(action) {
   // saga will try to refresh the access token then retry the initial request if
   // the refresh succeeds.
 
-  const isAccessExpired = (error) => error.error && error.message && error.statusCode
-      && error.statusCode === 401
-      && error.error === 'Unauthorized'
-      && error.message === 'Invalid token: access token has expired'
+  const isAccessExpired = (error) =>
+    error.error &&
+    error.message &&
+    error.statusCode &&
+    error.statusCode === 401 &&
+    error.error === 'Unauthorized' &&
+    error.message === 'Invalid token: access token has expired'
 
   const tokens = yield select(makeSelectTokens())
   const { payload } = action

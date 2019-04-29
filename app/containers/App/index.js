@@ -37,7 +37,7 @@ import {
   startTranslation,
   stopTranslation
 } from 'containers/LanguageProvider/actions'
-import { logout } from './actions'
+import { logout, activation } from './actions'
 import { makeSelectHasUser } from './selectors'
 
 class App extends Component {
@@ -127,36 +127,33 @@ class App extends Component {
 
   getViewProps(width) {
     let title = ''
-    let docked = false
+    let docked = width === LARGE
     const url = this.props.location.pathname
+    if (url === '/') docked = false
     switch (true) {
       case /pictograms\/search/.test(url):
         title = <FormattedMessage {...messages.pictogramsSearch} />
-        docked = width === LARGE
         break
       case /materials\/search/.test(url):
         title = <FormattedMessage {...messages.materialsSearch} />
-        docked = width === LARGE
         break
       case /catalogs/.test(url):
         title = <FormattedMessage {...messages.catalogs} />
-        docked = width === LARGE
         break
       case /materials/.test(url):
         title = <FormattedMessage {...messages.materials} />
-        docked = width === LARGE
         break
       case /pictograms/.test(url):
         title = <FormattedMessage {...messages.pictograms} />
-        docked = width === LARGE
+        break
+      case /activate/.test(url):
+        title = <FormattedMessage {...messages.userActivation} />
         break
       case /onlinetools/.test(url):
         title = <FormattedMessage {...messages.onlineTools} />
-        docked = width === LARGE
         break
       case /software/.test(url):
         title = <FormattedMessage {...messages.software} />
-        docked = width === LARGE
         break
       case /signin/.test(url):
         title = <FormattedMessage {...messages.signinTitle} />
@@ -168,39 +165,33 @@ class App extends Component {
         break
       case /profile/.test(url):
         title = <FormattedMessage {...messages.userProfileTitle} />
-        docked = width === LARGE
         break
       case /configuration/.test(url):
         title = <FormattedMessage {...messages.configurationTitle} />
-        docked = width === LARGE
         break
       case /developers\/api/.test(url):
         title = <FormattedMessage {...messages.api} />
-        docked = width === LARGE
         break
       case /developers\/accounts/.test(url):
         title = <FormattedMessage {...messages.devAccounts} />
-        docked = width === LARGE
         break
       case /developers/.test(url):
         title = <FormattedMessage {...messages.howto} />
-        docked = width === LARGE
         break
       case /uploadmaterial/.test(url):
         title = <FormattedMessage {...messages.configurationTitle} />
-        docked = width === LARGE
         break
       case /contact-us/.test(url):
         title = <FormattedMessage {...messages.contactusTitle} />
-        docked = width === LARGE
         break
       case /settings/.test(url):
         title = <FormattedMessage {...messages.settings} />
-        docked = width === LARGE
+        break
+      case /activate/.test(url):
+        title = <FormattedMessage {...messages.userActivation} />
         break
       case /prizes/.test(url):
         title = <FormattedMessage {...messages.prizes} />
-        docked = width === LARGE
         break
       default:
         docked = false
@@ -219,6 +210,10 @@ class App extends Component {
     this.setState({
       menuOpen: open
     })
+  }
+
+  getChildContext() {
+    return { isAuthenticated: this.props.isAuthenticated }
   }
 
   handleChangeList = (event, value) => {
@@ -266,6 +261,19 @@ class App extends Component {
       logout
     } = this.props
 
+    // if (location.hash) {
+    //   const authData = location.hash.substring(1)
+    //   const data = JSON.parse(
+    //     '{"' +
+    //       decodeURI(authData)
+    //         .replace(/"/g, '\\"')
+    //         .replace(/&/g, '","')
+    //         .replace(/=/g, '":"') +
+    //       '"}'
+    //   )
+    //   console.log(JSON.stringify(data))
+    // }
+
     let { menuOpen } = this.state
 
     const { joyride } = this.props
@@ -288,7 +296,7 @@ class App extends Component {
     const { title, docked } = this.getViewProps(width)
 
     let showMenuIconButton = true
-    let hideIconText = width === SMALL
+    let isMobile = width === SMALL
     if (width === LARGE && docked) {
       menuOpen = true
       showMenuIconButton = false
@@ -308,7 +316,7 @@ class App extends Component {
           changeLocale={this.handleTranslate}
           signout={logout}
           isTranslating={isTranslating}
-          hideIconText={hideIconText}
+          isMobile={isMobile}
         />
         <LoadingBar
           updateTime={100}
@@ -347,3 +355,7 @@ export default connect(
   mapStateToProps,
   { changeLocale, logout, startTranslation, stopTranslation }
 )(withWidth()(App))
+
+App.childContextTypes = {
+  isAuthenticated: PropTypes.bool
+}

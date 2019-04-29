@@ -78,6 +78,38 @@ export default function createRoutes(store) {
       }
     },
     {
+      path: '/activate/:activationCode',
+      name: 'activateView',
+      getComponent(location, cb) {
+        import('containers/ActivateView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    },
+    // {
+    //   path: '/activate/:activationCode',
+    //   name: 'activateView',
+    //   getComponent(nextState, cb) {
+    //     const importModules = Promise.all([
+    //       import('containers/App/reducer'),
+    //       import('containers/App/sagas'),
+    //       import('containers/ActivateView/')
+    //     ])
+
+    //     const renderRoute = loadModule(cb)
+    //     // if reducer is async, render values:  defaultToggled:
+    //     // state.configuration.filters[ownProps.filter] got undefined!!!
+    //     importModules.then(([reducer, sagas, component]) => {
+    //       // injectReducer('aux', reducer.default)
+    //       injectSagas(sagas.default)
+    //       renderRoute(component)
+    //     })
+
+    //     importModules.catch(errorLoading)
+    //   }
+    // },
+
+    {
       path: '/materials/search',
       name: 'materialsView',
       getComponent(nextState, cb) {
@@ -252,8 +284,10 @@ export default function createRoutes(store) {
       name: 'configurationView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import(// import('containers/ConfigurationView/reducer'),
-          'containers/ConfigurationView/')
+          import(
+            // import('containers/ConfigurationView/reducer'),
+            'containers/ConfigurationView/'
+          )
         ])
 
         const renderRoute = loadModule(cb)
@@ -330,38 +364,42 @@ export default function createRoutes(store) {
       }
     },
     {
-      path: 'register',
+      path: '/registerform',
       name: 'SignupView',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/SignupView/reducer'),
-          import('containers/SignupView/sagas'),
-          import('containers/SignupView')
-        ])
+        const importModules = Promise.all([import('containers/SignupView')])
         const renderRoute = loadModule(cb)
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('register', reducer.default)
-          injectSagas(sagas.default)
+        importModules.then(([component]) => {
           renderRoute(component)
         })
         importModules.catch(errorLoading)
       }
     },
     {
-      path: '/register-options',
-      name: 'loginView',
+      path: '/recoverpassword(/:email)',
+      name: 'RecoverPasswordView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import(// import('containers/LoginView/reducer'),
-          // import('containers/LoginView/sagas'),
-          'containers/LoginView')
+          import('containers/RecoverPasswordView')
+        ])
+        const renderRoute = loadModule(cb)
+        importModules.then(([component]) => {
+          renderRoute(component)
+        })
+        importModules.catch(errorLoading)
+      }
+    },
+    {
+      path: '/register',
+      name: 'SignupOptionsView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/SignupOptionsView')
         ])
 
         const renderRoute = loadModule(cb)
 
         importModules.then(([component]) => {
-          // injectReducer('loginView', reducer.default)
-          // injectSagas(sagas.default)
           renderRoute(component)
         })
         importModules.catch(errorLoading)

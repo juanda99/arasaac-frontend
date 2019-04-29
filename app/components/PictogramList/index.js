@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Map } from 'immutable'
-import withWidth, { SMALL } from 'material-ui/utils/withWidth'
+import withWidth, { SMALL, LARGE } from 'material-ui/utils/withWidth'
 import PictogramSnippet from '../PictogramSnippet'
 
 const Masonry = require('react-masonry-component')
@@ -20,11 +20,6 @@ const styles = {
 }
 
 export class PictogramList extends PureComponent {
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.pictograms !== this.props.pictograms) {
-    }
-  }
-
   render() {
     const {
       locale,
@@ -40,6 +35,7 @@ export class PictogramList extends PureComponent {
         searchText={searchText}
         locale={locale}
         key={pictogram.idPictogram}
+        showExtra={width === LARGE}
       />
     ))
 
@@ -68,10 +64,10 @@ PictogramList.propTypes = {
   // with optional parameters in the router is slower in my tests ????
   // rollback from https://github.com/react-boilerplate/react-boilerplate/issues/1748
   locale: PropTypes.string,
-  showLabels: PropTypes.bool.isRequired,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
   setFilterItems: PropTypes.func.isRequired,
-  searchText: PropTypes.string
+  searchText: PropTypes.string,
+  width: PropTypes.number.isRequired
 }
 
 export default withWidth()(PictogramList)

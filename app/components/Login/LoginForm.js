@@ -1,13 +1,20 @@
 import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
-import { reduxForm, Field, propTypes } from 'redux-form/immutable'
-import { TextField, Checkbox } from 'redux-form-material-ui'
+import {
+  reduxForm,
+  Field,
+  propTypes,
+  formValueSelector
+} from 'redux-form/immutable'
+import { connect } from 'react-redux'
+import { TextField } from 'redux-form-material-ui'
+import EmailIcon from 'material-ui/svg-icons/communication/email'
 import RaisedButton from 'material-ui/RaisedButton'
 import { Row, Col } from 'react-flexbox-grid'
 import Div from 'components/Div'
 import messages from './messages'
-import { required, email } from './validate'
+import { email } from './validate'
 
 const styles = {
   checkbox: {
@@ -34,14 +41,24 @@ const styles = {
 /* eslint-disable import/no-mutable-exports */
 let LoginForm = class LoginForm extends Component {
   componentDidMount() {
-    this.firstField            // the Field
+    this.firstField // the Field
       .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
       .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
-      .focus()                // on TextField
+      .focus() // on TextField
   }
 
+  email = (value) =>
+    email(value) ? <FormattedMessage {...messages.invalidEmail} /> : undefined
+
+  required = (value) =>
+    value == null ? <FormattedMessage {...messages.required} /> : undefined
+
   render() {
-    const { handleSubmit, submitting, pristine } = this.props
+    const { handleSubmit, submitting, pristine, username } = this.props
+    // const emailLink = email(username) !== 'Invalid'
+    const recoverLink = email(username)
+      ? '/recoverpassword'
+      : `/recoverpassword/${username}`
     return (
       <div>
         <form onSubmit={handleSubmit}>
@@ -49,12 +66,14 @@ let LoginForm = class LoginForm extends Component {
             <Field
               name='username'
               component={TextField}
-              ref={(input) => { this.firstField = input }} withRef
+              ref={(input) => {
+                this.firstField = input
+              }}
+              withRef
               style={styles.text}
               hintText={<FormattedMessage {...messages.email} />}
               floatingLabelText={<FormattedMessage {...messages.user} />}
-              validate={[required, email]}
-              autoComplete='email'
+              validate={[this.required, this.email]}
             />
             <Field
               name='password'
@@ -63,25 +82,24 @@ let LoginForm = class LoginForm extends Component {
               style={styles.text}
               hintText={<FormattedMessage {...messages.password} />}
               floatingLabelText={<FormattedMessage {...messages.password} />}
-              validate={required}
-              autoComplete='current-password'
+              validate={this.required}
             />
           </Div>
           <Div top={2}>
+            <RaisedButton
+              style={styles.signinButton}
+              label={<FormattedMessage {...messages.signin} />}
+              primary={true}
+              type='submit'
+              disabled={pristine || submitting}
+            />
+          </Div>
+
+          <Div top={2}>
             <Row>
+              <Col xs={6} />
               <Col xs={6}>
-                <Field
-                  name='remember'
-                  component={Checkbox}
-                  label={<FormattedMessage {...messages.remember} />}
-                  style={styles.checkbox}
-                  onCheck={(value) => {
-                    console.log('onCheck ', value) // eslint-disable-line no-console
-                  }}
-                />
-              </Col>
-              <Col xs={6}>
-                <Link to='http://localhost:3000/register'>
+                <Link to={recoverLink}>
                   <p style={styles.forgotPassword}>
                     {<FormattedMessage {...messages.forgotPassword} />}
                   </p>
@@ -89,28 +107,18 @@ let LoginForm = class LoginForm extends Component {
               </Col>
             </Row>
           </Div>
-          <Div top={2}>
-            <RaisedButton
-              style={styles.signinButton}
-              label='SIGN IN'
-              primary={true}
-              type='submit'
-              disabled={pristine || submitting}
-            />
-          </Div>
+
           <Div top={2} style={{ position: 'relative' }}>
-            <p>
-              {<FormattedMessage {...messages.offerAccount} />}
-            </p>
+            <p>{<FormattedMessage {...messages.offerAccount} />}</p>
 
             <Link to='/register'>
               <RaisedButton
                 style={styles.register}
                 label={<FormattedMessage {...messages.signup} />}
                 secondary={true}
+                icon={<EmailIcon />}
               />
             </Link>
-
           </Div>
         </form>
       </div>
@@ -127,5 +135,12 @@ LoginForm = reduxForm({
   touchOnChange: true
   // fields
 })(LoginForm)
+
+const selector = formValueSelector('signin')
+
+LoginForm = connect((state) => ({
+  // can select values individually
+  username: selector(state, 'username')
+}))(LoginForm)
 
 export default LoginForm

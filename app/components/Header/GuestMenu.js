@@ -9,7 +9,7 @@ import IconButton from 'material-ui/IconButton'
 import messages from './messages'
 
 const GuestMenu = (props) => {
-  if (props.hideIconText) {
+  if (props.isMobile) {
     return (
       <Link to='/signin'>
         <IconButton
@@ -27,20 +27,28 @@ const GuestMenu = (props) => {
     )
   }
   return (
-    <Link to='/signin'>
-      <FlatButton
-        style={{ color: props.muiTheme.appBar.textColor, marginTop: 4 }}
-        label={<FormattedMessage {...messages.signin} />}
-        {...this.props}
-        icon={<UserIcon />}
-      />
-    </Link>
+    <div>
+      <Link to='/signin'>
+        <FlatButton
+          style={{ color: props.muiTheme.appBar.textColor, marginTop: 4 }}
+          label={<FormattedMessage {...messages.signin} />}
+          {...this.props}
+        />
+      </Link>
+      <Link to='/register'>
+        <FlatButton
+          style={{ color: props.muiTheme.appBar.textColor, marginTop: 4 }}
+          label={<FormattedMessage {...messages.register} />}
+          {...this.props}
+        />
+      </Link>
+    </div>
   )
 }
 
 GuestMenu.propTypes = {
   muiTheme: PropTypes.object.isRequired,
-  hideIconText: PropTypes.bool.isRequired
+  isMobile: PropTypes.bool.isRequired
 }
 
 export default muiThemeable()(GuestMenu)

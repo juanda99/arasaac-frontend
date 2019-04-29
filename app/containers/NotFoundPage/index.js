@@ -11,15 +11,22 @@
 
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
+import { PICTOGRAMS_URL } from 'services/config'
+import View from 'components/View'
+import Logo from 'components/Logo'
 
 import messages from './messages'
 
-export default class NotFound extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class NotFound extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <View left={true} right={true} top={0}>
+        <h1 style={{ textAlign: 'center' }}>
+          <FormattedMessage {...messages.header} />
+        </h1>
+        <Logo src={`${PICTOGRAMS_URL}/21466/21466_300.png`} />
+      </View>
     )
   }
 }
