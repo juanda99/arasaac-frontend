@@ -37,7 +37,9 @@ class SignupView extends Component {
   }
 
   resetError = () => {
+    const { router } = this.props
     this.setState({ error: '' })
+    router.push('signin/')
   }
 
   recoverPassword = () => {
