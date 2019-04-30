@@ -131,6 +131,11 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'Sign in'
   },
+  signout: {
+    id: 'menu.signout',
+    description: 'Menu item',
+    defaultMessage: 'Sign out'
+  },
   downloads: {
     id: 'menu.downloads',
     description: 'Menu item',

@@ -333,6 +333,9 @@ class App extends Component {
           onRequestChangeNavDrawer={this.handleChangeRequestNavDrawer}
           onChangeList={this.handleChangeList}
           open={menuOpen}
+          isAuthenticated={isAuthenticated}
+          signout={logout}
+          isMobile={isMobile}
         />
         <Footer docked={docked} />
       </div>

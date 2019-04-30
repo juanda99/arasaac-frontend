@@ -56,6 +56,18 @@ export const signup = {
     }
   })
 }
+
+export const resetPassword = {
+  url: `${PRIVATE_API_ROOT}/users/password`,
+  options: (userData) => ({
+    config: {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData)
+    }
+  })
+}
+
 export const customPicto = {
   url: `${PRIVATE_API_ROOT}/pictograms/custom/base64/`,
   options: (parameters) => ({

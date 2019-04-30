@@ -48,17 +48,17 @@ let LoginForm = class LoginForm extends Component {
   }
 
   email = (value) =>
-    email(value) ? <FormattedMessage {...messages.invalidEmail} /> : undefined
+    email(value) ? '' : <FormattedMessage {...messages.invalidEmail} />
 
   required = (value) =>
-    value == null ? <FormattedMessage {...messages.required} /> : undefined
+    value == null ? <FormattedMessage {...messages.required} /> : ''
 
   render() {
     const { handleSubmit, submitting, pristine, username } = this.props
     // const emailLink = email(username) !== 'Invalid'
     const recoverLink = email(username)
-      ? '/recoverpassword'
-      : `/recoverpassword/${username}`
+      ? `/recoverpassword/${username}`
+      : '/recoverpassword/'
     return (
       <div>
         <form onSubmit={handleSubmit}>

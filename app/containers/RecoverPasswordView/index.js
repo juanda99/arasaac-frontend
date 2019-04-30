@@ -34,10 +34,10 @@ class RecoverPasswordView extends Component {
     this.setState({ error: '' })
   }
 
-  handleSubmit = async (userData) => {
+  handleSubmit = async (formData) => {
     try {
-      const data = { ...userData.toJS(), locale: this.props.locale }
-      await api.SIGNUP_REQUEST(data)
+      const data = { ...formData.toJS() }
+      await api.RESET_USER_PASSWORD(data)
       this.setState({ sent: true })
     } catch (error) {
       this.setState({ error: error.message })
