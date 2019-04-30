@@ -60,6 +60,10 @@ class Menu extends Component {
     window.location = value
   }
 
+  handleRouterChangeLink = (value) => {
+    this.context.router.push(value)
+  }
+
   handleTouchTapHeader = () => {
     this.context.router.push('/')
     this.props.onRequestChangeNavDrawer(false)
@@ -225,7 +229,7 @@ class Menu extends Component {
         </SelectableList>
         <Divider />
         {isMobile && (
-          <SelectableList value={location.pathname} onChange={onChangeList}>
+          <SelectableList value={location.pathname}>
             <Subheader>{<FormattedMessage {...messages.user} />}</Subheader>
             {isAuthenticated ? (
               <div>
@@ -243,12 +247,14 @@ class Menu extends Component {
                   value='/signin'
                   primaryText={<FormattedMessage {...messages.signin} />}
                   leftIcon={<LoginIcon />}
+                  onClick={() => this.handleRouterChangeLink('/signin')}
                 />
                 <ListItem
                   id='lstregister'
                   value='/register'
                   primaryText={<FormattedMessage {...messages.register} />}
                   leftIcon={<AccountIcon />}
+                  onClick={() => this.handleRouterChangeLink('/register')}
                 />
               </div>
             )}
