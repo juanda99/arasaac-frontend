@@ -149,6 +149,9 @@ class App extends Component {
       case /activate/.test(url):
         title = <FormattedMessage {...messages.userActivation} />
         break
+      case /recoverpassword/.test(url):
+        title = <FormattedMessage {...messages.recoverPassword} />
+        break
       case /onlinetools/.test(url):
         title = <FormattedMessage {...messages.onlineTools} />
         break
