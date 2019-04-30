@@ -62,6 +62,7 @@ class Menu extends Component {
 
   handleRouterChangeLink = (value) => {
     this.context.router.push(value)
+    this.props.onRequestChangeNavDrawer(false)
   }
 
   handleTouchTapHeader = () => {
