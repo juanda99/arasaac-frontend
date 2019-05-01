@@ -23,7 +23,6 @@ class RecoverPasswordView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: false,
       error: '',
       sent: false
     }
@@ -42,7 +41,8 @@ class RecoverPasswordView extends Component {
       hideProgressBar()
       this.setState({ sent: true })
     } catch (error) {
-      this.setState({ error: error.message })
+      hideProgressBar()
+      this.setState({ sent: false, error: error.message })
     }
   }
 
