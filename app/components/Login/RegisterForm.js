@@ -39,10 +39,10 @@ let RegisterForm = class RegisterForm extends Component {
   }
 
   email = (value) =>
-    email(value) ? <FormattedMessage {...messages.invalidEmail} /> : undefined
+    email(value) ? '' : <FormattedMessage {...messages.invalidEmail} />
 
   required = (value) =>
-    value == null ? <FormattedMessage {...messages.required} /> : undefined
+    value == null ? <FormattedMessage {...messages.required} /> : ''
 
   render() {
     const { handleSubmit, pristine, submitting } = this.props
