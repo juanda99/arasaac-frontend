@@ -48,24 +48,33 @@ export const socialLogin = {
 }
 export const signup = {
   url: `${PRIVATE_API_ROOT}/users`,
-  options: (userData) => ({
-    config: {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userData)
+  options: (userData) => {
+    const emailData = { email: userData.email.toLowerCase().trim() }
+    const data = { ...userData, ...emailData }
+    console.log(data)
+    return {
+      config: {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }
     }
-  })
+  }
 }
 
 export const resetPassword = {
   url: `${PRIVATE_API_ROOT}/users/password`,
-  options: (userData) => ({
-    config: {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userData)
+  options: (userData) => {
+    const emailData = { email: userData.email.toLowerCase().trim }
+    const data = { ...userData, ...emailData }
+    return {
+      config: {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }
     }
-  })
+  }
 }
 
 export const customPicto = {
