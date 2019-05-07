@@ -49,9 +49,8 @@ export const socialLogin = {
 export const signup = {
   url: `${PRIVATE_API_ROOT}/users`,
   options: (userData) => {
-    const emailData = { email: userData.email.toLowerCase().trim() }
+    const emailData = { email: userData.username.toLowerCase().trim() }
     const data = { ...userData, ...emailData }
-    console.log(data)
     return {
       config: {
         method: 'POST',
@@ -65,7 +64,7 @@ export const signup = {
 export const resetPassword = {
   url: `${PRIVATE_API_ROOT}/users/password`,
   options: (userData) => {
-    const emailData = { email: userData.email.toLowerCase().trim }
+    const emailData = { email: userData.username.toLowerCase().trim() }
     const data = { ...userData, ...emailData }
     return {
       config: {
