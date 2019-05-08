@@ -43,7 +43,7 @@ let RecoverPasswordForm = class RecoverPasswordForm extends Component {
   }
 
   componentWillMount() {
-    if (!email(this.props.email)) {
+    if (email(this.props.email)) {
       this.props.initialize({ username: this.props.email })
     }
   }
@@ -57,10 +57,10 @@ let RecoverPasswordForm = class RecoverPasswordForm extends Component {
   }
 
   email = (value) =>
-    email(value) ? <FormattedMessage {...messages.invalidEmail} /> : ''
+    email(value) ? '' : <FormattedMessage {...messages.invalidEmail} />
 
   required = (value) =>
-    value == null ? <FormattedMessage {...messages.required} /> : undefined
+    value == null ? <FormattedMessage {...messages.required} /> : ''
 
   render() {
     const { handleSubmit, submitting, pristine, email } = this.props

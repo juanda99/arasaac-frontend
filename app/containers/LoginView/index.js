@@ -13,8 +13,10 @@ import SocialLogin from 'components/SocialLogin'
 import Separator from 'components/Separator'
 import Logo from 'components/Logo'
 import AlertWindow from 'components/AlertWindow'
+import { injectIntl, intlShape } from 'react-intl'
 import { login, socialLogin, resetError } from 'containers/App/actions'
 import ConditionalPaper from 'components/ConditionalPaper'
+import messages from './messages'
 
 const handleSubmit = (requestLogin, formData) => {
   // this.props.login.request('pepito', 'password')
@@ -25,13 +27,28 @@ const handleSubmit = (requestLogin, formData) => {
 
 class LoginView extends Component {
   render() {
-    const { error, requestLogin, resetError, requestAppToken } = this.props
+    const {
+      error,
+      requestLogin,
+      resetError,
+      requestAppToken,
+      intl
+    } = this.props
+    const { formatMessage } = intl
     let showError = null
-    if (error) {
+    if (error === 'Failed to fetch') {
       showError = (
         <AlertWindow
-          title='Autenticación'
-          desc='Usuario no válido'
+          title={formatMessage(messages.authentication)}
+          desc={formatMessage(messages.communicationError)}
+          onReset={resetError}
+        />
+      )
+    } else if (error) {
+      showError = (
+        <AlertWindow
+          title={formatMessage(messages.authentication)}
+          desc={formatMessage(messages.invalidUser)}
           onReset={resetError}
         />
       )
@@ -57,7 +74,8 @@ LoginView.propTypes = {
   requestLogin: PropTypes.func.isRequired,
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   resetError: PropTypes.func.isRequired,
-  requestAppToken: PropTypes.func.isRequired
+  requestAppToken: PropTypes.func.isRequired,
+  intl: intlShape.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -79,4 +97,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginView)
+)(injectIntl(LoginView))

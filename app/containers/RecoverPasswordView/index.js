@@ -7,16 +7,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import api from 'services'
+import { withRouter } from 'react-router'
 import View from 'components/View'
-import { createSelector } from 'reselect'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 import { RecoverPasswordForm } from 'components/Login'
 import ConditionalPaper from 'components/ConditionalPaper'
 import Logo from 'components/Logo'
 import P from 'components/P'
-import { socialLogin } from 'containers/App/actions'
-import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import AlertWindow from 'components/AlertWindow'
 import messages from './messages'
 
@@ -24,7 +23,6 @@ class RecoverPasswordView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: false,
       error: '',
       sent: false
     }
@@ -34,13 +32,17 @@ class RecoverPasswordView extends Component {
     this.setState({ error: '' })
   }
 
-  handleSubmit = async (userData) => {
+  handleSubmit = async (formData) => {
+    const { showProgressBar, hideProgressBar } = this.props
     try {
-      const data = { ...userData.toJS(), locale: this.props.locale }
-      await api.SIGNUP_REQUEST(data)
+      const data = { ...formData.toJS() }
+      showProgressBar()
+      await api.RESET_USER_PASSWORD(data)
+      hideProgressBar()
       this.setState({ sent: true })
     } catch (error) {
-      this.setState({ error: error.message })
+      hideProgressBar()
+      this.setState({ sent: false, error: error.message })
     }
   }
 
@@ -50,15 +52,7 @@ class RecoverPasswordView extends Component {
     const { error, sent } = this.state
     const { formatMessage } = intl
     let showError = null
-    if (error === 'NOT_ACTIVATED_USER') {
-      showError = (
-        <AlertWindow
-          title={formatMessage(messages.resetPassword)}
-          desc={formatMessage(messages.userNotActivated)}
-          onReset={this.resetError}
-        />
-      )
-    } else if (error === 'NOT_USER') {
+    if (error === 'USER_NOT_EXISTS') {
       showError = (
         <AlertWindow
           title={formatMessage(messages.resetPassword)}
@@ -79,7 +73,7 @@ class RecoverPasswordView extends Component {
       <div>
         <Logo src='https://static.arasaac.org/pictograms/5432/5432_300.png' />
         <P>
-          <FormattedMessage {...messages.passwordResetSent} />
+          <FormattedMessage {...messages.passwordResetSend} />
         </P>
       </div>
     ) : (
@@ -99,13 +93,17 @@ class RecoverPasswordView extends Component {
 
 RecoverPasswordView.propTypes = {
   intl: intlShape.isRequired,
-  locale: PropTypes.string,
-  params: PropTypes.object.isRequired
+  params: PropTypes.object.isRequired,
+  showProgressBar: PropTypes.func.isRequired,
+  hideProgressBar: PropTypes.func.isRequired
 }
 
-const mapStateToProps = createSelector(
-  makeSelectLocale(),
-  (locale) => ({ locale })
-)
+const mapDispatchToProps = (dispatch) => ({
+  showProgressBar: () => dispatch(showLoading()),
+  hideProgressBar: () => dispatch(hideLoading())
+})
 
-export default connect(mapStateToProps)(injectIntl(RecoverPasswordView))
+export default connect(
+  null,
+  mapDispatchToProps
+)(injectIntl(withRouter(RecoverPasswordView)))

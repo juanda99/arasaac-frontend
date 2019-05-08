@@ -48,14 +48,34 @@ export const socialLogin = {
 }
 export const signup = {
   url: `${PRIVATE_API_ROOT}/users`,
-  options: (userData) => ({
-    config: {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userData)
+  options: (userData) => {
+    const emailData = { email: userData.username.toLowerCase().trim() }
+    const data = { ...userData, ...emailData }
+    return {
+      config: {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }
     }
-  })
+  }
 }
+
+export const resetPassword = {
+  url: `${PRIVATE_API_ROOT}/users/password`,
+  options: (userData) => {
+    const emailData = { email: userData.username.toLowerCase().trim() }
+    const data = { ...userData, ...emailData }
+    return {
+      config: {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }
+    }
+  }
+}
+
 export const customPicto = {
   url: `${PRIVATE_API_ROOT}/pictograms/custom/base64/`,
   options: (parameters) => ({

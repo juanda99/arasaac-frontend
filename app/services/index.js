@@ -6,6 +6,7 @@ import {
   socialLogin,
   uploadMaterial,
   customPicto,
+  resetPassword,
   /* customPictogram, */ API_ROOT,
   PRIVATE_API_ROOT
 } from './config'
@@ -46,7 +47,9 @@ const api = {
     callApi(
       `${PRIVATE_API_ROOT}/pictograms/keywords/${language}/${idPictogram}`
     ),
-  CATALOGS_REQUEST: () => callApi(`${PRIVATE_API_ROOT}/catalogs`)
+  CATALOGS_REQUEST: () => callApi(`${PRIVATE_API_ROOT}/catalogs`),
+  RESET_USER_PASSWORD: (userData) =>
+    callApi(resetPassword.url, resetPassword.options(userData))
 
   /* CUSTOM_PICTOGRAM_REQUEST: (idPictogram, options) => callApi(customPictogram.url(idPictogram, options))*/
 }

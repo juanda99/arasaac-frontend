@@ -149,6 +149,9 @@ class App extends Component {
       case /activate/.test(url):
         title = <FormattedMessage {...messages.userActivation} />
         break
+      case /recoverpassword/.test(url):
+        title = <FormattedMessage {...messages.recoverPassword} />
+        break
       case /onlinetools/.test(url):
         title = <FormattedMessage {...messages.onlineTools} />
         break
@@ -217,6 +220,9 @@ class App extends Component {
   }
 
   handleChangeList = (event, value) => {
+    console.log('handleChangeList')
+    console.log(event)
+    console.log(value)
     if (value) {
       this.context.router.push(value)
       this.setState({
@@ -333,6 +339,9 @@ class App extends Component {
           onRequestChangeNavDrawer={this.handleChangeRequestNavDrawer}
           onChangeList={this.handleChangeList}
           open={menuOpen}
+          isAuthenticated={isAuthenticated}
+          signout={logout}
+          isMobile={isMobile}
         />
         <Footer docked={docked} />
       </div>

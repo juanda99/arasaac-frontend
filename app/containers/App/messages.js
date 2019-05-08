@@ -26,6 +26,11 @@ export default defineMessages({
     description: 'Header title',
     defaultMessage: 'User activation'
   },
+  recoverPassword: {
+    id: 'header.recoverPassword',
+    description: 'Header title',
+    defaultMessage: 'Recover password'
+  },
   devAccounts: {
     id: 'header.devAccounts',
     description: 'Header title',
@@ -85,11 +90,6 @@ export default defineMessages({
     id: 'header.settingsTitle',
     description: 'Header title',
     defaultMessage: 'Settings'
-  },
-  userActivation: {
-    id: 'header.userActivation',
-    description: 'Header title',
-    defaultMessage: 'User activation'
   },
   prizes: {
     id: 'header.prizesTitle',

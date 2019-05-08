@@ -129,7 +129,9 @@ SignupView.propTypes = {
   intl: intlShape.isRequired,
   requestAppToken: PropTypes.func.isRequired,
   locale: PropTypes.string,
-  router: PropTypes.any.isRequired
+  router: PropTypes.any.isRequired,
+  showProgressBar: PropTypes.func.isRequired,
+  hideProgressBar: PropTypes.func.isRequired
 }
 
 const mapStateToProps = createSelector(

@@ -24,6 +24,7 @@ import PeopleIcon from 'material-ui/svg-icons/social/people'
 import SoftwareIcon from 'material-ui/svg-icons/action/important-devices'
 import MaterialsIcon from 'material-ui/svg-icons/av/library-books'
 import NewsIcon from 'material-ui/svg-icons/communication/message'
+import SignoutIcon from 'material-ui/svg-icons/content/block'
 import ApiIcon from 'material-ui/svg-icons/communication/import-export'
 import ContactMailIcon from 'material-ui/svg-icons/communication/contact-mail'
 import FileUploadIcon from 'material-ui/svg-icons/file/file-upload'
@@ -41,7 +42,10 @@ class Menu extends Component {
     onChangeList: PropTypes.func.isRequired,
     onRequestChangeNavDrawer: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
-    muiTheme: PropTypes.object.isRequired
+    muiTheme: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+    signout: PropTypes.func.isRequired,
+    isMobile: PropTypes.bool.isRequired
   }
 
   static contextTypes = {
@@ -56,6 +60,11 @@ class Menu extends Component {
     window.location = value
   }
 
+  handleRouterChangeLink = (value) => {
+    this.context.router.push(value)
+    this.props.onRequestChangeNavDrawer(false)
+  }
+
   handleTouchTapHeader = () => {
     this.context.router.push('/')
     this.props.onRequestChangeNavDrawer(false)
@@ -68,7 +77,10 @@ class Menu extends Component {
       onRequestChangeNavDrawer,
       onChangeList,
       open,
-      muiTheme
+      muiTheme,
+      isAuthenticated,
+      signout,
+      isMobile
     } = this.props
 
     return (
@@ -217,21 +229,38 @@ class Menu extends Component {
           />
         </SelectableList>
         <Divider />
-        <SelectableList value={location.pathname} onChange={onChangeList}>
-          <Subheader>{<FormattedMessage {...messages.user} />}</Subheader>
-          <ListItem
-            id='lstlogin'
-            value='/signin'
-            primaryText={<FormattedMessage {...messages.signin} />}
-            leftIcon={<LoginIcon />}
-          />
-          <ListItem
-            id='lstregister'
-            value='/register'
-            primaryText={<FormattedMessage {...messages.register} />}
-            leftIcon={<AccountIcon />}
-          />
-        </SelectableList>
+        {isMobile && (
+          <SelectableList value={location.pathname}>
+            <Subheader>{<FormattedMessage {...messages.user} />}</Subheader>
+            {isAuthenticated ? (
+              <div>
+                <ListItem
+                  id='lstsignout'
+                  primaryText={<FormattedMessage {...messages.signout} />}
+                  leftIcon={<SignoutIcon />}
+                  onClick={signout}
+                />
+              </div>
+            ) : (
+              <div>
+                <ListItem
+                  id='lstlogin'
+                  value='/signin'
+                  primaryText={<FormattedMessage {...messages.signin} />}
+                  leftIcon={<LoginIcon />}
+                  onClick={() => this.handleRouterChangeLink('/signin')}
+                />
+                <ListItem
+                  id='lstregister'
+                  value='/register'
+                  primaryText={<FormattedMessage {...messages.register} />}
+                  leftIcon={<AccountIcon />}
+                  onClick={() => this.handleRouterChangeLink('/register')}
+                />
+              </div>
+            )}
+          </SelectableList>
+        )}
         <Divider />
         <SelectableList value='' onChange={this.handleRequestChangeLink}>
           <Subheader>{<FormattedMessage {...messages.info} />}</Subheader>

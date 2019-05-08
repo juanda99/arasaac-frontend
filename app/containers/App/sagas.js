@@ -42,6 +42,8 @@ import {
   socialLogin
 } from './actions'
 
+import { changeLocale } from '../LanguageProvider/actions'
+
 /**
  *  The saga flow for authentication. Starts with either a direct login (with
  *  login/password) or a validation from the token stored in the local storage.
@@ -99,7 +101,7 @@ function* loginAuth(type, payload) {
     yield put(push('/profile'))
   } catch (err) {
     // const error = yield parseError(err)
-    yield put(login.failure(err))
+    yield put(login.failure(err.message))
   }
 }
 
@@ -131,7 +133,10 @@ function* authenticate() {
     payload: {
       url: `${API_ROOT}/users/profile`,
       options: { config: { method: 'GET' } },
-      onSuccess: (response) => put(tokenValidation.success(response)),
+      onSuccess: function* acabar(response) {
+        yield put(tokenValidation.success(response))
+        yield put(changeLocale(response.locale))
+      },
       onError
     }
   })
