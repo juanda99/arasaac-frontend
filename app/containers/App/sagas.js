@@ -101,7 +101,7 @@ function* loginAuth(type, payload) {
     yield put(push('/profile'))
   } catch (err) {
     // const error = yield parseError(err)
-    yield put(login.failure(err))
+    yield put(login.failure(err.message))
   }
 }
 
