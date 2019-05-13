@@ -100,7 +100,7 @@ let RegisterForm = class RegisterForm extends Component {
               autoComplete='organization'
             />
             <Field
-              name='website'
+              name='url'
               component={TextField}
               hintText={<FormattedMessage {...messages.hintWebsite} />}
               value=''
