@@ -8,7 +8,6 @@ import SocialLogin from 'components/SocialLogin'
 import Separator from 'components/Separator'
 import { RegisterOptions } from 'components/Login'
 import Logo from 'components/Logo'
-import { Link } from 'react-router'
 
 class SignupOptionsView extends Component {
   render() {
