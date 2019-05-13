@@ -39,9 +39,6 @@ import {
 } from './actions'
 
 const initialState = fromJS({
-  username: '',
-  accessToken: '',
-  refreshToken: '',
   loading: false,
   error: ''
 })
