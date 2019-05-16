@@ -21,10 +21,9 @@ const callApi = async (endpoint, options, token) => {
   // const fullUrl = (endpoint.indexOf(AUTH_ROOT) === -1) ? API_ROOT + endpoint : endpoint
   try {
     const response = await fetch(endpoint, config)
+    if (response.status === 401) throw new Error('UNAUTHORIZED')
+    if (response.status >= 400) throw new Error(data.error)
     const data = await response.json()
-    if (response.status >= 400) {
-      throw new Error(data.error)
-    }
     return schema ? normalize(data, schema) : data
   } catch (error) {
     throw new Error(error.message)
