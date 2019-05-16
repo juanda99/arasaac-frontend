@@ -10,13 +10,18 @@ const callApi = async (endpoint, options, token) => {
   let config = {}
   if (options) {
     schema = options.schema || null
-    config = options.config || {}
+    config = options.config
   }
-
   // if token we add it as header
+  // add Content-Type as spread operator does not deep merging
   if (token) {
-    const authHeader = { headers: { Authorization: `Bearer ${token}` } }
-    config = { ...(config || {}), ...authHeader }
+    const authHeader = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+    config = { ...config, ...authHeader }
   }
   // const fullUrl = (endpoint.indexOf(AUTH_ROOT) === -1) ? API_ROOT + endpoint : endpoint
   try {
