@@ -32,7 +32,7 @@ class ImageSlider extends Component {
               images.map((image, key) => (
                 <div key={key}>
                   <Counter>{`${key + 1}/${imagesCount}`}</Counter>
-                  <img src={`${MATERIALS_URL}/${id}/screenshots_300/${image}`} alt='Screenshot' />
+                  <img src={`${MATERIALS_URL}/${id}/screenshots/${image}`} alt='Screenshot' />
                 </div>
               ))
             : <img src={'//static.arasaac.org/images/noimage.png'} alt='Screenshot not available' />
