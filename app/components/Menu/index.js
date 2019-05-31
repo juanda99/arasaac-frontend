@@ -118,11 +118,6 @@ class Menu extends Component {
                   <FormattedMessage {...messages.searchPictograms} />
                 }
                 leftIcon={<SearchIcon />}
-              />,
-              <ListItem
-                value='/pictograms/catalogs'
-                primaryText={<FormattedMessage {...messages.downloads} />}
-                leftIcon={<CloudDownloadIcon />}
               />
             ]}
           />
