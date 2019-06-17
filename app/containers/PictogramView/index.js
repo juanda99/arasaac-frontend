@@ -16,6 +16,9 @@ import api, { downloadCustomPictogram, downloadLocution } from 'services'
 import { makePictogramByIdSelector } from './selectors'
 import messages from './messages'
 
+// TODO: Añadir logo de arasaac como identificador. Esto será útil para cuando se obligue
+// a hacer la descarga de los pictogramas con mención a Arasaac
+
 class PictogramView extends PureComponent {
   componentDidMount() {
     const { params, pictogramData } = this.props
