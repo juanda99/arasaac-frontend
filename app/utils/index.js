@@ -43,13 +43,13 @@ export const getFilteredItems = (items, filters) =>
 /* inside pictograms, check which keywords meets an specific searchText */
 export const keywordSelector = (searchText, keywords) => {
   const searchTextArray = searchText.split(' ')
-  if (!searchTextArray.length) return keywords[0]
+  if (!searchTextArray.length) return keywords[0] || ''
   // if same keyword exists, return it
   const keyword = keywords.find(
     (keywordsItem) =>
       keywordsItem.keyword.toLowerCase() === searchText.toLowerCase()
   )
-  if (keyword) return keyword
+  if (keyword) return keyword || ''
   // otherwise, return first partial match or fist keyword if no matches
   return (
     keywords.find((keywordsItem) => {
@@ -59,7 +59,9 @@ export const keywordSelector = (searchText, keywords) => {
       return searchTextArray.some((word) =>
         keywordArray.includes(word.toLowerCase())
       )
-    }) || keywords[0]
+    }) ||
+    keywords[0] ||
+    ''
   )
 }
 
