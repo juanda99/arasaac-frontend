@@ -121,6 +121,7 @@ class PictogramsView extends PureComponent {
       muiTheme,
       keywords
     } = this.props
+
     const { isAuthenticated } = this.context
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state

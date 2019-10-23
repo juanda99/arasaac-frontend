@@ -11,11 +11,12 @@ import Logo from 'components/Logo'
 
 class SignupOptionsView extends Component {
   render() {
+    const { requestAppToken, locale } = this.props
     return (
       <View>
         <ConditionalPaper>
           <Logo />
-          <SocialLogin onSuccess={this.props.requestAppToken} />
+          <SocialLogin onSuccess={requestAppToken} locale={locale} />
           <Separator />
           <RegisterOptions onClick={this.handleClick} />
         </ConditionalPaper>
@@ -25,16 +26,24 @@ class SignupOptionsView extends Component {
 }
 
 SignupOptionsView.propTypes = {
-  requestAppToken: PropTypes.func.isRequired
+  requestAppToken: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired
+}
+
+const mapStateToProps = (state) => {
+  const locale = state.getIn(['language', 'locale'])
+  return {
+    locale
+  }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  requestAppToken: (token, socialNetwork) => {
-    dispatch(socialLogin.request(token, socialNetwork))
+  requestAppToken: (token, socialNetwork, locale) => {
+    dispatch(socialLogin.request(token, socialNetwork, locale))
   }
 })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(SignupOptionsView)

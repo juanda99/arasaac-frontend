@@ -38,8 +38,11 @@ const api = {
     callApi(`${API_ROOT}/pictograms/${locale}/${idPictogram}`),
   LOGIN_REQUEST: ({ username, password }) =>
     callApi(login.url, login.options(username, password)),
-  SOCIAL_LOGIN_REQUEST: ({ socialToken, provider }) =>
-    callApi(socialLogin.url, socialLogin.options(socialToken, provider)),
+  SOCIAL_LOGIN_REQUEST: ({ socialToken, provider, locale }) =>
+    callApi(
+      socialLogin.url,
+      socialLogin.options(socialToken, provider, locale)
+    ),
   SIGNUP_REQUEST: (userData) => callApi(signup.url, signup.options(userData)),
   GENERATE_CUSTOM_PICTOGRAM: (parameters) =>
     callApi(customPicto.url, customPicto.options(parameters)),

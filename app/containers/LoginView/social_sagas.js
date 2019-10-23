@@ -5,29 +5,33 @@ import loginFlow from './login_sagas'
 /* eslint no-constant-condition: ["error", { "checkLoops": false }] */
 
 export const promises = {
-  fbLogin: (options) => new Promise((resolve, reject) => {
-    window.FB.login((response) => {
-      // istanbul ignore else
-      if (response.authResponse) {
-        resolve(response.authResponse)
-      } else {
-        reject(response.status)
-      }
-    }, options)
-  }),
-  fbGetMe: (options) => new Promise((resolve) => {
-    window.FB.api('/me', options, (me) => resolve(me))
-  }),
-  loadGoogleAuth2: () => new Promise((resolve) => {
-    window.gapi.load('auth2', resolve)
-  }),
-  loadScript: (src) => new Promise((resolve, reject) => {
-    const js = document.createElement('script')
-    js.src = src
-    js.onload = resolve
-    js.onerror = reject
-    document.head.appendChild(js)
-  })
+  fbLogin: (options) =>
+    new Promise((resolve, reject) => {
+      window.FB.login((response) => {
+        // istanbul ignore else
+        if (response.authResponse) {
+          resolve(response.authResponse)
+        } else {
+          reject(response.status)
+        }
+      }, options)
+    }),
+  fbGetMe: (options) =>
+    new Promise((resolve) => {
+      window.FB.api('/me', options, (me) => resolve(me))
+    }),
+  loadGoogleAuth2: () =>
+    new Promise((resolve) => {
+      window.gapi.load('auth2', resolve)
+    }),
+  loadScript: (src) =>
+    new Promise((resolve, reject) => {
+      const js = document.createElement('script')
+      js.src = src
+      js.onload = resolve
+      js.onerror = reject
+      document.head.appendChild(js)
+    })
 }
 
 export const appendFbRoot = () => {
@@ -39,7 +43,11 @@ export const appendFbRoot = () => {
 export const serviceAction = (suffix, service) => (action) =>
   action.type === `SOCIAL_LOGIN_${suffix}` && action.service === service
 
-export function* loginFacebook({ scope = 'public_profile', fields = 'id,name', ...options } = {}) {
+export function* loginFacebook({
+  scope = 'public_profile',
+  fields = 'id,name',
+  ...options
+} = {}) {
   try {
     yield call(promises.fbLogin, { scope, ...options })
     const data = yield call(promises.fbGetMe, { fields })

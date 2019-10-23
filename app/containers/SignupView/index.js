@@ -63,7 +63,7 @@ class SignupView extends Component {
   }
 
   render() {
-    const { intl } = this.props
+    const { intl, locale } = this.props
     const { error, registered, loading } = this.state
     const { formatMessage } = intl
     let showError = null
@@ -103,7 +103,7 @@ class SignupView extends Component {
       </div>
     ) : (
       <div>
-        <SocialLogin onSuccess={this.props.requestAppToken} />
+        <SocialLogin onSuccess={this.props.requestAppToken} locale={locale} />
         <Separator />
         {loading ? (
           <H3>
@@ -128,7 +128,7 @@ class SignupView extends Component {
 SignupView.propTypes = {
   intl: intlShape.isRequired,
   requestAppToken: PropTypes.func.isRequired,
-  locale: PropTypes.string,
+  locale: PropTypes.string.isRequired,
   router: PropTypes.any.isRequired,
   showProgressBar: PropTypes.func.isRequired,
   hideProgressBar: PropTypes.func.isRequired
