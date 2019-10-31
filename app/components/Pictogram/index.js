@@ -6,8 +6,6 @@ import H2 from 'components/H2'
 import H3 from 'components/H3'
 import ShareBar from 'components/ShareBar'
 import Divider from 'material-ui/Divider'
-import FlatButton from 'material-ui/FlatButton'
-import Person from 'material-ui/svg-icons/social/person'
 import RaisedButton from 'material-ui/RaisedButton'
 import {
   PICTOGRAMS_URL,
@@ -565,7 +563,6 @@ class Pictogram extends Component {
     const idPictogram = pictogram.get('idPictogram')
     // first time downloadUrl is default png
     const { keyword, idLocution } = keywordSelector(searchText, keywords.toJS())
-    const authors = pictogram.get('authors')
     // remove # character in identifierColor for url
     const identifierFile = `${IMAGES_URL}/identifiers/${identifier}_${identifierColor.substr(
       1
@@ -853,18 +850,7 @@ class Pictogram extends Component {
           onLanguageChange={this.handleLanguageChange}
           onDownloadLocution={this.props.onDownloadLocution}
         />
-        <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
-        <Divider />
-        {authors.valueSeq().map((author) => (
-          <P key={`${author.get('id')}`}>
-            <FlatButton
-              label={author.get('name')}
-              labelPosition='after'
-              icon={<Person />}
-              href={`http://static.arasaac.org/${author}`}
-            />
-          </P>
-        ))}
+
         <H3 primary={true}>
           {<FormattedMessage {...messages.sharePictogram} />}
         </H3>
