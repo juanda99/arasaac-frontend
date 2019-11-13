@@ -18,28 +18,29 @@ export default class RelatedWords extends Component {
     idPictogram: PropTypes.number.isRequired,
     onLanguageChange: PropTypes.func.isRequired,
     onDownloadLocution: PropTypes.func.isRequired
-  }
+  };
 
   state = {
     keywords: []
-  }
+  };
 
   componentDidMount = () => {
     const { idPictogram, language } = this.props
     api.GET_KEYWORDS_BY_PICTOID({ language, idPictogram }).then((keywords) => {
-      this.setState({ keywords })
+      console.log(keywords)
+      this.setState({ keywords: keywords.keywords })
     })
-  }
+  };
 
-  getSoundPlayer = (idLocution, locale) => (
-    <SoundPlayer
-      crossOrigin='anonymous'
-      streamUrl={`${LOCUTIONS_URL}/${locale}/${idLocution}`}
-      preloadType='metadata'
-      showProgress={false}
-      showTimer={false}
-    />
-  )
+  // getSoundPlayer = (idLocution, locale) => (
+  //   <SoundPlayer
+  //     crossOrigin='anonymous'
+  //     streamUrl={`${LOCUTIONS_URL}/${locale}/${idLocution}`}
+  //     preloadType='metadata'
+  //     showProgress={false}
+  //     showTimer={false}
+  //   />
+  // );
 
   getSoundPlayer = (idLocution, locale, keyword) => {
     const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
@@ -64,15 +65,15 @@ export default class RelatedWords extends Component {
         )}
       </div>
     )
-  }
+  };
 
   handleLanguageChange = (language) => {
     const { idPictogram, onLanguageChange } = this.props
     onLanguageChange(language)
     api.GET_KEYWORDS_BY_PICTOID({ language, idPictogram }).then((keywords) => {
-      this.setState({ keywords })
+      this.setState({ keywords: keywords.keywords })
     })
-  }
+  };
 
   render() {
     const { keywords } = this.state
@@ -88,22 +89,24 @@ export default class RelatedWords extends Component {
           shortOption={true}
           showToolTip={false}
         />
-
-        {keywords.map((keyword, index) => (
-          <div key={`${keyword.keyword}-${index}`}>
-            <div style={{ display: 'flex' }}>
-              {this.getSoundPlayer(
-                keyword.idLocution,
-                language,
-                keyword.keyword
-              )}
-              <P important={true} marginRight={'10px'}>
-                {keyword.keyword}{' '}
-              </P>
-              <P>{keyword.meaning}</P>
+        {console.log(keywords, 'keywords')}
+        {keywords &&
+          keywords.map((keyword, index) => (
+            <div key={`${keyword.keyword}-${index}`}>
+              <div style={{ display: 'flex' }}>
+                {keyword.idLocution &&
+                  this.getSoundPlayer(
+                    keyword.idLocution,
+                    language,
+                    keyword.keyword
+                  )}
+                <P important={true} marginRight={'10px'}>
+                  {keyword.keyword}{' '}
+                </P>
+                <P>{keyword.meaning}</P>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     )
   }
