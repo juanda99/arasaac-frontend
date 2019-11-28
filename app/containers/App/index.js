@@ -21,23 +21,19 @@ import { ImmutableLoadingBar as LoadingBar } from 'react-redux-loading-bar'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
 import Menu from 'components/Menu'
-import muiThemeable from 'material-ui/styles/muiThemeable'
 import { FormattedMessage } from 'react-intl'
 import Joyride from 'react-joyride'
-import Div from 'components/Div'
 import 'react-joyride/lib/react-joyride.scss'
 import messages from './messages'
 import Wrapper from './Wrapper'
 import { connect } from 'react-redux'
-import spacing from 'material-ui/styles/spacing'
-import { white } from 'material-ui/styles/colors'
 import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth'
 import {
   changeLocale,
   startTranslation,
   stopTranslation
 } from 'containers/LanguageProvider/actions'
-import { logout, activation } from './actions'
+import { logout } from './actions'
 import { makeSelectHasUser } from './selectors'
 
 class App extends Component {

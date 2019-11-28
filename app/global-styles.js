@@ -4,7 +4,7 @@ import { injectGlobal } from 'styled-components'
 injectGlobal`
   html,
   body {
-    height: 100%;
+    height: 100vh;
   }
   body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -12,8 +12,9 @@ injectGlobal`
 
   #app {
     background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
-    flex: 1;
   }
 
   #font-picker {
