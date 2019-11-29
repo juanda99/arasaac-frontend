@@ -47,12 +47,14 @@ export const keywordSelector = (searchText, keywords) => {
   // if same keyword exists, return it
   const keyword = keywords.find(
     (keywordsItem) =>
+      keywordsItem.keyword &&
       keywordsItem.keyword.toLowerCase() === searchText.toLowerCase()
   )
-  if (keyword) return keyword || ''
+  if (keyword) return keyword
   // otherwise, return first partial match or fist keyword if no matches
   return (
     keywords.find((keywordsItem) => {
+      if (!keywords.keyword) return false
       const keywordArray = keywordsItem.keyword
         .split(' ')
         .map((keyword) => keyword.toLowerCase())

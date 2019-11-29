@@ -31,15 +31,15 @@ export default class RelatedWords extends Component {
     })
   };
 
-  getSoundPlayer = (idLocution, locale) => (
-    <SoundPlayer
-      crossOrigin='anonymous'
-      streamUrl={`${LOCUTIONS_URL}/${locale}/${idLocution}`}
-      preloadType='metadata'
-      showProgress={false}
-      showTimer={false}
-    />
-  );
+  // getSoundPlayer = (idLocution, locale) => (
+  //   <SoundPlayer
+  //     crossOrigin='anonymous'
+  //     streamUrl={`${LOCUTIONS_URL}/${locale}/${idLocution}`}
+  //     preloadType='metadata'
+  //     showProgress={false}
+  //     showTimer={false}
+  //   />
+  // );
 
   getSoundPlayer = (idLocution, locale, keyword) => {
     const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
@@ -88,22 +88,23 @@ export default class RelatedWords extends Component {
           shortOption={true}
           showToolTip={false}
         />
-
-        {keywords.map((keyword, index) => (
-          <div key={`${keyword.keyword}-${index}`}>
-            <div style={{ display: 'flex' }}>
-              {this.getSoundPlayer(
-                keyword.idLocution,
-                language,
-                keyword.keyword
-              )}
-              <P important={true} marginRight={'10px'}>
-                {keyword.keyword}{' '}
-              </P>
-              <P>{keyword.meaning}</P>
+        {keywords &&
+          keywords.map((keyword, index) => (
+            <div key={`${keyword.keyword}-${index}`}>
+              <div style={{ display: 'flex' }}>
+                {keyword.idLocution &&
+                  this.getSoundPlayer(
+                    keyword.idLocution,
+                    language,
+                    keyword.keyword
+                  )}
+                <P important={true} marginRight={'10px'}>
+                  {keyword.keyword}{' '}
+                </P>
+                <P>{keyword.meaning}</P>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     )
   }
