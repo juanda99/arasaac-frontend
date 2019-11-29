@@ -17,7 +17,7 @@ import messages from './messages'
 class PictogramSnippet extends PureComponent {
   state = {
     isFlipped: false
-  }
+  };
 
   styles = {
     icon: {
@@ -47,23 +47,23 @@ class PictogramSnippet extends PureComponent {
       color: this.props.muiTheme.appBar.textColor,
       fontWeight: '900'
     }
-  }
+  };
 
   handleMouseEnter = () => {
     this.setState({
       zDepth: 3
     })
-  }
+  };
 
   handleMouseLeave = () => {
     this.setState({
       zDepth: 1
     })
-  }
+  };
 
   render() {
     const {
-      pictogram: { idPictogram, keywords },
+      pictogram: { _id, keywords },
       searchText,
       muiTheme,
       locale,
@@ -73,16 +73,16 @@ class PictogramSnippet extends PureComponent {
     const { isAuthenticated } = this.context
     return (
       <StyledList
-        key={idPictogram}
+        key={_id}
         className='image-element-class'
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
         <StyledPaper zDepth={this.state.zDepth}>
-          <Item url={`/pictograms/${locale}/${idPictogram}/${keyword}`}>
+          <Item url={`/pictograms/${locale}/${_id}/${keyword}`}>
             <div style={{ position: 'relative' }}>
               <Image
-                src={`${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_300.png`}
+                src={`${PICTOGRAMS_URL}/${_id}/${_id}_300.png`}
                 alt={keyword}
               />
               <CardActions>

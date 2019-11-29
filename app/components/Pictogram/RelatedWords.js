@@ -18,18 +18,18 @@ export default class RelatedWords extends Component {
     idPictogram: PropTypes.number.isRequired,
     onLanguageChange: PropTypes.func.isRequired,
     onDownloadLocution: PropTypes.func.isRequired
-  }
+  };
 
   state = {
     keywords: []
-  }
+  };
 
   componentDidMount = () => {
     const { idPictogram, language } = this.props
-    api.GET_KEYWORDS_BY_PICTOID({ language, idPictogram }).then((keywords) => {
-      this.setState({ keywords })
+    api.GET_KEYWORDS_BY_PICTOID({ language, idPictogram }).then((data) => {
+      this.setState({ keywords: data.keywords })
     })
-  }
+  };
 
   getSoundPlayer = (idLocution, locale) => (
     <SoundPlayer
@@ -39,7 +39,7 @@ export default class RelatedWords extends Component {
       showProgress={false}
       showTimer={false}
     />
-  )
+  );
 
   getSoundPlayer = (idLocution, locale, keyword) => {
     const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
@@ -64,15 +64,15 @@ export default class RelatedWords extends Component {
         )}
       </div>
     )
-  }
+  };
 
   handleLanguageChange = (language) => {
     const { idPictogram, onLanguageChange } = this.props
     onLanguageChange(language)
-    api.GET_KEYWORDS_BY_PICTOID({ language, idPictogram }).then((keywords) => {
-      this.setState({ keywords })
+    api.GET_KEYWORDS_BY_PICTOID({ language, idPictogram }).then((data) => {
+      this.setState({ keywords: data.keywords })
     })
-  }
+  };
 
   render() {
     const { keywords } = this.state

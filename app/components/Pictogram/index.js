@@ -61,7 +61,7 @@ class Pictogram extends Component {
     super(props)
     const { pictogram, searchText, locale } = this.props
     const keywords = pictogram.get('keywords')
-    const idPictogram = pictogram.get('idPictogram')
+    const idPictogram = pictogram.get('_id')
     const { keyword, type } = keywordSelector(searchText, keywords.toJS())
     const keywordsArray = keywords
       .valueSeq()
@@ -139,7 +139,7 @@ class Pictogram extends Component {
     if (prevState.activeFont !== this.state.activeFont) {
       // setInterval(() => this.textLayer.draw(), 1000)
     }
-  }
+  };
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions)
@@ -147,20 +147,20 @@ class Pictogram extends Component {
   }
 
   onTogglePicker = () =>
-    this.setState({ pickerVisible: !this.state.pickerVisible })
+    this.setState({ pickerVisible: !this.state.pickerVisible });
 
   getSoundPlayer = (idLocution, locale, keyword) => {
     const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
     return (
       <div style={{ display: 'flex' }}>
         {idLocution && (
-        <SoundPlayer
-          crossOrigin='anonymous'
-          streamUrl={streamUrl}
-          preloadType='metadata'
-          showProgress={false}
-          showTimer={false}
-        />
+          <SoundPlayer
+            crossOrigin='anonymous'
+            streamUrl={streamUrl}
+            preloadType='metadata'
+            showProgress={false}
+            showTimer={false}
+          />
         )}
         {keyword && (
           <IconButton
@@ -174,11 +174,11 @@ class Pictogram extends Component {
         )}
       </div>
     )
-  }
+  };
   needHideOptions = (event) => {
     // add data-hide to elements where if click options should hide
     if (event.target.dataset.hide) this.hideOptions()
-  }
+  };
 
   hideOptions = () =>
     this.setState({
@@ -191,12 +191,12 @@ class Pictogram extends Component {
       bottomTextOptionsShow: false,
       zoomOptionsShow: false,
       pluralOptionsShow: false
-    })
+    });
 
   buildOptionsRequest = () => {
     const { pictogram } = this.props
     const { color, hair, skin, highResolution } = this.state
-    const idPictogram = pictogram.get('idPictogram')
+    const idPictogram = pictogram.get('_id')
     const parameters = color ? {} : { color }
 
     // only if active hair, skin, backgroundColor we add it to the request. Otherwise we take default image values
@@ -218,47 +218,47 @@ class Pictogram extends Component {
         .then((data) => data.json())
         .then((data) => this.setState({ url: data.image, downloadUrl }))
     }
-  }
+  };
 
   handleLanguageChange = (language) => {
     this.setState({ language })
-  }
+  };
 
   handleColor = (event, color) => {
     this.setState({ color }, () => this.buildOptionsRequest())
     this.hideOptions()
-  }
+  };
 
   handleHighResolution = (event, highResolution) => {
     this.setState({ highResolution }, () => this.buildOptionsRequest())
     this.hideOptions()
-  }
+  };
 
   handleDragAndDrop = (event, dragAndDrop) => {
     this.setState({ dragAndDrop })
     this.hideOptions()
-  }
+  };
 
   // handlePlural = (event, plural) => this.setState({ plural }, () => this.buildOptionsRequest())
 
   handlePluralChange = (plural) => {
     this.hideOptions()
     this.setState({ plural, pluralOptionsShow: plural })
-  }
+  };
 
-  handlePluralColorChange = (pluralColor) => this.setState({ pluralColor })
+  handlePluralColorChange = (pluralColor) => this.setState({ pluralColor });
 
   handlePluralOptionsShow = (pluralOptionsShow) => {
     this.hideOptions()
     this.setState({ pluralOptionsShow })
-  }
+  };
 
   handleStrikeThrough = (event, strikeThrough) => {
     this.setState({ strikeThrough })
     this.hideOptions()
-  }
+  };
 
-  handleBgColorChange = (backgroundColor) => this.setState({ backgroundColor })
+  handleBgColorChange = (backgroundColor) => this.setState({ backgroundColor });
   /* this.setState({ backgroundColor: backgroundColor.replace('#', '%23') }, () =>
       this.buildOptionsRequest()
     )
@@ -267,44 +267,44 @@ class Pictogram extends Component {
   handleBgColorOptionsShow = (bgColorOptionsShow) => {
     this.hideOptions()
     this.setState({ bgColorOptionsShow })
-  }
+  };
 
   handleBgColorActive = (bgColorActive) => {
     this.hideOptions()
     this.setState({ bgColorActive, bgColorOptionsShow: bgColorActive })
-  }
+  };
 
-  handleZoomChange = (zoomLevel) => this.setState({ zoomLevel })
+  handleZoomChange = (zoomLevel) => this.setState({ zoomLevel });
 
   handleZoomOptionsShow = (zoomOptionsShow) => {
     this.hideOptions()
     this.setState({ zoomOptionsShow })
-  }
+  };
 
   handleZoomActive = (zoomActive) => {
     this.hideOptions()
     this.setState({ zoomActive, zoomOptionsShow: zoomActive, zoomLevel: 0 })
-  }
+  };
 
   handleFrameActive = (frameActive) => {
     this.hideOptions()
     this.setState({ frameActive, frameOptionsShow: frameActive })
-  }
-  handleFrameWidthChange = (frameWidth) => this.setState({ frameWidth })
+  };
+  handleFrameWidthChange = (frameWidth) => this.setState({ frameWidth });
 
-  handleFrameColorChange = (frameColor) => this.setState({ frameColor })
+  handleFrameColorChange = (frameColor) => this.setState({ frameColor });
 
   handleFrameOptionsShow = (frameOptionsShow) => {
     this.hideOptions()
     this.setState({ frameOptionsShow })
-  }
+  };
 
   handleHairChange = (hair) => {
     this.setState({ hair }, () => this.buildOptionsRequest())
-  }
+  };
   handleSkinChange = (skin) => {
     this.setState({ skin }, () => this.buildOptionsRequest())
-  }
+  };
 
   handlePeopleAppearanceActive = (peopleAppearanceActive) => {
     this.hideOptions()
@@ -317,12 +317,12 @@ class Pictogram extends Component {
       },
       () => this.buildOptionsRequest()
     )
-  }
+  };
 
   handlePeopleAppearanceOptionsShow = (peopleAppearanceOptionsShow) => {
     this.hideOptions()
     this.setState({ peopleAppearanceOptionsShow })
-  }
+  };
 
   handleVerbalTenseActive = (verbalTenseActive) => {
     this.hideOptions()
@@ -330,55 +330,58 @@ class Pictogram extends Component {
       verbalTenseActive,
       verbalTenseOptionsShow: verbalTenseActive
     })
-  }
+  };
 
   handleVerbalTenseOptionsShow = (verbalTenseOptionsShow) => {
     this.hideOptions()
     this.setState({ verbalTenseOptionsShow })
-  }
+  };
 
-  handleVerbalTenseChange = (verbalTense) => this.setState({ verbalTense })
+  handleVerbalTenseChange = (verbalTense) => this.setState({ verbalTense });
 
   handleVerbalTenseColorChange = (verbalTenseColor) =>
-    this.setState({ verbalTenseColor })
+    this.setState({ verbalTenseColor });
 
   handleIdentifierActive = (identifierActive) => {
     this.hideOptions()
-    this.setState({ identifierActive, identifierOptionsShow: identifierActive })
-  }
+    this.setState({
+      identifierActive,
+      identifierOptionsShow: identifierActive
+    })
+  };
 
   handleIdentifierOptionsShow = (identifierOptionsShow) => {
     this.hideOptions()
     this.setState({ identifierOptionsShow })
-  }
+  };
 
-  handleIdentifierChange = (identifier) => this.setState({ identifier })
+  handleIdentifierChange = (identifier) => this.setState({ identifier });
 
   handleIdentifierPositionChange = (identifierPosition) =>
-    this.setState({ identifierPosition })
+    this.setState({ identifierPosition });
 
   handleIdentifierColorChange = (identifierColor) =>
-    this.setState({ identifierColor })
+    this.setState({ identifierColor });
 
   handleTopTextActive = (topTextActive) => {
     this.hideOptions()
     this.setState({ topTextActive, topTextOptionsShow: topTextActive })
-  }
+  };
 
-  handleTopTextChange = (topText) => this.setState({ topText })
+  handleTopTextChange = (topText) => this.setState({ topText });
 
-  handleTopTextFontChange = (topTextFont) => this.setState({ topTextFont })
+  handleTopTextFontChange = (topTextFont) => this.setState({ topTextFont });
 
   handleTopTextFontSizeChange = (topTextFontSize) =>
-    this.setState({ topTextFontSize })
+    this.setState({ topTextFontSize });
 
   handleTopTextFontColorChange = (topTextFontColor) =>
-    this.setState({ topTextFontColor })
+    this.setState({ topTextFontColor });
 
   handleTopTextOptionsShow = (topTextOptionsShow) => {
     this.hideOptions()
     this.setState({ topTextOptionsShow })
-  }
+  };
 
   handleTopTextUpperCase = (uppercase) => {
     // if word is in our list, and uppercase is false, put it back
@@ -402,28 +405,31 @@ class Pictogram extends Component {
         })
       }
     }
-  }
+  };
 
   handleBottomTextActive = (bottomTextActive) => {
     this.hideOptions()
-    this.setState({ bottomTextActive, bottomTextOptionsShow: bottomTextActive })
-  }
+    this.setState({
+      bottomTextActive,
+      bottomTextOptionsShow: bottomTextActive
+    })
+  };
 
-  handleBottomTextChange = (bottomText) => this.setState({ bottomText })
+  handleBottomTextChange = (bottomText) => this.setState({ bottomText });
 
   handleBottomTextFontChange = (bottomTextFont) =>
-    this.setState({ bottomTextFont })
+    this.setState({ bottomTextFont });
 
   handleBottomTextFontSizeChange = (bottomTextFontSize) =>
-    this.setState({ bottomTextFontSize })
+    this.setState({ bottomTextFontSize });
 
   handleBottomTextFontColorChange = (bottomTextFontColor) =>
-    this.setState({ bottomTextFontColor })
+    this.setState({ bottomTextFontColor });
 
   handleBottomTextOptionsShow = (bottomTextOptionsShow) => {
     this.hideOptions()
     this.setState({ bottomTextOptionsShow })
-  }
+  };
 
   handleBottomTextUpperCase = (uppercase) => {
     // if word is in our list, and uppercase is false, put it back
@@ -447,18 +453,18 @@ class Pictogram extends Component {
         })
       }
     }
-  }
+  };
 
   handleOpenMenu = () => {
     const { pictogram } = this.props
     const { color, plural } = this.state
-    const idPictogram = pictogram.get('idPictogram')
+    const idPictogram = pictogram.get('_id')
     const urlParameters = Object.entries({ color, plural })
       .map((param) => param.join('='))
       .join('&')
     const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=false&download=true`
     fetch(endPoint)
-  }
+  };
 
   handleDownloadFromClient = (event) => {
     const { searchText, pictogram, onDownload } = this.props
@@ -471,7 +477,7 @@ class Pictogram extends Component {
     const { keyword } = keywordSelector(searchText, keywords.toJS())
     this.downloadButton.href = dataBase64
     this.downloadButton.download = keyword
-  }
+  };
 
   handleDownloadFromServer = () => {
     const { searchText, pictogram, onDownload } = this.props
@@ -483,10 +489,10 @@ class Pictogram extends Component {
     const keywords = pictogram.get('keywords')
     const { keyword } = keywordSelector(searchText, keywords.toJS())
     onDownload(keyword, dataBase64)
-  }
+  };
 
   updateWindowDimensions = () =>
-    this.setState({ windowWidth: document.body.clientWidth })
+    this.setState({ windowWidth: document.body.clientWidth });
 
   renderDownloadButton = () => {
     const userAgent = window.navigator.userAgent.toLowerCase()
@@ -501,7 +507,7 @@ class Pictogram extends Component {
         icon={<DownloadIcon />}
       />
     )
-  }
+  };
 
   render() {
     const { pictogram, searchText, locale, intl } = this.props
@@ -560,9 +566,12 @@ class Pictogram extends Component {
 
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
-    const idPictogram = pictogram.get('idPictogram')
+    const idPictogram = pictogram.get('_id')
     // first time downloadUrl is default png
-    const { keyword, idLocution } = keywordSelector(searchText, keywords.toJS())
+    const { keyword, idLocution } = keywordSelector(
+      searchText,
+      keywords.toJS()
+    )
     // remove # character in identifierColor for url
     const identifierFile = `${IMAGES_URL}/identifiers/${identifier}_${identifierColor.substr(
       1
