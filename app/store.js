@@ -23,7 +23,7 @@ export default function configureStore(initialState = {}, history) {
   const middlewares = [
     sagaMiddleware,
     routerMiddleware(history)
-     /* ,
+    /* ,
     loadingBarMiddleware({
       promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE']
     }) */
@@ -42,8 +42,9 @@ export default function configureStore(initialState = {}, history) {
   const composeEnhancers =
     process.env.NODE_ENV !== 'production' &&
     typeof window === 'object' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      : compose
   /* eslint-enable */
 
   const store = createStore(
@@ -53,7 +54,9 @@ export default function configureStore(initialState = {}, history) {
   )
 
   // begin periodically persisting the store
-  persistStore(store, { blacklist: ['route', 'loadingBar', 'form', 'register'] })
+  persistStore(store, {
+    blacklist: ['route', 'loadingBar', 'form', 'register', 'language']
+  })
 
   // Extensions
 
