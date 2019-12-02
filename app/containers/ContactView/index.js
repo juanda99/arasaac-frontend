@@ -4,7 +4,6 @@ import View from 'components/View'
 import ContactForm from './ContactForm'
 
 class ContactView extends Component {
-
   constructor(props) {
     super(props)
   }
@@ -12,14 +11,15 @@ class ContactView extends Component {
   submit = (values) => {
     // print the form values to the console
     console.log(values)
-  }
+  };
 
   render() {
     return (
-      <View>
+      <View left={true} right={true}>
+        <p>Here we should put people pictures, or center image </p>
         <ContactForm onSubmit={this.submit} />
       </View>
-      )
+    )
   }
 }
 
