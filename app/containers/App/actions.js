@@ -5,6 +5,7 @@
  */
 
 import { createRequestTypes, action } from 'utils/actions'
+import { DEFAULT_LIST } from 'utils'
 
 // constants
 export const LOGIN = createRequestTypes('LOGIN')
@@ -14,6 +15,9 @@ export const TOKEN_VALIDATION = createRequestTypes('TOKEN_VALIDATION')
 export const TOKEN_REFRESH = createRequestTypes('TOKEN_REFRESH')
 export const RESET_ERROR = 'app/LoginView/RESET_ERROR'
 export const ACTIVATION = createRequestTypes('ACTIVATION')
+
+export const ADD_FAVORITE = createRequestTypes('ADD_FAVORITE')
+export const REMOVE_FAVORITE = createRequestTypes('REMOVE_FAVORITE')
 
 export const login = {
   request: (username, password) =>
@@ -52,6 +56,22 @@ export const activation = {
 export const logout = () => action(LOGOUT)
 
 export const resetError = () => action(RESET_ERROR)
+
+export const addFavorite = {
+  request: (fileName, listName = DEFAULT_LIST, token) =>
+    action(ADD_FAVORITE.REQUEST, { fileName, listName, token }),
+  success: (fileName, listName) =>
+    action(ADD_FAVORITE.SUCCESS, { fileName, listName }),
+  failure: (error) => action(ADD_FAVORITE, { error })
+}
+
+export const removeFavorite = {
+  request: (fileName, listName) =>
+    action(REMOVE_FAVORITE.REQUEST, { fileName, listName }),
+  success: (fileName, listName) =>
+    action(REMOVE_FAVORITE.SUCCESS, { fileName, listName }),
+  failure: (error) => action(REMOVE_FAVORITE, { error })
+}
 
 /* Social login */
 /*

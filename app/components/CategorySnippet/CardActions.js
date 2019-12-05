@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import muiThemeable from 'material-ui/styles/muiThemeable'
-import media from 'utils/mediaqueries'
 
 const CardActions = styled.div`
   position: absolute;
@@ -9,10 +8,8 @@ const CardActions = styled.div`
   width: 250px;
   height: 250px;
   opacity: 0;
-  ${media.md} {
-    &:hover {
-      opacity: 0.93;
-    }
+  &:hover {
+    opacity: 0.93;
   }
   background-color: ${(props) => props.muiTheme.palette.primary1Color};
   display: flex;

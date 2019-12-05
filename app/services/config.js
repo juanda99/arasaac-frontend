@@ -88,6 +88,36 @@ export const customPicto = {
   })
 }
 
+export const addFavorite = {
+  url: `${PRIVATE_API_ROOT}/users/favorites`,
+  options: (data) => ({
+    config: {
+      method: 'POST',
+      body: JSON.stringify(data)
+    }
+  })
+}
+
+export const getFavorites = {
+  url: (locale) => `${PRIVATE_API_ROOT}/pictograms/favorites/${locale}`,
+  options: (favoriteIds) => ({
+    config: {
+      method: 'GET',
+      body: JSON.stringify(favoriteIds)
+    }
+  })
+}
+
+export const removeFavorite = {
+  url: `${PRIVATE_API_ROOT}/users/favorites`,
+  options: (data) => ({
+    config: {
+      method: 'DELETE',
+      body: JSON.stringify(data)
+    }
+  })
+}
+
 /*
 export const customPictogram = {
   url: (idPictogram, options) => {
@@ -117,9 +147,7 @@ export const uploadMaterial = {
 
     if (files) files.map((file) => formData.append('files', file))
     if (screenshots) {
-      screenshots.map((screenshot) =>
-        formData.append('screenshots', screenshot)
-      )
+      screenshots.map((screenshot) => formData.append('screenshots', screenshot))
     }
     if (languages) {
       translations = languages.map((language) => {

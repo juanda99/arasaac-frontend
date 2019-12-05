@@ -36,6 +36,7 @@ export class PictogramList extends PureComponent {
         locale={locale}
         key={pictogram.idPictogram}
         showExtra={width === LARGE}
+        onAddFavorite={this.props.onAddFavorite}
       />
     ))
 
@@ -67,7 +68,8 @@ PictogramList.propTypes = {
   filtersMap: PropTypes.instanceOf(Map).isRequired,
   setFilterItems: PropTypes.func.isRequired,
   searchText: PropTypes.string,
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  onAddFavorite: PropTypes.func.isRequired
 }
 
 export default withWidth()(PictogramList)

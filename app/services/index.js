@@ -7,7 +7,11 @@ import {
   uploadMaterial,
   customPicto,
   resetPassword,
-  /* customPictogram, */ API_ROOT,
+  addFavorite,
+  removeFavorite,
+  getFavorites,
+  /* customPictogram, */
+  API_ROOT,
   PRIVATE_API_ROOT
 } from './config'
 
@@ -44,6 +48,9 @@ const api = {
       socialLogin.options(socialToken, provider, locale)
     ),
   SIGNUP_REQUEST: (userData) => callApi(signup.url, signup.options(userData)),
+  FAVORITE_PICTOGRAMS_REQUEST: ({ locale, favoriteIds, token }) => callApi(getFavorites.url(locale), getFavorites.options(favoriteIds), token),
+  ADD_FAVORITE_REQUEST: ({ ...data, token }) => callApi(addFavorite.url, addFavorite.options(data), token),
+  REMOVE_FAVORITE_REQUEST: ({ ...data, token }) => callApi(removeFavorite.url, removeFavorite.options(data), token),
   GENERATE_CUSTOM_PICTOGRAM: (parameters) =>
     callApi(customPicto.url, customPicto.options(parameters)),
   GET_KEYWORDS_BY_PICTOID: ({ language, idPictogram }) =>

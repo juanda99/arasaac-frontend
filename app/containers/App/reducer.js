@@ -35,7 +35,8 @@ import {
   TOKEN_REFRESH,
   ACTIVATION,
   SOCIAL_LOGIN,
-  RESET_ERROR
+  RESET_ERROR,
+  ADD_FAVORITE
 } from './actions'
 
 const initialState = fromJS({
@@ -61,6 +62,19 @@ const authReducer = (state = initialState, action) => {
       return state
         .set('loading', false)
         .set('accessToken', action.payload.accessToken)
+    // eslint-disable-next-line no-case-declarations
+    case ADD_FAVORITE.SUCCESS:
+      const favorites = state.get('favorites')
+      const { fileName, listName } = action.payload
+      // add favorite, and remove duplicates, just in case...
+      const listFavorites = favorites.get(listName)
+      const modifiedList = listFavorites
+        .push(fileName)
+        .toSet()
+        .toList()
+      return state
+        .set('loading', false)
+        .setIn(['favorites', listName], modifiedList)
     case TOKEN_VALIDATION.SUCCESS:
       // after login ok, we test token asking for profile
       // token & refreshToken get not altered as they are valid

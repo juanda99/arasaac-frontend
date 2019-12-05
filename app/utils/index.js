@@ -4,6 +4,8 @@ function isArray(obj) {
 
 export const isEmptyObject = (object) => Object.entries(object).length === 0
 
+export const DEFAULT_LIST = 'defaultList'
+
 const checkLanguage = (item, language) =>
   language.size === 0 ||
   language.includes(item.language) ||

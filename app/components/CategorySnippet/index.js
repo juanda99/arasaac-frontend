@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import muiThemeable from 'material-ui/styles/muiThemeable'
-import { PICTOGRAMS_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
-import ActionSetFavorite from 'material-ui/svg-icons/action/favorite-border'
+import DeleteList from 'material-ui/svg-icons/action/delete'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
+import Folder from 'material-ui/svg-icons/file/folder'
 import { FormattedMessage } from 'react-intl'
-import { keywordSelector } from 'utils'
 import CardActions from './CardActions'
 import StyledPaper from './StyledPaper'
 import StyledList from './StyledList'
@@ -16,7 +15,7 @@ import messages from './messages'
 
 class PictogramSnippet extends PureComponent {
   state = {
-    zDepth: 1
+    isFlipped: false
   };
 
   styles = {
@@ -55,18 +54,6 @@ class PictogramSnippet extends PureComponent {
     })
   };
 
-  handleAddFavorite = (event) => {
-    const {
-      pictogram: { _id }
-    } = this.props
-    event.preventDefault()
-    this.props.onAddFavorite(_id)
-  };
-
-  handleDownload = (event) => {
-    event.preventDefault()
-  };
-
   handleMouseLeave = () => {
     this.setState({
       zDepth: 1
@@ -75,59 +62,51 @@ class PictogramSnippet extends PureComponent {
 
   render() {
     const {
-      pictogram: { _id, keywords },
-      searchText,
+      pictogram: { idPictogram },
+      title,
+      id,
       muiTheme,
       locale,
-      showExtra
+      isList
     } = this.props
-    const { keyword } = keywordSelector(searchText, keywords)
-    const { isAuthenticated } = this.context
     return (
       <StyledList
-        key={_id}
+        key={idPictogram}
         className='image-element-class'
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
         <StyledPaper zDepth={this.state.zDepth}>
-          <Item url={`/pictograms/${locale}/${_id}/${keyword}`}>
+          <Item url={`/pictograms/list/${id}`}>
             <div style={{ position: 'relative' }}>
-              <Image
-                src={`${PICTOGRAMS_URL}/${_id}/${_id}_300.png`}
-                alt={keyword}
-              />
-              <CardActions>
-                {showExtra && isAuthenticated && (
+              <Image src={Folder} alt={title} />
+              {isList && (
+                <CardActions>
                   <IconButton
                     touch={true}
-                    tooltip={<FormattedMessage {...messages.addFavorite} />}
+                    tooltip={<FormattedMessage {...messages.deleteList} />}
                     iconStyle={this.styles.icon}
                     style={this.styles.leftIconButton}
-                    onClick={this.handleAddFavorite}
                   >
-                    <ActionSetFavorite
+                    <DeleteList
                       color={muiTheme.appBar.textColor}
                       hoverColor={muiTheme.palette.accent1Color}
                     />
                   </IconButton>
-                )}
-                {showExtra && (
                   <IconButton
                     touch={true}
                     tooltip={<FormattedMessage {...messages.download} />}
                     iconStyle={this.styles.icon}
                     style={this.styles.rightIconButton}
-                    onClick={this.handleDownload}
                   >
                     <FileDownload
                       color={muiTheme.appBar.textColor}
                       hoverColor={muiTheme.palette.accent1Color}
                     />
                   </IconButton>
-                )}
-                <p style={this.styles.cardTitle}>{keyword}</p>
-              </CardActions>
+                </CardActions>
+              )}
+              <p style={this.styles.cardTitle}>{title}</p>
             </div>
           </Item>
         </StyledPaper>
@@ -142,11 +121,11 @@ PictogramSnippet.contextTypes = {
 
 PictogramSnippet.propTypes = {
   pictogram: PropTypes.object.isRequired,
-  searchText: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   muiTheme: PropTypes.object,
   locale: PropTypes.string.isRequired,
-  showExtra: PropTypes.bool,
-  onAddFavorite: PropTypes.func.isRequired
+  isList: PropTypes.boolean.isRequired
 }
 
 export default muiThemeable()(PictogramSnippet)
