@@ -93,6 +93,7 @@ export const addFavorite = {
   options: (data) => ({
     config: {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     }
   })
@@ -102,8 +103,8 @@ export const getFavorites = {
   url: (locale) => `${PRIVATE_API_ROOT}/pictograms/favorites/${locale}`,
   options: (favoriteIds) => ({
     config: {
-      method: 'GET',
-      body: JSON.stringify(favoriteIds)
+      method: 'POST',
+      body: JSON.stringify({ favoriteIds })
     }
   })
 }

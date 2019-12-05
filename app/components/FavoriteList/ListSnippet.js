@@ -79,7 +79,9 @@ class ListSnippet extends PureComponent {
     })
   };
 
-  handleClick = () => {
+  handleClick = (event) => {
+    console.log('click!..................')
+    event.stopPropagation()
     const { onSelect, listName } = this.props
     onSelect(listName)
   };

@@ -4,6 +4,7 @@ import { Map } from 'immutable'
 import withWidth, { SMALL, LARGE } from 'material-ui/utils/withWidth'
 import { DEFAULT_LIST } from 'utils'
 import ListSnippet from './ListSnippet'
+import PictogramSnippet from 'components/PictogramSnippet'
 
 const Masonry = require('react-masonry-component')
 const masonryOptions = {
@@ -21,22 +22,16 @@ const styles = {
 }
 
 export class FavoriteList extends PureComponent {
-  state = {
-    selectedList: DEFAULT_LIST
-  };
-
-  handleDeleteList = (listName) => {
-    console.log(`This should delete the list: ${listName}`)
-  };
-
-  handleSelectList = (listName) => {
-    this.setState({ selectedList: listName })
-  };
   render() {
-    const { items, width } = this.props
-    const { selectedList } = this.state
-    const pictos = items.get(selectedList)
-    console.log(pictos, '^^^^^^^^^^^')
+    const {
+      items,
+      width,
+      selectedList,
+      onDownloadList,
+      onDeleteList,
+      onSelectList,
+      listPictograms
+    } = this.props
     const [...lists] = items.keys()
     let renderLists
     if (selectedList === DEFAULT_LIST) {
@@ -46,11 +41,12 @@ export class FavoriteList extends PureComponent {
           const totalItems = items.get(selectedList).size
           return (
             <ListSnippet
+              key={listItem}
               listName={listItem}
               totalItems={totalItems}
-              onDelete={this.handleDeleteList}
-              onDownload={this.handleDownload}
-              onSelect={this.handleSelectList}
+              onDelete={onDeleteList}
+              onDownload={onDownloadList}
+              onSelect={onSelectList}
             />
           )
         })
@@ -58,24 +54,26 @@ export class FavoriteList extends PureComponent {
       /* in these case we just render back button */
       renderLists = (
         <ListSnippet
+          key={DEFAULT_LIST}
           listName={DEFAULT_LIST}
-          onDelete={this.handleDeleteList}
-          onDownload={this.handleDownload}
-          onSelect={this.handleSelectList}
+          onDelete={onDeleteList}
+          onDownload={onDownloadList}
+          onSelect={onSelectList}
         />
       )
     }
 
-    // const renderPictograms = pictograms.map((pictogram) => (
-    //   <PictogramSnippet
-    //     pictogram={pictogram}
-    //     searchText={searchText}
-    //     locale={locale}
-    //     key={pictogram.idPictogram}
-    //     showExtra={width === LARGE}
-    //     onAddFavorite={this.props.onAddFavorite}
-    //   />
-    // ))
+    const renderPictograms = listPictograms.map((pictogram) => (
+      <PictogramSnippet
+        pictogram={pictogram}
+        locale={'es'}
+        key={pictogram._id}
+        showExtra={width === LARGE}
+        onAddFavorite={() => {
+          console.log('kkkkk')
+        }}
+      />
+    ))
 
     return (
       <div>
@@ -88,9 +86,13 @@ export class FavoriteList extends PureComponent {
             style={styles.masonry}
           >
             {renderLists}
+            {renderPictograms}
           </Masonry>
         ) : (
-          <ul>{renderLists}</ul>
+          <ul>
+            {renderLists}
+            {renderPictograms}
+          </ul>
         )}
       </div>
     )
@@ -99,7 +101,12 @@ export class FavoriteList extends PureComponent {
 
 FavoriteList.propTypes = {
   items: PropTypes.object,
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  listPictograms: PropTypes.arrayOf(PropTypes.object),
+  onSelectList: PropTypes.func.isRequired,
+  onDeleteList: PropTypes.func.isRequired,
+  onDownloadList: PropTypes.func.isRequired,
+  selectedList: PropTypes.string.isRequired
 }
 
 export default withWidth()(FavoriteList)

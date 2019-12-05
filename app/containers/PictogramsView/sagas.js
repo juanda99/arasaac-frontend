@@ -35,15 +35,13 @@ function* pictogramsGetData(action) {
 }
 
 function* favoritePictogramsGetData(action) {
-  console.log('adfadfadfafasfdasfkjñj')
   const { locale } = action.payload
-  console.log(action)
   try {
     yield put(showLoading())
     const response = yield call(api[action.type], action.payload)
-    yield put(pictograms.success(locale, response))
+    yield put(favoritePictograms.success(locale, response))
   } catch (error) {
-    yield put(pictograms.failure(error.message))
+    yield put(favoritePictograms.failure(error.message))
   } finally {
     yield put(hideLoading())
     // When done, we tell Redux we're not in the middle of a request any more

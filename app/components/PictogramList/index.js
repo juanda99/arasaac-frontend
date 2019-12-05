@@ -34,7 +34,7 @@ export class PictogramList extends PureComponent {
         pictogram={pictogram}
         searchText={searchText}
         locale={locale}
-        key={pictogram.idPictogram}
+        key={pictogram._id}
         showExtra={width === LARGE}
         onAddFavorite={this.props.onAddFavorite}
       />

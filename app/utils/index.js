@@ -44,7 +44,7 @@ export const getFilteredItems = (items, filters) =>
 
 /* inside pictograms, check which keywords meets an specific searchText */
 export const keywordSelector = (searchText, keywords) => {
-  const searchTextArray = searchText.split(' ')
+  const searchTextArray = searchText ? searchText.split(' ') : []
   if (!searchTextArray.length) return keywords[0] || ''
   // if same keyword exists, return it
   const keyword = keywords.find(
@@ -73,6 +73,7 @@ export const keywordSelector = (searchText, keywords) => {
 export const getKeyByValue = (object, value) =>
   Object.keys(object).find((key) => object[key] === value)
 
+/* if changed, we should also update pictograms reducer */
 export const languages = [
   {
     code: 'es',

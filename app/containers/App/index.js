@@ -13,32 +13,32 @@
 
 /* eslint-disable */
 
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { ImmutableLoadingBar as LoadingBar } from 'react-redux-loading-bar'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { ImmutableLoadingBar as LoadingBar } from "react-redux-loading-bar";
 // import Helmet from 'react-helmet'
 // import styled from 'styled-components'
-import Header from 'components/Header'
-import Footer from 'components/Footer'
-import Menu from 'components/Menu'
-import muiThemeable from 'material-ui/styles/muiThemeable'
-import { FormattedMessage } from 'react-intl'
-import Joyride from 'react-joyride'
-import Div from 'components/Div'
-import 'react-joyride/lib/react-joyride.scss'
-import messages from './messages'
-import Wrapper from './Wrapper'
-import { connect } from 'react-redux'
-import spacing from 'material-ui/styles/spacing'
-import { white } from 'material-ui/styles/colors'
-import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth'
+import Header from "components/Header";
+import Footer from "components/Footer";
+import Menu from "components/Menu";
+import muiThemeable from "material-ui/styles/muiThemeable";
+import { FormattedMessage } from "react-intl";
+import Joyride from "react-joyride";
+import Div from "components/Div";
+import "react-joyride/lib/react-joyride.scss";
+import messages from "./messages";
+import Wrapper from "./Wrapper";
+import { connect } from "react-redux";
+import spacing from "material-ui/styles/spacing";
+import { white } from "material-ui/styles/colors";
+import withWidth, { LARGE, SMALL } from "material-ui/utils/withWidth";
 import {
   changeLocale,
   startTranslation,
   stopTranslation
-} from 'containers/LanguageProvider/actions'
-import { logout, activation } from './actions'
-import { makeSelectHasUser } from './selectors'
+} from "containers/LanguageProvider/actions";
+import { logout, activation } from "./actions";
+import { makeSelectHasUser } from "./selectors";
 
 class App extends Component {
   static propTypes = {
@@ -52,7 +52,7 @@ class App extends Component {
       callback: PropTypes.func,
       run: PropTypes.bool
     })
-  }
+  };
 
   static defaultProps = {
     joyride: {
@@ -60,11 +60,11 @@ class App extends Component {
       resizeDebounce: false,
       run: true
     }
-  }
+  };
 
   static contextTypes = {
     router: PropTypes.object.isRequired
-  } // import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
+  }; // import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 
   state = {
     menuOpen: false,
@@ -74,188 +74,188 @@ class App extends Component {
     step: 0,
     steps: [
       {
-        title: 'Open menu',
-        text: 'Click the button to navigate through ARASAAC website',
-        textAlign: 'center',
-        selector: '#header button',
-        position: 'bottom'
+        title: "Open menu",
+        text: "Click the button to navigate through ARASAAC website",
+        textAlign: "center",
+        selector: "#header button",
+        position: "bottom"
       },
       {
-        title: 'User menu',
-        text: 'User specific actions: profile, registration...',
-        selector: '#header div button',
-        position: 'bottom'
+        title: "User menu",
+        text: "User specific actions: profile, registration...",
+        selector: "#header div button",
+        position: "bottom"
       },
       {
-        title: 'Pictograms',
-        text: 'Search and select pictograms',
-        selector: '#lstpictograms',
-        position: 'right'
+        title: "Pictograms",
+        text: "Search and select pictograms",
+        selector: "#lstpictograms",
+        position: "right"
       },
       {
-        title: 'Materials',
-        text: 'Search or upload&share materials',
-        selector: '#lstmaterials',
-        position: 'right'
+        title: "Materials",
+        text: "Search or upload&share materials",
+        selector: "#lstmaterials",
+        position: "right"
       }
     ]
-  }
+  };
 
   handleTranslate = () => {
     if (!this.props.isTranslating) {
-      this.props.startTranslation()
-      const script = document.createElement('script')
-      script.src = '//cdn.crowdin.com/jipt/jipt.js'
-      script.async = true
-      document.body.appendChild(script)
+      this.props.startTranslation();
+      const script = document.createElement("script");
+      script.src = "//cdn.crowdin.com/jipt/jipt.js";
+      script.async = true;
+      document.body.appendChild(script);
     } else {
-      this.props.stopTranslation()
+      this.props.stopTranslation();
       // window.location.href = "http://localhost:3000";
     }
-  }
+  };
 
   getStyles() {
     const styles = {
       LoadingBar: {
         height: 2,
-        backgroundColor: 'rgb(0, 188, 212)',
+        backgroundColor: "rgb(0, 188, 212)",
         zIndex: 100000
       }
-    }
-    return styles
+    };
+    return styles;
   }
 
   getViewProps(width) {
-    let title = ''
-    let docked = width === LARGE
-    const url = this.props.location.pathname
-    if (url === '/') docked = false
+    let title = "";
+    let docked = width === LARGE;
+    const url = this.props.location.pathname;
+    if (url === "/") docked = false;
     switch (true) {
       case /pictograms\/search/.test(url):
-        title = <FormattedMessage {...messages.pictogramsSearch} />
-        break
+        title = <FormattedMessage {...messages.pictogramsSearch} />;
+        break;
       case /materials\/search/.test(url):
-        title = <FormattedMessage {...messages.materialsSearch} />
-        break
+        title = <FormattedMessage {...messages.materialsSearch} />;
+        break;
       case /catalogs/.test(url):
-        title = <FormattedMessage {...messages.catalogs} />
-        break
+        title = <FormattedMessage {...messages.catalogs} />;
+        break;
       case /materials/.test(url):
-        title = <FormattedMessage {...messages.materials} />
-        break
+        title = <FormattedMessage {...messages.materials} />;
+        break;
       case /pictograms/.test(url):
-        title = <FormattedMessage {...messages.pictograms} />
-        break
+        title = <FormattedMessage {...messages.pictograms} />;
+        break;
       case /activate/.test(url):
-        title = <FormattedMessage {...messages.userActivation} />
-        break
+        title = <FormattedMessage {...messages.userActivation} />;
+        break;
       case /recoverpassword/.test(url):
-        title = <FormattedMessage {...messages.recoverPassword} />
-        break
+        title = <FormattedMessage {...messages.recoverPassword} />;
+        break;
       case /onlinetools/.test(url):
-        title = <FormattedMessage {...messages.onlineTools} />
-        break
+        title = <FormattedMessage {...messages.onlineTools} />;
+        break;
       case /software/.test(url):
-        title = <FormattedMessage {...messages.software} />
-        break
+        title = <FormattedMessage {...messages.software} />;
+        break;
       case /signin/.test(url):
-        title = <FormattedMessage {...messages.signinTitle} />
-        docked = false
-        break
+        title = <FormattedMessage {...messages.signinTitle} />;
+        docked = false;
+        break;
       case /register/.test(url):
-        title = <FormattedMessage {...messages.registerTitle} />
-        docked = false
-        break
+        title = <FormattedMessage {...messages.registerTitle} />;
+        docked = false;
+        break;
       case /profile/.test(url):
-        title = <FormattedMessage {...messages.userProfileTitle} />
-        break
+        title = <FormattedMessage {...messages.userProfileTitle} />;
+        break;
       case /configuration/.test(url):
-        title = <FormattedMessage {...messages.configurationTitle} />
-        break
+        title = <FormattedMessage {...messages.configurationTitle} />;
+        break;
       case /developers\/api/.test(url):
-        title = <FormattedMessage {...messages.api} />
-        break
+        title = <FormattedMessage {...messages.api} />;
+        break;
       case /developers\/accounts/.test(url):
-        title = <FormattedMessage {...messages.devAccounts} />
-        break
+        title = <FormattedMessage {...messages.devAccounts} />;
+        break;
       case /developers/.test(url):
-        title = <FormattedMessage {...messages.howto} />
-        break
+        title = <FormattedMessage {...messages.howto} />;
+        break;
       case /uploadmaterial/.test(url):
-        title = <FormattedMessage {...messages.configurationTitle} />
-        break
+        title = <FormattedMessage {...messages.configurationTitle} />;
+        break;
       case /contact-us/.test(url):
-        title = <FormattedMessage {...messages.contactusTitle} />
-        break
+        title = <FormattedMessage {...messages.contactusTitle} />;
+        break;
       case /settings/.test(url):
-        title = <FormattedMessage {...messages.settings} />
-        break
+        title = <FormattedMessage {...messages.settings} />;
+        break;
       case /activate/.test(url):
-        title = <FormattedMessage {...messages.userActivation} />
-        break
+        title = <FormattedMessage {...messages.userActivation} />;
+        break;
       case /prizes/.test(url):
-        title = <FormattedMessage {...messages.prizes} />
-        break
+        title = <FormattedMessage {...messages.prizes} />;
+        break;
       default:
-        docked = false
-        break
+        docked = false;
+        break;
     }
-    return { docked, title }
+    return { docked, title };
   }
 
   handleTouchTapLeftIconButton = () => {
     this.setState({
       menuOpen: !this.state.menuOpen
-    })
-  }
+    });
+  };
 
-  handleChangeRequestNavDrawer = (open) => {
+  handleChangeRequestNavDrawer = open => {
     this.setState({
       menuOpen: open
-    })
-  }
+    });
+  };
 
   getChildContext() {
-    return { isAuthenticated: this.props.isAuthenticated }
+    return { isAuthenticated: this.props.isAuthenticated };
   }
 
   handleChangeList = (event, value) => {
-    console.log('handleChangeList')
-    console.log(event)
-    console.log(value)
+    console.log("handleChangeList");
+    console.log(event);
+    console.log(value);
     if (value) {
-      this.context.router.push(value)
+      this.context.router.push(value);
       this.setState({
         menuOpen: false
-      })
+      });
     }
-  }
+  };
 
-  handleJoyrideCallback = (result) => {
-    const { joyride } = this.props
+  handleJoyrideCallback = result => {
+    const { joyride } = this.props;
 
-    if (result.type === 'step:before') {
+    if (result.type === "step:before") {
       // Keep internal state in sync with joyride
-      this.setState({ step: result.index })
-      if (result.index === 1) this.setState({ menuOpen: true })
+      this.setState({ step: result.index });
+      if (result.index === 1) this.setState({ menuOpen: true });
     }
 
-    if (result.type === 'finished' && this.state.running) {
+    if (result.type === "finished" && this.state.running) {
       // Need to set our running state to false, so we can restart if we click start again.
-      this.setState({ running: false })
+      this.setState({ running: false });
     }
 
-    if (result.type === 'error:target_not_found') {
+    if (result.type === "error:target_not_found") {
       this.setState({
-        step: result.action === 'back' ? result.index - 1 : result.index + 1,
-        autoStart: result.action !== 'close' && result.action !== 'esc'
-      })
+        step: result.action === "back" ? result.index - 1 : result.index + 1,
+        autoStart: result.action !== "close" && result.action !== "esc"
+      });
     }
 
-    if (typeof joyride.callback === 'function') {
-      joyride.callback()
+    if (typeof joyride.callback === "function") {
+      joyride.callback();
     }
-  }
+  };
 
   render() {
     const {
@@ -265,7 +265,7 @@ class App extends Component {
       width,
       isTranslating,
       logout
-    } = this.props
+    } = this.props;
 
     // if (location.hash) {
     //   const authData = location.hash.substring(1)
@@ -280,9 +280,9 @@ class App extends Component {
     //   console.log(JSON.stringify(data))
     // }
 
-    let { menuOpen } = this.state
+    let { menuOpen } = this.state;
 
-    const { joyride } = this.props
+    const { joyride } = this.props;
     const joyrideProps = {
       autoStart: joyride.autoStart || this.state.autoStart,
       callback: this.handleJoyrideCallback,
@@ -293,25 +293,25 @@ class App extends Component {
       scrollToFirstStep: joyride.scrollToFirstStep || false,
       stepIndex: joyride.stepIndex || this.state.step,
       steps: joyride.steps || this.state.steps,
-      type: joyride.type || 'continuous',
+      type: joyride.type || "continuous",
       scrollOffset: 200
-    }
+    };
 
-    const styles = this.getStyles()
+    const styles = this.getStyles();
 
-    const { title, docked } = this.getViewProps(width)
+    const { title, docked } = this.getViewProps(width);
 
-    let showMenuIconButton = true
-    let isMobile = width === SMALL
+    let showMenuIconButton = true;
+    let isMobile = width === SMALL;
     if (width === LARGE && docked) {
-      menuOpen = true
-      showMenuIconButton = false
+      menuOpen = true;
+      showMenuIconButton = false;
     }
     return (
       <div
-        style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
+        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
       >
-        <Joyride {...joyrideProps} ref={(c) => (this.joyride = c)} />
+        <Joyride {...joyrideProps} ref={c => (this.joyride = c)} />
         <Header
           showMenuIconButton={showMenuIconButton}
           isAuthenticated={isAuthenticated}
@@ -345,26 +345,28 @@ class App extends Component {
         />
         <Footer docked={docked} />
       </div>
-    )
+    );
   }
 }
-const mapStateToProps = (state) => {
-  const auth = state.getIn(['auth', 'isActivating'])
-  const locale = state.getIn(['language', 'locale'])
-  const isTranslating = locale === 'af'
-  const isAuthenticated = (makeSelectHasUser()(state) && true) || false
+const mapStateToProps = state => {
+  const auth = state.getIn(["auth", "isActivating"]);
+  const locale = state.getIn(["language", "locale"]);
+  const isTranslating = locale === "af";
+  const isAuthenticated = (makeSelectHasUser()(state) && true) || false;
   return {
     isAuthenticated,
     locale,
     isTranslating
-  }
-}
+  };
+};
 
-export default connect(
-  mapStateToProps,
-  { changeLocale, logout, startTranslation, stopTranslation }
-)(withWidth()(App))
+export default connect(mapStateToProps, {
+  changeLocale,
+  logout,
+  startTranslation,
+  stopTranslation
+})(withWidth()(App));
 
 App.childContextTypes = {
   isAuthenticated: PropTypes.bool
-}
+};
