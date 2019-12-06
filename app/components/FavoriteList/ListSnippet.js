@@ -4,7 +4,7 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 import IconButton from 'material-ui/IconButton'
 import Badge from 'material-ui/Badge'
 import { DEFAULT_LIST } from 'utils'
-import ActionDelete from 'material-ui/svg-icons/action/delete'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back'
 import { FormattedMessage } from 'react-intl'
@@ -12,32 +12,32 @@ import CardActions from 'components/PictogramSnippet/CardActions'
 import StyledPaper from 'components/PictogramSnippet/StyledPaper'
 import StyledList from 'components/PictogramSnippet/StyledList'
 import Folder from 'material-ui/svg-icons/file/folder'
+import ListMenu from './ListMenu'
 import messages from './messages'
 
 class ListSnippet extends PureComponent {
   styles = {
     icon: {
-      width: 48,
-      height: 48
+      width: 35,
+      height: 35
     },
     leftIconButton: {
-      width: 96,
-      height: 96,
-      padding: 24,
+      width: 60,
+      height: 60,
       position: 'absolute',
-      top: '0',
-      left: '0'
+      top: '10',
+      left: '5'
     },
     rightIconButton: {
-      width: 96,
-      height: 96,
-      padding: 24,
+      width: 60,
+      height: 60,
       position: 'absolute',
-      top: '0',
-      right: '0'
+      top: '10',
+      right: '5'
     },
     cardTitle: {
       textAlign: 'center',
+      padding: '30px',
       fontSize: '1.4rem',
       textTransform: 'uppercase',
       color: this.props.muiTheme.appBar.textColor,
@@ -45,16 +45,18 @@ class ListSnippet extends PureComponent {
     },
     header: {
       fontSize: '1.4rem',
+      marginBottom: 0,
       textTransform: 'uppercase',
       color: this.props.muiTheme.palette.primary1Color,
       fontWeight: '900',
       textAlign: 'center',
-      padding: 10
+      paddingTop: 30
     }
   };
 
   state = {
-    zDepth: 1
+    zDepth: 1,
+    menuOpen: false
   };
 
   handleMouseEnter = () => {
@@ -63,9 +65,13 @@ class ListSnippet extends PureComponent {
     })
   };
 
-  handleRemoveList = (event) => {
+  handleDelete = (event) => {
     event.stopPropagation()
     this.props.onDelete(this.props.listName)
+  };
+  handleRename = (event) => {
+    event.stopPropagation()
+    this.props.onRename(this.props.listName)
   };
 
   handleDownload = (event) => {
@@ -79,8 +85,14 @@ class ListSnippet extends PureComponent {
     })
   };
 
+  handleOpenMenu = (event) => {
+    event.stopPropagation()
+    this.setState({ menuOpen: true, anchorEl: event.currentTarget })
+  };
+
+  handleCloseMenu = () => this.setState({ menuOpen: false });
+
   handleClick = (event) => {
-    console.log('click!..................')
     event.stopPropagation()
     const { onSelect, listName } = this.props
     onSelect(listName)
@@ -88,6 +100,7 @@ class ListSnippet extends PureComponent {
 
   render() {
     const { muiTheme, listName, totalItems } = this.props
+    const { anchorEl, menuOpen } = this.state
     return (
       <StyledList
         key={listName}
@@ -95,6 +108,14 @@ class ListSnippet extends PureComponent {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
+        <ListMenu
+          anchorEl={anchorEl}
+          open={menuOpen}
+          onClose={this.handleCloseMenu}
+          onDelete={this.handleDelete}
+          onRename={this.handleRename}
+          onDownload={this.handleDownload}
+        />
         <StyledPaper zDepth={this.state.zDepth} onClick={this.handleClick}>
           <div style={{ position: 'relative' }}>
             <div
@@ -139,29 +160,28 @@ class ListSnippet extends PureComponent {
               <CardActions>
                 <IconButton
                   touch={true}
-                  tooltip={<FormattedMessage {...messages.removeList} />}
+                  tooltip={<FormattedMessage {...messages.download} />}
                   iconStyle={this.styles.icon}
                   style={this.styles.leftIconButton}
-                  onClick={this.handleRemoveList}
+                  onClick={this.handleDownload}
                 >
-                  <ActionDelete
-                    color={muiTheme.appBar.textColor}
+                  <FileDownload
+                    color={muiTheme.palette.primary1Color}
                     hoverColor={muiTheme.palette.accent1Color}
                   />
                 </IconButton>
                 <IconButton
                   touch={true}
-                  tooltip={<FormattedMessage {...messages.download} />}
+                  tooltip={<FormattedMessage {...messages.manageList} />}
                   iconStyle={this.styles.icon}
                   style={this.styles.rightIconButton}
-                  onClick={this.handleDownload}
+                  onClick={this.handleOpenMenu}
                 >
-                  <FileDownload
-                    color={muiTheme.appBar.textColor}
+                  <MoreVertIcon
+                    color={muiTheme.palette.primary1Color}
                     hoverColor={muiTheme.palette.accent1Color}
                   />
                 </IconButton>
-                <p style={this.styles.cardTitle}>{listName}</p>
               </CardActions>
             )}
           </div>
@@ -176,6 +196,7 @@ ListSnippet.propTypes = {
   muiTheme: PropTypes.object,
   onDelete: PropTypes.func.isRequired,
   onDownload: PropTypes.func.isRequired,
+  onRename: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
   totalItems: PropTypes.number
 }

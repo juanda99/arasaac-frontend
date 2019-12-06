@@ -28,7 +28,6 @@ import SignoutIcon from 'material-ui/svg-icons/content/block'
 import ApiIcon from 'material-ui/svg-icons/communication/import-export'
 import ContactMailIcon from 'material-ui/svg-icons/communication/contact-mail'
 import FileUploadIcon from 'material-ui/svg-icons/file/file-upload'
-import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download'
 import Div from 'components/Div'
 import messages from './messages'
 import styles from './styles'
@@ -46,29 +45,29 @@ class Menu extends Component {
     isAuthenticated: PropTypes.bool.isRequired,
     signout: PropTypes.func.isRequired,
     isMobile: PropTypes.bool.isRequired
-  }
+  };
 
   static contextTypes = {
     router: PropTypes.object.isRequired
-  }
+  };
 
   state = {
     muiVersions: []
-  }
+  };
 
   handleRequestChangeLink = (event, value) => {
     window.location = value
-  }
+  };
 
   handleRouterChangeLink = (value) => {
     this.context.router.push(value)
     this.props.onRequestChangeNavDrawer(false)
-  }
+  };
 
   handleTouchTapHeader = () => {
     this.context.router.push('/')
     this.props.onRequestChangeNavDrawer(false)
-  }
+  };
 
   render() {
     const {

@@ -97,13 +97,13 @@ class PictogramSnippet extends PureComponent {
                 src={`${PICTOGRAMS_URL}/${_id}/${_id}_300.png`}
                 alt={keyword}
               />
-              <CardActions>
+              <CardActions color={true}>
                 {showExtra && isAuthenticated && (
                   <IconButton
                     touch={true}
                     tooltip={<FormattedMessage {...messages.addFavorite} />}
                     iconStyle={this.styles.icon}
-                    style={this.styles.leftIconButton}
+                    style={this.styles.rightIconButton}
                     onClick={this.handleAddFavorite}
                   >
                     <ActionSetFavorite
@@ -117,7 +117,7 @@ class PictogramSnippet extends PureComponent {
                     touch={true}
                     tooltip={<FormattedMessage {...messages.download} />}
                     iconStyle={this.styles.icon}
-                    style={this.styles.rightIconButton}
+                    style={this.styles.leftIconButton}
                     onClick={this.handleDownload}
                   >
                     <FileDownload
