@@ -38,7 +38,7 @@ export class FavoriteList extends PureComponent {
       renderLists = lists
         .filter((listItem) => listItem !== DEFAULT_LIST)
         .map((listItem) => {
-          const totalItems = items.get(selectedList).size
+          const totalItems = items.get(listItem).size
           return (
             <ListSnippet
               key={listItem}
