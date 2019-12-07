@@ -4,9 +4,15 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import api from 'services'
 import {
   ADD_FAVORITE,
-  REMOVE_FAVORITE,
+  DELETE_FAVORITE,
+  ADD_LIST,
+  RENAME_LIST,
+  DELETE_LIST,
   addFavorite,
-  removeFavorite
+  deleteFavorite,
+  addList,
+  renameList,
+  deleteList
 } from 'containers/App/actions'
 import {
   PICTOGRAMS,
@@ -75,14 +81,53 @@ function* addFavoritePutData(action) {
   }
 }
 
-function* removeFavoritePutData(action) {
+function* deleteFavoritePutData(action) {
   try {
     const { fileName, listName } = action.payload
     yield put(showLoading())
     yield call(api[action.type], action.payload)
-    yield put(removeFavorite.success(fileName, listName))
+    yield put(deleteFavorite.success(fileName, listName))
   } catch (error) {
-    yield put(removeFavorite.failure(error.message))
+    yield put(deleteFavorite.failure(error.message))
+  } finally {
+    yield put(hideLoading())
+  }
+}
+
+function* addListPutData(action) {
+  try {
+    const { listName } = action.payload
+    yield put(showLoading())
+    yield call(api[action.type], action.payload)
+    yield put(addList.success(listName))
+  } catch (error) {
+    yield put(addList.failure(error.message))
+  } finally {
+    yield put(hideLoading())
+  }
+}
+
+function* deleteListPutData(action) {
+  try {
+    const { listName } = action.payload
+    yield put(showLoading())
+    yield call(api[action.type], action.payload)
+    yield put(deleteList.success(listName))
+  } catch (error) {
+    yield put(deleteList.failure(error.message))
+  } finally {
+    yield put(hideLoading())
+  }
+}
+
+function* renameListPutData(action) {
+  try {
+    const { listName, newListName } = action.payload
+    yield put(showLoading())
+    yield call(api[action.type], action.payload)
+    yield put(renameList.success(listName, newListName))
+  } catch (error) {
+    yield put(renameList.failure(error.message))
   } finally {
     yield put(hideLoading())
   }
@@ -148,11 +193,32 @@ export function* addFavoriteData() {
   yield cancel(watcher)
 }
 
-export function* removeFavoriteData() {
+export function* deleteFavoriteData() {
   const watcher = yield takeLatest(
-    REMOVE_FAVORITE.REQUEST,
-    removeFavoritePutData
+    DELETE_FAVORITE.REQUEST,
+    deleteFavoritePutData
   )
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE)
+  yield cancel(watcher)
+}
+
+export function* addListData() {
+  const watcher = yield takeLatest(ADD_LIST.REQUEST, addListPutData)
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE)
+  yield cancel(watcher)
+}
+
+export function* renameListData() {
+  const watcher = yield takeLatest(RENAME_LIST.REQUEST, renameListPutData)
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE)
+  yield cancel(watcher)
+}
+
+export function* deleteListData() {
+  const watcher = yield takeLatest(DELETE_LIST.REQUEST, deleteListPutData)
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE)
   yield cancel(watcher)
@@ -165,5 +231,8 @@ export default [
   newPictogramsData,
   autoCompleteData,
   addFavoriteData,
-  removeFavoriteData
+  deleteFavoriteData,
+  addListData,
+  renameListData,
+  deleteListData
 ]

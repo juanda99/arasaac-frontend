@@ -23,7 +23,13 @@ import P from 'components/P'
 import { withRouter, Link } from 'react-router'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ActionButtons from 'containers/MaterialsView/ActionButtons'
-import { addFavorite, removeFavorite } from 'containers/App/actions'
+import {
+  addFavorite,
+  deleteFavorite,
+  addList,
+  renameList,
+  deleteList
+} from 'containers/App/actions'
 import {
   makeSelectHasUser,
   makeSelectFavorites
@@ -70,18 +76,6 @@ class PictogramsView extends PureComponent {
     visibleSettings: false,
     visibleLabels: false,
     slideIndex: 0
-  };
-
-  handleFavoriteListSelect = (listName) => {
-    this.props.favoriteListSelect(listName)
-  };
-
-  handleDeleteList = (listName) => {
-    console.log(`Delete list ${listName}`)
-  };
-
-  handleDownloadList = (listName) => {
-    console.log(`Download list ${listName}`)
   };
 
   componentDidMount() {
@@ -136,8 +130,34 @@ class PictogramsView extends PureComponent {
     addFavorite(fileName, listName, token)
   };
 
-  handleRemoveFavorite = (fileName, listName) => {
-    this.props.removeFavorite(fileName, listName)
+  handledeletesFavorite = (fileName, listName) => {
+    this.props.deleteFavorite(fileName, listName)
+  };
+
+  handleFavoriteListSelect = (listName) => {
+    this.props.favoriteListSelect(listName)
+  };
+
+  handleDeleteList = (listName) => {
+    console.log(`Delete list ${listName}`)
+    const { deleteList, token } = this.props
+    deleteList(listName, token)
+  };
+
+  handleAddList = (listName) => {
+    console.log(`Add list ${listName}`)
+    const { addList, token } = this.props
+    addList(listName, token)
+  };
+
+  handleRenameList = (listName, newListName) => {
+    console.log(`Rename list ${listName} to ${newListName}`)
+    const { renameList, token } = this.props
+    renameList(listName, token)
+  };
+
+  handleDownloadList = (listName) => {
+    console.log(`Download list ${listName}`)
   };
 
   handleSubmit = (nextValue) => {
@@ -332,10 +352,12 @@ class PictogramsView extends PureComponent {
             {isAuthenticated ? (
               <FavoriteList
                 items={favorites}
-                onSelectList={this.handleFavoriteListSelect}
+                onSelect={this.handleFavoriteListSelect}
                 selectedList={selectedList}
-                onDeleteList={this.handleDeleteList}
-                onDownloadList={this.handleDownloadList}
+                onDelete={this.handleDeleteList}
+                onDownload={this.handleDownloadList}
+                onRename={this.handleRenameList}
+                onAdd={this.handleAddList}
                 listPictograms={favoritePictograms}
               />
             ) : (
@@ -373,6 +395,10 @@ PictogramsView.propTypes = {
   searchResults: PropTypes.arrayOf(PropTypes.number),
   filtersData: PropTypes.instanceOf(Map),
   addFavorite: PropTypes.func.isRequired,
+  deleteFavorite: PropTypes.func.isRequired,
+  addList: PropTypes.func.isRequired,
+  deleteList: PropTypes.func.isRequired,
+  renameList: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
   favorites: PropTypes.object.isRequired,
   requestFavorites: PropTypes.func.isRequired,
@@ -424,8 +450,17 @@ const mapDispatchToProps = (dispatch) => ({
   addFavorite: (fileName, listName, token) => {
     dispatch(addFavorite.request(fileName, listName, token))
   },
-  removeFavorite: (fileName, listName, token) => {
-    dispatch(removeFavorite.request(fileName, listName, token))
+  deleteFavorite: (fileName, listName, token) => {
+    dispatch(deleteFavorite.request(fileName, listName, token))
+  },
+  addList: (listName, token) => {
+    dispatch(addList.request(listName, token))
+  },
+  deleteList: (listName, token) => {
+    dispatch(deleteList.request(listName, token))
+  },
+  renameList: (listName, newListName, token) => {
+    dispatch(renameList.request(listName, newListName, token))
   },
   favoriteListSelect: (listName) => {
     dispatch(favoriteListSelect(listName))

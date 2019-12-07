@@ -16,8 +16,12 @@ export const TOKEN_REFRESH = createRequestTypes('TOKEN_REFRESH')
 export const RESET_ERROR = 'app/LoginView/RESET_ERROR'
 export const ACTIVATION = createRequestTypes('ACTIVATION')
 
+// pictograms, saga takes place in PictogramsView
 export const ADD_FAVORITE = createRequestTypes('ADD_FAVORITE')
-export const REMOVE_FAVORITE = createRequestTypes('REMOVE_FAVORITE')
+export const DELETE_FAVORITE = createRequestTypes('DELETE_FAVORITE')
+export const ADD_LIST = createRequestTypes('ADD_LIST')
+export const RENAME_LIST = createRequestTypes('RENAME_LIST')
+export const DELETE_LIST = createRequestTypes('DELETE_LIST')
 
 export const login = {
   request: (username, password) =>
@@ -57,20 +61,43 @@ export const logout = () => action(LOGOUT)
 
 export const resetError = () => action(RESET_ERROR)
 
+// favorite pictograms related actions:
+
 export const addFavorite = {
   request: (fileName, listName = DEFAULT_LIST, token) =>
     action(ADD_FAVORITE.REQUEST, { fileName, listName, token }),
   success: (fileName, listName) =>
     action(ADD_FAVORITE.SUCCESS, { fileName, listName }),
-  failure: (error) => action(ADD_FAVORITE, { error })
+  failure: (error) => action(ADD_FAVORITE.FAILURE, { error })
 }
 
-export const removeFavorite = {
-  request: (fileName, listName) =>
-    action(REMOVE_FAVORITE.REQUEST, { fileName, listName }),
+export const deleteFavorite = {
+  request: (fileName, listName, token) =>
+    action(DELETE_FAVORITE.REQUEST, { fileName, listName, token }),
   success: (fileName, listName) =>
-    action(REMOVE_FAVORITE.SUCCESS, { fileName, listName }),
-  failure: (error) => action(REMOVE_FAVORITE, { error })
+    action(DELETE_FAVORITE.SUCCESS, { fileName, listName }),
+  failure: (error) => action(DELETE_FAVORITE.FAILURE, { error })
+}
+
+export const addList = {
+  request: (listName, token) => action(ADD_LIST.REQUEST, { listName, token }),
+  success: (listName) => action(ADD_LIST.SUCCESS, { listName }),
+  failure: (error) => action(ADD_LIST.FAILURE, { error })
+}
+
+export const renameList = {
+  request: (listName, newListName, token) =>
+    action(RENAME_LIST.REQUEST, { listName, newListName, token }),
+  success: (listName, newListName) =>
+    action(RENAME_LIST.SUCCESS, { listName, newListName }),
+  failure: (error) => action(RENAME_LIST.FAILURE, { error })
+}
+
+export const deleteList = {
+  request: (listName, token) =>
+    action(DELETE_LIST.REQUEST, { listName, token }),
+  success: (listName) => action(DELETE_LIST.SUCCESS, { listName }),
+  failure: (error) => action(DELETE_LIST.FAILURE, { error })
 }
 
 /* Social login */

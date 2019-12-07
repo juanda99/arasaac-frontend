@@ -27,9 +27,10 @@ export class FavoriteList extends PureComponent {
       items,
       width,
       selectedList,
-      onDownloadList,
-      onDeleteList,
-      onSelectList,
+      onDownload,
+      onDelete,
+      onSelect,
+      onRename,
       listPictograms
     } = this.props
     const [...lists] = items.keys()
@@ -44,9 +45,10 @@ export class FavoriteList extends PureComponent {
               key={listItem}
               listName={listItem}
               totalItems={totalItems}
-              onDelete={onDeleteList}
-              onDownload={onDownloadList}
-              onSelect={onSelectList}
+              onDelete={onDelete}
+              onDownload={onDownload}
+              onSelect={onSelect}
+              onRename={onRename}
             />
           )
         })
@@ -56,9 +58,10 @@ export class FavoriteList extends PureComponent {
         <ListSnippet
           key={DEFAULT_LIST}
           listName={DEFAULT_LIST}
-          onDelete={onDeleteList}
-          onDownload={onDownloadList}
-          onSelect={onSelectList}
+          onDelete={onDelete}
+          onDownload={onDownload}
+          onSelect={onSelect}
+          onRename={onRename}
         />
       )
     }
@@ -103,9 +106,10 @@ FavoriteList.propTypes = {
   items: PropTypes.object,
   width: PropTypes.number.isRequired,
   listPictograms: PropTypes.arrayOf(PropTypes.object),
-  onSelectList: PropTypes.func.isRequired,
-  onDeleteList: PropTypes.func.isRequired,
-  onDownloadList: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onDownload: PropTypes.func.isRequired,
+  onRename: PropTypes.func.isRequired,
   selectedList: PropTypes.string.isRequired
 }
 
