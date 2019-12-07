@@ -15,7 +15,6 @@ export const ENABLE_FILTER = 'PICTOGRAMS_ENABLE_FILTER'
 export const SET_FILTER_ITEMS = 'PICTOGRAMS_SET_FILTER_ITEMS'
 export const AUTOCOMPLETE = createRequestTypes('AUTOCOMPLETE')
 export const FAVORITE_LIST_SELECT = 'FAVORITE_LIST_SELECT'
-// actions: pictograms.request/success/failure
 
 export const pictograms = {
   request: (locale, searchText) =>
