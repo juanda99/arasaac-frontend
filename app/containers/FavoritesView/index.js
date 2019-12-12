@@ -52,7 +52,12 @@ class FavoritesView extends PureComponent {
     //  TODO: just ask once this stuff, once the app is open, depending on locale!!!
     if (favorites && token) {
       const [...lists] = favorites.keys()
-      const favoriteIds = lists.map((list) => favorites.get(list).toJS()).flat()
+      const favoriteIds = lists.map((list) => {
+        // .flat() not for edge & explorer
+        // return favorites.get(list).toJS()).flat()
+        const tmpIds = favorites.get(list).toJS()
+        return [].concat(...tmpIds)
+      })
       requestFavorites(locale, favoriteIds, token)
     }
   }
@@ -91,7 +96,6 @@ class FavoritesView extends PureComponent {
   };
 
   handleRenameList = (listName, newListName) => {
-    console.log(`Rename list ${listName} to ${newListName}`)
     const { renameList, token } = this.props
     renameList(listName, newListName, token)
   };
