@@ -220,9 +220,6 @@ class App extends Component {
   }
 
   handleChangeList = (event, value) => {
-    console.log("handleChangeList");
-    console.log(event);
-    console.log(value);
     if (value) {
       this.context.router.push(value);
       this.setState({

@@ -35,13 +35,12 @@ describe('AuthReducer', () => {
       loading: true,
       error: ''
     })
-    /*
-    console.log(expectedResult.toJS())
-    const newState = authReducer(state, login.request(user, password))
-    console.log('ha llegado?')
-    console.log(newState.toJS())
-    */
     // expect(authReducer(state, login(user, password))).toEqual(expectedResult)
-    expect(Immutable.is(authReducer(state, login.request(user, password)), expectedResult)).toEqual(true)
+    expect(
+      Immutable.is(
+        authReducer(state, login.request(user, password)),
+        expectedResult
+      )
+    ).toEqual(true)
   })
 })

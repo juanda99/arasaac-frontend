@@ -24,17 +24,16 @@ class SocialLogin extends PureComponent {
     // one we get facebook token we ask for our app token
     const token = response.accessToken
     this.props.onSuccess(token, 'facebook', this.props.locale)
-  }
+  };
 
   success = (response) => {
     const token = response.accessToken
-    console.log('ha entrado', this.props.locale)
     this.props.onSuccess(token, 'google', this.props.locale)
-  }
+  };
 
   error = (response) => {
     console.error(response)
-  }
+  };
 
   render() {
     return (

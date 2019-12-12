@@ -5,7 +5,6 @@ import Image from './Image'
 import StyledPaper from './StyledPaper'
 
 function getItemStyles(props) {
-  console.log(props)
   const { currentOffset, initialOffset } = props
   if (!currentOffset) {
     return {
@@ -36,16 +35,6 @@ function CustomDragLayer({ item, itemType, isDragging, ...props }) {
     return null
   }
 
-  // function renderItem(type, item) {
-  //   switch (type) {
-  //     case ItemTypes.BOX:
-  //       return <BoxDragPreview title={item.title} />
-  //   }
-  // }
-  {
-    console.log('drawing.....')
-    console.log(item)
-  }
   return (
     <div style={layerStyles} id='kkkkkk'>
       <div style={getItemStyles(props)}>

@@ -93,15 +93,9 @@ export const makeListSelector = () =>
   )
 
 export const makeListFavoritesSelector = () =>
-  createSelector(
-    makeListSelector(),
-    makeSelectFavorites(),
-    (list, favorites) => {
-      console.log(favorites)
-      console.log(list)
-      // not authenticated, return null
-      return favorites ? favorites.get(list) : null
-    }
+  createSelector(makeListSelector(), makeSelectFavorites(), (list, favorites) =>
+    // not authenticated, return null
+    favorites ? favorites.get(list) : null
   )
 
 export const makeFavoritePictogramsSelector = () =>
