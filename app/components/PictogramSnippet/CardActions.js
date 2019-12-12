@@ -11,7 +11,7 @@ const CardActions = styled.div`
   opacity: 0;
   ${media.md} {
     &:hover {
-      opacity: 0.93;
+      opacity: ${(props) => (props.isDragging ? 0 : 0.93)};
     }
   }
   background-color: ${(props) =>

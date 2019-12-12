@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { PICTOGRAMS_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
-import ActionSetFavorite from 'material-ui/svg-icons/action/favorite-border'
+import Delete from 'material-ui/svg-icons/action/delete'
+import { DragSource } from 'react-dnd'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
+import { getEmptyImage } from 'react-dnd-html5-backend'
 import { keywordSelector } from 'utils'
 import { FormattedMessage } from 'react-intl'
 import CardActions from './CardActions'
@@ -14,10 +16,42 @@ import Image from './Image'
 import Item from './Item'
 import messages from './messages'
 
+const source = {
+  beginDrag(props) {
+    const {
+      pictogram: { _id }
+    } = props
+    return {
+      _id
+    }
+  },
+  endDrag(props, monitor) {
+    if (!monitor.didDrop()) {
+      console.log('not dropped!')
+      return
+    }
+    const { onDrop } = props
+    const { _id } = monitor.getItem()
+    const { listName } = monitor.getDropResult()
+    onDrop({ _id, listName })
+  }
+}
+
+const collect = (connect, monitor) => ({
+  connectDragSource: connect.dragSource(),
+  connectDragPreview: connect.dragPreview(),
+  isDragging: monitor.isDragging()
+})
+
 class PictogramSnippet extends PureComponent {
   state = {
     zDepth: 1
   };
+
+  componentDidMount() {
+    const { connectDragPreview } = this.props
+    connectDragPreview(getEmptyImage())
+  }
 
   styles = {
     icon: {
@@ -55,16 +89,13 @@ class PictogramSnippet extends PureComponent {
     })
   };
 
-  handleDrop = (id) => {
-    console.log(`Drop executed with id ${id}`)
-  };
-
-  handleAddFavorite = (event) => {
-    const {
-      pictogram: { _id }
-    } = this.props
+  handleDelete = (event) => {
     event.preventDefault()
-    this.props.onAddFavorite(_id)
+    const {
+      pictogram: { _id },
+      onDelete
+    } = this.props
+    onDelete(_id)
   };
 
   handleDownload = (event) => {
@@ -83,26 +114,29 @@ class PictogramSnippet extends PureComponent {
       searchText,
       muiTheme,
       locale,
-      showExtra
+      showExtra,
+      connectDragSource,
+      isDragging
     } = this.props
 
     const { keyword } = keywordSelector(searchText, keywords)
     const { isAuthenticated } = this.context
     return (
       <StyledList
+        innerRef={(instance) => connectDragSource(instance)}
         key={_id}
         className='image-element-class'
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <StyledPaper zDepth={this.state.zDepth}>
+        <StyledPaper zDepth={this.state.zDepth} isDragging={isDragging}>
           <Item url={`/pictograms/${locale}/${_id}/${keyword}`}>
             <div style={{ position: 'relative' }}>
               <Image
                 src={`${PICTOGRAMS_URL}/${_id}/${_id}_300.png`}
                 alt={keyword}
               />
-              <CardActions color={true}>
+              <CardActions color={true} isDragging={isDragging}>
                 {showExtra && isAuthenticated && (
                   <IconButton
                     touch={true}
@@ -111,9 +145,9 @@ class PictogramSnippet extends PureComponent {
                     tooltip={<FormattedMessage {...messages.addFavorite} />}
                     iconStyle={this.styles.icon}
                     style={this.styles.rightIconButton}
-                    onClick={this.handleAddFavorite}
+                    onClick={this.handleDelete}
                   >
-                    <ActionSetFavorite
+                    <Delete
                       color={muiTheme.appBar.textColor}
                       hoverColor={muiTheme.palette.accent1Color}
                     />
@@ -155,7 +189,12 @@ PictogramSnippet.propTypes = {
   muiTheme: PropTypes.object,
   locale: PropTypes.string.isRequired,
   showExtra: PropTypes.bool,
-  onAddFavorite: PropTypes.func.isRequired
+  connectDragSource: PropTypes.func.isRequired,
+  connectDragPreview: PropTypes.func.isRequired,
+  isDragging: PropTypes.bool.isRequired,
+  onDelete: PropTypes.func.isRequired
 }
 
-export default muiThemeable()(PictogramSnippet)
+export default muiThemeable()(
+  DragSource('pictogram', source, collect)(PictogramSnippet)
+)

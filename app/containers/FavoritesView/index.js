@@ -18,6 +18,7 @@ import { withRouter } from 'react-router'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import {
   deleteFavorite,
+  addFavorite,
   addList,
   renameList,
   deleteList
@@ -56,13 +57,16 @@ class FavoritesView extends PureComponent {
     }
   }
 
-  handleAddFavorite = (fileName, listName) => {
+  handleAddFavorite = (props) => {
     const { addFavorite, token } = this.props
+    const fileName = props._id
+    const listName = props.listName
     addFavorite(fileName, listName, token)
   };
 
-  handledeletesFavorite = (fileName, listName) => {
-    this.props.deleteFavorite(fileName, listName)
+  handleDeleteFavorite = (fileName, listName) => {
+    const { deleteFavorite, token } = this.props
+    deleteFavorite(fileName, listName, token)
   };
 
   handleFavoriteListSelect = (listName) => {
@@ -127,10 +131,11 @@ class FavoritesView extends PureComponent {
           onSelect={this.handleFavoriteListSelect}
           selectedList={selectedList}
           onDelete={this.handleDeleteList}
+          onDeleteFavorite={this.handleDeleteFavorite}
           onDownload={this.handleDownloadList}
           onRename={this.handleRenameList}
-          onAdd={this.handleAddList}
           listPictograms={favoritePictograms}
+          onDrop={this.handleAddFavorite}
         />
       </View>
     )
@@ -185,6 +190,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   favoriteListSelect: (listName) => {
     dispatch(favoriteListSelect(listName))
+  },
+  addFavorite: (fileName, listName, token) => {
+    dispatch(addFavorite.request(fileName, listName, token))
   }
 })
 

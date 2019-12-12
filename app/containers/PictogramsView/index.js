@@ -6,7 +6,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
@@ -17,21 +17,12 @@ import Divider from 'material-ui/Divider'
 import SwipeableViews from 'react-swipeable-views'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
-import RaisedButton from 'material-ui/RaisedButton'
-import TextField from 'material-ui/TextField'
-import FavoriteList from 'components/FavoriteList'
 import PictogramList from 'components/PictogramList'
 import P from 'components/P'
-import { withRouter, Link } from 'react-router'
+import { withRouter } from 'react-router'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ActionButtons from 'containers/MaterialsView/ActionButtons'
-import {
-  addFavorite,
-  deleteFavorite,
-  addList,
-  renameList,
-  deleteList
-} from 'containers/App/actions'
+import { addFavorite, deleteFavorite } from 'containers/App/actions'
 import {
   makeSelectHasUser,
   makeSelectFavorites
@@ -53,8 +44,7 @@ import {
   favoritePictograms,
   newPictograms,
   toggleShowFilter,
-  setFilterItems,
-  favoriteListSelect
+  setFilterItems
 } from './actions'
 import messages from './messages'
 
@@ -86,10 +76,7 @@ class PictogramsView extends PureComponent {
       requestPictograms,
       requestNewPictograms,
       requestAutocomplete,
-      requestFavorites,
-      locale,
-      token,
-      favorites
+      locale
     } = this.props
     if (this.props.params.searchText && !this.props.searchResults) {
       requestPictograms(locale, this.props.params.searchText)
@@ -97,11 +84,11 @@ class PictogramsView extends PureComponent {
     //  TODO: just ask once this stuff, once the app is open, depending on locale!!!
     requestNewPictograms(locale)
     requestAutocomplete(locale)
-    if (favorites && token) {
-      const [...lists] = favorites.keys()
-      const favoriteIds = lists.map((list) => favorites.get(list).toJS()).flat()
-      requestFavorites(locale, favoriteIds, token)
-    }
+    // if (favorites && token) {
+    //   const [...lists] = favorites.keys()
+    //   const favoriteIds = lists.map((list) => favorites.get(list).toJS()).flat()
+    //   requestFavorites(locale, favoriteIds, token)
+    // }
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.params.searchText !== nextProps.params.searchText) {
@@ -137,37 +124,6 @@ class PictogramsView extends PureComponent {
     this.props.deleteFavorite(fileName, listName)
   };
 
-  handleFavoriteListSelect = (listName) => {
-    this.props.favoriteListSelect(listName)
-  };
-
-  handleDeleteList = (listName) => {
-    const { deleteList, token } = this.props
-    deleteList(listName, token)
-  };
-
-  handleListNameChange = (e) => {
-    this.setState({
-      listName: e.target.value
-    })
-  };
-
-  handleAddList = () => {
-    const { addList, token } = this.props
-    addList(this.state.listName, token)
-    this.setState({ listName: '' })
-  };
-
-  handleRenameList = (listName, newListName) => {
-    console.log(`Rename list ${listName} to ${newListName}`)
-    const { renameList, token } = this.props
-    renameList(listName, newListName, token)
-  };
-
-  handleDownloadList = (listName) => {
-    console.log(`Download list ${listName}`)
-  };
-
   handleSubmit = (nextValue) => {
     this.setState({
       slideIndex: 0
@@ -199,16 +155,9 @@ class PictogramsView extends PureComponent {
       loading,
       filtersData,
       muiTheme,
-      keywords,
-      favorites,
-      selectedList,
-      favoritePictograms,
-      intl
+      keywords
     } = this.props
 
-    const { formatMessage } = intl
-
-    const { isAuthenticated } = this.context
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
     let pictogramsCounter
@@ -216,27 +165,25 @@ class PictogramsView extends PureComponent {
     if (slideIndex === 0) pictogramsList = visiblePictograms
     else if (slideIndex === 1) pictogramsList = newPictogramsList
     let gallery
-    if (slideIndex !== 2) {
-      if ((loading && searchText) || (loading && slideIndex !== 0)) {
-        gallery = <p> Loading pictograms...</p>
-      } else if (!searchText && slideIndex !== 1) {
-        gallery = null
-      } else {
-        pictogramsCounter = pictogramsList.length
-        gallery = pictogramsCounter ? (
-          <PictogramList
-            pictograms={pictogramsList}
-            locale={locale}
-            filtersMap={filters}
-            setFilterItems={this.props.setFilterItems}
-            showLabels={visibleLabels}
-            searchText={searchText}
-            onAddFavorite={this.handleAddFavorite}
-          />
-        ) : (
-          <P>{<FormattedMessage {...messages.pictogramsNotFound} />}</P>
-        )
-      }
+    if ((loading && searchText) || (loading && slideIndex !== 0)) {
+      gallery = <p> Loading pictograms...</p>
+    } else if (!searchText && slideIndex !== 1) {
+      gallery = null
+    } else {
+      pictogramsCounter = pictogramsList.length
+      gallery = pictogramsCounter ? (
+        <PictogramList
+          pictograms={pictogramsList}
+          locale={locale}
+          filtersMap={filters}
+          setFilterItems={this.props.setFilterItems}
+          showLabels={visibleLabels}
+          searchText={searchText}
+          onAddFavorite={this.handleAddFavorite}
+        />
+      ) : (
+        <P>{<FormattedMessage {...messages.pictogramsNotFound} />}</P>
+      )
     }
 
     return (
@@ -359,41 +306,6 @@ class PictogramsView extends PureComponent {
               {gallery}
             </View>
           </div>
-          <View left={true} right={true}>
-            {isAuthenticated ? (
-              <div>
-                <TextField
-                  hintText={formatMessage(messages.addListHint)}
-                  floatingLabelText={formatMessage(messages.listName)}
-                  style={{ marginRight: 10 }}
-                  value={this.state.listName}
-                  onChange={this.handleListNameChange}
-                />
-                <RaisedButton
-                  label={<FormattedMessage {...messages.addList} />}
-                  primary={true}
-                  onClick={this.handleAddList}
-                  disabled={!this.state.listName}
-                />
-                <FavoriteList
-                  items={favorites}
-                  onSelect={this.handleFavoriteListSelect}
-                  selectedList={selectedList}
-                  onDelete={this.handleDeleteList}
-                  onDownload={this.handleDownloadList}
-                  onRename={this.handleRenameList}
-                  onAdd={this.handleAddList}
-                  listPictograms={favoritePictograms}
-                />
-              </div>
-            ) : (
-              <Link to='/signin'>
-                <FormattedMessage
-                  {...messages.contentNotAvailableWithoutAuth}
-                />
-              </Link>
-            )}
-          </View>
         </SwipeableViews>
       </div>
     )
@@ -422,16 +334,8 @@ PictogramsView.propTypes = {
   filtersData: PropTypes.instanceOf(Map),
   addFavorite: PropTypes.func.isRequired,
   deleteFavorite: PropTypes.func.isRequired,
-  addList: PropTypes.func.isRequired,
-  deleteList: PropTypes.func.isRequired,
-  renameList: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
-  favorites: PropTypes.object.isRequired,
-  requestFavorites: PropTypes.func.isRequired,
-  selectedList: PropTypes.string.isRequired,
-  favoriteListSelect: PropTypes.func.isRequired,
-  favoritePictograms: PropTypes.arrayOf(PropTypes.object),
-  intl: intlShape.isRequired
+  favorites: PropTypes.object.isRequired
 }
 
 PictogramsView.contextTypes = {
@@ -479,22 +383,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   deleteFavorite: (fileName, listName, token) => {
     dispatch(deleteFavorite.request(fileName, listName, token))
-  },
-  addList: (listName, token) => {
-    dispatch(addList.request(listName, token))
-  },
-  deleteList: (listName, token) => {
-    dispatch(deleteList.request(listName, token))
-  },
-  renameList: (listName, newListName, token) => {
-    dispatch(renameList.request(listName, newListName, token))
-  },
-  favoriteListSelect: (listName) => {
-    dispatch(favoriteListSelect(listName))
   }
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(muiThemeable()(injectIntl(PictogramsView))))
+)(withRouter(muiThemeable()(PictogramsView)))

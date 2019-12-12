@@ -56,7 +56,7 @@ const api = {
   ADD_LIST_REQUEST: ({ listName, token }) => callApi(addFavoriteList.url(listName), addFavoriteList.options, token),
   DELETE_LIST_REQUEST: ({ listName, token }) => callApi(deleteFavoriteList.url(listName), deleteFavoriteList.options, token),
   RENAME_LIST_REQUEST: ({ listName, newListName, token }) => callApi(renameFavoriteList.url(listName), renameFavoriteList.options(newListName), token),
-  REMOVE_FAVORITE_REQUEST: ({ ...data, token }) => callApi(removeFavorite.url, removeFavorite.options(data), token),
+  DELETE_FAVORITE_REQUEST: ({ ...data, token }) => callApi(removeFavorite.url, removeFavorite.options(data), token),
   GENERATE_CUSTOM_PICTOGRAM: (parameters) =>
     callApi(customPicto.url, customPicto.options(parameters)),
   GET_KEYWORDS_BY_PICTOID: ({ language, idPictogram }) =>

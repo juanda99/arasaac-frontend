@@ -15,10 +15,5 @@ export default defineMessages({
     id: 'app.containers.TabsHeader.new',
     description: 'Label for new materials tab',
     defaultMessage: 'New'
-  },
-  favorites: {
-    id: 'app.containers.TabsHeader.favorites',
-    description: 'Label for favorites tab',
-    defaultMessage: 'Favorites'
   }
 })

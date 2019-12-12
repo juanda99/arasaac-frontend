@@ -72,7 +72,7 @@ export const addFavorite = {
 }
 
 export const deleteFavorite = {
-  request: (fileName, listName, token) =>
+  request: (fileName, listName = DEFAULT_LIST, token) =>
     action(DELETE_FAVORITE.REQUEST, { fileName, listName, token }),
   success: (fileName, listName) =>
     action(DELETE_FAVORITE.SUCCESS, { fileName, listName }),

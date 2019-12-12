@@ -21,6 +21,11 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'Search Pictograms'
   },
+  favorites: {
+    id: 'menu.favorites',
+    description: 'Menu item',
+    defaultMessage: 'Favorites'
+  },
   searchMaterials: {
     id: 'menu.searchMaterials',
     description: 'Menu item',

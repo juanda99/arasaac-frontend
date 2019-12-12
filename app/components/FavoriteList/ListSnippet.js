@@ -11,6 +11,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
+import { DropTarget } from 'react-dnd'
 import CardActions from 'components/PictogramSnippet/CardActions'
 import StyledPaper from 'components/PictogramSnippet/StyledPaper'
 import StyledList from 'components/PictogramSnippet/StyledList'
@@ -126,7 +127,15 @@ class ListSnippet extends PureComponent {
   };
 
   render() {
-    const { muiTheme, listName, totalItems, intl } = this.props
+    const {
+      muiTheme,
+      listName,
+      totalItems,
+      intl,
+      connectDropTarget,
+      canDrop,
+      isOver
+    } = this.props
     const { anchorEl, menuOpen } = this.state
     const { formatMessage } = intl
 
@@ -146,6 +155,7 @@ class ListSnippet extends PureComponent {
     ]
     return (
       <StyledList
+        innerRef={(instance) => connectDropTarget(instance)}
         key={listName}
         className='image-element-class'
         onMouseEnter={this.handleMouseEnter}
@@ -185,7 +195,12 @@ class ListSnippet extends PureComponent {
             />
           )}
         </Dialog>
-        <StyledPaper zDepth={this.state.zDepth} onClick={this.handleClick}>
+        <StyledPaper
+          zDepth={this.state.zDepth}
+          onClick={this.handleClick}
+          canDrop={canDrop}
+          isOver={isOver}
+        >
           <div style={{ position: 'relative' }}>
             <div
               style={{
@@ -268,7 +283,28 @@ ListSnippet.propTypes = {
   onRename: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
   totalItems: PropTypes.number,
-  intl: intlShape.isRequired
+  intl: intlShape.isRequired,
+  connectDropTarget: PropTypes.func.isRequired,
+  canDrop: PropTypes.bool.isRequired,
+  isOver: PropTypes.bool.isRequired
 }
 
-export default muiThemeable()(injectIntl(ListSnippet))
+const target = {
+  drop(props) {
+    const { listName } = props
+    console.log('DROPPPPPED!')
+    return {
+      listName
+    }
+  }
+}
+
+const collect = (connect, monitor) => ({
+  connectDropTarget: connect.dropTarget(),
+  canDrop: monitor.canDrop(),
+  isOver: monitor.isOver()
+})
+
+export default muiThemeable()(
+  injectIntl(DropTarget('pictogram', target, collect)(ListSnippet))
+)

@@ -4,10 +4,9 @@ import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import withWidth, { SMALL, LARGE } from 'material-ui/utils/withWidth'
 import { DEFAULT_LIST } from 'utils'
-import ListSnippet from './ListSnippet'
-import PictogramSnippet from 'components/PictogramSnippet'
+import PictogramSnippet from 'components/PictogramSnippet/DragPictogramSnippet'
 import CustomDragLayer from 'components/PictogramSnippet/CustomDragLayer'
-import Test from './Test'
+import ListSnippet from './ListSnippet'
 
 const Masonry = require('react-masonry-component')
 const masonryOptions = {
@@ -25,15 +24,20 @@ const styles = {
 }
 
 export class FavoriteList extends React.Component {
-  componentDidMount() {
-    document.body.addEventListener('mousemove', (e) => this.showCords(e))
-  }
+  // componentDidMount() {
+  //   document.body.addEventListener('mousemove', (e) => this.showCords(e))
+  // }
 
-  showCords = (event) => {
-    const x = event.clientX
-    const y = event.clientY
-    const coor = 'X coords: ' + x + ', Y coords: ' + y
-    console.log(coor)
+  // showCords = (event) => {
+  //   const x = event.clientX
+  //   const y = event.clientY
+  //   const coor = 'X coords: ' + x + ', Y coords: ' + y
+  //   console.log(coor)
+  // };
+
+  handleDeleteFavorite = (fileName) => {
+    const { onDeleteFavorite, selectedList } = this.props
+    onDeleteFavorite(fileName, selectedList)
   };
 
   render() {
@@ -45,6 +49,7 @@ export class FavoriteList extends React.Component {
       onDelete,
       onSelect,
       onRename,
+      onDrop,
       listPictograms
     } = this.props
     const [...lists] = items.keys()
@@ -86,15 +91,13 @@ export class FavoriteList extends React.Component {
         locale={'es'}
         key={pictogram._id}
         showExtra={width === LARGE}
-        onAddFavorite={() => {
-          console.log('kkkkk')
-        }}
+        onDrop={onDrop}
+        onDelete={this.handleDeleteFavorite}
       />
     ))
 
     return (
-      <div ref={(c) => (this.myRef = c)}>
-        {this.myRef && console.log(this.myRef.getBoundingClientRect())}
+      <div>
         {width !== SMALL ? (
           <Masonry
             className={'my-gallery-class'} // default ''
@@ -112,7 +115,6 @@ export class FavoriteList extends React.Component {
             {renderPictograms}
           </ul>
         )}
-        <Test />
         <CustomDragLayer />
       </div>
     )
@@ -127,7 +129,9 @@ FavoriteList.propTypes = {
   onDelete: PropTypes.func.isRequired,
   onDownload: PropTypes.func.isRequired,
   onRename: PropTypes.func.isRequired,
-  selectedList: PropTypes.string.isRequired
+  selectedList: PropTypes.string.isRequired,
+  onDrop: PropTypes.func.isRequired,
+  onDeleteFavorite: PropTypes.func.isRequired
 }
 
 export default withWidth()(DragDropContext(HTML5Backend)(FavoriteList))

@@ -14,7 +14,7 @@ function getItemStyles(props) {
   }
 
   const { x, y } = currentOffset
-  const transform = `translate(${x - 100}px, ${y - 850 + window.scrollY}px)`
+  const transform = `translate(${x}px, ${y}px)`
   return {
     transform,
     WebkitTransform: transform
@@ -47,12 +47,11 @@ function CustomDragLayer({ item, itemType, isDragging, ...props }) {
     console.log(item)
   }
   return (
-    <div style={layerStyles} id='kkkkkk' ref={(c) => (this.layer = c)}>
+    <div style={layerStyles} id='kkkkkk'>
       <div style={getItemStyles(props)}>
-        <Image
-          src={`${PICTOGRAMS_URL}/${item._id}/${item._id}_300.png`}
-          style={{ width: 300, height: 300 }}
-        />
+        <StyledPaper>
+          <Image src={`${PICTOGRAMS_URL}/${item._id}/${item._id}_300.png`} />
+        </StyledPaper>
       </div>
     </div>
   )
