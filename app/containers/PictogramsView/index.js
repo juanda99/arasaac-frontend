@@ -6,7 +6,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
@@ -17,6 +17,8 @@ import Divider from 'material-ui/Divider'
 import SwipeableViews from 'react-swipeable-views'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
+import RaisedButton from 'material-ui/RaisedButton'
+import TextField from 'material-ui/TextField'
 import FavoriteList from 'components/FavoriteList'
 import PictogramList from 'components/PictogramList'
 import P from 'components/P'
@@ -75,7 +77,8 @@ class PictogramsView extends PureComponent {
   state = {
     visibleSettings: false,
     visibleLabels: false,
-    slideIndex: 0
+    slideIndex: 0,
+    listName: ''
   };
 
   componentDidMount() {
@@ -105,19 +108,19 @@ class PictogramsView extends PureComponent {
       const { requestPictograms, locale } = this.props
       requestPictograms(locale, nextProps.params.searchText)
     }
-    if (this.props.favorites !== nextProps.favorites) {
-      if (nextProps.favorites && nextProps.token) {
-        const [...lists] = nextProps.favorites.keys()
-        const favoriteIds = lists
-          .map((list) => nextProps.favorites.get(list).toJS())
-          .flat()
-        this.props.requestFavorites(
-          nextProps.locale,
-          favoriteIds,
-          nextProps.token
-        )
-      }
-    }
+    // if (this.props.favorites !== nextProps.favorites) {
+    //   if (nextProps.favorites && nextProps.token) {
+    //     const [...lists] = nextProps.favorites.keys()
+    //     const favoriteIds = lists
+    //       .map((list) => nextProps.favorites.get(list).toJS())
+    //       .flat()
+    //     this.props.requestFavorites(
+    //       nextProps.locale,
+    //       favoriteIds,
+    //       nextProps.token
+    //     )
+    //   }
+    // }
   }
 
   handleChange = (value) =>
@@ -139,21 +142,26 @@ class PictogramsView extends PureComponent {
   };
 
   handleDeleteList = (listName) => {
-    console.log(`Delete list ${listName}`)
     const { deleteList, token } = this.props
     deleteList(listName, token)
   };
 
-  handleAddList = (listName) => {
-    console.log(`Add list ${listName}`)
+  handleListNameChange = (e) => {
+    this.setState({
+      listName: e.target.value
+    })
+  };
+
+  handleAddList = () => {
     const { addList, token } = this.props
-    addList(listName, token)
+    addList(this.state.listName, token)
+    this.setState({ listName: '' })
   };
 
   handleRenameList = (listName, newListName) => {
     console.log(`Rename list ${listName} to ${newListName}`)
     const { renameList, token } = this.props
-    renameList(listName, token)
+    renameList(listName, newListName, token)
   };
 
   handleDownloadList = (listName) => {
@@ -194,8 +202,11 @@ class PictogramsView extends PureComponent {
       keywords,
       favorites,
       selectedList,
-      favoritePictograms
+      favoritePictograms,
+      intl
     } = this.props
+
+    const { formatMessage } = intl
 
     const { isAuthenticated } = this.context
     const searchText = this.props.params.searchText || ''
@@ -350,16 +361,31 @@ class PictogramsView extends PureComponent {
           </div>
           <View left={true} right={true}>
             {isAuthenticated ? (
-              <FavoriteList
-                items={favorites}
-                onSelect={this.handleFavoriteListSelect}
-                selectedList={selectedList}
-                onDelete={this.handleDeleteList}
-                onDownload={this.handleDownloadList}
-                onRename={this.handleRenameList}
-                onAdd={this.handleAddList}
-                listPictograms={favoritePictograms}
-              />
+              <div>
+                <TextField
+                  hintText={formatMessage(messages.addListHint)}
+                  floatingLabelText={formatMessage(messages.listName)}
+                  style={{ marginRight: 10 }}
+                  value={this.state.listName}
+                  onChange={this.handleListNameChange}
+                />
+                <RaisedButton
+                  label={<FormattedMessage {...messages.addList} />}
+                  primary={true}
+                  onClick={this.handleAddList}
+                  disabled={!this.state.listName}
+                />
+                <FavoriteList
+                  items={favorites}
+                  onSelect={this.handleFavoriteListSelect}
+                  selectedList={selectedList}
+                  onDelete={this.handleDeleteList}
+                  onDownload={this.handleDownloadList}
+                  onRename={this.handleRenameList}
+                  onAdd={this.handleAddList}
+                  listPictograms={favoritePictograms}
+                />
+              </div>
             ) : (
               <Link to='/signin'>
                 <FormattedMessage
@@ -404,7 +430,8 @@ PictogramsView.propTypes = {
   requestFavorites: PropTypes.func.isRequired,
   selectedList: PropTypes.string.isRequired,
   favoriteListSelect: PropTypes.func.isRequired,
-  favoritePictograms: PropTypes.arrayOf(PropTypes.object)
+  favoritePictograms: PropTypes.arrayOf(PropTypes.object),
+  intl: intlShape.isRequired
 }
 
 PictogramsView.contextTypes = {
@@ -470,4 +497,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(muiThemeable()(PictogramsView)))
+)(withRouter(muiThemeable()(injectIntl(PictogramsView))))

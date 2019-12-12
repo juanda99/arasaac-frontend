@@ -48,6 +48,8 @@ const initialState = fromJS({
   error: ''
 })
 
+const { List } = require('immutable')
+
 // The auth reducer. The starting state sets authentication based on a token being in local storage.
 // TODO:
 // we would also want a util to check if the token is expired, it would update isAuthenticated key
@@ -100,7 +102,7 @@ const authReducer = (state = initialState, action) => {
       const { listName } = action.payload
       return state
         .set('loading', false)
-        .set('favorites', favorites.set(listName, []))
+        .set('favorites', favorites.set(listName, List()))
     }
 
     case DELETE_LIST.SUCCESS: {
@@ -112,13 +114,16 @@ const authReducer = (state = initialState, action) => {
     }
 
     case RENAME_LIST.SUCCESS: {
-      const favorites = state.get('favorites')
+      let favorites = state.get('favorites')
       const { listName, newListName } = action.payload
-      const listFavorites = favorites.get(listName)
-      return state
-        .set('loading', false)
-        .set('favorites', favorites.set(newListName, listFavorites))
-        .set('favorites', favorites.delete(listName))
+      // const listFavorites = favorites.get(listName)
+      favorites = favorites.mapKeys((k) => {
+        if (k === listName) return newListName
+        return k
+      })
+      return state.set('loading', false).set('favorites', favorites)
+      //   .setIn(['favorites', newListName], listFavorites)
+      //   .set('favorites', favorites.delete(listName))
     }
 
     case TOKEN_VALIDATION.SUCCESS:

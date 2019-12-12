@@ -1,10 +1,13 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { Map } from 'immutable'
+import { DragDropContext } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 import withWidth, { SMALL, LARGE } from 'material-ui/utils/withWidth'
 import { DEFAULT_LIST } from 'utils'
 import ListSnippet from './ListSnippet'
 import PictogramSnippet from 'components/PictogramSnippet'
+import CustomDragLayer from 'components/PictogramSnippet/CustomDragLayer'
+import Test from './Test'
 
 const Masonry = require('react-masonry-component')
 const masonryOptions = {
@@ -21,7 +24,18 @@ const styles = {
   }
 }
 
-export class FavoriteList extends PureComponent {
+export class FavoriteList extends React.Component {
+  componentDidMount() {
+    document.body.addEventListener('mousemove', (e) => this.showCords(e))
+  }
+
+  showCords = (event) => {
+    const x = event.clientX
+    const y = event.clientY
+    const coor = 'X coords: ' + x + ', Y coords: ' + y
+    console.log(coor)
+  };
+
   render() {
     const {
       items,
@@ -79,7 +93,8 @@ export class FavoriteList extends PureComponent {
     ))
 
     return (
-      <div>
+      <div ref={(c) => (this.myRef = c)}>
+        {this.myRef && console.log(this.myRef.getBoundingClientRect())}
         {width !== SMALL ? (
           <Masonry
             className={'my-gallery-class'} // default ''
@@ -97,6 +112,8 @@ export class FavoriteList extends PureComponent {
             {renderPictograms}
           </ul>
         )}
+        <Test />
+        <CustomDragLayer />
       </div>
     )
   }
@@ -113,4 +130,4 @@ FavoriteList.propTypes = {
   selectedList: PropTypes.string.isRequired
 }
 
-export default withWidth()(FavoriteList)
+export default withWidth()(DragDropContext(HTML5Backend)(FavoriteList))

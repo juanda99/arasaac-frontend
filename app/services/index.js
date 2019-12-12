@@ -10,6 +10,9 @@ import {
   addFavorite,
   removeFavorite,
   getFavorites,
+  addFavoriteList,
+  deleteFavoriteList,
+  renameFavoriteList,
   /* customPictogram, */
   API_ROOT,
   PRIVATE_API_ROOT
@@ -50,6 +53,9 @@ const api = {
   SIGNUP_REQUEST: (userData) => callApi(signup.url, signup.options(userData)),
   FAVORITE_PICTOGRAMS_REQUEST: ({ locale, favoriteIds, token }) => callApi(getFavorites.url(locale), getFavorites.options(favoriteIds), token),
   ADD_FAVORITE_REQUEST: ({ ...data, token }) => callApi(addFavorite.url, addFavorite.options(data), token),
+  ADD_LIST_REQUEST: ({ listName, token }) => callApi(addFavoriteList.url(listName), addFavoriteList.options, token),
+  DELETE_LIST_REQUEST: ({ listName, token }) => callApi(deleteFavoriteList.url(listName), deleteFavoriteList.options, token),
+  RENAME_LIST_REQUEST: ({ listName, newListName, token }) => callApi(renameFavoriteList.url(listName), renameFavoriteList.options(newListName), token),
   REMOVE_FAVORITE_REQUEST: ({ ...data, token }) => callApi(removeFavorite.url, removeFavorite.options(data), token),
   GENERATE_CUSTOM_PICTOGRAM: (parameters) =>
     callApi(customPicto.url, customPicto.options(parameters)),

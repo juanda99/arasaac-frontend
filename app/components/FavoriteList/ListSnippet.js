@@ -1,13 +1,16 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import muiThemeable from 'material-ui/styles/muiThemeable'
+import TextField from 'material-ui/TextField'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
 import IconButton from 'material-ui/IconButton'
 import Badge from 'material-ui/Badge'
 import { DEFAULT_LIST } from 'utils'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import CardActions from 'components/PictogramSnippet/CardActions'
 import StyledPaper from 'components/PictogramSnippet/StyledPaper'
 import StyledList from 'components/PictogramSnippet/StyledList'
@@ -56,12 +59,21 @@ class ListSnippet extends PureComponent {
 
   state = {
     zDepth: 1,
-    menuOpen: false
+    menuOpen: false,
+    dialogOpen: false,
+    newListName: '',
+    inputRef: null
   };
 
   handleMouseEnter = () => {
     this.setState({
       zDepth: 3
+    })
+  };
+
+  handleListNameChange = (e) => {
+    this.setState({
+      newListName: e.target.value
     })
   };
 
@@ -71,7 +83,10 @@ class ListSnippet extends PureComponent {
   };
   handleRename = (event) => {
     event.stopPropagation()
-    this.props.onRename(this.props.listName)
+    this.setState({ dialogOpen: true, menuOpen: false }, () => {
+      const { inputRef } = this.state
+      inputRef.focus()
+    })
   };
 
   handleDownload = (event) => {
@@ -98,9 +113,37 @@ class ListSnippet extends PureComponent {
     onSelect(listName)
   };
 
+  handleCancelDialog = () => {
+    this.setState({ dialogOpen: false })
+  };
+
+  handleSubmitDialog = () => {
+    const { newListName } = this.state
+    this.setState({ dialogOpen: false, newListName: '' })
+    if (newListName) {
+      this.props.onRename(this.props.listName, newListName)
+    }
+  };
+
   render() {
-    const { muiTheme, listName, totalItems } = this.props
+    const { muiTheme, listName, totalItems, intl } = this.props
     const { anchorEl, menuOpen } = this.state
+    const { formatMessage } = intl
+
+    const actions = [
+      <FlatButton
+        label='Cancel'
+        primary={true}
+        onClick={this.handleCancelDialog}
+      />,
+      <FlatButton
+        label='Submit'
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.handleSubmitDialog}
+        type='submit'
+      />
+    ]
     return (
       <StyledList
         key={listName}
@@ -116,6 +159,32 @@ class ListSnippet extends PureComponent {
           onRename={this.handleRename}
           onDownload={this.handleDownload}
         />
+        <Dialog
+          title='New list name'
+          actions={actions}
+          modal={true}
+          open={this.state.dialogOpen}
+          onRequestClose={this.handleCancelDialog}
+        >
+          {/* bug with textfield, workaround */}
+          {this.state.newListName ? (
+            <TextField
+              floatingLabelText={formatMessage(messages.listName)}
+              style={{ marginRight: 10 }}
+              value={this.state.newlistName}
+              onChange={this.handleListNameChange}
+            />
+          ) : (
+            <TextField
+              ref={(c) => (this.state.inputRef = c)}
+              hintText={formatMessage(messages.addListHint)}
+              floatingLabelText={formatMessage(messages.listName)}
+              style={{ marginRight: 10 }}
+              value={this.state.newlistName}
+              onChange={this.handleListNameChange}
+            />
+          )}
+        </Dialog>
         <StyledPaper zDepth={this.state.zDepth} onClick={this.handleClick}>
           <div style={{ position: 'relative' }}>
             <div
@@ -198,7 +267,8 @@ ListSnippet.propTypes = {
   onDownload: PropTypes.func.isRequired,
   onRename: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
-  totalItems: PropTypes.number
+  totalItems: PropTypes.number,
+  intl: intlShape.isRequired
 }
 
-export default muiThemeable()(ListSnippet)
+export default muiThemeable()(injectIntl(ListSnippet))

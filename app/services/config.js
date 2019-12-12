@@ -119,6 +119,35 @@ export const removeFavorite = {
   })
 }
 
+export const addFavoriteList = {
+  url: (listName) => `${PRIVATE_API_ROOT}/users/favorites/list/${listName}`,
+  options: {
+    config: {
+      method: 'POST'
+    }
+  }
+}
+
+export const deleteFavoriteList = {
+  url: (listName) => `${PRIVATE_API_ROOT}/users/favorites/list/${listName}`,
+  options: {
+    config: {
+      method: 'DELETE'
+    }
+  }
+}
+
+export const renameFavoriteList = {
+  url: (listName) => `${PRIVATE_API_ROOT}/users/favorites/list/${listName}`,
+  options: (newListName) => ({
+    config: {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ newListName })
+    }
+  })
+}
+
 /*
 export const customPictogram = {
   url: (idPictogram, options) => {
