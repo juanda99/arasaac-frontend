@@ -17,6 +17,7 @@ import PrizesIcon from 'material-ui/svg-icons/action/card-membership'
 import ToolsIcon from 'material-ui/svg-icons/action/build'
 import AppsIcon from 'material-ui/svg-icons/navigation/apps'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
+import MenuIcon from 'material-ui/svg-icons/navigation/chevron-right'
 import AccountIcon from 'material-ui/svg-icons/social/person-add'
 import LoginIcon from 'material-ui/svg-icons/social/person'
 import InfoIcon from 'material-ui/svg-icons/action/info'
@@ -114,9 +115,7 @@ class Menu extends Component {
             nestedItems={[
               <ListItem
                 value='/pictograms/search'
-                primaryText={
-                  <FormattedMessage {...messages.searchPictograms} />
-                }
+                primaryText={<FormattedMessage {...messages.search} />}
                 leftIcon={<SearchIcon />}
               />,
               <ListItem
@@ -134,7 +133,7 @@ class Menu extends Component {
             nestedItems={[
               <ListItem
                 value='/materials/search'
-                primaryText={<FormattedMessage {...messages.searchMaterials} />}
+                primaryText={<FormattedMessage {...messages.search} />}
                 leftIcon={<SearchIcon />}
               />,
               <ListItem
@@ -151,51 +150,16 @@ class Menu extends Component {
             leftIcon={<AppsIcon />}
             nestedItems={[
               <ListItem
-                value='/onlinetools/animations-maker'
-                primaryText={<FormattedMessage {...messages.animationsMaker} />}
-              />,
-              <ListItem
-                value='/onlinetools/symbols-creator'
-                primaryText={<FormattedMessage {...messages.symbolsCreator} />}
-              />,
-              <ListItem
-                value='/onlinetools/schedule-generator'
-                primaryText={
-                  <FormattedMessage {...messages.scheduleGenerator} />
-                }
-              />,
-              <ListItem
-                value='/onlinetools/calendar-generator'
-                primaryText={
-                  <FormattedMessage {...messages.calendarGenerator} />
-                }
-              />,
-              <ListItem
-                value='/onlinetools/bingos-creator'
-                primaryText={<FormattedMessage {...messages.bingo} />}
-              />,
-              <ListItem
-                value='/onlinetools/snakes-and-ladders'
-                primaryText={
-                  <FormattedMessage {...messages.snakesAndLadders} />
-                }
-              />,
-              <ListItem
-                value='/onlinetools/dominos'
-                primaryText={<FormattedMessage {...messages.dominos} />}
-              />,
-              <ListItem
-                value='/onlinetools/dominos-encadenados'
-                primaryText={
-                  <FormattedMessage {...messages.dominosencadenados} />
-                }
+                value='/onlinetools/araword'
+                primaryText={<FormattedMessage {...messages.araword} />}
+                leftIcon={<MenuIcon />}
               />
             ]}
           />
           <ListItem
             id='lstsoftware'
-            value='/software'
-            primaryText={<FormattedMessage {...messages.software} />}
+            value='http://aulaabierta.arasaac.org'
+            primaryText='Aula abierta'
             leftIcon={<SoftwareIcon />}
           />
           <ListItem
@@ -264,12 +228,6 @@ class Menu extends Component {
         <Divider />
         <SelectableList value='' onChange={this.handleRequestChangeLink}>
           <Subheader>{<FormattedMessage {...messages.info} />}</Subheader>
-          <ListItem
-            id='lstnews'
-            value='https://github.com/callemall/material-ui'
-            primaryText={<FormattedMessage {...messages.news} />}
-            leftIcon={<NewsIcon />}
-          />
           <ListItem
             id='lstarasaacteam'
             value='/arasaac-team'

@@ -32,7 +32,7 @@ const makeSelectFavorites = () =>
 
 const makeSelectRootFavorites = () =>
   createSelector(makeSelectFavorites(), (favorites) =>
-    favorites.get(DEFAULT_LIST)
+    favorites ? favorites.get(DEFAULT_LIST) : []
   )
 
 const makeSelectError = () =>
