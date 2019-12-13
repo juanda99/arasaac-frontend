@@ -268,6 +268,7 @@
     "react-facebook-login": "^4.0.1",
     "react-flexbox-grid": "1.1.5",
     "react-helmet": "5.0.0",
+    "react-immutable-proptypes": "^2.1.0",
     "react-intl": "2.1.5",
     "react-joyride": "^1.11.1",
     "react-konva": "^1.1.6",

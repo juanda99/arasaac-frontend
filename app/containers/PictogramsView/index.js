@@ -5,6 +5,7 @@
  */
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
+import ImmutablePropTypes from "react-immutable-proptypes";
 import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import View from "components/View";
@@ -339,7 +340,7 @@ PictogramsView.propTypes = {
   addFavorite: PropTypes.func.isRequired,
   deleteFavorite: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
-  rootFavorites: PropTypes.array.isRequired
+  rootFavorites: ImmutablePropTypes.list.isRequired
 };
 
 PictogramsView.contextTypes = {

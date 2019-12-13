@@ -85,16 +85,19 @@ export class FavoriteList extends React.Component {
       )
     }
 
-    const renderPictograms = listPictograms.map((pictogram) => (
-      <PictogramSnippet
-        pictogram={pictogram}
-        locale={'es'}
-        key={pictogram._id}
-        showExtra={width === LARGE}
-        onDrop={onDrop}
-        onDelete={this.handleDeleteFavorite}
-      />
-    ))
+    const renderPictograms = listPictograms.map((pictogram) => {
+      console.log(pictogram._id, '*****')
+      return (
+        <PictogramSnippet
+          pictogram={pictogram}
+          locale={'es'}
+          key={pictogram._id}
+          showExtra={width === LARGE}
+          onDrop={onDrop}
+          onDelete={this.handleDeleteFavorite}
+        />
+      )
+    })
 
     return (
       <div>
