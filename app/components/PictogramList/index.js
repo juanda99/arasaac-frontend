@@ -27,18 +27,25 @@ export class PictogramList extends PureComponent {
       filtersMap,
       setFilterItems,
       width,
-      searchText
+      searchText,
+      favorites,
+      onDeleteFavorite,
+      onAddFavorite
     } = this.props
-    const renderPictograms = pictograms.map((pictogram) => (
-      <PictogramSnippet
-        pictogram={pictogram}
-        searchText={searchText}
-        locale={locale}
-        key={pictogram._id}
-        showExtra={width === LARGE}
-        onAddFavorite={this.props.onAddFavorite}
-      />
-    ))
+    const renderPictograms = pictograms.map((pictogram) => {
+      const isFavorite = favorites.includes(pictogram._id)
+      return (
+        <PictogramSnippet
+          pictogram={pictogram}
+          searchText={searchText}
+          locale={locale}
+          key={pictogram._id}
+          showExtra={width === LARGE}
+          onClickFavorite={isFavorite ? onDeleteFavorite : onAddFavorite}
+          isFavorite={isFavorite}
+        />
+      )
+    })
 
     return (
       <div>
@@ -69,7 +76,9 @@ PictogramList.propTypes = {
   setFilterItems: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   width: PropTypes.number.isRequired,
-  onAddFavorite: PropTypes.func.isRequired
+  onAddFavorite: PropTypes.func.isRequired,
+  onDeleteFavorite: PropTypes.func.isRequired,
+  favorites: PropTypes.array
 }
 
 export default withWidth()(PictogramList)

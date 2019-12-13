@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect'
+import { DEFAULT_LIST } from 'utils'
 
 // makeSelectLocationState expects a plain JS object for the routing state
 const makeSelectLocationState = () => {
@@ -29,6 +30,11 @@ const makeSelectLoading = () =>
 const makeSelectFavorites = () =>
   createSelector(selectAuth, (auth) => auth.get('favorites'))
 
+const makeSelectRootFavorites = () =>
+  createSelector(makeSelectFavorites(), (favorites) =>
+    favorites.get(DEFAULT_LIST)
+  )
+
 const makeSelectError = () =>
   createSelector(selectAuth, (auth) => auth.get('error'))
 
@@ -54,5 +60,6 @@ export {
   makeSelectRefreshing,
   makeSelectLoading,
   makeSelectError,
-  makeSelectFavorites
+  makeSelectFavorites,
+  makeSelectRootFavorites
 }

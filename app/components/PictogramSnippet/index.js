@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { PICTOGRAMS_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
-import ActionSetFavorite from 'material-ui/svg-icons/action/favorite-border'
+import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
+import Favorite from 'material-ui/svg-icons/action/favorite'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
 import { keywordSelector } from 'utils'
 import { FormattedMessage } from 'react-intl'
@@ -37,6 +38,7 @@ class PictogramSnippet extends PureComponent {
       height: 96,
       padding: 24,
       position: 'absolute',
+      opacity: 100,
       top: '0',
       right: '0'
     },
@@ -55,16 +57,13 @@ class PictogramSnippet extends PureComponent {
     })
   };
 
-  handleDrop = (id) => {
-    console.log(`Drop executed with id ${id}`)
-  };
-
-  handleAddFavorite = (event) => {
+  handleClickFavorite = (event) => {
     const {
-      pictogram: { _id }
+      pictogram: { _id },
+      onClickFavorite
     } = this.props
     event.preventDefault()
-    this.props.onAddFavorite(_id)
+    onClickFavorite(_id)
   };
 
   handleDownload = (event) => {
@@ -83,7 +82,8 @@ class PictogramSnippet extends PureComponent {
       searchText,
       muiTheme,
       locale,
-      showExtra
+      showExtra,
+      isFavorite
     } = this.props
 
     const { keyword } = keywordSelector(searchText, keywords)
@@ -102,28 +102,55 @@ class PictogramSnippet extends PureComponent {
                 src={`${PICTOGRAMS_URL}/${_id}/${_id}_300.png`}
                 alt={keyword}
               />
+              {isFavorite && (
+                <IconButton
+                  touch={true}
+                  // https://github.com/react-dnd/react-dnd/issues/577
+                  // we can use tooltip as we are using customDragLayer
+                  tooltip={<FormattedMessage {...messages.addFavorite} />}
+                  iconStyle={this.styles.icon}
+                  style={this.styles.rightIconButton}
+                  onClick={this.handleClickFavorite}
+                >
+                  <Favorite
+                    color={muiTheme.palette.primary1Color}
+                    hoverColor={muiTheme.palette.accent1Color}
+                  />
+                </IconButton>
+              )}
               <CardActions color={true}>
                 {showExtra && isAuthenticated && (
                   <IconButton
                     touch={true}
                     // https://github.com/react-dnd/react-dnd/issues/577
                     // we can use tooltip as we are using customDragLayer
-                    tooltip={<FormattedMessage {...messages.addFavorite} />}
+                    tooltip={
+                      isFavorite ? (
+                        <FormattedMessage {...messages.deleteFavorite} />
+                      ) : (
+                        <FormattedMessage {...messages.addFavorite} />
+                      )
+                    }
                     iconStyle={this.styles.icon}
                     style={this.styles.rightIconButton}
-                    onClick={this.handleAddFavorite}
+                    onClick={this.handleClickFavorite}
                   >
-                    <ActionSetFavorite
-                      color={muiTheme.appBar.textColor}
-                      hoverColor={muiTheme.palette.accent1Color}
-                    />
+                    {isFavorite ? (
+                      <Favorite
+                        color={muiTheme.appBar.textColor}
+                        hoverColor={muiTheme.palette.accent1Color}
+                      />
+                    ) : (
+                      <FavoriteBorder
+                        color={muiTheme.appBar.textColor}
+                        hoverColor={muiTheme.palette.accent1Color}
+                      />
+                    )}
                   </IconButton>
                 )}
                 {showExtra && (
                   <IconButton
                     touch={true}
-                    // https://github.com/react-dnd/react-dnd/issues/577
-                    // we can use tooltip as we are using customDragLayer
                     tooltip={<FormattedMessage {...messages.download} />}
                     iconStyle={this.styles.icon}
                     style={this.styles.leftIconButton}
@@ -155,7 +182,7 @@ PictogramSnippet.propTypes = {
   muiTheme: PropTypes.object,
   locale: PropTypes.string.isRequired,
   showExtra: PropTypes.bool,
-  onAddFavorite: PropTypes.func.isRequired
+  onClickFavorite: PropTypes.func.isRequired
 }
 
 export default muiThemeable()(PictogramSnippet)

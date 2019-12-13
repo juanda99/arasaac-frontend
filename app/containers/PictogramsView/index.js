@@ -23,9 +23,10 @@ import { withRouter } from 'react-router'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ActionButtons from 'containers/MaterialsView/ActionButtons'
 import { addFavorite, deleteFavorite } from 'containers/App/actions'
+import { DEFAULT_LIST } from 'utils'
 import {
   makeSelectHasUser,
-  makeSelectFavorites
+  makeSelectRootFavorites
 } from 'containers/App/selectors'
 import {
   makeFiltersSelector,
@@ -35,13 +36,13 @@ import {
   makeVisiblePictogramsSelector,
   makeNewPictogramsSelector,
   makeKeywordsSelectorByLocale,
-  makeListSelector,
-  makeFavoritePictogramsSelector
+  makeListSelector
+  // makeFavoritePictogramsSelector
 } from './selectors'
 import {
   autocomplete,
   pictograms,
-  favoritePictograms,
+  // favoritePictograms,
   newPictograms,
   toggleShowFilter,
   setFilterItems
@@ -115,13 +116,14 @@ class PictogramsView extends PureComponent {
       slideIndex: value
     });
 
-  handleAddFavorite = (fileName, listName) => {
+  handleAddFavorite = (fileName) => {
     const { addFavorite, token } = this.props
-    addFavorite(fileName, listName, token)
+    addFavorite(fileName, DEFAULT_LIST, token)
   };
 
-  handledeletesFavorite = (fileName, listName) => {
-    this.props.deleteFavorite(fileName, listName)
+  handleDeleteFavorite = (fileName) => {
+    const { deleteFavorite, token } = this.props
+    deleteFavorite(fileName, DEFAULT_LIST, token)
   };
 
   handleSubmit = (nextValue) => {
@@ -155,9 +157,9 @@ class PictogramsView extends PureComponent {
       loading,
       filtersData,
       muiTheme,
-      keywords
+      keywords,
+      rootFavorites
     } = this.props
-
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
     let pictogramsCounter
@@ -180,6 +182,8 @@ class PictogramsView extends PureComponent {
           showLabels={visibleLabels}
           searchText={searchText}
           onAddFavorite={this.handleAddFavorite}
+          onDeleteFavorite={this.handleDeleteFavorite}
+          favorites={rootFavorites}
         />
       ) : (
         <P>{<FormattedMessage {...messages.pictogramsNotFound} />}</P>
@@ -335,7 +339,7 @@ PictogramsView.propTypes = {
   addFavorite: PropTypes.func.isRequired,
   deleteFavorite: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
-  favorites: PropTypes.object.isRequired
+  rootFavorites: PropTypes.object.isRequired
 }
 
 PictogramsView.contextTypes = {
@@ -353,9 +357,9 @@ const mapStateToProps = (state, ownProps) => ({
   newPictogramsList: makeNewPictogramsSelector()(state),
   keywords: makeKeywordsSelectorByLocale()(state),
   token: makeSelectHasUser()(state),
-  favorites: makeSelectFavorites()(state),
-  selectedList: makeListSelector()(state),
-  favoritePictograms: makeFavoritePictogramsSelector()(state)
+  rootFavorites: makeSelectRootFavorites()(state),
+  selectedList: makeListSelector()(state)
+  // favoritePictograms: makeFavoritePictogramsSelector()(state)
 })
 // const pictoList = state.getIn(['pictogramView', 'search', ownProps.params.searchText]) || []
 
@@ -366,9 +370,9 @@ const mapDispatchToProps = (dispatch) => ({
   requestNewPictograms: (locale) => {
     dispatch(newPictograms.request(locale))
   },
-  requestFavorites: (locale, idFavorites, token) => {
-    dispatch(favoritePictograms.request(locale, idFavorites, token))
-  },
+  // requestFavorites: (locale, idFavorites, token) => {
+  //   dispatch(favoritePictograms.request(locale, idFavorites, token))
+  // },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())
   },
