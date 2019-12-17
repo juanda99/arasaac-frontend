@@ -27,6 +27,7 @@ const callApi = async (endpoint, options, token) => {
   try {
     const response = await fetch(endpoint, config)
     if (response.status === 401) throw new Error('UNAUTHORIZED')
+    // if (response.status === 404) throw new Error('NOT FOUND')
     if (response.status === 204) return null // fetch does not process 204
     const data = await response.json()
     if (response.status >= 400) throw new Error(data.error)

@@ -35,5 +35,14 @@ export default defineMessages({
     id: 'app.containers.ContactView.form.messageHint',
     description: 'message',
     defaultMessage: 'Type your message'
+  },
+  fingers: {
+    id: 'app.containers.ContactView.form.fingers',
+    defaultMessage: 'How many fingers?  '
+  },
+  fingersHint: {
+    id: 'app.containers.ContactView.form.fingersHint',
+    description: 'message',
+    defaultMessage: 'Type the fingers you see in the pictogram below'
   }
 })
