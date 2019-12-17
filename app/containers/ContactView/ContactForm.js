@@ -80,7 +80,7 @@ class ContactForm extends Component {
 
         <div style={{ display: 'flex' }}>
           <img
-            style={{ width: '100px', height: '100px', marginRight: '50' }}
+            style={{ width: '130px', height: '130px', marginRight: '50' }}
             src={`${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${LOW_RESOLUTION}.png`}
             alt={'spam filter'}
           />
