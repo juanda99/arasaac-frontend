@@ -91,8 +91,8 @@ class Menu extends Component {
         open={open}
         id='menu'
         onRequestChange={onRequestChangeNavDrawer}
-        // containerStyle={{zIndex: zIndex.drawer - 100}}
-        // containerStyle={{ Index: 1200 }}
+      // containerStyle={{zIndex: zIndex.drawer - 100}}
+      // containerStyle={{ Index: 1200 }}
       >
         {
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -206,23 +206,23 @@ class Menu extends Component {
                 />
               </div>
             ) : (
-              <div>
-                <ListItem
-                  id='lstlogin'
-                  value='/signin'
-                  primaryText={<FormattedMessage {...messages.signin} />}
-                  leftIcon={<LoginIcon />}
-                  onClick={() => this.handleRouterChangeLink('/signin')}
-                />
-                <ListItem
-                  id='lstregister'
-                  value='/register'
-                  primaryText={<FormattedMessage {...messages.register} />}
-                  leftIcon={<AccountIcon />}
-                  onClick={() => this.handleRouterChangeLink('/register')}
-                />
-              </div>
-            )}
+                <div>
+                  <ListItem
+                    id='lstlogin'
+                    value='/signin'
+                    primaryText={<FormattedMessage {...messages.signin} />}
+                    leftIcon={<LoginIcon />}
+                    onClick={() => this.handleRouterChangeLink('/signin')}
+                  />
+                  <ListItem
+                    id='lstregister'
+                    value='/register'
+                    primaryText={<FormattedMessage {...messages.register} />}
+                    leftIcon={<AccountIcon />}
+                    onClick={() => this.handleRouterChangeLink('/register')}
+                  />
+                </div>
+              )}
           </SelectableList>
         )}
         <Divider />
@@ -230,7 +230,7 @@ class Menu extends Component {
           <Subheader>{<FormattedMessage {...messages.info} />}</Subheader>
           <ListItem
             id='lstarasaacteam'
-            value='/arasaac-team'
+            value='/about-us'
             primaryText={<FormattedMessage {...messages.whoWeAre} />}
             leftIcon={<PeopleIcon />}
           />

@@ -471,6 +471,15 @@ export default function createRoutes(store) {
       }
     },
     {
+      path: 'about-us',
+      name: 'about-us',
+      getComponent(location, cb) {
+        import('containers/AboutView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    },
+    {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

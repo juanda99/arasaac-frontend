@@ -95,5 +95,9 @@ export default defineMessages({
     id: 'header.prizesTitle',
     description: 'Header title',
     defaultMessage: 'Prizes'
+  },
+  aboutUs: {
+    id: 'header.aboutUs',
+    defaultMessage: 'AboutUs'
   }
 })

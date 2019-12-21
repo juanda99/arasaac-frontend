@@ -196,6 +196,9 @@ class App extends Component {
       case /prizes/.test(url):
         title = <FormattedMessage {...messages.prizes} />;
         break;
+      case /about-us/.test(url):
+        title = <FormattedMessage {...messages.aboutUs} />;
+        break;
       default:
         docked = false;
         break;
