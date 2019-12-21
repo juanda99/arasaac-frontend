@@ -135,13 +135,6 @@ class Pictogram extends Component {
     document.body.addEventListener('click', this.needHideOptions)
   }
 
-  readText = () => {
-    if ('speechSynthesis' in window) {
-      const to_speak = new SpeechSynthesisUtterance('Hello world!')
-      window.speechSynthesis.speak(to_speak)
-    }
-  };
-
   componentDidUpdate = (prevProps, prevState) => {
     if (prevState.activeFont !== this.state.activeFont) {
       // setInterval(() => this.textLayer.draw(), 1000)
@@ -156,20 +149,19 @@ class Pictogram extends Component {
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible });
 
-  getSoundPlayer = (idLocution, locale, keyword) => {
-    const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
+  getSoundPlayer = (idLocution, locale, keyword, download) => {
+    const streamUrl = idLocution ? `${LOCUTIONS_URL}/${locale}/${idLocution}` : null
     return (
       <div style={{ display: 'flex' }}>
-        {idLocution && (
-          <SoundPlayer
-            crossOrigin='anonymous'
-            streamUrl={streamUrl}
-            preloadType='metadata'
-            showProgress={false}
-            showTimer={false}
-          />
-        )}
-        {keyword && (
+        <SoundPlayer
+          crossOrigin='anonymous'
+          streamUrl={streamUrl}
+          keyword={keyword}
+          preloadType='metadata'
+          showProgress={false}
+          showTimer={false}
+        />
+        {download && (
           <IconButton
             touch={true}
             onClick={
@@ -473,14 +465,6 @@ class Pictogram extends Component {
     fetch(endPoint)
   };
 
-  readText = () => {
-    if ('speechSynthesis' in window) {
-      const to_speak = new SpeechSynthesisUtterance('¿estás bien o no? Si')
-      to_speak.lang = 'es-ES'
-      window.speechSynthesis.speak(to_speak)
-    }
-  };
-
   handleDownload = () => {
     const { searchText, pictogram, onDownload } = this.props
     const { highResolution } = this.state
@@ -583,7 +567,7 @@ class Pictogram extends Component {
           <PictoWrapper>
             <ConditionalPaper>
               <PictogramTitle>
-                {this.getSoundPlayer(idLocution, locale)}
+                {this.getSoundPlayer(idLocution, locale, keyword, false)}
                 <H2 center={true} primary ucase noMargin>
                   {keyword}
                 </H2>
