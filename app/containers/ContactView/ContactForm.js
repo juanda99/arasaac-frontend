@@ -15,27 +15,15 @@ const email = (value) =>
 
 const required = (value) => (value ? undefined : 'Required')
 
-const pictograms = [
-  35693,
-  35677,
-  35679,
-  35681,
-  35665,
-  35631,
-  35683,
-  35685,
-  35687,
-  35689,
-  35691
-]
 
-const getNumber = (idPictogram) => pictograms.indexOf(idPictogram).toString()
+const getNumber = (idPictogram, pictograms) => pictograms.indexOf(idPictogram).toString()
 
 class ContactForm extends Component {
-  componentDidMount() {}
+  componentDidMount() { }
 
   fingersCount = (value) => {
-    const number = getNumber(this.props.idPictogram)
+    const { idPictogram, pictograms } = this.props
+    const number = getNumber(idPictogram, pictograms)
     return value === number ? undefined : 'Wrong number of fingers'
   };
 
@@ -49,7 +37,7 @@ class ContactForm extends Component {
             name='name'
             type='text'
             component={TextField}
-            // validate={[required]}
+            validate={[required]}
             hintText={<FormattedMessage {...messages.nameHint} />}
             floatingLabelText={<FormattedMessage {...messages.name} />}
             fullWidth
@@ -60,17 +48,17 @@ class ContactForm extends Component {
             name='email'
             type='email'
             component={TextField}
-            // validate={[required, email]}
+            validate={[required, email]}
             hintText={<FormattedMessage {...messages.emailHint} />}
             floatingLabelText={<FormattedMessage {...messages.email} />}
             fullWidth
           />
         </div>
         <Field
-          name='message2'
+          name='message'
           type='text'
           component={TextField}
-          // validate={[required]}
+          validate={[required]}
           hintText={<FormattedMessage {...messages.messageHint} />}
           floatingLabelText={<FormattedMessage {...messages.message} />}
           multiLine={true}

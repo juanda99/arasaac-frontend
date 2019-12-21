@@ -15,22 +15,23 @@ class ContactView extends Component {
 
   render() {
     const pictos = [
-      35677,
-      35679,
-      35681,
-      35665,
-      35631,
-      35683,
-      35685,
-      35687,
-      35691,
-      35693
+      6972,
+      7291,
+      7027,
+      7283,
+      7005,
+      6979,
+      7241,
+      7248,
+      7189,
+      7188,
+      7025
     ]
     const idPictogram = pictos[Math.floor(Math.random() * pictos.length)]
     return (
       <View left={true} right={true}>
         <p>Here we should put people pictures, or center image </p>
-        <ContactForm onSubmit={this.submit} idPictogram={idPictogram} />
+        <ContactForm onSubmit={this.submit} idPictogram={idPictogram} pictograms={pictos} />
       </View>
     )
   }
