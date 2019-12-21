@@ -56,9 +56,8 @@ class Menu extends Component {
     muiVersions: []
   };
 
-  handleRequestChangeLink = (event, value) => {
-    window.location = value
-  };
+
+  handleLink = (value) => window.open(value, '_blank')
 
   handleRouterChangeLink = (value) => {
     this.context.router.push(value)
@@ -158,6 +157,7 @@ class Menu extends Component {
           <ListItem
             id='lstsoftware'
             value='http://aulaabierta.arasaac.org'
+            onClick={() => this.handleLink('http://aulaabierta.arasaac.org')}
             primaryText='Aula abierta'
             leftIcon={<SoftwareIcon />}
           />
@@ -225,7 +225,7 @@ class Menu extends Component {
           </SelectableList>
         )}
         <Divider />
-        <SelectableList value='' onChange={this.handleRequestChangeLink}>
+        <SelectableList value='' onChange={onChangeList}>
           <Subheader>{<FormattedMessage {...messages.info} />}</Subheader>
           <ListItem
             id='lstarasaacteam'
