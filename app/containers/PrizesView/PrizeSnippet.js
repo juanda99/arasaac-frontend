@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import ReadMore from 'components/ReadMore'
-import H2 from 'components/H2'
+import H3 from 'components/H3'
 import Ribbon from 'components/Ribbon'
 import Item from 'components/MaterialSnippet/Item'
 import { IMAGES_URL } from 'services/config'
@@ -39,15 +38,15 @@ class PrizeSnippet extends PureComponent {
       <Item>
         <div style={styles.snippet}>
           <Ribbon text={prize.year} />
-          <img src={`${IMAGES_URL}/prizes/${prize.image}`} alt='' />
+          <img src={`${IMAGES_URL}/prizes/${prize.image}`} alt='' style={{ width: 300, height: 300 }} />
           <div style={styles.snippetText}>
-            <H2 primary ucase>{prize.title}</H2>
-            <ReadMore style={{ textAlign: 'justify' }}>
-              {prize.desc}
-            </ReadMore>
+            <H3 primary ucase dangerouslySetInnerHTML={{ __html: prize.title }}></H3>
+            <span dangerouslySetInnerHTML={{ __html: prize.desc }} >
+
+            </span>
           </div>
         </div>
-      </Item>
+      </Item >
     )
   }
 }

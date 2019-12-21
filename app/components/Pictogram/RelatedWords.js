@@ -77,6 +77,7 @@ export default class RelatedWords extends Component {
   render() {
     const { keywords } = this.state
     const { language } = this.props
+    console.log(this.state)
     return (
       <div>
         <H3 primary>{<FormattedMessage {...messages.description} />}</H3>
@@ -88,23 +89,28 @@ export default class RelatedWords extends Component {
           shortOption={true}
           showToolTip={false}
         />
+        {console.log(`****** ${keywords}`)}
         {keywords &&
-          keywords.map((keyword, index) => (
-            <div key={`${keyword.keyword}-${index}`}>
-              <div style={{ display: 'flex' }}>
-                {keyword.idLocution &&
-                  this.getSoundPlayer(
-                    keyword.idLocution,
-                    language,
-                    keyword.keyword
-                  )}
-                <P important={true} marginRight={'10px'}>
-                  {keyword.keyword}{' '}
-                </P>
-                <P>{keyword.meaning}</P>
+          keywords.map((keyword, index) => {
+            console.log(keyword, '1111')
+            return (
+
+              <div key={`${keyword.keyword}-${index}`}>
+                <div style={{ display: 'flex' }}>
+                  {keyword.idLocution &&
+                    this.getSoundPlayer(
+                      keyword.idLocution,
+                      language,
+                      keyword.keyword
+                    )}
+                  <P important={true} marginRight={'10px'}>
+                    {keyword.keyword}{' '}
+                  </P>
+                  <P>{keyword.meaning}</P>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
       </div>
     )
   }

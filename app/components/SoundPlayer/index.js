@@ -42,12 +42,12 @@ class SoundPlayer extends PureComponent {
             {...this.props}
             playing={playing}
             seeking={seeking}
-            onTogglePlay={this.handleClick}
+          //  onTogglePlay={this.handleClick}
           />
 
         </SoundButton>
-        { showTimer ? <Timer {...this.props} style={timer} /> : ''}
-        { showProgress ?
+        {showTimer ? <Timer {...this.props} style={timer} /> : ''}
+        {showProgress ?
           <Progress
             value={(currentTime / duration) * 100 || 0}
             style={progress}
@@ -57,8 +57,6 @@ class SoundPlayer extends PureComponent {
           />
           : ''
         }
-
-        
       </div>
     )
   }

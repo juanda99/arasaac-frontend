@@ -135,6 +135,13 @@ class Pictogram extends Component {
     document.body.addEventListener('click', this.needHideOptions)
   }
 
+  readText = () => {
+    if ('speechSynthesis' in window) {
+      const to_speak = new SpeechSynthesisUtterance('Hello world!')
+      window.speechSynthesis.speak(to_speak)
+    }
+  };
+
   componentDidUpdate = (prevProps, prevState) => {
     if (prevState.activeFont !== this.state.activeFont) {
       // setInterval(() => this.textLayer.draw(), 1000)
@@ -165,7 +172,7 @@ class Pictogram extends Component {
         {keyword && (
           <IconButton
             touch={true}
-            onClick={() =>
+            onClick={
               this.props.onDownloadLocution(idLocution, locale, keyword)
             }
           >
@@ -464,6 +471,14 @@ class Pictogram extends Component {
       .join('&')
     const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=false&download=true`
     fetch(endPoint)
+  };
+
+  readText = () => {
+    if ('speechSynthesis' in window) {
+      const to_speak = new SpeechSynthesisUtterance('¿estás bien o no? Si')
+      to_speak.lang = 'es-ES'
+      window.speechSynthesis.speak(to_speak)
+    }
   };
 
   handleDownload = () => {
