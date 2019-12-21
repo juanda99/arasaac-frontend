@@ -6,20 +6,14 @@ import FullWidthSection from 'components/FullWidthSection'
 import RaisedButton from 'material-ui/RaisedButton'
 import { grey200 } from 'material-ui/styles/colors'
 import { FormattedMessage } from 'react-intl'
+import { withRouter } from 'react-router'
 import styles from './styles'
 import messages from './messages'
 
 
 class Participate extends Component {
 
-  static contextTypes = {
-    router: PropTypes.object.isRequired
-  };
-
-  handleRouterChangeLink = (value) => {
-    event.preventDefault()
-    this.context.router.push(value)
-  }
+  handleRouterChangeLink = (value) => this.props.router.push(value)
 
   render() {
     return (
@@ -30,8 +24,7 @@ class Participate extends Component {
         <RaisedButton
           label={<FormattedMessage {...messages.contact} />}
           primary={true}
-          href='/contact-us'
-          onClick={(event) => this.handleRouterChangeLink(event, '/contact-us')}
+          onClick={() => this.handleRouterChangeLink('/contact-us')}
           style={styles.button}
         />
       </FullWidthSection>
@@ -39,4 +32,8 @@ class Participate extends Component {
   }
 }
 
-export default Participate
+Participate.propTypes = {
+  router: PropTypes.any.isRequired
+}
+
+export default withRouter(Participate)
