@@ -7,6 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { grey200 } from 'material-ui/styles/colors'
 import { FormattedMessage } from 'react-intl'
 import { withRouter } from 'react-router'
+import SocialLinks from 'components/SocialLinks'
 import styles from './styles'
 import messages from './messages'
 
@@ -21,12 +22,15 @@ class Participate extends Component {
         <H3 style={styles.H3} primary={true}>
           <FormattedMessage {...messages.participate} />
         </H3>
+
         <RaisedButton
           label={<FormattedMessage {...messages.contact} />}
           primary={true}
           onClick={() => this.handleRouterChangeLink('/contact-us')}
           style={styles.button}
         />
+        <SocialLinks />
+
       </FullWidthSection>
     )
   }

@@ -55,7 +55,11 @@ export const makeSearchResultsSelector = () =>
     makeSearchSelector(),
     makeSelectLocale(),
     makeSearchTextSelector(),
-    (pictograms, locale, searchText) => pictograms.getIn([locale, searchText])
+    (pictograms, locale, searchText) => {
+      console.log(searchText, '===============')
+      console.log(pictograms.getIn([locale, searchText]))
+      return pictograms.getIn([locale, searchText])
+    }
   )
 
 const makeSearchNewPictogramsSelector = () =>
@@ -76,6 +80,7 @@ export const makeVisiblePictogramsSelector = () =>
     makeEntitiesSelector(),
     makeFiltersSelector(),
     (searchData, entities, filters) => {
+      console.log(searchData, '$$$$$$$$$$$$$$$$$$$$$$$$$')
       /* searchData could be undefined */
       if (searchData == null) return []
       const pictogramList = denormalize(

@@ -77,7 +77,7 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .setIn(
-          ['search', action.payload.locale, action.payload.searchText],
+          ['search', action.payload.locale, decodeURIComponent(action.payload.searchText)],
           action.payload.data.result
         )
         .mergeIn(['pictograms', action.payload.locale], newPictogram)

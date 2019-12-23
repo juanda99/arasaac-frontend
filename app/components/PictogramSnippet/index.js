@@ -96,7 +96,7 @@ class PictogramSnippet extends PureComponent {
         onMouseLeave={this.handleMouseLeave}
       >
         <StyledPaper zDepth={this.state.zDepth}>
-          <Item url={`/pictograms/${locale}/${_id}/${keyword}`}>
+          <Item url={`/pictograms/${locale}/${_id}/${encodeURIComponent(keyword)}`}>
             <div style={{ position: 'relative' }}>
               <Image
                 src={`${PICTOGRAMS_URL}/${_id}/${_id}_300.png`}
@@ -128,8 +128,8 @@ class PictogramSnippet extends PureComponent {
                       isFavorite ? (
                         <FormattedMessage {...messages.deleteFavorite} />
                       ) : (
-                        <FormattedMessage {...messages.addFavorite} />
-                      )
+                          <FormattedMessage {...messages.addFavorite} />
+                        )
                     }
                     iconStyle={this.styles.icon}
                     style={this.styles.rightIconButton}
@@ -141,11 +141,11 @@ class PictogramSnippet extends PureComponent {
                         hoverColor={muiTheme.palette.accent1Color}
                       />
                     ) : (
-                      <FavoriteBorder
-                        color={muiTheme.appBar.textColor}
-                        hoverColor={muiTheme.palette.accent1Color}
-                      />
-                    )}
+                        <FavoriteBorder
+                          color={muiTheme.appBar.textColor}
+                          hoverColor={muiTheme.palette.accent1Color}
+                        />
+                      )}
                   </IconButton>
                 )}
                 {showExtra && (

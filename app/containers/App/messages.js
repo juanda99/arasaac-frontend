@@ -98,6 +98,10 @@ export default defineMessages({
   },
   aboutUs: {
     id: 'header.aboutUs',
-    defaultMessage: 'AboutUs'
+    defaultMessage: 'About us'
+  },
+  translate: {
+    id: 'header.translate',
+    defaultMessage: 'Translate Arasaac'
   }
 })

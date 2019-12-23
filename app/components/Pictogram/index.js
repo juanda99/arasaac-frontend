@@ -149,8 +149,9 @@ class Pictogram extends Component {
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible });
 
-  getSoundPlayer = (idLocution, locale, keyword, download) => {
-    const streamUrl = idLocution ? `${LOCUTIONS_URL}/${locale}/${idLocution}` : null
+  getSoundPlayer = (hasLocution, locale, keyword, download) => {
+    // split('/').join("\\\\") for pictos like 1/3, rewrote to 1\\3 for file system restrictions
+    const streamUrl = hasLocution ? `${LOCUTIONS_URL}/${locale}/${encodeURIComponent(keyword.toLowerCase().split('/').join('\\\\'))}.mp3` : null
     return (
       <div style={{ display: 'flex' }}>
         <SoundPlayer
@@ -161,11 +162,11 @@ class Pictogram extends Component {
           showProgress={false}
           showTimer={false}
         />
-        {download && (
+        {download && hasLocution && (
           <IconButton
             touch={true}
             onClick={
-              this.props.onDownloadLocution(idLocution, locale, keyword)
+              this.props.onDownloadLocution(locale, keyword)
             }
           >
             <CloudDownloadIcon />
@@ -552,7 +553,7 @@ class Pictogram extends Component {
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('_id')
     // first time downloadUrl is default png
-    const { keyword, idLocution } = keywordSelector(
+    const { keyword, hasLocution } = keywordSelector(
       searchText,
       keywords.toJS()
     )
@@ -567,7 +568,7 @@ class Pictogram extends Component {
           <PictoWrapper>
             <ConditionalPaper>
               <PictogramTitle>
-                {this.getSoundPlayer(idLocution, locale, keyword, false)}
+                {this.getSoundPlayer(hasLocution, locale, keyword, false)}
                 <H2 center={true} primary ucase noMargin>
                   {keyword}
                 </H2>

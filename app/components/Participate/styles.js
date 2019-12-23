@@ -8,7 +8,7 @@ const styles = {
     color: darkBlack
   },
   button: {
-    marginBottom: '6em'
+    marginBottom: '2em'
   }
 }
 

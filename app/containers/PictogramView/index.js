@@ -47,8 +47,8 @@ class PictogramView extends PureComponent {
     })
   };
 
-  handleDownloadLocution = (id, locale, keyword) =>
-    (window.location = downloadLocution(id, locale, keyword));
+  handleDownloadLocution = (locale, keyword) =>
+    (window.location = downloadLocution(locale, keyword));
 
   renderContent() {
     const {
@@ -68,14 +68,14 @@ class PictogramView extends PureComponent {
         <FormattedMessage {...messages.pictogramNotFound} />{' '}
       </P>
     ) : (
-      <Pictogram
-        pictogram={pictogramData}
-        locale={locale}
-        searchText={searchText || ''}
-        onDownload={this.handleDownload}
-        onDownloadLocution={this.handleDownloadLocution}
-      />
-    )
+        <Pictogram
+          pictogram={pictogramData}
+          locale={locale}
+          searchText={searchText || ''}
+          onDownload={this.handleDownload}
+          onDownloadLocution={this.handleDownloadLocution}
+        />
+      )
   }
 
   render() {

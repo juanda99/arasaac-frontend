@@ -81,7 +81,7 @@ class PictogramsView extends PureComponent {
       locale
     } = this.props
     if (this.props.params.searchText && !this.props.searchResults) {
-      requestPictograms(locale, this.props.params.searchText)
+      requestPictograms(locale, encodeURIComponent(this.props.params.searchText))
     }
     //  TODO: just ask once this stuff, once the app is open, depending on locale!!!
     requestNewPictograms(locale)
@@ -95,8 +95,9 @@ class PictogramsView extends PureComponent {
   componentWillReceiveProps(nextProps) {
     if (this.props.params.searchText !== nextProps.params.searchText) {
       const { requestPictograms, locale } = this.props
-      requestPictograms(locale, nextProps.params.searchText)
+      requestPictograms(locale, encodeURIComponent(nextProps.params.searchText))
     }
+
     // if (this.props.favorites !== nextProps.favorites) {
     //   if (nextProps.favorites && nextProps.token) {
     //     const [...lists] = nextProps.favorites.keys()
@@ -132,7 +133,7 @@ class PictogramsView extends PureComponent {
       slideIndex: 0
     })
     if (this.props.params.searchText !== nextValue) {
-      this.props.router.push(`/pictograms/search/${nextValue}`)
+      this.props.router.push(`/pictograms/search/${encodeURIComponent(nextValue)}`)
     }
   };
 
