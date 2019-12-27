@@ -7,7 +7,7 @@ import { TextField } from 'redux-form-material-ui'
 import FlatButton from 'material-ui/FlatButton'
 import Div from 'components/Div'
 import messages from './messages'
-import { email } from './validate'
+import { email, url } from './validate'
 
 // TODO: validate password minlength?????
 
@@ -40,6 +40,9 @@ let RegisterForm = class RegisterForm extends Component {
 
   email = (value) =>
     email(value) ? '' : <FormattedMessage {...messages.invalidEmail} />
+
+  url = (value) =>
+    url(value) ? '' : <FormattedMessage {...messages.invalidUrl} />
 
   required = (value) =>
     value == null ? <FormattedMessage {...messages.required} /> : ''
@@ -100,7 +103,7 @@ let RegisterForm = class RegisterForm extends Component {
               autoComplete='organization'
             />
             <Field
-              name='website'
+              name='url'
               component={TextField}
               hintText={<FormattedMessage {...messages.hintWebsite} />}
               value=''
@@ -108,6 +111,7 @@ let RegisterForm = class RegisterForm extends Component {
                 <FormattedMessage {...messages.labelWebsite} />
               }
               style={{ width: '100%' }}
+              validate={this.url}
             />
             <RaisedButton
               type='submit'

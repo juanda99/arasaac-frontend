@@ -18,24 +18,15 @@ function languageProviderReducer(state = initialState, action) {
   // if we start translating, change locale to af.
   // We need to remember previous locale, in order to come back when stop translating
   const currentLocale = state.get('locale')
-  let previousLocale = state.get('previousLocale')
+  const previousLocale = state.get('previousLocale')
   switch (action.type) {
     case CHANGE_LOCALE:
-      return state
-        .set('locale', action.locale)
+      return state.set('locale', action.locale)
     case START_TRANSLATION:
-      return state
-        .set('previousLocale', currentLocale)
-        .set('locale', 'af')
+      return state.set('previousLocale', currentLocale).set('locale', 'af')
     case STOP_TRANSLATION:
-      return state
-        .set('locale', previousLocale)
-        .set('previousLocale', '')
-    case REHYDRATE:
-      previousLocale = action.payload.language ? action.payload.language.get('previousLocale') : null
-      return previousLocale
-        ? state.set('locale', previousLocale).set('previousLocale', '')
-        : state
+      return state.set('locale', previousLocale).set('previousLocale', '')
+    // eslint-disable-next-line no-case-declarations
     default:
       return state
   }

@@ -335,6 +335,10 @@
   "loginView.authentication": "Error de autenticación",
   "loginView.communicationError": "No se puede acceder al servidor de autenticación",
   "loginView.invalidUser": "Usuario o contraseña erróneo",
+<<<<<<< HEAD
+=======
+  "menu.animationsMaker": "Creador de animaciones",
+>>>>>>> master
   "menu.api": "API para desarrolladores",
   "menu.araword": "Araword",
   "menu.contact": "Contactar",
@@ -354,6 +358,12 @@
   "menu.settings": "Configuración",
   "menu.signin": "Iniciar sesión",
   "menu.signout": "Salir",
+<<<<<<< HEAD
+=======
+  "menu.snakesAndLadders": "Serpientes y escaleras",
+  "menu.software": "Software",
+  "menu.symbolsCreator": "Creador de símbolos",
+>>>>>>> master
   "menu.uploadMaterials": "Subir materiales",
   "menu.user": "Usuario",
   "menu.whoWeAre": "El equipo Arasaac",

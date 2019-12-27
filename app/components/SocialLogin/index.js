@@ -23,21 +23,21 @@ class SocialLogin extends PureComponent {
   responseFacebook = (response) => {
     // one we get facebook token we ask for our app token
     const token = response.accessToken
-    this.props.onSuccess(token, 'facebook')
-  }
+    this.props.onSuccess(token, 'facebook', this.props.locale)
+  };
 
   success = (response) => {
     const token = response.accessToken
-    this.props.onSuccess(token, 'google')
-  }
+    this.props.onSuccess(token, 'google', this.props.locale)
+  };
 
   error = (response) => {
     console.error(response)
-  }
+  };
 
   render() {
     return (
-      <Div top={2} >
+      <Div top={2}>
         <FacebookLogin
           appId='1687810071473822'
           autoLoad={false}
@@ -53,22 +53,23 @@ class SocialLogin extends PureComponent {
               labelColor={white}
             />
           )}
-        >
-        </FacebookLogin>
+        ></FacebookLogin>
         <GoogleLogin
-          clientId={'856321241205-djlltqe6cpo9vm3hp392giboofdp44ha.apps.googleusercontent.com'}
+          clientId={
+            '856321241205-djlltqe6cpo9vm3hp392giboofdp44ha.apps.googleusercontent.com'
+          }
           onSuccess={this.success}
           onFailure={this.error}
           offline={false}
         />
-
       </Div>
     )
   }
 }
 
 SocialLogin.propTypes = {
-  onSuccess: PropTypes.func.isRequired
+  onSuccess: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired
 }
 
 export default SocialLogin

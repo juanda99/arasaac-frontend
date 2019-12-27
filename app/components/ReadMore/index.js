@@ -26,7 +26,7 @@ class ReadMore extends Component {
 
   toggleLines(event) {
     event.preventDefault()
-    event.stopPropagation() 
+    event.stopPropagation()
     this.setState({
       expanded: !this.state.expanded
     })
@@ -41,15 +41,15 @@ class ReadMore extends Component {
       <div style={{ fontSize: '1rem' }}>
         <Truncate
           lines={!expanded && lines}
-          ellipsis={ <span>{' '}<A onClick={this.toggleLines}>{<FormattedMessage {...messages.readmore} />}</A></span>}
+          ellipsis={<span>{' '}<A onClick={this.toggleLines}>{<FormattedMessage {...messages.readmore} />}</A></span>}
           onTruncate={this.handleTruncate}
         >
           {children}
         </Truncate>
         {!truncated &&
-        expanded && (
-          <span>{' '}<A onClick={this.toggleLines}>{<FormattedMessage {...messages.showless} />}</A></span>
-        )}
+          expanded && (
+            <span>{' '}<A onClick={this.toggleLines}>{<FormattedMessage {...messages.showless} />}</A></span>
+          )}
       </div>
     )
   }
@@ -63,7 +63,8 @@ ReadMore.defaultProps = {
 
 ReadMore.propTypes = {
   children: PropTypes.node.isRequired,
-  lines: PropTypes.number
+  lines: PropTypes.number,
+  htmlText: PropTypes.string
 }
 
 export default ReadMore

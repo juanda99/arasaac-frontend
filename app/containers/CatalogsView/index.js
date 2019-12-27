@@ -62,7 +62,8 @@ class CatalogsView extends PureComponent {
           showToolTip={false}
           onChange={this.handleChange}
         />
-        {catalog && <Catalog catalog={catalog} locale={this.props.locale} />}
+        <p>Not available</p>
+        {/* catalog && <Catalog catalog={catalog} locale={this.props.locale} /> */}
       </View>
     )
   }

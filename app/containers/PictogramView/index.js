@@ -16,6 +16,9 @@ import api, { downloadCustomPictogram, downloadLocution } from 'services'
 import { makePictogramByIdSelector } from './selectors'
 import messages from './messages'
 
+// TODO: Añadir logo de arasaac como identificador. Esto será útil para cuando se obligue
+// a hacer la descarga de los pictogramas con mención a Arasaac
+
 class PictogramView extends PureComponent {
   componentDidMount() {
     const { params, pictogramData } = this.props
@@ -38,13 +41,14 @@ class PictogramView extends PureComponent {
     })
     promiseFileName.then((data) => {
       const location = downloadCustomPictogram(data.fileName)
+      console.log(`*****************${location}`)
       window.location = location
       // window.open(downloadCustomPictogram(data.fileName), '_blank')
     })
-  }
+  };
 
-  handleDownloadLocution = (id, locale, keyword) =>
-    (window.location = downloadLocution(id, locale, keyword))
+  handleDownloadLocution = (locale, keyword) =>
+    (window.location = downloadLocution(locale, keyword));
 
   renderContent() {
     const {
@@ -64,14 +68,14 @@ class PictogramView extends PureComponent {
         <FormattedMessage {...messages.pictogramNotFound} />{' '}
       </P>
     ) : (
-      <Pictogram
-        pictogram={pictogramData}
-        locale={locale}
-        searchText={searchText || ''}
-        onDownload={this.handleDownload}
-        onDownloadLocution={this.handleDownloadLocution}
-      />
-    )
+        <Pictogram
+          pictogram={pictogramData}
+          locale={locale}
+          searchText={searchText || ''}
+          onDownload={this.handleDownload}
+          onDownloadLocution={this.handleDownloadLocution}
+        />
+      )
   }
 
   render() {
@@ -111,7 +115,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PictogramView)
+export default connect(mapStateToProps, mapDispatchToProps)(PictogramView)

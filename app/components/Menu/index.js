@@ -16,6 +16,8 @@ import SearchIcon from 'material-ui/svg-icons/action/search'
 import PrizesIcon from 'material-ui/svg-icons/action/card-membership'
 import ToolsIcon from 'material-ui/svg-icons/action/build'
 import AppsIcon from 'material-ui/svg-icons/navigation/apps'
+import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
+import MenuIcon from 'material-ui/svg-icons/navigation/chevron-right'
 import AccountIcon from 'material-ui/svg-icons/social/person-add'
 import LoginIcon from 'material-ui/svg-icons/social/person'
 import InfoIcon from 'material-ui/svg-icons/action/info'
@@ -23,12 +25,10 @@ import PictogramsIcon from 'material-ui/svg-icons/image/collections'
 import PeopleIcon from 'material-ui/svg-icons/social/people'
 import SoftwareIcon from 'material-ui/svg-icons/action/important-devices'
 import MaterialsIcon from 'material-ui/svg-icons/av/library-books'
-import NewsIcon from 'material-ui/svg-icons/communication/message'
 import SignoutIcon from 'material-ui/svg-icons/content/block'
 import ApiIcon from 'material-ui/svg-icons/communication/import-export'
 import ContactMailIcon from 'material-ui/svg-icons/communication/contact-mail'
 import FileUploadIcon from 'material-ui/svg-icons/file/file-upload'
-import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download'
 import Div from 'components/Div'
 import messages from './messages'
 import styles from './styles'
@@ -46,29 +46,28 @@ class Menu extends Component {
     isAuthenticated: PropTypes.bool.isRequired,
     signout: PropTypes.func.isRequired,
     isMobile: PropTypes.bool.isRequired
-  }
+  };
 
   static contextTypes = {
     router: PropTypes.object.isRequired
-  }
+  };
 
   state = {
     muiVersions: []
-  }
+  };
 
-  handleRequestChangeLink = (event, value) => {
-    window.location = value
-  }
+
+  handleLink = (value) => window.open(value, '_blank')
 
   handleRouterChangeLink = (value) => {
     this.context.router.push(value)
     this.props.onRequestChangeNavDrawer(false)
-  }
+  };
 
   handleTouchTapHeader = () => {
     this.context.router.push('/')
     this.props.onRequestChangeNavDrawer(false)
-  }
+  };
 
   render() {
     const {
@@ -90,8 +89,8 @@ class Menu extends Component {
         open={open}
         id='menu'
         onRequestChange={onRequestChangeNavDrawer}
-        // containerStyle={{zIndex: zIndex.drawer - 100}}
-        // containerStyle={{ Index: 1200 }}
+      // containerStyle={{zIndex: zIndex.drawer - 100}}
+      // containerStyle={{ Index: 1200 }}
       >
         {
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -114,15 +113,13 @@ class Menu extends Component {
             nestedItems={[
               <ListItem
                 value='/pictograms/search'
-                primaryText={
-                  <FormattedMessage {...messages.searchPictograms} />
-                }
+                primaryText={<FormattedMessage {...messages.search} />}
                 leftIcon={<SearchIcon />}
               />,
               <ListItem
-                value='/pictograms/catalogs'
-                primaryText={<FormattedMessage {...messages.downloads} />}
-                leftIcon={<CloudDownloadIcon />}
+                value='/pictograms/favorites'
+                primaryText={<FormattedMessage {...messages.favorites} />}
+                leftIcon={<FavoriteIcon />}
               />
             ]}
           />
@@ -134,7 +131,7 @@ class Menu extends Component {
             nestedItems={[
               <ListItem
                 value='/materials/search'
-                primaryText={<FormattedMessage {...messages.searchMaterials} />}
+                primaryText={<FormattedMessage {...messages.search} />}
                 leftIcon={<SearchIcon />}
               />,
               <ListItem
@@ -151,51 +148,17 @@ class Menu extends Component {
             leftIcon={<AppsIcon />}
             nestedItems={[
               <ListItem
-                value='/onlinetools/animations-maker'
-                primaryText={<FormattedMessage {...messages.animationsMaker} />}
-              />,
-              <ListItem
-                value='/onlinetools/symbols-creator'
-                primaryText={<FormattedMessage {...messages.symbolsCreator} />}
-              />,
-              <ListItem
-                value='/onlinetools/schedule-generator'
-                primaryText={
-                  <FormattedMessage {...messages.scheduleGenerator} />
-                }
-              />,
-              <ListItem
-                value='/onlinetools/calendar-generator'
-                primaryText={
-                  <FormattedMessage {...messages.calendarGenerator} />
-                }
-              />,
-              <ListItem
-                value='/onlinetools/bingos-creator'
-                primaryText={<FormattedMessage {...messages.bingo} />}
-              />,
-              <ListItem
-                value='/onlinetools/snakes-and-ladders'
-                primaryText={
-                  <FormattedMessage {...messages.snakesAndLadders} />
-                }
-              />,
-              <ListItem
-                value='/onlinetools/dominos'
-                primaryText={<FormattedMessage {...messages.dominos} />}
-              />,
-              <ListItem
-                value='/onlinetools/dominos-encadenados'
-                primaryText={
-                  <FormattedMessage {...messages.dominosencadenados} />
-                }
+                value='/onlinetools/araword'
+                primaryText={<FormattedMessage {...messages.araword} />}
+                leftIcon={<MenuIcon />}
               />
             ]}
           />
           <ListItem
             id='lstsoftware'
-            value='/software'
-            primaryText={<FormattedMessage {...messages.software} />}
+            value='http://aulaabierta.arasaac.org'
+            onClick={() => this.handleLink('http://aulaabierta.arasaac.org')}
+            primaryText='Aula abierta'
             leftIcon={<SoftwareIcon />}
           />
           <ListItem
@@ -242,37 +205,31 @@ class Menu extends Component {
                 />
               </div>
             ) : (
-              <div>
-                <ListItem
-                  id='lstlogin'
-                  value='/signin'
-                  primaryText={<FormattedMessage {...messages.signin} />}
-                  leftIcon={<LoginIcon />}
-                  onClick={() => this.handleRouterChangeLink('/signin')}
-                />
-                <ListItem
-                  id='lstregister'
-                  value='/register'
-                  primaryText={<FormattedMessage {...messages.register} />}
-                  leftIcon={<AccountIcon />}
-                  onClick={() => this.handleRouterChangeLink('/register')}
-                />
-              </div>
-            )}
+                <div>
+                  <ListItem
+                    id='lstlogin'
+                    value='/signin'
+                    primaryText={<FormattedMessage {...messages.signin} />}
+                    leftIcon={<LoginIcon />}
+                    onClick={() => this.handleRouterChangeLink('/signin')}
+                  />
+                  <ListItem
+                    id='lstregister'
+                    value='/register'
+                    primaryText={<FormattedMessage {...messages.register} />}
+                    leftIcon={<AccountIcon />}
+                    onClick={() => this.handleRouterChangeLink('/register')}
+                  />
+                </div>
+              )}
           </SelectableList>
         )}
         <Divider />
-        <SelectableList value='' onChange={this.handleRequestChangeLink}>
+        <SelectableList value='' onChange={onChangeList}>
           <Subheader>{<FormattedMessage {...messages.info} />}</Subheader>
           <ListItem
-            id='lstnews'
-            value='https://github.com/callemall/material-ui'
-            primaryText={<FormattedMessage {...messages.news} />}
-            leftIcon={<NewsIcon />}
-          />
-          <ListItem
             id='lstarasaacteam'
-            value='/arasaac-team'
+            value='/about-us'
             primaryText={<FormattedMessage {...messages.whoWeAre} />}
             leftIcon={<PeopleIcon />}
           />

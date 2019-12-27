@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect'
+import { DEFAULT_LIST } from 'utils'
 
 // makeSelectLocationState expects a plain JS object for the routing state
 const makeSelectLocationState = () => {
@@ -21,34 +22,27 @@ const selectAuth = (state) => state.get('auth')
 
 // we use Token as User
 const makeSelectHasUser = () =>
-  createSelector(
-    selectAuth,
-    (auth) => auth.get('accessToken')
-  )
+  createSelector(selectAuth, (auth) => auth.get('accessToken'))
 
 const makeSelectLoading = () =>
-  createSelector(
-    selectAuth,
-    (auth) => auth.get('loading')
+  createSelector(selectAuth, (auth) => auth.get('loading'))
+
+const makeSelectFavorites = () =>
+  createSelector(selectAuth, (auth) => auth.get('favorites'))
+
+const makeSelectRootFavorites = () =>
+  createSelector(makeSelectFavorites(), (favorites) =>
+    favorites ? favorites.get(DEFAULT_LIST) : []
   )
 
 const makeSelectError = () =>
-  createSelector(
-    selectAuth,
-    (auth) => auth.get('error')
-  )
+  createSelector(selectAuth, (auth) => auth.get('error'))
 
 const makeSelectRefreshToken = () =>
-  createSelector(
-    selectAuth,
-    (auth) => auth.get('refreshToken')
-  )
+  createSelector(selectAuth, (auth) => auth.get('refreshToken'))
 
 const makeSelectRefreshing = () =>
-  createSelector(
-    selectAuth,
-    (auth) => auth.get('isRefreshing')
-  )
+  createSelector(selectAuth, (auth) => auth.get('isRefreshing'))
 
 const makeSelectTokens = () =>
   createSelector(
@@ -65,5 +59,7 @@ export {
   makeSelectTokens,
   makeSelectRefreshing,
   makeSelectLoading,
-  makeSelectError
+  makeSelectError,
+  makeSelectFavorites,
+  makeSelectRootFavorites
 }

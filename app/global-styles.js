@@ -1,4 +1,7 @@
 import { injectGlobal } from 'styled-components'
+import {
+  lightGreen500
+} from 'material-ui/styles/colors'
 
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
@@ -32,7 +35,8 @@ injectGlobal`
     padding: 0;
   }
 
-  a {text-decoration: none}
+  a {text-decoration: none; color: ${lightGreen500}   }
+  a:hover {color:#81388d}
 
   
   body.fontLoaded {

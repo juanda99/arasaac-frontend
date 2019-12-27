@@ -211,7 +211,7 @@ function* refreshTokens() {
 function* logoutSaga() {
   yield call(logout)
   /* we go to frontend page */
-  yield put(push('/'))
+  yield put(push('/signin'))
   yield call(authFlow)
 }
 

@@ -20,6 +20,11 @@ const messages = defineMessages({
     description: 'Error message',
     defaultMessage: 'Invalid email'
   },
+  invalidUrl: {
+    id: 'Login.invalidUrl',
+    description: 'Error message',
+    defaultMessage: 'Invalid url'
+  },
   required: {
     id: 'Login.required',
     description: 'Error message',
