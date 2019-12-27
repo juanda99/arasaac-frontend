@@ -6,43 +6,15 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  name: {
-    id: 'app.containers.ContactView.form.name',
-    description: 'Name',
-    defaultMessage: 'Name'
+  whatArasaacOffers: {
+    id: 'app.containers.AboutView.whatArasaacOffers',
+    defaultMessage: 'ARASAAC offers graphic and material resources adapted with a Creative Commons license(BY - NC - SA) to facilitate communication and cognitive accessibility to all people who, due to different factors(autism, intellectual disability, lack of language, elderly people, etc.), present serious difficulties in these areas, which hinder their inclusion in any area of ​​daily life.'
   },
-  nameHint: {
-    id: 'app.containers.ContactView.form.nameHint',
-    description: 'Name',
-    defaultMessage: 'Type your name'
-  },
-  email: {
-    id: 'app.containers.ContactView.form.email',
-    description: 'email',
-    defaultMessage: 'Email'
-  },
-  emailHint: {
-    id: 'app.containers.ContactView.form.emailHint',
-    description: 'email',
-    defaultMessage: 'Type your email'
-  },
-  message: {
-    id: 'app.containers.ContactView.form.message',
-    description: 'message',
-    defaultMessage: 'Message'
-  },
-  messageHint: {
-    id: 'app.containers.ContactView.form.messageHint',
-    description: 'message',
-    defaultMessage: 'Type your message'
-  },
-  fingers: {
-    id: 'app.containers.ContactView.form.fingers',
-    defaultMessage: 'How many fingers?  '
-  },
-  fingersHint: {
-    id: 'app.containers.ContactView.form.fingersHint',
-    description: 'message',
-    defaultMessage: 'Type the fingers you see in the pictogram below'
+
+  fundedBy: {
+    id: 'app.containers.AboutView.fundedBy',
+    defaultMessage: 'This project is funded by the Department of Culture, Sports and Education of the Government of Aragon (Spain). Specifically Arasaac belongs to the area of ​​innovation and professional training'
   }
+
 })
+
