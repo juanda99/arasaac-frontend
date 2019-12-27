@@ -1,13 +1,8 @@
 {
   "Login.invalidEmail": "Invalid email",
-<<<<<<< HEAD
   "Login.invalidUrl": "Invalid url",
   "Login.required": "Required",
   "activate.activateUser": "Activation de l'utilisateur",
-=======
-  "Login.required": "Required",
-  "activate.activateUser": "User activation",
->>>>>>> master
   "activate.expiredCode": "Your activation code has expired. We have send you another email to validate your account",
   "activate.invalidCode": "Your activation code is not valid",
   "activate.userActivated": "Your user has been activated. You can sign in.",
