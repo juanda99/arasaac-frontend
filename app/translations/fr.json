@@ -295,22 +295,15 @@
   "app.containers.MaterialsView.showSettings": "Afficher les paramètres de recherche",
   "app.containers.PictogramView.pictogramLoading": "Pictogramme de chargement...",
   "app.containers.PictogramView.pictogramNotFound": "Désolé, le pictogramme que vous cherchez n’existe pas",
-<<<<<<< HEAD
   "app.containers.PictogramsView.addList": "Add list",
   "app.containers.PictogramsView.addListHint": "Type the name of the new list",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "This content is only available for authenticated users",
   "app.containers.PictogramsView.listName": "List name",
-=======
-  "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "This content is only available for authenticated users",
->>>>>>> master
   "app.containers.PictogramsView.newPictogramsFound": "Nous avons trouvé {pictogramsCounter} pictogrammes nouvelles ou actualisées dans les 30 derniers jours",
   "app.containers.PictogramsView.pictogramsFound": "{pictogramsCounter, plural, one {Nous avons trouvé qu’un pictogramme} other {Nous avons trouvé {pictogramsCounter} pictogrammes}}",
   "app.containers.PictogramsView.pictogramsNotFound": "Nous sommes désolés, nous ne trouvons aucun pictogramme",
   "app.containers.PictogramsView.signin": "Sign in",
-<<<<<<< HEAD
   "app.containers.PrizesView": "Sorry, this information is currently only in Spanish",
-=======
->>>>>>> master
   "app.containers.SearchBox.advancedSearch": "Recherche avancée",
   "app.containers.SettingsView.colortheme": "Thème de couleur",
   "app.containers.SettingsView.language": "Langue",
@@ -336,19 +329,12 @@
   "header.settingsTitle": "Paramètres",
   "header.signinTitle": "Connectez-vous à Arasaac",
   "header.software": "Logiciel",
-<<<<<<< HEAD
   "header.translate": "Translate Arasaac",
-=======
->>>>>>> master
   "header.userActivation": "User activation",
   "header.userProfileTitle": "Mon profil",
   "loginView.authentication": "Authentication error",
   "loginView.communicationError": "Can't access authentication server",
   "loginView.invalidUser": "Invalid user or password",
-<<<<<<< HEAD
-=======
-  "menu.animationsMaker": "Animations Maker",
->>>>>>> master
   "menu.api": "API pour les développeurs",
   "menu.araword": "Araword",
   "menu.contact": "Contactez-nous",
@@ -364,22 +350,10 @@
   "menu.pictograms": "Pictogrammes",
   "menu.prizes": "Prix",
   "menu.register": "Register",
-<<<<<<< HEAD
   "menu.search": "Search",
   "menu.settings": "Paramètres",
   "menu.signin": "Sign in",
   "menu.signout": "Sign out",
-=======
-  "menu.scheduleGenerator": "Générateur de calendrier",
-  "menu.searchMaterials": "Recherche matériaux",
-  "menu.searchPictograms": "Recherche de pictogrammes",
-  "menu.settings": "Paramètres",
-  "menu.signin": "Sign in",
-  "menu.signout": "Sign out",
-  "menu.snakesAndLadders": "Serpents et échelles",
-  "menu.software": "Logiciel",
-  "menu.symbolsCreator": "Créateur de symboles",
->>>>>>> master
   "menu.uploadMaterials": "Télécharger les documents",
   "menu.user": "User",
   "menu.whoWeAre": "Équipe Arasaac",
