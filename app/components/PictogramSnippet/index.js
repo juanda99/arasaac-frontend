@@ -85,7 +85,6 @@ class PictogramSnippet extends PureComponent {
       showExtra,
       isFavorite
     } = this.props
-
     const { keyword } = keywordSelector(searchText, keywords)
     const { isAuthenticated } = this.context
     return (
@@ -173,7 +172,8 @@ class PictogramSnippet extends PureComponent {
 }
 
 PictogramSnippet.contextTypes = {
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
+  isFavorite: PropTypes.bool
 }
 
 PictogramSnippet.propTypes = {

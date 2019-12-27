@@ -44,29 +44,24 @@ export const getFilteredItems = (items, filters) =>
 
 /* inside pictograms, check which keywords meets an specific searchText */
 export const keywordSelector = (searchText, keywords) => {
-  if (!keywords) return ''
+  const emptyResponse = { keyword: '' }
+  if (keywords.length === 0) return emptyResponse
   const searchTextArray = searchText ? searchText.split(' ') : []
   if (!searchTextArray.length) return keywords[0]
   // if same keyword exists, return it
   const keyword = keywords.find(
-    (keywordsItem) =>
-      keywordsItem.keyword &&
-      keywordsItem.keyword.toLowerCase() === searchText.toLowerCase()
+    (keywordsItem) => keywordsItem.keyword && keywordsItem.keyword.toLowerCase() === searchText.toLowerCase(),
   )
   if (keyword) return keyword
   // otherwise, return first partial match or fist keyword if no matches
   return (
     keywords.find((keywordsItem) => {
       if (!keywords.keyword) return false
-      const keywordArray = keywordsItem.keyword
-        .split(' ')
-        .map((keyword) => keyword.toLowerCase())
-      return searchTextArray.some((word) =>
-        keywordArray.includes(word.toLowerCase())
-      )
+      const keywordArray = keywordsItem.keyword.split(' ').map((keyword) => keyword.toLowerCase())
+      return searchTextArray.some((word) => keywordArray.includes(word.toLowerCase()))
     }) ||
     keywords[0] ||
-    ''
+    emptyResponse
   )
 }
 
