@@ -13,7 +13,8 @@ import {
   AUTOCOMPLETE,
   SHOW_FILTERS,
   SET_FILTER_ITEMS,
-  FAVORITE_LIST_SELECT
+  FAVORITE_LIST_SELECT,
+  FAVORITE_PICTOGRAMS
 } from './actions'
 
 export const initialState = fromJS({
@@ -68,10 +69,17 @@ function pictogramsViewReducer(state = initialState, action) {
           ['pictograms', action.payload.locale, idPictogram],
           newPictogram
         )
+
     case PICTOGRAM.FAILURE:
+    case PICTOGRAMS.FAILURE:
+    case NEW_PICTOGRAMS.FAILURE:
       return state.set('error', action.payload.error).set('loading', false)
+
     case PICTOGRAMS.REQUEST:
+    case FAVORITE_PICTOGRAMS.REQUEST:
+    case NEW_PICTOGRAMS.REQUEST:
       return state.set('loading', true).set('error', false)
+
     case PICTOGRAMS.SUCCESS:
       newPictogram = fromJS(action.payload.data.entities.pictograms || {})
       return state
@@ -81,18 +89,20 @@ function pictogramsViewReducer(state = initialState, action) {
           action.payload.data.result
         )
         .mergeIn(['pictograms', action.payload.locale], newPictogram)
-    case PICTOGRAMS.FAILURE:
-      return state.set('error', action.payload.error).set('loading', false)
-    case NEW_PICTOGRAMS.REQUEST:
-      return state.set('loading', true).set('error', false)
+
     case NEW_PICTOGRAMS.SUCCESS:
       newPictogram = fromJS(action.payload.data.entities.pictograms || {})
       return state
         .set('loading', false)
         .set('newPictograms', action.payload.data.result)
         .mergeIn(['pictograms', action.payload.locale], newPictogram)
-    case NEW_PICTOGRAMS.FAILURE:
-      return state.set('error', action.payload.error).set('loading', false)
+
+    case FAVORITE_PICTOGRAMS.SUCCESS:
+      newPictogram = fromJS(action.payload.data.entities.pictograms || {})
+      return state
+        .set('loading', false)
+        .mergeIn(['pictograms', action.payload.locale], newPictogram)
+
     case AUTOCOMPLETE.REQUEST:
       return state
     case AUTOCOMPLETE.SUCCESS:

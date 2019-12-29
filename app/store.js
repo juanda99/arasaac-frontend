@@ -41,43 +41,80 @@ export default function configureStore(initialState = {}, history) {
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers =
     process.env.NODE_ENV !== 'production' &&
-    typeof window === 'object' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      typeof window === 'object' &&
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       : compose
   /* eslint-enable */
 
-  const store = createStore(
-    createReducer(),
-    fromJS(initialState),
-    composeEnhancers(...enhancers)
-  )
+  // delay render after hydratation, https://github.com/rt2zz/redux-persist/issues/126
+  return new Promise((resolve, reject) => {
+    try {
+      const store = createStore(createReducer(), fromJS(initialState), composeEnhancers(...enhancers))
 
-  // begin periodically persisting the store
-  persistStore(store, {
-    blacklist: ['route', 'loadingBar', 'form', 'register', 'language']
+      // // Extensions
+
+      // run saga from 'containers/App/sagas' here
+      sagaMiddleware.run(appSaga)
+
+      store.runSaga = sagaMiddleware.run
+      store.asyncReducers = {} // Async reducer registry
+
+      // Make reducers hot reloadable, see http://mxs.is/googmo
+      /* istanbul ignore next */
+      if (module.hot) {
+        module.hot.accept('./reducers', () => {
+          System.import('./reducers').then((reducerModule) => {
+            const createReducers = reducerModule.default
+            const nextReducers = createReducers(store.asyncReducers)
+
+            store.replaceReducer(nextReducers)
+          })
+        })
+      }
+
+      // begin periodically persisting the store
+      persistStore(
+        store,
+        { blacklist: ['route', 'loadingBar', 'form', 'register', 'language'] },
+        () => resolve(store),
+      )
+    } catch (e) {
+      reject(e)
+    }
   })
 
-  // Extensions
+  // const store = createStore(
+  //   createReducer(),
+  //   fromJS(initialState),
+  //   composeEnhancers(...enhancers)
+  // )
 
-  // run saga from 'containers/App/sagas' here
-  sagaMiddleware.run(appSaga)
+  // // begin periodically persisting the store
+  // persistStore(store, {
+  //   blacklist: ['route', 'loadingBar', 'form', 'register', 'language']
+  // })
 
-  store.runSaga = sagaMiddleware.run
-  store.asyncReducers = {} // Async reducer registry
+  // // Extensions
 
-  // Make reducers hot reloadable, see http://mxs.is/googmo
-  /* istanbul ignore next */
-  if (module.hot) {
-    module.hot.accept('./reducers', () => {
-      System.import('./reducers').then((reducerModule) => {
-        const createReducers = reducerModule.default
-        const nextReducers = createReducers(store.asyncReducers)
+  // // run saga from 'containers/App/sagas' here
+  // sagaMiddleware.run(appSaga)
 
-        store.replaceReducer(nextReducers)
-      })
-    })
-  }
+  // store.runSaga = sagaMiddleware.run
+  // store.asyncReducers = {} // Async reducer registry
 
-  return store
+  // // Make reducers hot reloadable, see http://mxs.is/googmo
+  // /* istanbul ignore next */
+  // if (module.hot) {
+  //   module.hot.accept('./reducers', () => {
+  //     System.import('./reducers').then((reducerModule) => {
+  //       const createReducers = reducerModule.default
+  //       const nextReducers = createReducers(store.asyncReducers)
+
+  //       store.replaceReducer(nextReducers)
+  //     })
+  //   })
+  // }
+
+  // return store
 }

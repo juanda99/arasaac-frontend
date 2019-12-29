@@ -46,8 +46,8 @@ class FavoritesView extends PureComponent {
     listName: ''
   };
 
-  componentDidMount() {
-    const { requestFavorites, locale, token, favorites } = this.props
+  async componentDidMount() {
+    const { requestFavorites, locale, token, favorites, router } = this.props
 
     //  TODO: just ask once this stuff, once the app is open, depending on locale!!!
     if (favorites && token) {
@@ -58,8 +58,9 @@ class FavoritesView extends PureComponent {
         const tmpIds = favorites.get(list).toJS()
         return [].concat(...tmpIds)
       })
-      requestFavorites(locale, favoriteIds, token)
+      await requestFavorites(locale, favoriteIds, token)
     }
+    if (!token) router.push('/signin')
   }
 
   handleAddFavorite = (props) => {
@@ -108,7 +109,6 @@ class FavoritesView extends PureComponent {
     const { favorites, selectedList, favoritePictograms, intl } = this.props
 
     const { formatMessage } = intl
-
     return (
       <View left={true} right={true}>
         <Helmet
@@ -141,6 +141,7 @@ class FavoritesView extends PureComponent {
           listPictograms={favoritePictograms}
           onDrop={this.handleAddFavorite}
         />
+
       </View>
     )
   }
@@ -160,7 +161,8 @@ FavoritesView.propTypes = {
   selectedList: PropTypes.string.isRequired,
   favoriteListSelect: PropTypes.func.isRequired,
   favoritePictograms: PropTypes.arrayOf(PropTypes.object),
-  intl: intlShape.isRequired
+  intl: intlShape.isRequired,
+  router: PropTypes.any.isRequired
 }
 
 const mapStateToProps = (state) => ({

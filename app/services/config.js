@@ -1,5 +1,6 @@
 // import queryString from 'query-string'
 
+import { searchPictogramSchema } from './schemas'
 const CLIENT_ID = '12345'
 export const WEB_URL = 'https://localhost:3000'
 const STATIC_SERVER = 'https://static.arasaac.org'
@@ -105,7 +106,8 @@ export const getFavorites = {
     config: {
       method: 'POST',
       body: JSON.stringify({ favoriteIds })
-    }
+    },
+    schema: searchPictogramSchema
   })
 }
 

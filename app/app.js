@@ -69,23 +69,34 @@ openSansObserver.load().then(
 // this uses the singleton browserHistory provided by react-router
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
-const initialState = {}
-const store = configureStore(initialState, browserHistory)
+// const initialState = {}
+// const store = configureStore(initialState, browserHistory)
 
 // Sync history and store, as the react-router-redux reducer
 // is under the non-default key ("routing"), selectLocationState
 // must be provided for resolving how to retrieve the "route" in the state
-const history = syncHistoryWithStore(browserHistory, store, {
-  selectLocationState: makeSelectLocationState()
-})
+// const history = syncHistoryWithStore(browserHistory, store, {
+//   selectLocationState: makeSelectLocationState()
+// })
 
-// Set up the router, wrapping all Routes in the App component
-const rootRoute = {
-  component: App,
-  childRoutes: createRoutes(store)
-}
+// // Set up the router, wrapping all Routes in the App component
+// const rootRoute = {
+//   component: App,
+//   childRoutes: createRoutes(store)
+// }
 
-const render = (messages) => {
+const render = async (messages) => {
+  // Create redux store with history
+  const initialState = {}
+  const store = await configureStore(initialState, browserHistory)
+  const history = syncHistoryWithStore(browserHistory, store, {
+    selectLocationState: makeSelectLocationState()
+  })
+  // Set up the router, wrapping all Routes in the App component
+  const rootRoute = {
+    component: App,
+    childRoutes: createRoutes(store)
+  }
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>

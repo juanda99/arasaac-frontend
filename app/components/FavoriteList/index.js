@@ -52,8 +52,12 @@ export class FavoriteList extends React.Component {
       onDrop,
       listPictograms
     } = this.props
-    const [...lists] = items.keys()
     let renderLists
+    /* if not authenticated item.keys is undefined and should not render anything */
+
+
+    const [...lists] = items.keys()
+
     if (selectedList === DEFAULT_LIST) {
       renderLists = lists
         .filter((listItem) => listItem !== DEFAULT_LIST)
@@ -85,19 +89,16 @@ export class FavoriteList extends React.Component {
       )
     }
 
-    const renderPictograms = listPictograms.map((pictogram) => {
-      console.log(pictogram._id, '*****')
-      return (
-        <PictogramSnippet
-          pictogram={pictogram}
-          locale={'es'}
-          key={pictogram._id}
-          showExtra={width === LARGE}
-          onDrop={onDrop}
-          onDelete={this.handleDeleteFavorite}
-        />
-      )
-    })
+    const renderPictograms = listPictograms.map((pictogram) =>
+      <PictogramSnippet
+        pictogram={pictogram}
+        locale={'es'}
+        key={pictogram._id}
+        showExtra={width === LARGE}
+        onDrop={onDrop}
+        onDelete={this.handleDeleteFavorite}
+      />
+    )
 
     return (
       <div>
@@ -113,11 +114,11 @@ export class FavoriteList extends React.Component {
             {renderPictograms}
           </Masonry>
         ) : (
-          <ul>
-            {renderLists}
-            {renderPictograms}
-          </ul>
-        )}
+            <ul>
+              {renderLists}
+              {renderPictograms}
+            </ul>
+          )}
         <CustomDragLayer />
       </div>
     )
