@@ -14,6 +14,14 @@ export default defineMessages({
   fundedBy: {
     id: 'app.containers.AboutView.fundedBy',
     defaultMessage: 'This project is funded by the Department of Culture, Sports and Education of the Government of Aragon (Spain). Specifically Arasaac belongs to the area of ​​innovation and professional training'
+  },
+  whatIsArasaac: {
+    id: 'app.containers.AboutView.whatIsArasaac',
+    defaultMessage: 'What is Arasaac?'
+  },
+  arasaacTeam: {
+    id: 'app.containers.AboutView.whatIsArasaac',
+    defaultMessage: 'Arasaac team'
   }
 
 })
