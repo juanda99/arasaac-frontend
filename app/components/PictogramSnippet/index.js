@@ -172,8 +172,7 @@ class PictogramSnippet extends PureComponent {
 }
 
 PictogramSnippet.contextTypes = {
-  isAuthenticated: PropTypes.bool,
-  isFavorite: PropTypes.bool
+  isAuthenticated: PropTypes.bool
 }
 
 PictogramSnippet.propTypes = {
@@ -182,7 +181,8 @@ PictogramSnippet.propTypes = {
   muiTheme: PropTypes.object,
   locale: PropTypes.string.isRequired,
   showExtra: PropTypes.bool,
-  onClickFavorite: PropTypes.func.isRequired
+  onClickFavorite: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool
 }
 
 export default muiThemeable()(PictogramSnippet)
