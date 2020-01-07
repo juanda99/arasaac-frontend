@@ -8,6 +8,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
+import P from 'components/P'
 import Helmet from 'react-helmet'
 import PrizeList from './PrizeList'
 import prizes from './prizes.json'
@@ -15,7 +16,7 @@ import messages from './messages'
 
 class PrizesView extends PureComponent {
 
-  renderWarning = () => <p><FormattedMessage {...messages.onlySpanish} /></p>
+  renderWarning = <P><FormattedMessage {...messages.onlySpanish} /></P>
 
   render() {
     const { locale } = this.props
