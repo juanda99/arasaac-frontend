@@ -19,7 +19,6 @@ const required = (value) => (value ? undefined : 'Required')
 const getNumber = (idPictogram, pictograms) => pictograms.indexOf(idPictogram).toString()
 
 class ContactForm extends Component {
-  componentDidMount() { }
 
   fingersCount = (value) => {
     const { idPictogram, pictograms } = this.props

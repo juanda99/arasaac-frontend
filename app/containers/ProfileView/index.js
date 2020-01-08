@@ -11,7 +11,7 @@ import View from 'components/View'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { logout } from 'containers/App/actions'
 import { FormattedDate, FormattedTime } from 'react-intl'
-import { selectName, selectPicture, selectLastLogin } from './selectors'
+import { makeSelectName, makeSelectPicture, makeSelectLastLogin } from 'containers/App/selectors'
 
 class ProfileView extends PureComponent {
   componentDidMount() {
@@ -20,7 +20,6 @@ class ProfileView extends PureComponent {
 
   render() {
     const { lastLogin, name, picture } = this.props
-    console.log(`picture: ${picture}`)
 
     return (
       <View left={true} right={true}>
@@ -42,9 +41,9 @@ ProfileView.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  lastLogin: selectLastLogin()(state),
-  name: selectName()(state),
-  picture: selectPicture()(state)
+  lastLogin: makeSelectLastLogin()(state),
+  name: makeSelectName()(state),
+  picture: makeSelectPicture()(state)
 
 })
 

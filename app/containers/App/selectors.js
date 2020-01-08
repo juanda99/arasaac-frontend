@@ -51,6 +51,26 @@ const makeSelectTokens = () =>
     (accessToken, refreshToken) => ({ accessToken, refreshToken })
   )
 
+const makeSelectName = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('name') || substate.getIn(['facebook', 'name']) || substate.getIn(['google', 'name'])
+)
+
+const makeSelectPicture = () => createSelector(
+  selectAuth,
+  (substate) => substate.getIn(['facebook', 'picture']) || substate.getIn(['google', 'picture'])
+)
+
+const makeSelectLastLogin = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('lastLogin')
+)
+
+const makeSelectEmail = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('email')
+)
+
 export {
   makeSelectLocationState,
   selectAuth,
@@ -61,5 +81,9 @@ export {
   makeSelectLoading,
   makeSelectError,
   makeSelectFavorites,
-  makeSelectRootFavorites
+  makeSelectRootFavorites,
+  makeSelectName,
+  makeSelectPicture,
+  makeSelectLastLogin,
+  makeSelectEmail
 }

@@ -3,6 +3,7 @@ import callApi from './callApi'
 import {
   login,
   signup,
+  contactForm,
   socialLogin,
   uploadMaterial,
   customPicto,
@@ -51,6 +52,7 @@ const api = {
       socialLogin.options(socialToken, provider, locale)
     ),
   SIGNUP_REQUEST: (userData) => callApi(signup.url, signup.options(userData)),
+  CONTACTFORM_REQUEST: (userData) => callApi(contactForm.url, contactForm.options(userData)),
   FAVORITE_PICTOGRAMS_REQUEST: ({ locale, favoriteIds, token }) => callApi(getFavorites.url(locale), getFavorites.options(favoriteIds), token),
   ADD_FAVORITE_REQUEST: ({ ...data, token }) => callApi(addFavorite.url, addFavorite.options(data), token),
   ADD_LIST_REQUEST: ({ listName, token }) => callApi(addFavoriteList.url(listName), addFavoriteList.options, token),
