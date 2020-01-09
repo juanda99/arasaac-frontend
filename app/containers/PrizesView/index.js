@@ -28,7 +28,9 @@ class PrizesView extends PureComponent {
             { name: 'description', content: 'Arasaac prizes' }
           ]}
         />
+
         {locale !== 'es' && this.renderWarning}
+        <P style={{ paddingBottom: '2rem' }}><FormattedMessage {...messages.introArasaacPrizes} /></P>
         < PrizeList prizes={prizes} />
       </View>
     )
