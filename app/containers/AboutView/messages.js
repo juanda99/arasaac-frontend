@@ -20,7 +20,7 @@ export default defineMessages({
     defaultMessage: 'What is Arasaac?'
   },
   arasaacTeam: {
-    id: 'app.containers.AboutView.whatIsArasaac',
+    id: 'app.containers.AboutView.arasaacTeam',
     defaultMessage: 'Arasaac team'
   },
   whereWeAre: {
