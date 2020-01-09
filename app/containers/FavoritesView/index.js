@@ -115,7 +115,6 @@ class FavoritesView extends PureComponent {
           title='Favorites View'
           meta={[{ name: 'description', content: 'Pictogram favorites' }]}
         />
-        <Divider />
 
         <TextField
           hintText={formatMessage(messages.addListHint)}
