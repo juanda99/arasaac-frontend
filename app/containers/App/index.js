@@ -101,6 +101,7 @@ class App extends Component {
     ]
   };
 
+
   handleTranslate = () => {
     if (!this.props.isTranslating) {
       this.props.startTranslation();

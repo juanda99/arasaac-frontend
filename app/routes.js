@@ -88,15 +88,6 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading)
       }
     },
-    // {
-    //   path: '/pictograms/catalogs',
-    //   name: 'catalogs',
-    //   getComponent(location, cb) {
-    //     import('containers/CatalogsView')
-    //       .then(loadModule(cb))
-    //       .catch(errorLoading)
-    //   }
-    // },
     {
       path: '/activate/:activationCode',
       name: 'activateView',

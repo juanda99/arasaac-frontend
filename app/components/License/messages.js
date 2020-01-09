@@ -1,9 +1,9 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  download: {
-    id: 'app.components.Catalog.download',
-    defaultMessage: 'Download'
+  accept: {
+    id: 'app.components.Catalog.accept',
+    defaultMessage: 'Accept'
   },
   cancel: {
     id: 'app.components.Catalog.cancel',
