@@ -19,6 +19,11 @@ injectGlobal`
     flex: 1;
   }
 
+  .leaftlet-popup-content-wrapper {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
   #font-picker {
     width: 100%;
   }

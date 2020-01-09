@@ -64,5 +64,10 @@ export default defineMessages({
     id: 'app.containers.ContactView.sendMessage',
     description: 'message',
     defaultMessage: 'Thank you for your message. We will contact you as soon as possible.'
+  },
+  formTitle: {
+    id: 'app.containers.ContactView.formTitle',
+    description: 'message',
+    defaultMessage: 'Send us a message'
   }
 })

@@ -8,7 +8,9 @@ import { connect } from 'react-redux'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import View from 'components/View'
 import H3 from 'components/H3'
+import H2 from 'components/H2'
 import Logo from 'components/Logo'
+import Facebook from 'components/SocialLogin/icons/svg/facebook'
 import P from 'components/P'
 import { makeSelectName, makeSelectEmail } from 'containers/App/selectors'
 import ContactForm from './ContactForm'
@@ -20,7 +22,10 @@ class ContactView extends Component {
   state = {
     loading: false,
     error: '',
-    sendMessage: false
+    sendMessage: false,
+    lat: 41.66747,
+    lng: -0.89407,
+    zoom: 3
   }
 
   resetError = () => this.setState({ error: '', sendMessage: false })
@@ -92,11 +97,17 @@ class ContactView extends Component {
           {error && this.showError()}
         </div>
       )
-
+    const position = [this.state.lat, this.state.lng]
     return (
       <View left={true} right={true}>
+        <H2 primary={true}>{<FormattedMessage {...messages.formTitle} />}</H2>
+        <P>Fill in this form and we will try to reach you as soon as possible. If you prefer, you can conctact as by email or using our social networks: </P>
+        <a target='_blank' href='https://www.facebook.com/arasaac/'>
+          <Facebook />
+        </a>
+
         {renderView}
-      </View>
+      </View >
     )
   }
 }

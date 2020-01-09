@@ -22,6 +22,14 @@ export default defineMessages({
   arasaacTeam: {
     id: 'app.containers.AboutView.whatIsArasaac',
     defaultMessage: 'Arasaac team'
+  },
+  whereWeAre: {
+    id: 'app.containers.AboutView.whereWeAre',
+    defaultMessage: 'Where we are'
+  },
+  addressInfo: {
+    id: 'app.containers.AboutView.addressInfo',
+    defaultMessage: 'We are located in Zaragoza (Spain). Our postal address is:'
   }
 
 })
