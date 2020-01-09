@@ -65,9 +65,15 @@ export default defineMessages({
     description: 'message',
     defaultMessage: 'Thank you for your message. We will contact you as soon as possible.'
   },
-  formTitle: {
-    id: 'app.containers.ContactView.formTitle',
+  send: {
+    id: 'app.containers.ContactView.form.send',
     description: 'message',
-    defaultMessage: 'Send us a message'
+    defaultMessage: 'Send'
+  },
+  formIntro: {
+    id: 'app.containers.ContactView.formIntro',
+    description: 'message',
+    defaultMessage: 'Please contact us preferably through this form for any question, suggestion or collaboration. We will get back to you as soon as possible.'
   }
 })
+

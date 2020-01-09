@@ -85,7 +85,7 @@ class ContactForm extends Component {
         <RaisedButton
           type='submit'
           disabled={pristine || submitting}
-          label='Enviar'
+          label={<FormattedMessage {...messages.send} />}
           style={{ float: 'right' }}
           primary={true}
         />
