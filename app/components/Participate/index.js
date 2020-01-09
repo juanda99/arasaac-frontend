@@ -7,7 +7,6 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { grey200 } from 'material-ui/styles/colors'
 import { FormattedMessage } from 'react-intl'
 import { withRouter } from 'react-router'
-import SocialLinks from 'components/SocialLinks'
 import styles from './styles'
 import messages from './messages'
 
@@ -29,7 +28,6 @@ class Participate extends Component {
           onClick={() => this.handleRouterChangeLink('/contact-us')}
           style={styles.button}
         />
-        <SocialLinks />
 
       </FullWidthSection>
     )

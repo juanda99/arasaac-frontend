@@ -8,16 +8,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { Row, Col } from 'react-flexbox-grid'
+import SocialLinks from 'components/SocialLinks'
 // import { FormattedMessage } from 'react-intl'
 // import messages from './messages'
 
-import UnionEuropea from './union-europea-horizontal-logo.png'
+// import UnionEuropea from './union-europea-horizontal-logo.png'
 import GobiernoAragon from './gobierno-aragon-logo.svg'
 import styles from './styles'
 import FooterSection from './FooterSection'
 
 const Footer = ({ docked, muiTheme }) => (
-  <FooterSection id='footer' color={muiTheme.palette.primary1Color} docked={docked}>
+  <FooterSection id='footer' color={muiTheme.palette.accent1Color} docked={docked}>
     <Row middle='xs'>
       <Col xs={12} md={8}>
         <p style={styles.p}>
@@ -30,7 +31,8 @@ const Footer = ({ docked, muiTheme }) => (
         <img alt='Arasaac Logo' style={styles.logoGA} src={GobiernoAragon} />
       </Col>
       <Col xs={6} md={2} >
-        <img alt='Logo European Union Logo' style={styles.logoUE} src={UnionEuropea} />
+        {/* <img alt='Logo European Union Logo' style={styles.logoUE} src={UnionEuropea} /> */}
+        <SocialLinks />
       </Col>
     </Row>
   </FooterSection>
