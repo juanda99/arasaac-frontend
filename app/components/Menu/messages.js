@@ -114,6 +114,6 @@ export default defineMessages({
   whoWeAre: {
     id: 'menu.whoWeAre',
     description: 'Menu item',
-    defaultMessage: 'Arasaac Team'
+    defaultMessage: 'About us'
   }
 })
