@@ -7,7 +7,8 @@ const View = styled.div`
   padding-left: ${(props) => (props.left ? '1rem' : '0rem')};
   padding-right: ${(props) => (props.right ? '1rem' : '0rem')}; 
   padding-top: ${(props) => (props.top ? `${props.top}rem` : '0rem')};
-  padding-bottom: ${(props) => (props.bottom ? `${props.bottom}rem` : '2rem')};
+  padding-bottom: ${(props) => (props.bottom ? `${props.bottom}rem` : '0rem')};
+
 
   ${media.sm} {
     padding-left: ${(props) => (props.left ? '2rem' : '0.5rem')};

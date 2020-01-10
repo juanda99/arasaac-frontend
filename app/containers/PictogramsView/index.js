@@ -11,6 +11,7 @@ import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
+import SearchContainer from 'components/SearchContainer'
 import Toggle from 'material-ui/Toggle'
 import TabsHeader from 'components/TabsHeader'
 import muiThemeable from 'material-ui/styles/muiThemeable'
@@ -58,9 +59,7 @@ const styles = {
     width: '150px'
   },
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    width: '100%'
+
   }
 }
 class PictogramsView extends PureComponent {
@@ -205,9 +204,9 @@ class PictogramsView extends PureComponent {
         <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange}>
           <div>
             <View
-              style={{ backgroundColor: muiTheme.palette.accent2Color }}
+              style={{ backgroundColor: muiTheme.palette.accent2Color }} bottom={0}
             >
-              <div style={styles.container}>
+              <SearchContainer bottom-xs={0}>
                 <SearchField
                   value={searchText}
                   onSubmit={this.handleSubmit}
@@ -223,7 +222,7 @@ class PictogramsView extends PureComponent {
                   settingsActive={visibleSettings}
                   style={styles.actionButtons}
                 /> */}
-              </div>
+              </SearchContainer>
               {visibleSettings ? (
                 <div>
                   <p>todo</p>
@@ -257,16 +256,17 @@ class PictogramsView extends PureComponent {
             <View
               left={true}
               right={true}
-              style={{ backgroundColor: 'muiTheme.palette.accent2Color' }}
+              bottom={0}
+              style={{ backgroundColor: muiTheme.palette.accent2Color }}
             >
-              <div style={styles.container}>
+              <SearchContainer>
                 <SearchField
                   value={searchText}
                   onSubmit={this.handleSubmit}
                   style={styles.searchBar}
                   dataSource={keywords}
                 />
-                <ActionButtons
+                {/* <ActionButtons
                   onFilterClick={this.props.toggleShowFilter}
                   filterActive={showFilter}
                   onLabelsClick={this.showLabels}
@@ -274,8 +274,8 @@ class PictogramsView extends PureComponent {
                   onSettingsClick={this.showSettings}
                   settingsActive={visibleSettings}
                   style={styles.actionButtons}
-                />
-              </div>
+                /> */}
+              </SearchContainer>
               {visibleSettings ? (
                 <div>
                   <Toggle
