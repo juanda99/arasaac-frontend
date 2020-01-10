@@ -38,7 +38,7 @@ import {
   stopTranslation
 } from "containers/LanguageProvider/actions";
 import { logout, activation } from "./actions";
-import { makeSelectHasUser } from "./selectors";
+import { makeSelectHasUser, makeSelectRole } from "./selectors";
 
 class App extends Component {
   static propTypes = {
@@ -268,7 +268,8 @@ class App extends Component {
       isAuthenticated,
       width,
       isTranslating,
-      logout
+      logout,
+      role
     } = this.props;
 
     // if (location.hash) {
@@ -327,6 +328,7 @@ class App extends Component {
           signout={logout}
           isTranslating={isTranslating}
           isMobile={isMobile}
+          role={role}
         />
         <LoadingBar
           updateTime={100}
@@ -357,10 +359,12 @@ const mapStateToProps = state => {
   const locale = state.getIn(["language", "locale"]);
   const isTranslating = locale === "af";
   const isAuthenticated = (makeSelectHasUser()(state) && true) || false;
+  const role = makeSelectRole()(state)
   return {
     isAuthenticated,
     locale,
-    isTranslating
+    isTranslating,
+    role
   };
 };
 

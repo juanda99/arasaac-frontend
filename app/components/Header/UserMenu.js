@@ -11,7 +11,7 @@ import messages from './messages'
 
 /* eslint-disable jsx-a11y/anchor-has-content */
 
-const UserMenu = ({ isTranslating, changeLocale, muiTheme, signout }) => (
+const UserMenu = ({ isTranslating, changeLocale, muiTheme, signout, role }) => (
   <span>
     <IconMenu
       iconButtonElement={
@@ -30,25 +30,28 @@ const UserMenu = ({ isTranslating, changeLocale, muiTheme, signout }) => (
         primaryText={<FormattedMessage {...messages.userProfile} />}
         containerElement={<Link to='/profile' />}
       />
-      <MenuItem
+      {/* <MenuItem
         primaryText={<FormattedMessage {...messages.userMaterial} />}
         containerElement={<Link to='/usermaterial' />}
-      />
-      {!isTranslating ? (
-        <MenuItem
-          primaryText={<FormattedMessage {...messages.translateArasaac} />}
-          onClick={changeLocale}
-        />
-      ) : (
-        <MenuItem
-          primaryText={<FormattedMessage {...messages.stopTranslateArasaac} />}
-          onClick={changeLocale}
-        />
-      )}
-      <MenuItem
+      /> */}
+      {(role === 'admin' || role === 'translator') && (
+        !isTranslating ? (
+          <MenuItem
+            primaryText={<FormattedMessage {...messages.translateArasaac} />}
+            onClick={changeLocale}
+          />
+        ) : (
+            <MenuItem
+              primaryText={<FormattedMessage {...messages.stopTranslateArasaac} />}
+              onClick={changeLocale}
+            />
+          )
+      )
+      }
+      {/* <MenuItem
         primaryText={<FormattedMessage {...messages.uploadMaterial} />}
         containerElement={<Link to='/uploadmaterial' />}
-      />
+      /> */}
       <MenuItem
         primaryText={<FormattedMessage {...messages.signout} />}
         onClick={signout}
@@ -61,7 +64,8 @@ UserMenu.propTypes = {
   isTranslating: PropTypes.bool.isRequired,
   changeLocale: PropTypes.func.isRequired,
   signout: PropTypes.func.isRequired,
-  muiTheme: PropTypes.object.isRequired
+  muiTheme: PropTypes.object.isRequired,
+  role: PropTypes.string
 }
 
 export default muiThemeable()(UserMenu)

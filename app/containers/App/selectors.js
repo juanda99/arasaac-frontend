@@ -71,6 +71,26 @@ const makeSelectEmail = () => createSelector(
   (substate) => substate.get('email')
 )
 
+const makeSelectRole = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('role')
+)
+
+const makeSelectCompany = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('company')
+)
+
+const makeSelectUrl = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('url')
+)
+
+const makeSelectTargetLanguages = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('targetLanguages')
+)
+
 export {
   makeSelectLocationState,
   selectAuth,
@@ -85,5 +105,9 @@ export {
   makeSelectName,
   makeSelectPicture,
   makeSelectLastLogin,
-  makeSelectEmail
+  makeSelectEmail,
+  makeSelectRole,
+  makeSelectTargetLanguages,
+  makeSelectCompany,
+  makeSelectUrl
 }

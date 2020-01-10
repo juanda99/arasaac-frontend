@@ -22,7 +22,8 @@ const Header = (props) => {
     isTranslating,
     changeLocale,
     signout,
-    isMobile
+    isMobile,
+    role
   } = props
   return (
     <AppBar
@@ -38,10 +39,11 @@ const Header = (props) => {
             isTranslating={isTranslating}
             changeLocale={changeLocale}
             signout={signout}
+            role={role}
           />
         ) : (
-          <GuestMenu isMobile={isMobile} />
-        )
+            <GuestMenu isMobile={isMobile} />
+          )
       }
     />
   )
@@ -61,7 +63,8 @@ Header.propTypes = {
   signout: PropTypes.func.isRequired,
   touchTapLeftIconButton: PropTypes.func.isRequired,
   isTranslating: PropTypes.bool.isRequired,
-  isMobile: PropTypes.bool.isRequired
+  isMobile: PropTypes.bool.isRequired,
+  role: PropTypes.string
 }
 
 export default Header
