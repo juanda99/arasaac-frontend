@@ -10,10 +10,10 @@ import messages from './messages'
 
 const email = (value) =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-    ? 'Invalid email address'
+    ? <FormattedMessage {...messages.invalidEmail} />
     : undefined
 
-const required = (value) => (value ? undefined : 'Required')
+const required = (value) => (value ? undefined : <FormattedMessage {...messages.required} />)
 
 
 const getNumber = (idPictogram, pictograms) => pictograms.indexOf(idPictogram).toString()
@@ -23,7 +23,7 @@ class ContactForm extends Component {
   fingersCount = (value) => {
     const { idPictogram, pictograms } = this.props
     const number = getNumber(idPictogram, pictograms)
-    return value === number ? undefined : 'Wrong number of fingers'
+    return value === number ? undefined : <FormattedMessage {...messages.wrongFingers} />
   };
 
   render() {
@@ -67,7 +67,7 @@ class ContactForm extends Component {
 
         <div style={{ display: 'flex' }}>
           <img
-            style={{ width: '130px', height: '130px', marginRight: '50' }}
+            style={{ width: '130px', height: '130px', marginRight: '50px' }}
             src={`${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${LOW_RESOLUTION}.png`}
             alt={'spam filter'}
           />
@@ -95,11 +95,15 @@ class ContactForm extends Component {
 }
 
 ContactForm.propTypes = {
-  ...propTypes
+  ...propTypes,
+  idPictogram: PropTypes.number.isRequired,
+  pictograms: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired
 }
 
 ContactForm = reduxForm({
-  form: 'ContactForm'
+  form: 'ContactForm',
+  touchOnBlur: false,
+  touchOnChange: true
 })(ContactForm)
 
 // ContactForm = connect(

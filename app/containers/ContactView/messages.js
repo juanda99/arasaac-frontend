@@ -70,6 +70,21 @@ export default defineMessages({
     description: 'message',
     defaultMessage: 'Send'
   },
+  wrongFingers: {
+    id: 'app.containers.ContactView.form.wrongFingers',
+    description: 'message',
+    defaultMessage: 'Wrong number of fingers'
+  },
+  required: {
+    id: 'app.containers.ContactView.form.required',
+    description: 'message',
+    defaultMessage: 'Required'
+  },
+  invalidEmail: {
+    id: 'app.containers.ContactView.form.invalidEmail',
+    description: 'message',
+    defaultMessage: 'Invalid email'
+  },
   formIntro: {
     id: 'app.containers.ContactView.formIntro',
     description: 'message',
