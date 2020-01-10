@@ -205,8 +205,6 @@ class PictogramsView extends PureComponent {
         <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange}>
           <div>
             <View
-              left={true}
-              right={true}
               style={{ backgroundColor: muiTheme.palette.accent2Color }}
             >
               <div style={styles.container}>
@@ -216,7 +214,7 @@ class PictogramsView extends PureComponent {
                   style={styles.searchBar}
                   dataSource={keywords}
                 />
-                <ActionButtons
+                {/* <ActionButtons
                   onFilterClick={this.props.toggleShowFilter}
                   filterActive={showFilter}
                   onLabelsClick={this.showLabels}
@@ -224,7 +222,7 @@ class PictogramsView extends PureComponent {
                   onSettingsClick={this.showSettings}
                   settingsActive={visibleSettings}
                   style={styles.actionButtons}
-                />
+                /> */}
               </div>
               {visibleSettings ? (
                 <div>

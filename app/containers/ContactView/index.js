@@ -90,10 +90,11 @@ class ContactView extends Component {
             </H3>
           ) : (
               <ContactForm initialValues={{ name, email }} onSubmit={this.handleSubmit} idPictogram={idPictogram} pictograms={pictos} />
-            )}
+            )
+          }
 
           {error && this.showError()}
-        </div>
+        </div >
       )
     return (
       <View left={true} right={true}>

@@ -4,10 +4,8 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 
 const View = styled.div`
   background-color: ${(props) => props.muiTheme.palette.bodyColor};
-  /* padding-left: ${(props) => (props.left ? '0rem' : '0rem')};
-  padding-right: ${(props) => (props.right ? '0rem' : '0rem')}; */
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: ${(props) => (props.left ? '1rem' : '0rem')};
+  padding-right: ${(props) => (props.right ? '1rem' : '0rem')}; 
   padding-top: ${(props) => (props.top ? `${props.top}rem` : '0rem')};
   padding-bottom: ${(props) => (props.bottom ? `${props.bottom}rem` : '2rem')};
 
