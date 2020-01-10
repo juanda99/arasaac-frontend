@@ -30,7 +30,7 @@ class ContactForm extends Component {
     const { handleSubmit, pristine, submitting, idPictogram } = this.props
 
     return (
-      <form onSubmit={handleSubmit} style={{ maxWidth: '800px', marginBottom: '30px' }}>
+      <form onSubmit={handleSubmit} style={{ maxWidth: '500px', marginBottom: '30px' }}>
         <div>
           <Field
             name='name'
