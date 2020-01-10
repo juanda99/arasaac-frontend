@@ -10,8 +10,19 @@ import { connect } from 'react-redux'
 import View from 'components/View'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { logout } from 'containers/App/actions'
-import { FormattedDate, FormattedTime } from 'react-intl'
-import { makeSelectName, makeSelectPicture, makeSelectLastLogin } from 'containers/App/selectors'
+import { RegisterForm } from 'components/Login'
+import ProfileIntro from './ProfileIntro'
+
+import {
+  makeSelectName,
+  makeSelectPicture,
+  makeSelectEmail,
+  makeSelectLastLogin,
+  makeSelectRole,
+  makeSelectTargetLanguages,
+  makeSelectCompany,
+  makeSelectUrl
+} from 'containers/App/selectors'
 
 class ProfileView extends PureComponent {
   componentDidMount() {
@@ -19,31 +30,38 @@ class ProfileView extends PureComponent {
   }
 
   render() {
-    const { lastLogin, name, picture } = this.props
-
+    const { lastLogin, name, picture, company, url, email, role, targetLanguages } = this.props
     return (
       <View left={true} right={true}>
-        <p>Hooola {name}</p>
-        <p>Última conexión:&nbsp;
-          <FormattedDate value={lastLogin} day='numeric' month='long' year='numeric' />
-          <FormattedTime value={lastLogin} />
-        </p>
-        <img role='presentation' src={picture} alt={name} />
-      </View>
+        <ProfileIntro name={name} lastLogin={lastLogin} picture={picture} />
+        <div style={{ maxWidth: 400 }}>
+          <RegisterForm update={true} initialValues={{ name, company, url, email }} />
+        </div>
+      </View >
     )
   }
 }
 
 ProfileView.propTypes = {
   lastLogin: PropTypes.string,
-  name: PropTypes.string,
-  picture: PropTypes.string
+  name: PropTypes.string.isRequired,
+  picture: PropTypes.string,
+  company: PropTypes.string,
+  url: PropTypes.string,
+  role: PropTypes.string.isRequired,
+  target: PropTypes.array,
+  email: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state) => ({
   lastLogin: makeSelectLastLogin()(state),
   name: makeSelectName()(state),
-  picture: makeSelectPicture()(state)
+  email: makeSelectEmail()(state),
+  company: makeSelectCompany()(state),
+  url: makeSelectUrl()(state),
+  picture: makeSelectPicture()(state),
+  role: makeSelectRole()(state),
+  targetLanguages: makeSelectTargetLanguages()(state)
 
 })
 

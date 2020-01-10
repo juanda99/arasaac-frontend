@@ -140,6 +140,11 @@ const messages = defineMessages({
     id: 'signup.buttonSignUp',
     description: 'Button text box',
     defaultMessage: 'Sign up'
+  },
+  updateAccount: {
+    id: 'signup.updateAccount',
+    description: 'Button text box',
+    defaultMessage: 'Update account'
   }
 })
 
