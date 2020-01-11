@@ -7,6 +7,7 @@ import ConditionalPaper from 'components/ConditionalPaper'
 import { connect } from 'react-redux'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import View from 'components/View'
+import ReadMargin from 'components/ReadMargin'
 import H3 from 'components/H3'
 import Logo from 'components/Logo'
 import P from 'components/P'
@@ -97,10 +98,12 @@ class ContactView extends Component {
         </div >
       )
     return (
-      <View left={true} right={true}>
-        <P style={{ paddingBottom: '2rem' }}><FormattedMessage {...messages.formIntro} /></P>
+      <View left={true} right={true} bottom={2}>
+        <ReadMargin>
+          <P><FormattedMessage {...messages.formIntro} /></P>
+          {renderView}
+        </ReadMargin>
 
-        {renderView}
       </View >
     )
   }

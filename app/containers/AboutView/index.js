@@ -8,6 +8,7 @@ import {
   IMAGES_URL
 } from 'services/config'
 import AuthorSnippet from 'components/AuthorSnippet'
+import ReadMargin from 'components/ReadMargin'
 import GitHubIcon from './GibhubIcon'
 import FacebookIcon from './FacebookIcon'
 import messages from './messages'
@@ -62,10 +63,13 @@ class AboutView extends Component {
     const position = [this.state.lat, this.state.lng]
     return (
       <View left={true} right={true}>
-        <H2 primary={true}>{<FormattedMessage {...messages.whatIsArasaac} />}</H2>
-        <P>{<FormattedMessage {...messages.whatArasaacOffers} />}</P>
-        <P>{<FormattedMessage {...messages.fundedBy} />}</P>
-        <H2 primary={true}>{<FormattedMessage {...messages.whereWeAre} />}</H2>
+        <ReadMargin>
+          <H2 primary={true}>{<FormattedMessage {...messages.whatIsArasaac} />}</H2>
+          <P>{<FormattedMessage {...messages.whatArasaacOffers} />}</P>
+          <P>{<FormattedMessage {...messages.fundedBy} />}</P>
+          <H2 primary={true}>{<FormattedMessage {...messages.whereWeAre} />}</H2>
+        </ReadMargin>
+
         <Map center={position} zoom={this.state.zoom} style={{ height: '400px' }}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -77,19 +81,22 @@ class AboutView extends Component {
           </Popup>
           </Marker>
         </Map>
-        <P>{<FormattedMessage {...messages.addressInfo} />}</P>
-        <P><strong>Centro Aragonés para la Comunicación Aumentativa y Alternativa - ARASAAC</strong><br />Andador Pilar Cuartero Molinero, 1, 50018 Zaragoza<br /> España (Spain)</P>
+        <ReadMargin>
+          <P>{<FormattedMessage {...messages.addressInfo} />}</P>
+          <P><strong>Centro Aragonés para la Comunicación Aumentativa y Alternativa - ARASAAC</strong><br />Andador Pilar Cuartero Molinero, 1, 50018 Zaragoza<br /> España (Spain)</P>
 
-        <H2 primary={true}>{<FormattedMessage {...messages.arasaacTeam} />}</H2>
-        <Masonry
-          className={'my-gallery-class'} // default ''
-          elementType={'ul'} // default 'div'
-          options={masonryOptions} // default {}
-          disableImagesLoaded={false} // default false
-          style={styles.masonry}
-        >
-          {authors.map((author) => <AuthorSnippet key={author.name} name={author.name} imageSource={author.imageSource} />)}
-        </Masonry>
+          <H2 primary={true}>{<FormattedMessage {...messages.arasaacTeam} />}</H2>
+          <Masonry
+            className={'my-gallery-class'} // default ''
+            elementType={'ul'} // default 'div'
+            options={masonryOptions} // default {}
+            disableImagesLoaded={false} // default false
+            style={styles.masonry}
+          >
+            {authors.map((author) => <AuthorSnippet key={author.name} name={author.name} imageSource={author.imageSource} />)}
+          </Masonry>
+        </ReadMargin>
+
         {/* <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ margin: 10, display: 'flex' }}>
             <img src={`${IMAGES_URL}/team/jose-manuel-marco.png`} style={{ width: '100px', height: 'auto' }} />

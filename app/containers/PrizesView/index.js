@@ -10,6 +10,7 @@ import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import P from 'components/P'
 import Helmet from 'react-helmet'
+import ReadMargin from 'components/ReadMargin'
 import PrizeList from './PrizeList'
 import prizes from './prizes.json'
 import messages from './messages'
@@ -28,10 +29,12 @@ class PrizesView extends PureComponent {
             { name: 'description', content: 'Arasaac prizes' }
           ]}
         />
+        <ReadMargin>
+          {locale !== 'es' && this.renderWarning}
+          <P style={{ paddingBottom: '2rem' }}><FormattedMessage {...messages.introArasaacPrizes} /></P>
+          <PrizeList prizes={prizes} />
+        </ReadMargin>
 
-        {locale !== 'es' && this.renderWarning}
-        <P style={{ paddingBottom: '2rem' }}><FormattedMessage {...messages.introArasaacPrizes} /></P>
-        < PrizeList prizes={prizes} />
       </View>
     )
   }
