@@ -23,7 +23,7 @@ import PictogramList from 'components/PictogramList'
 import P from 'components/P'
 import { withRouter } from 'react-router'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
-import ActionButtons from 'containers/MaterialsView/ActionButtons'
+import ReadMargin from 'components/ReadMargin'
 import { addFavorite, deleteFavorite } from 'containers/App/actions'
 import { DEFAULT_LIST } from 'utils'
 import {
@@ -169,7 +169,7 @@ class PictogramsView extends PureComponent {
     else if (slideIndex === 1) pictogramsList = newPictogramsList
     let gallery
     if ((loading && searchText) || (loading && slideIndex !== 0)) {
-      gallery = <p> Loading pictograms...</p>
+      gallery = <ReadMargin><P>{<FormattedMessage {...messages.loadingPictograms} />}</P></ReadMargin>
     } else if (!searchText && slideIndex !== 1) {
       gallery = null
     } else {
@@ -187,7 +187,9 @@ class PictogramsView extends PureComponent {
           favorites={rootFavorites}
         />
       ) : (
-          <P>{<FormattedMessage {...messages.pictogramsNotFound} />}</P>
+          <ReadMargin>
+            <P>{<FormattedMessage {...messages.pictogramsNotFound} />}</P>
+          </ReadMargin>
         )
     }
 
@@ -239,13 +241,16 @@ class PictogramsView extends PureComponent {
             <Divider />
             <View left={true} right={true} top={1}>
               {pictogramsCounter ? (
-                <P>
-                  {' '}
-                  <FormattedMessage
-                    {...messages.pictogramsFound}
-                    values={{ pictogramsCounter }}
-                  />{' '}
-                </P>
+                <ReadMargin>
+                  <P>
+                    {' '}
+                    <FormattedMessage
+                      {...messages.pictogramsFound}
+                      values={{ pictogramsCounter }}
+                    />{' '}
+                  </P>
+                </ReadMargin>
+
               ) : (
                   ''
                 )}
@@ -253,57 +258,19 @@ class PictogramsView extends PureComponent {
             </View>
           </div>
           <div>
-            <View
-              left={true}
-              right={true}
-              bottom={0}
-              style={{ backgroundColor: muiTheme.palette.accent2Color }}
-            >
-              <SearchContainer>
-                <SearchField
-                  value={searchText}
-                  onSubmit={this.handleSubmit}
-                  style={styles.searchBar}
-                  dataSource={keywords}
-                />
-                {/* <ActionButtons
-                  onFilterClick={this.props.toggleShowFilter}
-                  filterActive={showFilter}
-                  onLabelsClick={this.showLabels}
-                  labelsActive={visibleLabels}
-                  onSettingsClick={this.showSettings}
-                  settingsActive={visibleSettings}
-                  style={styles.actionButtons}
-                /> */}
-              </SearchContainer>
-              {visibleSettings ? (
-                <div>
-                  <Toggle
-                    label={<FormattedMessage {...messages.advancedSearch} />}
-                    onToggle={this.props.toggleShowFilter}
-                    defaultToggled={showFilter}
-                    style={{ width: '200px' }}
-                  />
-                </div>
-              ) : null}
-              {showFilter ? (
-                <FilterList
-                  filtersMap={filters}
-                  setFilterItems={this.props.setFilterItems}
-                  filtersData={filtersData}
-                />
-              ) : null}
-            </View>
-            <Divider />
             <View left={true} right={true} top={1}>
               {pictogramsCounter ? (
-                <p>
-                  {' '}
-                  <FormattedMessage
-                    {...messages.newPictogramsFound}
-                    values={{ pictogramsCounter }}
-                  />{' '}
-                </p>
+                <ReadMargin>
+                  <P>
+                    {' '}
+                    <FormattedMessage
+                      {...messages.newPictogramsFound}
+                      values={{ pictogramsCounter }}
+                    />{' '}
+                  </P>
+
+                </ReadMargin>
+
               ) : (
                   ''
                 )}

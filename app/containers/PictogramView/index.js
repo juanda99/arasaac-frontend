@@ -58,9 +58,9 @@ class PictogramView extends PureComponent {
     } = this.props
     if (loading) {
       return (
-        <p>
+        <P>
           <FormattedMessage {...messages.pictogramLoading} />
-        </p>
+        </P>
       )
     }
     return pictogramData.isEmpty() ? (
@@ -80,7 +80,7 @@ class PictogramView extends PureComponent {
 
   render() {
     return (
-      <View left={true} right={true} top={0}>
+      <View left={true} right={true} top={0} readMargin={false}>
         <Helmet
           title='PictogramView'
           meta={[
