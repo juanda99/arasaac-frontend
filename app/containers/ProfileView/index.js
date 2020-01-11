@@ -8,11 +8,14 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import View from 'components/View'
+import PersonalData from 'containers/ProfileView/PersonalData'
+import LanguageSelector from 'components/LanguageSelector'
+import { PICTOGRAMS_URL } from 'services/config'
 import muiThemeable from 'material-ui/styles/muiThemeable'
+import ReadMargin from 'components/ReadMargin'
+import H2 from 'components/H2'
 import { logout } from 'containers/App/actions'
 import { RegisterForm } from 'components/Login'
-import ProfileIntro from './ProfileIntro'
-
 import {
   makeSelectName,
   makeSelectPicture,
@@ -23,6 +26,9 @@ import {
   makeSelectCompany,
   makeSelectUrl
 } from 'containers/App/selectors'
+import ProfileIntro from './ProfileIntro'
+import { makeSelectUserLocale } from '../App/selectors'
+
 
 class ProfileView extends PureComponent {
   componentDidMount() {
@@ -30,13 +36,28 @@ class ProfileView extends PureComponent {
   }
 
   render() {
-    const { lastLogin, name, picture, company, url, email, role, targetLanguages } = this.props
+    const { lastLogin, name, picture, company, url, email, role, targetLanguages, userLocale } = this.props
+    const profileImage = picture ? picture : `${PICTOGRAMS_URL}/28307/28307_300.png`
     return (
-      <View left={true} right={true}>
-        <ProfileIntro name={name} lastLogin={lastLogin} picture={picture} />
-        <div style={{ maxWidth: 400 }}>
-          <RegisterForm update={true} initialValues={{ name, company, url, email }} />
-        </div>
+      <View left={true} right={true} top={2}>
+        <ReadMargin>
+          <ProfileIntro
+            name={name}
+            lastLogin={lastLogin}
+            picture={profileImage}
+            role={role}
+            targetLanguages={targetLanguages}
+          />
+          <PersonalData name={name} email={email} company={company} url={url} />
+
+          <H2 primary={true}>Idioma</H2>
+          <LanguageSelector value={userLocale} onChange={null} />
+
+          <div style={{ maxWidth: 400 }}>
+            <RegisterForm update={true} initialValues={{ name, company, url, email }} />
+          </div>
+        </ReadMargin>
+
       </View >
     )
   }
@@ -50,7 +71,8 @@ ProfileView.propTypes = {
   url: PropTypes.string,
   role: PropTypes.string.isRequired,
   target: PropTypes.array,
-  email: PropTypes.string.isRequired
+  email: PropTypes.string.isRequired,
+  userLocale: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -60,6 +82,7 @@ const mapStateToProps = (state) => ({
   company: makeSelectCompany()(state),
   url: makeSelectUrl()(state),
   picture: makeSelectPicture()(state),
+  userLocale: makeSelectUserLocale()(state),
   role: makeSelectRole()(state),
   targetLanguages: makeSelectTargetLanguages()(state)
 
