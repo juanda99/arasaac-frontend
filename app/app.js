@@ -41,7 +41,7 @@ import 'file-loader?name=[name].[ext]!./.htaccess' // eslint-disable-line import
 /* eslint-enable import/no-webpack-loader-syntax */
 
 import configureStore from './store'
-    // console.log(pictoList.length)
+
 // Import i18n messages
 import { translationMessages } from './i18n'
 
@@ -56,33 +56,47 @@ import createRoutes from './routes'
 const openSansObserver = new FontFaceObserver('Roboto', {})
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded')
-}, () => {
-  document.body.classList.remove('fontLoaded')
-})
+openSansObserver.load().then(
+  () => {
+    document.body.classList.add('fontLoaded')
+  },
+  () => {
+    document.body.classList.remove('fontLoaded')
+  }
+)
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
-const initialState = {}
-const store = configureStore(initialState, browserHistory)
+// const initialState = {}
+// const store = configureStore(initialState, browserHistory)
 
 // Sync history and store, as the react-router-redux reducer
 // is under the non-default key ("routing"), selectLocationState
 // must be provided for resolving how to retrieve the "route" in the state
-const history = syncHistoryWithStore(browserHistory, store, {
-  selectLocationState: makeSelectLocationState()
-})
+// const history = syncHistoryWithStore(browserHistory, store, {
+//   selectLocationState: makeSelectLocationState()
+// })
 
-// Set up the router, wrapping all Routes in the App component
-const rootRoute = {
-  component: App,
-  childRoutes: createRoutes(store)
-}
+// // Set up the router, wrapping all Routes in the App component
+// const rootRoute = {
+//   component: App,
+//   childRoutes: createRoutes(store)
+// }
 
-const render = (messages) => {
+const render = async (messages) => {
+  // Create redux store with history
+  const initialState = {}
+  const store = await configureStore(initialState, browserHistory)
+  const history = syncHistoryWithStore(browserHistory, store, {
+    selectLocationState: makeSelectLocationState()
+  })
+  // Set up the router, wrapping all Routes in the App component
+  const rootRoute = {
+    component: App,
+    childRoutes: createRoutes(store)
+  }
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
@@ -114,17 +128,19 @@ if (module.hot) {
 
 // Chunked polyfill for browsers without Intl support
 if (!window.Intl) {
-  (new Promise((resolve) => {
+  new Promise((resolve) => {
     resolve(import('intl'))
-  }))
-    .then(() => Promise.all([
-      import('intl/locale-data/jsonp/en.js'),
-      import('intl/locale-data/jsonp/es.js'),
-      import('intl/locale-data/jsonp/fr.js'),
-      import('intl/locale-data/jsonp/it.js'),
-      import('intl/locale-data/jsonp/de.js'),
-      import('intl/locale-data/jsonp/af.js')
-    ]))
+  })
+    .then(() =>
+      Promise.all([
+        import('intl/locale-data/jsonp/en.js'),
+        import('intl/locale-data/jsonp/es.js'),
+        import('intl/locale-data/jsonp/fr.js'),
+        import('intl/locale-data/jsonp/it.js'),
+        import('intl/locale-data/jsonp/de.js'),
+        import('intl/locale-data/jsonp/af.js')
+      ])
+    )
     .then(() => render(translationMessages))
     .catch((err) => {
       throw err

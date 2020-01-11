@@ -37,5 +37,9 @@ export default defineMessages({
     id: 'app.containers.PictogramsView.signin',
     description: 'signin button',
     defaultMessage: 'Sign in'
+  },
+  loadingPictograms: {
+    id: 'app.containers.PictogramsView.loadingPictograms',
+    defaultMessage: 'Loading pictograms...'
   }
 })

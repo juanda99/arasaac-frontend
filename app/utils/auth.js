@@ -6,7 +6,7 @@ const userIsAuthenticated = connectedReduxRedirect({
   // The url to redirect user to if they fail
   redirectPath: '/signin',
   // Determine if the user is authenticated or not
-  authenticatedSelector: (state) => state.getIn(['auth', 'username']) !== null,
+  authenticatedSelector: (state) => !!state.getIn(['auth', 'accessToken']),
   // A nice display name for this check
   wrapperDisplayName: 'UserIsAuthenticated',
   redirectAction: routerActions.replace

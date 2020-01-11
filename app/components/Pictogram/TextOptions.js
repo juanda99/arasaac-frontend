@@ -37,46 +37,49 @@ class TextOptions extends Component {
     idPictogram: PropTypes.number.isRequired,
     upperCase: PropTypes.bool.isRequired,
     onUpperCase: PropTypes.func.isRequired
-  }
+  };
 
   state = {
     language: this.props.locale,
     keywords: this.props.keywords,
     editText: true
-  }
+  };
 
   handleFontChange = (nextFont) => {
     this.props.onFontChange(nextFont.family)
-  }
+  };
 
   handleUpdateInput = (searchText) =>
     this.props.upperCase
       ? this.props.onTextChange(searchText.toUpperCase())
-      : this.props.onTextChange(searchText)
+      : this.props.onTextChange(searchText);
 
-  handleUpperCase = (event, uppercase) => this.props.onUpperCase(uppercase)
+  handleUpperCase = (event, uppercase) => this.props.onUpperCase(uppercase);
 
   handleFontSizeChange = (event, value) => {
     this.props.onFontSizeChange(value)
-  }
+  };
 
-  handleFontColorChange = (color) => this.props.onFontColorChange(color)
+  handleFontColorChange = (color) => this.props.onFontColorChange(color);
 
-  handleActive = (active) => this.props.onActive(active)
+  handleActive = (active) => this.props.onActive(active);
 
-  handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions)
+  handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions);
 
   handleLanguageChange = (language) => {
     const { idPictogram } = this.props
     api.GET_KEYWORDS_BY_PICTOID({ language, idPictogram }).then((data) => {
-      const keywords = data.map((keyword) => keyword.keyword)
+      let keywords
+      if (data.keywords) {
+        keywords = data.keywords.map((keyword) => keyword.keyword)
+      } else keywords = []
       this.setState({ keywords, language })
       this.props.onTextChange(keywords[0] || '')
       this.suggestions.focus()
     })
-  }
+  };
 
-  toggleVisibility = () => this.setState({ editText: !this.state.editText })
+  toggleVisibility = () => this.setState({ editText: !this.state.editText });
 
   render() {
     const {

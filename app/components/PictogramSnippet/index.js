@@ -3,10 +3,11 @@ import PropTypes from 'prop-types'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { PICTOGRAMS_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
-import ActionSetFavorite from 'material-ui/svg-icons/action/favorite-border'
+import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
+import Favorite from 'material-ui/svg-icons/action/favorite'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
-import { FormattedMessage } from 'react-intl'
 import { keywordSelector } from 'utils'
+import { FormattedMessage } from 'react-intl'
 import CardActions from './CardActions'
 import StyledPaper from './StyledPaper'
 import StyledList from './StyledList'
@@ -16,8 +17,8 @@ import messages from './messages'
 
 class PictogramSnippet extends PureComponent {
   state = {
-    isFlipped: false
-  }
+    zDepth: 1
+  };
 
   styles = {
     icon: {
@@ -37,6 +38,7 @@ class PictogramSnippet extends PureComponent {
       height: 96,
       padding: 24,
       position: 'absolute',
+      opacity: 100,
       top: '0',
       right: '0'
     },
@@ -47,56 +49,102 @@ class PictogramSnippet extends PureComponent {
       color: this.props.muiTheme.appBar.textColor,
       fontWeight: '900'
     }
-  }
+  };
 
   handleMouseEnter = () => {
     this.setState({
       zDepth: 3
     })
-  }
+  };
+
+  handleClickFavorite = (event) => {
+    const {
+      pictogram: { _id },
+      onClickFavorite
+    } = this.props
+    event.preventDefault()
+    onClickFavorite(_id)
+  };
+
+  handleDownload = (event) => {
+    event.preventDefault()
+  };
 
   handleMouseLeave = () => {
     this.setState({
       zDepth: 1
     })
-  }
+  };
 
   render() {
     const {
-      pictogram: { idPictogram, keywords },
+      pictogram: { _id, keywords },
       searchText,
       muiTheme,
       locale,
-      showExtra
+      showExtra,
+      isFavorite
     } = this.props
     const { keyword } = keywordSelector(searchText, keywords)
     const { isAuthenticated } = this.context
     return (
       <StyledList
-        key={idPictogram}
+        key={_id}
         className='image-element-class'
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
         <StyledPaper zDepth={this.state.zDepth}>
-          <Item url={`/pictograms/${locale}/${idPictogram}/${keyword}`}>
+          <Item url={`/pictograms/${locale}/${_id}/${encodeURIComponent(keyword)}`}>
             <div style={{ position: 'relative' }}>
               <Image
-                src={`${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_300.png`}
+                src={`${PICTOGRAMS_URL}/${_id}/${_id}_300.png`}
                 alt={keyword}
               />
-              <CardActions>
+              {isFavorite && (
+                <IconButton
+                  touch={true}
+                  // https://github.com/react-dnd/react-dnd/issues/577
+                  // we can use tooltip as we are using customDragLayer
+                  tooltip={<FormattedMessage {...messages.addFavorite} />}
+                  iconStyle={this.styles.icon}
+                  style={this.styles.rightIconButton}
+                  onClick={this.handleClickFavorite}
+                >
+                  <Favorite
+                    color={muiTheme.palette.primary1Color}
+                    hoverColor={muiTheme.palette.accent1Color}
+                  />
+                </IconButton>
+              )}
+              <CardActions color={true}>
                 {showExtra && isAuthenticated && (
                   <IconButton
                     touch={true}
-                    tooltip={<FormattedMessage {...messages.addFavorite} />}
+                    // https://github.com/react-dnd/react-dnd/issues/577
+                    // we can use tooltip as we are using customDragLayer
+                    tooltip={
+                      isFavorite ? (
+                        <FormattedMessage {...messages.deleteFavorite} />
+                      ) : (
+                          <FormattedMessage {...messages.addFavorite} />
+                        )
+                    }
                     iconStyle={this.styles.icon}
-                    style={this.styles.leftIconButton}
+                    style={this.styles.rightIconButton}
+                    onClick={this.handleClickFavorite}
                   >
-                    <ActionSetFavorite
-                      color={muiTheme.appBar.textColor}
-                      hoverColor={muiTheme.palette.accent1Color}
-                    />
+                    {isFavorite ? (
+                      <Favorite
+                        color={muiTheme.appBar.textColor}
+                        hoverColor={muiTheme.palette.accent1Color}
+                      />
+                    ) : (
+                        <FavoriteBorder
+                          color={muiTheme.appBar.textColor}
+                          hoverColor={muiTheme.palette.accent1Color}
+                        />
+                      )}
                   </IconButton>
                 )}
                 {showExtra && (
@@ -104,7 +152,8 @@ class PictogramSnippet extends PureComponent {
                     touch={true}
                     tooltip={<FormattedMessage {...messages.download} />}
                     iconStyle={this.styles.icon}
-                    style={this.styles.rightIconButton}
+                    style={this.styles.leftIconButton}
+                    onClick={this.handleDownload}
                   >
                     <FileDownload
                       color={muiTheme.appBar.textColor}
@@ -131,7 +180,9 @@ PictogramSnippet.propTypes = {
   searchText: PropTypes.string,
   muiTheme: PropTypes.object,
   locale: PropTypes.string.isRequired,
-  showExtra: PropTypes.bool
+  showExtra: PropTypes.bool,
+  onClickFavorite: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool
 }
 
 export default muiThemeable()(PictogramSnippet)

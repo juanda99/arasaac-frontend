@@ -35,16 +35,20 @@ import {
   TOKEN_REFRESH,
   ACTIVATION,
   SOCIAL_LOGIN,
-  RESET_ERROR
+  RESET_ERROR,
+  ADD_FAVORITE,
+  DELETE_FAVORITE,
+  RENAME_LIST,
+  DELETE_LIST,
+  ADD_LIST
 } from './actions'
 
 const initialState = fromJS({
-  username: '',
-  accessToken: '',
-  refreshToken: '',
   loading: false,
   error: ''
 })
+
+const { List } = require('immutable')
 
 // The auth reducer. The starting state sets authentication based on a token being in local storage.
 // TODO:
@@ -56,6 +60,11 @@ const authReducer = (state = initialState, action) => {
     case SOCIAL_LOGIN.REQUEST:
     case TOKEN_VALIDATION.REQUEST:
     case ACTIVATION.REQUEST:
+    case ADD_FAVORITE.REQUEST:
+    case DELETE_FAVORITE.REQUEST:
+    case ADD_LIST.REQUEST:
+    case RENAME_LIST.REQUEST:
+    case DELETE_LIST.REQUEST:
     case TOKEN_REFRESH.REQUEST:
       return state.set('loading', true).set('error', '')
     case LOGIN.SUCCESS:
@@ -64,6 +73,59 @@ const authReducer = (state = initialState, action) => {
       return state
         .set('loading', false)
         .set('accessToken', action.payload.accessToken)
+    case ADD_FAVORITE.SUCCESS: {
+      const favorites = state.get('favorites')
+      const { fileName, listName } = action.payload
+      // add favorite, and remove duplicates, just in case...
+      const listFavorites = favorites.get(listName)
+      const modifiedList = listFavorites
+        .push(fileName)
+        .toSet()
+        .toList()
+      return state
+        .set('loading', false)
+        .setIn(['favorites', listName], modifiedList)
+    }
+    case DELETE_FAVORITE.SUCCESS: {
+      const favorites = state.get('favorites')
+      const { fileName, listName } = action.payload
+      // add favorite, and remove duplicates, just in case...
+      const listFavorites = favorites.get(listName)
+      const modifiedList = listFavorites.filter((name) => name !== fileName)
+      return state
+        .set('loading', false)
+        .setIn(['favorites', listName], modifiedList)
+    }
+
+    case ADD_LIST.SUCCESS: {
+      const favorites = state.get('favorites')
+      const { listName } = action.payload
+      return state
+        .set('loading', false)
+        .set('favorites', favorites.set(listName, List()))
+    }
+
+    case DELETE_LIST.SUCCESS: {
+      const favorites = state.get('favorites')
+      const { listName } = action.payload
+      return state
+        .set('loading', false)
+        .set('favorites', favorites.delete(listName))
+    }
+
+    case RENAME_LIST.SUCCESS: {
+      let favorites = state.get('favorites')
+      const { listName, newListName } = action.payload
+      // const listFavorites = favorites.get(listName)
+      favorites = favorites.mapKeys((k) => {
+        if (k === listName) return newListName
+        return k
+      })
+      return state.set('loading', false).set('favorites', favorites)
+      //   .setIn(['favorites', newListName], listFavorites)
+      //   .set('favorites', favorites.delete(listName))
+    }
+
     case TOKEN_VALIDATION.SUCCESS:
       // after login ok, we test token asking for profile
       // token & refreshToken get not altered as they are valid

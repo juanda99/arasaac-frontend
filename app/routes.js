@@ -69,12 +69,23 @@ export default function createRoutes(store) {
       ]
     },
     {
-      path: '/pictograms/catalogs',
-      name: 'catalogs',
-      getComponent(location, cb) {
-        import('containers/CatalogsView')
-          .then(loadModule(cb))
-          .catch(errorLoading)
+      path: '/pictograms/favorites',
+      name: 'favoritesView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/PictogramsView/reducer'),
+          import('containers/PictogramsView/sagas'),
+          import('containers/FavoritesView')
+        ])
+
+        const renderRoute = loadModule(cb)
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('pictogramsView', reducer.default)
+          injectSagas(sagas.default)
+          renderRoute(component)
+        })
+        importModules.catch(errorLoading)
       }
     },
     {
@@ -446,6 +457,24 @@ export default function createRoutes(store) {
       name: 'contact-us',
       getComponent(location, cb) {
         import('containers/ContactView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    },
+    {
+      path: 'about-us',
+      name: 'about-us',
+      getComponent(location, cb) {
+        import('containers/AboutView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    },
+    {
+      path: 'translate',
+      name: 'translate',
+      getComponent(location, cb) {
+        import('containers/TranslateView')
           .then(loadModule(cb))
           .catch(errorLoading)
       }

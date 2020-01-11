@@ -1,4 +1,7 @@
 import { injectGlobal } from 'styled-components'
+import {
+  lightGreen500
+} from 'material-ui/styles/colors'
 
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
@@ -14,6 +17,11 @@ injectGlobal`
     background-color: #fafafa;
     min-height: 100vh;
     flex: 1;
+  }
+
+  .leaftlet-popup-content-wrapper {
+    width: 200px !important;
+    height: 200px !important;
   }
 
   #font-picker {
@@ -32,7 +40,8 @@ injectGlobal`
     padding: 0;
   }
 
-  a {text-decoration: none}
+  a {text-decoration: none; color: ${lightGreen500}   }
+  a:hover {color:#81388d}
 
   
   body.fontLoaded {

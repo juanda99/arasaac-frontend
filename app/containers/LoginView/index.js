@@ -32,7 +32,8 @@ class LoginView extends Component {
       requestLogin,
       resetError,
       requestAppToken,
-      intl
+      intl,
+      locale
     } = this.props
     const { formatMessage } = intl
     let showError = null
@@ -58,7 +59,7 @@ class LoginView extends Component {
         {showError}
         <ConditionalPaper>
           <Logo />
-          <SocialLogin onSuccess={requestAppToken} />
+          <SocialLogin onSuccess={requestAppToken} locale={locale} />
           <Separator />
           <LoginForm
             onSubmit={(formData) => handleSubmit(requestLogin, formData)}
@@ -75,12 +76,18 @@ LoginView.propTypes = {
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   resetError: PropTypes.func.isRequired,
   requestAppToken: PropTypes.func.isRequired,
-  intl: intlShape.isRequired
+  intl: intlShape.isRequired,
+  locale: PropTypes.string.isRequired
 }
 
-const mapStateToProps = (state) => ({
-  error: state.getIn(['auth', 'error'])
-})
+const mapStateToProps = (state) => {
+  const error = state.getIn(['auth', 'error'])
+  const locale = state.getIn(['language', 'locale'])
+  return {
+    error,
+    locale
+  }
+}
 
 const mapDispatchToProps = (dispatch) => ({
   requestLogin: (username, password) => {
@@ -89,8 +96,8 @@ const mapDispatchToProps = (dispatch) => ({
   resetError: () => {
     dispatch(resetError())
   },
-  requestAppToken: (token, socialNetwork) => {
-    dispatch(socialLogin.request(token, socialNetwork))
+  requestAppToken: (token, socialNetwork, locale) => {
+    dispatch(socialLogin.request(token, socialNetwork, locale))
   }
 })
 

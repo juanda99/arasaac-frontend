@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Map } from 'immutable'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 import withWidth, { SMALL, LARGE } from 'material-ui/utils/withWidth'
 import PictogramSnippet from '../PictogramSnippet'
 
@@ -27,17 +27,25 @@ export class PictogramList extends PureComponent {
       filtersMap,
       setFilterItems,
       width,
-      searchText
+      searchText,
+      favorites,
+      onDeleteFavorite,
+      onAddFavorite
     } = this.props
-    const renderPictograms = pictograms.map((pictogram) => (
-      <PictogramSnippet
-        pictogram={pictogram}
-        searchText={searchText}
-        locale={locale}
-        key={pictogram.idPictogram}
-        showExtra={width === LARGE}
-      />
-    ))
+    const renderPictograms = pictograms.map((pictogram) => {
+      const isFavorite = favorites.includes(pictogram._id)
+      return (
+        <PictogramSnippet
+          pictogram={pictogram}
+          searchText={searchText}
+          locale={locale}
+          key={pictogram._id}
+          showExtra={width === LARGE}
+          onClickFavorite={isFavorite ? onDeleteFavorite : onAddFavorite}
+          isFavorite={isFavorite}
+        />
+      )
+    })
 
     return (
       <div>
@@ -64,10 +72,13 @@ PictogramList.propTypes = {
   // with optional parameters in the router is slower in my tests ????
   // rollback from https://github.com/react-boilerplate/react-boilerplate/issues/1748
   locale: PropTypes.string,
-  filtersMap: PropTypes.instanceOf(Map).isRequired,
+  filtersMap: ImmutablePropTypes.map.isRequired,
   setFilterItems: PropTypes.func.isRequired,
   searchText: PropTypes.string,
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  onAddFavorite: PropTypes.func.isRequired,
+  onDeleteFavorite: PropTypes.func.isRequired,
+  favorites: ImmutablePropTypes.list
 }
 
 export default withWidth()(PictogramList)

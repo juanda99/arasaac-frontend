@@ -31,23 +31,35 @@ class SoundPlayer extends PureComponent {
     }
   }
 
+  readText = (streamUrl, text) => {
+    if (!streamUrl) {
+      console.log(text)
+      console.log(typeof text)
+      if ('speechSynthesis' in window) {
+        const toSpeak = new SpeechSynthesisUtterance(text)
+        toSpeak.lang = 'es_ES'
+        window.speechSynthesis.speak(toSpeak)
+      }
+    }
+  }
+
   render() {
-    const { playing, seeking, currentTime, duration, showProgress, showTimer } = this.props
+    const { playing, seeking, currentTime, duration, showProgress, showTimer, streamUrl, keyword } = this.props
     const { progressInner, progress, timer, button, container } = this.styles
     return (
       <div style={container}>
-        <SoundButton>
+        <SoundButton onClick={() => this.readText(streamUrl, keyword)}>
           <PlayButton
             style={button}
             {...this.props}
             playing={playing}
             seeking={seeking}
-            onTogglePlay={this.handleClick}
+
           />
 
         </SoundButton>
-        { showTimer ? <Timer {...this.props} style={timer} /> : ''}
-        { showProgress ?
+        {showTimer ? <Timer {...this.props} style={timer} /> : ''}
+        {showProgress ?
           <Progress
             value={(currentTime / duration) * 100 || 0}
             style={progress}
@@ -57,8 +69,6 @@ class SoundPlayer extends PureComponent {
           />
           : ''
         }
-
-        
       </div>
     )
   }

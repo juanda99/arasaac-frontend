@@ -1,5 +1,6 @@
 // import queryString from 'query-string'
 
+import { searchPictogramSchema } from './schemas'
 const CLIENT_ID = '12345'
 export const WEB_URL = 'https://localhost:3000'
 const STATIC_SERVER = 'https://static.arasaac.org'
@@ -32,7 +33,7 @@ export const login = {
 }
 export const socialLogin = {
   url: `${AUTH_ROOT}/oauth/token`,
-  options: (token, provider) => ({
+  options: (token, provider, locale) => ({
     config: {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -41,7 +42,8 @@ export const socialLogin = {
         client_id: CLIENT_ID,
         client_secret: CLIENT_ID,
         grant_type: provider,
-        scope: 'offline_access'
+        scope: 'offline_access',
+        locale
       })
     }
   })
@@ -49,7 +51,22 @@ export const socialLogin = {
 export const signup = {
   url: `${PRIVATE_API_ROOT}/users`,
   options: (userData) => {
-    const emailData = { email: userData.username.toLowerCase().trim() }
+    const emailData = { email: userData.email.toLowerCase().trim() }
+    const data = { ...userData, ...emailData }
+    return {
+      config: {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }
+    }
+  }
+}
+
+export const contactForm = {
+  url: `${PRIVATE_API_ROOT}/users/contact`,
+  options: (userData) => {
+    const emailData = { email: userData.email.toLowerCase().trim() }
     const data = { ...userData, ...emailData }
     return {
       config: {
@@ -87,6 +104,67 @@ export const customPicto = {
   })
 }
 
+export const addFavorite = {
+  url: `${PRIVATE_API_ROOT}/users/favorites`,
+  options: (data) => ({
+    config: {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }
+  })
+}
+
+export const getFavorites = {
+  url: (locale) => `${PRIVATE_API_ROOT}/pictograms/favorites/${locale}`,
+  options: (favoriteIds) => ({
+    config: {
+      method: 'POST',
+      body: JSON.stringify({ favoriteIds })
+    },
+    schema: searchPictogramSchema
+  })
+}
+
+export const removeFavorite = {
+  url: `${PRIVATE_API_ROOT}/users/favorites`,
+  options: (data) => ({
+    config: {
+      method: 'DELETE',
+      body: JSON.stringify(data)
+    }
+  })
+}
+
+export const addFavoriteList = {
+  url: (listName) => `${PRIVATE_API_ROOT}/users/favorites/list/${listName}`,
+  options: {
+    config: {
+      method: 'POST'
+    }
+  }
+}
+
+export const deleteFavoriteList = {
+  url: (listName) => `${PRIVATE_API_ROOT}/users/favorites/list/${listName}`,
+  options: {
+    config: {
+      method: 'DELETE'
+    }
+  }
+}
+
+export const renameFavoriteList = {
+  url: (listName) => `${PRIVATE_API_ROOT}/users/favorites/list/${listName}`,
+  options: (newListName) => ({
+    config: {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ newListName })
+    }
+  })
+}
+
 /*
 export const customPictogram = {
   url: (idPictogram, options) => {
@@ -116,9 +194,7 @@ export const uploadMaterial = {
 
     if (files) files.map((file) => formData.append('files', file))
     if (screenshots) {
-      screenshots.map((screenshot) =>
-        formData.append('screenshots', screenshot)
-      )
+      screenshots.map((screenshot) => formData.append('screenshots', screenshot))
     }
     if (languages) {
       translations = languages.map((language) => {

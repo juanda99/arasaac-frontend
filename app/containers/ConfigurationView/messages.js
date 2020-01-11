@@ -59,11 +59,13 @@ export default defineMessages({
   pictogramFiltersDesc: {
     id: 'app.containers.ConfigurationView.pictogramFiltersDesc',
     description: 'Configuration description for filters',
-    defaultMessage: 'Select the filters you want to enable for searching pictograms'
+    defaultMessage:
+      'Select the filters you want to enable for searching pictograms'
   },
   materialFiltersDesc: {
     id: 'app.containers.ConfigurationView.materialFiltersDesc',
     description: 'Configuration description for filters',
-    defaultMessage: 'Select the filters you want to enable for searching materials'
+    defaultMessage:
+      'Select the filters you want to enable for searching materials'
   }
 })

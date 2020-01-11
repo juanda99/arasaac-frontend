@@ -4,7 +4,7 @@
 *
 */
 
-import React from 'react';
+import React from 'react'
 import PictogramCard from 'components/PictogramCard'
 import PropTypes from 'prop-types'
 // import { FormattedMessage } from 'react-intl'
@@ -28,9 +28,8 @@ const Gallery = ({ data }) => {
   const pictograms = data.map((pictogram) => (
     <li style={{ margin: 5 }} key={pictogram.id} className='image-element-class'>
       <PictogramCard title={pictogram.title} img={pictogram.src} />
-      <p>Hola que tal todo? ad ñlajdf añldfkja ñlfkjañdl jkadlñfk adlñfkjalñkjasdlñjadñflj ñj</p>
     </li>
-    )
+  )
   )
   return (
     <div>

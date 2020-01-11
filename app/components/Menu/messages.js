@@ -16,15 +16,15 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'Pictograms'
   },
-  searchPictograms: {
-    id: 'menu.searchPictograms',
+  search: {
+    id: 'menu.search',
     description: 'Menu item',
-    defaultMessage: 'Search Pictograms'
+    defaultMessage: 'Search'
   },
-  searchMaterials: {
-    id: 'menu.searchMaterials',
+  favorites: {
+    id: 'menu.favorites',
     description: 'Menu item',
-    defaultMessage: 'Search materials'
+    defaultMessage: 'Favorites'
   },
   api: {
     id: 'menu.api',
@@ -46,60 +46,15 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'How-to'
   },
-  software: {
-    id: 'menu.software',
-    description: 'Menu item',
-    defaultMessage: 'Software'
-  },
   onlineTools: {
     id: 'menu.onlineTools',
     description: 'Menu item',
     defaultMessage: 'Online Tools'
   },
-  animationsMaker: {
-    id: 'menu.animationsMaker',
+  araword: {
+    id: 'menu.araword',
     description: 'Menu item',
-    defaultMessage: 'Animations Maker'
-  },
-  symbolsCreator: {
-    id: 'menu.symbolsCreator',
-    description: 'Menu item',
-    defaultMessage: 'Symbols Creator'
-  },
-  scheduleGenerator: {
-    id: 'menu.scheduleGenerator',
-    description: 'Menu item',
-    defaultMessage: 'Schedule Generator'
-  },
-  calendarGenerator: {
-    id: 'menu.calendarGenerator',
-    description: 'Menu item',
-    defaultMessage: 'Calendar Generator'
-  },
-  snakesAndLadders: {
-    id: 'menu.snakesAndLadders',
-    description: 'Menu item',
-    defaultMessage: 'Snakes and Ladders'
-  },
-  bingo: {
-    id: 'menu.bingo',
-    description: 'Menu item',
-    defaultMessage: 'Bingo'
-  },
-  dominos: {
-    id: 'menu.dominos',
-    description: 'Menu item',
-    defaultMessage: 'Dominós'
-  },
-  dominosencadenados: {
-    id: 'menu.dominosencadenados',
-    description: 'Menu item',
-    defaultMessage: 'Dominós Encadenados'
-  },
-  news: {
-    id: 'menu.news',
-    description: 'Menu item',
-    defaultMessage: 'News'
+    defaultMessage: 'Araword'
   },
   materials: {
     id: 'menu.materials',
@@ -109,7 +64,7 @@ export default defineMessages({
   uploadMaterials: {
     id: 'menu.uploadMaterials',
     description: 'Menu item',
-    defaultMessage: 'Upload materials'
+    defaultMessage: 'Publish'
   },
   info: {
     id: 'menu.info',
@@ -159,6 +114,6 @@ export default defineMessages({
   whoWeAre: {
     id: 'menu.whoWeAre',
     description: 'Menu item',
-    defaultMessage: 'Arasaac Team'
+    defaultMessage: 'About us'
   }
 })

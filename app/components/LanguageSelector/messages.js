@@ -38,6 +38,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Galician'
   },
+  he: {
+    id: 'app.components.LanguageSelector.he',
+    description: 'Select language',
+    defaultMessage: 'Hebrew'
+  },
   hr: {
     id: 'app.components.LanguageSelector.hr',
     description: 'Select language',
@@ -47,6 +52,11 @@ export default defineMessages({
     id: 'app.components.LanguageSelector.it',
     description: 'Select language',
     defaultMessage: 'Italian'
+  },
+  nl: {
+    id: 'app.components.LanguageSelector.nl',
+    description: 'Select language',
+    defaultMessage: 'Dutch'
   },
   bg: {
     id: 'app.components.LanguageSelector.bg',

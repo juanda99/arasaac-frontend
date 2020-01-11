@@ -20,6 +20,11 @@ const messages = defineMessages({
     description: 'Error message',
     defaultMessage: 'Invalid email'
   },
+  invalidUrl: {
+    id: 'Login.invalidUrl',
+    description: 'Error message',
+    defaultMessage: 'Invalid url'
+  },
   required: {
     id: 'Login.required',
     description: 'Error message',
@@ -135,6 +140,11 @@ const messages = defineMessages({
     id: 'signup.buttonSignUp',
     description: 'Button text box',
     defaultMessage: 'Sign up'
+  },
+  updateAccount: {
+    id: 'signup.updateAccount',
+    description: 'Button text box',
+    defaultMessage: 'Update account'
   }
 })
 

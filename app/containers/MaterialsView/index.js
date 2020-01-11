@@ -29,7 +29,7 @@ import {
   makeSearchResultsSelector,
   makeVisibleMaterialsSelector,
   makeNewMaterialsSelector
-  } from './selectors'
+} from './selectors'
 
 import { materials, newMaterials, toggleShowFilter, setFilterItems } from './actions'
 import messages from './messages'
@@ -116,18 +116,18 @@ class MaterialsView extends PureComponent {
     } else {
       materialsCounter = materialsList.length
       gallery = materialsCounter
-      ? (
-        <div>
-          <MaterialList
-            materials={materialsList}
-            locale={locale}
-            filtersMap={filters}
-            setFilterItems={this.props.setFilterItems}
-            showLabels={visibleLabels}
-          />
-        </div>
-      )
-      : <P>{<FormattedMessage {...messages.materialsNotFound} />}</P>
+        ? (
+          <div>
+            <MaterialList
+              materials={materialsList}
+              locale={locale}
+              filtersMap={filters}
+              setFilterItems={this.props.setFilterItems}
+              showLabels={visibleLabels}
+            />
+          </div>
+        )
+        : <P>{<FormattedMessage {...messages.materialsNotFound} />}</P>
     }
     return (
       <div>
