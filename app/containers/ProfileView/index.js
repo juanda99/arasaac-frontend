@@ -8,14 +8,15 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import View from 'components/View'
-import PersonalData from 'containers/ProfileView/PersonalData'
+// import PersonalData from 'containers/ProfileView/PersonalData'
 import LanguageSelector from 'components/LanguageSelector'
 import { PICTOGRAMS_URL } from 'services/config'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import ReadMargin from 'components/ReadMargin'
+import { FormattedMessage } from 'react-intl'
 import H2 from 'components/H2'
 import { logout } from 'containers/App/actions'
-import { RegisterForm } from 'components/Login'
+import { RegisterForm, NewPasswordForm } from 'components/Login'
 import {
   makeSelectName,
   makeSelectPicture,
@@ -24,10 +25,12 @@ import {
   makeSelectRole,
   makeSelectTargetLanguages,
   makeSelectCompany,
-  makeSelectUrl
+  makeSelectUrl,
+  makeSelectUserLocale
 } from 'containers/App/selectors'
+
 import ProfileIntro from './ProfileIntro'
-import { makeSelectUserLocale } from '../App/selectors'
+import messages from './messages'
 
 
 class ProfileView extends PureComponent {
@@ -48,14 +51,24 @@ class ProfileView extends PureComponent {
             role={role}
             targetLanguages={targetLanguages}
           />
-          <PersonalData name={name} email={email} company={company} url={url} />
+          <H2 primary={true}>
+            <FormattedMessage {...messages.accessData} />
+          </H2>
+          <div style={{ maxWidth: 400 }}>
+            <NewPasswordForm />
+          </div>
+          <H2 primary={true}>
+            <FormattedMessage {...messages.personalData} />
+          </H2>
+          <div style={{ maxWidth: 400 }}>
+            <RegisterForm update={true} initialValues={{ name, company, url, email }} />
+          </div>
+
+          {/* <PersonalData name={name} email={email} company={company} url={url} /> */}
 
           <H2 primary={true}>Idioma</H2>
           <LanguageSelector value={userLocale} onChange={null} />
 
-          <div style={{ maxWidth: 400 }}>
-            <RegisterForm update={true} initialValues={{ name, company, url, email }} />
-          </div>
         </ReadMargin>
 
       </View >

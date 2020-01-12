@@ -25,6 +25,14 @@ export default defineMessages({
   upgradeRole: {
     id: 'app.containers.ProfileView.upgradeRole',
     defaultMessage: 'Upgrade role to translator'
+  },
+  personalData: {
+    id: 'app.containers.ProfileView.PersonalData.personalData',
+    defaultMessage: 'Personal data'
+  },
+  accessData: {
+    id: 'app.containers.ProfileView.PersonalData.accessData',
+    defaultMessage: 'Access data'
   }
 
 })

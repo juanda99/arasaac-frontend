@@ -23,6 +23,9 @@ const styles = {
     width: '100%',
     marginTop: 10,
     marginBottom: 10
+  },
+  update: {
+    marginTop: 20
   }
 }
 
@@ -53,7 +56,7 @@ let RegisterForm = class RegisterForm extends Component {
     /* en las propiedades estaba resetForm y submitting*/
     return (
       <div>
-        <Div top={2}>
+        <Div top={update ? 0 : 2}>
           <form onSubmit={handleSubmit}>
             {/* <Field
               name='name'
@@ -129,7 +132,7 @@ let RegisterForm = class RegisterForm extends Component {
               type='submit'
               label={update ? <FormattedMessage {...messages.updateAccount} /> : <FormattedMessage {...messages.buttonSignUp} />}
               primary={true}
-              style={styles.signup}
+              style={update ? styles.update : styles.signup}
               disabled={pristine || submitting}
             />
           </form>
