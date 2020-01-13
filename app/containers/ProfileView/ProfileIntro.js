@@ -22,7 +22,7 @@ const ProfileIntro = ({ name, lastLogin, picture, role }) => (
         <FormattedTime value={lastLogin} />
       </P>
 
-      <P>Current role: <FormattedMessage {...messages[role]} /></P>
+      <P>Current role: {!!role && <FormattedMessage {...messages[role]} />}</P>
       {role !== 'user' && <RaisedButton label={<FormattedMessage {...messages.upgradeRole} />} secondary={true} />}
 
 

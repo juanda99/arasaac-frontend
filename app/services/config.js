@@ -48,6 +48,18 @@ export const socialLogin = {
     }
   })
 }
+export const changePassword = {
+  url: `${PRIVATE_API_ROOT}/users/password`,
+  options: (password, token) => ({
+    config: {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password })
+    }
+  })
+}
+
+
 export const signup = {
   url: `${PRIVATE_API_ROOT}/users`,
   options: (userData) => {

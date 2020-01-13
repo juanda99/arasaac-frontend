@@ -14,6 +14,7 @@ import {
   addFavoriteList,
   deleteFavoriteList,
   renameFavoriteList,
+  changePassword,
   /* customPictogram, */
   API_ROOT,
   PRIVATE_API_ROOT
@@ -67,7 +68,9 @@ const api = {
     ),
   CATALOGS_REQUEST: () => callApi(`${PRIVATE_API_ROOT}/catalogs`),
   RESET_USER_PASSWORD: (userData) =>
-    callApi(resetPassword.url, resetPassword.options(userData))
+    callApi(resetPassword.url, resetPassword.options(userData)),
+
+  CHANGE_PASSWORD: (password, token) => callApi(changePassword.url, changePassword.options(password), token)
 
   /* CUSTOM_PICTOGRAM_REQUEST: (idPictogram, options) => callApi(customPictogram.url(idPictogram, options))*/
 }

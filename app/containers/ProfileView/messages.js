@@ -33,6 +33,14 @@ export default defineMessages({
   accessData: {
     id: 'app.containers.ProfileView.PersonalData.accessData',
     defaultMessage: 'Access data'
+  },
+  errorPassword: {
+    id: 'app.containers.ProfileView.errorPassword',
+    defaultMessage: 'Uppps! There was an error changing the password'
+  },
+  passwordChanged: {
+    id: 'app.containers.ProfileView.passwordChanged',
+    defaultMessage: 'Password changed'
   }
 
 })
