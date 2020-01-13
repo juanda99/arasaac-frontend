@@ -271,7 +271,7 @@
   "app.containers.ConfigurationView.materialFiltersDesc": "Seleccione los filtros que desea habilitar para la búsqueda de materiales",
   "app.containers.ConfigurationView.pictogramFiltersDesc": "Seleccione los filtros que desea habilitar para la búsqueda de pictogramas",
   "app.containers.ConfigurationView.searchMaterials": "Búsqueda de materiales",
-  "app.containers.ConfigurationView.searchPictograms": "Búsqueda de pictogramas",
+  "app.containers.ConfigurationView.searchPictograms": "Buscar pictogramas",
   "app.containers.ConfigurationView.title": "Configuración de ARASAAC",
   "app.containers.ContactView.alertWindowErrorDesc": "We are sorry but we could not receive your message.Try again later or contact us through our social networks",
   "app.containers.ContactView.alertWindowErrorTitle": "Contact form error",
