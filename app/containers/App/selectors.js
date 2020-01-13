@@ -86,6 +86,11 @@ const makeSelectUrl = () => createSelector(
   (substate) => substate.get('url')
 )
 
+const makeSelectUserLocale = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('locale')
+)
+
 const makeSelectTargetLanguages = () => createSelector(
   selectAuth,
   (substate) => substate.get('targetLanguages')
@@ -103,6 +108,7 @@ export {
   makeSelectFavorites,
   makeSelectRootFavorites,
   makeSelectName,
+  makeSelectUserLocale,
   makeSelectPicture,
   makeSelectLastLogin,
   makeSelectEmail,

@@ -101,6 +101,10 @@ const messages = defineMessages({
     description: 'Hint passwordtext box',
     defaultMessage: 'What is your password?'
   },
+  hintNewPassword: {
+    id: 'NewPasswordForm.hintNewPassword',
+    defaultMessage: 'What is your new password?'
+  },
   hintCompany: {
     id: 'signup.hintCompany',
     description: 'Hint company text box',
@@ -145,6 +149,14 @@ const messages = defineMessages({
     id: 'signup.updateAccount',
     description: 'Button text box',
     defaultMessage: 'Update account'
+  },
+  changePassword: {
+    id: 'newPasswordForm.changePassword',
+    defaultMessage: 'Change Password'
+  },
+  changePasswordInfo: {
+    id: 'newPasswordForm.changePasswordInfo',
+    defaultMessage: 'Type your new password in the field below'
   }
 })
 
