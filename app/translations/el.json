@@ -359,22 +359,10 @@
   "menu.pictograms": "Εικονογράμματα",
   "menu.prizes": "Βραβεία",
   "menu.register": "Register",
-<<<<<<< HEAD
   "menu.search": "Search",
   "menu.settings": "Settings",
   "menu.signin": "Sign in",
   "menu.signout": "Sign out",
-=======
-  "menu.scheduleGenerator": "Γεννήτρια χρονοδιάγραμμα",
-  "menu.searchMaterials": "Αναζήτηση υλικών",
-  "menu.searchPictograms": "Αναζήτηση εικονογράμματα",
-  "menu.settings": "Settings",
-  "menu.signin": "Sign in",
-  "menu.signout": "Sign out",
-  "menu.snakesAndLadders": "Φίδια και σκάλες",
-  "menu.software": "Λογισμικό",
-  "menu.symbolsCreator": "Σύμβολα δημιουργός",
->>>>>>> master
   "menu.uploadMaterials": "Ανεβάστε υλικά",
   "menu.user": "User",
   "menu.whoWeAre": "Arasaac Team",
