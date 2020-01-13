@@ -344,7 +344,6 @@
   "loginView.authentication": "Authentication error",
   "loginView.communicationError": "Can't access authentication server",
   "loginView.invalidUser": "Invalid user or password",
-  "menu.animationsMaker": "アニメーション メーカー",
   "menu.api": "開発者向け API",
   "menu.araword": "Araword",
   "menu.contact": "お問い合わせ",
