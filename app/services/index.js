@@ -15,6 +15,7 @@ import {
   deleteFavoriteList,
   renameFavoriteList,
   changePassword,
+  updateUser,
   /* customPictogram, */
   API_ROOT,
   PRIVATE_API_ROOT
@@ -53,6 +54,7 @@ const api = {
       socialLogin.options(socialToken, provider, locale)
     ),
   SIGNUP_REQUEST: (userData) => callApi(signup.url, signup.options(userData)),
+  UPDATE_USER_REQUEST: ({ user, token }) => callApi(updateUser.url(token), updateUser.options(user), token),
   CONTACTFORM_REQUEST: (userData) => callApi(contactForm.url, contactForm.options(userData)),
   FAVORITE_PICTOGRAMS_REQUEST: ({ locale, favoriteIds, token }) => callApi(getFavorites.url(locale), getFavorites.options(favoriteIds), token),
   ADD_FAVORITE_REQUEST: ({ ...data, token }) => callApi(addFavorite.url, addFavorite.options(data), token),

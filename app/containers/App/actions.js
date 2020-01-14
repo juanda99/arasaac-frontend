@@ -15,6 +15,8 @@ export const TOKEN_VALIDATION = createRequestTypes('TOKEN_VALIDATION')
 export const TOKEN_REFRESH = createRequestTypes('TOKEN_REFRESH')
 export const RESET_ERROR = 'app/LoginView/RESET_ERROR'
 export const ACTIVATION = createRequestTypes('ACTIVATION')
+// for profileView
+export const UPDATE_USER = createRequestTypes('UPDATE_USER')
 
 // pictograms, saga takes place in PictogramsView
 export const ADD_FAVORITE = createRequestTypes('ADD_FAVORITE')
@@ -55,6 +57,12 @@ export const activation = {
   request: (code) => action(ACTIVATION.REQUEST, { code }),
   success: (accessToken) => action(ACTIVATION.SUCCESS, { accessToken }),
   failure: (error) => action(ACTIVATION.FAILURE, { error })
+}
+
+export const updateUser = {
+  request: (user, token) => action(UPDATE_USER.REQUEST, { user, token }),
+  success: (user) => action(UPDATE_USER.SUCCESS, { user }),
+  failure: (error) => action(UPDATE_USER.FAILURE, { error })
 }
 
 export const logout = () => action(LOGOUT)
@@ -99,23 +107,3 @@ export const deleteList = {
   success: (listName) => action(DELETE_LIST.SUCCESS, { listName }),
   failure: (error) => action(DELETE_LIST.FAILURE, { error })
 }
-
-/* Social login */
-/*
-export const SOCIAL_LOGIN = 'app/LoginView/SOCIAL_LOGIN'
-export const SOCIAL_LOGIN_PREPARE = 'app/LoginView/SOCIAL_LOGIN_PREPARE'
-export const SOCIAL_LOGIN_REQUEST = 'app/LoginView/SOCIAL_LOGIN_REQUEST'
-export const SOCIAL_LOGIN_SUCCESS = 'app/LoginView/SOCIAL_LOGIN_SUCCESS'
-export const SOCIAL_LOGIN_FAILURE = 'app/LoginView/SOCIAL_LOGIN_FAILURE'
-export const SOCIAL_LOGOUT = 'app/LoginView/SOCIAL_LOGOUT'
-
-
-export const socialLogin = {
-  prepare: (service, options) => action(SOCIAL_LOGIN_PREPARE, { service, options }),
-  request: (service, options) => action(SOCIAL_LOGIN_REQUEST, { service, options }),
-  success: (user) => action(SOCIAL_LOGIN_SUCCESS, { user }),
-  failure: (error) => action(SOCIAL_LOGIN_FAILURE, { error })
-}
-
-export const socialLogout = () => action(SOCIAL_LOGOUT)
-*/

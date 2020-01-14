@@ -1,5 +1,6 @@
 // import queryString from 'query-string'
 
+import jwtDecode from 'jwt-decode'
 import { searchPictogramSchema } from './schemas'
 const CLIENT_ID = '12345'
 export const WEB_URL = 'https://localhost:3000'
@@ -52,13 +53,12 @@ export const changePassword = {
   url: `${PRIVATE_API_ROOT}/users/password`,
   options: (password, token) => ({
     config: {
-      method: 'POST',
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ password })
     }
   })
 }
-
 
 export const signup = {
   url: `${PRIVATE_API_ROOT}/users`,
@@ -73,6 +73,20 @@ export const signup = {
       }
     }
   }
+}
+
+export const updateUser = {
+  url: (token) => {
+    const { sub } = jwtDecode(token)
+    return `${PRIVATE_API_ROOT}/users/${sub}`
+  },
+  options: (data) => ({
+    config: {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data.user)
+    }
+  })
 }
 
 export const contactForm = {
