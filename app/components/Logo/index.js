@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Div from 'components/Div'
 import ArasaacLogo from './arasaac-logo.svg'
-import { CardMedia, Card } from 'material-ui/Card'
 
 
 const style = {
@@ -11,6 +10,9 @@ const style = {
   margin: '0 auto',
   padding: 20,
   borderRadius: '50%',
+  borderWidth: '7px',
+  borderStyle: 'inset',
+  borderColor: 'chartreuse',
   backgroundColor: 'white'
 }
 
