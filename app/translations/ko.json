@@ -242,7 +242,7 @@
   "app.components.UseConditions.owner": "아라곤 gobernment",
   "app.components.UseConditions.property": "{owner}는이 웹에 게시 된 무늬는 가져온 원본 파일의 속성이 있습니다.",
   "app.components.Welcome.aragonese": "아라곤 어",
-  "app.components.Welcome.header": "확대와 대안 통신의 {aragones} 포털",
+  "app.components.Welcome.header": "{aragones} Center of Augmentative and Alternative Communication",
   "app.components.dialog.ok": "Ok",
   "app.components.showcase.news": "Arasaac 뉴스",
   "app.components.showcase.saac": "SAAC 무엇입니까?",
