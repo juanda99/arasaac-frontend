@@ -98,7 +98,9 @@ function* loginAuth(type, payload) {
     const { access_token, refresh_token } = yield call(api[type], payload)
     yield put(login.success(access_token, refresh_token))
     yield call(authenticate)
-    yield put(push('/profile'))
+    const url = new URL(window.location.href)
+    const redirectPage = url.searchParams.get('redirect') || '/profile'
+    yield put(push(redirectPage))
   } catch (err) {
     // const error = yield parseError(err)
     yield put(login.failure(err.message))
@@ -110,7 +112,9 @@ function* socialLoginAuth(type, payload) {
     const { access_token, refresh_token } = yield call(api[type], payload)
     yield put(socialLogin.success(access_token, refresh_token))
     yield call(authenticate)
-    yield put(push('/profile'))
+    const url = new URL(window.location.href)
+    const redirectPage = url.searchParams.get('redirect') || '/profile'
+    yield put(push(redirectPage))
   } catch (err) {
     // const error = yield parseError(err)
     yield put(socialLogin.failure(err))

@@ -111,7 +111,6 @@ class App extends Component {
       document.body.appendChild(script);
     } else {
       this.props.stopTranslation();
-      // window.location.href = "http://localhost:3000";
     }
   };
 

@@ -10,11 +10,10 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import muiThemeable from 'material-ui/styles/muiThemeable'
-import Divider from 'material-ui/Divider'
+import userIsAuthenticated from 'utils/auth'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 import FavoriteList from 'components/FavoriteList'
-import { withRouter } from 'react-router'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import {
   deleteFavorite,
@@ -47,10 +46,10 @@ class FavoritesView extends PureComponent {
   };
 
   async componentDidMount() {
-    const { requestFavorites, locale, token, favorites, router } = this.props
+    const { requestFavorites, locale, token, favorites } = this.props
 
     //  TODO: just ask once this stuff, once the app is open, depending on locale!!!
-    if (favorites && token) {
+    if (favorites) {
       const [...lists] = favorites.keys()
       const favoriteIds = lists.map((list) => {
         // .flat() not for edge & explorer
@@ -60,7 +59,6 @@ class FavoritesView extends PureComponent {
       })
       await requestFavorites(locale, favoriteIds, token)
     }
-    if (!token) router.push('/signin')
   }
 
   handleAddFavorite = (props) => {
@@ -204,4 +202,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(muiThemeable()(injectIntl(FavoritesView))))
+)(muiThemeable()(injectIntl(userIsAuthenticated(FavoritesView))))

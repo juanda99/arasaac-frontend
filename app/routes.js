@@ -350,14 +350,19 @@ export default function createRoutes(store) {
     },
     {
       path: '/profile',
-      name: 'ProfileView',
+      name: 'profileView',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([import('containers/ProfileView')])
+        const importModules = Promise.all([
+          import('containers/ProfileView/sagas'),
+          import('containers/ProfileView/')
+        ])
         const renderRoute = loadModule(cb)
-        importModules.then(([component]) => {
+        // if reducer is async, render values:  defaultToggled:
+        // state.configuration.filters[ownProps.filter] got undefined!!!
+        importModules.then(([sagas, component]) => {
+          injectSagas(sagas.default)
           renderRoute(component)
         })
-
         importModules.catch(errorLoading)
       }
     },

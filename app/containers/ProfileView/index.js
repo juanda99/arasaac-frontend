@@ -8,14 +8,15 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import View from 'components/View'
-// import PersonalData from 'containers/ProfileView/PersonalData'
 import LanguageSelector from 'components/LanguageSelector'
+import userIsAuthenticated from 'utils/auth'
+import RaisedButton from 'material-ui/RaisedButton'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import { PICTOGRAMS_URL } from 'services/config'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import ReadMargin from 'components/ReadMargin'
 import { FormattedMessage } from 'react-intl'
 import H2 from 'components/H2'
-import { logout } from 'containers/App/actions'
 import { RegisterForm, NewPasswordForm } from 'components/Login'
 import {
   makeSelectName,
@@ -26,23 +27,78 @@ import {
   makeSelectTargetLanguages,
   makeSelectCompany,
   makeSelectUrl,
-  makeSelectUserLocale
+  makeSelectUserLocale,
+  makeSelectHasUser
 } from 'containers/App/selectors'
+import { updateUser } from 'containers/App/actions'
+import { changeLocale } from 'containers/LanguageProvider/actions'
+import api from 'services'
+import P from 'components/P'
 
 import ProfileIntro from './ProfileIntro'
 import messages from './messages'
 
 
 class ProfileView extends PureComponent {
+  state = {
+    showPassword: true,
+    errorPassword: false
+  }
   componentDidMount() {
 
+  }
+
+  handleChangePassword = async (data) => {
+    const { showProgressBar, hideProgressBar } = this.props
+    const password = data.get('password')
+    showProgressBar()
+    try {
+      await api.CHANGE_PASSWORD(password, this.props.token)
+      this.setState({ showPassword: false })
+      hideProgressBar()
+    } catch (error) {
+      this.setState({ showPassword: false, errorPassword: true })
+      hideProgressBar()
+    }
+  }
+
+  handleLanguageChange = (locale) => {
+    const { updateUser, token, changeLocale } = this.props
+    const user = { locale } // data from user to be changed
+    updateUser({ user }, token)
+    changeLocale(locale)
+  }
+
+  handleSubmitUser = (values) => {
+    const user = values.toJS()
+    const { updateUser, token } = this.props
+    updateUser({ user }, token)
+  }
+
+  renderPassword = () => {
+    const { showPassword, errorPassword } = this.state
+    if (showPassword) {
+      return (
+        <div style={{ maxWidth: 400 }}>
+          <NewPasswordForm onSubmit={this.handleChangePassword} />
+        </div>
+      )
+    }
+    if (errorPassword) {
+      return (
+        <P style={{ marginRight: 20 }} ><FormattedMessage {...messages.errorPassword} /></P>
+      )
+    }
+    return (
+      <P style={{ marginRight: 20 }}><FormattedMessage {...messages.passwordChanged} /></P>
+    )
   }
 
   render() {
     const { lastLogin, name, picture, company, url, email, role, targetLanguages, userLocale } = this.props
     const profileImage = picture ? picture : `${PICTOGRAMS_URL}/28307/28307_300.png`
     return (
-      <View left={true} right={true} top={2}>
+      <View left={true} right={true} top={2} >
         <ReadMargin>
           <ProfileIntro
             name={name}
@@ -54,20 +110,18 @@ class ProfileView extends PureComponent {
           <H2 primary={true}>
             <FormattedMessage {...messages.accessData} />
           </H2>
-          <div style={{ maxWidth: 400 }}>
-            <NewPasswordForm />
-          </div>
+          {this.renderPassword()}
+
           <H2 primary={true}>
             <FormattedMessage {...messages.personalData} />
           </H2>
           <div style={{ maxWidth: 400 }}>
-            <RegisterForm update={true} initialValues={{ name, company, url, email }} />
+            <RegisterForm update={true} initialValues={{ name, company, url, email }} onSubmit={this.handleSubmitUser} />
           </div>
 
-          {/* <PersonalData name={name} email={email} company={company} url={url} /> */}
 
           <H2 primary={true}>Idioma</H2>
-          <LanguageSelector value={userLocale} onChange={null} />
+          <LanguageSelector value={userLocale} onChange={this.handleLanguageChange} />
 
         </ReadMargin>
 
@@ -85,7 +139,12 @@ ProfileView.propTypes = {
   role: PropTypes.string.isRequired,
   target: PropTypes.array,
   email: PropTypes.string.isRequired,
-  userLocale: PropTypes.string.isRequired
+  userLocale: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired,
+  showProgressBar: PropTypes.func.isRequired,
+  hideProgressBar: PropTypes.func.isRequired,
+  updateUser: PropTypes.func.isRequired,
+  changeLocale: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -97,14 +156,16 @@ const mapStateToProps = (state) => ({
   picture: makeSelectPicture()(state),
   userLocale: makeSelectUserLocale()(state),
   role: makeSelectRole()(state),
+  token: makeSelectHasUser()(state),
   targetLanguages: makeSelectTargetLanguages()(state)
 
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => {
-    dispatch(logout())
-  }
+  showProgressBar: () => dispatch(showLoading()),
+  hideProgressBar: () => dispatch(hideLoading()),
+  updateUser: (user, token) => dispatch(updateUser.request(user, token)),
+  changeLocale: (language) => dispatch(changeLocale(language))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(muiThemeable()(ProfileView))
+export default connect(mapStateToProps, mapDispatchToProps)(muiThemeable()(userIsAuthenticated(ProfileView)))
