@@ -32,8 +32,13 @@ import FileUploadIcon from 'material-ui/svg-icons/file/file-upload'
 import Div from 'components/Div'
 import messages from './messages'
 import styles from './styles'
+import PrizeIcon from './PrizeIcon'
 
 const SelectableList = makeSelectable(List)
+
+
+
+
 
 class Menu extends Component {
   static propTypes = {
@@ -237,7 +242,7 @@ class Menu extends Component {
             id='lstprizes'
             value='/prizes'
             primaryText={<FormattedMessage {...messages.prizes} />}
-            leftIcon={<PrizesIcon />}
+            leftIcon={<PrizeIcon />}
           />
           <ListItem
             value='/contact-us'
