@@ -242,7 +242,7 @@
   "app.components.UseConditions.owner": "阿拉貢阻力",
   "app.components.UseConditions.property": "{owner} 已經發佈在此網站中的象形圖，從中可獲得原始檔案的屬性。",
   "app.components.Welcome.aragonese": "阿拉貢",
-  "app.components.Welcome.header": "強化和替代通信的 {aragones} 門戶",
+  "app.components.Welcome.header": "{aragones} Center of Augmentative and Alternative Communication",
   "app.components.dialog.ok": "Ok",
   "app.components.showcase.news": "Arasaac 新聞",
   "app.components.showcase.saac": "製冷機是什麼？",

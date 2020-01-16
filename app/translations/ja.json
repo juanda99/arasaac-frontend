@@ -242,7 +242,7 @@
   "app.components.UseConditions.owner": "アラゴン技術",
   "app.components.UseConditions.property": "{owner} には、この Web で公開された絵文字を取得する元のファイルのプロパティがあります。",
   "app.components.Welcome.aragonese": "アラゴン",
-  "app.components.Welcome.header": "補助・代替コミュニケーション {aragones} ポータル",
+  "app.components.Welcome.header": "{aragones} Center of Augmentative and Alternative Communication",
   "app.components.dialog.ok": "Ok",
   "app.components.showcase.news": "Arasaac ニュース",
   "app.components.showcase.saac": "SAAC は何ですか。",

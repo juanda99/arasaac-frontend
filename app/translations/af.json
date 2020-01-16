@@ -242,7 +242,7 @@
   "app.components.UseConditions.owner": "crwdns111:0crwdne111:0",
   "app.components.UseConditions.property": "crwdns112:0{owner}crwdne112:0",
   "app.components.Welcome.aragonese": "crwdns9:0crwdne9:0",
-  "app.components.Welcome.header": "crwdns10:0{aragones}crwdne10:0",
+  "app.components.Welcome.header": "crwdns2031:0{aragones}crwdne2031:0",
   "app.components.dialog.ok": "crwdns363:0crwdne363:0",
   "app.components.showcase.news": "crwdns11:0crwdne11:0",
   "app.components.showcase.saac": "crwdns12:0crwdne12:0",

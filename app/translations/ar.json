@@ -242,7 +242,7 @@
   "app.components.UseConditions.owner": "Gobernment أراغون",
   "app.components.UseConditions.property": "وقد {owner} ملكا للملفات الأصلية التي يتم الحصول على الصور التوضيحية ونشرت في موقع ويب هذا.",
   "app.components.Welcome.aragonese": "أراغون",
-  "app.components.Welcome.header": "بوابة {aragones} لتكبير والاتصالات البديلة",
+  "app.components.Welcome.header": "{aragones} Center of Augmentative and Alternative Communication",
   "app.components.dialog.ok": "موافق",
   "app.components.showcase.news": "أخبار أرزاق",
   "app.components.showcase.saac": "ما هو اﻷكريليك؟",
