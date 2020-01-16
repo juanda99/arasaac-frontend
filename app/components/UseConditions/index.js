@@ -15,7 +15,7 @@ const owner = <a href='http://www.aragon.es/' target='_blank'><FormattedMessage 
 
 const UseConditions = () => (
   <View>
-    <p>{<FormattedMessage {...messages.property} values={{ owner }} /> }</p>
+    <p>{<FormattedMessage {...messages.property} values={{ owner }} />}</p>
     <p></p>
     <p>Resources offered in the site (pictograms, images or videos), as well as the materials based on them, are released under a
     Creative Commons License Licencia Creative Commons, being authorised for a non-profit use if author and source are mentioned
@@ -31,12 +31,12 @@ const UseConditions = () => (
     Remains excluded from this permission the edition or publication of these materials inside publications with commercial purposes.</blockquote>
 
     <p>
-    For any other use, reprography and the computer treatment remain rigorously prohibited without the written authorization of
-    the holders of the Copyright, under the sanctions established by the laws, the total or partial reproduction of these materials
-    for any way or procedure.
+      For any other use, reprography and the computer treatment remain rigorously prohibited without the written authorization of
+      the holders of the Copyright, under the sanctions established by the laws, the total or partial reproduction of these materials
+      for any way or procedure.
     </p>
     <p> Responsibility’s exemption clause:</p>
-    <p> The Aragonese Portal of Augmentative and Alternative Communication has an informative and illustrative character, and tries to put at the disposal of any interested
+    <p> The Aragonese Center of Augmentative and Alternative Communication has an informative and illustrative character, and tries to put at the disposal of any interested
       person the information of the project. Nevertheless, it is necessary to specify the following thing:</p>
     <ul>
       <li>The information that offers is merely informative and lacks of any effect binding the Administration, so that we do not assume any responsibility of the content.</li>

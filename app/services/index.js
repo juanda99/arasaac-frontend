@@ -72,7 +72,8 @@ const api = {
   RESET_USER_PASSWORD: (userData) =>
     callApi(resetPassword.url, resetPassword.options(userData)),
 
-  CHANGE_PASSWORD: (password, token) => callApi(changePassword.url, changePassword.options(password), token)
+  CHANGE_PASSWORD: (password, token) => callApi(changePassword.url, changePassword.options(password), token),
+  TRANSLATIONS_STATUS: (locale) => callApi(`${PRIVATE_API_ROOT}/translations/status/${locale}`)
 
   /* CUSTOM_PICTOGRAM_REQUEST: (idPictogram, options) => callApi(customPictogram.url(idPictogram, options))*/
 }

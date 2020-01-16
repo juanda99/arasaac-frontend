@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 import View from 'components/View'
 import LanguageSelector from 'components/LanguageSelector'
 import userIsAuthenticated from 'utils/auth'
+
 import RaisedButton from 'material-ui/RaisedButton'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import { PICTOGRAMS_URL } from 'services/config'
@@ -34,6 +35,7 @@ import { updateUser } from 'containers/App/actions'
 import { changeLocale } from 'containers/LanguageProvider/actions'
 import api from 'services'
 import P from 'components/P'
+import TranslationStatus from 'containers/TranslationStatus'
 
 import ProfileIntro from './ProfileIntro'
 import messages from './messages'
@@ -43,9 +45,6 @@ class ProfileView extends PureComponent {
   state = {
     showPassword: true,
     errorPassword: false
-  }
-  componentDidMount() {
-
   }
 
   handleChangePassword = async (data) => {
@@ -97,8 +96,11 @@ class ProfileView extends PureComponent {
   render() {
     const { lastLogin, name, picture, company, url, email, role, targetLanguages, userLocale } = this.props
     const profileImage = picture ? picture : `${PICTOGRAMS_URL}/28307/28307_300.png`
+
+    console.log(userLocale, '*******************userLocale')
+
     return (
-      <View left={true} right={true} top={2} >
+      <View left={true} right={true} top={2} bottom={2} >
         <ReadMargin>
           <ProfileIntro
             name={name}
@@ -122,6 +124,9 @@ class ProfileView extends PureComponent {
 
           <H2 primary={true}>Idioma</H2>
           <LanguageSelector value={userLocale} onChange={this.handleLanguageChange} />
+
+          <H2 primary={true}>Translation Status</H2>
+          <TranslationStatus userLocale={userLocale} />
 
         </ReadMargin>
 
