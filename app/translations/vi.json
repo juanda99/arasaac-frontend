@@ -242,7 +242,7 @@
   "app.components.UseConditions.owner": "Aragon gobernment",
   "app.components.UseConditions.property": "{owner} có tính chất của các tập tin ban đầu từ đó thu được pictograms được đăng trong trang Web này.",
   "app.components.Welcome.aragonese": "Vương triều Aragon",
-  "app.components.Welcome.header": "cổng thông tin {aragones} Augmentative và thay thế thông tin liên lạc",
+  "app.components.Welcome.header": "{aragones} Center of Augmentative and Alternative Communication",
   "app.components.dialog.ok": "Ok",
   "app.components.showcase.news": "Arasaac tin tức",
   "app.components.showcase.saac": "SAAC là gì?",

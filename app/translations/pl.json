@@ -242,7 +242,7 @@
   "app.components.UseConditions.owner": "Aragon gobernment",
   "app.components.UseConditions.property": "{owner} ma właściwość oryginalnych plików, z których uzyskiwane są piktogramy, opublikowane w tej witrynie sieci Web.",
   "app.components.Welcome.aragonese": "Aragoński",
-  "app.components.Welcome.header": "portal {aragones} zgrubienie i alternatywna komunikacja",
+  "app.components.Welcome.header": "{aragones} Center of Augmentative and Alternative Communication",
   "app.components.dialog.ok": "Ok",
   "app.components.showcase.news": "Arasaac Aktualności",
   "app.components.showcase.saac": "Co to jest SAAC?",

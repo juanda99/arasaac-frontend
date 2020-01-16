@@ -242,7 +242,7 @@
   "app.components.UseConditions.owner": "Αραγονία gobernment",
   "app.components.UseConditions.property": "{owner} έχει την ιδιότητα των αρχικών αρχείων από την οποία λαμβάνονται τα εικονογράμματα που δημοσιεύονται σε αυτόν τον ιστό.",
   "app.components.Welcome.aragonese": "Αραγονική",
-  "app.components.Welcome.header": "{aragones} πύλη της ενισχυτικής και εναλλακτικής επικοινωνίας",
+  "app.components.Welcome.header": "{aragones} Center of Augmentative and Alternative Communication",
   "app.components.dialog.ok": "Ok",
   "app.components.showcase.news": "Arasaac ειδήσεις",
   "app.components.showcase.saac": "Τι είναι SAAC;",
