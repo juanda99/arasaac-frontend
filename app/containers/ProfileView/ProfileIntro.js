@@ -23,7 +23,7 @@ const ProfileIntro = ({ name, lastLogin, picture, role }) => (
       </P>
 
       <P>Current role: {!!role && <FormattedMessage {...messages[role]} />}</P>
-      {role !== 'user' && <RaisedButton label={<FormattedMessage {...messages.upgradeRole} />} secondary={true} />}
+      {role === 'user' && <RaisedButton label={<FormattedMessage {...messages.upgradeRole} />} secondary={true} />}
 
 
     </div>

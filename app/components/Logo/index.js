@@ -9,6 +9,13 @@ const style = {
   display: 'flex',
   margin: '0 auto',
   padding: 20,
+  backgroundColor: 'white'
+}
+const styleRounded = {
+  width: 270,
+  display: 'flex',
+  margin: '0 auto',
+  padding: 20,
   borderRadius: '50%',
   borderWidth: '7px',
   borderStyle: 'inset',
@@ -16,15 +23,16 @@ const style = {
   backgroundColor: 'white'
 }
 
-const Logo = ({ src, top }) => (
+const Logo = ({ src, top, circle }) => (
   <Div top={top}>
-    <img alt='Arasaac logo' style={style} src={src || ArasaacLogo} />
+    <img alt='Arasaac logo' style={circle ? styleRounded : style} src={src || ArasaacLogo} />
   </Div >
 )
 
 Logo.propTypes = {
   src: PropTypes.string,
-  top: PropTypes.number
+  top: PropTypes.number,
+  circle: PropTypes.bool,
 }
 
 export default Logo

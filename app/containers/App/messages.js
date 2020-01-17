@@ -86,6 +86,11 @@ export default defineMessages({
     description: 'Header title',
     defaultMessage: 'Contact us'
   },
+  collaborateTitle: {
+    id: 'header.collaborateTitle',
+    description: 'Header title',
+    defaultMessage: 'Collaborate with Arasaac'
+  },
   settings: {
     id: 'header.settingsTitle',
     description: 'Header title',

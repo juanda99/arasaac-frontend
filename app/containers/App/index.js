@@ -187,6 +187,9 @@ class App extends Component {
       case /contact-us/.test(url):
         title = <FormattedMessage {...messages.contactusTitle} />;
         break;
+      case /collaborate/.test(url):
+        title = <FormattedMessage {...messages.collaborateTitle} />;
+        break;
       case /settings/.test(url):
         title = <FormattedMessage {...messages.settings} />;
         break;

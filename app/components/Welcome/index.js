@@ -22,7 +22,7 @@ const Welcome = () => {
   const aragones = <Strong><FormattedMessage {...messages.aragonese} /> </Strong>
   return (
     <FullWidthSection color={lightGreen500}>
-      <Logo />
+      <Logo circle={true} />
       <H1>ARA<Strong>SAAC</Strong></H1>
       <H2 center={true}>
         <FormattedMessage {...messages.header} values={{ aragones }} />
