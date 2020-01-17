@@ -427,7 +427,7 @@
   "signup.userNotCreated": "An error occurred while creating a new user",
   "size.choose": "Μέγεθος",
   "user.signin": "Χρήστης",
-  "userMenu.appConfiguration": "Εφαρμογή διαμόρφωσης",
+  "userMenu.appConfiguration": "Configuration",
   "userMenu.register": "Εγγράψου",
   "userMenu.signin": "Είσοδος",
   "userMenu.signout": "Αποσύνδεση",

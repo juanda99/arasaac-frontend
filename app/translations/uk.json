@@ -427,7 +427,7 @@
   "signup.userNotCreated": "An error occurred while creating a new user",
   "size.choose": "Розмір",
   "user.signin": "Користувач",
-  "userMenu.appConfiguration": "Конфігурацію застосунку",
+  "userMenu.appConfiguration": "Configuration",
   "userMenu.register": "Зареєструватися",
   "userMenu.signin": "Ввійти",
   "userMenu.signout": "Вийти",
