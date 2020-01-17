@@ -427,7 +427,7 @@
   "signup.userNotCreated": "An error occurred while creating a new user",
   "size.choose": "Kích thước",
   "user.signin": "Người sử dụng",
-  "userMenu.appConfiguration": "Cấu hình ứng dụng",
+  "userMenu.appConfiguration": "Configuration",
   "userMenu.register": "Đăng ký",
   "userMenu.signin": "Đăng nhập",
   "userMenu.signout": "Đăng xuất",
