@@ -80,17 +80,19 @@ class AuthorSnippet extends PureComponent {
         onMouseLeave={this.handleMouseLeave}
       >
         <ReactCardFlip isFlipped={this.state.isFlipped}>
-          <StyledPaper zDepth={this.state.zDepth} onClick={this.handleClick}>
+          <div key='front'>
+            <StyledPaper zDepth={this.state.zDepth} onClick={this.handleClick}>
 
-            <div style={{ position: 'relative' }} >
-              <Image
-                src={imageSource}
-                alt={name}
-              />
-              <H3 style={this.styles.cardTitle} primary={true}>{name}</H3>
-            </div>
-          </StyledPaper >
-          <div>
+              <div style={{ position: 'relative' }} >
+                <Image
+                  src={imageSource}
+                  alt={name}
+                />
+                <H3 style={this.styles.cardTitle} primary={true}>{name}</H3>
+              </div>
+            </StyledPaper >
+          </div>
+          <div key='back'>
             <p>Prueba.....</p>
           </div>
         </ReactCardFlip>
