@@ -88,7 +88,7 @@ export default defineMessages({
   formIntro: {
     id: 'app.containers.ContactView.formIntro',
     description: 'message',
-    defaultMessage: 'Please contact us preferably through this form for any question, suggestion or collaboration. We will get back to you as soon as possible.'
+    defaultMessage: 'We speak english and spanish. Please contact us preferably through this form for any question, suggestion or collaboration. We will get back to you as soon as possible.'
   }
 })
 

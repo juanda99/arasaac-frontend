@@ -12,7 +12,7 @@ export default defineMessages({
   },
   introArasaacPrizes: {
     id: 'app.containers.introArasaacPrizes',
-    defaultMessage: 'Arasaac was born in 2007. It is a non-commercial project that has received many awards since then, thanks to the selfless work of its user community, mainly Spanish-speaking.'
+    defaultMessage: 'ARASAAC is a collaborative project, coordinated and financed by the Government of Aragon, which has received several awards, since its creation in 2007, thanks to the altruistic work of numerous collaborators.'
   }
 })
 
