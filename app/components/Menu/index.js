@@ -13,7 +13,6 @@ import { FormattedMessage } from 'react-intl'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import SearchIcon from 'material-ui/svg-icons/action/search'
-import PrizesIcon from 'material-ui/svg-icons/action/card-membership'
 import ToolsIcon from 'material-ui/svg-icons/action/build'
 import AppsIcon from 'material-ui/svg-icons/navigation/apps'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
@@ -24,6 +23,7 @@ import InfoIcon from 'material-ui/svg-icons/action/info'
 import PictogramsIcon from 'material-ui/svg-icons/image/collections'
 import PeopleIcon from 'material-ui/svg-icons/social/people'
 import SoftwareIcon from 'material-ui/svg-icons/action/important-devices'
+import ThumbUpIcon from 'material-ui/svg-icons/action/thumb-up'
 import MaterialsIcon from 'material-ui/svg-icons/av/library-books'
 import SignoutIcon from 'material-ui/svg-icons/content/block'
 import ApiIcon from 'material-ui/svg-icons/communication/import-export'
@@ -243,6 +243,12 @@ class Menu extends Component {
             value='/prizes'
             primaryText={<FormattedMessage {...messages.prizes} />}
             leftIcon={<PrizeIcon />}
+          />
+          <ListItem
+            id='lstcollaborators'
+            value='/collaborate'
+            primaryText={<FormattedMessage {...messages.collaborators} />}
+            leftIcon={<ThumbUpIcon />}
           />
           <ListItem
             value='/contact-us'

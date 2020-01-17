@@ -458,6 +458,15 @@ export default function createRoutes(store) {
       }
     },
     {
+      path: '/collaborate',
+      name: 'collaborate',
+      getComponent(location, cb) {
+        import('containers/CollaboratorsView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    },
+    {
       path: 'contact-us',
       name: 'contact-us',
       getComponent(location, cb) {

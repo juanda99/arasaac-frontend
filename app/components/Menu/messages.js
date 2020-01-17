@@ -101,6 +101,11 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'Prizes'
   },
+  collaborators: {
+    id: 'menu.collaborators',
+    description: 'Menu item',
+    defaultMessage: 'Collaborators'
+  },
   contact: {
     id: 'menu.contact',
     description: 'Menu item',

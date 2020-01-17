@@ -23,14 +23,16 @@ class TranslationStatus extends PureComponent {
   }
 
   componentDidMount() {
+    const { language, locale } = this.props
     // we use userLocale if given by props (ProfileView), otherwise locale
-    this.updateData(this.props.userLocale || this.props.locale)
+    this.updateData(language || locale)
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.userLocale !== this.props.userLocale) {
+    const { language, locale } = this.props
+    if (prevProps.userLocale !== language) {
       // we use userLocale if given by props (ProfileView), otherwise locale
-      this.updateData(this.props.userLocale || this.props.locale)
+      this.updateData(language || locale)
     }
   }
 
@@ -88,7 +90,7 @@ class TranslationStatus extends PureComponent {
 TranslationStatus.propTypes = {
   showProgressBar: PropTypes.func.isRequired,
   hideProgressBar: PropTypes.func.isRequired,
-  userLocale: PropTypes.string,
+  language: PropTypes.string,
   locale: PropTypes.string.isRequired
 }
 

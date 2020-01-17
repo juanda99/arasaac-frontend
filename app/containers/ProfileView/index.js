@@ -97,8 +97,6 @@ class ProfileView extends PureComponent {
     const { lastLogin, name, picture, company, url, email, role, targetLanguages, userLocale } = this.props
     const profileImage = picture ? picture : `${PICTOGRAMS_URL}/28307/28307_300.png`
 
-    console.log(userLocale, '*******************userLocale')
-
     return (
       <View left={true} right={true} top={2} bottom={2} >
         <ReadMargin>
@@ -124,10 +122,12 @@ class ProfileView extends PureComponent {
 
           <H2 primary={true}>Idioma</H2>
           <LanguageSelector value={userLocale} onChange={this.handleLanguageChange} />
-
-          <H2 primary={true}>Translation Status</H2>
-          <TranslationStatus userLocale={userLocale} />
-
+          {(role === 'admin' || role === 'translator') && (
+            <div>
+              <H2 primary={true}>Translation Status</H2>
+              <TranslationStatus language={userLocale} />
+            </div>
+          )}
         </ReadMargin>
 
       </View >
