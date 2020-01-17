@@ -427,7 +427,7 @@
   "signup.userNotCreated": "An error occurred while creating a new user",
   "size.choose": "크기",
   "user.signin": "사용자",
-  "userMenu.appConfiguration": "응용 프로그램 구성",
+  "userMenu.appConfiguration": "Configuration",
   "userMenu.register": "등록",
   "userMenu.signin": "로그인",
   "userMenu.signout": "로그 아웃",
