@@ -427,7 +427,7 @@
   "signup.userNotCreated": "An error occurred while creating a new user",
   "size.choose": "Величина",
   "user.signin": "Корисник",
-  "userMenu.appConfiguration": "Апликација за конфигурацију",
+  "userMenu.appConfiguration": "Configuration",
   "userMenu.register": "Дневник",
   "userMenu.signin": "упиши се",
   "userMenu.signout": "Одјави се",
