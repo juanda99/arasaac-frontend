@@ -427,7 +427,7 @@
   "signup.userNotCreated": "An error occurred while creating a new user",
   "size.choose": "サイズ",
   "user.signin": "ユーザー",
-  "userMenu.appConfiguration": "アプリケーション構成",
+  "userMenu.appConfiguration": "Configuration",
   "userMenu.register": "登録",
   "userMenu.signin": "サインイン",
   "userMenu.signout": "サインアウトします。",
