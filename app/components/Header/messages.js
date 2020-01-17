@@ -19,7 +19,7 @@ export default defineMessages({
   appConfiguration: {
     id: 'userMenu.appConfiguration',
     description: 'User menu item',
-    defaultMessage: 'App Configuration'
+    defaultMessage: 'Configuration'
   },
   userProfile: {
     id: 'userMenu.userProfile',
