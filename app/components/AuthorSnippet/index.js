@@ -1,12 +1,19 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { FormattedMessage } from 'react-intl'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import ReactCardFlip from 'react-card-flip'
 import CardActions from 'components/PictogramSnippet/CardActions'
+import Facebook from 'components/SocialLogin/icons/svg/facebook'
+import GitHub from 'components/SocialLogin/icons/svg/github'
+import Twitter from 'components/SocialLogin/icons/svg/twitter'
+import IconButton from 'material-ui/IconButton'
 import StyledPaper from './StyledPaper'
 import StyledList from './StyledList'
 import H3 from 'components/H3'
+import P from 'components/P'
 import Image from 'components/PictogramSnippet/Image'
+import messages from './messages'
 
 
 class AuthorSnippet extends PureComponent {
@@ -45,33 +52,39 @@ class AuthorSnippet extends PureComponent {
       backgroundColor: this.props.muiTheme.palette.primary1Color,
       fontWeight: '600',
       margin: 0,
-      marginTop: 10,
       padding: 10,
       paddingTop: 20,
       height: 70
+    },
+    smallIcon: {
+      width: 72,
+      height: 72
+    },
+    small: {
+      width: 144,
+      height: 144,
+      padding: 32
     }
   };
 
   handleMouseEnter = () => {
     this.setState({
-      zDepth: 3
+      zDepth: 3,
+      isFlipped: true
     })
   };
 
   handleMouseLeave = () => {
     this.setState({
-      zDepth: 1
+      zDepth: 1,
+      isFlipped: false
     })
   };
 
   onClick = () => this.setState({ isFlipped: !this.state.isFlipped })
 
   render() {
-    const {
-      imageSource,
-      name,
-      desc
-    } = this.props
+    const { author } = this.props
     return (
       <StyledList
         key={name}
@@ -85,15 +98,49 @@ class AuthorSnippet extends PureComponent {
 
               <div style={{ position: 'relative' }} >
                 <Image
-                  src={imageSource}
-                  alt={name}
+                  src={author.imageSource}
+                  alt={author.name}
                 />
-                <H3 style={this.styles.cardTitle} primary={true}>{name}</H3>
+                <H3 style={this.styles.cardTitle} primary={true}>{author.name}</H3>
               </div>
             </StyledPaper >
           </div>
           <div key='back'>
-            <p>Prueba.....</p>
+            <StyledPaper zDepth={this.state.zDepth} onClick={this.handleClick}>
+              <H3 style={this.styles.cardTitle} primary={true}>{author.name}</H3>
+              <P>{<FormattedMessage {...messages[author.desc]} />}</P>
+              <P>{<FormattedMessage {...messages.reachme} />}</P>
+              {author.facebook && (
+                <a href={author.facebook} target='_blank'>
+                  <IconButton
+                    iconStyle={this.styles.smallIcon}
+                    style={this.styles.small}
+                  >
+                    <Facebook color='red' hoverColor='black' />
+                  </IconButton>
+                </a>
+              )}
+              {author.github && (
+                <a href={author.facebook} target='_blank'>
+                  <IconButton
+                    iconStyle={this.styles.smallIcon}
+                    style={this.styles.small}
+                  >
+                    <GitHub color='red' hoverColor='black' />
+                  </IconButton>
+                </a>
+              )}
+              {author.twitter && (
+                <a href={author.facebook} target='_blank'>
+                  <IconButton
+                    iconStyle={this.styles.smallIcon}
+                    style={this.styles.small}
+                  >
+                    <Twitter color='red' hoverColor='black' />
+                  </IconButton>
+                </a>
+              )}
+            </StyledPaper >
           </div>
         </ReactCardFlip>
       </StyledList >
@@ -104,9 +151,7 @@ class AuthorSnippet extends PureComponent {
 
 AuthorSnippet.propTypes = {
   muiTheme: PropTypes.object,
-  imageSource: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired
+  author: PropTypes.object.isRequired,
 }
 
 export default muiThemeable()(AuthorSnippet)

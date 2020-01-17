@@ -22,22 +22,26 @@ const authors = [
   {
     name: 'José Manuel Marcos',
     imageSource: `${IMAGES_URL}/team/jose-manuel-marco.png`,
-    desc: ''
+    desc: 'coordinator', //desc value is taken as react-intl key in AuthorSnippet
+    facebook: 'https://www.facebook.com/josemanuelmarcosrodrigo'
   },
   {
     name: 'David Romero',
     imageSource: `${IMAGES_URL}/team/david-romero.png`,
-    desc: ''
+    desc: 'coordinator',
+    facebook: 'https://www.facebook.com/david.romerocorral'
   },
   {
     name: 'Juan Daniel Burró',
     imageSource: `${IMAGES_URL}/team/juanda.png`,
-    desc: ''
+    desc: 'developer',
+    github: 'https://github.com/juanda99'
   },
   {
     name: 'Luis Miguel Morillas',
     imageSource: `${IMAGES_URL}/team/jose-manuel-marco.png`,
-    desc: ''
+    desc: 'developer',
+    github: 'https://github.com/lmorillas'
   }
 ]
 
@@ -93,7 +97,7 @@ class AboutView extends Component {
             disableImagesLoaded={false} // default false
             style={styles.masonry}
           >
-            {authors.map((author) => <AuthorSnippet key={author.name} name={author.name} imageSource={author.imageSource} />)}
+            {authors.map((author) => <AuthorSnippet key={author.name} author={author} />)}
           </Masonry>
         </ReadMargin>
       </View >
