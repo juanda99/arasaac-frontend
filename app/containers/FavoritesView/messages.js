@@ -8,7 +8,7 @@ import { defineMessages } from 'react-intl'
 export default defineMessages({
   addList: {
     id: 'app.containers.PictogramsView.addList',
-    defaultMessage: 'Add list'
+    defaultMessage: 'Create list'
   },
   addListHint: {
     id: 'app.containers.PictogramsView.addListHint',
