@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import muiThemeable from 'material-ui/styles/muiThemeable'
+import ReactCardFlip from 'react-card-flip'
 import CardActions from 'components/PictogramSnippet/CardActions'
 import StyledPaper from './StyledPaper'
 import StyledList from './StyledList'
@@ -10,7 +11,8 @@ import Image from 'components/PictogramSnippet/Image'
 
 class AuthorSnippet extends PureComponent {
   state = {
-    zDepth: 1
+    zDepth: 1,
+    isFlipped: false
   };
 
   styles = {
@@ -62,6 +64,8 @@ class AuthorSnippet extends PureComponent {
     })
   };
 
+  onClick = () => this.setState({ isFlipped: !this.state.isFlipped })
+
   render() {
     const {
       imageSource,
@@ -75,16 +79,22 @@ class AuthorSnippet extends PureComponent {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <StyledPaper zDepth={this.state.zDepth}>
-          <div style={{ position: 'relative' }}>
-            <Image
-              src={imageSource}
-              alt={name}
-            />
-            <H3 style={this.styles.cardTitle} primary={true}>{name}</H3>
+        <ReactCardFlip isFlipped={this.state.isFlipped}>
+          <StyledPaper zDepth={this.state.zDepth} onClick={this.handleClick}>
+
+            <div style={{ position: 'relative' }} >
+              <Image
+                src={imageSource}
+                alt={name}
+              />
+              <H3 style={this.styles.cardTitle} primary={true}>{name}</H3>
+            </div>
+          </StyledPaper >
+          <div>
+            <p>Prueba.....</p>
           </div>
-        </StyledPaper>
-      </StyledList>
+        </ReactCardFlip>
+      </StyledList >
     )
   }
 }
