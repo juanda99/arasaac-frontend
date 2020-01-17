@@ -427,7 +427,7 @@
   "signup.userNotCreated": "An error occurred while creating a new user",
   "size.choose": "Størrelse",
   "user.signin": "Bruger",
-  "userMenu.appConfiguration": "App konfiguration",
+  "userMenu.appConfiguration": "Configuration",
   "userMenu.register": "Registrer",
   "userMenu.signin": "Log på",
   "userMenu.signout": "Log ud",
