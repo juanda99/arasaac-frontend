@@ -300,7 +300,7 @@
   "app.containers.MaterialsView.showSettings": "crwdns352:0crwdne352:0",
   "app.containers.PictogramView.pictogramLoading": "crwdns386:0crwdne386:0",
   "app.containers.PictogramView.pictogramNotFound": "crwdns387:0crwdne387:0",
-  "app.containers.PictogramsView.addList": "crwdns2069:0crwdne2069:0",
+  "app.containers.PictogramsView.addList": "crwdns2075:0crwdne2075:0",
   "app.containers.PictogramsView.addListHint": "crwdns2071:0crwdne2071:0",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "crwdns796:0crwdne796:0",
   "app.containers.PictogramsView.listName": "crwdns2073:0crwdne2073:0",
