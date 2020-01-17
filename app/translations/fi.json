@@ -427,7 +427,7 @@
   "signup.userNotCreated": "An error occurred while creating a new user",
   "size.choose": "Kokoa",
   "user.signin": "Käyttäjä",
-  "userMenu.appConfiguration": "Sovelluksen kokoonpano",
+  "userMenu.appConfiguration": "Configuration",
   "userMenu.register": "Rekisteröidy",
   "userMenu.signin": "Kirjaudu sisään",
   "userMenu.signout": "Kirjaudu ulos",
