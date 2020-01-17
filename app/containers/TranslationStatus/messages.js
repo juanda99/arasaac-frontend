@@ -9,11 +9,11 @@ export default defineMessages({
   },
   webTranslationStatus: {
     id: `${scope}.webTranslationStatus`,
-    defaultMessage: 'Web translation status: {webTranslatedString}%'
+    defaultMessage: 'Web translation: {webTranslatedString}%'
   },
   pictosTranslationStatus: {
     id: `${scope}.pictosTranslationStatus`,
-    defaultMessage: 'Pictograms validation status (maybe already translated): {pictosValidatedString}%'
+    defaultMessage: 'Pictograms translation (maybe already translated but not validated): {pictosValidatedString}%'
   }
 
 })
