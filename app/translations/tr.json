@@ -427,7 +427,7 @@
   "signup.userNotCreated": "An error occurred while creating a new user",
   "size.choose": "Boyutu",
   "user.signin": "Kullanıcı",
-  "userMenu.appConfiguration": "App yapılandırma",
+  "userMenu.appConfiguration": "Configuration",
   "userMenu.register": "Üye ol",
   "userMenu.signin": "Oturum Aç",
   "userMenu.signout": "Oturumu Kapat",
