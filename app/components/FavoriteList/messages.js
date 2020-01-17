@@ -3,26 +3,26 @@ import { defineMessages } from 'react-intl'
 export default defineMessages({
   download: {
     id: 'app.components.ListSnippet.download',
-    defaultMessage: 'Download list'
+    defaultMessage: 'Download folder'
   },
   showLists: {
     id: 'app.components.ListSnippet.showLists',
-    defaultMessage: 'Show lists'
+    defaultMessage: 'Show folder'
   },
   manageList: {
     id: 'app.components.ListSnippet.manageList',
-    defaultMessage: 'Manage list'
+    defaultMessage: 'Manage folder'
   },
   addList: {
     id: 'app.containers.PictogramsView.addList',
-    defaultMessage: 'Add list'
+    defaultMessage: 'Create folder'
   },
   addListHint: {
     id: 'app.containers.PictogramsView.addListHint',
-    defaultMessage: 'Type the name of the new list'
+    defaultMessage: 'Type the name of the new folder'
   },
   listName: {
     id: 'app.containers.PictogramsView.listName',
-    defaultMessage: 'List name'
+    defaultMessage: 'Folder name'
   }
 })

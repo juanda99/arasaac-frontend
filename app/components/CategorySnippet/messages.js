@@ -8,10 +8,10 @@ import { defineMessages } from 'react-intl'
 export default defineMessages({
   deleteList: {
     id: 'app.components.CategorySnippet.deleteList',
-    defaultMessage: 'Delete list'
+    defaultMessage: 'Delete folder'
   },
   download: {
     id: 'app.components.CategorySnippet.download',
-    defaultMessage: 'Download list'
+    defaultMessage: 'Download folder'
   }
 })
