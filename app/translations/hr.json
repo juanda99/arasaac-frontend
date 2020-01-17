@@ -427,7 +427,7 @@
   "signup.userNotCreated": "An error occurred while creating a new user",
   "size.choose": "Size",
   "user.signin": "User",
-  "userMenu.appConfiguration": "App Configuration",
+  "userMenu.appConfiguration": "Configuration",
   "userMenu.register": "Register",
   "userMenu.signin": "Sign in",
   "userMenu.signout": "Sign out",
