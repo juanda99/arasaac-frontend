@@ -300,7 +300,7 @@
   "app.containers.MaterialsView.showSettings": "Pokaż ustawienia wyszukiwania",
   "app.containers.PictogramView.pictogramLoading": "Piktogram ładowania...",
   "app.containers.PictogramView.pictogramNotFound": "Przepraszamy piktogram, której szukasz nie istnieje",
-  "app.containers.PictogramsView.addList": "Add folder",
+  "app.containers.PictogramsView.addList": "Create folder",
   "app.containers.PictogramsView.addListHint": "Type the name of the new folder",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "This content is only available for authenticated users",
   "app.containers.PictogramsView.listName": "Folder name",
