@@ -17,6 +17,7 @@ const H3 = styled.h3`
     props.primary
       ? props.muiTheme.palette.primary1Color
       : props.muiTheme.palette.textColor}};
+      
   text-transform: ${(props) => (props.ucase ? 'uppercase' : 'none')};
   ${media.lg} {
     font-size: 1.25rem;

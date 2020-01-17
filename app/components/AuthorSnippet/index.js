@@ -4,6 +4,7 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 import CardActions from 'components/PictogramSnippet/CardActions'
 import StyledPaper from './StyledPaper'
 import StyledList from './StyledList'
+import H3 from 'components/H3'
 import Image from 'components/PictogramSnippet/Image'
 
 
@@ -36,10 +37,16 @@ class AuthorSnippet extends PureComponent {
     },
     cardTitle: {
       textAlign: 'center',
-      fontSize: '1.4rem',
+      fontSize: '1rem',
       textTransform: 'uppercase',
       color: this.props.muiTheme.appBar.textColor,
-      fontWeight: '900'
+      backgroundColor: this.props.muiTheme.palette.primary1Color,
+      fontWeight: '600',
+      margin: 0,
+      marginTop: 10,
+      padding: 10,
+      paddingTop: 20,
+      height: 70
     }
   };
 
@@ -74,7 +81,7 @@ class AuthorSnippet extends PureComponent {
               src={imageSource}
               alt={name}
             />
-
+            <H3 style={this.styles.cardTitle} primary={true}>{name}</H3>
           </div>
         </StyledPaper>
       </StyledList>

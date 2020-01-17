@@ -20,17 +20,17 @@ const masonryOptions = {
 
 const authors = [
   {
-    name: 'José Manuel Marcos Rodrigo',
+    name: 'José Manuel Marcos',
     imageSource: `${IMAGES_URL}/team/jose-manuel-marco.png`,
     desc: ''
   },
   {
-    name: 'David Romero Corral',
+    name: 'David Romero',
     imageSource: `${IMAGES_URL}/team/david-romero.png`,
     desc: ''
   },
   {
-    name: 'Juan Daniel Burró Aláez',
+    name: 'Juan Daniel Burró',
     imageSource: `${IMAGES_URL}/team/juanda.png`,
     desc: ''
   },
@@ -96,25 +96,6 @@ class AboutView extends Component {
             {authors.map((author) => <AuthorSnippet key={author.name} name={author.name} imageSource={author.imageSource} />)}
           </Masonry>
         </ReadMargin>
-
-        {/* <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ margin: 10, display: 'flex' }}>
-            <img src={`${IMAGES_URL}/team/jose-manuel-marco.png`} style={{ width: '100px', height: 'auto' }} />
-            <a href='https://www.facebook.com/josemanuelmarcosrodrigo'><FacebookIcon />  José Manuel Marcos Rodrigo</a>
-          </div>
-          <div style={{ margin: 10 }}>
-            <img src={`${IMAGES_URL}/team/david-romero.png`} style={{ width: '100px', height: 'auto' }} />
-            <a href='https://www.facebook.com/david.romerocorral'><FacebookIcon />  David Romero Corral</a>
-          </div>
-          <div style={{ margin: 10 }}>
-            <img src={`${IMAGES_URL}/team/jose-manuel-marco.png`} style={{ width: '100px', height: 'auto' }} />
-            <a href='https://github.com/lmorillas'><GitHubIcon />  Luis Miguel Morillas</a>
-          </div>
-          <div style={{ margin: 10 }}>
-            <img src={`${IMAGES_URL}/team/juanda.png`} style={{ width: '100px', height: 'auto' }} />
-            <a href='https://github.com/juanda99'><GitHubIcon />  Juan Daniel Burró Aláez</a>
-          </div>
-        </div> */}
       </View >
     )
   }
