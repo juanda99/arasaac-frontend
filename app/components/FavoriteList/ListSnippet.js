@@ -170,7 +170,7 @@ class ListSnippet extends PureComponent {
           onDownload={this.handleDownload}
         />
         <Dialog
-          title="New list name"
+          title={formatMessage(messages.newFolderName)}
           actions={actions}
           modal={true}
           open={this.state.dialogOpen}
@@ -185,15 +185,15 @@ class ListSnippet extends PureComponent {
               onChange={this.handleListNameChange}
             />
           ) : (
-            <TextField
-              ref={c => (this.state.inputRef = c)}
-              hintText={formatMessage(messages.addListHint)}
-              floatingLabelText={formatMessage(messages.listName)}
-              style={{ marginRight: 10 }}
-              value={this.state.newlistName}
-              onChange={this.handleListNameChange}
-            />
-          )}
+              <TextField
+                ref={c => (this.state.inputRef = c)}
+                hintText={formatMessage(messages.addListHint)}
+                floatingLabelText={formatMessage(messages.listName)}
+                style={{ marginRight: 10 }}
+                value={this.state.newlistName}
+                onChange={this.handleListNameChange}
+              />
+            )}
         </Dialog>
         <StyledPaper
           zDepth={this.state.zDepth}
@@ -215,8 +215,8 @@ class ListSnippet extends PureComponent {
                 {listName === DEFAULT_LIST ? (
                   <FormattedMessage {...messages.showLists} />
                 ) : (
-                  listName
-                )}
+                    listName
+                  )}
               </p>
               {listName === DEFAULT_LIST ? (
                 <ArrowBack
@@ -226,19 +226,19 @@ class ListSnippet extends PureComponent {
                   style={{ width: 100, height: 100 }}
                 />
               ) : (
-                <Badge
-                  badgeContent={totalItems}
-                  secondary={true}
-                  badgeStyle={{ top: 23, right: 23 }}
-                >
-                  <Folder
-                    color={muiTheme.palette.primary1Color}
-                    hoverColor={muiTheme.palette.accent1Color}
-                    onClick={this.handleClick}
-                    style={{ width: 100, height: 100 }}
-                  />
-                </Badge>
-              )}
+                  <Badge
+                    badgeContent={totalItems}
+                    secondary={true}
+                    badgeStyle={{ top: 23, right: 23 }}
+                  >
+                    <Folder
+                      color={muiTheme.palette.primary1Color}
+                      hoverColor={muiTheme.palette.accent1Color}
+                      onClick={this.handleClick}
+                      style={{ width: 100, height: 100 }}
+                    />
+                  </Badge>
+                )}
             </div>
             {listName !== DEFAULT_LIST && (
               <CardActions>

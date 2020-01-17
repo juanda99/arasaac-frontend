@@ -1,9 +1,10 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
+  // download is also used in ListMenu
   download: {
     id: 'app.components.ListSnippet.download',
-    defaultMessage: 'Download folder'
+    defaultMessage: 'Download'
   },
   showLists: {
     id: 'app.components.ListSnippet.showLists',
@@ -24,5 +25,17 @@ export default defineMessages({
   listName: {
     id: 'app.containers.PictogramsView.listName',
     defaultMessage: 'Folder name'
+  },
+  newFolderName: {
+    id: 'app.containers.ListSnippet.newFolderName',
+    defaultMessage: 'Folder new name'
+  },
+  rename: {
+    id: 'app.containers.ListMenu.rename',
+    defaultMessage: 'Rename'
+  },
+  delete: {
+    id: 'app.containers.ListMenu.delete',
+    defaultMessage: 'Delete'
   }
 })

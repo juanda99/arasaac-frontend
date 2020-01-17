@@ -7,6 +7,8 @@ import Delete from 'material-ui/svg-icons/action/delete'
 import Download from 'material-ui/svg-icons/file/file-download'
 import Edit from 'material-ui/svg-icons/image/edit'
 import Divider from 'material-ui/Divider'
+import { FormattedMessage } from "react-intl";
+import messages from './messages'
 const ListMenu = ({
   anchorEl,
   open,
@@ -15,26 +17,26 @@ const ListMenu = ({
   onRename,
   onDownload
 }) => (
-  <Popover
-    open={open}
-    anchorEl={anchorEl}
-    anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
-    targetOrigin={{ horizontal: 'left', vertical: 'top' }}
-    onRequestClose={onClose}
-    onContextMenu={(e) => e.preventDefault()}
-  >
-    <Menu>
-      <MenuItem primaryText='Rename' leftIcon={<Edit />} onClick={onRename} />
-      <MenuItem
-        primaryText='Download'
-        leftIcon={<Download />}
-        onClick={onDownload}
-      />
-      <Divider />
-      <MenuItem primaryText='Delete' leftIcon={<Delete />} onClick={onDelete} />
-    </Menu>
-  </Popover>
-)
+    <Popover
+      open={open}
+      anchorEl={anchorEl}
+      anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+      targetOrigin={{ horizontal: 'left', vertical: 'top' }}
+      onRequestClose={onClose}
+      onContextMenu={(e) => e.preventDefault()}
+    >
+      <Menu>
+        <MenuItem primaryText={<FormattedMessage {...messages.rename} />} leftIcon={<Edit />} onClick={onRename} />
+        <MenuItem
+          primaryText={<FormattedMessage {...messages.download} />}
+          leftIcon={<Download />}
+          onClick={onDownload}
+        />
+        <Divider />
+        <MenuItem primaryText={<FormattedMessage {...messages.delete} />} leftIcon={<Delete />} onClick={onDelete} />
+      </Menu>
+    </Popover>
+  )
 
 ListMenu.propTypes = {
   anchorEl: PropTypes.string.isRequired,
