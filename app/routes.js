@@ -449,6 +449,15 @@ export default function createRoutes(store) {
       }
     },
     {
+      path: '/world',
+      name: 'world',
+      getComponent(location, cb) {
+        import('containers/WorldView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    },
+    {
       path: '/settings',
       name: 'settings',
       getComponent(location, cb) {

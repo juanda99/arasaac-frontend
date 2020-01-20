@@ -106,6 +106,11 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'Collaborators'
   },
+  arasaacWorld: {
+    id: 'menu.arasaacWorld',
+    description: 'Menu item',
+    defaultMessage: 'Arasaac in the world'
+  },
   contact: {
     id: 'menu.contact',
     description: 'Menu item',
