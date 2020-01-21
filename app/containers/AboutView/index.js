@@ -7,6 +7,7 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import {
   IMAGES_URL
 } from 'services/config'
+import ReactSlidy from 'react-slidy'
 import AuthorSnippet from 'components/AuthorSnippet'
 import ReadMargin from 'components/ReadMargin'
 import GitHubIcon from './GibhubIcon'
@@ -80,9 +81,12 @@ class AboutView extends Component {
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
           />
           <Marker position={position}>
-            <Popup style={{ height: '200px', width: '200px' }}>
-              A pretty CSS3 popup. Easily customizable.
-          </Popup>
+            <Popup>
+              <div>
+                <img width='150px' src={`${IMAGES_URL}/arasaac-logo.png`} alt='Screenshot' />
+                <P><strong>Centro Aragonés para la Comunicación Aumentativa y Alternativa - ARASAAC</strong><br />Andador Pilar Cuartero Molinero, 1, 50018 Zaragoza<br /> España (Spain)</P>
+              </div>
+            </Popup>
           </Marker>
         </Map>
         <ReadMargin>

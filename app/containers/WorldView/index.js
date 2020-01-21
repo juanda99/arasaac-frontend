@@ -23,9 +23,12 @@ class WorldView extends PureComponent {
     return (
       <div>
         <View left={true}>
-          <FormattedMessage {...messages.arasaacWorldDesc} />
+          <ReadMargin>
+            <P><FormattedMessage {...messages.arasaacWorldDesc} /></P>
+          </ReadMargin>
+
         </View>
-        <iframe src="https://www.google.com/maps/d/embed?mid=1EBR3psLxK-G_WujU93NMWkfisTYK4HwY" width="100%" height="800"></iframe>
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBR3psLxK-G_WujU93NMWkfisTYK4HwY" width="100%" height="800"></iframe>
       </div>
     )
   }
