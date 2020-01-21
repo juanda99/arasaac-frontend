@@ -6,16 +6,16 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  addList: {
-    id: 'app.containers.PictogramsView.addList',
-    defaultMessage: 'Create list'
+  addFolder: {
+    id: 'app.containers.PictogramsView.addFolder',
+    defaultMessage: 'Create folder'
   },
-  addListHint: {
-    id: 'app.containers.PictogramsView.addListHint',
-    defaultMessage: 'Type the name of the new list'
+  addFolderHint: {
+    id: 'app.containers.PictogramsView.addFolderHint',
+    defaultMessage: 'Type the name of the new folder'
   },
-  listName: {
-    id: 'app.containers.PictogramsView.listName',
-    defaultMessage: 'List name'
+  folderName: {
+    id: 'app.containers.PictogramsView.folderName',
+    defaultMessage: 'Folder name'
   }
 })

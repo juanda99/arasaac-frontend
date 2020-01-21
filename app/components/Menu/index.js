@@ -33,6 +33,7 @@ import Div from 'components/Div'
 import messages from './messages'
 import styles from './styles'
 import PrizeIcon from './PrizeIcon'
+import WorldIcon from './WorldIcon'
 
 const SelectableList = makeSelectable(List)
 
@@ -237,6 +238,12 @@ class Menu extends Component {
             value='/about-us'
             primaryText={<FormattedMessage {...messages.whoWeAre} />}
             leftIcon={<PeopleIcon />}
+          />
+          <ListItem
+            id='lstworld'
+            value='/world'
+            primaryText={<FormattedMessage {...messages.arasaacWorld} />}
+            leftIcon={<WorldIcon />}
           />
           <ListItem
             id='lstprizes'

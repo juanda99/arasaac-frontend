@@ -170,7 +170,7 @@ class ListSnippet extends PureComponent {
           onDownload={this.handleDownload}
         />
         <Dialog
-          title="New list name"
+          title={formatMessage(messages.newFolderName)}
           actions={actions}
           modal={true}
           open={this.state.dialogOpen}
@@ -179,21 +179,21 @@ class ListSnippet extends PureComponent {
           {/* bug with textfield, workaround */}
           {this.state.newListName ? (
             <TextField
-              floatingLabelText={formatMessage(messages.listName)}
+              floatingLabelText={formatMessage(messages.folderName)}
               style={{ marginRight: 10 }}
               value={this.state.newlistName}
               onChange={this.handleListNameChange}
             />
           ) : (
-            <TextField
-              ref={c => (this.state.inputRef = c)}
-              hintText={formatMessage(messages.addListHint)}
-              floatingLabelText={formatMessage(messages.listName)}
-              style={{ marginRight: 10 }}
-              value={this.state.newlistName}
-              onChange={this.handleListNameChange}
-            />
-          )}
+              <TextField
+                ref={c => (this.state.inputRef = c)}
+                hintText={formatMessage(messages.addFolderHint)}
+                floatingLabelText={formatMessage(messages.folderName)}
+                style={{ marginRight: 10 }}
+                value={this.state.newlistName}
+                onChange={this.handleListNameChange}
+              />
+            )}
         </Dialog>
         <StyledPaper
           zDepth={this.state.zDepth}
@@ -213,10 +213,10 @@ class ListSnippet extends PureComponent {
             >
               <p style={this.styles.header}>
                 {listName === DEFAULT_LIST ? (
-                  <FormattedMessage {...messages.showLists} />
+                  <FormattedMessage {...messages.showFolders} />
                 ) : (
-                  listName
-                )}
+                    listName
+                  )}
               </p>
               {listName === DEFAULT_LIST ? (
                 <ArrowBack
@@ -226,19 +226,19 @@ class ListSnippet extends PureComponent {
                   style={{ width: 100, height: 100 }}
                 />
               ) : (
-                <Badge
-                  badgeContent={totalItems}
-                  secondary={true}
-                  badgeStyle={{ top: 23, right: 23 }}
-                >
-                  <Folder
-                    color={muiTheme.palette.primary1Color}
-                    hoverColor={muiTheme.palette.accent1Color}
-                    onClick={this.handleClick}
-                    style={{ width: 100, height: 100 }}
-                  />
-                </Badge>
-              )}
+                  <Badge
+                    badgeContent={totalItems}
+                    secondary={true}
+                    badgeStyle={{ top: 23, right: 23 }}
+                  >
+                    <Folder
+                      color={muiTheme.palette.primary1Color}
+                      hoverColor={muiTheme.palette.accent1Color}
+                      onClick={this.handleClick}
+                      style={{ width: 100, height: 100 }}
+                    />
+                  </Badge>
+                )}
             </div>
             {listName !== DEFAULT_LIST && (
               <CardActions>
@@ -256,7 +256,7 @@ class ListSnippet extends PureComponent {
                 </IconButton>
                 <IconButton
                   touch={true}
-                  tooltip={<FormattedMessage {...messages.manageList} />}
+                  tooltip={<FormattedMessage {...messages.manageFolder} />}
                   iconStyle={this.styles.icon}
                   style={this.styles.rightIconButton}
                   onClick={this.handleOpenMenu}

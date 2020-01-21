@@ -41,6 +41,10 @@ export default defineMessages({
   passwordChanged: {
     id: 'app.containers.ProfileView.passwordChanged',
     defaultMessage: 'Password changed'
+  },
+  currentRole: {
+    id: 'app.containers.ProfileView.currentRole',
+    defaultMessage: 'Current role:'
   }
 
 })

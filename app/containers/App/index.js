@@ -190,6 +190,9 @@ class App extends Component {
       case /collaborate/.test(url):
         title = <FormattedMessage {...messages.collaborateTitle} />;
         break;
+      case /world/.test(url):
+        title = <FormattedMessage {...messages.arasaacWorld} />;
+        break;
       case /settings/.test(url):
         title = <FormattedMessage {...messages.settings} />;
         break;

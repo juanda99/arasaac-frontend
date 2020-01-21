@@ -7,6 +7,7 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import {
   IMAGES_URL
 } from 'services/config'
+import ReactSlidy from 'react-slidy'
 import AuthorSnippet from 'components/AuthorSnippet'
 import ReadMargin from 'components/ReadMargin'
 import GitHubIcon from './GibhubIcon'
@@ -20,24 +21,28 @@ const masonryOptions = {
 
 const authors = [
   {
-    name: 'José Manuel Marcos Rodrigo',
+    name: 'José Manuel Marcos',
     imageSource: `${IMAGES_URL}/team/jose-manuel-marco.png`,
-    desc: ''
+    desc: 'coordinator', //desc value is taken as react-intl key in AuthorSnippet
+    facebook: 'https://www.facebook.com/josemanuelmarcosrodrigo'
   },
   {
-    name: 'David Romero Corral',
+    name: 'David Romero',
     imageSource: `${IMAGES_URL}/team/david-romero.png`,
-    desc: ''
+    desc: 'coordinator',
+    facebook: 'https://www.facebook.com/david.romerocorral'
   },
   {
-    name: 'Juan Daniel Burró Aláez',
+    name: 'Juan Daniel Burró',
     imageSource: `${IMAGES_URL}/team/juanda.png`,
-    desc: ''
+    desc: 'developer',
+    github: 'https://github.com/juanda99'
   },
   {
     name: 'Luis Miguel Morillas',
     imageSource: `${IMAGES_URL}/team/jose-manuel-marco.png`,
-    desc: ''
+    desc: 'developer',
+    github: 'https://github.com/lmorillas'
   }
 ]
 
@@ -76,9 +81,12 @@ class AboutView extends Component {
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
           />
           <Marker position={position}>
-            <Popup style={{ height: '200px', width: '200px' }}>
-              A pretty CSS3 popup. Easily customizable.
-          </Popup>
+            <Popup>
+              <div>
+                <img width='150px' src={`${IMAGES_URL}/arasaac-logo.png`} alt='Screenshot' />
+                <P><strong>Centro Aragonés para la Comunicación Aumentativa y Alternativa - ARASAAC</strong><br />Andador Pilar Cuartero Molinero, 1, 50018 Zaragoza<br /> España (Spain)</P>
+              </div>
+            </Popup>
           </Marker>
         </Map>
         <ReadMargin>
@@ -93,28 +101,9 @@ class AboutView extends Component {
             disableImagesLoaded={false} // default false
             style={styles.masonry}
           >
-            {authors.map((author) => <AuthorSnippet key={author.name} name={author.name} imageSource={author.imageSource} />)}
+            {authors.map((author) => <AuthorSnippet key={author.name} author={author} />)}
           </Masonry>
         </ReadMargin>
-
-        {/* <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ margin: 10, display: 'flex' }}>
-            <img src={`${IMAGES_URL}/team/jose-manuel-marco.png`} style={{ width: '100px', height: 'auto' }} />
-            <a href='https://www.facebook.com/josemanuelmarcosrodrigo'><FacebookIcon />  José Manuel Marcos Rodrigo</a>
-          </div>
-          <div style={{ margin: 10 }}>
-            <img src={`${IMAGES_URL}/team/david-romero.png`} style={{ width: '100px', height: 'auto' }} />
-            <a href='https://www.facebook.com/david.romerocorral'><FacebookIcon />  David Romero Corral</a>
-          </div>
-          <div style={{ margin: 10 }}>
-            <img src={`${IMAGES_URL}/team/jose-manuel-marco.png`} style={{ width: '100px', height: 'auto' }} />
-            <a href='https://github.com/lmorillas'><GitHubIcon />  Luis Miguel Morillas</a>
-          </div>
-          <div style={{ margin: 10 }}>
-            <img src={`${IMAGES_URL}/team/juanda.png`} style={{ width: '100px', height: 'auto' }} />
-            <a href='https://github.com/juanda99'><GitHubIcon />  Juan Daniel Burró Aláez</a>
-          </div>
-        </div> */}
       </View >
     )
   }

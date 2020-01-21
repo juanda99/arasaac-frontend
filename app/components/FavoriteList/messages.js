@@ -1,28 +1,41 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
+  // download is also used in ListMenu
   download: {
     id: 'app.components.ListSnippet.download',
-    defaultMessage: 'Download folder'
+    defaultMessage: 'Download'
   },
-  showLists: {
-    id: 'app.components.ListSnippet.showLists',
-    defaultMessage: 'Show folder'
+  showFolders: {
+    id: 'app.components.ListSnippet.showFolders',
+    defaultMessage: 'Show folders'
   },
-  manageList: {
-    id: 'app.components.ListSnippet.manageList',
+  manageFolder: {
+    id: 'app.components.ListSnippet.manageFolder',
     defaultMessage: 'Manage folder'
   },
-  addList: {
-    id: 'app.containers.PictogramsView.addList',
+  addFolder: {
+    id: 'app.containers.PictogramsView.addFolder',
     defaultMessage: 'Create folder'
   },
-  addListHint: {
-    id: 'app.containers.PictogramsView.addListHint',
+  addFolderHint: {
+    id: 'app.containers.PictogramsView.addFolderHint',
     defaultMessage: 'Type the name of the new folder'
   },
-  listName: {
-    id: 'app.containers.PictogramsView.listName',
+  folderName: {
+    id: 'app.containers.PictogramsView.folderName',
     defaultMessage: 'Folder name'
+  },
+  newFolderName: {
+    id: 'app.containers.ListSnippet.newFolderName',
+    defaultMessage: 'Folder new name'
+  },
+  rename: {
+    id: 'app.containers.ListMenu.rename',
+    defaultMessage: 'Rename'
+  },
+  delete: {
+    id: 'app.containers.ListMenu.delete',
+    defaultMessage: 'Delete'
   }
 })

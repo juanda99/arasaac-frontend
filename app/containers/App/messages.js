@@ -96,6 +96,10 @@ export default defineMessages({
     description: 'Header title',
     defaultMessage: 'Settings'
   },
+  arasaacWorld: {
+    id: 'header.arasaacWorld',
+    defaultMessage: 'Arasaac in the world'
+  },
   prizes: {
     id: 'header.prizesTitle',
     description: 'Header title',
