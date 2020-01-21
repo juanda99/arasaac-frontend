@@ -24,7 +24,7 @@ class WorldView extends PureComponent {
       <div>
         <View left={true}>
           <ReadMargin>
-            <P><FormattedMessage {...messages.arasaacWorldDesc} /></P>
+            <P><FormattedMessage {...messages.arasaacInWorld} /></P>
           </ReadMargin>
 
         </View>

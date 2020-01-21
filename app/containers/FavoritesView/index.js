@@ -115,14 +115,14 @@ class FavoritesView extends PureComponent {
         />
 
         <TextField
-          hintText={formatMessage(messages.addListHint)}
-          floatingLabelText={formatMessage(messages.listName)}
+          hintText={formatMessage(messages.addFolderHint)}
+          floatingLabelText={formatMessage(messages.folderName)}
           style={{ marginRight: 10 }}
           value={this.state.listName}
           onChange={this.handleListNameChange}
         />
         <RaisedButton
-          label={<FormattedMessage {...messages.addList} />}
+          label={<FormattedMessage {...messages.addFolder} />}
           primary={true}
           onClick={this.handleAddList}
           disabled={!this.state.listName}

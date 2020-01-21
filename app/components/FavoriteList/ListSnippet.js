@@ -179,7 +179,7 @@ class ListSnippet extends PureComponent {
           {/* bug with textfield, workaround */}
           {this.state.newListName ? (
             <TextField
-              floatingLabelText={formatMessage(messages.listName)}
+              floatingLabelText={formatMessage(messages.folderName)}
               style={{ marginRight: 10 }}
               value={this.state.newlistName}
               onChange={this.handleListNameChange}
@@ -187,8 +187,8 @@ class ListSnippet extends PureComponent {
           ) : (
               <TextField
                 ref={c => (this.state.inputRef = c)}
-                hintText={formatMessage(messages.addListHint)}
-                floatingLabelText={formatMessage(messages.listName)}
+                hintText={formatMessage(messages.addFolderHint)}
+                floatingLabelText={formatMessage(messages.folderName)}
                 style={{ marginRight: 10 }}
                 value={this.state.newlistName}
                 onChange={this.handleListNameChange}
@@ -213,7 +213,7 @@ class ListSnippet extends PureComponent {
             >
               <p style={this.styles.header}>
                 {listName === DEFAULT_LIST ? (
-                  <FormattedMessage {...messages.showLists} />
+                  <FormattedMessage {...messages.showFolders} />
                 ) : (
                     listName
                   )}
@@ -256,7 +256,7 @@ class ListSnippet extends PureComponent {
                 </IconButton>
                 <IconButton
                   touch={true}
-                  tooltip={<FormattedMessage {...messages.manageList} />}
+                  tooltip={<FormattedMessage {...messages.manageFolder} />}
                   iconStyle={this.styles.icon}
                   style={this.styles.rightIconButton}
                   onClick={this.handleOpenMenu}

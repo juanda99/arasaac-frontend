@@ -7,7 +7,7 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   arasaacWorldDesc: {
-    id: 'app.containers.WorldView.arasaacWorldDesc',
+    id: 'app.containers.WorldView.arasaacInWorld',
     defaultMessage: 'Arasaac is present worldwide. In the map below you can see some examples of its usage. Contact us if you wish to share in the map below your experience of using ARASAAC'
   }
 
