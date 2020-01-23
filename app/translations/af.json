@@ -337,6 +337,7 @@
   "app.containers.introArasaacPrizes": "crwdns2035:0crwdne2035:0",
   "app.containers/collaboratorsView.buildArasaac": "crwdns2037:0crwdne2037:0",
   "app.containers/collaboratorsView.howToCollaborate": "crwdns2039:0crwdne2039:0",
+  "app.containers/collaboratorsView.translationStatus": "crwdns2125:0crwdne2125:0",
   "app.containers/collaboratorsView.wantToCollaborate": "crwdns2041:0crwdne2041:0",
   "app.containersTranslationStatus.noDataAvailable": "crwdns2043:0crwdne2043:0",
   "app.containersTranslationStatus.pictosTranslationStatus": "crwdns2055:0{pictosValidatedString}crwdne2055:0",

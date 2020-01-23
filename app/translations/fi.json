@@ -337,6 +337,7 @@
   "app.containers.introArasaacPrizes": "ARASAAC is a collaborative project, coordinated and financed by the Government of Aragon, which has received several awards, since its creation in 2007, thanks to the altruistic work of numerous collaborators.",
   "app.containers/collaboratorsView.buildArasaac": "Arasaac is built with the help of many volunteers who prepare educational materials or translate our website and its pictograms into dozens of languages.",
   "app.containers/collaboratorsView.howToCollaborate": "Through our website you can share your materials with other users. In addition you can also help us translate our website and pictograms into your mother tongue.",
+  "app.containers/collaboratorsView.translationStatus": "Translation status",
   "app.containers/collaboratorsView.wantToCollaborate": "Do you want to collaborate?",
   "app.containersTranslationStatus.noDataAvailable": "No data available",
   "app.containersTranslationStatus.pictosTranslationStatus": "Pictograms translation (maybe already translated but not validated): {pictosValidatedString}%",
