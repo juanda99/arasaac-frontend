@@ -38,7 +38,7 @@ class CollaboratorsView extends Component {
         </P>
 
 
-        <H2 primary={true}>Translation Status</H2>
+        <H2 primary={true}><FormattedMessage {...messages.translationStatus} /></H2>
         <LanguageSelector value={locale} onChange={this.handleLanguageChange} />
         <TranslationStatus language={locale} />
 

@@ -14,5 +14,9 @@ export default defineMessages({
     id: `${scope}.howToCollaborate`,
     defaultMessage: 'Through our website you can share your materials with other users. In addition you can also help us translate our website and pictograms into your mother tongue.'
   },
+  translationStatus: {
+    id: `${scope}.translationStatus`,
+    defaultMessage: 'Translation status'
+  },
 
 })
