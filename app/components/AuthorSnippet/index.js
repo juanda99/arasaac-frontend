@@ -81,7 +81,7 @@ class AuthorSnippet extends PureComponent {
     })
   };
 
-  onClick = () => this.setState({ isFlipped: !this.state.isFlipped })
+  handleClick = () => this.setState({ isFlipped: !this.state.isFlipped })
 
   render() {
     const { author } = this.props
@@ -91,10 +91,11 @@ class AuthorSnippet extends PureComponent {
         className='image-element-class'
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
+        onClick={this.handleClick}
       >
         <ReactCardFlip isFlipped={this.state.isFlipped}>
           <div key='front'>
-            <StyledPaper zDepth={this.state.zDepth} onClick={this.handleClick}>
+            <StyledPaper zDepth={this.state.zDepth}>
 
               <div style={{ position: 'relative' }} >
                 <Image
@@ -106,7 +107,7 @@ class AuthorSnippet extends PureComponent {
             </StyledPaper >
           </div>
           <div key='back'>
-            <StyledPaper zDepth={this.state.zDepth} onClick={this.handleClick}>
+            <StyledPaper zDepth={this.state.zDepth}>
               <H3 style={this.styles.cardTitle} primary={true}>{author.name}</H3>
               <P>{<FormattedMessage {...messages[author.desc]} />}</P>
               <P>{<FormattedMessage {...messages.reachme} />}</P>

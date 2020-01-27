@@ -7,11 +7,6 @@ const StyledPaper = styled(Paper)`
   margin-bottom: 30px;
   width: 300px;
   height: 400px;
-  ${media.xs} {
-    width: inherit;
-    height: auto;
-    margin: 10px auto;
-  }
 `
 
 export default muiThemeable()(StyledPaper)
