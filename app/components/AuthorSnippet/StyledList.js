@@ -8,7 +8,6 @@ const StyledList = styled.li`
   ${media.xs} {
     box-sizing: border-box;
     width: 95%;
-    height: auto;
     margin: 20px auto;
   }
 `
