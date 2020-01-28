@@ -13,6 +13,7 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import H3 from 'components/H3'
 import { Map } from 'immutable'
 import filterMessages from 'components/Filters/messages'
+import { change } from 'redux-form';
 import RenderAuthors from './RenderAuthors'
 import RenderDropzoneInput from './RenderDropzoneInput'
 import RenderChip from './RenderChip'
@@ -41,7 +42,7 @@ class MaterialForm extends React.Component {
   }
 
   render() {
-    const { handleSubmit, pristine, submitting, reset, activities, areas, intl } = this.props
+    const { handleSubmit, pristine, submitting, reset, activities, areas, intl, onEmailExists } = this.props
     const { stepIndex } = this.state
     const { formatMessage } = intl
     const listActivities = [...activities.entries()].map(
@@ -61,8 +62,8 @@ class MaterialForm extends React.Component {
                 <H3><FormattedMessage {...messages.authors} /></H3>
               </StepButton>
               <StepContent>
-                <p><FormattedMessage {...messages.authorsData} /></p>
-                <FieldArray name='authors' component={RenderAuthors} />
+                <p><FormattedMessage {...messages.authorsDataDesc} /></p>
+                <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onHurry={(field, value) => this.props.change(field, value)} />
               </StepContent>
             </Step>
             <Step>
@@ -136,7 +137,8 @@ MaterialForm.propTypes = {
   activities: PropTypes.instanceOf(Map),
   areas: PropTypes.instanceOf(Map),
   languages: PropTypes.instanceOf(Map),
-  intl: intlShape.isRequired
+  intl: intlShape.isRequired,
+  onEmailExists: PropTypes.func.isRequired,
 }
 
 export default reduxForm({

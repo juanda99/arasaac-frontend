@@ -71,7 +71,7 @@ const api = {
   CATALOGS_REQUEST: () => callApi(`${PRIVATE_API_ROOT}/catalogs`),
   RESET_USER_PASSWORD: (userData) =>
     callApi(resetPassword.url, resetPassword.options(userData)),
-
+  GET_USER_BY_EMAIL: (email, token) => callApi(`${PRIVATE_API_ROOT}/users/email/${email}`, null, token),
   CHANGE_PASSWORD: (password, token) => callApi(changePassword.url, changePassword.options(password), token),
   TRANSLATIONS_STATUS: (locale) => callApi(`${PRIVATE_API_ROOT}/translations/status/${locale}`)
 

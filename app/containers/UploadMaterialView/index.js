@@ -10,10 +10,19 @@ import { connect } from 'react-redux'
 import View from 'components/View'
 import MaterialForm from 'components/MaterialForm'
 import { Map } from 'immutable'
+import api from 'services' // just the endpoint
+import {
+  makeSelectHasUser
+} from 'containers/App/selectors'
 import userIsAuthenticated from 'utils/auth'
 import { uploadMaterial } from './actions'
 
 class UploadMaterialView extends PureComponent {
+
+  getUserByEmail = async (email) => {
+    const { token } = this.props
+    return api.GET_USER_BY_EMAIL(email, token)
+  }
 
   handleSubmit(values) {
     const formValues = values.toJS()
@@ -39,6 +48,7 @@ class UploadMaterialView extends PureComponent {
           activities={activities}
           areas={areas}
           languages={languages}
+          onEmailExists={this.getUserByEmail}
         />
       </View>
     )
@@ -55,7 +65,8 @@ UploadMaterialView.propTypes = {
 const mapStateToProps = (state) => ({
   activities: state.getIn(['configuration', 'filtersData', 'activity']),
   areas: state.getIn(['configuration', 'filtersData', 'area']),
-  languages: state.getIn(['configuration', 'filtersData', 'language'])
+  languages: state.getIn(['configuration', 'filtersData', 'language']),
+  token: makeSelectHasUser()(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({
