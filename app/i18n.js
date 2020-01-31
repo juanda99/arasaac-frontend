@@ -11,6 +11,8 @@ import es from 'react-intl/locale-data/es'
 import fr from 'react-intl/locale-data/fr'
 import it from 'react-intl/locale-data/it'
 import de from 'react-intl/locale-data/de'
+import pt from 'react-intl/locale-data/pt'
+import he from 'react-intl/locale-data/he'
 import af from 'react-intl/locale-data/af'
 
 import { DEFAULT_LOCALE, appLocales } from './containers/App/constants'
@@ -21,9 +23,11 @@ import frTranslationMessages from './translations/fr.json'
 import itTranslationMessages from './translations/it.json'
 import deTranslationMessages from './translations/de.json'
 import valTranslationMessages from './translations/val.json'
+import ptTranslationMessages from './translations/pt.json'
+import heTranslationMessages from './translations/he.json'
 import afTranslationMessages from './translations/af.json'
 
-addLocaleData([...en, ...es, ...fr, ...it, ...de, ...af])
+addLocaleData([...en, ...es, ...fr, ...it, ...de, ...pt, ...he, ...af])
 
 export const formatTranslationMessages = (locale, messages) => {
   const defaultFormattedMessages =
@@ -47,5 +51,7 @@ export const translationMessages = {
   de: formatTranslationMessages('de', deTranslationMessages),
   nl: formatTranslationMessages('nl', nlTranslationMessages),
   val: formatTranslationMessages('val', valTranslationMessages),
-  af: formatTranslationMessages('af', afTranslationMessages)
+  pt: formatTranslationMessages('pt', ptTranslationMessages),
+  he: formatTranslationMessages('he', heTranslationMessages),
+  af: formatTranslationMessages('af', afTranslationMessages),
 }

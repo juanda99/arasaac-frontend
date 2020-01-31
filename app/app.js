@@ -136,8 +136,10 @@ if (!window.Intl) {
         import('intl/locale-data/jsonp/en.js'),
         import('intl/locale-data/jsonp/es.js'),
         import('intl/locale-data/jsonp/fr.js'),
+        import('intl/locale-data/jsonp/he.js'),
         import('intl/locale-data/jsonp/it.js'),
         import('intl/locale-data/jsonp/de.js'),
+        import('intl/locale-data/jsonp/pt.js'),
         import('intl/locale-data/jsonp/af.js')
       ])
     )
