@@ -14,9 +14,9 @@ export default defineMessages({
     id: 'app.components.MaterialForm.authors',
     defaultMessage: 'Authors'
   },
-  authorsData: {
-    id: 'app.components.MaterialForm.authorsData',
-    defaultMessage: 'Please, enter the name and surname of the authors'
+  authorsDataDesc: {
+    id: 'app.components.MaterialForm.authorsDataDesc',
+    defaultMessage: 'Please enter just the authors email. They must be registered users in ARASAAC. The name is filled in automatically'
   },
   name: {
     id: 'app.components.MaterialForm.name',
@@ -26,13 +26,13 @@ export default defineMessages({
     id: 'app.components.MaterialForm.nameHint',
     defaultMessage: 'Enter the name of the author '
   },
-  surname: {
-    id: 'app.components.MaterialForm.surname',
-    defaultMessage: 'Surname'
+  email: {
+    id: 'app.components.MaterialForm.email',
+    defaultMessage: 'Email'
   },
-  surnameHint: {
-    id: 'app.components.MaterialForm.surnameHint',
-    defaultMessage: 'Enter the  surname of the author'
+  emailHint: {
+    id: 'app.components.MaterialForm.emailHint',
+    defaultMessage: 'Enter the  email of the author'
   },
   areas: {
     id: 'app.components.MaterialForm.areas',

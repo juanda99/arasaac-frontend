@@ -8,9 +8,9 @@ const StyledPaper = styled(Paper)`
   width: 300px;
   height: 400px;
   ${media.xs} {
-    width: inherit;
-    height: auto;
-    margin: 10px auto;
+    box-sizing: border-box;
+    width: 95%;
+    margin: 20px auto;
   }
 `
 

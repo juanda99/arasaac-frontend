@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import View from 'components/View'
 import LanguageSelector from 'components/LanguageSelector'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
+import ReadMargin from 'components/ReadMargin'
 import {
   makeSelectName,
   makeSelectRole,
@@ -27,21 +28,22 @@ class CollaboratorsView extends Component {
     const { locale } = this.state
     return (
       <View left={true} right={true}>
-        <P>
-          <FormattedMessage {...messages.buildArasaac} />
-        </P>
-        <P>
-          <FormattedMessage {...messages.wantToCollaborate} />
-        </P>
-        <P>
-          <FormattedMessage {...messages.howToCollaborate} />
-        </P>
+        <ReadMargin>
+          <P>
+            <FormattedMessage {...messages.buildArasaac} />
+          </P>
+          <P>
+            <FormattedMessage {...messages.wantToCollaborate} />
+          </P>
+          <P>
+            <FormattedMessage {...messages.howToCollaborate} />
+          </P>
 
 
-        <H2 primary={true}>Translation Status</H2>
-        <LanguageSelector value={locale} onChange={this.handleLanguageChange} />
-        <TranslationStatus language={locale} />
-
+          <H2 primary={true}><FormattedMessage {...messages.translationStatus} /></H2>
+          <LanguageSelector value={locale} onChange={this.handleLanguageChange} />
+          <TranslationStatus language={locale} />
+        </ReadMargin>
       </View >
     )
   }

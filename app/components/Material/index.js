@@ -20,6 +20,7 @@ import P from 'components/P'
 import activity from 'data/activity'
 import area from 'data/area'
 import { MATERIALS_URL } from 'services/config'
+import langMessages from 'components/LanguageSelector/messages'
 import messages from './messages'
 
 const styles = {
@@ -124,7 +125,7 @@ class Material extends Component {
             <RadioButton
               key={language}
               value={language}
-              label={<FormattedMessage {...messages[language]} />}
+              label={<FormattedMessage {...langMessages[language]} />}
               style={styles.radioButton}
             />
           )}

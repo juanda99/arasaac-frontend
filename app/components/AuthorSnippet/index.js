@@ -58,12 +58,12 @@ class AuthorSnippet extends PureComponent {
     },
     smallIcon: {
       width: 72,
-      height: 72
+      height: 72,
     },
     small: {
       width: 144,
       height: 144,
-      padding: 32
+      padding: 32,
     }
   };
 
@@ -81,7 +81,7 @@ class AuthorSnippet extends PureComponent {
     })
   };
 
-  onClick = () => this.setState({ isFlipped: !this.state.isFlipped })
+  handleClick = () => this.setState({ isFlipped: !this.state.isFlipped })
 
   render() {
     const { author } = this.props
@@ -91,10 +91,11 @@ class AuthorSnippet extends PureComponent {
         className='image-element-class'
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
+        onClick={this.handleClick}
       >
         <ReactCardFlip isFlipped={this.state.isFlipped}>
           <div key='front'>
-            <StyledPaper zDepth={this.state.zDepth} onClick={this.handleClick}>
+            <StyledPaper zDepth={this.state.zDepth}>
 
               <div style={{ position: 'relative' }} >
                 <Image
@@ -106,37 +107,37 @@ class AuthorSnippet extends PureComponent {
             </StyledPaper >
           </div>
           <div key='back'>
-            <StyledPaper zDepth={this.state.zDepth} onClick={this.handleClick}>
+            <StyledPaper zDepth={this.state.zDepth}>
               <H3 style={this.styles.cardTitle} primary={true}>{author.name}</H3>
-              <P>{<FormattedMessage {...messages[author.desc]} />}</P>
-              <P>{<FormattedMessage {...messages.reachme} />}</P>
+              <H3 style={{ textAlign: 'center' }}>{<FormattedMessage {...messages[author.desc]} />}</H3>
+              <P style={{ textAlign: 'center' }}>{<FormattedMessage {...messages.reachme} />}</P>
               {author.facebook && (
-                <a href={author.facebook} target='_blank'>
+                <a href={author.facebook} target='_blank' style={{ margin: '75px' }}>
                   <IconButton
                     iconStyle={this.styles.smallIcon}
                     style={this.styles.small}
                   >
-                    <Facebook color='red' hoverColor='black' />
+                    <Facebook color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
                   </IconButton>
                 </a>
               )}
               {author.github && (
-                <a href={author.facebook} target='_blank'>
+                <a href={author.facebook} target='_blank' style={{ margin: '75px' }}>
                   <IconButton
                     iconStyle={this.styles.smallIcon}
                     style={this.styles.small}
                   >
-                    <GitHub color='red' hoverColor='black' />
+                    <GitHub color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
                   </IconButton>
                 </a>
               )}
               {author.twitter && (
-                <a href={author.facebook} target='_blank'>
+                <a href={author.facebook} target='_blank' style={{ margin: '75px' }}>
                   <IconButton
                     iconStyle={this.styles.smallIcon}
                     style={this.styles.small}
                   >
-                    <Twitter color='red' hoverColor='black' />
+                    <Twitter color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
                   </IconButton>
                 </a>
               )}
