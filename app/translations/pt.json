@@ -150,7 +150,7 @@
   "app.components.MaterialForm.areas": "Áreas",
   "app.components.MaterialForm.areasHint": "Seleccione áreas relacionadas com o material",
   "app.components.MaterialForm.authors": "Autores",
-  "app.components.MaterialForm.authorsDataDesc": "Please enter just the authors email. They must be registered users in ARASAAC. The name is filled in automatically",
+  "app.components.MaterialForm.authorsDataDesc": "Por favor, escreva apenas o email dos autores. Têm que ser utilizadores registados no ARASAAC. O nome é preenchido automaticamente",
   "app.components.MaterialForm.chooseLanguage": "Select the material language",
   "app.components.MaterialForm.classification": "Classificação",
   "app.components.MaterialForm.description": "Descrição",
