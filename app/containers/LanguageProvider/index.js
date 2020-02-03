@@ -14,7 +14,13 @@ import { IntlProvider } from 'react-intl'
 import { makeSelectLocale } from './selectors'
 
 export class LanguageProvider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
   render() {
+    // if error with a locale in React-intl....
+    // var locale = this.props.locale
+    // if (this.props.locale === 'br') {
+    //   locale = 'pt'
+    // }
     return (
       <IntlProvider locale={this.props.locale} key={this.props.locale} messages={this.props.messages[this.props.locale]}>
         {React.Children.only(this.props.children)}

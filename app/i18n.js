@@ -13,6 +13,12 @@ import it from 'react-intl/locale-data/it'
 import de from 'react-intl/locale-data/de'
 import pt from 'react-intl/locale-data/pt'
 import he from 'react-intl/locale-data/he'
+import ca from 'react-intl/locale-data/ca'
+import gl from 'react-intl/locale-data/gl'
+import ru from 'react-intl/locale-data/ru'
+import ar from 'react-intl/locale-data/ar'
+import eu from 'react-intl/locale-data/eu'
+import zh from 'react-intl/locale-data/zh'
 import af from 'react-intl/locale-data/af'
 
 import { DEFAULT_LOCALE, appLocales } from './containers/App/constants'
@@ -22,12 +28,32 @@ import esTranslationMessages from './translations/es.json'
 import frTranslationMessages from './translations/fr.json'
 import itTranslationMessages from './translations/it.json'
 import deTranslationMessages from './translations/de.json'
-import valTranslationMessages from './translations/val.json'
 import ptTranslationMessages from './translations/pt.json'
 import heTranslationMessages from './translations/he.json'
+import caTranslationMessages from './translations/ca.json'
+import glTranslationMessages from './translations/gl.json'
+import ruTranslationMessages from './translations/ru.json'
+import arTranslationMessages from './translations/ar.json'
+import euTranslationMessages from './translations/eu.json'
+import zhTranslationMessages from './translations/zh.json'
 import afTranslationMessages from './translations/af.json'
 
-addLocaleData([...en, ...es, ...fr, ...it, ...de, ...pt, ...he, ...af])
+addLocaleData([
+  ...en,
+  ...es,
+  ...fr,
+  ...it,
+  ...de,
+  ...pt,
+  ...he,
+  ...ca,
+  ...gl,
+  ...ru,
+  ...ar,
+  ...eu,
+  ...zh,
+  ...af
+])
 
 export const formatTranslationMessages = (locale, messages) => {
   const defaultFormattedMessages =
@@ -50,8 +76,13 @@ export const translationMessages = {
   it: formatTranslationMessages('it', itTranslationMessages),
   de: formatTranslationMessages('de', deTranslationMessages),
   nl: formatTranslationMessages('nl', nlTranslationMessages),
-  val: formatTranslationMessages('val', valTranslationMessages),
   pt: formatTranslationMessages('pt', ptTranslationMessages),
   he: formatTranslationMessages('he', heTranslationMessages),
+  ca: formatTranslationMessages('ca', caTranslationMessages),
+  gl: formatTranslationMessages('gl', glTranslationMessages),
+  ru: formatTranslationMessages('ru', ruTranslationMessages),
+  ar: formatTranslationMessages('ar', arTranslationMessages),
+  eu: formatTranslationMessages('eu', euTranslationMessages),
+  zh: formatTranslationMessages('zh', zhTranslationMessages),
   af: formatTranslationMessages('af', afTranslationMessages),
 }
