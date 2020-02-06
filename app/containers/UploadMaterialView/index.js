@@ -12,9 +12,14 @@ import MaterialForm from 'components/MaterialForm'
 import { Map } from 'immutable'
 import api from 'services' // just the endpoint
 import {
-  makeSelectHasUser
+  makeSelectHasUser,
+  makeSelectPicture,
+  makeSelectName,
+  makeSelectEmail,
+  makeSelectId
 } from 'containers/App/selectors'
 import userIsAuthenticated from 'utils/auth'
+import { } from 'containers/App/selectors'
 import { uploadMaterial } from './actions'
 
 class UploadMaterialView extends PureComponent {
@@ -34,13 +39,16 @@ class UploadMaterialView extends PureComponent {
     const areas = formValues.areas ?
       formValues.areas.map((area) => (area.value))
       : []
+    const authors = formValues.authors.map(author => author._id)
     formValues.activities = activities
     formValues.areas = areas
+    formValues.authors = authors
     this.props.uploadMaterial(formValues)
   }
 
   render() {
-    const { activities, areas, languages } = this.props
+    const { activities, areas, languages, name, email, picture, _id } = this.props
+    const initialValues = { authors: [{ name, email, picture, _id }] }
     return (
       <View left={true} right={true}>
         <MaterialForm
@@ -49,6 +57,7 @@ class UploadMaterialView extends PureComponent {
           areas={areas}
           languages={languages}
           onEmailExists={this.getUserByEmail}
+          initialValues={initialValues}
         />
       </View>
     )
@@ -67,6 +76,10 @@ const mapStateToProps = (state) => ({
   areas: state.getIn(['configuration', 'filtersData', 'area']),
   languages: state.getIn(['configuration', 'filtersData', 'language']),
   token: makeSelectHasUser()(state),
+  name: makeSelectName()(state),
+  email: makeSelectEmail()(state),
+  picture: makeSelectPicture()(state),
+  _id: makeSelectId()(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({

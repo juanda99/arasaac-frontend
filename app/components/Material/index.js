@@ -74,19 +74,22 @@ class Material extends Component {
     material.get('translations').forEach((translation) =>
       languages.push(translation.get('lang'))
     )
-    const activityTags = material.get('activity').map((id) => (
+    const activityTags = material.get('activity') && material.get('activity').map((id) => (
       <Chip style={styles.chip} key={id}>
         <Avatar icon={<ActivityIcon />} />
         {activity[id]}
       </Chip>
     ))
-    const areaTags = material.get('area').map((id) => (
+    const areaTags = material.get('area') && material.get('area').map((id) => (
       <Chip style={styles.chip} key={id}>
         <Avatar icon={<AreaIcon />} />
         {area[id]}
       </Chip>
     ))
 
+    console.log('***************************')
+    console.log(languages);
+    console.log('***************************')
 
     return (
       <div>

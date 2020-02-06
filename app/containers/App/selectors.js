@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect'
-import { DEFAULT_LIST } from 'utils'
+import { DEFAULT_LIST, DEFAULT_PROFILE_PICTURE } from 'utils'
 
 // makeSelectLocationState expects a plain JS object for the routing state
-const makeSelectLocationState = () => {
+export const makeSelectLocationState = () => {
   let prevRoutingState
   let prevRoutingStateJS
 
@@ -18,102 +18,83 @@ const makeSelectLocationState = () => {
   }
 }
 
-const selectAuth = (state) => state.get('auth')
+export const selectAuth = (state) => state.get('auth')
 
 // we use Token as User
-const makeSelectHasUser = () =>
+export const makeSelectHasUser = () =>
   createSelector(selectAuth, (auth) => auth.get('accessToken'))
 
-const makeSelectLoading = () =>
+export const makeSelectId = () =>
+  createSelector(selectAuth, (auth) => auth.get('_id'))
+
+export const makeSelectLoading = () =>
   createSelector(selectAuth, (auth) => auth.get('loading'))
 
-const makeSelectFavorites = () =>
+export const makeSelectFavorites = () =>
   createSelector(selectAuth, (auth) => auth.get('favorites'))
 
-const makeSelectRootFavorites = () =>
+export const makeSelectRootFavorites = () =>
   createSelector(makeSelectFavorites(), (favorites) =>
     favorites ? favorites.get(DEFAULT_LIST) : []
   )
 
-const makeSelectError = () =>
+export const makeSelectError = () =>
   createSelector(selectAuth, (auth) => auth.get('error'))
 
-const makeSelectRefreshToken = () =>
+export const makeSelectRefreshToken = () =>
   createSelector(selectAuth, (auth) => auth.get('refreshToken'))
 
-const makeSelectRefreshing = () =>
+export const makeSelectRefreshing = () =>
   createSelector(selectAuth, (auth) => auth.get('isRefreshing'))
 
-const makeSelectTokens = () =>
+export const makeSelectTokens = () =>
   createSelector(
     makeSelectHasUser(),
     makeSelectRefreshToken(),
     (accessToken, refreshToken) => ({ accessToken, refreshToken })
   )
 
-const makeSelectName = () => createSelector(
+export const makeSelectName = () => createSelector(
   selectAuth,
   (substate) => substate.get('name') || substate.getIn(['facebook', 'name']) || substate.getIn(['google', 'name'])
 )
 
-const makeSelectPicture = () => createSelector(
+export const makeSelectPicture = () => createSelector(
   selectAuth,
-  (substate) => substate.getIn(['facebook', 'picture']) || substate.getIn(['google', 'picture'])
+  (substate) => substate.getIn(['facebook', 'picture']) || substate.getIn(['google', 'picture']) || DEFAULT_PROFILE_PICTURE
 )
 
-const makeSelectLastLogin = () => createSelector(
+export const makeSelectLastLogin = () => createSelector(
   selectAuth,
   (substate) => substate.get('lastLogin')
 )
 
-const makeSelectEmail = () => createSelector(
+export const makeSelectEmail = () => createSelector(
   selectAuth,
   (substate) => substate.get('email')
 )
 
-const makeSelectRole = () => createSelector(
+export const makeSelectRole = () => createSelector(
   selectAuth,
   (substate) => substate.get('role')
 )
 
-const makeSelectCompany = () => createSelector(
+export const makeSelectCompany = () => createSelector(
   selectAuth,
   (substate) => substate.get('company')
 )
 
-const makeSelectUrl = () => createSelector(
+export const makeSelectUrl = () => createSelector(
   selectAuth,
   (substate) => substate.get('url')
 )
 
-const makeSelectUserLocale = () => createSelector(
+export const makeSelectUserLocale = () => createSelector(
   selectAuth,
   (substate) => substate.get('locale')
 )
 
-const makeSelectTargetLanguages = () => createSelector(
+export const makeSelectTargetLanguages = () => createSelector(
   selectAuth,
   (substate) => substate.get('targetLanguages')
 )
-
-export {
-  makeSelectLocationState,
-  selectAuth,
-  makeSelectHasUser,
-  makeSelectRefreshToken,
-  makeSelectTokens,
-  makeSelectRefreshing,
-  makeSelectLoading,
-  makeSelectError,
-  makeSelectFavorites,
-  makeSelectRootFavorites,
-  makeSelectName,
-  makeSelectUserLocale,
-  makeSelectPicture,
-  makeSelectLastLogin,
-  makeSelectEmail,
-  makeSelectRole,
-  makeSelectTargetLanguages,
-  makeSelectCompany,
-  makeSelectUrl
-}

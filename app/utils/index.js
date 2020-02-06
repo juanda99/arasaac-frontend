@@ -1,3 +1,5 @@
+import { PICTOGRAMS_URL } from 'services/config'
+
 function isArray(obj) {
   return !!obj && obj.constructor === Array
 }
@@ -5,6 +7,8 @@ function isArray(obj) {
 export const isEmptyObject = (object) => Object.entries(object).length === 0
 
 export const DEFAULT_LIST = 'defaultList'
+
+export const DEFAULT_PROFILE_PICTURE = `${PICTOGRAMS_URL}/28307/28307_300.png`
 
 const checkLanguage = (item, language) =>
   language.size === 0 ||

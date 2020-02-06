@@ -10,10 +10,9 @@ import { connect } from 'react-redux'
 import View from 'components/View'
 import LanguageSelector from 'components/LanguageSelector'
 import userIsAuthenticated from 'utils/auth'
-
+import { DEFAULT_PROFILE_PICTURE } from 'utils/index'
 import RaisedButton from 'material-ui/RaisedButton'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
-import { PICTOGRAMS_URL } from 'services/config'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import ReadMargin from 'components/ReadMargin'
 import { FormattedMessage } from 'react-intl'
@@ -95,7 +94,7 @@ class ProfileView extends PureComponent {
 
   render() {
     const { lastLogin, name, picture, company, url, email, role, targetLanguages, userLocale } = this.props
-    const profileImage = picture ? picture : `${PICTOGRAMS_URL}/28307/28307_300.png`
+    const profileImage = picture ? picture : DEFAULT_PROFILE_PICTURE
 
     return (
       <View left={true} right={true} top={2} bottom={2} >

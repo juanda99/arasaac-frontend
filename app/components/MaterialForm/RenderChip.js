@@ -14,7 +14,7 @@ class CustomChipInput extends React.Component {
     // if its already present, we don't add it
     const duplicated = chips.some((item) => (item.text === chip.text))
     // if its already entered, we don't put it again
-    if (verifyChip && !duplicated) {
+    if (verifyChip.length && !duplicated) {
       chips.push(verifyChip[0])
       this.props.input.onChange(chips)
     }

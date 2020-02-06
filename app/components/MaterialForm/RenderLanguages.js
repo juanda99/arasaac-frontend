@@ -9,7 +9,8 @@ import PersonAdd from 'material-ui/svg-icons/action/note-add'
 import Delete from 'material-ui/svg-icons/action/delete'
 import MenuItem from 'material-ui/MenuItem'
 import { Map } from 'immutable'
-import languages from 'components/LanguageSelector/messages'
+import { languages } from 'utils/index'
+import languageMessages from 'components/LanguageSelector/messages'
 import RenderDropzoneInput from './RenderDropzoneInput'
 import messages from './messages'
 
@@ -50,30 +51,14 @@ const RenderLanguages = ({ fields, intl }) => {
               floatingLabelText={<FormattedMessage {...messages.language} />}
               fullWidth
             >
-              <MenuItem
-                value={'es'}
-                primaryText={formatMessage(languages.es)}
-              />
-              <MenuItem
-                value={'fr'}
-                primaryText={formatMessage(languages.fr)}
-              />
-              <MenuItem
-                value={'en'}
-                primaryText={formatMessage(languages.en)}
-              />
-              <MenuItem
-                value={'it'}
-                primaryText={formatMessage(languages.it)}
-              />
-              <MenuItem
-                value={'val'}
-                primaryText={formatMessage(languages.val)}
-              />
-              <MenuItem
-                value={'de'}
-                primaryText={formatMessage(languages.de)}
-              />
+              {languages.map((language) =>
+                <MenuItem
+                  key={language.code}
+                  value={language.code}
+                  primaryText={formatMessage(languageMessages[language.code])}
+                />
+              )
+              }
             </Field>
             <Field
               name={`${member}.title`}

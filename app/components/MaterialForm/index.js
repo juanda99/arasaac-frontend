@@ -63,7 +63,7 @@ class MaterialForm extends React.Component {
               </StepButton>
               <StepContent>
                 <p><FormattedMessage {...messages.authorsDataDesc} /></p>
-                <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onHurry={(field, value) => this.props.change(field, value)} />
+                <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} />
               </StepContent>
             </Step>
             <Step>

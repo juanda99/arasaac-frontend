@@ -5,6 +5,7 @@ import MUIAutoComplete from 'material-ui/AutoComplete'
 import { AutoComplete, TextField } from 'redux-form-material-ui'
 import { FormattedMessage } from 'react-intl'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
+import { DEFAULT_PROFILE_PICTURE } from 'utils/index'
 import PersonAdd from 'material-ui/svg-icons/social/person-add'
 import Delete from 'material-ui/svg-icons/action/delete'
 import { Map } from 'immutable'
@@ -40,7 +41,7 @@ const emailList = [
   'Pérez', 'Gracia', 'Gómez', 'Sanchez'
 ]
 
-const RenderAuthors = ({ fields, onEmailExists, onHurry }) => {
+const RenderAuthors = ({ fields, onEmailExists, onFieldChange }) => {
   const addAuthorField = () => { fields.push(new Map()) }
   if (fields.length === 0) {
     addAuthorField()
@@ -48,12 +49,26 @@ const RenderAuthors = ({ fields, onEmailExists, onHurry }) => {
 
   const handleEmailChange = async (event, newValue, previousValue, fieldName) => {
     const newFieldName = fieldName.replace("email", "name")
+    const newFieldId = fieldName.replace("email", "_id")
+    const newFieldPicture = fieldName.replace("email", "picture")
     try {
       const response = await onEmailExists(newValue)
-      const { name } = response
-      onHurry(newFieldName, name)
+      const { name, _id, facebook, google } = response
+      // 404 should enter here...
+      if (name) {
+        let picture = DEFAULT_PROFILE_PICTURE
+        if (facebook) picture = facebook.picture
+        else if (google) picture = google.picture
+        onFieldChange(newFieldName, name)
+        onFieldChange(newFieldId, _id)
+        onFieldChange(newFieldPicture, picture)
+      }
+      else throw new Error('USER_NOT_FOUND')
     } catch (e) {
-      onHurry(newFieldName, '')
+      onFieldChange(newFieldPicture, '')
+      onFieldChange(newFieldName, '')
+      onFieldChange(newFieldId, '')
+
     }
   }
 
@@ -63,6 +78,9 @@ const RenderAuthors = ({ fields, onEmailExists, onHurry }) => {
       {
         fields.map((member, index) =>
           <li key={index} style={styles.authorsList}>
+            {console.log(fields.get(index).get('picture'))}
+            {console.log(fields.get(index))}
+            <img src={fields.get(index).get('picture')} style={{ width: '70px', height: '70px', marginRight: '15px', visibility: fields.get(index).get('picture') ? 'visible' : 'hidden' }} />
             <Field
               name={`${member}.email`}
               type='text'
@@ -80,13 +98,27 @@ const RenderAuthors = ({ fields, onEmailExists, onHurry }) => {
               name={`${member}.name`}
               type='text'
               component={TextField}
-              dataSource={nameList}
               disabled={true}
               hintText={<FormattedMessage {...messages.nameHint} />}
               floatingLabelText={<FormattedMessage {...messages.name} />}
-              openOnFocus={true}
               filter={MUIAutoComplete.fuzzyFilter}
               style={styles.field}
+              validate={[required()]}
+            />
+            <Field
+              name={`${member}._id`}
+              type='text'
+              component={TextField}
+              disabled={true}
+              style={{ display: 'none' }}
+              validate={[required()]}
+            />
+            <Field
+              name={`${member}.picture`}
+              type='text'
+              component={TextField}
+              disabled={true}
+              style={{ display: 'none' }}
               validate={[required()]}
             />
 
