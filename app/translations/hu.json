@@ -163,7 +163,7 @@
   "app.components.MaterialForm.filesHint": "Please use descriptive file names to facilitate downloading",
   "app.components.MaterialForm.filesUpload": "Files upload",
   "app.components.MaterialForm.header": "Ez egy a MaterialForm összetevőt!",
-  "app.components.MaterialForm.langFilesInfo": "Upload materials if they are exclusive to this language.",
+  "app.components.MaterialForm.langFilesInfo": "Upload material files if they are exclusive to this language.",
   "app.components.MaterialForm.langScreenshotsInfo": "Upload material images if they are exclusive to this language.",
   "app.components.MaterialForm.language": "Language",
   "app.components.MaterialForm.languageFiles": "Upload only files specific for this language",
