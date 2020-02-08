@@ -163,7 +163,7 @@
   "app.components.MaterialForm.filesHint": "Bitte verwenden Sie beschreibenden Dateinamen, um Download zu erleichtern",
   "app.components.MaterialForm.filesUpload": "Dateien hochladen",
   "app.components.MaterialForm.header": "Dies ist die MaterialForm Komponente!",
-  "app.components.MaterialForm.langFilesInfo": "Upload materials if they are exclusive to this language.",
+  "app.components.MaterialForm.langFilesInfo": "Upload material files if they are exclusive to this language.",
   "app.components.MaterialForm.langScreenshotsInfo": "Upload material images if they are exclusive to this language.",
   "app.components.MaterialForm.language": "Sprache",
   "app.components.MaterialForm.languageFiles": "Laden Sie nur Dateien speziell für diese Sprache",
