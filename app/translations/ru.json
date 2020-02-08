@@ -163,7 +163,7 @@
   "app.components.MaterialForm.filesHint": "Пожалуйста, используйте описательные имена для облегчения загрузки",
   "app.components.MaterialForm.filesUpload": "Загрузка файлов",
   "app.components.MaterialForm.header": "Это компонент MaterialForm!",
-  "app.components.MaterialForm.langFilesInfo": "Upload materials if they are exclusive to this language.",
+  "app.components.MaterialForm.langFilesInfo": "Upload material files if they are exclusive to this language.",
   "app.components.MaterialForm.langScreenshotsInfo": "Upload material images if they are exclusive to this language.",
   "app.components.MaterialForm.language": "Язык",
   "app.components.MaterialForm.languageFiles": "Загружать только файлы конкретно для этого языка",
