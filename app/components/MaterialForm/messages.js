@@ -136,7 +136,7 @@ export default defineMessages({
   },
   langFilesInfo: {
     id: 'app.components.MaterialForm.langFilesInfo',
-    defaultMessage: 'Upload materials if they are exclusive to this language.'
+    defaultMessage: 'Upload material files if they are exclusive to this language.'
   },
   langScreenshotsInfo: {
     id: 'app.components.MaterialForm.langScreenshotsInfo',
