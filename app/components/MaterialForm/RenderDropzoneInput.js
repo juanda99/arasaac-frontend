@@ -1,32 +1,31 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Immutable from 'immutable'
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import FilePreview from './FilePreview'
 import CustomDropzone from './CustomDropzone'
+import messages from './messages'
 const styles = {
-  img: {
-    width: '200px',
-    marginRight: '1rem',
-    maxWidth: '400px',
-    flexGrow: 1,
-    opacity: 0.5
-  },
   thumb: {
-    display: 'inline-flex',
-    borderRadius: 2,
-    border: '1px solid #eaeaea',
     marginBottom: 8,
     marginRight: 8,
-    width: 200,
-    height: 200,
     boxSizing: 'border-box',
   },
   thumbsContainer: {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: 16,
+    margin: 16,
   }
+}
+
+const removeDuplicates = (array, key) => {
+  const lookup = {}
+  return array.filter(obj => {
+    const isNewValue = !lookup[obj[key]]
+    lookup[obj[key]] = true
+    return isNewValue
+  })
 }
 
 class RenderDropZoneInput extends Component {
@@ -35,26 +34,41 @@ class RenderDropZoneInput extends Component {
     const files = this.props.input.value || Immutable.List()
     const newFiles = Immutable.List(acceptedFiles)
     const allFiles = files.concat(newFiles)
-    onChange(allFiles)
+    const uniqueFiles = removeDuplicates(allFiles, 'name')
+    onChange(uniqueFiles)
   }
 
+
+
   handleDelete = (fileName) => {
-    console.log(`${fileName} to be deleted!!!!!!!!!!!!!!!!!!!!!!!!!!!`)
+    const files = this.props.input.value
+    const { onChange } = this.props.input
+    const newFiles = files.filter(file => file.name !== fileName)
+    onChange(newFiles)
   }
 
   render() {
     const files = this.props.input.value
+    const { onlyImage, exclusive } = this.props
     return (
       <div>
-        <CustomDropzone name={name} onDrop={this.onDrop} multiple={true}>
-          {console.log(files)}
+        <CustomDropzone name={name} onDrop={this.onDrop} multiple={true} accept={onlyImage ? 'image/*' : false}>
+
           <aside style={styles.thumbsContainer}>
             {files.size ?
               files.map((file) => (
-                <div style={styles.thumb} file={file.name}>
+                <div style={styles.thumb} key={file.name}>
                   <FilePreview file={file} onDelete={this.handleDelete} />
                 </div>
-              )) : ''
+              )) : (
+                <p style={{ margin: '20px', textAlign: 'center' }}>
+                  {exclusive ? (
+                    onlyImage ? <FormattedMessage {...messages.langFilesInfo} /> : <FormattedMessage {...messages.langScreenshotsInfo} />)
+                    : (
+                      onlyImage ? <FormattedMessage {...messages.addMaterialImages} /> : <FormattedMessage {...messages.addFiles} />
+                    )}
+                </p>
+              )
             }
           </aside>
 
@@ -69,7 +83,9 @@ class RenderDropZoneInput extends Component {
 
 RenderDropZoneInput.propTypes = {
   input: PropTypes.object.isRequired,
-  hint: PropTypes.object.isRequired
+  hint: PropTypes.object.isRequired,
+  onlyImage: PropTypes.bool,
+  exclusive: PropTypes.bool,
 }
 
 export default RenderDropZoneInput

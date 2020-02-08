@@ -122,9 +122,25 @@ export default defineMessages({
     id: 'app.components.MaterialForm.screenshotsUpload',
     defaultMessage: 'Screenshots upload'
   },
-  submit: {
-    id: 'app.components.MaterialForm.submit',
-    defaultMessage: 'Submit'
-  }
+  sendMaterial: {
+    id: 'app.components.MaterialForm.sendMaterial',
+    defaultMessage: 'Send material'
+  },
+  addFiles: {
+    id: 'app.components.MaterialForm.addFiles',
+    defaultMessage: 'Add material files'
+  },
+  addMaterialImages: {
+    id: 'app.components.MaterialForm.addMaterialImages',
+    defaultMessage: 'Add material images'
+  },
+  langFilesInfo: {
+    id: 'app.components.MaterialForm.langFilesInfo',
+    defaultMessage: 'Upload materials if they are exclusive to this language.'
+  },
+  langScreenshotsInfo: {
+    id: 'app.components.MaterialForm.langScreenshotsInfo',
+    defaultMessage: 'Upload material images if they are exclusive to this language.'
+  },
 })
 

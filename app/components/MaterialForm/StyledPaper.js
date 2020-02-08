@@ -4,14 +4,19 @@ import media from 'utils/mediaqueries'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 
 const StyledPaper = styled(Paper)`
-  margin-bottom: 30px;
-  width: 100%;
-  height: 100%;
-  opacity: ${(props) => (props.isDragging ? 0.25 : 1)};
+  width: 200px;
+  min-height: 130px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: auto;
   ${media.xs} {
     width: inherit;
     height: auto;
-    margin: 10px auto;
+    // margin: 10px auto;
   }
 `
 

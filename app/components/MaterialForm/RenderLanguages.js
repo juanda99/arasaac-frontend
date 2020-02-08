@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'redux-form/immutable'
+import FlatButton from 'material-ui/FlatButton'
 import Paper from 'material-ui/Paper'
 import { SelectField, TextField } from 'redux-form-material-ui'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
@@ -10,6 +11,7 @@ import Delete from 'material-ui/svg-icons/action/delete'
 import MenuItem from 'material-ui/MenuItem'
 import { Map } from 'immutable'
 import { languages } from 'utils/index'
+import { required } from 'redux-form-validators'
 import languageMessages from 'components/LanguageSelector/messages'
 import RenderDropzoneInput from './RenderDropzoneInput'
 import messages from './messages'
@@ -22,7 +24,8 @@ const styles = {
   },
   listItem: {
     flex: 1,
-    minWidth: '350px',
+    // remove for mobile:
+    // minWidth: '350px',
     maxWidth: '700px',
     padding: '1rem'
   },
@@ -50,6 +53,7 @@ const RenderLanguages = ({ fields, intl }) => {
               hintText={<FormattedMessage {...messages.chooseLanguage} />}
               floatingLabelText={<FormattedMessage {...messages.language} />}
               fullWidth
+              validate={[required()]}
             >
               {languages.map((language) =>
                 <MenuItem
@@ -67,6 +71,7 @@ const RenderLanguages = ({ fields, intl }) => {
               hintText={<FormattedMessage {...messages.titleHint} />}
               floatingLabelText={<FormattedMessage {...messages.title} />}
               fullWidth
+              validate={[required()]}
             />
             <Field
               name={`${member}.desc`}
@@ -77,6 +82,7 @@ const RenderLanguages = ({ fields, intl }) => {
               multiLine={true}
               rows={2}
               fullWidth
+              validate={[required()]}
             />
             <div>
               <Field
@@ -85,12 +91,15 @@ const RenderLanguages = ({ fields, intl }) => {
                 props={{
                   hint: <FormattedMessage {...messages.languageFiles} />
                 }}
+                exclusive={true} // just for message
               />
             </div>
             <div>
               <Field
                 name={`${member}.screenshots`}
                 component={RenderDropzoneInput}
+                onlyImage={true}
+                exclusive={true} // just for message
                 props={{
                   hint: <FormattedMessage {...messages.languageScreenshots} />
                 }}

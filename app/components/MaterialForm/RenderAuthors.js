@@ -34,13 +34,6 @@ const styles = {
   }
 }
 
-const nameList = [
-  'Juan', 'Pedro', 'Marcos'
-]
-const emailList = [
-  'Pérez', 'Gracia', 'Gómez', 'Sanchez'
-]
-
 const RenderAuthors = ({ fields, onEmailExists, onFieldChange }) => {
   const addAuthorField = () => { fields.push(new Map()) }
   if (fields.length === 0) {
@@ -78,18 +71,13 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange }) => {
       {
         fields.map((member, index) =>
           <li key={index} style={styles.authorsList}>
-            {console.log(fields.get(index).get('picture'))}
-            {console.log(fields.get(index))}
             <img src={fields.get(index).get('picture')} style={{ width: '70px', height: '70px', marginRight: '15px', visibility: fields.get(index).get('picture') ? 'visible' : 'hidden' }} />
             <Field
               name={`${member}.email`}
               type='text'
-              component={AutoComplete}
-              dataSource={emailList}
+              component={TextField}
               hintText={<FormattedMessage {...messages.emailHint} />}
               floatingLabelText={<FormattedMessage {...messages.email} />}
-              openOnFocus={true}
-              filter={MUIAutoComplete.fuzzyFilter}
               style={styles.field}
               onChange={handleEmailChange}
               validate={[required(), email()]}

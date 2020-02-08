@@ -11,6 +11,7 @@ import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper'
 import RaisedButton from 'material-ui/RaisedButton'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import H3 from 'components/H3'
+import P from 'components/P'
 import { Map } from 'immutable'
 import filterMessages from 'components/Filters/messages'
 import { change } from 'redux-form';
@@ -22,28 +23,9 @@ import messages from './messages'
 
 class MaterialForm extends React.Component {
 
-  state = {
-    stepIndex: 0,
-    files: []
-  }
-
-  handleNext = () => {
-    const { stepIndex } = this.state
-    if (stepIndex < 2) {
-      this.setState({ stepIndex: stepIndex + 1 })
-    }
-  }
-
-  handlePrev = () => {
-    const { stepIndex } = this.state
-    if (stepIndex > 0) {
-      this.setState({ stepIndex: stepIndex - 1 })
-    }
-  }
 
   render() {
-    const { handleSubmit, pristine, submitting, reset, activities, areas, intl, onEmailExists } = this.props
-    const { stepIndex } = this.state
+    const { handleSubmit, pristine, submitting, reset, activities, areas, intl, onEmailExists, invalid, changeStep, stepIndex } = this.props
     const { formatMessage } = intl
     const listActivities = [...activities.entries()].map(
       (selectItem) => ({ value: parseInt(selectItem[0], 10), text: formatMessage(filterMessages[selectItem[1]]) })
@@ -58,16 +40,16 @@ class MaterialForm extends React.Component {
         <form onSubmit={handleSubmit}>
           <Stepper activeStep={stepIndex} linear={false} orientation='vertical'>
             <Step>
-              <StepButton onClick={() => this.setState({ stepIndex: 0 })}>
+              <StepButton onClick={() => changeStep(0)}>
                 <H3><FormattedMessage {...messages.authors} /></H3>
               </StepButton>
               <StepContent>
-                <p><FormattedMessage {...messages.authorsDataDesc} /></p>
+                <P><FormattedMessage {...messages.authorsDataDesc} /></P>
                 <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} />
               </StepContent>
             </Step>
             <Step>
-              <StepButton onClick={() => this.setState({ stepIndex: 1 })}>
+              <StepButton onClick={() => changeStep(1)}>
                 <H3><FormattedMessage {...messages.classification} /></H3>
               </StepButton>
               <StepContent>
@@ -88,11 +70,11 @@ class MaterialForm extends React.Component {
               </StepContent>
             </Step>
             <Step>
-              <StepButton onClick={() => this.setState({ stepIndex: 2 })}>
+              <StepButton onClick={() => changeStep(2)}>
                 <H3><FormattedMessage {...messages.files} /></H3>
               </StepButton>
               <StepContent>
-                <p><FormattedMessage {...messages.filesHint} /></p>
+                <P><FormattedMessage {...messages.filesHint} /></P>
                 <Field
                   name='files'
                   component={RenderDropzoneInput}
@@ -101,31 +83,33 @@ class MaterialForm extends React.Component {
               </StepContent>
             </Step>
             <Step>
-              <StepButton onClick={() => this.setState({ stepIndex: 3 })}>
+              <StepButton onClick={() => changeStep(3)}>
                 <H3><FormattedMessage {...messages.screenshots} /></H3>
               </StepButton>
               <StepContent>
-                <p><FormattedMessage {...messages.screenshotsDesc} /></p>
+                <P><FormattedMessage {...messages.screenshotsDesc} /></P>
                 <Field
                   name='screenshots'
                   component={RenderDropzoneInput}
+                  onlyImage={true}
                   props={{ hint: <FormattedMessage {...messages.screenshotsUpload} /> }}
                 />
               </StepContent>
             </Step>
             <Step>
-              <StepButton onClick={() => this.setState({ stepIndex: 4 })}>
+              <StepButton onClick={() => changeStep(4)}>
                 <H3><FormattedMessage {...messages.languageTitle} /></H3>
               </StepButton>
               <StepContent>
-                <p><FormattedMessage {...messages.languageHint} /></p>
+                <P><FormattedMessage {...messages.languageHint} /></P>
                 <FieldArray name='languages' component={RenderLanguages} />
+                <RaisedButton style={{ marginTop: '30px' }} type='submit' disabled={pristine || submitting} label={<FormattedMessage {...messages.sendMaterial} />} primary={true} />
               </StepContent>
             </Step>
 
           </Stepper>
-          <RaisedButton type='submit' disabled={pristine || submitting} label='Enviar' primary={true} />
-          <RaisedButton label='Clear values' disabled={pristine || submitting} onClick={reset} />
+
+          {/* <RaisedButton label='Clear values' disabled={pristine || submitting} onClick={reset} /> */}
         </form>
       </div>
     )

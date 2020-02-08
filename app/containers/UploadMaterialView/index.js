@@ -7,6 +7,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import View from 'components/View'
 import MaterialForm from 'components/MaterialForm'
 import { Map } from 'immutable'
@@ -18,11 +19,22 @@ import {
   makeSelectEmail,
   makeSelectId
 } from 'containers/App/selectors'
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 import userIsAuthenticated from 'utils/auth'
-import { } from 'containers/App/selectors'
+import messages from './messages'
 import { uploadMaterial } from './actions'
+import { makeSelectUserLocale } from '../App/selectors'
 
 class UploadMaterialView extends PureComponent {
+
+  state = {
+    stepIndex: 0,
+    showDialog: false,
+    dialogText: ''
+  }
+
+  handleChangeStep = (stepIndex) => this.setState({ stepIndex })
 
   getUserByEmail = async (email) => {
     const { token } = this.props
@@ -30,25 +42,56 @@ class UploadMaterialView extends PureComponent {
   }
 
   handleSubmit(values) {
+    const { uploadMaterial, intl } = this.props
     const formValues = values.toJS()
-
+    const { formatMessage } = intl
+    const { activities, areas, authors, files, languages } = formValues
     // change activities, areas from [{key1, value1}, {key2, value2}].. to [key1, key2...]
-    const activities = formValues.activities ?
-      formValues.activities.map((activity) => (activity.value))
+    const Activities = activities ?
+      activities.map((activity) => (activity.value))
       : []
-    const areas = formValues.areas ?
-      formValues.areas.map((area) => (area.value))
+    const Areas = areas ?
+      areas.map((area) => (area.value))
       : []
-    const authors = formValues.authors.map(author => author._id)
-    formValues.activities = activities
-    formValues.areas = areas
-    formValues.authors = authors
-    this.props.uploadMaterial(formValues)
+
+    const Authors = authors.filter(author => author._id).map(author => author._id)
+    if (authors.length === 0) {
+      this.setState({ stepIndex: 0, showDialog: true, dialogText: formatMessage(messages.needAuthor) })
+      return
+    }
+    if (!files) {
+      //check if any of the languages does not have files
+      const langNeedFiles = languages.some((language => !language.files))
+      // check if any language has files
+      const langHasFiles = languages.some((language => !!language.files))
+      if (langNeedFiles && langHasFiles) {
+        this.setState({ showDialog: true, dialogText: formatMessage(messages.needLanguageFiles) })
+      } else if (langNeedFiles && !langHasFiles) {
+        this.setState({ stepIndex: 2, showDialog: true, dialogText: formatMessage(messages.needFiles) })
+      }
+    }
+    formValues.activities = Activities
+    formValues.areas = Areas
+    formValues.authors = Authors
+    uploadMaterial(formValues)
   }
 
+  handleClose = () => this.setState({ showDialog: false, dialogText: '' })
+
   render() {
-    const { activities, areas, languages, name, email, picture, _id } = this.props
-    const initialValues = { authors: [{ name, email, picture, _id }] }
+    const { activities, areas, languages, name, email, picture, _id, intl, language } = this.props
+    const { showDialog, dialogText } = this.state
+    const { formatMessage } = intl
+    const initialValues = { authors: [{ name, email, picture, _id }], languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }] }
+    const actions = [
+      <FlatButton
+        label={formatMessage(messages.close)}
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.handleClose}
+      />
+    ];
+
     return (
       <View left={true} right={true}>
         <MaterialForm
@@ -58,7 +101,19 @@ class UploadMaterialView extends PureComponent {
           languages={languages}
           onEmailExists={this.getUserByEmail}
           initialValues={initialValues}
+          changeStep={this.handleChangeStep}
+          stepIndex={this.state.stepIndex}
         />
+
+        <Dialog
+          title={formatMessage(messages.needReview)}
+          actions={actions}
+          modal={false}
+          open={showDialog}
+          onRequestClose={this.handleClose}
+        >
+          {dialogText}
+        </Dialog>
       </View>
     )
   }
@@ -79,6 +134,7 @@ const mapStateToProps = (state) => ({
   name: makeSelectName()(state),
   email: makeSelectEmail()(state),
   picture: makeSelectPicture()(state),
+  language: makeSelectUserLocale()(state),
   _id: makeSelectId()(state),
 })
 
@@ -88,4 +144,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(userIsAuthenticated(UploadMaterialView))
+export default connect(mapStateToProps, mapDispatchToProps)(userIsAuthenticated(injectIntl(UploadMaterialView)))
