@@ -21,7 +21,7 @@ import {
 } from 'containers/App/selectors'
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import userIsAuthenticated from 'utils/auth'
+import userIsAuthenticated, { userIsAdmin } from 'utils/auth'
 import messages from './messages'
 import { uploadMaterial } from './actions'
 import { makeSelectUserLocale } from '../App/selectors'
@@ -144,4 +144,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(userIsAuthenticated(injectIntl(UploadMaterialView)))
+export default connect(mapStateToProps, mapDispatchToProps)(userIsAuthenticated(userIsAdmin(injectIntl(UploadMaterialView))))

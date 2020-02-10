@@ -112,5 +112,9 @@ export default defineMessages({
   translate: {
     id: 'header.translate',
     defaultMessage: 'Translate Arasaac'
+  },
+  forbidden: {
+    id: 'header.forbidden',
+    defaultMessage: 'Forbidden access'
   }
 })

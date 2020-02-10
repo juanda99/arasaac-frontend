@@ -207,6 +207,8 @@ class App extends Component {
         break;
       case /translate/.test(url):
         title = <FormattedMessage {...messages.translate} />;
+      case /permissionsError/.test(url):
+        title = <FormattedMessage {...messages.forbidden} />;
         break;
       default:
         docked = false;

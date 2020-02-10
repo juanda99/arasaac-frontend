@@ -503,6 +503,15 @@ export default function createRoutes(store) {
       }
     },
     {
+      path: 'permissionsError',
+      name: 'permissionsError',
+      getComponent(location, cb) {
+        import('containers/PermissionsErrorView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    },
+    {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
