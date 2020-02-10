@@ -16,7 +16,7 @@ export const userIsAdmin = connectedReduxRedirect({
   // The url to redirect user to if they fail
   redirectPath: '/permissionsError',
   // Determine if the user is authenticated or not
-  authenticatedSelector: (state) => state.getIn(['auth', 'accessToken']) === 'admin',
+  authenticatedSelector: (state) => state.getIn(['auth', 'role']) === 'admin',
   // A nice display name for this check
   wrapperDisplayName: 'UserIsAdmin',
   redirectAction: routerActions.replace
