@@ -63,7 +63,7 @@ class RenderDropZoneInput extends Component {
               )) : (
                 <p style={{ margin: '20px', textAlign: 'center' }}>
                   {exclusive ? (
-                    onlyImage ? <FormattedMessage {...messages.langFilesInfo} /> : <FormattedMessage {...messages.langScreenshotsInfo} />)
+                    onlyImage ? <FormattedMessage {...messages.langScreenshotsInfo} /> : <FormattedMessage {...messages.langFilesInfo} />)
                     : (
                       onlyImage ? <FormattedMessage {...messages.addMaterialImages} /> : <FormattedMessage {...messages.addFiles} />
                     )}
