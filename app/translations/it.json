@@ -181,7 +181,7 @@
   "app.components.NotFoundPage.header": "Questo è un componente NotFoundPage!",
   "app.components.Pictogram.ColorPicker.showLessColors": "Mostra meno colori",
   "app.components.Pictogram.ColorPicker.showMoreColors": "Mostra più colori",
-  "app.components.Pictogram.DragAndDrop": "Drap and drop",
+  "app.components.Pictogram.DragAndDrop": "Trascina e rilascia",
   "app.components.Pictogram.TextOptions.chooseSuggestionsLanguage": "Scegli la lingua dei suggerimenti:",
   "app.components.Pictogram.TextOptions.editText": "Modifica il testo",
   "app.components.Pictogram.TextOptions.enterText": "Inserisci testo",
