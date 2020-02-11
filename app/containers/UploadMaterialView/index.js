@@ -11,7 +11,9 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import View from 'components/View'
 import MaterialForm from 'components/MaterialForm'
 import LinearProgress from 'material-ui/LinearProgress'
-import openSocket from 'socket.io-client'
+// import openSocket from 'socket.io-client'
+// see https://github.com/react-boilerplate/react-boilerplate/issues/1413
+import openSocket from 'socket.io-client/dist/socket.io'
 import { Map } from 'immutable'
 import api from 'services' // just the endpoint
 import {

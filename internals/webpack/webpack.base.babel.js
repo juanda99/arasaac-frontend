@@ -100,8 +100,8 @@ module.exports = (options) => ({
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window
   performance: options.performance || {},
-   // yaml-js has a reference to `fs`, this is a workaround
+  // yaml-js has a reference to `fs`, this is a workaround
   node: {
-    fs: 'empty'
+    fs: 'empty',
   }
 })
