@@ -9,7 +9,7 @@ function* uploadMaterialProcess(action) {
     yield put(showLoading())
     const { id } = yield call(api[action.type], action.payload)
     yield put(uploadMaterial.success())
-    yield put(push(`/materials/${id}`))
+    // yield put(push(`/materials/${id}`))
   } catch (error) {
     yield put(uploadMaterial.failure(error.message))
   } finally {

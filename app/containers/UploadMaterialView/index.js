@@ -10,6 +10,8 @@ import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import View from 'components/View'
 import MaterialForm from 'components/MaterialForm'
+import LinearProgress from 'material-ui/LinearProgress'
+import openSocket from 'socket.io-client'
 import { Map } from 'immutable'
 import api from 'services' // just the endpoint
 import {
@@ -19,6 +21,7 @@ import {
   makeSelectEmail,
   makeSelectId
 } from 'containers/App/selectors'
+import H3 from 'components/H3'
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import userIsAuthenticated, { userIsAdmin } from 'utils/auth'
@@ -31,7 +34,9 @@ class UploadMaterialView extends PureComponent {
   state = {
     stepIndex: 0,
     showDialog: false,
-    dialogText: ''
+    dialogText: '',
+    progressStatus: 0,
+    sending: false
   }
 
   handleChangeStep = (stepIndex) => this.setState({ stepIndex })
@@ -42,10 +47,11 @@ class UploadMaterialView extends PureComponent {
   }
 
   handleSubmit(values) {
-    const { uploadMaterial, intl } = this.props
+    const { uploadMaterial, intl, token } = this.props
     const formValues = values.toJS()
     const { formatMessage } = intl
     const { activities, areas, authors, files, languages } = formValues
+    this.setState({ sending: true })
     // change activities, areas from [{key1, value1}, {key2, value2}].. to [key1, key2...]
     const Activities = activities ?
       activities.map((activity) => (activity.value))
@@ -73,14 +79,26 @@ class UploadMaterialView extends PureComponent {
     formValues.activities = Activities
     formValues.areas = Areas
     formValues.authors = Authors
-    uploadMaterial(formValues)
+    uploadMaterial(formValues, token)
+    /* now we will get status by websockets */
+    const socket = openSocket('https://privateapi.arasaac.org')
+
+    const randomSocketEvent = `${Math.random() * 1000}`;
+    socket.on('FILE_UPLOAD_STATUS', progressStatus => {
+      this.setState({ progressStatus: parseFloat(progressStatus) })
+      console.log('loadStatus', progressStatus)
+    }
+    )
+    // get value from 0 to 10000 for socket reference:
+
+
   }
 
   handleClose = () => this.setState({ showDialog: false, dialogText: '' })
 
   render() {
-    const { activities, areas, languages, name, email, picture, _id, intl, language } = this.props
-    const { showDialog, dialogText } = this.state
+    const { activities, areas, languages, name, email, picture, _id, intl, language, loading, error } = this.props
+    const { showDialog, dialogText, sending, progressStatus } = this.state
     const { formatMessage } = intl
     const initialValues = { authors: [{ name, email, picture, _id }], languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }] }
     const actions = [
@@ -94,17 +112,30 @@ class UploadMaterialView extends PureComponent {
 
     return (
       <View left={true} right={true}>
-        <MaterialForm
-          onSubmit={(values) => this.handleSubmit(values)}
-          activities={activities}
-          areas={areas}
-          languages={languages}
-          onEmailExists={this.getUserByEmail}
-          initialValues={initialValues}
-          changeStep={this.handleChangeStep}
-          stepIndex={this.state.stepIndex}
-        />
+        {!sending ? (
+          <MaterialForm
+            onSubmit={(values) => this.handleSubmit(values)}
+            activities={activities}
+            areas={areas}
+            languages={languages}
+            onEmailExists={this.getUserByEmail}
+            initialValues={initialValues}
+            changeStep={this.handleChangeStep}
+            stepIndex={this.state.stepIndex}
+          />
+        ) :
+          (loading ? (
+            <div>
+              <LinearProgress mode="determinate" value={progressStatus} />
+              <H3>Subiendo el material: {progressStatus}%</H3>
+            </div>
+          ) :
+            (
+              error ? <H3> {error}</H3> : <H3>Material subido correctamente</H3>
+            )
 
+          )
+        }
         <Dialog
           title={formatMessage(messages.needReview)}
           actions={actions}
@@ -114,7 +145,7 @@ class UploadMaterialView extends PureComponent {
         >
           {dialogText}
         </Dialog>
-      </View>
+      </View >
     )
   }
 }
@@ -139,8 +170,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  uploadMaterial: (formData) => {
-    dispatch(uploadMaterial.request(formData))
+  uploadMaterial: (formData, token) => {
+    dispatch(uploadMaterial.request(formData, token))
   }
 })
 

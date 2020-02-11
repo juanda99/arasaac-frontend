@@ -40,8 +40,8 @@ const api = {
     }),
   NEW_MATERIALS_REQUEST: () =>
     callApi(`${API_ROOT}/materials/new/30`, { schema: searchMaterialSchema }),
-  UPLOAD_MATERIAL_REQUEST: (formData) =>
-    callApi(uploadMaterial.url, uploadMaterial.options(formData)),
+  UPLOAD_MATERIAL_REQUEST: ({ formData, token }) =>
+    callApi(uploadMaterial.url, uploadMaterial.options(formData, token)),
   MATERIAL_REQUEST: ({ idMaterial }) =>
     callApi(`${API_ROOT}/materials/${idMaterial}`),
   PICTOGRAM_REQUEST: ({ idPictogram, locale }) =>

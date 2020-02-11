@@ -213,7 +213,12 @@ export const customPictogram = {
 
 export const uploadMaterial = {
   url: `${PRIVATE_API_ROOT}/materials`,
-  options: (data) => {
+  options: (data, token) => {
+
+    console.log(data)
+    console.log('**************')
+
+
     const formData = new FormData()
     let translations
     const { files, screenshots, languages, activities, areas, authors } = data
@@ -248,7 +253,8 @@ export const uploadMaterial = {
     return {
       config: {
         method: 'POST',
-        body: formData
+        body: formData,
+        headers: { Authorization: `Bearer ${token}` }
       }
     }
   }
