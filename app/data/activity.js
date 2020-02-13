@@ -10,7 +10,7 @@ const activity = {
   9: 'story',
   10: 'multimedia',
   11: 'domino',
-  12: 'game',
+  12: 'individualGame',
   13: 'collectiveGame',
   14: 'exerciseSheet',
   15: 'jClic',
