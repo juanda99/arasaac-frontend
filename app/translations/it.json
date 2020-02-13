@@ -282,7 +282,7 @@
   "app.containers.ContactView.form.email": "Email",
   "app.containers.ContactView.form.emailHint": "Digita la tua email",
   "app.containers.ContactView.form.fingers": "Quante dita?",
-  "app.containers.ContactView.form.fingersHint": "Digita le dita che vedi nell'immagine qui sotto",
+  "app.containers.ContactView.form.fingersHint": "Inserisci il numero delle dita nell'immagine",
   "app.containers.ContactView.form.invalidEmail": "Email non valida",
   "app.containers.ContactView.form.message": "Messaggio",
   "app.containers.ContactView.form.messageHint": "Scrivi il tuo messaggio",
