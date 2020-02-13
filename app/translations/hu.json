@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "Igazgatóság",
   "app.components.Filters.Activity.book": "Könyv",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "Digitális tábla",
   "app.components.Filters.Activity.domino": "Domino",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",
