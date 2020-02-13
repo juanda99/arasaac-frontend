@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "Deska",
   "app.components.Filters.Activity.book": "Kniha",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "Digitální deska",
   "app.components.Filters.Activity.domino": "Domino",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",
