@@ -332,7 +332,7 @@
   "app.containers.ProfileView.admin": "Administratzailea",
   "app.containers.ProfileView.currentRole": "Current role:",
   "app.containers.ProfileView.errorPassword": "Uppps! Pasahitza aldatzean akats bat gertatu da",
-  "app.containers.ProfileView.greeting": "Kaixo, {izena}!",
+  "app.containers.ProfileView.greeting": "Kaixo, {name}!",
   "app.containers.ProfileView.lastLogin": "Azken saioa:",
   "app.containers.ProfileView.passwordChanged": "Pasahitza aldatu da",
   "app.containers.ProfileView.translator": "Itzultzailea",
