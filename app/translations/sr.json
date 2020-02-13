@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "Одбор",
   "app.components.Filters.Activity.book": "Књига",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "Дигитални одбор",
   "app.components.Filters.Activity.domino": "Домино",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",
