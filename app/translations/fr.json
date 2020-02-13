@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "Conseil d’administration",
   "app.components.Filters.Activity.book": "Livre",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "Carte numérique",
   "app.components.Filters.Activity.domino": "Domino",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",
