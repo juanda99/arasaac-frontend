@@ -27,12 +27,70 @@ class MaterialForm extends React.Component {
   render() {
     const { handleSubmit, pristine, submitting, reset, activities, areas, intl, onEmailExists, invalid, changeStep, stepIndex } = this.props
     const { formatMessage } = intl
+
     const listActivities = [...activities.entries()].map(
-      (selectItem) => ({ value: parseInt(selectItem[0], 10), text: formatMessage(filterMessages[selectItem[1]]) })
+      (selectItem) => {
+        const value = parseInt(selectItem[0], 10)
+        let text = formatMessage(filterMessages[selectItem[1]])
+        switch (value) {
+          case 1:
+          case 15:
+          case 20:
+          case 21:
+          case 27:
+          case 31:
+            text = `${formatMessage(filterMessages['software'])} / ${text}`
+            break;
+          case 4:
+          case 5:
+          case 8:
+          case 17:
+          case 20:
+          case 28:
+            text = `${formatMessage(filterMessages['communication'])} / ${text}`
+            break;
+          case 6:
+          case 11:
+          case 12:
+          case 13:
+          case 16:
+            text = `${formatMessage(filterMessages['game'])} / ${text}`
+            break;
+          default:
+            break;
+        }
+        return { value, text }
+      }
     )
+
     const listAreas = [...areas.entries()].map(
-      (selectItem) => ({ value: parseInt(selectItem[0], 10), text: formatMessage(filterMessages[selectItem[1]]) })
+      (selectItem) => {
+        const value = parseInt(selectItem[0], 10)
+        let text = formatMessage(filterMessages[selectItem[1]])
+        switch (value) {
+          case 1:
+          case 4:
+          case 5:
+          case 6:
+          case 7:
+          case 8:
+          case 9:
+            text = `${formatMessage(filterMessages['language'])} / ${text}`
+            break;
+          case 13:
+          case 14:
+          case 15:
+          case 16:
+            text = `${formatMessage(filterMessages['math'])} / ${text}`
+            break;
+          default:
+            break;
+        }
+        return { value, text }
+      }
     )
+
+
     const sortListActivities = listActivities.sort((a, b) => a.text.localeCompare(b.text))
     const sortListAreas = listAreas.sort((a, b) => a.text.localeCompare(b.text))
     return (

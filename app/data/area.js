@@ -9,7 +9,7 @@ const area = {
   8: 'reading',
   9: 'writing',
   10: 'literature',
-  11: 'languages',
+  11: 'foreignLanguages',
   12: 'math',
   13: 'numeration',
   14: 'basicOperations',

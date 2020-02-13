@@ -15,7 +15,16 @@ class CustomChipInput extends React.Component {
     const duplicated = chips.some((item) => (item.text === chip.text))
     // if its already entered, we don't put it again
     if (verifyChip.length && !duplicated) {
-      chips.push(verifyChip[0])
+      if (verifyChip[0].text.includes(' / ')) {
+        const splitChipText = verifyChip[0].text.split(' / ')
+        const parentChip = this.props.dataSource.filter((item) => (item.text === splitChipText[0]))[0]
+        // if not present we add it:
+        const duplicatedParent = chips.some((item) => item.text === parentChip.text)
+        if (!duplicatedParent) chips.push(parentChip)
+        chips.push({ value: verifyChip[0].value, text: splitChipText[1] })
+      } else {
+        chips.push(verifyChip[0])
+      }
       this.props.input.onChange(chips)
     }
   }

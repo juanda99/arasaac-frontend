@@ -146,10 +146,10 @@ export default defineMessages({
     description: 'Menu choose material area',
     defaultMessage: 'Literature'
   },
-  languages: {
-    id: 'app.components.Filters.Area.languages',
+  foreignLanguages: {
+    id: 'app.components.Filters.Area.foreignLanguages',
     description: 'Menu choose material area',
-    defaultMessage: 'Languages'
+    defaultMessage: 'Foreign languages'
   },
   math: {
     id: 'app.components.Filters.Area.math',
@@ -286,35 +286,35 @@ export default defineMessages({
     description: 'Menu choose material activity',
     defaultMessage: 'Game'
   },
-  group: {
-    id: 'app.components.Filters.Activity.group',
+  individualGame: {
+    id: 'app.components.Filters.Activity.individualGame',
     description: 'Menu choose material activity',
-    defaultMessage: 'Group'
+    defaultMessage: 'Individual game'
   },
-  exercise: {
-    id: 'app.components.Filters.Activity.exercise',
+  collectiveGame: {
+    id: 'app.components.Filters.Activity.collectiveGame',
     description: 'Menu choose material activity',
-    defaultMessage: 'Exercise'
+    defaultMessage: 'Collective Game'
+  },
+  exerciseSheet: {
+    id: 'app.components.Filters.Activity.exerciseSheet',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Exercise sheet'
   },
   jClic: {
     id: 'app.components.Filters.Activity.jClic',
     description: 'Menu choose material activity',
     defaultMessage: 'JClic'
   },
-  goose: {
-    id: 'app.components.Filters.Activity.goose',
+  snakeAndLadders: {
+    id: 'app.components.Filters.Activity.snakeAndLadders',
     description: 'Menu choose material activity',
-    defaultMessage: 'Goose'
+    defaultMessage: 'Snake and ladders'
   },
   book: {
     id: 'app.components.Filters.Activity.book',
     description: 'Menu choose material activity',
     defaultMessage: 'Book'
-  },
-  image: {
-    id: 'app.components.Filters.Activity.image',
-    description: 'Menu choose material activity',
-    defaultMessage: 'Image'
   },
   video: {
     id: 'app.components.Filters.Activity.video',
@@ -331,10 +331,10 @@ export default defineMessages({
     description: 'Menu choose material activity',
     defaultMessage: 'Digital Board'
   },
-  slide: {
-    id: 'app.components.Filters.Activity.slide',
+  presentation: {
+    id: 'app.components.Filters.Activity.presentation',
     description: 'Menu choose material activity',
-    defaultMessage: 'Slide'
+    defaultMessage: 'Presentation'
   },
   protocol: {
     id: 'app.components.Filters.Activity.protocol',
@@ -366,15 +366,30 @@ export default defineMessages({
     description: 'Menu choose material activity',
     defaultMessage: 'TICO'
   },
-  test: {
-    id: 'app.components.Filters.Activity.test',
+  assessmentTest: {
+    id: 'app.components.Filters.Activity.assessmentTest',
     description: 'Menu choose material activity',
-    defaultMessage: 'Test'
+    defaultMessage: 'Assessment test'
   },
   socialHistory: {
     id: 'app.components.Filters.Activity.socialHistory',
     description: 'Menu choose material activity',
     defaultMessage: 'Social History'
+  },
+  communication: {
+    id: 'app.components.Filters.Activity.communication',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Communication'
+  },
+  kitchenRecipes: {
+    id: 'app.components.Filters.Activity.kitchenRecipes',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Kitchen recipes'
+  },
+  teacchMaterial: {
+    id: 'app.components.Filters.Activity.teacchMaterial',
+    description: 'Menu choose material activity',
+    defaultMessage: 'TEACCH material'
   },
   chooseLanguage: {
     id: 'app.components.Filters.Language.chooseLanguage',
