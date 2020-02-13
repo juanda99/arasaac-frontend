@@ -327,7 +327,7 @@
   "app.containers.PrizesView": "מצטערים, מידע זה כרגע קיים רק בספרדית",
   "app.containers.ProfileView.PersonalData.accessData": "גישה לנתונים",
   "app.containers.ProfileView.PersonalData.personalData": "נתונים אישיים",
-  "app.containers.ProfileView.admin": "ניהול",
+  "app.containers.ProfileView.admin": "מנהל מערכת",
   "app.containers.ProfileView.currentRole": "תפקיד נוכחי:",
   "app.containers.ProfileView.errorPassword": "אופססס! נמצאה שגיאה בשינוי הסיסמה",
   "app.containers.ProfileView.greeting": "שלום {name}!",
