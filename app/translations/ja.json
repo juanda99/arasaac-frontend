@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "ボード",
   "app.components.Filters.Activity.book": "本",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "デジタル ボード",
   "app.components.Filters.Activity.domino": "ドミノ",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",
