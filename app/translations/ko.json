@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "보드",
   "app.components.Filters.Activity.book": "도 서",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "디지털 보드",
   "app.components.Filters.Activity.domino": "도미노",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",
