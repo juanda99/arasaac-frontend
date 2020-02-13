@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "Дошка",
   "app.components.Filters.Activity.book": "Книга",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "Цифровий дошці",
   "app.components.Filters.Activity.domino": "Доміно",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",
