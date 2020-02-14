@@ -77,19 +77,15 @@ class Material extends Component {
     const activityTags = material.get('activity') && material.get('activity').map((id) => (
       <Chip style={styles.chip} key={id}>
         <Avatar icon={<ActivityIcon />} />
-        {activity[id]}
+        {activities.filter(item => item.code === id)[0].text}
       </Chip>
     ))
     const areaTags = material.get('area') && material.get('area').map((id) => (
       <Chip style={styles.chip} key={id}>
         <Avatar icon={<AreaIcon />} />
-        {area[id]}
+        {areas.filter(item => item.code === id)[0].text}
       </Chip>
     ))
-
-    console.log('***************************')
-    console.log(languages);
-    console.log('***************************')
 
     return (
       <div>
