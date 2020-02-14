@@ -22,23 +22,27 @@ export const getFilteredItems = (items, filters) =>
   items.filter((item) => {
     const [...filterNames] = filters.keys()
     return filterNames.every((filterName) => {
-      if (filterName === 'language') {
-        return checkLanguage(item, filters.get('language'))
+      // filterName can have a name different to material structure... small hack:
+      let fieldName = filterName
+      if (filterName === 'activities') fieldName = 'activity'
+      else if (filterName === 'areas') fieldName = 'area'
+      if (filterName === 'languages') {
+        return checkLanguage(item, filters.get('languages'))
       } else if (
         filters.get(filterName).size === 0 ||
         filters.get(filterName) === ''
       ) {
         return true
       } else if (
-        typeof item[filterName] === 'string' ||
-        typeof item[filterName] === 'number'
+        typeof item[fieldName] === 'string' ||
+        typeof item[fieldName] === 'number'
       ) {
         return (
-          item[filterName] === filters.get(filterName) ||
-          filters.get(filterName).includes(item[filterName])
+          item[fieldName] === filters.get(filterName) ||
+          filters.get(filterName).includes(item[fieldName])
         )
-      } else if (isArray(item[filterName]) && item[filterName].length) {
-        return item[filterName].some((keyItems) =>
+      } else if (isArray(item[fieldName]) && item[fieldName].length) {
+        return item[fieldName].some((keyItems) =>
           filters.get(filterName).includes(keyItems)
         )
       }
@@ -72,87 +76,3 @@ export const keywordSelector = (searchText, keywords) => {
 /* for hair and skin options, get object key for a given value */
 export const getKeyByValue = (object, value) =>
   Object.keys(object).find((key) => object[key] === value)
-
-/* if changed, we should also update pictograms reducer */
-export const languages = [
-  {
-    code: 'es',
-    text: 'Español'
-  },
-  {
-    code: 'en',
-    text: 'English'
-  },
-  {
-    code: 'ar',
-    text: 'عربى'
-  },
-  {
-    code: 'bg',
-    text: 'български'
-  },
-  {
-    code: 'br',
-    text: 'Português do Brasil'
-  },
-  {
-    code: 'ca',
-    text: 'Català'
-  },
-  {
-    code: 'de',
-    text: 'Deutsche'
-  },
-  {
-    code: 'eu',
-    text: 'Euskal'
-  },
-  {
-    code: 'fr',
-    text: 'Français'
-  },
-  {
-    code: 'gl',
-    text: 'Galego'
-  },
-  {
-    code: 'he',
-    text: 'עברי' // hebreo
-  },
-  {
-    code: 'hr',
-    text: 'Hrvatski'
-  },
-  {
-    code: 'it',
-    text: 'Italiano'
-  },
-  {
-    code: 'nl',
-    text: 'Nederlands'
-  },
-  {
-    code: 'pl',
-    text: 'Polskie'
-  },
-  {
-    code: 'pt',
-    text: 'Português'
-  },
-  {
-    code: 'ro',
-    text: 'Română'
-  },
-  {
-    code: 'ru',
-    text: 'Pусский'
-  },
-  {
-    code: 'val',
-    text: 'Valencia'
-  },
-  {
-    code: 'zh',
-    text: '简体中文）'
-  }
-]

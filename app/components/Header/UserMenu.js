@@ -23,10 +23,6 @@ const UserMenu = ({ isTranslating, changeLocale, muiTheme, signout, role }) => (
       anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
     >
       <MenuItem
-        primaryText={<FormattedMessage {...messages.appConfiguration} />}
-        containerElement={<Link to='/configuration' />}
-      />
-      <MenuItem
         primaryText={<FormattedMessage {...messages.userProfile} />}
         containerElement={<Link to='/profile' />}
       />
@@ -48,10 +44,6 @@ const UserMenu = ({ isTranslating, changeLocale, muiTheme, signout, role }) => (
           )
       )
       }
-      {/* <MenuItem
-        primaryText={<FormattedMessage {...messages.uploadMaterial} />}
-        containerElement={<Link to='/uploadmaterial' />}
-      /> */}
       <MenuItem
         primaryText={<FormattedMessage {...messages.signout} />}
         onClick={signout}

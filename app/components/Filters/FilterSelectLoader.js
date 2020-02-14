@@ -1,17 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
-import { Map } from 'immutable'
 import FilterSelect from './FilterSelect'
 import messages from './messages'
 
 export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, type, ...other }) => {
   const { formatMessage } = intl
-  const [...selectItems] = filterData.entries()
-  const items = selectItems.map((selectItem) => {
-    /* select for Language needs no translation */
-    if (type === 'language') return { value: selectItem[0], primaryText: selectItem[1] }
-    return { value: parseInt(selectItem[0], 10) || selectItem[0], primaryText: formatMessage(messages[selectItem[1]]) }
+  // const [...selectItems] = filterData.entries()
+  const items = filterData.map((selectItem) => {
+    if (type === 'languages') return { value: selectItem.code, primaryText: selectItem.text }
+    return { value: parseInt(selectItem.code, 10) || selectItem.code, primaryText: formatMessage(messages[selectItem.text]) }
   })
   const sortItems = items.sort((a, b) => a.primaryText.localeCompare(b.primaryText))
   const filterProps = {
@@ -30,7 +28,7 @@ FilterSelectLoader.propTypes = {
   intl: intlShape.isRequired,
   setFilterItems: PropTypes.func.isRequired,
   values: PropTypes.array,
-  filterData: PropTypes.instanceOf(Map).isRequired,
+  filterData: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired
 }
 

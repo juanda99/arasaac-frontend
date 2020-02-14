@@ -8,7 +8,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-import { languages } from 'utils/index'
+import languages from 'data/languages'
 import { injectIntl, intlShape } from 'react-intl'
 import messages from './messages'
 
@@ -40,14 +40,14 @@ const LanguageSelector = ({
             primaryText={formatMessage(messages[language.code])}
           />
         ) : (
-          <MenuItem
-            key={language.code}
-            value={language.code}
-            primaryText={`${language.text} - ${formatMessage(
-              messages[language.code]
-            )}`}
-          />
-        )
+            <MenuItem
+              key={language.code}
+              value={language.code}
+              primaryText={`${language.text} - ${formatMessage(
+                messages[language.code]
+              )}`}
+            />
+          )
       )}
     </SelectField>
   )

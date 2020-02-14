@@ -16,11 +16,6 @@ export default defineMessages({
     description: 'User menu item',
     defaultMessage: 'Register'
   },
-  appConfiguration: {
-    id: 'userMenu.appConfiguration',
-    description: 'User menu item',
-    defaultMessage: 'Configuration'
-  },
   userProfile: {
     id: 'userMenu.userProfile',
     description: 'User menu item',
@@ -30,11 +25,6 @@ export default defineMessages({
     id: 'userMenu.userMaterial',
     description: 'User menu item',
     defaultMessage: 'My material'
-  },
-  uploadMaterial: {
-    id: 'userMenu.uploadMaterial',
-    description: 'User menu item',
-    defaultMessage: 'Share material'
   },
   translateArasaac: {
     id: 'userMenu.translateArasaac',

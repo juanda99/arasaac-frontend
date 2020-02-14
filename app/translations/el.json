@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "Διοικητικό Συμβούλιο",
   "app.components.Filters.Activity.book": "Το βιβλίο",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "Ψηφιακό πίνακα",
   "app.components.Filters.Activity.domino": "Ντόμινο",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",

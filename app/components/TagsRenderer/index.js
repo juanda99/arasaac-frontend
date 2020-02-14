@@ -11,8 +11,8 @@ import { FormattedMessage } from 'react-intl'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { List } from 'immutable'
 
-import activity from 'data/activity'
-import area from 'data/area'
+import activities from 'data/activities'
+import areas from 'data/areas'
 import messages from 'components/Filters/messages'
 
 
@@ -30,9 +30,9 @@ const styles = {
 class TagsRenderer extends Component {
   getIcon(type) {
     switch (type) {
-      case 'activity':
+      case 'activities':
         return <ActivityIcon />
-      case 'area':
+      case 'areas':
         return <AreaIcon />
       default:
         return null
@@ -41,10 +41,10 @@ class TagsRenderer extends Component {
 
   getArray(type) {
     switch (type) {
-      case 'activity':
-        return activity
-      case 'area':
-        return area
+      case 'activities':
+        return activities
+      case 'areas':
+        return areas
       default:
         return null
     }
@@ -59,7 +59,13 @@ class TagsRenderer extends Component {
     const { tags, type, selected } = this.props
     const customIcon = this.getIcon(type)
     const selectedArray = this.getArray(type)
+    console.log('TAGS', type, tags)
     const rendered = tags.map((tag) => {
+      // console.log(tag, '-------------')
+      // console.log(selectedArray)
+      // console.log(`will execute text with tag ${tag}`)
+      const tagCode = selectedArray.filter(item => item.code === tag)[0].text
+      console.log('okkkkk', tagCode)
       if (selected && selected.includes(tag)) {
         return (
           <Chip
@@ -74,7 +80,8 @@ class TagsRenderer extends Component {
               backgroundColor={lightGreen800}
               icon={customIcon}
             />
-            {<FormattedMessage {...messages[selectedArray[tag]]} />}
+            {console.log(`renderiing with ${tagCode}`)}
+            {<FormattedMessage {...messages[tagCode]} />}
           </Chip>
         )
       }
@@ -85,11 +92,11 @@ class TagsRenderer extends Component {
           onClick={(e) => this.handleClick(tag, 1, e)}
         >
           <Avatar icon={customIcon} />
-          {<FormattedMessage {...messages[selectedArray[tag]]} />}
+          {<FormattedMessage {...messages[tagCode]} />}
         </Chip>
       )
     })
-    return <div style={styles.div}>{rendered}</div>
+    return <div style={styles.div}> {rendered}</div >
   }
 }
 
@@ -97,7 +104,7 @@ TagsRenderer.propTypes = {
   tags: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
   selected: PropTypes.instanceOf(List),
-  onClick: PropTypes.func 
+  onClick: PropTypes.func
 }
 
 export default muiThemeable()(TagsRenderer)

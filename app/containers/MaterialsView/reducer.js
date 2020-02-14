@@ -15,9 +15,9 @@ export const initialState = fromJS({
   search: {},
   searchText: '',
   filters: {
-    activity: List(),
-    area: List(),
-    language: List()
+    activities: List(),
+    areas: List(),
+    languages: List()
   },
   materials: {},
   newMaterials: []
@@ -43,8 +43,8 @@ function materialsViewReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
-        // it's not useful:
-        // .set('searchText', action.payload.searchText)
+    // it's not useful:
+    // .set('searchText', action.payload.searchText)
     case MATERIALS.SUCCESS:
       newMaterial = fromJS(action.payload.data.entities.materials || {})
       return state

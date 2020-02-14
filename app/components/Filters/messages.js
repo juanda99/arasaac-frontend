@@ -86,7 +86,7 @@ export default defineMessages({
     description: 'Menu choose display small size',
     defaultMessage: 'Small'
   },
-  area: {
+  areas: {
     id: 'app.components.Filters.Area',
     description: 'Menu choose material area',
     defaultMessage: 'Area'
@@ -110,6 +110,12 @@ export default defineMessages({
     id: 'app.components.Filters.Area.language',
     description: 'Menu choose material area',
     defaultMessage: 'Language'
+  },
+  // used by FilterSelectLoader as type
+  languages: {
+    id: 'app.components.Filters.Area.languages',
+    description: 'Type language',
+    defaultMessage: 'Languages'
   },
   phonology: {
     id: 'app.components.Filters.Area.phonology',
@@ -216,7 +222,7 @@ export default defineMessages({
     description: 'Menu choose material area',
     defaultMessage: 'Leisure and culture'
   },
-  activity: {
+  activities: {
     id: 'app.components.Filters.Activity.activity',
     description: 'Menu choose material activity',
     defaultMessage: 'Activity'

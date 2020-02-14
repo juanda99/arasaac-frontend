@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "לוח",
   "app.components.Filters.Activity.book": "ספר",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "לוח דיגיטלי",
   "app.components.Filters.Activity.domino": "דומינו",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",

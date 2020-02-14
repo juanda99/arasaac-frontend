@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "董事會",
   "app.components.Filters.Activity.book": "書",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "數位板",
   "app.components.Filters.Activity.domino": "多米諾骨牌",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",

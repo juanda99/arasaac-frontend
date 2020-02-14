@@ -12,7 +12,6 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer'
 import pictogramsViewReducer from 'containers/PictogramsView/reducer'
 import materialsViewReducer from 'containers/MaterialsView/reducer'
 import themeProviderReducer from 'containers/ThemeProvider/reducer'
-import configuration from 'containers/ConfigurationView/reducer'
 import auth from 'containers/App/reducer'
 // import register from 'containers/SignupView/reducer'
 /*
@@ -88,7 +87,6 @@ export default function createReducer(asyncReducers) {
     theme: themeProviderReducer,
     language: languageProviderReducer,
     loadingBar: loadingBarReducer,
-    configuration,
     auth,
     form,
     pictogramsView: pictogramsViewReducer,

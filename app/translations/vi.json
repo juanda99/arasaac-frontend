@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "Hội đồng quản trị",
   "app.components.Filters.Activity.book": "Cuốn sách",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "Bảng kỹ thuật số",
   "app.components.Filters.Activity.domino": "Domino",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",

@@ -30,6 +30,9 @@ import userIsAuthenticated, { userIsAdmin } from 'utils/auth'
 import messages from './messages'
 import { uploadMaterial } from './actions'
 import { makeSelectUserLocale } from '../App/selectors'
+import activities from 'data/activities'
+import areas from 'data/areas'
+import languages from 'data/languages'
 
 class UploadMaterialView extends PureComponent {
 
@@ -99,7 +102,7 @@ class UploadMaterialView extends PureComponent {
   handleClose = () => this.setState({ showDialog: false, dialogText: '' })
 
   render() {
-    const { activities, areas, languages, name, email, picture, _id, intl, language, loading, error } = this.props
+    const { name, email, picture, _id, intl, loading, error, language } = this.props
     const { showDialog, dialogText, sending, progressStatus } = this.state
     const { formatMessage } = intl
     const initialValues = { authors: [{ name, email, picture, _id }], languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }] }
@@ -154,15 +157,9 @@ class UploadMaterialView extends PureComponent {
 
 UploadMaterialView.propTypes = {
   uploadMaterial: PropTypes.func.isRequired,
-  activities: PropTypes.instanceOf(Map),
-  areas: PropTypes.instanceOf(Map),
-  languages: PropTypes.instanceOf(Map)
 }
 
 const mapStateToProps = (state) => ({
-  activities: state.getIn(['configuration', 'filtersData', 'activity']),
-  areas: state.getIn(['configuration', 'filtersData', 'area']),
-  languages: state.getIn(['configuration', 'filtersData', 'language']),
   token: makeSelectHasUser()(state),
   name: makeSelectName()(state),
   email: makeSelectEmail()(state),

@@ -28,10 +28,10 @@ class MaterialForm extends React.Component {
     const { handleSubmit, pristine, submitting, reset, activities, areas, intl, onEmailExists, invalid, changeStep, stepIndex } = this.props
     const { formatMessage } = intl
 
-    const listActivities = [...activities.entries()].map(
+    const listActivities = activities.map(
       (selectItem) => {
-        const value = parseInt(selectItem[0], 10)
-        let text = formatMessage(filterMessages[selectItem[1]])
+        const value = parseInt(selectItem.code, 10)
+        let text = formatMessage(filterMessages[selectItem.text])
         switch (value) {
           case 1:
           case 15:
@@ -63,10 +63,10 @@ class MaterialForm extends React.Component {
       }
     )
 
-    const listAreas = [...areas.entries()].map(
+    const listAreas = areas.map(
       (selectItem) => {
-        const value = parseInt(selectItem[0], 10)
-        let text = formatMessage(filterMessages[selectItem[1]])
+        const value = parseInt(selectItem.code, 10)
+        let text = formatMessage(filterMessages[selectItem.text])
         switch (value) {
           case 1:
           case 4:
@@ -176,9 +176,9 @@ class MaterialForm extends React.Component {
 
 MaterialForm.propTypes = {
   ...propTypes,
-  activities: PropTypes.instanceOf(Map),
-  areas: PropTypes.instanceOf(Map),
-  languages: PropTypes.instanceOf(Map),
+  activities: PropTypes.array.isRequired,
+  areas: PropTypes.array.isRequired,
+  languages: PropTypes.array.isRequired,
   intl: intlShape.isRequired,
   onEmailExists: PropTypes.func.isRequired,
 }

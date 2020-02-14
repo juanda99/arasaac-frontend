@@ -33,7 +33,7 @@ const styles = {
 
 class MaterialSnippet extends PureComponent {
 
-// nextStatus 0 to desactivate the filter, 1 for activating
+  // nextStatus 0 to desactivate the filter, 1 for activating
   handleTouchTap = (filterName, filterItem, nextStatus, e) => {
     e.preventDefault()
     e.stopPropagation()
@@ -61,17 +61,17 @@ class MaterialSnippet extends PureComponent {
     const activityTags = (
       <TagsRenderer
         tags={material.activity}
-        type={'activity'}
-        selected={filtersMap.get('activity')}
+        type={'activities'}
+        selected={filtersMap.get('activities')}
         onClick={this.handleTouchTap}
       />
     )
 
     const areaTags = (
       <TagsRenderer
-        tags={material.area}
-        type={'area'}
-        selected={filtersMap.get('area')}
+        tags={material.area} s
+        type={'areas'}
+        selected={filtersMap.get('areas')}
         onClick={this.handleTouchTap}
       />
     )
@@ -80,7 +80,7 @@ class MaterialSnippet extends PureComponent {
 
     return (
       <Item>
-        { material.favorite ? <Ribbon /> : '' }
+        {material.favorite ? <Ribbon /> : ''}
         <div style={styles.snippet}>
           <ImageSlider images={images} id={material.idMaterial} style={styles.snippetImg} />
           <div style={styles.snippetText}>

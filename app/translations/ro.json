@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "Bord",
   "app.components.Filters.Activity.book": "Cartea",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "Bord Digital",
   "app.components.Filters.Activity.domino": "Domino",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",

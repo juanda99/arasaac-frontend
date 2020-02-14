@@ -11,10 +11,12 @@ import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
 import Toggle from 'material-ui/Toggle'
-import TabsHeader from 'components/TabsHeader'
+import SearchIcon from 'material-ui/svg-icons/action/search'
+import withWidth, { SMALL } from 'material-ui/utils/withWidth'
+import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import Divider from 'material-ui/Divider'
-import SwipeableViews from 'react-swipeable-views'
+import { Tabs, Tab } from 'material-ui/Tabs'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
@@ -32,6 +34,9 @@ import {
 } from './selectors'
 
 import { materials, newMaterials, toggleShowFilter, setFilterItems } from './actions'
+import languages from 'data/languages'
+import activities from 'data/activities'
+import areas from 'data/areas'
 import messages from './messages'
 
 const styles = {
@@ -47,6 +52,9 @@ const styles = {
     width: '100%'
   }
 }
+
+const filtersData = { areas, activities, languages }
+
 
 class MaterialsView extends PureComponent {
 
@@ -100,10 +108,11 @@ class MaterialsView extends PureComponent {
   }
 
   render() {
-    const { showFilter, filters, visibleMaterials, newMaterialsList, locale, loading, filtersData, muiTheme } = this.props
+    const { showFilter, filters, visibleMaterials, newMaterialsList, locale, loading, muiTheme, width } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
     let materialsCounter
+    const hideIconText = width === SMALL
     // depending on which slide we are, we show one or another list */
     let materialsList
     if (slideIndex === 0) materialsList = visibleMaterials
@@ -132,79 +141,87 @@ class MaterialsView extends PureComponent {
     return (
       <div>
         <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
-        <TabsHeader onChange={this.handleChange} value={slideIndex} />
-        <Divider />
-        <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange} >
-          <div>
-            <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
-              <div style={styles.container}>
-                <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
-                <ActionButtons
-                  onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
-                  onLabelsClick={this.showLabels} labelsActive={visibleLabels}
-                  onSettingsClick={this.showSettings} settingsActive={visibleSettings}
-                  style={styles.actionButtons}
-                />
-              </div>
-              {visibleSettings ?
-                <div>
-                  <Toggle
-                    label={<FormattedMessage {...messages.advancedSearch} />}
-                    onToggle={this.props.toggleShowFilter}
-                    defaultToggled={showFilter}
-                    style={{ width: '200px' }}
+        <Tabs onChange={this.handleChange} value={slideIndex}>
+          <Tab
+            label={hideIconText ? '' : <FormattedMessage {...messages.search} />}
+            icon={<SearchIcon />}
+            value={0}
+          >
+            <div>
+              <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+                <div style={styles.container}>
+                  <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
+                  <ActionButtons
+                    onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
+                    onLabelsClick={this.showLabels} labelsActive={visibleLabels}
+                    onSettingsClick={this.showSettings} settingsActive={visibleSettings}
+                    style={styles.actionButtons}
                   />
                 </div>
-                : null
-              }
-              {showFilter ?
-                <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
-                : null
-              }
-            </View>
-            <Divider />
-            <View left={true} right={true} top={1} >
-              {materialsCounter ? <P> <FormattedMessage {...messages.materialsFound} values={{ materialsCounter }} /> </P> : ''}
-              {gallery}
-            </View>
-          </div>
-          <div>
-            <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
-              <div style={styles.container}>
-                <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
-                <ActionButtons
-                  onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
-                  onLabelsClick={this.showLabels} labelsActive={visibleLabels}
-                  onSettingsClick={this.showSettings} settingsActive={visibleSettings}
-                  style={styles.actionButtons}
-                />
-              </div>
-              {visibleSettings ?
-                <div>
-                  <Toggle
-                    label={<FormattedMessage {...messages.advancedSearch} />}
-                    onToggle={this.props.toggleShowFilter}
-                    defaultToggled={showFilter}
-                    style={{ width: '200px' }}
+                {visibleSettings ?
+                  <div>
+                    <Toggle
+                      label={<FormattedMessage {...messages.advancedSearch} />}
+                      onToggle={this.props.toggleShowFilter}
+                      defaultToggled={showFilter}
+                      style={{ width: '200px' }}
+                    />
+                  </div>
+                  : null
+                }
+                {showFilter ?
+                  <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
+                  : null
+                }
+              </View>
+              <Divider />
+              <View left={true} right={true} top={1} >
+                {materialsCounter ? <P> <FormattedMessage {...messages.materialsFound} values={{ materialsCounter }} /> </P> : ''}
+                {gallery}
+              </View>
+            </div>
+          </Tab>
+          <Tab
+            label={hideIconText ? '' : <FormattedMessage {...messages.new} />}
+            icon={<NewReleasesIcon />}
+            value={1}
+          >
+            <div>
+              <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+                <div style={styles.container}>
+                  <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
+                  <ActionButtons
+                    onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
+                    onLabelsClick={this.showLabels} labelsActive={visibleLabels}
+                    onSettingsClick={this.showSettings} settingsActive={visibleSettings}
+                    style={styles.actionButtons}
                   />
                 </div>
-                : null
-              }
-              {showFilter ?
-                <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
-                : null
-              }
-            </View>
-            <Divider />
-            <View left={true} right={true} top={1} >
-              {materialsCounter ? <p> <FormattedMessage {...messages.newMaterialsFound} values={{ materialsCounter }} /> </p> : ''}
-              {gallery}
-            </View>
-          </div>
-          <View left={true} right={true}>
-            También sin implementar
-          </View>
-        </SwipeableViews>
+                {visibleSettings ?
+                  <div>
+                    <Toggle
+                      label={<FormattedMessage {...messages.advancedSearch} />}
+                      onToggle={this.props.toggleShowFilter}
+                      defaultToggled={showFilter}
+                      style={{ width: '200px' }}
+                    />
+                  </div>
+                  : null
+                }
+                {showFilter ?
+                  <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
+                  : null
+                }
+              </View>
+              <Divider />
+              <View left={true} right={true} top={1} >
+                {materialsCounter ? <p> <FormattedMessage {...messages.newMaterialsFound} values={{ materialsCounter }} /> </p> : ''}
+                {gallery}
+              </View>
+            </div>
+          </Tab>
+        </Tabs>
+
       </div>
     )
   }
@@ -227,7 +244,7 @@ MaterialsView.propTypes = {
   router: PropTypes.any.isRequired,
   locale: PropTypes.string.isRequired,
   searchResults: PropTypes.arrayOf(PropTypes.number),
-  filtersData: PropTypes.instanceOf(Map)
+  width: PropTypes.number.isRequired
 }
 
 
@@ -238,7 +255,6 @@ const mapStateToProps = (state, ownProps) => ({
   loading: makeLoadingSelector()(state),
   searchResults: makeSearchResultsSelector()(state, ownProps),
   visibleMaterials: makeVisibleMaterialsSelector()(state, ownProps),
-  filtersData: state.getIn(['configuration', 'filtersData']),
   newMaterialsList: makeNewMaterialsSelector()(state)
 })
 
@@ -257,4 +273,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(muiThemeable()(MaterialsView)))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(muiThemeable()(withWidth()(MaterialsView))))

@@ -15,7 +15,7 @@
 
 /* default locale from browser */
 
-import { languages } from 'utils'
+import languages from 'data/languages'
 const appLocales = languages.map((language) => language.code)
 appLocales.push('af')
 

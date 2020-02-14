@@ -24,6 +24,7 @@
   "app.components.Filters.Activity.board": "Yönetim Kurulu",
   "app.components.Filters.Activity.book": "Kitap",
   "app.components.Filters.Activity.collectiveGame": "Collective Game",
+  "app.components.Filters.Activity.communication": "Communication",
   "app.components.Filters.Activity.digitalBoard": "Dijital Pano",
   "app.components.Filters.Activity.domino": "Domino",
   "app.components.Filters.Activity.exerciseSheet": "Exercise sheet",
