@@ -1,5 +1,5 @@
 {
-  "Login.invalidEmail": "Invalid email",
+  "Login.invalidEmail": "E-mail non reconnu",
   "Login.invalidUrl": "Invalid url",
   "Login.required": "Required",
   "NewPasswordForm.hintNewPassword": "What is your new password?",
