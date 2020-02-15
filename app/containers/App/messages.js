@@ -64,12 +64,12 @@ export default defineMessages({
   signinTitle: {
     id: 'header.signinTitle',
     description: 'Header Title',
-    defaultMessage: 'Sign in to Arasaac'
+    defaultMessage: 'Sign in to ARASAAC'
   },
   registerTitle: {
     id: 'header.registerTitle',
     description: 'Header title',
-    defaultMessage: 'Sign up for Arasaac'
+    defaultMessage: 'Sign up for ARASAAC'
   },
   userProfileTitle: {
     id: 'header.userProfileTitle',
@@ -79,7 +79,7 @@ export default defineMessages({
   configurationTitle: {
     id: 'header.configurationTitle',
     description: 'Header title',
-    defaultMessage: 'Arasaac configuration'
+    defaultMessage: 'ARASAAC configuration'
   },
   contactusTitle: {
     id: 'header.contactusTitle',
@@ -89,7 +89,7 @@ export default defineMessages({
   collaborateTitle: {
     id: 'header.collaborateTitle',
     description: 'Header title',
-    defaultMessage: 'Collaborate with Arasaac'
+    defaultMessage: 'Collaborate with ARASAAC'
   },
   settings: {
     id: 'header.settingsTitle',
@@ -98,7 +98,7 @@ export default defineMessages({
   },
   arasaacWorld: {
     id: 'header.arasaacWorld',
-    defaultMessage: 'Arasaac in the world'
+    defaultMessage: 'ARASAAC in the world'
   },
   prizes: {
     id: 'header.prizesTitle',
@@ -111,7 +111,7 @@ export default defineMessages({
   },
   translate: {
     id: 'header.translate',
-    defaultMessage: 'Translate Arasaac'
+    defaultMessage: 'Translate ARASAAC'
   },
   forbidden: {
     id: 'header.forbidden',

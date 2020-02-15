@@ -4,7 +4,7 @@ const scope = 'app.containers/collaboratorsView'
 export default defineMessages({
   buildArasaac: {
     id: `${scope}.buildArasaac`,
-    defaultMessage: 'Arasaac is built with the help of many volunteers who prepare educational materials or translate our website and its pictograms into dozens of languages.'
+    defaultMessage: 'ARASAAC is built with the help of many volunteers who prepare educational materials or translate our website and its pictograms into dozens of languages.'
   },
   wantToCollaborate: {
     id: `${scope}.wantToCollaborate`,

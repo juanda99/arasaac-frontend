@@ -79,11 +79,11 @@ const messages = defineMessages({
   useConditions: {
     id: 'signup.useConditions',
     description: 'Arasaac use conditions',
-    defaultMessage: "Arasaac's use conditions"
+    defaultMessage: "ARASAAC's use conditions"
   },
   privacyPolicy: {
     id: 'signup.privacyPolicy',
-    description: 'Arasaac privacy policy',
+    description: 'ARASAAC privacy policy',
     defaultMessage: 'privacy policy'
   },
   hintName: {

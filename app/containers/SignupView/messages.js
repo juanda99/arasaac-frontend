@@ -32,12 +32,12 @@ export default defineMessages({
   createUser: {
     id: 'signup.createUser',
     description: 'User creation title',
-    defaultMessage: 'New Arasaac user'
+    defaultMessage: 'New ARASAAC user'
   },
   creatingUser: {
     id: 'signup.creatingUser',
     description: 'info message',
-    defaultMessage: 'Creating new Arasaac account...'
+    defaultMessage: 'Creating new ARASAAC account...'
   },
   recoverPassword: {
     id: 'signup.recoverPassword',

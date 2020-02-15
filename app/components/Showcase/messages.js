@@ -19,6 +19,6 @@ export default defineMessages({
   news: {
     id: 'app.components.showcase.news',
     description: 'Arasaac news',
-    defaultMessage: 'Arasaac news'
+    defaultMessage: 'ARASAAC news'
   }
 })

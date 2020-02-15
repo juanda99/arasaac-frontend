@@ -17,11 +17,11 @@ export default defineMessages({
   },
   whatIsArasaac: {
     id: 'app.containers.AboutView.whatIsArasaac',
-    defaultMessage: 'What is Arasaac?'
+    defaultMessage: 'What is ARASAAC?'
   },
   arasaacTeam: {
     id: 'app.containers.AboutView.arasaacTeam',
-    defaultMessage: 'Arasaac team'
+    defaultMessage: 'ARASAAC team'
   },
   whereWeAre: {
     id: 'app.containers.AboutView.whereWeAre',

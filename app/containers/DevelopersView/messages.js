@@ -14,7 +14,7 @@ export default defineMessages({
   introApi: {
     id: 'app.containers.DevelopersView.introApi',
     description: 'Intro to API webview',
-    defaultMessage: 'Arasaac has an extensive API to serve our resources to third-party applications.'
+    defaultMessage: 'ARASAAC has an extensive API to serve our resources to third-party applications.'
   },
   termsOfUseDesc: {
     id: 'app.containers.DevelopersView.termsOfUseDesc',
@@ -24,7 +24,7 @@ export default defineMessages({
   license: {
     id: 'app.containers.DevelopersView.license',
     description: 'Description for API terms of use',
-    defaultMessage: 'Arasaac creative commons license CC BY-NC-SA'
+    defaultMessage: 'ARASAAC creative commons license CC BY-NC-SA'
   },
   howto: {
     id: 'app.containers.DevelopersView.howto',
@@ -34,7 +34,7 @@ export default defineMessages({
   howtoDesc: {
     id: 'app.containers.DevelopersView.howtoDesc',
     description: 'Desc for API usage',
-    defaultMessage: 'In order to use the Arasaac API you need access credentials. We use the Oauth2 authorization protocol that allows us that third-party applications can access both Arasaac and its users data.'
+    defaultMessage: 'In order to use the ARASAAC API you need access credentials. We use the Oauth2 authorization protocol that allows us that third-party applications can access both ARASAAC and its users data.'
   },
   grantTypes: {
     id: 'app.containers.DevelopersView.grantTypes',

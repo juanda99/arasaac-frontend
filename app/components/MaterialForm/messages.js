@@ -16,7 +16,7 @@ export default defineMessages({
   },
   authorsDataDesc: {
     id: 'app.components.MaterialForm.authorsDataDesc',
-    defaultMessage: 'Please enter just the authors email. They must be registered users in ARASAAC. The name is filled in automatically'
+    defaultMessage: 'Please enter just the authors email. They must be registered users in ARASAAC. The name is filled in automatically.'
   },
   name: {
     id: 'app.components.MaterialForm.name',
@@ -104,7 +104,7 @@ export default defineMessages({
   },
   filesHint: {
     id: 'app.components.MaterialForm.filesHint',
-    defaultMessage: 'Please use descriptive file names to facilitate downloading'
+    defaultMessage: 'Please use descriptive file names to facilitate downloading.'
   },
   screenshots: {
     id: 'app.components.MaterialForm.screenshots',
@@ -112,7 +112,7 @@ export default defineMessages({
   },
   screenshotsDesc: {
     id: 'app.components.MaterialForm.screenshotsDesc',
-    defaultMessage: 'Please, upload some images of the material to show to the users without downloading'
+    defaultMessage: 'Please, upload some images of the material to show to the users without downloading.'
   },
   screenshotsHint: {
     id: 'app.components.MaterialForm.screenshotsUpload',
