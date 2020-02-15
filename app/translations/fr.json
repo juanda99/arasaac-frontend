@@ -1,8 +1,8 @@
 {
-  "Login.invalidEmail": "E-mail non reconnu",
-  "Login.invalidUrl": "Invalid url",
-  "Login.required": "Required",
-  "NewPasswordForm.hintNewPassword": "What is your new password?",
+  "Login.invalidEmail": "Adresse mail non reconnu",
+  "Login.invalidUrl": "URL incorrecte",
+  "Login.required": "Obligatoire",
+  "NewPasswordForm.hintNewPassword": "Entrez votre nouveau mot de passe",
   "activate.activateUser": "Activation de l'utilisateur",
   "activate.expiredCode": "Your activation code has expired. We have send you another email to validate your account",
   "activate.invalidCode": "Your activation code is not valid",
