@@ -1,4 +1,5 @@
 // text will be translated, it's just react-intl code
+// translations inside app/componentsFilters/messages
 const activities = [
   { code: 1, text: 'picaa' },
   { code: 2, text: 'animation' },

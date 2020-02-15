@@ -1,4 +1,5 @@
 // text will be translated, it's just react-intl code
+// translations inside app/componentsFilters/messages
 const areas = [
   { code: 1, text: 'visualdiscrimination' },
   { code: 2, text: 'auditorydiscrimination' },
@@ -26,6 +27,8 @@ const areas = [
   { code: 24, text: 'leisure' },
   { code: 25, text: 'signalling' },
   { code: 26, text: 'selfawareness' },
+  { code: 27, text: 'attention' },
+  { code: 28, text: 'priorSkills' },
 ]
 
 

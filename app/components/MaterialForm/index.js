@@ -32,10 +32,10 @@ class MaterialForm extends React.Component {
       (selectItem) => {
         const value = parseInt(selectItem.code, 10)
         let text = formatMessage(filterMessages[selectItem.text])
+        console.log('ok')
         switch (value) {
           case 1:
           case 15:
-          case 20:
           case 21:
           case 27:
           case 31:
@@ -67,14 +67,15 @@ class MaterialForm extends React.Component {
       (selectItem) => {
         const value = parseInt(selectItem.code, 10)
         let text = formatMessage(filterMessages[selectItem.text])
+        console.log('ok')
         switch (value) {
-          case 1:
           case 4:
           case 5:
           case 6:
           case 7:
           case 8:
           case 9:
+          case 10:
             text = `${formatMessage(filterMessages['language'])} / ${text}`
             break;
           case 13:
@@ -82,6 +83,11 @@ class MaterialForm extends React.Component {
           case 15:
           case 16:
             text = `${formatMessage(filterMessages['math'])} / ${text}`
+            break;
+          case 1:
+          case 2:
+          case 27:
+            text = `${formatMessage(filterMessages['priorSkills'])} / ${text}`
             break;
           default:
             break;

@@ -222,6 +222,16 @@ export default defineMessages({
     description: 'Menu choose material area',
     defaultMessage: 'Leisure and culture'
   },
+  attention: {
+    id: 'app.components.Filters.Area.attention',
+    description: 'Menu choose material area',
+    defaultMessage: 'Attention'
+  },
+  priorSkills: {
+    id: 'app.components.Filters.Area.priorSkills',
+    description: 'Menu choose material area',
+    defaultMessage: 'Prior skills'
+  },
   activities: {
     id: 'app.components.Filters.Activity.activity',
     description: 'Menu choose material activity',
