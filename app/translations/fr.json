@@ -252,7 +252,7 @@
   "app.components.UseConditions.owner": "Gouvernement d'Aragon",
   "app.components.UseConditions.property": "{owner} a la propriété des fichiers originaux à partir desquels les pictogrammes publiés sur ce site web sont obtenus.",
   "app.components.Welcome.aragonese": "Aragonais",
-  "app.components.Welcome.header": "{aragones} Centre de Communication Augmentative et Alternative",
+  "app.components.Welcome.header": "Centre {aragones} de Communication Augmentative et Alternative",
   "app.components.dialog.ok": "Valider",
   "app.components.showcase.news": "Actualités ARASAAC",
   "app.components.showcase.saac": "Que sont les SAAC ?",
