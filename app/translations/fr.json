@@ -253,7 +253,7 @@
   "app.components.UseConditions.property": "{owner} a la propriété des fichiers originaux à partir desquels les pictogrammes publiés sur ce site web sont obtenus.",
   "app.components.Welcome.aragonese": "Aragonais",
   "app.components.Welcome.header": "Centre {aragones} de Communication Augmentative et Alternative",
-  "app.components.dialog.ok": "Valider",
+  "app.components.dialog.ok": "D'accord",
   "app.components.showcase.news": "Actualités ARASAAC",
   "app.components.showcase.saac": "Que sont les SAAC ?",
   "app.components.showcase.software": "Logiciel",
