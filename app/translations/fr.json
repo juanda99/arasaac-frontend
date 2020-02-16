@@ -286,7 +286,7 @@
   "app.containers.ContactView.form.send": "Envoyer",
   "app.containers.ContactView.form.wrongFingers": "Nombre incorrect de doigts",
   "app.containers.ContactView.formIntro": "Nous parlons anglais et espagnol. Veuillez nous contacter de préférence par le biais de ce formulaire pour toute question, suggestion ou collaboration. Nous vous répondrons dans les plus brefs délais.",
-  "app.containers.ContactView.sendMessage": "Thank you for your message. We will contact you as soon as possible.",
+  "app.containers.ContactView.sendMessage": "Merci pour votre message. Nous vous contacterons dans les plus brefs délais.",
   "app.containers.ContactView.sendingMessage": "Sending message...",
   "app.containers.DevelopersView.grantTypes": "Types de subvention",
   "app.containers.DevelopersView.grantTypesDesc": "Selon le type de demande et des besoins spécifiques, un type de subvention spécifique ou autre doit être implémentée. N’hésitez pas à nous contacter pour plus d’informations.",
