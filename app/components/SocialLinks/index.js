@@ -28,12 +28,28 @@ export default class SocialLinks extends Component {
           justifyContent: 'center'
         }}
       >
+        <a href='https://www.instagram.com/arasaac/' target='_blank'>
+          <IconButton
+            iconStyle={styles.smallIcon}
+            style={styles.small}
+          >
+            <Instagram color='white' hoverColor='black' />
+          </IconButton>
+        </a>
         <a href='https://www.facebook.com/arasaac/' target='_blank'>
           <IconButton
             iconStyle={styles.smallIcon}
             style={styles.small}
           >
             <Facebook color='white' hoverColor='black' />
+          </IconButton>
+        </a>
+        <a href='https://www.pinterest.es/arasaac/' target='_blank'>
+          <IconButton
+            iconStyle={styles.smallIcon}
+            style={styles.small}
+          >
+            <Pinterest color='white' hoverColor='black' />
           </IconButton>
         </a>
         <a href='https://twitter.com/arasaac/' target='_blank'>
@@ -52,23 +68,6 @@ export default class SocialLinks extends Component {
             <YouTube color='white' hoverColor='black' />
           </IconButton>
         </a>
-        <a href='https://www.instagram.com/arasaac/' target='_blank'>
-          <IconButton
-            iconStyle={styles.smallIcon}
-            style={styles.small}
-          >
-            <Instagram color='white' hoverColor='black' />
-          </IconButton>
-        </a>
-        <a href='https://www.pinterest.es/arasaac/' target='_blank'>
-          <IconButton
-            iconStyle={styles.smallIcon}
-            style={styles.small}
-          >
-            <Pinterest color='white' hoverColor='black' />
-          </IconButton>
-        </a>
-
       </div>
     )
   }
