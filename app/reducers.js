@@ -11,6 +11,7 @@ import { reducer as form } from 'redux-form/immutable'
 import languageProviderReducer from 'containers/LanguageProvider/reducer'
 import pictogramsViewReducer from 'containers/PictogramsView/reducer'
 import materialsViewReducer from 'containers/MaterialsView/reducer'
+import uploadMaterialViewReducer from 'containers/UploadMaterialView/reducer'
 import themeProviderReducer from 'containers/ThemeProvider/reducer'
 import auth from 'containers/App/reducer'
 // import register from 'containers/SignupView/reducer'
@@ -91,6 +92,7 @@ export default function createReducer(asyncReducers) {
     form,
     pictogramsView: pictogramsViewReducer,
     materialsView: materialsViewReducer,
+    uploadMaterialView: uploadMaterialViewReducer,
     ...asyncReducers
   })
 }

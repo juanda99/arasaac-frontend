@@ -215,10 +215,6 @@ export const uploadMaterial = {
   url: `${PRIVATE_API_ROOT}/materials`,
   options: (data, token) => {
 
-    console.log(data)
-    console.log('**************')
-
-
     const formData = new FormData()
     let translations
     const { files, screenshots, languages, activities, areas, authors } = data

@@ -8,7 +8,6 @@ import { fromJS, List } from 'immutable'
 import { UPLOAD_MATERIAL } from './actions'
 
 export const initialState = fromJS({
-  showFilter: false,
   loading: false,
   error: false
 })

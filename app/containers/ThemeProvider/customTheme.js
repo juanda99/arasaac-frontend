@@ -1,7 +1,7 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import { fade } from 'material-ui/utils/colorManipulator'
 import {
-  lightGreen500, lightGreen300, lightGreen700,
+  lightGreen500, lightGreen300, lightGreen900, green900,
   darkBlack, white, fullBlack, fullWhite,
   pinkA100, pinkA200,
   grey100, grey200, grey300, grey500, grey800, grey900,
@@ -14,8 +14,8 @@ themes[THEME_NAMES.LIGHT] = {
   palette: {
     primary1Color: lightGreen500,
     primary2Color: lightGreen300,
-    primary3Color: lightGreen700,
-    accent1Color: '#81388d',
+    primary3Color: lightGreen900, // used by LinearProgress backendColor
+    accent1Color: grey800,
     accent2Color: grey200,
     accent3Color: grey500,
     textColor: darkBlack,
@@ -36,8 +36,8 @@ themes[THEME_NAMES.DARK] = {
   palette: {
     primary1Color: lightGreen500,
     primary2Color: lightGreen300,
-    primary3Color: lightGreen700,
-    accent1Color: pinkA200,
+    primary3Color: lightGreen900,
+    accent1Color: green900,
     accent2Color: grey800,
     accent3Color: pinkA100,
     textColor: fullWhite,
@@ -60,8 +60,8 @@ themes[THEME_NAMES.HIGH_CONTRAST] = {
   palette: {
     primary1Color: lightGreen500,
     primary2Color: lightGreen300,
-    primary3Color: lightGreen700,
-    accent1Color: pinkA200,
+    primary3Color: lightGreen900,
+    accent1Color: green900,
     accent2Color: grey100,
     accent3Color: grey500,
     textColor: fullBlack,
