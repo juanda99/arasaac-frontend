@@ -59,13 +59,8 @@ class TagsRenderer extends Component {
     const { tags, type, selected } = this.props
     const customIcon = this.getIcon(type)
     const selectedArray = this.getArray(type)
-    console.log('TAGS', type, tags)
     const rendered = tags.map((tag) => {
-      // console.log(tag, '-------------')
-      // console.log(selectedArray)
-      // console.log(`will execute text with tag ${tag}`)
       const tagCode = selectedArray.filter(item => item.code === tag)[0].text
-      console.log('okkkkk', tagCode)
       if (selected && selected.includes(tag)) {
         return (
           <Chip
@@ -80,7 +75,6 @@ class TagsRenderer extends Component {
               backgroundColor={lightGreen800}
               icon={customIcon}
             />
-            {console.log(`renderiing with ${tagCode}`)}
             {<FormattedMessage {...messages[tagCode]} />}
           </Chip>
         )

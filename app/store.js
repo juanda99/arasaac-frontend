@@ -76,7 +76,7 @@ export default function configureStore(initialState = {}, history) {
       // begin periodically persisting the store
       persistStore(
         store,
-        { blacklist: ['route', 'loadingBar', 'form', 'register', 'language', 'materialsView', 'pictogramsView', 'uploadMaterialView'] },
+        { blacklist: ['route', 'loadingBar', 'form', 'register', 'language', 'materialsView', 'pictogramsView'] },
         () => resolve(store),
       )
     } catch (e) {

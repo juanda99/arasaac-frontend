@@ -203,49 +203,11 @@ export default function createRoutes(store) {
     },
     {
       path: '/materials/upload',
-      onEnter(nextState, replace, callback) {
-        // onEnter gets called when we visit a route
-        // childRoute changes do not trigger onEnter, which is a desired behavior
-        // Prevent saga reinjection if they are running
-        if (this.loadedSagas) {
-          callback()
-          return
-        }
-
-        // Inject sagas as usual
-        const importModules = System.import(
-          'containers/UploadMaterialView/sagas'
-        )
-
-        importModules.then((sagas) => {
-          this.loadedSagas = injectSagas(sagas.default)
-          callback()
-        })
-
-        importModules.catch(errorLoading)
-      },
-      onLeave() {
-        // onLeave gets called when we leave the route
-        // Cancel the sagas if they are running
-        if (this.loadedSagas) {
-          this.loadedSagas.forEach((saga) => saga.cancel())
-          delete this.loadedSagas
-        }
-      },
+      name: 'uploadMaterialView',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          System.import('containers/UploadMaterialView'),
-          System.import('containers/UploadMaterialView/reducer')
-        ])
-
-        const renderRoute = loadModule(cb)
-
-        importModules.then(([component, reducer]) => {
-          injectReducer('uploadMaterialView', reducer.default)
-          renderRoute(component)
-        })
-
-        importModules.catch(errorLoading)
+        import('containers/UploadMaterialView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
       }
     },
     {

@@ -11,10 +11,6 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import View from 'components/View'
 import MaterialForm from 'components/MaterialForm'
 import LinearProgress from 'material-ui/LinearProgress'
-// import openSocket from 'socket.io-client'
-// see https://github.com/react-boilerplate/react-boilerplate/issues/1413
-import openSocket from 'socket.io-client/dist/socket.io'
-import { Map } from 'immutable'
 import api from 'services' // just the endpoint
 import axios from 'axios'
 import {
@@ -30,7 +26,6 @@ import FlatButton from 'material-ui/FlatButton';
 import { PRIVATE_API_ROOT } from 'services/config'
 import userIsAuthenticated, { userIsAdmin } from 'utils/auth'
 import messages from './messages'
-import { uploadMaterial } from './actions'
 import { makeSelectUserLocale } from '../App/selectors'
 // import { makeLoadingSelector, makeErrorSelector } from './selectors'
 import activities from 'data/activities'
@@ -56,7 +51,7 @@ class UploadMaterialView extends PureComponent {
   }
 
   handleSubmit(values) {
-    const { uploadMaterial, intl, token } = this.props
+    const { intl, token } = this.props
     const formValues = values.toJS()
     const { formatMessage } = intl
     // const { activities, areas, authors, files, languages } = formValues
@@ -111,28 +106,42 @@ class UploadMaterialView extends PureComponent {
             formData.append(`${language.language}_screenshotfiles`, langFile)
           )
         }
+        let customLanguage
+        switch (language.language) {
+          case 'da':
+          case 'nl':
+          case 'en':
+          case 'fi':
+          case 'fr':
+          case 'de':
+          case 'hu':
+          case 'it':
+          case 'nb':
+          case 'pt':
+          case 'ro':
+          case 'ru':
+          case 'es':
+          case 'sv':
+          case 'tr':
+            customLanguage = language.language
+            break;
+          default:
+            customLanguage = 'none'
+            break;
+        }
+
         return {
           title: language.title,
           desc: language.desc,
-          language: language.language
+          language: customLanguage,
+          lang: language.language
         }
       })
     }
     formData.append(
       'formData',
-      JSON.stringify({ areas, activities, authors, translations })
+      JSON.stringify({ Areas, Activities, Authors, translations })
     )
-
-
-    // const socket = openSocket('https://privateapi.arasaac.org')
-
-    // // const randomSocketEvent = `${Math.random() * 1000}`;
-    // socket.on('FILE_UPLOAD_STATUS', progressStatus => {
-    //   this.setState({ progressStatus: parseFloat(progressStatus) })
-    //   console.log('loadStatus', progressStatus)
-    // })
-    // uploadMaterial(formValues, token)
-
 
     axios.request({
       method: "POST",
@@ -150,11 +159,8 @@ class UploadMaterialView extends PureComponent {
         loading: false,
         error: ''
       })
-      console.log('Done!')
     }).catch(function (error) {
       //handle error
-      console.log('error!')
-      console.log(response);
       this.setState({ error: error.message })
     });
 
@@ -172,8 +178,6 @@ class UploadMaterialView extends PureComponent {
     const { name, email, picture, _id, intl, language } = this.props
     const { showDialog, dialogText, sending, progressStatus, error, loading } = this.state
     const { formatMessage } = intl
-    console.log('loading', loading)
-    console.log('progressStatus', progressStatus)
     const initialValues = { authors: [{ name, email, picture, _id }], languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }] }
     const actions = [
       <FlatButton
@@ -200,8 +204,8 @@ class UploadMaterialView extends PureComponent {
         ) :
           (loading ? (
             <div>
-              <LinearProgress mode="determinate" value={progressStatus} />
               <H3>Subiendo el material: {progressStatus}%</H3>
+              <LinearProgress mode="determinate" value={progressStatus} style={{ maxWidth: '600px', height: '6px' }} />
             </div>
           ) :
             (
@@ -234,15 +238,7 @@ const mapStateToProps = (state) => ({
   email: makeSelectEmail()(state),
   picture: makeSelectPicture()(state),
   language: makeSelectUserLocale()(state),
-  // error: makeErrorSelector()(state),
-  // loading: makeLoadingSelector()(state),
   _id: makeSelectId()(state),
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  uploadMaterial: (formData, token) => {
-    dispatch(uploadMaterial.request(formData, token))
-  }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(userIsAuthenticated(userIsAdmin(injectIntl(UploadMaterialView))))
+export default connect(mapStateToProps)(userIsAuthenticated(userIsAdmin(injectIntl(UploadMaterialView))))
