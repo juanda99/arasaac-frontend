@@ -60,7 +60,6 @@ class MaterialsView extends PureComponent {
 
 
   state = {
-    visibleSettings: false,
     visibleLabels: false,
     slideIndex: 0
   }
@@ -95,12 +94,6 @@ class MaterialsView extends PureComponent {
     }
   }
 
-  showSettings = () => {
-    this.setState({
-      visibleSettings: !this.state.visibleSettings
-    })
-  }
-
   showLabels = () => {
     this.setState({
       visibleLabels: !this.state.visibleLabels
@@ -110,7 +103,7 @@ class MaterialsView extends PureComponent {
   render() {
     const { showFilter, filters, visibleMaterials, newMaterialsList, locale, loading, muiTheme, width } = this.props
     const searchText = this.props.params.searchText || ''
-    const { visibleLabels, visibleSettings, slideIndex } = this.state
+    const { visibleLabels, slideIndex } = this.state
     let materialsCounter
     const hideIconText = width === SMALL
     // depending on which slide we are, we show one or another list */
@@ -154,21 +147,9 @@ class MaterialsView extends PureComponent {
                   <ActionButtons
                     onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
                     onLabelsClick={this.showLabels} labelsActive={visibleLabels}
-                    onSettingsClick={this.showSettings} settingsActive={visibleSettings}
                     style={styles.actionButtons}
                   />
                 </div>
-                {visibleSettings ?
-                  <div>
-                    <Toggle
-                      label={<FormattedMessage {...messages.advancedSearch} />}
-                      onToggle={this.props.toggleShowFilter}
-                      defaultToggled={showFilter}
-                      style={{ width: '200px' }}
-                    />
-                  </div>
-                  : null
-                }
                 {showFilter ?
                   <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
                   : null
@@ -193,21 +174,9 @@ class MaterialsView extends PureComponent {
                   <ActionButtons
                     onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
                     onLabelsClick={this.showLabels} labelsActive={visibleLabels}
-                    onSettingsClick={this.showSettings} settingsActive={visibleSettings}
                     style={styles.actionButtons}
                   />
                 </div>
-                {visibleSettings ?
-                  <div>
-                    <Toggle
-                      label={<FormattedMessage {...messages.advancedSearch} />}
-                      onToggle={this.props.toggleShowFilter}
-                      defaultToggled={showFilter}
-                      style={{ width: '200px' }}
-                    />
-                  </div>
-                  : null
-                }
                 {showFilter ?
                   <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
                   : null

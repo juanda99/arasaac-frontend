@@ -27,19 +27,14 @@ class ActionButtons extends PureComponent {
     return (
       <div>
         <IconButton style={styles.icon} onClick={onLabelsClick} tooltip={<FormattedMessage {...messages.showCategories} />}>
-          { labelsActive ?
+          {labelsActive ?
             <ClassIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
-            : <ClassIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} /> }
+            : <ClassIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} />}
         </IconButton>
         <IconButton style={styles.icon} onClick={onFilterClick} tooltip={<FormattedMessage {...messages.showFilters} />}>
-          { filterActive ?
+          {filterActive ?
             <FilterListIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
-            : <FilterListIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} /> }
-        </IconButton>
-        <IconButton style={styles.icon} onClick={onSettingsClick} tooltip={<FormattedMessage {...messages.showSettings} />} >
-          { settingsActive ?
-            <SettingsIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
-            : <SettingsIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} /> }
+            : <FilterListIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} />}
         </IconButton>
       </div>
     )
