@@ -289,7 +289,7 @@
   "app.containers.ContactView.sendMessage": "Спасибо за ваше сообщение, мы свяжемся с вами как можно скорее.",
   "app.containers.ContactView.sendingMessage": "Отправка сообщения...",
   "app.containers.DevelopersView.grantTypes": "Типы грантов",
-  "app.containers.DevelopersView.grantTypesDesc": "В зависимости от типа приложения и конкретных потребностей должен быть реализован конкретных Грант типа или других. Не стесняйтесь связаться с нами для получения дополнительной информации.",
+  "app.containers.DevelopersView.grantTypesDesc": "В зависимости от типа приложения и его потребностей будет предложена форма взаимодействия. Не стесняйтесь связаться с нами для получения дополнительной информации.\n\nDependiendo del tipo de aplicación y sus necesidades específicas, se implementará un tipo determinado de concesión (grant type)",
   "app.containers.DevelopersView.howto": "Использование API",
   "app.containers.DevelopersView.howtoDesc": "Чтобы использовать API ARASAAC необходим доступ к учетным данным. Мы используем протокол авторизации Oauth2, позволяяющий нам использовать сторонние приложения, которые могут получать доступ как к материалам ARASAAC так и к данным его пользователей.",
   "app.containers.DevelopersView.introApi": "Arasaac имеет обширный API для обслуживания наших ресурсов для приложений сторонних разработчиков.",
