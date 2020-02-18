@@ -289,7 +289,7 @@
   "app.containers.ContactView.sendMessage": "Grazie per il tuo messaggio. Ti contatteremo appena possibile.",
   "app.containers.ContactView.sendingMessage": "Invio messaggio in corso...",
   "app.containers.DevelopersView.grantTypes": "Tipi di concessione",
-  "app.containers.DevelopersView.grantTypesDesc": "A seconda del tipo di applicazione e delle esigenze specifiche, deve essere attuato un tipo di sovvenzione specifico o altro. Non esitare a contattarci per ulteriori informazioni.",
+  "app.containers.DevelopersView.grantTypesDesc": "A secondo del tipo di applicazione e delle esigenze specifiche, occorre attivare un certo tipo di accesso piuttosto che un altro. Non esitate a contattarci per ulteriori informazioni.",
   "app.containers.DevelopersView.howto": "Uso dell'API",
   "app.containers.DevelopersView.howtoDesc": "Per utilizzare l'API di Arasaac è necessario avere le credenziali di accesso. Usiamo il protocollo di autorizzazione Oauth2 che permette ad applicazioni di terze parti di accedere ad Arasaac e ai suoi dati degli utenti.",
   "app.containers.DevelopersView.introApi": "Arasaac mette a disposizione un'API estesa per fornire le nostre risorse ad applicazioni di terze parti.",
