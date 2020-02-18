@@ -61,7 +61,7 @@ themes[THEME_NAMES.HIGH_CONTRAST] = {
     primary1Color: lightGreen500,
     primary2Color: lightGreen300,
     primary3Color: lightGreen900,
-    accent1Color: green900,
+    accent1Color: grey800,
     accent2Color: grey100,
     accent3Color: grey500,
     textColor: fullBlack,

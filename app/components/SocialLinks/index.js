@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import muiThemeable from 'material-ui/styles/muiThemeable'
+import PropTypes from 'prop-types'
 import Facebook from 'components/SocialLogin/icons/svg/facebook'
 import IconButton from 'material-ui/IconButton'
 import Instagram from 'components/SocialLogin/icons/svg/instagram'
@@ -18,9 +20,10 @@ const styles = {
   }
 }
 
-export default class SocialLinks extends Component {
+class SocialLinks extends Component {
 
   render() {
+    const { muiTheme } = this.props
     return (
       <div
         style={{
@@ -33,7 +36,7 @@ export default class SocialLinks extends Component {
             iconStyle={styles.smallIcon}
             style={styles.small}
           >
-            <Instagram color='white' hoverColor='black' />
+            <Instagram color='white' hoverColor={muiTheme.palette.primary1Color} />
           </IconButton>
         </a>
         <a href='https://www.facebook.com/arasaac/' target='_blank'>
@@ -41,7 +44,7 @@ export default class SocialLinks extends Component {
             iconStyle={styles.smallIcon}
             style={styles.small}
           >
-            <Facebook color='white' hoverColor='black' />
+            <Facebook color='white' hoverColor={muiTheme.palette.primary1Color} />
           </IconButton>
         </a>
         <a href='https://www.pinterest.es/arasaac/' target='_blank'>
@@ -49,7 +52,7 @@ export default class SocialLinks extends Component {
             iconStyle={styles.smallIcon}
             style={styles.small}
           >
-            <Pinterest color='white' hoverColor='black' />
+            <Pinterest color='white' hoverColor={muiTheme.palette.primary1Color} />
           </IconButton>
         </a>
         <a href='https://twitter.com/arasaac/' target='_blank'>
@@ -57,7 +60,7 @@ export default class SocialLinks extends Component {
             iconStyle={styles.smallIcon}
             style={styles.small}
           >
-            <Twitter color='white' hoverColor='black' />
+            <Twitter color='white' hoverColor={muiTheme.palette.primary1Color} />
           </IconButton>
         </a>
         <a href='https://www.youtube.com/channel/UCwzhptqPzLOxG7JpPJ8vO-Q' target='_blank'>
@@ -65,10 +68,16 @@ export default class SocialLinks extends Component {
             iconStyle={styles.smallIcon}
             style={styles.small}
           >
-            <YouTube color='white' hoverColor='black' />
+            <YouTube color='white' hoverColor={muiTheme.palette.primary1Color} />
           </IconButton>
         </a>
       </div>
     )
   }
 }
+
+SocialLinks.propTypes = {
+  muiTheme: PropTypes.object,
+}
+
+export default muiThemeable()(SocialLinks)
