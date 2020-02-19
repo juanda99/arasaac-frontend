@@ -11,14 +11,14 @@ import { typography } from 'material-ui/styles'
 import media from 'utils/mediaqueries'
 
 const H1 = styled.h1`
-  color: ${darkWhite};
-  background-color: darkGreen;
+  background-color: black;
+  color: white;
+  opacity: 70%;
   font-size: 4em;
   margin-bottom: 0.25em;
   margin-top: 0.25rem;
   font-weight: ${typography.fontWeightLight};
   display: inline-block;
-  opacity: 80%;
   ${media.lg} {
     font-size: 4em;
   }

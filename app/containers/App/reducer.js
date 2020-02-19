@@ -18,7 +18,7 @@ import {
 
 const initialState = fromJS({
   loading: false,
-  error: ''
+  error: '',
 })
 
 const { List } = require('immutable')

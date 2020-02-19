@@ -17,7 +17,7 @@ const H1 = styled.h1`
   margin-top: 0.25rem;
   font-weight: ${typography.fontWeightLight};
   ${media.lg} {
-    font-size: 4em;
+    font-size: 3em;
   }
   
 `

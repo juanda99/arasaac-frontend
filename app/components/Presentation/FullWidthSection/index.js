@@ -12,7 +12,7 @@ const FullWidthSection = styled.div`
   border-style: solid;
   border-width: 0px;
   border-top-width: 2px;
-  border-bottom-width: 2px;
+  // border-bottom-width: 2px;
 `
 // export default muiThemeable()(FullWidthSection)
 export default FullWidthSection

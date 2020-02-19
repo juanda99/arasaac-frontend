@@ -273,7 +273,7 @@
     "react-helmet": "5.0.0",
     "react-immutable-proptypes": "^2.1.0",
     "react-intl": "2.1.5",
-    "react-joyride": "^1.11.1",
+    "react-joyride": "^1.11.4",
     "react-konva": "^1.1.6",
     "react-leaflet": "^1.9.1",
     "react-masonry-component": "^5.0.3",

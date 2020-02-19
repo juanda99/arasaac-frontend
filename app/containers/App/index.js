@@ -24,8 +24,8 @@ import Menu from "components/Menu";
 import muiThemeable from "material-ui/styles/muiThemeable";
 import { FormattedMessage } from "react-intl";
 import Joyride from "react-joyride";
-import Div from "components/Div";
 import "react-joyride/lib/react-joyride.scss";
+import Div from "components/Div";
 import messages from "./messages";
 import Wrapper from "./Wrapper";
 import { connect } from "react-redux";
@@ -58,7 +58,7 @@ class App extends Component {
     joyride: {
       autoStart: false,
       resizeDebounce: false,
-      run: true
+      run: true // show button
     }
   };
 
@@ -308,6 +308,8 @@ class App extends Component {
       type: joyride.type || "continuous",
       scrollOffset: 200
     };
+
+    console.log(joyrideProps)
 
     const styles = this.getStyles();
 
