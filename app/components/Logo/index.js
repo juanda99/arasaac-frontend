@@ -9,7 +9,7 @@ const style = {
   display: 'flex',
   margin: '0 auto',
   padding: 20,
-  backgroundColor: 'white'
+  // backgroundColor: 'white'
 }
 const styleRounded = {
   width: 270,
