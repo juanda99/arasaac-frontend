@@ -10,7 +10,7 @@ const activities = [
   { code: 7, text: 'song' },
   { code: 8, text: 'notebook' },
   { code: 9, text: 'story' },
-  { code: 10, text: 'multimedia' },
+  { code: 10, text: 'audiovisualMaterial' },
   { code: 11, text: 'domino' },
   { code: 12, text: 'individualGame' },
   { code: 13, text: 'collectiveGame' },

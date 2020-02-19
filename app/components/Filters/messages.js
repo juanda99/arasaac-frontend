@@ -287,10 +287,10 @@ export default defineMessages({
     description: 'Menu choose material activity',
     defaultMessage: 'Story'
   },
-  multimedia: {
-    id: 'app.components.Filters.Activity.multimedia',
+  audiovisualMaterial: {
+    id: 'app.components.Filters.Activity.audiovisualMaterial',
     description: 'Menu choose material activity',
-    defaultMessage: 'Multimedia'
+    defaultMessage: 'Audiovisual material'
   },
   domino: {
     id: 'app.components.Filters.Activity.domino',
