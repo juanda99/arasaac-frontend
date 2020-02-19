@@ -5,6 +5,7 @@ const FullWidthSection = styled.div`
   overflow: 'hidden';
   clear:both;
   padding: 0em;
+  background: ${(props) => props.color};
   text-align: center;
   width: 100%;
   border-color: white;
