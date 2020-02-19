@@ -2,12 +2,12 @@ import React from 'react'
 import Welcome from 'components/Welcome'
 import Showcase from 'components/Showcase'
 import Participate from 'components/Participate'
-// import Presentation from 'components/Presentation'
+import LanguageSelection from 'components/LanguageSelection'
 
 const Home = () => (
   <div>
     <Welcome />
-    {/* <Presentation /> */}
+    <LanguageSelection />
     <Showcase />
     <Participate />
   </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Div from 'components/Div'
-import ArasaacLogo from './arasaac-logo.svg'
+import ArasaacLogo from './arasaac-logo-blanco.svg'
 
 
 const style = {
