@@ -78,6 +78,23 @@ function routeReducer(state = routeInitialState, action) {
   }
 }
 
+// Initial tour state
+const tourInitialState = fromJS({
+  run: false
+})
+
+function tourReducer(state = tourInitialState, action) {
+  switch (action.type) {
+    /* istanbul ignore next */
+    case 'START_TOUR':
+      return state.set('run', true)
+    case 'STOP_TOUR':
+      return state.set('run', false)
+    default:
+      return state
+  }
+}
+
 /**
  * Creates the main reducer with the asynchronously loaded ones
  */
@@ -91,6 +108,7 @@ export default function createReducer(asyncReducers) {
     form,
     pictogramsView: pictogramsViewReducer,
     materialsView: materialsViewReducer,
+    tour: tourReducer,
     ...asyncReducers
   })
 }
