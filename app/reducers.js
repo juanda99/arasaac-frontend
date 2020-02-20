@@ -12,6 +12,7 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer'
 import pictogramsViewReducer from 'containers/PictogramsView/reducer'
 import materialsViewReducer from 'containers/MaterialsView/reducer'
 import themeProviderReducer from 'containers/ThemeProvider/reducer'
+import tourReducer from 'containers/HomePage/reducer'
 import auth from 'containers/App/reducer'
 // import register from 'containers/SignupView/reducer'
 /*
@@ -78,22 +79,6 @@ function routeReducer(state = routeInitialState, action) {
   }
 }
 
-// Initial tour state
-const tourInitialState = fromJS({
-  run: false
-})
-
-function tourReducer(state = tourInitialState, action) {
-  switch (action.type) {
-    /* istanbul ignore next */
-    case 'START_TOUR':
-      return state.set('run', true)
-    case 'STOP_TOUR':
-      return state.set('run', false)
-    default:
-      return state
-  }
-}
 
 /**
  * Creates the main reducer with the asynchronously loaded ones

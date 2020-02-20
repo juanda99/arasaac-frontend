@@ -34,7 +34,7 @@ const makeSearchSelector = () => createSelector(
 const makeSearchTextSelector = () => (_, ownProps) => ownProps.params.searchText
 
 /* get materials id's from a material search (specific for locale and search keywords) */
-  /* if undefined, it means it's necessary to make an ajax call */
+/* if undefined, it means it's necessary to make an ajax call */
 
 export const makeSearchResultsSelector = () => createSelector(
   makeSearchSelector(), makeSelectLocale(), makeSearchTextSelector(), (materials, locale, searchText) => (
@@ -60,10 +60,14 @@ const makeEntitiesSelector = () => createSelector(
 
 export const makeVisibleMaterialsSelector = () => createSelector(
   makeSearchResultsSelector(), makeEntitiesSelector(), makeFiltersSelector(), (searchData, entities, filters) => {
+    console.log('entities', entities)
     /* searchData could be undefined */
     if (searchData == null) return []
     const materialList = denormalize(searchData, searchMaterialSchema, entities)
-    return getFilteredItems(materialList, filters)
+    console.log(materialList, 'materialList')
+    const kk = getFilteredItems(materialList, filters)
+    console.log('kk', kk)
+    return kk
   }
 )
 

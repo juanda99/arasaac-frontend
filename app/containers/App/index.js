@@ -23,8 +23,7 @@ import Footer from "components/Footer";
 import Menu from "components/Menu";
 import muiThemeable from "material-ui/styles/muiThemeable";
 import { FormattedMessage } from "react-intl";
-import Joyride from "react-joyride";
-import "react-joyride/lib/react-joyride.scss";
+import Joyride, { STATUS } from 'react-joyride'
 import Div from "components/Div";
 import messages from "./messages";
 import Wrapper from "./Wrapper";
@@ -37,6 +36,8 @@ import {
   startTranslation,
   stopTranslation
 } from "containers/LanguageProvider/actions";
+import { makeSelectRunTour } from 'containers/HomePage/selectors'
+import { stopTour } from 'containers/HomePage/actions'
 import { logout, activation } from "./actions";
 import { makeSelectHasUser, makeSelectRole } from "./selectors";
 
@@ -47,19 +48,8 @@ class App extends Component {
     location: PropTypes.object,
     isAuthenticated: PropTypes.bool,
     changeLocale: PropTypes.func,
-    joyride: PropTypes.shape({
-      autoStart: PropTypes.bool,
-      callback: PropTypes.func,
-      run: PropTypes.bool
-    })
-  };
-
-  static defaultProps = {
-    joyride: {
-      autoStart: false,
-      resizeDebounce: false,
-      run: true // show button
-    }
+    stopTour: PropTypes.func.isRequired,
+    run: PropTypes.bool.isRequired,
   };
 
   static contextTypes = {
@@ -69,34 +59,37 @@ class App extends Component {
   state = {
     menuOpen: false,
     /* react-joyride state */
-    autoStart: false,
-    running: false,
+    autoStart: true,
+    running: true,
     step: 0,
     steps: [
       {
         title: "Open menu",
-        text: "Click the button to navigate through ARASAAC website",
-        textAlign: "center",
-        selector: "#header button",
-        position: "bottom"
+        content: "Click the button to navigate through ARASAAC website",
+        target: "#header button",
+        placement: "bottom",
+        disableBeacon: true
       },
       {
         title: "User menu",
-        text: "User specific actions: profile, registration...",
-        selector: "#header div button",
-        position: "bottom"
+        content: "User specific actions: profile, registration...",
+        target: "#header div button",
+        placement: "bottom",
+        disableBeacon: true
       },
       {
         title: "Pictograms",
-        text: "Search and select pictograms",
-        selector: "#lstpictograms",
-        position: "right"
+        content: "Search and select pictograms",
+        target: "#lstpictograms",
+        placement: "right",
+        disableBeacon: true
       },
       {
         title: "Materials",
-        text: "Search or upload&share materials",
-        selector: "#lstmaterials",
-        position: "right"
+        content: "Search or upload and share materials",
+        target: "#lstmaterials",
+        placement: "right",
+        disableBeacon: true
       }
     ]
   };
@@ -242,29 +235,47 @@ class App extends Component {
     }
   };
 
-  handleJoyrideCallback = result => {
-    const { joyride } = this.props;
+  // handleJoyrideCallback = result => {
+  //   const { joyride } = this.props;
 
-    if (result.type === "step:before") {
-      // Keep internal state in sync with joyride
-      this.setState({ step: result.index });
-      if (result.index === 1) this.setState({ menuOpen: true });
+  //   if (result.type === "step:before") {
+  //     // Keep internal state in sync with joyride
+  //     this.setState({ step: result.index });
+  //     if (result.index === 1) this.setState({ menuOpen: true });
+  //   }
+
+  //   if (result.type === "finished" && this.state.running) {
+  //     // Need to set our running state to false, so we can restart if we click start again.
+  //     this.setState({ running: false });
+  //   }
+
+  //   if (result.type === "error:target_not_found") {
+  //     this.setState({
+  //       step: result.action === "back" ? result.index - 1 : result.index + 1,
+  //       autoStart: result.action !== "close" && result.action !== "esc"
+  //     });
+  //   }
+
+  //   if (typeof joyride.callback === "function") {
+  //     joyride.callback();
+  //   }
+  // };
+
+  handleJoyrideCallback = (data) => {
+    const { status, type } = data;
+    console.log(STATUS)
+    console.log('status', status)
+    console.log('type', type)
+    const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED]
+
+    if (finishedStatuses.includes(status)) {
+      this.props.stopTour()
     }
-
-    if (result.type === "finished" && this.state.running) {
-      // Need to set our running state to false, so we can restart if we click start again.
-      this.setState({ running: false });
+    if (data.index === 0) {
+      this.setState({ menuOpen: false });
     }
-
-    if (result.type === "error:target_not_found") {
-      this.setState({
-        step: result.action === "back" ? result.index - 1 : result.index + 1,
-        autoStart: result.action !== "close" && result.action !== "esc"
-      });
-    }
-
-    if (typeof joyride.callback === "function") {
-      joyride.callback();
+    if (data.index === 1) {
+      this.setState({ menuOpen: true });
     }
   };
 
@@ -276,40 +287,11 @@ class App extends Component {
       width,
       isTranslating,
       logout,
-      role
+      role,
+      run // runTour
     } = this.props;
 
-    // if (location.hash) {
-    //   const authData = location.hash.substring(1)
-    //   const data = JSON.parse(
-    //     '{"' +
-    //       decodeURI(authData)
-    //         .replace(/"/g, '\\"')
-    //         .replace(/&/g, '","')
-    //         .replace(/=/g, '":"') +
-    //       '"}'
-    //   )
-    //   console.log(JSON.stringify(data))
-    // }
-
-    let { menuOpen } = this.state;
-
-    const { joyride } = this.props;
-    const joyrideProps = {
-      autoStart: joyride.autoStart || this.state.autoStart,
-      callback: this.handleJoyrideCallback,
-      // debug: true,
-      disableOverlay: this.state.step === 1,
-      resizeDebounce: joyride.resizeDebounce,
-      run: joyride.run || this.state.running,
-      scrollToFirstStep: joyride.scrollToFirstStep || false,
-      stepIndex: joyride.stepIndex || this.state.step,
-      steps: joyride.steps || this.state.steps,
-      type: joyride.type || "continuous",
-      scrollOffset: 200
-    };
-
-    console.log(joyrideProps)
+    let { menuOpen, steps } = this.state;
 
     const styles = this.getStyles();
 
@@ -321,11 +303,25 @@ class App extends Component {
       menuOpen = true;
       showMenuIconButton = false;
     }
+    { console.log('render again!!!!!!!!') }
     return (
       <div
         style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
       >
-        <Joyride {...joyrideProps} ref={c => (this.joyride = c)} />
+        <Joyride
+          callback={this.handleJoyrideCallback}
+          continuous={true}
+          // getHelpers={this.getHelpers}
+          run={run}
+          scrollToFirstStep={true}
+          showSkipButton={true}
+          steps={steps}
+          styles={{
+            options: {
+              zIndex: 10000,
+            },
+          }}
+        />
         <Header
           showMenuIconButton={showMenuIconButton}
           isAuthenticated={isAuthenticated}
@@ -364,16 +360,17 @@ class App extends Component {
   }
 }
 const mapStateToProps = state => {
-  const auth = state.getIn(["auth", "isActivating"]);
   const locale = state.getIn(["language", "locale"]);
   const isTranslating = locale === "af";
   const isAuthenticated = (makeSelectHasUser()(state) && true) || false;
   const role = makeSelectRole()(state)
+  const run = makeSelectRunTour()(state)
   return {
     isAuthenticated,
     locale,
     isTranslating,
-    role
+    role,
+    run
   };
 };
 
@@ -381,7 +378,8 @@ export default connect(mapStateToProps, {
   changeLocale,
   logout,
   startTranslation,
-  stopTranslation
+  stopTranslation,
+  stopTour
 })(withWidth()(App));
 
 App.childContextTypes = {

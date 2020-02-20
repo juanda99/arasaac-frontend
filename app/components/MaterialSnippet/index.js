@@ -77,7 +77,18 @@ class MaterialSnippet extends PureComponent {
     )
 
     const images = [...material.commonScreenshots || [], ...material.screenshots[locale] || []]
+    let title, desc
+    let chooseTranslation = material.translations.filter(translation => translation.lang === locale)
+    if (chooseTranslation.length) {
+      title = chooseTranslation[0].title
+      desc = chooseTranslation[0].desc
+    } else {
+      title = material.translations[0].title
+      desc = material.translations[0].desc
+    }
 
+    console.log(title, 'title')
+    console.log(desc, 'desc')
     return (
       <Item>
         {material.favorite ? <Ribbon /> : ''}
@@ -85,10 +96,10 @@ class MaterialSnippet extends PureComponent {
           <ImageSlider images={images} id={material.idMaterial} style={styles.snippetImg} />
           <div style={styles.snippetText}>
             <Link to={`/materials/${material.idMaterial}`}>
-              <H2 primary ucase>{material.title}</H2>
+              <H2 primary ucase>{title}</H2>
             </Link>
             <ReadMore style={{ textAlign: 'justify' }}>
-              {material.desc}
+              {desc}
             </ReadMore>
             {showLabels ?
               <div style={styles.wrapper}> {activityTags} {areaTags} </div>

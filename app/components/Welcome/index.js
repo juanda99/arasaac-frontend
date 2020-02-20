@@ -13,23 +13,21 @@ import LocaleToggle from 'containers/LocaleToggle'
 import RaisedButton from 'material-ui/RaisedButton'
 
 
-const Welcome = () => {
+const Welcome = ({ run, onStart, onStop }) => (
 
-  return (
+  <FullWidthSection color={lightGreen500}>
+    <div style={{ padding: '10em' }}>
+      <H1 center={true} style={{ color: 'black' }}>¡Bienvenido a ARASAAC!</H1>
+      <LocaleToggle />
+      <RaisedButton
+        label='Como empezar'
+        secondary={true}
+        onClick={onStart}
+        disabled={run === true}
+      />
+    </div>
+  </FullWidthSection>
 
-    <FullWidthSection color={lightGreen500}>
-      <div style={{ padding: '10em' }}>
-        <H1 center={true} style={{ color: 'black' }}>¡Bienvenido a ARASAAC!</H1>
-        <LocaleToggle />
-        <RaisedButton
-          label='Como empezar'
-          secondary={true}
-        />
-      </div>
-
-    </FullWidthSection>
-
-  )
-}
+)
 
 export default Welcome

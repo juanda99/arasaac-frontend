@@ -10,7 +10,6 @@ import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
-import Toggle from 'material-ui/Toggle'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
@@ -108,9 +107,11 @@ class MaterialsView extends PureComponent {
     const hideIconText = width === SMALL
     // depending on which slide we are, we show one or another list */
     let materialsList
+    console.log('visible', visibleMaterials)
     if (slideIndex === 0) materialsList = visibleMaterials
     else materialsList = newMaterialsList
-    let gallery
+
+    let gallery = ''
     if (loading) {
       gallery = <p> Loading materials...</p>
     } else if (!searchText && slideIndex === 0) {

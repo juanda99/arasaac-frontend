@@ -32,11 +32,12 @@ class MaterialView extends PureComponent {
     const { materialData, loading, locale } = this.props
     if (loading) return <p><FormattedMessage {...messages.materialLoading} /></p>
     return materialData.isEmpty()
-        ? <P><FormattedMessage {...messages.materialNotFound} /> </P>
-        : <Material material={materialData} locale={locale} />
+      ? <P><FormattedMessage {...messages.materialNotFound} /> </P>
+      : <Material material={materialData} locale={locale} />
   }
 
   render() {
+    console.log(this.props.materialData)
     return (
       <View left={true} right={true} top={1}>
         <Helmet
@@ -45,7 +46,7 @@ class MaterialView extends PureComponent {
             { name: 'description', content: 'Description of MaterialView' }
           ]}
         />
-        { this.renderContent() }
+        {this.renderContent()}
       </View>
     )
   }
