@@ -134,7 +134,7 @@ export default defineMessages({
     defaultMessage: 'Skip'
   },
   last: {
-    id: 'joyride.skip',
+    id: 'joyride.last',
     defaultMessage: 'Last'
   },
   openMenu: {
