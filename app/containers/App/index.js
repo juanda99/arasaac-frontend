@@ -86,7 +86,12 @@ class App extends Component {
       },
       {
         title: <FormattedMessage {...messages.pictograms} />,
-        content: <FormattedMessage {...messages.pictogramsDesc} />,
+        content: (
+          <div>
+            <p><FormattedMessage {...messages.pictogramsDesc1} /></p>
+            <p><FormattedMessage {...messages.pictogramsDesc2} /></p>
+          </div>
+        ),
         target: "#lstpictograms",
         placement: "right",
         disableBeacon: true

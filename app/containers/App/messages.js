@@ -157,10 +157,15 @@ export default defineMessages({
     id: 'joyride.loginMenuDesc',
     defaultMessage: 'Create a user account or access through your social network to enjoy all the possibilities of the ARASAAC website.'
   },
-  pictogramsDesc: {
-    id: 'joyride.pictogramsDesc',
-    defaultMessage: 'Arasaac has a collection of more than 10,000 pictograms in 20 different languages. You can search, download, modify and save them in favorites lists.'
+  pictogramsDesc1: {
+    id: 'joyride.pictogramsDesc1',
+    defaultMessage: 'Arasaac has a collection of more than 10,000 pictograms in 20 different languages.'
   },
+  pictogramsDesc2: {
+    id: 'joyride.pictogramsDesc2',
+    defaultMessage: 'You can search, download, modify and save them in favorites lists.'
+  },
+
   materialsDesc1: {
     id: 'joyride.materialsDesc1',
     defaultMessage: 'The ARASAAC team and its user community create and adapt materials for communication and cognitive accessibility based on the ARASAAC pictogram collection.'
