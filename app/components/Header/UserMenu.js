@@ -12,7 +12,7 @@ import messages from './messages'
 /* eslint-disable jsx-a11y/anchor-has-content */
 
 const UserMenu = ({ isTranslating, changeLocale, muiTheme, signout, role }) => (
-  <span>
+  <span id='userMenu'>
     <IconMenu
       iconButtonElement={
         <IconButton>

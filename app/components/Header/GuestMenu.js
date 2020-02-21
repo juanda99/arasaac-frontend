@@ -11,23 +11,26 @@ import messages from './messages'
 const GuestMenu = (props) => {
   if (props.isMobile) {
     return (
-      <Link to='/signin'>
-        <IconButton
-          style={{
-            color: props.muiTheme.appBar.textColor,
-            marginTop: 4,
-            padding: 0
-          }}
-          {...this.props}
-          tooltip={<FormattedMessage {...messages.signin} />}
-        >
-          <UserIcon color={'white'} />
-        </IconButton>
-      </Link>
+      <div id='loginMenu'>
+        <Link to='/signin'>
+          <IconButton
+            style={{
+              color: props.muiTheme.appBar.textColor,
+              marginTop: 4,
+              padding: 0
+            }}
+            {...this.props}
+            tooltip={<FormattedMessage {...messages.signin} />}
+          >
+            <UserIcon color={'white'} />
+          </IconButton>
+        </Link>
+      </div>
+
     )
   }
   return (
-    <div>
+    <div id='loginMenu'>
       <Link to='/signin'>
         <FlatButton
           style={{ color: props.muiTheme.appBar.textColor, marginTop: 4 }}

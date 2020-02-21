@@ -64,36 +64,54 @@ class App extends Component {
     step: 0,
     steps: [
       {
-        title: "Open menu",
-        content: "Click the button to navigate through ARASAAC website",
+        title: <FormattedMessage {...messages.openMenu} />,
+        content: <FormattedMessage {...messages.startNavigation} />,
         target: "#header button",
         placement: "bottom",
         disableBeacon: true
       },
       {
-        title: "User menu",
-        content: "User specific actions: profile, registration...",
-        target: "#header div button",
+        title: <FormattedMessage {...messages.userMenu} />,
+        content: <FormattedMessage {...messages.userMenuDesc} />,
+        target: "#header #userMenu",
         placement: "bottom",
         disableBeacon: true
       },
       {
-        title: "Pictograms",
-        content: "Search and select pictograms",
+        title: <FormattedMessage {...messages.loginMenu} />,
+        content: <FormattedMessage {...messages.loginMenuDesc} />,
+        target: "#header #loginMenu",
+        placement: "bottom",
+        disableBeacon: true
+      },
+      {
+        title: <FormattedMessage {...messages.pictograms} />,
+        content: <FormattedMessage {...messages.pictogramsDesc} />,
         target: "#lstpictograms",
         placement: "right",
         disableBeacon: true
       },
       {
-        title: "Materials",
-        content: "Search or upload and share materials",
+        title: <FormattedMessage {...messages.materials} />,
+        content: <FormattedMessage {...messages.materialsDesc} />,
         target: "#lstmaterials",
+        placement: "right",
+        disableBeacon: true
+      },
+      {
+        title: 'Aula abierta',
+        content: (
+          <div>
+            <p><strong><FormattedMessage {...messages.onlySpanish} /></strong></p>
+            <p><FormattedMessage {...messages.aulaAbiertaDesc} /></p>
+          </div>
+        ),
+        target: "#lstaulaabierta",
         placement: "right",
         disableBeacon: true
       }
     ]
   };
-
 
   handleTranslate = () => {
     if (!this.props.isTranslating) {
@@ -291,6 +309,13 @@ class App extends Component {
       run // runTour
     } = this.props;
 
+    const locale = {
+      next: <FormattedMessage {...messages.next} />,
+      back: <FormattedMessage {...messages.back} />,
+      skip: <FormattedMessage {...messages.skip} />,
+      last: <FormattedMessage {...messages.last} />
+    }
+
     let { menuOpen, steps } = this.state;
 
     const styles = this.getStyles();
@@ -303,7 +328,6 @@ class App extends Component {
       menuOpen = true;
       showMenuIconButton = false;
     }
-    { console.log('render again!!!!!!!!') }
     return (
       <div
         style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
@@ -321,6 +345,7 @@ class App extends Component {
               zIndex: 10000,
             },
           }}
+          locale={locale}
         />
         <Header
           showMenuIconButton={showMenuIconButton}

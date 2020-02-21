@@ -116,5 +116,62 @@ export default defineMessages({
   forbidden: {
     id: 'header.forbidden',
     defaultMessage: 'Forbidden access'
+  },
+  startNavigation: {
+    id: 'joyride.startNavigation',
+    defaultMessage: 'Click the button to navigate through ARASAAC website.'
+  },
+  next: {
+    id: 'joyride.next',
+    defaultMessage: 'Next'
+  },
+  back: {
+    id: 'joyride.back',
+    defaultMessage: 'Back'
+  },
+  skip: {
+    id: 'joyride.skip',
+    defaultMessage: 'Skip'
+  },
+  last: {
+    id: 'joyride.skip',
+    defaultMessage: 'Last'
+  },
+  openMenu: {
+    id: 'joyride.openMenu',
+    defaultMessage: 'Open menu'
+  },
+  userMenu: {
+    id: 'joyride.userMenu',
+    defaultMessage: 'User menu'
+  },
+  userMenuDesc: {
+    id: 'joyride.userMenuDesc',
+    defaultMessage: 'User-specific actions such as changing personal data.'
+  },
+  loginMenu: {
+    id: 'joyride.loginMenu',
+    defaultMessage: 'Login menu'
+  },
+  loginMenuDesc: {
+    id: 'joyride.loginMenuDesc',
+    defaultMessage: 'Create a user account or access through your social network to enjoy all the possibilities of the ARASAAC website.'
+  },
+  pictogramsDesc: {
+    id: 'joyride.pictogramsDesc',
+    defaultMessage: 'Arasaac has a collection of more than 10,000 pictograms in 20 different languages. You can search for pictograms, modify them and save them in favorites lists.'
+  },
+  materialsDesc: {
+    id: 'joyride.materialsDesc',
+    defaultMessage: 'Arasaac has a collection of more than 10,000 pictograms in 20 different languages. You can search for pictograms, modify them and save them in favorites lists.'
+  },
+  aulaAbiertaDesc: {
+    id: 'joyride.aulaAbiertaDesc',
+    defaultMessage: 'The Open Classroom of ARASAAC is a repository of quality content related to Augmentative and Alternative Communication, in which any professional or family can be freely trained in everything related to documents, free software tools and resources that use pictograms of ARASAAC.'
+  },
+  onlySpanish: {
+    id: 'joyride.onlySpanish',
+    defaultMessage: 'Only available in Spanish'
   }
 })
+

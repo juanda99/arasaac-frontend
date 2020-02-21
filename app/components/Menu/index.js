@@ -161,7 +161,7 @@ class Menu extends Component {
             ]}
           />
           <ListItem
-            id='lstsoftware'
+            id='lstaulaabierta'
             value='http://aulaabierta.arasaac.org'
             onClick={() => this.handleLink('http://aulaabierta.arasaac.org')}
             primaryText='Aula abierta'
