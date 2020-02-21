@@ -163,7 +163,7 @@ export default defineMessages({
   },
   materialsDesc1: {
     id: 'joyride.materialsDesc1',
-    defaultMessage: 'The Arasaac team and its user community create and adapt materials for communication and cognitive accessibility based on the ARASAAC pictogram collection.'
+    defaultMessage: 'The ARASAAC team and its user community create and adapt materials for communication and cognitive accessibility based on the ARASAAC pictogram collection.'
   },
   materialsDesc2: {
     id: 'joyride.materialsDesc2',
@@ -175,7 +175,7 @@ export default defineMessages({
   },
   onlySpanish: {
     id: 'joyride.onlySpanish',
-    defaultMessage: 'Only available in Spanish'
+    defaultMessage: 'Only available in Spanish.'
   }
 })
 
