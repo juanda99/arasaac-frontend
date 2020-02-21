@@ -163,7 +163,7 @@ export default defineMessages({
   },
   pictogramsDesc2: {
     id: 'joyride.pictogramsDesc2',
-    defaultMessage: 'You can search, download, modify and save them in favorites lists.'
+    defaultMessage: 'Using this menu you can search pictograms to download, modify or save them in favorites lists.'
   },
 
   materialsDesc1: {
