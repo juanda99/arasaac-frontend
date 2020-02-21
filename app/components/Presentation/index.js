@@ -51,7 +51,7 @@ const Presentation = () => {
     autoplay: true
   }
 
-  const imgStyle = { width: '100%', height: 'auto', filter: 'brightness(70%)' }
+  const imgStyle = { width: '100%', height: 'auto', filter: 'brightness(50%)' }
   return (
     <FullWidthSection style={{ position: 'relative', textAlign: 'left' }} color={lightGreen500}>
       <div style={{ position: 'absolute', top: 'calc(100% - 135px)', left: 'calc(50% - 135px)', zIndex: 10 }}>
@@ -60,11 +60,11 @@ const Presentation = () => {
       </div>
       <div style={{ position: 'absolute', bottom: '200px', left: '280px', width: '500px', zIndex: 10 }}>
         <div>
-          <H1 style={{ textAlign: 'left', display: 'inline' }}>ARASAAC</H1>
+          <H1 style={{ textAlign: 'left', display: 'inline-block', opacity: '0.7', backgroundColor: 'black', color: 'white' }}>ARASAAC</H1>
         </div>
 
         <div>
-          <H2>
+          <H2 style={{ textAlign: 'left', display: 'inline-block', color: 'white' }}>
             <FormattedMessage {...messages.header} values={{ aragones }} />
           </H2>
         </div>

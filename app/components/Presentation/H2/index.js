@@ -18,6 +18,8 @@ const H2 = styled.h2`
   font-weight: 800;
   font-weight: ${typography.fontWeightLight};
   color: white;
+  backgroundColor: black;
+  opacity: 0.7;
   display: inline-block;
   text-transform: ${(props) => (props.ucase ? 'uppercase' : 'none')};
   ${media.lg} {
