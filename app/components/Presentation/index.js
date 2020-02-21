@@ -51,7 +51,7 @@ const Presentation = () => {
     autoplay: true
   }
   return (
-    <FullWidthSection style={{ position: 'relative', overflow: 'hidden' }} color={lightGreen500}>
+    <FullWidthSection style={{ position: 'relative' }} color={lightGreen500}>
       <div style={{ position: 'absolute', top: 'calc(100% - 135px)', left: 'calc(50% - 135px)', zIndex: 10 }}>
         <img alt='Arasaac logo' style={styleRounded} src={ArasaacLogo} />
 
@@ -64,29 +64,31 @@ const Presentation = () => {
           </H2>
         </div>
       </div>
-      <Slider {...settings} >
-        <div>
-          <img src={`${IMAGES_URL}/background/banner_1.jpg`} style={{ width: '100%', height: 'auto' }} />
-        </div>
-        <div>
-          <img src={`${IMAGES_URL}/background/banner_2.jpg`} style={{ width: '100%', height: 'auto' }} />
-        </div>
-        <div>
-          <img src={`${IMAGES_URL}/background/banner_3.jpg`} style={{ width: '100%', height: 'auto' }} />
-        </div>
-        <div>
-          <img src={`${IMAGES_URL}/background/banner_4.jpg`} style={{ width: '100%', height: 'auto' }} />
-        </div>
-        <div>
-          <img src={`${IMAGES_URL}/background/banner_5.jpg`} style={{ width: '100%', height: 'auto' }} />
-        </div>
-        <div>
-          <img src={`${IMAGES_URL}/background/banner_6.jpg`} style={{ width: '100%', height: 'auto' }} />
-        </div>
-        <div>
-          <img src={`${IMAGES_URL}/background/banner_7.jpg`} style={{ width: '100%', height: 'auto' }} />
-        </div>
-      </Slider>
+      <div style={{ width: '100%', overflow: 'hidden' }}>
+        <Slider {...settings} >
+          <div>
+            <img src={`${IMAGES_URL}/background/banner_1.jpg`} style={{ width: '100%', height: 'auto' }} />
+          </div>
+          <div>
+            <img src={`${IMAGES_URL}/background/banner_2.jpg`} style={{ width: '100%', height: 'auto' }} />
+          </div>
+          <div>
+            <img src={`${IMAGES_URL}/background/banner_3.jpg`} style={{ width: '100%', height: 'auto' }} />
+          </div>
+          <div>
+            <img src={`${IMAGES_URL}/background/banner_4.jpg`} style={{ width: '100%', height: 'auto' }} />
+          </div>
+          <div>
+            <img src={`${IMAGES_URL}/background/banner_5.jpg`} style={{ width: '100%', height: 'auto' }} />
+          </div>
+          <div>
+            <img src={`${IMAGES_URL}/background/banner_6.jpg`} style={{ width: '100%', height: 'auto' }} />
+          </div>
+          <div>
+            <img src={`${IMAGES_URL}/background/banner_7.jpg`} style={{ width: '100%', height: 'auto' }} />
+          </div>
+        </Slider>
+      </div>
     </FullWidthSection >
   )
 }
