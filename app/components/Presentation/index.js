@@ -51,7 +51,7 @@ const Presentation = () => {
     autoplay: true
   }
   return (
-    <FullWidthSection style={{ position: 'relative' }} color={lightGreen500}>
+    <FullWidthSection style={{ position: 'relative', overflow: 'hidden' }} color={lightGreen500}>
       <div style={{ position: 'absolute', top: 'calc(100% - 135px)', left: 'calc(50% - 135px)', zIndex: 10 }}>
         <img alt='Arasaac logo' style={styleRounded} src={ArasaacLogo} />
 
