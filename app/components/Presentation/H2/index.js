@@ -17,9 +17,7 @@ const H2 = styled.h2`
   line-height: '2.8em';
   font-weight: 800;
   font-weight: ${typography.fontWeightLight};
-  background-color: black;
   color: white;
-  opacity: 70%;
   display: inline-block;
   text-transform: ${(props) => (props.ucase ? 'uppercase' : 'none')};
   ${media.lg} {

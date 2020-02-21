@@ -50,16 +50,21 @@ const Presentation = () => {
     slidesToScroll: 1,
     autoplay: true
   }
+
+  const imgStyle = { width: '100%', height: 'auto', filter: 'brightness(70%)' }
   return (
-    <FullWidthSection style={{ position: 'relative' }} color={lightGreen500}>
+    <FullWidthSection style={{ position: 'relative', textAlign: 'left' }} color={lightGreen500}>
       <div style={{ position: 'absolute', top: 'calc(100% - 135px)', left: 'calc(50% - 135px)', zIndex: 10 }}>
         <img alt='Arasaac logo' style={styleRounded} src={ArasaacLogo} />
 
       </div>
-      <div style={{ position: 'absolute', bottom: '200px', zIndex: 10, width: '100%' }}>
-        <H1 center={true}>ARASAAC</H1>
+      <div style={{ position: 'absolute', bottom: '200px', left: '280px', width: '500px', zIndex: 10 }}>
         <div>
-          <H2 center={true}>
+          <H1 style={{ textAlign: 'left', display: 'inline' }}>ARASAAC</H1>
+        </div>
+
+        <div>
+          <H2>
             <FormattedMessage {...messages.header} values={{ aragones }} />
           </H2>
         </div>
@@ -67,25 +72,25 @@ const Presentation = () => {
       <div style={{ width: '100%', overflow: 'hidden' }}>
         <Slider {...settings} >
           <div>
-            <img src={`${IMAGES_URL}/background/banner_1.jpg`} style={{ width: '100%', height: 'auto' }} />
+            <img src={`${IMAGES_URL}/background/banner_1.jpg`} style={imgStyle} />
           </div>
           <div>
-            <img src={`${IMAGES_URL}/background/banner_2.jpg`} style={{ width: '100%', height: 'auto' }} />
+            <img src={`${IMAGES_URL}/background/banner_2.jpg`} style={imgStyle} />
           </div>
           <div>
-            <img src={`${IMAGES_URL}/background/banner_3.jpg`} style={{ width: '100%', height: 'auto' }} />
+            <img src={`${IMAGES_URL}/background/banner_3.jpg`} style={imgStyle} />
           </div>
           <div>
-            <img src={`${IMAGES_URL}/background/banner_4.jpg`} style={{ width: '100%', height: 'auto' }} />
+            <img src={`${IMAGES_URL}/background/banner_4.jpg`} style={imgStyle} />
           </div>
           <div>
-            <img src={`${IMAGES_URL}/background/banner_5.jpg`} style={{ width: '100%', height: 'auto' }} />
+            <img src={`${IMAGES_URL}/background/banner_5.jpg`} style={imgStyle} />
           </div>
           <div>
-            <img src={`${IMAGES_URL}/background/banner_6.jpg`} style={{ width: '100%', height: 'auto' }} />
+            <img src={`${IMAGES_URL}/background/banner_6.jpg`} style={imgStyle} />
           </div>
           <div>
-            <img src={`${IMAGES_URL}/background/banner_7.jpg`} style={{ width: '100%', height: 'auto' }} />
+            <img src={`${IMAGES_URL}/background/banner_7.jpg`} style={imgStyle} />
           </div>
         </Slider>
       </div>
