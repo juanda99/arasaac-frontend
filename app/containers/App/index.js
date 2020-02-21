@@ -93,7 +93,12 @@ class App extends Component {
       },
       {
         title: <FormattedMessage {...messages.materials} />,
-        content: <FormattedMessage {...messages.materialsDesc} />,
+        content: (
+          <div>
+            <p><FormattedMessage {...messages.materialsDesc1} /></p>
+            <p><FormattedMessage {...messages.materialsDesc2} /></p>
+          </div>
+        ),
         target: "#lstmaterials",
         placement: "right",
         disableBeacon: true
