@@ -10,13 +10,15 @@ const H2 = styled.h2`
   text-align: center;
   z-index: 10;
   font-weight: ${typography.fontWeightLight};
+  font-size: 14px;
+  top: 10px;
   ${media.sm} {
     font-size: 16px;
-    top: calc(100% - 75px);
+    top: calc(100% - 210px);
   }
   ${media.md} {
-    font-size: 17px;
-    top: calc(100% - 280px);
+    font-size: 16px;
+    top: calc(100% - 260px);
   }
   ${media.lg} {   
     font-size: 19px; // 626px wide

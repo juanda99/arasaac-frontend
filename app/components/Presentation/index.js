@@ -12,7 +12,7 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 import { lightGreen500 } from 'material-ui/styles/colors'
 import FullWidthSection from './FullWidthSection'
 import Slider from 'react-slick'
-import RaisedButton from 'material-ui/RaisedButton'
+import DiscoverButton from './DiscoverButton'
 import { IMAGES_URL } from 'services/config'
 import H1 from './H1'
 import H2 from './H2'
@@ -40,11 +40,10 @@ const Presentation = ({ run, onStart, muiTheme }) => {
       <Logo circle={true} />
       <H1>ARASAAC</H1>
       <H2><FormattedMessage {...messages.header} values={{ aragones }} /></H2>
-      <RaisedButton
+      <DiscoverButton
         label='Descubre ARASAAC'
         primary={true}
         onClick={onStart}
-        style={{ marginTop: '20px', position: 'absolute', zIndex: 10, left: '50%', bottom: '180px', marginRight: '-50%', transform: 'translate(-50%, 0)' }}
         disabled={run === true}
       />
       <div style={{ width: '100%', overflow: 'hidden' }}>
