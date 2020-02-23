@@ -6,38 +6,21 @@
 
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 import { lightGreen500 } from 'material-ui/styles/colors'
 import FullWidthSection from './FullWidthSection'
 import Slider from 'react-slick'
+import RaisedButton from 'material-ui/RaisedButton'
 import { IMAGES_URL } from 'services/config'
 import H1 from './H1'
 import H2 from './H2'
-import ArasaacLogo from 'components/Logo/arasaac-logo-blanco.svg'
+import Logo from 'components/Logo'
 import messages from './messages'
-import Strong from './Strong'
 
 
-const style = {
-  width: 270,
-  display: 'flex',
-  margin: '0 auto',
-  padding: 20,
-  // backgroundColor: 'white'
-}
-const styleRounded = {
-  width: 270,
-  display: 'flex',
-  margin: '0 auto',
-  padding: 20,
-  borderRadius: '50%',
-  borderWidth: '7px',
-  borderStyle: 'inset',
-  borderColor: 'chartreuse',
-  backgroundColor: 'white'
-}
-
-const Presentation = () => {
+const Presentation = ({ run, onStart, muiTheme }) => {
   // const aragones = <Strong><FormattedMessage {...messages.aragonese} /> </Strong>
   const aragones = <FormattedMessage {...messages.aragonese} />
   const settings = {
@@ -53,22 +36,17 @@ const Presentation = () => {
 
   const imgStyle = { width: '100%', height: 'auto', filter: 'brightness(50%)' }
   return (
-    <FullWidthSection style={{ position: 'relative', textAlign: 'left' }} color={lightGreen500}>
-      <div style={{ position: 'absolute', top: 'calc(100% - 135px)', left: 'calc(50% - 135px)', zIndex: 10 }}>
-        <img alt='Arasaac logo' style={styleRounded} src={ArasaacLogo} />
-
-      </div>
-      <div style={{ position: 'absolute', bottom: '200px', left: '280px', width: '500px', zIndex: 10 }}>
-        <div>
-          <H1 style={{ textAlign: 'left', display: 'inline-block', opacity: '0.7', backgroundColor: 'black', color: 'white' }}>ARASAAC</H1>
-        </div>
-
-        <div>
-          <H2 style={{ textAlign: 'left', display: 'inline-block', color: 'white' }}>
-            <FormattedMessage {...messages.header} values={{ aragones }} />
-          </H2>
-        </div>
-      </div>
+    <FullWidthSection style={{ position: 'relative', textAlign: 'left' }} color={muiTheme.palette.welcomeColor}>
+      <Logo circle={true} />
+      <H1>ARASAAC</H1>
+      <H2><FormattedMessage {...messages.header} values={{ aragones }} /></H2>
+      <RaisedButton
+        label='Descubre ARASAAC'
+        primary={true}
+        onClick={onStart}
+        style={{ marginTop: '20px', position: 'absolute', zIndex: 10, left: '50%', bottom: '180px', marginRight: '-50%', transform: 'translate(-50%, 0)' }}
+        disabled={run === true}
+      />
       <div style={{ width: '100%', overflow: 'hidden' }}>
         <Slider {...settings} >
           <div>
@@ -98,4 +76,10 @@ const Presentation = () => {
   )
 }
 
-export default Presentation
+Presentation.propTypes = {
+  muiTheme: PropTypes.object.isRequired,
+  run: PropTypes.bool.isRequired,
+  onStart: PropTypes.func.isRequired,
+}
+
+export default muiThemeable()(Presentation)

@@ -1,31 +1,27 @@
-/**
- *
- * H2
- *
- */
-
-import muiThemeable from 'material-ui/styles/muiThemeable'
 import styled from 'styled-components'
 import { typography } from 'material-ui/styles'
-import { darkWhite } from 'material-ui/styles/colors'
 import media from 'utils/mediaqueries'
 
 const H2 = styled.h2`
-  font-size: 2em;
-  margin-bottom: ${(props) => (props.noMargin ? 0 : '0.25em')};
-  margin-top: ${(props) => (props.noMargin ? 0 : '')};
-  line-height: '2.8em';
-  font-weight: 800;
-  font-weight: ${typography.fontWeightLight};
   color: white;
-  backgroundColor: black;
-  opacity: 0.7;
-  display: inline-block;
-  text-transform: ${(props) => (props.ucase ? 'uppercase' : 'none')};
-  ${media.lg} {
-    font-size: 2em;
+  margin: 0 auto;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  font-weight: ${typography.fontWeightLight};
+  ${media.sm} {
+    font-size: 16px;
+    top: calc(100% - 75px);
   }
-  text-align: ${(props) => (props.center ? 'center' : 'left')};
+  ${media.md} {
+    font-size: 17px;
+    top: calc(100% - 280px);
+  }
+  ${media.lg} {   
+    font-size: 19px; // 626px wide
+    top: calc(100% - 282px);
+  }
 `
 
-export default muiThemeable()(H2)
+export default H2

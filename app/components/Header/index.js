@@ -26,26 +26,31 @@ const Header = (props) => {
     role
   } = props
   return (
-    <AppBar
-      onLeftIconButtonTouchTap={handleTouchTapLeftIconButton}
-      title={<Title docked={props.docked}>{title}</Title>}
-      zDepth={0}
-      id='header'
-      style={styles.appBar}
-      showMenuIconButton={showMenuIconButton}
-      iconElementRight={
-        isAuthenticated ? (
-          <UserMenu
-            isTranslating={isTranslating}
-            changeLocale={changeLocale}
-            signout={signout}
-            role={role}
-          />
-        ) : (
-            <GuestMenu isMobile={isMobile} />
-          )
-      }
-    />
+    <div style={{ position: 'relative' }}>
+      <AppBar
+        onLeftIconButtonTouchTap={handleTouchTapLeftIconButton}
+        title={<Title docked={props.docked}>{title}</Title>}
+        zDepth={0}
+        id='header'
+        style={styles.appBar}
+        showMenuIconButton={showMenuIconButton}
+        iconElementRight={
+          isAuthenticated ? (
+            <UserMenu
+              isTranslating={isTranslating}
+              changeLocale={changeLocale}
+              signout={signout}
+              role={role}
+            />
+          ) : (
+              <GuestMenu isMobile={isMobile} />
+            )
+        }
+      />
+      {/* <div style={{ position: 'absolute', margin: 10, left: '50px', color: 'white', top: 0, zIndex: 14000 }}>
+          <h1 style={{ display: 'inline' }}>ARASAAC</h1>
+        </div> */}
+    </div>
   )
 }
 

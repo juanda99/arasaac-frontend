@@ -1,27 +1,25 @@
-/**
-*
-* H1
-*
-*/
-
-import { darkWhite } from 'material-ui/styles/colors'
-
 import styled from 'styled-components'
-import { typography } from 'material-ui/styles'
 import media from 'utils/mediaqueries'
 
 const H1 = styled.h1`
   color: white;
-  text-align: left !important;
-  font-size: 4em;
-  margin-bottom: 0.25em;
-  margin-top: 0.25rem;
-  font-weight: ${typography.fontWeightLight};
-  display: inline;
-  ${media.lg} {
+  font-weight: 900;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  text-align: center;
+  ${media.sm} {
     font-size: 4em;
+    top: calc(100% - 75px); 
+  } 
+  ${media.md} {
+    font-size: 40px;
+    top: calc(100% - 350px);
   }
-  
+  ${media.lg} {   
+    font-size: 64px;
+    top: calc(100% - 400px);
+  }
 `
 
 export default H1

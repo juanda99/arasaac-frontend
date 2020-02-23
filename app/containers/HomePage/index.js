@@ -8,17 +8,19 @@ import Welcome from 'components/Welcome'
 import Showcase from 'components/Showcase'
 import Participate from 'components/Participate'
 import { makeSelectRunTour } from './selectors'
+import { selectTheme } from 'containers/ThemeProvider/selectors'
 import { startTour, stopTour } from './actions'
 
 
 class HomePage extends PureComponent {
+
   render() {
-    const { run, startTour, stopTour } = this.props
-    console.log('run', run)
+    const { run, startTour, theme } = this.props
+    console.log(theme, 'adfaddfadsfdf')
     return (
       <div>
-        <Presentation />
-        <Welcome run={run} onStart={startTour} onStop={stopTour} />
+        <Presentation run={run} onStart={startTour} />
+        <Welcome theme={theme} />
         <Showcase />
         <Participate />
       </div>
@@ -38,7 +40,8 @@ HomePage.propTypes = {
 
 
 const mapStateToProps = (state) => ({
-  run: makeSelectRunTour()(state)
+  run: makeSelectRunTour()(state),
+  theme: selectTheme()(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
