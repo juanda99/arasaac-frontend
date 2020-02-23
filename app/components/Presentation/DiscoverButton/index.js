@@ -11,10 +11,10 @@ const DiscoverButton = styled(RaisedButton)`
   margin-right: -50%;
   transform: translate(-50%, 0);
   ${media.xs} {
-    bottom: 80px;
+    bottom: -100px;
   } 
   ${media.sm} {
-    bottom: 120px;
+    bottom: 110px;
   } 
   ${media.md} {
     bottom: 160px;

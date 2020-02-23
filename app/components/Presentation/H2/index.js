@@ -14,7 +14,7 @@ const H2 = styled.h2`
   top: 10px;
   ${media.sm} {
     font-size: 16px;
-    top: calc(100% - 210px);
+    top: calc(100% - 190px);
   }
   ${media.md} {
     font-size: 16px;

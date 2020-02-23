@@ -16,7 +16,7 @@ const GuestMenu = (props) => {
           <IconButton
             style={{
               color: props.muiTheme.appBar.textColor,
-              marginTop: 4,
+              marginTop: 0,
               padding: 0
             }}
             {...this.props}
