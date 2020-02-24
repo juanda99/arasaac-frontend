@@ -356,7 +356,7 @@ export default function createRoutes(store) {
       path: 'use-conditions',
       name: 'useConditions',
       getComponent(location, cb) {
-        import('components/UseConditions')
+        import('containers/LicenseView')
           .then(loadModule(cb))
           .catch(errorLoading)
       }
