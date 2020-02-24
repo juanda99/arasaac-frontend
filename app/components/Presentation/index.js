@@ -51,26 +51,12 @@ const Presentation = ({ run, onStart, muiTheme, width }) => {
       <div style={{ width: '100%', overflow: 'hidden' }}>
         <Slider {...settings} >
           <div>
-            <img src={`${IMAGES_URL}/background/banner_1.jpg`} style={imgStyle} />
+            <img src={`${IMAGES_URL}/slides/banner_1${isMobile ? '-mobile' : ''}.jpg`} style={imgStyle} />
           </div>
           <div>
-            <img src={`${IMAGES_URL}/background/banner_2.jpg`} style={imgStyle} />
+            <img src={`${IMAGES_URL}/slides/banner_2${isMobile ? '-mobile' : ''}.jpg`} style={imgStyle} />
           </div>
-          <div>
-            <img src={`${IMAGES_URL}/background/banner_3.jpg`} style={imgStyle} />
-          </div>
-          <div>
-            <img src={`${IMAGES_URL}/background/banner_4.jpg`} style={imgStyle} />
-          </div>
-          <div>
-            <img src={`${IMAGES_URL}/background/banner_5.jpg`} style={imgStyle} />
-          </div>
-          <div>
-            <img src={`${IMAGES_URL}/background/banner_6.jpg`} style={imgStyle} />
-          </div>
-          <div>
-            <img src={`${IMAGES_URL}/background/banner_7.jpg`} style={imgStyle} />
-          </div>
+
         </Slider>
       </div>
     </FullWidthSection >

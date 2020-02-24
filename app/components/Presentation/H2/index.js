@@ -5,6 +5,7 @@ import media from 'utils/mediaqueries'
 const H2 = styled.h2`
   color: white;
   margin: 0 auto;
+  padding: 20px;
   position: absolute;
   width: 100%;
   text-align: center;
