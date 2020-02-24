@@ -9,20 +9,19 @@ const H2 = styled.h2`
   width: 100%;
   text-align: center;
   z-index: 10;
-  font-weight: ${typography.fontWeightLight};
   font-size: 14px;
   top: 10px;
   ${media.sm} {
-    font-size: 16px;
-    top: calc(100% - 190px);
+    font-size: 1em;
+    top: calc(50% + 8px);
   }
   ${media.md} {
-    font-size: 16px;
-    top: calc(100% - 260px);
+    font-size: 1em;
+    top: calc(50% + 30px);
   }
   ${media.lg} {   
-    font-size: 19px; // 626px wide
-    top: calc(100% - 282px);
+    font-size: 1em; // 626px wide
+    top: calc(50% + 37px);
   }
 `
 

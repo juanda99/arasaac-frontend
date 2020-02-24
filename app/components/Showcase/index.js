@@ -16,6 +16,8 @@ import PictogramsImage from './pictograms.png'
 
 
 const Showcase = () => (
+
+
   <FullWidthSection>
     <Grid>
       <Row>

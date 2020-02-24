@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Div from 'components/Div'
 import ArasaacLogo from './arasaac-logo-blanco.svg'
+// import ArasaacLogo from './logo-arasaac-texto.svg'
 import LogoImg from './Logo'
 
 
@@ -14,10 +15,9 @@ const style = {
 }
 
 
-const Logo = ({ src, top, circle }) => (
-  <Div top={top}>
-    {circle ? <LogoImg alt='Arasaac logo' /> : <img alt='Arasaac logo' style={style} src={src || ArasaacLogo} />}
-  </Div >
+const Logo = ({ src, top, presentation }) => (
+  <LogoImg alt='Arasaac logo' />
+
 )
 
 

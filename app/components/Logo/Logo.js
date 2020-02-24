@@ -1,43 +1,39 @@
 import styled from 'styled-components'
 import media from 'utils/mediaqueries'
-import ArasaacLogo from './arasaac-logo-blanco.svg'
 
 
 const Logo = styled.img.attrs({
-  src: 'https://static.arasaac.org/images/arasaac-logo.svg'
+  // src: 'https://static.arasaac.org/images/arasaac-logo.svg'
+  src: 'https://static.arasaac.org/images/logo-arasaac-texto.svg'
 })`
-  width: 100px;
+
+  width: 200px;
   padding: 8px;
-  border-radius: 50%;
-  border-width: 3px;
-  border-style: inset;
-  border-color: chartreuse;
-  background-color: white;
   position: absolute;
-  z-index: 10;
-  top: calc(100% - 50px);
-  left: calc(50% - 50px);
+  z-index: 100;
+  top: calc(0% - 58px);
+  left: calc(50% - 100px);
 
   ${media.sm} {
-    width: 150px;
+    width: 300px;
     padding: 12px;
     border-width: 3px;
-    top: calc(100% - 75px);
-    left: calc(50% - 75px);
+    top: calc(50% - 60px);
+    left: calc(50% - 150px);
   }
   ${media.md} {
-    width: 180px;
+    width: 400px;
     padding: 16px;
     border-width: 5px;
-    top: calc(100% - 90px);
-    left: calc(50% - 90px);
+    top: calc(50% - 65 px);
+    left: calc(50% - 200px);
   }
   ${media.lg} {
-    width: 210px;
+    width: 500px;
     border-width: 7px;
     padding: 20px;
-    top: calc(100% - 105px);
-    left: calc(50% - 105px);
+    top: calc(50% - 75px);
+    left: calc(50% - 250px);
   }
 `
 

@@ -22,8 +22,8 @@ const Welcome = ({ theme, muiTheme }) => {
   const style = theme === 'DARK' ? { color: 'white' } : { color: 'black' }
   return (
     <FullWidthSection color={muiTheme.palette.welcomeColor}>
-      <div style={{ paddingTop: '6em', paddingBottom: '1.5em' }}>
-        <P sytle={{ textAlign: 'center' }}>Choose your language:</P>
+      <div style={{ paddingTop: '1em', paddingBottom: '1.5em' }}>
+        <p sytle={{ textAlign: 'center', fontWeight: 300, color: 'white' }}>Centro Aragonés para la Comunicación Aumentativa y Alternativa</p>
         {/* <H1 center={true} style={style}> {<FormattedMessage {...messages.welcome} />}</H1> */}
         <LocaleToggle />
       </div>

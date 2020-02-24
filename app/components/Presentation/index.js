@@ -39,8 +39,7 @@ const Presentation = ({ run, onStart, muiTheme, width }) => {
   const imgStyle = { width: '100%', height: 'auto', filter: 'brightness(50%)' }
   return (
     <FullWidthSection style={{ position: 'relative', textAlign: 'left' }} color={muiTheme.palette.welcomeColor}>
-      <Logo circle={true} />
-      <H1>ARA<span style={{ fontWeight: 300 }}>SAAC</span></H1>
+      <Logo />
       <H2><FormattedMessage {...messages.header} values={{ aragones }} /></H2>
       <DiscoverButton
         label='Descubre ARASAAC'
