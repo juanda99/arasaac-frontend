@@ -293,7 +293,7 @@
   "app.containers.DevelopersView.grantTypes": "Grant-Typen",
   "app.containers.DevelopersView.grantTypesDesc": "Je nach Art der Anwendung und der spezifischen Bedürfnisse muss eine spezifische Grant Art oder andere umgesetzt werden. Zögern Sie nicht, kontaktieren Sie uns für weitere Informationen.",
   "app.containers.DevelopersView.howto": "App-Nutzung",
-  "app.containers.DevelopersView.howtoDesc": "In order to use the ARASAAC API you need access credentials. We use the Oauth2 authorization protocol that allows us that third-party applications can access both ARASAAC and its users data.",
+  "app.containers.DevelopersView.howtoDesc": "Um die ARASAAC API nutzen zu können, benötigen Sie Ihre Zugangsdaten. Wir verwenden das Oauth2-Berechtigungsprotokoll, das den Zugang für Anwendungen von Drittanbietern, sowohl auf ARASAAC als auch auf Benutzerdaten, erlaubt.",
   "app.containers.DevelopersView.introApi": "ARASAAC has an extensive API to serve our resources to third-party applications.",
   "app.containers.DevelopersView.license": "ARASAAC creative commons license CC BY-NC-SA",
   "app.containers.DevelopersView.termsOfUse": "Nutzungsbedingungen",
