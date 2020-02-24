@@ -40,7 +40,7 @@ const Presentation = ({ run, onStart, muiTheme, width }) => {
   return (
     <FullWidthSection style={{ position: 'relative', textAlign: 'left' }} color={muiTheme.palette.welcomeColor}>
       <Logo circle={true} />
-      <H1>ARASAAC</H1>
+      <H1>ARA<span style={{ fontWeight: 300 }}>SAAC</span></H1>
       <H2><FormattedMessage {...messages.header} values={{ aragones }} /></H2>
       <DiscoverButton
         label='Descubre ARASAAC'

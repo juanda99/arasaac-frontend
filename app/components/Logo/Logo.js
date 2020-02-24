@@ -26,18 +26,18 @@ const Logo = styled.img.attrs({
     left: calc(50% - 75px);
   }
   ${media.md} {
-    width: 200px;
+    width: 180px;
     padding: 16px;
     border-width: 5px;
-    top: calc(100% - 100px);
-    left: calc(50% - 100px);
+    top: calc(100% - 90px);
+    left: calc(50% - 90px);
   }
   ${media.lg} {
-    width: 240px;
+    width: 210px;
     border-width: 7px;
     padding: 20px;
-    top: calc(100% - 120px);
-    left: calc(50% - 120px);
+    top: calc(100% - 105px);
+    left: calc(50% - 105px);
   }
 `
 
