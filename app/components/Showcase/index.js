@@ -8,12 +8,9 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import FullWidthSection from 'components/FullWidthSection'
+import { IMAGES_URL } from 'services/config'
 import messages from './messages'
 import Item from './Item'
-import SoftwareImage from './software.png'
-import NewsImage from './news.png'
-import PictogramsImage from './pictograms.png'
-
 
 const Showcase = () => (
 
@@ -24,22 +21,22 @@ const Showcase = () => (
         <Col xs={12} md={4}>
           <Item
             title={<FormattedMessage {...messages.saac} />}
-            route='/get-started'
-            image={PictogramsImage}
+            route='/pictograms/search'
+            image={`${IMAGES_URL}/pictograms.jpg`}
           />
         </Col>
         <Col xs={12} md={4}>
           <Item
             title={<FormattedMessage {...messages.software} />}
-            route='/get-started'
-            image={SoftwareImage}
+            route='/materials/search'
+            image={`${IMAGES_URL}/materiales.jpg`}
           />
         </Col>
         <Col xs={12} md={4}>
           <Item
             title={<FormattedMessage {...messages.news} />}
-            route='/get-started'
-            image={NewsImage}
+            route='http://aulaabierta.arasaac.org/'
+            image={`${IMAGES_URL}/aula-abierta.jpg`}
           />
         </Col>
       </Row>

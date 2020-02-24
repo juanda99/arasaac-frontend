@@ -16,8 +16,8 @@ import FullWidthSection from 'components/FullWidthSection'
 const styles = {
   paper: {
     width: '100%',
-    maxWidth: '370px',
-    margin: '0 auto'
+    padding: 0,
+    margin: '0 0'
   },
   H3: {
     textAlign: 'center',
@@ -63,7 +63,7 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
           <FullWidthSection color={grey200}>
             <H3 style={styles.H3}>{title}</H3>
           </FullWidthSection>
-          <Image src={image} alt={title} />
+          <Image src={image} alt={title} style={{ margin: 20 }} />
         </Paper>
       </Link>
     )
