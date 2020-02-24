@@ -293,7 +293,7 @@
   "app.containers.DevelopersView.grantTypes": "Tipus de subvencions",
   "app.containers.DevelopersView.grantTypesDesc": "Depenent del tipus d'aplicació i les necessitats específiques, s'ha d'implementar un tipus específic de subvenció o un altre. No dubteu en contactar amb nosaltres per obtenir més informació.",
   "app.containers.DevelopersView.howto": "Ús de l'API",
-  "app.containers.DevelopersView.howtoDesc": "In order to use the ARASAAC API you need access credentials. We use the Oauth2 authorization protocol that allows us that third-party applications can access both ARASAAC and its users data.",
+  "app.containers.DevelopersView.howtoDesc": "Per utilitzar l'API ARASAAC, necessiteu les credencials d'accés. Utilitzem el protocol d'autorització Oauth2 que ens permet que les aplicacions de tercers puguin accedir tant a les dades d'ARASAAC com dels seus usuaris.",
   "app.containers.DevelopersView.introApi": "ARASAAC has an extensive API to serve our resources to third-party applications.",
   "app.containers.DevelopersView.license": "ARASAAC creative commons license CC BY-NC-SA",
   "app.containers.DevelopersView.termsOfUse": "Condicions d'ús",
