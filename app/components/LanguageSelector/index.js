@@ -27,7 +27,7 @@ const LanguageSelector = ({
 
   return (
     <SelectField
-      style={{ textAlign: 'left', width: '330px', maxWidth: '98%' }}
+      style={{ textAlign: 'left', width: '370px' }}
       maxHeight={400}
       value={value}
       labelStyle={labelColor ? { color: labelColor } : {}}
