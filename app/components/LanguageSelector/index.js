@@ -26,8 +26,9 @@ const LanguageSelector = ({
   }
 
   return (
+    // maxWidth so fixed good in mobile
     <SelectField
-      style={{ textAlign: 'left', width: '370px' }}
+      style={{ textAlign: 'left', width: '370px', maxWidth: '95%' }}
       maxHeight={400}
       value={value}
       labelStyle={labelColor ? { color: labelColor } : {}}
