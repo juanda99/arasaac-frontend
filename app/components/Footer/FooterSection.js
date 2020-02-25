@@ -7,8 +7,7 @@ const FooterSection = styled.div`
   background: ${(props) => props.color};
   text-align: center;
   align-items: center;
-  justify-content: space-around;
-  flex: none;
+  justify-content: space-between;
   display: flex;
   ${media.md} {
     padding-left: ${(props) => (props.docked ? '16rem' : '0em')};

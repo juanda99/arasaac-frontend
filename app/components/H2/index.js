@@ -14,7 +14,6 @@ const H2 = styled.h2`
   font-size: 2em;
   margin-bottom: ${(props) => (props.noMargin ? 0 : '0.25em')};
   margin-top: ${(props) => (props.noMargin ? 0 : '')};
-  line-height: '2.8em';
   font-weight: 800;
   font-weight: ${typography.fontWeightLight};
   color: ${(props) =>

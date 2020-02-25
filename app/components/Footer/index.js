@@ -20,9 +20,10 @@ import A from './A'
 const Footer = ({ docked, muiTheme }) => (
   <FooterSection id='footer' color={muiTheme.palette.footerColor} docked={docked}>
     {/* <img alt='Logo European Union Logo' style={styles.logoUE} src={UnionEuropea} /> */}
+
     <SocialLinks />
 
-    <div>
+    <div style={{ flex: 1, justifyContent: 'center' }}>
       <p style={styles.p}>
         {`© ARASAAC - Gobierno de Aragón, ${new Date().getFullYear()}`}
       </p>
@@ -32,7 +33,9 @@ const Footer = ({ docked, muiTheme }) => (
       </p>
     </div>
 
-    <div>
+
+
+    <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
       <img alt='Arasaac Logo' style={styles.logoGA} src={`${IMAGES_URL}/gobierno-aragon-logo.svg`} />
     </div>
 

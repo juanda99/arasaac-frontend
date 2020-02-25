@@ -25,12 +25,7 @@ class SocialLinks extends Component {
   render() {
     const { muiTheme } = this.props
     return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center'
-        }}
-      >
+      <div style={{ minWidth: '360px', flex: 1, display: 'flex', justifyContent: 'center' }}>
         <a href='https://www.instagram.com/arasaac/' target='_blank'>
           <IconButton
             iconStyle={styles.smallIcon}
