@@ -1,7 +1,7 @@
 {
   "Login.invalidEmail": "Nevažeća adresa e-pošte",
   "Login.invalidUrl": "Neispravan URL",
-  "Login.required": "Potrebno",
+  "Login.required": "Obavezno",
   "NewPasswordForm.hintNewPassword": "Kako glasi vaša nova lozinka?",
   "activate.activateUser": "Aktivacija korisnika",
   "activate.expiredCode": "Vaš kod za aktivaciju je istekao. Poslali smo vam drugu poruku e-pošte kako bi validirali vaš korisnički račun",
