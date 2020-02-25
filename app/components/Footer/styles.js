@@ -2,8 +2,7 @@ import { white, lightGreen300 } from 'material-ui/styles/colors'
 
 export default {
   a: {
-    color: lightGreen300,
-    textDecoration: 'none'
+    color: 'white'
   },
   p: {
     margin: '0 auto',
@@ -11,15 +10,6 @@ export default {
     color: white,
     fontWeight: 'normal',
     fontSize: '15px'
-  },
-  img: {
-    width: '100%'
-  },
-  logoUE: {
-    width: '100%',
-    position: 'relative',
-    top: '-11px',
-    maxWidth: '256px'
   },
   logoGA: {
     width: '100%',

@@ -8,6 +8,7 @@ const FullWidthSection = styled.div`
   background: ${(props) => props.color};
   text-align: center;
   width: 100%;
+  margin-bottom: -7px;
   border-color: white;
   border-style: solid;
   border-width: 0px;

@@ -6,19 +6,12 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  saac: {
-    id: 'app.components.showcase.saac',
-    description: 'banner',
-    defaultMessage: 'What is SAAC?'
+  materials: {
+    id: 'app.components.showcase.materials',
+    defaultMessage: 'Materials'
   },
-  software: {
-    id: 'app.components.showcase.software',
-    description: 'Software',
-    defaultMessage: 'Software'
-  },
-  news: {
-    id: 'app.components.showcase.news',
-    description: 'Arasaac news',
-    defaultMessage: 'ARASAAC news'
+  pictograms: {
+    id: 'app.components.showcase.pictograms',
+    defaultMessage: 'Pictograms'
   }
 })

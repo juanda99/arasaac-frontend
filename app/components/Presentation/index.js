@@ -10,13 +10,14 @@ import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import { lightGreen500 } from 'material-ui/styles/colors'
-import withWidth, { SMALL } from "material-ui/utils/withWidth";
+import withWidth, { SMALL } from "material-ui/utils/withWidth"
+import LocaleToggle from 'containers/LocaleToggle'
 import FullWidthSection from './FullWidthSection'
 import Slider from 'react-slick'
 import DiscoverButton from './DiscoverButton'
 import { IMAGES_URL } from 'services/config'
-import H1 from './H1'
 import H2 from './H2'
+import P from 'components/P'
 import Logo from 'components/Logo'
 import messages from './messages'
 
@@ -36,28 +37,36 @@ const Presentation = ({ run, onStart, muiTheme, width }) => {
   }
   let isMobile = width === SMALL;
 
-  const imgStyle = { width: '100%', height: 'auto', filter: 'brightness(50%)' }
+  const imgStyle = { width: '100%', height: 'auto', filter: 'brightness(75%)' }
   return (
-    <FullWidthSection style={{ position: 'relative', textAlign: 'left' }} color={muiTheme.palette.welcomeColor}>
-      <Logo />
+    <FullWidthSection style={{ position: 'relative', textAlign: 'left' }} color={'white'}>
+      <Logo presentation={true} />
       <H2><FormattedMessage {...messages.header} values={{ aragones }} /></H2>
       <DiscoverButton
-        label='Descubre ARASAAC'
-        primary={!isMobile}
-        secondary={isMobile}
+        label={<FormattedMessage {...messages.discover} />}
+        primary={true}
         onClick={onStart}
         disabled={run === true}
       />
       <div style={{ width: '100%', overflow: 'hidden' }}>
         <Slider {...settings} >
           <div>
-            <img src={`${IMAGES_URL}/slides/banner_1${isMobile ? '-mobile' : ''}.jpg`} style={imgStyle} />
+            <img src={`${IMAGES_URL}/slides/banner_1${isMobile ? '-mobile' : '_1000'}.jpg`} style={imgStyle} />
           </div>
           <div>
-            <img src={`${IMAGES_URL}/slides/banner_2${isMobile ? '-mobile' : ''}.jpg`} style={imgStyle} />
+            <img src={`${IMAGES_URL}/slides/banner_2${isMobile ? '-mobile' : '_1000'}.jpg`} style={imgStyle} />
           </div>
-
+          <div>
+            <img src={`${IMAGES_URL}/slides/banner_4${isMobile ? '-mobile' : '_1000'}.jpg`} style={imgStyle} />
+          </div>
+          <div>
+            <img src={`${IMAGES_URL}/slides/banner_6${isMobile ? '-mobile' : '_1000'}.jpg`} style={imgStyle} />
+          </div>
         </Slider>
+      </div>
+      <div style={{ position: 'absolute', bottom: '7px', background: 'rgba(0, 0, 0, 0.2)', height: '150px', width: '100%', textAlign: 'center' }}>
+        <P style={{ color: 'white' }}><FormattedMessage {...messages.chooseLanguage} /></P>
+        <LocaleToggle labelColor='white' />
       </div>
     </FullWidthSection >
   )

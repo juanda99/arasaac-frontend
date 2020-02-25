@@ -5,6 +5,7 @@
  */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { IMAGES_URL } from 'services/config'
 import Drawer from 'material-ui/Drawer'
 import { List, ListItem, makeSelectable } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
@@ -108,7 +109,7 @@ class Menu extends Component {
           style={styles.logo}
           onClick={this.handleTouchTapHeader}
         >
-          ARASAAC
+          <img src={`${IMAGES_URL}/logo-arasaac-texto.svg`} style={{ width: '140px', marginLeft: '-20px' }} />
         </Div>
         <SelectableList value={location.pathname} onChange={onChangeList}>
           <ListItem

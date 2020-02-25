@@ -15,5 +15,13 @@ export default defineMessages({
     id: 'app.components.Welcome.aragonese',
     description: 'Home header',
     defaultMessage: 'Aragonese'
+  },
+  chooseLanguage: {
+    id: 'app.components.Welcome.chooseLanguage',
+    defaultMessage: 'Choose your language:'
+  },
+  discover: {
+    id: 'app.HomePage.discover',
+    defaultMessage: 'Discover ARASAAC'
   }
 })

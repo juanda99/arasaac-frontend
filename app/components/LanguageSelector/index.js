@@ -17,7 +17,8 @@ const LanguageSelector = ({
   intl,
   value,
   shortOption,
-  showToolTip
+  showToolTip,
+  labelColor
 }) => {
   const { formatMessage } = intl
   const handleChange = (event, index, value) => {
@@ -29,6 +30,7 @@ const LanguageSelector = ({
       style={{ textAlign: 'left', width: '330px', maxWidth: '98%' }}
       maxHeight={400}
       value={value}
+      labelStyle={labelColor ? { color: labelColor } : {}}
       onChange={handleChange}
       floatingLabelText={showToolTip && 'Choose your language'}
     >
@@ -58,7 +60,8 @@ LanguageSelector.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
   shortOption: PropTypes.bool,
-  showToolTip: PropTypes.bool
+  showToolTip: PropTypes.bool,
+  labelColor: PropTypes.string,
 }
 
 export default injectIntl(LanguageSelector)

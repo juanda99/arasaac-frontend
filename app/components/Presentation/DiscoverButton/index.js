@@ -7,17 +7,17 @@ const DiscoverButton = styled(RaisedButton)`
   position: absolute;
   z-index: 10;
   left: 50%;
-  bottom: 20px;
+  bottom: 200px;
   margin-right: -50%;
   transform: translate(-50%, 0);
   ${media.sm} {
-    bottom: 40px;
+    bottom: calc(40px + 150px);
   } 
   ${media.md} {
-    bottom: 50px;
+    bottom: calc(30px + 150px);
   }
   ${media.lg} {   
-    bottom: 60px;
+    bottom: calc(60px + 150px);
   }
 `;
 

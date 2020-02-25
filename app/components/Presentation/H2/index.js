@@ -5,24 +5,19 @@ import media from 'utils/mediaqueries'
 const H2 = styled.h2`
   color: white;
   margin: 0 auto;
-  padding: 20px;
   position: absolute;
   width: 100%;
   text-align: center;
   z-index: 10;
-  font-size: 14px;
-  top: 10px;
-  ${media.sm} {
-    font-size: 1em;
-    top: calc(50% + 8px);
-  }
+  font-size: 1em;
+  top: 30px;
   ${media.md} {
     font-size: 1em;
-    top: calc(50% + 30px);
+    top: calc(50% + 40px - 95px);
   }
   ${media.lg} {   
     font-size: 1em; // 626px wide
-    top: calc(50% + 37px);
+    top: calc(50% + 57px - 95px);
   }
 `
 

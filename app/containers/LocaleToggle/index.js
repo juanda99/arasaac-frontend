@@ -16,13 +16,16 @@ import { makeSelectLocale } from '../LanguageProvider/selectors'
 
 export class LocaleToggle extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
+
   render() {
+    const { locale, changeLocale, labelColor } = this.props
     return (
       <Wrapper>
         <LanguageSelector
-          value={this.props.locale}
-          onChange={this.props.changeLocale}
+          value={locale}
+          onChange={changeLocale}
           shortOption={false}
+          labelColor={labelColor || ''}
         />
       </Wrapper>
     )
@@ -31,7 +34,8 @@ export class LocaleToggle extends React.PureComponent {
 
 LocaleToggle.propTypes = {
   changeLocale: PropTypes.func,
-  locale: PropTypes.string
+  locale: PropTypes.string,
+  labelColor: PropTypes.string,
 }
 
 const mapStateToProps = createSelector(

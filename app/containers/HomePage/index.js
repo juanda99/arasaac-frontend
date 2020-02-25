@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import Presentation from 'components/Presentation'
-import Welcome from 'components/Welcome'
 import Showcase from 'components/Showcase'
 import Participate from 'components/Participate'
 import { makeSelectRunTour } from './selectors'
@@ -16,11 +15,9 @@ class HomePage extends PureComponent {
 
   render() {
     const { run, startTour, theme } = this.props
-    console.log(theme, 'adfaddfadsfdf')
     return (
       <div>
         <Presentation run={run} onStart={startTour} />
-        <Welcome theme={theme} />
         <Showcase />
         <Participate />
       </div>
