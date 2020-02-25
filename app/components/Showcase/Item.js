@@ -51,8 +51,8 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <FullWidthSection color={this.props.muiTheme.palette.primary1Color}>
-          <H3 style={{ color: 'white', fontSize: '1.4em' }} >{title}</H3>
+        <FullWidthSection color={this.props.muiTheme.palette.primary1Color} style={{ paddingBottom: 0, paddingTop: 0 }}>
+          <H3 style={{ color: 'white' }} >{title}</H3>
         </FullWidthSection>
         <Image src={image} alt={title} style={{ padding: 20, width: '100%', margin: 0 }} />
       </Paper >
