@@ -19,7 +19,7 @@ export default defineMessages({
   api: {
     id: 'header.api',
     description: 'Header title',
-    defaultMessage: 'Api for developers'
+    defaultMessage: 'API for developers'
   },
   userActivation: {
     id: 'header.userActivation',

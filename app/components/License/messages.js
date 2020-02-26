@@ -21,23 +21,12 @@ export default defineMessages({
   licenseP1: {
     id: 'app.components.licensep1',
     defaultMessage:
-      `{ARASAAC} is a brand of the Government of Aragon (Spain), registered in
-      the Spanish Patent and Trademark Office. The {ARASAAC} pictogram
-      collection is registered in the General Registry of Intellectual Property
-      (No. Deposit Legal Z 901-2013) as a collective work on behalf of the
-      Diputación General de Aragón, who has edited and disseminated it in
-      accordance with the provisions of Article 8 of the revised text of the
-      Intellectual Property Law, approved by Royal Legislative Decree 1/1996, of
-      April 12. `
+      `{ARASAAC} is a brand of the Government of Aragon (Spain), registered in the Spanish Patent and Trademark Office. The {ARASAAC} pictogram collection is registered in the General Registry of Intellectual Property (No. Deposit Legal Z 901-2013) as a collective work on behalf of the Diputación General de Aragón, who has edited and disseminated it in accordance with the provisions of Article 8 of the revised text of the Intellectual Property Law, approved by Royal Legislative Decree 1/1996, of April 12. `
   },
   licenseP2: {
     id: 'app.components.licenseP2',
     defaultMessage:
-      `Resources offered on the website (pictograms, images, locutions or
-      videos), as well as the materials based o n them, are published under
-      {creativeCommonsLicense}, authorizing their use for non-profit
-      purposes provided that the source, author and are shared under the same
-      license.`
+      `Resources offered on the website (pictograms, images, locutions or videos), as well as the materials based o n them, are published under {creativeCommonsLicense}, authorizing their use for non-profit purposes provided that the source, author and are shared under the same license.`
   },
   licenseP3: {
     id: 'app.components.licenseP3',
@@ -47,20 +36,12 @@ export default defineMessages({
   licenseP4: {
     id: 'app.components.licenseP4',
     defaultMessage:
-      `For any other use they are strictly prohibited, without written
-      authorization of the copyright holders, under the sanctions established by
-      law, the total or partial reproduction of these resources by any means or
-      procedure, including reprography and computer processing.`
+      `For any other use they are strictly prohibited, without written authorization of the copyright holders, under the sanctions established by law, the total or partial reproduction of these resources by any means or procedure, including reprography and computer processing.`
   },
   licenseP5: {
     id: 'app.components.licenseP5',
     defaultMessage:
-      `Any work derived from the resources contained in the {ARASAAC} catalogs
-      (pictograms, images, voiceovers or videos), must distribute with the same
-      {creativeCommonsLicense}, it must be cited the author and the owner
-      thereof (Gobierno de Aragón), their origin (
-      {ARASAAC}) and the license under which is distributed (
-      {creativeCommonsLicense}).`
+      `Any work derived from the resources contained in the {ARASAAC} catalogs (pictograms, images, voiceovers or videos), must distribute with the same {creativeCommonsLicense}, it must be cited the author and the owner thereof (Gobierno de Aragón), their origin ({ARASAAC}) and the license under which is distributed ({creativeCommonsLicense}).`
   },
   licenseP6: {
     id: 'app.components.licenseP6',
@@ -70,9 +51,7 @@ export default defineMessages({
   licenseP7: {
     id: 'app.components.licenseP7',
     defaultMessage:
-      `The pictographic symbols used are the property of the Government of
-        Aragón and have been created by Sergio Palao for {ARASAAC}
-        , that distributes them under {creativeCommonsLicense}.`
+      `The pictographic symbols used are the property of the Government of Aragón and have been created by Sergio Palao for {ARASAAC}, that distributes them under {creativeCommonsLicense}.`
   },
   licenseP8: {
     id: 'app.components.licenseP8',
@@ -82,9 +61,7 @@ export default defineMessages({
   licenseP9: {
     id: 'app.components.licenseP9',
     defaultMessage:
-      `The Government of Aragon, is not responsible for the improper or negligent
-      use of resources contained in the {ARASAAC} catalogs made by
-      third parties that exceeds the terms of the {creativeCommonsLicense}`
+      `The Government of Aragon, is not responsible for the improper or negligent use of resources contained in the {ARASAAC} catalogs made by third parties that exceeds the terms of the {creativeCommonsLicense}`
   },
   creativeCommons: {
     id: 'app.components.creativeCommons',
