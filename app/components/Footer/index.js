@@ -6,9 +6,11 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
+import { FormattedMessage } from 'react-intl'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import SocialLinks from 'components/SocialLinks'
 import { IMAGES_URL } from 'services/config'
+import { Link } from 'react-router'
 // import { FormattedMessage } from 'react-intl'
 // import messages from './messages'
 
@@ -16,6 +18,7 @@ import { IMAGES_URL } from 'services/config'
 import styles from './styles'
 import FooterSection from './FooterSection'
 import A from './A'
+import messages from './messages'
 
 const Footer = ({ docked, muiTheme }) => (
   <FooterSection id='footer' color={muiTheme.palette.footerColor} docked={docked}>
@@ -27,9 +30,9 @@ const Footer = ({ docked, muiTheme }) => (
       <p style={styles.p}>
         {`© ARASAAC - Gobierno de Aragón, ${new Date().getFullYear()}`}
       </p>
-      <p style={styles.p}><A href='https://creativecommons.org/licenses/by/3.0/'>Condiciones de uso</A>
+      <p style={styles.p}><Link to='/terms-of-use'><FormattedMessage {...messages.termsOfUse} /></Link>
       </p>
-      <p style={styles.p}><A href='https://creativecommons.org/licenses/by/3.0/'>Política de cookies</A> - <A href='https://creativecommons.org/licenses/by/3.0/'>Aviso legal</A>
+      <p style={styles.p}><Link to='/cookies-policy'><FormattedMessage {...messages.cookiesPolicy} /></Link> - <Link to='/legal-notice'><FormattedMessage {...messages.legalNotice} /></Link>
       </p>
     </div>
 

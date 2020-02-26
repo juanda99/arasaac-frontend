@@ -353,10 +353,10 @@ export default function createRoutes(store) {
       }
     },
     {
-      path: 'use-conditions',
+      path: 'terms-of-use',
       name: 'useConditions',
       getComponent(location, cb) {
-        import('containers/LicenseView')
+        import('containers/TermsOfUseView')
           .then(loadModule(cb))
           .catch(errorLoading)
       }

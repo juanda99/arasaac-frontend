@@ -6,8 +6,16 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  header: {
-    id: 'app.components.Footer.header',
-    defaultMessage: 'This is the Footer component !'
-  }
+  termsOfUse: {
+    id: 'app.components.Footer.termsOfUse',
+    defaultMessage: 'Terms of Use'
+  },
+  legalNotice: {
+    id: 'app.components.Footer.legalNotice',
+    defaultMessage: 'Legal Notice'
+  },
+  cookiesPolicy: {
+    id: 'app.components.Footer.cookiesPolicy',
+    defaultMessage: 'Cookies Policy'
+  },
 })

@@ -30,6 +30,7 @@ import SignoutIcon from 'material-ui/svg-icons/content/block'
 import ApiIcon from 'material-ui/svg-icons/communication/import-export'
 import ContactMailIcon from 'material-ui/svg-icons/communication/contact-mail'
 import FileUploadIcon from 'material-ui/svg-icons/file/file-upload'
+import TermsOfUseIcon from 'material-ui/svg-icons/action/assignment-turned-in'
 import Div from 'components/Div'
 import messages from './messages'
 import styles from './styles'
@@ -196,6 +197,12 @@ class Menu extends Component {
             value='/settings'
             primaryText={<FormattedMessage {...messages.settings} />}
             leftIcon={<SettingsIcon />}
+          />
+          <ListItem
+            id='lstusage'
+            value='/terms-of-use'
+            primaryText={<FormattedMessage {...messages.termsOfUse} />}
+            leftIcon={<TermsOfUseIcon />}
           />
         </SelectableList>
         <Divider />

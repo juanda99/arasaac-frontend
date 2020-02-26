@@ -25,7 +25,7 @@ export default class NotFound extends React.PureComponent {
         <h1 style={{ textAlign: 'center' }}>
           <FormattedMessage {...messages.header} />
         </h1>
-        <Logo src={`${PICTOGRAMS_URL}/21466/21466_300.png`} />
+        <div style={{ textAlign: 'center' }}><img src={`${PICTOGRAMS_URL}/21466/21466_300.png`} /></div>
       </View>
     )
   }

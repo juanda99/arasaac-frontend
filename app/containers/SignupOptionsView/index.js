@@ -18,7 +18,7 @@ class SignupOptionsView extends Component {
           <Logo />
           <SocialLogin onSuccess={requestAppToken} locale={locale} />
           <Separator />
-          <RegisterOptions onClick={this.handleClick} />
+          <RegisterOptions onClick={this.handleClick} locale={locale} />
         </ConditionalPaper>
       </View>
     )

@@ -96,6 +96,18 @@ export default defineMessages({
     description: 'Header title',
     defaultMessage: 'Settings'
   },
+  termsOfUse: {
+    id: 'header.termsOfUse',
+    defaultMessage: 'Terms of use'
+  },
+  cookiesPolicy: {
+    id: 'header.termsOfUse',
+    defaultMessage: 'Cookies Policy'
+  },
+  legalNotice: {
+    id: 'header.legalNotice',
+    defaultMessage: 'Legal Notice'
+  },
   arasaacWorld: {
     id: 'header.arasaacWorld',
     defaultMessage: 'ARASAAC in the world'

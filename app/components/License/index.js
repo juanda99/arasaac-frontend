@@ -4,8 +4,7 @@ import Checkbox from 'material-ui/Checkbox'
 import FlatButton from 'material-ui/FlatButton'
 import { FormattedMessage } from 'react-intl'
 import Dialog from 'material-ui/Dialog'
-import EsLicense from './EsLicense'
-import EnLicense from './EnLicense'
+import LicenseText from './LicenseText'
 import messages from './messages'
 
 class License extends Component {
@@ -22,7 +21,7 @@ class License extends Component {
 
   render() {
     const { isChecked } = this.state
-    const { locale, open } = this.props
+    const { locale, showDialog } = this.props
 
     const actions = [
       <FlatButton
@@ -33,32 +32,42 @@ class License extends Component {
       />
     ]
     return (
-      <Dialog
-        title={
-          <p>
-            <FormattedMessage {...messages.arasaacLicense} />
-          </p>
-        }
-        actions={actions}
-        modal={true}
-        open={open}
-        autoScrollBodyContent={true}
-      >
-        {locale === 'es' ? <EsLicense /> : <EnLicense />}
-        <Checkbox
-          label={<FormattedMessage {...messages.confirmLicense} />}
-          checked={isChecked}
-          onCheck={this.readLicense}
-        />
-      </Dialog>
+      <div>
+        {
+          showDialog ? (
+            <Dialog
+              title={
+                <p>
+                  <FormattedMessage {...messages.arasaacLicense} />
+                </p>
+              }
+              actions={actions}
+              modal={true}
+              open={this.props.open}
+              autoScrollBodyContent={true}
+            >
+              <LicenseText locale={locale} />
+              <Checkbox
+                label={<FormattedMessage {...messages.confirmLicense} />}
+                checked={isChecked}
+                onCheck={this.readLicense}
+              />
+            </Dialog >
+          ) : (
+              <div>
+                {<LicenseText />}
+              </div>
+            )}
+      </div>
     )
   }
 }
 
 License.propTypes = {
   locale: PropTypes.string.isRequired,
-  open: PropTypes.bool.isRequired,
-  closeDialog: PropTypes.func.isRequired
+  open: PropTypes.bool,
+  closeDialog: PropTypes.func,
+  showDialog: PropTypes.bool,
 }
 
 export default License

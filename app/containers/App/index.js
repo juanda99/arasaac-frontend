@@ -228,6 +228,16 @@ class App extends Component {
         break;
       case /translate/.test(url):
         title = <FormattedMessage {...messages.translate} />;
+        break;
+      case /terms-of-use/.test(url):
+        title = <FormattedMessage {...messages.termsOfUse} />;
+        break;
+      case /cookies-policy/.test(url):
+        title = <FormattedMessage {...messages.cookiesPolicy} />;
+        break;
+      case /legal-notice/.test(url):
+        title = <FormattedMessage {...messages.legalNotice} />;
+        break;
       case /permissionsError/.test(url):
         title = <FormattedMessage {...messages.forbidden} />;
         break;

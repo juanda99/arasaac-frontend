@@ -26,6 +26,10 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'Favorites'
   },
+  termsOfUse: {
+    id: 'menu.termsOfUse',
+    defaultMessage: 'Terms of use'
+  },
   api: {
     id: 'menu.api',
     description: 'Menu item',

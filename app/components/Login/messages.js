@@ -74,17 +74,17 @@ const messages = defineMessages({
     id: 'signup.agreement',
     description: 'Link to the use conditions and the privacy policy',
     defaultMessage:
-      'By clicking on Sign up, you agree to {useConditions} and {privacyPolicy}'
+      'By clicking on Sign up, you agree to {useConditions} and our {privacyPolicy}'
   },
   useConditions: {
     id: 'signup.useConditions',
     description: 'Arasaac use conditions',
-    defaultMessage: "ARASAAC's use conditions"
+    defaultMessage: "ARASAAC terms and conditions of use"
   },
   privacyPolicy: {
     id: 'signup.privacyPolicy',
     description: 'ARASAAC privacy policy',
-    defaultMessage: 'privacy policy'
+    defaultMessage: 'Privacy Policy'
   },
   hintName: {
     id: 'signup.hintName',
