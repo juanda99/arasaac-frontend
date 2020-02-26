@@ -37,7 +37,7 @@ const Presentation = ({ run, onStart, muiTheme, width }) => {
   }
   let isMobile = width === SMALL;
 
-  const imgStyle = { width: '100%', height: 'auto', filter: 'brightness(75%)' }
+  const imgStyle = { width: '100%', height: 'auto', filter: 'brightness(55%)' }
   return (
     <FullWidthSection style={{ position: 'relative', textAlign: 'left' }} color={'white'}>
       <Logo presentation={true} />
