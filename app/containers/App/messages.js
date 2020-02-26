@@ -101,7 +101,7 @@ export default defineMessages({
     defaultMessage: 'Terms of use'
   },
   cookiesPolicy: {
-    id: 'header.termsOfUse',
+    id: 'header.cookiesPolicy',
     defaultMessage: 'Cookies Policy'
   },
   legalNotice: {
