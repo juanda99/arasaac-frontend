@@ -74,7 +74,7 @@ export default defineMessages({
     id: 'app.components.licenseP9',
     defaultMessage:
       `The Government of Aragon, is not responsible for the improper or negligent use of resources contained in 
-      the {ARASAAC} catalogs made by third parties that exceeds the terms of the {creativeCommonsLicense}`
+      the {ARASAAC} catalogs made by third parties that exceeds the terms of the {creativeCommonsLicense}.`
   },
   creativeCommons: {
     id: 'app.components.creativeCommons',
