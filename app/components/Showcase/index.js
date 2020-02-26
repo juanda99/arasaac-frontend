@@ -14,7 +14,7 @@ import Item from './Item'
 const Showcase = () => (
 
 
-  <FullWidthSection style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+  <FullWidthSection style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', color: 'white' }}>
 
     <Item
       title={<FormattedMessage {...messages.pictograms} />}

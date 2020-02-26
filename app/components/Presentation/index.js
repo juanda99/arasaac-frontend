@@ -39,7 +39,7 @@ const Presentation = ({ run, onStart, muiTheme, width }) => {
 
   const imgStyle = { width: '100%', height: 'auto', filter: 'brightness(55%)' }
   return (
-    <FullWidthSection style={{ position: 'relative', textAlign: 'left' }} color={'white'}>
+    <FullWidthSection style={{ position: 'relative', textAlign: 'left' }} >
       <Logo presentation={true} />
       <H2><FormattedMessage {...messages.header} values={{ aragones }} /></H2>
       <DiscoverButton
