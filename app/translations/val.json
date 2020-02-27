@@ -1,5 +1,5 @@
 {
-  "Login.invalidEmail": "Correu electrònic invàlid",
+  "Login.invalidEmail": "Correu electrònic no vàlid",
   "Login.invalidUrl": "Url no vàlid",
   "Login.required": "Requerit",
   "NewPasswordForm.hintNewPassword": "Quina és la vostra nova contrasenya?",
