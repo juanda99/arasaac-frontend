@@ -255,7 +255,7 @@
   "app.components.UseConditions.owner": "Governo di Aragona",
   "app.components.UseConditions.property": "{owner} ha la proprietà dei file originali da cui sono ottenuti i pittogrammi pubblicati in questo sito Web.",
   "app.components.Welcome.aragonese": "Aragonese",
-  "app.components.Welcome.chooseLanguage": "Choose your language:",
+  "app.components.Welcome.chooseLanguage": "Scegli la lingua:",
   "app.components.Welcome.header": "{aragones} Centro di Comunicazione Aumentativa e Alternativa",
   "app.components.author": "Pictograms author:",
   "app.components.creativeCommons": "Creative Commons License BY-NC-SA",
