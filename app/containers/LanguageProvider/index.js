@@ -17,12 +17,14 @@ export class LanguageProvider extends React.PureComponent { // eslint-disable-li
 
   render() {
     // if error with a locale in React-intl....
-    // var locale = this.props.locale
-    // if (this.props.locale === 'br') {
-    //   locale = 'pt'
-    // }
+    let locale = this.props.locale
+    if (this.props.locale === 'br') {
+      locale = 'pt'
+    } else if (this.props.locale === 'val') {
+      locale = 'ca'
+    }
     return (
-      <IntlProvider locale={this.props.locale} key={this.props.locale} messages={this.props.messages[this.props.locale]}>
+      <IntlProvider locale={locale} key={this.props.locale} messages={this.props.messages[this.props.locale]}>
         {React.Children.only(this.props.children)}
       </IntlProvider>
     )

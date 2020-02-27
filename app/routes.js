@@ -365,7 +365,16 @@ export default function createRoutes(store) {
       path: 'privacy-policy',
       name: 'privacyPolicy',
       getComponent(location, cb) {
-        import('components/PrivacyPolicy')
+        import('containers/PrivacyPolicyView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      }
+    },
+    {
+      path: 'cookies-policy',
+      name: 'cookiesPolicy',
+      getComponent(location, cb) {
+        import('containers/CookiesPolicyView')
           .then(loadModule(cb))
           .catch(errorLoading)
       }

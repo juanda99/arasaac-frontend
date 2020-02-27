@@ -32,7 +32,7 @@ const Footer = ({ docked, muiTheme }) => (
       </p>
       <p style={styles.p}><Link to='/terms-of-use'><FormattedMessage {...messages.termsOfUse} /></Link>
       </p>
-      <p style={styles.p}><Link to='/cookies-policy'><FormattedMessage {...messages.cookiesPolicy} /></Link> - <Link to='/legal-notice'><FormattedMessage {...messages.legalNotice} /></Link>
+      <p style={styles.p}><Link to='/cookies-policy'><FormattedMessage {...messages.cookiesPolicy} /></Link> - <Link to='/privacy-policy'><FormattedMessage {...messages.privacyPolicy} /></Link>
       </p>
     </div>
 

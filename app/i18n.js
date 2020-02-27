@@ -37,6 +37,7 @@ import glTranslationMessages from './translations/gl.json'
 import ruTranslationMessages from './translations/ru.json'
 import arTranslationMessages from './translations/ar.json'
 import euTranslationMessages from './translations/eu.json'
+import valTranslationMessages from './translations/val.json'
 import zhTranslationMessages from './translations/zh.json'
 import afTranslationMessages from './translations/af.json'
 
@@ -87,6 +88,7 @@ export const translationMessages = {
   ru: formatTranslationMessages('ru', ruTranslationMessages),
   ar: formatTranslationMessages('ar', arTranslationMessages),
   eu: formatTranslationMessages('eu', euTranslationMessages),
+  val: formatTranslationMessages('val', valTranslationMessages),
   zh: formatTranslationMessages('zh', zhTranslationMessages),
   af: formatTranslationMessages('af', afTranslationMessages),
 }

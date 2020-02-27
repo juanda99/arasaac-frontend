@@ -235,8 +235,8 @@ class App extends Component {
       case /cookies-policy/.test(url):
         title = <FormattedMessage {...messages.cookiesPolicy} />;
         break;
-      case /legal-notice/.test(url):
-        title = <FormattedMessage {...messages.legalNotice} />;
+      case /privacy-policy/.test(url):
+        title = <FormattedMessage {...messages.privacyPolicy} />;
         break;
       case /permissionsError/.test(url):
         title = <FormattedMessage {...messages.forbidden} />;

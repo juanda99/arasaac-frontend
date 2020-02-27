@@ -104,9 +104,9 @@ export default defineMessages({
     id: 'header.cookiesPolicy',
     defaultMessage: 'Cookies Policy'
   },
-  legalNotice: {
-    id: 'header.legalNotice',
-    defaultMessage: 'Legal Notice'
+  privacyPolicy: {
+    id: 'header.privacyPolicy',
+    defaultMessage: 'Privacy Policy'
   },
   arasaacWorld: {
     id: 'header.arasaacWorld',

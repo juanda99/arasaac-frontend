@@ -10,9 +10,9 @@ export default defineMessages({
     id: 'app.components.Footer.termsOfUse',
     defaultMessage: 'Terms of Use'
   },
-  legalNotice: {
-    id: 'app.components.Footer.legalNotice',
-    defaultMessage: 'Legal Notice'
+  privacyPolicy: {
+    id: 'app.components.Footer.privacyPolicy',
+    defaultMessage: 'Privacy Policy'
   },
   cookiesPolicy: {
     id: 'app.components.Footer.cookiesPolicy',

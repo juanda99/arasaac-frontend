@@ -20,8 +20,8 @@ const styles = {
 }
 
 const useConditions = (
-  <Link to='/use-conditions'>
-    <FormattedMessage {...messages.useConditions} />
+  <Link to='/terms-of-use'>
+    <FormattedMessage {...messages.termsOfUse} />
   </Link>
 )
 const privacyPolicy = (
