@@ -257,7 +257,7 @@
   "app.components.Welcome.aragonese": "Aragonese",
   "app.components.Welcome.chooseLanguage": "Scegli la lingua:",
   "app.components.Welcome.header": "{aragones} Centro di Comunicazione Aumentativa e Alternativa",
-  "app.components.author": "Pictograms author:",
+  "app.components.author": "Autore dei pittogrammi:",
   "app.components.creativeCommons": "Creative Commons License BY-NC-SA",
   "app.components.dialog.ok": "Ok",
   "app.components.license": "License:",
