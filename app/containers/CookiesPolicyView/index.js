@@ -24,67 +24,40 @@ export class CookiesPolicyView extends React.PureComponent {
           ]}
         />
         <ReadMargin>
-          <P>Esta página informa sobre la política de privacidad y protección de datos del sitio web <A href="https://www.arasaac.org">www.arasaac.org</A>, que se
-          ha adaptado al <strong>"Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo
-                                  a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación
-          de estos datos"</strong> (en adelante, RGPD) y a la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales
-         y garantía de los derechos digitales.</P>
-          <P>Esta política es aplicable tanto a la información recogida a través a través del sitio web <A href="https://www.arasaac.org">www.arasaac.org</A>  como a los portales y
-          y aplicaciones dependientes del mismo.</P>
-
-          <P>El tratamiento de los datos de carácter personal recogidos en esta web y en los portales y aplicaciones asociados
-            estará sujeto a la legislación vigente en materia de protección de datos, el RGPD y demás normativa de aplicación.
-            De esta manera se garantiza en todo momento la privacidad de los usuarios, así como el secreto y seguridad de sus
-            datos personales.</P>
-
-          <P>El Gobierno de Aragón se compromete a guardar la máxima reserva y confidencialidad sobre la información que le
-          sea facilitada y a utilizarla únicamente para los fines establecidos en cada caso.</P>
-
-          <H2 primary={true}>Responsable del tratamiento de datos personales</H2>
-
-          <P>El Gobierno de Aragón dispone de una base de datos llamada <em>"Registro de Actividades de Tratamiento del Gobierno de Aragón"</em>.
-          En ella los Departamentos del Gobierno Aragón identifican las actividades de tratamiento que se aplica a cada conjunto de datos personal.
-          Los datos tratados son los estrictamente necesarios, adecuados y pertinentes para cada finalidad. </P>
-          <P>Los datos recogidos en esta web serán incorporados y tratados en el Registro de Actividades de Tratamiento de la Dirección General de Innovación y Formación Profesional “ARASAAC”.
-          Sus datos personales serán tratados con el fin exclusivo de gestión del proyecto ARASAAC, abarcando las reclamaciones en vía administrativa y judicial, así como las solicitudes en materia de transparencia.
+          <P>Las cookies son pequeños ficheros de texto que se almacenan en los equipos de los usuarios a través de las distintas webs que visitan.
+          Son herramientas esenciales para la prestación de numerosos servicios de la sociedad de la información. Entre otros, permiten a una página
+          web almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información obtenida,
+          se pueden utilizar para reconocer al usuario y personalizar el servicio ofrecido. </P>
+          <P>
+            Con la finalidad de ofrecer un mejor servicio a través de esta sede, y con el objeto de facilitar su uso, se recogen de forma automática
+            los datos de conexión y navegación en ARASAAC, que entre otros:
+            <ul>
+              <li>Obtener estadísticas de uso: número de visitas, paises, frecuencia...</li>
+              <li>Mejorar el rendimiento de la aplicación</li>
+              <li>Mejorar la usabilidad de la aplicación</li>
+            </ul>
           </P>
-          <P>El órgano responsable del Registro de Actividades de Tratamiento es la Dirección General de Innovación y Formación Profesional.</P>
+
+          <H2 primary={true}>Cookies de estadísticas</H2>
+          <P>La página web de ARASAAC utiliza Google Analytics, un servicio de analítica web desarrollado por Google, que permite la medición y análisis de
+          la navegación en las páginas web.</P>
+          <P>En su navegador podrá observar varias cookies de este servicio,  se tratan de "cookies" de sesión y de análisis. Son "cookies" que tratan datos
+          agregados con una finalidad estrictamente estadística. La norma obliga a obtener un consentimiento informado para su uso y se incluye la posibilidad
+          de que los usuarios manifiesten su negativa sobre su utilización.</P>
+
+          <H3>Cómo restringir, bloquear y eliminar las cookies</H3>
+          <P>Para restringir, bloquear y eliminar las cookies instaladas en su equipo puede consultar:
+            <ul>
+              <li a href='https://support.google.com/accounts/answer/61416?hl=es' target='_blank'>Chrome</li>
+              <li a href='https://support.mozilla.org/es/kb/Borrar%20cookies  ' target='_blank'>Firefox</li>
+              <li a href='' target='_blank'>Internet Explorer</li>
+              <li a href='' target='_blank'>Opera</li>
+              <li a href='' target='_blank'>Safari </li>
+            </ul>
 
 
-          <P>La licitud del tratamiento de los datos es necesaria para el cumplimiento de una obligación legal aplicable al responsable del tratamiento.
 
-Estos datos no se cederán a terceros, salvo obligación legal.</P>
-
-
-
-          <H2 primary={true}>Derechos de los interesados</H2>
-
-          <P>Cualquier persona tiene derecho a obtener información sobre los tratamientos de sus datos personales hechos por el Gobierno de Aragón.
-          Se podrán ejercitar los derechos de acceso, rectificación, supresión, portabilidad de los datos y los de limitación y oposición a los tratamientos.
-          También se podrá ejercitar el derecho a no ser objeto de decisiones basadas únicamente en el tratamiento automatizado de los datos, incluida la
-          elaboración de perfiles. Los derechos se ejercitarán ante el órgano responsable del tratamiento.</P>
-
-          <P>Podrá Ud. ejercer sus derechos de acceso, rectificación, supresión y portabilidad de datos de carácter personal, así como de limitación
-y oposición a su tratamiento, de conformidad con lo dispuesto en el Reglamento General de Protección de Datos, ante dicha Dirección General
-(Avda. Ranillas nº 5 D 50.071 Zaragoza), o en la dirección de correo electrónico dginnovacionyfp@aragon.es, de conformidad con lo dispuesto
-en el Reglamento General de Protección de Datos. Podrá consultar información adicional y detallada en el &nbsp;
-          <A href="http://aplicaciones.aragon.es/notif_lopd_pub/details.action?fileId=249&fileVersion=1" target="_blank">
-              Registro de Actividades de Tratamiento del Gobierno de Aragón
-          </A>, identificando la siguiente actividad de tratamiento: “ARASAAC".</P>
-
-
-          <P>También se puede presentar una reclamación ante la Agencia Española de Protección de Datos en el caso de que considere que el tratamiento
-          de sus datos no está siendo adecuado.</P>
-
-          <H2 primary={true}>Seguridad de los datos personales</H2>
-          <P>En cumplimiento con lo dispuesto en el artículo 32 del RGPD, el Gobierno de Aragón garantizará la confidencialidad, integridad,
-          disponibilidad y resiliencia permanentes de los sistemas y servicios de tratamiento. El nivel de seguridad será proporcional al
-          riesgo en el tratamiento de cada tipo de datos personales.</P>
-
-
-          <H2 primary={true}>Utilización de cookies y registro de direcciones IP</H2>
-          <P>La única información que se recoge de los usuarios es el formulario de alta (nombre, correo electrónico, empresa y sitio web). La información se guarda en servidores pertenecientes al Gobierno de Aragón y localizados en la Unión Europea.</P>
-          <P>Se utilizan una serie de cookies para el funcionamiento del sitio web y las aplicaciones, así como la herramienta Google Analytics con fines exclusivamente estadísticos. Toda esta información aparece detallada en nuestra Política de Cookies</P>
+          </P>
         </ReadMargin>
       </View>
 

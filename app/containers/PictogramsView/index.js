@@ -58,9 +58,6 @@ const styles = {
   actionButtons: {
     width: '150px'
   },
-  container: {
-
-  }
 }
 class PictogramsView extends PureComponent {
   // eslint-disable-line react/prefer-stateless-function
@@ -205,26 +202,13 @@ class PictogramsView extends PureComponent {
         <Divider />
         <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange}>
           <div>
-            <View
-              style={{ backgroundColor: muiTheme.palette.accent2Color }} bottom={0}
-            >
-              <SearchContainer bottom-xs={0}>
-                <SearchField
-                  value={searchText}
-                  onSubmit={this.handleSubmit}
-                  style={styles.searchBar}
-                  dataSource={keywords}
-                />
-                {/* <ActionButtons
-                  onFilterClick={this.props.toggleShowFilter}
-                  filterActive={showFilter}
-                  onLabelsClick={this.showLabels}
-                  labelsActive={visibleLabels}
-                  onSettingsClick={this.showSettings}
-                  settingsActive={visibleSettings}
-                  style={styles.actionButtons}
-                /> */}
-              </SearchContainer>
+            <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+              <SearchField
+                value={searchText}
+                onSubmit={this.handleSubmit}
+                style={styles.searchBar}
+                dataSource={keywords}
+              />
               {visibleSettings ? (
                 <div>
                   <p>todo</p>

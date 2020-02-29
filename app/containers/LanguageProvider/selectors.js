@@ -14,7 +14,13 @@ const makeSelectLocale = () => createSelector(
   (languageState) => languageState.get('locale')
 )
 
+const makeSelectDirection = () => createSelector(
+  selectLanguage(),
+  (languageState) => languageState.get('direction')
+)
+
 export {
   selectLanguage,
-  makeSelectLocale
+  makeSelectLocale,
+  makeSelectDirection
 }

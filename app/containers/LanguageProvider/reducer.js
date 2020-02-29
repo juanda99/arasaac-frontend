@@ -9,9 +9,12 @@ import { REHYDRATE } from 'redux-persist/constants'
 import { CHANGE_LOCALE, START_TRANSLATION, STOP_TRANSLATION } from './actions'
 import { DEFAULT_LOCALE } from '../App/constants'
 
+const getDirection = (locale) => locale === 'ar' || locale === 'he' ? 'rtl' : 'ltr'
+
 export const initialState = fromJS({
   locale: DEFAULT_LOCALE,
-  previousLocale: ''
+  previousLocale: '',
+  direction: getDirection(DEFAULT_LOCALE)
 })
 
 function languageProviderReducer(state = initialState, action) {
@@ -21,7 +24,8 @@ function languageProviderReducer(state = initialState, action) {
   const previousLocale = state.get('previousLocale')
   switch (action.type) {
     case CHANGE_LOCALE:
-      return state.set('locale', action.locale)
+      const direction = getDirection(action.locale)
+      return state.set('locale', action.locale).set('direction', direction)
     case START_TRANSLATION:
       return state.set('previousLocale', currentLocale).set('locale', 'af')
     case STOP_TRANSLATION:

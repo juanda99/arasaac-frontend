@@ -157,10 +157,10 @@ const customComponentsTheme = (theme, currentTheme) => (
   { ...commonComponentsTheme(currentTheme), ...componentsTheme[theme](currentTheme) || {} }
 )
 
-const customTheme = (theme = DEFAULT_THEME) => {
+const customTheme = (theme = DEFAULT_THEME, direction) => {
   const currentTheme = themes[theme]
+  currentTheme.direction = direction
   return getMuiTheme(currentTheme, customComponentsTheme(theme, currentTheme))
 }
-
 
 export default customTheme

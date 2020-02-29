@@ -22,18 +22,19 @@ import Logo from 'components/Logo'
 import messages from './messages'
 
 
-const Presentation = ({ run, onStart, muiTheme, width }) => {
+const Presentation = ({ run, onStart, muiTheme, width, rtl }) => {
   // const aragones = <Strong><FormattedMessage {...messages.aragonese} /> </Strong>
   const aragones = <FormattedMessage {...messages.aragonese} />
   const settings = {
     dots: false,
     infinite: true,
     speed: 2000,
-    fade: true,
-    autoplaySpeed: 6000,
+    fade: false, // https://github.com/akiran/react-slick/issues/1710 
+    autoplaySpeed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true
+    autoplay: true,
+    rtl
   }
   let isMobile = width === SMALL;
 
@@ -80,6 +81,7 @@ Presentation.propTypes = {
   run: PropTypes.bool.isRequired,
   onStart: PropTypes.func.isRequired,
   width: PropTypes.number.isRequired,
+  rtl: PropTypes.bool.isRequired,
 }
 
 export default muiThemeable()(withWidth()(Presentation))

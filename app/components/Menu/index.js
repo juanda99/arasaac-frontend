@@ -95,6 +95,7 @@ class Menu extends Component {
         style={styles.menu}
         docked={docked}
         open={open}
+        openSecondary={muiTheme.direction === 'rtl'}
         id='menu'
         onRequestChange={onRequestChangeNavDrawer}
       // containerStyle={{zIndex: zIndex.drawer - 100}}

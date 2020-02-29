@@ -40,6 +40,7 @@ import { makeSelectRunTour } from 'containers/HomePage/selectors'
 import { stopTour } from 'containers/HomePage/actions'
 import { logout, activation } from "./actions";
 import { makeSelectHasUser, makeSelectRole } from "./selectors";
+import { makeSelectDirection } from 'containers/LanguageProvider/selectors';
 
 class App extends Component {
   static propTypes = {
@@ -50,6 +51,7 @@ class App extends Component {
     changeLocale: PropTypes.func,
     stopTour: PropTypes.func.isRequired,
     run: PropTypes.bool.isRequired,
+    direction: PropTypes.string.isRequired,
   };
 
   static contextTypes = {
@@ -301,9 +303,6 @@ class App extends Component {
 
   handleJoyrideCallback = (data) => {
     const { status, type } = data;
-    console.log(STATUS)
-    console.log('status', status)
-    console.log('type', type)
     const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED]
 
     if (finishedStatuses.includes(status)) {
@@ -326,7 +325,8 @@ class App extends Component {
       isTranslating,
       logout,
       role,
-      run // runTour
+      run,
+      direction // runTour
     } = this.props;
 
     const locale = {
@@ -351,6 +351,7 @@ class App extends Component {
     return (
       <div
         style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+        dir={direction}
       >
         <Joyride
           callback={this.handleJoyrideCallback}
@@ -410,12 +411,14 @@ const mapStateToProps = state => {
   const isAuthenticated = (makeSelectHasUser()(state) && true) || false;
   const role = makeSelectRole()(state)
   const run = makeSelectRunTour()(state)
+  const direction = makeSelectDirection()(state)
   return {
     isAuthenticated,
     locale,
     isTranslating,
     role,
-    run
+    run,
+    direction
   };
 };
 
