@@ -2,7 +2,7 @@
   "Login.invalidEmail": "Adresă de e-mail invalidă",
   "Login.invalidUrl": "Url invalid",
   "Login.required": "Required",
-  "NewPasswordForm.hintNewPassword": "What is your new password?",
+  "NewPasswordForm.hintNewPassword": "Introduceți parola nouă",
   "activate.activateUser": "User activation",
   "activate.expiredCode": "Your activation code has expired. We have send you another email to validate your account",
   "activate.invalidCode": "Acest cod de activare nu este valid",
