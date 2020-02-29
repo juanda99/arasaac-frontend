@@ -5,9 +5,7 @@ import withWidth, { SMALL, LARGE } from 'material-ui/utils/withWidth'
 import PictogramSnippet from '../PictogramSnippet'
 
 const Masonry = require('react-masonry-component')
-const masonryOptions = {
-  transitionDuration: '1s'
-}
+
 
 const styles = {
   masonry: {
@@ -30,8 +28,13 @@ export class PictogramList extends PureComponent {
       searchText,
       favorites,
       onDeleteFavorite,
-      onAddFavorite
+      onAddFavorite,
+      rtl
     } = this.props
+    const masonryOptions = {
+      transitionDuration: '1s',
+      isOriginLeft: !rtl
+    }
     const renderPictograms = pictograms.map((pictogram) => {
       const isFavorite = favorites.includes(pictogram._id)
       return (
@@ -60,8 +63,8 @@ export class PictogramList extends PureComponent {
             {renderPictograms}
           </Masonry>
         ) : (
-          <ul>{renderPictograms}</ul>
-        )}
+            <ul>{renderPictograms}</ul>
+          )}
       </div>
     )
   }
@@ -78,7 +81,8 @@ PictogramList.propTypes = {
   width: PropTypes.number.isRequired,
   onAddFavorite: PropTypes.func.isRequired,
   onDeleteFavorite: PropTypes.func.isRequired,
-  favorites: ImmutablePropTypes.list
+  favorites: ImmutablePropTypes.list,
+  rtl: PropTypes.bool.isRequired,
 }
 
 export default withWidth()(PictogramList)

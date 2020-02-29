@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 import media from 'utils/mediaqueries'
 
 const FooterSection = styled.div`
@@ -12,8 +13,12 @@ const FooterSection = styled.div`
   ${media.md} {
     padding-left: ${(props) => (props.docked ? '16rem' : '0em')};
   }
+  ${media.md} {
+    padding-left: ${(props) => (props.docked && props.muiTheme.direction === 'ltr' ? '16rem' : '0rem')};
+    padding-right: ${(props) => (props.docked && props.muiTheme.direction === 'rtl' ? '16rem' : '0rem')};
+  }
   ${media.xs} {
     flex-direction: column;
   }
 `
-export default FooterSection
+export default muiThemeable()(FooterSection)

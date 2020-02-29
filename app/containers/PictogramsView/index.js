@@ -16,12 +16,15 @@ import Toggle from 'material-ui/Toggle'
 import TabsHeader from 'components/TabsHeader'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import Divider from 'material-ui/Divider'
-import SwipeableViews from 'react-swipeable-views'
+import { Tabs, Tab } from 'material-ui/Tabs'
 import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import PictogramList from 'components/PictogramList'
 import P from 'components/P'
 import { withRouter } from 'react-router'
+import SearchIcon from 'material-ui/svg-icons/action/search'
+import withWidth, { SMALL } from 'material-ui/utils/withWidth'
+import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ReadMargin from 'components/ReadMargin'
 import { addFavorite, deleteFavorite } from 'containers/App/actions'
@@ -156,11 +159,13 @@ class PictogramsView extends PureComponent {
       filtersData,
       muiTheme,
       keywords,
-      rootFavorites
+      rootFavorites,
+      width
     } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, slideIndex } = this.state
     let pictogramsCounter
+    const hideIconText = width === SMALL
     let pictogramsList
     if (slideIndex === 0) pictogramsList = visiblePictograms
     else if (slideIndex === 1) pictogramsList = newPictogramsList
@@ -182,6 +187,7 @@ class PictogramsView extends PureComponent {
           onAddFavorite={this.handleAddFavorite}
           onDeleteFavorite={this.handleDeleteFavorite}
           favorites={rootFavorites}
+          rtl={muiTheme.direction === 'rtl'}
         />
       ) : (
           <ReadMargin>
@@ -198,70 +204,104 @@ class PictogramsView extends PureComponent {
             { name: 'description', content: 'Description of PictogramsView' }
           ]}
         />
-        <TabsHeader onChange={this.handleChange} value={slideIndex} />
-        <Divider />
-        <SwipeableViews index={slideIndex} onChangeIndex={this.handleChange}>
-          <div>
-            <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
-              <SearchField
-                value={searchText}
-                onSubmit={this.handleSubmit}
-                style={styles.searchBar}
-                dataSource={keywords}
-              />
-              {visibleSettings ? (
-                <div>
-                  <p>todo</p>
-                </div>
-              ) : null}
-              {showFilter ? (
-                <FilterList
-                  filtersMap={filters}
-                  setFilterItems={this.props.setFilterItems}
-                  filtersData={filtersData}
+        <Tabs onChange={this.handleChange} value={slideIndex}>
+          <Tab
+            label={hideIconText ? '' : <FormattedMessage {...messages.search} />}
+            icon={<SearchIcon />}
+            value={0}
+          >
+            <div>
+              <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+                <SearchField
+                  value={searchText}
+                  onSubmit={this.handleSubmit}
+                  style={styles.searchBar}
+                  dataSource={keywords}
                 />
-              ) : null}
-            </View>
-            <Divider />
-            <View left={true} right={true} top={1}>
-              {pictogramsCounter ? (
-                <ReadMargin>
-                  <P>
-                    {' '}
-                    <FormattedMessage
-                      {...messages.pictogramsFound}
-                      values={{ pictogramsCounter }}
-                    />{' '}
-                  </P>
-                </ReadMargin>
+                {visibleSettings ? (
+                  <div>
+                    <p>todo</p>
+                  </div>
+                ) : null}
+                {showFilter ? (
+                  <FilterList
+                    filtersMap={filters}
+                    setFilterItems={this.props.setFilterItems}
+                    filtersData={filtersData}
+                  />
+                ) : null}
+              </View>
+              <Divider />
+              <View left={true} right={true} top={1}>
+                {pictogramsCounter ? (
+                  <ReadMargin>
+                    <P>
+                      {' '}
+                      <FormattedMessage
+                        {...messages.pictogramsFound}
+                        values={{ pictogramsCounter }}
+                      />{' '}
+                    </P>
+                  </ReadMargin>
 
-              ) : (
-                  ''
-                )}
-              {gallery}
-            </View>
-          </div>
-          <div>
-            <View left={true} right={true} top={1}>
-              {pictogramsCounter ? (
-                <ReadMargin>
-                  <P>
-                    {' '}
-                    <FormattedMessage
-                      {...messages.newPictogramsFound}
-                      values={{ pictogramsCounter }}
-                    />{' '}
-                  </P>
+                ) : (
+                    ''
+                  )}
+                {gallery}
+              </View>
+            </div>
 
-                </ReadMargin>
+          </Tab>
+          <Tab
+            label={hideIconText ? '' : <FormattedMessage {...messages.new} />}
+            icon={<NewReleasesIcon />}
+            value={1}
+          >
 
-              ) : (
-                  ''
-                )}
-              {gallery}
-            </View>
-          </div>
-        </SwipeableViews>
+            <div>
+              <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+                <SearchField
+                  value={searchText}
+                  onSubmit={this.handleSubmit}
+                  style={styles.searchBar}
+                  dataSource={keywords}
+                />
+                {visibleSettings ? (
+                  <div>
+                    <p>todo</p>
+                  </div>
+                ) : null}
+                {showFilter ? (
+                  <FilterList
+                    filtersMap={filters}
+                    setFilterItems={this.props.setFilterItems}
+                    filtersData={filtersData}
+                  />
+                ) : null}
+              </View>
+              <Divider />
+              <View left={true} right={true} top={1}>
+                {pictogramsCounter ? (
+                  <ReadMargin>
+                    <P>
+                      {' '}
+                      <FormattedMessage
+                        {...messages.newPictogramsFound}
+                        values={{ pictogramsCounter }}
+                      />{' '}
+                    </P>
+
+                  </ReadMargin>
+
+                ) : (
+                    ''
+                  )}
+                {gallery}
+              </View>
+            </div>
+
+          </Tab>
+        </Tabs>
       </div>
     )
   }
@@ -290,7 +330,8 @@ PictogramsView.propTypes = {
   addFavorite: PropTypes.func.isRequired,
   deleteFavorite: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
-  rootFavorites: ImmutablePropTypes.list.isRequired
+  rootFavorites: ImmutablePropTypes.list.isRequired,
+  width: PropTypes.number.isRequired
 }
 
 PictogramsView.contextTypes = {
@@ -344,4 +385,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(muiThemeable()(PictogramsView)))
+)(withRouter(muiThemeable()(withWidth()(PictogramsView))))

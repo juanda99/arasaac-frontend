@@ -41,5 +41,13 @@ export default defineMessages({
   loadingPictograms: {
     id: 'app.containers.PictogramsView.loadingPictograms',
     defaultMessage: 'Loading pictograms...'
+  },
+  search: {
+    id: 'app.containers.PictogramsView.search',
+    defaultMessage: 'Search'
+  },
+  new: {
+    id: 'app.containers.PictogramsView.new',
+    defaultMessage: 'New'
   }
 })
