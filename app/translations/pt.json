@@ -407,7 +407,7 @@
   "joyride.skip": "Ignorar",
   "joyride.startNavigation": "Clique no botão para navegar pelo site do ARASAAC.",
   "joyride.userMenu": "User menu",
-  "joyride.userMenuDesc": "User-specific actions such as changing personal data.",
+  "joyride.userMenuDesc": "Acções específicas do utilizador, como alteração de dados pessoais.",
   "loginView.authentication": "Erro de autenticação",
   "loginView.communicationError": "Não é possível aceder ao servidor de autenticação",
   "loginView.invalidUser": "Utilizador ou palavra-passe inválidos",
