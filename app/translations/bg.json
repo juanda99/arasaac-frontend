@@ -1,7 +1,7 @@
 {
   "Login.invalidEmail": "Невалидна електронна поща",
   "Login.invalidUrl": "Invalid url",
-  "Login.required": "Required",
+  "Login.required": "Задължително",
   "NewPasswordForm.hintNewPassword": "What is your new password?",
   "activate.activateUser": "User activation",
   "activate.expiredCode": "Your activation code has expired. We have send you another email to validate your account",
