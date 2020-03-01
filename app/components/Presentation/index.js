@@ -30,7 +30,7 @@ const Presentation = ({ run, onStart, muiTheme, width, rtl }) => {
     infinite: true,
     speed: 2000,
     fade: false, // https://github.com/akiran/react-slick/issues/1710 
-    autoplaySpeed: 2000,
+    autoplaySpeed: 6000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
