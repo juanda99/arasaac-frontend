@@ -31,8 +31,8 @@ export default defineMessages({
     id: 'app.components.licenseP2',
     defaultMessage:
       `Resources offered on the website (pictograms, images, locutions or videos), as well as the materials based on
-       them, are published under {creativeCommonsLicense}, authorizing their use for non-profit purposes provided that 
-       the source, author and are shared under the same license.`
+       them, are published under {creativeCommonsLicense}, authorizing their use for non-profit purposes providing
+       the source and the author, and are shared under the same license.`
   },
   licenseP3: {
     id: 'app.components.licenseP3',
@@ -50,9 +50,8 @@ export default defineMessages({
     id: 'app.components.licenseP5',
     defaultMessage:
       `Any work derived from the resources contained in the {ARASAAC} catalogs (pictograms, images, voiceovers or 
-        videos), must distribute with the same {creativeCommonsLicense}, it must be cited the author and the owner 
-        thereof (Gobierno de Aragón), their origin ({ARASAAC}) and the license under which is distributed 
-        ({creativeCommonsLicense}).`
+        videos), must be distributed with the same {creativeCommonsLicense}. The author (Sergio Palao), the owner(Gobierno de Aragón),
+          their origin ({ARASAAC}) and the license under which is distributed ({creativeCommonsLicense}) must be cited.`
   },
   licenseP6: {
     id: 'app.components.licenseP6',
@@ -90,6 +89,11 @@ export default defineMessages({
     id: 'app.components.license',
     defaultMessage:
       'License:'
+  },
+  disclaimer: {
+    id: 'app.components.disclaimer',
+    defaultMessage:
+      'Disclaimer'
   },
   author: {
     id: 'app.components.author',

@@ -42,7 +42,7 @@ const LicenseText = ({ locale }) => (
       </blockquote>
     </P>
     <Divider />
-    <H3>Disclaimer</H3>
+    <H3><FormattedMessage {...messages.disclaimer} /></H3>
     <P>
       <FormattedMessage {...messages.licenseP9} values={{ ARASAAC: <Arasaac link={true} />, creativeCommonsLicense: <CreativeCommons locale={locale} /> }} />
     </P>
