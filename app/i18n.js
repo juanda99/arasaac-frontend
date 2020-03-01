@@ -75,6 +75,7 @@ export const formatTranslationMessages = (locale, messages) => {
 
 export const translationMessages = {
   en: formatTranslationMessages('en', enTranslationMessages),
+  br: formatTranslationMessages('br', ptTranslationMessages),
   es: formatTranslationMessages('es', esTranslationMessages),
   fr: formatTranslationMessages('fr', frTranslationMessages),
   it: formatTranslationMessages('it', itTranslationMessages),
