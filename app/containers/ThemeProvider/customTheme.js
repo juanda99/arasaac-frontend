@@ -38,7 +38,7 @@ themes[THEME_NAMES.DARK] = {
     primary1Color: lightGreen500,
     primary2Color: lightGreen300,
     primary3Color: lightGreen900,
-    accent1Color: grey800, // used by footer
+    accent1Color: grey200, // used by footer
     accent2Color: grey800,
     accent3Color: pinkA100,
     footerColor: '#333333',
