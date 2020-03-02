@@ -20,7 +20,7 @@ const Logo = ({ src, top, presentation }) =>
   presentation ? (
     <LogoImg />
   ) : (
-      <img src={`${IMAGES_URL}/arasaac-logo.svg`} />
+      <img src={`${IMAGES_URL}/arasaac-logo.svg`} style={{ backgroundColor: 'white' }} />
     )
 
 
