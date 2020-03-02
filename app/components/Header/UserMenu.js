@@ -12,7 +12,7 @@ import messages from './messages'
 /* eslint-disable jsx-a11y/anchor-has-content */
 
 const UserMenu = ({ isTranslating, changeLocale, muiTheme, signout, role }) => (
-  <span id='userMenu'>
+  <span id='userMenu' dir='rtl'>
     <IconMenu
       iconButtonElement={
         <IconButton>
@@ -23,7 +23,7 @@ const UserMenu = ({ isTranslating, changeLocale, muiTheme, signout, role }) => (
       anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
     >
       <MenuItem
-        primaryText={<FormattedMessage {...messages.userProfile} />}
+        primaryText={<p dir={muiTheme.direction}><FormattedMessage {...messages.userProfile} /></p>}
         containerElement={<Link to='/profile' />}
       />
       {/* <MenuItem
@@ -33,19 +33,19 @@ const UserMenu = ({ isTranslating, changeLocale, muiTheme, signout, role }) => (
       {(role === 'admin' || role === 'translator') && (
         !isTranslating ? (
           <MenuItem
-            primaryText={<FormattedMessage {...messages.translateArasaac} />}
+            primaryText={<p dir={muiTheme.direction}><FormattedMessage {...messages.translateArasaac} /></p>}
             onClick={changeLocale}
           />
         ) : (
             <MenuItem
-              primaryText={<FormattedMessage {...messages.stopTranslateArasaac} />}
+              primaryText={<p dir={muiTheme.direction}><FormattedMessage {...messages.stopTranslateArasaac} /></p>}
               onClick={changeLocale}
             />
           )
       )
       }
       <MenuItem
-        primaryText={<FormattedMessage {...messages.signout} />}
+        primaryText={<p dir={muiTheme.direction}><FormattedMessage {...messages.signout} /></p>}
         onClick={signout}
       />
     </IconMenu>

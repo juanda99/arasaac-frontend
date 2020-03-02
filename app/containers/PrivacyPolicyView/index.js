@@ -16,7 +16,7 @@ export class PrivacyPolicyView extends React.PureComponent {
   render() {
     const { locale } = this.props
     return (
-      <View left={true} right={true} top={1}>
+      <View left={true} right={true} top={1} dir='ltr'>
         <Helmet
           title='Política de Privacidad'
           meta={[
@@ -26,7 +26,7 @@ export class PrivacyPolicyView extends React.PureComponent {
         <ReadMargin>
           <P>Esta página informa sobre la política de privacidad y protección de datos del sitio web <A href="https://www.arasaac.org">www.arasaac.org</A>, que se
           ha adaptado al <strong>"Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo
-                                    a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación
+                                      a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación
           de estos datos"</strong> (en adelante, RGPD) y a la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales
          y garantía de los derechos digitales.</P>
           <P>Esta política es aplicable tanto a la información recogida a través a través del sitio web <A href="https://www.arasaac.org">www.arasaac.org</A>  como a los portales y

@@ -39,7 +39,7 @@ class PrizeSnippet extends PureComponent {
         <div style={styles.snippet}>
           <Ribbon text={prize.year} />
           <img src={`${IMAGES_URL}/prizes/${prize.image}`} alt='' style={{ width: 300, height: 300 }} />
-          <div style={styles.snippetText}>
+          <div style={styles.snippetText} dir='ltr'>
             <H3 primary ucase dangerouslySetInnerHTML={{ __html: prize.title }}></H3>
             <span dangerouslySetInnerHTML={{ __html: prize.desc }} >
 
