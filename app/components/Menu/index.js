@@ -90,12 +90,14 @@ class Menu extends Component {
       isMobile
     } = this.props
 
+    const isRtl = muiTheme.direction === 'rtl'
+
     return (
       <Drawer
         style={styles.menu}
         docked={docked}
         open={open}
-        openSecondary={muiTheme.direction === 'rtl'}
+        openSecondary={isRtl}
         id='menu'
         onRequestChange={onRequestChangeNavDrawer}
       // containerStyle={{zIndex: zIndex.drawer - 100}}
@@ -116,7 +118,7 @@ class Menu extends Component {
         <SelectableList value={location.pathname} onChange={onChangeList}>
           <ListItem
             id='lstpictograms'
-            primaryText={<FormattedMessage {...messages.pictograms} />}
+            primaryText={<span><FormattedMessage {...messages.pictograms} /></span>}
             primaryTogglesNestedList={true}
             leftIcon={<PictogramsIcon />}
             nestedItems={[
@@ -134,6 +136,7 @@ class Menu extends Component {
           />
           <ListItem
             id='lstmaterials'
+            isRtl={true}
             primaryText={<FormattedMessage {...messages.materials} />}
             primaryTogglesNestedList={true}
             leftIcon={<MaterialsIcon />}

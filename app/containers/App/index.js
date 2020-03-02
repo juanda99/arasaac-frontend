@@ -67,21 +67,21 @@ class App extends Component {
     steps: [
       {
         title: <FormattedMessage {...messages.openMenu} />,
-        content: <FormattedMessage {...messages.startNavigation} />,
+        content: <p dir={this.props.direction}><FormattedMessage {...messages.startNavigation} /></p>,
         target: "#header button",
         placement: "bottom",
         disableBeacon: true
       },
       {
         title: <FormattedMessage {...messages.userMenu} />,
-        content: <FormattedMessage {...messages.userMenuDesc} />,
+        content: <p dir={this.props.direction}><FormattedMessage {...messages.userMenuDesc} /></p>,
         target: "#header #userMenu",
         placement: "bottom",
         disableBeacon: true
       },
       {
         title: <FormattedMessage {...messages.loginMenu} />,
-        content: <FormattedMessage {...messages.loginMenuDesc} />,
+        content: <p dir={this.props.direction}><FormattedMessage {...messages.loginMenuDesc} /></p>,
         target: "#header #loginMenu",
         placement: "bottom",
         disableBeacon: true
@@ -90,8 +90,8 @@ class App extends Component {
         title: <FormattedMessage {...messages.pictograms} />,
         content: (
           <div>
-            <p><FormattedMessage {...messages.pictogramsDesc1} /></p>
-            <p><FormattedMessage {...messages.pictogramsDesc2} /></p>
+            <p dir={this.props.direction}><FormattedMessage {...messages.pictogramsDesc1} /></p>
+            <p dir={this.props.direction}><FormattedMessage {...messages.pictogramsDesc2} /></p>
           </div>
         ),
         target: "#lstpictograms",
@@ -102,8 +102,8 @@ class App extends Component {
         title: <FormattedMessage {...messages.materials} />,
         content: (
           <div>
-            <p><FormattedMessage {...messages.materialsDesc1} /></p>
-            <p><FormattedMessage {...messages.materialsDesc2} /></p>
+            <p dir={this.props.direction}><FormattedMessage {...messages.materialsDesc1} /></p>
+            <p dir={this.props.direction}><FormattedMessage {...messages.materialsDesc2} /></p>
           </div>
         ),
         target: "#lstmaterials",
@@ -114,8 +114,8 @@ class App extends Component {
         title: 'Aula abierta',
         content: (
           <div>
-            <p><strong><FormattedMessage {...messages.onlySpanish} /></strong></p>
-            <p><FormattedMessage {...messages.aulaAbiertaDesc} /></p>
+            <p dir={this.props.direction}><strong><FormattedMessage {...messages.onlySpanish} /></strong></p>
+            <p dir={this.props.direction}><FormattedMessage {...messages.aulaAbiertaDesc} /></p>
           </div>
         ),
         target: "#lstaulaabierta",
