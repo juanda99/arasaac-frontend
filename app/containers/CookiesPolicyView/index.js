@@ -15,8 +15,51 @@ import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import P from 'components/P'
-import A from 'components/A'
 import H2 from 'components/H2'
+
+const cookies = [
+  {
+    name: '_ga',
+    time: '24 meses',
+    desc: 'Google Analytics. Información estadística de navegación del usuario.'
+  },
+  {
+    name: '_gat_gtag_UA_46065439_1',
+    time: '1 minuto',
+    desc: 'Google Analytics. Limita la recogida de datos en sitios con mucho tráfico o en picos de uso. Expira después de 1 minuto y no recoge datos.'
+  },
+  {
+    name: '_gid',
+    time: '24 horas',
+    desc: 'Google Analytics. Información estadística de navegación del usuario.'
+  },
+  {
+    name: 'NID',
+    time: '6 meses',
+    desc: 'Registra una identificación única que identifica el dispositivo de un usuario que vuelve. La identificación se utiliza para los anuncios específicos y para autenticar en ARASAAC mediante red social de Google.'
+  },
+  {
+    name: '_fbp',
+    time: '3 meses',
+    desc: 'Se instala por Google Analytics. La usa facebook para publicidad y ARASAAC para obtener datos demográficos de sus visitantes.'
+  },
+  {
+    name: 'DSID',
+    time: '15 días',
+    desc: 'Se instala por Google Analytics con fines publicitarios. ARASAAC la usa para obtener datos demográficos de sus visitantes.'
+  },
+  {
+    name: 'id',
+    time: 'Sesión',
+    desc: 'Se instala por Google Analytics con fines publicitarios. ARASAAC la usa para obtener datos demográficos de sus visitantes.'
+  },
+  {
+    name: 'redux-persist:theme',
+    time: 'Indefinido',
+    desc: 'Guarda el tema por defecto de visualización de la aplicación.'
+  },
+]
+
 
 export class CookiesPolicyView extends React.PureComponent {
 
@@ -70,63 +113,25 @@ export class CookiesPolicyView extends React.PureComponent {
               cookies sobre las que no tenemos control directo, pero que debemos usar para que los servicios funcionen
             </P>
             <Table>
-              <TableHeader>
+              <TableHeader displaySelectAll={false}>
                 <TableRow>
                   <TableHeaderColumn>Nombre</TableHeaderColumn>
                   <TableHeaderColumn>Duración</TableHeaderColumn>
                   <TableHeaderColumn>Descripción</TableHeaderColumn>
                 </TableRow>
               </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableRowColumn>_ga</TableRowColumn>
-                  <TableRowColumn>24 meses</TableRowColumn>
-                  <TableRowColumn>Google Analytics. Información estadística de navegación del usuario.</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>_gat_gtag_UA_46065439_1</TableRowColumn>
-                  <TableRowColumn>1 minuto</TableRowColumn>
-                  <TableRowColumn>Google Analytics. Limita la recogida de datos en sitios con mucho tráfico o en picos de uso. Expira después de 1 minuto y no recoge datos.</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>_gid</TableRowColumn>
-                  <TableRowColumn>24 horas</TableRowColumn>
-                  <TableRowColumn>Google Analytics. Información estadística de navegación del usuario.</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>collect</TableRowColumn>
-                  <TableRowColumn>?</TableRowColumn>
-                  <TableRowColumn>Se utiliza para enviar datos a Google Analytics sobre el dispositivo del visitante y su comportamiento. Rastrea al visitante a través de dispositivos y canales de marketing.</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>NID</TableRowColumn>
-                  <TableRowColumn></TableRowColumn>
-                  <TableRowColumn>Registra una identificación única que identifica el dispositivo de un usuario que vuelve. La identificación se utiliza para los anuncios específicos.</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>oauth2_cs</TableRowColumn>
-                  <TableRowColumn></TableRowColumn>
-                  <TableRowColumn>Autenticación mediante la red social de Google</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>r/collect</TableRowColumn>
-                  <TableRowColumn></TableRowColumn>
-                  <TableRowColumn>Esta cookie se utiliza para enviar datos a Google Analytics sobre el dispositivo y comportamiento del visitante. Hace un seguimiento del visitante en todos los dispositivos y canales de marketing,</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>reduxPersist:auth</TableRowColumn>
-                  <TableRowColumn></TableRowColumn>
-                  <TableRowColumn></TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>reduxPersist:theme</TableRowColumn>
-                  <TableRowColumn></TableRowColumn>
-                  <TableRowColumn></TableRowColumn>
-                </TableRow>
+              <TableBody displayRowCheckbox={false} >
+                {cookies.map((cookie) =>
+                  <TableRow key={cookie.nombre}>
+                    <TableRowColumn>{cookie.name}</TableRowColumn>
+                    <TableRowColumn>{cookie.time}</TableRowColumn>
+                    <TableRowColumn style={{ whiteSpace: 'inherit' }}>{cookie.desc}</TableRowColumn>
+                  </TableRow>
+                )}
               </TableBody>
             </Table>
 
-
+            <P>Además pueden aparecer cookies con proveedores Facebook y/o Google si iniciamos sesión en ARASAAC con una cuenta de dichas redes sociales.</P>
           </div>
         </ReadMargin>
       </View>
