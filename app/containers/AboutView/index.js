@@ -34,13 +34,13 @@ const authors = [
   },
   {
     name: 'Juan Daniel Burró',
-    imageSource: `${IMAGES_URL}/team/juanda.png`,
+    imageSource: `${IMAGES_URL}/team/juanda-color.jpg`,
     desc: 'developer',
     github: 'https://github.com/juanda99'
   },
   {
     name: 'Luis Miguel Morillas',
-    imageSource: `${IMAGES_URL}/team/jose-manuel-marco.png`,
+    imageSource: `${IMAGES_URL}/team/lmorillas-color.jpg`,
     desc: 'developer',
     github: 'https://github.com/lmorillas'
   }
