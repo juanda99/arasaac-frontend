@@ -260,7 +260,7 @@
   "app.components.author": "Автор пиктограммы:",
   "app.components.creativeCommons": "Лицензия Creative commons ARASAAC CC BY-NC-SA",
   "app.components.dialog.ok": "Ок",
-  "app.components.disclaimer": "Disclaimer",
+  "app.components.disclaimer": "Отказ от ответственности",
   "app.components.license": "Лицензия:",
   "app.components.licenseP1": "{ARASAAC} - бренд правительства Арагона (Испания), зарегистрированный в Испанском Бюро Патентов и Торговых Марок. Коллекция пиктограмм {ARASAAC} зарегистрирована в Генеральном реестре интеллектуальной собственности (№  Deposit Legal Z 901-2013) как коллективная работа от имени Генерального совета Арагона, которая отредактирована и распространена в соответствии с положениями статьи 8 Закона об интеллектуальной собственности, утвержденного Королевским законодательным декретом 1/1996, от 12 апреля.",
   "app.components.licenseP2": "Resources offered on the website (pictograms, images, locutions or videos), as well as the materials based on them, are published under {creativeCommonsLicense}, authorizing their use for non-profit purposes providing the source and the author, and are shared under the same license.",
