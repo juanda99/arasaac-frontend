@@ -13,7 +13,8 @@ const styles = {
     display: 'inlineBlock',
     padding: 4,
     position: 'relative',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    color: '#000'
   },
   separatorLine: {
     marginTop: '-10px'
