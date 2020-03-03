@@ -104,12 +104,19 @@ export const makeFavoritePictogramsSelector = () =>
     makeEntitiesSelector(),
     (favorites, entities) => {
       /* searchData could be undefined */
+      console.log(favorites, 'adfadfasfadfdf')
+      console.log(entities, 'piedra')
       if (favorites == null) return []
       const pictogramList = denormalize(
         favorites,
         searchPictogramSchema,
         entities
       )
+      const pictoList = pictogramList.toJS()
+      // it can be calculated when pictos are not yet present
+      if (pictoList.length) {
+        return pictoList[0] === undefined ? [] : pictoList
+      }
       return pictogramList.toJS()
     }
   )

@@ -88,7 +88,6 @@ export class FavoriteList extends React.Component {
         />
       )
     }
-
     const renderPictograms = listPictograms.map((pictogram) =>
       <PictogramSnippet
         pictogram={pictogram}

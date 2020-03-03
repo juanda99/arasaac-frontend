@@ -105,7 +105,6 @@ class FavoritesView extends PureComponent {
 
   render() {
     const { favorites, selectedList, favoritePictograms, intl, token } = this.props
-
     const { formatMessage } = intl
     return (
       <View left={true} right={true}>
@@ -127,7 +126,7 @@ class FavoritesView extends PureComponent {
           onClick={this.handleAddList}
           disabled={!this.state.listName}
         />
-        {!!token && <FavoriteList
+        {favoritePictograms && <FavoriteList
           items={favorites}
           onSelect={this.handleFavoriteListSelect}
           selectedList={selectedList}
