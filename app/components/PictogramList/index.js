@@ -29,7 +29,8 @@ export class PictogramList extends PureComponent {
       favorites,
       onDeleteFavorite,
       onAddFavorite,
-      rtl
+      rtl,
+      onDownload
     } = this.props
     const masonryOptions = {
       transitionDuration: '1s',
@@ -45,6 +46,7 @@ export class PictogramList extends PureComponent {
           key={pictogram._id}
           showExtra={width === LARGE}
           onClickFavorite={isFavorite ? onDeleteFavorite : onAddFavorite}
+          onDownload={onDownload}
           isFavorite={isFavorite}
         />
       )
@@ -83,6 +85,7 @@ PictogramList.propTypes = {
   onDeleteFavorite: PropTypes.func.isRequired,
   favorites: ImmutablePropTypes.list,
   rtl: PropTypes.bool.isRequired,
+  onDownload: PropTypes.func.isRequired,
 }
 
 export default withWidth()(PictogramList)

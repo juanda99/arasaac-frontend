@@ -34,6 +34,7 @@ class PictogramView extends PureComponent {
       )
     }
   }
+  // also used in pictogramsView
   handleDownload = (fileName, base64Data) => {
     const promiseFileName = api.GENERATE_CUSTOM_PICTOGRAM({
       fileName,
@@ -41,7 +42,6 @@ class PictogramView extends PureComponent {
     })
     promiseFileName.then((data) => {
       const location = downloadCustomPictogram(data.fileName)
-      console.log(`*****************${location}`)
       window.location = location
       // window.open(downloadCustomPictogram(data.fileName), '_blank')
     })

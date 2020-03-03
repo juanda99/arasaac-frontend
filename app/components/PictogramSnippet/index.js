@@ -67,7 +67,9 @@ class PictogramSnippet extends PureComponent {
   };
 
   handleDownload = (event) => {
+    const { pictogram: { _id }, onDownload } = this.props
     event.preventDefault()
+    onDownload(_id)
   };
 
   handleMouseLeave = () => {

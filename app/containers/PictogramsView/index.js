@@ -11,9 +11,6 @@ import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
-import SearchContainer from 'components/SearchContainer'
-import Toggle from 'material-ui/Toggle'
-import TabsHeader from 'components/TabsHeader'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import Divider from 'material-ui/Divider'
 import { Tabs, Tab } from 'material-ui/Tabs'
@@ -28,6 +25,7 @@ import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ReadMargin from 'components/ReadMargin'
 import { addFavorite, deleteFavorite } from 'containers/App/actions'
+import { PICTOGRAMS_URL } from 'services/config'
 import { DEFAULT_LIST } from 'utils'
 import {
   makeSelectHasUser,
@@ -127,12 +125,18 @@ class PictogramsView extends PureComponent {
     deleteFavorite(fileName, DEFAULT_LIST, token)
   };
 
+  handleDownload = (idPictogram) => {
+    const location = `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_300.png`
+    window.location = location
+  }
+
   handleSubmit = (nextValue) => {
     this.setState({
       slideIndex: 0
     })
     if (this.props.params.searchText !== nextValue) {
-      this.props.router.push(`/pictograms/search/${encodeURIComponent(nextValue)}`)
+      this.props.router.push(`/pictograms/search/${encodeURIComponent(nextValue)
+        }`)
     }
   };
 
@@ -186,6 +190,7 @@ class PictogramsView extends PureComponent {
           searchText={searchText}
           onAddFavorite={this.handleAddFavorite}
           onDeleteFavorite={this.handleDeleteFavorite}
+          onDownload={this.handleDownload}
           favorites={rootFavorites}
           rtl={muiTheme.direction === 'rtl'}
         />
