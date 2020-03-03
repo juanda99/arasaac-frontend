@@ -270,7 +270,7 @@
   "app.components.licenseP6": "Piktogramen kasuan, egiletza emateko modua hau da:",
   "app.components.licenseP7": "Erabiltzen diren sinbolo piktografikoak Aragoiko Gobernuaren jabetzakoak dira eta Sergio Palaok sortu ditu {ARASAAC} enpresarako, {creativeCommonsLicense} atalean banatzen dituelarik.",
   "app.components.licenseP8": "Edo modu eskematikoan:",
-  "app.components.licenseP9": "The Government of Aragon, is not responsible for the improper or negligent use of resources contained in the {ARASAAC} catalogs made by third parties that exceeds the terms of the {creativeCommonsLicense}.",
+  "app.components.licenseP9": "Aragoiko Gobernua ez da {{ARASAAC} katalogoetan jasotako baliabideen erabilera okerra edo arduragabearen erantzule, {{CreativeCommonsLicense} ren baldintzak bete ezean.",
   "app.components.origin": "Jatorria:",
   "app.components.owner": "Jabea: Aragoiko Gobernua (Espainia)",
   "app.components.showcase.materials": "Materialak",
