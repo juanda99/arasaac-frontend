@@ -288,7 +288,7 @@
   "app.containers.AboutView.whereWeAre": "Non gaude",
   "app.containers.AuthorSnippet.coordinator": "ARASAACeko koordinatzailea",
   "app.containers.AuthorSnippet.developer": "ARASAAC-eko sustatzailea",
-  "app.containers.AuthorSnippet.reachme": "You can reach me on:",
+  "app.containers.AuthorSnippet.reachme": "Gurekin harremanetan jartzeko:",
   "app.containers.ContactView.alertWindowErrorDesc": "Sentitzen dugu, baina ezin izan dugu zure mezua jaso. Saiatu berriro geroago edo jarri gurekin harremanetan gure sare sozialen bidez",
   "app.containers.ContactView.alertWindowErrorTitle": "Harremanetarako formularioaren akatsa",
   "app.containers.ContactView.form.email": "Posta elektronikoa",
