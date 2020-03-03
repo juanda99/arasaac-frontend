@@ -101,6 +101,7 @@ class AuthorSnippet extends PureComponent {
                 <Image
                   src={author.imageSource}
                   alt={author.name}
+                  style={{ padding: '5px', paddingTop: '35px' }}
                 />
                 <H3 style={this.styles.cardTitle} primary={true}>{author.name}</H3>
               </div>
@@ -112,24 +113,28 @@ class AuthorSnippet extends PureComponent {
               <H3 style={{ textAlign: 'center' }}>{<FormattedMessage {...messages[author.desc]} />}</H3>
               <P style={{ textAlign: 'center' }}>{<FormattedMessage {...messages.reachme} />}</P>
               {author.facebook && (
-                <a href={author.facebook} target='_blank' style={{ margin: '75px' }}>
-                  <IconButton
-                    iconStyle={this.styles.smallIcon}
-                    style={this.styles.small}
-                  >
-                    <Facebook color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
-                  </IconButton>
-                </a>
+                <P style={{ textAlign: 'center' }}>
+                  <a href={author.facebook} target='_blank'>
+                    <IconButton
+                      iconStyle={this.styles.smallIcon}
+                      style={this.styles.small}
+                    >
+                      <Facebook color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                    </IconButton>
+                  </a>
+                </P>
               )}
               {author.github && (
-                <a href={author.facebook} target='_blank' style={{ margin: '75px' }}>
-                  <IconButton
-                    iconStyle={this.styles.smallIcon}
-                    style={this.styles.small}
-                  >
-                    <GitHub color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
-                  </IconButton>
-                </a>
+                <P style={{ textAlign: 'center' }}>
+                  <a href={author.facebook} target='_blank' style={{ margin: '75px' }}>
+                    <IconButton
+                      iconStyle={this.styles.smallIcon}
+                      style={this.styles.small}
+                    >
+                      <GitHub color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                    </IconButton>
+                  </a>
+                </P>
               )}
               {author.twitter && (
                 <a href={author.facebook} target='_blank' style={{ margin: '75px' }}>

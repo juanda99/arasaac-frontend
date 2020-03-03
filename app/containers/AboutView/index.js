@@ -22,25 +22,25 @@ const masonryOptions = {
 const authors = [
   {
     name: 'José Manuel Marcos',
-    imageSource: `${IMAGES_URL}/team/jose-manuel-marco-color.jpg`,
+    imageSource: `${IMAGES_URL}/team/jose-manuel-marco-320.jpg`,
     desc: 'coordinator', //desc value is taken as react-intl key in AuthorSnippet
     facebook: 'https://www.facebook.com/josemanuelmarcosrodrigo'
   },
   {
     name: 'David Romero',
-    imageSource: `${IMAGES_URL}/team/david-romero-color.jpg`,
+    imageSource: `${IMAGES_URL}/team/david-romero-320.jpg`,
     desc: 'coordinator',
     facebook: 'https://www.facebook.com/david.romerocorral'
   },
   {
     name: 'Juan Daniel Burró',
-    imageSource: `${IMAGES_URL}/team/juanda-color.jpg`,
+    imageSource: `${IMAGES_URL}/team/juanda-320.jpg`,
     desc: 'developer',
     github: 'https://github.com/juanda99'
   },
   {
     name: 'Luis Miguel Morillas',
-    imageSource: `${IMAGES_URL}/team/lmorillas-color.jpg`,
+    imageSource: `${IMAGES_URL}/team/lmorillas-320.jpg`,
     desc: 'developer',
     github: 'https://github.com/lmorillas'
   }
