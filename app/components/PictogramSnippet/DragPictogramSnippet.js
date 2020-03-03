@@ -99,7 +99,11 @@ class PictogramSnippet extends PureComponent {
   };
 
   handleDownload = (event) => {
+    const { pictogram: { _id, keywords }, onDownload } = this.props
     event.preventDefault()
+    /* no searchText, it will return keywords[0].keyword if exists */
+    const { keyword } = keywordSelector('', keywords)
+    onDownload(_id, keyword)
   };
 
   handleMouseLeave = () => {
@@ -192,7 +196,8 @@ PictogramSnippet.propTypes = {
   connectDragSource: PropTypes.func.isRequired,
   connectDragPreview: PropTypes.func.isRequired,
   isDragging: PropTypes.bool.isRequired,
-  onDelete: PropTypes.func.isRequired
+  onDelete: PropTypes.func.isRequired,
+  onDownload: PropTypes.func.isRequired,
 }
 
 export default muiThemeable()(

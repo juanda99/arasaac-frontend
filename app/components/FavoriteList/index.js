@@ -4,7 +4,7 @@ import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import withWidth, { SMALL, LARGE } from 'material-ui/utils/withWidth'
 import { DEFAULT_LIST } from 'utils'
-import PictogramSnippet from 'components/PictogramSnippet/DragPictogramSnippet'
+import DragPictogramSnippet from 'components/PictogramSnippet/DragPictogramSnippet'
 import CustomDragLayer from 'components/PictogramSnippet/CustomDragLayer'
 import ListSnippet from './ListSnippet'
 
@@ -50,7 +50,8 @@ export class FavoriteList extends React.Component {
       onSelect,
       onRename,
       onDrop,
-      listPictograms
+      listPictograms,
+      onDownloadList
     } = this.props
     let renderLists
     /* if not authenticated item.keys is undefined and should not render anything */
@@ -69,7 +70,7 @@ export class FavoriteList extends React.Component {
               listName={listItem}
               totalItems={totalItems}
               onDelete={onDelete}
-              onDownload={onDownload}
+              onDownload={onDownloadList}
               onSelect={onSelect}
               onRename={onRename}
             />
@@ -82,20 +83,21 @@ export class FavoriteList extends React.Component {
           key={DEFAULT_LIST}
           listName={DEFAULT_LIST}
           onDelete={onDelete}
-          onDownload={onDownload}
+          onDownload={onDownloadList}
           onSelect={onSelect}
           onRename={onRename}
         />
       )
     }
     const renderPictograms = listPictograms.map((pictogram) =>
-      <PictogramSnippet
+      <DragPictogramSnippet
         pictogram={pictogram}
         locale={'es'}
         key={pictogram._id}
         showExtra={width === LARGE}
         onDrop={onDrop}
         onDelete={this.handleDeleteFavorite}
+        onDownload={onDownload}
       />
     )
 
@@ -131,6 +133,7 @@ FavoriteList.propTypes = {
   onSelect: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   onDownload: PropTypes.func.isRequired,
+  onDownloadList: PropTypes.func.isRequired,
   onRename: PropTypes.func.isRequired,
   selectedList: PropTypes.string.isRequired,
   onDrop: PropTypes.func.isRequired,

@@ -14,6 +14,7 @@ import userIsAuthenticated from 'utils/auth'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 import FavoriteList from 'components/FavoriteList'
+import { downloadPictogram } from 'services'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import {
   deleteFavorite,
@@ -97,11 +98,16 @@ class FavoritesView extends PureComponent {
   handleRenameList = (listName, newListName) => {
     const { renameList, token } = this.props
     renameList(listName, newListName, token)
-  };
+  }
 
   handleDownloadList = (listName) => {
     console.log(`Download list ${listName}`)
-  };
+  }
+
+  handleDownload = (idPictogram, keyword) => {
+    const location = downloadPictogram(idPictogram, keyword)
+    window.location = location
+  }
 
   render() {
     const { favorites, selectedList, favoritePictograms, intl, token } = this.props
@@ -132,7 +138,8 @@ class FavoritesView extends PureComponent {
           selectedList={selectedList}
           onDelete={this.handleDeleteList}
           onDeleteFavorite={this.handleDeleteFavorite}
-          onDownload={this.handleDownloadList}
+          onDownloadList={this.handleDownloadList}
+          onDownload={this.handleDownload}
           onRename={this.handleRenameList}
           listPictograms={favoritePictograms}
           onDrop={this.handleAddFavorite}

@@ -185,7 +185,8 @@ PictogramSnippet.propTypes = {
   locale: PropTypes.string.isRequired,
   showExtra: PropTypes.bool,
   onClickFavorite: PropTypes.func.isRequired,
-  isFavorite: PropTypes.bool
+  isFavorite: PropTypes.bool,
+  onDownload: PropTypes.func.isRequired,
 }
 
 export default muiThemeable()(PictogramSnippet)
