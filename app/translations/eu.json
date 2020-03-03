@@ -442,7 +442,7 @@
   "newPasswordForm.changePassword": "Aldatu pasahitza",
   "newPasswordForm.changePasswordInfo": "Idatzi zure pasahitz berria beheko eremuan",
   "password.signin": "Pasahitza",
-  "permissionsErrorView.forbidden": "Your user role can't access this resource.",
+  "permissionsErrorView.forbidden": "Zure erabiltzailearekin ezin duzu hemen sartu.",
   "readmmore.more": "...gehiago irakurri",
   "readmore.less": "...gutxiago erakutsi",
   "recoverPasswordView.passwordNotReset": "Sentitzen dugu, baina akats bat gertatu da pasahitza berrezartzean",
