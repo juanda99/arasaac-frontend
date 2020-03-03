@@ -5,6 +5,7 @@
  *
  */
 import { addLocaleData } from 'react-intl'
+import bg from 'react-intl/locale-data/bg'
 import en from 'react-intl/locale-data/en'
 import nl from 'react-intl/locale-data/nl'
 import es from 'react-intl/locale-data/es'
@@ -24,6 +25,7 @@ import af from 'react-intl/locale-data/af'
 
 import { DEFAULT_LOCALE, appLocales } from './containers/App/constants'
 import enTranslationMessages from './translations/en.json'
+import bgTranslationMessages from './translations/bg.json'
 import nlTranslationMessages from './translations/nl.json'
 import esTranslationMessages from './translations/es.json'
 import frTranslationMessages from './translations/fr.json'
@@ -43,6 +45,7 @@ import afTranslationMessages from './translations/af.json'
 
 addLocaleData([
   ...en,
+  ...bg,
   ...es,
   ...fr,
   ...it,
@@ -75,6 +78,7 @@ export const formatTranslationMessages = (locale, messages) => {
 
 export const translationMessages = {
   en: formatTranslationMessages('en', enTranslationMessages),
+  bg: formatTranslationMessages('bg', bgTranslationMessages),
   br: formatTranslationMessages('br', ptTranslationMessages),
   es: formatTranslationMessages('es', esTranslationMessages),
   fr: formatTranslationMessages('fr', frTranslationMessages),
