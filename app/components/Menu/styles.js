@@ -10,6 +10,6 @@ export default {
     paddingLeft: 60 // spacing.desktopGutter,
   },
   menu: {
-    zIndex: 10
+    zIndex: 10000 // fix about us map
   }
 }
