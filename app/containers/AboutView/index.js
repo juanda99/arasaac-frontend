@@ -22,13 +22,13 @@ const masonryOptions = {
 const authors = [
   {
     name: 'José Manuel Marcos',
-    imageSource: `${IMAGES_URL}/team/jose-manuel-marco.png`,
+    imageSource: `${IMAGES_URL}/team/jose-manuel-marco-color.jpg`,
     desc: 'coordinator', //desc value is taken as react-intl key in AuthorSnippet
     facebook: 'https://www.facebook.com/josemanuelmarcosrodrigo'
   },
   {
     name: 'David Romero',
-    imageSource: `${IMAGES_URL}/team/david-romero.png`,
+    imageSource: `${IMAGES_URL}/team/david-romero-color.jpg`,
     desc: 'coordinator',
     facebook: 'https://www.facebook.com/david.romerocorral'
   },
