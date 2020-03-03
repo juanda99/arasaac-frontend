@@ -260,7 +260,7 @@
   "app.components.author": "Piktogramm-Urheber",
   "app.components.creativeCommons": "Creative-Commons-Lizenz BY-NC-SA",
   "app.components.dialog.ok": "Ok",
-  "app.components.disclaimer": "Disclaimer",
+  "app.components.disclaimer": "Haftungsausschluss",
   "app.components.license": "Lizenz:",
   "app.components.licenseP1": "{ARASAAC} is a brand of the Government of Aragon (Spain), registered in the Spanish Patent and Trademark Office. The {ARASAAC} pictogram collection is registered in the General Registry of Intellectual Property (No. Deposit Legal Z 901-2013) as a collective work on behalf of the Diputación General de Aragón, who has edited and disseminated it in accordance with the provisions of Article 8 of the revised text of the Intellectual Property Law, approved by Royal Legislative Decree 1/1996, of April 12.",
   "app.components.licenseP2": "Resources offered on the website (pictograms, images, locutions or videos), as well as the materials based on them, are published under {creativeCommonsLicense}, authorizing their use for non-profit purposes providing the source and the author, and are shared under the same license.",
