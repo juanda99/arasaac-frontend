@@ -57,19 +57,20 @@ class PictogramSnippet extends PureComponent {
     })
   };
 
-  handleClickFavorite = (event) => {
-    const {
-      pictogram: { _id },
-      onClickFavorite
-    } = this.props
+  handleClickFavorite = (event, id, keyword) => {
+    // const {
+    //   pictogram: { _id },
+    //   onClickFavorite
+    // } = this.props
     event.preventDefault()
-    onClickFavorite(_id)
+    this.props.onClickFavorite(id, keyword)
   };
 
   handleDownload = (event) => {
-    const { pictogram: { _id }, onDownload } = this.props
+    const { pictogram: { _id, keywords }, searchText, onDownload } = this.props
     event.preventDefault()
-    onDownload(_id)
+    const { keyword } = keywordSelector(searchText, keywords)
+    onDownload(_id, keyword)
   };
 
   handleMouseLeave = () => {

@@ -25,7 +25,7 @@ import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ReadMargin from 'components/ReadMargin'
 import { addFavorite, deleteFavorite } from 'containers/App/actions'
-import { PICTOGRAMS_URL } from 'services/config'
+import { downloadPictogram } from 'services'
 import { DEFAULT_LIST } from 'utils'
 import {
   makeSelectHasUser,
@@ -125,8 +125,8 @@ class PictogramsView extends PureComponent {
     deleteFavorite(fileName, DEFAULT_LIST, token)
   };
 
-  handleDownload = (idPictogram) => {
-    const location = `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_300.png`
+  handleDownload = (idPictogram, keyword) => {
+    const location = downloadPictogram(idPictogram, keyword)
     window.location = location
   }
 
