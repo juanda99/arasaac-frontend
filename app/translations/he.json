@@ -324,7 +324,7 @@
   "app.containers.MaterialsView.materialsFound": " {materialsCounter, plural, one {מצאנו רק סמל אחד} other {מצאנו {materialsCounter} חומרים}}",
   "app.containers.MaterialsView.materialsNotFound": "מצטערים, לא מצאנו סמל",
   "app.containers.MaterialsView.new": "חדש",
-  "app.containers.MaterialsView.newMaterialsFound": "We have found {pictogramsCounter} new pictograms created recently",
+  "app.containers.MaterialsView.newMaterialsFound": "We have found {pictogramsCounter} pictograms created recently",
   "app.containers.MaterialsView.search": "חיפוש",
   "app.containers.MaterialsView.showCategories": "הצג קטגוריות בתוצאות",
   "app.containers.MaterialsView.showFilters": "הצג מסננים",
