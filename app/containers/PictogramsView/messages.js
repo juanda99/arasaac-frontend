@@ -26,7 +26,7 @@ export default defineMessages({
     id: 'app.containers.PictogramsView.newPictogramsFound',
     description: 'Message when no pictograms for a specific search',
     defaultMessage:
-      'We have found {pictogramsCounter} new pictograms created recently'
+      'We have found {pictogramsCounter} pictograms created recently'
   },
   contentNotAvailableWithoutAuth: {
     id: 'app.containers.PictogramsView.contentNotAvailableWithoutAuth',
