@@ -112,6 +112,7 @@ class FavoritesView extends PureComponent {
   render() {
     const { favorites, selectedList, favoritePictograms, intl, token } = this.props
     const { formatMessage } = intl
+    console.log(favoritePictograms, 'adfadfafadfadfadfadsf*************')
     return (
       <View left={true} right={true}>
         <Helmet

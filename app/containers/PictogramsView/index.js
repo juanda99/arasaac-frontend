@@ -66,9 +66,25 @@ class PictogramsView extends PureComponent {
   state = {
     visibleSettings: false,
     visibleLabels: false,
-    slideIndex: 0,
+    tab: 0,
+    offset: 0,
     listName: ''
   };
+
+  processQuery = props => {
+    const { location } = props || this.props
+    const { search, query } = location
+    let parameters = { offset: 0, tab: 0 }
+    if (search) {
+      parameters = { ...parameters, ...query }
+      const validKeys = ['offset', 'tab']
+      Object.keys(parameters).forEach(key => validKeys.includes(key) || delete parameters[key])
+      parameters.offset = parseInt(parameters.offset, 10)
+      parameters.tab = parseInt(parameters.tab, 10)
+    }
+    const needUpdate = Object.keys(parameters).some(key => parameters[key] !== this.state[key])
+    if (needUpdate) this.setState(parameters)
+  }
 
   componentDidMount() {
     const {
@@ -77,6 +93,7 @@ class PictogramsView extends PureComponent {
       requestAutocomplete,
       locale
     } = this.props
+    this.processQuery()
     if (this.props.params.searchText && !this.props.searchResults) {
       requestPictograms(locale, encodeURIComponent(this.props.params.searchText))
     }
@@ -88,11 +105,15 @@ class PictogramsView extends PureComponent {
     //   const favoriteIds = lists.map((list) => favorites.get(list).toJS()).flat()
     //   requestFavorites(locale, favoriteIds, token)
     // }
+
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.params.searchText !== nextProps.params.searchText) {
       const { requestPictograms, locale } = this.props
       requestPictograms(locale, encodeURIComponent(nextProps.params.searchText))
+    }
+    if (this.props.location.search !== nextProps.location.search) {
+      this.processQuery(nextProps)
     }
 
     // if (this.props.favorites !== nextProps.favorites) {
@@ -110,10 +131,16 @@ class PictogramsView extends PureComponent {
     // }
   }
 
-  handleChange = (value) =>
-    this.setState({
-      slideIndex: value
-    });
+  // handleChange = (value) =>
+  //   this.setState({
+  //     tab: value
+  //   });
+
+  handleChange = (tab) => {
+    const { pathname } = this.props.location
+    const url = `${pathname}?tab=${tab}`
+    this.props.router.push(url)
+  }
 
   handleAddFavorite = (fileName) => {
     const { addFavorite, token } = this.props
@@ -132,7 +159,7 @@ class PictogramsView extends PureComponent {
 
   handleSubmit = (nextValue) => {
     this.setState({
-      slideIndex: 0
+      tab: 0
     })
     if (this.props.params.searchText !== nextValue) {
       this.props.router.push(`/pictograms/search/${encodeURIComponent(nextValue)
@@ -167,16 +194,16 @@ class PictogramsView extends PureComponent {
       width
     } = this.props
     const searchText = this.props.params.searchText || ''
-    const { visibleLabels, visibleSettings, slideIndex } = this.state
+    const { visibleLabels, visibleSettings, tab } = this.state
     let pictogramsCounter
     const hideIconText = width === SMALL
     let pictogramsList
-    if (slideIndex === 0) pictogramsList = visiblePictograms
-    else if (slideIndex === 1) pictogramsList = newPictogramsList
+    if (tab === 0) pictogramsList = visiblePictograms
+    else if (tab === 1) pictogramsList = newPictogramsList
     let gallery
-    if ((loading && searchText) || (loading && slideIndex !== 0)) {
+    if ((loading && searchText) || (loading && tab !== 0)) {
       gallery = <ReadMargin><P>{<FormattedMessage {...messages.loadingPictograms} />}</P></ReadMargin>
-    } else if (!searchText && slideIndex !== 1) {
+    } else if (!searchText && tab !== 1) {
       gallery = null
     } else {
       pictogramsCounter = pictogramsList.length
@@ -209,7 +236,7 @@ class PictogramsView extends PureComponent {
             { name: 'description', content: 'Description of PictogramsView' }
           ]}
         />
-        <Tabs onChange={this.handleChange} value={slideIndex}>
+        <Tabs onChange={this.handleChange} value={tab}>
           <Tab
             label={hideIconText ? '' : <FormattedMessage {...messages.search} />}
             icon={<SearchIcon />}
