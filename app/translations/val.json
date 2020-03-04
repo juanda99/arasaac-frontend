@@ -324,7 +324,7 @@
   "app.containers.MaterialsView.materialsFound": "{materialsCounter, plural, one {Hem trobat un sol material} other {Hem trobat {materialsCounter} materials}}",
   "app.containers.MaterialsView.materialsNotFound": "No podem trobar cap material",
   "app.containers.MaterialsView.new": "Nou",
-  "app.containers.MaterialsView.newMaterialsFound": "We have found {pictogramsCounter} new pictograms created recently",
+  "app.containers.MaterialsView.newMaterialsFound": "We have found {pictogramsCounter} pictograms created recently",
   "app.containers.MaterialsView.search": "Busca",
   "app.containers.MaterialsView.showCategories": "Mostra les categories en els resultats de la cerca",
   "app.containers.MaterialsView.showFilters": "Mostra els filtres",
