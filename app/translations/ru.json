@@ -324,7 +324,7 @@
   "app.containers.MaterialsView.materialsFound": "{materialsCounter, plural, one {Мы нашли только один материал} other {Мы нашли {materialsCounter} материалы}}",
   "app.containers.MaterialsView.materialsNotFound": "К сожалению, мы не можем найти никаких материалов",
   "app.containers.MaterialsView.new": "Новое",
-  "app.containers.MaterialsView.newMaterialsFound": "We have found {pictogramsCounter} new pictograms created recently",
+  "app.containers.MaterialsView.newMaterialsFound": "We have found {pictogramsCounter} pictograms created recently",
   "app.containers.MaterialsView.search": "Поиск",
   "app.containers.MaterialsView.showCategories": "Показать категории в результатах поиска",
   "app.containers.MaterialsView.showFilters": "Показать фильтры",
