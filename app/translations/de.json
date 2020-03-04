@@ -324,7 +324,7 @@
   "app.containers.MaterialsView.materialsFound": "{materialsCounter, plural, one {Wir haben nur ein Material gefunden} other {Wir haben gefunden {materialsCounter} Materialien}}",
   "app.containers.MaterialsView.materialsNotFound": "Wir bedauern es, jegliches Material wurde nicht gefunden",
   "app.containers.MaterialsView.new": "Neu",
-  "app.containers.MaterialsView.newMaterialsFound": "We have found {pictogramsCounter} new pictograms created recently",
+  "app.containers.MaterialsView.newMaterialsFound": "We have found {pictogramsCounter} pictograms created recently",
   "app.containers.MaterialsView.search": "Suchen",
   "app.containers.MaterialsView.showCategories": "Kategorien in den Suchergebnissen anzeigen",
   "app.containers.MaterialsView.showFilters": "Zeigen Filtern an",
