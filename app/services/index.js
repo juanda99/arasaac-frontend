@@ -30,7 +30,7 @@ const api = {
       schema: searchPictogramSchema
     }),
   NEW_PICTOGRAMS_REQUEST: ({ locale }) =>
-    callApi(`${API_ROOT}/pictograms/${locale}/new/30`, {
+    callApi(`${API_ROOT}/pictograms/${locale}/new/300`, {
       schema: searchPictogramSchema
     }),
   MATERIALS_REQUEST: ({ locale, searchText }) =>
