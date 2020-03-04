@@ -324,7 +324,7 @@
   "app.containers.MaterialsView.materialsFound": "crwdns373:0materialsCounter={materialsCounter}crwdnd373:0materialsCounter={materialsCounter}crwdne373:0",
   "app.containers.MaterialsView.materialsNotFound": "crwdns348:0crwdne348:0",
   "app.containers.MaterialsView.new": "crwdns2225:0crwdne2225:0",
-  "app.containers.MaterialsView.newMaterialsFound": "crwdns2436:0{pictogramsCounter}crwdne2436:0",
+  "app.containers.MaterialsView.newMaterialsFound": "crwdns2438:0{pictogramsCounter}crwdne2438:0",
   "app.containers.MaterialsView.search": "crwdns2227:0crwdne2227:0",
   "app.containers.MaterialsView.showCategories": "crwdns350:0crwdne350:0",
   "app.containers.MaterialsView.showFilters": "crwdns351:0crwdne351:0",
