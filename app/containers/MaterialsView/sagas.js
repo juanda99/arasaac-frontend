@@ -8,12 +8,8 @@ function* materialsGetData(action) {
   try {
     const { locale, searchText } = action.payload
     yield put(showLoading())
-    console.log('11111111111111')
     const response = yield call(api[action.type], action.payload)
-    console.log(response)
-    console.log('222222222222222222')
     yield put(materials.success(locale, searchText, response))
-    console.log('3333333333333')
   } catch (error) {
     yield put(materials.failure(error.message))
   } finally {

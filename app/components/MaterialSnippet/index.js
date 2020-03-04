@@ -86,9 +86,6 @@ class MaterialSnippet extends PureComponent {
       title = material.translations[0].title
       desc = material.translations[0].desc
     }
-
-    console.log(title, 'title')
-    console.log(desc, 'desc')
     return (
       <Item>
         {material.favorite ? <Ribbon /> : ''}

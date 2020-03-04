@@ -37,7 +37,6 @@ class MaterialView extends PureComponent {
   }
 
   render() {
-    console.log(this.props.materialData)
     return (
       <View left={true} right={true} top={1}>
         <Helmet

@@ -60,13 +60,10 @@ const makeEntitiesSelector = () => createSelector(
 
 export const makeVisibleMaterialsSelector = () => createSelector(
   makeSearchResultsSelector(), makeEntitiesSelector(), makeFiltersSelector(), (searchData, entities, filters) => {
-    console.log('entities', entities)
     /* searchData could be undefined */
     if (searchData == null) return []
     const materialList = denormalize(searchData, searchMaterialSchema, entities)
-    console.log(materialList, 'materialList')
     const kk = getFilteredItems(materialList, filters)
-    console.log('kk', kk)
     return kk
   }
 )

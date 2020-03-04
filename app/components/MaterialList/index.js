@@ -5,13 +5,9 @@ import { Map } from 'immutable'
 import Pagination from 'material-ui-pagination'
 
 const itemsPerPage = 10 /* number of items per page */
-const display = 10 /* number of pages to see in the paginator */
+const display = 8 /* number of pages to see in the paginator */
 
 export class MaterialList extends PureComponent {
-
-  state = {
-    currentPage: 1
-  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.materials !== this.props.materials) {
@@ -24,26 +20,50 @@ export class MaterialList extends PureComponent {
     this.topPosition = element
   }
 
-  handlePageClick = (currentPage) => {
-    this.setState({ currentPage })
-    this.topPosition.scrollIntoView()
-    // window.scroll(0, 0)
+  // handlePageClick = (currentPage) => {
+  //   this.setState({ currentPage })
+  //   this.topPosition.scrollIntoView()
+  //   // window.scroll(0, 0)
+  // }
+
+  handleClick = currentPage => {
+    const offset = (currentPage - 1) * itemsPerPage
+    this.props.onPageClick(offset)
   }
 
   render() {
-    const { locale, materials, filtersMap, setFilterItems } = this.props
-    const { currentPage } = this.state
-    const total = Math.ceil(materials.length / itemsPerPage)
-    const offset = Math.ceil((currentPage - 1) * itemsPerPage)
+    const { locale, materials, filtersMap, setFilterItems, offset } = this.props
+    // const total = Math.ceil(materials.length / itemsPerPage)
+    // const offset = Math.ceil((currentPage - 1) * itemsPerPage)
+    // const visibleMaterials = materials.slice(offset, offset + itemsPerPage)
+    // const pagination = (materials.length >= itemsPerPage) ?
+    //   (<Pagination
+    //     total={total}
+    //     current={currentPage}
+    //     display={display}
+    //     onChange={this.handlePageClick}
+    //   />)
+    //   : null
+
+    const numberItems = materials.length
+    const totalPages = Math.ceil(numberItems / itemsPerPage)
     const visibleMaterials = materials.slice(offset, offset + itemsPerPage)
-    const pagination = (materials.length >= itemsPerPage) ?
-      (<Pagination
-        total={total}
-        current={currentPage}
-        display={display}
-        onChange={this.handlePageClick}
-      />)
-      : null
+    const currentPage = Math.ceil(offset / itemsPerPage) + 1
+    const pagination =
+      numberItems >= itemsPerPage ? (
+        <Pagination
+          // limit={itemsPerPage}
+          display={display}
+          // offset={offset}
+          current={currentPage}
+          total={totalPages}
+          // onClick={(e, offsetParam) => this.handleClick(offsetParam)}
+          onChange={this.handleClick}
+          currentPageColor="inherit"
+          styleRoot={{ textAlign: 'center' }}
+        />
+      ) : null
+
     return (
       <div ref={this.setTopRef}>
         {pagination}
@@ -72,7 +92,9 @@ MaterialList.propTypes = {
   locale: PropTypes.string,
   showLabels: PropTypes.bool.isRequired,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
-  setFilterItems: PropTypes.func.isRequired
+  setFilterItems: PropTypes.func.isRequired,
+  offset: PropTypes.number.isRequired,
+  onPageClick: PropTypes.func.isRequired,
 }
 
 export default MaterialList

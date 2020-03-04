@@ -70,7 +70,6 @@ class Material extends Component {
     const title = material.get('title')
     /* get material languages */
     const languages = []
-    languages.push(material.get('lang'))
     material.get('translations').forEach((translation) =>
       languages.push(translation.get('lang'))
     )
@@ -119,17 +118,18 @@ class Material extends Component {
         </div>
         <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
         <Divider />
+        {console.log(languages)}
         <RadioButtonGroup name='languages' defaultSelected={this.state.language} onChange={this.handleChange}>
-          {languages.map((language) =>
+          {languages.map((language) => (
             <RadioButton
               key={language}
               value={language}
               label={<FormattedMessage {...langMessages[language]} />}
               style={styles.radioButton}
             />
+          )
           )}
         </RadioButtonGroup>
-
 
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />

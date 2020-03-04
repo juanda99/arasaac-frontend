@@ -66,21 +66,20 @@ export class PictogramList extends PureComponent {
     const numberItems = pictograms.length
     const totalPages = Math.ceil(numberItems / itemsPerPage)
     const visiblePictograms = pictograms.slice(offset, offset + itemsPerPage)
+    const currentPage = Math.ceil(offset / itemsPerPage) + 1
     const pagination =
       numberItems >= itemsPerPage ? (
-        <div style={styles.pagination}>
-          <Pagination
-            // limit={itemsPerPage}
-            display={display}
-            // offset={offset}
-            current={offset}
-            total={totalPages}
-            // onClick={(e, offsetParam) => this.handleClick(offsetParam)}
-            onChange={this.handleClick}
-            currentPageColor="inherit"
-            styleRoot={{ textAlign: 'center' }}
-          />
-        </div>
+        <Pagination
+          // limit={itemsPerPage}
+          display={display}
+          // offset={offset}
+          current={currentPage}
+          total={totalPages}
+          // onClick={(e, offsetParam) => this.handleClick(offsetParam)}
+          onChange={this.handleClick}
+          currentPageColor="inherit"
+          styleRoot={{ textAlign: 'center' }}
+        />
       ) : null
 
     const masonryOptions = {

@@ -61,11 +61,28 @@ class MaterialsView extends PureComponent {
 
   state = {
     visibleLabels: false,
-    slideIndex: 0
+    tab: 0,
+    offset: 0
+  }
+
+  processQuery = props => {
+    const { location } = props || this.props
+    const { search, query } = location
+    let parameters = { offset: 0, tab: 0 }
+    if (search) {
+      parameters = { ...parameters, ...query }
+      const validKeys = ['offset', 'tab']
+      Object.keys(parameters).forEach(key => validKeys.includes(key) || delete parameters[key])
+      parameters.offset = parseInt(parameters.offset, 10)
+      parameters.tab = parseInt(parameters.tab, 10)
+    }
+    const needUpdate = Object.keys(parameters).some(key => parameters[key] !== this.state[key])
+    if (needUpdate) this.setState(parameters)
   }
 
   componentDidMount() {
     const { requestMaterials, requestNewMaterials, locale } = this.props
+    this.processQuery()
     if (this.props.params.searchText && !this.props.searchResults) {
       requestMaterials(locale, this.props.params.searchText)
     }
@@ -76,21 +93,33 @@ class MaterialsView extends PureComponent {
     if (this.props.params.searchText !== nextProps.params.searchText) {
       this.props.requestMaterials(this.props.locale, nextProps.params.searchText)
     }
+    if (this.props.location.search !== nextProps.location.search) {
+      this.processQuery(nextProps)
+    }
   }
 
-  handleChange = (value) => {
-    this.setState({
-      slideIndex: value
-    })
-    // if (value === 1) this.props.requestNewMaterials()
+  handleChange = (tab) => {
+    const { pathname } = this.props.location
+    const url = `${pathname}?tab=${tab}`
+    this.props.router.push(url)
+  }
+
+  handlePageClick = offset => {
+    // fix bug if offset is not number, click comes from picto link, should not be processed here
+    if (typeof offset === 'number') {
+      const { tab } = this.state
+      const { pathname } = this.props.location
+      const url = `${pathname}?offset=${offset}&tab=${tab}`
+      this.props.router.push(url)
+    }
   }
 
   handleSubmit = (nextValue) => {
     this.setState({
-      slideIndex: 0
+      tab: 0
     })
     if (this.props.params.searchText !== nextValue) {
-      this.props.router.push(`/materials/search/${nextValue}`)
+      this.props.router.push(`/materials/search/${encodeURIComponent(nextValue)}`)
     }
   }
 
@@ -103,18 +132,18 @@ class MaterialsView extends PureComponent {
   render() {
     const { showFilter, filters, visibleMaterials, newMaterialsList, locale, loading, muiTheme, width } = this.props
     const searchText = this.props.params.searchText || ''
-    const { visibleLabels, slideIndex } = this.state
+    const { visibleLabels, tab, offset } = this.state
     let materialsCounter
     const hideIconText = width === SMALL
     // depending on which slide we are, we show one or another list */
     let materialsList
-    if (slideIndex === 0) materialsList = visibleMaterials
+    if (tab === 0) materialsList = visibleMaterials
     else materialsList = newMaterialsList
 
     let gallery = ''
     if (loading) {
       gallery = <ReadMargin><P>{<FormattedMessage {...messages.loadingMaterials} />}</P></ReadMargin>
-    } else if (!searchText && slideIndex === 0) {
+    } else if (!searchText && tab === 0) {
       gallery = null
     } else {
       materialsCounter = materialsList.length
@@ -127,6 +156,8 @@ class MaterialsView extends PureComponent {
               filtersMap={filters}
               setFilterItems={this.props.setFilterItems}
               showLabels={visibleLabels}
+              offset={offset}
+              onPageClick={this.handlePageClick}
             />
           </div>
         )
@@ -135,7 +166,7 @@ class MaterialsView extends PureComponent {
     return (
       <div>
         <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
-        <Tabs onChange={this.handleChange} value={slideIndex}>
+        <Tabs onChange={this.handleChange} value={tab}>
           <Tab
             label={hideIconText ? '' : <FormattedMessage {...messages.search} />}
             icon={<SearchIcon />}
