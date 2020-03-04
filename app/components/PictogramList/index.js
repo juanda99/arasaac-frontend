@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import withWidth, { SMALL, LARGE } from 'material-ui/utils/withWidth'
+import Pagination from 'material-ui-pagination'
 import PictogramSnippet from '../PictogramSnippet'
 
 const Masonry = require('react-masonry-component')
@@ -17,7 +18,26 @@ const styles = {
   }
 }
 
+const itemsPerPage = 20 /* number of items per page */
+const display = 10 /* number of pages to see in the paginator */
+
 export class PictogramList extends PureComponent {
+
+  setTopRef = (element) => {
+    this.topPosition = element
+  }
+
+  // handlePageClick = (currentPage) => {
+  //   this.setState({ currentPage })
+  //   this.topPosition.scrollIntoView()
+  //   // window.scroll(0, 0)
+  // }
+
+  handleClick = currentPage => {
+    const offset = (currentPage - 1) * itemsPerPage
+    this.props.onPageClick(offset)
+  }
+
   render() {
     const {
       locale,
@@ -30,13 +50,43 @@ export class PictogramList extends PureComponent {
       onDeleteFavorite,
       onAddFavorite,
       rtl,
-      onDownload
+      onDownload,
+      offset
     } = this.props
+
+    // const pagination = (pictograms.length >= itemsPerPage) ?
+    //   (<Pagination
+    //     total={total}
+    //     current={currentPage}
+    //     display={display}
+    //     onChange={this.handlePageClick}
+    //   />)
+    //   : null
+
+    const numberItems = pictograms.length
+    const totalPages = Math.ceil(numberItems / itemsPerPage)
+    const visiblePictograms = pictograms.slice(offset, offset + itemsPerPage)
+    const pagination =
+      numberItems >= itemsPerPage ? (
+        <div style={styles.pagination}>
+          <Pagination
+            // limit={itemsPerPage}
+            display={display}
+            // offset={offset}
+            current={offset}
+            total={totalPages}
+            // onClick={(e, offsetParam) => this.handleClick(offsetParam)}
+            onChange={this.handleClick}
+            currentPageColor="inherit"
+          />
+        </div>
+      ) : null
+
     const masonryOptions = {
       transitionDuration: '1s',
       isOriginLeft: !rtl
     }
-    const renderPictograms = pictograms.map((pictogram) => {
+    const renderPictograms = visiblePictograms.map((pictogram) => {
       const isFavorite = favorites.includes(pictogram._id)
       return (
         <PictogramSnippet
@@ -55,17 +105,24 @@ export class PictogramList extends PureComponent {
     return (
       <div>
         {width !== SMALL ? (
-          <Masonry
-            className={'my-gallery-class'} // default ''
-            elementType={'ul'} // default 'div'
-            options={masonryOptions} // default {}
-            disableImagesLoaded={false} // default false
-            style={styles.masonry}
-          >
-            {renderPictograms}
-          </Masonry>
+          <div ref={this.setTopRef}>
+            {pagination}
+            <Masonry
+              className={'my-gallery-class'} // default ''
+              elementType={'ul'} // default 'div'
+              options={masonryOptions} // default {}
+              disableImagesLoaded={false} // default false
+              style={styles.masonry}
+            >
+              {renderPictograms}
+            </Masonry>
+            {pagination}
+          </div>
         ) : (
-            <ul>{renderPictograms}</ul>
+            <div ref={this.setTopRef}>
+              {pagination}
+              <ul>{renderPictograms}</ul>
+            </div>
           )}
       </div>
     )
@@ -86,6 +143,8 @@ PictogramList.propTypes = {
   favorites: ImmutablePropTypes.list,
   rtl: PropTypes.bool.isRequired,
   onDownload: PropTypes.func.isRequired,
+  offset: PropTypes.number.isRequired,
+  onPageClick: PropTypes.func.isRequired,
 }
 
 export default withWidth()(PictogramList)

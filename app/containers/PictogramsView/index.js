@@ -142,6 +142,16 @@ class PictogramsView extends PureComponent {
     this.props.router.push(url)
   }
 
+  handlePageClick = offset => {
+    // fix bug if offset is not number, click comes from picto link, should not be processed here
+    if (typeof offset === 'number') {
+      const { tab } = this.state
+      const { pathname } = this.props.location
+      const url = `${pathname}?offset=${offset}&tab=${tab}`
+      this.props.router.push(url)
+    }
+  }
+
   handleAddFavorite = (fileName) => {
     const { addFavorite, token } = this.props
     addFavorite(fileName, DEFAULT_LIST, token)
@@ -194,7 +204,7 @@ class PictogramsView extends PureComponent {
       width
     } = this.props
     const searchText = this.props.params.searchText || ''
-    const { visibleLabels, visibleSettings, tab } = this.state
+    const { visibleLabels, visibleSettings, offset, tab } = this.state
     let pictogramsCounter
     const hideIconText = width === SMALL
     let pictogramsList
@@ -220,6 +230,8 @@ class PictogramsView extends PureComponent {
           onDownload={this.handleDownload}
           favorites={rootFavorites}
           rtl={muiTheme.direction === 'rtl'}
+          offset={offset}
+          onPageClick={this.handlePageClick}
         />
       ) : (
           <ReadMargin>
