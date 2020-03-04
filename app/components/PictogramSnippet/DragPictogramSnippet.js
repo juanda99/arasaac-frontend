@@ -146,7 +146,7 @@ class PictogramSnippet extends PureComponent {
                     touch={true}
                     // https://github.com/react-dnd/react-dnd/issues/577
                     // we can use tooltip as we are using customDragLayer
-                    tooltip={<FormattedMessage {...messages.addFavorite} />}
+                    tooltip={<FormattedMessage {...messages.deleteFavorite} />}
                     iconStyle={this.styles.icon}
                     style={this.styles.rightIconButton}
                     onClick={this.handleDelete}

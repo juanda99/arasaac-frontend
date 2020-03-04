@@ -37,5 +37,13 @@ export default defineMessages({
   delete: {
     id: 'app.containers.ListMenu.delete',
     defaultMessage: 'Delete'
+  },
+  submit: {
+    id: 'app.containers.ListMenu.submit',
+    defaultMessage: 'Submit'
+  },
+  cancel: {
+    id: 'app.containers.ListMenu.cancel',
+    defaultMessage: 'Cancel'
   }
 })

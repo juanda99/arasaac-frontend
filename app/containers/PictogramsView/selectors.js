@@ -104,8 +104,6 @@ export const makeFavoritePictogramsSelector = () =>
     makeEntitiesSelector(),
     (favorites, entities) => {
       /* searchData could be undefined */
-      console.log(favorites, 'adfadfasfadfdf')
-      console.log(entities, 'piedra')
       if (favorites == null) return []
       const pictogramList = denormalize(
         favorites,

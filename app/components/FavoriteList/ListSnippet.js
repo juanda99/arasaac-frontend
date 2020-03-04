@@ -141,12 +141,12 @@ class ListSnippet extends PureComponent {
 
     const actions = [
       <FlatButton
-        label="Cancel"
+        label={formatMessage(messages.cancel)}
         primary={true}
         onClick={this.handleCancelDialog}
       />,
       <FlatButton
-        label="Submit"
+        label={formatMessage(messages.submit)}
         primary={true}
         keyboardFocused={true}
         onClick={this.handleSubmitDialog}
