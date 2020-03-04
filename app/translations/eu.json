@@ -337,7 +337,7 @@
   "app.containers.PictogramsView.folderName": "Karpetaren izena",
   "app.containers.PictogramsView.loadingPictograms": "Piktograma kargatzen...",
   "app.containers.PictogramsView.new": "Berria",
-  "app.containers.PictogramsView.newPictogramsFound": "Duela gutxi sortutako piktogramak {pictogramsCounter} aurkitu ditugu",
+  "app.containers.PictogramsView.newPictogramsFound": "Duela gutxi sortutako {pictogramsCounter} piktogramak aurkitu ditugu",
   "app.containers.PictogramsView.pictogramsFound": "{pictogramsCounter, plural, one {Piktograma bat aurkitu dugu} other {Aurkitu dugu {pictogramsCounter} Piktograma}}",
   "app.containers.PictogramsView.pictogramsNotFound": "Sentitzen dugu, ezin dugu piktogramarik aurkitu",
   "app.containers.PictogramsView.search": "Bilatu",
