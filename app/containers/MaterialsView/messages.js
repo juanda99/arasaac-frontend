@@ -34,7 +34,7 @@ export default defineMessages({
   newMaterialsFound: {
     id: 'app.containers.MaterialsView.newMaterialsFound',
     description: 'Message when no materials for a specific search',
-    defaultMessage: 'We have found {materialsCounter} new or updated materials in the last 30 days'
+    defaultMessage: 'We have found {materialsCounter} new or updated materials recently'
   },
   search: {
     id: 'app.containers.MaterialsView.search',
@@ -45,5 +45,9 @@ export default defineMessages({
     id: 'app.containers.MaterialsView.new',
     description: 'Label for new materials tab',
     defaultMessage: 'New'
+  },
+  loadingMaterials: {
+    id: 'app.containers.MaterialsView.loadingMaterials',
+    defaultMessage: 'Loading materials...'
   }
 })

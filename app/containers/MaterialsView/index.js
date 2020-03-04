@@ -20,6 +20,7 @@ import { Map } from 'immutable'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
 import P from 'components/P'
+import ReadMargin from 'components/ReadMargin'
 import { withRouter } from 'react-router'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ActionButtons from './ActionButtons'
@@ -107,13 +108,12 @@ class MaterialsView extends PureComponent {
     const hideIconText = width === SMALL
     // depending on which slide we are, we show one or another list */
     let materialsList
-    console.log('visible', visibleMaterials)
     if (slideIndex === 0) materialsList = visibleMaterials
     else materialsList = newMaterialsList
 
     let gallery = ''
     if (loading) {
-      gallery = <p> Loading materials...</p>
+      gallery = <ReadMargin><P>{<FormattedMessage {...messages.loadingMaterials} />}</P></ReadMargin>
     } else if (!searchText && slideIndex === 0) {
       gallery = null
     } else {
@@ -130,7 +130,7 @@ class MaterialsView extends PureComponent {
             />
           </div>
         )
-        : <P>{<FormattedMessage {...messages.materialsNotFound} />}</P>
+        : <ReadMargin><P>{<FormattedMessage {...messages.materialsNotFound} />}</P></ReadMargin>
     }
     return (
       <div>
@@ -158,7 +158,7 @@ class MaterialsView extends PureComponent {
               </View>
               <Divider />
               <View left={true} right={true} top={1} >
-                {materialsCounter ? <P> <FormattedMessage {...messages.materialsFound} values={{ materialsCounter }} /> </P> : ''}
+                {materialsCounter ? <ReadMargin><P> <FormattedMessage {...messages.materialsFound} values={{ materialsCounter }} /> </P></ReadMargin> : ''}
                 {gallery}
               </View>
             </div>
@@ -185,7 +185,7 @@ class MaterialsView extends PureComponent {
               </View>
               <Divider />
               <View left={true} right={true} top={1} >
-                {materialsCounter ? <p> <FormattedMessage {...messages.newMaterialsFound} values={{ materialsCounter }} /> </p> : ''}
+                {materialsCounter ? <ReadMargin><P> <FormattedMessage {...messages.newMaterialsFound} values={{ materialsCounter }} /> </P> </ReadMargin> : ''}
                 {gallery}
               </View>
             </div>

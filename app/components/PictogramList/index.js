@@ -78,6 +78,7 @@ export class PictogramList extends PureComponent {
             // onClick={(e, offsetParam) => this.handleClick(offsetParam)}
             onChange={this.handleClick}
             currentPageColor="inherit"
+            styleRoot={{ textAlign: 'center' }}
           />
         </div>
       ) : null
