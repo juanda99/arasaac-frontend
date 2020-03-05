@@ -359,7 +359,7 @@
   "app.containers.SettingsView.language": "Limbă",
   "app.containers.TabsHeader.new": "Noutăți",
   "app.containers.TabsHeader.search": "Căutare",
-  "app.containers.TranslateView.crowdinService": "We use Crowdin to translate our web site and our administration panel to different languages. If you want to help with translations, let us hear from you! . We will upgrade your ARASAAC account with translator role and you will also receive an invitation to join Crowdin:",
+  "app.containers.TranslateView.crowdinService": "Folosim Crowdin pentru a traduce site-ul nostru web și panoul nostru de administrare în diferite limbi. Dacă doriți să ne ajutați cu traducerile, contactați-ne. Vă vom actualiza contul ARASAAC cu rol de traducător și veți primi, de asemenea, o invitație de a vă alătura pe Crowdin:",
   "app.containers.WorldView.arasaacInWorld": "ARASAAC is present worldwide. In the map below you can see some examples of its usage. Contact us if you wish to share in the map below your experience of using ARASAAC",
   "app.containers.introArasaacPrizes": "ARASAAC is a collaborative project, coordinated and financed by the Government of Aragon, which has received several awards, since its creation in 2007, thanks to the altruistic work of numerous collaborators.",
   "app.containers/collaboratorsView.buildArasaac": "ARASAAC is built with the help of many volunteers who prepare educational materials or translate our website and its pictograms into dozens of languages.",
