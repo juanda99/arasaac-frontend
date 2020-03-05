@@ -16,9 +16,7 @@ class TranslationStatus extends PureComponent {
     pictogramsValidated: 0,
     totalPictograms: 0,
     arasaacPhrases: 0,
-    adminPhrases: 0,
     arasaacTranslated: 0,
-    adminTranslated: 0,
     statisticsAvailable: false
   }
 
@@ -30,7 +28,7 @@ class TranslationStatus extends PureComponent {
 
   componentDidUpdate(prevProps) {
     const { language, locale } = this.props
-    if (prevProps.userLocale !== language) {
+    if (prevProps.language !== language) {
       // we use userLocale if given by props (ProfileView), otherwise locale
       this.updateData(language || locale)
     }
@@ -42,11 +40,17 @@ class TranslationStatus extends PureComponent {
     showProgressBar()
     try {
       const translationData = await api.TRANSLATIONS_STATUS(language)
-      const { pictogramsValidated, totalPictograms, arasaacPhrases, adminPhrases, arasaacTranslated, adminTranslated } = translationData
-      this.setState({ statisticsAvailable: true, pictogramsValidated, totalPictograms, arasaacPhrases, adminPhrases, arasaacTranslated, adminTranslated })
+      const { pictogramsValidated, totalPictograms, arasaacPhrases, arasaacTranslated } = translationData
+      if (language === 'en') {
+        this.setState({ statisticsAvailable: true, pictogramsValidated, totalPictograms, arasaacPhrases: 100, arasaacTranslated: 100 })
+      } else {
+        this.setState({ statisticsAvailable: true, pictogramsValidated, totalPictograms, arasaacPhrases, arasaacTranslated })
+      }
+
       hideProgressBar()
     } catch (error) {
       this.setState({ statisticsAvailable: false })
+      console.log(error)
       hideProgressBar()
     }
   }
@@ -57,12 +61,12 @@ class TranslationStatus extends PureComponent {
       pictogramsValidated,
       totalPictograms,
       arasaacPhrases,
-      adminPhrases,
       arasaacTranslated,
-      adminTranslated,
       statisticsAvailable
     } = this.state
-    const webTranslated = parseInt(((arasaacTranslated + adminTranslated) / (arasaacPhrases + adminPhrases)) * 100, 10)
+    console.log(this.props.locale)
+    console.log(statisticsAvailable, 'fffff')
+    const webTranslated = this.props.locale === 'en' ? 100 : parseInt(((arasaacTranslated) / (arasaacPhrases)) * 100, 10)
     const pictosValidated = parseInt((pictogramsValidated / totalPictograms) * 100, 10)
     const webTranslatedString = webTranslated.toString()
     const pictosValidatedString = pictosValidated.toString()
