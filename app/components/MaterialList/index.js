@@ -5,7 +5,7 @@ import { Map } from 'immutable'
 import Pagination from 'material-ui-pagination'
 
 const itemsPerPage = 10 /* number of items per page */
-const display = 8 /* number of pages to see in the paginator */
+const display = 7 /* number of pages to see in the paginator */
 
 export class MaterialList extends PureComponent {
 

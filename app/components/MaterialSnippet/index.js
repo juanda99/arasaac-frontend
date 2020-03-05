@@ -60,7 +60,7 @@ class MaterialSnippet extends PureComponent {
     const { material, locale, filtersMap, showLabels } = this.props
     const activityTags = (
       <TagsRenderer
-        tags={material.activity}
+        tags={material.activities}
         type={'activities'}
         selected={filtersMap.get('activities')}
         onClick={this.handleTouchTap}
@@ -69,7 +69,7 @@ class MaterialSnippet extends PureComponent {
 
     const areaTags = (
       <TagsRenderer
-        tags={material.area} s
+        tags={material.areas}
         type={'areas'}
         selected={filtersMap.get('areas')}
         onClick={this.handleTouchTap}

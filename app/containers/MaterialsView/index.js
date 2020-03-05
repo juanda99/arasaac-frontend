@@ -30,7 +30,7 @@ import {
   makeLoadingSelector,
   makeSearchResultsSelector,
   makeVisibleMaterialsSelector,
-  makeNewMaterialsSelector
+  makeNewVisibleMaterialsSelector
 } from './selectors'
 
 import { materials, newMaterials, toggleShowFilter, setFilterItems } from './actions'
@@ -130,7 +130,7 @@ class MaterialsView extends PureComponent {
   }
 
   render() {
-    const { showFilter, filters, visibleMaterials, newMaterialsList, locale, loading, muiTheme, width } = this.props
+    const { showFilter, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, muiTheme, width } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, tab, offset } = this.state
     let materialsCounter
@@ -138,7 +138,7 @@ class MaterialsView extends PureComponent {
     // depending on which slide we are, we show one or another list */
     let materialsList
     if (tab === 0) materialsList = visibleMaterials
-    else materialsList = newMaterialsList
+    else materialsList = newVisibleMaterialsList
 
     let gallery = ''
     if (loading) {
@@ -147,20 +147,17 @@ class MaterialsView extends PureComponent {
       gallery = null
     } else {
       materialsCounter = materialsList.length
-      gallery = materialsCounter
-        ? (
-          <div>
-            <MaterialList
-              materials={materialsList}
-              locale={locale}
-              filtersMap={filters}
-              setFilterItems={this.props.setFilterItems}
-              showLabels={visibleLabels}
-              offset={offset}
-              onPageClick={this.handlePageClick}
-            />
-          </div>
-        )
+      gallery = materialsCounter ? (
+        <MaterialList
+          materials={materialsList}
+          locale={locale}
+          filtersMap={filters}
+          setFilterItems={this.props.setFilterItems}
+          showLabels={visibleLabels}
+          offset={offset}
+          onPageClick={this.handlePageClick}
+        />
+      )
         : <ReadMargin><P>{<FormattedMessage {...messages.materialsNotFound} />}</P></ReadMargin>
     }
     return (
@@ -256,7 +253,7 @@ const mapStateToProps = (state, ownProps) => ({
   loading: makeLoadingSelector()(state),
   searchResults: makeSearchResultsSelector()(state, ownProps),
   visibleMaterials: makeVisibleMaterialsSelector()(state, ownProps),
-  newMaterialsList: makeNewMaterialsSelector()(state)
+  newVisibleMaterialsList: makeNewVisibleMaterialsSelector(state)(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({

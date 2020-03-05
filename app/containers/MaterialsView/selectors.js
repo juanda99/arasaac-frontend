@@ -63,8 +63,7 @@ export const makeVisibleMaterialsSelector = () => createSelector(
     /* searchData could be undefined */
     if (searchData == null) return []
     const materialList = denormalize(searchData, searchMaterialSchema, entities)
-    const kk = getFilteredItems(materialList, filters)
-    return kk
+    return getFilteredItems(materialList, filters)
   }
 )
 
@@ -74,5 +73,14 @@ export const makeNewMaterialsSelector = () => createSelector(
     if (searchData == null) return []
     const materialList = denormalize(searchData, searchMaterialSchema, entities)
     return materialList
+  }
+)
+
+export const makeNewVisibleMaterialsSelector = () => createSelector(
+  makeSearchNewMaterialsSelector(), makeEntitiesSelector(), makeFiltersSelector(), (searchData, entities, filters) => {
+    /* searchData could be undefined */
+    if (searchData == null) return []
+    const materialList = denormalize(searchData, searchMaterialSchema, entities)
+    return getFilteredItems(materialList, filters)
   }
 )

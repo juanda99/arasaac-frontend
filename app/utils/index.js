@@ -24,8 +24,8 @@ export const getFilteredItems = (items, filters) =>
     return filterNames.every((filterName) => {
       // filterName can have a name different to material structure... small hack:
       let fieldName = filterName
-      if (filterName === 'activities') fieldName = 'activity'
-      else if (filterName === 'areas') fieldName = 'area'
+      // if (filterName === 'activities') fieldName = 'activity'
+      // else if (filterName === 'areas') fieldName = 'area'
       if (filterName === 'languages') {
         return checkLanguage(item, filters.get('languages'))
       } else if (
