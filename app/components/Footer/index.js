@@ -30,6 +30,7 @@ const Footer = ({ docked, muiTheme }) => (
       <p style={styles.p}>
         {`© ARASAAC - Gobierno de Aragón, ${new Date().getFullYear()}`}
       </p>
+
       <p style={styles.p}><Link to='/terms-of-use'><FormattedMessage {...messages.termsOfUse} /></Link>
       </p>
       <p style={styles.p}><Link to='/cookies-policy'><FormattedMessage {...messages.cookiesPolicy} /></Link> - <Link to='/privacy-policy'><FormattedMessage {...messages.privacyPolicy} /></Link>

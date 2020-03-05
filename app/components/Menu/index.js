@@ -190,11 +190,11 @@ class Menu extends Component {
                 primaryText={<FormattedMessage {...messages.api} />}
                 leftIcon={<ApiIcon />}
               />,
-              <ListItem
-                value='/developers/accounts'
-                primaryText={<FormattedMessage {...messages.devAccount} />}
-                leftIcon={<AccountIcon />}
-              />
+              // <ListItem
+              //   value='/developers/accounts'
+              //   primaryText={<FormattedMessage {...messages.devAccount} />}
+              //   leftIcon={<AccountIcon />}
+              // />
             ]}
           />
           <ListItem

@@ -11,6 +11,7 @@ import SwaggerUi, { presets } from 'swagger-ui'
 // import 'swagger-ui/dist/swagger-ui.css'
 import View from 'components/View'
 import { API_SERVER } from 'services/config'
+import ReadMargin from 'components/ReadMargin'
 import './theme-material.css'
 
 class ApiView extends PureComponent {
@@ -26,8 +27,10 @@ class ApiView extends PureComponent {
     // console.log(this.props.theme)
     return (
       <View>
-        <div id='swaggerContainer'>
-        </div>
+        <ReadMargin>
+          <div id='swaggerContainer'>
+          </div>
+        </ReadMargin>
       </View>
     )
   }

@@ -12,6 +12,7 @@ import Slider from 'material-ui/Slider'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import H2 from 'components/H2'
+import ReadMargin from 'components/ReadMargin'
 import Button from 'components/Button'
 import Divider from 'material-ui/Divider'
 import { THEMES, changeTheme } from 'containers/ThemeProvider/actions'
@@ -38,31 +39,33 @@ class SettingsView extends React.Component {
     const { changeTheme, theme, changeLocale, locale } = this.props
     return (
       <View left={true} right={true}>
-        <Helmet
-          title='Settings'
-          meta={[
-            { name: 'description', content: 'Description of MaterialView' }
-          ]}
-        />
-        <Div bottom={3}>
-          <H2 primary={true}> <FormattedMessage {...messages.colortheme} /> </H2>
-          {
-            THEMES.map((value) =>
-              <Button
-                key={value}
-                label={value}
-                value={value}
-                onClick={changeTheme}
-                style={{ margin: 12 }}
-                curval={theme}
-              />)
-          }
-        </Div>
-        <Divider style={{ margin: '4px' }} />
-        <Div top={3}>
-          <H2 primary={true}> <FormattedMessage {...messages.language} /> </H2>
-          <LanguageSelector value={locale} onChange={changeLocale} />
-        </Div>
+        <ReadMargin>
+          <Helmet
+            title='Settings'
+            meta={[
+              { name: 'description', content: 'Description of MaterialView' }
+            ]}
+          />
+          <Div bottom={3}>
+            <H2 primary={true}> <FormattedMessage {...messages.colortheme} /> </H2>
+            {
+              THEMES.map((value) =>
+                <Button
+                  key={value}
+                  label={value}
+                  value={value}
+                  onClick={changeTheme}
+                  style={{ margin: 12 }}
+                  curval={theme}
+                />)
+            }
+          </Div>
+          <Divider style={{ margin: '4px' }} />
+          <Div top={3}>
+            <H2 primary={true}> <FormattedMessage {...messages.language} /> </H2>
+            <LanguageSelector value={locale} onChange={changeLocale} />
+          </Div>
+        </ReadMargin>
       </View>
     )
   }
