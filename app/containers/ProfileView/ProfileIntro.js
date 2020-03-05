@@ -4,6 +4,7 @@ import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl'
 import P from 'components/P'
 import H3 from 'components/H3'
 import RaisedButton from 'material-ui/RaisedButton'
+import { Link } from 'react-router'
 import messages from './messages'
 
 const ProfileIntro = ({ name, lastLogin, picture, role }) => (
@@ -23,7 +24,12 @@ const ProfileIntro = ({ name, lastLogin, picture, role }) => (
       </P>
 
       <P><FormattedMessage {...messages.currentRole} /> {!!role && <FormattedMessage {...messages[role]} />}</P>
-      {role === 'user' && <RaisedButton label={<FormattedMessage {...messages.upgradeRole} />} secondary={true} />}
+      {role === 'user' &&
+        (
+          <Link to='/contact-us'>
+            <RaisedButton label={<FormattedMessage {...messages.upgradeRole} />} secondary={true} />
+          </Link>
+        )}
 
 
     </div>
