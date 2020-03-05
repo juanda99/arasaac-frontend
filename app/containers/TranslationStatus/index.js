@@ -41,16 +41,10 @@ class TranslationStatus extends PureComponent {
     try {
       const translationData = await api.TRANSLATIONS_STATUS(language)
       const { pictogramsValidated, totalPictograms, arasaacPhrases, arasaacTranslated } = translationData
-      if (language === 'en') {
-        this.setState({ statisticsAvailable: true, pictogramsValidated, totalPictograms, arasaacPhrases: 100, arasaacTranslated: 100 })
-      } else {
-        this.setState({ statisticsAvailable: true, pictogramsValidated, totalPictograms, arasaacPhrases, arasaacTranslated })
-      }
-
+      this.setState({ statisticsAvailable: true, pictogramsValidated, totalPictograms, arasaacPhrases, arasaacTranslated })
       hideProgressBar()
     } catch (error) {
       this.setState({ statisticsAvailable: false })
-      console.log(error)
       hideProgressBar()
     }
   }
@@ -64,9 +58,7 @@ class TranslationStatus extends PureComponent {
       arasaacTranslated,
       statisticsAvailable
     } = this.state
-    console.log(this.props.locale)
-    console.log(statisticsAvailable, 'fffff')
-    const webTranslated = this.props.locale === 'en' ? 100 : parseInt(((arasaacTranslated) / (arasaacPhrases)) * 100, 10)
+    const webTranslated = parseInt(((arasaacTranslated) / (arasaacPhrases)) * 100, 10)
     const pictosValidated = parseInt((pictogramsValidated / totalPictograms) * 100, 10)
     const webTranslatedString = webTranslated.toString()
     const pictosValidatedString = pictosValidated.toString()
