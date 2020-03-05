@@ -17,6 +17,7 @@ import he from 'react-intl/locale-data/he'
 import hr from 'react-intl/locale-data/hr'
 import ca from 'react-intl/locale-data/ca'
 import gl from 'react-intl/locale-data/gl'
+import ro from 'react-intl/locale-data/ro'
 import ru from 'react-intl/locale-data/ru'
 import ar from 'react-intl/locale-data/ar'
 import eu from 'react-intl/locale-data/eu'
@@ -36,6 +37,7 @@ import heTranslationMessages from './translations/he.json'
 import hrTranslationMessages from './translations/hr.json'
 import caTranslationMessages from './translations/ca.json'
 import glTranslationMessages from './translations/gl.json'
+import roTranslationMessages from './translations/ro.json'
 import ruTranslationMessages from './translations/ru.json'
 import arTranslationMessages from './translations/ar.json'
 import euTranslationMessages from './translations/eu.json'
@@ -55,6 +57,7 @@ addLocaleData([
   ...hr,
   ...ca,
   ...gl,
+  ...ro,
   ...ru,
   ...ar,
   ...eu,
@@ -90,6 +93,7 @@ export const translationMessages = {
   hr: formatTranslationMessages('hr', hrTranslationMessages),
   ca: formatTranslationMessages('ca', caTranslationMessages),
   gl: formatTranslationMessages('gl', glTranslationMessages),
+  ro: formatTranslationMessages('ro', roTranslationMessages),
   ru: formatTranslationMessages('ru', ruTranslationMessages),
   ar: formatTranslationMessages('ar', arTranslationMessages),
   eu: formatTranslationMessages('eu', euTranslationMessages),
