@@ -9,8 +9,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import View from 'components/View'
-//import MaterialForm from 'components/MaterialForm'
-import MaterialForm from 'components/MaterialFormSimple'
+import MaterialForm from 'components/MaterialForm'
 import LinearProgress from 'material-ui/LinearProgress'
 import api from 'services' // just the endpoint
 import axios from 'axios'
@@ -65,25 +64,17 @@ class UploadMaterialView extends PureComponent {
       areas.map((area) => (area.value))
       : []
 
-    const Authors = authors.filter(author => author._id).map(author => author._id)
+    const Authors = authors.filter(author => author._id).map(author => ({ author: author._id, role: author.role }))
     if (authors.length === 0) {
       this.setState({ stepIndex: 0, showDialog: true, dialogText: formatMessage(messages.needAuthor) })
       return
     }
     if (!files) {
-      //check if any of the languages does not have files
-      const langNeedFiles = languages.some((language => !language.files))
-      // check if any language has files
-      const langHasFiles = languages.some((language => !!language.files))
-      if (langNeedFiles && langHasFiles) {
-        this.setState({ showDialog: true, dialogText: formatMessage(messages.needLanguageFiles) })
-      } else if (langNeedFiles && !langHasFiles) {
-        this.setState({ stepIndex: 2, showDialog: true, dialogText: formatMessage(messages.needFiles) })
-      }
+      this.setState({ stepIndex: 2, showDialog: true, dialogText: formatMessage(messages.needFiles) })
+      return
     }
-    formValues.activities = Activities
-    formValues.areas = Areas
-    formValues.authors = Authors
+
+    console.log(Authors, '**************')
 
     /* try to process it, we use axios to get progress */
     this.setState({ sending: true, loading: true })
@@ -97,16 +88,6 @@ class UploadMaterialView extends PureComponent {
     }
     if (languages) {
       translations = languages.map((language) => {
-        if (language.files) {
-          language.files.map((langFile) =>
-            formData.append(`${language.language}_files`, langFile)
-          )
-        }
-        if (language.screenshots) {
-          language.screenshots.map((langFile) =>
-            formData.append(`${language.language}_screenshotfiles`, langFile)
-          )
-        }
         let customLanguage
         switch (language.language) {
           case 'da':
@@ -141,7 +122,7 @@ class UploadMaterialView extends PureComponent {
     }
     formData.append(
       'formData',
-      JSON.stringify({ Areas, Activities, Authors, translations })
+      JSON.stringify({ areas: Areas, activities: Activities, authors: Authors, translations })
     )
 
     axios.request({
@@ -179,7 +160,7 @@ class UploadMaterialView extends PureComponent {
     const { name, email, picture, _id, intl, language } = this.props
     const { showDialog, dialogText, sending, progressStatus, error, loading } = this.state
     const { formatMessage } = intl
-    const initialValues = { authors: [{ name, email, picture, _id }], languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }] }
+    const initialValues = { authors: [{ name, email, picture, _id, role: 'author' }], languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }] }
     const actions = [
       <FlatButton
         label={formatMessage(messages.close)}

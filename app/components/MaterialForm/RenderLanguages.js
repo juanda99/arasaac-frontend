@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'redux-form/immutable'
-import FlatButton from 'material-ui/FlatButton'
 import Paper from 'material-ui/Paper'
 import { SelectField, TextField } from 'redux-form-material-ui'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
@@ -13,7 +12,6 @@ import { Map } from 'immutable'
 import languages from 'data/languages'
 import { required } from 'redux-form-validators'
 import languageMessages from 'components/LanguageSelector/messages'
-import RenderDropzoneInput from './RenderDropzoneInput'
 import messages from './messages'
 
 const styles = {
@@ -84,7 +82,7 @@ const RenderLanguages = ({ fields, intl }) => {
               fullWidth
               validate={[required()]}
             />
-            <div>
+            {/* <div>
               <Field
                 name={`${member}.files`}
                 component={RenderDropzoneInput}
@@ -104,7 +102,7 @@ const RenderLanguages = ({ fields, intl }) => {
                   hint: <FormattedMessage {...messages.languageScreenshots} />
                 }}
               />
-            </div>
+            </div> */}
             <FloatingActionButton
               mini={true}
               style={{ position: 'absolute', top: -5, right: 53 }}

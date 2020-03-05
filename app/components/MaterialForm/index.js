@@ -66,7 +66,6 @@ class MaterialForm extends React.Component {
       (selectItem) => {
         const value = parseInt(selectItem.code, 10)
         let text = formatMessage(filterMessages[selectItem.text])
-        console.log('ok')
         switch (value) {
           case 4:
           case 5:

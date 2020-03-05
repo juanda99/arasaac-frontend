@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'redux-form/immutable'
 import MUIAutoComplete from 'material-ui/AutoComplete'
-import { AutoComplete, TextField } from 'redux-form-material-ui'
+import { SelectField, TextField } from 'redux-form-material-ui'
+import MenuItem from 'material-ui/MenuItem'
 import { FormattedMessage } from 'react-intl'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import { DEFAULT_PROFILE_PICTURE } from 'utils/index'
@@ -10,7 +11,6 @@ import PersonAdd from 'material-ui/svg-icons/social/person-add'
 import Delete from 'material-ui/svg-icons/action/delete'
 import { Map } from 'immutable'
 import { required, email } from 'redux-form-validators'
-import { getUserByEmail } from 'services'
 import messages from './messages'
 
 const styles = {
@@ -109,6 +109,25 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange }) => {
               style={{ display: 'none' }}
               validate={[required()]}
             />
+            <Field
+              name={`${member}.role`}
+              component={SelectField}
+              hintText={<FormattedMessage {...messages.chooseRole} />}
+              floatingLabelText={<FormattedMessage {...messages.role} />}
+              defaultValue='author'
+              style={styles.field}
+              validate={[required()]}
+              value='author'
+            >
+              <MenuItem
+                value='author'
+                primaryText={<FormattedMessage {...messages.author} />}
+              />
+              <MenuItem
+                value='translator'
+                primaryText={<FormattedMessage {...messages.translator} />}
+              />
+            </Field>
 
             <div style={styles.icons}>
               <FloatingActionButton mini={true} style={styles.icon} onClick={() => fields.remove(index)} >

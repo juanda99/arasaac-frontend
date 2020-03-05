@@ -17,9 +17,5 @@ export default defineMessages({
     id: 'app.components.uploadMaterialView.needFiles',
     defaultMessage: 'At least one material file is required'
   },
-  needLanguageFiles: {
-    id: 'app.components.uploadMaterialView.needLanguageFiles',
-    defaultMessage: 'There are languages without material files. Common materials for all languages ​​should be uploaded in step 3'
-  },
 })
 
