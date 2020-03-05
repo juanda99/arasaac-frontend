@@ -211,7 +211,7 @@ export default function createRoutes(store) {
       }
     },
     {
-      path: '/materials/:idMaterial',
+      path: '/materials/:locale/:idMaterial',
       name: 'materialView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([

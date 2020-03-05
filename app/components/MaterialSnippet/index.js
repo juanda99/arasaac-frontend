@@ -92,7 +92,7 @@ class MaterialSnippet extends PureComponent {
         <div style={styles.snippet}>
           <ImageSlider images={images} id={material.idMaterial} style={styles.snippetImg} />
           <div style={styles.snippetText}>
-            <Link to={`/materials/${material.idMaterial}`}>
+            <Link to={`/materials/${locale}/${material.idMaterial}`}>
               <H2 primary ucase>{title}</H2>
             </Link>
             <ReadMore style={{ textAlign: 'justify' }}>

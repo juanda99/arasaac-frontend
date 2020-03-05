@@ -29,7 +29,8 @@ class MaterialView extends PureComponent {
   }
 
   renderContent() {
-    const { materialData, loading, locale } = this.props
+    const { materialData, loading, params } = this.props
+    const { locale } = params
     if (loading) return <p><FormattedMessage {...messages.materialLoading} /></p>
     return materialData.isEmpty()
       ? <P><FormattedMessage {...messages.materialNotFound} /> </P>
@@ -54,18 +55,15 @@ class MaterialView extends PureComponent {
 MaterialView.propTypes = {
   requestMaterial: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
-  locale: PropTypes.string.isRequired,
   materialData: PropTypes.object,
   loading: PropTypes.bool
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const locale = state.get('language').get('locale')
   const materialData = state.getIn(['materialsView', 'materials', parseInt(ownProps.params.idMaterial, 10)]) || Map()
   const loading = state.getIn(['materialsView', 'loading'])
   return ({
     materialData,
-    locale,
     loading
   })
 }

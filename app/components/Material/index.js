@@ -67,19 +67,39 @@ class Material extends Component {
     const zipFile = material.getIn(['file', locale]) || material.getIn(['file', 'xx'])
     const authors = material.get('authors')
     const idMaterial = material.get('idMaterial')
-    const title = material.get('title')
+    let title, desc
     /* get material languages */
     const languages = []
-    material.get('translations').forEach((translation) =>
+    material.get('translations').forEach((translation) => {
       languages.push(translation.get('lang'))
-    )
-    const activityTags = material.get('activity') && material.get('activity').map((id) => (
+      /* init title and desc with first translation */
+      /* if another translation fits locale, we change it */
+      if (!title) {
+        title = translation.get('title')
+      } else {
+        if (translation.get('lang') === locale) {
+          title = translation.get('title')
+          desc = translation.get('desc')
+        }
+      }
+      if (!desc) {
+        desc = translation.get('desc')
+        if (translation.get('lang') === locale) {
+          title = translation.get('title')
+          desc = translation.get('desc')
+        }
+      }
+    })
+
+
+
+    const activityTags = material.get('activities') && material.get('activities').map((id) => (
       <Chip style={styles.chip} key={id}>
         <Avatar icon={<ActivityIcon />} />
         {activities.filter(item => item.code === id)[0].text}
       </Chip>
     ))
-    const areaTags = material.get('area') && material.get('area').map((id) => (
+    const areaTags = material.get('areas') && material.get('areas').map((id) => (
       <Chip style={styles.chip} key={id}>
         <Avatar icon={<AreaIcon />} />
         {areas.filter(item => item.code === id)[0].text}
@@ -92,7 +112,7 @@ class Material extends Component {
         <div style={styles.snippet}>
           <ImageSlider images={images} id={idMaterial} style={styles.slides} />
           <div style={styles.desc}>
-            <P>{material.get('desc')}</P>
+            <P>{desc}</P>
             <p style={{ textAlign: 'center' }}>
               <a href={`${MATERIALS_URL}/${idMaterial}/${zipFile}`}>
                 <RaisedButton label={<FormattedMessage {...messages.zipFileLabel} />} primary={true} style={styles.button} />
