@@ -99,7 +99,7 @@ class MaterialSnippet extends PureComponent {
               {desc}
             </ReadMore>
             {showLabels ?
-              <div style={styles.wrapper}> {activityTags} {areaTags} </div>
+              <div style={styles.wrapper}> {activityTags} {areaTags}</div>
               : ''
             }
           </div>

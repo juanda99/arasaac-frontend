@@ -60,7 +60,6 @@ class MaterialsView extends PureComponent {
 
 
   state = {
-    visibleLabels: false,
     tab: 0,
     offset: 0
   }
@@ -123,16 +122,10 @@ class MaterialsView extends PureComponent {
     }
   }
 
-  showLabels = () => {
-    this.setState({
-      visibleLabels: !this.state.visibleLabels
-    })
-  }
-
   render() {
     const { showFilter, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, muiTheme, width } = this.props
     const searchText = this.props.params.searchText || ''
-    const { visibleLabels, tab, offset } = this.state
+    const { tab, offset } = this.state
     let materialsCounter
     const hideIconText = width === SMALL
     // depending on which slide we are, we show one or another list */
@@ -153,7 +146,7 @@ class MaterialsView extends PureComponent {
           locale={locale}
           filtersMap={filters}
           setFilterItems={this.props.setFilterItems}
-          showLabels={visibleLabels}
+          showLabels={showFilter} // show labels if filter is active
           offset={offset}
           onPageClick={this.handlePageClick}
         />
@@ -175,7 +168,6 @@ class MaterialsView extends PureComponent {
                   <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
                   <ActionButtons
                     onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
-                    onLabelsClick={this.showLabels} labelsActive={visibleLabels}
                     style={styles.actionButtons}
                   />
                 </div>
@@ -202,7 +194,6 @@ class MaterialsView extends PureComponent {
                   <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
                   <ActionButtons
                     onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
-                    onLabelsClick={this.showLabels} labelsActive={visibleLabels}
                     style={styles.actionButtons}
                   />
                 </div>
