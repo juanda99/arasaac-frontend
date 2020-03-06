@@ -21,11 +21,6 @@ export default defineMessages({
     description: 'Button tooltip to show filters',
     defaultMessage: 'Show filters'
   },
-  showCategories: {
-    id: 'app.containers.MaterialsView.showCategories',
-    description: 'Button tooltip to show categories on search items',
-    defaultMessage: 'Show categories in search results'
-  },
   materialsFound: {
     id: 'app.containers.MaterialsView.materialsFound',
     description: 'Message when materials found',
