@@ -74,8 +74,6 @@ class UploadMaterialView extends PureComponent {
       return
     }
 
-    console.log(Authors, '**************')
-
     /* try to process it, we use axios to get progress */
     this.setState({ sending: true, loading: true })
 

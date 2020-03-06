@@ -61,7 +61,7 @@ class MaterialForm extends React.Component {
         return { value, text }
       }
     )
-
+    /* also used in FilterSelectLoader */
     const listAreas = areas.map(
       (selectItem) => {
         const value = parseInt(selectItem.code, 10)

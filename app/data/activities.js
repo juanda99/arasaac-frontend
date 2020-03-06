@@ -18,8 +18,6 @@ const activities = [
   { code: 15, text: 'jClic' },
   { code: 16, text: 'snakeAndLadders' },
   { code: 17, text: 'book' },
-  // TODO: clean code: 18, for image but not used!!!!! wait till new import is done.
-  { code: 18, text: 'video' },
   { code: 19, text: 'video' },
   { code: 20, text: 'pictodroidLite' },
   { code: 21, text: 'digitalBoard' },

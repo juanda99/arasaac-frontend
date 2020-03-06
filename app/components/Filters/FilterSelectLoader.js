@@ -8,7 +8,69 @@ export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, t
   const { formatMessage } = intl
   // const [...selectItems] = filterData.entries()
   const items = filterData.map((selectItem) => {
+    console.log(type)
     if (type === 'languages') return { value: selectItem.code, primaryText: selectItem.text }
+    /* areas and activities also used in MaterialForm */
+    if (type === 'areas') {
+      const value = parseInt(selectItem.code, 10)
+      let text = formatMessage(messages[selectItem.text])
+      switch (value) {
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+          text = `${formatMessage(messages['language'])} / ${text}`
+          break;
+        case 13:
+        case 14:
+        case 15:
+        case 16:
+          text = `${formatMessage(messages['math'])} / ${text}`
+          break;
+        case 1:
+        case 2:
+        case 27:
+          text = `${formatMessage(messages['priorSkills'])} / ${text}`
+          break;
+        default:
+          break;
+      }
+      return { value, primaryText: text }
+    }
+    if (type === 'activities') {
+      const value = parseInt(selectItem.code, 10)
+      let text = formatMessage(messages[selectItem.text])
+      switch (value) {
+        case 1:
+        case 15:
+        case 21:
+        case 27:
+        case 31:
+          text = `${formatMessage(messages['software'])} / ${text}`
+          break;
+        case 4:
+        case 5:
+        case 8:
+        case 17:
+        case 20:
+        case 28:
+          text = `${formatMessage(messages['communication'])} / ${text}`
+          break;
+        case 6:
+        case 11:
+        case 12:
+        case 13:
+        case 16:
+          text = `${formatMessage(messages['game'])} / ${text}`
+          break;
+        default:
+          break;
+      }
+      return { value, primaryText: text }
+    }
     return { value: parseInt(selectItem.code, 10) || selectItem.code, primaryText: formatMessage(messages[selectItem.text]) }
   })
   const sortItems = items.sort((a, b) => a.primaryText.localeCompare(b.primaryText))
