@@ -8,7 +8,6 @@ export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, t
   const { formatMessage } = intl
   // const [...selectItems] = filterData.entries()
   const items = filterData.map((selectItem) => {
-    console.log(type)
     if (type === 'languages') return { value: selectItem.code, primaryText: selectItem.text }
     /* areas and activities also used in MaterialForm */
     if (type === 'areas') {
