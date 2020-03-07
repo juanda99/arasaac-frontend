@@ -11,8 +11,9 @@ import media from 'utils/mediaqueries'
 
 const H3 = styled.h3`
   font-size: 1.25rem;
-  line-height: '1.25rem';
   font-weight: ${typography.fontWeightLight};
+  margin-bottom: ${(props) => (props.noMargin ? 0 : '1rem')};
+  margin-top: ${(props) => (props.noMargin ? 0 : '2rem')};
   color: ${(props) =>
     props.primary
       ? props.muiTheme.palette.primary1Color

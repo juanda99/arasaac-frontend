@@ -18,8 +18,6 @@ const H2 = styled.h2`
   font-weight: ${typography.fontWeightLight};
   color: ${(props) =>
     props.primary ? props.muiTheme.palette.primary1Color : darkWhite};
-  backgroundcolor: ${(props) =>
-    props.bgColor ? props.muiTheme.palette.primary1Color : darkWhite};
   text-transform: ${(props) => (props.ucase ? 'uppercase' : 'none')};
   ${media.lg} {
     font-size: 2em;

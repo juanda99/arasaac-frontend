@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
 import ShareBar from 'components/ShareBar'
-import Divider from 'material-ui/Divider'
+import Divider from 'components/Divider'
 import FlatButton from 'material-ui/FlatButton'
 import Chip from 'material-ui/Chip'
 import Avatar from 'material-ui/Avatar'
+import List from 'material-ui/List/List'
+import ListItem from 'material-ui/List/ListItem'
 import ActivityIcon from 'material-ui/svg-icons/action/input'
 import AreaIcon from 'material-ui/svg-icons/social/school'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
@@ -21,6 +23,7 @@ import activities from 'data/activities'
 import areas from 'data/areas'
 import { MATERIALS_URL } from 'services/config'
 import langMessages from 'components/LanguageSelector/messages'
+import { DEFAULT_AVATAR_PICTURE } from 'utils/index'
 import messages from './messages'
 
 const styles = {
@@ -153,17 +156,34 @@ class Material extends Component {
 
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />
-        {authors.valueSeq().map((author) =>
-          <P>
-            <FlatButton
-              key={author.get('id')}
-              label={author.get('name')}
-              labelPosition='after'
-              icon={<Person />}
-              href={`http://static.arasaac.org/${author}`}
-            />
-          </P>
-        )}
+        <List>
+
+          {authors.valueSeq().map((authorData) => {
+            const role = authorData.get('role') || 'author'
+            const author = authorData.get('author')
+            return (
+              <ListItem
+                key={author.get('id')}
+              >
+                <div style={{ display: 'flex' }}>
+                  <div>
+                    <img src={DEFAULT_AVATAR_PICTURE} style={{ width: '50px', height: '50px', marginRight: '25px' }} />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <P important={true} style={{ marginBottom: '5px' }}>{author.get('name')}</P>
+                    <span style={{ color: 'darkGrey', fontSize: '0.9rem' }}>{role}</span>
+                  </div>
+                </div>
+                <P>
+
+
+
+                </P>
+              </ListItem>
+            )
+          }
+          )}
+        </List>
         <H3 primary={true}>{<FormattedMessage {...messages.files} />}</H3>
         <Divider />
         {files.map((file) =>
