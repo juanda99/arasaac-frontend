@@ -15,6 +15,7 @@ import {
   renameFavoriteList,
   changePassword,
   updateUser,
+  materialPublish,
   /* customPictogram, */
   API_ROOT,
   PRIVATE_API_ROOT
@@ -33,12 +34,12 @@ const api = {
     callApi(`${API_ROOT}/pictograms/${locale}/new/300`, {
       schema: searchPictogramSchema
     }),
-  MATERIALS_REQUEST: ({ locale, searchText }) =>
+  MATERIALS_REQUEST: ({ locale, searchText, token }) =>
     callApi(`${API_ROOT}/materials/${locale}/${searchText}`, {
       schema: searchMaterialSchema
     }),
-  NEW_MATERIALS_REQUEST: () =>
-    callApi(`${API_ROOT}/materials/new/30`, { schema: searchMaterialSchema }),
+  NEW_MATERIALS_REQUEST: ({ token }) =>
+    callApi(`${PRIVATE_API_ROOT}/materials/new/30`, { schema: searchMaterialSchema }, token),
   MATERIAL_REQUEST: ({ idMaterial }) =>
     callApi(`${API_ROOT}/materials/${idMaterial}`),
   PICTOGRAM_REQUEST: ({ idPictogram, locale }) =>
@@ -70,7 +71,8 @@ const api = {
     callApi(resetPassword.url, resetPassword.options(userData)),
   GET_USER_BY_EMAIL: (email, token) => callApi(`${PRIVATE_API_ROOT}/users/email/${email}`, null, token),
   CHANGE_PASSWORD: (password, token) => callApi(changePassword.url, changePassword.options(password), token),
-  TRANSLATIONS_STATUS: (locale) => callApi(`${PRIVATE_API_ROOT}/translations/status/${locale}`)
+  TRANSLATIONS_STATUS: (locale) => callApi(`${PRIVATE_API_ROOT}/translations/status/${locale}`),
+  MATERIAL_PUBLISH_REQUEST: ({ id, published, token }) => callApi(materialPublish.url(id), materialPublish.options(published), token),
 
   /* CUSTOM_PICTOGRAM_REQUEST: (idPictogram, options) => callApi(customPictogram.url(idPictogram, options))*/
 }

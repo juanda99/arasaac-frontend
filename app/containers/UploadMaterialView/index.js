@@ -18,13 +18,14 @@ import {
   makeSelectPicture,
   makeSelectName,
   makeSelectEmail,
-  makeSelectId
+  makeSelectId,
+  makeSelectRole
 } from 'containers/App/selectors'
 import H3 from 'components/H3'
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { PRIVATE_API_ROOT } from 'services/config'
-import userIsAuthenticated, { userIsAdmin } from 'utils/auth'
+import userIsAuthenticated from 'utils/auth'
 import messages from './messages'
 import { makeSelectUserLocale } from '../App/selectors'
 // import { makeLoadingSelector, makeErrorSelector } from './selectors'
@@ -155,10 +156,10 @@ class UploadMaterialView extends PureComponent {
   handleClose = () => this.setState({ showDialog: false, dialogText: '' })
 
   render() {
-    const { name, email, picture, _id, intl, language } = this.props
+    const { name, email, picture, _id, intl, language, role } = this.props
     const { showDialog, dialogText, sending, progressStatus, error, loading } = this.state
     const { formatMessage } = intl
-    const initialValues = { authors: [{ name, email, picture, _id, role: 'author' }], languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }] }
+    const initialValues = { authors: [{ name, email, picture, _id, role: 'author' }], languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }], published: 1 }
     const actions = [
       <FlatButton
         label={formatMessage(messages.close)}
@@ -180,6 +181,7 @@ class UploadMaterialView extends PureComponent {
             initialValues={initialValues}
             changeStep={this.handleChangeStep}
             stepIndex={this.state.stepIndex}
+            isAdmin={role === 'admin'}
           />
         ) :
           (loading ? (
@@ -209,7 +211,12 @@ class UploadMaterialView extends PureComponent {
 }
 
 UploadMaterialView.propTypes = {
-  uploadMaterial: PropTypes.func.isRequired,
+  role: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired,
+  picture: PropTypes.string,
+  language: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = (state) => ({
@@ -219,6 +226,7 @@ const mapStateToProps = (state) => ({
   picture: makeSelectPicture()(state),
   language: makeSelectUserLocale()(state),
   _id: makeSelectId()(state),
+  role: makeSelectRole()(state)
 })
 
-export default connect(mapStateToProps)(userIsAuthenticated(userIsAdmin(injectIntl(UploadMaterialView))))
+export default connect(mapStateToProps)(userIsAuthenticated(injectIntl(UploadMaterialView)))

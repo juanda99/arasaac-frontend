@@ -9,11 +9,13 @@ import PropTypes from 'prop-types'
 import { Field, FieldArray, reduxForm, propTypes } from 'redux-form/immutable'
 import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper'
 import RaisedButton from 'material-ui/RaisedButton'
+import MenuItem from 'material-ui/MenuItem'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import H3 from 'components/H3'
 import P from 'components/P'
 import { Map } from 'immutable'
 import filterMessages from 'components/Filters/messages'
+import { SelectField } from 'redux-form-material-ui'
 import { change } from 'redux-form';
 import RenderAuthors from './RenderAuthors'
 import RenderDropzoneInput from './RenderDropzoneInput'
@@ -25,7 +27,7 @@ class MaterialForm extends React.Component {
 
 
   render() {
-    const { handleSubmit, pristine, submitting, reset, activities, areas, intl, onEmailExists, invalid, changeStep, stepIndex } = this.props
+    const { handleSubmit, pristine, submitting, reset, activities, areas, intl, onEmailExists, invalid, changeStep, stepIndex, isAdmin } = this.props
     const { formatMessage } = intl
 
     const listActivities = activities.map(
@@ -97,6 +99,7 @@ class MaterialForm extends React.Component {
 
     const sortListActivities = listActivities.sort((a, b) => a.text.localeCompare(b.text))
     const sortListAreas = listAreas.sort((a, b) => a.text.localeCompare(b.text))
+    const lastIndex = isAdmin ? 5 : 4
     return (
       <div>
         <form onSubmit={handleSubmit}>
@@ -158,8 +161,27 @@ class MaterialForm extends React.Component {
                 />
               </StepContent>
             </Step>
+            {isAdmin && (
+              <Step>
+                <StepButton onClick={() => changeStep(4)}>
+                  <H3><FormattedMessage {...messages.materialStatus} /></H3>
+                </StepButton>
+                <StepContent>
+                  <Field
+                    name='published'
+                    component={SelectField}
+                    hintText={<FormattedMessage {...messages.materialStatus} />}
+                    floatingLabelText={<FormattedMessage {...messages.materialStatus} />}
+                  >
+                    <MenuItem key={0} value={0} primaryText={<FormattedMessage {...messages.notPublished} />} />
+                    <MenuItem key={1} value={1} primaryText={<FormattedMessage {...messages.published} />} />
+                    <MenuItem key={2} value={2} primaryText={<FormattedMessage {...messages.pending} />} />
+                  </Field>
+                </StepContent>
+              </Step>
+            )}
             <Step>
-              <StepButton onClick={() => changeStep(4)}>
+              <StepButton onClick={() => changeStep(lastIndex)}>
                 <H3><FormattedMessage {...messages.languageTitle} /></H3>
               </StepButton>
               <StepContent>
@@ -168,7 +190,6 @@ class MaterialForm extends React.Component {
                 <RaisedButton style={{ marginTop: '30px' }} type='submit' disabled={pristine || submitting} label={<FormattedMessage {...messages.sendMaterial} />} primary={true} />
               </StepContent>
             </Step>
-
           </Stepper>
 
           {/* <RaisedButton label='Clear values' disabled={pristine || submitting} onClick={reset} /> */}
@@ -185,6 +206,7 @@ MaterialForm.propTypes = {
   languages: PropTypes.array.isRequired,
   intl: intlShape.isRequired,
   onEmailExists: PropTypes.func.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
 }
 
 export default reduxForm({

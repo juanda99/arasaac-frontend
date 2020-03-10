@@ -23,6 +23,7 @@ import P from 'components/P'
 import ReadMargin from 'components/ReadMargin'
 import { withRouter } from 'react-router'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
+import { makeSelectHasUser, makeSelectRole } from 'containers/App/selectors'
 import ActionButtons from './ActionButtons'
 import {
   makeFiltersSelector,
@@ -33,7 +34,7 @@ import {
   makeNewVisibleMaterialsSelector
 } from './selectors'
 
-import { materials, newMaterials, toggleShowFilter, setFilterItems } from './actions'
+import { materials, newMaterials, toggleShowFilter, setFilterItems, publishMaterial } from './actions'
 import languages from 'data/languages'
 import activities from 'data/activities'
 import areas from 'data/areas'
@@ -80,17 +81,18 @@ class MaterialsView extends PureComponent {
   }
 
   componentDidMount() {
-    const { requestMaterials, requestNewMaterials, locale } = this.props
+    const { requestMaterials, requestNewMaterials, locale, token } = this.props
     this.processQuery()
     if (this.props.params.searchText && !this.props.searchResults) {
-      requestMaterials(locale, this.props.params.searchText)
+      requestMaterials(locale, this.props.params.searchText, token)
     }
-    requestNewMaterials()
+    requestNewMaterials(token)
   }
 
   componentWillReceiveProps(nextProps) {
+    const { token } = nextProps
     if (this.props.params.searchText !== nextProps.params.searchText) {
-      this.props.requestMaterials(this.props.locale, nextProps.params.searchText)
+      this.props.requestMaterials(this.props.locale, nextProps.params.searchText, token)
     }
     if (this.props.location.search !== nextProps.location.search) {
       this.processQuery(nextProps)
@@ -122,8 +124,13 @@ class MaterialsView extends PureComponent {
     }
   }
 
+  handlePublishMaterial = (id, publish) => {
+    const { publishMaterial, token } = this.props
+    publishMaterial(id, publish, token)
+  }
+
   render() {
-    const { showFilter, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, muiTheme, width } = this.props
+    const { showFilter, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, muiTheme, width, role } = this.props
     const searchText = this.props.params.searchText || ''
     const { tab, offset } = this.state
     let materialsCounter
@@ -149,6 +156,8 @@ class MaterialsView extends PureComponent {
           showLabels={showFilter} // show labels if filter is active
           offset={offset}
           onPageClick={this.handlePageClick}
+          showActionButtons={role === 'admin'}
+          publishMaterial={this.handlePublishMaterial}
         />
       )
         : <ReadMargin><P>{<FormattedMessage {...messages.materialsNotFound} />}</P></ReadMargin>
@@ -229,11 +238,14 @@ MaterialsView.propTypes = {
   setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
   newMaterialsList: PropTypes.array.isRequired,
+  token: PropTypes.string,
   // Injected by React Router
   router: PropTypes.any.isRequired,
   locale: PropTypes.string.isRequired,
   searchResults: PropTypes.arrayOf(PropTypes.number),
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  role: PropTypes.string,
+  publishMaterial: PropTypes.func.isRequired,
 }
 
 
@@ -244,15 +256,20 @@ const mapStateToProps = (state, ownProps) => ({
   loading: makeLoadingSelector()(state),
   searchResults: makeSearchResultsSelector()(state, ownProps),
   visibleMaterials: makeVisibleMaterialsSelector()(state, ownProps),
-  newVisibleMaterialsList: makeNewVisibleMaterialsSelector(state)(state)
+  newVisibleMaterialsList: makeNewVisibleMaterialsSelector(state)(state),
+  token: makeSelectHasUser()(state),
+  role: makeSelectRole()(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  requestMaterials: (locale, searchText) => {
-    dispatch(materials.request(locale, searchText))
+  requestMaterials: (locale, searchText, token) => {
+    dispatch(materials.request(locale, searchText, token))
   },
-  requestNewMaterials: () => {
-    dispatch(newMaterials.request())
+  requestNewMaterials: (token) => {
+    dispatch(newMaterials.request(token))
+  },
+  publishMaterial: (id, publish, token) => {
+    dispatch(publishMaterial.request(id, publish, token))
   },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())

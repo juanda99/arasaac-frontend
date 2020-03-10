@@ -7,13 +7,18 @@ class Ribbon extends Component {
   render() {
     return (
       <Div>
-        <Span>{this.props.text}</Span>
+        <Span type={this.props.type}>{this.props.text}</Span>
       </Div>
     )
   }
 }
 
 Ribbon.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  type: PropTypes.string,
+}
+
+Ribbon.defaultProps = {
+  type: 'success'
 }
 export default Ribbon

@@ -57,44 +57,46 @@ const styles = {
 }
 class Material extends Component {
   state = {
-    language: this.props.locale
+    currentTranslation: this.props.material.get('translations').get(0),
+    languages: this.props.material.get('translations').map(translation => translation.get('lang'))
   }
 
-  handleChange = (event, value) => { this.setState({ language: value }) }
+  handleChange = (event, value) => this.updateByLanguage(value)
+
+  updateByLanguage = (locale) => {
+    const { material } = this.props
+    const { currentTranslation } = this.state
+    const translation = material.get('translations').filter(translation => translation.get('lang') === locale)
+    if (translation.size && currentTranslation.get('lang') !== locale) {
+      this.setState({ currentTranslation: translation.get(0) })
+    }
+  }
+
+  componentDidMount() {
+    /* check if locale has language, otherwise, use first material language */
+    const { locale } = this.props
+    this.updateByLanguage(locale)
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+
+  }
+
+
 
   render() {
-    const { material, locale } = this.props
-    const images = [...material.get('commonScreenshots') || [], ...material.getIn(['screenshots', locale]) || []]
-    const files = [...material.get('commonFiles') || [], ...material.getIn(['files', locale]) || []]
+    const { material } = this.props
+    const { languages, currentTranslation } = this.state
+    const language = currentTranslation.get('lang')
+    console.log(language, 'language ***************', currentTranslation)
+    const title = currentTranslation.get('title')
+    const desc = currentTranslation.get('desc')
+    const images = [...material.get('commonScreenshots') || [], ...material.getIn(['screenshots', language]) || []]
+    const files = [...material.get('commonFiles') || [], ...material.getIn(['files', language]) || []]
     // migration hack: if just one language and not under its language directory, it is compress under xx locale code
-    const zipFile = material.getIn(['file', locale]) || material.getIn(['file', 'xx'])
+    const zipFile = material.getIn(['file', language]) || material.getIn(['file', 'xx'])
     const authors = material.get('authors')
     const idMaterial = material.get('idMaterial')
-    let title, desc
-    /* get material languages */
-    const languages = []
-    material.get('translations').forEach((translation) => {
-      languages.push(translation.get('lang'))
-      /* init title and desc with first translation */
-      /* if another translation fits locale, we change it */
-      if (!title) {
-        title = translation.get('title')
-      } else {
-        if (translation.get('lang') === locale) {
-          title = translation.get('title')
-          desc = translation.get('desc')
-        }
-      }
-      if (!desc) {
-        desc = translation.get('desc')
-        if (translation.get('lang') === locale) {
-          title = translation.get('title')
-          desc = translation.get('desc')
-        }
-      }
-    })
-
-
 
     const activityTags = material.get('activities') && material.get('activities').map((id) => (
       <Chip style={styles.chip} key={id}>
@@ -141,8 +143,7 @@ class Material extends Component {
         </div>
         <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
         <Divider />
-        {console.log(languages)}
-        <RadioButtonGroup name='languages' defaultSelected={this.state.language} onChange={this.handleChange}>
+        <RadioButtonGroup name='languages' valueSelected={language} onChange={this.handleChange}>
           {languages.map((language) => (
             <RadioButton
               key={language}
@@ -163,7 +164,7 @@ class Material extends Component {
             const author = authorData.get('author')
             return (
               <ListItem
-                key={author.get('id')}
+                key={author.get('_id')}
               >
                 <div style={{ display: 'flex' }}>
                   <div>
@@ -186,16 +187,18 @@ class Material extends Component {
         </List>
         <H3 primary={true}>{<FormattedMessage {...messages.files} />}</H3>
         <Divider />
-        {files.map((file) =>
-          <FlatButton
-            key={file}
-            label={file}
-            labelPosition='after'
-            icon={<Download />}
-            href={`${MATERIALS_URL}/${idMaterial}/${file}`}
-          />
-        )}
-      </div>
+        {
+          files.map((file) =>
+            <FlatButton
+              key={file}
+              label={file}
+              labelPosition='after'
+              icon={<Download />}
+              href={`${MATERIALS_URL}/${idMaterial}/${file}`}
+            />
+          )
+        }
+      </div >
     )
   }
 }

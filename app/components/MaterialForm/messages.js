@@ -150,5 +150,21 @@ export default defineMessages({
     id: 'app.components.MaterialForm.translator',
     defaultMessage: 'Translator'
   },
+  materialStatus: {
+    id: 'app.components.MaterialForm.materialStatus',
+    defaultMessage: 'Material status'
+  },
+  published: {
+    id: 'app.components.MaterialForm.published',
+    defaultMessage: 'Published'
+  },
+  pending: {
+    id: 'app.components.MaterialForm.pending',
+    defaultMessage: 'Pending publication'
+  },
+  notPublished: {
+    id: 'app.components.MaterialForm.notPublished',
+    defaultMessage: 'Not published'
+  },
 })
 
