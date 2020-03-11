@@ -369,7 +369,7 @@
   "app.containers/collaboratorsView.translationStatus": "Starea traducerii",
   "app.containers/collaboratorsView.wantToCollaborate": "Doriți să colaborați?",
   "app.containersTranslationStatus.noDataAvailable": "Nici o informație disponibilă",
-  "app.containersTranslationStatus.pictosTranslationStatus": "Pictograms translation (maybe already translated but not validated): {pictosValidatedString}%",
+  "app.containersTranslationStatus.pictosTranslationStatus": "Traducerea pictogramelor (poate sunt deja traduse, dar nevalidate): {pictosValidatedString}%",
   "app.containersTranslationStatus.webTranslationStatus": "Traducerea web: {webTranslatedString}%",
   "email.signin": "e-mail",
   "header.aboutUs": "Despre noi",
