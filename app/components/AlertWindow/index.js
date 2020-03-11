@@ -16,10 +16,9 @@ class AlertWindow extends PureComponent {
   }
 
   handleClose = () => {
-    const { url, router } = this.props
+    const { router } = this.props
     this.props.onReset()
     this.setState({ open: false })
-    if (url) router.push('/marca.es')
   }
 
   render() {

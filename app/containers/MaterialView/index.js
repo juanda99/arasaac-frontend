@@ -18,6 +18,7 @@ import messages from './messages'
 class MaterialView extends PureComponent {
 
   componentDidMount() {
+    console.log(this.props.materialData, typeof this.props.materialData)
     if (this.props.materialData.isEmpty()) {
       this.props.requestMaterial(this.props.params.idMaterial)
     }

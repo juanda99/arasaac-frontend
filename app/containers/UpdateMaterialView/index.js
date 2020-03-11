@@ -1,17 +1,13 @@
-/*
- *
- * UploadMaterialView
- *
- */
-
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import View from 'components/View'
-import MaterialForm from 'components/MaterialForm'
+import MaterialForm from 'components/MaterialForm/MaterialFormUpdate'
+import { material } from 'containers/MaterialView/actions'
 import LinearProgress from 'material-ui/LinearProgress'
 import api from 'services' // just the endpoint
+import P from 'components/P'
 import axios from 'axios'
 import {
   makeSelectHasUser,
@@ -25,15 +21,16 @@ import H3 from 'components/H3'
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { PRIVATE_API_ROOT } from 'services/config'
-import userIsAuthenticated from 'utils/auth'
-import messages from './messages'
+import { userIsAdmin } from 'utils/auth'
+import messages from '../UploadMaterialView/messages'
 import { makeSelectUserLocale } from '../App/selectors'
 // import { makeLoadingSelector, makeErrorSelector } from './selectors'
 import activities from 'data/activities'
 import areas from 'data/areas'
 import languages from 'data/languages'
+import filterMessages from 'components/Filters/messages'
 
-class UploadMaterialView extends PureComponent {
+class UpdateMaterialView extends PureComponent {
 
   state = {
     stepIndex: 0,
@@ -42,6 +39,17 @@ class UploadMaterialView extends PureComponent {
     progressStatus: 0,
     sending: false,
     loading: false
+  }
+
+  componentDidMount() {
+    if (this.props.materialData.size === 0) {
+      this.props.requestMaterial(this.props.params.idMaterial)
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.params.idMaterial !== nextProps.params.idMaterial) {
+      this.props.requestMaterial(nextProps.params.idMaterial)
+    }
   }
 
   handleChangeStep = (stepIndex) => this.setState({ stepIndex })
@@ -145,16 +153,61 @@ class UploadMaterialView extends PureComponent {
       this.setState({ error: error.message })
     });
 
+    // uploadMaterial(formValues, token)
+    /* now we will get status by websockets */
+
+    // get value from 0 to 10000 for socket reference:
+
+
   }
 
   handleClose = () => this.setState({ showDialog: false, dialogText: '' })
 
+  renderContent() {
+    const { materialData, loading, params, intl, role, _id } = this.props
+    const { locale } = params
+    const { formatMessage } = intl
+    if (loading) return <P><FormattedMessage {...messages.materialLoading} /></P>
+    if (materialData.size === 0) return <P><FormattedMessage {...messages.materialNotFound} /> </P>
+    const formData = materialData.toJS()
+    // const { areas, activities } = formData
+    console.log(formData, 'formData')
+    const authors = formData.authors.map(author => ({ name: author.author.name, email: author.author.email, picture: author.author.picture, _id: author.author._id, role: author.role }))
+    const listActivities = activities
+      .filter((activity) => formData.activities.indexOf(activity.code) !== -1)
+      .map(activity => ({ value: parseInt(activity.code, 10), text: formatMessage(filterMessages[activity.text]) }))
+
+    const listAreas = areas
+      .filter((area) => formData.areas.indexOf(area.code) !== -1)
+      .map(area => ({ value: parseInt(area.code, 10), text: formatMessage(filterMessages[area.text]) }))
+
+    const initialValues = { authors, areas: listAreas, activities: listActivities, languages: formData.translations }
+    // languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }]
+
+    console.log('initialValues', initialValues, '**************************')
+
+
+    return (
+      <MaterialForm
+        onSubmit={(values) => this.handleSubmit(values)}
+        activities={activities}
+        areas={areas}
+        languages={languages}
+        onEmailExists={this.getUserByEmail}
+        initialValues={initialValues}
+        changeStep={this.handleChangeStep}
+        stepIndex={this.state.stepIndex}
+        isAdmin={role === 'admin'}
+      />
+    )
+  }
+
+
   render() {
-    const { name, email, picture, _id, intl, language, role } = this.props
+    const { intl, materialData } = this.props
 
     const { showDialog, dialogText, sending, progressStatus, error, loading } = this.state
     const { formatMessage } = intl
-    const initialValues = { authors: [{ name, email, picture, _id, role: 'author' }], languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }], published: 1 }
     const actions = [
       <FlatButton
         label={formatMessage(messages.close)}
@@ -167,17 +220,7 @@ class UploadMaterialView extends PureComponent {
     return (
       <View left={true} right={true}>
         {!sending ? (
-          <MaterialForm
-            onSubmit={(values) => this.handleSubmit(values)}
-            activities={activities}
-            areas={areas}
-            languages={languages}
-            onEmailExists={this.getUserByEmail}
-            initialValues={initialValues}
-            changeStep={this.handleChangeStep}
-            stepIndex={this.state.stepIndex}
-            isAdmin={role === 'admin'}
-          />
+          this.renderContent()
         ) :
           (loading ? (
             <div>
@@ -205,23 +248,46 @@ class UploadMaterialView extends PureComponent {
   }
 }
 
-UploadMaterialView.propTypes = {
+UpdateMaterialView.propTypes = {
   role: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   token: PropTypes.string.isRequired,
   picture: PropTypes.string,
   language: PropTypes.string.isRequired,
   _id: PropTypes.string.isRequired,
+  materialData: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
 }
 
-const mapStateToProps = (state) => ({
-  token: makeSelectHasUser()(state),
-  name: makeSelectName()(state),
-  email: makeSelectEmail()(state),
-  picture: makeSelectPicture()(state),
-  language: makeSelectUserLocale()(state),
-  _id: makeSelectId()(state),
-  role: makeSelectRole()(state)
+const mapStateToProps = (state, ownProps) => {
+  const token = makeSelectHasUser()(state)
+  const name = makeSelectName()(state)
+  const email = makeSelectEmail()(state)
+  const picture = makeSelectPicture()(state)
+  const language = makeSelectUserLocale()(state)
+  const _id = makeSelectId()(state)
+  const role = makeSelectRole()(state)
+  const materialData = state.getIn(['materialsView', 'materials', parseInt(ownProps.params.idMaterial, 10)]) || new Map()
+  const loading = state.getIn(['materialsView', 'loading'])
+  return ({
+    token,
+    name,
+    email,
+    picture,
+    language,
+    _id,
+    role,
+    materialData,
+    loading
+  })
+}
+
+
+const mapDispatchToProps = (dispatch) => ({
+  requestMaterial: (idMaterial) => {
+    dispatch(material.request(idMaterial))
+  }
 })
 
-export default connect(mapStateToProps)(userIsAuthenticated(injectIntl(UploadMaterialView)))
+
+export default connect(mapStateToProps, mapDispatchToProps)(userIsAdmin(injectIntl(UpdateMaterialView)))

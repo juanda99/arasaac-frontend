@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Field } from 'redux-form/immutable'
+import { Field, FieldArray } from 'redux-form/immutable'
 import Paper from 'material-ui/Paper'
 import { SelectField, TextField } from 'redux-form-material-ui'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
@@ -9,6 +9,8 @@ import PersonAdd from 'material-ui/svg-icons/action/note-add'
 import Delete from 'material-ui/svg-icons/action/delete'
 import MenuItem from 'material-ui/MenuItem'
 import { Map } from 'immutable'
+import RenderAuthors from './RenderAuthors'
+import { change } from 'redux-form'
 import languages from 'data/languages'
 import { required } from 'redux-form-validators'
 import languageMessages from 'components/LanguageSelector/messages'
@@ -24,7 +26,7 @@ const styles = {
     flex: 1,
     // remove for mobile:
     // minWidth: '350px',
-    maxWidth: '700px',
+    width: '100%',
     padding: '1rem'
   },
   paper: {
@@ -34,12 +36,13 @@ const styles = {
   }
 }
 
-const RenderLanguages = ({ fields, intl }) => {
+const RenderLanguages = ({ fields, intl, unique, onEmailExists, change }) => {
   const { formatMessage } = intl
   const addLanguage = () => {
     fields.push(new Map())
   }
   if (fields.length === 0) addLanguage()
+  console.log(typeof change, '*******3*******', change)
   return (
     <ul style={styles.list}>
       {fields.map((member, index) => (
@@ -82,41 +85,25 @@ const RenderLanguages = ({ fields, intl }) => {
               fullWidth
               validate={[required()]}
             />
-            {/* <div>
-              <Field
-                name={`${member}.files`}
-                component={RenderDropzoneInput}
-                props={{
-                  hint: <FormattedMessage {...messages.languageFiles} />
-                }}
-                exclusive={true} // just for message
-              />
-            </div>
-            <div>
-              <Field
-                name={`${member}.screenshots`}
-                component={RenderDropzoneInput}
-                onlyImage={true}
-                exclusive={true} // just for message
-                props={{
-                  hint: <FormattedMessage {...messages.languageScreenshots} />
-                }}
-              />
-            </div> */}
-            <FloatingActionButton
-              mini={true}
-              style={{ position: 'absolute', top: -5, right: 53 }}
-              onClick={() => fields.remove(index)}
-            >
-              <Delete />
-            </FloatingActionButton>
-            <FloatingActionButton
-              mini={true}
-              style={{ position: 'absolute', top: -5, right: 3 }}
-              onClick={addLanguage}
-            >
-              <PersonAdd />
-            </FloatingActionButton>
+            <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => change(field, value)} />
+            {!unique && (
+              <div>
+                <FloatingActionButton
+                  mini={true}
+                  style={{ position: 'absolute', top: -5, right: 53 }}
+                  onClick={() => fields.remove(index)}
+                >
+                  <Delete />
+                </FloatingActionButton>
+                <FloatingActionButton
+                  mini={true}
+                  style={{ position: 'absolute', top: -5, right: 3 }}
+                  onClick={addLanguage}
+                >
+                  <PersonAdd />
+                </FloatingActionButton>
+              </div>
+            )}
           </Paper>
         </li>
       ))}
@@ -126,7 +113,8 @@ const RenderLanguages = ({ fields, intl }) => {
 
 RenderLanguages.propTypes = {
   intl: intlShape.isRequired,
-  fields: PropTypes.object.isRequired
+  fields: PropTypes.object.isRequired,
+  unique: PropTypes.bool
 }
 
 export default injectIntl(RenderLanguages)

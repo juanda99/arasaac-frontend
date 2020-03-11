@@ -166,5 +166,9 @@ export default defineMessages({
     id: 'app.components.MaterialForm.notPublished',
     defaultMessage: 'Not published'
   },
+  updateMaterial: {
+    id: 'app.components.MaterialForm.updateMaterial',
+    defaultMessage: 'Update material'
+  },
 })
 

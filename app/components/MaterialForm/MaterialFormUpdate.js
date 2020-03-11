@@ -128,39 +128,12 @@ class MaterialForm extends React.Component {
             </Step>
             <Step>
               <StepButton onClick={() => changeStep(2)}>
-                <H3><FormattedMessage {...messages.files} /></H3>
-              </StepButton>
-              <StepContent>
-                <P><FormattedMessage {...messages.filesHint} /></P>
-                <Field
-                  name='files'
-                  component={RenderDropzoneInput}
-                  props={{ hint: <FormattedMessage {...messages.filesUpload} /> }}
-                />
-              </StepContent>
-            </Step>
-            <Step>
-              <StepButton onClick={() => changeStep(3)}>
-                <H3><FormattedMessage {...messages.screenshots} /></H3>
-              </StepButton>
-              <StepContent>
-                <P><FormattedMessage {...messages.screenshotsDesc} /></P>
-                <Field
-                  name='screenshots'
-                  component={RenderDropzoneInput}
-                  onlyImage={true}
-                  props={{ hint: <FormattedMessage {...messages.screenshotsUpload} /> }}
-                />
-              </StepContent>
-            </Step>
-            <Step>
-              <StepButton onClick={() => changeStep(4)}>
                 <H3><FormattedMessage {...messages.languageTitle} /></H3>
               </StepButton>
               <StepContent>
 
                 <P><FormattedMessage {...messages.languageHint} /></P>
-                <FieldArray name='languages' component={RenderLanguages} onEmailExists={onEmailExists} />
+                <FieldArray name='languages' component={RenderLanguages} />
                 {isAdmin && (
                   <div>
                     <Field
@@ -176,7 +149,7 @@ class MaterialForm extends React.Component {
                     </Field>
                   </div>
                 )}
-                <RaisedButton style={{ marginTop: '30px' }} type='submit' disabled={pristine || submitting} label={<FormattedMessage {...messages.sendMaterial} />} primary={true} />
+                <RaisedButton style={{ marginTop: '30px' }} type='submit' disabled={pristine || submitting} label={<FormattedMessage {...messages.updateMaterial} />} primary={true} />
               </StepContent>
             </Step>
           </Stepper>
@@ -199,5 +172,5 @@ MaterialForm.propTypes = {
 }
 
 export default reduxForm({
-  form: 'MaterialForm'
+  form: 'MaterialFormUpdate'
 })(injectIntl(MaterialForm))

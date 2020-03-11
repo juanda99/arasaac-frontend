@@ -1,8 +1,9 @@
+// just a copy of MaterialViewSaga to fix webpack compiling issues
 import { take, takeLatest, call, put, cancel } from 'redux-saga/effects'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import api from 'services'
-import { MATERIAL, material } from './actions'
+import { MATERIAL, material } from 'containers/MaterialView/actions'
 
 function* materialGetData(action) {
   try {

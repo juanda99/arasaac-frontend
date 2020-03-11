@@ -211,11 +211,30 @@ export default function createRoutes(store) {
       }
     },
     {
+      path: '/materials/update(/:idMaterial)',
+      name: 'updateMaterialView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/MaterialView/sagas'),
+          import('containers/UpdateMaterialView/')
+        ])
+
+        const renderRoute = loadModule(cb)
+        // if reducer is async, render values:  defaultToggled:
+        // state.configuration.filters[ownProps.filter] got undefined!!!
+        importModules.then(([sagas, component]) => {
+          injectSagas(sagas.default)
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      }
+    },
+    {
       path: '/materials/:locale/:idMaterial',
       name: 'materialView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/MaterialsView/reducer'),
           import('containers/MaterialView/sagas'),
           import('containers/MaterialView/')
         ])
@@ -223,8 +242,7 @@ export default function createRoutes(store) {
         const renderRoute = loadModule(cb)
         // if reducer is async, render values:  defaultToggled:
         // state.configuration.filters[ownProps.filter] got undefined!!!
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('materialsView', reducer.default)
+        importModules.then(([sagas, component]) => {
           injectSagas(sagas.default)
           renderRoute(component)
         })

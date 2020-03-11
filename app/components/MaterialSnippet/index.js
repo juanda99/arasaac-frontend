@@ -70,25 +70,29 @@ class MaterialSnippet extends PureComponent {
 
   renderActionButtons = () => {
     const { showActionButtons, material } = this.props
+    const { idMaterial } = material
     return showActionButtons ? (
       <span>
-        <FloatingActionButton mini={true} style={styles.actionBtn}>
-          <EditIcon />
-        </FloatingActionButton>
-        {material.published !== PUBLISHED ? (
-          <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PUBLISHED)}>
-            <VisibilityIcon />
+        <Link to={`/materials/update/${idMaterial}`} >
+          <FloatingActionButton mini={true} style={styles.actionBtn}>
+            <EditIcon />
           </FloatingActionButton>
-        ) : (
-            <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PENDING)}>
-              <VisibilityOffIcon />
+        </Link>
+        {
+          material.published !== PUBLISHED ? (
+            <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PUBLISHED)}>
+              <VisibilityIcon />
             </FloatingActionButton>
-          )
+          ) : (
+              <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PENDING)}>
+                <VisibilityOffIcon />
+              </FloatingActionButton>
+            )
 
 
         }
 
-      </span>
+      </span >
 
     ) : ''
   }

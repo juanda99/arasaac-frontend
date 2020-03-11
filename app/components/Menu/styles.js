@@ -10,6 +10,6 @@ export default {
     paddingLeft: 60 // spacing.desktopGutter,
   },
   menu: {
-    zIndex: 10000 // fix about us map
+    zIndex: 9998 // fix about us map, less than 9999 (error console screen)
   }
 }

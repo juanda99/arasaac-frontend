@@ -2,12 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ChipInput from 'material-ui-chip-input'
 import AutoComplete from 'material-ui/AutoComplete'
+import { List } from 'immutable'
 
 class CustomChipInput extends React.Component {
 
 
   handleRequestAdd(chip) {
-    const chips = this.props.input.value || []
+    const { input } = this.props
+    let chips
+    if (List.isList(input.value)) chips = input.value.toJS()
+    else chips = input.value || []
+    // const chips = this.props.input.value || []
     // we can't save chip as it is. If its entered by keyboard, value=text, so we need
     // to calculate its value:
     const verifyChip = this.props.dataSource.filter((item) => (item.text === chip.text))
@@ -30,14 +35,22 @@ class CustomChipInput extends React.Component {
   }
 
   handleRequestDelete(deletedChip) {
-    let chips = this.props.input.value || []
+    const { input } = this.props
+    let chips
+    if (List.isList(input.value)) chips = input.value.toJS()
+    else chips = input.value || []
+    // let chips = this.props.input.value || []
     chips = chips.filter((c) => c.value !== deletedChip)
     this.props.input.onChange(chips)
   }
 
   render() {
     const { dataSource, hintText, floatingLabelText, input } = this.props
-    const chips = input.value || []
+    let chips
+    console.log(input.value, List.isList(input.value), '987')
+    if (List.isList(input.value)) chips = input.value.toJS()
+    else chips = input.value || []
+    console.log(chips, 'chips********')
     return (
       <ChipInput
         {...this.props}

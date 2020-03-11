@@ -88,7 +88,6 @@ class Material extends Component {
     const { material } = this.props
     const { languages, currentTranslation } = this.state
     const language = currentTranslation.get('lang')
-    console.log(language, 'language ***************', currentTranslation)
     const title = currentTranslation.get('title')
     const desc = currentTranslation.get('desc')
     const images = [...material.get('commonScreenshots') || [], ...material.getIn(['screenshots', language]) || []]
@@ -175,11 +174,6 @@ class Material extends Component {
                     <span style={{ color: 'darkGrey', fontSize: '0.9rem' }}>{role}</span>
                   </div>
                 </div>
-                <P>
-
-
-
-                </P>
               </ListItem>
             )
           }

@@ -17,5 +17,13 @@ export default defineMessages({
     id: 'app.components.uploadMaterialView.needFiles',
     defaultMessage: 'At least one material file is required'
   },
+  materialLoading: {
+    id: 'app.components.updateMaterialView.materialLoading',
+    defaultMessage: 'Loading material...'
+  },
+  materialNotFound: {
+    id: 'app.components.updateMaterialView.materialNotFound',
+    defaultMessage: 'Sorry, the material you are looking for does not exist'
+  },
 })
 
