@@ -10,7 +10,6 @@ import Delete from 'material-ui/svg-icons/action/delete'
 import MenuItem from 'material-ui/MenuItem'
 import { Map } from 'immutable'
 import RenderAuthors from './RenderAuthors'
-import { change } from 'redux-form'
 import languages from 'data/languages'
 import { required } from 'redux-form-validators'
 import languageMessages from 'components/LanguageSelector/messages'
@@ -23,10 +22,11 @@ const styles = {
     flexFlow: 'row wrap'
   },
   listItem: {
-    flex: 1,
+    flex: 0,
     // remove for mobile:
     // minWidth: '350px',
-    width: '100%',
+    width: '50%',
+    minWidth: '900px',
     padding: '1rem'
   },
   paper: {
@@ -36,13 +36,15 @@ const styles = {
   }
 }
 
-const RenderLanguages = ({ fields, intl, unique, onEmailExists, change }) => {
+
+
+const RenderLanguages = ({ fields, intl, unique, onEmailExists, onFieldChange }) => {
   const { formatMessage } = intl
   const addLanguage = () => {
     fields.push(new Map())
   }
   if (fields.length === 0) addLanguage()
-  console.log(typeof change, '*******3*******', change)
+  console.log(typeof onFieldChange, '*******3*******', onFieldChange)
   return (
     <ul style={styles.list}>
       {fields.map((member, index) => (
@@ -85,7 +87,7 @@ const RenderLanguages = ({ fields, intl, unique, onEmailExists, change }) => {
               fullWidth
               validate={[required()]}
             />
-            <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => change(field, value)} />
+            <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} showRole={false} />
             {!unique && (
               <div>
                 <FloatingActionButton

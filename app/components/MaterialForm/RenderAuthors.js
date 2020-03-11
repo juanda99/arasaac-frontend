@@ -10,6 +10,8 @@ import { DEFAULT_PROFILE_PICTURE } from 'utils/index'
 import PersonAdd from 'material-ui/svg-icons/social/person-add'
 import Delete from 'material-ui/svg-icons/action/delete'
 import { Map } from 'immutable'
+import H3 from 'components/H3'
+import P from 'components/P'
 import { required, email } from 'redux-form-validators'
 import messages from './messages'
 
@@ -34,7 +36,7 @@ const styles = {
   }
 }
 
-const RenderAuthors = ({ fields, onEmailExists, onFieldChange }) => {
+const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
   const addAuthorField = () => { fields.push(new Map()) }
   if (fields.length === 0) {
     addAuthorField()
@@ -66,86 +68,93 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange }) => {
   }
 
   return (
+    <div>
+      {!showRole && <P important={true}>Translators: </P>}
+      <ul>
+        {
 
-    <ul>
-      {
-        fields.map((member, index) =>
-          <li key={index} style={styles.authorsList}>
-            <img src={fields.get(index).get('picture')} style={{ width: '70px', height: '70px', marginRight: '15px', visibility: fields.get(index).get('picture') ? 'visible' : 'hidden' }} />
-            <Field
-              name={`${member}.email`}
-              type='text'
-              component={TextField}
-              hintText={<FormattedMessage {...messages.emailHint} />}
-              floatingLabelText={<FormattedMessage {...messages.email} />}
-              style={styles.field}
-              onChange={handleEmailChange}
-              validate={[required(), email()]}
-            />
-            <Field
-              name={`${member}.name`}
-              type='text'
-              component={TextField}
-              disabled={true}
-              hintText={<FormattedMessage {...messages.nameHint} />}
-              floatingLabelText={<FormattedMessage {...messages.name} />}
-              filter={MUIAutoComplete.fuzzyFilter}
-              style={styles.field}
-              validate={[required()]}
-            />
-            <Field
-              name={`${member}._id`}
-              type='text'
-              component={TextField}
-              disabled={true}
-              style={{ display: 'none' }}
-              validate={[required()]}
-            />
-            <Field
-              name={`${member}.picture`}
-              type='text'
-              component={TextField}
-              disabled={true}
-              style={{ display: 'none' }}
-              validate={[required()]}
-            />
-            <Field
-              name={`${member}.role`}
-              component={SelectField}
-              hintText={<FormattedMessage {...messages.chooseRole} />}
-              floatingLabelText={<FormattedMessage {...messages.role} />}
-              defaultValue='author'
-              style={styles.field}
-              validate={[required()]}
-              value='author'
-            >
-              <MenuItem
-                value='author'
-                primaryText={<FormattedMessage {...messages.author} />}
+          fields.map((member, index) =>
+            <li key={index} style={styles.authorsList}>
+              <img src={fields.get(index).get('picture')} style={{ width: '70px', height: '70px', marginRight: '15px', visibility: fields.get(index).get('picture') ? 'visible' : 'hidden' }} />
+              <Field
+                name={`${member}.email`}
+                type='text'
+                component={TextField}
+                hintText={<FormattedMessage {...messages.emailHint} />}
+                floatingLabelText={<FormattedMessage {...messages.email} />}
+                style={styles.field}
+                onChange={handleEmailChange}
+                validate={[required(), email()]}
               />
-              <MenuItem
-                value='translator'
-                primaryText={<FormattedMessage {...messages.translator} />}
+              <Field
+                name={`${member}.name`}
+                type='text'
+                component={TextField}
+                disabled={true}
+                hintText={<FormattedMessage {...messages.nameHint} />}
+                floatingLabelText={<FormattedMessage {...messages.name} />}
+                filter={MUIAutoComplete.fuzzyFilter}
+                style={styles.field}
+                validate={[required()]}
               />
-            </Field>
+              <Field
+                name={`${member}._id`}
+                type='text'
+                component={TextField}
+                disabled={true}
+                style={{ display: 'none' }}
+                validate={[required()]}
+              />
+              <Field
+                name={`${member}.picture`}
+                type='text'
+                component={TextField}
+                disabled={true}
+                style={{ display: 'none' }}
+                validate={[required()]}
+              />
+              {showRole && (
+                <Field
+                  name={`${member}.role`}
+                  component={SelectField}
+                  hintText={<FormattedMessage {...messages.chooseRole} />}
+                  floatingLabelText={<FormattedMessage {...messages.role} />}
+                  defaultValue='author'
+                  style={styles.field}
+                  validate={[required()]}
+                  value='author'
+                >
+                  <MenuItem
+                    value='author'
+                    primaryText={<FormattedMessage {...messages.author} />}
+                  />
+                  <MenuItem
+                    value='translator'
+                    primaryText={<FormattedMessage {...messages.translator} />}
+                  />
+                </Field>
+              )}
 
-            <div style={styles.icons}>
-              <FloatingActionButton mini={true} style={styles.icon} onClick={() => fields.remove(index)} >
-                <Delete />
-              </FloatingActionButton>
-              <FloatingActionButton mini={true} style={styles.icon} onClick={addAuthorField} >
-                <PersonAdd />
-              </FloatingActionButton>
-            </div>
-          </li>
-        )
-      }
-    </ul >
+
+              <div style={styles.icons}>
+                <FloatingActionButton mini={true} style={styles.icon} onClick={() => fields.remove(index)} >
+                  <Delete />
+                </FloatingActionButton>
+                <FloatingActionButton mini={true} style={styles.icon} onClick={addAuthorField} >
+                  <PersonAdd />
+                </FloatingActionButton>
+              </div>
+            </li>
+          )
+        }
+      </ul>
+    </div>
   )
 }
 
 RenderAuthors.propTypes = {
-  fields: PropTypes.object.isRequired
+  fields: PropTypes.object.isRequired,
+  showRole: PropTypes.bool.isRequired,
 }
 
 export default RenderAuthors
