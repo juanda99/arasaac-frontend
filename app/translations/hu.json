@@ -13,7 +13,7 @@
   "app.component.Participate.header": "We are building ARASAAC. Would you like to join us?",
   "app.components.Catalog.accept": "Elfogad",
   "app.components.Catalog.arasaacLicense": "ARASAAC licenc",
-  "app.components.Catalog.cancel": "Cancel",
+  "app.components.Catalog.cancel": "Mégse",
   "app.components.Catalog.confirmLicense": "I have read and accept the terms of the ARASAAC license agreement",
   "app.components.CategorySnippet.deleteList": "Delete folder",
   "app.components.CategorySnippet.download": "Download folder",
