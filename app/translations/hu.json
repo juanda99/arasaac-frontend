@@ -3,7 +3,7 @@
   "Login.invalidUrl": "Érvénytelen url",
   "Login.required": "Kötelező",
   "NewPasswordForm.hintNewPassword": "What is your new password?",
-  "activate.activateUser": "User activation",
+  "activate.activateUser": "Felhasználó aktiválása",
   "activate.expiredCode": "Your activation code has expired. We have send you another email to validate your account",
   "activate.invalidCode": "Your activation code is not valid",
   "activate.userActivated": "Your user has been activated. You can sign in.",
