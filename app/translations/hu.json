@@ -1,7 +1,7 @@
 {
-  "Login.invalidEmail": "Invalid email",
-  "Login.invalidUrl": "Invalid url",
-  "Login.required": "Required",
+  "Login.invalidEmail": "Érvénytelen e-mail",
+  "Login.invalidUrl": "Érvénytelen url",
+  "Login.required": "Kötelező",
   "NewPasswordForm.hintNewPassword": "What is your new password?",
   "activate.activateUser": "User activation",
   "activate.expiredCode": "Your activation code has expired. We have send you another email to validate your account",
