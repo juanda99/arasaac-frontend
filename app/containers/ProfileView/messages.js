@@ -45,7 +45,18 @@ export default defineMessages({
   currentRole: {
     id: 'app.containers.ProfileView.currentRole',
     defaultMessage: 'Current role:'
-  }
-
+  },
+  arasaacProfilePicture: {
+    id: 'app.containers.ProfileView.arasaacProfilePicture',
+    defaultMessage: 'Arasaac profile picture'
+  },
+  googleProfilePicture: {
+    id: 'app.containers.ProfileView.googleProfilePicture',
+    defaultMessage: 'Google profile picture'
+  },
+  facebookProfilePicture: {
+    id: 'app.containers.ProfileView.facebookProfilePicture',
+    defaultMessage: 'Facebook profile picture'
+  },
 })
 

@@ -1,4 +1,7 @@
 import { PICTOGRAMS_URL, IMAGES_URL } from 'services/config'
+export const ARASAAC = 'arasaac'
+export const GOOGLE = 'google'
+export const FACEBOOK = 'facebook'
 
 function isArray(obj) {
   return !!obj && obj.constructor === Array

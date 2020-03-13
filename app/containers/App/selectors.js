@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { DEFAULT_LIST, DEFAULT_PROFILE_PICTURE } from 'utils'
+import { DEFAULT_LIST, DEFAULT_PROFILE_PICTURE, ARASAAC, FACEBOOK, GOOGLE } from 'utils'
 
 // makeSelectLocationState expects a plain JS object for the routing state
 export const makeSelectLocationState = () => {
@@ -61,7 +61,26 @@ export const makeSelectName = () => createSelector(
 
 export const makeSelectPicture = () => createSelector(
   selectAuth,
-  (substate) => substate.getIn(['facebook', 'picture']) || substate.getIn(['google', 'picture']) || DEFAULT_PROFILE_PICTURE
+  makeSelectPictureProvider(),
+  (substate, pictureProvider) => {
+    if (pictureProvider === ARASAAC) return DEFAULT_PROFILE_PICTURE
+    return substate.getIn([pictureProvider, 'picture'])
+  }
+)
+
+export const makeSelectPictureProvider = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('pictureProvider') || ARASAAC
+)
+
+export const makeSelectHasFacebook = () => createSelector(
+  selectAuth,
+  (substate) => !!substate.getIn([FACEBOOK, 'picture'])
+)
+
+export const makeSelectHasGoogle = () => createSelector(
+  selectAuth,
+  (substate) => !!substate.getIn([GOOGLE, 'picture'])
 )
 
 export const makeSelectLastLogin = () => createSelector(

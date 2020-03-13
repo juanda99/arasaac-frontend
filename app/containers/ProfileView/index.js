@@ -20,6 +20,7 @@ import { RegisterForm, NewPasswordForm } from 'components/Login'
 import {
   makeSelectName,
   makeSelectPicture,
+  makeSelectPictureProvider,
   makeSelectEmail,
   makeSelectLastLogin,
   makeSelectRole,
@@ -27,7 +28,9 @@ import {
   makeSelectCompany,
   makeSelectUrl,
   makeSelectUserLocale,
-  makeSelectHasUser
+  makeSelectHasUser,
+  makeSelectHasGoogle,
+  makeSelectHasFacebook
 } from 'containers/App/selectors'
 import { updateUser } from 'containers/App/actions'
 import { changeLocale } from 'containers/LanguageProvider/actions'
@@ -66,6 +69,12 @@ class ProfileView extends PureComponent {
     changeLocale(locale)
   }
 
+  handlePictureChange = (pictureProvider) => {
+    const { updateUser, token } = this.props
+    const user = { pictureProvider }
+    updateUser({ user }, token)
+  }
+
   handleSubmitUser = (values) => {
     const user = values.toJS()
     const { updateUser, token } = this.props
@@ -92,8 +101,11 @@ class ProfileView extends PureComponent {
   }
 
   render() {
-    const { lastLogin, name, picture, company, url, email, role, targetLanguages, userLocale } = this.props
+    const { lastLogin, name, picture, company, url, email, role, targetLanguages, userLocale, hasGoogle, hasFacebook, pictureProvider, muiTheme } = this.props
     const profileImage = picture ? picture : DEFAULT_PROFILE_PICTURE
+    const isRtl = muiTheme.direction === 'rtl'
+
+    console.log(pictureProvider, picture, '**********************************')
 
     return (
       <View left={true} right={true} top={2} bottom={2} >
@@ -102,8 +114,13 @@ class ProfileView extends PureComponent {
             name={name}
             lastLogin={lastLogin}
             picture={profileImage}
+            onPictureChange={this.handlePictureChange}
             role={role}
             targetLanguages={targetLanguages}
+            isRtl={isRtl}
+            hasFacebook={hasFacebook}
+            hasGoogle={hasGoogle}
+            pictureProvider={pictureProvider}
           />
           <H2 primary={true}>
             <FormattedMessage {...messages.accessData} />
@@ -147,7 +164,10 @@ ProfileView.propTypes = {
   showProgressBar: PropTypes.func.isRequired,
   hideProgressBar: PropTypes.func.isRequired,
   updateUser: PropTypes.func.isRequired,
-  changeLocale: PropTypes.func.isRequired
+  changeLocale: PropTypes.func.isRequired,
+  hasGoogle: PropTypes.bool.isRequired,
+  hasFacebook: PropTypes.bool.isRequired,
+  pictureProvider: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = (state) => ({
@@ -157,10 +177,13 @@ const mapStateToProps = (state) => ({
   company: makeSelectCompany()(state),
   url: makeSelectUrl()(state),
   picture: makeSelectPicture()(state),
+  pictureProvider: makeSelectPictureProvider()(state),
   userLocale: makeSelectUserLocale()(state),
   role: makeSelectRole()(state),
   token: makeSelectHasUser()(state),
-  targetLanguages: makeSelectTargetLanguages()(state)
+  targetLanguages: makeSelectTargetLanguages()(state),
+  hasFacebook: makeSelectHasFacebook()(state),
+  hasGoogle: makeSelectHasGoogle()(state),
 
 })
 
