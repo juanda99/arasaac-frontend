@@ -193,7 +193,7 @@
   "app.components.MaterialForm.title": "Titolo",
   "app.components.MaterialForm.titleHint": "Inserisci il titolo del materiale",
   "app.components.MaterialForm.translator": "Traduttore",
-  "app.components.MaterialForm.updateMaterial": "Update material",
+  "app.components.MaterialForm.updateMaterial": "Carica materiale",
   "app.components.MaterialSnippet.notPublished": "Non pubblicato",
   "app.components.MaterialSnippet.pending": "Sospeso",
   "app.components.NotFoundPage.header": "Pagina web non trovata",
