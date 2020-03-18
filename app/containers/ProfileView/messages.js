@@ -48,7 +48,7 @@ export default defineMessages({
   },
   arasaacProfilePicture: {
     id: 'app.containers.ProfileView.arasaacProfilePicture',
-    defaultMessage: 'Arasaac profile picture'
+    defaultMessage: 'ARASAAC profile picture'
   },
   googleProfilePicture: {
     id: 'app.containers.ProfileView.googleProfilePicture',
