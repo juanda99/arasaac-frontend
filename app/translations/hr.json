@@ -363,7 +363,7 @@
   "app.containers.ProfileView.PersonalData.accessData": "Pristup podacima",
   "app.containers.ProfileView.PersonalData.personalData": "Osobni podaci",
   "app.containers.ProfileView.admin": "Administrator",
-  "app.containers.ProfileView.arasaacProfilePicture": "Arasaac profile picture",
+  "app.containers.ProfileView.arasaacProfilePicture": "ARASAAC profile picture",
   "app.containers.ProfileView.currentRole": "Trenutna uloga:",
   "app.containers.ProfileView.errorPassword": "Uppps! Došlo je do greške prilikom mijenjanja lozinke",
   "app.containers.ProfileView.facebookProfilePicture": "Facebook profile picture",
