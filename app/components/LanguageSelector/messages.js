@@ -48,6 +48,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Croatian'
   },
+  hu: {
+    id: 'app.components.LanguageSelector.hu',
+    description: 'Select language',
+    defaultMessage: 'Hungarian'
+  },
   it: {
     id: 'app.components.LanguageSelector.it',
     description: 'Select language',
