@@ -363,7 +363,7 @@
   "app.containers.ProfileView.PersonalData.accessData": "Sarbide-datuak",
   "app.containers.ProfileView.PersonalData.personalData": "Datu pertsonalak",
   "app.containers.ProfileView.admin": "Administratzailea",
-  "app.containers.ProfileView.arasaacProfilePicture": "Arasaac profile picture",
+  "app.containers.ProfileView.arasaacProfilePicture": "ARASAAC profile picture",
   "app.containers.ProfileView.currentRole": "Egungo eginkizuna:",
   "app.containers.ProfileView.errorPassword": "Uppps! Pasahitza aldatzean akats bat gertatu da",
   "app.containers.ProfileView.facebookProfilePicture": "Facebook profile picture",
