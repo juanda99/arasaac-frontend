@@ -22,8 +22,10 @@ import {
   makeSelectRole
 } from 'containers/App/selectors'
 import H3 from 'components/H3'
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+import P from 'components/P'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton'
 import { PRIVATE_API_ROOT } from 'services/config'
 import userIsAuthenticated from 'utils/auth'
 import messages from './messages'
@@ -56,7 +58,7 @@ class UploadMaterialView extends PureComponent {
     const formValues = values.toJS()
     const { formatMessage } = intl
     // const { activities, areas, authors, files, languages } = formValues
-    const { files, screenshots, languages, activities, areas, authors } = formValues
+    const { files, screenshots, languages, activities, areas, authors, status } = formValues
     // change activities, areas from [{key1, value1}, {key2, value2}].. to [key1, key2...]
     const Activities = activities ?
       activities.map((activity) => (activity.value))
@@ -121,17 +123,18 @@ class UploadMaterialView extends PureComponent {
     }
     formData.append(
       'formData',
-      JSON.stringify({ areas: Areas, activities: Activities, authors: Authors, translations })
+      JSON.stringify({ areas: Areas, activities: Activities, authors: Authors, translations, status })
     )
 
     axios.request({
       method: "POST",
+      // timeout: 2000,
       url: `${PRIVATE_API_ROOT}/materials`,
       data: formData,
       headers: { Authorization: `Bearer ${token}` },
       onUploadProgress: ProgressEvent => {
         this.setState({
-          progressStatus: parseFloat(ProgressEvent.loaded / ProgressEvent.total * 100).toFixed(2),
+          progressStatus: parseInt(ProgressEvent.loaded / ProgressEvent.total * 100),
         })
       }
     }).then(data => {
@@ -140,21 +143,23 @@ class UploadMaterialView extends PureComponent {
         loading: false,
         error: ''
       })
-    }).catch(function (error) {
-      //handle error
-      this.setState({ error: error.message })
+    }).catch((error) => {
+      //handle error  
+      this.setState({ error: error.message, loading: false })
     });
 
   }
 
   handleClose = () => this.setState({ showDialog: false, dialogText: '' })
 
+  resetForm = () => this.setState({ sending: false, error: '', stepIndex: 0 })
+
   render() {
     const { name, email, picture, _id, intl, language, role } = this.props
 
     const { showDialog, dialogText, sending, progressStatus, error, loading } = this.state
     const { formatMessage } = intl
-    const initialValues = { authors: [{ name, email, picture, _id, role: 'author' }], languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }], published: 1 }
+    const initialValues = { authors: [{ name, email, picture, _id, role: 'author' }], languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }], status: 2 }
     const actions = [
       <FlatButton
         label={formatMessage(messages.close)}
@@ -163,6 +168,7 @@ class UploadMaterialView extends PureComponent {
         onClick={this.handleClose}
       />
     ];
+
 
     return (
       <View left={true} right={true}>
@@ -178,17 +184,26 @@ class UploadMaterialView extends PureComponent {
             stepIndex={this.state.stepIndex}
             isAdmin={role === 'admin'}
           />
-        ) :
-          (loading ? (
+        ) : (
             <div>
-              <H3>Subiendo el material: {progressStatus}%</H3>
+              <P><FormattedMessage {...messages.progressStatus} values={{ progressStatus: `${progressStatus}` }} /></P>
               <LinearProgress mode="determinate" value={progressStatus} style={{ maxWidth: '600px', height: '6px' }} />
+              {!loading && (
+                <div>
+                  {error ? (
+                    <div>
+                      <P>{error}</P>
+                      <RaisedButton label={formatMessage(messages.tryAgain)} onClick={this.resetForm} />
+                    </div>
+                  ) : (
+                      <div>
+                        <P><FormattedMessage {...messages.materialSuccessUpload} /></P>
+                        <RaisedButton primary={true} label={formatMessage(messages.uploadMore)} onClick={this.resetForm} />
+                      </div>
+                    )}
+                </div>
+              )}
             </div>
-          ) :
-            (
-              error ? <H3> {error}</H3> : <H3>Material subido correctamente</H3>
-            )
-
           )
         }
         <Dialog

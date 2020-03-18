@@ -37,7 +37,10 @@ const styles = {
 }
 
 const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
-  const addAuthorField = () => { fields.push(new Map()) }
+
+  const addAuthorField = (index) => {
+    fields.push(new Map())
+  }
   if (fields.length === 0) {
     addAuthorField()
   }
@@ -68,8 +71,9 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
   }
 
   return (
+
     <div>
-      {!showRole && <P important={true}>Translators: </P>}
+      {!showRole && <P important={true}><FormattedMessage {...messages.translators} /></P>}
       <ul>
         {
 
@@ -84,7 +88,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
                 floatingLabelText={<FormattedMessage {...messages.email} />}
                 style={styles.field}
                 onChange={handleEmailChange}
-                validate={[required(), email()]}
+                validate={showRole ? [required(), email()] : [email()]}
               />
               <Field
                 name={`${member}.name`}
@@ -95,7 +99,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
                 floatingLabelText={<FormattedMessage {...messages.name} />}
                 filter={MUIAutoComplete.fuzzyFilter}
                 style={styles.field}
-                validate={[required()]}
+                validate={showRole ? [required()] : []}
               />
               <Field
                 name={`${member}._id`}
@@ -103,7 +107,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
                 component={TextField}
                 disabled={true}
                 style={{ display: 'none' }}
-                validate={[required()]}
+                validate={showRole ? [required()] : []}
               />
               <Field
                 name={`${member}.picture`}
@@ -111,7 +115,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
                 component={TextField}
                 disabled={true}
                 style={{ display: 'none' }}
-                validate={[required()]}
+                validate={showRole ? [required()] : []}
               />
               {showRole && (
                 <Field
@@ -121,7 +125,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
                   floatingLabelText={<FormattedMessage {...messages.role} />}
                   defaultValue='author'
                   style={styles.field}
-                  validate={[required()]}
+                  validate={showRole ? [required()] : []}
                   value='author'
                 >
                   <MenuItem
@@ -140,7 +144,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
                 <FloatingActionButton mini={true} style={styles.icon} onClick={() => fields.remove(index)} >
                   <Delete />
                 </FloatingActionButton>
-                <FloatingActionButton mini={true} style={styles.icon} onClick={addAuthorField} >
+                <FloatingActionButton mini={true} style={styles.icon} onClick={() => addAuthorField(index)} >
                   <PersonAdd />
                 </FloatingActionButton>
               </div>

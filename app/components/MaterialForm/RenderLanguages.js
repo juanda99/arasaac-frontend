@@ -13,6 +13,7 @@ import RenderAuthors from './RenderAuthors'
 import languages from 'data/languages'
 import { required } from 'redux-form-validators'
 import languageMessages from 'components/LanguageSelector/messages'
+import { TRANSLATION, NEW_MATERIAL } from './constants'
 import messages from './messages'
 
 const styles = {
@@ -38,13 +39,12 @@ const styles = {
 
 
 
-const RenderLanguages = ({ fields, intl, unique, onEmailExists, onFieldChange }) => {
+const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange }) => {
   const { formatMessage } = intl
   const addLanguage = () => {
     fields.push(new Map())
   }
   if (fields.length === 0) addLanguage()
-  console.log(typeof onFieldChange, '*******3*******', onFieldChange)
   return (
     <ul style={styles.list}>
       {fields.map((member, index) => (
@@ -87,8 +87,12 @@ const RenderLanguages = ({ fields, intl, unique, onEmailExists, onFieldChange })
               fullWidth
               validate={[required()]}
             />
-            <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} showRole={false} />
-            {!unique && (
+            {/* if new material we don't show author */}
+            {status !== NEW_MATERIAL && (
+              <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} status={status} />
+            )}
+            {/* every translation separately */}
+            {status !== TRANSLATION && (
               <div>
                 <FloatingActionButton
                   mini={true}
@@ -116,7 +120,7 @@ const RenderLanguages = ({ fields, intl, unique, onEmailExists, onFieldChange })
 RenderLanguages.propTypes = {
   intl: intlShape.isRequired,
   fields: PropTypes.object.isRequired,
-  unique: PropTypes.bool
+  status: PropTypes.string.isRequired,
 }
 
 export default injectIntl(RenderLanguages)

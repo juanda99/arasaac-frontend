@@ -6,21 +6,6 @@ import './index.css'
 import Counter from './Counter'
 
 class ImageSlider extends Component {
-  /* state = {
-    hover: true
-  }
-
-  mouseOver = () => {
-    console.log('mouse over!!!!')
-    console.log(this.state)
-    this.setState({ hover: true })
-  }
-  mouseOut() {
-    console.log('mouse out!!!!')
-    this.setState({ hover: false })
-  }
-  */
-
   render() {
     const { id, images, style } = this.props
     const imagesCount = images.length
@@ -35,7 +20,7 @@ class ImageSlider extends Component {
                   <img src={`${MATERIALS_URL}/${id}/screenshots/${image}`} alt='Screenshot' />
                 </div>
               ))
-            : <img src={'//static.arasaac.org/images/noimage.png'} alt='Screenshot not available' />
+              : <img src={'//static.arasaac.org/images/noimage.png'} alt='Screenshot not available' />
           }
         </ReactSlidy>
       </div>

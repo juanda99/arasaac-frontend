@@ -42,13 +42,12 @@ class UploadNewsView extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <View left={true} right={true}>
         <ReactQuill
           value={this.state.text}
           onChange={this.handleChange}
-          modules={QuillConf.modules} 
+          modules={QuillConf.modules}
           formats={QuillConf.formats}
         />
       </View>

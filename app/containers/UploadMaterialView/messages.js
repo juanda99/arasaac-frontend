@@ -17,6 +17,22 @@ export default defineMessages({
     id: 'app.components.uploadMaterialView.needFiles',
     defaultMessage: 'At least one material file is required'
   },
+  uploadMore: {
+    id: 'app.components.uploadMaterialView.uploadMore',
+    defaultMessage: 'Upload another material'
+  },
+  tryAgain: {
+    id: 'app.components.uploadMaterialView.tryAgain',
+    defaultMessage: 'Try again'
+  },
+  materialSuccessUpload: {
+    id: 'app.components.uploadMaterialView.materialSuccessUpload',
+    defaultMessage: 'Your material has been uploaded and is pending review by the ARASAAC team. We will send you an email when it is published.'
+  },
+  progressStatus: {
+    id: `app.components.uploadMaterialView.progressStatus`,
+    defaultMessage: 'Uploading material: {progressStatus}%'
+  },
   materialLoading: {
     id: 'app.components.updateMaterialView.materialLoading',
     defaultMessage: 'Loading material...'

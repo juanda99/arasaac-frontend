@@ -105,7 +105,6 @@ class ProfileView extends PureComponent {
     const profileImage = picture ? picture : DEFAULT_PROFILE_PICTURE
     const isRtl = muiTheme.direction === 'rtl'
 
-    console.log(pictureProvider, picture, '**********************************')
 
     return (
       <View left={true} right={true} top={2} bottom={2} >

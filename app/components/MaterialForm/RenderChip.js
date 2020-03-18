@@ -47,10 +47,8 @@ class CustomChipInput extends React.Component {
   render() {
     const { dataSource, hintText, floatingLabelText, input } = this.props
     let chips
-    console.log(input.value, List.isList(input.value), '987')
     if (List.isList(input.value)) chips = input.value.toJS()
     else chips = input.value || []
-    console.log(chips, 'chips********')
     return (
       <ChipInput
         {...this.props}

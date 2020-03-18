@@ -4,18 +4,17 @@ import { Field, FieldArray, reduxForm, propTypes } from 'redux-form/immutable'
 import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper'
 import RaisedButton from 'material-ui/RaisedButton'
 import MenuItem from 'material-ui/MenuItem'
-import { FormattedMessage, injectIntl, intlShape, formatMessage } from 'react-intl'
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import H3 from 'components/H3'
 import P from 'components/P'
-import { Map } from 'immutable'
 import filterMessages from 'components/Filters/messages'
 import { SelectField } from 'redux-form-material-ui'
 import { change } from 'redux-form';
 import RenderAuthors from './RenderAuthors'
-import RenderDropzoneInput from './RenderDropzoneInput'
 import RenderChip from './RenderChip'
 import RenderLanguages from './RenderLanguages'
 import messages from './messages'
+import { UPDATE_MATERIAL } from './constants'
 
 class MaterialForm extends React.Component {
 
@@ -102,7 +101,7 @@ class MaterialForm extends React.Component {
               </StepButton>
               <StepContent>
                 <P><FormattedMessage {...messages.authorsDataDesc} /></P>
-                <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} showRole={true} />
+                <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} status={UPDATE_MATERIAL} showRole={true} />
               </StepContent>
             </Step>
             <Step>
@@ -137,7 +136,7 @@ class MaterialForm extends React.Component {
                 {isAdmin && (
                   <div>
                     <Field
-                      name='published'
+                      name='status'
                       component={SelectField}
                       hintText={<FormattedMessage {...messages.materialStatus} />}
                       floatingLabelText={<FormattedMessage {...messages.materialStatus} />}

@@ -48,8 +48,9 @@ export class MaterialList extends PureComponent {
     const totalPages = Math.ceil(numberItems / itemsPerPage)
     const visibleMaterials = materials.slice(offset, offset + itemsPerPage)
     const currentPage = Math.ceil(offset / itemsPerPage) + 1
+    console.log(numberItems, 'numberItems', itemsPerPage, 'itemsPerPage')
     const pagination =
-      numberItems >= itemsPerPage ? (
+      numberItems > itemsPerPage ? (
         <Pagination
           // limit={itemsPerPage}
           display={display}

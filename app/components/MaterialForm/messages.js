@@ -150,6 +150,10 @@ export default defineMessages({
     id: 'app.components.MaterialForm.translator',
     defaultMessage: 'Translator'
   },
+  translators: {
+    id: 'app.components.MaterialForm.translators',
+    defaultMessage: 'Translators:'
+  },
   materialStatus: {
     id: 'app.components.MaterialForm.materialStatus',
     defaultMessage: 'Material status'

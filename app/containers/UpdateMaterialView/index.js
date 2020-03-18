@@ -6,9 +6,11 @@ import View from 'components/View'
 import MaterialForm from 'components/MaterialForm/MaterialFormUpdate'
 import { material } from 'containers/MaterialView/actions'
 import LinearProgress from 'material-ui/LinearProgress'
+import RaisedButton from 'material-ui/RaisedButton'
 import api from 'services' // just the endpoint
 import P from 'components/P'
 import axios from 'axios'
+import { DEFAULT_PROFILE_PICTURE, ARASAAC, FACEBOOK, GOOGLE } from 'utils'
 import {
   makeSelectHasUser,
   makeSelectPicture,
@@ -134,21 +136,26 @@ class UpdateMaterialView extends PureComponent {
 
     axios.request({
       method: "POST",
+      timeout: 2000,
       url: `${PRIVATE_API_ROOT}/materials`,
       data: formData,
       headers: { Authorization: `Bearer ${token}` },
       onUploadProgress: ProgressEvent => {
+        console.log('kkkkkkkkkkkk')
         this.setState({
-          progressStatus: parseFloat(ProgressEvent.loaded / ProgressEvent.total * 100).toFixed(2),
+          progressStatus: parseFloat(ProgressEvent.loaded / ProgressEvent.total * 100).toFixed(2) || 0,
         })
       }
     }).then(data => {
+      console.log('2kkkkkkkkkkkk')
       this.setState({
         progressStatus: 100,
         loading: false,
         error: ''
       })
-    }).catch(function (error) {
+    }).catch((error) => {
+      console.log('3kkkkkkkkkkkk')
+      console.log(error, error.message)
       //handle error
       this.setState({ error: error.message })
     });
@@ -172,7 +179,17 @@ class UpdateMaterialView extends PureComponent {
     const formData = materialData.toJS()
     // const { areas, activities } = formData
     console.log(formData, 'formData')
-    const authors = formData.authors.map(author => ({ name: author.author.name, email: author.author.email, picture: author.author.picture, _id: author.author._id, role: author.role }))
+    const authors = formData.authors.map(author => {
+      if (author.author.pictureProvider === ARASAAC) author.author.picture = DEFAULT_PROFILE_PICTURE
+      else author.author.picture = author.author[author.author.pictureProvider].picture
+      return ({
+        name: author.author.name,
+        email: author.author.email,
+        picture: author.author.picture,
+        _id: author.author._id,
+        role: author.role
+      })
+    })
     const listActivities = activities
       .filter((activity) => formData.activities.indexOf(activity.code) !== -1)
       .map(activity => ({ value: parseInt(activity.code, 10), text: formatMessage(filterMessages[activity.text]) }))
@@ -229,7 +246,19 @@ class UpdateMaterialView extends PureComponent {
             </div>
           ) :
             (
-              error ? <H3> {error}</H3> : <H3>Material subido correctamente</H3>
+              error ? (
+                <div>
+                  <H3> {error}</H3>
+                  <RaisedButton label="Intentar otra vez" onClick={() => this.setState({ sending: false })} />
+                </div>
+
+              ) : (
+                  <div>
+                    <H3>Material actualizado correctamente</H3>
+                    <RaisedButton label="Subir otro material" onClick={() => this.setState({ sending: false })} />
+                  </div>
+
+                )
             )
 
           )

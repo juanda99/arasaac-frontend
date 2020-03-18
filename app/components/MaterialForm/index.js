@@ -16,6 +16,7 @@ import RenderDropzoneInput from './RenderDropzoneInput'
 import RenderChip from './RenderChip'
 import RenderLanguages from './RenderLanguages'
 import messages from './messages'
+import { NEW_MATERIAL } from './constants'
 
 class MaterialForm extends React.Component {
 
@@ -102,7 +103,7 @@ class MaterialForm extends React.Component {
               </StepButton>
               <StepContent>
                 <P><FormattedMessage {...messages.authorsDataDesc} /></P>
-                <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} showRole={true} />
+                <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} status={NEW_MATERIAL} showRole={true} />
               </StepContent>
             </Step>
             <Step>
@@ -160,11 +161,11 @@ class MaterialForm extends React.Component {
               <StepContent>
 
                 <P><FormattedMessage {...messages.languageHint} /></P>
-                <FieldArray name='languages' component={RenderLanguages} />
+                <FieldArray name='languages' component={RenderLanguages} status={NEW_MATERIAL} />
                 {isAdmin && (
                   <div>
                     <Field
-                      name='published'
+                      name='status'
                       component={SelectField}
                       hintText={<FormattedMessage {...messages.materialStatus} />}
                       floatingLabelText={<FormattedMessage {...messages.materialStatus} />}

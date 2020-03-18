@@ -123,7 +123,6 @@ class MaterialSnippet extends PureComponent {
         onClick={this.handleTouchTap}
       />
     )
-    console.log(material)
     const images = [...material.commonScreenshots || [], ...material.screenshots[locale] || []]
     let title, desc
     let chooseTranslation = material.translations.filter(translation => translation.lang === locale)
@@ -138,8 +137,8 @@ class MaterialSnippet extends PureComponent {
     return (
       <Item>
         <div style={styles.snippet}>
-          {material.published === PENDING && <Ribbon text={< FormattedMessage {...messages.pending} />} type='warning' />}
-          {material.published === NOT_PUBLISHED && <Ribbon text={< FormattedMessage {...messages.notPublished} />} type='danger' />}
+          {material.status === PENDING && <Ribbon text={< FormattedMessage {...messages.pending} />} type='warning' />}
+          {material.status === NOT_PUBLISHED && <Ribbon text={< FormattedMessage {...messages.notPublished} />} type='danger' />}
           <ImageSlider images={images} id={material.idMaterial} style={styles.snippetImg} />
           <div style={styles.snippetText}>
             <Link to={`/materials/${locale}/${material.idMaterial}`}>
