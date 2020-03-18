@@ -363,7 +363,7 @@
   "app.containers.ProfileView.PersonalData.accessData": "Dados de acesso",
   "app.containers.ProfileView.PersonalData.personalData": "Dados pessoais",
   "app.containers.ProfileView.admin": "Administrador",
-  "app.containers.ProfileView.arasaacProfilePicture": "Arasaac profile picture",
+  "app.containers.ProfileView.arasaacProfilePicture": "ARASAAC profile picture",
   "app.containers.ProfileView.currentRole": "Perfil actual:",
   "app.containers.ProfileView.errorPassword": "Uppps! Ocorreu um erro ao alterar a palavra-passe",
   "app.containers.ProfileView.facebookProfilePicture": "Facebook profile picture",
