@@ -27,7 +27,7 @@ export default defineMessages({
   },
   materialSuccessUpload: {
     id: 'app.components.uploadMaterialView.materialSuccessUpload',
-    defaultMessage: 'Your material has been uploaded and it will be reviewed by the ARASAAC team. We will send you an email when it is published.'
+    defaultMessage: 'Your material has been uploaded and it will be reviewed by the ARASAAC team. We will send you an email when it is published!'
   },
   progressStatus: {
     id: `app.components.uploadMaterialView.progressStatus`,
