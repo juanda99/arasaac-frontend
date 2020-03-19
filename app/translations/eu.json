@@ -289,7 +289,7 @@
   "app.components.updateMaterialView.materialLoading": "Loading material...",
   "app.components.updateMaterialView.materialNotFound": "Sorry, the material you are looking for does not exist",
   "app.components.uploadMaterialView.close": "Itxi",
-  "app.components.uploadMaterialView.materialSuccessUpload": "Your material has been uploaded and it will be reviewed by the ARASAAC team. We will send you an email when it is published.",
+  "app.components.uploadMaterialView.materialSuccessUpload": "Your material has been uploaded and it will be reviewed by the ARASAAC team. We will send you an email when it is published!",
   "app.components.uploadMaterialView.needAuthor": "Gutxienez materialaren egile bat behar da",
   "app.components.uploadMaterialView.needFiles": "Gutxienez material fitxategi bat behar da",
   "app.components.uploadMaterialView.needReview": "Materiala berrikusteko",
