@@ -28,7 +28,7 @@ export const newMaterials = {
 }
 
 export const publishMaterial = {
-  request: (id, published, token) => action(MATERIAL_PUBLISH.REQUEST, { id, published, token }),
+  request: (id, status, token) => action(MATERIAL_PUBLISH.REQUEST, { id, status, token }),
   success: (data) => action(MATERIAL_PUBLISH.SUCCESS, { data }),
   failure: (error) => action(MATERIAL_PUBLISH.FAILURE, { error })
 }

@@ -71,6 +71,7 @@ class MaterialSnippet extends PureComponent {
   renderActionButtons = () => {
     const { showActionButtons, material } = this.props
     const { idMaterial } = material
+    console.log(material, idMaterial)
     return showActionButtons ? (
       <span>
         <Link to={`/materials/update/${idMaterial}`} >
@@ -79,7 +80,7 @@ class MaterialSnippet extends PureComponent {
           </FloatingActionButton>
         </Link>
         {
-          material.published !== PUBLISHED ? (
+          material.status !== PUBLISHED ? (
             <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PUBLISHED)}>
               <VisibilityIcon />
             </FloatingActionButton>

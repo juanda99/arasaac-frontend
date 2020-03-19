@@ -72,7 +72,7 @@ const api = {
   GET_USER_BY_EMAIL: (email, token) => callApi(`${PRIVATE_API_ROOT}/users/email/${email}`, null, token),
   CHANGE_PASSWORD: (password, token) => callApi(changePassword.url, changePassword.options(password), token),
   TRANSLATIONS_STATUS: (locale) => callApi(`${PRIVATE_API_ROOT}/translations/status/${locale}`),
-  MATERIAL_PUBLISH_REQUEST: ({ id, published, token }) => callApi(materialPublish.url(id), materialPublish.options(published), token),
+  MATERIAL_PUBLISH_REQUEST: ({ id, status, token }) => callApi(materialPublish.url(id), materialPublish.options(status), token),
 
   /* CUSTOM_PICTOGRAM_REQUEST: (idPictogram, options) => callApi(customPictogram.url(idPictogram, options))*/
 }

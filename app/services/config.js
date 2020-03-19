@@ -193,11 +193,11 @@ export const renameFavoriteList = {
 
 export const materialPublish = {
   url: (id) => `${PRIVATE_API_ROOT}/materials/${id}`,
-  options: (published) => ({
+  options: (status) => ({
     config: {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ published })
+      body: JSON.stringify({ status })
     }
   })
 }
