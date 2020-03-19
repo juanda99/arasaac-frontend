@@ -289,7 +289,7 @@
   "app.components.updateMaterialView.materialLoading": "crwdns3068:0crwdne3068:0",
   "app.components.updateMaterialView.materialNotFound": "crwdns3070:0crwdne3070:0",
   "app.components.uploadMaterialView.close": "crwdns3072:0crwdne3072:0",
-  "app.components.uploadMaterialView.materialSuccessUpload": "crwdns3074:0crwdne3074:0",
+  "app.components.uploadMaterialView.materialSuccessUpload": "crwdns3524:0crwdne3524:0",
   "app.components.uploadMaterialView.needAuthor": "crwdns3076:0crwdne3076:0",
   "app.components.uploadMaterialView.needFiles": "crwdns3078:0crwdne3078:0",
   "app.components.uploadMaterialView.needReview": "crwdns3080:0crwdne3080:0",
