@@ -289,7 +289,7 @@
   "app.components.updateMaterialView.materialLoading": "Obteniendo material...",
   "app.components.updateMaterialView.materialNotFound": "Lo sentimos, el material que estás buscando no existe",
   "app.components.uploadMaterialView.close": "Cerrar",
-  "app.components.uploadMaterialView.materialSuccessUpload": "Your material has been uploaded and it will be reviewed by the ARASAAC team. We will send you an email when it is published.",
+  "app.components.uploadMaterialView.materialSuccessUpload": "Your material has been uploaded and it will be reviewed by the ARASAAC team. We will send you an email when it is published!",
   "app.components.uploadMaterialView.needAuthor": "Es obligatorio insertar al menos un autor del material",
   "app.components.uploadMaterialView.needFiles": "Es obligatorio subir al menos un fichero asociado al material",
   "app.components.uploadMaterialView.needReview": "Revisar material",
