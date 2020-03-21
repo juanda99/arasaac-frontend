@@ -12,7 +12,7 @@ export const isEmptyObject = (object) => Object.entries(object).length === 0
 export const DEFAULT_LIST = 'defaultList'
 
 export const DEFAULT_PROFILE_PICTURE = `${PICTOGRAMS_URL}/28307/28307_300.png`
-export const DEFAULT_AVATAR_PICTURE = `${IMAGES_URL}/arasaac-avatar.gif`
+// export const DEFAULT_AVATAR_PICTURE = `${IMAGES_URL}/arasaac-avatar.gif`
 
 const checkLanguage = (item, language) =>
   language.size === 0 ||

@@ -23,7 +23,7 @@ import activities from 'data/activities'
 import areas from 'data/areas'
 import { MATERIALS_URL } from 'services/config'
 import langMessages from 'components/LanguageSelector/messages'
-import { DEFAULT_AVATAR_PICTURE } from 'utils/index'
+import { DEFAULT_PROFILE_PICTURE, ARASAAC } from 'utils'
 import messages from './messages'
 
 const styles = {
@@ -161,13 +161,15 @@ class Material extends Component {
           {authors.valueSeq().map((authorData) => {
             const role = authorData.get('role') || 'author'
             const author = authorData.get('author')
+            const pictureProvider = author.get('pictureProvider')
+            const picture = pictureProvider === ARASAAC ? DEFAULT_PROFILE_PICTURE : author.getIn([pictureProvider, 'picture'])
             return (
               <ListItem
                 key={author.get('_id')}
               >
                 <div style={{ display: 'flex' }}>
                   <div>
-                    <img src={DEFAULT_AVATAR_PICTURE} style={{ width: '50px', height: '50px', marginRight: '25px' }} />
+                    <img src={picture} style={{ width: '50px', height: '50px', marginRight: '25px' }} />
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <P important={true} style={{ marginBottom: '5px' }}>{author.get('name')}</P>
