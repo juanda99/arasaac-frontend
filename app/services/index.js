@@ -16,6 +16,7 @@ import {
   changePassword,
   updateUser,
   materialPublish,
+  materialUpdate,
   /* customPictogram, */
   API_ROOT,
   PRIVATE_API_ROOT
@@ -73,7 +74,7 @@ const api = {
   CHANGE_PASSWORD: (password, token) => callApi(changePassword.url, changePassword.options(password), token),
   TRANSLATIONS_STATUS: (locale) => callApi(`${PRIVATE_API_ROOT}/translations/status/${locale}`),
   MATERIAL_PUBLISH_REQUEST: ({ id, status, token }) => callApi(materialPublish.url(id), materialPublish.options(status), token),
-
+  MATERIAL_UPDATE_REQUEST: ({ id, data, token }) => callApi(materialUpdate.url(id), materialUpdate.options(data), token)
   /* CUSTOM_PICTOGRAM_REQUEST: (idPictogram, options) => callApi(customPictogram.url(idPictogram, options))*/
 }
 

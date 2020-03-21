@@ -5,12 +5,10 @@ import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import View from 'components/View'
 import MaterialForm from 'components/MaterialForm/MaterialFormUpdate'
 import { material } from 'containers/MaterialView/actions'
-import LinearProgress from 'material-ui/LinearProgress'
-import RaisedButton from 'material-ui/RaisedButton'
 import api from 'services' // just the endpoint
 import P from 'components/P'
-import axios from 'axios'
-import { DEFAULT_PROFILE_PICTURE, ARASAAC, FACEBOOK, GOOGLE } from 'utils'
+import { DEFAULT_PROFILE_PICTURE, ARASAAC } from 'utils'
+import { Link } from 'react-router'
 import {
   makeSelectHasUser,
   makeSelectPicture,
@@ -19,14 +17,18 @@ import {
   makeSelectId,
   makeSelectRole
 } from 'containers/App/selectors'
-import H3 from 'components/H3'
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import { PRIVATE_API_ROOT } from 'services/config'
+import {
+  makeLoadingSelector,
+  makeErrorSelector
+} from 'containers/MaterialsView/selectors'
+import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton'
 import { userIsAdmin } from 'utils/auth'
 import messages from '../UploadMaterialView/messages'
 import { makeSelectUserLocale } from '../App/selectors'
-// import { makeLoadingSelector, makeErrorSelector } from './selectors'
+import { updateMaterial } from 'containers/MaterialView/actions'
 import activities from 'data/activities'
 import areas from 'data/areas'
 import languages from 'data/languages'
@@ -39,8 +41,7 @@ class UpdateMaterialView extends PureComponent {
     showDialog: false,
     dialogText: '',
     progressStatus: 0,
-    sending: false,
-    loading: false
+    sending: false
   }
 
   componentDidMount() {
@@ -54,6 +55,7 @@ class UpdateMaterialView extends PureComponent {
     }
   }
 
+
   handleChangeStep = (stepIndex) => this.setState({ stepIndex })
 
   getUserByEmail = async (email) => {
@@ -62,11 +64,10 @@ class UpdateMaterialView extends PureComponent {
   }
 
   handleSubmit(values) {
-    const { intl, token } = this.props
+    const { intl, token, params } = this.props
     const formValues = values.toJS()
     const { formatMessage } = intl
-    // const { activities, areas, authors, files, languages } = formValues
-    const { files, screenshots, languages, activities, areas, authors } = formValues
+    const { languages, activities, areas, authors, status } = formValues
     // change activities, areas from [{key1, value1}, {key2, value2}].. to [key1, key2...]
     const Activities = activities ?
       activities.map((activity) => (activity.value))
@@ -80,21 +81,11 @@ class UpdateMaterialView extends PureComponent {
       this.setState({ stepIndex: 0, showDialog: true, dialogText: formatMessage(messages.needAuthor) })
       return
     }
-    if (!files) {
-      this.setState({ stepIndex: 2, showDialog: true, dialogText: formatMessage(messages.needFiles) })
-      return
-    }
+
 
     /* try to process it, we use axios to get progress */
-    this.setState({ sending: true, loading: true })
-
-    const formData = new FormData()
+    this.setState({ sending: true })
     let translations
-
-    if (files) files.map((file) => formData.append('files', file))
-    if (screenshots) {
-      screenshots.map((screenshot) => formData.append('screenshots', screenshot))
-    }
     if (languages) {
       translations = languages.map((language) => {
         let customLanguage
@@ -129,56 +120,23 @@ class UpdateMaterialView extends PureComponent {
         }
       })
     }
-    formData.append(
-      'formData',
-      JSON.stringify({ areas: Areas, activities: Activities, authors: Authors, translations })
-    )
-
-    axios.request({
-      method: "POST",
-      timeout: 2000,
-      url: `${PRIVATE_API_ROOT}/materials`,
-      data: formData,
-      headers: { Authorization: `Bearer ${token}` },
-      onUploadProgress: ProgressEvent => {
-        console.log('kkkkkkkkkkkk')
-        this.setState({
-          progressStatus: parseFloat(ProgressEvent.loaded / ProgressEvent.total * 100).toFixed(2) || 0,
-        })
-      }
-    }).then(data => {
-      console.log('2kkkkkkkkkkkk')
-      this.setState({
-        progressStatus: 100,
-        loading: false,
-        error: ''
-      })
-    }).catch((error) => {
-      console.log('3kkkkkkkkkkkk')
-      console.log(error, error.message)
-      //handle error
-      this.setState({ error: error.message })
-    });
-
-    // uploadMaterial(formValues, token)
-    /* now we will get status by websockets */
-
-    // get value from 0 to 10000 for socket reference:
-
-
+    const data = { areas: Areas, activities: Activities, authors: Authors, translations, status }
+    this.props.updateMaterial(params.idMaterial, data, token)
   }
 
   handleClose = () => this.setState({ showDialog: false, dialogText: '' })
 
+  resetForm = () => {
+    this.setState({ sending: false, stepIndex: 0 })
+  }
+
   renderContent() {
     const { materialData, loading, params, intl, role, _id } = this.props
-    const { locale } = params
     const { formatMessage } = intl
     if (loading) return <P><FormattedMessage {...messages.materialLoading} /></P>
     if (materialData.size === 0) return <P><FormattedMessage {...messages.materialNotFound} /> </P>
     const formData = materialData.toJS()
-    // const { areas, activities } = formData
-    console.log(formData, 'formData')
+
     const authors = formData.authors.map(author => {
       if (author.author.pictureProvider === ARASAAC) author.author.picture = DEFAULT_PROFILE_PICTURE
       else author.author.picture = author.author[author.author.pictureProvider].picture
@@ -198,11 +156,7 @@ class UpdateMaterialView extends PureComponent {
       .filter((area) => formData.areas.indexOf(area.code) !== -1)
       .map(area => ({ value: parseInt(area.code, 10), text: formatMessage(filterMessages[area.text]) }))
 
-    const initialValues = { authors, areas: listAreas, activities: listActivities, languages: formData.translations }
-    // languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }]
-
-    console.log('initialValues', initialValues, '**************************')
-
+    const initialValues = { authors, areas: listAreas, activities: listActivities, languages: formData.translations, status: formData.status }
 
     return (
       <MaterialForm
@@ -221,9 +175,9 @@ class UpdateMaterialView extends PureComponent {
 
 
   render() {
-    const { intl, materialData } = this.props
-
-    const { showDialog, dialogText, sending, progressStatus, error, loading } = this.state
+    const { intl, materialData, loading, error, locale } = this.props
+    const idMaterial = materialData.get('idMaterial')
+    const { showDialog, dialogText, sending } = this.state
     const { formatMessage } = intl
     const actions = [
       <FlatButton
@@ -240,22 +194,22 @@ class UpdateMaterialView extends PureComponent {
           this.renderContent()
         ) :
           (loading ? (
-            <div>
-              <H3>Subiendo el material: {progressStatus}%</H3>
-              <LinearProgress mode="determinate" value={progressStatus} style={{ maxWidth: '600px', height: '6px' }} />
-            </div>
+            <FormattedMessage {...messages.updatingMaterial} />
           ) :
             (
               error ? (
                 <div>
-                  <H3> {error}</H3>
-                  <RaisedButton label="Intentar otra vez" onClick={() => this.setState({ sending: false })} />
+                  <P>{error}</P>
+                  <RaisedButton label={formatMessage(messages.tryAgain)} onClick={this.resetForm} />
                 </div>
 
               ) : (
                   <div>
-                    <H3>Material actualizado correctamente</H3>
-                    <RaisedButton label="Subir otro material" onClick={() => this.setState({ sending: false })} />
+                    <P><FormattedMessage {...messages.updatedMaterial} /></P>
+                    <Link to={`/materials/${locale}/${idMaterial}`}>
+                      <RaisedButton primary={true} label={formatMessage(messages.showMaterial)} onClick={this.showMaterial} />
+                    </Link>
+
                   </div>
 
                 )
@@ -294,20 +248,24 @@ const mapStateToProps = (state, ownProps) => {
   const email = makeSelectEmail()(state)
   const picture = makeSelectPicture()(state)
   const language = makeSelectUserLocale()(state)
+  const locale = makeSelectLocale()(state)
   const _id = makeSelectId()(state)
   const role = makeSelectRole()(state)
   const materialData = state.getIn(['materialsView', 'materials', parseInt(ownProps.params.idMaterial, 10)]) || new Map()
-  const loading = state.getIn(['materialsView', 'loading'])
+  const loading = makeLoadingSelector()(state)
+  const error = makeErrorSelector()(state)
   return ({
     token,
     name,
     email,
     picture,
     language,
+    locale,
     _id,
     role,
     materialData,
-    loading
+    loading,
+    error
   })
 }
 
@@ -315,6 +273,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => ({
   requestMaterial: (idMaterial) => {
     dispatch(material.request(idMaterial))
+  },
+  updateMaterial: (id, data, token) => {
+    dispatch(updateMaterial.request(id, data, token))
   }
 })
 

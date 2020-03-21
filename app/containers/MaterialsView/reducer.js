@@ -5,7 +5,7 @@
  */
 
 import { fromJS, List } from 'immutable'
-import { MATERIAL } from 'containers/MaterialView/actions'
+import { MATERIAL, MATERIAL_UPDATE } from 'containers/MaterialView/actions'
 import { MATERIALS, NEW_MATERIALS, SHOW_FILTERS, SET_FILTER_ITEMS, MATERIAL_PUBLISH } from './actions'
 
 export const initialState = fromJS({
@@ -28,6 +28,10 @@ function materialsViewReducer(state = initialState, action) {
   switch (action.type) {
 
     case MATERIAL.REQUEST:
+    case MATERIALS.REQUEST:
+    case MATERIAL_PUBLISH.REQUEST:
+    case MATERIAL_UPDATE.REQUEST:
+    case NEW_MATERIALS.REQUEST:
       return state
         .set('loading', true)
         .set('error', false)
@@ -36,31 +40,19 @@ function materialsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .setIn(['materials', action.payload.data.idMaterial], newMaterial)
-    case MATERIAL_PUBLISH.FAILURE:
-      return state
-        .set('error', action.payload.error)
-        .set('loading', false)
 
-    case MATERIAL_PUBLISH.REQUEST:
-      return state
-        .set('loading', true)
-        .set('error', false)
     case MATERIAL_PUBLISH.SUCCESS:
+    case MATERIAL_UPDATE.SUCCESS:
       newMaterial = fromJS(action.payload.data || {})
       return state
         .set('loading', false)
         .setIn(['materials', action.payload.data.idMaterial], newMaterial)
     case MATERIAL_PUBLISH.FAILURE:
+    case MATERIAL_UPDATE.FAILURE:
       return state
         .set('error', action.payload.error)
         .set('loading', false)
 
-    case MATERIALS.REQUEST:
-      return state
-        .set('loading', true)
-        .set('error', false)
-    // it's not useful:
-    // .set('searchText', action.payload.searchText)
     case MATERIALS.SUCCESS:
       newMaterial = fromJS(action.payload.data.entities.materials || {})
       return state
@@ -71,10 +63,6 @@ function materialsViewReducer(state = initialState, action) {
       return state
         .set('error', action.payload.error)
         .set('loading', false)
-    case NEW_MATERIALS.REQUEST:
-      return state
-        .set('loading', true)
-        .set('error', false)
     case NEW_MATERIALS.SUCCESS:
       newMaterial = fromJS(action.payload.data.entities.materials || {})
       return state

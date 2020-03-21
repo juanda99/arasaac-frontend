@@ -101,7 +101,7 @@ class MaterialForm extends React.Component {
               </StepButton>
               <StepContent>
                 <P><FormattedMessage {...messages.authorsDataDesc} /></P>
-                <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} status={UPDATE_MATERIAL} showRole={true} />
+                <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} showRole={true} mandatory={true} />
               </StepContent>
             </Step>
             <Step>
@@ -132,7 +132,7 @@ class MaterialForm extends React.Component {
               <StepContent>
 
                 <P><FormattedMessage {...messages.languageHint} /></P>
-                <FieldArray name='languages' component={RenderLanguages} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} />
+                <FieldArray name='languages' component={RenderLanguages} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} status={UPDATE_MATERIAL} />
                 {isAdmin && (
                   <div>
                     <Field

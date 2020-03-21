@@ -18,7 +18,6 @@ import messages from './messages'
 class MaterialView extends PureComponent {
 
   componentDidMount() {
-    console.log(this.props.materialData, typeof this.props.materialData)
     if (this.props.materialData.isEmpty()) {
       this.props.requestMaterial(this.props.params.idMaterial)
     }
@@ -47,6 +46,7 @@ class MaterialView extends PureComponent {
             { name: 'description', content: 'Description of MaterialView' }
           ]}
         />
+        {console.log(this.props.materialData, "********************")}
         {this.renderContent()}
       </View>
     )

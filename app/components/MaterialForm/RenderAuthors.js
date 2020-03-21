@@ -13,6 +13,7 @@ import { Map } from 'immutable'
 import H3 from 'components/H3'
 import P from 'components/P'
 import { required, email } from 'redux-form-validators'
+import Validators from 'redux-form-validators'
 import messages from './messages'
 
 const styles = {
@@ -36,7 +37,11 @@ const styles = {
   }
 }
 
-const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
+Object.assign(Validators.defaultOptions, {
+  allowBlank: true
+})
+
+const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandatory }) => {
 
   const addAuthorField = (index) => {
     fields.push(new Map())
@@ -74,6 +79,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
 
     <div>
       {!showRole && <P important={true}><FormattedMessage {...messages.translators} /></P>}
+      {console.log('mandatory:', mandatory)}
       <ul>
         {
 
@@ -88,7 +94,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
                 floatingLabelText={<FormattedMessage {...messages.email} />}
                 style={styles.field}
                 onChange={handleEmailChange}
-                validate={showRole ? [required(), email()] : [email()]}
+                validate={mandatory ? [required(), email()] : [email()]}
               />
               <Field
                 name={`${member}.name`}
@@ -99,7 +105,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
                 floatingLabelText={<FormattedMessage {...messages.name} />}
                 filter={MUIAutoComplete.fuzzyFilter}
                 style={styles.field}
-                validate={showRole ? [required()] : []}
+                validate={mandatory ? [required()] : []}
               />
               <Field
                 name={`${member}._id`}
@@ -107,7 +113,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
                 component={TextField}
                 disabled={true}
                 style={{ display: 'none' }}
-                validate={showRole ? [required()] : []}
+                validate={mandatory ? [required()] : []}
               />
               <Field
                 name={`${member}.picture`}
@@ -115,7 +121,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
                 component={TextField}
                 disabled={true}
                 style={{ display: 'none' }}
-                validate={showRole ? [required()] : []}
+                validate={mandatory ? [required()] : []}
               />
               {showRole && (
                 <Field
@@ -125,7 +131,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
                   floatingLabelText={<FormattedMessage {...messages.role} />}
                   defaultValue='author'
                   style={styles.field}
-                  validate={showRole ? [required()] : []}
+                  validate={required ? [required()] : []}
                   value='author'
                 >
                   <MenuItem
@@ -159,6 +165,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole }) => {
 RenderAuthors.propTypes = {
   fields: PropTypes.object.isRequired,
   showRole: PropTypes.bool.isRequired,
+  mandatory: PropTypes.bool.isRequired,
 }
 
 export default RenderAuthors

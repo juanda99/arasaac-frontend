@@ -14,6 +14,7 @@ export const SHOW_FILTERS = 'MATERIALS_SHOW_FILTERS'
 export const ENABLE_FILTER = 'MATERIALS_ENABLE_FILTER'
 export const SET_FILTER_ITEMS = 'MATERIALS_SET_FILTER_ITEMS'
 
+
 // actions: materials.request/success/failure
 export const materials = {
   request: (locale, searchText, token) => action(MATERIALS.REQUEST, { locale, searchText, token }),

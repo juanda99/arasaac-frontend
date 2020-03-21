@@ -37,6 +37,18 @@ export default defineMessages({
     id: 'app.components.updateMaterialView.materialLoading',
     defaultMessage: 'Loading material...'
   },
+  updatingMaterial: {
+    id: 'app.components.updateMaterialView.updatingMaterial',
+    defaultMessage: 'Updating material...'
+  },
+  updatedMaterial: {
+    id: 'app.components.updateMaterialView.updatedMaterial',
+    defaultMessage: 'Material updated.'
+  },
+  showMaterial: {
+    id: 'app.components.updateMaterialView.showMaterial',
+    defaultMessage: 'Show material'
+  },
   materialNotFound: {
     id: 'app.components.updateMaterialView.materialNotFound',
     defaultMessage: 'Sorry, the material you are looking for does not exist'

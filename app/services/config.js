@@ -202,6 +202,20 @@ export const materialPublish = {
   })
 }
 
+export const materialUpdate = {
+  url: (id) => `${PRIVATE_API_ROOT}/materials/${id}`,
+  options: (data) => ({
+    config: {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }
+  })
+}
+
+
+
+
 /*
 export const customPictogram = {
   url: (idPictogram, options) => {

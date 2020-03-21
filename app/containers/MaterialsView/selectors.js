@@ -11,6 +11,11 @@ export const makeLoadingSelector = () => createSelector(
   (substate) => substate.get('loading')
 )
 
+export const makeErrorSelector = () => createSelector(
+  selectMaterialsViewDomain,
+  (substate) => substate.get('error')
+)
+
 export const makeShowFiltersSelector = () => createSelector(
   selectMaterialsViewDomain,
   (substate) => substate.get('showFilter')

@@ -13,7 +13,7 @@ import RenderAuthors from './RenderAuthors'
 import languages from 'data/languages'
 import { required } from 'redux-form-validators'
 import languageMessages from 'components/LanguageSelector/messages'
-import { TRANSLATION, NEW_MATERIAL } from './constants'
+import { TRANSLATION, UPDATE_MATERIAL } from './constants'
 import messages from './messages'
 
 const styles = {
@@ -87,9 +87,13 @@ const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange })
               fullWidth
               validate={[required()]}
             />
-            {/* if new material we don't show author */}
-            {status !== NEW_MATERIAL && (
-              <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} status={status} />
+            {/* if new material we don't show author for languages, too complicated*/}
+            {console.log(status, '*********************')}
+            {status === UPDATE_MATERIAL && (
+              <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} mandatory={false} showRole={false} />
+            )}
+            {status === TRANSLATION && (
+              <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} mandatory={true} showRole={false} />
             )}
             {/* every translation separately */}
             {status !== TRANSLATION && (

@@ -21,7 +21,6 @@ import {
   makeSelectId,
   makeSelectRole
 } from 'containers/App/selectors'
-import H3 from 'components/H3'
 import P from 'components/P'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
@@ -57,7 +56,6 @@ class UploadMaterialView extends PureComponent {
     const { intl, token } = this.props
     const formValues = values.toJS()
     const { formatMessage } = intl
-    // const { activities, areas, authors, files, languages } = formValues
     const { files, screenshots, languages, activities, areas, authors, status } = formValues
     // change activities, areas from [{key1, value1}, {key2, value2}].. to [key1, key2...]
     const Activities = activities ?
@@ -128,7 +126,6 @@ class UploadMaterialView extends PureComponent {
 
     axios.request({
       method: "POST",
-      // timeout: 2000,
       url: `${PRIVATE_API_ROOT}/materials`,
       data: formData,
       headers: { Authorization: `Bearer ${token}` },
