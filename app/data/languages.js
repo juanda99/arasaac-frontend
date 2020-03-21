@@ -77,6 +77,10 @@ const languages = [
     text: 'Pусский'
   },
   {
+    code: 'sk',
+    text: 'Slovenský'
+  },
+  {
     code: 'val',
     text: 'Valencia'
   },
