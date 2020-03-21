@@ -103,6 +103,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Russian'
   },
+  sk: {
+    id: 'app.components.LanguageSelector.sk',
+    description: 'Select language',
+    defaultMessage: 'Slovak'
+  },
   ar: {
     id: 'app.components.LanguageSelector.ar',
     description: 'Select language',
