@@ -21,6 +21,7 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 import P from 'components/P'
 import activities from 'data/activities'
 import areas from 'data/areas'
+import classificationMessages from 'components/Filters/messages'
 import { MATERIALS_URL } from 'services/config'
 import langMessages from 'components/LanguageSelector/messages'
 import { DEFAULT_PROFILE_PICTURE, ARASAAC } from 'utils'
@@ -97,18 +98,24 @@ class Material extends Component {
     const authors = material.get('authors')
     const idMaterial = material.get('idMaterial')
 
-    const activityTags = material.get('activities') && material.get('activities').map((id) => (
-      <Chip style={styles.chip} key={id}>
-        <Avatar icon={<ActivityIcon />} />
-        {activities.filter(item => item.code === id)[0].text}
-      </Chip>
-    ))
-    const areaTags = material.get('areas') && material.get('areas').map((id) => (
-      <Chip style={styles.chip} key={id}>
-        <Avatar icon={<AreaIcon />} />
-        {areas.filter(item => item.code === id)[0].text}
-      </Chip>
-    ))
+    const activityTags = material.get('activities') && material.get('activities').map((id) => {
+      const key = activities.filter(item => item.code === id)[0].text
+      return (
+        <Chip style={styles.chip} key={id}>
+          <Avatar icon={<ActivityIcon />} />
+          <FormattedMessage {...classificationMessages[key]} />
+        </Chip>
+      )
+    })
+    const areaTags = material.get('areas') && material.get('areas').map((id) => {
+      const key = areas.filter(item => item.code === id)[0].text
+      return (
+        <Chip style={styles.chip} key={id}>
+          <Avatar icon={<AreaIcon />} />
+          <FormattedMessage {...classificationMessages[key]} />
+        </Chip>
+      )
+    })
 
     return (
       <div>
