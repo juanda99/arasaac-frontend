@@ -1,8 +1,8 @@
 {
-  "Login.invalidEmail": "Invalid email",
-  "Login.invalidUrl": "Invalid url",
-  "Login.required": "Required",
-  "NewPasswordForm.hintNewPassword": "What is your new password?",
+  "Login.invalidEmail": "Nieprawidłowy adres email",
+  "Login.invalidUrl": "Nieprawidłowy adres url",
+  "Login.required": "Wymagane",
+  "NewPasswordForm.hintNewPassword": "Wpisz nowe hasło:",
   "activate.activateUser": "User activation",
   "activate.expiredCode": "Your activation code has expired. We have send you another email to validate your account",
   "activate.invalidCode": "Your activation code is not valid",
