@@ -11,6 +11,7 @@ import View from 'components/View'
 import Helmet from 'react-helmet'
 import Material from 'components/Material'
 import { material } from 'containers/MaterialView/actions'
+import { makeSelectHasUser } from 'containers/App/selectors'
 import P from 'components/P'
 import { Map } from 'immutable'
 import messages from './messages'
@@ -19,12 +20,12 @@ class MaterialView extends PureComponent {
 
   componentDidMount() {
     if (this.props.materialData.isEmpty()) {
-      this.props.requestMaterial(this.props.params.idMaterial)
+      this.props.requestMaterial(this.props.params.idMaterial, this.props.token)
     }
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.params.idMaterial !== nextProps.params.idMaterial) {
-      this.props.requestMaterial(nextProps.params.idMaterial)
+      this.props.requestMaterial(nextProps.params.idMaterial, this.props.token)
     }
   }
 
@@ -46,7 +47,6 @@ class MaterialView extends PureComponent {
             { name: 'description', content: 'Description of MaterialView' }
           ]}
         />
-        {console.log(this.props.materialData, "********************")}
         {this.renderContent()}
       </View>
     )
@@ -63,15 +63,17 @@ MaterialView.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const materialData = state.getIn(['materialsView', 'materials', parseInt(ownProps.params.idMaterial, 10)]) || Map()
   const loading = state.getIn(['materialsView', 'loading'])
+  const token = makeSelectHasUser()(state)
   return ({
     materialData,
-    loading
+    loading,
+    token
   })
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  requestMaterial: (idMaterial) => {
-    dispatch(material.request(idMaterial))
+  requestMaterial: (idMaterial, token) => {
+    dispatch(material.request(idMaterial, token))
   }
 })
 

@@ -12,7 +12,7 @@ export const MATERIAL_UPDATE = createRequestTypes('MATERIAL_UPDATE')
 
 // actions: material.request/success/failure
 export const material = {
-  request: (idMaterial) => action(MATERIAL.REQUEST, { idMaterial }),
+  request: (idMaterial, token) => action(MATERIAL.REQUEST, { idMaterial, token }),
   success: (data) => action(MATERIAL.SUCCESS, { data }),
   failure: (error) => action(MATERIAL.FAILURE, { error })
 }

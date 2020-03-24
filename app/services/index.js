@@ -41,8 +41,8 @@ const api = {
     }),
   NEW_MATERIALS_REQUEST: ({ token }) =>
     callApi(`${PRIVATE_API_ROOT}/materials/new/30`, { schema: searchMaterialSchema }, token),
-  MATERIAL_REQUEST: ({ idMaterial }) =>
-    callApi(`${API_ROOT}/materials/${idMaterial}`),
+  MATERIAL_REQUEST: ({ idMaterial, token }) =>
+    callApi(`${PRIVATE_API_ROOT}/materials/${idMaterial}`, null, token),
   PICTOGRAM_REQUEST: ({ idPictogram, locale }) =>
     callApi(`${API_ROOT}/pictograms/${locale}/${idPictogram}`),
   LOGIN_REQUEST: ({ username, password }) =>
