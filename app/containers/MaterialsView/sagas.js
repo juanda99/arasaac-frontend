@@ -2,7 +2,7 @@ import { take, takeLatest, call, put, cancel } from 'redux-saga/effects'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import api from 'services'
-import { MATERIALS, NEW_MATERIALS, MATERIAL_PUBLISH, materials, newMaterials, publishMaterial } from './actions'
+import { MATERIALS, NEW_MATERIALS, MATERIAL_PUBLISH, MATERIAL_REMOVE, materials, newMaterials, publishMaterial, removeMaterial } from './actions'
 
 function* materialsGetData(action) {
   try {
@@ -43,8 +43,27 @@ function* materialPublishGetData(action) {
   }
 }
 
+function* materialRemoveGetData(action) {
+  try {
+    yield put(showLoading())
+    const response = yield call(api[action.type], action.payload)
+    yield put(removeMaterial.success(response))
+  } catch (error) {
+    yield put(removeMaterial.failure(error.message))
+  } finally {
+    yield put(hideLoading())
+  }
+}
+
 export function* materialsData() {
   const watcher = yield takeLatest(MATERIALS.REQUEST, materialsGetData)
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE)
+  yield cancel(watcher)
+}
+
+export function* materialRemoveData() {
+  const watcher = yield takeLatest(MATERIAL_REMOVE.REQUEST, materialRemoveGetData)
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE)
   yield cancel(watcher)
@@ -65,4 +84,4 @@ export function* newMaterialsData() {
 }
 
 // All sagas to be loaded
-export default [materialsData, newMaterialsData, materialPublishData]
+export default [materialsData, newMaterialsData, materialPublishData, materialRemoveData]

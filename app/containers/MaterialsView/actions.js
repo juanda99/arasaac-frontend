@@ -10,6 +10,7 @@ import { createRequestTypes, action } from 'utils/actions'
 export const MATERIALS = createRequestTypes('MATERIALS')
 export const NEW_MATERIALS = createRequestTypes('NEW_MATERIALS')
 export const MATERIAL_PUBLISH = createRequestTypes('MATERIAL_PUBLISH')
+export const MATERIAL_REMOVE = createRequestTypes('MATERIAL_REMOVE')
 export const SHOW_FILTERS = 'MATERIALS_SHOW_FILTERS'
 export const ENABLE_FILTER = 'MATERIALS_ENABLE_FILTER'
 export const SET_FILTER_ITEMS = 'MATERIALS_SET_FILTER_ITEMS'
@@ -32,6 +33,12 @@ export const publishMaterial = {
   request: (id, status, token) => action(MATERIAL_PUBLISH.REQUEST, { id, status, token }),
   success: (data) => action(MATERIAL_PUBLISH.SUCCESS, { data }),
   failure: (error) => action(MATERIAL_PUBLISH.FAILURE, { error })
+}
+
+export const removeMaterial = {
+  request: (id, token) => action(MATERIAL_REMOVE.REQUEST, { id, token }),
+  success: (data) => action(MATERIAL_REMOVE.SUCCESS, { data }),
+  failure: (error) => action(MATERIAL_REMOVE.FAILURE, { error })
 }
 
 export const toggleShowFilter = () => action(SHOW_FILTERS)

@@ -6,7 +6,7 @@
 
 import { fromJS, List } from 'immutable'
 import { MATERIAL, MATERIAL_UPDATE } from 'containers/MaterialView/actions'
-import { MATERIALS, NEW_MATERIALS, SHOW_FILTERS, SET_FILTER_ITEMS, MATERIAL_PUBLISH } from './actions'
+import { MATERIALS, NEW_MATERIALS, SHOW_FILTERS, SET_FILTER_ITEMS, MATERIAL_PUBLISH, MATERIAL_REMOVE } from './actions'
 
 export const initialState = fromJS({
   showFilter: false,
@@ -29,6 +29,7 @@ function materialsViewReducer(state = initialState, action) {
 
     case MATERIAL.REQUEST:
     case MATERIALS.REQUEST:
+    case MATERIAL_REMOVE.REQUEST:
     case MATERIAL_PUBLISH.REQUEST:
     case MATERIAL_UPDATE.REQUEST:
     case NEW_MATERIALS.REQUEST:
@@ -40,13 +41,17 @@ function materialsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .setIn(['materials', action.payload.data.idMaterial], newMaterial)
-
+    case MATERIAL_REMOVE.SUCCESS:
+      return state
+        .set('loading', false)
+        .deleteIn(['materials', action.payload.data.idMaterial])
     case MATERIAL_PUBLISH.SUCCESS:
     case MATERIAL_UPDATE.SUCCESS:
       newMaterial = fromJS(action.payload.data || {})
       return state
         .set('loading', false)
         .setIn(['materials', action.payload.data.idMaterial], newMaterial)
+    case MATERIAL_REMOVE.FAILURE:
     case MATERIAL_PUBLISH.FAILURE:
     case MATERIAL_UPDATE.FAILURE:
       return state

@@ -34,7 +34,7 @@ import {
   makeNewVisibleMaterialsSelector
 } from './selectors'
 
-import { materials, newMaterials, toggleShowFilter, setFilterItems, publishMaterial } from './actions'
+import { materials, newMaterials, toggleShowFilter, setFilterItems, publishMaterial, removeMaterial } from './actions'
 import languages from 'data/languages'
 import activities from 'data/activities'
 import areas from 'data/areas'
@@ -129,6 +129,11 @@ class MaterialsView extends PureComponent {
     publishMaterial(id, publish, token)
   }
 
+  handleRemoveMaterial = (id) => {
+    const { removeMaterial, token } = this.props
+    removeMaterial(id, token)
+  }
+
   render() {
     const { showFilter, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, muiTheme, width, role } = this.props
     const searchText = this.props.params.searchText || ''
@@ -158,6 +163,7 @@ class MaterialsView extends PureComponent {
           onPageClick={this.handlePageClick}
           showActionButtons={role === 'admin'}
           publishMaterial={this.handlePublishMaterial}
+          removeMaterial={this.handleRemoveMaterial}
         />
       )
         : <ReadMargin><P>{<FormattedMessage {...messages.materialsNotFound} />}</P></ReadMargin>
@@ -270,6 +276,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   publishMaterial: (id, publish, token) => {
     dispatch(publishMaterial.request(id, publish, token))
+  },
+  removeMaterial: (id, token) => {
+    dispatch(removeMaterial.request(id, token))
   },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())

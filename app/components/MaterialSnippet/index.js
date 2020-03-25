@@ -6,6 +6,7 @@ import Ribbon from 'components/Ribbon'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import EditIcon from 'material-ui/svg-icons/image/edit'
 import VisibilityIcon from 'material-ui/svg-icons/action/visibility'
+import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import VisibilityOffIcon from 'material-ui/svg-icons/action/visibility-Off'
 import H2 from 'components/H2'
 import { FormattedMessage } from 'react-intl'
@@ -92,6 +93,9 @@ class MaterialSnippet extends PureComponent {
 
 
         }
+        <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handleRemove(e)}>
+          <DeleteIcon />
+        </FloatingActionButton>
 
       </span >
 
@@ -103,6 +107,13 @@ class MaterialSnippet extends PureComponent {
     e.stopPropagation()
     const { publishMaterial, material } = this.props
     publishMaterial(material.idMaterial, publish)
+  }
+
+  handleRemove = (e) => {
+    // e.preventDefault()
+    e.stopPropagation()
+    const { material } = this.props
+    removeMaterial(material.idMaterial)
   }
 
   render() {

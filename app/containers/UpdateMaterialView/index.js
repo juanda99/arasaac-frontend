@@ -45,13 +45,15 @@ class UpdateMaterialView extends PureComponent {
   }
 
   componentDidMount() {
-    if (this.props.materialData.size === 0) {
-      this.props.requestMaterial(this.props.params.idMaterial)
+    const { requestMaterial, params, token, materialData } = this.props
+    if (materialData.size === 0) {
+      requestMaterial(params.idMaterial, token)
     }
   }
   componentWillReceiveProps(nextProps) {
-    if (this.props.params.idMaterial !== nextProps.params.idMaterial) {
-      this.props.requestMaterial(nextProps.params.idMaterial)
+    const { requestMaterial, params, token } = this.props
+    if (params.idMaterial !== nextProps.params.idMaterial) {
+      requestMaterial(nextProps.params.idMaterial, token)
     }
   }
 
@@ -112,11 +114,14 @@ class UpdateMaterialView extends PureComponent {
             break;
         }
 
+        const authors = language.authors.map(author => ({ author: author._id, role: 'translator' }))
+
         return {
           title: language.title,
           desc: language.desc,
           language: customLanguage,
-          lang: language.language
+          lang: language.language,
+          authors
         }
       })
     }
@@ -130,6 +135,18 @@ class UpdateMaterialView extends PureComponent {
     this.setState({ sending: false, stepIndex: 0 })
   }
 
+  getAuthorsData = (authors) => authors.map(author => {
+    if (author.author.pictureProvider === ARASAAC) author.author.picture = DEFAULT_PROFILE_PICTURE
+    else author.author.picture = author.author[author.author.pictureProvider].picture
+    return ({
+      name: author.author.name,
+      email: author.author.email,
+      picture: author.author.picture,
+      _id: author.author._id,
+      role: author.role
+    })
+  })
+
   renderContent() {
     const { materialData, loading, params, intl, role, _id } = this.props
     const { formatMessage } = intl
@@ -137,17 +154,14 @@ class UpdateMaterialView extends PureComponent {
     if (materialData.size === 0) return <P><FormattedMessage {...messages.materialNotFound} /> </P>
     const formData = materialData.toJS()
 
-    const authors = formData.authors.map(author => {
-      if (author.author.pictureProvider === ARASAAC) author.author.picture = DEFAULT_PROFILE_PICTURE
-      else author.author.picture = author.author[author.author.pictureProvider].picture
-      return ({
-        name: author.author.name,
-        email: author.author.email,
-        picture: author.author.picture,
-        _id: author.author._id,
-        role: author.role
-      })
+    const authors = this.getAuthorsData(formData.authors)
+
+
+    const languages = formData.translations.map(translation => {
+      const authors = this.getAuthorsData(translation.authors)
+      return { ...translation, authors }
     })
+
     const listActivities = activities
       .filter((activity) => formData.activities.indexOf(activity.code) !== -1)
       .map(activity => ({ value: parseInt(activity.code, 10), text: formatMessage(filterMessages[activity.text]) }))
@@ -156,7 +170,7 @@ class UpdateMaterialView extends PureComponent {
       .filter((area) => formData.areas.indexOf(area.code) !== -1)
       .map(area => ({ value: parseInt(area.code, 10), text: formatMessage(filterMessages[area.text]) }))
 
-    const initialValues = { authors, areas: listAreas, activities: listActivities, languages: formData.translations, status: formData.status }
+    const initialValues = { authors, areas: listAreas, activities: listActivities, languages, status: formData.status }
 
     return (
       <MaterialForm
@@ -271,8 +285,8 @@ const mapStateToProps = (state, ownProps) => {
 
 
 const mapDispatchToProps = (dispatch) => ({
-  requestMaterial: (idMaterial) => {
-    dispatch(material.request(idMaterial))
+  requestMaterial: (idMaterial, token) => {
+    dispatch(material.request(idMaterial, token))
   },
   updateMaterial: (id, data, token) => {
     dispatch(updateMaterial.request(id, data, token))
