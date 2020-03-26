@@ -202,7 +202,7 @@
   "app.components.Pictogram.ColorPicker.showLessColors": "Show less colors",
   "app.components.Pictogram.ColorPicker.showMoreColors": "Több szín",
   "app.components.Pictogram.DragAndDrop": "Fogd és vidd",
-  "app.components.Pictogram.TextOptions.chooseSuggestionsLanguage": "Choose suggestions language:",
+  "app.components.Pictogram.TextOptions.chooseSuggestionsLanguage": "Javasolt nyelv kiválasztása:",
   "app.components.Pictogram.TextOptions.editText": "Edit text",
   "app.components.Pictogram.TextOptions.enterText": "Enter text",
   "app.components.Pictogram.TextOptions.fontColor": "Font color:",
