@@ -129,10 +129,18 @@ class MaterialsView extends PureComponent {
     publishMaterial(id, publish, token)
   }
 
-  handleRemoveMaterial = (id) => {
+  handleRemoveMaterial = (id, accept) => {
     const { removeMaterial, token } = this.props
     removeMaterial(id, token)
   }
+
+  // handleDelete = accept => {
+  //   const { idPictogram, requestPictogramDelete, token } = this.props
+  //   this.setState({ confirmationBoxOpen: false })
+  //   if (accept) requestPictogramDelete(idPictogram, token)
+  // }
+
+  // handleBeforeDelete = () => this.setState({ confirmationBoxOpen: true })
 
   render() {
     const { showFilter, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, muiTheme, width, role } = this.props

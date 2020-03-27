@@ -32,23 +32,23 @@ export class MaterialList extends PureComponent {
   }
 
   render() {
-    const { locale, materials, filtersMap, setFilterItems, offset, showLabels, showActionButtons, publishMaterial, removeMaterial } = this.props
-    // const total = Math.ceil(materials.length / itemsPerPage)
-    // const offset = Math.ceil((currentPage - 1) * itemsPerPage)
-    // const visibleMaterials = materials.slice(offset, offset + itemsPerPage)
-    // const pagination = (materials.length >= itemsPerPage) ?
-    //   (<Pagination
-    //     total={total}
-    //     current={currentPage}
-    //     display={display}
-    //     onChange={this.handlePageClick}
-    //   />)
+    const {
+      locale,
+      materials,
+      filtersMap,
+      setFilterItems,
+      offset,
+      showLabels,
+      showActionButtons,
+      publishMaterial,
+      removeMaterial
+    } = this.props
+
     //   : null
     const numberItems = materials.length
     const totalPages = Math.ceil(numberItems / itemsPerPage)
     const visibleMaterials = materials.slice(offset, offset + itemsPerPage)
     const currentPage = Math.ceil(offset / itemsPerPage) + 1
-    console.log(numberItems, 'numberItems', itemsPerPage, 'itemsPerPage')
     const pagination =
       numberItems > itemsPerPage ? (
         <Pagination
@@ -100,7 +100,7 @@ MaterialList.propTypes = {
   onPageClick: PropTypes.func.isRequired,
   showActionButtons: PropTypes.bool.isRequired,
   publishMaterial: PropTypes.func.isRequired,
-  removeMaterial: PropTypes.func.isRequired,
+  removeMaterial: PropTypes.func.isRequired
 }
 
 export default MaterialList

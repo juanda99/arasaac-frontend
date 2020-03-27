@@ -8,8 +8,10 @@ import EditIcon from 'material-ui/svg-icons/image/edit'
 import VisibilityIcon from 'material-ui/svg-icons/action/visibility'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import VisibilityOffIcon from 'material-ui/svg-icons/action/visibility-Off'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
 import H2 from 'components/H2'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import TagsRenderer from 'components/TagsRenderer'
 import ImageSlider from 'components/ImageSlider'
 import { Link } from 'react-router'
@@ -46,6 +48,10 @@ const styles = {
 
 class MaterialSnippet extends PureComponent {
 
+  state = {
+    showDialog: false
+  }
+
   // nextStatus 0 to desactivate the filter, 1 for activating
   handleTouchTap = (filterName, filterItem, nextStatus, e) => {
     e.preventDefault()
@@ -72,7 +78,6 @@ class MaterialSnippet extends PureComponent {
   renderActionButtons = () => {
     const { showActionButtons, material } = this.props
     const { idMaterial } = material
-    console.log(material, idMaterial)
     return showActionButtons ? (
       <span>
         <Link to={`/materials/update/${idMaterial}`} >
@@ -90,10 +95,8 @@ class MaterialSnippet extends PureComponent {
                 <VisibilityOffIcon />
               </FloatingActionButton>
             )
-
-
         }
-        <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handleRemove(e)}>
+        <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handleBeforeRemove(e)}>
           <DeleteIcon />
         </FloatingActionButton>
 
@@ -109,15 +112,24 @@ class MaterialSnippet extends PureComponent {
     publishMaterial(material.idMaterial, publish)
   }
 
-  handleRemove = (e) => {
-    // e.preventDefault()
+  handleBeforeRemove = (e) => {
     e.stopPropagation()
+    this.setState({ showDialog: true })
+  }
+
+  handleClose = () => this.setState({ showDialog: false })
+
+  handleRemove = () => {
+    this.setState({ showDialog: false })
     const { removeMaterial, material } = this.props
     removeMaterial(material.idMaterial)
   }
 
   render() {
-    const { material, locale, filtersMap, showLabels } = this.props
+    const { material, locale, filtersMap, showLabels, intl } = this.props
+    const { formatMessage } = intl
+    const { showDialog } = this.state
+
     const activityTags = (
       <TagsRenderer
         tags={material.activities}
@@ -146,11 +158,25 @@ class MaterialSnippet extends PureComponent {
       desc = material.translations[0].desc
     }
 
+    const actions = [
+      <FlatButton
+        label={formatMessage(messages.cancel)}
+        primary={true}
+        onClick={this.handleClose}
+      />,
+      <FlatButton
+        label={formatMessage(messages.submit)}
+        keyboardFocused={true}
+        primary={true}
+        onClick={this.handleRemove}
+      />
+    ];
+
     return (
       <Item>
         <div style={styles.snippet}>
-          {material.status === PENDING && <Ribbon text={< FormattedMessage {...messages.pending} />} type='warning' />}
-          {material.status === NOT_PUBLISHED && <Ribbon text={< FormattedMessage {...messages.notPublished} />} type='danger' />}
+          {material.status === PENDING && <Ribbon text={<FormattedMessage {...messages.pending} />} type='warning' />}
+          {material.status === NOT_PUBLISHED && <Ribbon text={<FormattedMessage {...messages.notPublished} />} type='danger' />}
           <ImageSlider images={images} id={material.idMaterial} style={styles.snippetImg} />
           <div style={styles.snippetText}>
             <Link to={`/materials/${locale}/${material.idMaterial}`}>
@@ -166,6 +192,15 @@ class MaterialSnippet extends PureComponent {
             }
           </div>
         </div>
+        <Dialog
+          title={formatMessage(messages.deleteMaterial)}
+          actions={actions}
+          modal={true}
+          open={showDialog}
+          onRequestClose={this.handleClose}
+        >
+          <FormattedMessage {...messages.confirmDeletion} />
+        </Dialog>
       </Item>
     )
   }
@@ -179,7 +214,7 @@ MaterialSnippet.propTypes = {
   setFilterItems: PropTypes.func.isRequired,
   showLabels: PropTypes.bool.isRequired,
   publishMaterial: PropTypes.func.isRequired,
-  removeMaterial: PropTypes.func.isRequired,
+  removeMaterial: PropTypes.func.isRequired
 }
 
-export default MaterialSnippet
+export default injectIntl(MaterialSnippet)
