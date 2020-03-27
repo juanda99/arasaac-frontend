@@ -112,7 +112,7 @@ class MaterialSnippet extends PureComponent {
   handleRemove = (e) => {
     // e.preventDefault()
     e.stopPropagation()
-    const { material } = this.props
+    const { removeMaterial, material } = this.props
     removeMaterial(material.idMaterial)
   }
 
@@ -179,6 +179,7 @@ MaterialSnippet.propTypes = {
   setFilterItems: PropTypes.func.isRequired,
   showLabels: PropTypes.bool.isRequired,
   publishMaterial: PropTypes.func.isRequired,
+  removeMaterial: PropTypes.func.isRequired,
 }
 
 export default MaterialSnippet

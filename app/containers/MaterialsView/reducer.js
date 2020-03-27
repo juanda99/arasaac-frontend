@@ -42,9 +42,12 @@ function materialsViewReducer(state = initialState, action) {
         .set('loading', false)
         .setIn(['materials', action.payload.data.idMaterial], newMaterial)
     case MATERIAL_REMOVE.SUCCESS:
+      const { idMaterial } = action.payload.data
+      const newMaterials = state.get('newMaterials').filter((item) => item.toString() !== idMaterial)
       return state
         .set('loading', false)
-        .deleteIn(['materials', action.payload.data.idMaterial])
+        .deleteIn(['materials', idMaterial])
+        .set('newMaterials', newMaterials)
     case MATERIAL_PUBLISH.SUCCESS:
     case MATERIAL_UPDATE.SUCCESS:
       newMaterial = fromJS(action.payload.data || {})

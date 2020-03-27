@@ -32,7 +32,7 @@ export class MaterialList extends PureComponent {
   }
 
   render() {
-    const { locale, materials, filtersMap, setFilterItems, offset, showLabels, showActionButtons, publishMaterial } = this.props
+    const { locale, materials, filtersMap, setFilterItems, offset, showLabels, showActionButtons, publishMaterial, removeMaterial } = this.props
     // const total = Math.ceil(materials.length / itemsPerPage)
     // const offset = Math.ceil((currentPage - 1) * itemsPerPage)
     // const visibleMaterials = materials.slice(offset, offset + itemsPerPage)
@@ -78,6 +78,7 @@ export class MaterialList extends PureComponent {
               showLabels={showLabels}
               showActionButtons={showActionButtons}
               publishMaterial={publishMaterial}
+              removeMaterial={removeMaterial}
             />
           )}
         </ul>
@@ -99,6 +100,7 @@ MaterialList.propTypes = {
   onPageClick: PropTypes.func.isRequired,
   showActionButtons: PropTypes.bool.isRequired,
   publishMaterial: PropTypes.func.isRequired,
+  removeMaterial: PropTypes.func.isRequired,
 }
 
 export default MaterialList

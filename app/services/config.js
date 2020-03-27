@@ -213,6 +213,16 @@ export const materialUpdate = {
   })
 }
 
+export const materialRemove = {
+  url: (id) => `${PRIVATE_API_ROOT}/materials/${id}`,
+  options: () => ({
+    config: {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    }
+  })
+}
+
 
 
 

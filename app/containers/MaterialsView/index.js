@@ -252,6 +252,7 @@ MaterialsView.propTypes = {
   width: PropTypes.number.isRequired,
   role: PropTypes.string,
   publishMaterial: PropTypes.func.isRequired,
+  removeMaterial: PropTypes.func.isRequired,
 }
 
 
