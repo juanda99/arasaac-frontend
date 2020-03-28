@@ -5,8 +5,16 @@
  */
 
 import { fromJS, List } from 'immutable'
-import { MATERIAL, MATERIAL_UPDATE } from 'containers/MaterialView/actions'
-import { MATERIALS, NEW_MATERIALS, SHOW_FILTERS, SET_FILTER_ITEMS, MATERIAL_PUBLISH, MATERIAL_REMOVE } from './actions'
+import {
+  MATERIALS,
+  NEW_MATERIALS,
+  SHOW_FILTERS,
+  SET_FILTER_ITEMS,
+  MATERIAL_PUBLISH,
+  MATERIAL_REMOVE,
+  MATERIAL,
+  MATERIAL_UPDATE
+} from './actions'
 
 export const initialState = fromJS({
   showFilter: false,
@@ -42,8 +50,9 @@ function materialsViewReducer(state = initialState, action) {
         .set('loading', false)
         .setIn(['materials', action.payload.data.idMaterial], newMaterial)
     case MATERIAL_REMOVE.SUCCESS:
-      const { idMaterial } = action.payload.data
-      const newMaterials = state.get('newMaterials').filter((item) => item.toString() !== idMaterial)
+      // need parseInt when remove from MaterialView
+      const idMaterial = parseInt(action.payload.data.idMaterial)
+      const newMaterials = state.get('newMaterials').filter((item) => item !== idMaterial)
       return state
         .set('loading', false)
         .deleteIn(['materials', idMaterial])

@@ -215,7 +215,7 @@ export default function createRoutes(store) {
       name: 'updateMaterialView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/MaterialView/sagas'),
+          import('containers/MaterialsView/sagas'),
           import('containers/UpdateMaterialView/')
         ])
 
@@ -235,7 +235,7 @@ export default function createRoutes(store) {
       name: 'materialView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/MaterialView/sagas'),
+          import('containers/MaterialsView/sagas'),
           import('containers/MaterialView/')
         ])
 

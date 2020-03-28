@@ -2,6 +2,10 @@ import { PICTOGRAMS_URL, IMAGES_URL } from 'services/config'
 export const ARASAAC = 'arasaac'
 export const GOOGLE = 'google'
 export const FACEBOOK = 'facebook'
+/* for material status */
+export const NOT_PUBLISHED = 0
+export const PUBLISHED = 1
+export const PENDING = 2
 
 function isArray(obj) {
   return !!obj && obj.constructor === Array

@@ -129,7 +129,7 @@ class MaterialsView extends PureComponent {
     publishMaterial(id, publish, token)
   }
 
-  handleRemoveMaterial = (id, accept) => {
+  handleRemoveMaterial = (id) => {
     const { removeMaterial, token } = this.props
     removeMaterial(id, token)
   }

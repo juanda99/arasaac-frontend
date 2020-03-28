@@ -4,19 +4,26 @@ import H2 from 'components/H2'
 import H3 from 'components/H3'
 import ShareBar from 'components/ShareBar'
 import Divider from 'components/Divider'
+import { Link } from 'react-router'
 import FlatButton from 'material-ui/FlatButton'
 import Chip from 'material-ui/Chip'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import EditIcon from 'material-ui/svg-icons/image/edit'
+import VisibilityIcon from 'material-ui/svg-icons/action/visibility'
+import VisibilityOffIcon from 'material-ui/svg-icons/action/visibility-Off'
+import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import Avatar from 'material-ui/Avatar'
+import Ribbon from 'components/Ribbon'
 import List from 'material-ui/List/List'
 import ListItem from 'material-ui/List/ListItem'
 import ActivityIcon from 'material-ui/svg-icons/action/input'
 import AreaIcon from 'material-ui/svg-icons/social/school'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import Download from 'material-ui/svg-icons/action/get-app'
-import Person from 'material-ui/svg-icons/social/person'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import RaisedButton from 'material-ui/RaisedButton'
 import ImageSlider from 'components/ImageSlider'
+import Dialog from 'material-ui/Dialog'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import P from 'components/P'
 import activities from 'data/activities'
@@ -24,7 +31,7 @@ import areas from 'data/areas'
 import classificationMessages from 'components/Filters/messages'
 import { MATERIALS_URL } from 'services/config'
 import langMessages from 'components/LanguageSelector/messages'
-import { DEFAULT_PROFILE_PICTURE, ARASAAC } from 'utils'
+import { DEFAULT_PROFILE_PICTURE, ARASAAC, NOT_PUBLISHED, PUBLISHED, PENDING } from 'utils'
 import messages from './messages'
 
 const styles = {
@@ -39,14 +46,14 @@ const styles = {
   },
   slides: {
     flexGrow: 1,
-    width: '600px',
-    position: 'relative'
+    width: '600px'
   },
   snippet: {
     display: 'flex',
     width: '100%',
     alignItems: 'center',
-    flexWrap: 'wrap-reverse'
+    flexWrap: 'wrap-reverse',
+    position: 'relative'
   },
   button: {
     margin: '0 auto'
@@ -54,12 +61,18 @@ const styles = {
   wrapper: {
     display: 'flex',
     flexWrap: 'wrap'
+  },
+  actionBtn: {
+    margin: '5px'
   }
 }
+
+
 class Material extends Component {
   state = {
     currentTranslation: this.props.material.get('translations').get(0),
-    languages: this.props.material.get('translations').map(translation => translation.get('lang'))
+    languages: this.props.material.get('translations').map(translation => translation.get('lang')),
+    showDiaglog: false
   }
 
   handleChange = (event, value) => this.updateByLanguage(value)
@@ -83,11 +96,64 @@ class Material extends Component {
 
   }
 
+  handlePublish = (e, publish) => {
+    // e.preventDefault()
+    e.stopPropagation()
+    const { publishMaterial, material } = this.props
+    const idMaterial = material.get('idMaterial')
+    publishMaterial(idMaterial, publish)
+  }
+
+  handleBeforeRemove = (e) => {
+    e.stopPropagation()
+    this.setState({ showDialog: true })
+  }
+
+  handleClose = () => this.setState({ showDialog: false })
+
+  handleRemove = () => {
+    this.setState({ showDialog: false })
+    const { removeMaterial, material } = this.props
+    const idMaterial = material.get('idMaterial')
+    removeMaterial(idMaterial)
+  }
+
+  renderActionButtons = () => {
+    const { showActionButtons, material } = this.props
+    const idMaterial = material.get('idMaterial')
+    return showActionButtons ? (
+      <span>
+        <Link to={`/materials/update/${idMaterial}`} >
+          <FloatingActionButton mini={true} style={styles.actionBtn}>
+            <EditIcon />
+          </FloatingActionButton>
+        </Link>
+        {
+          material.get('status') !== PUBLISHED ? (
+            <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PUBLISHED)}>
+              <VisibilityIcon />
+            </FloatingActionButton>
+          ) : (
+              <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PENDING)}>
+                <VisibilityOffIcon />
+              </FloatingActionButton>
+            )
+        }
+        <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handleBeforeRemove(e)}>
+          <DeleteIcon />
+        </FloatingActionButton>
+
+      </span >
+
+    ) : ''
+  }
+
 
 
   render() {
-    const { material } = this.props
-    const { languages, currentTranslation } = this.state
+    const { material, intl } = this.props
+    const { formatMessage } = intl
+    const { languages, currentTranslation, showDialog } = this.state
     const language = currentTranslation.get('lang')
     const title = currentTranslation.get('title')
     const desc = currentTranslation.get('desc')
@@ -117,11 +183,32 @@ class Material extends Component {
       )
     })
 
+    const actions = [
+      <FlatButton
+        label={formatMessage(messages.cancel)}
+        primary={true}
+        onClick={this.handleClose}
+      />,
+      <FlatButton
+        label={formatMessage(messages.submit)}
+        keyboardFocused={true}
+        primary={true}
+        onClick={this.handleRemove}
+      />
+    ];
+
     return (
       <div>
         <H2 primary ucase>{title}</H2>
+        {this.renderActionButtons()}
         <div style={styles.snippet}>
-          <ImageSlider images={images} id={idMaterial} style={styles.slides} />
+
+          <div style={{ position: 'relative' }}>
+            <ImageSlider images={images} id={idMaterial} style={styles.slides} />
+            {material.get('status') === PENDING && <Ribbon text={<FormattedMessage {...messages.pending} />} type='warning' />}
+            {material.get('status') === NOT_PUBLISHED && <Ribbon text={<FormattedMessage {...messages.notPublished} />} type='danger' />}
+          </div>
+
           <div style={styles.desc}>
             <P>{desc}</P>
             <p style={{ textAlign: 'center' }}>
@@ -201,6 +288,15 @@ class Material extends Component {
             />
           )
         }
+        <Dialog
+          title={formatMessage(messages.deleteMaterial)}
+          actions={actions}
+          modal={true}
+          open={showDialog}
+          onRequestClose={this.handleClose}
+        >
+          <FormattedMessage {...messages.confirmDeletion} />
+        </Dialog>
       </div >
     )
   }
@@ -210,7 +306,10 @@ class Material extends Component {
 Material.propTypes = {
   // onClick: PropTypes.func.isRequired,
   material: PropTypes.object.isRequired,
-  locale: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired,
+  showActionButtons: PropTypes.bool.isRequired,
+  publishMaterial: PropTypes.func.isRequired,
+  removeMaterial: PropTypes.func.isRequired,
 }
 
-export default muiThemeable()(Material)
+export default muiThemeable()(injectIntl(Material))

@@ -16,10 +16,8 @@ import TagsRenderer from 'components/TagsRenderer'
 import ImageSlider from 'components/ImageSlider'
 import { Link } from 'react-router'
 import Item from './Item'
-import messages from './messages'
-const NOT_PUBLISHED = 0
-const PUBLISHED = 1
-const PENDING = 2
+import messages from 'components/Material/messages'
+import { NOT_PUBLISHED, PUBLISHED, PENDING } from 'utils'
 
 const styles = {
 
@@ -214,7 +212,8 @@ MaterialSnippet.propTypes = {
   setFilterItems: PropTypes.func.isRequired,
   showLabels: PropTypes.bool.isRequired,
   publishMaterial: PropTypes.func.isRequired,
-  removeMaterial: PropTypes.func.isRequired
+  removeMaterial: PropTypes.func.isRequired,
+  showActionButtons: PropTypes.func.isRequired,
 }
 
 export default injectIntl(MaterialSnippet)

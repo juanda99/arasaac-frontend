@@ -2,6 +2,7 @@
  * Material Messages
  *
  * This contains all the text for the Material component.
+ *  ALSO USED IN MATERIAL_SNIPPET
  */
 import { defineMessages } from 'react-intl'
 
@@ -50,5 +51,29 @@ export default defineMessages({
     id: 'app.components.Material.languages',
     description: 'Title for list of languages',
     defaultMessage: 'Languages'
-  }
+  },
+  deleteMaterial: {
+    id: 'app.components.Material.deleteMaterial',
+    defaultMessage: 'Delete material'
+  },
+  confirmDeletion: {
+    id: 'app.components.Material.confirmDeletion',
+    defaultMessage: 'Are you sure you want to delete this material?'
+  },
+  cancel: {
+    id: 'app.components.Material.cancel',
+    defaultMessage: 'Cancel'
+  },
+  submit: {
+    id: 'app.components.Material.submit',
+    defaultMessage: 'Submit'
+  },
+  pending: {
+    id: 'app.components.Material.pending',
+    defaultMessage: 'Pending'
+  },
+  notPublished: {
+    id: 'app.components.Material.notPublished',
+    defaultMessage: 'Not published'
+  },
 })
