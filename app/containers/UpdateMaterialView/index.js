@@ -114,7 +114,9 @@ class UpdateMaterialView extends PureComponent {
             break;
         }
 
-        const authors = language.authors.map(author => ({ author: author._id, role: 'translator' }))
+        const authors = language.authors
+          .map(author => ({ author: author._id, role: 'translator' }))
+          .filter(author => !!author.author)
 
         return {
           title: language.title,

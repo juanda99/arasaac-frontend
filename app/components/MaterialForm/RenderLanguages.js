@@ -88,7 +88,6 @@ const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange })
               validate={[required()]}
             />
             {/* if new material we don't show author for languages, too complicated*/}
-            {console.log(status, '*********************')}
             {status === UPDATE_MATERIAL && (
               <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} mandatory={false} showRole={false} />
             )}

@@ -148,12 +148,35 @@ class Material extends Component {
     ) : ''
   }
 
+  createAuthorItem = (authorData) => {
+    const role = authorData.get('role') || 'author'
+    const author = authorData.get('author')
+    const pictureProvider = author.get('pictureProvider')
+    const picture = pictureProvider === ARASAAC ? DEFAULT_PROFILE_PICTURE : author.getIn([pictureProvider, 'picture'])
+    return (
+      <ListItem
+        key={author.get('_id')}
+      >
+        <div style={{ display: 'flex' }}>
+          <div>
+            <img src={picture} style={{ width: '50px', height: '50px', marginRight: '25px' }} />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <P important={true} style={{ marginBottom: '5px' }}>{author.get('name')}</P>
+            <span style={{ color: 'darkGrey', fontSize: '0.9rem' }}>{role}</span>
+          </div>
+        </div>
+      </ListItem>
+    )
+  }
+
 
 
   render() {
     const { material, intl } = this.props
     const { formatMessage } = intl
     const { languages, currentTranslation, showDialog } = this.state
+    console.log(currentTranslation, '*****currentTranslation***********')
     const language = currentTranslation.get('lang')
     const title = currentTranslation.get('title')
     const desc = currentTranslation.get('desc')
@@ -251,29 +274,10 @@ class Material extends Component {
         <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
         <Divider />
         <List>
-
-          {authors.valueSeq().map((authorData) => {
-            const role = authorData.get('role') || 'author'
-            const author = authorData.get('author')
-            const pictureProvider = author.get('pictureProvider')
-            const picture = pictureProvider === ARASAAC ? DEFAULT_PROFILE_PICTURE : author.getIn([pictureProvider, 'picture'])
-            return (
-              <ListItem
-                key={author.get('_id')}
-              >
-                <div style={{ display: 'flex' }}>
-                  <div>
-                    <img src={picture} style={{ width: '50px', height: '50px', marginRight: '25px' }} />
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <P important={true} style={{ marginBottom: '5px' }}>{author.get('name')}</P>
-                    <span style={{ color: 'darkGrey', fontSize: '0.9rem' }}>{role}</span>
-                  </div>
-                </div>
-              </ListItem>
-            )
-          }
-          )}
+          {/* general authors */}
+          {authors.map((authorData) => this.createAuthorItem(authorData))}
+          {/* translation authors */}
+          {currentTranslation.get('authors').map(authorData => this.createAuthorItem(authorData))}
         </List>
         <H3 primary={true}>{<FormattedMessage {...messages.files} />}</H3>
         <Divider />

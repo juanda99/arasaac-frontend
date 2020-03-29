@@ -14,6 +14,7 @@ import H3 from 'components/H3'
 import P from 'components/P'
 import { required, email } from 'redux-form-validators'
 import Validators from 'redux-form-validators'
+import { ARASAAC } from 'utils'
 import messages from './messages'
 
 const styles = {
@@ -56,12 +57,12 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandato
     const newFieldPicture = fieldName.replace("email", "picture")
     try {
       const response = await onEmailExists(newValue)
-      const { name, _id, facebook, google } = response
+      const { name, _id, pictureProvider } = response
       // 404 should enter here...
       if (name) {
-        let picture = DEFAULT_PROFILE_PICTURE
-        if (facebook) picture = facebook.picture
-        else if (google) picture = google.picture
+        let picture
+        if (pictureProvider === ARASAAC) picture = DEFAULT_PROFILE_PICTURE
+        else picture = response[pictureProvider].picture
         onFieldChange(newFieldName, name)
         onFieldChange(newFieldId, _id)
         onFieldChange(newFieldPicture, picture)
@@ -79,7 +80,6 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandato
 
     <div>
       {!showRole && <P important={true}><FormattedMessage {...messages.translators} /></P>}
-      {console.log('mandatory:', mandatory)}
       <ul>
         {
 
