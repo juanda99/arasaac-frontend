@@ -163,7 +163,7 @@ class Material extends Component {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <P important={true} style={{ marginBottom: '5px' }}>{author.get('name')}</P>
-            <span style={{ color: 'darkGrey', fontSize: '0.9rem' }}>{role}</span>
+            <span style={{ color: 'darkGrey', fontSize: '0.9rem' }}><FormattedMessage {...messages[role]} /></span>
           </div>
         </div>
       </ListItem>
@@ -176,7 +176,6 @@ class Material extends Component {
     const { material, intl } = this.props
     const { formatMessage } = intl
     const { languages, currentTranslation, showDialog } = this.state
-    console.log(currentTranslation, '*****currentTranslation***********')
     const language = currentTranslation.get('lang')
     const title = currentTranslation.get('title')
     const desc = currentTranslation.get('desc')

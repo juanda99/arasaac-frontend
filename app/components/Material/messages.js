@@ -76,4 +76,12 @@ export default defineMessages({
     id: 'app.components.Material.notPublished',
     defaultMessage: 'Not published'
   },
+  author: {
+    id: 'app.components.Material.author',
+    defaultMessage: 'Author'
+  },
+  translator: {
+    id: 'app.components.Material.translator',
+    defaultMessage: 'Translator'
+  },
 })
