@@ -18,6 +18,10 @@ export default defineMessages({
     id: 'app.components.MaterialForm.authorsDataDesc',
     defaultMessage: 'Please enter just the authors email. They must be registered users in ARASAAC. The name is filled in automatically.'
   },
+  translatorsDataDesc: {
+    id: 'app.components.MaterialForm.translatorsDataDesc',
+    defaultMessage: 'Please enter just the translators email. They must be registered users in ARASAAC. The name is filled in automatically.'
+  },
   name: {
     id: 'app.components.MaterialForm.name',
     defaultMessage: 'Name'
@@ -126,6 +130,10 @@ export default defineMessages({
     id: 'app.components.MaterialForm.sendMaterial',
     defaultMessage: 'Send material'
   },
+  sendTranslation: {
+    id: 'app.components.MaterialForm.sendTranslation',
+    defaultMessage: 'Send translation'
+  },
   addFiles: {
     id: 'app.components.MaterialForm.addFiles',
     defaultMessage: 'Add material files'
@@ -152,7 +160,7 @@ export default defineMessages({
   },
   translators: {
     id: 'app.components.MaterialForm.translators',
-    defaultMessage: 'Translators:'
+    defaultMessage: 'Translators'
   },
   materialStatus: {
     id: 'app.components.MaterialForm.materialStatus',

@@ -4,7 +4,7 @@ import { Field, FieldArray, reduxForm, propTypes } from 'redux-form/immutable'
 import { Step, Stepper, StepButton, StepContent } from 'material-ui/Stepper'
 import RaisedButton from 'material-ui/RaisedButton'
 import MenuItem from 'material-ui/MenuItem'
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import H3 from 'components/H3'
 import P from 'components/P'
 import { Map } from 'immutable'
@@ -13,31 +13,28 @@ import { SelectField } from 'redux-form-material-ui'
 import { change } from 'redux-form';
 import RenderAuthors from './RenderAuthors'
 import RenderDropzoneInput from './RenderDropzoneInput'
-import RenderChip from './RenderChip'
 import RenderLanguages from './RenderLanguages'
 import messages from './messages'
+import { TRANSLATION } from './constants'
 
-class MaterialForm extends React.Component {
+class TranslationForm extends React.Component {
 
 
   render() {
-    const { handleSubmit, pristine, submitting, reset, activities, areas, intl, onEmailExists, invalid, changeStep, stepIndex, isAdmin } = this.props
-    const { formatMessage } = intls
-
+    const { handleSubmit, pristine, submitting, onEmailExists, changeStep, stepIndex } = this.props
     return (
       <div>
         <form onSubmit={handleSubmit}>
           <Stepper activeStep={stepIndex} linear={false} orientation='vertical'>
             <Step>
               <StepButton onClick={() => changeStep(0)}>
-                <H3><FormattedMessage {...messages.authors} /></H3>
+                <H3><FormattedMessage {...messages.translators} /></H3>
               </StepButton>
               <StepContent>
-                <P><FormattedMessage {...messages.authorsDataDesc} /></P>
-                <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} />
+                <P><FormattedMessage {...messages.translatorsDataDesc} /></P>
+                <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} showRole={false} mandatory={true} showDesc={false} />
               </StepContent>
             </Step>
-
             <Step>
               <StepButton onClick={() => changeStep(1)}>
                 <H3><FormattedMessage {...messages.files} /></H3>
@@ -70,9 +67,11 @@ class MaterialForm extends React.Component {
                 <H3><FormattedMessage {...messages.languageTitle} /></H3>
               </StepButton>
               <StepContent>
+
                 <P><FormattedMessage {...messages.languageHint} /></P>
-                <FieldArray name='languages' component={RenderLanguages} unique={true} />
-                <RaisedButton style={{ marginTop: '30px' }} type='submit' disabled={pristine || submitting} label={<FormattedMessage {...messages.sendMaterial} />} primary={true} />
+                <FieldArray name='languages' component={RenderLanguages} status={TRANSLATION} />
+
+                <RaisedButton style={{ marginTop: '30px' }} type='submit' disabled={pristine || submitting} label={<FormattedMessage {...messages.sendTranslation} />} primary={true} />
               </StepContent>
             </Step>
           </Stepper>
@@ -84,13 +83,13 @@ class MaterialForm extends React.Component {
   }
 }
 
-MaterialForm.propTypes = {
+TranslationForm.propTypes = {
   ...propTypes,
   languages: PropTypes.array.isRequired,
-  intl: intlShape.isRequired,
   onEmailExists: PropTypes.func.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
 }
 
 export default reduxForm({
-  form: 'MaterialFormTranslation'
-})(injectIntl(MaterialForm))
+  form: 'TranslationForm'
+})(TranslationForm)

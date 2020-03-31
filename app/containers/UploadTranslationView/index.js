@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import View from 'components/View'
-import MaterialForm from 'components/MaterialForm/MaterialFormUpdate'
+import TranslationForm from 'components/MaterialForm/TranslationForm'
 import { material } from 'containers/MaterialsView/actions'
 import api from 'services' // just the endpoint
 import P from 'components/P'
@@ -25,15 +25,12 @@ import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
-import { userIsAdmin } from 'utils/auth'
+import userIsAuthenticated from 'utils/auth'
 import messages from '../UploadMaterialView/messages'
 import { makeSelectUserLocale } from '../App/selectors'
 import { updateMaterial } from 'containers/MaterialsView/actions'
-import activities from 'data/activities'
-import areas from 'data/areas'
-import filterMessages from 'components/Filters/messages'
 
-class UpdateMaterialView extends PureComponent {
+class UploadTranslationView extends PureComponent {
 
   state = {
     stepIndex: 0,
@@ -68,14 +65,7 @@ class UpdateMaterialView extends PureComponent {
     const { intl, token, params } = this.props
     const formValues = values.toJS()
     const { formatMessage } = intl
-    const { languages, activities, areas, authors, status } = formValues
-    // change activities, areas from [{key1, value1}, {key2, value2}].. to [key1, key2...]
-    const Activities = activities ?
-      activities.map((activity) => (activity.value))
-      : []
-    const Areas = areas ?
-      areas.map((area) => (area.value))
-      : []
+    const { languages, authors } = formValues
 
     const Authors = authors.filter(author => author._id).map(author => ({ author: author._id, role: author.role }))
     if (authors.length === 0) {
@@ -126,7 +116,7 @@ class UpdateMaterialView extends PureComponent {
         }
       })
     }
-    const data = { areas: Areas, activities: Activities, authors: Authors, translations, status }
+    const data = { authors: Authors, translations }
     this.props.updateMaterial(params.idMaterial, data, token)
   }
 
@@ -149,35 +139,33 @@ class UpdateMaterialView extends PureComponent {
   })
 
   renderContent() {
-    const { materialData, loading, params, intl, role, _id } = this.props
+    const {
+      materialData,
+      loading,
+      intl,
+      role,
+      name,
+      email,
+      picture,
+      _id
+    } = this.props
     const { formatMessage } = intl
     if (loading) return <P><FormattedMessage {...messages.materialLoading} /></P>
     if (materialData.size === 0) return <P><FormattedMessage {...messages.materialNotFound} /> </P>
     const formData = materialData.toJS()
 
-    const authors = this.getAuthorsData(formData.authors)
-
-
     const languages = formData.translations.map(translation => {
       const authors = this.getAuthorsData(translation.authors)
       return { ...translation, authors }
     })
+    // add item 'to change'
+    languages.push({})
 
-    const listActivities = activities
-      .filter((activity) => formData.activities.indexOf(activity.code) !== -1)
-      .map(activity => ({ value: parseInt(activity.code, 10), text: formatMessage(filterMessages[activity.text]) }))
-
-    const listAreas = areas
-      .filter((area) => formData.areas.indexOf(area.code) !== -1)
-      .map(area => ({ value: parseInt(area.code, 10), text: formatMessage(filterMessages[area.text]) }))
-
-    const initialValues = { authors, areas: listAreas, activities: listActivities, languages, status: formData.status }
+    const initialValues = { authors: [{ name, email, picture, _id, role: 'translator' }], languages }
 
     return (
-      <MaterialForm
+      <TranslationForm
         onSubmit={(values) => this.handleSubmit(values)}
-        activities={activities}
-        areas={areas}
         languages={languages}
         onEmailExists={this.getUserByEmail}
         initialValues={initialValues}
@@ -190,7 +178,13 @@ class UpdateMaterialView extends PureComponent {
 
 
   render() {
-    const { intl, materialData, loading, error, locale } = this.props
+    const {
+      intl,
+      materialData,
+      loading,
+      error,
+      locale,
+    } = this.props
     const idMaterial = materialData.get('idMaterial')
     const { showDialog, dialogText, sending } = this.state
     const { formatMessage } = intl
@@ -246,7 +240,8 @@ class UpdateMaterialView extends PureComponent {
   }
 }
 
-UpdateMaterialView.propTypes = {
+
+UploadTranslationView.propTypes = {
   role: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   token: PropTypes.string.isRequired,
@@ -295,4 +290,4 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(userIsAdmin(injectIntl(UpdateMaterialView)))
+export default connect(mapStateToProps, mapDispatchToProps)(userIsAuthenticated(injectIntl(UploadTranslationView)))

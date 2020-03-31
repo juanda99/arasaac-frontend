@@ -45,6 +45,7 @@ const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange })
     fields.push(new Map())
   }
   if (fields.length === 0) addLanguage()
+  // if (status === 'TRANSLATION') addLanguage()
   return (
     <ul style={styles.list}>
       {fields.map((member, index) => (
@@ -57,6 +58,7 @@ const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange })
               floatingLabelText={<FormattedMessage {...messages.language} />}
               fullWidth
               validate={[required()]}
+              disabled={index != (fields.length - 1) && status === TRANSLATION}
             >
               {languages.map((language) =>
                 <MenuItem
@@ -75,6 +77,7 @@ const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange })
               floatingLabelText={<FormattedMessage {...messages.title} />}
               fullWidth
               validate={[required()]}
+              disabled={index != (fields.length - 1) && status === TRANSLATION}
             />
             <Field
               name={`${member}.desc`}
@@ -86,13 +89,11 @@ const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange })
               rows={2}
               fullWidth
               validate={[required()]}
+              disabled={index != (fields.length - 1) && status === TRANSLATION}
             />
             {/* if new material we don't show author for languages, too complicated*/}
             {status === UPDATE_MATERIAL && (
-              <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} mandatory={false} showRole={false} />
-            )}
-            {status === TRANSLATION && (
-              <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} mandatory={true} showRole={false} />
+              <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} mandatory={false} showRole={false} showDesc={true} />
             )}
             {/* every translation separately */}
             {status !== TRANSLATION && (

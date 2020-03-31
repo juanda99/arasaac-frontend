@@ -42,7 +42,7 @@ Object.assign(Validators.defaultOptions, {
   allowBlank: true
 })
 
-const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandatory }) => {
+const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandatory, showDesc }) => {
 
   const addAuthorField = (index) => {
     fields.push(new Map())
@@ -79,7 +79,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandato
   return (
 
     <div>
-      {!showRole && <P important={true}><FormattedMessage {...messages.translators} /></P>}
+      {showDesc && <P important={true}><FormattedMessage {...messages.translators} /></P>}
       <ul>
         {
 
@@ -131,7 +131,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandato
                   floatingLabelText={<FormattedMessage {...messages.role} />}
                   defaultValue='author'
                   style={styles.field}
-                  validate={required ? [required()] : []}
+                  validate={mandatory ? [required()] : []}
                   value='author'
                 >
                   <MenuItem
@@ -166,6 +166,10 @@ RenderAuthors.propTypes = {
   fields: PropTypes.object.isRequired,
   showRole: PropTypes.bool.isRequired,
   mandatory: PropTypes.bool.isRequired,
+  onEmailExists: PropTypes.func.isRequired,
+  onFieldChange: PropTypes.func.isRequired,
+  showDesc: PropTypes.bool.isRequired,
+
 }
 
 export default RenderAuthors

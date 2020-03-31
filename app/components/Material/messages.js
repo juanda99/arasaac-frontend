@@ -84,4 +84,12 @@ export default defineMessages({
     id: 'app.components.Material.translator',
     defaultMessage: 'Translator'
   },
+  addTranslation: {
+    id: 'app.components.Material.addTranslation',
+    defaultMessage: 'Add translation'
+  },
+  suggestTranslation: {
+    id: 'app.components.Material.suggestranslation',
+    defaultMessage: 'You can translate this material to another language and share it with us:'
+  },
 })

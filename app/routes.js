@@ -231,6 +231,26 @@ export default function createRoutes(store) {
       }
     },
     {
+      path: '/materials/add-translation(/:idMaterial)',
+      name: 'uploadTranslationView',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/MaterialsView/sagas'),
+          import('containers/UploadTranslationView/')
+        ])
+
+        const renderRoute = loadModule(cb)
+        // if reducer is async, render values:  defaultToggled:
+        // state.configuration.filters[ownProps.filter] got undefined!!!
+        importModules.then(([sagas, component]) => {
+          injectSagas(sagas.default)
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      }
+    },
+    {
       path: '/materials/:locale/:idMaterial',
       name: 'materialView',
       getComponent(nextState, cb) {

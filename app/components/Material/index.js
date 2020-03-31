@@ -241,22 +241,22 @@ class Material extends Component {
 
           </div>
         </div>
-        <H3 primary={true}>{<FormattedMessage {...messages.shareMaterial} />}</H3>
+        <H3 primary={true}><FormattedMessage {...messages.shareMaterial} /></H3>
         <Divider />
         <p>
           <ShareBar shareUrl={window.location.href} title={title} image={'http://www.arasaac.org/images/arasaac_titulo.png'} />
         </p>
-        <H3 primary={true}>{<FormattedMessage {...messages.activities} />}</H3>
+        <H3 primary={true}><FormattedMessage {...messages.activities} /></H3>
         <Divider />
         <div style={styles.wrapper}>
           {activityTags}
         </div>
-        <H3 primary={true}>{<FormattedMessage {...messages.areas} />}</H3>
+        <H3 primary={true}><FormattedMessage {...messages.areas} /></H3>
         <Divider />
         <div style={styles.wrapper}>
           {areaTags}
         </div>
-        <H3 primary={true}>{<FormattedMessage {...messages.languages} />}</H3>
+        <H3 primary={true}><FormattedMessage {...messages.languages} /></H3>
         <Divider />
         <RadioButtonGroup name='languages' valueSelected={language} onChange={this.handleChange}>
           {languages.map((language) => (
@@ -269,8 +269,11 @@ class Material extends Component {
           )
           )}
         </RadioButtonGroup>
-
-        <H3 primary={true}>{<FormattedMessage {...messages.authors} />}</H3>
+        <P><FormattedMessage {...messages.suggestTranslation} /></P>
+        <Link to={`/materials/add-translation/${idMaterial}`} >
+          <RaisedButton label={<FormattedMessage {...messages.addTranslation} />} primary={true} style={styles.button} />
+        </Link>
+        <H3 primary={true}><FormattedMessage {...messages.authors} /></H3>
         <Divider />
         <List>
           {/* general authors */}
@@ -278,7 +281,7 @@ class Material extends Component {
           {/* translation authors */}
           {currentTranslation.get('authors').map(authorData => this.createAuthorItem(authorData))}
         </List>
-        <H3 primary={true}>{<FormattedMessage {...messages.files} />}</H3>
+        <H3 primary={true}><FormattedMessage {...messages.files} /></H3>
         <Divider />
         {
           files.map((file) =>
