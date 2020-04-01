@@ -51,8 +51,8 @@ function materialsViewReducer(state = initialState, action) {
         .setIn(['materials', action.payload.data.idMaterial], newMaterial)
     case MATERIAL_REMOVE.SUCCESS:
       // need parseInt when remove from MaterialView
-      const idMaterial = parseInt(action.payload.data.idMaterial)
-      const newMaterials = state.get('newMaterials').filter((item) => item !== idMaterial)
+      const { idMaterial } = (action.payload.data)
+      const newMaterials = state.get('newMaterials').filter((item) => item !== parseInt(idMaterial))
       return state
         .set('loading', false)
         .deleteIn(['materials', idMaterial])

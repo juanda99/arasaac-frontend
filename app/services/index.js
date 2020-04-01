@@ -37,9 +37,9 @@ const api = {
       schema: searchPictogramSchema
     }),
   MATERIALS_REQUEST: ({ locale, searchText, token }) =>
-    callApi(`${API_ROOT}/materials/${locale}/${searchText}`, {
+    callApi(`${PRIVATE_API_ROOT}/materials/${locale}/${searchText}`, {
       schema: searchMaterialSchema
-    }),
+    }, token),
   NEW_MATERIALS_REQUEST: ({ token }) =>
     callApi(`${PRIVATE_API_ROOT}/materials/new/30`, { schema: searchMaterialSchema }, token),
   MATERIAL_REQUEST: ({ idMaterial, token }) =>
