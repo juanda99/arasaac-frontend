@@ -58,7 +58,7 @@ const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange })
               floatingLabelText={<FormattedMessage {...messages.language} />}
               fullWidth
               validate={[required()]}
-              disabled={index != (fields.length - 1) && status === TRANSLATION}
+              disabled={index !== 0 && status === TRANSLATION}
             >
               {languages.map((language) =>
                 <MenuItem
@@ -77,7 +77,7 @@ const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange })
               floatingLabelText={<FormattedMessage {...messages.title} />}
               fullWidth
               validate={[required()]}
-              disabled={index != (fields.length - 1) && status === TRANSLATION}
+              disabled={index !== 0 && status === TRANSLATION}
             />
             <Field
               name={`${member}.desc`}
@@ -89,11 +89,14 @@ const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange })
               rows={2}
               fullWidth
               validate={[required()]}
-              disabled={index != (fields.length - 1) && status === TRANSLATION}
+              disabled={index !== 0 && status === TRANSLATION}
             />
             {/* if new material we don't show author for languages, too complicated*/}
             {status === UPDATE_MATERIAL && (
               <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} mandatory={false} showRole={false} showDesc={true} />
+            )}
+            {status === TRANSLATION && (
+              <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} hide={true} />
             )}
             {/* every translation separately */}
             {status !== TRANSLATION && (

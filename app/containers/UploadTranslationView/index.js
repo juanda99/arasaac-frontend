@@ -67,7 +67,7 @@ class UploadTranslationView extends PureComponent {
     const { formatMessage } = intl
     const { languages, authors } = formValues
 
-    const Authors = authors.filter(author => author._id).map(author => ({ author: author._id, role: author.role }))
+    const Authors = authors.filter(author => author._id).map(author => ({ author: author._id, role: 'translator' }))
     if (authors.length === 0) {
       this.setState({ stepIndex: 0, showDialog: true, dialogText: formatMessage(messages.needAuthor) })
       return
@@ -116,7 +116,9 @@ class UploadTranslationView extends PureComponent {
         }
       })
     }
-    const data = { authors: Authors, translations }
+    translations[0].authors = Authors
+    const translationsReverse = translations.reverse()
+    const data = { authors: Authors, translations: translations.reverse() }
     this.props.updateMaterial(params.idMaterial, data, token)
   }
 
@@ -158,10 +160,10 @@ class UploadTranslationView extends PureComponent {
       const authors = this.getAuthorsData(translation.authors)
       return { ...translation, authors }
     })
-    // add item 'to change'
+    // add item 'to change' and change order to improve translation
     languages.push({})
-
-    const initialValues = { authors: [{ name, email, picture, _id, role: 'translator' }], languages }
+    const invertLanguages = languages.reverse()
+    const initialValues = { authors: [{ name, email, picture, _id, role: 'translator' }], languages: invertLanguages }
 
     return (
       <TranslationForm

@@ -42,7 +42,7 @@ Object.assign(Validators.defaultOptions, {
   allowBlank: true
 })
 
-const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandatory, showDesc }) => {
+const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandatory, showDesc, hide }) => {
 
   const addAuthorField = (index) => {
     fields.push(new Map())
@@ -84,7 +84,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandato
         {
 
           fields.map((member, index) =>
-            <li key={index} style={styles.authorsList}>
+            <li key={index} style={hide ? { ...styles.authorsList, display: 'none' } : styles.authorsList} >
               <img src={fields.get(index).get('picture')} style={{ width: '70px', height: '70px', marginRight: '15px', visibility: fields.get(index).get('picture') ? 'visible' : 'hidden' }} />
               <Field
                 name={`${member}.email`}
@@ -95,6 +95,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandato
                 style={styles.field}
                 onChange={handleEmailChange}
                 validate={mandatory ? [required(), email()] : [email()]}
+
               />
               <Field
                 name={`${member}.name`}
@@ -104,7 +105,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandato
                 hintText={<FormattedMessage {...messages.nameHint} />}
                 floatingLabelText={<FormattedMessage {...messages.name} />}
                 filter={MUIAutoComplete.fuzzyFilter}
-                style={styles.field}
+                style={hide ? styles.field : { ...styles.field, display: 'none' }}
                 validate={mandatory ? [required()] : []}
               />
               <Field
@@ -158,17 +159,18 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandato
           )
         }
       </ul>
-    </div>
+    </div >
   )
 }
 
 RenderAuthors.propTypes = {
   fields: PropTypes.object.isRequired,
-  showRole: PropTypes.bool.isRequired,
-  mandatory: PropTypes.bool.isRequired,
+  showRole: PropTypes.bool,
+  mandatory: PropTypes.bool,
   onEmailExists: PropTypes.func.isRequired,
   onFieldChange: PropTypes.func.isRequired,
-  showDesc: PropTypes.bool.isRequired,
+  showDesc: PropTypes.bool,
+  hide: PropTypes.bool,
 
 }
 
