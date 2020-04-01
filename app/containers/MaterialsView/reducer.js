@@ -4,7 +4,7 @@
  *
  */
 
-import { fromJS, List } from 'immutable'
+import { fromJS, List, Map } from 'immutable'
 import {
   MATERIALS,
   NEW_MATERIALS,
@@ -56,6 +56,7 @@ function materialsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .deleteIn(['materials', idMaterial])
+        .set('search', Map()) // we remove searches as it can be there....
         .set('newMaterials', newMaterials)
     case MATERIAL_PUBLISH.SUCCESS:
     case MATERIAL_UPDATE.SUCCESS:
