@@ -42,7 +42,8 @@ class UploadMaterialView extends PureComponent {
     dialogText: '',
     progressStatus: 0,
     sending: false,
-    loading: false
+    loading: false,
+    error: ''
   }
 
   handleChangeStep = (stepIndex) => this.setState({ stepIndex })

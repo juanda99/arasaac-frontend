@@ -105,7 +105,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandato
                 hintText={<FormattedMessage {...messages.nameHint} />}
                 floatingLabelText={<FormattedMessage {...messages.name} />}
                 filter={MUIAutoComplete.fuzzyFilter}
-                style={hide ? styles.field : { ...styles.field, display: 'none' }}
+                style={styles.field}
                 validate={mandatory ? [required()] : []}
               />
               <Field

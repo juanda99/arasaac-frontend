@@ -95,10 +95,9 @@ const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange })
             {status === UPDATE_MATERIAL && (
               <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} mandatory={false} showRole={false} showDesc={true} />
             )}
-            {status === TRANSLATION && (
+            {/* {status === TRANSLATION && (
               <FieldArray name={`${member}.authors`} component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={onFieldChange} hide={true} />
-            )}
-            {/* every translation separately */}
+            )} */}
             {status !== TRANSLATION && (
               <div>
                 <FloatingActionButton

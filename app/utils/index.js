@@ -84,3 +84,27 @@ export const keywordSelector = (searchText, keywords) => {
 /* for hair and skin options, get object key for a given value */
 export const getKeyByValue = (object, value) =>
   Object.keys(object).find((key) => object[key] === value)
+
+
+export const getMongoDBLanguage = (language) => {
+  switch (language) {
+    case 'da':
+    case 'nl':
+    case 'en':
+    case 'fi':
+    case 'fr':
+    case 'de':
+    case 'hu':
+    case 'it':
+    case 'nb':
+    case 'pt':
+    case 'ro':
+    case 'ru':
+    case 'es':
+    case 'sv':
+    case 'tr':
+      return language
+    default:
+      return 'none'
+  }
+}
