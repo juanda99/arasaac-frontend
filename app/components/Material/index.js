@@ -276,14 +276,6 @@ class Material extends Component {
         </Link>
         <H3 primary={true}><FormattedMessage {...messages.authors} /></H3>
         <Divider />
-        <List>
-          {/* general authors */}
-          {authors.map((authorData) => this.createAuthorItem(authorData))}
-          {/* translation authors */}
-          {currentTranslation.get('authors').map(authorData => this.createAuthorItem(authorData))}
-        </List>
-        <H3 primary={true}><FormattedMessage {...messages.files} /></H3>
-        <Divider />
         {
           files.map((file) =>
             <FlatButton
@@ -304,6 +296,16 @@ class Material extends Component {
         >
           <FormattedMessage {...messages.confirmDeletion} />
         </Dialog>
+        <Divider />
+
+        <List>
+          {/* general authors */}
+          {authors.map((authorData) => this.createAuthorItem(authorData))}
+          {/* translation authors */}
+          {currentTranslation.get('authors').map(authorData => this.createAuthorItem(authorData))}
+        </List>
+        <H3 primary={true}><FormattedMessage {...messages.files} /></H3>
+
       </div >
     )
   }

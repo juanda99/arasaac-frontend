@@ -208,33 +208,31 @@ class UploadTranslationView extends PureComponent {
       <View left={true} right={true}>
         {!sending ? (
           this.renderContent()
-        ) :
-          loading ? (
-            <FormattedMessage {...messages.updatingMaterial} />
-          ) : (
-              <div>
-                <P><FormattedMessage {...messages.progressStatus} values={{ progressStatus: `${progressStatus}` }} /></P>
-                <LinearProgress mode="determinate" value={progressStatus} style={{ maxWidth: '600px', height: '6px' }} />
-                {!loading && (
-                  <div>
-                    {error ? (
+        ) : (
+            <div>
+              <FormattedMessage {...messages.updatingMaterial} />
+              <P><FormattedMessage {...messages.progressStatus} values={{ progressStatus: `${progressStatus}` }} /></P>
+              <LinearProgress mode="determinate" value={progressStatus} style={{ maxWidth: '600px', height: '6px' }} />
+              {!loading && (
+                <div>
+                  {error ? (
+                    <div>
+                      <P>{error}</P>
+                      <RaisedButton label={formatMessage(messages.tryAgain)} onClick={this.resetForm} />
+                    </div>
+                  ) : (
                       <div>
-                        <P>{error}</P>
-                        <RaisedButton label={formatMessage(messages.tryAgain)} onClick={this.resetForm} />
-                      </div>
-                    ) : (
-                        <div>
-                          <P><FormattedMessage {...messages.updatedMaterial} /></P>
-                          <Link to={`/materials/${locale}/${idMaterial}`}>
-                            <RaisedButton primary={true} label={formatMessage(messages.showMaterial)} onClick={this.showMaterial} />
-                          </Link>
+                        <P><FormattedMessage {...messages.updatedMaterial} /></P>
+                        <Link to={`/materials/${locale}/${idMaterial}`}>
+                          <RaisedButton primary={true} label={formatMessage(messages.showMaterial)} onClick={this.showMaterial} />
+                        </Link>
 
-                        </div>
-                      )}
-                  </div>
-                )}
-              </div>
-            )
+                      </div>
+                    )}
+                </div>
+              )}
+            </div>
+          )
         }
         <Dialog
           title={formatMessage(messages.needReview)}
