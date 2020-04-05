@@ -7,15 +7,17 @@ import Counter from './Counter'
 
 class ImageSlider extends Component {
   render() {
-    const { id, images, style } = this.props
+    const { id, images, style, language } = this.props
     const imagesCount = images.length
     return (
       <div style={style} /* onMouseOver={this.mouseOver} onFocus={this.mouseOver} onMouseOut={this.mouseOut} onBlur={this.mouseOut}*/>
+
         <ReactSlidy dynamicContent infinite={false}>
           {
             imagesCount ?
               images.map((image, key) => (
-                <div key={key}>
+                /* use language for materials when changing material, slides need to be loaded, and key has to change */
+                <div key={`${id}-${language}`}>
                   <Counter>{`${key + 1}/${imagesCount}`}</Counter>
                   <img src={`${MATERIALS_URL}/${id}/screenshots/${image}`} alt='Screenshot' />
                 </div>
@@ -31,7 +33,8 @@ class ImageSlider extends Component {
 ImageSlider.propTypes = {
   images: PropTypes.array,
   id: PropTypes.number.isRequired,
-  style: PropTypes.object
+  style: PropTypes.object,
+  language: PropTypes.string,
 }
 
 export default ImageSlider

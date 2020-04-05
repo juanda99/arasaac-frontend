@@ -180,6 +180,8 @@ class Material extends Component {
     const title = currentTranslation.get('title')
     const desc = currentTranslation.get('desc')
     const images = [...material.get('commonScreenshots') || [], ...material.getIn(['screenshots', language]) || []]
+    console.log(images)
+    console.log(material)
     const files = [...material.get('commonFiles') || [], ...material.getIn(['files', language]) || []]
     // migration hack: if just one language and not under its language directory, it is compress under xx locale code
     const zipFile = material.getIn(['file', language]) || material.getIn(['file', 'xx'])
@@ -224,9 +226,8 @@ class Material extends Component {
         <H2 primary ucase>{title}</H2>
         {this.renderActionButtons()}
         <div style={styles.snippet}>
-
           <div style={{ position: 'relative' }}>
-            <ImageSlider images={images} id={idMaterial} style={styles.slides} />
+            <ImageSlider images={images} language={language} id={idMaterial} style={styles.slides} />
             {material.get('status') === PENDING && <Ribbon text={<FormattedMessage {...messages.pending} />} type='warning' />}
             {material.get('status') === NOT_PUBLISHED && <Ribbon text={<FormattedMessage {...messages.notPublished} />} type='danger' />}
           </div>
