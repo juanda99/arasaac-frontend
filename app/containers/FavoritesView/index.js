@@ -11,6 +11,7 @@ import View from 'components/View'
 import Helmet from 'react-helmet'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import userIsAuthenticated from 'utils/auth'
+import { DEFAULT_LIST } from 'utils'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 import FavoriteList from 'components/FavoriteList'
@@ -63,10 +64,12 @@ class FavoritesView extends PureComponent {
   }
 
   handleAddFavorite = (props) => {
-    const { addFavorite, token } = this.props
+    const { addFavorite, deleteFavorite, token } = this.props
     const fileName = props._id
     const listName = props.listName
     addFavorite(fileName, listName, token)
+    /* we remove material from defaultList */
+    if (listName !== DEFAULT_LIST) deleteFavorite(fileName, DEFAULT_LIST, token)
   };
 
   handleDeleteFavorite = (fileName, listName) => {
