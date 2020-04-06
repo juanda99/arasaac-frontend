@@ -58,6 +58,11 @@ function* authFlow() {
     yield call(loggedOutFlowSaga)
   }
   if (hasUser) {
+    /* we verify token is recent otherwise we call logout saga */
+    /* we get profile data */
+    console.log('will call authtenticate ****************************')
+    yield call(authenticate)
+    console.log('called authtenticate ****************************')
     yield takeEvery(LOGOUT, logoutSaga)
   }
 }
@@ -304,12 +309,12 @@ function* parseError(error) {
 function* authFlowSaga() {
   // first time rehydrate before reading from state....
   yield take(REHYDRATE)
-  while (true) {
-    const watcher = yield fork(authFlow)
-    yield take(LOCATION_CHANGE)
-    yield cancel(watcher)
-    // watcher = yield fork(authFlow)
-  }
+  // while (true) {
+  const watcher = yield fork(authFlow)
+  // yield take(LOCATION_CHANGE)
+  // yield cancel(watcher)
+  // watcher = yield fork(authFlow)
+  // }
 }
 
 export default authFlowSaga

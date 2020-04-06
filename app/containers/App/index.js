@@ -348,7 +348,6 @@ class App extends Component {
       menuOpen = true;
       showMenuIconButton = false;
     }
-    console.log('************************************ APP INIT ********************************')
     return (
       <div
         style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}

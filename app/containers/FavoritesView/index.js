@@ -8,6 +8,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import View from 'components/View'
+import P from 'components/P'
 import Helmet from 'react-helmet'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import userIsAuthenticated from 'utils/auth'
@@ -113,7 +114,7 @@ class FavoritesView extends PureComponent {
   }
 
   render() {
-    const { favorites, selectedList, favoritePictograms, intl, token } = this.props
+    const { favorites, selectedList, favoritePictograms, intl, loading } = this.props
     const { formatMessage } = intl
     return (
       <View left={true} right={true}>
@@ -135,7 +136,7 @@ class FavoritesView extends PureComponent {
           onClick={this.handleAddList}
           disabled={!this.state.listName}
         />
-        {favoritePictograms && <FavoriteList
+        {favoritePictograms && !loading && <FavoriteList
           items={favorites}
           onSelect={this.handleFavoriteListSelect}
           selectedList={selectedList}
@@ -147,6 +148,8 @@ class FavoritesView extends PureComponent {
           listPictograms={favoritePictograms}
           onDrop={this.handleAddFavorite}
         />}
+
+        {favoritePictograms && loading && <P>Cargando favoritos...</P>}
 
       </View>
     )
