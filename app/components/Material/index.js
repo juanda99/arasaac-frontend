@@ -283,6 +283,7 @@ class Material extends Component {
               labelPosition='after'
               icon={<Download />}
               href={`${MATERIALS_URL}/${idMaterial}/${file}`}
+              target='_blank'
             />
           )
         }
@@ -294,6 +295,7 @@ class Material extends Component {
               labelPosition='after'
               icon={<Download />}
               href={`${MATERIALS_URL}/${idMaterial}/${language}/${file}`}
+              target='_blank'
             />
           )
         }
