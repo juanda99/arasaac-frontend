@@ -27,7 +27,8 @@ import {
 } from 'containers/App/actions'
 import {
   makeSelectHasUser,
-  makeSelectFavorites
+  makeSelectFavorites,
+  makeSelectRootFavorites
 } from 'containers/App/selectors'
 import {
   makeLoadingSelector,
@@ -61,6 +62,23 @@ class FavoritesView extends PureComponent {
         return [].concat(...tmpIds)
       })
       await requestFavorites(locale, favoriteIds, token)
+    }
+  }
+
+  async componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+    const { requestFavorites, locale, token, favorites } = this.props
+    if (nextProps.favorites !== favorites) {
+      if (favorites) {
+        const [...lists] = favorites.keys()
+        const favoriteIds = lists.map((list) => {
+          // .flat() not for edge & explorer
+          // return favorites.get(list).toJS()).flat()
+          const tmpIds = favorites.get(list).toJS()
+          return [].concat(...tmpIds)
+        })
+        await requestFavorites(locale, favoriteIds, token)
+      }
     }
   }
 
@@ -180,7 +198,8 @@ const mapStateToProps = (state) => ({
   token: makeSelectHasUser()(state),
   favorites: makeSelectFavorites()(state),
   selectedList: makeListSelector()(state),
-  favoritePictograms: makeFavoritePictogramsSelector()(state)
+  favoritePictograms: makeFavoritePictogramsSelector()(state),
+  rootFavorites: makeSelectRootFavorites()(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({

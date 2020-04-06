@@ -113,7 +113,7 @@ const authReducer = (state = initialState, action) => {
       // after login ok, we test token asking for profile
       // token & refreshToken get not altered as they are valid
       // we upgrade user profile
-      return state.set('loading', false).mergeDeep(action.payload.authData)
+      return state.set('loading', false).set('favorites', {}).mergeDeep(action.payload.authData)
     case TOKEN_REFRESH.SUCCESS:
       return state
         .set('loading', false)
