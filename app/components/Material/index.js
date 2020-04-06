@@ -180,9 +180,7 @@ class Material extends Component {
     const title = currentTranslation.get('title')
     const desc = currentTranslation.get('desc')
     const images = [...material.get('commonScreenshots') || [], ...material.getIn(['screenshots', language]) || []]
-    console.log(images)
-    console.log(material)
-    const files = [...material.get('commonFiles') || [], ...material.getIn(['files', language]) || []]
+    // const files = [...material.get('commonFiles') || [], ...material.getIn(['files', language]) || []]
     // migration hack: if just one language and not under its language directory, it is compress under xx locale code
     const zipFile = material.getIn(['file', language]) || material.getIn(['file', 'xx'])
     const authors = material.get('authors')
@@ -278,13 +276,24 @@ class Material extends Component {
         <H3 primary={true}><FormattedMessage {...messages.files} /></H3>
         <Divider />
         {
-          files.map((file) =>
+          material.get('commonFiles').map((file) =>
             <FlatButton
               key={file}
               label={file}
               labelPosition='after'
               icon={<Download />}
               href={`${MATERIALS_URL}/${idMaterial}/${file}`}
+            />
+          )
+        }
+        {
+          material.getIn(['files', language]) && material.getIn(['files', language]).map((file) =>
+            <FlatButton
+              key={file}
+              label={file}
+              labelPosition='after'
+              icon={<Download />}
+              href={`${MATERIALS_URL}/${idMaterial}/${language}/${file}`}
             />
           )
         }
