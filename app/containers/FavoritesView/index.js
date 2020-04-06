@@ -40,6 +40,7 @@ import {
   toggleShowFilter,
   favoriteListSelect
 } from 'containers/PictogramsView/actions'
+import api from 'services'
 import messages from './messages'
 
 class FavoritesView extends PureComponent {
@@ -123,7 +124,10 @@ class FavoritesView extends PureComponent {
   }
 
   handleDownloadList = (listName) => {
-    console.log(`Download list ${listName}`)
+
+    const { token } = this.props
+    console.log(`Download list ${listName}, token: ${token}`)
+    api.DOWNLOAD_LIST({ listName, token })
   }
 
   handleDownload = (idPictogram, keyword) => {
