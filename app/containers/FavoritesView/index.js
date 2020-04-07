@@ -16,7 +16,7 @@ import { DEFAULT_LIST } from 'utils'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 import FavoriteList from 'components/FavoriteList'
-import { downloadPictogram } from 'services'
+import { downloadPictogram, downloadList } from 'services'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import {
   deleteFavorite,
@@ -27,6 +27,7 @@ import {
 } from 'containers/App/actions'
 import {
   makeSelectHasUser,
+  makeSelectId,
   makeSelectFavorites,
   makeSelectRootFavorites
 } from 'containers/App/selectors'
@@ -123,15 +124,17 @@ class FavoritesView extends PureComponent {
     renameList(listName, newListName, token)
   }
 
-  handleDownloadList = (listName) => {
+  handleDownloadList = listName => {
 
-    const { token } = this.props
-    console.log(`Download list ${listName}, token: ${token}`)
-    api.DOWNLOAD_LIST({ listName, token })
+    const { id } = this.props
+    console.log(`Download list ${listName}, id: ${id}`)
+    const location = downloadList(listName, id)
+    window.location = location
   }
 
   handleDownload = (idPictogram, keyword) => {
     const location = downloadPictogram(idPictogram, keyword)
+    console.log(location, 'xxxx')
     window.location = location
   }
 
@@ -193,7 +196,8 @@ FavoritesView.propTypes = {
   favoriteListSelect: PropTypes.func.isRequired,
   favoritePictograms: PropTypes.arrayOf(PropTypes.object),
   intl: intlShape.isRequired,
-  router: PropTypes.any.isRequired
+  router: PropTypes.any.isRequired,
+  id: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = (state) => ({
@@ -203,7 +207,8 @@ const mapStateToProps = (state) => ({
   favorites: makeSelectFavorites()(state),
   selectedList: makeListSelector()(state),
   favoritePictograms: makeFavoritePictogramsSelector()(state),
-  rootFavorites: makeSelectRootFavorites()(state)
+  rootFavorites: makeSelectRootFavorites()(state),
+  id: makeSelectId()(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({

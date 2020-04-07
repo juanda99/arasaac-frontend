@@ -61,7 +61,6 @@ const api = {
   ADD_LIST_REQUEST: ({ listName, token }) => callApi(addFavoriteList.url(listName), addFavoriteList.options, token),
   DELETE_LIST_REQUEST: ({ listName, token }) => callApi(deleteFavoriteList.url(listName), deleteFavoriteList.options, token),
   RENAME_LIST_REQUEST: ({ listName, newListName, token }) => callApi(renameFavoriteList.url(listName), renameFavoriteList.options(newListName), token),
-  DOWNLOAD_LIST: ({ listName, token }) => callApi(`${PRIVATE_API_ROOT}/users/favorites/${listName}`, null, token),
   DELETE_FAVORITE_REQUEST: ({ ...data, token }) => callApi(removeFavorite.url, removeFavorite.options(data), token),
   GENERATE_CUSTOM_PICTOGRAM: (parameters) =>
     callApi(customPicto.url, customPicto.options(parameters)),
@@ -86,6 +85,9 @@ export const downloadCustomPictogram = (fileName) =>
 
 export const downloadPictogram = (fileName, keyword) =>
   `${PRIVATE_API_ROOT}/pictograms/download/${fileName}/${keyword}`
+
+export const downloadList = (listName, id) =>
+  `${PRIVATE_API_ROOT}/users/favorites/${id}/${listName}`
 
 export const downloadLocution = (locale, keyword) =>
   `${PRIVATE_API_ROOT}/locutions/${locale}/${keyword}`
