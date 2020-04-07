@@ -522,7 +522,7 @@
   "signup.updateAccount": "Felhasználói fiók frissítése",
   "signup.userActivated": "A felhasználó aktiválva.",
   "signup.userConflict": "Ön már korábban regisztrált, van létező felhasználói fiókja. Elfelejtette a jelszavát?",
-  "signup.userCreated": "An email has been sent to you. Please check it to verify your account.",
+  "signup.userCreated": "Küldtünk Önnek egy emailt. Kérjük ellenőrizze és erősítse meg a regisztrációját.",
   "signup.userNotActivated": "You have already signed up. Please check your email to verify your account.",
   "signup.userNotCreated": "An error occurred while creating a new user",
   "size.choose": "Méret",
