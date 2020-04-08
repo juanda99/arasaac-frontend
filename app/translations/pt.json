@@ -372,6 +372,7 @@
   "app.containers.PictogramsView.addFolderHint": "Digite o nome da nova pasta",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "Este conteúdo só está disponível para utilizadores autenticados",
   "app.containers.PictogramsView.folderName": "Nome da pasta",
+  "app.containers.PictogramsView.loadingFavorites": "Loading favorites...",
   "app.containers.PictogramsView.loadingPictograms": "A carregar pictogramas...",
   "app.containers.PictogramsView.new": "Novo",
   "app.containers.PictogramsView.newPictogramsFound": "We have found {pictogramsCounter} pictograms created recently",
