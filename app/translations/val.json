@@ -372,6 +372,7 @@
   "app.containers.PictogramsView.addFolderHint": "Escriviu el nom de la nova carpeta",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "Aquest contingut només està disponible per a usuaris autentificats",
   "app.containers.PictogramsView.folderName": "Nom de la carpeta",
+  "app.containers.PictogramsView.loadingFavorites": "Loading favorites...",
   "app.containers.PictogramsView.loadingPictograms": "S'estan carregant pictogrames...",
   "app.containers.PictogramsView.new": "Nou",
   "app.containers.PictogramsView.newPictogramsFound": "We have found {pictogramsCounter} pictograms created recently",
