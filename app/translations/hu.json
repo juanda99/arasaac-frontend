@@ -372,6 +372,7 @@
   "app.containers.PictogramsView.addFolderHint": "Adja meg az új mappa nevét",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "Ez a tartalom csak bejelentkezett felhasználóknak érhető el",
   "app.containers.PictogramsView.folderName": "Mappa neve",
+  "app.containers.PictogramsView.loadingFavorites": "Loading favorites...",
   "app.containers.PictogramsView.loadingPictograms": "Piktogramok betöltése...",
   "app.containers.PictogramsView.new": "Új",
   "app.containers.PictogramsView.newPictogramsFound": "We have found {pictogramsCounter} new or updated pictograms in the last 30 days",
