@@ -319,7 +319,7 @@
   "app.containers.AboutView.addressInfo": "Zaragozában (Spanyolország) találhat ránk. Postacímünk:",
   "app.containers.AboutView.arasaacTeam": "ARASAAC csapata",
   "app.containers.AboutView.fundedBy": "Az Aragon Kormány (Spanyolország) Oktatási, Sport és Kulturális Minisztériuma által finanszírozott projekt. Az ARASAAC a fejlesztési és oktatási területhez tartozik",
-  "app.containers.AboutView.whatArasaacOffers": "ARASAAC offers graphic and material resources adapted with a Creative Commons license(BY - NC - SA) to facilitate communication and cognitive accessibility to all people who, due to different factors(autism, intellectual disability, lack of language, elderly people, etc.), present serious difficulties in these areas, which hinder their inclusion in any area of ​​daily life.",
+  "app.containers.AboutView.whatArasaacOffers": "Az ARAASAAC a Creative Commons license(BY - NC - SA) által adaptált ábrákat és eszközöket ajánl, melyek megkönnyítik a kommunikációs és megismerő tevékenységet minden olyan személy számára, akik különböző tényezők (autizmus, értelmi fogyatékosság, beszéd hiánya, idősebb személyek, stb.) miatt nehézségekkel küzdenek ezeken a területeken, és ezek akadályozzák őket a mindennapi élet bármely területén.",
   "app.containers.AboutView.whatIsArasaac": "Mi az ARASAAC?",
   "app.containers.AboutView.whereWeAre": "Hol vagyunk",
   "app.containers.AuthorSnippet.coordinator": "ARASAAC koordinátor",
@@ -532,6 +532,6 @@
   "userMenu.signout": "Kijelentkezés",
   "userMenu.stopTranslateArasaac": "ARASAAC fordításának befejezése",
   "userMenu.translateArasaac": "ARASAAC fordítása",
-  "userMenu.userMaterial": "Az én-m anyag",
-  "userMenu.userProfile": "A profilom"
+  "userMenu.userMaterial": "Az eszközeim",
+  "userMenu.userProfile": "Profilom"
 }
