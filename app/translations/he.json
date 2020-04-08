@@ -372,6 +372,7 @@
   "app.containers.PictogramsView.addFolderHint": "הקלד את שם התיקיה החדשה",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "חומר זה שמיש רק למשתמשים מורשים",
   "app.containers.PictogramsView.folderName": "שם הקובץ",
+  "app.containers.PictogramsView.loadingFavorites": "Loading favorites...",
   "app.containers.PictogramsView.loadingPictograms": "מעלה סמלים...",
   "app.containers.PictogramsView.new": "חדש",
   "app.containers.PictogramsView.newPictogramsFound": "מצאנו {pictogramsCounter} איורים שנוצרו לאחרונה",
