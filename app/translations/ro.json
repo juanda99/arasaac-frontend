@@ -372,6 +372,7 @@
   "app.containers.PictogramsView.addFolderHint": "Introduceți numele noului folder",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "Acest conținut este disponibil numai pentru utilizatorii autentificați",
   "app.containers.PictogramsView.folderName": "Numele dosarului",
+  "app.containers.PictogramsView.loadingFavorites": "Loading favorites...",
   "app.containers.PictogramsView.loadingPictograms": "Se încarcă pictograme...",
   "app.containers.PictogramsView.new": "Noutăți",
   "app.containers.PictogramsView.newPictogramsFound": "Am găsit {pictogramsCounter} pictograme create recent",

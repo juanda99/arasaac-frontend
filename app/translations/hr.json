@@ -372,6 +372,7 @@
   "app.containers.PictogramsView.addFolderHint": "Napišite ime novog direktorija",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "Sadržaj je dostupan samo za provjerene korisnike",
   "app.containers.PictogramsView.folderName": "Naziv direktorija",
+  "app.containers.PictogramsView.loadingFavorites": "Loading favorites...",
   "app.containers.PictogramsView.loadingPictograms": "Učitavanje piktograma...",
   "app.containers.PictogramsView.new": "New",
   "app.containers.PictogramsView.newPictogramsFound": "We have found {pictogramsCounter} pictograms created recently",

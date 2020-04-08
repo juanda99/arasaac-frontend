@@ -372,6 +372,7 @@
   "app.containers.PictogramsView.addFolderHint": "crwdns3194:0crwdne3194:0",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "crwdns3196:0crwdne3196:0",
   "app.containers.PictogramsView.folderName": "crwdns3198:0crwdne3198:0",
+  "app.containers.PictogramsView.loadingFavorites": "crwdns3570:0crwdne3570:0",
   "app.containers.PictogramsView.loadingPictograms": "crwdns3200:0crwdne3200:0",
   "app.containers.PictogramsView.new": "crwdns3202:0crwdne3202:0",
   "app.containers.PictogramsView.newPictogramsFound": "crwdns3204:0{pictogramsCounter}crwdne3204:0",
