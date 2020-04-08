@@ -346,7 +346,7 @@
   "app.containers.DevelopersView.grantTypesDesc": "Depending on the type of application and specific needs, an specific grant type or other must be implemented. Do not hesitate to contact us for more information.",
   "app.containers.DevelopersView.howto": "API használat",
   "app.containers.DevelopersView.howtoDesc": "In order to use the ARASAAC API you need access credentials. We use the Oauth2 authorization protocol that allows us that third-party applications can access both ARASAAC and its users data.",
-  "app.containers.DevelopersView.introApi": "ARASAAC has an extensive API to serve our resources to third-party applications.",
+  "app.containers.DevelopersView.introApi": "Az ARASAAC megbízható API-n keresztül nyújt harmadik félnek szolgáltatásokat.",
   "app.containers.DevelopersView.license": "ARASAAC Creative Commons licenc BY-NC-SA",
   "app.containers.DevelopersView.termsOfUse": "Felhasználási feltételek",
   "app.containers.DevelopersView.termsOfUseDesc": "Az ARASAAC API kizárólag nem kereskedelmi célú felhasználásra érhető el.  Kérjük ellenőrizze a felhasználási feltételeket!",
