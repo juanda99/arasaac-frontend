@@ -372,6 +372,7 @@
   "app.containers.PictogramsView.addFolderHint": "Entrez le nom du nouveau dossier",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "Ce contenu n'est disponible que pour les utilisateurs authentifiés",
   "app.containers.PictogramsView.folderName": "Nom du dossier",
+  "app.containers.PictogramsView.loadingFavorites": "Loading favorites...",
   "app.containers.PictogramsView.loadingPictograms": "Chargement des pictogrammes...",
   "app.containers.PictogramsView.new": "New",
   "app.containers.PictogramsView.newPictogramsFound": "We have found {pictogramsCounter} pictograms created recently",
