@@ -372,7 +372,7 @@
   "app.containers.PictogramsView.addFolderHint": "Escribe el nombre de la carpeta",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "Este contenido está disponible únicamente para usuarios autenticados",
   "app.containers.PictogramsView.folderName": "Nombre de la carpeta",
-  "app.containers.PictogramsView.loadingFavorites": "Loading favorites...",
+  "app.containers.PictogramsView.loadingFavorites": "Obteniendo favoritos...",
   "app.containers.PictogramsView.loadingPictograms": "Obteniendo pictogramas...",
   "app.containers.PictogramsView.new": "Nuevos",
   "app.containers.PictogramsView.newPictogramsFound": "Hemos encontrado {pictogramsCounter} pictogramas creados recientemente",
