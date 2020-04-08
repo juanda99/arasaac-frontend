@@ -372,6 +372,7 @@
   "app.containers.PictogramsView.addFolderHint": "Karpeta berriaren izena idatzi",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "Eduki hau autentifikatutako erabiltzaileentzat bakarrik dago eskuragarri",
   "app.containers.PictogramsView.folderName": "Karpetaren izena",
+  "app.containers.PictogramsView.loadingFavorites": "Loading favorites...",
   "app.containers.PictogramsView.loadingPictograms": "Piktograma kargatzen...",
   "app.containers.PictogramsView.new": "Berria",
   "app.containers.PictogramsView.newPictogramsFound": "Duela gutxi sortutako {pictogramsCounter} piktogramak aurkitu ditugu",
