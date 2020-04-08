@@ -174,7 +174,7 @@ class FavoritesView extends PureComponent {
           onDrop={this.handleAddFavorite}
         />}
 
-        {favoritePictograms && loading && <P>Cargando favoritos...</P>}
+        {favoritePictograms && loading && <P><FormattedMessage {...messages.loadingFavorites} /></P>}
 
       </View>
     )

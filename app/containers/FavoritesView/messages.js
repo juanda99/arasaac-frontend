@@ -17,5 +17,9 @@ export default defineMessages({
   folderName: {
     id: 'app.containers.PictogramsView.folderName',
     defaultMessage: 'Folder name'
+  },
+  loadingFavorites: {
+    id: 'app.containers.PictogramsView.loadingFavorites',
+    defaultMessage: 'Loading favorites...'
   }
 })
