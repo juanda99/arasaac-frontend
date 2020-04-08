@@ -372,6 +372,7 @@
   "app.containers.PictogramsView.addFolderHint": "Введите имя новой папки",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "Этот контент доступен только авторизованным пользователям",
   "app.containers.PictogramsView.folderName": "Имя папки",
+  "app.containers.PictogramsView.loadingFavorites": "Loading favorites...",
   "app.containers.PictogramsView.loadingPictograms": "Загрузка пиктограмма...",
   "app.containers.PictogramsView.new": "Новое",
   "app.containers.PictogramsView.newPictogramsFound": "Было найдено {pictogramsCounter} пиктограмм созданных в последнее время",
