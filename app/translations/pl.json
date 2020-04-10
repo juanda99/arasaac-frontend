@@ -325,7 +325,7 @@
   "app.containers.AuthorSnippet.coordinator": "Koordynator ARASAAC",
   "app.containers.AuthorSnippet.developer": "Programista ARASAAC",
   "app.containers.AuthorSnippet.reachme": "Jesteśmy dostępni:",
-  "app.containers.ContactView.alertWindowErrorDesc": "Przykro nam, ale nie mogliśmy otrzymać Twojej wiadomości. Spróbuj ponownie później lub skontaktuj się z nami za pośrednictwem naszych portali społecznościowych",
+  "app.containers.ContactView.alertWindowErrorDesc": "We are sorry but we could not receive your message.Try again later or contact us through our social networks",
   "app.containers.ContactView.alertWindowErrorTitle": "Błąd formularza kontaktowego",
   "app.containers.ContactView.form.email": "Adres e-mail",
   "app.containers.ContactView.form.emailHint": "Wpisz swój adres e-mail",
