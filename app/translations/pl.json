@@ -515,11 +515,11 @@
   "signup.labelEmail": "Adres e-mail",
   "signup.labelName": "Nazwisko",
   "signup.labelPassword": "Hasło",
-  "signup.labelWebsite": "Strona www (opcjonalnie)",
+  "signup.labelWebsite": "Strona internetowa (opcjonalnie)",
   "signup.privacyPolicy": "Polityka prywatności",
   "signup.recoverPassword": "Odzyskaj hasło",
   "signup.signin": "Zaloguj się",
-  "signup.termsOfUse": "ARASAAC warunki użycia",
+  "signup.termsOfUse": "ARASAAC warunki użytkowania",
   "signup.updateAccount": "Aktualizuj konto",
   "signup.userActivated": "Konto użytkownika zostało aktywowane.",
   "signup.userConflict": "Już się zarejestrowałeś i potwierdziłeś swoje konto. Zapomniałeś hasła?",
@@ -532,7 +532,7 @@
   "userMenu.signin": "Zaloguj się",
   "userMenu.signout": "Wyloguj się",
   "userMenu.stopTranslateArasaac": "Przestań tłumaczyć ARASAAC",
-  "userMenu.translateArasaac": "Przetłumacz ARASAAC",
+  "userMenu.translateArasaac": "Tłumacz ARASAAC",
   "userMenu.userMaterial": "Mój materiał",
   "userMenu.userProfile": "Mój profil"
 }
