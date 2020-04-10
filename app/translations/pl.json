@@ -375,7 +375,7 @@
   "app.containers.PictogramsView.loadingFavorites": "Ładowanie ulubionych...",
   "app.containers.PictogramsView.loadingPictograms": "Ładowanie piktogramów...",
   "app.containers.PictogramsView.new": "Nowy",
-  "app.containers.PictogramsView.newPictogramsFound": "Znaleźliśmy {pictogramsCounter} ostatnio utworzone piktogramów/y",
+  "app.containers.PictogramsView.newPictogramsFound": "Znaleźliśmy {pictogramsCounter} ostatnio utworzone/ych piktogramy/ów",
   "app.containers.PictogramsView.pictogramsFound": "{pictogramsCounter, plural, one {Udało nam się znaleźć tylko jeden piktogram} other {Udało nam się znaleźć {pictogramsCounter} piktogramy/ów}}",
   "app.containers.PictogramsView.pictogramsNotFound": "Przepraszamy, nie możemy znaleźć piktogramu",
   "app.containers.PictogramsView.search": "Szukaj",
