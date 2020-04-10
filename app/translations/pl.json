@@ -410,7 +410,7 @@
   "app.containersTranslationStatus.noDataAvailable": "Brak dostępnych danych",
   "app.containersTranslationStatus.pictosTranslationStatus": "Tłumaczenie Piktogramów (może być już przetłumaczone, ale nie zatwierdzone): {pictosValidatedString}%",
   "app.containersTranslationStatus.webTranslationStatus": "Tłumaczenie internetowe: {webTranslatedString}%",
-  "email.signin": "wiadomości e-mail",
+  "email.signin": "e-mail",
   "header.aboutUs": "O nas",
   "header.api": "API dla programistów",
   "header.arasaacWorld": "ARASAAC na świecie",
