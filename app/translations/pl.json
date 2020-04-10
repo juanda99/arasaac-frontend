@@ -273,7 +273,7 @@
   "app.components.Pictogram.upperCase": "Wielkie litery",
   "app.components.Pictogram.verbalTense": "Czas czasownika",
   "app.components.PictogramSnippet.addFavorite": "Dodaj do ulubionych",
-  "app.components.PictogramSnippet.addFavoriteTooltip": "Dodaj piktogram do karty ulubionych",
+  "app.components.PictogramSnippet.addFavoriteTooltip": "Dodaj piktogram do zakładki ulubionych",
   "app.components.PictogramSnippet.deleteFavorite": "Usuń z ulubionych",
   "app.components.PictogramSnippet.download": "Pobierz piktogram",
   "app.components.PictogramSnippet.downloadTooltip": "Pobierz piktogram",
