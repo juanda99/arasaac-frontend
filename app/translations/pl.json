@@ -2,7 +2,7 @@
   "Login.invalidEmail": "Nieprawidłowy adres e-mail",
   "Login.invalidUrl": "Nieprawidłowy adres url",
   "Login.required": "Wymagane",
-  "NewPasswordForm.hintNewPassword": "Wpisz nowe hasło:",
+  "NewPasswordForm.hintNewPassword": "Jakie jest twoje nowe hasło?",
   "activate.activateUser": "Aktywacja użytkownika",
   "activate.expiredCode": "Twój kod aktywacyjny utracił ważność. Wysłaliśmy Ci kolejny e-mail, aby potwierdzić Twoje konto",
   "activate.invalidCode": "Twój kod aktywacyjny jest nieprawidłowy",
