@@ -8,6 +8,7 @@ import { createRequestTypes, action } from 'utils/actions'
 
 // constants
 export const MATERIALS = createRequestTypes('MATERIALS')
+export const MATERIALS_NOT_PUBLISHED = createRequestTypes('MATERIALS_NOT_PUBLISHED')
 export const NEW_MATERIALS = createRequestTypes('NEW_MATERIALS')
 export const MATERIAL_PUBLISH = createRequestTypes('MATERIAL_PUBLISH')
 export const MATERIAL_REMOVE = createRequestTypes('MATERIAL_REMOVE')
@@ -36,6 +37,12 @@ export const publishMaterial = {
   request: (id, status, token) => action(MATERIAL_PUBLISH.REQUEST, { id, status, token }),
   success: (data) => action(MATERIAL_PUBLISH.SUCCESS, { data }),
   failure: (error) => action(MATERIAL_PUBLISH.FAILURE, { error })
+}
+
+export const notPublishedMaterials = {
+  request: (token) => action(MATERIALS_NOT_PUBLISHED.REQUEST, { token }),
+  success: (data) => action(MATERIALS_NOT_PUBLISHED.SUCCESS, { data }),
+  failure: (error) => action(MATERIALS_NOT_PUBLISHED.FAILURE, { error })
 }
 
 export const removeMaterial = {

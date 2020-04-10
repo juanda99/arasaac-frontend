@@ -13,7 +13,8 @@ import {
   MATERIAL_PUBLISH,
   MATERIAL_REMOVE,
   MATERIAL,
-  MATERIAL_UPDATE
+  MATERIAL_UPDATE,
+  MATERIALS_NOT_PUBLISHED
 } from './actions'
 
 export const initialState = fromJS({
@@ -41,6 +42,7 @@ function materialsViewReducer(state = initialState, action) {
     case MATERIAL_PUBLISH.REQUEST:
     case MATERIAL_UPDATE.REQUEST:
     case NEW_MATERIALS.REQUEST:
+    case MATERIALS_NOT_PUBLISHED.REQUEST:
       return state
         .set('loading', true)
         .set('error', false)
@@ -66,6 +68,7 @@ function materialsViewReducer(state = initialState, action) {
         .setIn(['materials', action.payload.data.idMaterial], newMaterial)
     case MATERIAL_REMOVE.FAILURE:
     case MATERIAL_PUBLISH.FAILURE:
+    case MATERIALS_NOT_PUBLISHED.FAILURE:
     case MATERIAL_UPDATE.FAILURE:
       return state
         .set('error', action.payload.error)
@@ -77,6 +80,11 @@ function materialsViewReducer(state = initialState, action) {
         .set('loading', false)
         .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data.result)
         .mergeIn(['materials'], newMaterial)
+    case MATERIALS_NOT_PUBLISHED.SUCCESS:
+      const notPublishedMaterials = fromJS(action.payload.data || [])
+      return state
+        .set('loading', false)
+        .mergeIn(['materials'], notPublishedMaterials)
     case MATERIALS.FAILURE:
       return state
         .set('error', action.payload.error)

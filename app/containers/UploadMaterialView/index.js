@@ -28,6 +28,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { PRIVATE_API_ROOT } from 'services/config'
 import userIsAuthenticated from 'utils/auth'
 import messages from './messages'
+import MaterialConditions from './MaterialConditions'
 import { makeSelectUserLocale } from '../App/selectors'
 // import { makeLoadingSelector, makeErrorSelector } from './selectors'
 import activities from 'data/activities'
@@ -155,7 +156,7 @@ class UploadMaterialView extends PureComponent {
   render() {
     const { name, email, picture, _id, intl, language, role } = this.props
 
-    const { showDialog, dialogText, sending, progressStatus, error, loading } = this.state
+    const { showDialog, dialogText, sending, progressStatus, error, loading, showMaterialConditions } = this.state
     const { formatMessage } = intl
     const initialValues = { authors: [{ name, email, picture, _id, role: 'author' }], languages: [{ language, title: '', desc: '', showLangFiles: false, showLangImages: false }], status: 2 }
     const actions = [
@@ -170,6 +171,7 @@ class UploadMaterialView extends PureComponent {
 
     return (
       <View left={true} right={true}>
+        <MaterialConditions />
         {!sending ? (
           <MaterialForm
             onSubmit={(values) => this.handleSubmit(values)}

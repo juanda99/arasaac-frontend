@@ -8,10 +8,12 @@ import {
   MATERIAL_PUBLISH,
   MATERIAL_REMOVE,
   MATERIAL,
+  MATERIALS_NOT_PUBLISHED,
   MATERIAL_UPDATE,
   materials,
   newMaterials,
   publishMaterial,
+  notPublishedMaterials,
   removeMaterial,
   material,
   updateMaterial
@@ -56,6 +58,18 @@ function* materialPublishGetData(action) {
   }
 }
 
+function* materialsNotPublishedGetData(action) {
+  try {
+    yield put(showLoading())
+    const response = yield call(api[action.type], action.payload)
+    yield put(notPublishedMaterials.success(response))
+  } catch (error) {
+    yield put(notPublishedMaterials.failure(error.message))
+  } finally {
+    yield put(hideLoading())
+  }
+}
+
 function* materialRemoveGetData(action) {
   try {
     yield put(showLoading())
@@ -84,6 +98,13 @@ export function* materialRemoveData() {
 
 export function* materialPublishData() {
   const watcher = yield takeLatest(MATERIAL_PUBLISH.REQUEST, materialPublishGetData)
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE)
+  yield cancel(watcher)
+}
+
+export function* materialsNotPublishedData() {
+  const watcher = yield takeLatest(MATERIALS_NOT_PUBLISHED.REQUEST, materialsNotPublishedGetData)
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE)
   yield cancel(watcher)
@@ -135,4 +156,4 @@ export function* materialData() {
 }
 
 // All sagas to be loaded
-export default [materialsData, newMaterialsData, materialPublishData, materialRemoveData, materialData, updateMaterialData]
+export default [materialsData, newMaterialsData, materialPublishData, materialsNotPublishedData, materialRemoveData, materialData, updateMaterialData]

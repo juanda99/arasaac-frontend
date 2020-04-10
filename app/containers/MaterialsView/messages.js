@@ -41,6 +41,19 @@ export default defineMessages({
     description: 'Label for new materials tab',
     defaultMessage: 'New'
   },
+  new: {
+    id: 'app.containers.MaterialsView.new',
+    description: 'Label for new materials tab',
+    defaultMessage: 'New'
+  },
+  pending: {
+    id: 'app.containers.MaterialsView.pending',
+    defaultMessage: 'Pending'
+  },
+  notPublished: {
+    id: 'app.containers.MaterialsView.notPublished',
+    defaultMessage: 'Not published'
+  },
   loadingMaterials: {
     id: 'app.containers.MaterialsView.loadingMaterials',
     defaultMessage: 'Loading materials...'

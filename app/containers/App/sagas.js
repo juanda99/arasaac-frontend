@@ -60,9 +60,7 @@ function* authFlow() {
   if (hasUser) {
     /* we verify token is recent otherwise we call logout saga */
     /* we get profile data */
-    console.log('will call authtenticate ****************************')
     yield call(authenticate)
-    console.log('called authtenticate ****************************')
     yield takeEvery(LOGOUT, logoutSaga)
   }
 }

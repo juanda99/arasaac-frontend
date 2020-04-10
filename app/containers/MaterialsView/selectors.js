@@ -1,7 +1,8 @@
 import { denormalize } from 'normalizr'
 import { createSelector } from 'reselect'
 import { searchMaterialSchema } from 'services/schemas'
-import { getFilteredItems } from 'utils'
+import { getFilteredItems, NOT_PUBLISHED, PENDING } from 'utils'
+
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 
 export const selectMaterialsViewDomain = (state) => state.get('materialsView')
@@ -61,6 +62,21 @@ const makeEntitiesSelector = () => createSelector(
     entities.materials = materials.toJS()
     return entities
   }
+)
+
+const makeMaterialsFromEntitiesSelector = () => createSelector(
+  makeEntitiesSelector(),
+  (entities) => Object.values(entities.materials) || [] // maybe it's empty
+)
+
+export const makePendingSelector = () => createSelector(
+  makeMaterialsFromEntitiesSelector(),
+  (materials) => materials.filter(material => material.status === PENDING)
+)
+
+export const makeNotPublishedSelector = () => createSelector(
+  makeMaterialsFromEntitiesSelector(),
+  (materials) => materials.filter(material => material.status === NOT_PUBLISHED)
 )
 
 export const makeVisibleMaterialsSelector = () => createSelector(
