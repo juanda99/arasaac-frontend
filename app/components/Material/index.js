@@ -46,7 +46,8 @@ const styles = {
   },
   slides: {
     flexGrow: 1,
-    width: '600px'
+    margin: '0 auto',
+    maxWidth: '600px'
   },
   snippet: {
     display: 'flex',
@@ -223,6 +224,9 @@ class Material extends Component {
       <div>
         <H2 primary ucase>{title}</H2>
         {this.renderActionButtons()}
+        <p>
+          <ShareBar shareUrl={window.location.href} title={title} image={'http://www.arasaac.org/images/arasaac_titulo.png'} />
+        </p>
         <div style={styles.snippet}>
           <div style={{ position: 'relative' }}>
             <ImageSlider images={images} language={language} id={idMaterial} style={styles.slides} />
@@ -240,21 +244,7 @@ class Material extends Component {
 
           </div>
         </div>
-        <H3 primary={true}><FormattedMessage {...messages.shareMaterial} /></H3>
-        <Divider />
-        <p>
-          <ShareBar shareUrl={window.location.href} title={title} image={'http://www.arasaac.org/images/arasaac_titulo.png'} />
-        </p>
-        <H3 primary={true}><FormattedMessage {...messages.activities} /></H3>
-        <Divider />
-        <div style={styles.wrapper}>
-          {activityTags}
-        </div>
-        <H3 primary={true}><FormattedMessage {...messages.areas} /></H3>
-        <Divider />
-        <div style={styles.wrapper}>
-          {areaTags}
-        </div>
+
         <H3 primary={true}><FormattedMessage {...messages.languages} /></H3>
         <Divider />
         <RadioButtonGroup name='languages' valueSelected={language} onChange={this.handleChange}>
@@ -317,6 +307,17 @@ class Material extends Component {
           {/* translation authors */}
           {currentTranslation.get('authors').map(authorData => this.createAuthorItem(authorData))}
         </List>
+
+        <H3 primary={true}><FormattedMessage {...messages.activities} /></H3>
+        <Divider />
+        <div style={styles.wrapper}>
+          {activityTags}
+        </div>
+        <H3 primary={true}><FormattedMessage {...messages.areas} /></H3>
+        <Divider />
+        <div style={styles.wrapper}>
+          {areaTags}
+        </div>
 
 
       </div >
