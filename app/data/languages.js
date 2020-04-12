@@ -62,7 +62,7 @@ const languages = [
   },
   {
     code: 'pl',
-    text: 'Polskie'
+    text: 'Polski'
   },
   {
     code: 'pt',
