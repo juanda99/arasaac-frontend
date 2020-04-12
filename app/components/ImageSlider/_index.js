@@ -3,30 +3,26 @@ import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ArrowBackIcon from 'material-ui/svg-icons/navigation/arrow-back'
-import ArrowForwardIcon from 'material-ui/svg-icons/navigation/arrow-forward'
-import { yellow500 } from 'material-ui/styles/colors'
 
 function SampleNextArrow(props) {
-    const {className, style, onClick} = props
+  const { className, style, onClick } = props
   return (
     <div
       className={className}
-      style={{...style, display: 'block', background: 'green'}}
+      style={{ ...style, display: 'block', background: 'green' }}
       onClick={onClick}
     ></div>
   )
 }
 
 function SamplePrevArrow(props) {
-  const {className, style, onClick} = props
+  const { className, style, onClick } = props
   return (
     <div
       className={className}
-      style={{...style, display: 'block', background: 'green'}}
+      style={{ ...style, display: 'block', background: 'green' }}
       onClick={onClick}
-    ></div> 
+    ></div>
   )
 }
 
@@ -43,7 +39,7 @@ class ImageSlider extends Component {
     }
     const carousel = this.props.images.map((image) => (
       <div>
-        <img src={image} alt='' style={{width: '100%'}} />
+        <img src={image} alt='' style={{ width: '100%' }} />
       </div>
     ))
     return (
