@@ -225,7 +225,7 @@ class Material extends Component {
         <H2 primary ucase>{title}</H2>
         {this.renderActionButtons()}
         <p>
-          <ShareBar shareUrl={window.location.href} title={title} image={'http://www.arasaac.org/images/arasaac_titulo.png'} />
+          <ShareBar shareUrl={window.location.href} title={title} image={'http://www.arasaac.org/images/arasaac_titulo.png'} language={language} />
         </p>
         <div style={styles.snippet}>
           <div style={{ position: 'relative' }}>
