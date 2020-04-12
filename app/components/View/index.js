@@ -7,7 +7,8 @@ const View = styled.div`
   padding-left: ${(props) => (props.readMargin ? '1rem' : '0rem')};
   padding-right: ${(props) => (props.readMargin ? '1rem' : '0rem')}; 
   padding-top: ${(props) => (props.top ? `${props.top}rem` : '0rem')};
-  padding-bottom: ${(props) => (props.bottom ? `${props.bottom}rem` : '1rem')};
+  ${'' /* 0 for SearchField in materials and pictograms */}
+  padding-bottom: ${(props) => (props.bottom ? `${props.bottom}rem` : '0rem')};
 
 
   ${media.sm} {
