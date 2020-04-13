@@ -33,6 +33,30 @@ export default function createRoutes(store) {
       }
     },
     {
+      path: '/saac',
+      name: 'saac',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([import('containers/IntroSAAC')])
+        const renderRoute = loadModule(cb)
+        importModules.then(([component]) => {
+          renderRoute(component)
+        })
+        importModules.catch(errorLoading)
+      }
+    },
+    {
+      path: '/aac',
+      name: 'AAC',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([import('containers/IntroAAC')])
+        const renderRoute = loadModule(cb)
+        importModules.then(([component]) => {
+          renderRoute(component)
+        })
+        importModules.catch(errorLoading)
+      }
+    },
+    {
       path: '/pictograms/search',
       name: 'pictogramsView',
       getComponent(nextState, cb) {

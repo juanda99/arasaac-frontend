@@ -157,6 +157,12 @@ class App extends Component {
       case /pictograms\/search/.test(url):
         title = <FormattedMessage {...messages.pictogramsSearch} />;
         break;
+      case /saac/.test(url):
+        title = '¿Qué son los SAAC?'
+        break;
+      case /aac/.test(url):
+        title = 'What is AAC?'
+        break;
       case /materials\/search/.test(url):
         title = <FormattedMessage {...messages.materialsSearch} />;
         break;
