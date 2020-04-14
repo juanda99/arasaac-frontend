@@ -59,10 +59,13 @@ class MaterialView extends PureComponent {
   render() {
     return (
       <View left={true} right={true} top={1}>
+        {console.log(this.props.materialData)}
         <Helmet
           title='MaterialView'
           meta={[
-            { name: 'description', content: 'Description of MaterialView' }
+            { name: 'description', content: 'Description of MaterialView' },
+            { property: "og:title", content: "your_link_title" },
+            { property: "og:image", content: "your_image_url" }
           ]}
         />
         {this.renderContent()}

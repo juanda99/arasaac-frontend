@@ -23,6 +23,7 @@ const H2 = styled.h2`
     font-size: 2em;
   }
   text-align: ${(props) => (props.center ? 'center' : 'left')};
+  clear: both;
 `
 
 export default muiThemeable()(H2)
