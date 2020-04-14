@@ -6,7 +6,7 @@ import A from 'components/A'
 const AAC = () => {
   return (
     <div>
-      <P>From ARASAAC we’d like to thank both <strong>Carmen Basil</strong> and the <strong> <A href="https://www.utac.cat/">Unitat de Tècniques Augmentatives de Comunicació (UTAC)</A></strong> for their collaboration at drafting this section in our website.</P>
+      <P>From ARASAAC we’d like to thank both <strong>Carmen Basil</strong> and the <strong> <A href='https://www.utac.cat/' target='_blank'>Unitat de Tècniques Augmentatives de Comunicació (UTAC)</A></strong> for their collaboration at drafting this section in our website.</P>
 
       <H2 primary={true}>What are the Augmentative and Alternative Systems of Communication? </H2>
       <img src='https://static.arasaac.org/pictograms/27685/27685_300.png' alt='pictograms' style={{ float: 'left', width: '250px  ', padding: '20px' }} />

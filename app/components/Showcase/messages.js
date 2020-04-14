@@ -13,5 +13,9 @@ export default defineMessages({
   pictograms: {
     id: 'app.components.showcase.pictograms',
     defaultMessage: 'Pictograms'
+  },
+  whatIsAAC: {
+    id: 'app.components.showcase.whatIsAAC',
+    defaultMessage: 'What is AAC?'
   }
 })

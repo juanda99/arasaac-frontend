@@ -6,7 +6,7 @@ import A from 'components/A'
 const SAAC = () => {
   return (
     <div>
-      <P>Desde ARASAAC queremos agradecer a <strong>Carmen Basil</strong> y a la <strong> <A href="https://www.utac.cat/">Unitat de Tècniques Augmentatives de Comunicació (UTAC)</A></strong> su colaboración en la
+      <P>Desde ARASAAC queremos agradecer a <strong>Carmen Basil</strong> y a la <strong> <A href='https://www.utac.cat/' target='_blank'>Unitat de Tècniques Augmentatives de Comunicació (UTAC)</A></strong> su colaboración en la
       redacción de este apartado de nuestro sitio web.</P>
 
       <H2 primary={true}>¿Qué son los sistemas aumentativos y alternativos de comunicación? </H2>
