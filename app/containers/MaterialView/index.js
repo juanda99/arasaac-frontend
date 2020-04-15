@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
-import Helmet from 'react-helmet'
 import Material from 'components/Material'
 import { makeSelectHasUser, makeSelectRole } from 'containers/App/selectors'
 import { publishMaterial, removeMaterial, material } from 'containers/MaterialsView/actions'
@@ -59,15 +58,7 @@ class MaterialView extends PureComponent {
   render() {
     return (
       <View left={true} right={true} top={1}>
-        {console.log(this.props.materialData)}
-        <Helmet
-          title='MaterialView'
-          meta={[
-            { name: 'description', content: 'Description of MaterialView' },
-            { property: "og:title", content: "your_link_title" },
-            { property: "og:image", content: "your_image_url" }
-          ]}
-        />
+        {/* use react-helmet inside material component */}
         {this.renderContent()}
       </View>
     )

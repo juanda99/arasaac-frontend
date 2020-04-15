@@ -27,9 +27,10 @@ import Dialog from 'material-ui/Dialog'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import P from 'components/P'
 import activities from 'data/activities'
+import Helmet from 'react-helmet'
 import areas from 'data/areas'
 import classificationMessages from 'components/Filters/messages'
-import { MATERIALS_URL } from 'services/config'
+import { MATERIALS_URL, IMAGES_URL } from 'services/config'
 import langMessages from 'components/LanguageSelector/messages'
 import { DEFAULT_PROFILE_PICTURE, ARASAAC, NOT_PUBLISHED, PUBLISHED, PENDING } from 'utils'
 import messages from './messages'
@@ -176,7 +177,7 @@ class Material extends Component {
   render() {
     const { material, intl } = this.props
     const { formatMessage } = intl
-    const { languages, currentTranslation, showDialog } = this.state
+    const { currentTranslation, showDialog, languages } = this.state
     const language = currentTranslation.get('lang')
     const title = currentTranslation.get('title')
     const desc = currentTranslation.get('desc')
@@ -219,9 +220,18 @@ class Material extends Component {
         onClick={this.handleRemove}
       />
     ];
-
+    const defaultImage = images.length ? `${MATERIALS_URL}/${idMaterial}/screenshots/${images[0]}` : `${IMAGES_URL}/arasaac-logo.png`
+    console.log('defaultImage', defaultImage, '********************************')
     return (
       <div>
+        <Helmet
+          title={title}
+          meta={[
+            { name: 'description', content: desc },
+            { property: "og:title", content: title },
+            { property: "og:image", content: defaultImage }
+          ]}
+        />
         <H2 primary ucase>{title}</H2>
         {this.renderActionButtons()}
         <p>
