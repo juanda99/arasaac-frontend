@@ -64,7 +64,7 @@ import Span from './Span'
 const ShareBar = ({ shareUrl, title, image, language }) => (
   <div>
     <OuterDiv>
-      <FacebookShareButton url={shareUrl} title={title} picture={`${String(window.location)}/${image}`}>
+      <FacebookShareButton url={shareUrl} quote={title} hashtag='#arasaac'>
         <FacebookIcon size={40} round />
       </FacebookShareButton>
       {/* <Span>
@@ -98,7 +98,7 @@ const ShareBar = ({ shareUrl, title, image, language }) => (
     </OuterDiv>
 
     <OuterDiv>
-      <WhatsappShareButton url={shareUrl} title={title} separator=':: '>
+      <WhatsappShareButton url={shareUrl} title={title} separator=' '>
         <WhatsappIcon size={40} round />
       </WhatsappShareButton>
 
@@ -153,6 +153,7 @@ ShareBar.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string,
   language: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
 }
 
 export default ShareBar
