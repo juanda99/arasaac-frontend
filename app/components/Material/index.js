@@ -221,7 +221,6 @@ class Material extends Component {
       />
     ];
     const defaultImage = images.length ? `${MATERIALS_URL}/${idMaterial}/screenshots/${images[0]}` : `${IMAGES_URL}/arasaac-logo.png`
-    console.log('defaultImage', defaultImage, '********************************')
     return (
       <div>
         <Helmet
