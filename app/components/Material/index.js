@@ -226,15 +226,13 @@ class Material extends Component {
         <Helmet
           title={title}
           meta={[
-            { name: 'description', content: desc },
-            { property: "og:title", content: title },
-            { property: "og:image", content: defaultImage }
+            { name: 'description', content: desc }
           ]}
         />
         <H2 primary ucase>{title}</H2>
         {this.renderActionButtons()}
         <p>
-          <ShareBar shareUrl={window.location.href} title={title} desc={desc} image={defaultImage} language={language} />
+          <ShareBar shareUrl={`https://privateapi.arasaac.org/api/pages/materials/${language}/${idMaterial}`} title={title} desc={desc} image={defaultImage} language={language} />
         </p>
         <div style={styles.snippet}>
           <div style={{ position: 'relative' }}>
