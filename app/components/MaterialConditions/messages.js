@@ -95,7 +95,7 @@ export default defineMessages({
   },
   publicationDesc: {
     id: `${component}.publicationDesc`,
-    defaultMessage: 'The administrators of Arasaac website reserve the right to publish materials if they don’t meet our requirements or our quality criteria based on the materials already published.'
+    defaultMessage: 'The administrators of ARASAAC website reserve the right to publish materials if they don’t meet our requirements or our quality criteria based on the materials already published.'
   },
   checkRead: {
     id: `${component}.checkRead`,
