@@ -9,7 +9,7 @@
   "activate.userActivated": "Twoje konto zostało aktywowane. Możesz się zalogować.",
   "activate.userNotActivated": "Wystąpił błąd podczas aktywacji użytkownika",
   "app.HomePage.discover": "Odkryj ARASAAC",
-  "app.component.MaterialConditions.adaptationQuote": "Adaptation quote",
+  "app.component.MaterialConditions.adaptationQuote": "Cytat dostosowania",
   "app.component.MaterialConditions.adaptationQuoteDesc": "W adaptacji istniejącego materiału nazwisko osoby, która go dostosowała, zostanie dodane na końcu cytatu:",
   "app.component.MaterialConditions.adaptedBy": "Dostosowane przez:",
   "app.component.MaterialConditions.author": "Autor:",
