@@ -18,5 +18,8 @@ export default defineMessages({
     id: `${scope}.translationStatus`,
     defaultMessage: 'Translation status'
   },
-
+  translators: {
+    id: `${scope}.translators`,
+    defaultMessage: 'Translators'
+  },
 })

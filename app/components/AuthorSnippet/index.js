@@ -126,7 +126,7 @@ class AuthorSnippet extends PureComponent {
               )}
               {author.github && (
                 <P style={{ textAlign: 'center' }}>
-                  <a href={author.facebook} target='_blank' style={{ margin: '75px' }}>
+                  <a href={author.github} target='_blank' style={{ margin: '75px' }}>
                     <IconButton
                       iconStyle={this.styles.smallIcon}
                       style={this.styles.small}
@@ -137,7 +137,7 @@ class AuthorSnippet extends PureComponent {
                 </P>
               )}
               {author.twitter && (
-                <a href={author.facebook} target='_blank' style={{ margin: '75px' }}>
+                <a href={author.twitter} target='_blank' style={{ margin: '75px' }}>
                   <IconButton
                     iconStyle={this.styles.smallIcon}
                     style={this.styles.small}

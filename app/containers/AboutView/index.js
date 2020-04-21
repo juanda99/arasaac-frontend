@@ -4,14 +4,9 @@ import P from 'components/P'
 import H2 from 'components/H2'
 import View from 'components/View'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
-import {
-  IMAGES_URL
-} from 'services/config'
-import ReactSlidy from 'react-slidy'
+import { IMAGES_URL } from 'services/config'
 import AuthorSnippet from 'components/AuthorSnippet'
 import ReadMargin from 'components/ReadMargin'
-import GitHubIcon from './GibhubIcon'
-import FacebookIcon from './FacebookIcon'
 import messages from './messages'
 const Masonry = require('react-masonry-component')
 const masonryOptions = {
