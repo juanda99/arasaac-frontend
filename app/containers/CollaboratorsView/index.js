@@ -116,7 +116,27 @@ const collaborators = [
     url: 'http://www.ict-aac.hr/',
     facebook: 'ictaac',
     twitter: 'ictaac'
-  }
+  },
+  {
+    name: 'Juan Daniel Burró Aláez',
+    language: 'en',
+    desc: 'Arasaac developer',
+    image: 'juanda.jpeg',
+    github: 'juanda99',
+    twitter: 'juandawrite'
+  },
+  {
+    name: 'David Romero Corral  ',
+    language: 'en',
+    desc: 'Arasaac coordinator',
+    facebook: 'david.romerocorral'
+  },
+  {
+    name: 'José Manuel Marco',
+    language: 'es',
+    desc: 'Arasaac coordinator',
+    facebook: 'josemanuelmarcosrodrigo'
+  },
 ]
 
 class CollaboratorsView extends Component {
