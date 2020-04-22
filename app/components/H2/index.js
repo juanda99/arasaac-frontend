@@ -22,7 +22,7 @@ const H2 = styled.h2`
   ${media.lg} {
     font-size: 2em;
   }
-  text-align: ${(props) => (props.center ? 'center' : 'left')};
+  ${'' /* text-align: ${(props) => (props.center ? 'center' : 'left')}; */}
   clear: both;
 `
 

@@ -30,6 +30,7 @@ import userIsAuthenticated from 'utils/auth'
 import messages from './messages'
 import MaterialConditions from 'components/MaterialConditions'
 import { makeSelectUserLocale } from '../App/selectors'
+import { makeSelectDirection } from 'containers/LanguageProvider/selectors'
 // import { makeLoadingSelector, makeErrorSelector } from './selectors'
 import activities from 'data/activities'
 import areas from 'data/areas'
@@ -154,7 +155,7 @@ class UploadMaterialView extends PureComponent {
   resetForm = () => this.setState({ sending: false, error: '', stepIndex: 0 })
 
   render() {
-    const { name, email, picture, _id, intl, language, role } = this.props
+    const { name, email, picture, _id, intl, language, role, direction } = this.props
 
     const { showDialog, dialogText, sending, progressStatus, error, loading, showMaterialConditions } = this.state
     const { formatMessage } = intl
@@ -171,7 +172,7 @@ class UploadMaterialView extends PureComponent {
 
     return (
       <View left={true} right={true}>
-        <MaterialConditions />
+        <MaterialConditions direction={direction} />
         {!sending ? (
           <MaterialForm
             onSubmit={(values) => this.handleSubmit(values)}
@@ -236,7 +237,8 @@ const mapStateToProps = (state) => ({
   picture: makeSelectPicture()(state),
   language: makeSelectUserLocale()(state),
   _id: makeSelectId()(state),
-  role: makeSelectRole()(state)
+  role: makeSelectRole()(state),
+  direction: makeSelectDirection()(state)
 })
 
 export default connect(mapStateToProps)(userIsAuthenticated(injectIntl(UploadMaterialView)))

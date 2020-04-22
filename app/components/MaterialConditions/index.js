@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import H2 from 'components/H2'
@@ -22,7 +23,7 @@ class MaterialConditions extends React.Component {
   }
 
   render() {
-    const { intl } = this.props
+    const { intl, direction } = this.props
     const { formatMessage } = intl
     const actions = [
       <FlatButton
@@ -33,16 +34,22 @@ class MaterialConditions extends React.Component {
       />
     ]
 
+    const isRtl = direction === 'rtl'
+
     return (
-      <div>
-        <Dialog
-          title={formatMessage(messages['materialPublication'])}
-          actions={actions}
-          modal={true}
-          open={this.state.open}
-          autoScrollBodyContent={true}
-          onRequestClose={this.handleClose}
-        >
+      // maxWidth so fixed good in mobile
+
+      <Dialog
+        title={formatMessage(messages['materialPublication'])}
+        actions={actions}
+        modal={true}
+        open={this.state.open}
+        autoScrollBodyContent={true}
+        onRequestClose={this.handleClose}
+        contentStyle={isRtl ? { textAlign: 'right' } : {}}
+        actionsContainerStyle={isRtl ? { textAlign: 'left' } : { textAlign: 'right' }}
+      >
+        <div dir={direction}>
           <P><FormattedMessage {...messages.intro} /></P>
           <H2 primary={true}><FormattedMessage {...messages.requirements} /></H2>
           <P><FormattedMessage {...messages.requirementsP1} /></P>
@@ -51,7 +58,7 @@ class MaterialConditions extends React.Component {
           <P><FormattedMessage {...messages.requirementsP4} /></P>
           <P><FormattedMessage {...messages.requirementsP5} /></P>
           <P><FormattedMessage {...messages.requirementsP6} /></P>
-          <ul style={{ marginLeft: '20px', listStyleType: 'square', fontWeight: 300 }}>
+          <ul style={isRtl ? { marginRight: '20px', listStyleType: 'square', fontWeight: 300 } : { marginLeft: '20px', listStyleType: 'square', fontWeight: 300 }}>
             <li>
               <P important={true}><FormattedMessage {...messages.standardQuote} /></P>
 
@@ -114,11 +121,14 @@ class MaterialConditions extends React.Component {
             labelPosition='right'
             onCheck={this.handleAcceptButton}
           />
-
-        </Dialog>
-      </div >
+        </div>
+      </Dialog>
     );
   }
 }
 
 export default injectIntl(MaterialConditions)
+
+MaterialConditions.propTypes = {
+  direction: PropTypes.string.isRequired,
+}

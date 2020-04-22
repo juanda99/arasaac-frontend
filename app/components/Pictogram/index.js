@@ -569,7 +569,7 @@ class Pictogram extends Component {
             <ConditionalPaper>
               <PictogramTitle>
                 {this.getSoundPlayer(hasLocution, locale, keyword, false)}
-                <H2 center={true} primary ucase noMargin>
+                <H2 style={{ textAlign: 'center' }} primary ucase noMargin>
                   {keyword}
                 </H2>
               </PictogramTitle>
