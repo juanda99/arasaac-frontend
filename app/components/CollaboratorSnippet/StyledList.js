@@ -3,12 +3,12 @@ import media from 'utils/mediaqueries'
 
 const StyledList = styled.li`
   box-sizing: border-box;
-  width: 320px;
-  height: 400px;
+  height: 200px;
+  width: 100%;
   margin: 10px;
-  margin-left: calc(50% - 160px);
+  ${'' /* margin-left: calc(50% - 160px); */}
   ${media.sm} {
-    height: 400px;
+    width: 600px;
     margin-right: 20px;
     margin-left: 0px;
   }

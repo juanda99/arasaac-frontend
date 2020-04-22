@@ -50,13 +50,8 @@ class CollaboratorSnippet extends PureComponent {
       textAlign: 'center',
       fontSize: '1rem',
       textTransform: 'uppercase',
-      color: this.props.muiTheme.appBar.textColor,
-      backgroundColor: this.props.muiTheme.palette.primary1Color,
-      fontWeight: '600',
-      margin: 0,
-      padding: 10,
-      paddingTop: 20,
-      height: 70
+      margin: 10,
+      width: '100%'
     },
     smallIcon: {
       width: 36,
@@ -65,7 +60,7 @@ class CollaboratorSnippet extends PureComponent {
     small: {
       width: 72,
       height: 72,
-      padding: 32,
+
     }
   };
 
@@ -98,28 +93,25 @@ class CollaboratorSnippet extends PureComponent {
         onMouseLeave={this.handleMouseLeave}
         onClick={this.handleClick}
       >
-        <ReactCardFlip isFlipped={this.state.isFlipped}>
-          <div key='front'>
-            <StyledPaper zDepth={this.state.zDepth}>
-
-              <div style={{ position: 'relative' }} >
-                <Image
-                  src={collaboratorImage}
-                  alt={collaborator.name}
-                  style={{ padding: '5px' }}
-                />
-                <H3 style={this.styles.cardTitle} primary={true}>{collaborator.name}</H3>
-              </div>
-            </StyledPaper >
+        <StyledPaper zDepth={this.state.zDepth}>
+          <div>
+            <Image
+              src={collaboratorImage}
+              alt={collaborator.name}
+              style={{ padding: '5px', width: '200px', height: '200px' }}
+            />
           </div>
-          <div key='back'>
-            <StyledPaper zDepth={this.state.zDepth}>
-              <H3 style={this.styles.cardTitle} primary={true}>{collaborator.name}</H3>
+
+          <div style={{ paddingRight: 5, paddingTop: 5, display: 'flex', flexGrow: 1, flexDirection: 'column' }}>
+            <H3 style={this.styles.cardTitle} primary={true}>{collaborator.name}</H3>
+            <div>
               {collaborator.desc && (
                 <P style={{ textAlign: 'center' }}>{collaborator.desc}</P>
               )}
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
               {collaborator.url && (
-                <a href={collaborator.url} target='_blank' style={{ margin: '110px' }}>
+                <a href={collaborator.url} target='_blank'>
                   <IconButton
                     iconStyle={this.styles.smallIcon}
                     style={this.styles.small}
@@ -129,7 +121,7 @@ class CollaboratorSnippet extends PureComponent {
                 </a>
               )}
               {collaborator.youtube && (
-                <a href={`https://youtube.com/${collaborator.youtube}`} target='_blank' style={{ margin: '110px' }}>
+                <a href={`https://youtube.com/${collaborator.youtube}`} target='_blank'>
                   <IconButton
                     iconStyle={this.styles.smallIcon}
                     style={this.styles.small}
@@ -139,7 +131,7 @@ class CollaboratorSnippet extends PureComponent {
                 </a>
               )}
               {collaborator.facebook && (
-                <a href={`https://www.facebook.com/${collaborator.facebook}`} target='_blank' style={{ margin: '110px' }}>
+                <a href={`https://www.facebook.com/${collaborator.facebook}`} target='_blank'>
                   <IconButton
                     iconStyle={this.styles.smallIcon}
                     style={this.styles.small}
@@ -149,7 +141,7 @@ class CollaboratorSnippet extends PureComponent {
                 </a>
               )}
               {collaborator.instagram && (
-                <a href={`https://www.instagram.com/${collaborator.instagram}`} target='_blank' style={{ margin: '110px' }}>
+                <a href={`https://www.instagram.com/${collaborator.instagram}`} target='_blank'>
                   <IconButton
                     iconStyle={this.styles.smallIcon}
                     style={this.styles.small}
@@ -159,19 +151,17 @@ class CollaboratorSnippet extends PureComponent {
                 </a>
               )}
               {collaborator.github && (
-                <P style={{ textAlign: 'center' }}>
-                  <a href={`https://github.com/${collaborator.github}`} target='_blank' style={{ margin: '110px' }}>
-                    <IconButton
-                      iconStyle={this.styles.smallIcon}
-                      style={this.styles.small}
-                    >
-                      <GitHub color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
-                    </IconButton>
-                  </a>
-                </P>
+                <a href={`https://github.com/${collaborator.github}`} target='_blank'>
+                  <IconButton
+                    iconStyle={this.styles.smallIcon}
+                    style={this.styles.small}
+                  >
+                    <GitHub color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                  </IconButton>
+                </a>
               )}
               {collaborator.twitter && (
-                <a href={`https://twitter.com/${collaborator.twitter}`} target='_blank' style={{ margin: '110px' }}>
+                <a href={`https://twitter.com/${collaborator.twitter}`} target='_blank'>
                   <IconButton
                     iconStyle={this.styles.smallIcon}
                     style={this.styles.small}
@@ -180,10 +170,9 @@ class CollaboratorSnippet extends PureComponent {
                   </IconButton>
                 </a>
               )}
-
-            </StyledPaper >
+            </div>
           </div>
-        </ReactCardFlip>
+        </StyledPaper >
       </StyledList >
     )
   }

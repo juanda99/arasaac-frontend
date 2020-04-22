@@ -6,6 +6,7 @@ import View from 'components/View'
 import LanguageSelector from 'components/LanguageSelector'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ReadMargin from 'components/ReadMargin'
+import RaisedButton from 'material-ui/RaisedButton'
 import {
   makeSelectName,
   makeSelectRole,
@@ -127,30 +128,32 @@ class CollaboratorsView extends Component {
 
 
   render() {
-    const { locale } = this.state
-    const localeCollaborators = collaborators.filter(colaborator => colaborator.language === locale)
+    const { locale, filter } = this.state
+    const localeCollaborators = filter ? collaborators.filter(colaborator => colaborator.language === locale) : collaborators
     return (
       <View left={true} right={true}>
         <ReadMargin>
           <P>
             <FormattedMessage {...messages.buildArasaac} />
           </P>
-          {/* <P>
+          <P>
             <FormattedMessage {...messages.wantToCollaborate} />
           </P>
           <P>
             <FormattedMessage {...messages.howToCollaborate} />
-          </P> */}
+          </P>
+
+          <H2 primary={true}><FormattedMessage {...messages.translators} /></H2>
+
+          <RaisedButton label={filter ? 'Quitar filtro' : 'Filtrar por idioma'} primary={true} onClick={() => this.setState({ filter: !filter })} />
+          <div style={{ marginTop: '20px' }}>
+            {filter && <LanguageSelector value={locale} onChange={this.handleLanguageChange} />}
+          </div>
 
 
-          <H2 primary={true}><FormattedMessage {...messages.translationStatus} /></H2>
-          <LanguageSelector value={locale} onChange={this.handleLanguageChange} />
-          <TranslationStatus language={locale} />
-
-          <H3 primary={true}><FormattedMessage {...messages.translators} /></H3>
           {localeCollaborators.length ? (
             <Masonry
-              className={'my-gallery-class'} // default ''
+              className={'my-gallery-class'} // default ''  
               elementType={'ul'} // default 'div'
               options={masonryOptions} // default {}    
               disableImagesLoaded={false} // default false
@@ -161,14 +164,18 @@ class CollaboratorsView extends Component {
           ) : (
               <div>
                 <P>
-                  <FormattedMessage {...messages.wantToCollaborate} />
-                </P>
-                <P>
-                  <FormattedMessage {...messages.howToCollaborate} />
+                  No hay traductores en este idioma. Puedes ponerte en contacto con nosotros para colaborar.
                 </P>
               </div>
             )
           }
+          {filter && (
+            <div>
+              <H3 primary={true}><FormattedMessage {...messages.translationStatus} /></H3>
+              <TranslationStatus language={locale} />
+            </div>
+          )}
+
 
 
         </ReadMargin>

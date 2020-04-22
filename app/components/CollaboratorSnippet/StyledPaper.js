@@ -4,16 +4,13 @@ import media from 'utils/mediaqueries'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 
 const StyledPaper = styled(Paper)`
-
-
   box-sizing: border-box;
-  width: 320px;
+  display: flex;
   margin: 10px;
-  height: 390px;
-  margin-left: calc(50% - 160px);
+  height: 200px;
+  ${'' /* margin-left: calc(50% - 160px); */}
 
   ${media.sm} {
-    height: 390px;
     margin-left: 0px;
     margin-right: 10px;
   }
