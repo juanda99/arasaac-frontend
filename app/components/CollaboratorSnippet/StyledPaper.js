@@ -7,13 +7,15 @@ const StyledPaper = styled(Paper)`
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  margin: 10px;
+  margin-bottom: 15px;
   width: 100%;
   height: 400px;
   ${media.sm} {
-    margin-left: 0px;
-    margin-right: 10px;
-    width: 600px;
+    width: 100%;
+    height: 200px;
+  }
+  ${media.md} {
+    width: 590px;
     height: 200px;
   }
 

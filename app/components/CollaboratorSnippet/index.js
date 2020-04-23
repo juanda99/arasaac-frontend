@@ -11,13 +11,13 @@ import { DEFAULT_PROFILE_PICTURE } from 'utils'
 import WebIcon from 'material-ui/svg-icons/social/public'
 import Twitter from 'components/SocialLogin/icons/svg/twitter'
 import Instagram from 'components/SocialLogin/icons/svg/instagram'
-import IconButton from 'material-ui/IconButton'
 import StyledPaper from './StyledPaper'
 import H3 from 'components/H3'
 import P from 'components/P'
 import Image from 'components/PictogramSnippet/Image'
 import langMessages from 'components/LanguageSelector/messages'
 import FormatCard from './FormatCard'
+// import liWrapper from './liWrapper'
 import messages from './messages'
 
 
@@ -77,6 +77,7 @@ class CollaboratorSnippet extends PureComponent {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         onClick={this.handleClick}
+        style={{ width: '100%', maxWidth: '600px' }}
       >
         <StyledPaper zDepth={this.state.zDepth}>
           <FormatCard>
