@@ -6,13 +6,15 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 const StyledPaper = styled(Paper)`
   box-sizing: border-box;
   display: flex;
+  flex-wrap: wrap;
   margin: 10px;
-  height: 200px;
-  ${'' /* margin-left: calc(50% - 160px); */}
-
+  width: 100%;
+  height: 400px;
   ${media.sm} {
     margin-left: 0px;
     margin-right: 10px;
+    width: 600px;
+    height: 200px;
   }
 
 `

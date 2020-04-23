@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
+import { FormattedMessage } from 'react-intl'
 import PropTypes from 'prop-types'
 import muiThemeable from 'material-ui/styles/muiThemeable'
-import ReactCardFlip from 'react-card-flip'
+import Chip from 'material-ui/Chip'
 import Facebook from 'components/SocialLogin/icons/svg/facebook'
 import GitHub from 'components/SocialLogin/icons/svg/github'
 import YouTube from 'components/SocialLogin/icons/svg/youtube'
@@ -12,10 +13,12 @@ import Twitter from 'components/SocialLogin/icons/svg/twitter'
 import Instagram from 'components/SocialLogin/icons/svg/instagram'
 import IconButton from 'material-ui/IconButton'
 import StyledPaper from './StyledPaper'
-import StyledList from './StyledList'
 import H3 from 'components/H3'
 import P from 'components/P'
 import Image from 'components/PictogramSnippet/Image'
+import langMessages from 'components/LanguageSelector/messages'
+import FormatCard from './FormatCard'
+import messages from './messages'
 
 
 class CollaboratorSnippet extends PureComponent {
@@ -29,38 +32,20 @@ class CollaboratorSnippet extends PureComponent {
       width: 48,
       height: 48
     },
-    leftIconButton: {
-      width: 96,
-      height: 96,
-      padding: 24,
-      position: 'absolute',
-      top: '0',
-      left: '0'
-    },
-    rightIconButton: {
-      width: 96,
-      height: 96,
-      padding: 24,
-      position: 'absolute',
-      opacity: 100,
-      top: '0',
-      right: '0'
-    },
     cardTitle: {
       textAlign: 'center',
-      fontSize: '1rem',
+      fontSize: '1.1 rem',
       textTransform: 'uppercase',
+      marginTop: 10,
+      marginBottom: 0
+    },
+    icon: {
+      width: 40,
+      height: 40,
+    },
+    a: {
       margin: 10,
-      width: '100%'
-    },
-    smallIcon: {
-      width: 36,
-      height: 36,
-    },
-    small: {
-      width: 72,
-      height: 72,
-
+      marginTop: 0
     }
   };
 
@@ -86,7 +71,7 @@ class CollaboratorSnippet extends PureComponent {
       `${IMAGES_URL}/collaborators/${collaborator.image}`
       : DEFAULT_PROFILE_PICTURE
     return (
-      <StyledList
+      <li
         key={name}
         className='image-element-class'
         onMouseEnter={this.handleMouseEnter}
@@ -94,86 +79,71 @@ class CollaboratorSnippet extends PureComponent {
         onClick={this.handleClick}
       >
         <StyledPaper zDepth={this.state.zDepth}>
-          <div>
-            <Image
-              src={collaboratorImage}
-              alt={collaborator.name}
-              style={{ padding: '5px', width: '200px', height: '200px' }}
-            />
-          </div>
+          <FormatCard>
+            <div style={{ flexGrow: 1, margin: '0 auto' }}>
+              <Image
+                src={collaboratorImage}
+                alt={collaborator.name}
+                style={{ padding: '5px', width: '200px', height: '200px' }}
+              />
+            </div>
 
-          <div style={{ paddingRight: 5, paddingTop: 5, display: 'flex', flexGrow: 1, flexDirection: 'column' }}>
-            <H3 style={this.styles.cardTitle} primary={true}>{collaborator.name}</H3>
-            <div>
-              {collaborator.desc && (
-                <P style={{ textAlign: 'center' }}>{collaborator.desc}</P>
-              )}
+            <div style={{ paddingRight: 5, paddingTop: 5, display: 'flex', flexWrap: 'wrap', flexGrow: 4, flexDirection: 'column', justifyContent: 'center' }}>
+              <H3 style={this.styles.cardTitle} primary={true}>{collaborator.name}</H3>
+              <div style={{ margin: '0 auto' }}>
+                {collaborator.languages.map(language => <Chip key={`${collaborator.name}-${language}`}><FormattedMessage {...langMessages[language]} /></Chip>)}
+              </div>
+
+              <div>
+                {collaborator.desc && (
+                  <P style={{ textAlign: 'center' }}>
+                    {collaborator.desc}
+                  &nbsp;
+                    {collaborator.country && <FormattedMessage {...messages[collaborator.country]} />}
+                  </P>
+                )}
+
+
+                <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
+                  {collaborator.url && (
+                    <a href={collaborator.url} target='_blank' style={this.styles.a}>
+                      <WebIcon style={this.styles.icon} color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                    </a>
+                  )}
+                  {collaborator.youtube && (
+                    <a href={`https://youtube.com/${collaborator.youtube}`} target='_blank' style={this.styles.a}>
+                      <YouTube style={this.styles.icon} color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                    </a>
+                  )}
+                  {collaborator.facebook && (
+                    <a href={`https://www.facebook.com/${collaborator.facebook}`} target='_blank' style={this.styles.a}>
+                      <Facebook style={{ width: 31, height: 31, marginTop: 4 }} color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                    </a>
+                  )}
+                  {collaborator.instagram && (
+                    <a href={`https://www.instagram.com/${collaborator.instagram}`} target='_blank' style={this.styles.a}>
+                      <Instagram style={this.styles.icon} color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                    </a>
+                  )}
+                  {collaborator.github && (
+                    <a href={`https://github.com/${collaborator.github}`} target='_blank' style={this.styles.a}>
+                      <GitHub style={{ width: 33, height: 33, marginTop: 2 }} color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                    </a>
+                  )}
+                  {collaborator.twitter && (
+                    <a href={`https://twitter.com/${collaborator.twitter}`} target='_blank' style={this.styles.a}>
+                      <Twitter style={this.styles.icon} color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                    </a>
+                  )}
+                </div>
+
+
+              </div>
+
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
-              {collaborator.url && (
-                <a href={collaborator.url} target='_blank'>
-                  <IconButton
-                    iconStyle={this.styles.smallIcon}
-                    style={this.styles.small}
-                  >
-                    <WebIcon color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
-                  </IconButton>
-                </a>
-              )}
-              {collaborator.youtube && (
-                <a href={`https://youtube.com/${collaborator.youtube}`} target='_blank'>
-                  <IconButton
-                    iconStyle={this.styles.smallIcon}
-                    style={this.styles.small}
-                  >
-                    <YouTube color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
-                  </IconButton>
-                </a>
-              )}
-              {collaborator.facebook && (
-                <a href={`https://www.facebook.com/${collaborator.facebook}`} target='_blank'>
-                  <IconButton
-                    iconStyle={this.styles.smallIcon}
-                    style={this.styles.small}
-                  >
-                    <Facebook color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
-                  </IconButton>
-                </a>
-              )}
-              {collaborator.instagram && (
-                <a href={`https://www.instagram.com/${collaborator.instagram}`} target='_blank'>
-                  <IconButton
-                    iconStyle={this.styles.smallIcon}
-                    style={this.styles.small}
-                  >
-                    <Instagram color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
-                  </IconButton>
-                </a>
-              )}
-              {collaborator.github && (
-                <a href={`https://github.com/${collaborator.github}`} target='_blank'>
-                  <IconButton
-                    iconStyle={this.styles.smallIcon}
-                    style={this.styles.small}
-                  >
-                    <GitHub color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
-                  </IconButton>
-                </a>
-              )}
-              {collaborator.twitter && (
-                <a href={`https://twitter.com/${collaborator.twitter}`} target='_blank'>
-                  <IconButton
-                    iconStyle={this.styles.smallIcon}
-                    style={this.styles.small}
-                  >
-                    <Twitter color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
-                  </IconButton>
-                </a>
-              )}
-            </div>
-          </div>
-        </StyledPaper >
-      </StyledList >
+          </FormatCard>
+        </StyledPaper>
+      </li>
     )
   }
 }

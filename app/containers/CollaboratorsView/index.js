@@ -37,105 +37,137 @@ const styles = {
 const collaborators = [
   {
     name: 'Sandra Altvater',
-    language: 'de',
+    languages: ['de'],
     image: 'Sandra-Altvater.jpg',
-    desc: 'Profesora de educación especial, Sonderschule Rosenhain, Graz, Austria.',
+    desc: 'Profesora de educación especial, Sonderschule Rosenhain, Graz.',
+    country: 'au',
+    facebook: 'abeneguilogopedia',
+    instagram: 'abeneguilogopedia',
   },
   {
     name: 'Pablo Salinas Gracia',
-    language: 'de',
+    languages: ['de'],
     image: 'Pablo-Salinas-Gracia.jpg',
-    desc: 'Profesor de educación especial,  Sonderschule Rosenhain, Graz, Austria.',
+    desc: 'Profesor de educación especial,  Sonderschule Rosenhain, Graz.',
+    country: 'au'
   },
   {
     name: 'Barbara Salinas-Horngacher',
-    language: 'de',
+    languages: ['de'],
     image: 'Barbara-Salinas-Horngacher.jpg',
-    desc: 'Lectora de didáctica de lenguas extranjeras,  Karl-Franzens-Universität, Graz Austria',
+    desc: 'Lectora de didáctica de lenguas extranjeras,  Karl-Franzens-Universität, Graz.',
+    country: 'au'
   },
   {
     name: 'Aiala Grajirena Juanena',
-    language: 'eu',
+    languages: ['eu'],
+    image: 'she.jpg',
     desc: 'P.T maistra. Onintze Aguirre Méndez Gizarte Integrazio, Gautena.',
+    country: 'es'
   },
   {
     name: 'Ane Cuesta Muguruza',
-    language: 'eu',
+    languages: ['eu'],
+    image: 'she.jpg',
     desc: 'P.T maistra. Onintze Aguirre Méndez Gizarte Integrazio, Gautena.',
+    country: 'es'
   },
   {
     name: 'Marina Argote Larrauri',
-    language: 'eu',
+    languages: ['eu'],
+    image: 'she.jpg',
     desc: 'H.H maistra. Onintze Aguirre Méndez Gizarte Integrazio, Gautena.',
+    country: 'es'
   },
   {
     name: 'Marisa Lorenzo Rodríguez',
-    language: 'gl',
+    languages: ['gl'],
+    image: 'marisa.jpg',
     desc: 'Maestra de pedagogía terapéutica.',
+    country: 'es'
   },
   {
     name: 'Jaime Vidal Corral',
-    language: 'gl',
+    languages: ['gl'],
     desc: 'Maestro de Educación Especial y Pedagogo',
     linkedIn: 'https://www.linkedin.com/in/jaime-vidal-25989082',
     instagram: 'jaime_vc79',
     image: 'jaime-vidal.jpg',
+    country: 'es'
   },
   {
     name: 'Nitzan Cohen',
-    language: 'he',
+    languages: ['he'],
     image: 'nitzan.jpg',
-    desc: 'Ph.D. Speech Therapist and Educator. Kaye College. Beer Sheva Israel.',
+    desc: 'Ph.D. Speech Therapist and Educator. Kaye College. Beer Sheva.',
+    country: 'is'
   },
   {
     name: 'Laura Pedrós Cuadra',
-    language: 'en',
+    languages: ['en'],
     twitter: 'lapku',
     image: 'Laura_Pedros.jpg',
-    desc: 'Profesora de Inglés. Zaragoza (España)',
+    desc: 'Profesora de Inglés.',
+    country: 'es'
   },
   {
     name: 'Claudia Adelina Benegui',
-    language: 'ro',
-    desc: 'Logopeda en A. Benegui Logopedia. Oviedo (España).',
+    languages: ['ro'],
+    image: 'she.jpg',
+    desc: 'Logopeda en A. Benegui Logopedia.',
     url: 'http://www.abeneguilogopedia.com',
-    // youtube: 'watch?v=3_8LdbZ_rX0',
     facebook: 'abeneguilogopedia',
-    instagram: 'abeneguilogopedia'
+    instagram: 'abeneguilogopedia',
+    country: 'es'
   },
   {
     name: 'Gulnara Ibragimova',
-    language: 'ru',
+    languages: ['ru'],
     image: 'Gulnara_400x400.jpg',
-    instagram: 'mom_box_tratata'
+    instagram: 'mom_box_tratata',
+    country: 'ru'
   },
   {
     name: 'ICT-AAC',
-    language: 'hr',
+    languages: ['hr'],
     image: 'ict-aac-logo.png',
     url: 'http://www.ict-aac.hr/',
     facebook: 'ictaac',
-    twitter: 'ictaac'
+    twitter: 'ictaac',
+    country: 'hr'
   },
   {
     name: 'Juan Daniel Burró Aláez',
-    language: 'en',
-    desc: 'Arasaac developer',
+    languages: ['en'],
+    desc: 'Arasaac developer.',
     image: 'juanda.jpeg',
     github: 'juanda99',
-    twitter: 'juandawrite'
+    twitter: 'juandawrite',
+    country: 'es'
   },
   {
     name: 'David Romero Corral  ',
-    language: 'en',
-    desc: 'Arasaac coordinator',
-    facebook: 'david.romerocorral'
+    languages: ['en'],
+    image: 'david-romero-320.jpg',
+    desc: 'Arasaac coordinator. ',
+    facebook: 'david.romerocorral',
+    country: 'es'
   },
   {
-    name: 'José Manuel Marco',
-    language: 'es',
-    desc: 'Arasaac coordinator',
-    facebook: 'josemanuelmarcosrodrigo'
+    name: 'José Manuel Marcos Rodrigo',
+    languages: ['es'],
+    image: 'Jose_Manuel.jpg',
+    desc: 'Arasaac coordinator. ',
+    facebook: 'josemanuelmarcosrodrigo',
+    country: 'es'
+  },
+  {
+    name: 'Katalin Révész',
+    languages: ['hu'],
+    image: 'katalin.png',
+    desc: 'Special education teacher, Pilis.',
+    instagram: 'revesz.kata',
+    country: 'hu'
   },
 ]
 
@@ -149,7 +181,7 @@ class CollaboratorsView extends Component {
 
   render() {
     const { locale, filter } = this.state
-    const localeCollaborators = filter ? collaborators.filter(colaborator => colaborator.language === locale) : collaborators
+    const localeCollaborators = filter ? collaborators.filter(colaborator => colaborator.languages.indexOf(locale) !== -1) : collaborators
     return (
       <View left={true} right={true}>
         <ReadMargin>
