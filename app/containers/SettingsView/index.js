@@ -52,7 +52,7 @@ class SettingsView extends React.Component {
               THEMES.map((value) =>
                 <Button
                   key={value}
-                  label={value}
+                  label={<FormattedMessage {...messages[value]} />}
                   value={value}
                   onClick={changeTheme}
                   style={{ margin: 12 }}
