@@ -7,7 +7,8 @@ export default {
     color: typography.textFullWhite,
     lineHeight: `${spacing.desktopKeylineIncrement}px`,
     fontWeight: typography.fontWeightLight,
-    paddingLeft: 60 // spacing.desktopGutter,
+    paddingLeft: 60, // spacing.desktopGutter,
+    paddingRight: 60 //rtl
   },
   menu: {
     zIndex: 9998 // fix about us map, less than 9999 (error console screen)
