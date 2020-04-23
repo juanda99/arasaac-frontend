@@ -89,7 +89,7 @@ class CollaboratorSnippet extends PureComponent {
               />
             </div>
 
-            <div style={{ paddingRight: 5, paddingTop: 5, display: 'flex', flexWrap: 'wrap', flexGrow: 4, flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ paddingRight: 5, paddingTop: 5, display: 'flex', flexWrap: 'wrap', flexGrow: 4, flexDirection: 'column', justifyContent: 'flex-start' }}>
               <H3 style={this.styles.cardTitle} primary={true}>{collaborator.name}</H3>
               <div style={{ margin: '0 auto' }}>
                 {collaborator.languages.map(language => <Chip key={`${collaborator.name}-${language}`}><FormattedMessage {...langMessages[language]} /></Chip>)}
