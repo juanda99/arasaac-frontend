@@ -86,10 +86,10 @@ export default defineMessages({
     description: 'Header title',
     defaultMessage: 'Contact us'
   },
-  collaborateTitle: {
-    id: 'header.collaborateTitle',
+  translatorsTitle: {
+    id: 'header.translatorsTitle',
     description: 'Header title',
-    defaultMessage: 'Collaborate with ARASAAC'
+    defaultMessage: 'Translators'
   },
   settings: {
     id: 'header.settingsTitle',

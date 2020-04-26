@@ -266,8 +266,8 @@ class Menu extends Component {
           />
           <ListItem
             id='lstcollaborators'
-            value='/collaborate'
-            primaryText={<FormattedMessage {...messages.collaborators} />}
+            value='/translators'
+            primaryText={<FormattedMessage {...messages.translators} />}
             leftIcon={<ThumbUpIcon />}
           />
           <ListItem

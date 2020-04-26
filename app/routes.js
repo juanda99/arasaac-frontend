@@ -469,8 +469,8 @@ export default function createRoutes(store) {
       }
     },
     {
-      path: '/collaborate',
-      name: 'collaborate',
+      path: '/translators',
+      name: 'translators',
       getComponent(location, cb) {
         import('containers/CollaboratorsView')
           .then(loadModule(cb))

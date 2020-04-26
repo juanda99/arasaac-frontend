@@ -2,24 +2,20 @@ import { defineMessages } from 'react-intl'
 
 const scope = 'app.containers/collaboratorsView'
 export default defineMessages({
-  buildArasaac: {
-    id: `${scope}.buildArasaac`,
-    defaultMessage: 'ARASAAC is built with the help of many volunteers who prepare educational materials or translate our website and its pictograms into dozens of languages.'
-  },
-  wantToCollaborate: {
-    id: `${scope}.wantToCollaborate`,
-    defaultMessage: 'Do you want to collaborate?'
-  },
-  howToCollaborate: {
-    id: `${scope}.howToCollaborate`,
-    defaultMessage: 'Through our website you can share your materials with other users. In addition you can also help us translate our website and pictograms into your mother tongue.'
+  translateArasaac: {
+    id: `${scope}.translateArasaac`,
+    defaultMessage: 'ARASAAC is translated by volunteers into multiple languages. Contact us if you want to help translating ARASAAC into a new language or improving an existing translation.'
   },
   translationStatus: {
     id: `${scope}.translationStatus`,
     defaultMessage: 'Translation status'
   },
-  translators: {
-    id: `${scope}.translators`,
-    defaultMessage: 'Translators'
+  removeFilter: {
+    id: `${scope}.removeFilter`,
+    defaultMessage: 'Remove filter'
   },
+  filterByLanguage: {
+    id: `${scope}.filterByLanguage`,
+    defaultMessage: 'Filter by language'
+  }
 })

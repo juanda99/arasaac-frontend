@@ -216,8 +216,8 @@ class App extends Component {
       case /contact-us/.test(url):
         title = <FormattedMessage {...messages.contactusTitle} />;
         break;
-      case /collaborate/.test(url):
-        title = <FormattedMessage {...messages.collaborateTitle} />;
+      case /translators/.test(url):
+        title = <FormattedMessage {...messages.translatorsTitle} />;
         break;
       case /world/.test(url):
         title = <FormattedMessage {...messages.arasaacWorld} />;

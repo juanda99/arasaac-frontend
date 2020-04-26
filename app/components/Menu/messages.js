@@ -105,10 +105,10 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'Prizes'
   },
-  collaborators: {
-    id: 'menu.collaborators',
+  translators: {
+    id: 'menu.translators',
     description: 'Menu item',
-    defaultMessage: 'Collaborators'
+    defaultMessage: 'Translators'
   },
   arasaacWorld: {
     id: 'menu.arasaacWorld',
