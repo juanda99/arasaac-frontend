@@ -25,5 +25,9 @@ export default defineMessages({
   hu: {
     id: `${scope}.hu`,
     defaultMessage: 'Hungary'
-  }
+  },
+  pl: {
+    id: `${scope}.pl`,
+    defaultMessage: 'Poland'
+  },
 })

@@ -140,6 +140,15 @@ const collaborators = [
     desc: 'Special Needs Teacher in the Field of Autism Spectrum Disorders.',
     country: 'hu'
   },
+  {
+    name: 'Olga Świeża',
+    languages: ['pl'],
+    image: 'Olga_Swieza.jpg',
+    desc: 'Maestra de educación especial, pedagoga. Fundación SYNAPSIS, Varsovia.',
+    url: 'https://synapsis.org.pl',
+    facebook: 'fundacja.synapsis',
+    country: 'pl'
+  },
 ]
 
 export default collaborators
