@@ -446,6 +446,7 @@
   "app.containers/collaboratorsSnippet.hr": "Horvátország",
   "app.containers/collaboratorsSnippet.hu": "Magyarország",
   "app.containers/collaboratorsSnippet.is": "Izrael",
+  "app.containers/collaboratorsSnippet.pl": "",
   "app.containers/collaboratorsSnippet.ru": "Oroszország",
   "app.containers/collaboratorsView.filterByLanguage": "Szűrés nyelv alapján",
   "app.containers/collaboratorsView.removeFilter": "Szűrő eltávolítása",
