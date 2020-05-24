@@ -54,7 +54,7 @@ const collaborators = [
     name: 'Jaime Vidal Corral',
     languages: ['gl'],
     desc: 'Maestro de Educación Especial y Pedagogo',
-    linkedIn: 'https://www.linkedin.com/in/jaime-vidal-25989082',
+    linkedIn: 'jaime-vidal-25989082',
     instagram: 'jaime_vc79',
     image: 'jaime-vidal.jpg',
     country: 'es'
@@ -148,6 +148,14 @@ const collaborators = [
     url: 'https://synapsis.org.pl',
     facebook: 'fundacja.synapsis',
     country: 'pl'
+  },
+  {
+    name: 'Pilar Marcos Lázaro',
+    languages: ['en'],
+    image: 'pilar-marcos.jpg',
+    desc: 'PhD Walsh Scholar at Teagasc. University College Dublin.',
+    linkedIn: 'pilar-marcos-lázaro-989a308a',
+    country: 'ir'
   },
 ]
 

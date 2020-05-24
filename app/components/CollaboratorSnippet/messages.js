@@ -30,4 +30,8 @@ export default defineMessages({
     id: `${scope}.pl`,
     defaultMessage: 'Poland'
   },
+  ir: {
+    id: `${scope}.ir`,
+    defaultMessage: 'Ireland'
+  }
 })

@@ -10,6 +10,7 @@ import { IMAGES_URL } from 'services/config'
 import { DEFAULT_PROFILE_PICTURE } from 'utils'
 import WebIcon from 'material-ui/svg-icons/social/public'
 import Twitter from 'components/SocialLogin/icons/svg/twitter'
+import Linkedin from 'components/SocialLogin/icons/svg/linkedin'
 import Instagram from 'components/SocialLogin/icons/svg/instagram'
 import StyledPaper from './StyledPaper'
 import H3 from 'components/H3'
@@ -134,6 +135,11 @@ class CollaboratorSnippet extends PureComponent {
                   {collaborator.twitter && (
                     <a href={`https://twitter.com/${collaborator.twitter}`} target='_blank' style={this.styles.a}>
                       <Twitter style={this.styles.icon} color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                    </a>
+                  )}
+                  {collaborator.linkedIn && (
+                    <a href={`https://www.linkedin.com/in/${collaborator.linkedIn}`} target='_blank' style={this.styles.a}>
+                      <Linkedin style={this.styles.icon} color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
                     </a>
                   )}
                 </div>
