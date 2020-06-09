@@ -448,6 +448,7 @@
   "app.containers/collaboratorsSnippet.ir": "",
   "app.containers/collaboratorsSnippet.is": "Израиль",
   "app.containers/collaboratorsSnippet.pl": "Польский",
+  "app.containers/collaboratorsSnippet.pt": "",
   "app.containers/collaboratorsSnippet.ru": "Россия",
   "app.containers/collaboratorsView.filterByLanguage": "Фильтр по языку",
   "app.containers/collaboratorsView.removeFilter": "Удалить фильтр",
