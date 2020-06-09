@@ -157,6 +157,14 @@ const collaborators = [
     linkedIn: 'pilar-marcos-lázaro-989a308a',
     country: 'ir'
   },
+  {
+    name: 'Rui Fernandes',
+    languages: ['pt'],
+    image: 'rui-fernandes.jpg',
+    desc: 'CANTIC (CRTIC-Amadora).',
+    url: 'http://www.cantic.org.pt',
+    country: 'pt'
+  },
 ]
 
 export default collaborators

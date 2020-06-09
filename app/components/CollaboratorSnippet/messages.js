@@ -14,6 +14,10 @@ export default defineMessages({
     id: `${scope}.is`,
     defaultMessage: 'Israel'
   },
+  pt: {
+    id: `${scope}.pt`,
+    defaultMessage: 'Portugal'
+  },
   hr: {
     id: `${scope}.hr`,
     defaultMessage: 'Croatia'
