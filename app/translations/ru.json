@@ -310,7 +310,7 @@
   "app.components.UseConditions.property": "{owner} имеет характеристики исходных файлов, из которых получаются пиктограммы, опубликованные на этом веб-сайте.",
   "app.components.Welcome.aragonese": "Арагонский",
   "app.components.Welcome.chooseLanguage": "Выберите язык:",
-  "app.components.Welcome.header": "Центр аументативной и альтернативных коммуникаций {aragones}",
+  "app.components.Welcome.header": "Центр аументативной и альтернативных коммуникаций Арагона",
   "app.components.author": "Автор пиктограммы:",
   "app.components.creativeCommons": "Лицензия Creative commons ARASAAC CC BY-NC-SA",
   "app.components.dialog.ok": "Ок",
