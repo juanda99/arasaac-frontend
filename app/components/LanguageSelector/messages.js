@@ -118,6 +118,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Chinese (Simplified)'
   },
+  mk: {
+    id: 'app.components.LanguageSelector.mk',
+    description: 'Select language',
+    defaultMessage: 'Macedonian'
+  },
   translateOnline: {
     id: 'app.components.LanguageSelector.translateOnline',
     description: 'Select language',

@@ -57,6 +57,10 @@ const languages = [
     text: 'Italiano'
   },
   {
+    code: 'mk',
+    text: 'Македонски'
+  },
+  {
     code: 'nl',
     text: 'Nederlands'
   },
