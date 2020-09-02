@@ -153,7 +153,7 @@ class Material extends Component {
   createAuthorItem = (authorData) => {
     const role = authorData.get('role') || 'author'
     const author = authorData.get('author')
-    const pictureProvider = author.get('pictureProvider')
+    const pictureProvider = authorData.get('pictureProvider')
     const picture = pictureProvider === ARASAAC ? DEFAULT_PROFILE_PICTURE : author.getIn([pictureProvider, 'picture'])
     return (
       <ListItem
@@ -181,7 +181,8 @@ class Material extends Component {
     const language = currentTranslation.get('lang')
     const title = currentTranslation.get('title')
     const desc = currentTranslation.get('desc')
-    const images = [...material.get('commonScreenshots') || [], ...material.getIn(['screenshots', language]) || []]
+    const langImages = (material.getIn(['screenshots', language]) || []).map(image => `${language}/${image}`)
+    const images = [...langImages, ...material.get('commonScreenshots') || []]
     // const files = [...material.get('commonFiles') || [], ...material.getIn(['files', language]) || []]
     // migration hack: if just one language and not under its language directory, it is compress under xx locale code
     const zipFile = material.getIn(['file', language]) || material.getIn(['file', 'xx'])
