@@ -153,7 +153,7 @@ class Material extends Component {
   createAuthorItem = (authorData) => {
     const role = authorData.get('role') || 'author'
     const author = authorData.get('author')
-    const pictureProvider = authorData.get('pictureProvider')
+    const pictureProvider = authorData.get('pictureProvider') || ARASAAC /* legacy users data */
     const picture = pictureProvider === ARASAAC ? DEFAULT_PROFILE_PICTURE : author.getIn([pictureProvider, 'picture'])
     return (
       <ListItem
