@@ -93,7 +93,7 @@ class MaterialsView extends PureComponent {
       requestMaterials(locale, this.props.params.searchText, token)
     }
     requestNewMaterials(token)
-    // if (role === 'admin') requestNotPublishedMaterials(token)
+    if (role === 'admin') requestNotPublishedMaterials(token)
   }
 
   componentWillReceiveProps(nextProps) {
