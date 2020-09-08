@@ -52,7 +52,7 @@ const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange })
         <li key={index} style={styles.listItem}>
           <Paper zDepth={2} style={styles.paper}>
             <Field
-              name={`${member}.language`}
+              name={`${member}.lang`}
               component={SelectField}
               hintText={<FormattedMessage {...messages.chooseLanguage} />}
               floatingLabelText={<FormattedMessage {...messages.language} />}
