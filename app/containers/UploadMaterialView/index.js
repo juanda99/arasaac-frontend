@@ -91,7 +91,7 @@ class UploadMaterialView extends PureComponent {
     if (languages) {
       translations = languages.map((language) => {
         let customLanguage
-        switch (language.language) {
+        switch (language.lang) {
           case 'da':
           case 'nl':
           case 'en':
@@ -107,7 +107,7 @@ class UploadMaterialView extends PureComponent {
           case 'es':
           case 'sv':
           case 'tr':
-            customLanguage = language.language
+            customLanguage = language.lang
             break;
           default:
             customLanguage = 'none'
@@ -118,7 +118,7 @@ class UploadMaterialView extends PureComponent {
           title: language.title,
           desc: language.desc,
           language: customLanguage,
-          lang: language.language
+          lang: language.lang
         }
       })
     }
