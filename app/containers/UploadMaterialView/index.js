@@ -35,6 +35,7 @@ import { makeSelectDirection } from 'containers/LanguageProvider/selectors'
 import activities from 'data/activities'
 import areas from 'data/areas'
 import languages from 'data/languages'
+import { getMongoDBLanguage } from 'utils'
 
 class UploadMaterialView extends PureComponent {
 
@@ -89,38 +90,13 @@ class UploadMaterialView extends PureComponent {
       screenshots.map((screenshot) => formData.append('screenshots', screenshot))
     }
     if (languages) {
-      translations = languages.map((language) => {
-        let customLanguage
-        switch (language.lang) {
-          case 'da':
-          case 'nl':
-          case 'en':
-          case 'fi':
-          case 'fr':
-          case 'de':
-          case 'hu':
-          case 'it':
-          case 'nb':
-          case 'pt':
-          case 'ro':
-          case 'ru':
-          case 'es':
-          case 'sv':
-          case 'tr':
-            customLanguage = language.lang
-            break;
-          default:
-            customLanguage = 'none'
-            break;
-        }
-
-        return {
-          title: language.title,
-          desc: language.desc,
-          language: customLanguage,
-          lang: language.lang
-        }
+      translations = languages.map((language) => ({
+        title: language.title,
+        desc: language.desc,
+        language: getMongoDBLanguage(language.lang),
+        lang: language.lang
       })
+      )
     }
     formData.append(
       'formData',

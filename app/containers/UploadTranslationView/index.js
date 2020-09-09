@@ -86,7 +86,7 @@ class UploadTranslationView extends PureComponent {
 
     /* try to process it, we use axios to get progress */
     this.setState({ sending: true, loading: true })
-    const targetLanguage = languages[0].language
+    const targetLanguage = languages[0].lang
 
     const formData = new FormData()
     if (files) files.map((file) => formData.append(`${targetLanguage}_files`, file))
