@@ -270,7 +270,7 @@
   "app.components.Pictogram.downloadLabel": "",
   "app.components.Pictogram.frame": "Рамка",
   "app.components.Pictogram.frameColor": "Боја на рамка",
-  "app.components.Pictogram.frameWidth": "",
+  "app.components.Pictogram.frameWidth": "Одбери ширина:",
   "app.components.Pictogram.future": "",
   "app.components.Pictogram.hairColor": "",
   "app.components.Pictogram.health": "",
