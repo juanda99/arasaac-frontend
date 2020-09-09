@@ -61,6 +61,10 @@ const languages = [
     text: 'Македонски'
   },
   {
+    code: 'el',
+    text: 'Ελληνικά'
+  },
+  {
     code: 'nl',
     text: 'Nederlands'
   },

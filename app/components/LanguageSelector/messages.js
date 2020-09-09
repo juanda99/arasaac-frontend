@@ -123,6 +123,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Macedonian'
   },
+  el: {
+    id: 'app.components.LanguageSelector.el',
+    description: 'Select language',
+    defaultMessage: 'Greek'
+  },
   translateOnline: {
     id: 'app.components.LanguageSelector.translateOnline',
     description: 'Select language',
