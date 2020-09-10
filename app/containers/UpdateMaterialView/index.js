@@ -32,6 +32,7 @@ import { updateMaterial } from 'containers/MaterialsView/actions'
 import activities from 'data/activities'
 import areas from 'data/areas'
 import filterMessages from 'components/Filters/messages'
+import { getMongoDBLanguage } from 'utils'
 
 class UpdateMaterialView extends PureComponent {
 
@@ -89,30 +90,6 @@ class UpdateMaterialView extends PureComponent {
     let translations
     if (languages) {
       translations = languages.map((language) => {
-        let customLanguage
-        switch (language.language) {
-          case 'da':
-          case 'nl':
-          case 'en':
-          case 'fi':
-          case 'fr':
-          case 'de':
-          case 'hu':
-          case 'it':
-          case 'nb':
-          case 'pt':
-          case 'ro':
-          case 'ru':
-          case 'es':
-          case 'sv':
-          case 'tr':
-            customLanguage = language.language
-            break;
-          default:
-            customLanguage = 'none'
-            break;
-        }
-
         const authors = language.authors
           .map(author => ({ author: author._id, role: 'translator' }))
           .filter(author => !!author.author)
@@ -120,8 +97,8 @@ class UpdateMaterialView extends PureComponent {
         return {
           title: language.title,
           desc: language.desc,
-          language: customLanguage,
-          lang: language.language,
+          language: getMongoDBLanguage(language.lang),
+          lang: language.lang,
           authors
         }
       })
