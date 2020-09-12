@@ -90,11 +90,15 @@ function materialsViewReducer(state = initialState, action) {
         .set('error', action.payload.error)
         .set('loading', false)
     case NEW_MATERIALS.SUCCESS:
-    case MATERIALS_NOT_PUBLISHED.SUCCESS:
       newMaterial = fromJS(action.payload.data.entities.materials || {})
       return state
         .set('loading', false)
         .set('newMaterials', action.payload.data.result)
+        .mergeIn(['materials'], newMaterial)
+    case MATERIALS_NOT_PUBLISHED.SUCCESS:
+      newMaterial = fromJS(action.payload.data.entities.materials || {})
+      return state
+        .set('loading', false)
         .mergeIn(['materials'], newMaterial)
     case NEW_MATERIALS.FAILURE:
       return state
