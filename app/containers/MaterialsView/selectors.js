@@ -71,12 +71,14 @@ const makeMaterialsFromEntitiesSelector = () => createSelector(
 
 export const makePendingSelector = () => createSelector(
   makeMaterialsFromEntitiesSelector(),
-  (materials) => materials.filter(material => material.status === PENDING)
+  (materials) => materials.filter(material => material.status === PENDING).sort((a, b) =>
+    new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime())
 )
 
 export const makeNotPublishedSelector = () => createSelector(
   makeMaterialsFromEntitiesSelector(),
-  (materials) => materials.filter(material => material.status === NOT_PUBLISHED)
+  (materials) => materials.filter(material => material.status === NOT_PUBLISHED).sort((a, b) =>
+    new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime())
 )
 
 export const makeVisibleMaterialsSelector = () => createSelector(
@@ -84,7 +86,8 @@ export const makeVisibleMaterialsSelector = () => createSelector(
     /* searchData could be undefined */
     if (searchData == null) return []
     const materialList = denormalize(searchData, searchMaterialSchema, entities)
-    return getFilteredItems(materialList, filters)
+    return getFilteredItems(materialList, filters).sort((a, b) =>
+      new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime())
   }
 )
 
@@ -93,15 +96,9 @@ export const makeNewMaterialsSelector = () => createSelector(
     /* searchData could be undefined */
     if (searchData == null) return []
     const materialList = denormalize(searchData, searchMaterialSchema, entities)
-    return materialList
+    return materialList.sort((a, b) => new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime())
   }
 )
 
 export const makeNewVisibleMaterialsSelector = () => createSelector(
-  makeSearchNewMaterialsSelector(), makeEntitiesSelector(), makeFiltersSelector(), (searchData, entities, filters) => {
-    /* searchData could be undefined */
-    if (searchData == null) return []
-    const materialList = denormalize(searchData, searchMaterialSchema, entities)
-    return getFilteredItems(materialList, filters)
-  }
-)
+  makeNewMaterialsSelector(), makeFiltersSelector(), (materialList, filters) => getFilteredItems(materialList, filters))

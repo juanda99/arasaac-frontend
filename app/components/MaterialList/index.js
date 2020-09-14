@@ -63,7 +63,6 @@ export class MaterialList extends PureComponent {
           styleRoot={{ textAlign: 'center' }}
         />
       ) : null
-
     return (
       <div ref={this.setTopRef}>
         {pagination}

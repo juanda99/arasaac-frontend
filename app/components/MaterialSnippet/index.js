@@ -1,13 +1,10 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Map, List } from 'immutable'
+import moment from 'moment'
 import ReadMore from 'components/ReadMore'
 import Ribbon from 'components/Ribbon'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import EditIcon from 'material-ui/svg-icons/image/edit'
-import VisibilityIcon from 'material-ui/svg-icons/action/visibility'
-import DeleteIcon from 'material-ui/svg-icons/action/delete'
-import VisibilityOffIcon from 'material-ui/svg-icons/action/visibility-Off'
+import P from 'components/P'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import H2 from 'components/H2'
@@ -128,6 +125,9 @@ class MaterialSnippet extends PureComponent {
     const { formatMessage } = intl
     const { showDialog } = this.state
 
+    moment.locale(locale)
+
+
     const activityTags = (
       <TagsRenderer
         tags={material.activities}
@@ -180,7 +180,7 @@ class MaterialSnippet extends PureComponent {
             <Link to={`/materials/${locale}/${material.idMaterial}`}>
               <H2 primary ucase>{title}</H2>
             </Link>
-            {/* {this.renderActionButtons()} */}
+            <em><P>{moment(material.lastUpdated).format('LLL')} ({moment(material.lastUpdated).fromNow()})</P></em>
             <ReadMore style={{ textAlign: 'justify' }}>
               {desc}
             </ReadMore>
