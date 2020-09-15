@@ -355,6 +355,7 @@
   "app.containers.ContactView.sendingMessage": "Пораката се испраќа...",
   "app.containers.DevelopersView.grantTypes": "Видови на грант",
   "app.containers.DevelopersView.grantTypesDesc": "Во зависност од видот на апликацијата и специфичните потреби, мора да се спроведе специфичен вид на обезбедување на средства или пак нешто друго. Не двоумете се да контактирате со нас за повеќе информации.",
+  "app.containers.DevelopersView.howto": "Употреба на API",
   "app.containers.DevelopersView.howtoDesc": "За да го користите ARASAAC API ви требаат ингеренции за пристап. Ние користиме протокол за овластување Oauth2 што ни овозможува апликанти од трети страни да имаат пристап до податоците на ARASAAC и неговите корисници.",
   "app.containers.DevelopersView.introApi": "ARASAAC има обемна API за да им ги овозможи нашите ресурси на апликантите од трети страни.",
   "app.containers.DevelopersView.license": "ARASAAC криејтив комонс лиценца CC BY-NC-SA",
