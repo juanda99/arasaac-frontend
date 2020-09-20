@@ -40,5 +40,20 @@
   "app.components.Filters.Activity.bingo": "Bingo",
   "app.components.Filters.Activity.book": "Βιβλίο",
   "app.components.Filters.Activity.collectiveGame": "Ομαδικό παιχνίδι",
-  "app.components.Filters.Activity.communication": "Επικοινωνία"
+  "app.components.Filters.Activity.communication": "Επικοινωνία",
+  "app.components.Filters.Activity.domino": "Ντόμινο",
+  "app.components.Filters.Activity.exerciseSheet": "Φύλλο εργασιών",
+  "app.components.Filters.Activity.game": "Παιχνίδι",
+  "app.components.Filters.Activity.individualGame": "Ατομικό παιχνίδι",
+  "app.components.Filters.Activity.kitchenRecipes": "Συνταγές μαγειρικής",
+  "app.components.Filters.Activity.notebook": "Σημειωματάριο",
+  "app.components.Filters.Activity.presentation": "Παρουσίαση",
+  "app.components.Filters.Activity.protocol": "Πρωτόκολλο",
+  "app.components.Filters.Activity.routine": "Ρουτίνα",
+  "app.components.Filters.Activity.sequence": "Αλληλουχία",
+  "app.components.Filters.Activity.signalling": "Σηματοδότηση",
+  "app.components.Filters.Activity.smartNotebook": "Έξυπνο Σημειωματάριο",
+  "app.components.Filters.Area.semantics": "Σημασιολογία",
+  "app.components.Filters.Area.socialSciences": "Κοινωνικές Επιστήμες",
+  "app.components.Filters.Area.visualdiscrimination": "Οπτική διάκριση"
 }
