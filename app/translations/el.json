@@ -55,5 +55,16 @@
   "app.components.Filters.Activity.smartNotebook": "Έξυπνο Σημειωματάριο",
   "app.components.Filters.Area.semantics": "Σημασιολογία",
   "app.components.Filters.Area.socialSciences": "Κοινωνικές Επιστήμες",
-  "app.components.Filters.Area.visualdiscrimination": "Οπτική διάκριση"
+  "app.components.Filters.Area.visualdiscrimination": "Οπτική διάκριση",
+  "app.components.Filters.Area.writing": "Γραφή",
+  "app.components.Filters.Catalog.blackAndWhitePictograms": "Ασπρόμαυρα εικονογράμματα",
+  "app.components.Filters.Catalog.catalog": "Κατάλογος",
+  "app.components.Filters.Catalog.colorPictograms": "Έγχρωμα εικονογράμματα",
+  "app.components.Filters.Catalog.pictures": "Εικόνες",
+  "app.components.Filters.Language.chooseLanguage": "Γλώσσα",
+  "app.components.Filters.License.license": "Άδεια",
+  "app.components.Filters.Size.any": "Οποιοδήποτε μέγεθος",
+  "app.components.Filters.Size.large": "Μεγάλο",
+  "app.components.Filters.Size.medium": "Μεσαίο",
+  "app.components.Filters.Size.small": "Μικρό"
 }
