@@ -1,5 +1,10 @@
 {
   "Login.invalidEmail": "Μη έγκυρο email",
   "Login.invalidUrl": "Μη έγκυρη διεύθυνση URL",
-  "Login.required": "Απαιτείται"
+  "Login.required": "Απαιτείται",
+  "activate.activateUser": "Ενεργοποίηση χρήστη",
+  "activate.expiredCode": "Ο κωδικός ενεργοποίησης έχει λήξει. Σας έχουμε στείλει άλλο email για την επικύρωση του λογαριασμού σας",
+  "activate.invalidCode": "Ο κωδικός ενεργοποίησης δεν είναι έγκυρος",
+  "activate.userActivated": "Ο λογαριασμός σας έχει ενεργοποιηθεί. Τώρα μπορείτε να συνδεθείτε.",
+  "activate.userNotActivated": "Παρουσιάστηκε σφάλμα κατά την ενεργοποίηση του λογαριασμού σας"
 }
