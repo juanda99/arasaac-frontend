@@ -204,6 +204,17 @@
   "app.components.Pictogram.ZoomOptions.zoomLevel": "Επίπεδο ζουμ",
   "app.components.Pictogram.addFavoriteLabel": "Προσθήκη στα αγαπημένα",
   "app.components.Pictogram.backgroundColor": "Χρώμα φόντου",
+  "app.components.Pictogram.chooseColor": "Επιλέξτε χρώμα:",
+  "app.components.Pictogram.chooseIdentifier": "Επιλέξτε χαρακτηριστικό:",
+  "app.components.Pictogram.choosePosition": "Επιλέξτε θέση:",
+  "app.components.Pictogram.chooseZoom": "Επιλέξτε επίπεδο ζουμ:",
+  "app.components.Pictogram.classroom": "Αίθουσα",
+  "app.components.Pictogram.color": "Χρώμα",
+  "app.components.Pictogram.description": "Σχετικές λέξεις",
+  "app.components.Pictogram.downloadLabel": "Λήψη",
+  "app.components.Pictogram.frame": "Πλαίσιο",
+  "app.components.Pictogram.frameColor": "Χρώμα Πλαισίου",
+  "app.components.Pictogram.frameWidth": "Επιλέξτε πλάτος:",
   "app.components.Pictogram.future": "Mέλλον",
   "app.components.Pictogram.hairColor": "Επιλέξτε χρώμα μαλλιών:",
   "app.components.Pictogram.health": "Υγεία",
@@ -232,5 +243,6 @@
   "app.components.PictogramSnippet.addFavoriteTooltip": "Προσθέστε εικονόγραμμα στην καρτέλα αγαπημένα",
   "app.components.PictogramSnippet.deleteFavorite": "Διαγραφή από τα Αγαπημένα",
   "app.components.PictogramSnippet.download": "Λήψη εικονογράμματος",
-  "app.components.PictogramSnippet.downloadTooltip": "Λήψη εικονογράμματος"
+  "app.components.PictogramSnippet.downloadTooltip": "Λήψη εικονογράμματος",
+  "app.components.SearchBox.searchField": "Εισάγετε κείμενο αναζήτησης"
 }
