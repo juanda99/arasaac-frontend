@@ -178,5 +178,20 @@
   "app.components.Pictogram.highResolution": "Υψηλή ανάλυση",
   "app.components.Pictogram.identifier": "Αναγνωριστικό",
   "app.components.Pictogram.left": "Αριστερά",
-  "app.components.Pictogram.library": "Βιβλιοθήκη"
+  "app.components.Pictogram.library": "Βιβλιοθήκη",
+  "app.components.Pictogram.medium": "Μεσαίο",
+  "app.components.Pictogram.modifyPicto": "Τροποποίηση εικονογράμματος",
+  "app.components.Pictogram.office": "Γραφείο",
+  "app.components.Pictogram.past": "Παρελθόν",
+  "app.components.Pictogram.pictogramOptions": "Επιλογές εικονογράμματος",
+  "app.components.Pictogram.plural": "Πληθυντικός",
+  "app.components.Pictogram.present": "Παρόν",
+  "app.components.Pictogram.right": "Δεξιά",
+  "app.components.Pictogram.sharePictogram": "Δημοσιεύστε το!",
+  "app.components.Pictogram.skinColor": "Επιλέξτε χρώμα δέρματος:",
+  "app.components.Pictogram.text": "Κείμενο",
+  "app.components.Pictogram.textOptions": "Επιλογές κειμένου",
+  "app.components.Pictogram.thick": "Παχύ",
+  "app.components.Pictogram.thin": "Λεπτό",
+  "app.components.Pictogram.upperCase": "Κεφαλαία"
 }
