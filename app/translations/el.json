@@ -66,5 +66,19 @@
   "app.components.Filters.Size.any": "Οποιοδήποτε μέγεθος",
   "app.components.Filters.Size.large": "Μεγάλο",
   "app.components.Filters.Size.medium": "Μεσαίο",
-  "app.components.Filters.Size.small": "Μικρό"
+  "app.components.Filters.Size.small": "Μικρό",
+  "app.components.Footer.cookiesPolicy": "Πολιτική Cookies",
+  "app.components.Footer.privacyPolicy": "Πολιτική Απορρήτου",
+  "app.components.Footer.termsOfUse": "Όροι Χρήσης",
+  "app.components.LanguageSelector.ar": "Αραβικά",
+  "app.components.LanguageSelector.bg": "Βουλγαρικά",
+  "app.components.LanguageSelector.br": "Πορτογαλικά Βραζιλίας",
+  "app.components.LanguageSelector.ca": "Καταλανικά",
+  "app.components.LanguageSelector.choose": "Επιλογή γλώσσας",
+  "app.components.LanguageSelector.de": "Γερμανικά",
+  "app.components.LanguageSelector.en": "Αγγλικά",
+  "app.components.LanguageSelector.es": "Ισπανικά",
+  "app.components.LanguageSelector.eu": "Βασκικά",
+  "app.components.LanguageSelector.fr": "Γαλλικά",
+  "app.components.LanguageSelector.he": "Εβραϊκά"
 }
