@@ -80,5 +80,22 @@
   "app.components.LanguageSelector.es": "Ισπανικά",
   "app.components.LanguageSelector.eu": "Βασκικά",
   "app.components.LanguageSelector.fr": "Γαλλικά",
-  "app.components.LanguageSelector.he": "Εβραϊκά"
+  "app.components.LanguageSelector.he": "Εβραϊκά",
+  "app.components.LanguageSelector.hr": "Κροατικά",
+  "app.components.LanguageSelector.hu": "Ουγγρικά",
+  "app.components.LanguageSelector.it": "Ιταλικά",
+  "app.components.LanguageSelector.nl": "Ολλανδικά",
+  "app.components.LanguageSelector.pl": "Πολωνικά",
+  "app.components.LanguageSelector.pt": "Πορτογαλικά",
+  "app.components.LanguageSelector.ro": "Ρουμανικά",
+  "app.components.LanguageSelector.ru": "Ρωσικά",
+  "app.components.LanguageSelector.sk": "Σλοβακικά",
+  "app.components.LanguageSelector.translateOnline": "Μετάφραση στο διαδίκτυο",
+  "app.components.LanguageSelector.val": "Βαλενθιανά",
+  "app.components.LanguageSelector.zh": "Κινέζικα (Απλοποιημένα)",
+  "app.components.ListSnippet.download": "Λήψη",
+  "app.components.MaterialForm.addFiles": "Προσθέστε αρχεία υλικού",
+  "app.components.MaterialForm.addMaterialImages": "Προσθέστε εικόνες υλικού",
+  "app.components.MaterialForm.author": "Δημιουργός",
+  "app.components.MaterialForm.authors": "Δημιουργοί"
 }
