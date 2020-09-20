@@ -193,5 +193,10 @@
   "app.components.Pictogram.textOptions": "Επιλογές κειμένου",
   "app.components.Pictogram.thick": "Παχύ",
   "app.components.Pictogram.thin": "Λεπτό",
-  "app.components.Pictogram.upperCase": "Κεφαλαία"
+  "app.components.Pictogram.upperCase": "Κεφαλαία",
+  "app.components.Pictogram.verbalTense": "Χρόνος Ρήματος",
+  "app.components.PictogramSnippet.addFavorite": "Προσθήκη στα αγαπημένα",
+  "app.components.PictogramSnippet.addFavoriteTooltip": "Προσθέστε εικονόγραμμα στην καρτέλα αγαπημένα",
+  "app.components.PictogramSnippet.deleteFavorite": "Διαγραφή από τα Αγαπημένα",
+  "app.components.PictogramSnippet.download": "Λήψη εικονογράμματος"
 }
