@@ -9,5 +9,11 @@
   "activate.userNotActivated": "Παρουσιάστηκε σφάλμα κατά την ενεργοποίηση του λογαριασμού σας",
   "app.HomePage.discover": "Ανακαλύψτε το ARASAAC",
   "app.component.MaterialConditions.author": "Δημιουργός:",
-  "app.component.MaterialConditions.checkRead": "Έχω διαβάσει και κατανοήσει τις παραπάνω πληροφορίες."
+  "app.component.MaterialConditions.checkRead": "Έχω διαβάσει και κατανοήσει τις παραπάνω πληροφορίες.",
+  "app.component.MaterialConditions.intro": "Ελπίζουμε να καταλαβαίνετε την ανάγκη να ακολουθήσετε αυτά τα κριτήρια για τη δημοσίευση του υλικού στο ARASAAC. Σας ευχαριστούμε εκ των προτέρων για τη συνεργασία σας.",
+  "app.component.MaterialConditions.license": "Άδεια:",
+  "app.component.MaterialConditions.materialPublication": "Δημοσίευση υλικού",
+  "app.component.MaterialConditions.origin": "Πηγή:",
+  "app.component.MaterialConditions.pictogramsAuthor": "Δημιουργός εικονογραμμάτων:",
+  "app.component.MaterialConditions.publication": "Δημοσίευση"
 }
