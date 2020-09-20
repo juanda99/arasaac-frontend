@@ -15,5 +15,9 @@
   "app.component.MaterialConditions.materialPublication": "Δημοσίευση υλικού",
   "app.component.MaterialConditions.origin": "Πηγή:",
   "app.component.MaterialConditions.pictogramsAuthor": "Δημιουργός εικονογραμμάτων:",
-  "app.component.MaterialConditions.publication": "Δημοσίευση"
+  "app.component.MaterialConditions.publication": "Δημοσίευση",
+  "app.component.MaterialConditions.requirements": "Προϋποθέσεις",
+  "app.component.MaterialConditions.requirementsP1": "Το υλικό που δημοσιεύεται σε αυτήν την ενότητα θα περιέχει εικονογράμματα από τη συλλογή ARASAAC ή από οποιαδήποτε παρόμοια εργασία.",
+  "app.component.MaterialConditions.requirementsP2": "Τα υλικά δημοσιεύονται υπό την άδεια Creative Commons License BY-NC-SA, επιτρέποντας τη χρήση τους για μη κερδοσκοπικούς σκοπούς παρέχοντας την πηγή και τον δημιουργό και κοινοποιούνται με την ίδια άδεια",
+  "app.component.MaterialConditions.requirementsP3": "Οι φωτογραφίες και οι εικόνες που περιλαμβάνονται στο υλικό πρέπει να είναι σύμφωνες με την άδειά μας ή πρέπει να έχουν γίνει από τον ίδιο το δημιουργό."
 }
