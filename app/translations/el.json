@@ -272,5 +272,20 @@
   "app.containers.DevelopersView.howto": "Χρήση API",
   "app.containers.DevelopersView.howtoDesc": "Για να χρησιμοποιήσετε το ARASAAC API χρειάζεστε διαπιστευτήρια πρόσβασης. Χρησιμοποιούμε το πρωτόκολλο εξουσιοδότησης Oauth2 που μας επιτρέπει οι εφαρμογές τρίτων να μπορούν να έχουν πρόσβαση τόσο στα δεδομένα του ARASAAC όσο και στους χρήστες του.",
   "app.containers.DevelopersView.introApi": "Το ARASAAC διαθέτει ένα εκτεταμένο API για την εξυπηρέτηση των πόρων μας σε εφαρμογές τρίτων.",
-  "app.containers.DevelopersView.termsOfUse": "Όροι χρήσης"
+  "app.containers.DevelopersView.termsOfUse": "Όροι χρήσης",
+  "app.containers.DevelopersView.termsOfUseDesc": "Το ARASAAC API είναι διαθέσιμο μόνο για μη εμπορικές εφαρμογές. Βεβαιωθείτε ότι πληροίτε τους όρους άδειας χρήσης.",
+  "app.containers.ListMenu.cancel": "Ακύρωση",
+  "app.containers.ListMenu.delete": "Διαγραφή",
+  "app.containers.ListMenu.rename": "Μετονομασία",
+  "app.containers.ListMenu.submit": "Υποβολή",
+  "app.containers.ListSnippet.newFolderName": "Όνομα φακέλου",
+  "app.containers.MaterialView.materialLoading": "Φόρτωση υλικού ...",
+  "app.containers.MaterialView.materialNotFound": "Λυπούμαστε, το υλικό που αναζητήσατε δεν υπάρχει",
+  "app.containers.MaterialsView.loadingMaterials": "Φόρτωση υλικού ...",
+  "app.containers.MaterialsView.materialsNotFound": "Λυπούμαστε, δεν μπορούμε να βρούμε κανένα υλικό",
+  "app.containers.MaterialsView.new": "Νέο",
+  "app.containers.MaterialsView.newMaterialsFound": "Βρήκαμε πρόσφατα {materialCounter} νέο ή ενημερωμένο υλικό",
+  "app.containers.MaterialsView.notPublished": "Μη δημοσιευμένο",
+  "app.containers.MaterialsView.pending": "Σε εκκρεμότητα",
+  "app.containers.MaterialsView.search": "Αναζήτηση"
 }
