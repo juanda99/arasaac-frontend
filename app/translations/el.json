@@ -26,5 +26,19 @@
   "app.component.MaterialConditions.suggestions": "Προτάσεις",
   "app.component.MaterialConditions.translationQuoteDesc": "Σε περίπτωση μεταφρασμένου υλικού, το όνομα του μεταφραστή θα προστεθεί στο τέλος της αναφοράς:",
   "app.component.MaterialConditions.translator": "Μεταφραστής:",
-  "app.component.Participate.contact": "Επικοινωνήστε μαζί μας"
+  "app.component.Participate.contact": "Επικοινωνήστε μαζί μας",
+  "app.component.Participate.header": "Χτίζουμε το ARASAAC. Θα ήθελες να συμμετέχεις μαζί μας;",
+  "app.components.Catalog.accept": "Αποδοχή",
+  "app.components.Catalog.arasaacLicense": "Άδεια ARASAAC",
+  "app.components.Catalog.cancel": "Ακύρωση",
+  "app.components.Catalog.confirmLicense": "Έχω διαβάσει και αποδέχομαι τους όρους της συμφωνίας της άδειας ARASAAC",
+  "app.components.CategorySnippet.deleteList": "Διαγραφή φακέλου",
+  "app.components.CategorySnippet.download": "Φάκελος λήψεων",
+  "app.components.Filters.Activity.activity": "Δραστηριότητα",
+  "app.components.Filters.Activity.assessmentTest": "Τεστ αξιολόγησης",
+  "app.components.Filters.Activity.audiovisualMaterial": "Οπτικοακουστικό υλικό",
+  "app.components.Filters.Activity.bingo": "Bingo",
+  "app.components.Filters.Activity.book": "Βιβλίο",
+  "app.components.Filters.Activity.collectiveGame": "Ομαδικό παιχνίδι",
+  "app.components.Filters.Activity.communication": "Επικοινωνία"
 }
