@@ -300,5 +300,19 @@
   "app.containers.PictogramsView.loadingPictograms": "Φόρτωση εικονογραμμάτων ...",
   "app.containers/collaboratorsSnippet.pt": "Πορτογαλία",
   "app.containers/collaboratorsSnippet.ru": "Ρωσία",
-  "app.containers/collaboratorsView.removeFilter": "Αφαίρεση φίλτρου"
+  "app.containers/collaboratorsView.removeFilter": "Αφαίρεση φίλτρου",
+  "app.containers/collaboratorsView.translateArasaac": "Το ARASAAC μεταφράζεται από εθελοντές σε πολλές γλώσσες. Επικοινωνήστε μαζί μας εάν θέλετε να βοηθήσετε στη μετάφραση του ARASAAC σε μια νέα γλώσσα ή στη βελτίωση μιας υπάρχουσας μετάφρασης.",
+  "app.containers/collaboratorsView.translationStatus": "Κατάσταση μετάφρασης",
+  "app.containersTranslationStatus.noDataAvailable": "Δεν υπάρχουν διαθέσιμα δεδομένα",
+  "app.containersTranslationStatus.pictosTranslationStatus": "Μετάφραση εικονογραμμάτων (ίσως έχει ήδη μεταφραστεί, αλλά δεν έχει επικυρωθεί):  {pictosValidatedString}%",
+  "app.containersTranslationStatus.webTranslationStatus": "Μετάφραση στο Διαδίκτυο:{webTranslatedString}%",
+  "email.signin": "e-mail",
+  "header.aboutUs": "Σχετικά με εμάς",
+  "header.api": "API για προγραμματιστές",
+  "header.arasaacWorld": "ARASAAC στον κόσμο",
+  "header.catalogs": "Λήψη καταλόγων",
+  "header.configurationTitle": "Διαμόρφωση ARASAAC",
+  "header.contactusTitle": "Επικοινωνήστε μαζί μας",
+  "header.cookiesPolicy": "Πολιτική Cookies",
+  "header.forbidden": "Απαγορευμένη πρόσβαση"
 }
