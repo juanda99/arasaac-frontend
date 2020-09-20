@@ -198,5 +198,6 @@
   "app.components.PictogramSnippet.addFavorite": "Προσθήκη στα αγαπημένα",
   "app.components.PictogramSnippet.addFavoriteTooltip": "Προσθέστε εικονόγραμμα στην καρτέλα αγαπημένα",
   "app.components.PictogramSnippet.deleteFavorite": "Διαγραφή από τα Αγαπημένα",
-  "app.components.PictogramSnippet.download": "Λήψη εικονογράμματος"
+  "app.components.PictogramSnippet.download": "Λήψη εικονογράμματος",
+  "app.components.PictogramSnippet.downloadTooltip": "Λήψη εικονογράμματος"
 }
