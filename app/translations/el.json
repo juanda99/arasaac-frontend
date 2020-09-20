@@ -255,5 +255,22 @@
   "app.components.licenseP2": "Οι πόροι που προσφέρονται στον ιστότοπο (εικονογράμματα, εικόνες, τοποθεσίες ή βίντεο), καθώς και το υλικό που βασίζεται σε αυτά, δημοσιεύονται στην ενότητα {creativeCommonsLicense}, επιτρέποντας τη χρήση τους για μη κερδοσκοπικούς σκοπούς παρέχοντας την πηγή και τον συγγραφέα και κοινοποιούνται με την ίδια άδεια.",
   "app.containers.ContactView.alertWindowErrorTitle": "Σφάλμα φόρμας επικοινωνίας",
   "app.containers.ContactView.form.email": "Ηλεκτρονικό ταχυδρομείο",
-  "app.containers.ContactView.form.emailHint": "Πληκτρολογήστε το email σας"
+  "app.containers.ContactView.form.emailHint": "Πληκτρολογήστε το email σας",
+  "app.containers.ContactView.form.fingers": "Πόσα δάχτυλα είναι;",
+  "app.containers.ContactView.form.fingersHint": "Πληκτρολογήστε τον αριθμό των δαχτύλων που βλέπετε στο παρακάτω εικονόγραμμα",
+  "app.containers.ContactView.form.invalidEmail": "Μη έγκυρο email",
+  "app.containers.ContactView.form.message": "Μήνυμα",
+  "app.containers.ContactView.form.messageHint": "Πληκτρολογήστε το μήνυμά σας",
+  "app.containers.ContactView.form.name": "Όνομα",
+  "app.containers.ContactView.form.nameHint": "Πληκτρολογήστε το όνομά σας",
+  "app.containers.ContactView.form.required": "Απαιτείται",
+  "app.containers.ContactView.form.send": "Αποστολή",
+  "app.containers.ContactView.form.wrongFingers": "Λάθος αριθμός δαχτύλων",
+  "app.containers.ContactView.formIntro": "Μιλάτε αγγλικά και ισπανικά. Παρακαλούμε επικοινωνήστε μαζί μας κατά προτίμηση μέσω αυτής της φόρμας για οποιαδήποτε ερώτηση, πρόταση ή συνεργασία. Θα επικοινωνήσουμε μαζί σας το συντομότερο δυνατό.",
+  "app.containers.ContactView.sendMessage": "Σας ευχαριστούμε για το μήνυμά σας. Θα επικοινωνήσουμε μαζί σας το συντομότερο δυνατό.",
+  "app.containers.ContactView.sendingMessage": "Αποστολή μηνύματος…",
+  "app.containers.DevelopersView.howto": "Χρήση API",
+  "app.containers.DevelopersView.howtoDesc": "Για να χρησιμοποιήσετε το ARASAAC API χρειάζεστε διαπιστευτήρια πρόσβασης. Χρησιμοποιούμε το πρωτόκολλο εξουσιοδότησης Oauth2 που μας επιτρέπει οι εφαρμογές τρίτων να μπορούν να έχουν πρόσβαση τόσο στα δεδομένα του ARASAAC όσο και στους χρήστες του.",
+  "app.containers.DevelopersView.introApi": "Το ARASAAC διαθέτει ένα εκτεταμένο API για την εξυπηρέτηση των πόρων μας σε εφαρμογές τρίτων.",
+  "app.containers.DevelopersView.termsOfUse": "Όροι χρήσης"
 }
