@@ -151,8 +151,13 @@
   "app.components.MaterialForm.chooseRole": "Επιλέξτε την ιδιότητα του χρήστη",
   "app.components.MaterialForm.classification": "Ταξινόμηση",
   "app.components.MaterialForm.description": "Περιγραφή",
-  "app.components.MaterialForm.descriptionHint": "Εισαγάγετε την περιγραφή του υλικού",
+  "app.components.MaterialForm.descriptionHint": "Εισάγετε την περιγραφή του υλικού",
   "app.components.MaterialForm.email": "Ηλεκτρονικό ταχυδρομείο",
-  "app.components.MaterialForm.emailHint": "Εισαγάγετε το email του δημιουργού",
-  "app.components.MaterialForm.files": "Αρχεία"
+  "app.components.MaterialForm.emailHint": "Εισάγετε το email του δημιουργού",
+  "app.components.MaterialForm.files": "Αρχεία",
+  "app.components.MaterialForm.filesHint": "Χρησιμοποιήστε περιγραφικά ονόματα αρχείων για να διευκολύνετε τη λήψη.",
+  "app.components.MaterialForm.filesUpload": "Προσθήκη αρχείων",
+  "app.components.MaterialForm.language": "Γλώσσα",
+  "app.components.MaterialForm.languageHint": "Εισάγετε τη γλώσσα, τον τίτλο και την περιγραφή του υλικού.",
+  "app.components.MaterialForm.languageScreenshots": "Ανεβάστε μόνο στιγμιότυπα οθόνης για αυτήν τη γλώσσα"
 }
