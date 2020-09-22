@@ -51,15 +51,6 @@ const collaborators = [
     country: 'es'
   },
   {
-    name: 'Jaime Vidal Corral',
-    languages: ['gl'],
-    desc: 'Maestro de Educación Especial y Pedagogo',
-    linkedIn: 'jaime-vidal-25989082',
-    instagram: 'jaime_vc79',
-    image: 'jaime-vidal.jpg',
-    country: 'es'
-  },
-  {
     name: 'Nitzan Cohen',
     languages: ['he'],
     image: 'nitzan.jpg',
