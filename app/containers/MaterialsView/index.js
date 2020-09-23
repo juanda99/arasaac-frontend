@@ -308,14 +308,14 @@ class MaterialsView extends PureComponent {
         }
         {showSettings ?
           <SelectField
-            floatingLabelText="Tipo de búsqueda"
+            floatingLabelText={<FormattedMessage {...messages.advancedSearch} />}
             value={searchType}
             onChange={this.handleSearchTypeChange}
           >
-            <MenuItem value='content' primaryText='Contenido' />
-            <MenuItem value='author' primaryText='Autor' />
-            <MenuItem value='activity' primaryText='Actividad' />
-            <MenuItem value='area' primaryText='Área' />
+            <MenuItem value='content' primaryText={<FormattedMessage {...messages.content} />} />
+            <MenuItem value='author' primaryText={<FormattedMessage {...messages.author} />} />
+            <MenuItem value='activity' primaryText={<FormattedMessage {...messages.activity} />} />
+            <MenuItem value='area' primaryText={<FormattedMessage {...messages.area} />} />
           </SelectField>
           : null
         }

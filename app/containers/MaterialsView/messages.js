@@ -11,6 +11,22 @@ export default defineMessages({
     description: 'Label for filtering Search',
     defaultMessage: 'Advanced Search'
   },
+  content: {
+    id: 'app.containers.SearchBox.content',
+    defaultMessage: 'Content'
+  },
+  author: {
+    id: 'app.containers.SearchBox.author',
+    defaultMessage: 'Author'
+  },
+  activity: {
+    id: 'app.containers.SearchBox.activity',
+    defaultMessage: 'Activity'
+  },
+  area: {
+    id: 'app.containers.SearchBox.area',
+    defaultMessage: 'Area'
+  },
   materialsNotFound: {
     id: 'app.containers.MaterialsView.materialsNotFound',
     description: 'Message when no materials for a specific search',
@@ -57,9 +73,5 @@ export default defineMessages({
   loadingMaterials: {
     id: 'app.containers.MaterialsView.loadingMaterials',
     defaultMessage: 'Loading materials...'
-  },
-  advancedSearch: {
-    id: 'app.containers.MaterialsView.search.advancedSearch',
-    defaultMessage: 'Advanced search'
   }
 })
