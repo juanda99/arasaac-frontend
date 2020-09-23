@@ -19,7 +19,7 @@ class ImageSlider extends Component {
                 /* use language for materials when changing material, slides need to be loaded, and key has to change */
                 <div key={`${id}-${language}`}>
                   <Counter>{`${key + 1}/${imagesCount}`}</Counter>
-                  <img src={`${MATERIALS_URL}/${id}/screenshots/${image}`} alt='Screenshot' />
+                  <img src={`${MATERIALS_URL}/${id}/screenshots_300/${image}`} alt='Screenshot' />
                 </div>
               ))
               : <img src={'//static.arasaac.org/images/noimage.png'} alt='Screenshot not available' />
