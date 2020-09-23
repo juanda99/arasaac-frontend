@@ -70,35 +70,35 @@ class MaterialSnippet extends PureComponent {
   /* eu: eu, es, en, ....*/
   /* ga: ga, es, en, .....*/
 
-  renderActionButtons = () => {
-    const { showActionButtons, material } = this.props
-    const { idMaterial } = material
-    return showActionButtons ? (
-      <span>
-        <Link to={`/materials/update/${idMaterial}`} >
-          <FloatingActionButton mini={true} style={styles.actionBtn}>
-            <EditIcon />
-          </FloatingActionButton>
-        </Link>
-        {
-          material.status !== PUBLISHED ? (
-            <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PUBLISHED)}>
-              <VisibilityIcon />
-            </FloatingActionButton>
-          ) : (
-              <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PENDING)}>
-                <VisibilityOffIcon />
-              </FloatingActionButton>
-            )
-        }
-        <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handleBeforeRemove(e)}>
-          <DeleteIcon />
-        </FloatingActionButton>
+  // renderActionButtons = () => {
+  //   const { showActionButtons, material } = this.props
+  //   const { idMaterial } = material
+  //   return showActionButtons ? (
+  //     <span>
+  //       <Link to={`/materials/update/${idMaterial}`} >
+  //         <FloatingActionButton mini={true} style={styles.actionBtn}>
+  //           <EditIcon />
+  //         </FloatingActionButton>
+  //       </Link>
+  //       {
+  //         material.status !== PUBLISHED ? (
+  //           <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PUBLISHED)}>
+  //             <VisibilityIcon />
+  //           </FloatingActionButton>
+  //         ) : (
+  //             <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PENDING)}>
+  //               <VisibilityOffIcon />
+  //             </FloatingActionButton>
+  //           )
+  //       }
+  //       <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handleBeforeRemove(e)}>
+  //         <DeleteIcon />
+  //       </FloatingActionButton>
 
-      </span >
+  //     </span >
 
-    ) : ''
-  }
+  //   ) : ''
+  // }
 
   handlePublish = (e, publish) => {
     // e.preventDefault()
