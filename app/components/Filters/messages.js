@@ -96,6 +96,11 @@ export default defineMessages({
     description: 'Menu choose material area',
     defaultMessage: 'Self-awareness and personal autonomy'
   },
+  schedule: {
+    id: 'app.components.Filters.Area.schedule',
+    description: 'Menu choose material area',
+    defaultMessage: 'Schedule'
+  },
   visualdiscrimination: {
     id: 'app.components.Filters.Area.visualdiscrimination',
     description: 'Menu choose material area',

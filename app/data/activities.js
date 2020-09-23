@@ -35,6 +35,7 @@ const activities = [
   { code: 36, text: 'teacchMaterial' },
   { code: 37, text: 'game' },
   { code: 38, text: 'communication' },
+  { code: 39, text: 'schedule' }
 ]
 
 export default activities
