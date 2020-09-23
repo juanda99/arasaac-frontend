@@ -5,6 +5,7 @@ import api from 'services'
 import {
   MATERIALS,
   NEW_MATERIALS,
+  AUTHORS,
   MATERIAL_PUBLISH,
   MATERIAL_REMOVE,
   MATERIAL,
@@ -16,15 +17,16 @@ import {
   notPublishedMaterials,
   removeMaterial,
   material,
-  updateMaterial
+  updateMaterial,
+  authors
 } from './actions'
 
 function* materialsGetData(action) {
   try {
-    const { locale, searchText } = action.payload
+    const { locale, searchText, searchType } = action.payload
     yield put(showLoading())
     const response = yield call(api[action.type], action.payload)
-    yield put(materials.success(locale, searchText, response))
+    yield put(materials.success(locale, searchText, searchType, response))
   } catch (error) {
     yield put(materials.failure(error.message))
   } finally {
@@ -36,9 +38,9 @@ function* materialsGetData(action) {
 
 function* newMaterialsGetData(action) {
   try {
-    yield put(showLoading())
+    // yield put(showLoading())
     const response = yield call(api[action.type], action.payload)
-    yield put(newMaterials.success(response))
+    // yield put(newMaterials.success(response))
   } catch (error) {
     yield put(newMaterials.failure(error.message))
   } finally {
@@ -60,9 +62,9 @@ function* materialPublishGetData(action) {
 
 function* materialsNotPublishedGetData(action) {
   try {
-    yield put(showLoading())
+    // yield put(showLoading())
     const response = yield call(api[action.type], action.payload)
-    yield put(notPublishedMaterials.success(response))
+    // yield put(notPublishedMaterials.success(response))
   } catch (error) {
     yield put(notPublishedMaterials.failure(error.message))
   } finally {
@@ -129,6 +131,18 @@ function* materialGetData(action) {
   }
 }
 
+function* authorsGetData(action) {
+  try {
+    // yield put(showLoading())
+    const response = yield call(api[action.type], action.payload)
+    yield put(authors.success(response))
+    // yield put(hideLoading())
+  } catch (error) {
+    yield put(hideLoading())
+    yield put(authors.failure(error.message))
+  }
+}
+
 function* updateMaterialGetData(action) {
   try {
     yield put(showLoading())
@@ -155,5 +169,12 @@ export function* materialData() {
   yield cancel(watcher)
 }
 
+export function* authorsData() {
+  const watcher = yield takeLatest(AUTHORS.REQUEST, authorsGetData)
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE)
+  yield cancel(watcher)
+}
+
 // All sagas to be loaded
-export default [materialsData, newMaterialsData, materialPublishData, materialsNotPublishedData, materialRemoveData, materialData, updateMaterialData]
+export default [materialsData, newMaterialsData, authorsData, materialPublishData, materialsNotPublishedData, materialRemoveData, materialData, updateMaterialData]

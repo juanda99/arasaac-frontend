@@ -17,9 +17,24 @@ export const makeErrorSelector = () => createSelector(
   (substate) => substate.get('error')
 )
 
+export const makeAuthorsSelector = () => createSelector(
+  selectMaterialsViewDomain,
+  (substate) => substate.get('authors')
+)
+
+export const makeAuthorsNameSelector = () => createSelector(
+  makeAuthorsSelector(),
+  (substate) => substate.map(author => author.name)
+)
+
 export const makeShowFiltersSelector = () => createSelector(
   selectMaterialsViewDomain,
   (substate) => substate.get('showFilter')
+)
+
+export const makeShowSettingsSelector = () => createSelector(
+  selectMaterialsViewDomain,
+  (substate) => substate.get('showSettings')
 )
 
 export const makeFiltersSelector = () => createSelector(
@@ -39,15 +54,24 @@ const makeSearchSelector = () => createSelector(
 
 const makeSearchTextSelector = () => (_, ownProps) => ownProps.params.searchText
 
+const makeSearchTypeSelector = () => (_, ownProps) => {
+  const searchType = ownProps.location.search.split('searchType=')[1]
+  return searchType
+}
+
 /* get materials id's from a material search (specific for locale and search keywords) */
 /* if undefined, it means it's necessary to make an ajax call */
 
-export const makeSearchResultsSelector = () => createSelector(
-  makeSearchSelector(), makeSelectLocale(), makeSearchTextSelector(), (materials, locale, searchText) => (
-    materials.getIn([locale, searchText])
-  )
+export const makeSearchResultsSelector = (_, ownProps) => createSelector(
+  makeSearchSelector(), makeSearchTypeSelector(), makeSelectLocale(), makeSearchTextSelector(), (materials, searchType, locale, searchText) => {
+    const prueba = searchType && searchType !== 'content' ?
+      materials.getIn([searchType, searchText]) :
+      materials.getIn([locale, searchText])
+    const prueba2 = materials.getIn([searchType, 7])
+    const prueba3 = materials.getIn([searchType, '7'])
+    return prueba
+  })
 
-)
 
 /* get materials id's for last modify materials (configured in client/server API for 30 days) */
 const makeSearchNewMaterialsSelector = () => createSelector(

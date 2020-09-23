@@ -6,10 +6,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import PendingIcon from 'material-ui/svg-icons/action/visibility-Off'
 import NotPublishedIcon from 'material-ui/svg-icons/action/thumb-down'
@@ -30,19 +32,22 @@ import ActionButtons from './ActionButtons'
 import {
   makeFiltersSelector,
   makeShowFiltersSelector,
+  makeShowSettingsSelector,
   makeLoadingSelector,
   makeSearchResultsSelector,
   makeVisibleMaterialsSelector,
   makeNewVisibleMaterialsSelector,
   makePendingSelector,
-  makeNotPublishedSelector
+  makeNotPublishedSelector,
+  makeAuthorsNameSelector
 } from './selectors'
 
-import { materials, newMaterials, notPublishedMaterials, toggleShowFilter, setFilterItems, publishMaterial, removeMaterial } from './actions'
+import { materials, newMaterials, authors, notPublishedMaterials, toggleShowSettings, toggleShowFilter, setFilterItems, publishMaterial, removeMaterial } from './actions'
 import languages from 'data/languages'
 import activities from 'data/activities'
 import areas from 'data/areas'
 import messages from './messages'
+import messagesFilters from 'components/Filters/messages'
 
 const styles = {
   searchBar: {
@@ -68,8 +73,78 @@ class MaterialsView extends PureComponent {
     tab: 0,
     offset: 0,
     getNewMaterials: false,
-    getUnpublished: false
+    getUnpublished: false,
+    searchType: 'content',
+    // types: [...this.areaKeywords, ...this.activitiesKeywords].sort()
   }
+
+  customActivities = activities.map(selectItem => {
+    const { formatMessage } = this.props.intl
+    const value = parseInt(selectItem.code, 10)
+    let text = formatMessage(messagesFilters[selectItem.text])
+    switch (value) {
+      case 1:
+      case 15:
+      case 21:
+      case 27:
+      case 31:
+        text = `${formatMessage(messagesFilters['software'])} / ${text}`
+        break;
+      case 4:
+      case 5:
+      case 8:
+      case 17:
+      case 20:
+      case 28:
+        text = `${formatMessage(messagesFilters['communication'])} / ${text}`
+        break;
+      case 6:
+      case 11:
+      case 12:
+      case 13:
+      case 16:
+        text = `${formatMessage(messagesFilters['game'])} / ${text}`
+        break;
+      default:
+        break;
+    }
+    return { value, text }
+  })
+
+  customAreas = areas.map(selectItem => {
+    const { formatMessage } = this.props.intl
+    const value = parseInt(selectItem.code, 10)
+    let text = formatMessage(messagesFilters[selectItem.text])
+    switch (value) {
+      case 4:
+      case 5:
+      case 6:
+      case 7:
+      case 8:
+      case 9:
+      case 10:
+        text = `${formatMessage(messagesFilters['language'])} / ${text}`
+        break;
+      case 13:
+      case 14:
+      case 15:
+      case 16:
+        text = `${formatMessage(messagesFilters['math'])} / ${text}`
+        break;
+      case 1:
+      case 2:
+      case 27:
+        text = `${formatMessage(messagesFilters['priorSkills'])} / ${text}`
+        break;
+      default:
+        break;
+    }
+    return { value, text }
+  })
+
+
+  areasKeywords = this.customAreas.map(area => area.text).sort()
+  activitiesKeywords = this.customActivities.map(activity => activity.text).sort()
 
   processQuery = props => {
     const { location } = props || this.props
@@ -77,47 +152,71 @@ class MaterialsView extends PureComponent {
     let parameters = { offset: 0, tab: 0 }
     if (search) {
       parameters = { ...parameters, ...query }
-      const validKeys = ['offset', 'tab']
+      const validKeys = ['offset', 'tab', 'searchType']
       Object.keys(parameters).forEach(key => validKeys.includes(key) || delete parameters[key])
       parameters.offset = parseInt(parameters.offset, 10) || 0
       parameters.tab = parseInt(parameters.tab, 10) || 0
+      parameters.searchType = parameters.searchType || 'content'
     }
     const needUpdate = Object.keys(parameters).some(key => parameters[key] !== this.state[key])
     if (needUpdate) this.setState(parameters)
   }
 
-  componentDidMount() {
-    const { requestMaterials, requestNewMaterials, requestNotPublishedMaterials, locale, token, role } = this.props
-    this.processQuery()
+  getCodeText = (searchType, searchText) => {
+    const { formatMessage } = this.props.intl
+    if (!searchText) return ''
+    if (searchType === 'activity') return this.customActivities.filter(item => item.text === searchText).map(item => item.value)[0]
+    else if (searchType === 'area') return this.customAreas.filter(item => item.text === searchText).map(item => item.value)[0]
+    return searchText
+  }
+
+  getSearchText = (searchType, searchText) => {
+    const { formatMessage } = this.props.intl
+    if (!searchText) return ''
+    if (searchType === 'activity') return this.customActivities.filter(item => item.value === parseInt(searchText)).map(item => item.text)[0]
+    else if (searchType === 'area') return this.customAreas.filter(item => item.value === parseInt(searchText)).map(item => item.text)[0]
+    return searchText
+  }
+
+  async componentDidMount() {
+    const { requestMaterials, requestNewMaterials, requestNotPublishedMaterials, locale, token, role, authorsName, requestAuthors } = this.props
+    await this.processQuery()
     if (this.props.params.searchText && !this.props.searchResults) {
-      requestMaterials(locale, this.props.params.searchText, token)
+      requestMaterials(locale, this.props.params.searchText, this.state.searchType, token)
     }
     requestNewMaterials(token)
     if (role === 'admin') requestNotPublishedMaterials(token)
+    if (!authorsName.length) requestAuthors()
   }
 
   componentWillReceiveProps(nextProps) {
     const { token } = nextProps
-    if (this.props.params.searchText !== nextProps.params.searchText) {
-      this.props.requestMaterials(this.props.locale, nextProps.params.searchText, token)
-    }
     if (this.props.location.search !== nextProps.location.search) {
       this.processQuery(nextProps)
     }
+    if (nextProps.params.searchText && this.props.params.searchText !== nextProps.params.searchText && !nextProps.searchResults) {
+      this.props.requestMaterials(nextProps.locale, nextProps.params.searchText, this.state.searchType, token)
+    }
+
   }
 
   handleChange = (tab) => {
     const { pathname } = this.props.location
-    const url = `${pathname}?tab=${tab}`
+    const url = `${pathname}?tab=${tab}&searchType=${this.state.searchType}`
+    this.props.router.push(url)
+  }
+
+  handleSearchTypeChange = (event, index, value) => {
+    const url = `/materials/search?tab=${this.state.tab}&searchType=${value}`
     this.props.router.push(url)
   }
 
   handlePageClick = offset => {
     // fix bug if offset is not number, click comes from picto link, should not be processed here
     if (typeof offset === 'number') {
-      const { tab } = this.state
+      const { tab, searchType } = this.state
       const { pathname } = this.props.location
-      const url = `${pathname}?offset=${offset}&tab=${tab}`
+      const url = `${pathname}?offset=${offset}&tab=${tab}&searchType=${searchType}`
       this.props.router.push(url)
     }
   }
@@ -126,8 +225,9 @@ class MaterialsView extends PureComponent {
     this.setState({
       tab: 0
     })
-    if (this.props.params.searchText !== nextValue) {
-      this.props.router.push(`/materials/search/${encodeURIComponent(nextValue)}`)
+    const newValue = this.getCodeText(this.state.searchType, nextValue)
+    if (this.props.params.searchText !== newValue) {
+      this.props.router.push(`/materials/search/${encodeURIComponent(newValue)}?searchType=${this.state.searchType}`)
     }
   }
 
@@ -150,20 +250,17 @@ class MaterialsView extends PureComponent {
   // handleBeforeDelete = () => this.setState({ confirmationBoxOpen: true })
 
   render() {
-    const { showFilter, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, muiTheme, width, role, pendingMaterials, unpublishedMaterials } = this.props
-    const searchText = this.props.params.searchText || ''
-    const { tab, offset } = this.state
+    const { showFilter, showSettings, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, muiTheme, width, role, pendingMaterials, unpublishedMaterials, authorsName } = this.props
+    const { tab, offset, searchType } = this.state
+    const searchText = this.getSearchText(searchType, this.props.params.searchText) || ''
     let materialsCounter
     const hideIconText = width === SMALL
     // depending on which slide we are, we show one or another list */
     let materialsList
-
-
     if (tab === 0) materialsList = visibleMaterials
     else if (tab === 1) materialsList = newVisibleMaterialsList
     else if (tab === 2) materialsList = pendingMaterials
     else if (tab === 3) materialsList = unpublishedMaterials
-
     let gallery = ''
     if (loading) {
       gallery = <ReadMargin><P>{<FormattedMessage {...messages.loadingMaterials} />}</P></ReadMargin>
@@ -187,6 +284,44 @@ class MaterialsView extends PureComponent {
       )
         : <ReadMargin><P>{<FormattedMessage {...messages.materialsNotFound} />}</P></ReadMargin>
     }
+    let dataSource
+    if (searchType === 'content') dataSource = []
+    else if (searchType === 'author') dataSource = authorsName
+    else if (searchType === 'area') dataSource = this.areasKeywords
+    else dataSource = this.activitiesKeywords
+
+    const renderSearchBox = (
+      <div>
+        <div style={styles.container}>
+          <SearchField value={searchText} dataSource={dataSource} onSubmit={this.handleSubmit} style={styles.searchBar} />
+          <ActionButtons
+            onFilterClick={this.props.toggleShowFilter}
+            onSettingsClick={this.props.toggleShowSettings}
+            filterActive={showFilter}
+            settingsActive={showSettings}
+            style={styles.actionButtons}
+          />
+        </div>
+        {showFilter ?
+          <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
+          : null
+        }
+        {showSettings ?
+          <SelectField
+            floatingLabelText="Tipo de búsqueda"
+            value={searchType}
+            onChange={this.handleSearchTypeChange}
+          >
+            <MenuItem value='content' primaryText='Contenido' />
+            <MenuItem value='author' primaryText='Autor' />
+            <MenuItem value='activity' primaryText='Actividad' />
+            <MenuItem value='area' primaryText='Área' />
+          </SelectField>
+          : null
+        }
+      </div>
+    )
+
     return (
       <div>
         <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
@@ -198,17 +333,7 @@ class MaterialsView extends PureComponent {
           >
             <div>
               <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
-                <div style={styles.container}>
-                  <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
-                  <ActionButtons
-                    onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
-                    style={styles.actionButtons}
-                  />
-                </div>
-                {showFilter ?
-                  <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
-                  : null
-                }
+                {renderSearchBox}
               </View>
               <Divider />
               <View left={true} right={true} top={1} >
@@ -224,17 +349,7 @@ class MaterialsView extends PureComponent {
           >
             <div>
               <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
-                <div style={styles.container}>
-                  <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
-                  <ActionButtons
-                    onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
-                    style={styles.actionButtons}
-                  />
-                </div>
-                {showFilter ?
-                  <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
-                  : null
-                }
+                {renderSearchBox}
               </View>
               <Divider />
               <View left={true} right={true} top={1} >
@@ -251,17 +366,7 @@ class MaterialsView extends PureComponent {
             >
               <div>
                 <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
-                  <div style={styles.container}>
-                    <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
-                    <ActionButtons
-                      onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
-                      style={styles.actionButtons}
-                    />
-                  </div>
-                  {showFilter ?
-                    <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
-                    : null
-                  }
+                  {renderSearchBox}
                 </View>
                 <Divider />
                 <View left={true} right={true} top={1} >
@@ -279,17 +384,7 @@ class MaterialsView extends PureComponent {
             >
               <div>
                 <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
-                  <div style={styles.container}>
-                    <SearchField value={searchText} onSubmit={this.handleSubmit} style={styles.searchBar} />
-                    <ActionButtons
-                      onFilterClick={this.props.toggleShowFilter} filterActive={showFilter}
-                      style={styles.actionButtons}
-                    />
-                  </div>
-                  {showFilter ?
-                    <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
-                    : null
-                  }
+                  {renderSearchBox}
                 </View>
                 <Divider />
                 <View left={true} right={true} top={1} >
@@ -336,7 +431,10 @@ MaterialsView.propTypes = {
 
 const mapStateToProps = (state, ownProps) => ({
   filters: makeFiltersSelector()(state),
+  // authors: makeAuthorsSelector()(state),
+  authorsName: makeAuthorsNameSelector()(state),
   showFilter: makeShowFiltersSelector()(state),
+  showSettings: makeShowSettingsSelector()(state),
   locale: makeSelectLocale()(state),
   loading: makeLoadingSelector()(state),
   searchResults: makeSearchResultsSelector()(state, ownProps),
@@ -349,11 +447,14 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  requestMaterials: (locale, searchText, token) => {
-    dispatch(materials.request(locale, searchText, token))
+  requestMaterials: (locale, searchText, searchType, token) => {
+    dispatch(materials.request(locale, searchText, searchType, token))
   },
   requestNewMaterials: (token) => {
     dispatch(newMaterials.request(token))
+  },
+  requestAuthors: () => {
+    dispatch(authors.request())
   },
   requestNotPublishedMaterials: (token) => {
     dispatch(notPublishedMaterials.request(token))
@@ -367,9 +468,12 @@ const mapDispatchToProps = (dispatch) => ({
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())
   },
+  toggleShowSettings: () => {
+    dispatch(toggleShowSettings())
+  },
   setFilterItems: (filter, filterItem) => {
     dispatch(setFilterItems(filter, filterItem))
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(muiThemeable()(withWidth()(MaterialsView))))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(muiThemeable()(withWidth()(injectIntl(MaterialsView)))))

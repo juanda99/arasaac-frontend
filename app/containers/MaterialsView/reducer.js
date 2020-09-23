@@ -8,7 +8,9 @@ import { fromJS, List, Map } from 'immutable'
 import {
   MATERIALS,
   NEW_MATERIALS,
+  AUTHORS,
   SHOW_FILTERS,
+  SHOW_SETTINGS,
   SET_FILTER_ITEMS,
   MATERIAL_PUBLISH,
   MATERIAL_REMOVE,
@@ -19,6 +21,7 @@ import {
 
 export const initialState = fromJS({
   showFilter: false,
+  showSettings: false,
   loading: false,
   error: false,
   search: {},
@@ -29,7 +32,8 @@ export const initialState = fromJS({
     languages: List()
   },
   materials: {},
-  newMaterials: []
+  newMaterials: [],
+  authors: []
 })
 
 function materialsViewReducer(state = initialState, action) {
@@ -43,6 +47,7 @@ function materialsViewReducer(state = initialState, action) {
     case MATERIAL_UPDATE.REQUEST:
     case NEW_MATERIALS.REQUEST:
     case MATERIALS_NOT_PUBLISHED.REQUEST:
+    case AUTHORS.REQUEST:
       return state
         .set('loading', true)
         .set('error', false)
@@ -70,25 +75,36 @@ function materialsViewReducer(state = initialState, action) {
     case MATERIAL_PUBLISH.FAILURE:
     case MATERIALS_NOT_PUBLISHED.FAILURE:
     case MATERIAL_UPDATE.FAILURE:
+    case MATERIALS.FAILURE:
+    case AUTHORS.FAILURE:
+    case NEW_MATERIALS.FAILURE:
       return state
         .set('error', action.payload.error)
         .set('loading', false)
 
     case MATERIALS.SUCCESS:
       newMaterial = fromJS(action.payload.data.entities.materials || {})
-      return state
-        .set('loading', false)
-        .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data.result)
-        .mergeIn(['materials'], newMaterial)
+      // we change searchType for reducer, for authors, activities and areas we don't need locale
+      // activity or area could also be mixed with a content searchText
+      return action.payload.searchType === 'content' ?
+        state
+          .set('loading', false)
+          .setIn(['search', action.payload.locale, action.payload.searchText], action.payload.data.result)
+          .mergeIn(['materials'], newMaterial)
+        :
+        state
+          .set('loading', false)
+          .setIn(['search', action.payload.searchType, action.payload.searchText], action.payload.data.result)
+          .mergeIn(['materials'], newMaterial)
     // case MATERIALS_NOT_PUBLISHED.SUCCESS:
     //   const notPublishedMaterials = fromJS(action.payload.data || [])
     //   return state
     //     .set('loading', false)
     //     .mergeIn(['materials'], notPublishedMaterials)
-    case MATERIALS.FAILURE:
+    case AUTHORS.SUCCESS:
       return state
-        .set('error', action.payload.error)
         .set('loading', false)
+        .set('authors', action.payload.data)
     case NEW_MATERIALS.SUCCESS:
       newMaterial = fromJS(action.payload.data.entities.materials || {})
       return state
@@ -100,13 +116,14 @@ function materialsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .mergeIn(['materials'], newMaterial)
-    case NEW_MATERIALS.FAILURE:
-      return state
-        .set('error', action.payload.error)
-        .set('loading', false)
     case SHOW_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))
+        .set('showSettings', false)
+    case SHOW_SETTINGS:
+      return state
+        .set('showSettings', !state.get('showSettings'))
+        .set('showFilter', false)
     case SET_FILTER_ITEMS:
       return state
         .setIn(['filters', action.payload.filter], action.payload.values)

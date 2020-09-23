@@ -70,35 +70,35 @@ class MaterialSnippet extends PureComponent {
   /* eu: eu, es, en, ....*/
   /* ga: ga, es, en, .....*/
 
-  // renderActionButtons = () => {
-  //   const { showActionButtons, material } = this.props
-  //   const { idMaterial } = material
-  //   return showActionButtons ? (
-  //     <span>
-  //       <Link to={`/materials/update/${idMaterial}`} >
-  //         <FloatingActionButton mini={true} style={styles.actionBtn}>
-  //           <EditIcon />
-  //         </FloatingActionButton>
-  //       </Link>
-  //       {
-  //         material.status !== PUBLISHED ? (
-  //           <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PUBLISHED)}>
-  //             <VisibilityIcon />
-  //           </FloatingActionButton>
-  //         ) : (
-  //             <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PENDING)}>
-  //               <VisibilityOffIcon />
-  //             </FloatingActionButton>
-  //           )
-  //       }
-  //       <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handleBeforeRemove(e)}>
-  //         <DeleteIcon />
-  //       </FloatingActionButton>
+  renderActionButtons = () => {
+    const { showActionButtons, material } = this.props
+    const { idMaterial } = material
+    return showActionButtons ? (
+      <span>
+        <Link to={`/materials/update/${idMaterial}`} >
+          <FloatingActionButton mini={true} style={styles.actionBtn}>
+            <EditIcon />
+          </FloatingActionButton>
+        </Link>
+        {
+          material.status !== PUBLISHED ? (
+            <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PUBLISHED)}>
+              <VisibilityIcon />
+            </FloatingActionButton>
+          ) : (
+              <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PENDING)}>
+                <VisibilityOffIcon />
+              </FloatingActionButton>
+            )
+        }
+        <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handleBeforeRemove(e)}>
+          <DeleteIcon />
+        </FloatingActionButton>
 
-  //     </span >
+      </span >
 
-  //   ) : ''
-  // }
+    ) : ''
+  }
 
   handlePublish = (e, publish) => {
     // e.preventDefault()
@@ -145,7 +145,8 @@ class MaterialSnippet extends PureComponent {
         onClick={this.handleTouchTap}
       />
     )
-    const images = [...material.commonScreenshots || [], ...material.screenshots[locale] || []]
+    const localeImages = [...material.screenshots[locale] || []].map(image => `${locale}/${image}`)
+    const images = [...material.commonScreenshots || [], ...localeImages]
     let title, desc
     let chooseTranslation = material.translations.filter(translation => translation.lang === locale)
     if (chooseTranslation.length) {
@@ -173,6 +174,7 @@ class MaterialSnippet extends PureComponent {
     return (
       <Item>
         <div style={styles.snippet}>
+
           {material.status === PENDING && <Ribbon text={<FormattedMessage {...messages.pending} />} type='warning' />}
           {material.status === NOT_PUBLISHED && <Ribbon text={<FormattedMessage {...messages.notPublished} />} type='danger' />}
           <ImageSlider images={images} id={material.idMaterial} style={styles.snippetImg} />
@@ -184,6 +186,7 @@ class MaterialSnippet extends PureComponent {
             <ReadMore style={{ textAlign: 'justify' }}>
               {desc}
             </ReadMore>
+
             {showLabels ?
               <div style={styles.wrapper}> {activityTags} {areaTags}</div>
               : ''

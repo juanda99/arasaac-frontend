@@ -57,5 +57,9 @@ export default defineMessages({
   loadingMaterials: {
     id: 'app.containers.MaterialsView.loadingMaterials',
     defaultMessage: 'Loading materials...'
+  },
+  advancedSearch: {
+    id: 'app.containers.MaterialsView.search.advancedSearch',
+    defaultMessage: 'Advanced search'
   }
 })

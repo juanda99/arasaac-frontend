@@ -28,6 +28,8 @@ const api = {
     callApi(`${PRIVATE_API_ROOT}/users/activate/${code}`),
   AUTOCOMPLETE_REQUEST: ({ locale }) =>
     callApi(`${API_ROOT}/keywords/${locale}`),
+  AUTHORS_REQUEST: () =>
+    callApi(`${PRIVATE_API_ROOT}/users/authors`),
   PICTOGRAMS_REQUEST: ({ locale, searchText }) =>
     callApi(`${API_ROOT}/pictograms/${locale}/search/${searchText}`, {
       schema: searchPictogramSchema
@@ -36,8 +38,8 @@ const api = {
     callApi(`${API_ROOT}/pictograms/${locale}/new/300`, {
       schema: searchPictogramSchema
     }),
-  MATERIALS_REQUEST: ({ locale, searchText, token }) =>
-    callApi(`${PRIVATE_API_ROOT}/materials/${locale}/${searchText}`, {
+  MATERIALS_REQUEST: ({ locale, searchText, searchType, token }) =>
+    callApi(`${PRIVATE_API_ROOT}/materials/${locale}/${searchType}/${searchText}`, {
       schema: searchMaterialSchema
     }, token),
   NEW_MATERIALS_REQUEST: ({ token }) =>

@@ -10,20 +10,22 @@ import { createRequestTypes, action } from 'utils/actions'
 export const MATERIALS = createRequestTypes('MATERIALS')
 export const MATERIALS_NOT_PUBLISHED = createRequestTypes('MATERIALS_NOT_PUBLISHED')
 export const NEW_MATERIALS = createRequestTypes('NEW_MATERIALS')
+export const AUTHORS = createRequestTypes('AUTHORS')
 export const MATERIAL_PUBLISH = createRequestTypes('MATERIAL_PUBLISH')
 export const MATERIAL_REMOVE = createRequestTypes('MATERIAL_REMOVE')
 export const MATERIAL = createRequestTypes('MATERIAL')
 export const MATERIAL_UPDATE = createRequestTypes('MATERIAL_UPDATE')
 
 export const SHOW_FILTERS = 'MATERIALS_SHOW_FILTERS'
+export const SHOW_SETTINGS = 'MATERIALS_SHOW_SETTINGS'
 export const ENABLE_FILTER = 'MATERIALS_ENABLE_FILTER'
 export const SET_FILTER_ITEMS = 'MATERIALS_SET_FILTER_ITEMS'
 
 
 // actions: materials.request/success/failure
 export const materials = {
-  request: (locale, searchText, token) => action(MATERIALS.REQUEST, { locale, searchText, token }),
-  success: (locale, searchText, data) => action(MATERIALS.SUCCESS, { locale, searchText, data }),
+  request: (locale, searchText, searchType, token) => action(MATERIALS.REQUEST, { locale, searchText, searchType, token }),
+  success: (locale, searchText, searchType, data) => action(MATERIALS.SUCCESS, { locale, searchText, searchType, data }),
   failure: (error) => action(MATERIALS.FAILURE, { error })
 }
 
@@ -31,6 +33,12 @@ export const newMaterials = {
   request: (token) => action(NEW_MATERIALS.REQUEST, { token }),
   success: (data) => action(NEW_MATERIALS.SUCCESS, { data }),
   failure: (error) => action(NEW_MATERIALS.FAILURE, { error })
+}
+
+export const authors = {
+  request: () => action(AUTHORS.REQUEST),
+  success: (data) => action(AUTHORS.SUCCESS, { data }),
+  failure: (error) => action(AUTHORS.FAILURE, { error })
 }
 
 export const publishMaterial = {
@@ -64,6 +72,9 @@ export const updateMaterial = {
 }
 
 export const toggleShowFilter = () => action(SHOW_FILTERS)
+
+export const toggleShowSettings = () => action(SHOW_SETTINGS)
+
 
 // we don't use this action right now, maybe if we decide to show only some filters... mobile version?
 export const enableFilter = (field, value) => action(ENABLE_FILTER, { field, value })
