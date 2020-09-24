@@ -74,8 +74,7 @@ class MaterialsView extends PureComponent {
     offset: 0,
     getNewMaterials: false,
     getUnpublished: false,
-    searchType: 'content',
-    // types: [...this.areaKeywords, ...this.activitiesKeywords].sort()
+    searchType: 'content'
   }
 
   customActivities = activities.map(selectItem => {

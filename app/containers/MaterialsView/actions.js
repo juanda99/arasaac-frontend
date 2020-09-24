@@ -16,7 +16,8 @@ export const MATERIAL_REMOVE = createRequestTypes('MATERIAL_REMOVE')
 export const MATERIAL = createRequestTypes('MATERIAL')
 export const MATERIAL_UPDATE = createRequestTypes('MATERIAL_UPDATE')
 
-export const SHOW_FILTERS = 'MATERIALS_SHOW_FILTERS'
+export const TOGGLE_FILTERS = 'MATERIALS_TOGGLE_FILTERS'
+export const TOGGLE_SETTINGS = 'MATERIALS_TOGGLE_SETTINGS'
 export const SHOW_SETTINGS = 'MATERIALS_SHOW_SETTINGS'
 export const ENABLE_FILTER = 'MATERIALS_ENABLE_FILTER'
 export const SET_FILTER_ITEMS = 'MATERIALS_SET_FILTER_ITEMS'
@@ -71,9 +72,10 @@ export const updateMaterial = {
   failure: (error) => action(MATERIAL_UPDATE.FAILURE, { error })
 }
 
-export const toggleShowFilter = () => action(SHOW_FILTERS)
+export const toggleShowFilter = () => action(TOGGLE_FILTERS)
 
-export const toggleShowSettings = () => action(SHOW_SETTINGS)
+export const toggleShowSettings = () => action(TOGGLE_SETTINGS)
+export const showSettings = () => action(SHOW_SETTINGS)
 
 
 // we don't use this action right now, maybe if we decide to show only some filters... mobile version?

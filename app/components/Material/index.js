@@ -170,19 +170,21 @@ class Material extends Component {
     const pictureProvider = authorData.get('pictureProvider') || ARASAAC /* legacy users data */
     const picture = pictureProvider === ARASAAC ? DEFAULT_PROFILE_PICTURE : author.getIn([pictureProvider, 'picture'])
     return (
-      <ListItem
-        key={author.get('_id')}
-      >
-        <div style={{ display: 'flex' }}>
-          <div>
-            <img src={picture} style={{ width: '50px', height: '50px', marginRight: '25px' }} />
+      <Link to={`/materials/search/${author.get('name')}?searchType=author`} onClick={() => this.props.showSettings()}>
+        <ListItem
+          key={author.get('_id')}
+        >
+          <div style={{ display: 'flex' }}>
+            <div>
+              <img src={picture} style={{ width: '50px', height: '50px', marginRight: '25px' }} />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <P important={true} style={{ marginBottom: '5px' }}>{author.get('name')}</P>
+              <span style={{ color: 'darkGrey', fontSize: '0.9rem' }}><FormattedMessage {...messages[role]} /></span>
+            </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <P important={true} style={{ marginBottom: '5px' }}>{author.get('name')}</P>
-            <span style={{ color: 'darkGrey', fontSize: '0.9rem' }}><FormattedMessage {...messages[role]} /></span>
-          </div>
-        </div>
-      </ListItem>
+        </ListItem>
+      </Link>
     )
   }
 
@@ -366,6 +368,7 @@ Material.propTypes = {
   showActionButtons: PropTypes.bool.isRequired,
   publishMaterial: PropTypes.func.isRequired,
   removeMaterial: PropTypes.func.isRequired,
+  showSettings: PropTypes.func.isRequired
 }
 
 export default muiThemeable()(injectIntl(Material))

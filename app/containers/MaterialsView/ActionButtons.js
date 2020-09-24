@@ -26,15 +26,15 @@ class ActionButtons extends PureComponent {
 
     return (
       <div>
-        <IconButton style={styles.icon} onClick={onSettingsClick} tooltip={<FormattedMessage {...messages.advancedSearch} />}>
-          {settingsActive ?
-            <SettingsIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
-            : <SettingsIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} />}
-        </IconButton>
         <IconButton style={styles.icon} onClick={onFilterClick} tooltip={<FormattedMessage {...messages.showFilters} />}>
           {filterActive ?
             <FilterListIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
             : <FilterListIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} />}
+        </IconButton>
+        <IconButton style={styles.icon} onClick={onSettingsClick} tooltip={<FormattedMessage {...messages.advancedSearch} />}>
+          {settingsActive ?
+            <SettingsIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
+            : <SettingsIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} />}
         </IconButton>
       </div>
     )

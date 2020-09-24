@@ -9,7 +9,8 @@ import {
   MATERIALS,
   NEW_MATERIALS,
   AUTHORS,
-  SHOW_FILTERS,
+  TOGGLE_FILTERS,
+  TOGGLE_SETTINGS,
   SHOW_SETTINGS,
   SET_FILTER_ITEMS,
   MATERIAL_PUBLISH,
@@ -116,13 +117,17 @@ function materialsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .mergeIn(['materials'], newMaterial)
-    case SHOW_FILTERS:
+    case TOGGLE_FILTERS:
       return state
         .set('showFilter', !state.get('showFilter'))
         .set('showSettings', false)
-    case SHOW_SETTINGS:
+    case TOGGLE_SETTINGS:
       return state
         .set('showSettings', !state.get('showSettings'))
+        .set('showFilter', false)
+    case SHOW_SETTINGS:
+      return state
+        .set('showSettings', true)
         .set('showFilter', false)
     case SET_FILTER_ITEMS:
       return state
