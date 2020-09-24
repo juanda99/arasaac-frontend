@@ -64,11 +64,11 @@ function* materialsNotPublishedGetData(action) {
   try {
     // yield put(showLoading())
     const response = yield call(api[action.type], action.payload)
-    // yield put(notPublishedMaterials.success(response))
+    yield put(notPublishedMaterials.success(response))
   } catch (error) {
     yield put(notPublishedMaterials.failure(error.message))
   } finally {
-    yield put(hideLoading())
+    // yield put(hideLoading())
   }
 }
 
