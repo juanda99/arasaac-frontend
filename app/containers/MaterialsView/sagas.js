@@ -40,11 +40,11 @@ function* newMaterialsGetData(action) {
   try {
     // yield put(showLoading())
     const response = yield call(api[action.type], action.payload)
-    // yield put(newMaterials.success(response))
+    yield put(newMaterials.success(response))
   } catch (error) {
     yield put(newMaterials.failure(error.message))
   } finally {
-    yield put(hideLoading())
+    // yield put(hideLoading())
   }
 }
 
