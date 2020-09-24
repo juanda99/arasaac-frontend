@@ -110,8 +110,7 @@ export const makeVisibleMaterialsSelector = () => createSelector(
     /* searchData could be undefined */
     if (searchData == null) return []
     const materialList = denormalize(searchData, searchMaterialSchema, entities)
-    return getFilteredItems(materialList, filters).sort((a, b) =>
-      new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime())
+    return getFilteredItems(materialList, filters)
   }
 )
 
