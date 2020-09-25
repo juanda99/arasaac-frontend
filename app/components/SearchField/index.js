@@ -6,7 +6,7 @@ import { injectIntl, intlShape } from 'react-intl'
 import NoMobileButton from 'components/NoMobileButton'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import messages from './messages'
-import customFilter from './filter'
+import customFilter, { pictogramFilter } from './filter'
 
 class SearchField extends Component {
 
@@ -33,6 +33,7 @@ class SearchField extends Component {
 
   render() {
     const { formatMessage } = this.props.intl
+    const filter = this.props.filterFromStart ? pictogramFilter : customFilter
     const dataSource = this.props.dataSource || []
     return (
       <div style={this.props.style}>
@@ -40,7 +41,7 @@ class SearchField extends Component {
           <SearchBar
             style={this.props.style}
             ref={(ref) => (this.myInput = ref)}
-            filter={customFilter}
+            filter={filter}
             dataSource={dataSource}
             onChange={this.handleUpdateInput}
             onNewRequest={this.handleClick}
@@ -64,7 +65,8 @@ SearchField.propTypes = {
   style: PropTypes.object,
   intl: intlShape.isRequired,
   value: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  filterFromStart: PropTypes.bool,
 }
 
 export default injectIntl(SearchField)

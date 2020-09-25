@@ -261,6 +261,7 @@ class PictogramsView extends PureComponent {
                   onSubmit={this.handleSubmit}
                   style={styles.searchBar}
                   dataSource={keywords}
+                  filterFromStart={true}
                 />
                 {visibleSettings ? (
                   <div>
