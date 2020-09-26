@@ -62,15 +62,12 @@ const makeSearchTypeSelector = () => (_, ownProps) => {
 /* get materials id's from a material search (specific for locale and search keywords) */
 /* if undefined, it means it's necessary to make an ajax call */
 
-export const makeSearchResultsSelector = (_, ownProps) => createSelector(
-  makeSearchSelector(), makeSearchTypeSelector(), makeSelectLocale(), makeSearchTextSelector(), (materials, searchType, locale, searchText) => {
-    const prueba = searchType && searchType !== 'content' ?
-      materials.getIn([searchType, searchText]) :
-      materials.getIn([locale, searchText])
-    const prueba2 = materials.getIn([searchType, 7])
-    const prueba3 = materials.getIn([searchType, '7'])
-    return prueba
-  })
+export const makeSearchResultsSelector = () => createSelector(
+  makeSearchSelector(), makeSearchTypeSelector(), makeSelectLocale(), makeSearchTextSelector(), (materials, searchType, locale, searchText) =>
+  searchType && searchType !== 'content' ?
+    materials.getIn([searchType, searchText]) :
+    materials.getIn([locale, searchText])
+)
 
 
 /* get materials id's for last modify materials (configured in client/server API for 30 days) */
@@ -106,11 +103,13 @@ export const makeNotPublishedSelector = () => createSelector(
 )
 
 export const makeVisibleMaterialsSelector = () => createSelector(
-  makeSearchResultsSelector(), makeEntitiesSelector(), makeFiltersSelector(), (searchData, entities, filters) => {
+  makeSearchResultsSelector(), makeEntitiesSelector(), makeFiltersSelector(), makeSearchTypeSelector(), (searchData, entities, filters, searchType) => {
     /* searchData could be undefined */
     if (searchData == null) return []
     const materialList = denormalize(searchData, searchMaterialSchema, entities)
-    return getFilteredItems(materialList, filters)
+    const filterList = getFilteredItems(materialList, filters)
+    return searchType === 'content' ? filterList : filterList.sort((a, b) =>
+      new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime())
   }
 )
 
