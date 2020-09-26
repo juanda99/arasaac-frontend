@@ -18,8 +18,8 @@ class ImageSlider extends Component {
               images.map((image, key) => (
                 /* use language for materials when changing material, slides need to be loaded, and key has to change */
                 <div key={`${id}-${language}`}>
-                  <Counter>{`${key + 1}/${imagesCount}`}</Counter>
                   <img src={`${MATERIALS_URL}/${id}/screenshots/${image}`} alt='Screenshot' />
+                  <Counter>{`${key + 1}/${imagesCount}`}</Counter>
                 </div>
               ))
               : <img src={'//static.arasaac.org/images/noimage.png'} alt='Screenshot not available' />
