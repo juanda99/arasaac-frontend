@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
+import ReadMargin from 'components/ReadMargin'
 import ShareBar from 'components/ShareBar'
 import Divider from 'components/Divider'
 import { Link } from 'react-router'
@@ -34,15 +35,10 @@ import { MATERIALS_URL, IMAGES_URL } from 'services/config'
 const processString = require('react-process-string')
 import langMessages from 'components/LanguageSelector/messages'
 import { DEFAULT_PROFILE_PICTURE, ARASAAC, NOT_PUBLISHED, PUBLISHED, PENDING, urlRegex } from 'utils'
+import Desc from './Desc'
 import messages from './messages'
 
 const styles = {
-  desc: {
-    flexGrow: 3,
-    width: '500px',
-    padding: '2rem',
-    textAlign: 'justify'
-  },
   chip: {
     margin: '4px'
   },
@@ -233,7 +229,7 @@ class Material extends Component {
     ];
     const defaultImage = images.length ? `${MATERIALS_URL}/${idMaterial}/screenshots/${images[0]}` : `${IMAGES_URL}/arasaac-logo.png`
     return (
-      <div>
+      <ReadMargin>
         <Helmet
           title={title}
           meta={[
@@ -252,7 +248,7 @@ class Material extends Component {
             {material.get('status') === NOT_PUBLISHED && <Ribbon text={<FormattedMessage {...messages.notPublished} />} type='danger' />}
           </div>
 
-          <div style={styles.desc}>
+          <Desc>
             {desc.split('\n').map((i, key) => {
               return <P key={key}>{processString(urlRegex)(i)}</P>
             })}
@@ -262,7 +258,7 @@ class Material extends Component {
               </a>
             </p>
 
-          </div>
+          </Desc>
         </div>
 
         <H3 primary={true}><FormattedMessage {...messages.languages} /></H3>
@@ -289,7 +285,7 @@ class Material extends Component {
           material.get('commonFiles').map((file) =>
             <FlatButton
               key={file}
-              label={file}
+              label={`${file.replace(/_/g, ' ')}`}
               labelPosition='after'
               icon={<Download />}
               href={`${MATERIALS_URL}/${idMaterial}/${file}`}
@@ -301,7 +297,7 @@ class Material extends Component {
           material.getIn(['files', language]) && material.getIn(['files', language]).map((file) =>
             <FlatButton
               key={file}
-              label={file}
+              label={`${file.replace(/_/g, ' ')}`}
               labelPosition='after'
               icon={<Download />}
               href={`${MATERIALS_URL}/${idMaterial}/${language}/${file}`}
@@ -340,7 +336,7 @@ class Material extends Component {
         </div>
 
 
-      </div >
+      </ReadMargin >
     )
   }
 }
