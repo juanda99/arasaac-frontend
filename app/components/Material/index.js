@@ -33,7 +33,7 @@ import classificationMessages from 'components/Filters/messages'
 import { MATERIALS_URL, IMAGES_URL } from 'services/config'
 const processString = require('react-process-string')
 import langMessages from 'components/LanguageSelector/messages'
-import { DEFAULT_PROFILE_PICTURE, ARASAAC, NOT_PUBLISHED, PUBLISHED, PENDING } from 'utils'
+import { DEFAULT_PROFILE_PICTURE, ARASAAC, NOT_PUBLISHED, PUBLISHED, PENDING, urlRegex } from 'utils'
 import messages from './messages'
 
 const styles = {
@@ -69,20 +69,6 @@ const styles = {
     margin: '5px'
   }
 }
-
-
-const config = [{
-  regex: /(http|https):\/\/(\S+)\.([a-z]{2,}?)(.*?)( |\,|$|\.)/gim,
-  fn: (key, result) => <span key={key}>
-    <a target="_blank" href={`${result[1]}://${result[2]}.${result[3]}${result[4]}`}>{result[2]}.{result[3]}{result[4]}</a>{result[5]}
-  </span>
-}, {
-  regex: /(\S+)\.([a-z]{2,}?)(.*?)( |\,|$|\.)/gim,
-  fn: (key, result) => <span key={key}>
-    <a target="_blank" href={`http://${result[1]}.${result[2]}${result[3]}`}>{result[1]}.{result[2]}{result[3]}</a>{result[4]}
-  </span>
-}];
-
 
 class Material extends Component {
   state = {
@@ -267,9 +253,8 @@ class Material extends Component {
           </div>
 
           <div style={styles.desc}>
-            {/* <P>{processString(config)(desc)}******************************</P> */}
             {desc.split('\n').map((i, key) => {
-              return <P key={key}>{processString(config)(i)}</P>
+              return <P key={key}>{processString(urlRegex)(i)}</P>
             })}
             <p style={{ textAlign: 'center' }}>
               <a href={`${MATERIALS_URL}/${idMaterial}/${zipFile}`}>

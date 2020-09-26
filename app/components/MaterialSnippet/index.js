@@ -14,7 +14,7 @@ import ImageSlider from 'components/ImageSlider'
 import { Link } from 'react-router'
 import Item from './Item'
 import messages from 'components/Material/messages'
-import { NOT_PUBLISHED, PUBLISHED, PENDING } from 'utils'
+import { NOT_PUBLISHED, PENDING } from 'utils'
 
 const styles = {
 
@@ -40,6 +40,7 @@ const styles = {
     margin: '5px'
   }
 }
+
 
 class MaterialSnippet extends PureComponent {
 
@@ -184,7 +185,9 @@ class MaterialSnippet extends PureComponent {
             </Link>
             <em><P>{moment(material.lastUpdated).format('LLL')} ({moment(material.lastUpdated).fromNow()})</P></em>
             <ReadMore style={{ textAlign: 'justify' }}>
-              {desc}
+              {desc.split('\n').map((i, key) => {
+                return <P key={key}>{i}</P>
+              })}
             </ReadMore>
 
             {showLabels ?
