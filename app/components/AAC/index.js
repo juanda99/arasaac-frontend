@@ -2,6 +2,7 @@ import React from 'react'
 import H2 from 'components/H2'
 import P from 'components/P'
 import A from 'components/A'
+import Img from 'components/SAAC/Img'
 
 const AAC = () => {
   return (
@@ -9,9 +10,9 @@ const AAC = () => {
       <P>From ARASAAC we’d like to thank both <strong>Carmen Basil</strong> and the <strong> <A href='https://www.utac.cat/' target='_blank'>Unitat de Tècniques Augmentatives de Comunicació (UTAC)</A></strong> for their collaboration at drafting this section in our website.</P>
 
       <H2 primary={true}>What are the Augmentative and Alternative Systems of Communication? </H2>
-      <img src='https://static.arasaac.org/pictograms/27685/27685_300.png' alt='pictograms' style={{ float: 'left', width: '250px  ', padding: '20px' }} />
       <P>The <strong>Augmentative and Alternative Systems of Communication (AAC)</strong> are ways of expression different from spoken language, that aim at increasing (augmentative) and/or compensate (alternative)
       the difficulties of communication and language of many people with disabilities.</P>
+      <Img src='https://static.arasaac.org/pictograms/27685/27685_500.png' alt='pictograms' left={true} />
       <P>Communication and language are essential for every human being to interact with other people, to learn, enjoy and take part in society. Today, thanks to these systems, they can’t be restrained
       by the difficulties with the oral language. For this reason, every person, whether kids, teenagers, adults or seniors, that for any cause haven’t acquired or have lost the level of spoken language
       needed for communicating in a satisfactory manner, have to use a SAAC. </P>
@@ -22,9 +23,9 @@ const AAC = () => {
       no evidence that the use of AAC inhibits or interferes in the development or recovery of speech.</P>
 
       <H2 primary={true}>What resources are used?</H2>
-      <img src='https://static.arasaac.org/pictograms/36723/36723_300.png' alt='pictograms' style={{ float: 'right', width: '250px  ', padding: '20px' }} />
       <P>Augmentative and Alternative Communication includes different <strong>systems of symbols</strong>, both graphic (pictures, drawings, pictograms, words or letters) and gestural (mimicry, gestures or hand signals) and,
       in the former case, it also requires the use of <strong>support products</strong>. The different systems of symbols adapt to the needs of people of varied ages and uneven motor , cognitive and linguistic skills. </P>
+      <Img src='https://static.arasaac.org/pictograms/36723/36723_500.png' alt='pictograms' />
       <P>The <strong>support products for communication</strong> include technological resources such as artificial speech communicators, personal computers or tablets with special programmes that allow different forms of
       access adapted for people with very limited mobility. They also facilitate the incorporation of the different systems of  pictographic and ortographic symbols, as well as different outbound means including
       voice output.  They may also involve non technological resources like communication boards and books. </P>
@@ -32,13 +33,13 @@ const AAC = () => {
       adapted or virtual keyboards and mouse devices  or switches. </P>
 
       <H2 primary={true}>Systems of symbols</H2>
-      <img src='https://static.arasaac.org/pictograms/15018/15018_300.png' alt='pictograms' style={{ float: 'left', width: '250px  ', padding: '20px' }} />
-      <img src='https://static.arasaac.org/pictograms/11754/11754_300.png' alt='pictograms' style={{ float: 'right', width: '250px  ', padding: '20px' }} />
       <P>Previously we have divided the systems of symbols for ACC into gestural and graphic. In both cases we find a gradation from very simple systems -that adapt themselves to people with cognitive and linguistic
        deficit of different considerations- to complex systems that allow advanced levels of sign language (based on hand signs) or assisted language (based on graphic signs). </P>
+      <Img src='https://static.arasaac.org/pictograms/15018/15018_500.png' alt='pictograms' left={true} />
       <P>In the case of <strong>gestural symbols</strong>, this gradation encompasses from the use of mimicry and commonly used gestures to the use of hand signs, generally in the order of spoken language; this is what is called
       signed or bimodal language. Sign languages used by hearing impaired people are not considered as SAAC as they constitute languages that have been naturally developed and acquired, like spoken language.
       The use of hand signs requires having enough motor skills as it may be the case of people with mental disability or autism spectrum disorders. </P>
+      <Img src='https://static.arasaac.org/pictograms/11754/11754_500.png' alt='pictograms' />
       <P><strong>Graphic symbols</strong > cover from very simple systems based on pictures or photographs to systems more and more complex like pictographic systems or traditional orthography (letters, words and sentences).
       Thanks to the support products for communication and the diverse resources for access, the graphic systems may be used by people with reduced mobility, even in cases of extreme severity. That’s why, apart
       from being used -as in the previous case- by mentally disabled people or those with ASD, they are also used by motorically impaired people (CP, ALS, MS, …)</P>
@@ -47,12 +48,11 @@ const AAC = () => {
       used pictographic systems in Spain are PSC (Pictographic System of Communication) and ARASAAC, developed by this Aragonese Portal of AAC and freely available under Creative Commons licence.</P>
 
       <H2 primary={true}>Support products for communication</H2>
-      <img src='https://static.arasaac.org/pictograms/16155/16155_300.png' alt='pictograms' style={{ float: 'left', width: '250px  ', padding: '20px' }} />
-      <img src='https://static.arasaac.org/pictograms/5971/5971_300.png' alt='pictograms' style={{ float: 'right', width: '250px  ', padding: '20px' }} />
+      <Img src='https://static.arasaac.org/pictograms/16155/16155_500.png' alt='pictograms' left={true} />
       <P>We can divide support products for communication into basic and technological. The <strong>boards of communication</strong> are basic support products that consist of surfaces of diverse materials where graphic symbols for
       communication are placed (photographs, pictograms, letters, words and / or sentences) that the person will indicate to communicate. When the sysmbols are distributed on different pages, we call them <strong>communication
-      books</strong>.
-      </P>
+      books</strong>.</P>
+      <Img src='https://static.arasaac.org/pictograms/5971/5971_500.png' alt='pictograms' />
       <P>Among the technological products we find <strong>electronic communicators</strong> especially designed for that purpose, and <strong>personal computers</strong> or <strong>tablets</strong> with special programmes that turn them into communicators.
       The electronic communicators emulated by computers are customized with the graphic symbols each person requires. They are characterized by being portable and adaptable to the access forms appropriate for each
       person (keyboard, mouse, switches…). They have digitalized or synthesized voice output for messages, as well as they usually offer other outputs like screen, printed paper or even control of the environment

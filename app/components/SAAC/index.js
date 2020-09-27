@@ -2,6 +2,7 @@ import React from 'react'
 import H2 from 'components/H2'
 import P from 'components/P'
 import A from 'components/A'
+import Img from './Img'
 
 const SAAC = () => {
   return (
@@ -10,9 +11,9 @@ const SAAC = () => {
       redacción de este apartado de nuestro sitio web.</P>
 
       <H2 primary={true}>¿Qué son los sistemas aumentativos y alternativos de comunicación? </H2>
-      <img src='https://static.arasaac.org/pictograms/27685/27685_300.png' alt='pictograms' style={{ float: 'left', width: '250px  ', padding: '20px' }} />
       <P>Los <strong>Sistemas Aumentativos y Alternativos de Comunicación (SAAC)</strong> son formas de expresión distintas al lenguaje hablado, que tienen como objetivo aumentar (aumentativos) y/o compensar (alternativos)
       las dificultades de comunicación y lenguaje de muchas personas con discapacidad.</P>
+      <Img src='https://static.arasaac.org/pictograms/27685/27685_500.png' alt='pictograms' left={true} />
       <P>La comunicación y el lenguaje son esenciales para todo ser humano, para relacionarse con los demás, para aprender, para disfrutar y para participar en la sociedad y hoy en día, gracias a estos sistemas,
       no deben verse frenados a causa de las dificultades en el lenguaje oral. Por esta razón, todas las personas, ya sean niños, jóvenes, adultos o ancianos, que por cualquier causa no han adquirido o han perdido
       un nivel de habla suficiente para comunicarse de forma satisfactoria, necesitan usar un SAAC.</P>
@@ -24,10 +25,11 @@ const SAAC = () => {
       No existe ninguna evidencia de que el uso de CAA inhiba o interfiera en el desarrollo o la recuperación del habla.</P>
 
       <H2 primary={true}>¿Qué recursos se utilizan?</H2>
-      <img src='https://static.arasaac.org/pictograms/36723/36723_300.png' alt='pictograms' style={{ float: 'right', width: '250px  ', padding: '20px' }} />
+
       <P>La Comunicación Aumentativa y Alternativa incluye diversos <strong>sistemas de símbolos</strong>, tanto gráficos (fotografías, dibujos, pictogramas, palabras o letras) como gestuales (mímica, gestos o signos manuales) y,
       en el caso de los primeros, requiere también el uso de <strong>productos de apoyo</strong>. Los diversos sistemas de símbolos se adaptan a las necesidades de personas con edades y habilidades motrices, cognitivas y lingüísticas
       muy dispares.</P>
+      <Img src='https://static.arasaac.org/pictograms/36723/36723_500.png' alt='pictograms' />
       <P>Los <strong>productos de apoyo para la comunicación</strong> incluyen recursos tecnológicos, como los comunicadores de habla artificial o los ordenadores personales y tablets con programas especiales, que permiten diferentes
       formas de acceso adaptadas algunas para personas con movilidad muy reducida, y facilitan también la incorporación de los diferentes sistemas de signos pictográficos y ortográficos, así como diferentes formas de
        salida incluyendo la salida de voz. También pueden consistir en recursos no tecnológicos, como los tableros y los libros de comunicación.</P>
@@ -35,20 +37,22 @@ const SAAC = () => {
       tales como los punteros, los teclados y ratones adaptados o virtuales o los conmutadores.</P>
 
       <H2 primary={true}>Los sistemas de símbolos</H2>
-      <img src='https://static.arasaac.org/pictograms/15018/15018_300.png' alt='pictograms' style={{ float: 'left', width: '250px  ', padding: '20px' }} />
-      <img src='https://static.arasaac.org/pictograms/11754/11754_300.png' alt='pictograms' style={{ float: 'right', width: '250px  ', padding: '20px' }} />
+
+
 
       <P>En líneas anteriores hemos dividido los sistemas de símbolos para la CAA en gestuales y gráficos. En ambos casos encontramos una gradación desde sistemas muy sencillos, que se adaptan a personas con déficits
       cognitivos y lingüísticos de diversa consideración, hasta sistemas complejos que permiten niveles avanzados de lenguaje signado (basado en signos manuales) o asistido (basado en signos gráficos).</P>
-
+      <Img src='https://static.arasaac.org/pictograms/15018/15018_500.png' alt='pictograms' left={true} />
 
       <P>En el caso de los <strong>símbolos gestuales</strong>, esta gradación abarca desde el uso de mímica y gestos de uso común hasta el uso de signos manuales, generalmente en el orden correspondiente al lenguaje hablado; es lo
       que se denomina lenguaje signado o bimodal. Las lenguas de signos utilizadas por las personas no oyentes no se consideran SAAC, ya que constituyen idiomas que se han desarrollado y se adquieren de forma natural,
       al igual que ocurre con el lenguaje hablado. El uso de signos manuales requiere disponer de habilidades motrices suficientes, como puede ser el caso de personas con discapacidad intelectual o TEA.</P>
+      <Img src='https://static.arasaac.org/pictograms/11754/11754_500.png' alt='pictograms' />
       <P>Los <strong>símbolos gráficos</strong> abarcan desde sistemas muy sencillos basados en dibujos o fotografías hasta sistemas progresivamente más complejos como los sistemas pictográficos o la ortografía tradicional
       (letras, palabras y frases). Gracias a los productos de apoyo para la comunicación y los diversos recursos para el acceso, los sistemas gráficos pueden ser usados por personas con movilidad reducida,
       incluso en casos de extrema gravedad. Por ello, además de ser usados, como en el caso anterior, por personas con discapacidad intelectual o TEA, los usan también personas con discapacidades motoras
       (PC, ELA, EM, etc.).</P>
+
       <P>Los <strong>sistemas pictográficos</strong > se aplican a personas que no están alfabetizadas a causa de la edad o la discapacidad. Tienen la ventaja de permitir desde un nivel de comunicación muy básico, que se adapta a
       personas con niveles cognitivos bajos o en etapas muy iniciales, hasta un nivel de comunicación muy rico y avanzado, aunque nunca tan completo y flexible como el que se puede alcanzar con el uso de la lengua
       escrita. Los sistemas pictográficos más usados en los diversos territorios del estado español son el sistema SPC (Sistema Pictográfico de Comunicación) y el sistema ARASAAC, desarrollado por este propio Portal
@@ -56,11 +60,12 @@ const SAAC = () => {
 
 
       <H2 primary={true}>Los productos de apoyo para la comunicación</H2>
-      <img src='https://static.arasaac.org/pictograms/16155/16155_300.png' alt='pictograms' style={{ float: 'left', width: '250px  ', padding: '20px' }} />
-      <img src='https://static.arasaac.org/pictograms/5971/5971_300.png' alt='pictograms' style={{ float: 'right', width: '250px  ', padding: '20px' }} />
+      <Img src='https://static.arasaac.org/pictograms/16155/16155_500.png' alt='pictograms' left={true} />
       <P>Podemos dividir los productos de apoyo para la comunicación en básicos y tecnológicos. Los <strong>tableros de comunicación</strong> son productos de apoyo básicos que consisten en superficies de materiales diversos en las
       que se disponen los símbolos gráficos para la comunicación (fotografías, pictogramas, letras, palabras y/o frases) que la persona indicará para comunicarse. Cuando los símbolos se distribuyen en varias páginas
       hablamos de <strong>libros de comunicación</strong>.</P>
+
+      <Img src='https://static.arasaac.org/pictograms/5971/5971_500.png' alt='pictograms' />
       <P>Entre los productos tecnológicos encontramos los <strong>comunicadores electrónicos</strong> especialmente diseñados para tal fin y los <strong>ordenadores portátiles</strong> o las <strong> tablets</strong> con programas especiales que los convierten en
       comunicadores. Los comunicadores electrónicos dedicados o emulados en ordenadores se personalizan con los símbolos gráficos que requiere cada persona y se caracterizan por ser portátiles y adaptarse a las formas
       de acceso apropiadas para cada persona (teclados, ratones, conmutadores, etc.). Disponen de una salida para los mensajes en forma de habla digitalizada o sintetizada, así como también, a menudo, de otras salidas
