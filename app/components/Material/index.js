@@ -285,18 +285,21 @@ class Material extends Component {
           material.get('commonFiles').map((file) =>
             <FlatButton
               key={file}
+              style={{ height: '60px', lineHeight: '22px' }}
               label={`${file.replace(/_/g, ' ')}`}
               labelPosition='after'
               icon={<Download />}
               href={`${MATERIALS_URL}/${idMaterial}/${file}`}
               target='_blank'
-            />
+            >
+            </FlatButton>
           )
         }
         {
           material.getIn(['files', language]) && material.getIn(['files', language]).map((file) =>
             <FlatButton
               key={file}
+              style={{ height: '60px', lineHeight: '22px' }}
               label={`${file.replace(/_/g, ' ')}`}
               labelPosition='after'
               icon={<Download />}
