@@ -261,6 +261,7 @@ function* makeAuthenticatedRequest(action) {
     const response = yield callApi(payload.url, payload.options, token)
     yield payload.onSuccess(response)
   } catch (err) {
+    yield put(logout())
     const error = yield parseError(err)
 
     if (isAccessExpired(error)) {
