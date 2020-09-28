@@ -31,7 +31,7 @@ export const materials = {
 }
 
 export const newMaterials = {
-  request: (token) => action(NEW_MATERIALS.REQUEST, { token }),
+  request: (numItems, token) => action(NEW_MATERIALS.REQUEST, { numItems, token }),
   success: (data) => action(NEW_MATERIALS.SUCCESS, { data }),
   failure: (error) => action(NEW_MATERIALS.FAILURE, { error })
 }

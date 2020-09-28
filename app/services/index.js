@@ -42,8 +42,8 @@ const api = {
     callApi(`${PRIVATE_API_ROOT}/materials/${locale}/${searchType}/${searchText}`, {
       schema: searchMaterialSchema
     }, token),
-  NEW_MATERIALS_REQUEST: ({ token }) =>
-    callApi(`${PRIVATE_API_ROOT}/materials/new/100`, { schema: searchMaterialSchema }, token),
+  NEW_MATERIALS_REQUEST: ({ numItems, token }) =>
+    callApi(`${PRIVATE_API_ROOT}/materials/new/${numItems}`, { schema: searchMaterialSchema }, token),
   MATERIALS_NOT_PUBLISHED_REQUEST: ({ token }) =>
     callApi(`${PRIVATE_API_ROOT}/materials/unpublished`, { schema: searchMaterialSchema }, token),
   MATERIAL_REQUEST: ({ idMaterial, token }) =>

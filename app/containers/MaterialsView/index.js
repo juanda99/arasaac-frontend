@@ -178,12 +178,17 @@ class MaterialsView extends PureComponent {
   }
 
   async componentDidMount() {
-    const { requestMaterials, requestNewMaterials, requestNotPublishedMaterials, locale, token, role, authorsName, requestAuthors } = this.props
+    const { requestMaterials, requestNewMaterials, requestNotPublishedMaterials, locale, token, role, authorsName, requestAuthors, newVisibleMaterialsList } = this.props
     await this.processQuery()
     if (this.props.params.searchText && !this.props.searchResults) {
       requestMaterials(locale, this.props.params.searchText, this.state.searchType, token)
     }
-    requestNewMaterials(token)
+    /* we just ask for new Materials once an hour */
+    const newMaterialsDate = sessionStorage.getItem('newMaterialsDate')
+    const actualDate = new Date()
+    const diffSeconds = newMaterialsDate ? (actualDate.getTime() - newMaterialsDate) / 1000 : 0
+    const numItems = role === 'admin' ? 10000 : 100
+    if (newVisibleMaterialsList.size === 0 || diffSeconds > 1800) requestNewMaterials(numItems, token)
     if (role === 'admin') requestNotPublishedMaterials(token)
     if (!authorsName.length) requestAuthors()
   }
@@ -449,8 +454,8 @@ const mapDispatchToProps = (dispatch) => ({
   requestMaterials: (locale, searchText, searchType, token) => {
     dispatch(materials.request(locale, searchText, searchType, token))
   },
-  requestNewMaterials: (token) => {
-    dispatch(newMaterials.request(token))
+  requestNewMaterials: (numItems, token) => {
+    dispatch(newMaterials.request(numItems, token))
   },
   requestAuthors: () => {
     dispatch(authors.request())

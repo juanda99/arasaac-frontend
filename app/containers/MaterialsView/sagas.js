@@ -41,6 +41,8 @@ function* newMaterialsGetData(action) {
     // yield put(showLoading())
     const response = yield call(api[action.type], action.payload)
     yield put(newMaterials.success(response))
+    const d1 = new Date();
+    sessionStorage.setItem('newMaterialsDate', d1.getTime())
   } catch (error) {
     yield put(newMaterials.failure(error.message))
   } finally {
