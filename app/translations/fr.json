@@ -36,7 +36,7 @@
   "app.component.MaterialConditions.translationQuoteDesc": "En cas de traduction du matériel, le nom du traducteur sera ajouté à la fin des crédits :",
   "app.component.MaterialConditions.translator": "Traducteur :",
   "app.component.Participate.contact": "Contactez-nous",
-  "app.component.Participate.header": "Nous sommes en train de construire ARASAAC. ¿ Souhaitez-vous nous rejoindre ?",
+  "app.component.Participate.header": "Nous sommes en train de construire ARASAAC. Souhaitez-vous nous rejoindre ?",
   "app.components.Catalog.accept": "Accepter",
   "app.components.Catalog.arasaacLicense": "Licence ARASAAC",
   "app.components.Catalog.cancel": "Annuler",
