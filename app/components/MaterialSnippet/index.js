@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Map, List } from 'immutable'
+import Linkify from 'react-linkify'
 import moment from 'moment'
 import ReadMore from 'components/ReadMore'
 import Ribbon from 'components/Ribbon'
@@ -186,7 +187,7 @@ class MaterialSnippet extends PureComponent {
             <em><P>{moment(material.lastUpdated).format('LLL')} ({moment(material.lastUpdated).fromNow()})</P></em>
             <ReadMore style={{ textAlign: 'justify' }}>
               {desc.split('\n').map((i, key) => {
-                return <P key={key}>{i}</P>
+                return <P key={key}><Linkify>{i}</Linkify></P>
               })}
             </ReadMore>
 

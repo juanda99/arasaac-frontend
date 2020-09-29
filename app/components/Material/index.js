@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Linkify from 'react-linkify'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
 import ReadMargin from 'components/ReadMargin'
@@ -32,9 +33,8 @@ import Helmet from 'react-helmet'
 import areas from 'data/areas'
 import classificationMessages from 'components/Filters/messages'
 import { MATERIALS_URL, IMAGES_URL } from 'services/config'
-const processString = require('react-process-string')
 import langMessages from 'components/LanguageSelector/messages'
-import { DEFAULT_PROFILE_PICTURE, ARASAAC, NOT_PUBLISHED, PUBLISHED, PENDING, urlRegex } from 'utils'
+import { DEFAULT_PROFILE_PICTURE, ARASAAC, NOT_PUBLISHED, PUBLISHED, PENDING } from 'utils'
 import Desc from './Desc'
 import messages from './messages'
 
@@ -170,15 +170,6 @@ class Material extends Component {
     )
   }
 
-  renderText(text) {
-    let parts = text.split(re) // re is a matching regular expression
-    for (let i = 1; i < parts.length; i += 2) {
-      parts[i] = <a key={'link' + i} href={parts[i]}>{parts[i]}</a>
-    }
-    return parts
-  }
-
-
 
   render() {
     const { material, intl } = this.props
@@ -249,9 +240,7 @@ class Material extends Component {
           </div>
 
           <Desc>
-            {desc.split('\n').map((i, key) => {
-              return <P key={key}>{processString(urlRegex)(i)}</P>
-            })}
+            {desc.split('\n').map((i, key) => <P key={key}><Linkify>{i}</Linkify></P>)}
             <p style={{ textAlign: 'center' }}>
               <a href={`${MATERIALS_URL}/${idMaterial}/${zipFile}`}>
                 <RaisedButton label={<FormattedMessage {...messages.zipFileLabel} />} primary={true} style={styles.button} />
