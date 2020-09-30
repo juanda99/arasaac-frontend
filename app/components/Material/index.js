@@ -240,7 +240,7 @@ class Material extends Component {
           </div>
 
           <Desc>
-            {desc.split('\n').map((i, key) => <P key={key}><Linkify>{i}</Linkify></P>)}
+            {desc.split('\n').map((i, key) => <P key={key}><Linkify properties={{ target: '_blank' }}>{i}</Linkify></P>)}
             <p style={{ textAlign: 'center' }}>
               <a href={`${MATERIALS_URL}/${idMaterial}/${zipFile}`}>
                 <RaisedButton label={<FormattedMessage {...messages.zipFileLabel} />} primary={true} style={styles.button} />

@@ -187,7 +187,7 @@ class MaterialSnippet extends PureComponent {
             <em><P>{moment(material.lastUpdated).format('LLL')} ({moment(material.lastUpdated).fromNow()})</P></em>
             <ReadMore style={{ textAlign: 'justify' }}>
               {desc.split('\n').map((i, key) => {
-                return <P key={key}><Linkify>{i}</Linkify></P>
+                return <P key={key}><Linkify properties={{ target: '_blank' }}>{i}</Linkify></P>
               })}
             </ReadMore>
 
