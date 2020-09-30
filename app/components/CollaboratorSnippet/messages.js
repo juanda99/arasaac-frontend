@@ -37,5 +37,13 @@ export default defineMessages({
   ir: {
     id: `${scope}.ir`,
     defaultMessage: 'Ireland'
+  },
+  fr: {
+    id: `${scope}.fr`,
+    defaultMessage: 'France'
+  },
+  mk: {
+    id: `${scope}.mk`,
+    defaultMessage: 'Macedonia'
   }
 })

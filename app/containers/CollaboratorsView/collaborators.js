@@ -156,6 +156,39 @@ const collaborators = [
     url: 'http://www.cantic.org.pt',
     country: 'pt'
   },
+  {
+    name: 'Sébastien Vermandel',
+    languages: ['fr'],
+    image: 'he.jpg',
+    desc: 'Head Engineer. APF Lab – le Hub.',
+    url: '',
+    country: 'fr'
+  },
+  {
+    name: 'Aurélie Régent',
+    languages: ['fr'],
+    image: 'she.jpg',
+    desc: 'Speech Therapist. APF Lab – le Hub. ',
+    url: '',
+    country: 'fr'
+  },
+  {
+    name: 'Thierry Danigo',
+    languages: ['fr'],
+    image: 'he.jpg',
+    desc: 'Ergothérapeute Conseil. APF Lab - le Hub. ',
+    url: '',
+    country: 'fr'
+  },
+  {
+    name: 'Meri Nolcheva',
+    languages: ['mk'],
+    image: 'meri-nolcheva.jpg',
+    desc: 'Special educator and rehabilitator. SES "D-r Zlatan Sremec" - Skopje. ',
+    url: 'http://www.zlatansremec.edu.mk/',
+    facebook: 'zlatansremec',
+    country: 'mk'
+  }
 ]
 
 export default collaborators
