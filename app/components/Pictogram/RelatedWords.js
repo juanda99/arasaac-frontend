@@ -17,7 +17,8 @@ export default class RelatedWords extends Component {
     language: PropTypes.string,
     idPictogram: PropTypes.number.isRequired,
     onLanguageChange: PropTypes.func.isRequired,
-    onDownloadLocution: PropTypes.func.isRequired
+    onDownloadLocution: PropTypes.func.isRequired,
+    style: PropTypes.object
   };
 
   state = {
@@ -76,9 +77,9 @@ export default class RelatedWords extends Component {
 
   render() {
     const { keywords } = this.state
-    const { language } = this.props
+    const { language, style } = this.props
     return (
-      <div>
+      <div style={style}>
         <H3 primary>{<FormattedMessage {...messages.description} />}</H3>
         <Divider />
         <P>{<FormattedMessage {...messages.changePictoLanguage} />}</P>

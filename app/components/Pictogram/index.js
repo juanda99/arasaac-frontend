@@ -838,6 +838,7 @@ class Pictogram extends Component {
           </div>
         </div>
         <RelatedWords
+          style={{ padding: '5px' }}
           locale={locale}
           language={language}
           idPictogram={idPictogram}
@@ -845,11 +846,11 @@ class Pictogram extends Component {
           onDownloadLocution={this.props.onDownloadLocution}
         />
 
-        <H3 primary={true}>
+        <H3 primary={true} style={{ padding: '5px' }}>
           {<FormattedMessage {...messages.sharePictogram} />}
         </H3>
         <Divider />
-        <p>
+        <p style={{ padding: '5px' }}>
           <ShareBar
             shareUrl={window.location.href}
             title={'title'}
