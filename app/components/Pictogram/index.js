@@ -125,7 +125,8 @@ class Pictogram extends Component {
       zoomActive: false,
       zoomOptionsShow: false,
       windowWidth: 0,
-      dragAndDrop: false
+      dragAndDrop: false,
+      isFavorite: false
     }
   }
 
@@ -476,6 +477,17 @@ class Pictogram extends Component {
     const keywords = pictogram.get('keywords')
     const { keyword } = keywordSelector(searchText, keywords.toJS())
     onDownload(keyword, dataBase64)
+  }
+
+  handleAddFavorite = (event) => {
+    const {
+      pictogram,
+      onAddFavorite
+    } = this.props
+    const idPictogram = pictogram.get('_id')
+    event.preventDefault()
+    onAddFavorite(idPictogram)
+    this.setState({ isFavorite: true })
   };
 
   updateWindowDimensions = () =>
@@ -495,7 +507,7 @@ class Pictogram extends Component {
   );
 
   render() {
-    const { pictogram, searchText, locale, intl } = this.props
+    const { pictogram, searchText, locale, intl, authenticated } = this.props
     const {
       language,
       backgroundColor,
@@ -543,7 +555,8 @@ class Pictogram extends Component {
       zoomActive,
       zoomOptionsShow,
       windowWidth,
-      dragAndDrop
+      dragAndDrop,
+      isFavorite
     } = this.state
 
     const canvasSize =
@@ -675,6 +688,8 @@ class Pictogram extends Component {
                   secondary={true}
                   style={styles.button}
                   icon={<FavoriteIcon />}
+                  disabled={!authenticated || isFavorite ? true : false}
+                  onClick={this.handleAddFavorite}
                 />
                 {this.renderDownloadButton()}
               </PictogramTitle>
@@ -869,7 +884,9 @@ Pictogram.propTypes = {
   searchText: PropTypes.string.isRequired,
   onDownload: PropTypes.func.isRequired,
   onDownloadLocution: PropTypes.func.isRequired,
-  intl: intlShape.isRequired
+  intl: intlShape.isRequired,
+  authenticated: PropTypes.bool.isRequired,
+  onAddFavorite: PropTypes.func.isRequired,
 }
 
 export default injectIntl(Pictogram)

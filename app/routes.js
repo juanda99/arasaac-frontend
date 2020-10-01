@@ -299,14 +299,16 @@ export default function createRoutes(store) {
       name: 'pictogramView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/PictogramView/sagas'),
+          import('containers/PictogramsView/reducer'),
+          import('containers/PictogramsView/sagas'),
           import('containers/PictogramView/')
         ])
 
         const renderRoute = loadModule(cb)
         // if reducer is async, render values:  defaultToggled:
         // state.configuration.filters[ownProps.filter] got undefined!!!
-        importModules.then(([sagas, component]) => {
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('pictogramsView', reducer.default)
           injectSagas(sagas.default)
           renderRoute(component)
         })

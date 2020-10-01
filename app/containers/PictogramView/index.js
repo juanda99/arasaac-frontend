@@ -11,8 +11,11 @@ import View from 'components/View'
 import Helmet from 'react-helmet'
 import Pictogram from 'components/Pictogram'
 import { pictogram } from 'containers/PictogramView/actions'
+import { addFavorite } from 'containers/App/actions'
 import P from 'components/P'
 import api, { downloadCustomPictogram, downloadLocution } from 'services'
+import { DEFAULT_LIST } from 'utils'
+import { makeSelectHasUser } from 'containers/App/selectors'
 import { makePictogramByIdSelector } from './selectors'
 import messages from './messages'
 
@@ -45,15 +48,22 @@ class PictogramView extends PureComponent {
       window.location = location
       // window.open(downloadCustomPictogram(data.fileName), '_blank')
     })
-  };
+  }
 
   handleDownloadLocution = (locale, keyword) =>
-    (window.location = downloadLocution(locale, keyword));
+    (window.location = downloadLocution(locale, keyword))
+
+  handleAddFavorite = (fileName) => {
+    console.log('KKK*******************************   ')
+    const { addFavorite, token } = this.props
+    addFavorite(fileName, DEFAULT_LIST, token)
+  }
 
   renderContent() {
     const {
       pictogramData,
       loading,
+      token,
       params: { locale, searchText }
     } = this.props
     if (loading) {
@@ -72,8 +82,10 @@ class PictogramView extends PureComponent {
           pictogram={pictogramData}
           locale={locale}
           searchText={searchText || ''}
+          authenticated={!!token}
           onDownload={this.handleDownload}
           onDownloadLocution={this.handleDownloadLocution}
+          onAddFavorite={this.handleAddFavorite}
         />
       )
   }
@@ -97,21 +109,27 @@ PictogramView.propTypes = {
   requestPictogram: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
   pictogramData: PropTypes.object,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  addFavorite: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state, ownProps) => {
   const pictogramData = makePictogramByIdSelector()(state, ownProps)
   const loading = state.getIn(['pictogramsView', 'loading'])
+  const token = makeSelectHasUser()(state)
   return {
     pictogramData,
-    loading
+    loading,
+    token
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   requestPictogram: (idPictogram) => {
     dispatch(pictogram.request(idPictogram, ownProps.params.locale))
+  },
+  addFavorite: (fileName, listName, token) => {
+    dispatch(addFavorite.request(fileName, listName, token))
   }
 })
 

@@ -8,6 +8,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import View from 'components/View'
+import ReadMargin from 'components/ReadMargin'
 import P from 'components/P'
 import Helmet from 'react-helmet'
 import muiThemeable from 'material-ui/styles/muiThemeable'
@@ -143,39 +144,40 @@ class FavoritesView extends PureComponent {
     const { formatMessage } = intl
     return (
       <View left={true} right={true}>
-        <Helmet
-          title='Favorites View'
-          meta={[{ name: 'description', content: 'Pictogram favorites' }]}
-        />
+        <ReadMargin>
+          <Helmet
+            title='Favorites View'
+            meta={[{ name: 'description', content: 'Pictogram favorites' }]}
+          />
 
-        <TextField
-          hintText={formatMessage(messages.addFolderHint)}
-          floatingLabelText={formatMessage(messages.folderName)}
-          style={{ marginRight: 10 }}
-          value={this.state.listName}
-          onChange={this.handleListNameChange}
-        />
-        <RaisedButton
-          label={<FormattedMessage {...messages.addFolder} />}
-          primary={true}
-          onClick={this.handleAddList}
-          disabled={!this.state.listName}
-        />
-        {favoritePictograms && !loading && <FavoriteList
-          items={favorites}
-          onSelect={this.handleFavoriteListSelect}
-          selectedList={selectedList}
-          onDelete={this.handleDeleteList}
-          onDeleteFavorite={this.handleDeleteFavorite}
-          onDownloadList={this.handleDownloadList}
-          onDownload={this.handleDownload}
-          onRename={this.handleRenameList}
-          listPictograms={favoritePictograms}
-          onDrop={this.handleAddFavorite}
-        />}
+          <TextField
+            hintText={formatMessage(messages.addFolderHint)}
+            floatingLabelText={formatMessage(messages.folderName)}
+            style={{ marginRight: 10 }}
+            value={this.state.listName}
+            onChange={this.handleListNameChange}
+          />
+          <RaisedButton
+            label={<FormattedMessage {...messages.addFolder} />}
+            primary={true}
+            onClick={this.handleAddList}
+            disabled={!this.state.listName}
+          />
+          {favoritePictograms && !loading && <FavoriteList
+            items={favorites}
+            onSelect={this.handleFavoriteListSelect}
+            selectedList={selectedList}
+            onDelete={this.handleDeleteList}
+            onDeleteFavorite={this.handleDeleteFavorite}
+            onDownloadList={this.handleDownloadList}
+            onDownload={this.handleDownload}
+            onRename={this.handleRenameList}
+            listPictograms={favoritePictograms}
+            onDrop={this.handleAddFavorite}
+          />}
 
-        {favoritePictograms && loading && <P><FormattedMessage {...messages.loadingFavorites} /></P>}
-
+          {favoritePictograms && loading && <P><FormattedMessage {...messages.loadingFavorites} /></P>}
+        </ReadMargin>
       </View>
     )
   }
