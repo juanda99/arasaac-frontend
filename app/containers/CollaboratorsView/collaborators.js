@@ -188,7 +188,16 @@ const collaborators = [
     url: 'http://www.zlatansremec.edu.mk/',
     facebook: 'zlatansremec',
     country: 'mk'
-  }
+  },
+  {
+    name: 'Jasmina Troshanska',
+    languages: ['mk'],
+    image: 'jt.jpg',
+    desc: 'Professor in Special Education and Rehabilitation. Association  "Blue Firefly". ',
+    url: 'http://www.sinasvetulka.mk/',
+    facebook: 'autismmacedonia',
+    country: 'mk'
+  },
 ]
 
 export default collaborators
