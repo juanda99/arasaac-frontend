@@ -11,6 +11,7 @@ import 'babel-polyfill'
 // Import all the third party stuff
 import React from 'react'
 import ReactDOM from 'react-dom'
+import ReactGA from 'react-ga'
 import { Provider } from 'react-redux'
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
@@ -97,6 +98,7 @@ const render = async (messages) => {
     component: App,
     childRoutes: createRoutes(store)
   }
+  ReactGA.initialize('UA-46065439-1')
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>

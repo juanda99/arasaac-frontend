@@ -7,6 +7,7 @@ import { fromJS } from 'immutable'
 import { routerMiddleware } from 'react-router-redux'
 import { persistStore, autoRehydrate } from 'redux-persist-immutable'
 import { REHYDRATE } from 'redux-persist/constants'
+import { googleAnalytics } from './reactGAMiddlewares'
 import createActionBuffer from 'redux-action-buffer'
 // on sagas by hand, not automated:
 // import { loadingBarMiddleware } from 'react-redux-loading-bar'
@@ -22,7 +23,8 @@ export default function configureStore(initialState = {}, history) {
   // 2. routerMiddleware: Syncs the location/URL path to the state
   const middlewares = [
     sagaMiddleware,
-    routerMiddleware(history)
+    routerMiddleware(history),
+    googleAnalytics
     /* ,
     loadingBarMiddleware({
       promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE']
