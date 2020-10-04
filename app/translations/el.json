@@ -435,5 +435,10 @@
   "header.translate": "Μετάφραση ARASAAC",
   "header.translatorsTitle": "Μεταφραστές",
   "header.userActivation": "Ενεργοποίηση χρήστη",
-  "header.userProfileTitle": "Το προφίλ μου"
+  "header.userProfileTitle": "Το προφίλ μου",
+  "joyride.back": "Πίσω",
+  "joyride.last": "Τελευταία",
+  "joyride.loginMenu": "Μενού σύνδεσης",
+  "joyride.loginMenuDesc": "Δημιουργήστε έναν λογαριασμό χρήστη ή αποκτήστε πρόσβαση μέσω του κοινωνικού σας δικτύου για να απολαύσετε όλες τις δυνατότητες του ιστότοπου ARASAAC.",
+  "joyride.materialsDesc1": "Η ομάδα ARASAAC και η κοινότητα χρηστών της δημιουργούν και προσαρμόζουν υλικό για επικοινωνία και γνωστική προσβασιμότητα με βάση τη συλλογή εικονογραμμάτων ARASAAC."
 }
