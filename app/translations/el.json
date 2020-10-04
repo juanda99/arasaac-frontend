@@ -273,6 +273,7 @@
   "app.components.UseConditions.owner": "Κυβέρνηση της Αραγονίας",
   "app.components.Welcome.aragonese": "Αραγωνικά",
   "app.components.Welcome.chooseLanguage": "Επιλέξτε γλώσσα:",
+  "app.components.Welcome.header": "{aragones} Κέντρο Επαυξητικής και Εναλλακτικής Επικοινωνίας",
   "app.components.author": "Δημιουργός εικονογραμμάτων:",
   "app.components.dialog.ok": "Εντάξει",
   "app.components.disclaimer": "Αποποίηση ευθυνών",
