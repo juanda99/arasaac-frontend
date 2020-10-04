@@ -299,6 +299,7 @@
   "app.components.uploadMaterialView.close": "Κλείσιμο",
   "app.components.uploadMaterialView.materialSuccessUpload": "Το υλικό σας έχει μεταφορτωθεί και θα ελεγχθεί από την ομάδα του ARASAAC. Θα σας στείλουμε email όταν δημοσιευτεί!",
   "app.components.uploadMaterialView.needAuthor": "Απαιτείται τουλάχιστον ένας συγγραφέας του υλικού",
+  "app.components.uploadMaterialView.needFiles": "Απαιτείται τουλάχιστον ένα αρχείο που σχετίζεται με το υλικό",
   "app.containers.ContactView.alertWindowErrorTitle": "Σφάλμα φόρμας επικοινωνίας",
   "app.containers.ContactView.form.email": "Ηλεκτρονικό ταχυδρομείο",
   "app.containers.ContactView.form.emailHint": "Πληκτρολογήστε το email σας",
