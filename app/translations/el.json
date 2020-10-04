@@ -314,7 +314,7 @@
   "app.containers.ContactView.sendMessage": "Σας ευχαριστούμε για το μήνυμά σας. Θα επικοινωνήσουμε μαζί σας το συντομότερο δυνατό.",
   "app.containers.ContactView.sendingMessage": "Αποστολή μηνύματος…",
   "app.containers.DevelopersView.howto": "Χρήση API",
-  "app.containers.DevelopersView.howtoDesc": "Για να μπορείτε να χρησιμοποιήσετε το ARASAAC API, πρέπει να έχετε κωδικό πρόσβασης. Χρησιμοποιούμε το πρωτόκολλο εξουσιοδότησης Oauth2 που επιτρέπει σε εφαρμογές τρίτων να έχουν πρόσβαση τόσο στο ARASAAC όσο και στα δεδομένα των χρηστών του.",
+  "app.containers.DevelopersView.howtoDesc": "Για να χρησιμοποιήσετε το Arasaac API χρειάζεστε διαπιστευτήρια πρόσβασης. Χρησιμοποιούμε το πρωτόκολλο εξουσιοδότησης Oauth2 που επιτρέπει σε εφαρμογές τρίτων να έχουν πρόσβαση στο ARASAAC και στα δεδομένα των χρηστών του.",
   "app.containers.DevelopersView.introApi": "Το ARASAAC διαθέτει ένα εκτεταμένο API για την εξυπηρέτηση των πόρων μας σε εφαρμογές τρίτων.",
   "app.containers.DevelopersView.termsOfUse": "Όροι χρήσης",
   "app.containers.DevelopersView.termsOfUseDesc": "Το ARASAAC API είναι διαθέσιμο μόνο για μη εμπορικές εφαρμογές. Βεβαιωθείτε ότι πληροίτε τους όρους άδειας χρήσης.",
