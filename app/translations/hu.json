@@ -197,7 +197,7 @@
   "app.components.MaterialForm.addFiles": "Fájlok hozzáadása",
   "app.components.MaterialForm.addMaterialImages": "Képek hozzáadása",
   "app.components.MaterialForm.areas": "Területek",
-  "app.components.MaterialForm.areasHint": "Válassza ki az eszközhöz kapcsolódó területeket",
+  "app.components.MaterialForm.areasHint": "Válassza ki az eszközhöz kapcsolódó fejlesztési területeket",
   "app.components.MaterialForm.author": "Szerző",
   "app.components.MaterialForm.authors": "Szerzők",
   "app.components.MaterialForm.authorsDataDesc": "Kérjük adja meg a szerző email címét! Ha regisztrálva van az ARASAAc-on, akkor a neve automatikusan kitöltődik.",
