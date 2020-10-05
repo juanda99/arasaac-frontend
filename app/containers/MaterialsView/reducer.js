@@ -17,7 +17,8 @@ import {
   MATERIAL_REMOVE,
   MATERIAL,
   MATERIAL_UPDATE,
-  MATERIALS_NOT_PUBLISHED
+  MATERIALS_NOT_PUBLISHED,
+  SHOW_FILTERS
 } from './actions'
 
 export const initialState = fromJS({
@@ -129,6 +130,10 @@ function materialsViewReducer(state = initialState, action) {
       return state
         .set('showSettings', true)
         .set('showFilter', false)
+    case SHOW_FILTERS:
+      return state
+        .set('showSettings', false)
+        .set('showFilter', true)
     case SET_FILTER_ITEMS:
       return state
         .setIn(['filters', action.payload.filter], action.payload.values)

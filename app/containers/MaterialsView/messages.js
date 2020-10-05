@@ -11,6 +11,42 @@ export default defineMessages({
     description: 'Label for filtering Search',
     defaultMessage: 'Advanced Search'
   },
+  showHelp: {
+    id: 'app.containers.SearchBox.showHelp',
+    defaultMessage: 'Show help'
+  },
+  filtersBtn: {
+    id: 'app.containers.SearchBox.filtersBtn',
+    defaultMessage: 'Click on this button to filter your search results.'
+  },
+  searchTypes: {
+    id: 'app.containers.SearchBox.searchTypes',
+    defaultMessage: 'Search types'
+  },
+  searchHint1: {
+    id: 'app.containers.SearchBox.search',
+    defaultMessage: 'Searches between quotes for exact searches. For example: "covid-19"'
+  },
+  searchHint2: {
+    id: 'app.containers.SearchBox.search',
+    defaultMessage: 'Searches with minus to filter by content. For example: "pictograms -covid" searches materials related to pictograms but not to covid'
+  },
+  filtersHint: {
+    id: 'app.containers.SearchBox.filtersHint',
+    defaultMessage: 'You can filter search results by activity, area or language.'
+  },
+  filters: {
+    id: 'app.containers.SearchBox.filters',
+    defaultMessage: 'Filters'
+  },
+  advSearchBtn: {
+    id: 'app.containers.SearchBox.advSearchHint',
+    defaultMessage: 'Click on this button to do an advanced search.'
+  },
+  advSearchHint: {
+    id: 'app.containers.SearchBox.advSearchHint',
+    defaultMessage: 'You can search by material content (default search) but also by author, activity or area.'
+  },
   content: {
     id: 'app.containers.SearchBox.content',
     defaultMessage: 'Content'
@@ -73,5 +109,21 @@ export default defineMessages({
   loadingMaterials: {
     id: 'app.containers.MaterialsView.loadingMaterials',
     defaultMessage: 'Loading materials...'
+  },
+  next: {
+    id: 'joyride.next',
+    defaultMessage: 'Next'
+  },
+  back: {
+    id: 'joyride.back',
+    defaultMessage: 'Back'
+  },
+  skip: {
+    id: 'joyride.skip',
+    defaultMessage: 'Skip'
+  },
+  last: {
+    id: 'joyride.last',
+    defaultMessage: 'Last'
   }
 })

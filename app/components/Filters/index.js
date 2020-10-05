@@ -4,7 +4,7 @@ import { Map, List } from 'immutable'
 import FilterSelectLoader from './FilterSelectLoader'
 
 const FilterList = ({ filtersMap, setFilterItems, filtersData, ...other }) => (
-  <div>
+  <div id='filtersArea'>
     {filtersMap.entrySeq().map((item) => {
       const values = List.isList(item[1]) ? item[1].toArray() : item[1]
       return <FilterSelectLoader {...other} key={item[0]} type={item[0]} values={values} setFilterItems={setFilterItems} filterData={filtersData[item[0]]} />

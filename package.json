@@ -44,7 +44,8 @@
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "deploy": "scp -P 22987 -r ./build/* debian@beta.arasaac.org:/data/arasaac-docker/newarasaac/frontend/code"
+    "deploy": "scp -P 22987 -r ./build/* debian@beta.arasaac.org:/data/arasaac-docker/newarasaac/frontend/code",
+    "testdeploy": "scp -P 22987 -r ./build/* debian@beta.arasaac.org:/data/arasaac-docker/newarasaac/test/code"
   },
   "lint-staged": {
     "*.js": "lint:eslint"

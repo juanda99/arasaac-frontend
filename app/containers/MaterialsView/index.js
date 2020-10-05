@@ -7,17 +7,19 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
+import Joyride, { STATUS } from 'react-joyride'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
+import DivSearchBox from './DivSearchBox'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import PendingIcon from 'material-ui/svg-icons/action/visibility-Off'
 import NotPublishedIcon from 'material-ui/svg-icons/action/thumb-down'
 import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
-import muiThemeable from 'material-ui/styles/muiThemeable'
 import Divider from 'material-ui/Divider'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import { Map } from 'immutable'
@@ -42,26 +44,12 @@ import {
   makeAuthorsNameSelector
 } from './selectors'
 
-import { materials, newMaterials, authors, notPublishedMaterials, toggleShowSettings, toggleShowFilter, setFilterItems, publishMaterial, removeMaterial } from './actions'
+import { materials, newMaterials, authors, notPublishedMaterials, toggleShowSettings, toggleShowFilter, setFilterItems, publishMaterial, removeMaterial, showFilters, showSettings } from './actions'
 import languages from 'data/languages'
 import activities from 'data/activities'
 import areas from 'data/areas'
 import messages from './messages'
 import messagesFilters from 'components/Filters/messages'
-
-const styles = {
-  searchBar: {
-    flexGrow: 1
-  },
-  actionButtons: {
-    width: '150px'
-  },
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    width: '100%'
-  }
-}
 
 const filtersData = { areas, activities, languages }
 
@@ -74,7 +62,54 @@ class MaterialsView extends PureComponent {
     offset: 0,
     getNewMaterials: false,
     getUnpublished: false,
-    searchType: 'content'
+    searchType: 'content',
+    /* running, step and steps for Joyride */
+    running: false,
+    step: 0,
+    steps: [
+      {
+        title: <FormattedMessage {...messages.searchTypes} />,
+        content: (
+          <div>
+            <p dir={this.props.direction}><FormattedMessage {...messages.searchHint1} /></p>
+            <p dir={this.props.direction}><FormattedMessage {...messages.searchHint2} /></p>
+          </div>
+
+
+        ),
+        target: "#searchBox",
+        placement: "bottom",
+        disableBeacon: true
+      },
+      {
+        title: <FormattedMessage {...messages.filters} />,
+        content: <p dir={this.props.direction}><FormattedMessage {...messages.filtersBtn} /></p>,
+        target: "#filtersBtn",
+        placement: "bottom",
+        disableBeacon: true
+      },
+      {
+        title: <FormattedMessage {...messages.filters} />,
+        content: <p dir={this.props.direction}><FormattedMessage {...messages.filtersHint} /></p>,
+        target: "#filtersArea",
+        placement: "bottom",
+        disableBeacon: true,
+      },
+      {
+        title: <FormattedMessage {...messages.advancedSearch} />,
+        content: <p dir={this.props.direction}><FormattedMessage {...messages.advSearchBtn} /></p>,
+        target: "#advSearchBtn",
+        placement: "bottom",
+        disableBeacon: true
+      },
+      {
+        title: <FormattedMessage {...messages.advancedSearch} />,
+        content: <p dir={this.props.direction}><FormattedMessage {...messages.advSearchHint} /></p>,
+        target: "#advSearchField",
+        placement: "bottom",
+        disableBeacon: true
+      },
+    ]
   }
 
   customActivities = activities.map(selectItem => {
@@ -253,12 +288,40 @@ class MaterialsView extends PureComponent {
 
   // handleBeforeDelete = () => this.setState({ confirmationBoxOpen: true })
 
+  handleJoyrideCallback = (data) => {
+    const { status, type } = data;
+    const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED]
+
+    if (finishedStatuses.includes(status)) {
+      this.setState({ running: false })
+    }
+    if (data.index === 1) {
+      this.props.fshowFilters()
+    }
+    if (data.index === 3) {
+      this.props.fshowSettings()
+    }
+  }
+
+  startHelp = () => this.setState({ running: true })
+
+
+
+
   render() {
     const { showFilter, showSettings, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, muiTheme, width, role, pendingMaterials, unpublishedMaterials, authorsName } = this.props
-    const { tab, offset, searchType } = this.state
+    const { tab, offset, searchType, running, steps } = this.state
     const searchText = this.getSearchText(searchType, this.props.params.searchText) || ''
     let materialsCounter
     const hideIconText = width === SMALL
+
+    const localeTour = {
+      next: <FormattedMessage {...messages.next} />,
+      back: <FormattedMessage {...messages.back} />,
+      skip: <FormattedMessage {...messages.skip} />,
+      last: <FormattedMessage {...messages.last} />
+    }
+
     // depending on which slide we are, we show one or another list */
     let materialsList
     if (tab === 0) materialsList = visibleMaterials
@@ -296,22 +359,24 @@ class MaterialsView extends PureComponent {
 
     const renderSearchBox = (
       <div>
-        <div style={styles.container}>
-          <SearchField value={searchText} dataSource={dataSource} onSubmit={this.handleSubmit} style={styles.searchBar} />
+        <DivSearchBox id='searchBox'>
+          <SearchField value={searchText} dataSource={dataSource} onSubmit={this.handleSubmit} style={{ flexGrow: 1 }} />
           <ActionButtons
             onFilterClick={this.props.toggleShowFilter}
             onSettingsClick={this.props.toggleShowSettings}
             filterActive={showFilter}
             settingsActive={showSettings}
-            style={styles.actionButtons}
+            helpActive={running}
+            onHelpClick={this.startHelp}
           />
-        </div>
+        </DivSearchBox>
         {showFilter ?
           <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
           : null
         }
         {showSettings ?
           <SelectField
+            id='advSearchField'
             floatingLabelText={<FormattedMessage {...messages.advancedSearch} />}
             value={searchType}
             onChange={this.handleSearchTypeChange}
@@ -323,12 +388,30 @@ class MaterialsView extends PureComponent {
           </SelectField>
           : null
         }
+
       </div>
     )
+
+
 
     return (
       <div>
         <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
+        <Joyride
+          callback={this.handleJoyrideCallback}
+          continuous={true}
+          floaterProps={{ disableAnimation: true }}
+          // // getHelpers={this.getHelpers}
+          run={running}
+          showSkipButton={true}
+          steps={steps}
+          // styles={{
+          //   options: {
+          //     zIndex: 10000,
+          //   },
+          // }}
+          locale={localeTour}
+        />
         <Tabs onChange={this.handleChange} value={tab}>
           <Tab
             label={hideIconText ? '' : <FormattedMessage {...messages.search} />}
@@ -474,6 +557,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   toggleShowSettings: () => {
     dispatch(toggleShowSettings())
+  },
+  fshowFilters: () => {
+    dispatch(showFilters())
+  },
+  fshowSettings: () => {
+    dispatch(showSettings())
   },
   setFilterItems: (filter, filterItem) => {
     dispatch(setFilterItems(filter, filterItem))
