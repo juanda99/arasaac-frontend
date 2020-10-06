@@ -187,6 +187,16 @@ export default defineMessages({
     description: 'Menu choose material area',
     defaultMessage: 'Geometry'
   },
+  measurementUnits: {
+    id: 'app.components.Filters.Area.measurementUnits',
+    description: 'Menu choose material area',
+    defaultMessage: 'Measurement units'
+  },
+  moneyUsage: {
+    id: 'app.components.Filters.Area.moneyUsage',
+    description: 'Menu choose material area',
+    defaultMessage: 'Money usage'
+  },
   naturalSciences: {
     id: 'app.components.Filters.Area.naturalSciences',
     description: 'Menu choose material area',
@@ -411,6 +421,16 @@ export default defineMessages({
     id: 'app.components.Filters.Activity.teacchMaterial',
     description: 'Menu choose material activity',
     defaultMessage: 'TEACCH material'
+  },
+  didacticUnit: {
+    id: 'app.components.Filters.Activity.didacticUnit',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Didactic Unit'
+  },
+  poster: {
+    id: 'app.components.Filters.Activity.poster',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Poster'
   },
   chooseLanguage: {
     id: 'app.components.Filters.Language.chooseLanguage',

@@ -25,10 +25,13 @@ const areas = [
   { code: 22, text: 'religion' },
   { code: 23, text: 'health' },
   { code: 24, text: 'leisure' },
-  { code: 25, text: 'signalling' },
+  // { code: 25, text: 'signalling' },
   { code: 26, text: 'selfawareness' },
   { code: 27, text: 'attention' },
   { code: 28, text: 'priorSkills' },
+  { code: 29, text: 'measurementUnits' },
+  { code: 30, text: 'moneyUsage' },
+
 ]
 
 
