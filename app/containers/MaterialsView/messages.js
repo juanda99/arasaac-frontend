@@ -25,7 +25,7 @@ export default defineMessages({
   },
   searchHint1: {
     id: 'app.containers.SearchBox.searchHint1',
-    defaultMessage: 'Enter one or more terms to search for the material, e.g. "weekly agenda".'
+    defaultMessage: 'Enter one or more terms to search for the material, e.g. weekly agenda.'
   },
   searchHint2: {
     id: 'app.containers.SearchBox.searchHint2',

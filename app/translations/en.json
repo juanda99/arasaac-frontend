@@ -447,7 +447,7 @@
   "app.containers.SearchBox.filters": "Filters",
   "app.containers.SearchBox.filtersBtn": "Click on this button to filter your search results.",
   "app.containers.SearchBox.filtersHint": "You can filter search results by activity, area  or language.",
-  "app.containers.SearchBox.searchHint1": "Enter one or more terms to search for the material, e.g. \"weekly agenda\".",
+  "app.containers.SearchBox.searchHint1": "Enter one or more terms to search for the material, e.g. weekly agenda.",
   "app.containers.SearchBox.searchHint2": "To perform an exact search, enter your search terms in quotation marks, e.g. \"communication notebook\".",
   "app.containers.SearchBox.showHelp": "Show help",
   "app.containers.SearchBox.wordSearch": "Search by words",
