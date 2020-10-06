@@ -447,6 +447,7 @@
   "app.containers.SearchBox.filters": "Filtros",
   "app.containers.SearchBox.filtersBtn": "Pulsa en este botón para filtrar los resultados de búsqueda.",
   "app.containers.SearchBox.filtersHint": "Puedes filtrar los resultados de búsqueda por actividad, área o idioma.",
+  "app.containers.SearchBox.searchHint1": "Introduce uno o más términos para buscar el material, p. ej. agenda semanal.",
   "app.containers.SearchBox.searchHint2": "Si quieres realizar una búsqueda exacta, introduce los términos de búsqueda entrecomillados, p. ej. \"cuaderno de comunicación\".",
   "app.containers.SearchBox.showHelp": "Mostrar ayuda",
   "app.containers.SearchBox.wordSearch": "Busqueda por palabras",
