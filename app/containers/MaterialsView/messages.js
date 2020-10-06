@@ -52,7 +52,7 @@ export default defineMessages({
     defaultMessage: 'Filter results'
   },
   advSearchBtn: {
-    id: 'app.containers.SearchBox.advSearchHint',
+    id: 'app.containers.SearchBox.advSearchBtn',
     defaultMessage: 'Click on this button to do an advanced search.'
   },
   advSearchHint: {
