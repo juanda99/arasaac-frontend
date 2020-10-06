@@ -68,7 +68,7 @@ class MaterialsView extends PureComponent {
     step: 0,
     steps: [
       {
-        title: <FormattedMessage {...messages.searchTypes} />,
+        title: <FormattedMessage {...messages.wordSearch} />,
         content: (
           <div>
             <p dir={this.props.direction}><FormattedMessage {...messages.searchHint1} /></p>
@@ -82,7 +82,7 @@ class MaterialsView extends PureComponent {
         disableBeacon: true
       },
       {
-        title: <FormattedMessage {...messages.filters} />,
+        title: <FormattedMessage {...messages.filterResults} />,
         content: <p dir={this.props.direction}><FormattedMessage {...messages.filtersBtn} /></p>,
         target: "#filtersBtn",
         placement: "bottom",
@@ -92,6 +92,13 @@ class MaterialsView extends PureComponent {
         title: <FormattedMessage {...messages.filters} />,
         content: <p dir={this.props.direction}><FormattedMessage {...messages.filtersHint} /></p>,
         target: "#filtersArea",
+        placement: "bottom",
+        disableBeacon: true,
+      },
+      {
+        title: <FormattedMessage {...messages.disableFilters} />,
+        content: <p dir={this.props.direction}><FormattedMessage {...messages.disableFiltersHint} /></p>,
+        target: ".btnDeleteFilter:first-of-type",
         placement: "bottom",
         disableBeacon: true,
       },
@@ -298,7 +305,7 @@ class MaterialsView extends PureComponent {
     if (data.index === 1) {
       this.props.fshowFilters()
     }
-    if (data.index === 3) {
+    if (data.index === 4) {
       this.props.fshowSettings()
     }
   }

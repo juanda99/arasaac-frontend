@@ -21,16 +21,16 @@ class FilterSelect extends React.Component {
     const { multiple } = this.props
     return items.map((item) => (
       multiple
-      ? <MenuItem
-        key={item.primaryText}
-        insetChildren={true}
-        checked={values && values.includes(item.value)}
-        {...item}
-      />
-      : <MenuItem
-        key={item.primaryText}
-        {...item}
-      />
+        ? <MenuItem
+          key={item.primaryText}
+          insetChildren={true}
+          checked={values && values.includes(item.value)}
+          {...item}
+        />
+        : <MenuItem
+          key={item.primaryText}
+          {...item}
+        />
     ))
   }
   render() {
@@ -41,7 +41,7 @@ class FilterSelect extends React.Component {
     if (multiple) multipleProps = { multiple }
     return (
       <span style={styles.span}>
-        <IconButton iconStyle={{ color: muiTheme.palette.accent1Color, verticalAlign: 'bottom' }} onClick={this.handleReset} tooltip={<FormattedMessage {...messages.filterTooltip} />}>
+        <IconButton className='btnDeleteFilter' iconStyle={{ color: muiTheme.palette.accent1Color, verticalAlign: 'bottom' }} onClick={this.handleReset} tooltip={<FormattedMessage {...messages.filterTooltip} />}>
           <ActionHide />
         </IconButton>
         <SelectField

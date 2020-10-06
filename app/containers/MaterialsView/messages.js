@@ -19,25 +19,37 @@ export default defineMessages({
     id: 'app.containers.SearchBox.filtersBtn',
     defaultMessage: 'Click on this button to filter your search results.'
   },
-  searchTypes: {
-    id: 'app.containers.SearchBox.searchTypes',
-    defaultMessage: 'Search types'
+  wordSearch: {
+    id: 'app.containers.SearchBox.wordSearch',
+    defaultMessage: 'Search by words'
   },
   searchHint1: {
     id: 'app.containers.SearchBox.search',
-    defaultMessage: 'Searches between quotes for exact searches. For example: "covid-19"'
+    defaultMessage: 'Enter one or more terms to search for the material, e.g. "weekly agenda".'
   },
   searchHint2: {
     id: 'app.containers.SearchBox.search',
-    defaultMessage: 'Searches with minus to filter by content. For example: "pictograms -covid" searches materials related to pictograms but not to covid'
+    defaultMessage: 'To perform an exact search, enter your search terms in quotation marks, e.g. "communication notebook".'
   },
   filtersHint: {
     id: 'app.containers.SearchBox.filtersHint',
-    defaultMessage: 'You can filter search results by activity, area or language.'
+    defaultMessage: 'You can filter search results by activity, area  or language.'
   },
   filters: {
     id: 'app.containers.SearchBox.filters',
     defaultMessage: 'Filters'
+  },
+  disableFilters: {
+    id: 'app.containers.SearchBox.filters',
+    defaultMessage: 'Deactivate filters'
+  },
+  disableFiltersHint: {
+    id: 'app.containers.SearchBox.filters',
+    defaultMessage: 'Click on this button to deactivate the search filters'
+  },
+  filterResults: {
+    id: 'app.containers.SearchBox.filterResults',
+    defaultMessage: 'Filter results'
   },
   advSearchBtn: {
     id: 'app.containers.SearchBox.advSearchHint',
@@ -45,7 +57,7 @@ export default defineMessages({
   },
   advSearchHint: {
     id: 'app.containers.SearchBox.advSearchHint',
-    defaultMessage: 'You can search by material content (default search) but also by author, activity or area.'
+    defaultMessage: 'Click on the drop-down menu to search by Content, Author, Activity (e.g. routine, agenda, story...) or Area (e.g. Language, Mathematics, Music...).'
   },
   content: {
     id: 'app.containers.SearchBox.content',
