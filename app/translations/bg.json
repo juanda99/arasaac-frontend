@@ -27,6 +27,8 @@
   "app.component.MaterialConditions.requirementsP3": "Снимките и изображенията, включени в материалите, трябва да са в съответствие с нашия лиценз или трябва да са направени от самия автор.",
   "app.component.MaterialConditions.requirementsP4": "Текстовете, включени в материалите, трябва да са в съответствие с нашия лиценз. Те не могат да бъдат дословно копие на защитено с авторски права съдържание.",
   "app.component.MaterialConditions.requirementsP5": "Всички материали трябва да цитират лиценз ARASAAC, за предпочитане в долния колонтитул, заедно с името на автора на материала, за да се приписва авторство. Интелектуалната собственост на материала също е защитена съгласно същия лиценз.",
+  "app.component.MaterialConditions.requirementsP6": "За да направите цитирането правилно, трябва да се използва един от следните цитати:",
+  "app.component.MaterialConditions.standardQuote": "Стандартен цитат",
   "app.component.MaterialConditions.submit": "Потвърди",
   "app.component.MaterialConditions.suggestions": "Предложения",
   "app.component.MaterialConditions.translationQuoteDesc": "След превода на съществуващ материал, ще се добави името на преводача в края на оригиналния лиценз:",
