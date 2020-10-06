@@ -5,6 +5,7 @@ import { PICTOGRAMS_URL } from 'services/config'
 import { LOW_RESOLUTION } from 'components/Pictogram/constants'
 import { TextField } from 'redux-form-material-ui'
 import RaisedButton from 'material-ui/RaisedButton'
+import P from 'components/P'
 import { Field, reduxForm, propTypes } from 'redux-form/immutable'
 import messages from './messages'
 
@@ -31,28 +32,34 @@ class ContactForm extends Component {
 
     return (
       <form onSubmit={handleSubmit} style={{ maxWidth: '500px', marginBottom: '30px' }}>
-        <div>
-          <Field
-            name='name'
-            type='text'
-            component={TextField}
-            validate={[required]}
-            hintText={<FormattedMessage {...messages.nameHint} />}
-            floatingLabelText={<FormattedMessage {...messages.name} />}
-            fullWidth
-          />
-        </div>
-        <div>
-          <Field
-            name='email'
-            type='email'
-            component={TextField}
-            validate={[required, email]}
-            hintText={<FormattedMessage {...messages.emailHint} />}
-            floatingLabelText={<FormattedMessage {...messages.email} />}
-            fullWidth
-          />
-        </div>
+        <Field
+          name='name'
+          type='text'
+          component={TextField}
+          validate={[required]}
+          hintText={<FormattedMessage {...messages.nameHint} />}
+          floatingLabelText={<FormattedMessage {...messages.name} />}
+          fullWidth
+        />
+        <Field
+          name='email'
+          type='email'
+          component={TextField}
+          validate={[required, email]}
+          hintText={<FormattedMessage {...messages.emailHint} />}
+          floatingLabelText={<FormattedMessage {...messages.email} />}
+          fullWidth
+        />
+        <Field
+          name='subject'
+          type='text'
+          component={TextField}
+          validate={[required]}
+          hintText={<FormattedMessage {...messages.subjectHint} />}
+          floatingLabelText={<FormattedMessage {...messages.subject} />}
+          multiLine={false}
+          fullWidth
+        />
         <Field
           name='message'
           type='text'
@@ -64,8 +71,9 @@ class ContactForm extends Component {
           rows={2}
           fullWidth
         />
-
+        <P><FormattedMessage {...messages.preventSpam} /></P>
         <div style={{ display: 'flex' }}>
+
           <div>
             <img
               style={{ width: '130px', height: '130px', marginRight: '50px' }}

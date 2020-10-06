@@ -36,6 +36,18 @@ export default defineMessages({
     description: 'message',
     defaultMessage: 'Type your message'
   },
+  subject: {
+    id: 'app.containers.ContactView.form.subject',
+    defaultMessage: 'Subject'
+  },
+  subjectHint: {
+    id: 'app.containers.ContactView.form.subjectHint',
+    defaultMessage: 'Type the subject of your message'
+  },
+  preventSpam: {
+    id: 'app.containers.ContactView.form.preventSpam',
+    defaultMessage: 'Please, answer this question to prevent spam:'
+  },
   fingers: {
     id: 'app.containers.ContactView.form.fingers',
     defaultMessage: 'How many fingers?  '
