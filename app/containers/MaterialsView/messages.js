@@ -24,11 +24,11 @@ export default defineMessages({
     defaultMessage: 'Search by words'
   },
   searchHint1: {
-    id: 'app.containers.SearchBox.search',
+    id: 'app.containers.SearchBox.searchHint1',
     defaultMessage: 'Enter one or more terms to search for the material, e.g. "weekly agenda".'
   },
   searchHint2: {
-    id: 'app.containers.SearchBox.search',
+    id: 'app.containers.SearchBox.searchHint2',
     defaultMessage: 'To perform an exact search, enter your search terms in quotation marks, e.g. "communication notebook".'
   },
   filtersHint: {
@@ -40,11 +40,11 @@ export default defineMessages({
     defaultMessage: 'Filters'
   },
   disableFilters: {
-    id: 'app.containers.SearchBox.filters',
+    id: 'app.containers.SearchBox.disableFilters',
     defaultMessage: 'Deactivate filters'
   },
   disableFiltersHint: {
-    id: 'app.containers.SearchBox.filters',
+    id: 'app.containers.SearchBox.disableFiltersHint',
     defaultMessage: 'Click on this button to deactivate the search filters'
   },
   filterResults: {
