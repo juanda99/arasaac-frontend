@@ -198,6 +198,12 @@ const collaborators = [
     facebook: 'autismmacedonia',
     country: 'mk'
   },
+  {
+    name: 'Olga Serra Pellicer',
+    languages: ['ca'],
+    image: 'she.jpg',
+    country: 'es'
+  },
 ]
 
 export default collaborators
