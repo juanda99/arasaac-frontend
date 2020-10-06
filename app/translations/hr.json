@@ -286,8 +286,6 @@
   "app.containers.MaterialView.materialNotFound": "Žao nam je, sadržaj koji ste tražili ne postoji",
   "app.containers.MaterialsView.materialsFound": "{materialsCounter, plural, one {Pronažli smo samo jedan materijal} other {Pronašli smo {materialsCounter} materijala}}",
   "app.containers.MaterialsView.materialsNotFound": "Žao nam je, ne možemo pronaći ni jedan materijal",
-  "app.containers.MaterialsView.new": "Novo",
-  "app.containers.MaterialsView.search": "Pretraživanje",
   "app.containers.MaterialsView.showCategories": "Prikaži kategorije u rezultatima pretrage",
   "app.containers.MaterialsView.showFilters": "Prikaži filtre",
   "app.containers.MaterialsView.showSettings": "Prikaži postavke pretraživanja",
