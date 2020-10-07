@@ -7,14 +7,24 @@ import MenuItem from 'material-ui/MenuItem'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import H3 from 'components/H3'
 import P from 'components/P'
+// import areIntlLocalesSupported from 'intl-locales-supported'
 import filterMessages from 'components/Filters/messages'
-import { SelectField } from 'redux-form-material-ui'
-import { change } from 'redux-form';
+import { SelectField, DatePicker, TimePicker } from 'redux-form-material-ui'
 import RenderAuthors from './RenderAuthors'
 import RenderChip from './RenderChip'
 import RenderLanguages from './RenderLanguages'
 import messages from './messages'
 import { UPDATE_MATERIAL } from './constants'
+
+const DateTimeFormat = global.Intl.DateTimeFormat
+// let DateTimeFormat
+// if (areIntlLocalesSupported(['es', 'es-ES'])) {
+//   DateTimeFormat = global.Intl.DateTimeFormat
+// } else {
+//   const IntlPolyfill = require('intl')
+//   DateTimeFormat = IntlPolyfill.DateTimeFormat
+//   require('intl/locale-data/jsonp/es')
+// }
 
 class MaterialForm extends React.Component {
 
@@ -74,6 +84,8 @@ class MaterialForm extends React.Component {
           case 14:
           case 15:
           case 16:
+          case 29:
+          case 30:
             text = `${formatMessage(filterMessages['math'])} / ${text}`
             break;
           case 1:
@@ -146,11 +158,26 @@ class MaterialForm extends React.Component {
                       <MenuItem key={1} value={1} primaryText={<FormattedMessage {...messages.published} />} />
                       <MenuItem key={2} value={2} primaryText={<FormattedMessage {...messages.pending} />} />
                     </Field>
+                    <Field
+                      name="lastUpdated"
+                      component={DatePicker}
+                      DateTimeFormat={DateTimeFormat}
+                      locale={'es'}
+                      floatingLabelText={<FormattedMessage {...messages.lastUpdated} />}
+                    />
+                    <Field
+                      name="lastUpdated"
+                      component={TimePicker}
+                      locale={'es'}
+                      DateTimeFormat={DateTimeFormat}
+                      floatingLabelText={<FormattedMessage {...messages.lastUpdatedTime} />}
+                    />
                   </div>
                 )}
                 <RaisedButton style={{ marginTop: '30px' }} type='submit' disabled={pristine || submitting} label={<FormattedMessage {...messages.updateMaterial} />} primary={true} />
               </StepContent>
             </Step>
+
           </Stepper>
 
           {/* <RaisedButton label='Clear values' disabled={pristine || submitting} onClick={reset} /> */}

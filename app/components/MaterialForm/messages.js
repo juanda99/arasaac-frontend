@@ -38,6 +38,14 @@ export default defineMessages({
     id: 'app.components.MaterialForm.emailHint',
     defaultMessage: 'Enter the  email of the author'
   },
+  lastUpdated: {
+    id: 'app.components.MaterialForm.lastUpdated',
+    defaultMessage: 'Update date'
+  },
+  lastUpdatedTime: {
+    id: 'app.components.MaterialForm.lastUpdatedTime',
+    defaultMessage: 'Update time'
+  },
   areas: {
     id: 'app.components.MaterialForm.areas',
     defaultMessage: 'Areas'

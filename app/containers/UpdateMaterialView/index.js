@@ -69,7 +69,7 @@ class UpdateMaterialView extends PureComponent {
     const { intl, token, params } = this.props
     const formValues = values.toJS()
     const { formatMessage } = intl
-    const { languages, activities, areas, authors, status } = formValues
+    const { languages, activities, areas, authors, status, lastUpdated } = formValues
     // change activities, areas from [{key1, value1}, {key2, value2}].. to [key1, key2...]
     const Activities = activities ?
       activities.map((activity) => (activity.value))
@@ -103,7 +103,7 @@ class UpdateMaterialView extends PureComponent {
         }
       })
     }
-    const data = { areas: Areas, activities: Activities, authors: Authors, translations, status }
+    const data = { areas: Areas, activities: Activities, authors: Authors, translations, status, lastUpdated }
     this.props.updateMaterial(params.idMaterial, data, token)
   }
 

@@ -7,10 +7,8 @@ import MenuItem from 'material-ui/MenuItem'
 import { FormattedMessage, injectIntl, intlShape, formatMessage } from 'react-intl'
 import H3 from 'components/H3'
 import P from 'components/P'
-import { Map } from 'immutable'
 import filterMessages from 'components/Filters/messages'
 import { SelectField } from 'redux-form-material-ui'
-import { change } from 'redux-form';
 import RenderAuthors from './RenderAuthors'
 import RenderDropzoneInput from './RenderDropzoneInput'
 import RenderChip from './RenderChip'
@@ -19,7 +17,6 @@ import messages from './messages'
 import { NEW_MATERIAL } from './constants'
 
 class MaterialForm extends React.Component {
-
 
   render() {
     const { handleSubmit, pristine, submitting, reset, activities, areas, intl, onEmailExists, invalid, changeStep, stepIndex, isAdmin, isNew } = this.props
@@ -76,6 +73,8 @@ class MaterialForm extends React.Component {
           case 14:
           case 15:
           case 16:
+          case 29:
+          case 30:
             text = `${formatMessage(filterMessages['math'])} / ${text}`
             break;
           case 1:

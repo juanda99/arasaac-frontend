@@ -248,6 +248,7 @@
     "humps": "^2.0.0",
     "immutable": "3.8.1",
     "intl": "1.2.5",
+    "intl-locales-supported": "^1.8.12",
     "invariant": "2.2.2",
     "ip": "1.1.4",
     "jwt-decode": "^2.2.0",
