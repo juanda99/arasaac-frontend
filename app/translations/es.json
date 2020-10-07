@@ -228,6 +228,7 @@
   "app.components.MaterialForm.languageScreenshots": "Subir sólo los archivos específicos para este idioma",
   "app.components.MaterialForm.languageTitle": "Idiomas y descripciones",
   "app.components.MaterialForm.lastUpdated": "Fecha de actualización",
+  "app.components.MaterialForm.lastUpdatedTime": "Hora de actualización",
   "app.components.MaterialForm.materialStatus": "Estado del material",
   "app.components.MaterialForm.name": "Nombre",
   "app.components.MaterialForm.nameHint": "Introduce el nombre del autor",
