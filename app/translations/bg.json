@@ -438,5 +438,15 @@
   "app.containers/collaboratorsView.translateArasaac": "ARASAAC се превежда от доброволци на множество езици. Свържи се с нас, ако искаш да помогнеш за превода на ARASAAC на нов език или подобряване на съществуващ превод.",
   "app.containers/collaboratorsView.translationStatus": "Състояние на превода",
   "app.containersTranslationStatus.noDataAvailable": "Няма налични данни",
-  "app.containersTranslationStatus.pictosTranslationStatus": "Превод на пиктограми (може би вече преведени, но не валидирани): {pictosValidatedString}%"
+  "app.containersTranslationStatus.pictosTranslationStatus": "Превод на пиктограми (може би вече преведени, но не валидирани): {pictosValidatedString}%",
+  "app.containersTranslationStatus.webTranslationStatus": "Уеб превод: {webTranslatedString}%",
+  "email.signin": "имейл",
+  "header.aboutUs": "За нас",
+  "header.api": "API за разработчици",
+  "header.arasaacWorld": "ARASAAC по света",
+  "header.catalogs": "Изтегляне на каталози",
+  "header.configurationTitle": "Настройки на ARASAAC",
+  "header.contactusTitle": "Свържи се с нас",
+  "header.cookiesPolicy": "Политика относно бисквитките",
+  "header.devAccounts": "Създай профил за разработчици"
 }
