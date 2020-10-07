@@ -516,5 +516,11 @@
   "newPasswordForm.changePasswordInfo": "Въведи новата си парола в полето по-долу",
   "password.signin": "Парола",
   "permissionsErrorView.forbidden": "Твояо потребителска роля няма достъп до този ресурс.",
-  "readmmore.more": "Прочети още"
+  "readmmore.more": "...прочети още",
+  "readmore.less": "... покажи по-малко",
+  "recoverPasswordView.passwordNotReset": "Съжаляваме, но възникна грешка при възстановяването на паролата ти",
+  "recoverPasswordView.passwordResetSend": "Почти си готов! Провери имейла си, за да възстановиш паролата си",
+  "recoverPasswordView.resetPassword": "Забравена парола",
+  "recoverPasswordView.userNotActivated": "Твоят потребител не беше активен. Изпратихме ти връзка за активиране, след като влезеш, можеш да промениш паролата си от потребителския си профил",
+  "recoverPasswordView.userNotExists": "Съжаляваме, но няма профил с твоя имейл"
 }
