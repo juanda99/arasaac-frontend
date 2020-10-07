@@ -38,6 +38,8 @@ const activities = [
   { code: 39, text: 'schedule' },
   { code: 40, text: 'didacticUnit' },
   { code: 41, text: 'poster' },
+  { code: 42, text: 'intruder' },
+  { code: 43, text: 'semanticMap' },
 
 ]
 

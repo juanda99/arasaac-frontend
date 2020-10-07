@@ -67,6 +67,7 @@ class MaterialForm extends React.Component {
           case 8:
           case 9:
           case 10:
+          case 31:
             text = `${formatMessage(filterMessages['language'])} / ${text}`
             break;
           case 13:

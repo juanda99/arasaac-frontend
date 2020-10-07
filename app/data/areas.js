@@ -31,6 +31,7 @@ const areas = [
   { code: 28, text: 'priorSkills' },
   { code: 29, text: 'measurementUnits' },
   { code: 30, text: 'moneyUsage' },
+  { code: 31, text: 'alphabet' },
 
 ]
 

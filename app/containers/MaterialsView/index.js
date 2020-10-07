@@ -164,6 +164,7 @@ class MaterialsView extends PureComponent {
       case 8:
       case 9:
       case 10:
+      case 31:
         text = `${formatMessage(messagesFilters['language'])} / ${text}`
         break;
       case 13:

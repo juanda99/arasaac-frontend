@@ -247,6 +247,11 @@ export default defineMessages({
     description: 'Menu choose material area',
     defaultMessage: 'Prior skills'
   },
+  alphabet: {
+    id: 'app.components.Filters.Area.alphabet',
+    description: 'Menu choose material area',
+    defaultMessage: 'Alphabet'
+  },
   activities: {
     id: 'app.components.Filters.Activity.activity',
     description: 'Menu choose material activity',
@@ -431,6 +436,16 @@ export default defineMessages({
     id: 'app.components.Filters.Activity.poster',
     description: 'Menu choose material activity',
     defaultMessage: 'Poster'
+  },
+  intruder: {
+    id: 'app.components.Filters.Activity.intruder',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Intruder'
+  },
+  semanticMap: {
+    id: 'app.components.Filters.Activity.semanticMap',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Semantic map'
   },
   chooseLanguage: {
     id: 'app.components.Filters.Language.chooseLanguage',

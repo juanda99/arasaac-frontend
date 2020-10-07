@@ -78,6 +78,7 @@ class MaterialForm extends React.Component {
           case 8:
           case 9:
           case 10:
+          case 31:
             text = `${formatMessage(filterMessages['language'])} / ${text}`
             break;
           case 13:
@@ -145,40 +146,45 @@ class MaterialForm extends React.Component {
 
                 <P><FormattedMessage {...messages.languageHint} /></P>
                 <FieldArray name='languages' component={RenderLanguages} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} status={UPDATE_MATERIAL} />
-                {isAdmin && (
-                  <div>
-                    <Field
-                      name='status'
-                      component={SelectField}
-                      hintText={<FormattedMessage {...messages.materialStatus} />}
-                      floatingLabelText={<FormattedMessage {...messages.materialStatus} />}
-                    >
 
-                      <MenuItem key={0} value={0} primaryText={<FormattedMessage {...messages.notPublished} />} />
-                      <MenuItem key={1} value={1} primaryText={<FormattedMessage {...messages.published} />} />
-                      <MenuItem key={2} value={2} primaryText={<FormattedMessage {...messages.pending} />} />
-                    </Field>
-                    <Field
-                      name="lastUpdated"
-                      component={DatePicker}
-                      DateTimeFormat={DateTimeFormat}
-                      locale={'es'}
-                      floatingLabelText={<FormattedMessage {...messages.lastUpdated} />}
-                    />
-                    <Field
-                      name="lastUpdated"
-                      component={TimePicker}
-                      locale={'es'}
-                      DateTimeFormat={DateTimeFormat}
-                      floatingLabelText={<FormattedMessage {...messages.lastUpdatedTime} />}
-                    />
-                  </div>
-                )}
-                <RaisedButton style={{ marginTop: '30px' }} type='submit' disabled={pristine || submitting} label={<FormattedMessage {...messages.updateMaterial} />} primary={true} />
               </StepContent>
             </Step>
 
           </Stepper>
+          <div style={{ paddingLeft: '40px', paddingTop: '30px' }}>
+            {isAdmin && (
+              <div>
+                <Field
+                  name='status'
+                  component={SelectField}
+                  hintText={<FormattedMessage {...messages.materialStatus} />}
+                  floatingLabelText={<FormattedMessage {...messages.materialStatus} />}
+                >
+
+                  <MenuItem key={0} value={0} primaryText={<FormattedMessage {...messages.notPublished} />} />
+                  <MenuItem key={1} value={1} primaryText={<FormattedMessage {...messages.published} />} />
+                  <MenuItem key={2} value={2} primaryText={<FormattedMessage {...messages.pending} />} />
+                </Field>
+                <Field
+                  name="lastUpdated"
+                  component={DatePicker}
+                  DateTimeFormat={DateTimeFormat}
+                  locale={'es'}
+                  floatingLabelText={<FormattedMessage {...messages.lastUpdated} />}
+                />
+                <Field
+                  name="lastUpdated"
+                  component={TimePicker}
+                  locale={'es'}
+                  DateTimeFormat={DateTimeFormat}
+                  floatingLabelText={<FormattedMessage {...messages.lastUpdatedTime} />}
+                />
+              </div>
+            )}
+            <RaisedButton style={{ marginTop: '30px' }} type='submit' disabled={pristine || submitting} label={<FormattedMessage {...messages.updateMaterial} />} primary={true} />
+
+          </div>
+
 
           {/* <RaisedButton label='Clear values' disabled={pristine || submitting} onClick={reset} /> */}
         </form>
