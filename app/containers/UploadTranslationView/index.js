@@ -80,7 +80,7 @@ class UploadTranslationView extends PureComponent {
     }
 
     if (!files) {
-      this.setState({ stepIndex: 2, showDialog: true, dialogText: formatMessage(messages.needFiles) })
+      this.setState({ stepIndex: 1, showDialog: true, dialogText: formatMessage(messages.needFiles) })
       return
     }
 
