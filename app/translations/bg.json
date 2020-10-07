@@ -430,8 +430,8 @@
   "app.containers.ProfileView.arasaacProfilePicture": "Снимка на профила на ARASAAC",
   "app.containers.ProfileView.currentRole": "Сегашна роля:",
   "app.containers.ProfileView.errorPassword": "Упс! Възникна грешка при смяната на паролата",
-  "app.containers.ProfileView.facebookProfilePicture": "Снимка на профила на Фейсбук",
-  "app.containers.ProfileView.googleProfilePicture": "Снимка на профила на Гугъл",
+  "app.containers.ProfileView.facebookProfilePicture": "Снимка на профила на Facebook",
+  "app.containers.ProfileView.googleProfilePicture": "Снимка на профила на Google",
   "app.containers.ProfileView.greeting": "Здравей{name}!",
   "app.containers.ProfileView.lastLogin": "Последно влизане:",
   "app.containers.ProfileView.passwordChanged": "Паролата е променена",
@@ -522,5 +522,7 @@
   "recoverPasswordView.passwordResetSend": "Почти си готов! Провери имейла си, за да възстановиш паролата си",
   "recoverPasswordView.resetPassword": "Забравена парола",
   "recoverPasswordView.userNotActivated": "Твоят потребител не беше активен. Изпратихме ти връзка за активиране, след като влезеш, можеш да промениш паролата си от потребителския си профил",
-  "recoverPasswordView.userNotExists": "Съжаляваме, но няма профил с твоя имейл"
+  "recoverPasswordView.userNotExists": "Съжаляваме, но няма профил с твоя имейл",
+  "signin.facebook": "Регистрирай се с Facebook",
+  "signin.google": "Регистрирай се с Google"
 }
