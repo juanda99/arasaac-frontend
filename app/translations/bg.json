@@ -339,5 +339,18 @@
   "app.containers.DevelopersView.howto": "Използване на API",
   "app.containers.DevelopersView.howtoDesc": "За да използваш API на ARASAAC, имаш нужда от идентификационни данни за достъп. Ние използваме протокола за разрешение Oauth2, който ни позволява приложенията на трети страни да имат достъп както до ARASAAC, така и до данните за потребителите.",
   "app.containers.DevelopersView.introApi": "ARASAAC разполага с обширен API за обслужване на нашите ресурси за приложения на трети страни.",
-  "app.containers.DevelopersView.license": "ARASAAC Creative Commons лиценз CC BY-NC-SA"
+  "app.containers.DevelopersView.license": "ARASAAC Creative Commons лиценз CC BY-NC-SA",
+  "app.containers.DevelopersView.termsOfUse": "Условия за ползване",
+  "app.containers.DevelopersView.termsOfUseDesc": "API ARASAAC е достъпен само за нетърговски приложения. Увери се, че отговарш на нашите лицензионни условия.",
+  "app.containers.ListMenu.cancel": "Отказ",
+  "app.containers.ListMenu.delete": "Изтриване",
+  "app.containers.ListMenu.rename": "Преименуване",
+  "app.containers.ListMenu.submit": "Потвърждение",
+  "app.containers.ListSnippet.newFolderName": "Име на нова папка",
+  "app.containers.MaterialView.materialLoading": "Зареждане на материал...",
+  "app.containers.MaterialView.materialNotFound": "Съжаляваме, материала, който търсиш, не съществува",
+  "app.containers.MaterialsView.loadingMaterials": "Зареждане на материал...",
+  "app.containers.MaterialsView.materialsFound": "{materialsCounter, plural,one {Намерихме само един материал}other {Намерихме{materialsCounter} материали}}",
+  "app.containers.MaterialsView.materialsNotFound": "Съжаляваме, не можем да намерим никакъв материал",
+  "app.containers.MaterialsView.new": "Ново"
 }
