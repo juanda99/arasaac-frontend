@@ -57,7 +57,7 @@ class UploadMaterialView extends PureComponent {
   }
 
   handleSubmit(values) {
-    const { intl, token } = this.props
+    const { intl, token, name, email } = this.props
     const formValues = values.toJS()
     const { formatMessage } = intl
     const { files, screenshots, languages, activities, areas, authors, status } = formValues
@@ -68,8 +68,9 @@ class UploadMaterialView extends PureComponent {
     const Areas = areas ?
       areas.map((area) => (area.value))
       : []
-
     const Authors = authors.filter(author => author._id).map(author => ({ author: author._id, role: author.role }))
+    /* we manage new material with user who send it, not with its authors! */
+    const emailAuthors = { email, name }
     if (authors.length === 0) {
       this.setState({ stepIndex: 0, showDialog: true, dialogText: formatMessage(messages.needAuthor) })
       return
@@ -100,7 +101,7 @@ class UploadMaterialView extends PureComponent {
     }
     formData.append(
       'formData',
-      JSON.stringify({ areas: Areas, activities: Activities, authors: Authors, translations, status })
+      JSON.stringify({ areas: Areas, activities: Activities, authors: Authors, translations, status, emailAuthors })
     )
 
     axios.request({

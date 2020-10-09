@@ -367,6 +367,11 @@ export default defineMessages({
     description: 'Menu choose material activity',
     defaultMessage: 'Digital Board'
   },
+  accessibleDoc: {
+    id: 'app.components.Filters.Activity.accessibleDoc',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Accessible document'
+  },
   presentation: {
     id: 'app.components.Filters.Activity.presentation',
     description: 'Menu choose material activity',

@@ -40,6 +40,7 @@ const activities = [
   { code: 41, text: 'poster' },
   { code: 42, text: 'intruder' },
   { code: 43, text: 'semanticMap' },
+  { code: 44, text: 'accessibleDoc' }
 
 ]
 

@@ -68,7 +68,7 @@ class UploadTranslationView extends PureComponent {
   }
 
   handleSubmit(values) {
-    const { intl, token, params } = this.props
+    const { intl, token, params, name, email } = this.props
     const formValues = values.toJS()
     const { formatMessage } = intl
     const { files, screenshots, languages, authors } = formValues
@@ -103,7 +103,7 @@ class UploadTranslationView extends PureComponent {
 
     formData.append(
       'formData',
-      JSON.stringify({ translations: languages })
+      JSON.stringify({ translations: languages, name, email })
     )
 
     axios.request({
