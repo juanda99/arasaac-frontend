@@ -43,6 +43,7 @@
   "app.components.Catalog.confirmLicense": "I have read and accept the terms of the ARASAAC license agreement",
   "app.components.CategorySnippet.deleteList": "Delete folder",
   "app.components.CategorySnippet.download": "Download folder",
+  "app.components.Filters.Activity.accessibleDoc": "Accessible document",
   "app.components.Filters.Activity.activity": "Activity",
   "app.components.Filters.Activity.animation": "Animation",
   "app.components.Filters.Activity.araBoard": "AraBoard",
