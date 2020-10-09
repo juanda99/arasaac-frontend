@@ -1,31 +1,29 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import ImmutablePropTypes from 'react-immutable-proptypes'
-import withWidth, { SMALL, LARGE } from 'material-ui/utils/withWidth'
-import Pagination from 'material-ui-pagination'
-import PictogramSnippet from '../PictogramSnippet'
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import ImmutablePropTypes from "react-immutable-proptypes";
+import withWidth, { SMALL, LARGE } from "material-ui/utils/withWidth";
+import Pagination from "material-ui-pagination";
+import PictogramSnippet from "../PictogramSnippet";
 
-const Masonry = require('react-masonry-component')
-
+const Masonry = require("react-masonry-component");
 
 const styles = {
   masonry: {
-    listStyleType: 'none',
-    display: 'flex',
-    flexWrap: 'wrap',
+    listStyleType: "none",
+    display: "flex",
+    flexWrap: "wrap",
     flexGrow: 2,
-    justifyContent: 'space-around'
-  }
-}
+    justifyContent: "space-around",
+  },
+};
 
-const itemsPerPage = 20 /* number of items per page */
-const display = 7 /* number of pages to see in the paginator */
+const itemsPerPage = 20; /* number of items per page */
+const display = 7; /* number of pages to see in the paginator */
 
 export class PictogramList extends PureComponent {
-
   setTopRef = (element) => {
-    this.topPosition = element
-  }
+    this.topPosition = element;
+  };
 
   // handlePageClick = (currentPage) => {
   //   this.setState({ currentPage })
@@ -33,10 +31,10 @@ export class PictogramList extends PureComponent {
   //   // window.scroll(0, 0)
   // }
 
-  handleClick = currentPage => {
-    const offset = (currentPage - 1) * itemsPerPage
-    this.props.onPageClick(offset)
-  }
+  handleClick = (currentPage) => {
+    const offset = (currentPage - 1) * itemsPerPage;
+    this.props.onPageClick(offset);
+  };
 
   render() {
     const {
@@ -51,8 +49,8 @@ export class PictogramList extends PureComponent {
       onAddFavorite,
       rtl,
       onDownload,
-      offset
-    } = this.props
+      offset,
+    } = this.props;
 
     // const pagination = (pictograms.length >= itemsPerPage) ?
     //   (<Pagination
@@ -63,10 +61,10 @@ export class PictogramList extends PureComponent {
     //   />)
     //   : null
 
-    const numberItems = pictograms.length
-    const totalPages = Math.ceil(numberItems / itemsPerPage)
-    const visiblePictograms = pictograms.slice(offset, offset + itemsPerPage)
-    const currentPage = Math.ceil(offset / itemsPerPage) + 1
+    const numberItems = pictograms.length;
+    const totalPages = Math.ceil(numberItems / itemsPerPage);
+    const visiblePictograms = pictograms.slice(offset, offset + itemsPerPage);
+    const currentPage = Math.ceil(offset / itemsPerPage) + 1;
     const pagination =
       numberItems > itemsPerPage ? (
         <Pagination
@@ -78,16 +76,16 @@ export class PictogramList extends PureComponent {
           // onClick={(e, offsetParam) => this.handleClick(offsetParam)}
           onChange={this.handleClick}
           currentPageColor="inherit"
-          styleRoot={{ textAlign: 'center' }}
+          styleRoot={{ textAlign: "center" }}
         />
-      ) : null
+      ) : null;
 
     const masonryOptions = {
-      transitionDuration: '1s',
-      isOriginLeft: !rtl
-    }
+      transitionDuration: "1s",
+      isOriginLeft: !rtl,
+    };
     const renderPictograms = visiblePictograms.map((pictogram) => {
-      const isFavorite = favorites.includes(pictogram._id)
+      const isFavorite = favorites.includes(pictogram._id);
       return (
         <PictogramSnippet
           pictogram={pictogram}
@@ -99,8 +97,8 @@ export class PictogramList extends PureComponent {
           onDownload={onDownload}
           isFavorite={isFavorite}
         />
-      )
-    })
+      );
+    });
 
     return (
       <div>
@@ -108,8 +106,8 @@ export class PictogramList extends PureComponent {
           <div ref={this.setTopRef}>
             {pagination}
             <Masonry
-              className={'my-gallery-class'} // default ''
-              elementType={'ul'} // default 'div'
+              className={"my-gallery-class"} // default ''
+              elementType={"ul"} // default 'div'
               options={masonryOptions} // default {}
               disableImagesLoaded={false} // default false
               style={styles.masonry}
@@ -119,13 +117,13 @@ export class PictogramList extends PureComponent {
             {pagination}
           </div>
         ) : (
-            <div ref={this.setTopRef}>
-              {pagination}
-              <ul>{renderPictograms}</ul>
-            </div>
-          )}
+          <div ref={this.setTopRef}>
+            {pagination}
+            <ul>{renderPictograms}</ul>
+          </div>
+        )}
       </div>
-    )
+    );
   }
 }
 
@@ -145,6 +143,6 @@ PictogramList.propTypes = {
   onDownload: PropTypes.func.isRequired,
   offset: PropTypes.number.isRequired,
   onPageClick: PropTypes.func.isRequired,
-}
+};
 
-export default withWidth()(PictogramList)
+export default withWidth()(PictogramList);

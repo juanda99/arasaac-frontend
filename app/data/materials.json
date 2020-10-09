@@ -1,8 +1,26 @@
-[{
+[
+  {
     "_id": "591c0ab64da4b09c6f019be3",
     "Activity": ["Cuento"],
-    "Area": ["Literatura", "Ciencias Naturales", "Ciencias Sociales", "Conocimiento de si mismo y autonomía personal", "Semántica (Lenguaje)", "Pragmática (Lenguaje)", "Lectura (Lenguaje)", "Escritura (Lenguaje)"],
-    "Author": [{ "web_autor": "http://", "id_autor": 364, "empresa_institucion": "", "email_autor": "", "autor": "AFTEA" }],
+    "Area": [
+      "Literatura",
+      "Ciencias Naturales",
+      "Ciencias Sociales",
+      "Conocimiento de si mismo y autonomía personal",
+      "Semántica (Lenguaje)",
+      "Pragmática (Lenguaje)",
+      "Lectura (Lenguaje)",
+      "Escritura (Lenguaje)"
+    ],
+    "Author": [
+      {
+        "web_autor": "http://",
+        "id_autor": 364,
+        "empresa_institucion": "",
+        "email_autor": "",
+        "autor": "AFTEA"
+      }
+    ],
     "Created": "2014-01-29T10:41:29.000Z",
     "Desc": "Cuento realizado por una usuaria de AFTEA, adaptado a pictogramas por sus terapeutas, sobre las aventuras de dos amigos, un perro y una gata, que se pierden en la selva y viven una gran aventura hasta encontrar a sus dueños. Corren peligros y... ¡hacen amigos!.  http:://www.aftea.org ",
     "Downloads": 0,
@@ -15,16 +33,39 @@
     "Status": ["Publico"],
     "Title": "Las aventuras de Wilfred y Zoe.",
     "Translations": []
-}, {
+  },
+  {
     "_id": "591c0ab64da4b09c6f0197b5",
     "Activity": ["Ficha de actividades"],
     "Area": ["Literatura"],
-    "Author": [{ "web_autor": "http://centros6.pntic.mec.es/cpee.alborada/", "id_autor": 5, "empresa_institucion": "Colegio Público de Educación Especial Alborada (Zaragoza)", "email_autor": "jmmarcosrodrigo@gmail.com", "autor": "José Manuel Marcos Rodrigo" }, { "web_autor": "http://garachicoenclave.blogspot.com/", "id_autor": 19, "empresa_institucion": "IES Garachico (Tenerife)", "email_autor": "amypad@gmail.com", "autor": "Amaya Padilla Collado" }],
+    "Author": [
+      {
+        "web_autor": "http://centros6.pntic.mec.es/cpee.alborada/",
+        "id_autor": 5,
+        "empresa_institucion": "Colegio Público de Educación Especial Alborada (Zaragoza)",
+        "email_autor": "jmmarcosrodrigo@gmail.com",
+        "autor": "José Manuel Marcos Rodrigo"
+      },
+      {
+        "web_autor": "http://garachicoenclave.blogspot.com/",
+        "id_autor": 19,
+        "empresa_institucion": "IES Garachico (Tenerife)",
+        "email_autor": "amypad@gmail.com",
+        "autor": "Amaya Padilla Collado"
+      }
+    ],
     "Created": "2017-02-09T21:28:22.000Z",
     "Desc": "A través de estos libros, se pretende potenciar el aprendizaje de vocabulario, la construccción de frases y fomentar la comprensión y la expresión oral en torno a temas cotidianos para los usuarios.A través de estos libros, se pretende potenciar el aprendizaje de vocabulario, la construcción de frases y fomentar la comprensión y la expresión oral en torno a temas cotidianos para los usuarios.A lo largo de cada libro, vamos trabajando frases con estructuras muy simples a partir de la fotografía. También se añaden en torno a la foto, algunos pictogramas para complementar la escena y que nos ayudan a expresar otro tipo de mensajes.Al final de cada libro, encontramos los repertorios de vocabulario para trabajar la identificación y evocación del mismo.Este material consta de tres libros en el que combina pictogramas con fotografías y textos en lectura fácil:- Libro del bebé,- Libro de los niños y- Libro del perro. ",
     "Downloads": 0,
     "File": "66.zip",
-    "Files": ["Libro_de_los_ninyos.doc", "Libro_de_los_ninyos.pdf", "Libro_del_bebe.doc", "Libro_del_bebe.pdf", "Libro_del_perro.doc", "Libro_del_perro.pdf"],
+    "Files": [
+      "Libro_de_los_ninyos.doc",
+      "Libro_de_los_ninyos.pdf",
+      "Libro_del_bebe.doc",
+      "Libro_del_bebe.pdf",
+      "Libro_del_perro.doc",
+      "Libro_del_perro.pdf"
+    ],
     "idMaterial": 66,
     "Images": [],
     "Language": "es",
@@ -32,4 +73,5 @@
     "Status": ["Publico"],
     "Title": "Libro del bebé - Libro de los niños - Libro del perro",
     "Translations": []
-}]
+  }
+]

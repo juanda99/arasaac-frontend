@@ -1,8 +1,8 @@
 /* eslint no-mixed-operators: 0 */
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Layer, Rect, Line, Group } from 'react-konva'
-import { ICON_SIZE, PAST, FUTURE } from './constants'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Layer, Rect, Line, Group } from "react-konva";
+import { ICON_SIZE, PAST, FUTURE } from "./constants";
 
 export default class VerbalTenseLayer extends Component {
   static propTypes = {
@@ -10,18 +10,18 @@ export default class VerbalTenseLayer extends Component {
     frame: PropTypes.bool.isRequired,
     canvasSize: PropTypes.number.isRequired,
     verbalTense: PropTypes.string,
-    color: PropTypes.string.isRequired
-  }
+    color: PropTypes.string.isRequired,
+  };
 
   state = {
-    color: 'black'
-  }
+    color: "black",
+  };
 
   getPastCode = () => {
-    const { frame, frameWidth, color } = this.props
-    const x = frame ? frameWidth / 2 : 0
-    const y = frame ? frameWidth / 2 : 0
-    const strokeWidth = 16
+    const { frame, frameWidth, color } = this.props;
+    const x = frame ? frameWidth / 2 : 0;
+    const y = frame ? frameWidth / 2 : 0;
+    const strokeWidth = 16;
     return (
       <Group>
         <Line
@@ -31,7 +31,7 @@ export default class VerbalTenseLayer extends Component {
             x + ICON_SIZE / 2,
             y + ICON_SIZE / 2,
             x + ICON_SIZE,
-            y + ICON_SIZE / 2
+            y + ICON_SIZE / 2,
           ]}
         />
         <Line
@@ -43,23 +43,23 @@ export default class VerbalTenseLayer extends Component {
             x + ICON_SIZE / 2,
             y + ICON_SIZE,
             x,
-            y + ICON_SIZE / 2
+            y + ICON_SIZE / 2,
           ]}
           closed={true}
           fill={color}
         />
         <Rect x={x} y={y} width={ICON_SIZE} height={ICON_SIZE} />
       </Group>
-    )
-  }
+    );
+  };
 
   getFutureCode = () => {
-    const { frame, frameWidth, canvasSize, color } = this.props
+    const { frame, frameWidth, canvasSize, color } = this.props;
     const x = frame
       ? canvasSize - ICON_SIZE - frameWidth / 2
-      : canvasSize - ICON_SIZE
-    const y = frame ? frameWidth / 2 : 0
-    const strokeWidth = 16
+      : canvasSize - ICON_SIZE;
+    const y = frame ? frameWidth / 2 : 0;
+    const strokeWidth = 16;
     return (
       <Group>
         <Line
@@ -76,24 +76,24 @@ export default class VerbalTenseLayer extends Component {
             x + ICON_SIZE / 2,
             y + ICON_SIZE,
             x + ICON_SIZE,
-            y + ICON_SIZE / 2
+            y + ICON_SIZE / 2,
           ]}
           closed={true}
           fill={color}
         />
         <Rect x={x} y={y} width={ICON_SIZE} height={ICON_SIZE} />
       </Group>
-    )
-  }
+    );
+  };
 
   render() {
-    const { verbalTense } = this.props
+    const { verbalTense } = this.props;
     return (
       <Layer>
         {verbalTense === FUTURE && this.getFutureCode()}
         {verbalTense === PAST && this.getPastCode()}
       </Layer>
-    )
+    );
   }
 }
 

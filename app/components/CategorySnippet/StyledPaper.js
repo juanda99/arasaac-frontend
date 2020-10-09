@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import Paper from 'material-ui/Paper'
-import media from 'utils/mediaqueries'
+import styled from "styled-components";
+import Paper from "material-ui/Paper";
+import media from "utils/mediaqueries";
 
 const StyledPaper = styled(Paper)`
   margin-bottom: 30px;
@@ -11,6 +11,6 @@ const StyledPaper = styled(Paper)`
     height: auto;
     margin: 10px auto;
   }
-`
+`;
 
-export default StyledPaper
+export default StyledPaper;

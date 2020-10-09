@@ -1,5 +1,5 @@
-import muiThemeable from 'material-ui/styles/muiThemeable'
-import styled from 'styled-components'
+import muiThemeable from "material-ui/styles/muiThemeable";
+import styled from "styled-components";
 
 const BoxTitle = styled.div`
   background-color: ${(props) => props.muiTheme.optionBox.backgroundColor};
@@ -7,6 +7,6 @@ const BoxTitle = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-`
+`;
 
-export default muiThemeable()(BoxTitle)
+export default muiThemeable()(BoxTitle);

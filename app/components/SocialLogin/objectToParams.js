@@ -5,11 +5,10 @@
  * @return     {String} Encoded url parameters
  */
 
-export default (paramsObj) => (
-  Object.keys(paramsObj).map(
-    (key) => (
-      `encodeURIComponent(${key}) = encodeURIComponent(${paramsObj[key]})`
+export default (paramsObj) =>
+  Object.keys(paramsObj)
+    .map(
+      (key) =>
+        `encodeURIComponent(${key}) = encodeURIComponent(${paramsObj[key]})`
     )
-  ).join('&')
-)
-
+    .join("&");

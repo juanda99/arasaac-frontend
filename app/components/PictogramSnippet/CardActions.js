@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import muiThemeable from 'material-ui/styles/muiThemeable'
-import media from 'utils/mediaqueries'
+import styled from "styled-components";
+import muiThemeable from "material-ui/styles/muiThemeable";
+import media from "utils/mediaqueries";
 
 const CardActions = styled.div`
   position: absolute;
@@ -15,10 +15,10 @@ const CardActions = styled.div`
     }
   }
   background-color: ${(props) =>
-    props.color ? props.muiTheme.palette.primary1Color : ''};
+    props.color ? props.muiTheme.palette.primary1Color : ""};
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 
-export default muiThemeable()(CardActions)
+export default muiThemeable()(CardActions);

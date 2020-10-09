@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import media from 'utils/mediaqueries'
+import styled from "styled-components";
+import media from "utils/mediaqueries";
 
 const PictoWrapper = styled.div`
   max-width: 500px;
@@ -7,6 +7,6 @@ const PictoWrapper = styled.div`
   ${media.md} {
     margin-right: 60px;
   }
-`
+`;
 
-export default PictoWrapper
+export default PictoWrapper;

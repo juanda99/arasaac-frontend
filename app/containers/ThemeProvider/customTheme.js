@@ -1,15 +1,27 @@
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import { fade } from 'material-ui/utils/colorManipulator'
+import getMuiTheme from "material-ui/styles/getMuiTheme";
+import { fade } from "material-ui/utils/colorManipulator";
 import {
-  lightGreen500, lightGreen300, lightGreen900, green900,
-  darkBlack, white, fullBlack, fullWhite,
-  pinkA100, pinkA200,
-  grey100, grey200, grey300, grey500, grey800, grey900,
-  cyan500
-} from 'material-ui/styles/colors'
-import { THEME_NAMES, DEFAULT_THEME } from './actions'
+  lightGreen500,
+  lightGreen300,
+  lightGreen900,
+  green900,
+  darkBlack,
+  white,
+  fullBlack,
+  fullWhite,
+  pinkA100,
+  pinkA200,
+  grey100,
+  grey200,
+  grey300,
+  grey500,
+  grey800,
+  grey900,
+  cyan500,
+} from "material-ui/styles/colors";
+import { THEME_NAMES, DEFAULT_THEME } from "./actions";
 
-const themes = {}
+const themes = {};
 themes[THEME_NAMES.LIGHT] = {
   palette: {
     primary1Color: lightGreen500,
@@ -29,9 +41,9 @@ themes[THEME_NAMES.LIGHT] = {
     clockCircleColor: fade(darkBlack, 0.07),
     shadowColor: fullBlack,
     bodyColor: fullWhite,
-    logoColor: fullWhite
-  }
-}
+    logoColor: fullWhite,
+  },
+};
 
 themes[THEME_NAMES.DARK] = {
   palette: {
@@ -41,10 +53,10 @@ themes[THEME_NAMES.DARK] = {
     accent1Color: grey200, // used by footer
     accent2Color: grey800,
     accent3Color: pinkA100,
-    footerColor: '#333333',
+    footerColor: "#333333",
     textColor: fullWhite,
     secondaryTextColor: fade(fullWhite, 0.7),
-    alternateTextColor: '#303030',
+    alternateTextColor: "#303030",
     canvasColor: grey900,
     borderColor: fullWhite, // divider
     disabledColor: fade(fullWhite, 0.3),
@@ -52,9 +64,9 @@ themes[THEME_NAMES.DARK] = {
     clockCircleColor: fade(fullWhite, 0.12),
     shadowColor: fullWhite,
     bodyColor: grey800,
-    logoColor: fullBlack
-  }
-}
+    logoColor: fullBlack,
+  },
+};
 
 // logoColor for ARASAAC text should be black if high contrast
 
@@ -77,20 +89,18 @@ themes[THEME_NAMES.HIGH_CONTRAST] = {
     clockCircleColor: fade(darkBlack, 0.07),
     shadowColor: fullBlack,
     bodyColor: fullWhite,
-    logoColor: fullBlack
-  }
-}
-
+    logoColor: fullBlack,
+  },
+};
 
 /* global theme */
 
-const commonComponentsTheme = (currentTheme) => (
-  {
-    tabs: {
-      backgroundColor: currentTheme.palette.canvasColor,
-      textColor: fade(currentTheme.palette.textColor, 0.5),
-      selectedTextColor: currentTheme.palette.textColor
-    } /* ,
+const commonComponentsTheme = (currentTheme) => ({
+  tabs: {
+    backgroundColor: currentTheme.palette.canvasColor,
+    textColor: fade(currentTheme.palette.textColor, 0.5),
+    selectedTextColor: currentTheme.palette.textColor,
+  } /* ,
     menu: {
       backgroundColor: currentTheme.palette.alternateTextColor
     },
@@ -111,56 +121,55 @@ const commonComponentsTheme = (currentTheme) => (
       fontWeight: typography.fontWeightNormal,
       shadow: `0 1px 6px ${fade(currentTheme.palette.shadowColor, 0.12)},
         0 1px 4px ${fade(currentTheme.palette.shadowColor, 0.12)}`
-    }*/
-  }
-)
-const componentsTheme = {}
-componentsTheme[THEME_NAMES.LIGHT] = (currentTheme) => ( // eslint-disable-line no-unused-vars
-  {
-    optionBox: {
-      backgroundColor: grey100
-    }
+    }*/,
+});
+const componentsTheme = {};
+componentsTheme[THEME_NAMES.LIGHT] = (
+  currentTheme // eslint-disable-line no-unused-vars
+) => ({
+  optionBox: {
+    backgroundColor: grey100,
+  },
+});
+componentsTheme[THEME_NAMES.DARK] = (
+  currentTheme // eslint-disable-line no-unused-vars
+) => ({
+  listItem: {
+    leftIconColor: "white",
+    rightIconColor: "white",
+  },
+  dropDownMenu: {
+    canvasColor: "white",
+    backgroundColor: "white",
+  },
+  menu: {
+    backgroundColor: "white",
+    containerBackgroundColor: "white",
+  },
+  optionBox: {
+    backgroundColor: grey900,
+  },
+});
+componentsTheme[THEME_NAMES.HIGH_CONTRAST] = (
+  currentTheme // eslint-disable-line no-unused-vars
+) => ({
+  appBar: {
+    textColor: "black",
+  },
+  optionBox: {
+    backgroundColor: grey900,
+  },
+});
 
-  }
-)
-componentsTheme[THEME_NAMES.DARK] = (currentTheme) => ( // eslint-disable-line no-unused-vars
-  {
-    listItem: {
-      leftIconColor: 'white',
-      rightIconColor: 'white'
-    },
-    dropDownMenu: {
-      canvasColor: 'white',
-      backgroundColor: 'white'
-    },
-    menu: {
-      backgroundColor: 'white',
-      containerBackgroundColor: 'white'
-    },
-    optionBox: {
-      backgroundColor: grey900
-    }
-  }
-)
-componentsTheme[THEME_NAMES.HIGH_CONTRAST] = (currentTheme) => ( // eslint-disable-line no-unused-vars
-  {
-    appBar: {
-      textColor: 'black'
-    },
-    optionBox: {
-      backgroundColor: grey900
-    }
-  }
-)
-
-const customComponentsTheme = (theme, currentTheme) => (
-  { ...commonComponentsTheme(currentTheme), ...componentsTheme[theme](currentTheme) || {} }
-)
+const customComponentsTheme = (theme, currentTheme) => ({
+  ...commonComponentsTheme(currentTheme),
+  ...(componentsTheme[theme](currentTheme) || {}),
+});
 
 const customTheme = (theme = DEFAULT_THEME, direction) => {
-  const currentTheme = themes[theme]
-  currentTheme.direction = direction
-  return getMuiTheme(currentTheme, customComponentsTheme(theme, currentTheme))
-}
+  const currentTheme = themes[theme];
+  currentTheme.direction = direction;
+  return getMuiTheme(currentTheme, customComponentsTheme(theme, currentTheme));
+};
 
-export default customTheme
+export default customTheme;

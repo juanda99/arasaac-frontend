@@ -1,47 +1,52 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import muiThemeable from 'material-ui/styles/muiThemeable'
-import OptionsOff from 'material-ui/svg-icons/navigation/chevron-right'
-import OptionsOn from 'material-ui/svg-icons/navigation/expand-more'
-import IconButton from 'material-ui/IconButton'
-import Toggle from 'material-ui/Toggle'
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import muiThemeable from "material-ui/styles/muiThemeable";
+import OptionsOff from "material-ui/svg-icons/navigation/chevron-right";
+import OptionsOn from "material-ui/svg-icons/navigation/expand-more";
+import IconButton from "material-ui/IconButton";
+import Toggle from "material-ui/Toggle";
 
 class ToggleDropdown extends PureComponent {
-
-  state = { showExtra: false }
+  state = { showExtra: false };
 
   handleOnToggle = (event, toggled) => {
-    this.props.onToggle(toggled)
-  }
+    this.props.onToggle(toggled);
+  };
   handleClick = () => {
-    this.props.onClick()
-  }
+    this.props.onClick();
+  };
 
-  renderExtra = () => (
-    this.props.showOptions ?
-      <IconButton style={{ position: 'absolute', left: '200px', top: '3px' }} onClick={this.handleClick} >
+  renderExtra = () =>
+    this.props.showOptions ? (
+      <IconButton
+        style={{ position: "absolute", left: "200px", top: "3px" }}
+        onClick={this.handleClick}
+      >
         <OptionsOn color={this.props.muiTheme.palette.primary1Color} />
       </IconButton>
-    :
-      <IconButton style={{ position: 'absolute', left: '200px', top: '3px' }} onClick={this.handleClick}>
+    ) : (
+      <IconButton
+        style={{ position: "absolute", left: "200px", top: "3px" }}
+        onClick={this.handleClick}
+      >
         <OptionsOff color={this.props.muiTheme.palette.primary1Color} />
       </IconButton>
-  )
+    );
 
   render() {
-    const { toggled, style, label } = this.props
+    const { toggled, style, label } = this.props;
     return (
-      <div style={{ display: 'flex', flexWrap: 'wrap', position: 'relative' }}>
+      <div style={{ display: "flex", flexWrap: "wrap", position: "relative" }}>
         <Toggle
           label={label}
-          labelPosition='right'
+          labelPosition="right"
           style={style}
           toggled={toggled}
           onToggle={this.handleOnToggle}
         />
-        { toggled ? this.renderExtra() : '' }
+        {toggled ? this.renderExtra() : ""}
       </div>
-    )
+    );
   }
 }
 
@@ -52,7 +57,7 @@ ToggleDropdown.propTypes = {
   toggled: PropTypes.bool.isRequired,
   showOptions: PropTypes.bool.isRequired,
   style: PropTypes.object.isRequired,
-  label: PropTypes.string.isRequired
-}
+  label: PropTypes.string.isRequired,
+};
 
-export default muiThemeable()(ToggleDropdown)
+export default muiThemeable()(ToggleDropdown);

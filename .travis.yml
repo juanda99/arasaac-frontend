@@ -16,7 +16,7 @@ notifications:
   email:
     on_failure: change
 
-after_success: 'npm run coveralls'
+after_success: "npm run coveralls"
 
 cache:
   yarn: true
@@ -26,4 +26,4 @@ cache:
 # safelist
 branches:
   only:
-  - master
+    - master

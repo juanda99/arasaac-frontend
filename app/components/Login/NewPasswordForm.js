@@ -1,74 +1,71 @@
-import React, { Component } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { reduxForm, Field, propTypes } from 'redux-form/immutable'
-import { TextField } from 'redux-form-material-ui'
-import KeyIcon from 'material-ui/svg-icons/communication/vpn-key'
-import RaisedButton from 'material-ui/RaisedButton'
-import P from 'components/P'
-import Div from 'components/Div'
-import messages from './messages'
-import { email } from './validate'
+import React, { Component } from "react";
+import { FormattedMessage } from "react-intl";
+import { reduxForm, Field, propTypes } from "redux-form/immutable";
+import { TextField } from "redux-form-material-ui";
+import KeyIcon from "material-ui/svg-icons/communication/vpn-key";
+import RaisedButton from "material-ui/RaisedButton";
+import P from "components/P";
+import Div from "components/Div";
+import messages from "./messages";
+import { email } from "./validate";
 
 const styles = {
   checkbox: {
-    left: 0
+    left: 0,
   },
   text: {
-    width: '100%'
+    width: "100%",
   },
   register: {
-    position: 'absolute',
+    position: "absolute",
     right: 0,
-    bottom: 0
+    bottom: 0,
   },
-  signinButton: {
-
-  },
+  signinButton: {},
   forgotPassword: {
     marginTop: 0,
-    textAlign: 'right'
-  }
-}
-
+    textAlign: "right",
+  },
+};
 
 /* eslint-disable import/no-mutable-exports */
 let NewPasswordForm = class NewPasswordForm extends Component {
-  state = { errors: false }
+  state = { errors: false };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.invalid) {
-      this.setState({ errors: true })
+      this.setState({ errors: true });
     } else {
-      this.setState({ errors: false })
+      this.setState({ errors: false });
     }
   }
 
   email = (value) =>
-    email(value) ? '' : <FormattedMessage {...messages.invalidEmail} />
+    email(value) ? "" : <FormattedMessage {...messages.invalidEmail} />;
 
   required = (value) =>
-    value == null ? <FormattedMessage {...messages.required} /> : ''
+    value == null ? <FormattedMessage {...messages.required} /> : "";
 
   render() {
-    const { handleSubmit, submitting, pristine, email } = this.props
-    this.firstField = email
+    const { handleSubmit, submitting, pristine, email } = this.props;
+    this.firstField = email;
     return (
       <div>
         <P>{<FormattedMessage {...messages.changePasswordInfo} />}</P>
         <form onSubmit={handleSubmit}>
           <Div>
             <Field
-              name='password'
+              name="password"
               component={TextField}
-              type='password'
+              type="password"
               hintText={<FormattedMessage {...messages.hintNewPassword} />}
-              value=''
+              value=""
               floatingLabelText={
                 <FormattedMessage {...messages.labelPassword} />
               }
-              style={{ width: '100%' }}
+              style={{ width: "100%" }}
               validate={this.required}
-              autoComplete='new-password'
+              autoComplete="new-password"
             />
           </Div>
           <Div top={2}>
@@ -77,25 +74,25 @@ let NewPasswordForm = class NewPasswordForm extends Component {
               label={<FormattedMessage {...messages.changePassword} />}
               primary={true}
               icon={<KeyIcon />}
-              type='submit'
+              type="submit"
               disabled={this.state.errors || submitting}
             />
           </Div>
         </form>
       </div>
-    )
+    );
   }
-}
+};
 
 NewPasswordForm.propTypes = {
-  ...propTypes
-}
+  ...propTypes,
+};
 NewPasswordForm = reduxForm({
-  form: 'newPassword',
+  form: "newPassword",
   touchOnBlur: false,
-  touchOnChange: true
+  touchOnChange: true,
   // enableReinitialize: true
   // fields
-})(NewPasswordForm)
+})(NewPasswordForm);
 
-export default NewPasswordForm
+export default NewPasswordForm;

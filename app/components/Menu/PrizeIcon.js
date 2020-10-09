@@ -1,6 +1,6 @@
-import React from 'react';
-import pure from 'recompose/pure';
-import SvgIcon from 'material-ui/SvgIcon';
+import React from "react";
+import pure from "recompose/pure";
+import SvgIcon from "material-ui/SvgIcon";
 
 let PrizeIcon = (props) => (
   <SvgIcon {...props}>
@@ -9,7 +9,7 @@ let PrizeIcon = (props) => (
 );
 
 PrizeIcon = pure(PrizeIcon);
-PrizeIcon.displayName = 'PrizeIcon';
-PrizeIcon.muiName = 'SvgIcon';
+PrizeIcon.displayName = "PrizeIcon";
+PrizeIcon.muiName = "SvgIcon";
 
 export default PrizeIcon;

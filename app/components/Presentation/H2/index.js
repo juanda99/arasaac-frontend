@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { typography } from 'material-ui/styles'
-import media from 'utils/mediaqueries'
+import styled from "styled-components";
+import { typography } from "material-ui/styles";
+import media from "utils/mediaqueries";
 
 const H2 = styled.h2`
   color: white;
@@ -15,10 +15,10 @@ const H2 = styled.h2`
     font-size: 1em;
     top: calc(50% + 40px - 95px);
   }
-  ${media.lg} {   
+  ${media.lg} {
     font-size: 1em; // 626px wide
     top: calc(50% + 57px - 95px);
   }
-`
+`;
 
-export default H2
+export default H2;

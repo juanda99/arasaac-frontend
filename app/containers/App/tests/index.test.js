@@ -3,8 +3,8 @@
 
 // import { App } from '../index'
 
-describe('<App />', () => {
-  it('should render the header', () => {
-    expect(true).toBe(true)
-  })
-})
+describe("<App />", () => {
+  it("should render the header", () => {
+    expect(true).toBe(true);
+  });
+});

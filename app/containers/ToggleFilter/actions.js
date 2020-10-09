@@ -4,8 +4,9 @@
  *
  */
 
-import { action } from 'utils/actions'
+import { action } from "utils/actions";
 
-export const TOGGLE_FILTER = 'app/ToggleFilter/TOGGLE_FILTER'
+export const TOGGLE_FILTER = "app/ToggleFilter/TOGGLE_FILTER";
 
-export const toggleFilter = (type, filter) => action(TOGGLE_FILTER, { type, filter })
+export const toggleFilter = (type, filter) =>
+  action(TOGGLE_FILTER, { type, filter });

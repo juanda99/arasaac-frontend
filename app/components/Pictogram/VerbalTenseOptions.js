@@ -1,16 +1,16 @@
 /* eslint no-mixed-operators: 0 */
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
-import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
-import P from 'components/P'
-import { smallColorSet } from 'utils/colors'
-import { FUTURE, PAST, PRESENT } from './constants'
-import ToggleDropDown from './ToggleDropdown'
-import messages from './messages'
-import styles from './styles'
-import BoxOptions from './BoxOptions'
-import ColorPicker from './ColorPicker'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { injectIntl, intlShape, FormattedMessage } from "react-intl";
+import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
+import P from "components/P";
+import { smallColorSet } from "utils/colors";
+import { FUTURE, PAST, PRESENT } from "./constants";
+import ToggleDropDown from "./ToggleDropdown";
+import messages from "./messages";
+import styles from "./styles";
+import BoxOptions from "./BoxOptions";
+import ColorPicker from "./ColorPicker";
 
 class VerbalTenseOptions extends Component {
   static propTypes = {
@@ -22,23 +22,23 @@ class VerbalTenseOptions extends Component {
     showOptions: PropTypes.bool.isRequired,
     onOptionsShow: PropTypes.func.isRequired,
     color: PropTypes.string.isRequired,
-    onColorChange: PropTypes.func.isRequired
-  }
+    onColorChange: PropTypes.func.isRequired,
+  };
 
   // bgColor means isInputChecked
-  handleActive = (active) => this.props.onActive(active)
+  handleActive = (active) => this.props.onActive(active);
 
-  handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions)
+  handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions);
 
   handleVerbalTenseChange = (event, verbalTense) =>
-    this.props.onVerbalTenseChange(verbalTense)
+    this.props.onVerbalTenseChange(verbalTense);
 
-  handleColorChange = (color) => this.props.onColorChange(color)
+  handleColorChange = (color) => this.props.onColorChange(color);
 
   render() {
-    const { intl, active, showOptions, verbalTense, color } = this.props
-    const { formatMessage } = intl
-    const marginBottom = showOptions ? '280px' : 'auto'
+    const { intl, active, showOptions, verbalTense, color } = this.props;
+    const { formatMessage } = intl;
+    const marginBottom = showOptions ? "280px" : "auto";
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown
@@ -53,7 +53,7 @@ class VerbalTenseOptions extends Component {
           <BoxOptions>
             <P>{<FormattedMessage {...messages.chooseVerbalTense} />}</P>
             <RadioButtonGroup
-              name='verbalTense'
+              name="verbalTense"
               // defaultSelected='present'
               valueSelected={verbalTense}
               onChange={this.handleVerbalTenseChange}
@@ -83,11 +83,11 @@ class VerbalTenseOptions extends Component {
             />
           </BoxOptions>
         ) : (
-          ''
+          ""
         )}
       </div>
-    )
+    );
   }
 }
 
-export default injectIntl(VerbalTenseOptions)
+export default injectIntl(VerbalTenseOptions);

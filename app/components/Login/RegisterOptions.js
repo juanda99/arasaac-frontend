@@ -1,42 +1,42 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import RaisedButton from 'material-ui/RaisedButton'
-import EmailIcon from 'material-ui/svg-icons/communication/email'
-import { Link } from 'react-router'
-import { FormattedMessage } from 'react-intl'
-import FlatButton from 'material-ui/FlatButton'
-import Div from 'components/Div'
-import A from 'components/A'
-import messages from './messages'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import RaisedButton from "material-ui/RaisedButton";
+import EmailIcon from "material-ui/svg-icons/communication/email";
+import { Link } from "react-router";
+import { FormattedMessage } from "react-intl";
+import FlatButton from "material-ui/FlatButton";
+import Div from "components/Div";
+import A from "components/A";
+import messages from "./messages";
 
 const styles = {
   text: {
-    textAlign: 'left',
-    marginLeft: 5
+    textAlign: "left",
+    marginLeft: 5,
   },
   signupButton: {
-    width: '100%'
-  }
-}
+    width: "100%",
+  },
+};
 
 const useConditions = (
-  <Link to='/terms-of-use'>
+  <Link to="/terms-of-use">
     <FormattedMessage {...messages.termsOfUse} />
   </Link>
-)
+);
 const privacyPolicy = (
-  <Link to='/privacy-policy'>
+  <Link to="/privacy-policy">
     <FormattedMessage {...messages.privacyPolicy} />
   </Link>
-)
+);
 
 class RegisterOptions extends Component {
   render() {
-    const { onClick } = this.props
+    const { onClick } = this.props;
     return (
       <div>
         <Div>
-          <Link to='/registerform'>
+          <Link to="/registerform">
             <RaisedButton
               style={styles.signupButton}
               onClick={onClick}
@@ -57,7 +57,7 @@ class RegisterOptions extends Component {
           </p>
         </Div>
         <Div top={2}>
-          <Link to='/signin'>
+          <Link to="/signin">
             <FlatButton
               label={<FormattedMessage {...messages.offerSignin} />}
               secondary={true}
@@ -66,14 +66,13 @@ class RegisterOptions extends Component {
           </Link>
         </Div>
       </div>
-    )
+    );
   }
 }
-
 
 RegisterOptions.propTypes = {
   onClick: PropTypes.func,
   locale: PropTypes.string.isRequired,
-}
+};
 
-export default RegisterOptions
+export default RegisterOptions;

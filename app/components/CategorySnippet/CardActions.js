@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import muiThemeable from 'material-ui/styles/muiThemeable'
+import styled from "styled-components";
+import muiThemeable from "material-ui/styles/muiThemeable";
 
 const CardActions = styled.div`
   position: absolute;
@@ -15,6 +15,6 @@ const CardActions = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 
-export default muiThemeable()(CardActions)
+export default muiThemeable()(CardActions);

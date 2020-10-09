@@ -1,66 +1,64 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import Chip from 'material-ui/Chip'
-import ActivityIcon from 'material-ui/svg-icons/action/input'
-import AreaIcon from 'material-ui/svg-icons/social/school'
-import Avatar from 'material-ui/Avatar'
-import { lightGreen400, lightGreen800 } from 'material-ui/styles/colors'
-import { FormattedMessage } from 'react-intl'
+import Chip from "material-ui/Chip";
+import ActivityIcon from "material-ui/svg-icons/action/input";
+import AreaIcon from "material-ui/svg-icons/social/school";
+import Avatar from "material-ui/Avatar";
+import { lightGreen400, lightGreen800 } from "material-ui/styles/colors";
+import { FormattedMessage } from "react-intl";
 
-import muiThemeable from 'material-ui/styles/muiThemeable'
-import { List } from 'immutable'
+import muiThemeable from "material-ui/styles/muiThemeable";
+import { List } from "immutable";
 
-import activities from 'data/activities'
-import areas from 'data/areas'
-import messages from 'components/Filters/messages'
-
+import activities from "data/activities";
+import areas from "data/areas";
+import messages from "components/Filters/messages";
 
 const styles = {
   chip: {
-    margin: '4px'
+    margin: "4px",
   },
   div: {
-    display: 'flex',
-    flexWrap: 'wrap'
-
-  }
-}
+    display: "flex",
+    flexWrap: "wrap",
+  },
+};
 
 class TagsRenderer extends Component {
   getIcon(type) {
     switch (type) {
-      case 'activities':
-        return <ActivityIcon />
-      case 'areas':
-        return <AreaIcon />
+      case "activities":
+        return <ActivityIcon />;
+      case "areas":
+        return <AreaIcon />;
       default:
-        return null
+        return null;
     }
   }
 
   getArray(type) {
     switch (type) {
-      case 'activities':
-        return activities
-      case 'areas':
-        return areas
+      case "activities":
+        return activities;
+      case "areas":
+        return areas;
       default:
-        return null
+        return null;
     }
   }
 
   handleClick = (filterItem, nextStatus, e) => {
-    const { onClick, type } = this.props
-    if (onClick) onClick(type, filterItem, nextStatus, e)
-  }
+    const { onClick, type } = this.props;
+    if (onClick) onClick(type, filterItem, nextStatus, e);
+  };
 
   render() {
-    const { tags, type, selected } = this.props
-    const customIcon = this.getIcon(type)
-    const selectedArray = this.getArray(type)
+    const { tags, type, selected } = this.props;
+    const customIcon = this.getIcon(type);
+    const selectedArray = this.getArray(type);
     const rendered = tags.map((tag) => {
-      const tagCode = selectedArray.filter(item => item.code === tag)[0].text
+      const tagCode = selectedArray.filter((item) => item.code === tag)[0].text;
       if (selected && selected.includes(tag)) {
         return (
           <Chip
@@ -70,14 +68,14 @@ class TagsRenderer extends Component {
             onClick={(e) => this.handleClick(tag, 0, e)}
           >
             <Avatar
-              color={'white'}
+              color={"white"}
               size={30}
               backgroundColor={lightGreen800}
               icon={customIcon}
             />
             {<FormattedMessage {...messages[tagCode]} />}
           </Chip>
-        )
+        );
       }
       return (
         <Chip
@@ -88,9 +86,9 @@ class TagsRenderer extends Component {
           <Avatar icon={customIcon} />
           {<FormattedMessage {...messages[tagCode]} />}
         </Chip>
-      )
-    })
-    return <div style={styles.div}> {rendered}</div >
+      );
+    });
+    return <div style={styles.div}> {rendered}</div>;
   }
 }
 
@@ -98,7 +96,7 @@ TagsRenderer.propTypes = {
   tags: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
   selected: PropTypes.instanceOf(List),
-  onClick: PropTypes.func
-}
+  onClick: PropTypes.func,
+};
 
-export default muiThemeable()(TagsRenderer)
+export default muiThemeable()(TagsRenderer);

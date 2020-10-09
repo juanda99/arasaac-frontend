@@ -6,4 +6,4 @@ import { getFilteredItems } from 'utils'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 */
 
-export const selectNewsViewDomain = (state) => state.get('news')
+export const selectNewsViewDomain = (state) => state.get("news");

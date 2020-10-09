@@ -3,151 +3,157 @@
  * PictogramsView
  *
  */
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
-import View from 'components/View'
-import ReadMargin from 'components/ReadMargin'
-import P from 'components/P'
-import Helmet from 'react-helmet'
-import muiThemeable from 'material-ui/styles/muiThemeable'
-import userIsAuthenticated from 'utils/auth'
-import { DEFAULT_LIST } from 'utils'
-import RaisedButton from 'material-ui/RaisedButton'
-import TextField from 'material-ui/TextField'
-import FavoriteList from 'components/FavoriteList'
-import { downloadPictogram, downloadList } from 'services'
-import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { FormattedMessage, injectIntl, intlShape } from "react-intl";
+import View from "components/View";
+import ReadMargin from "components/ReadMargin";
+import P from "components/P";
+import Helmet from "react-helmet";
+import muiThemeable from "material-ui/styles/muiThemeable";
+import userIsAuthenticated from "utils/auth";
+import { DEFAULT_LIST } from "utils";
+import RaisedButton from "material-ui/RaisedButton";
+import TextField from "material-ui/TextField";
+import FavoriteList from "components/FavoriteList";
+import { downloadPictogram, downloadList } from "services";
+import { makeSelectLocale } from "containers/LanguageProvider/selectors";
 import {
   deleteFavorite,
   addFavorite,
   addList,
   renameList,
-  deleteList
-} from 'containers/App/actions'
+  deleteList,
+} from "containers/App/actions";
 import {
   makeSelectHasUser,
   makeSelectId,
   makeSelectFavorites,
-  makeSelectRootFavorites
-} from 'containers/App/selectors'
+  makeSelectRootFavorites,
+} from "containers/App/selectors";
 import {
   makeLoadingSelector,
   makeListSelector,
-  makeFavoritePictogramsSelector
-} from 'containers/PictogramsView/selectors'
+  makeFavoritePictogramsSelector,
+} from "containers/PictogramsView/selectors";
 import {
   favoritePictograms,
   toggleShowFilter,
-  favoriteListSelect
-} from 'containers/PictogramsView/actions'
-import api from 'services'
-import messages from './messages'
+  favoriteListSelect,
+} from "containers/PictogramsView/actions";
+import api from "services";
+import messages from "./messages";
 
 class FavoritesView extends PureComponent {
   // eslint-disable-line react/prefer-stateless-function
 
   state = {
-    listName: ''
+    listName: "",
   };
 
   async componentDidMount() {
-    const { requestFavorites, locale, token, favorites } = this.props
+    const { requestFavorites, locale, token, favorites } = this.props;
 
     //  TODO: just ask once this stuff, once the app is open, depending on locale!!!
     if (favorites) {
-      const [...lists] = favorites.keys()
+      const [...lists] = favorites.keys();
       const favoriteIds = lists.map((list) => {
         // .flat() not for edge & explorer
         // return favorites.get(list).toJS()).flat()
-        const tmpIds = favorites.get(list).toJS()
-        return [].concat(...tmpIds)
-      })
-      await requestFavorites(locale, favoriteIds, token)
+        const tmpIds = favorites.get(list).toJS();
+        return [].concat(...tmpIds);
+      });
+      await requestFavorites(locale, favoriteIds, token);
     }
   }
 
   async componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
-    const { requestFavorites, locale, token, favorites } = this.props
+    console.log(nextProps);
+    const { requestFavorites, locale, token, favorites } = this.props;
     if (nextProps.favorites !== favorites) {
       if (favorites) {
-        const [...lists] = favorites.keys()
+        const [...lists] = favorites.keys();
         const favoriteIds = lists.map((list) => {
           // .flat() not for edge & explorer
           // return favorites.get(list).toJS()).flat()
-          const tmpIds = favorites.get(list).toJS()
-          return [].concat(...tmpIds)
-        })
-        await requestFavorites(locale, favoriteIds, token)
+          const tmpIds = favorites.get(list).toJS();
+          return [].concat(...tmpIds);
+        });
+        await requestFavorites(locale, favoriteIds, token);
       }
     }
   }
 
   handleAddFavorite = (props) => {
-    const { addFavorite, deleteFavorite, token } = this.props
-    const fileName = props._id
-    const listName = props.listName
-    addFavorite(fileName, listName, token)
+    const { addFavorite, deleteFavorite, token } = this.props;
+    const fileName = props._id;
+    const listName = props.listName;
+    addFavorite(fileName, listName, token);
     /* we remove material from defaultList */
-    if (listName !== DEFAULT_LIST) deleteFavorite(fileName, DEFAULT_LIST, token)
+    if (listName !== DEFAULT_LIST)
+      deleteFavorite(fileName, DEFAULT_LIST, token);
   };
 
   handleDeleteFavorite = (fileName, listName) => {
-    const { deleteFavorite, token } = this.props
-    deleteFavorite(fileName, listName, token)
+    const { deleteFavorite, token } = this.props;
+    deleteFavorite(fileName, listName, token);
   };
 
   handleFavoriteListSelect = (listName) => {
-    this.props.favoriteListSelect(listName)
+    this.props.favoriteListSelect(listName);
   };
 
   handleDeleteList = (listName) => {
-    const { deleteList, token } = this.props
-    deleteList(listName, token)
+    const { deleteList, token } = this.props;
+    deleteList(listName, token);
   };
 
   handleListNameChange = (e) => {
     this.setState({
-      listName: e.target.value
-    })
+      listName: e.target.value,
+    });
   };
 
   handleAddList = () => {
-    const { addList, token } = this.props
-    addList(this.state.listName, token)
-    this.setState({ listName: '' })
+    const { addList, token } = this.props;
+    addList(this.state.listName, token);
+    this.setState({ listName: "" });
   };
 
   handleRenameList = (listName, newListName) => {
-    const { renameList, token } = this.props
-    renameList(listName, newListName, token)
-  }
+    const { renameList, token } = this.props;
+    renameList(listName, newListName, token);
+  };
 
-  handleDownloadList = listName => {
-
-    const { id } = this.props
-    console.log(`Download list ${listName}, id: ${id}`)
-    const location = downloadList(listName, id)
-    window.location = location
-  }
+  handleDownloadList = (listName) => {
+    const { id } = this.props;
+    console.log(`Download list ${listName}, id: ${id}`);
+    const location = downloadList(listName, id);
+    window.location = location;
+  };
 
   handleDownload = (idPictogram, keyword) => {
-    const location = downloadPictogram(idPictogram, keyword)
-    console.log(location, 'xxxx')
-    window.location = location
-  }
+    const location = downloadPictogram(idPictogram, keyword);
+    console.log(location, "xxxx");
+    window.location = location;
+  };
 
   render() {
-    const { favorites, selectedList, favoritePictograms, intl, loading } = this.props
-    const { formatMessage } = intl
+    const {
+      favorites,
+      selectedList,
+      favoritePictograms,
+      intl,
+      loading,
+    } = this.props;
+    const { formatMessage } = intl;
     return (
       <View left={true} right={true}>
         <ReadMargin>
           <Helmet
-            title='Favorites View'
-            meta={[{ name: 'description', content: 'Pictogram favorites' }]}
+            title="Favorites View"
+            meta={[{ name: "description", content: "Pictogram favorites" }]}
           />
 
           <TextField
@@ -163,23 +169,29 @@ class FavoritesView extends PureComponent {
             onClick={this.handleAddList}
             disabled={!this.state.listName}
           />
-          {favoritePictograms && !loading && <FavoriteList
-            items={favorites}
-            onSelect={this.handleFavoriteListSelect}
-            selectedList={selectedList}
-            onDelete={this.handleDeleteList}
-            onDeleteFavorite={this.handleDeleteFavorite}
-            onDownloadList={this.handleDownloadList}
-            onDownload={this.handleDownload}
-            onRename={this.handleRenameList}
-            listPictograms={favoritePictograms}
-            onDrop={this.handleAddFavorite}
-          />}
+          {favoritePictograms && !loading && (
+            <FavoriteList
+              items={favorites}
+              onSelect={this.handleFavoriteListSelect}
+              selectedList={selectedList}
+              onDelete={this.handleDeleteList}
+              onDeleteFavorite={this.handleDeleteFavorite}
+              onDownloadList={this.handleDownloadList}
+              onDownload={this.handleDownload}
+              onRename={this.handleRenameList}
+              listPictograms={favoritePictograms}
+              onDrop={this.handleAddFavorite}
+            />
+          )}
 
-          {favoritePictograms && loading && <P><FormattedMessage {...messages.loadingFavorites} /></P>}
+          {favoritePictograms && loading && (
+            <P>
+              <FormattedMessage {...messages.loadingFavorites} />
+            </P>
+          )}
         </ReadMargin>
       </View>
-    )
+    );
   }
 }
 
@@ -200,7 +212,7 @@ FavoritesView.propTypes = {
   intl: intlShape.isRequired,
   router: PropTypes.any.isRequired,
   id: PropTypes.string.isRequired,
-}
+};
 
 const mapStateToProps = (state) => ({
   locale: makeSelectLocale()(state),
@@ -210,38 +222,38 @@ const mapStateToProps = (state) => ({
   selectedList: makeListSelector()(state),
   favoritePictograms: makeFavoritePictogramsSelector()(state),
   rootFavorites: makeSelectRootFavorites()(state),
-  id: makeSelectId()(state)
-})
+  id: makeSelectId()(state),
+});
 
 const mapDispatchToProps = (dispatch) => ({
   requestFavorites: (locale, idFavorites, token) => {
-    dispatch(favoritePictograms.request(locale, idFavorites, token))
+    dispatch(favoritePictograms.request(locale, idFavorites, token));
   },
   toggleShowFilter: () => {
-    dispatch(toggleShowFilter())
+    dispatch(toggleShowFilter());
   },
 
   deleteFavorite: (fileName, listName, token) => {
-    dispatch(deleteFavorite.request(fileName, listName, token))
+    dispatch(deleteFavorite.request(fileName, listName, token));
   },
   addList: (listName, token) => {
-    dispatch(addList.request(listName, token))
+    dispatch(addList.request(listName, token));
   },
   deleteList: (listName, token) => {
-    dispatch(deleteList.request(listName, token))
+    dispatch(deleteList.request(listName, token));
   },
   renameList: (listName, newListName, token) => {
-    dispatch(renameList.request(listName, newListName, token))
+    dispatch(renameList.request(listName, newListName, token));
   },
   favoriteListSelect: (listName) => {
-    dispatch(favoriteListSelect(listName))
+    dispatch(favoriteListSelect(listName));
   },
   addFavorite: (fileName, listName, token) => {
-    dispatch(addFavorite.request(fileName, listName, token))
-  }
-})
+    dispatch(addFavorite.request(fileName, listName, token));
+  },
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(muiThemeable()(injectIntl(userIsAuthenticated(FavoritesView))))
+)(muiThemeable()(injectIntl(userIsAuthenticated(FavoritesView))));

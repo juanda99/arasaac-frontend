@@ -3,131 +3,131 @@
  *
  * This contains all the text for the Menu component.
  */
-import { defineMessages } from 'react-intl'
+import { defineMessages } from "react-intl";
 
 export default defineMessages({
   home: {
-    id: 'menu.home',
-    description: 'Menu item',
-    defaultMessage: 'Home'
+    id: "menu.home",
+    description: "Menu item",
+    defaultMessage: "Home",
   },
   pictograms: {
-    id: 'menu.pictograms',
-    description: 'Menu item',
-    defaultMessage: 'Pictograms'
+    id: "menu.pictograms",
+    description: "Menu item",
+    defaultMessage: "Pictograms",
   },
   search: {
-    id: 'menu.search',
-    description: 'Menu item',
-    defaultMessage: 'Search'
+    id: "menu.search",
+    description: "Menu item",
+    defaultMessage: "Search",
   },
   favorites: {
-    id: 'menu.favorites',
-    description: 'Menu item',
-    defaultMessage: 'Favorites'
+    id: "menu.favorites",
+    description: "Menu item",
+    defaultMessage: "Favorites",
   },
   termsOfUse: {
-    id: 'menu.termsOfUse',
-    defaultMessage: 'Terms of use'
+    id: "menu.termsOfUse",
+    defaultMessage: "Terms of use",
   },
   api: {
-    id: 'menu.api',
-    description: 'Menu item',
-    defaultMessage: 'API for developers'
+    id: "menu.api",
+    description: "Menu item",
+    defaultMessage: "API for developers",
   },
   dev: {
-    id: 'menu.dev',
-    description: 'Menu item',
-    defaultMessage: 'Developers'
+    id: "menu.dev",
+    description: "Menu item",
+    defaultMessage: "Developers",
   },
   devAccount: {
-    id: 'menu.devAccount',
-    description: 'Menu item',
-    defaultMessage: 'Signup'
+    id: "menu.devAccount",
+    description: "Menu item",
+    defaultMessage: "Signup",
   },
   devInfo: {
-    id: 'menu.devInfo',
-    description: 'Menu item',
-    defaultMessage: 'How-to'
+    id: "menu.devInfo",
+    description: "Menu item",
+    defaultMessage: "How-to",
   },
   onlineTools: {
-    id: 'menu.onlineTools',
-    description: 'Menu item',
-    defaultMessage: 'Online Tools'
+    id: "menu.onlineTools",
+    description: "Menu item",
+    defaultMessage: "Online Tools",
   },
   araword: {
-    id: 'menu.araword',
-    description: 'Menu item',
-    defaultMessage: 'Araword'
+    id: "menu.araword",
+    description: "Menu item",
+    defaultMessage: "Araword",
   },
   materials: {
-    id: 'menu.materials',
-    description: 'Menu item',
-    defaultMessage: 'Materials'
+    id: "menu.materials",
+    description: "Menu item",
+    defaultMessage: "Materials",
   },
   uploadMaterials: {
-    id: 'menu.uploadMaterials',
-    description: 'Menu item',
-    defaultMessage: 'Publish'
+    id: "menu.uploadMaterials",
+    description: "Menu item",
+    defaultMessage: "Publish",
   },
   info: {
-    id: 'menu.info',
-    description: 'Menu division title',
-    defaultMessage: 'About us'
+    id: "menu.info",
+    description: "Menu division title",
+    defaultMessage: "About us",
   },
   user: {
-    id: 'menu.user',
-    description: 'Menu division title',
-    defaultMessage: 'User'
+    id: "menu.user",
+    description: "Menu division title",
+    defaultMessage: "User",
   },
   register: {
-    id: 'menu.register',
-    description: 'Menu item',
-    defaultMessage: 'Register'
+    id: "menu.register",
+    description: "Menu item",
+    defaultMessage: "Register",
   },
   signin: {
-    id: 'menu.signin',
-    description: 'Menu item',
-    defaultMessage: 'Sign in'
+    id: "menu.signin",
+    description: "Menu item",
+    defaultMessage: "Sign in",
   },
   signout: {
-    id: 'menu.signout',
-    description: 'Menu item',
-    defaultMessage: 'Sign out'
+    id: "menu.signout",
+    description: "Menu item",
+    defaultMessage: "Sign out",
   },
   downloads: {
-    id: 'menu.downloads',
-    description: 'Menu item',
-    defaultMessage: 'Download Catalogs'
+    id: "menu.downloads",
+    description: "Menu item",
+    defaultMessage: "Download Catalogs",
   },
   prizes: {
-    id: 'menu.prizes',
-    description: 'Menu item',
-    defaultMessage: 'Prizes'
+    id: "menu.prizes",
+    description: "Menu item",
+    defaultMessage: "Prizes",
   },
   translators: {
-    id: 'menu.translators',
-    description: 'Menu item',
-    defaultMessage: 'Translators'
+    id: "menu.translators",
+    description: "Menu item",
+    defaultMessage: "Translators",
   },
   arasaacWorld: {
-    id: 'menu.arasaacWorld',
-    description: 'Menu item',
-    defaultMessage: 'Arasaac in the world'
+    id: "menu.arasaacWorld",
+    description: "Menu item",
+    defaultMessage: "Arasaac in the world",
   },
   contact: {
-    id: 'menu.contact',
-    description: 'Menu item',
-    defaultMessage: 'Contact us'
+    id: "menu.contact",
+    description: "Menu item",
+    defaultMessage: "Contact us",
   },
   settings: {
-    id: 'menu.settings',
-    description: 'Menu item',
-    defaultMessage: 'Settings'
+    id: "menu.settings",
+    description: "Menu item",
+    defaultMessage: "Settings",
   },
   whoWeAre: {
-    id: 'menu.whoWeAre',
-    description: 'Menu item',
-    defaultMessage: 'About us'
-  }
-})
+    id: "menu.whoWeAre",
+    description: "Menu item",
+    defaultMessage: "About us",
+  },
+});

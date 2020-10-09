@@ -2,20 +2,20 @@
  * Create the store with asynchronously loaded reducers
  */
 
-import { createStore, applyMiddleware, compose } from 'redux'
-import { fromJS } from 'immutable'
-import { routerMiddleware } from 'react-router-redux'
-import { persistStore, autoRehydrate } from 'redux-persist-immutable'
-import { REHYDRATE } from 'redux-persist/constants'
-import { googleAnalytics } from './reactGAMiddlewares'
-import createActionBuffer from 'redux-action-buffer'
+import { createStore, applyMiddleware, compose } from "redux";
+import { fromJS } from "immutable";
+import { routerMiddleware } from "react-router-redux";
+import { persistStore, autoRehydrate } from "redux-persist-immutable";
+import { REHYDRATE } from "redux-persist/constants";
+import { googleAnalytics } from "./reactGAMiddlewares";
+import createActionBuffer from "redux-action-buffer";
 // on sagas by hand, not automated:
 // import { loadingBarMiddleware } from 'react-redux-loading-bar'
-import createSagaMiddleware from 'redux-saga'
-import appSaga from 'containers/App/sagas'
-import createReducer from './reducers'
+import createSagaMiddleware from "redux-saga";
+import appSaga from "containers/App/sagas";
+import createReducer from "./reducers";
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore(initialState = {}, history) {
   // Create the store with two middlewares
@@ -24,67 +24,82 @@ export default function configureStore(initialState = {}, history) {
   const middlewares = [
     sagaMiddleware,
     routerMiddleware(history),
-    googleAnalytics
+    googleAnalytics,
     /* ,
     loadingBarMiddleware({
       promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE']
     }) */
-  ]
+  ];
 
   const enhancers = [
     applyMiddleware(...middlewares),
     autoRehydrate({ log: true }),
     applyMiddleware(
       createActionBuffer(REHYDRATE) // make sure to apply this after redux-thunk et al.
-    )
-  ]
+    ),
+  ];
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers =
-    process.env.NODE_ENV !== 'production' &&
-      typeof window === 'object' &&
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    process.env.NODE_ENV !== "production" &&
+    typeof window === "object" &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-      : compose
+      : compose;
   /* eslint-enable */
 
   // delay render after hydratation, https://github.com/rt2zz/redux-persist/issues/126
   return new Promise((resolve, reject) => {
     try {
-      const store = createStore(createReducer(), fromJS(initialState), composeEnhancers(...enhancers))
+      const store = createStore(
+        createReducer(),
+        fromJS(initialState),
+        composeEnhancers(...enhancers)
+      );
 
       // // Extensions
 
       // run saga from 'containers/App/sagas' here
-      sagaMiddleware.run(appSaga)
+      sagaMiddleware.run(appSaga);
 
-      store.runSaga = sagaMiddleware.run
-      store.asyncReducers = {} // Async reducer registry
+      store.runSaga = sagaMiddleware.run;
+      store.asyncReducers = {}; // Async reducer registry
 
       // Make reducers hot reloadable, see http://mxs.is/googmo
       /* istanbul ignore next */
       if (module.hot) {
-        module.hot.accept('./reducers', () => {
-          System.import('./reducers').then((reducerModule) => {
-            const createReducers = reducerModule.default
-            const nextReducers = createReducers(store.asyncReducers)
+        module.hot.accept("./reducers", () => {
+          System.import("./reducers").then((reducerModule) => {
+            const createReducers = reducerModule.default;
+            const nextReducers = createReducers(store.asyncReducers);
 
-            store.replaceReducer(nextReducers)
-          })
-        })
+            store.replaceReducer(nextReducers);
+          });
+        });
       }
 
       // begin periodically persisting the store
       persistStore(
         store,
-        { blacklist: ['route', 'loadingBar', 'form', 'register', 'language', 'materialsView', 'pictogramsView', 'tour'] },
-        () => resolve(store),
-      )
+        {
+          blacklist: [
+            "route",
+            "loadingBar",
+            "form",
+            "register",
+            "language",
+            "materialsView",
+            "pictogramsView",
+            "tour",
+          ],
+        },
+        () => resolve(store)
+      );
     } catch (e) {
-      reject(e)
+      reject(e);
     }
-  })
+  });
 
   // const store = createStore(
   //   createReducer(),

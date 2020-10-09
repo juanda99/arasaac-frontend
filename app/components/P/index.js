@@ -4,8 +4,8 @@
  *
  */
 
-import muiThemeable from 'material-ui/styles/muiThemeable'
-import styled from 'styled-components'
+import muiThemeable from "material-ui/styles/muiThemeable";
+import styled from "styled-components";
 
 const P = styled.p`
   color: ${(props) =>
@@ -17,6 +17,6 @@ const P = styled.p`
   margin-top: ${(props) => props.marginTop};
   margin-bottom: ${(props) => props.marginBottom};
   margin-right: ${(props) => props.marginRight};
-`
+`;
 
-export default muiThemeable()(P)
+export default muiThemeable()(P);

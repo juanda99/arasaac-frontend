@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { url } from 'redux-form-validators'
+import styled from "styled-components";
+import { url } from "redux-form-validators";
 // import muiThemeable from 'material-ui/styles/muiThemeable'
 
 const FullWidthSection = styled.div`
@@ -10,6 +10,6 @@ const FullWidthSection = styled.div`
   width: 100%;
   padding-bottom: 30px;
   padding-top: 30px;
-`
+`;
 // export default muiThemeable()(FullWidthSection)
-export default FullWidthSection
+export default FullWidthSection;

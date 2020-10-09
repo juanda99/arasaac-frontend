@@ -1,45 +1,46 @@
 /**
-*
-* Item
-*
-*/
+ *
+ * Item
+ *
+ */
 
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router'
-import Paper from 'material-ui/Paper'
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router";
+import Paper from "material-ui/Paper";
 
 const styles = {
   paper: {
-    padding: '0.5rem',
-    marginBottom: '30px',
-    position: 'relative'
-  }
-}
+    padding: "0.5rem",
+    marginBottom: "30px",
+    position: "relative",
+  },
+};
 
-class Item extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class Item extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
     url: PropTypes.string,
-    children: PropTypes.node
-  }
+    children: PropTypes.node,
+  };
 
-  state = { zDepth: 1 }
+  state = { zDepth: 1 };
 
   handleMouseEnter = () => {
     this.setState({
-      zDepth: 2
-    })
-  }
+      zDepth: 2,
+    });
+  };
 
   handleMouseLeave = () => {
     this.setState({
-      zDepth: 1
-    })
-  }
+      zDepth: 1,
+    });
+  };
 
   render() {
-    const { children, url } = this.props
+    const { children, url } = this.props;
     const rendered = url ? (
       <Link to={url}>
         <Paper
@@ -60,13 +61,9 @@ class Item extends React.PureComponent { // eslint-disable-line react/prefer-sta
       >
         {children}
       </Paper>
-    )
-    return (
-      <div>
-        { rendered }
-      </div>
-    )
+    );
+    return <div>{rendered}</div>;
   }
 }
 
-export default Item
+export default Item;

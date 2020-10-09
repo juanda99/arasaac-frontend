@@ -23,7 +23,7 @@ import Footer from "components/Footer";
 import Menu from "components/Menu";
 import muiThemeable from "material-ui/styles/muiThemeable";
 import { FormattedMessage } from "react-intl";
-import Joyride, { STATUS } from 'react-joyride'
+import Joyride, { STATUS } from "react-joyride";
 import Div from "components/Div";
 import messages from "./messages";
 import Wrapper from "./Wrapper";
@@ -34,13 +34,13 @@ import withWidth, { LARGE, SMALL } from "material-ui/utils/withWidth";
 import {
   changeLocale,
   startTranslation,
-  stopTranslation
+  stopTranslation,
 } from "containers/LanguageProvider/actions";
-import { makeSelectRunTour } from 'containers/HomePage/selectors'
-import { stopTour } from 'containers/HomePage/actions'
+import { makeSelectRunTour } from "containers/HomePage/selectors";
+import { stopTour } from "containers/HomePage/actions";
 import { logout, activation } from "./actions";
 import { makeSelectHasUser, makeSelectRole } from "./selectors";
-import { makeSelectDirection } from 'containers/LanguageProvider/selectors';
+import { makeSelectDirection } from "containers/LanguageProvider/selectors";
 
 class App extends Component {
   static propTypes = {
@@ -55,7 +55,7 @@ class App extends Component {
   };
 
   static contextTypes = {
-    router: PropTypes.object.isRequired
+    router: PropTypes.object.isRequired,
   }; // import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 
   state = {
@@ -67,62 +67,88 @@ class App extends Component {
     steps: [
       {
         title: <FormattedMessage {...messages.openMenu} />,
-        content: <p dir={this.props.direction}><FormattedMessage {...messages.startNavigation} /></p>,
+        content: (
+          <p dir={this.props.direction}>
+            <FormattedMessage {...messages.startNavigation} />
+          </p>
+        ),
         target: "#header button",
         placement: "bottom",
-        disableBeacon: true
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.userMenu} />,
-        content: <p dir={this.props.direction}><FormattedMessage {...messages.userMenuDesc} /></p>,
+        content: (
+          <p dir={this.props.direction}>
+            <FormattedMessage {...messages.userMenuDesc} />
+          </p>
+        ),
         target: "#header #userMenu",
         placement: "bottom",
-        disableBeacon: true
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.loginMenu} />,
-        content: <p dir={this.props.direction}><FormattedMessage {...messages.loginMenuDesc} /></p>,
+        content: (
+          <p dir={this.props.direction}>
+            <FormattedMessage {...messages.loginMenuDesc} />
+          </p>
+        ),
         target: "#header #loginMenu",
         placement: "bottom",
-        disableBeacon: true
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.pictograms} />,
         content: (
           <div>
-            <p dir={this.props.direction}><FormattedMessage {...messages.pictogramsDesc1} /></p>
-            <p dir={this.props.direction}><FormattedMessage {...messages.pictogramsDesc2} /></p>
+            <p dir={this.props.direction}>
+              <FormattedMessage {...messages.pictogramsDesc1} />
+            </p>
+            <p dir={this.props.direction}>
+              <FormattedMessage {...messages.pictogramsDesc2} />
+            </p>
           </div>
         ),
         target: "#lstpictograms",
         placement: "right",
-        disableBeacon: true
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.materials} />,
         content: (
           <div>
-            <p dir={this.props.direction}><FormattedMessage {...messages.materialsDesc1} /></p>
-            <p dir={this.props.direction}><FormattedMessage {...messages.materialsDesc2} /></p>
+            <p dir={this.props.direction}>
+              <FormattedMessage {...messages.materialsDesc1} />
+            </p>
+            <p dir={this.props.direction}>
+              <FormattedMessage {...messages.materialsDesc2} />
+            </p>
           </div>
         ),
         target: "#lstmaterials",
         placement: "right",
-        disableBeacon: true
+        disableBeacon: true,
       },
       {
-        title: 'Aula abierta',
+        title: "Aula abierta",
         content: (
           <div>
-            <p dir={this.props.direction}><strong><FormattedMessage {...messages.onlySpanish} /></strong></p>
-            <p dir={this.props.direction}><FormattedMessage {...messages.aulaAbiertaDesc} /></p>
+            <p dir={this.props.direction}>
+              <strong>
+                <FormattedMessage {...messages.onlySpanish} />
+              </strong>
+            </p>
+            <p dir={this.props.direction}>
+              <FormattedMessage {...messages.aulaAbiertaDesc} />
+            </p>
           </div>
         ),
         target: "#lstaulaabierta",
         placement: "right",
-        disableBeacon: true
-      }
-    ]
+        disableBeacon: true,
+      },
+    ],
   };
 
   handleTranslate = () => {
@@ -142,8 +168,8 @@ class App extends Component {
       LoadingBar: {
         height: 2,
         backgroundColor: "rgb(0, 188, 212)",
-        zIndex: 100000
-      }
+        zIndex: 100000,
+      },
     };
     return styles;
   }
@@ -158,10 +184,10 @@ class App extends Component {
         title = <FormattedMessage {...messages.pictogramsSearch} />;
         break;
       case /saac/.test(url):
-        title = '¿Qué son los SAAC?'
+        title = "¿Qué son los SAAC?";
         break;
       case /aac/.test(url):
-        title = 'What is AAC?'
+        title = "What is AAC?";
         break;
       case /materials\/search/.test(url):
         title = <FormattedMessage {...messages.materialsSearch} />;
@@ -258,13 +284,13 @@ class App extends Component {
 
   handleTouchTapLeftIconButton = () => {
     this.setState({
-      menuOpen: !this.state.menuOpen
+      menuOpen: !this.state.menuOpen,
     });
   };
 
-  handleChangeRequestNavDrawer = open => {
+  handleChangeRequestNavDrawer = (open) => {
     this.setState({
-      menuOpen: open
+      menuOpen: open,
     });
   };
 
@@ -276,7 +302,7 @@ class App extends Component {
     if (value) {
       this.context.router.push(value);
       this.setState({
-        menuOpen: false
+        menuOpen: false,
       });
     }
   };
@@ -309,10 +335,10 @@ class App extends Component {
 
   handleJoyrideCallback = (data) => {
     const { status, type } = data;
-    const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED]
+    const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED];
 
     if (finishedStatuses.includes(status)) {
-      this.props.stopTour()
+      this.props.stopTour();
     }
     if (data.index === 0) {
       this.setState({ menuOpen: false });
@@ -332,15 +358,15 @@ class App extends Component {
       logout,
       role,
       run,
-      direction // runTour
+      direction, // runTour
     } = this.props;
 
     const locale = {
       next: <FormattedMessage {...messages.next} />,
       back: <FormattedMessage {...messages.back} />,
       skip: <FormattedMessage {...messages.skip} />,
-      last: <FormattedMessage {...messages.last} />
-    }
+      last: <FormattedMessage {...messages.last} />,
+    };
 
     let { menuOpen, steps } = this.state;
 
@@ -411,20 +437,20 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const locale = state.getIn(["language", "locale"]);
   const isTranslating = locale === "af";
   const isAuthenticated = (makeSelectHasUser()(state) && true) || false;
-  const role = makeSelectRole()(state)
-  const run = makeSelectRunTour()(state)
-  const direction = makeSelectDirection()(state)
+  const role = makeSelectRole()(state);
+  const run = makeSelectRunTour()(state);
+  const direction = makeSelectDirection()(state);
   return {
     isAuthenticated,
     locale,
     isTranslating,
     role,
     run,
-    direction
+    direction,
   };
 };
 
@@ -433,9 +459,9 @@ export default connect(mapStateToProps, {
   logout,
   startTranslation,
   stopTranslation,
-  stopTour
+  stopTour,
 })(withWidth()(App));
 
 App.childContextTypes = {
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };

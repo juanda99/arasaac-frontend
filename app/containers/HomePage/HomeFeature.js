@@ -1,53 +1,52 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router'
-import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth'
-import spacing from 'material-ui/styles/spacing'
-import transitions from 'material-ui/styles/transitions'
-import typography from 'material-ui/styles/typography'
-import { grey200 } from 'material-ui/styles/colors'
-import Paper from 'material-ui/Paper'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router";
+import withWidth, { MEDIUM, LARGE } from "material-ui/utils/withWidth";
+import spacing from "material-ui/styles/spacing";
+import transitions from "material-ui/styles/transitions";
+import typography from "material-ui/styles/typography";
+import { grey200 } from "material-ui/styles/colors";
+import Paper from "material-ui/Paper";
 
 class HomeFeature extends Component {
-
   static propTypes = {
     firstChild: PropTypes.bool,
     heading: PropTypes.object,
     img: PropTypes.string,
     lastChild: PropTypes.bool,
     route: PropTypes.string,
-    width: PropTypes.number.isRequired
-  }
+    width: PropTypes.number.isRequired,
+  };
 
   static defaultProps = {
     firstChild: false,
-    lastChild: false
-  }
+    lastChild: false,
+  };
 
   state = {
-    zDepth: 0
-  }
+    zDepth: 0,
+  };
 
   getStyles() {
-    const desktopGutter = spacing.desktopGutter
-    const desktopKeylineIncrement = spacing.desktopKeylineIncrement
+    const desktopGutter = spacing.desktopGutter;
+    const desktopKeylineIncrement = spacing.desktopKeylineIncrement;
     const styles = {
       root: {
         transition: transitions.easeOut(),
-        maxWidth: '300px',
-        margin: `0 auto ' + ${desktopGutter}px auto`
+        maxWidth: "300px",
+        margin: `0 auto ' + ${desktopGutter}px auto`,
       },
       rootWhenMedium: {
-        float: 'left',
-        width: '33%',
+        float: "left",
+        width: "33%",
         marginRight: 4,
-        marginBottom: 0
+        marginBottom: 0,
       },
       image: {
         // Not sure why this is needed but it fixes a display
         // issue in chrome
         marginBottom: -6,
-        width: '100%'
+        width: "100%",
       },
       heading: {
         fontSize: 20,
@@ -57,23 +56,23 @@ class HomeFeature extends Component {
         fontWeight: typography.fontWeightMedium,
         color: typography.textDarkBlack,
         backgroundColor: grey200,
-        textAlign: 'center',
+        textAlign: "center",
         margin: 0,
         padding: 0,
-        lineHeight: `${desktopKeylineIncrement}px`
+        lineHeight: `${desktopKeylineIncrement}px`,
       },
       rootWhenLastChild: {
-        marginBottom: 0
+        marginBottom: 0,
       },
       rootWhenMediumAndLastChild: {
         marginRight: 0,
         marginBottom: 0,
-        marginTop: '0px'
+        marginTop: "0px",
       },
       rootWhenMediumAndFirstChild: {
-        marginLeft: 0
-      }
-    }
+        marginLeft: 0,
+      },
+    };
 
     if (this.props.width === MEDIUM || this.props.width === LARGE) {
       styles.root = Object.assign(
@@ -81,25 +80,25 @@ class HomeFeature extends Component {
         styles.rootWhenMedium,
         this.props.firstChild && styles.rootWhenMediumAndFirstChild,
         this.props.lastChild && styles.rootWhenMediumAndLastChild
-      )
+      );
     }
-    return styles
+    return styles;
   }
 
   handleMouseEnter = () => {
     this.setState({
-      zDepth: 4
-    })
-  }
+      zDepth: 4,
+    });
+  };
 
   handleMouseLeave = () => {
     this.setState({
-      zDepth: 0
-    })
-  }
+      zDepth: 0,
+    });
+  };
 
   render() {
-    const styles = this.getStyles()
+    const styles = this.getStyles();
 
     return (
       <Paper
@@ -108,15 +107,16 @@ class HomeFeature extends Component {
         onMouseLeave={this.handleMouseLeave}
         style={Object.assign(
           styles.root,
-          this.props.lastChild && styles.rootWhenLastChild)}
+          this.props.lastChild && styles.rootWhenLastChild
+        )}
       >
         <h3 style={styles.heading}>{this.props.heading}</h3>
         <Link to={this.props.route}>
-          <img role='presentation' style={styles.image} src={this.props.img} />
+          <img role="presentation" style={styles.image} src={this.props.img} />
         </Link>
       </Paper>
-    )
+    );
   }
 }
 
-export default withWidth()(HomeFeature)
+export default withWidth()(HomeFeature);

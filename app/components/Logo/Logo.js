@@ -1,13 +1,11 @@
-import styled from 'styled-components'
-import media from 'utils/mediaqueries'
-
+import styled from "styled-components";
+import media from "utils/mediaqueries";
 
 const Logo = styled.img.attrs({
   // src: 'https://static.arasaac.org/images/arasaac-logo.svg'
-  src: 'https://static.arasaac.org/images/logo-arasaac-texto.svg',
-  alt: 'ARASAAC logo'
+  src: "https://static.arasaac.org/images/logo-arasaac-texto.svg",
+  alt: "ARASAAC logo",
 })`
-
   width: 180px;
   padding: 8px;
   position: absolute;
@@ -28,6 +26,6 @@ const Logo = styled.img.attrs({
     top: calc(50% - 75px - 75px);
     left: calc(50% - 250px);
   }
-`
+`;
 
-export default Logo
+export default Logo;

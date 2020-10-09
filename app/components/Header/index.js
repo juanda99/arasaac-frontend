@@ -3,18 +3,18 @@
  * Header
  *
  */
-import React from 'react'
-import PropTypes from 'prop-types'
-import AppBar from 'material-ui/AppBar'
-import styles from './styles'
-import Title from './Title'
-import UserMenu from './UserMenu'
-import GuestMenu from './GuestMenu'
+import React from "react";
+import PropTypes from "prop-types";
+import AppBar from "material-ui/AppBar";
+import styles from "./styles";
+import Title from "./Title";
+import UserMenu from "./UserMenu";
+import GuestMenu from "./GuestMenu";
 
 const Header = (props) => {
   const handleTouchTapLeftIconButton = () => {
-    props.touchTapLeftIconButton()
-  }
+    props.touchTapLeftIconButton();
+  };
   const {
     isAuthenticated,
     showMenuIconButton,
@@ -23,15 +23,15 @@ const Header = (props) => {
     changeLocale,
     signout,
     isMobile,
-    role
-  } = props
+    role,
+  } = props;
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: "relative" }}>
       <AppBar
         onLeftIconButtonTouchTap={handleTouchTapLeftIconButton}
         title={<Title docked={props.docked}>{title}</Title>}
         zDepth={0}
-        id='header'
+        id="header"
         style={styles.appBar}
         showMenuIconButton={showMenuIconButton}
         iconElementRight={
@@ -43,16 +43,16 @@ const Header = (props) => {
               role={role}
             />
           ) : (
-              <GuestMenu isMobile={isMobile} />
-            )
+            <GuestMenu isMobile={isMobile} />
+          )
         }
       />
       {/* <div style={{ position: 'absolute', margin: 10, left: '50px', color: 'white', top: 0, zIndex: 14000 }}>
           <h1 style={{ display: 'inline' }}>ARASAAC</h1>
         </div> */}
     </div>
-  )
-}
+  );
+};
 
 Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
@@ -61,7 +61,7 @@ Header.propTypes = {
   // será un string
   title: PropTypes.oneOfType([
     PropTypes.string.isRequired,
-    PropTypes.object.isRequired
+    PropTypes.object.isRequired,
   ]),
   docked: PropTypes.bool.isRequired,
   changeLocale: PropTypes.func.isRequired,
@@ -69,7 +69,7 @@ Header.propTypes = {
   touchTapLeftIconButton: PropTypes.func.isRequired,
   isTranslating: PropTypes.bool.isRequired,
   isMobile: PropTypes.bool.isRequired,
-  role: PropTypes.string
-}
+  role: PropTypes.string,
+};
 
-export default Header
+export default Header;

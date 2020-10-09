@@ -1,12 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import pure from 'recompose/pure'
-import SvgIcon from 'material-ui/SvgIcon'
+import React from "react";
+import PropTypes from "prop-types";
+import pure from "recompose/pure";
+import SvgIcon from "material-ui/SvgIcon";
 /* eslint-disable import/no-mutable-exports */
 let Google = (props) => (
-  <SvgIcon {...props} viewBox='0 0 90 90'>
+  <SvgIcon {...props} viewBox="0 0 90 90">
     <path
-      fill={props.color} d='M74.499,0H50.144c-6.382,0-14.421,0.942-21.158,6.49c-5.09,4.374-7.566,10.392-7.566,15.828
+      fill={props.color}
+      d="M74.499,0H50.144c-6.382,0-14.421,0.942-21.158,6.49c-5.09,4.374-7.566,10.392-7.566,15.828
       c0,9.211,7.094,18.546,19.625,18.546c1.182,0,2.477-0.12,3.787-0.235c-0.592,1.413-1.189,2.594-1.189,4.605
       c0,3.662,1.893,5.902,3.547,8.029c-5.314,0.353-15.249,0.942-22.583,5.428c-6.975,4.143-9.107,10.16-9.107,14.414
       C15.499,81.846,23.778,90,40.923,90c20.336,0,31.098-11.22,31.098-22.33c0-8.143-4.729-12.164-9.932-16.534l-4.258-3.305
@@ -15,16 +16,16 @@ let Google = (props) => (
       c-12.648,0-20.809-6.024-20.809-14.405c0-8.393,7.568-11.218,10.166-12.164c4.969-1.656,11.352-1.891,12.414-1.891
       c1.184,0,1.775,0,2.725,0.115C60.202,63.064,64.103,66.257,64.103,72.279z M54.642,34.249c-1.893,1.886-5.088,3.305-8.045,3.305
       c-10.164,0-14.772-13.113-14.772-21.023c0-3.072,0.592-6.258,2.598-8.74c1.893-2.362,5.201-3.899,8.277-3.899
-      c9.812,0,14.899,13.229,14.899,21.73C57.599,27.752,57.358,31.528,54.642,34.249z'
+      c9.812,0,14.899,13.229,14.899,21.73C57.599,27.752,57.358,31.528,54.642,34.249z"
     />
   </SvgIcon>
-)
+);
 
 Google.propTypes = {
-  color: PropTypes.string
-}
+  color: PropTypes.string,
+};
 
-Google = pure(Google)
-Google.displayName = 'Google'
+Google = pure(Google);
+Google.displayName = "Google";
 
-export default Google
+export default Google;

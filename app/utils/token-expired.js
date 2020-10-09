@@ -3,10 +3,10 @@
  *  @param   {String}     token
  *  @return  {Boolean}
  */
-import jwtDecode from 'jwt-decode'
+import jwtDecode from "jwt-decode";
 const tokenExpired = (token) => {
-  const decoded = jwtDecode(token)
-  return decoded.exp > new Date().getTime() / 1000
-}
+  const decoded = jwtDecode(token);
+  return decoded.exp > new Date().getTime() / 1000;
+};
 
-export default tokenExpired
+export default tokenExpired;

@@ -3,11 +3,11 @@
  *
  * This contains all the text for the NotFoundPage component.
  */
-import { defineMessages } from 'react-intl'
+import { defineMessages } from "react-intl";
 
 export default defineMessages({
   header: {
-    id: 'app.components.NotFoundPage.header',
-    defaultMessage: 'Web page not found'
-  }
-})
+    id: "app.components.NotFoundPage.header",
+    defaultMessage: "Web page not found",
+  },
+});

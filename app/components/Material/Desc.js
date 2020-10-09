@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import media from 'utils/mediaqueries'
+import styled from "styled-components";
+import media from "utils/mediaqueries";
 
 const Desc = styled.div`
   flex-grow: 3;
@@ -7,6 +7,6 @@ const Desc = styled.div`
   text-align: justify;
   ${media.md} {
     padding: 2rem;
-  } 
-`
-export default Desc
+  }
+`;
+export default Desc;

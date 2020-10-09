@@ -1,7 +1,7 @@
 export default class ZoomSlider extends Component {
   state = {
     firstSlider: 0.5,
-    secondSlider: 50
+    secondSlider: 50,
   };
 
   handleFirstSlider = (event, value) => {

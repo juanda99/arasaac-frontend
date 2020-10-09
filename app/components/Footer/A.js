@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const A = styled.a`
   color: white;
@@ -7,7 +7,6 @@ const A = styled.a`
   &:hover {
     color: yellowGreen;
   }
+`;
 
-`
-
-export default A
+export default A;

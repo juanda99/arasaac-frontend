@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import Paper from 'material-ui/Paper'
-import media from 'utils/mediaqueries'
-import muiThemeable from 'material-ui/styles/muiThemeable'
+import styled from "styled-components";
+import Paper from "material-ui/Paper";
+import media from "utils/mediaqueries";
+import muiThemeable from "material-ui/styles/muiThemeable";
 
 const StyledPaper = styled(Paper)`
   box-sizing: border-box;
@@ -18,7 +18,6 @@ const StyledPaper = styled(Paper)`
     width: 590px;
     height: 200px;
   }
+`;
 
-`
-
-export default muiThemeable()(StyledPaper)
+export default muiThemeable()(StyledPaper);

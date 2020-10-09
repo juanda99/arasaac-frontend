@@ -54,7 +54,6 @@ If you want to help us make react-boilerplate great, please use the `dev` branch
 
 This release was made possible by [Fullstack React](https://www.fullstackreact.com/) and [Serverless](http://serverless.com)! _Want to support us too? [Click here!](http://opencollective.com/react-boilerplate)_
 
-
 ## RBP v3.0: The "JS Fatigue Antivenin" Edition
 
 React Boilerplate (RBP) v3.0.0 is out, and it's a _complete_ rewrite! :tada:
@@ -82,12 +81,14 @@ website!
   tests are now co-located with the code that they validate.
 
 - **New industry-standard JS utilities** We're now making the most of...
-    - ImmutableJS
-    - reselect
-    - react-router-redux
-    - redux-saga
+
+  - ImmutableJS
+  - reselect
+  - react-router-redux
+  - redux-saga
 
 - **Huge CSS Improvements**
+
   - _[CSS Modules](docs/css/css-modules.md)_: Finally, truly modular, reusable
     styles!
   - _Page-specific CSS_: smart Webpack configuration means that only the CSS
@@ -97,6 +98,7 @@ website!
     that you and your team stay on point.
 
 - **Performance**
+
   - _Code splitting_: splitting/chunking by route means the leanest, meanest
     payload (because the fastest code is the code you don't load!)
 

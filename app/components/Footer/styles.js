@@ -1,18 +1,18 @@
-import { white, lightGreen300 } from 'material-ui/styles/colors'
+import { white, lightGreen300 } from "material-ui/styles/colors";
 
 export default {
   a: {
-    color: 'white'
+    color: "white",
   },
   p: {
-    margin: '0 auto',
+    margin: "0 auto",
     maxWidth: 500,
     color: white,
-    fontWeight: 'normal',
-    fontSize: '15px'
+    fontWeight: "normal",
+    fontSize: "15px",
   },
   logoGA: {
-    width: '100%',
-    maxWidth: '256px'
-  }
-}
+    width: "100%",
+    maxWidth: "256px",
+  },
+};

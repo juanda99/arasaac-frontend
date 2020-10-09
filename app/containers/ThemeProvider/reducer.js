@@ -4,17 +4,17 @@
  *
  */
 
-import { CHANGE_THEME, DEFAULT_THEME } from './actions'
+import { CHANGE_THEME, DEFAULT_THEME } from "./actions";
 
-export const initialState = DEFAULT_THEME
+export const initialState = DEFAULT_THEME;
 
 function themeProviderReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_THEME:
-      return action.theme
+      return action.theme;
     default:
-      return state
+      return state;
   }
 }
 
-export default themeProviderReducer
+export default themeProviderReducer;

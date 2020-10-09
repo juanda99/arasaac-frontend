@@ -1,63 +1,63 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import muiThemeable from 'material-ui/styles/muiThemeable'
-import IconButton from 'material-ui/IconButton'
-import DeleteList from 'material-ui/svg-icons/action/delete'
-import FileDownload from 'material-ui/svg-icons/file/file-download'
-import Folder from 'material-ui/svg-icons/file/folder'
-import { FormattedMessage } from 'react-intl'
-import CardActions from './CardActions'
-import StyledPaper from './StyledPaper'
-import StyledList from './StyledList'
-import Image from './Image'
-import Item from './Item'
-import messages from './messages'
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import muiThemeable from "material-ui/styles/muiThemeable";
+import IconButton from "material-ui/IconButton";
+import DeleteList from "material-ui/svg-icons/action/delete";
+import FileDownload from "material-ui/svg-icons/file/file-download";
+import Folder from "material-ui/svg-icons/file/folder";
+import { FormattedMessage } from "react-intl";
+import CardActions from "./CardActions";
+import StyledPaper from "./StyledPaper";
+import StyledList from "./StyledList";
+import Image from "./Image";
+import Item from "./Item";
+import messages from "./messages";
 
 class PictogramSnippet extends PureComponent {
   state = {
-    isFlipped: false
+    isFlipped: false,
   };
 
   styles = {
     icon: {
       width: 48,
-      height: 48
+      height: 48,
     },
     leftIconButton: {
       width: 96,
       height: 96,
       padding: 24,
-      position: 'absolute',
-      top: '0',
-      left: '0'
+      position: "absolute",
+      top: "0",
+      left: "0",
     },
     rightIconButton: {
       width: 96,
       height: 96,
       padding: 24,
-      position: 'absolute',
-      top: '0',
-      right: '0'
+      position: "absolute",
+      top: "0",
+      right: "0",
     },
     cardTitle: {
-      textAlign: 'center',
-      fontSize: '1.4rem',
-      textTransform: 'uppercase',
+      textAlign: "center",
+      fontSize: "1.4rem",
+      textTransform: "uppercase",
       color: this.props.muiTheme.appBar.textColor,
-      fontWeight: '900'
-    }
+      fontWeight: "900",
+    },
   };
 
   handleMouseEnter = () => {
     this.setState({
-      zDepth: 3
-    })
+      zDepth: 3,
+    });
   };
 
   handleMouseLeave = () => {
     this.setState({
-      zDepth: 1
-    })
+      zDepth: 1,
+    });
   };
 
   render() {
@@ -67,18 +67,18 @@ class PictogramSnippet extends PureComponent {
       id,
       muiTheme,
       locale,
-      isList
-    } = this.props
+      isList,
+    } = this.props;
     return (
       <StyledList
         key={idPictogram}
-        className='image-element-class'
+        className="image-element-class"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
         <StyledPaper zDepth={this.state.zDepth}>
           <Item url={`/pictograms/list/${id}`}>
-            <div style={{ position: 'relative' }}>
+            <div style={{ position: "relative" }}>
               <Image src={Folder} alt={title} />
               {isList && (
                 <CardActions>
@@ -111,13 +111,13 @@ class PictogramSnippet extends PureComponent {
           </Item>
         </StyledPaper>
       </StyledList>
-    )
+    );
   }
 }
 
 PictogramSnippet.contextTypes = {
-  isAuthenticated: PropTypes.bool
-}
+  isAuthenticated: PropTypes.bool,
+};
 
 PictogramSnippet.propTypes = {
   pictogram: PropTypes.object.isRequired,
@@ -125,7 +125,7 @@ PictogramSnippet.propTypes = {
   id: PropTypes.string.isRequired,
   muiTheme: PropTypes.object,
   locale: PropTypes.string.isRequired,
-  isList: PropTypes.boolean.isRequired
-}
+  isList: PropTypes.boolean.isRequired,
+};
 
-export default muiThemeable()(PictogramSnippet)
+export default muiThemeable()(PictogramSnippet);

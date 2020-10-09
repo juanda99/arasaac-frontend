@@ -1,8 +1,8 @@
-import { defineMessages } from 'react-intl'
+import { defineMessages } from "react-intl";
 
 export default defineMessages({
   ok: {
-    id: 'app.components.dialog.ok',
-    defaultMessage: 'Ok'
-  }
-})
+    id: "app.components.dialog.ok",
+    defaultMessage: "Ok",
+  },
+});

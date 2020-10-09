@@ -3,34 +3,34 @@
  * PictogramsView
  *
  */
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import ImmutablePropTypes from 'react-immutable-proptypes'
-import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
-import View from 'components/View'
-import Helmet from 'react-helmet'
-import SearchField from 'components/SearchField'
-import muiThemeable from 'material-ui/styles/muiThemeable'
-import Divider from 'material-ui/Divider'
-import { Tabs, Tab } from 'material-ui/Tabs'
-import { Map } from 'immutable'
-import FilterList from 'components/Filters'
-import PictogramList from 'components/PictogramList'
-import P from 'components/P'
-import { withRouter } from 'react-router'
-import SearchIcon from 'material-ui/svg-icons/action/search'
-import withWidth, { SMALL } from 'material-ui/utils/withWidth'
-import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
-import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
-import ReadMargin from 'components/ReadMargin'
-import { addFavorite, deleteFavorite } from 'containers/App/actions'
-import { downloadPictogram } from 'services'
-import { DEFAULT_LIST } from 'utils'
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import ImmutablePropTypes from "react-immutable-proptypes";
+import { connect } from "react-redux";
+import { FormattedMessage } from "react-intl";
+import View from "components/View";
+import Helmet from "react-helmet";
+import SearchField from "components/SearchField";
+import muiThemeable from "material-ui/styles/muiThemeable";
+import Divider from "material-ui/Divider";
+import { Tabs, Tab } from "material-ui/Tabs";
+import { Map } from "immutable";
+import FilterList from "components/Filters";
+import PictogramList from "components/PictogramList";
+import P from "components/P";
+import { withRouter } from "react-router";
+import SearchIcon from "material-ui/svg-icons/action/search";
+import withWidth, { SMALL } from "material-ui/utils/withWidth";
+import NewReleasesIcon from "material-ui/svg-icons/av/new-releases";
+import { makeSelectLocale } from "containers/LanguageProvider/selectors";
+import ReadMargin from "components/ReadMargin";
+import { addFavorite, deleteFavorite } from "containers/App/actions";
+import { downloadPictogram } from "services";
+import { DEFAULT_LIST } from "utils";
 import {
   makeSelectHasUser,
-  makeSelectRootFavorites
-} from 'containers/App/selectors'
+  makeSelectRootFavorites,
+} from "containers/App/selectors";
 import {
   makeFiltersSelector,
   makeShowFiltersSelector,
@@ -39,27 +39,27 @@ import {
   makeVisiblePictogramsSelector,
   makeNewPictogramsSelector,
   makeKeywordsSelectorByLocale,
-  makeListSelector
+  makeListSelector,
   // makeFavoritePictogramsSelector
-} from './selectors'
+} from "./selectors";
 import {
   autocomplete,
   pictograms,
   // favoritePictograms,
   newPictograms,
   toggleShowFilter,
-  setFilterItems
-} from './actions'
-import messages from './messages'
+  setFilterItems,
+} from "./actions";
+import messages from "./messages";
 
 const styles = {
   searchBar: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   actionButtons: {
-    width: '150px'
+    width: "150px",
   },
-}
+};
 class PictogramsView extends PureComponent {
   // eslint-disable-line react/prefer-stateless-function
 
@@ -68,52 +68,61 @@ class PictogramsView extends PureComponent {
     visibleLabels: false,
     tab: 0,
     offset: 0,
-    listName: ''
+    listName: "",
   };
 
-  processQuery = props => {
-    const { location } = props || this.props
-    const { search, query } = location
-    let parameters = { offset: 0, tab: 0 }
+  processQuery = (props) => {
+    const { location } = props || this.props;
+    const { search, query } = location;
+    let parameters = { offset: 0, tab: 0 };
     if (search) {
-      parameters = { ...parameters, ...query }
-      const validKeys = ['offset', 'tab']
-      Object.keys(parameters).forEach(key => validKeys.includes(key) || delete parameters[key])
-      parameters.offset = parseInt(parameters.offset, 10)
-      parameters.tab = parseInt(parameters.tab, 10)
+      parameters = { ...parameters, ...query };
+      const validKeys = ["offset", "tab"];
+      Object.keys(parameters).forEach(
+        (key) => validKeys.includes(key) || delete parameters[key]
+      );
+      parameters.offset = parseInt(parameters.offset, 10);
+      parameters.tab = parseInt(parameters.tab, 10);
     }
-    const needUpdate = Object.keys(parameters).some(key => parameters[key] !== this.state[key])
-    if (needUpdate) this.setState(parameters)
-  }
+    const needUpdate = Object.keys(parameters).some(
+      (key) => parameters[key] !== this.state[key]
+    );
+    if (needUpdate) this.setState(parameters);
+  };
 
   componentDidMount() {
     const {
       requestPictograms,
       requestNewPictograms,
       requestAutocomplete,
-      locale
-    } = this.props
-    this.processQuery()
+      locale,
+    } = this.props;
+    this.processQuery();
     if (this.props.params.searchText && !this.props.searchResults) {
-      requestPictograms(locale, encodeURIComponent(this.props.params.searchText))
+      requestPictograms(
+        locale,
+        encodeURIComponent(this.props.params.searchText)
+      );
     }
     //  TODO: just ask once this stuff, once the app is open, depending on locale!!!
-    requestNewPictograms(locale)
-    requestAutocomplete(locale)
+    requestNewPictograms(locale);
+    requestAutocomplete(locale);
     // if (favorites && token) {
     //   const [...lists] = favorites.keys()
     //   const favoriteIds = lists.map((list) => favorites.get(list).toJS()).flat()
     //   requestFavorites(locale, favoriteIds, token)
     // }
-
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.params.searchText !== nextProps.params.searchText) {
-      const { requestPictograms, locale } = this.props
-      requestPictograms(locale, encodeURIComponent(nextProps.params.searchText))
+      const { requestPictograms, locale } = this.props;
+      requestPictograms(
+        locale,
+        encodeURIComponent(nextProps.params.searchText)
+      );
     }
     if (this.props.location.search !== nextProps.location.search) {
-      this.processQuery(nextProps)
+      this.processQuery(nextProps);
     }
 
     // if (this.props.favorites !== nextProps.favorites) {
@@ -137,56 +146,57 @@ class PictogramsView extends PureComponent {
   //   });
 
   handleChange = (tab) => {
-    const { pathname } = this.props.location
-    const url = `${pathname}?tab=${tab}`
-    this.props.router.push(url)
-  }
+    const { pathname } = this.props.location;
+    const url = `${pathname}?tab=${tab}`;
+    this.props.router.push(url);
+  };
 
-  handlePageClick = offset => {
+  handlePageClick = (offset) => {
     // fix bug if offset is not number, click comes from picto link, should not be processed here
-    if (typeof offset === 'number') {
-      const { tab } = this.state
-      const { pathname } = this.props.location
-      const url = `${pathname}?offset=${offset}&tab=${tab}`
-      this.props.router.push(url)
+    if (typeof offset === "number") {
+      const { tab } = this.state;
+      const { pathname } = this.props.location;
+      const url = `${pathname}?offset=${offset}&tab=${tab}`;
+      this.props.router.push(url);
     }
-  }
+  };
 
   handleAddFavorite = (fileName) => {
-    const { addFavorite, token } = this.props
-    addFavorite(fileName, DEFAULT_LIST, token)
+    const { addFavorite, token } = this.props;
+    addFavorite(fileName, DEFAULT_LIST, token);
   };
 
   handleDeleteFavorite = (fileName) => {
-    const { deleteFavorite, token } = this.props
-    deleteFavorite(fileName, DEFAULT_LIST, token)
+    const { deleteFavorite, token } = this.props;
+    deleteFavorite(fileName, DEFAULT_LIST, token);
   };
 
   handleDownload = (idPictogram, keyword) => {
-    const location = downloadPictogram(idPictogram, keyword)
-    window.location = location
-  }
+    const location = downloadPictogram(idPictogram, keyword);
+    window.location = location;
+  };
 
   handleSubmit = (nextValue) => {
     this.setState({
-      tab: 0
-    })
+      tab: 0,
+    });
     if (this.props.params.searchText !== nextValue) {
-      this.props.router.push(`/pictograms/search/${encodeURIComponent(nextValue)
-        }`)
+      this.props.router.push(
+        `/pictograms/search/${encodeURIComponent(nextValue)}`
+      );
     }
   };
 
   showSettings = () => {
     this.setState({
-      visibleSettings: !this.state.visibleSettings
-    })
+      visibleSettings: !this.state.visibleSettings,
+    });
   };
 
   showLabels = () => {
     this.setState({
-      visibleLabels: !this.state.visibleLabels
-    })
+      visibleLabels: !this.state.visibleLabels,
+    });
   };
 
   render() {
@@ -201,22 +211,26 @@ class PictogramsView extends PureComponent {
       muiTheme,
       keywords,
       rootFavorites,
-      width
-    } = this.props
-    const searchText = this.props.params.searchText || ''
-    const { visibleLabels, visibleSettings, offset, tab } = this.state
-    let pictogramsCounter
-    const hideIconText = width === SMALL
-    let pictogramsList
-    if (tab === 0) pictogramsList = visiblePictograms
-    else if (tab === 1) pictogramsList = newPictogramsList
-    let gallery
+      width,
+    } = this.props;
+    const searchText = this.props.params.searchText || "";
+    const { visibleLabels, visibleSettings, offset, tab } = this.state;
+    let pictogramsCounter;
+    const hideIconText = width === SMALL;
+    let pictogramsList;
+    if (tab === 0) pictogramsList = visiblePictograms;
+    else if (tab === 1) pictogramsList = newPictogramsList;
+    let gallery;
     if ((loading && searchText) || (loading && tab !== 0)) {
-      gallery = <ReadMargin><P>{<FormattedMessage {...messages.loadingPictograms} />}</P></ReadMargin>
+      gallery = (
+        <ReadMargin>
+          <P>{<FormattedMessage {...messages.loadingPictograms} />}</P>
+        </ReadMargin>
+      );
     } else if (!searchText && tab !== 1) {
-      gallery = null
+      gallery = null;
     } else {
-      pictogramsCounter = pictogramsList.length
+      pictogramsCounter = pictogramsList.length;
       gallery = pictogramsCounter ? (
         <PictogramList
           pictograms={pictogramsList}
@@ -229,33 +243,39 @@ class PictogramsView extends PureComponent {
           onDeleteFavorite={this.handleDeleteFavorite}
           onDownload={this.handleDownload}
           favorites={rootFavorites}
-          rtl={muiTheme.direction === 'rtl'}
+          rtl={muiTheme.direction === "rtl"}
           offset={offset}
           onPageClick={this.handlePageClick}
         />
       ) : (
-          <ReadMargin>
-            <P>{<FormattedMessage {...messages.pictogramsNotFound} />}</P>
-          </ReadMargin>
-        )
+        <ReadMargin>
+          <P>{<FormattedMessage {...messages.pictogramsNotFound} />}</P>
+        </ReadMargin>
+      );
     }
 
     return (
       <div>
         <Helmet
-          title='PictogramsView'
+          title="PictogramsView"
           meta={[
-            { name: 'description', content: 'Description of PictogramsView' }
+            { name: "description", content: "Description of PictogramsView" },
           ]}
         />
         <Tabs onChange={this.handleChange} value={tab}>
           <Tab
-            label={hideIconText ? '' : <FormattedMessage {...messages.search} />}
+            label={
+              hideIconText ? "" : <FormattedMessage {...messages.search} />
+            }
             icon={<SearchIcon />}
             value={0}
           >
             <div>
-              <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+              <View
+                left={true}
+                right={true}
+                style={{ backgroundColor: muiTheme.palette.accent2Color }}
+              >
                 <SearchField
                   value={searchText}
                   onSubmit={this.handleSubmit}
@@ -281,30 +301,31 @@ class PictogramsView extends PureComponent {
                 {pictogramsCounter ? (
                   <ReadMargin>
                     <P>
-                      {' '}
+                      {" "}
                       <FormattedMessage
                         {...messages.pictogramsFound}
                         values={{ pictogramsCounter }}
-                      />{' '}
+                      />{" "}
                     </P>
                   </ReadMargin>
-
                 ) : (
-                    ''
-                  )}
+                  ""
+                )}
                 {gallery}
               </View>
             </div>
-
           </Tab>
           <Tab
-            label={hideIconText ? '' : <FormattedMessage {...messages.new} />}
+            label={hideIconText ? "" : <FormattedMessage {...messages.new} />}
             icon={<NewReleasesIcon />}
             value={1}
           >
-
             <div>
-              <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+              <View
+                left={true}
+                right={true}
+                style={{ backgroundColor: muiTheme.palette.accent2Color }}
+              >
                 <SearchField
                   value={searchText}
                   onSubmit={this.handleSubmit}
@@ -329,26 +350,23 @@ class PictogramsView extends PureComponent {
                 {pictogramsCounter ? (
                   <ReadMargin>
                     <P>
-                      {' '}
+                      {" "}
                       <FormattedMessage
                         {...messages.newPictogramsFound}
                         values={{ pictogramsCounter }}
-                      />{' '}
+                      />{" "}
                     </P>
-
                   </ReadMargin>
-
                 ) : (
-                    ''
-                  )}
+                  ""
+                )}
                 {gallery}
               </View>
             </div>
-
           </Tab>
         </Tabs>
       </div>
-    )
+    );
   }
 }
 
@@ -376,12 +394,12 @@ PictogramsView.propTypes = {
   deleteFavorite: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
   rootFavorites: ImmutablePropTypes.list.isRequired,
-  width: PropTypes.number.isRequired
-}
+  width: PropTypes.number.isRequired,
+};
 
 PictogramsView.contextTypes = {
-  isAuthenticated: PropTypes.bool
-}
+  isAuthenticated: PropTypes.bool,
+};
 
 const mapStateToProps = (state, ownProps) => ({
   filters: makeFiltersSelector()(state),
@@ -390,44 +408,44 @@ const mapStateToProps = (state, ownProps) => ({
   loading: makeLoadingSelector()(state),
   searchResults: makeSearchResultsSelector()(state, ownProps),
   visiblePictograms: makeVisiblePictogramsSelector()(state, ownProps),
-  filtersData: state.getIn(['configuration', 'filtersData']),
+  filtersData: state.getIn(["configuration", "filtersData"]),
   newPictogramsList: makeNewPictogramsSelector()(state),
   keywords: makeKeywordsSelectorByLocale()(state),
   token: makeSelectHasUser()(state),
   rootFavorites: makeSelectRootFavorites()(state),
-  selectedList: makeListSelector()(state)
+  selectedList: makeListSelector()(state),
   // favoritePictograms: makeFavoritePictogramsSelector()(state)
-})
+});
 // const pictoList = state.getIn(['pictogramView', 'search', ownProps.params.searchText]) || []
 
 const mapDispatchToProps = (dispatch) => ({
   requestPictograms: (locale, searchText) => {
-    dispatch(pictograms.request(locale, searchText))
+    dispatch(pictograms.request(locale, searchText));
   },
   requestNewPictograms: (locale) => {
-    dispatch(newPictograms.request(locale))
+    dispatch(newPictograms.request(locale));
   },
   // requestFavorites: (locale, idFavorites, token) => {
   //   dispatch(favoritePictograms.request(locale, idFavorites, token))
   // },
   toggleShowFilter: () => {
-    dispatch(toggleShowFilter())
+    dispatch(toggleShowFilter());
   },
   setFilterItems: (filter, filterItem) => {
-    dispatch(setFilterItems(filter, filterItem))
+    dispatch(setFilterItems(filter, filterItem));
   },
   requestAutocomplete: (locale) => {
-    dispatch(autocomplete.request(locale))
+    dispatch(autocomplete.request(locale));
   },
   addFavorite: (fileName, listName, token) => {
-    dispatch(addFavorite.request(fileName, listName, token))
+    dispatch(addFavorite.request(fileName, listName, token));
   },
   deleteFavorite: (fileName, listName, token) => {
-    dispatch(deleteFavorite.request(fileName, listName, token))
-  }
-})
+    dispatch(deleteFavorite.request(fileName, listName, token));
+  },
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(muiThemeable()(withWidth()(PictogramsView))))
+)(withRouter(muiThemeable()(withWidth()(PictogramsView))));

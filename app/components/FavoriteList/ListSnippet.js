@@ -23,21 +23,21 @@ class ListSnippet extends PureComponent {
   styles = {
     icon: {
       width: 35,
-      height: 35
+      height: 35,
     },
     leftIconButton: {
       width: 60,
       height: 60,
       position: "absolute",
       top: "10",
-      left: "5"
+      left: "5",
     },
     rightIconButton: {
       width: 60,
       height: 60,
       position: "absolute",
       top: "10",
-      right: "5"
+      right: "5",
     },
     cardTitle: {
       textAlign: "center",
@@ -45,7 +45,7 @@ class ListSnippet extends PureComponent {
       fontSize: "1.4rem",
       textTransform: "uppercase",
       color: this.props.muiTheme.appBar.textColor,
-      fontWeight: "900"
+      fontWeight: "900",
     },
     header: {
       fontSize: "1.4rem",
@@ -54,8 +54,8 @@ class ListSnippet extends PureComponent {
       color: this.props.muiTheme.palette.primary1Color,
       fontWeight: "900",
       textAlign: "center",
-      paddingTop: 30
-    }
+      paddingTop: 30,
+    },
   };
 
   state = {
@@ -63,26 +63,26 @@ class ListSnippet extends PureComponent {
     menuOpen: false,
     dialogOpen: false,
     newListName: "",
-    inputRef: null
+    inputRef: null,
   };
 
   handleMouseEnter = () => {
     this.setState({
-      zDepth: 3
+      zDepth: 3,
     });
   };
 
-  handleListNameChange = e => {
+  handleListNameChange = (e) => {
     this.setState({
-      newListName: e.target.value
+      newListName: e.target.value,
     });
   };
 
-  handleDelete = event => {
+  handleDelete = (event) => {
     event.stopPropagation();
     this.props.onDelete(this.props.listName);
   };
-  handleRename = event => {
+  handleRename = (event) => {
     event.stopPropagation();
     this.setState({ dialogOpen: true, menuOpen: false }, () => {
       const { inputRef } = this.state;
@@ -90,25 +90,25 @@ class ListSnippet extends PureComponent {
     });
   };
 
-  handleDownload = event => {
+  handleDownload = (event) => {
     event.stopPropagation();
     this.props.onDownload(this.props.listName);
   };
 
   handleMouseLeave = () => {
     this.setState({
-      zDepth: 1
+      zDepth: 1,
     });
   };
 
-  handleOpenMenu = event => {
+  handleOpenMenu = (event) => {
     event.stopPropagation();
     this.setState({ menuOpen: true, anchorEl: event.currentTarget });
   };
 
   handleCloseMenu = () => this.setState({ menuOpen: false });
 
-  handleClick = event => {
+  handleClick = (event) => {
     event.stopPropagation();
     const { onSelect, listName } = this.props;
     onSelect(listName);
@@ -134,7 +134,7 @@ class ListSnippet extends PureComponent {
       intl,
       connectDropTarget,
       canDrop,
-      isOver
+      isOver,
     } = this.props;
     const { anchorEl, menuOpen } = this.state;
     const { formatMessage } = intl;
@@ -151,11 +151,11 @@ class ListSnippet extends PureComponent {
         keyboardFocused={true}
         onClick={this.handleSubmitDialog}
         type="submit"
-      />
+      />,
     ];
     return (
       <StyledList
-        innerRef={instance => connectDropTarget(instance)}
+        innerRef={(instance) => connectDropTarget(instance)}
         key={listName}
         className="image-element-class"
         onMouseEnter={this.handleMouseEnter}
@@ -185,15 +185,15 @@ class ListSnippet extends PureComponent {
               onChange={this.handleListNameChange}
             />
           ) : (
-              <TextField
-                ref={c => (this.state.inputRef = c)}
-                hintText={formatMessage(messages.addFolderHint)}
-                floatingLabelText={formatMessage(messages.folderName)}
-                style={{ marginRight: 10 }}
-                value={this.state.newlistName}
-                onChange={this.handleListNameChange}
-              />
-            )}
+            <TextField
+              ref={(c) => (this.state.inputRef = c)}
+              hintText={formatMessage(messages.addFolderHint)}
+              floatingLabelText={formatMessage(messages.folderName)}
+              style={{ marginRight: 10 }}
+              value={this.state.newlistName}
+              onChange={this.handleListNameChange}
+            />
+          )}
         </Dialog>
         <StyledPaper
           zDepth={this.state.zDepth}
@@ -208,15 +208,15 @@ class ListSnippet extends PureComponent {
                 alignItems: "center",
                 justifyContent: "center",
                 flexDirection: "column",
-                width: "100%"
+                width: "100%",
               }}
             >
               <p style={this.styles.header}>
                 {listName === DEFAULT_LIST ? (
                   <FormattedMessage {...messages.showFolders} />
                 ) : (
-                    listName
-                  )}
+                  listName
+                )}
               </p>
               {listName === DEFAULT_LIST ? (
                 <ArrowBack
@@ -226,19 +226,19 @@ class ListSnippet extends PureComponent {
                   style={{ width: 100, height: 100 }}
                 />
               ) : (
-                  <Badge
-                    badgeContent={totalItems}
-                    secondary={true}
-                    badgeStyle={{ top: 23, right: 23 }}
-                  >
-                    <Folder
-                      color={muiTheme.palette.primary1Color}
-                      hoverColor={muiTheme.palette.accent1Color}
-                      onClick={this.handleClick}
-                      style={{ width: 100, height: 100 }}
-                    />
-                  </Badge>
-                )}
+                <Badge
+                  badgeContent={totalItems}
+                  secondary={true}
+                  badgeStyle={{ top: 23, right: 23 }}
+                >
+                  <Folder
+                    color={muiTheme.palette.primary1Color}
+                    hoverColor={muiTheme.palette.accent1Color}
+                    onClick={this.handleClick}
+                    style={{ width: 100, height: 100 }}
+                  />
+                </Badge>
+              )}
             </div>
             {listName !== DEFAULT_LIST && (
               <CardActions>
@@ -286,22 +286,22 @@ ListSnippet.propTypes = {
   intl: intlShape.isRequired,
   connectDropTarget: PropTypes.func.isRequired,
   canDrop: PropTypes.bool.isRequired,
-  isOver: PropTypes.bool.isRequired
+  isOver: PropTypes.bool.isRequired,
 };
 
 const target = {
   drop(props) {
     const { listName } = props;
     return {
-      listName
+      listName,
     };
-  }
+  },
 };
 
 const collect = (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   canDrop: monitor.canDrop(),
-  isOver: monitor.isOver()
+  isOver: monitor.isOver(),
 });
 
 export default muiThemeable()(

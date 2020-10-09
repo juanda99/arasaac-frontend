@@ -1,13 +1,13 @@
 /* eslint no-mixed-operators: 0 */
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { injectIntl, intlShape } from 'react-intl'
-import Slider from 'material-ui/Slider'
-import P from 'components/P'
-import ToggleDropDown from './ToggleDropdown'
-import messages from './messages'
-import styles from './styles'
-import BoxOptions from './BoxOptions'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { injectIntl, intlShape } from "react-intl";
+import Slider from "material-ui/Slider";
+import P from "components/P";
+import ToggleDropDown from "./ToggleDropdown";
+import messages from "./messages";
+import styles from "./styles";
+import BoxOptions from "./BoxOptions";
 
 class ZoomOptions extends Component {
   static propTypes = {
@@ -17,21 +17,21 @@ class ZoomOptions extends Component {
     active: PropTypes.bool.isRequired,
     showOptions: PropTypes.bool.isRequired,
     onOptionsShow: PropTypes.func.isRequired,
-    intl: intlShape.isRequired
-  }
+    intl: intlShape.isRequired,
+  };
 
   handleZoomChange = (event, value) => {
-    this.props.onZoomChange(value)
-  }
+    this.props.onZoomChange(value);
+  };
 
-  handleActive = (active) => this.props.onActive(active)
+  handleActive = (active) => this.props.onActive(active);
 
-  handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions)
+  handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions);
 
   render() {
-    const { zoomLevel, showOptions, active, intl } = this.props
-    const { formatMessage } = intl
-    const marginBottom = showOptions ? '150px' : 'auto'
+    const { zoomLevel, showOptions, active, intl } = this.props;
+    const { formatMessage } = intl;
+    const marginBottom = showOptions ? "150px" : "auto";
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown
@@ -44,7 +44,9 @@ class ZoomOptions extends Component {
         />
         {showOptions ? (
           <BoxOptions>
-            <P>{formatMessage(messages.chooseZoom)} {zoomLevel}%</P>
+            <P>
+              {formatMessage(messages.chooseZoom)} {zoomLevel}%
+            </P>
             <Slider
               min={-400}
               max={+800}
@@ -54,11 +56,11 @@ class ZoomOptions extends Component {
             />
           </BoxOptions>
         ) : (
-          ''
+          ""
         )}
       </div>
-    )
+    );
   }
 }
 
-export default injectIntl(ZoomOptions)
+export default injectIntl(ZoomOptions);

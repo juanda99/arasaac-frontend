@@ -1,7 +1,5 @@
-import { injectGlobal } from 'styled-components'
-import {
-  lightGreen500
-} from 'material-ui/styles/colors'
+import { injectGlobal } from "styled-components";
+import { lightGreen500 } from "material-ui/styles/colors";
 
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
@@ -54,4 +52,4 @@ injectGlobal`
   ::-ms-clear {
     display: none;
   }
-`
+`;

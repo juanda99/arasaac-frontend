@@ -1,82 +1,86 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import muiThemeable from 'material-ui/styles/muiThemeable'
-import { PICTOGRAMS_URL } from 'services/config'
-import IconButton from 'material-ui/IconButton'
-import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
-import Favorite from 'material-ui/svg-icons/action/favorite'
-import FileDownload from 'material-ui/svg-icons/file/file-download'
-import { keywordSelector } from 'utils'
-import { FormattedMessage } from 'react-intl'
-import CardActions from './CardActions'
-import StyledPaper from './StyledPaper'
-import StyledList from './StyledList'
-import Image from './Image'
-import Item from './Item'
-import messages from './messages'
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import muiThemeable from "material-ui/styles/muiThemeable";
+import { PICTOGRAMS_URL } from "services/config";
+import IconButton from "material-ui/IconButton";
+import FavoriteBorder from "material-ui/svg-icons/action/favorite-border";
+import Favorite from "material-ui/svg-icons/action/favorite";
+import FileDownload from "material-ui/svg-icons/file/file-download";
+import { keywordSelector } from "utils";
+import { FormattedMessage } from "react-intl";
+import CardActions from "./CardActions";
+import StyledPaper from "./StyledPaper";
+import StyledList from "./StyledList";
+import Image from "./Image";
+import Item from "./Item";
+import messages from "./messages";
 
 class PictogramSnippet extends PureComponent {
   state = {
-    zDepth: 1
+    zDepth: 1,
   };
 
   styles = {
     icon: {
       width: 48,
-      height: 48
+      height: 48,
     },
     leftIconButton: {
       width: 96,
       height: 96,
       padding: 24,
-      position: 'absolute',
-      top: '0',
-      left: '0'
+      position: "absolute",
+      top: "0",
+      left: "0",
     },
     rightIconButton: {
       width: 96,
       height: 96,
       padding: 24,
-      position: 'absolute',
+      position: "absolute",
       opacity: 100,
-      top: '0',
-      right: '0'
+      top: "0",
+      right: "0",
     },
     cardTitle: {
-      textAlign: 'center',
-      fontSize: '1.4rem',
-      textTransform: 'uppercase',
+      textAlign: "center",
+      fontSize: "1.4rem",
+      textTransform: "uppercase",
       color: this.props.muiTheme.appBar.textColor,
-      fontWeight: '900'
-    }
+      fontWeight: "900",
+    },
   };
 
   handleMouseEnter = () => {
     this.setState({
-      zDepth: 3
-    })
+      zDepth: 3,
+    });
   };
 
   handleClickFavorite = (event) => {
     const {
       pictogram: { _id },
-      onClickFavorite
-    } = this.props
-    event.preventDefault()
-    onClickFavorite(_id)
+      onClickFavorite,
+    } = this.props;
+    event.preventDefault();
+    onClickFavorite(_id);
   };
 
   handleDownload = (event) => {
-    const { pictogram: { _id, keywords }, searchText, onDownload } = this.props
-    event.preventDefault()
-    const { keyword } = keywordSelector(searchText, keywords)
-    onDownload(_id, keyword)
+    const {
+      pictogram: { _id, keywords },
+      searchText,
+      onDownload,
+    } = this.props;
+    event.preventDefault();
+    const { keyword } = keywordSelector(searchText, keywords);
+    onDownload(_id, keyword);
   };
 
   handleMouseLeave = () => {
     this.setState({
-      zDepth: 1
-    })
+      zDepth: 1,
+    });
   };
 
   render() {
@@ -86,20 +90,22 @@ class PictogramSnippet extends PureComponent {
       muiTheme,
       locale,
       showExtra,
-      isFavorite
-    } = this.props
-    const { keyword } = keywordSelector(searchText, keywords)
-    const { isAuthenticated } = this.context
+      isFavorite,
+    } = this.props;
+    const { keyword } = keywordSelector(searchText, keywords);
+    const { isAuthenticated } = this.context;
     return (
       <StyledList
         key={_id}
-        className='image-element-class'
+        className="image-element-class"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
         <StyledPaper zDepth={this.state.zDepth}>
-          <Item url={`/pictograms/${locale}/${_id}/${encodeURIComponent(keyword)}`}>
-            <div style={{ position: 'relative' }}>
+          <Item
+            url={`/pictograms/${locale}/${_id}/${encodeURIComponent(keyword)}`}
+          >
+            <div style={{ position: "relative" }}>
               <Image
                 src={`${PICTOGRAMS_URL}/${_id}/${_id}_300.png`}
                 alt={keyword}
@@ -130,8 +136,8 @@ class PictogramSnippet extends PureComponent {
                       isFavorite ? (
                         <FormattedMessage {...messages.deleteFavorite} />
                       ) : (
-                          <FormattedMessage {...messages.addFavorite} />
-                        )
+                        <FormattedMessage {...messages.addFavorite} />
+                      )
                     }
                     iconStyle={this.styles.icon}
                     style={this.styles.rightIconButton}
@@ -143,11 +149,11 @@ class PictogramSnippet extends PureComponent {
                         hoverColor={muiTheme.palette.accent1Color}
                       />
                     ) : (
-                        <FavoriteBorder
-                          color={muiTheme.appBar.textColor}
-                          hoverColor={muiTheme.palette.accent1Color}
-                        />
-                      )}
+                      <FavoriteBorder
+                        color={muiTheme.appBar.textColor}
+                        hoverColor={muiTheme.palette.accent1Color}
+                      />
+                    )}
                   </IconButton>
                 )}
                 {showExtra && (
@@ -170,13 +176,13 @@ class PictogramSnippet extends PureComponent {
           </Item>
         </StyledPaper>
       </StyledList>
-    )
+    );
   }
 }
 
 PictogramSnippet.contextTypes = {
-  isAuthenticated: PropTypes.bool
-}
+  isAuthenticated: PropTypes.bool,
+};
 
 PictogramSnippet.propTypes = {
   pictogram: PropTypes.object.isRequired,
@@ -187,6 +193,6 @@ PictogramSnippet.propTypes = {
   onClickFavorite: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool,
   onDownload: PropTypes.func.isRequired,
-}
+};
 
-export default muiThemeable()(PictogramSnippet)
+export default muiThemeable()(PictogramSnippet);

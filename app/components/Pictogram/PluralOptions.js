@@ -1,14 +1,14 @@
 /* eslint no-mixed-operators: 0 */
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { injectIntl, intlShape } from 'react-intl'
-import P from 'components/P'
-import { smallColorSet } from 'utils/colors'
-import ColorPicker from './ColorPicker'
-import BoxOptions from './BoxOptions'
-import ToggleDropDown from './ToggleDropdown'
-import messages from './messages'
-import styles from './styles'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { injectIntl, intlShape } from "react-intl";
+import P from "components/P";
+import { smallColorSet } from "utils/colors";
+import ColorPicker from "./ColorPicker";
+import BoxOptions from "./BoxOptions";
+import ToggleDropDown from "./ToggleDropdown";
+import messages from "./messages";
+import styles from "./styles";
 
 class PluralOptions extends Component {
   static propTypes = {
@@ -18,19 +18,19 @@ class PluralOptions extends Component {
     onActive: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
     showOptions: PropTypes.bool.isRequired,
-    onOptionsShow: PropTypes.func.isRequired
-  }
+    onOptionsShow: PropTypes.func.isRequired,
+  };
 
-  handleActive = (active) => this.props.onActive(active)
+  handleActive = (active) => this.props.onActive(active);
 
-  handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions)
+  handleOptionsShow = () => this.props.onOptionsShow(!this.props.showOptions);
 
-  handleColorChange = (color) => this.props.onColorChange(color)
+  handleColorChange = (color) => this.props.onColorChange(color);
 
   render() {
-    const { intl, color, active, showOptions } = this.props
-    const { formatMessage } = intl
-    const marginBottom = showOptions ? '180px' : 'auto'
+    const { intl, color, active, showOptions } = this.props;
+    const { formatMessage } = intl;
+    const marginBottom = showOptions ? "180px" : "auto";
     return (
       <div style={{ marginBottom }}>
         <ToggleDropDown
@@ -52,11 +52,11 @@ class PluralOptions extends Component {
             />
           </BoxOptions>
         ) : (
-          ''
+          ""
         )}
       </div>
-    )
+    );
   }
 }
 
-export default injectIntl(PluralOptions)
+export default injectIntl(PluralOptions);

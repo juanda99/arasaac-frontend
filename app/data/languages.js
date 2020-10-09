@@ -1,101 +1,101 @@
 /* TODO: if changed, we should also update pictograms reducer */
 const languages = [
   {
-    code: 'es',
-    text: 'Español'
+    code: "es",
+    text: "Español",
   },
   {
-    code: 'en',
-    text: 'English'
+    code: "en",
+    text: "English",
   },
   {
-    code: 'ar',
-    text: 'عربى'
+    code: "ar",
+    text: "عربى",
   },
   {
-    code: 'bg',
-    text: 'български'
+    code: "bg",
+    text: "български",
   },
   {
-    code: 'br',
-    text: 'Português do Brasil'
+    code: "br",
+    text: "Português do Brasil",
   },
   {
-    code: 'ca',
-    text: 'Català'
+    code: "ca",
+    text: "Català",
   },
   {
-    code: 'de',
-    text: 'Deutsche'
+    code: "de",
+    text: "Deutsche",
   },
   {
-    code: 'eu',
-    text: 'Euskal'
+    code: "eu",
+    text: "Euskal",
   },
   {
-    code: 'fr',
-    text: 'Français'
+    code: "fr",
+    text: "Français",
   },
   {
-    code: 'gl',
-    text: 'Galego'
+    code: "gl",
+    text: "Galego",
   },
   {
-    code: 'he',
-    text: 'עברי' // hebreo
+    code: "he",
+    text: "עברי", // hebreo
   },
   {
-    code: 'hr',
-    text: 'Hrvatski'
+    code: "hr",
+    text: "Hrvatski",
   },
   {
-    code: 'hu',
-    text: 'Magyar'
+    code: "hu",
+    text: "Magyar",
   },
   {
-    code: 'it',
-    text: 'Italiano'
+    code: "it",
+    text: "Italiano",
   },
   {
-    code: 'mk',
-    text: 'Македонски'
+    code: "mk",
+    text: "Македонски",
   },
   {
-    code: 'el',
-    text: 'Ελληνικά'
+    code: "el",
+    text: "Ελληνικά",
   },
   {
-    code: 'nl',
-    text: 'Nederlands'
+    code: "nl",
+    text: "Nederlands",
   },
   {
-    code: 'pl',
-    text: 'Polski'
+    code: "pl",
+    text: "Polski",
   },
   {
-    code: 'pt',
-    text: 'Português'
+    code: "pt",
+    text: "Português",
   },
   {
-    code: 'ro',
-    text: 'Română'
+    code: "ro",
+    text: "Română",
   },
   {
-    code: 'ru',
-    text: 'Pусский'
+    code: "ru",
+    text: "Pусский",
   },
   {
-    code: 'sk',
-    text: 'Slovenský'
+    code: "sk",
+    text: "Slovenský",
   },
   {
-    code: 'val',
-    text: 'Valencia'
+    code: "val",
+    text: "Valencia",
   },
   {
-    code: 'zh',
-    text: '简体中文）'
-  }
-]
+    code: "zh",
+    text: "简体中文）",
+  },
+];
 
-export default languages
+export default languages;

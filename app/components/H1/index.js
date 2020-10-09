@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { typography } from 'material-ui/styles'
-import media from 'utils/mediaqueries'
+import styled from "styled-components";
+import { typography } from "material-ui/styles";
+import media from "utils/mediaqueries";
 
 const H1 = styled.h1`
   font-size: 4em;
@@ -10,7 +10,6 @@ const H1 = styled.h1`
   ${media.lg} {
     font-size: 3em;
   }
-  
-`
+`;
 
-export default H1
+export default H1;

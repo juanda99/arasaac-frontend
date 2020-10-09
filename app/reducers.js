@@ -3,17 +3,17 @@
  * If we were to do this in store.js, reducers wouldn't be hot reloadable.
  */
 
-import { combineReducers } from 'redux-immutable'
-import { fromJS } from 'immutable'
-import { loadingBarReducer } from 'react-redux-loading-bar'
-import { LOCATION_CHANGE } from 'react-router-redux'
-import { reducer as form } from 'redux-form/immutable'
-import languageProviderReducer from 'containers/LanguageProvider/reducer'
-import pictogramsViewReducer from 'containers/PictogramsView/reducer'
-import materialsViewReducer from 'containers/MaterialsView/reducer'
-import themeProviderReducer from 'containers/ThemeProvider/reducer'
-import tourReducer from 'containers/HomePage/reducer'
-import auth from 'containers/App/reducer'
+import { combineReducers } from "redux-immutable";
+import { fromJS } from "immutable";
+import { loadingBarReducer } from "react-redux-loading-bar";
+import { LOCATION_CHANGE } from "react-router-redux";
+import { reducer as form } from "redux-form/immutable";
+import languageProviderReducer from "containers/LanguageProvider/reducer";
+import pictogramsViewReducer from "containers/PictogramsView/reducer";
+import materialsViewReducer from "containers/MaterialsView/reducer";
+import themeProviderReducer from "containers/ThemeProvider/reducer";
+import tourReducer from "containers/HomePage/reducer";
+import auth from "containers/App/reducer";
 // import register from 'containers/SignupView/reducer'
 /*
  * routeReducer
@@ -23,8 +23,8 @@ import auth from 'containers/App/reducer'
  *
  */
 
-export const INITIAL_LAYOUT = 'modules'
-export const INITIAL_FILTERS = ''
+export const INITIAL_LAYOUT = "modules";
+export const INITIAL_FILTERS = "";
 /*
 export const PICTOGRAMS_LAYOUT = 'PICTOGRAMS_LAYOUT'
 
@@ -61,8 +61,8 @@ const storageState = {
 
 // Initial routing state
 const routeInitialState = fromJS({
-  locationBeforeTransitions: null
-})
+  locationBeforeTransitions: null,
+});
 
 /**
  * Merge route into the global application state
@@ -72,13 +72,12 @@ function routeReducer(state = routeInitialState, action) {
     /* istanbul ignore next */
     case LOCATION_CHANGE:
       return state.merge({
-        locationBeforeTransitions: action.payload
-      })
+        locationBeforeTransitions: action.payload,
+      });
     default:
-      return state
+      return state;
   }
 }
-
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -94,6 +93,6 @@ export default function createReducer(asyncReducers) {
     pictogramsView: pictogramsViewReducer,
     materialsView: materialsViewReducer,
     tour: tourReducer,
-    ...asyncReducers
-  })
+    ...asyncReducers,
+  });
 }

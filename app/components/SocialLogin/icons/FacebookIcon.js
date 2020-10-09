@@ -1,9 +1,7 @@
-import React from 'react'
-import { white } from 'material-ui/styles/colors'
-import Facebook from './svg/facebook'
+import React from "react";
+import { white } from "material-ui/styles/colors";
+import Facebook from "./svg/facebook";
 
-const FacebookIcon = () => (
-  <Facebook color={white} />
-)
+const FacebookIcon = () => <Facebook color={white} />;
 
-export default FacebookIcon
+export default FacebookIcon;

@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import media from 'utils/mediaqueries'
-import muiThemeable from 'material-ui/styles/muiThemeable'
+import styled from "styled-components";
+import media from "utils/mediaqueries";
+import muiThemeable from "material-ui/styles/muiThemeable";
 
 const SearchContainer = styled.div`
   display: flex;
@@ -14,8 +14,7 @@ const SearchContainer = styled.div`
   ${media.lg} {
     padding-left: 4rem;
     padding-right: 4rem;
-
   }
-`
+`;
 
-export default muiThemeable()(SearchContainer)
+export default muiThemeable()(SearchContainer);

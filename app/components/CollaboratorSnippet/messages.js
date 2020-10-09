@@ -1,49 +1,49 @@
-import { defineMessages } from 'react-intl'
+import { defineMessages } from "react-intl";
 
-const scope = 'app.containers/collaboratorsSnippet'
+const scope = "app.containers/collaboratorsSnippet";
 export default defineMessages({
   es: {
     id: `${scope}.es`,
-    defaultMessage: 'Spain'
+    defaultMessage: "Spain",
   },
   au: {
     id: `${scope}.au`,
-    defaultMessage: 'Austria  '
+    defaultMessage: "Austria  ",
   },
   is: {
     id: `${scope}.is`,
-    defaultMessage: 'Israel'
+    defaultMessage: "Israel",
   },
   pt: {
     id: `${scope}.pt`,
-    defaultMessage: 'Portugal'
+    defaultMessage: "Portugal",
   },
   hr: {
     id: `${scope}.hr`,
-    defaultMessage: 'Croatia'
+    defaultMessage: "Croatia",
   },
   ru: {
     id: `${scope}.ru`,
-    defaultMessage: 'Russia'
+    defaultMessage: "Russia",
   },
   hu: {
     id: `${scope}.hu`,
-    defaultMessage: 'Hungary'
+    defaultMessage: "Hungary",
   },
   pl: {
     id: `${scope}.pl`,
-    defaultMessage: 'Poland'
+    defaultMessage: "Poland",
   },
   ir: {
     id: `${scope}.ir`,
-    defaultMessage: 'Ireland'
+    defaultMessage: "Ireland",
   },
   fr: {
     id: `${scope}.fr`,
-    defaultMessage: 'France'
+    defaultMessage: "France",
   },
   mk: {
     id: `${scope}.mk`,
-    defaultMessage: 'Macedonia'
-  }
-})
+    defaultMessage: "Macedonia",
+  },
+});

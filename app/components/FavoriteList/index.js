@@ -1,27 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { DragDropContext } from 'react-dnd'
-import HTML5Backend from 'react-dnd-html5-backend'
-import withWidth, { SMALL, LARGE } from 'material-ui/utils/withWidth'
-import { DEFAULT_LIST } from 'utils'
-import DragPictogramSnippet from 'components/PictogramSnippet/DragPictogramSnippet'
-import CustomDragLayer from 'components/PictogramSnippet/CustomDragLayer'
-import ListSnippet from './ListSnippet'
+import React from "react";
+import PropTypes from "prop-types";
+import { DragDropContext } from "react-dnd";
+import HTML5Backend from "react-dnd-html5-backend";
+import withWidth, { SMALL, LARGE } from "material-ui/utils/withWidth";
+import { DEFAULT_LIST } from "utils";
+import DragPictogramSnippet from "components/PictogramSnippet/DragPictogramSnippet";
+import CustomDragLayer from "components/PictogramSnippet/CustomDragLayer";
+import ListSnippet from "./ListSnippet";
 
-const Masonry = require('react-masonry-component')
+const Masonry = require("react-masonry-component");
 const masonryOptions = {
-  transitionDuration: '1s'
-}
+  transitionDuration: "1s",
+};
 
 const styles = {
   masonry: {
-    listStyleType: 'none',
-    display: 'flex',
-    flexWrap: 'wrap',
+    listStyleType: "none",
+    display: "flex",
+    flexWrap: "wrap",
     flexGrow: 2,
-    justifyContent: 'space-around'
-  }
-}
+    justifyContent: "space-around",
+  },
+};
 
 export class FavoriteList extends React.Component {
   // componentDidMount() {
@@ -36,8 +36,8 @@ export class FavoriteList extends React.Component {
   // };
 
   handleDeleteFavorite = (fileName) => {
-    const { onDeleteFavorite, selectedList } = this.props
-    onDeleteFavorite(fileName, selectedList)
+    const { onDeleteFavorite, selectedList } = this.props;
+    onDeleteFavorite(fileName, selectedList);
   };
 
   render() {
@@ -51,19 +51,18 @@ export class FavoriteList extends React.Component {
       onRename,
       onDrop,
       listPictograms,
-      onDownloadList
-    } = this.props
-    let renderLists
+      onDownloadList,
+    } = this.props;
+    let renderLists;
     /* if not authenticated item.keys is undefined and should not render anything */
 
-
-    const [...lists] = items.keys()
+    const [...lists] = items.keys();
 
     if (selectedList === DEFAULT_LIST) {
       renderLists = lists
         .filter((listItem) => listItem !== DEFAULT_LIST)
         .map((listItem) => {
-          const totalItems = items.get(listItem).size
+          const totalItems = items.get(listItem).size;
           return (
             <ListSnippet
               key={listItem}
@@ -74,8 +73,8 @@ export class FavoriteList extends React.Component {
               onSelect={onSelect}
               onRename={onRename}
             />
-          )
-        })
+          );
+        });
     } else {
       /* in these case we just render back button */
       renderLists = (
@@ -87,26 +86,26 @@ export class FavoriteList extends React.Component {
           onSelect={onSelect}
           onRename={onRename}
         />
-      )
+      );
     }
-    const renderPictograms = listPictograms.map((pictogram) =>
+    const renderPictograms = listPictograms.map((pictogram) => (
       <DragPictogramSnippet
         pictogram={pictogram}
-        locale={'es'}
+        locale={"es"}
         key={pictogram._id}
         showExtra={width === LARGE}
         onDrop={onDrop}
         onDelete={this.handleDeleteFavorite}
         onDownload={onDownload}
       />
-    )
+    ));
 
     return (
       <div>
         {width !== SMALL ? (
           <Masonry
-            className={'my-gallery-class'} // default ''
-            elementType={'ul'} // default 'div'
+            className={"my-gallery-class"} // default ''
+            elementType={"ul"} // default 'div'
             options={masonryOptions} // default {}
             disableImagesLoaded={false} // default false
             style={styles.masonry}
@@ -115,14 +114,14 @@ export class FavoriteList extends React.Component {
             {renderPictograms}
           </Masonry>
         ) : (
-            <ul>
-              {renderLists}
-              {renderPictograms}
-            </ul>
-          )}
+          <ul>
+            {renderLists}
+            {renderPictograms}
+          </ul>
+        )}
         <CustomDragLayer />
       </div>
-    )
+    );
   }
 }
 
@@ -137,7 +136,7 @@ FavoriteList.propTypes = {
   onRename: PropTypes.func.isRequired,
   selectedList: PropTypes.string.isRequired,
   onDrop: PropTypes.func.isRequired,
-  onDeleteFavorite: PropTypes.func.isRequired
-}
+  onDeleteFavorite: PropTypes.func.isRequired,
+};
 
-export default withWidth()(DragDropContext(HTML5Backend)(FavoriteList))
+export default withWidth()(DragDropContext(HTML5Backend)(FavoriteList));

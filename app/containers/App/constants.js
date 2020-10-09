@@ -15,15 +15,15 @@
 
 /* default locale from browser */
 
-import languages from 'data/languages'
-const appLocales = languages.map((language) => language.code)
-appLocales.push('af')
+import languages from "data/languages";
+const appLocales = languages.map((language) => language.code);
+appLocales.push("af");
 
 // pt-br for brasilian
 // valencian doesn't exist
 
-let navigatorLanguage = navigator.language.split('-')[0] // es-ES get reduced to es
-if (navigator.language === 'pt-br') navigatorLanguage = 'br'
+let navigatorLanguage = navigator.language.split("-")[0]; // es-ES get reduced to es
+if (navigator.language === "pt-br") navigatorLanguage = "br";
 export const DEFAULT_LOCALE = appLocales.includes(navigatorLanguage)
   ? navigatorLanguage
-  : 'en'
+  : "en";

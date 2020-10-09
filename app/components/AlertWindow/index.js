@@ -1,25 +1,25 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { FormattedMessage } from 'react-intl'
-import Dialog from 'material-ui/Dialog'
-import FlatButton from 'material-ui/FlatButton'
-import { withRouter } from 'react-router'
-import messages from './messages'
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { FormattedMessage } from "react-intl";
+import Dialog from "material-ui/Dialog";
+import FlatButton from "material-ui/FlatButton";
+import { withRouter } from "react-router";
+import messages from "./messages";
 
 class AlertWindow extends PureComponent {
   state = {
-    open: true
-  }
+    open: true,
+  };
 
   handleOpen = () => {
-    this.setState({ open: true })
-  }
+    this.setState({ open: true });
+  };
 
   handleClose = () => {
-    const { router } = this.props
-    this.props.onReset()
-    this.setState({ open: false })
-  }
+    const { router } = this.props;
+    this.props.onReset();
+    this.setState({ open: false });
+  };
 
   render() {
     const actions = [
@@ -28,14 +28,14 @@ class AlertWindow extends PureComponent {
         primary={true}
         keyboardFocused={true}
         onClick={this.handleClose}
-      />
-    ]
-    const { title, desc, onSolution, onSolutionText } = this.props
+      />,
+    ];
+    const { title, desc, onSolution, onSolutionText } = this.props;
 
     if (onSolution) {
       actions.unshift(
         <FlatButton label={onSolutionText} onClick={onSolution} />
-      )
+      );
     }
 
     return (
@@ -48,7 +48,7 @@ class AlertWindow extends PureComponent {
       >
         {desc}
       </Dialog>
-    )
+    );
   }
 }
 
@@ -59,7 +59,7 @@ AlertWindow.propTypes = {
   url: PropTypes.string,
   router: PropTypes.any.isRequired,
   onSolution: PropTypes.func,
-  onSolutionText: PropTypes.string
-}
+  onSolutionText: PropTypes.string,
+};
 
-export default withRouter(AlertWindow)
+export default withRouter(AlertWindow);

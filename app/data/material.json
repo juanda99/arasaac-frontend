@@ -1,8 +1,25 @@
 {
   "_id": "591c0ab64da4b09c6f019be3",
   "activities": ["Cuento"],
-  "areas": ["Literatura", "Ciencias Naturales", "Ciencias Sociales", "Conocimiento de si mismo y autonomía personal", "Semántica (Lenguaje)", "Pragmática (Lenguaje)", "Lectura (Lenguaje)", "Escritura (Lenguaje)"],
-  "authors": [{ "web_autor": "http://", "id_autor": 364, "empresa_institucion": "", "email_autor": "", "autor": "AFTEA" }],
+  "areas": [
+    "Literatura",
+    "Ciencias Naturales",
+    "Ciencias Sociales",
+    "Conocimiento de si mismo y autonomía personal",
+    "Semántica (Lenguaje)",
+    "Pragmática (Lenguaje)",
+    "Lectura (Lenguaje)",
+    "Escritura (Lenguaje)"
+  ],
+  "authors": [
+    {
+      "web_autor": "http://",
+      "id_autor": 364,
+      "empresa_institucion": "",
+      "email_autor": "",
+      "autor": "AFTEA"
+    }
+  ],
   "created": "2014-01-29T10:41:29.000Z",
   "desc": "Cuento realizado por una usuaria de AFTEA, adaptado a pictogramas por sus terapeutas, sobre las aventuras de dos amigos, un perro y una gata, que se pierden en la selva y viven una gran aventura hasta encontrar a sus dueños. Corren peligros y... ¡hacen amigos!.  http:://www.aftea.org ",
   "downloads": 0,

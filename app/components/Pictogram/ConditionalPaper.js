@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import withWidth, { SMALL } from 'material-ui/utils/withWidth'
-import Paper from 'material-ui/Paper'
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import withWidth, { SMALL } from "material-ui/utils/withWidth";
+import Paper from "material-ui/Paper";
 
 /**
  *
@@ -15,24 +15,24 @@ import Paper from 'material-ui/Paper'
 
 class ConditionalPaper extends PureComponent {
   state = {
-    zDepth: 1
-  }
+    zDepth: 1,
+  };
 
   handleMouseEnter = () => {
     this.setState({
-      zDepth: 3
-    })
-  }
+      zDepth: 3,
+    });
+  };
 
   handleMouseLeave = () => {
     this.setState({
-      zDepth: 1
-    })
-  }
+      zDepth: 1,
+    });
+  };
 
   render() {
-    const { width, children, style } = this.props
-    const isSmall = SMALL === width
+    const { width, children, style } = this.props;
+    const isSmall = SMALL === width;
     return (
       <div>
         {isSmall ? (
@@ -44,22 +44,22 @@ class ConditionalPaper extends PureComponent {
             onMouseLeave={this.handleMouseLeave}
             style={style}
           >
-            {' '}
-            {children}{' '}
+            {" "}
+            {children}{" "}
           </Paper>
         )}
       </div>
-    )
+    );
   }
 }
 
 ConditionalPaper.propTypes = {
   children: React.PropTypes.oneOfType([
     React.PropTypes.arrayOf(React.PropTypes.node),
-    React.PropTypes.node
+    React.PropTypes.node,
   ]),
   width: PropTypes.number.isRequired,
-  style: PropTypes.object
-}
+  style: PropTypes.object,
+};
 
-export default withWidth()(ConditionalPaper)
+export default withWidth()(ConditionalPaper);

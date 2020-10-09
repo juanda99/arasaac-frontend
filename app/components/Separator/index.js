@@ -1,25 +1,25 @@
-import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import Div from 'components/Div'
-import messages from './messages'
+import React from "react";
+import { FormattedMessage } from "react-intl";
+import Div from "components/Div";
+import messages from "./messages";
 
 const styles = {
   separator: {
-    textAlign: 'center',
+    textAlign: "center",
     paddingTop: 20,
-    clear: 'both'
+    clear: "both",
   },
   separatorText: {
-    display: 'inlineBlock',
+    display: "inlineBlock",
     padding: 4,
-    position: 'relative',
-    backgroundColor: '#fff',
-    color: '#000'
+    position: "relative",
+    backgroundColor: "#fff",
+    color: "#000",
   },
   separatorLine: {
-    marginTop: '-10px'
-  }
-}
+    marginTop: "-10px",
+  },
+};
 
 const Separator = () => (
   <Div style={styles.separator}>
@@ -28,6 +28,6 @@ const Separator = () => (
     </span>
     <hr style={styles.separatorLine} />
   </Div>
-)
+);
 
-export default Separator
+export default Separator;

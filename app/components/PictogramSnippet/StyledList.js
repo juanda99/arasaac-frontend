@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import media from 'utils/mediaqueries'
+import styled from "styled-components";
+import media from "utils/mediaqueries";
 
 const StyledList = styled.li`
   margin: 5px;
@@ -11,6 +11,6 @@ const StyledList = styled.li`
     height: auto;
     margin: 20px auto;
   }
-`
+`;
 
-export default StyledList
+export default StyledList;

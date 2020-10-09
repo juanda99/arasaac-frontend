@@ -1,24 +1,23 @@
-import { shallow } from 'enzyme'
-import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import FullWidthSection from 'components/FullWidthSection'
+import { shallow } from "enzyme";
+import React from "react";
+import { FormattedMessage } from "react-intl";
+import FullWidthSection from "components/FullWidthSection";
 
-import messages from '../messages'
-import Component from '../index'
+import messages from "../messages";
+import Component from "../index";
 
-const renderComponent = () => shallow(<Component />)
+const renderComponent = () => shallow(<Component />);
 
+describe("<participate />", () => {
+  it("should render a <FullWidthSection> tag", () => {
+    const renderedComponent = renderComponent();
+    expect(renderedComponent.type()).toEqual(FullWidthSection);
+  });
 
-describe('<participate />', () => {
-  it('should render a <FullWidthSection> tag', () => {
-    const renderedComponent = renderComponent()
-    expect(renderedComponent.type()).toEqual(FullWidthSection)
-  })
-
-  it('should render the colaboration message', () => {
-    const renderedComponent = renderComponent()
-    expect(renderedComponent.contains(
-      <FormattedMessage {...messages.participate} />
-    )).toEqual(true)
-  })
-})
+  it("should render the colaboration message", () => {
+    const renderedComponent = renderComponent();
+    expect(
+      renderedComponent.contains(<FormattedMessage {...messages.participate} />)
+    ).toEqual(true);
+  });
+});

@@ -4,9 +4,9 @@
  *
  */
 
-import { fromJS } from 'immutable'
-import { PICTOGRAM } from 'containers/PictogramView/actions'
-import { DEFAULT_LIST } from 'utils'
+import { fromJS } from "immutable";
+import { PICTOGRAM } from "containers/PictogramView/actions";
+import { DEFAULT_LIST } from "utils";
 import {
   PICTOGRAMS,
   NEW_PICTOGRAMS,
@@ -14,8 +14,8 @@ import {
   SHOW_FILTERS,
   SET_FILTER_ITEMS,
   FAVORITE_LIST_SELECT,
-  FAVORITE_PICTOGRAMS
-} from './actions'
+  FAVORITE_PICTOGRAMS,
+} from "./actions";
 
 export const initialState = fromJS({
   showFilter: false,
@@ -24,9 +24,9 @@ export const initialState = fromJS({
   search: {},
   words: {},
   favoriteList: DEFAULT_LIST,
-  searchText: '',
+  searchText: "",
   filters: {
-    License: []
+    License: [],
     // TODO: filter by violence, sex, schematic
   },
   pictograms: {
@@ -53,78 +53,82 @@ export const initialState = fromJS({
     ru: {},
     sk: {},
     val: {},
-    zh: {}
+    zh: {},
   },
-  newPictograms: []
-})
+  newPictograms: [],
+});
 
 function pictogramsViewReducer(state = initialState, action) {
-  let newPictogram = {}
-  let idPictogram
+  let newPictogram = {};
+  let idPictogram;
   switch (action.type) {
     case PICTOGRAM.REQUEST:
-      return state.set('loading', true).set('error', false)
+      return state.set("loading", true).set("error", false);
     case PICTOGRAM.SUCCESS:
-      newPictogram = fromJS(action.payload.data || {})
-      idPictogram = action.payload.data._id.toString()
+      newPictogram = fromJS(action.payload.data || {});
+      idPictogram = action.payload.data._id.toString();
       return state
-        .set('loading', false)
+        .set("loading", false)
         .setIn(
-          ['pictograms', action.payload.locale, idPictogram],
+          ["pictograms", action.payload.locale, idPictogram],
           newPictogram
-        )
+        );
 
     case PICTOGRAM.FAILURE:
     case PICTOGRAMS.FAILURE:
     case NEW_PICTOGRAMS.FAILURE:
-      return state.set('error', action.payload.error).set('loading', false)
+      return state.set("error", action.payload.error).set("loading", false);
 
     case PICTOGRAMS.REQUEST:
     case FAVORITE_PICTOGRAMS.REQUEST:
     case NEW_PICTOGRAMS.REQUEST:
-      return state.set('loading', true).set('error', false)
+      return state.set("loading", true).set("error", false);
 
     case PICTOGRAMS.SUCCESS:
-      newPictogram = fromJS(action.payload.data.entities.pictograms || {})
+      newPictogram = fromJS(action.payload.data.entities.pictograms || {});
       return state
-        .set('loading', false)
+        .set("loading", false)
         .setIn(
-          ['search', action.payload.locale, decodeURIComponent(action.payload.searchText)],
+          [
+            "search",
+            action.payload.locale,
+            decodeURIComponent(action.payload.searchText),
+          ],
           action.payload.data.result
         )
-        .mergeIn(['pictograms', action.payload.locale], newPictogram)
+        .mergeIn(["pictograms", action.payload.locale], newPictogram);
 
     case NEW_PICTOGRAMS.SUCCESS:
-      newPictogram = fromJS(action.payload.data.entities.pictograms || {})
+      newPictogram = fromJS(action.payload.data.entities.pictograms || {});
       return state
-        .set('loading', false)
-        .set('newPictograms', action.payload.data.result)
-        .mergeIn(['pictograms', action.payload.locale], newPictogram)
+        .set("loading", false)
+        .set("newPictograms", action.payload.data.result)
+        .mergeIn(["pictograms", action.payload.locale], newPictogram);
 
     case FAVORITE_PICTOGRAMS.SUCCESS:
-      newPictogram = fromJS(action.payload.data.entities.pictograms || {})
+      newPictogram = fromJS(action.payload.data.entities.pictograms || {});
       return state
-        .set('loading', false)
-        .mergeIn(['pictograms', action.payload.locale], newPictogram)
+        .set("loading", false)
+        .mergeIn(["pictograms", action.payload.locale], newPictogram);
 
     case AUTOCOMPLETE.REQUEST:
-      return state
+      return state;
     case AUTOCOMPLETE.SUCCESS:
-      return state.setIn(['words', action.payload.locale], action.payload.data)
+      return state.setIn(["words", action.payload.locale], action.payload.data);
     case AUTOCOMPLETE.FAILURE:
-      return state.set('error', action.payload.error)
+      return state.set("error", action.payload.error);
     case SHOW_FILTERS:
-      return state.set('showFilter', !state.get('showFilter'))
+      return state.set("showFilter", !state.get("showFilter"));
     case SET_FILTER_ITEMS:
       return state.setIn(
-        ['filters', action.payload.filter],
+        ["filters", action.payload.filter],
         action.payload.values
-      )
+      );
     case FAVORITE_LIST_SELECT:
-      return state.set('favoriteList', action.payload.listName)
+      return state.set("favoriteList", action.payload.listName);
     default:
-      return state
+      return state;
   }
 }
 
-export default pictogramsViewReducer
+export default pictogramsViewReducer;
