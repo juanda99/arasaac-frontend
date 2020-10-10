@@ -92,6 +92,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandato
                 hintText={<FormattedMessage {...messages.emailHint} />}
                 floatingLabelText={<FormattedMessage {...messages.email} />}
                 style={styles.field}
+                autoComplete="new-password"
                 onChange={handleEmailChange}
                 validate={mandatory ? [required(), email()] : [email()]}
 
@@ -105,6 +106,7 @@ const RenderAuthors = ({ fields, onEmailExists, onFieldChange, showRole, mandato
                 floatingLabelText={<FormattedMessage {...messages.name} />}
                 filter={MUIAutoComplete.fuzzyFilter}
                 style={styles.field}
+                autoComplete="new-password"
                 validate={mandatory ? [required()] : []}
               />
               <Field
