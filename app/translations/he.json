@@ -427,7 +427,6 @@
   "app.containers.SettingsView.language": "שפה",
   "app.containers.TabsHeader.new": "חדש",
   "app.containers.TabsHeader.search": "חפש",
-  "app.containers.TranslateView.crowdinService": "אנו משתמשים ב Crowdin כדי לתרגם את האתר לשפות שונות. אם תרצו לעזור בתרגום, צרו עימנו קשר! אנו נשדרג את חשבון המשתמש שלכם לתפקיד מתרגם ותקבלו הזמנה להצטרף ל Crowdin:",
   "app.containers.WorldView.arasaacInWorld": "ARASAAC נמצא בשימוש בכל העולם. במפה למטה, תוכלו להתרשם ממספר דוגמאות. צרו עימנו קשר אם תרצו לשתף במפה גם את התוצרים שלכם",
   "app.containers.introArasaacPrizes": "ARASAAC הוא פרויקט שיתופי, הממומן ומנוהל על ידי ממשלת אראגון, שקיבל מספר פרסים, מאז הקמת הפרויקט ב 2007, תודות לעבודה יוצאת דופן של העובדים בו.",
   "app.containers/IntroAAC.inEnglish": "הראה באנגלית",
