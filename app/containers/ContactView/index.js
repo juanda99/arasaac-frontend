@@ -22,9 +22,6 @@ class ContactView extends Component {
     loading: false,
     error: '',
     sendMessage: false,
-    lat: 41.66747,
-    lng: -0.89407,
-    zoom: 3
   }
 
   resetError = () => this.setState({ error: '', sendMessage: false })
@@ -95,12 +92,12 @@ class ContactView extends Component {
           }
 
           {error && this.showError()}
-        </div >
+        </div>
       )
     return (
       <View left={true} right={true} bottom={2}>
         <ReadMargin>
-          <P><FormattedMessage {...messages.formIntro} /></P>
+          <P important={true}><FormattedMessage {...messages.formIntro} /></P>
           {renderView}
         </ReadMargin>
 

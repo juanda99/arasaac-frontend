@@ -72,26 +72,24 @@ class ContactForm extends Component {
           fullWidth
         />
         <P><FormattedMessage {...messages.preventSpam} /></P>
-        <div style={{ display: 'flex' }}>
 
-          <div>
-            <img
-              style={{ width: '130px', height: '130px', marginRight: '50px' }}
-              src={`${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${LOW_RESOLUTION}.png`}
-              alt={'spam filter'}
-            />
-          </div>
-
-          <Field
-            name='fingers'
-            type='text'
-            component={TextField}
-            validate={[required, this.fingersCount]}
-            hintText={<FormattedMessage {...messages.fingersHint} />}
-            floatingLabelText={<FormattedMessage {...messages.fingers} />}
-            fullWidth
+        <div>
+          <img
+            style={{ width: '130px', height: '130px', marginRight: '50px' }}
+            src={`${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${LOW_RESOLUTION}.png`}
+            alt={'spam filter'}
           />
         </div>
+
+        <Field
+          name='fingers'
+          type='text'
+          component={TextField}
+          validate={[required, this.fingersCount]}
+          hintText={<FormattedMessage {...messages.fingersHint} />}
+          floatingLabelText={<FormattedMessage {...messages.fingers} />}
+          fullWidth
+        />
 
         <RaisedButton
           type='submit'
