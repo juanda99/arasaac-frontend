@@ -32,7 +32,8 @@ const areas = [
   { code: 29, text: 'measurementUnits' },
   { code: 30, text: 'moneyUsage' },
   { code: 31, text: 'alphabet' },
-
+  { code: 32, text: 'logicReasoning' },
+  { code: 33, text: 'time' }
 ]
 
 

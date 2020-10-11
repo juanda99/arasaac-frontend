@@ -498,15 +498,6 @@ export default function createRoutes(store) {
       }
     },
     {
-      path: 'translate',
-      name: 'translate',
-      getComponent(location, cb) {
-        import('containers/TranslateView')
-          .then(loadModule(cb))
-          .catch(errorLoading)
-      }
-    },
-    {
       path: 'permissionsError',
       name: 'permissionsError',
       getComponent(location, cb) {

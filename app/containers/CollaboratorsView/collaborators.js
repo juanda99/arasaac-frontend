@@ -26,21 +26,28 @@ const collaborators = [
     name: 'Aiala Grajirena Juanena',
     languages: ['eu'],
     image: 'she.jpg',
-    desc: 'P.T maistra. Onintze Aguirre Méndez Gizarte Integrazio, Gautena.',
+    desc: 'P.T maistra.',
     country: 'es'
   },
   {
     name: 'Ane Cuesta Muguruza',
     languages: ['eu'],
     image: 'she.jpg',
-    desc: 'P.T maistra. Onintze Aguirre Méndez Gizarte Integrazio, Gautena.',
+    desc: 'P.T maistra.',
     country: 'es'
   },
   {
     name: 'Marina Argote Larrauri',
     languages: ['eu'],
     image: 'she.jpg',
-    desc: 'H.H maistra. Onintze Aguirre Méndez Gizarte Integrazio, Gautena.',
+    desc: 'H.H maistra.',
+    country: 'es'
+  },
+  {
+    name: 'Onintze Aguirre Méndez',
+    languages: ['eu'],
+    image: 'she.jpg',
+    desc: 'Gizarte Integrazio, Gautena.',
     country: 'es'
   },
   {

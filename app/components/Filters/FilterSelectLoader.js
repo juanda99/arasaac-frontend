@@ -22,6 +22,7 @@ export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, t
         case 9:
         case 10:
         case 31:
+        case 32:
           text = `${formatMessage(messages['language'])} / ${text}`
           break;
         case 13:
@@ -30,6 +31,7 @@ export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, t
         case 16:
         case 29:
         case 30:
+        case 33:
           text = `${formatMessage(messages['math'])} / ${text}`
           break;
         case 1:

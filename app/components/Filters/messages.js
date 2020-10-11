@@ -252,6 +252,16 @@ export default defineMessages({
     description: 'Menu choose material area',
     defaultMessage: 'Alphabet'
   },
+  logicReasoning: {
+    id: 'app.components.Filters.Area.logicReasoning',
+    description: 'Menu choose material area',
+    defaultMessage: 'Logic reasoning'
+  },
+  time: {
+    id: 'app.components.Filters.Area.time',
+    description: 'Menu choose material area',
+    defaultMessage: 'Time'
+  },
   activities: {
     id: 'app.components.Filters.Activity.activity',
     description: 'Menu choose material activity',
