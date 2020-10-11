@@ -428,7 +428,6 @@
   "app.containers.SettingsView.language": "Nyelv",
   "app.containers.TabsHeader.new": "Új",
   "app.containers.TabsHeader.search": "Keresés",
-  "app.containers.TranslateView.crowdinService": "A Crowdint használjuk a web oldal és az adminisztrációs felület fordítására különböző nyelveken. Ha szeretne segíteni a fordításban, akkor kérem tudassa velünk! Módosítani fogjuk az ARAASAAC-os hozzáférését fordítói szerepkörrel és kapni fog egy meghívót, hogy csatlakozzon hozzánk a Crowdinon:",
   "app.containers.WorldView.arasaacInWorld": "Az ARASAAC jelen van világszerte. A térképen láthat néhány példát, arra hogy hol használják. Vegye fel velünk a kapcsolatot, ha szeretné megosztani a térképen, hogy Ön hol használja az ARASAAC-ot",
   "app.containers.introArasaacPrizes": "Az ARASAAC egy együttműködési projekt, melyet az Aragón Kormány irányít és finanszíroz. Számos díjat nyert 2007-es megalakulása óta. Köszönet a számtalan együttműködőnek az önzetlen munkájáért.",
   "app.containers/IntroAAC.inEnglish": "Angolul",

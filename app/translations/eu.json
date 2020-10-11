@@ -427,7 +427,6 @@
   "app.containers.SettingsView.language": "Hizkuntza",
   "app.containers.TabsHeader.new": "Berria",
   "app.containers.TabsHeader.search": "Bilatu",
-  "app.containers.TranslateView.crowdinService": "Crowdin-en bidez gure web orria eta administrazio panela hainbat hizkuntzetan itzultzen dugu. Lagundu nahi baduzu, jarri gurekin kontaktuan! ARASAAC-eko kontua eguneratu eta itzultzaile roll-a emangu dizugu. Honetaz gain, Crownin-ean parte hartzeko gonbidapen bat ere jasoko duzu:",
   "app.containers.WorldView.arasaacInWorld": "ARASAAC mundu osoan dago. Beheko mapan, erabileraren adibide batzuk ikus daitezke. ARASAAC erabiltzen izandako esperientzia mapan partekatu nahi baduzu jar zaitez gurekin harremanetan",
   "app.containers.introArasaacPrizes": "ARASAAC lankidetza-proiektua da, Aragoiko Gobernuak koordinatu eta finantzatu duena. Hainbat sari jaso ditu 2007an sortu zenetik, kolaboratzaile ugariren lan altruistari esker.",
   "app.containers/IntroAAC.inEnglish": "Ingelesez erakutsi",
