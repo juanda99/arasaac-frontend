@@ -40,12 +40,12 @@ const ProfileIntro = ({ name, lastLogin, picture, role, isRtl, hasFacebook, hasG
       </SelectField>
 
       <P><FormattedMessage {...messages.currentRole} /> {!!role && <FormattedMessage {...messages[role]} />}</P>
-      {role === 'user' &&
+      {/* {role === 'user' &&
         (
           <Link to='/contact-us'>
             <RaisedButton label={<FormattedMessage {...messages.upgradeRole} />} secondary={true} />
           </Link>
-        )}
+        )} */}
 
 
     </div>
