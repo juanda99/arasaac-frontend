@@ -427,7 +427,6 @@
   "app.containers.SettingsView.language": "Język",
   "app.containers.TabsHeader.new": "Nowy",
   "app.containers.TabsHeader.search": "Szukaj",
-  "app.containers.TranslateView.crowdinService": "Korzystamy z Crowdin, aby tłumaczyć naszą stronę internetową i panel administracyjny na różne języki. Jeśli chcesz pomóc w tłumaczeniach, skontaktuj się z nami! Zaktualizujemy Twoje konto ARASAAC do roli tłumacza, a Ty otrzymasz również zaproszenie do dołączenia do Crowdin:",
   "app.containers.WorldView.arasaacInWorld": "ARASAAC jest obecny na całym świecie. Na poniższej mapie możesz zobaczyć kilka przykładów jego użycia. Skontaktuj się z nami, jeśli chcesz udostępnić na mapie poniżej swoje doświadczenia związane z używaniem ARASAAC",
   "app.containers.introArasaacPrizes": "ARASAAC jest wspólnym projektem, koordynowanym i finansowanym przez rząd Aragonii. Powstał on dzięki altruistycznej pracy wielu współpracowników i otrzymał wiele nagród i wyróżnień od momentu powstania w 2007 r.",
   "app.containers/IntroAAC.inEnglish": "Pokaż w języku angielskim",
