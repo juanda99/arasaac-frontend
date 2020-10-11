@@ -463,7 +463,6 @@
   "app.containers.SettingsView.language": "Idioma",
   "app.containers.TabsHeader.new": "Novo",
   "app.containers.TabsHeader.search": "Pesquisa",
-  "app.containers.TranslateView.crowdinService": "Usamos o Crowdin para traduzir o nosso sítio web e o painel de administração para diferentes idiomas. Se quer ajudar com as traduções, diga-nos! Actualizaremos a sua conta ARASAAC com o papel de tradutor e receberá um convite para juntar-se ao Crowdin:",
   "app.containers.WorldView.arasaacInWorld": "ARASAAC está presente em todo o mundo. No mapa abaixo, pode ver alguns exemplos de utilização. Contacte-nos se deseja partilhar no mapa a sua experiência de utilização do ARASAAC",
   "app.containers.introArasaacPrizes": "ARASAAC é um projecto colaborativo, coordenado e financiado pelo Governo de Aragão, que recebeu vários prémios, desde a sua criação, em 2007, graças ao trabalho altruísta de numerosos colaboradores.",
   "app.containers/IntroAAC.inEnglish": "Mostrar em inglês",
