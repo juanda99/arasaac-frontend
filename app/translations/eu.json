@@ -446,7 +446,7 @@
   "app.containers.SearchBox.advSearchBtn": "Egin klik botoi honetan bilaketa aurreratua egiteko.",
   "app.containers.SearchBox.advSearchHint": "Egin klik goitibeherako menuan Edukia, Egilea, Jarduera (adibidez, errutina, agenda, istorioa ...) edo Arloa (adibidez, Hizkuntza, Matematika, Musika ...) bilatzeko.",
   "app.containers.SearchBox.advancedSearch": "Bilaketa aurreratua",
-  "app.containers.SearchBox.area": "Eremua",
+  "app.containers.SearchBox.area": "Arloa",
   "app.containers.SearchBox.author": "Egilea",
   "app.containers.SearchBox.content": "Edukia",
   "app.containers.SearchBox.disableFilters": "Filtroak desaktibatu",
