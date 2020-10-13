@@ -35,8 +35,8 @@ const styles = {
     alignSelf: 'baseline'
   },
   button: {
-    margin: 16,
-    minWidth: 200
+    margin: 8,
+    minWidth: 120,
   }
 }
 

@@ -19,12 +19,14 @@ import Toggle from 'material-ui/Toggle'
 import { keywordSelector, isEmptyObject } from 'utils'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
+import CopyIcon from 'material-ui/svg-icons/content/content-copy'
 import Konva from 'konva'
 import { Stage } from 'react-konva'
 import P from 'components/P'
 import { colorSet, black } from 'utils/colors'
 import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download'
 import IconButton from 'material-ui/IconButton'
+import Snackbar from 'material-ui/Snackbar'
 import PluralLayer from './PluralLayer'
 import StrikeThroughLayer from './StrikeThroughLayer'
 import VerbalTenseLayer from './VerbalTenseLayer'
@@ -55,6 +57,28 @@ import PictoWrapper from './PictoWrapper'
 import Canvas from './Canvas'
 import PictogramTitle from '../BoxTitle'
 import RelatedWords from './RelatedWords'
+
+
+const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
+  const data = b64Data.replace('data:image/png;base64,', '')
+  const byteCharacters = atob(data);
+  const byteArrays = [];
+
+  for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+    const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+    const byteNumbers = new Array(slice.length);
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+
+  const blob = new Blob(byteArrays, { type: contentType });
+  return blob;
+}
 
 class Pictogram extends Component {
   constructor(props) {
@@ -126,7 +150,8 @@ class Pictogram extends Component {
       zoomOptionsShow: false,
       windowWidth: 0,
       dragAndDrop: false,
-      isFavorite: false
+      isFavorite: false,
+      snackOpen: false
     }
   }
 
@@ -145,6 +170,12 @@ class Pictogram extends Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions)
     document.body.removeEventListener('click', this.needHideOptions)
+  }
+
+  handleRequestClose = () => {
+    this.setState({
+      snackOpen: false,
+    })
   }
 
   onTogglePicker = () =>
@@ -432,6 +463,14 @@ class Pictogram extends Component {
     this.setState({ bottomTextOptionsShow })
   };
 
+  handleExport = () => {
+    const base64Code = this.stageRef.getStage().toDataURL()
+    // var data = new Blob([base64Code], { type: "image/png" });
+    const item = new ClipboardItem({ "image/png": b64toBlob(base64Code, "image/png") });
+    navigator.clipboard.write([item]);
+    this.setState({ snackOpen: true })
+  }
+
   handleBottomTextUpperCase = (uppercase) => {
     // if word is in our list, and uppercase is false, put it back
     const { bottomText } = this.state
@@ -556,7 +595,8 @@ class Pictogram extends Component {
       zoomOptionsShow,
       windowWidth,
       dragAndDrop,
-      isFavorite
+      isFavorite,
+      snackOpen
     } = this.state
 
     const canvasSize =
@@ -578,6 +618,12 @@ class Pictogram extends Component {
     return (
       <div>
         <div style={styles.wrapper}>
+          <Snackbar
+            open={snackOpen}
+            message={<FormattedMessage {...messages.copyToClipboard} />}
+            autoHideDuration={4000}
+            onRequestClose={this.handleRequestClose}
+          />
           <PictoWrapper>
             <ConditionalPaper>
               <PictogramTitle>
@@ -593,7 +639,7 @@ class Pictogram extends Component {
                   ref={(node) => {
                     this.stageRef = node
                   }}
-                  onContextMenu={(e) => e.evt.preventDefault()}
+                // onContextMenu={(e) => e.evt.preventDefault()}
                 >
                   {bgColorActive && (
                     <BackgroundLayer
@@ -692,6 +738,13 @@ class Pictogram extends Component {
                   onClick={this.handleAddFavorite}
                 />
                 {this.renderDownloadButton()}
+                <RaisedButton
+                  label={<FormattedMessage {...messages.copy} />}
+                  primary={true}
+                  style={styles.button}
+                  icon={<CopyIcon />}
+                  onClick={this.handleExport}
+                />
               </PictogramTitle>
             </ConditionalPaper>
           </PictoWrapper>

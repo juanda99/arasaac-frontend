@@ -227,6 +227,14 @@ export default defineMessages({
     id: 'app.components.Pictogram.addFavoriteLabel',
     defaultMessage: 'Add to favorites'
   },
+  copy: {
+    id: 'app.components.Pictogram.copy',
+    defaultMessage: 'Copy'
+  },
+  copyToClipboard: {
+    id: 'app.components.Pictogram.copyToClipboard',
+    defaultMessage: 'Pictogram copied to clipboard'
+  },
   downloadLabel: {
     id: 'app.components.Pictogram.downloadLabel',
     defaultMessage: 'Download'
