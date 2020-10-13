@@ -281,6 +281,8 @@
   "app.components.Pictogram.chooseZoom": "crwdns2936:0crwdne2936:0",
   "app.components.Pictogram.classroom": "crwdns2938:0crwdne2938:0",
   "app.components.Pictogram.color": "crwdns2940:0crwdne2940:0",
+  "app.components.Pictogram.copy": "crwdns5660:0crwdne5660:0",
+  "app.components.Pictogram.copyToClipboard": "crwdns5662:0crwdne5662:0",
   "app.components.Pictogram.description": "crwdns2942:0crwdne2942:0",
   "app.components.Pictogram.downloadLabel": "crwdns2944:0crwdne2944:0",
   "app.components.Pictogram.frame": "crwdns2946:0crwdne2946:0",
