@@ -10,6 +10,7 @@
   "activate.userNotActivated": "Dogodila se pogreška tijekom aktiviranja vašeg korisničkog računa",
   "app.HomePage.discover": "Otkrijte ARASAAC",
   "app.component.MaterialConditions.adaptationQuote": "Citat prilagodbe",
+  "app.component.MaterialConditions.adaptationQuoteDesc": "U prilagodbi postojećeg materijala, ime osobe koja je prilagodila materijal bit će dodano na kraju citata:",
   "app.component.MaterialConditions.adaptedBy": "Prilagodio:",
   "app.component.MaterialConditions.author": "Autor:",
   "app.component.MaterialConditions.checkRead": "Pročitao/la sam i razumijem gore-navedene informacije.",
