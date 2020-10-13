@@ -281,6 +281,8 @@
   "app.components.Pictogram.chooseZoom": "Choose zoom level:",
   "app.components.Pictogram.classroom": "Classroom",
   "app.components.Pictogram.color": "Color",
+  "app.components.Pictogram.copy": "Copy",
+  "app.components.Pictogram.copyToClipboard": "Pictogram copied to clipboard",
   "app.components.Pictogram.description": "Related words",
   "app.components.Pictogram.downloadLabel": "Download",
   "app.components.Pictogram.frame": "Frame",
