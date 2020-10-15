@@ -128,6 +128,16 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Greek'
   },
+  an: {
+    id: 'app.components.LanguageSelector.an',
+    description: 'Select language',
+    defaultMessage: 'Aragonese'
+  },
+  sq: {
+    id: 'app.components.LanguageSelector.sq',
+    description: 'Select language',
+    defaultMessage: 'Albanian'
+  },
   translateOnline: {
     id: 'app.components.LanguageSelector.translateOnline',
     description: 'Select language',

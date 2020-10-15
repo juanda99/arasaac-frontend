@@ -136,20 +136,30 @@ if (!window.Intl) {
     .then(() =>
       Promise.all([
         import('intl/locale-data/jsonp/en.js'),
+        import('intl/locale-data/jsonp/bg.js'),
         import('intl/locale-data/jsonp/nl.js'),
         import('intl/locale-data/jsonp/es.js'),
         import('intl/locale-data/jsonp/fr.js'),
         import('intl/locale-data/jsonp/it.js'),
         import('intl/locale-data/jsonp/de.js'),
+        import('intl/locale-data/jsonp/nl.js'),
         import('intl/locale-data/jsonp/pt.js'),
         import('intl/locale-data/jsonp/he.js'),
+        import('intl/locale-data/jsonp/hr.js'),
+        import('intl/locale-data/jsonp/hu.js'),
         import('intl/locale-data/jsonp/ca.js'),
         import('intl/locale-data/jsonp/gl.js'),
+        import('intl/locale-data/jsonp/ro.js'),
         import('intl/locale-data/jsonp/ru.js'),
+        import('intl/locale-data/jsonp/sk.js'),
         import('intl/locale-data/jsonp/ar.js'),
         import('intl/locale-data/jsonp/eu.js'),
         import('intl/locale-data/jsonp/zh.js'),
-        import('intl/locale-data/jsonp/af.js')
+        import('intl/locale-data/jsonp/af.js'),
+        import('intl/locale-data/jsonp/mk.js'),
+        import('intl/locale-data/jsonp/el.js'),
+        import('intl/locale-data/jsonp/sq.js'),
+        import('intl/locale-data/jsonp/el.js')
       ])
     )
     .then(() => render(translationMessages))

@@ -13,6 +13,10 @@ const languages = [
     text: 'عربى'
   },
   {
+    code: 'an',
+    text: 'Aragonés'
+  },
+  {
     code: 'bg',
     text: 'български'
   },
@@ -87,6 +91,10 @@ const languages = [
   {
     code: 'sk',
     text: 'Slovenský'
+  },
+  {
+    code: 'sq',
+    text: 'Shqip'
   },
   {
     code: 'val',

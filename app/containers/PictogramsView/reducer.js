@@ -32,6 +32,8 @@ export const initialState = fromJS({
   pictograms: {
     es: {},
     en: {},
+    al: {},
+    an: {},
     ar: {},
     bg: {},
     br: {},
