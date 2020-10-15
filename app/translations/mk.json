@@ -281,6 +281,8 @@
   "app.components.Pictogram.chooseZoom": "Изберете ниво на раздалеченост:",
   "app.components.Pictogram.classroom": "Училница",
   "app.components.Pictogram.color": "Боја",
+  "app.components.Pictogram.copy": "Копирај",
+  "app.components.Pictogram.copyToClipboard": "Пиктограмот е копиран на клипбордот",
   "app.components.Pictogram.description": "Сродни зборови",
   "app.components.Pictogram.downloadLabel": "Превземи",
   "app.components.Pictogram.frame": "Рамка",
