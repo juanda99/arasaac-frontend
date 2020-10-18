@@ -29,7 +29,7 @@ import Dialog from 'material-ui/Dialog'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import P from 'components/P'
 import activities from 'data/activities'
-import Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 import areas from 'data/areas'
 import classificationMessages from 'components/Filters/messages'
 import { MATERIALS_URL, IMAGES_URL } from 'services/config'
@@ -221,12 +221,11 @@ class Material extends Component {
     const defaultImage = images.length ? `${MATERIALS_URL}/${idMaterial}/screenshots/${images[0]}` : `${IMAGES_URL}/arasaac-logo.png`
     return (
       <ReadMargin>
-        <Helmet
-          title={title}
-          meta={[
-            { name: 'description', content: desc }
-          ]}
-        />
+        <Helmet>
+          <title>{title}</title>
+          <meta name="description" content={desc} />
+          {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+        </Helmet>
         <H2 primary ucase>{title}</H2>
         {this.renderActionButtons()}
         <p>

@@ -6,11 +6,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
+import { injectIntl, FormattedMessage } from 'react-intl'
 import Joyride, { STATUS } from 'react-joyride'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import View from 'components/View'
-import Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 import SearchField from 'components/SearchField'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
@@ -323,6 +323,7 @@ class MaterialsView extends PureComponent {
   render() {
     const { showFilter, showSettings, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, muiTheme, width, role, pendingMaterials, unpublishedMaterials, authorsName } = this.props
     const { tab, offset, searchType, running, steps } = this.state
+    const { formatMessage } = this.props.intl
     const searchText = this.getSearchText(searchType, this.props.params.searchText) || ''
     let materialsCounter
     const hideIconText = width === SMALL
@@ -403,12 +404,23 @@ class MaterialsView extends PureComponent {
 
       </div>
     )
-
-
+    
+    const title = searchText ? 
+      formatMessage(messages.pageTitleSearch, { searchText })
+      : formatMessage(messages.pageTitle)
+    
+    const description = searchText ? 
+      formatMessage(messages.pageDescriptionSearch, { searchText })
+      : formatMessage(messages.pageDescription)
 
     return (
       <div>
-        <Helmet title='PictogramsView' meta={[{ name: 'description', content: 'Description of PictogramsView' }]} />
+        <Helmet>
+          <title>{title}</title>
+          <meta name="description" content={description} />
+          {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+
+        </Helmet>
         <Joyride
           callback={this.handleJoyrideCallback}
           continuous={true}

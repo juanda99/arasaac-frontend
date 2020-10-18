@@ -6,6 +6,7 @@ import View from 'components/View'
 import RaisedButton from 'material-ui/RaisedButton'
 import P from 'components/P'
 import { Link } from 'react-router'
+import {Helmet} from 'react-helmet'
 import SAAC from 'components/SAAC'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ReadMargin from 'components/ReadMargin'
@@ -40,6 +41,12 @@ class IntroSAAC extends Component {
     }
     return (
       <View left={true} right={true}>
+        <Helmet>
+          <title>¿Qué son los SAAC? - ARASAAC</title>
+          <meta name="description" content="Los Sistemas Aumentativos y Alternativos de Comunicación (SAAC) tienen como objetivo aumentar o compensar las dificultades de comunicación de personas con discapacidad."/>
+          {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+
+        </Helmet>
         <ReadMargin>
           {renderInfo}
           <SAAC />

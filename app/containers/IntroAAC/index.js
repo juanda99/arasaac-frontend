@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import View from 'components/View'
 import RaisedButton from 'material-ui/RaisedButton'
 import P from 'components/P'
+import {Helmet} from 'react-helmet'
 import { Link } from 'react-router'
 import AAC from 'components/AAC'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
@@ -38,6 +39,12 @@ class IntroAAC extends Component {
     }
     return (
       <View left={true} right={true}>
+        <Helmet>
+          <title>What is AAC? - ARASAAC</title>
+          <meta name="description" content="The Augmentative and Alternative Systems of Communication (AAC) aim at increasing or compensate the difficulties of communication of people with disabilities." />
+          {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+
+        </Helmet>
         <ReadMargin>
           {renderInfo}
           <AAC />

@@ -108,3 +108,5 @@ export const getMongoDBLanguage = (language) => {
       return 'none'
   }
 }
+export const capitalizeFirstLetter = (string)  => string.charAt(0).toUpperCase() + string.slice(1);
+

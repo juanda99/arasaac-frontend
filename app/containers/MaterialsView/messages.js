@@ -137,5 +137,22 @@ export default defineMessages({
   last: {
     id: 'joyride.last',
     defaultMessage: 'Last'
-  }
+  },
+  pageTitle: {
+    id: 'app.MaterialsView.pageTitle',
+    defaultMessage: 'AAC shared material resources - ARASAAC'
+  },
+  pageDescription: {
+    id: 'app.MaterialsView.pageDescription',
+    defaultMessage: 'AAC material resources for professionals and families. Download Augmentative and Alternative Communication documents, boards, worksheets...'
+  },
+  pageTitleSearch: {
+    id: 'app.MaterialsView.pageTitleSearch',
+    defaultMessage: 'AAC shared material resources related to {searchText} - ARASAAC'
+  },
+  pageDescriptionSearch: {
+    id: 'app.MaterialsView.pageDescriptionSearch',
+    defaultMessage: 'AAC material resources related to {searchText} for professionals and families. Download Augmentative and Alternative Communication documents, boards, worksheets...'
+  },
+
 })
