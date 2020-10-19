@@ -28,6 +28,7 @@ import af from 'react-intl/locale-data/af'
 import mk from 'react-intl/locale-data/mk'
 import el from 'react-intl/locale-data/el'
 import sq from 'react-intl/locale-data/sq'
+import pl from 'react-intl/locale-data/pl'
 
 import { DEFAULT_LOCALE, appLocales } from './containers/App/constants'
 import enTranslationMessages from './translations/en.json'
@@ -55,6 +56,7 @@ import mkTranslationMessages from './translations/mk.json'
 import elTranslationMessages from './translations/el.json'
 import sqTranslationMessages from './translations/sq.json'
 import anTranslationMessages from './translations/an.json'
+import plTranslationMessages from './translations/pl.json'
 
 addLocaleData([
   ...en,
@@ -79,7 +81,8 @@ addLocaleData([
   ...af,
   ...mk,
   ...el,
-  ...sq
+  ...sq,
+  ...pl
 ])
 
 export const formatTranslationMessages = (locale, messages) => {
@@ -123,4 +126,5 @@ export const translationMessages = {
   el: formatTranslationMessages('el', elTranslationMessages),
   sq: formatTranslationMessages('sq', sqTranslationMessages),
   an: formatTranslationMessages('an', anTranslationMessages),
+  pl: formatTranslationMessages('pl', plTranslationMessages),
 }
