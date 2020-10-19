@@ -9,6 +9,8 @@
   "activate.userActivated": "Вашиот кориснички профил е активиран. Сега можете да се логирате",
   "activate.userNotActivated": "Настана грешка при активирање на вашиот кориснички профил",
   "app.HomePage.discover": "Истражи го ARASAAC",
+  "app.MaterialsView.pageDescription": "Ресурси за ААК за професионалци и семејства. Превезмете документи за алтернативна и аугментативна комуникација, табли, наставни листови...",
+  "app.MaterialsView.pageDescriptionSearch": "Ресурси за ААК поврзани со {searchText} за професионалци и семејства. Превезмете документи за алтернативна и аугментативна комуникација, табли, наставни листови...",
   "app.MaterialsView.pageTitle": "Споделени ресурси за ААК - ARASAAC",
   "app.MaterialsView.pageTitleSearch": "Споделени ресурси за ААК поврзани со {searchText} - ARASAAC",
   "app.component.MaterialConditions.adaptationQuote": "Референца за адаптација",
