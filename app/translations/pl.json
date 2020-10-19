@@ -396,7 +396,7 @@
   "app.containers.ContactView.sendMessage": "Dziękujemy za wiadomość. Skontaktujemy się z Tobą tak szybko, jak to możliwe.",
   "app.containers.ContactView.sendingMessage": "Wysyłanie wiadomości...",
   "app.containers.DevelopersView.grantTypes": "Rodzaje dostępu (dotacji)",
-  "app.containers.DevelopersView.grantTypesDesc": "W zależności od rodzaju aplikacji i potrzeb należy wdrożyć jeden lub inny rodzaj dostępu. Nie wahaj się z nami skontaktować w celu uzyskania więcej informacji.",
+  "app.containers.DevelopersView.grantTypesDesc": "W zależności od rodzaju aplikacji i potrzeb należy zastosować odpowiedni sposób dostępu. Skontaktuj się z nami, jeśli potrzebujesz więcej informacji.",
   "app.containers.DevelopersView.howto": "Użycie API",
   "app.containers.DevelopersView.howtoDesc": "Aby korzystać z interfejsu API ARASAAC, potrzebujesz poświadczeń dostępu. Korzystamy z protokołu autoryzacji Oauth2, który pozwala aplikacjom zewnętrznym na dostęp zarówno do ARASAAC, jak i do danych użytkowników.",
   "app.containers.DevelopersView.introApi": "ARASAAC posiada rozbudowane API do obsługi naszych zasobów w aplikacjach innych firm.",
