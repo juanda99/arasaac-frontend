@@ -17,7 +17,7 @@ import SearchIcon from 'material-ui/svg-icons/action/search'
 import ToolsIcon from 'material-ui/svg-icons/action/build'
 import AppsIcon from 'material-ui/svg-icons/navigation/apps'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
-import MenuIcon from 'material-ui/svg-icons/navigation/chevron-right'
+import LSEIcon from './LSEIcon'
 import AccountIcon from 'material-ui/svg-icons/social/person-add'
 import LoginIcon from 'material-ui/svg-icons/social/person'
 import InfoIcon from 'material-ui/svg-icons/action/info'
@@ -174,7 +174,7 @@ class Menu extends Component {
             id='lstLSE'
             value='/lse'
             primaryText='Lengua de signos española'
-            leftIcon={<SoftwareIcon />}
+            leftIcon={<LSEIcon />}
           />
           )}
 

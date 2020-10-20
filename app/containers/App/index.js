@@ -358,8 +358,7 @@ class App extends Component {
       showMenuIconButton = false;
     }
 
-    const showLSE = this.props.locale === 'es'|| locale==='val'|| locale==='eu'||locale==='gl'|| locale==='ca' || locale === 'an'
-
+    const showLSE = ['es', 'val', 'eu', 'gl', 'ca', 'an'].includes(this.props.locale)
 
     return (
       <div
