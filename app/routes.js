@@ -498,6 +498,19 @@ export default function createRoutes(store) {
       }
     },
     {
+      path: '/lse',
+      name: 'lse',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([import('containers/LSE')])
+        const renderRoute = loadModule(cb)
+        importModules.then(([component]) => {
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      }
+    },
+    {
       path: 'permissionsError',
       name: 'permissionsError',
       getComponent(location, cb) {

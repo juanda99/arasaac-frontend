@@ -249,6 +249,9 @@ class App extends Component {
       case /permissionsError/.test(url):
         title = <FormattedMessage {...messages.forbidden} />;
         break;
+      case /lse/.test(url):
+        title = "Lengua de  signos";
+        break;
       default:
         docked = false;
         break;
@@ -332,7 +335,7 @@ class App extends Component {
       logout,
       role,
       run,
-      direction // runTour
+      direction, // runTour
     } = this.props;
 
     const locale = {
@@ -354,6 +357,10 @@ class App extends Component {
       menuOpen = true;
       showMenuIconButton = false;
     }
+
+    const showLSE = this.props.locale === 'es'|| locale==='val'|| locale==='eu'||locale==='gl'|| locale==='ca' || locale === 'an'
+
+
     return (
       <div
         style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
@@ -405,6 +412,7 @@ class App extends Component {
           isAuthenticated={isAuthenticated}
           signout={logout}
           isMobile={isMobile}
+          showLSE={showLSE}
         />
         <Footer docked={docked} />
       </div>

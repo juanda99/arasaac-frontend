@@ -53,7 +53,8 @@ class Menu extends Component {
     muiTheme: PropTypes.object.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     signout: PropTypes.func.isRequired,
-    isMobile: PropTypes.bool.isRequired
+    isMobile: PropTypes.bool.isRequired,
+    showLSE: PropTypes.bool.isRequired,
   };
 
   static contextTypes = {
@@ -87,7 +88,8 @@ class Menu extends Component {
       muiTheme,
       isAuthenticated,
       signout,
-      isMobile
+      isMobile,
+      showLSE
     } = this.props
 
     const isRtl = muiTheme.direction === 'rtl'
@@ -167,6 +169,15 @@ class Menu extends Component {
           //   />
           // ]}
           />
+          {showLSE && (
+          <ListItem
+            id='lstLSE'
+            value='/lse'
+            primaryText='Lengua de signos española'
+            leftIcon={<SoftwareIcon />}
+          />
+          )}
+
           <ListItem
             id='lstaulaabierta'
             value='http://aulaabierta.arasaac.org'
