@@ -9,6 +9,7 @@
   "activate.userActivated": "Il tuo utente è stato attivato. Puoi accedere.",
   "activate.userNotActivated": "Si è verificato un errore durante l'attivazione dell'utente",
   "app.HomePage.discover": "Scopri ARASAAC",
+  "app.MaterialsView.pageDescription": "Risorse materiali CAA per professionisti e famiglie. Scarica documenti di Comunicazione Aumentativa Alternativa, tabelle, fogli di lavoro...",
   "app.component.MaterialConditions.adaptationQuote": "Citazione dell'adattamento",
   "app.component.MaterialConditions.adaptationQuoteDesc": "Nell'adattamento di un materiale esistente, il nome della persona che lo ha adattato verrà aggiunto alla fine della citazione:",
   "app.component.MaterialConditions.adaptedBy": "Adattato da:",
