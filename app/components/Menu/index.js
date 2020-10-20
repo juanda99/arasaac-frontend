@@ -159,7 +159,7 @@ class Menu extends Component {
             id='lstonlinetools'
             primaryText={<FormattedMessage {...messages.onlineTools} />}
             // primaryTogglesNestedList={true}
-            onClick={() => this.handleLink('http://www.arasaac.org/herramientas.php')}
+            onClick={() => this.handleLink('http://www.old.arasaac.org/herramientas.php')}
             leftIcon={<AppsIcon />}
           // nestedItems={[
           //   <ListItem
