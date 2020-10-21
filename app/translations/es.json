@@ -12,6 +12,7 @@
   "app.MaterialsView.pageDescription": "Materiales y recursos SAAC para familias y profesionales. Descarga documentos, tableros, fichas... de comunicación aumentativa y alternativa.",
   "app.MaterialsView.pageDescriptionSearch": "Materiales y recursos SAAC relacionados con {searchText} para familias y profesionales. Descarga documentos, tableros, fichas... de comunicación aumentativa y alternativa.",
   "app.MaterialsView.pageTitle": "Materiales y recursos SAAC compartidos - ARASAAC",
+  "app.MaterialsView.pageTitleSearch": "Materiales y recursos SAAC compartidos relacionados con {searchText} - ARASAAC",
   "app.component.MaterialConditions.adaptationQuote": "Cita adaptaciones",
   "app.component.MaterialConditions.adaptationQuoteDesc": "En la adaptación de un material existente, se añadirá el nombre de la persona que lo ha adaptado al final de la licencia original:",
   "app.component.MaterialConditions.adaptedBy": "Adaptado por:",
