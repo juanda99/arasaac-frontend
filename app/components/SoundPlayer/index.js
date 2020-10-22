@@ -33,11 +33,9 @@ class SoundPlayer extends PureComponent {
 
   readText = (streamUrl, text) => {
     if (!streamUrl) {
-      console.log(text)
-      console.log(typeof text)
       if ('speechSynthesis' in window) {
         const toSpeak = new SpeechSynthesisUtterance(text)
-        toSpeak.lang = 'es_ES'
+        // toSpeak.lang = 'es_US'
         window.speechSynthesis.speak(toSpeak)
       }
     }

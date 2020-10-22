@@ -9,7 +9,8 @@ import P from 'components/P'
 import SoundPlayer from 'components/SoundPlayer'
 import { LOCUTIONS_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
-import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download'
+// import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download'
+import CloudDownloadIcon from 'material-ui/svg-icons/action/get-app'
 import messages from './messages'
 
 export default class RelatedWords extends Component {
@@ -42,25 +43,30 @@ export default class RelatedWords extends Component {
   //   />
   // );
 
-  getSoundPlayer = (idLocution, locale, keyword) => {
-    const streamUrl = `${LOCUTIONS_URL}/${locale}/${idLocution}`
+  getSoundPlayer = (hasLocution, locale, keyword, download) => {
+    // split('/').join("\\\\") for pictos like 1/3, rewrote to 1\\3 for file system restrictions
+    const streamUrl = hasLocution ? `${LOCUTIONS_URL}/${locale}/${encodeURIComponent(keyword.toLowerCase().split('/').join('\\\\'))}.mp3` : null
     return (
       <div style={{ display: 'flex' }}>
+      {!download && 
         <SoundPlayer
           crossOrigin='anonymous'
           streamUrl={streamUrl}
+          keyword={keyword}
           preloadType='metadata'
           showProgress={false}
           showTimer={false}
         />
-        {keyword && (
+      }
+
+        {download && hasLocution && (
           <IconButton
             touch={true}
-            onClick={() =>
-              this.props.onDownloadLocution(idLocution, locale, keyword)
+            onClick={
+              () =>this.props.onDownloadLocution(locale, keyword)
             }
           >
-            <CloudDownloadIcon />
+            <CloudDownloadIcon/>
           </IconButton>
         )}
       </div>
@@ -95,12 +101,22 @@ export default class RelatedWords extends Component {
 
               <div key={`${keyword.keyword}-${index}`}>
                 <div style={{ display: 'flex' }}>
-                  {keyword.idLocution &&
+                  {
                     this.getSoundPlayer(
-                      keyword.idLocution,
+                      keyword.hasLocution,
                       language,
-                      keyword.keyword
+                      keyword.keyword,
+                      false
                     )}
+
+                                      {
+                    this.getSoundPlayer(
+                      keyword.hasLocution,
+                      language,
+                      keyword.keyword,
+                      true
+                    )}
+
                   <P important={true} marginRight={'10px'}>
                     {keyword.keyword}{' '}
                   </P>
