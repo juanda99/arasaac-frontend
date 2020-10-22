@@ -14,5 +14,6 @@
   "app.MaterialsView.pageTitle": "Materials e recursos SAAC compartitos - ARASAAC",
   "app.MaterialsView.pageTitleSearch": "Materials e recursos SAAC compartitos relazionatos con {searchText} - ARASAAC",
   "app.component.MaterialConditions.adaptationQuoteDesc": "En l'adautazión d'un material esistén, s'adibirá o nombre d'a presona que ha feito l'adautazión a la fin d'a lizenzia orichinal:",
+  "app.component.MaterialConditions.adaptedBy": "Adautato por:",
   "app.component.MaterialConditions.author": "Autor:"
 }
