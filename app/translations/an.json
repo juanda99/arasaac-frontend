@@ -10,5 +10,6 @@
   "activate.userNotActivated": "Ha ocurrito una error en activar a tuya cuenta d'usuario",
   "app.HomePage.discover": "Escubre ARASAAC",
   "app.MaterialsView.pageDescription": "Materials e recursos SAAC pa familias e profesionals. Escarga documentos, tablers, fichas... de comunicazión aumentativa e alternativa...",
+  "app.MaterialsView.pageDescriptionSearch": "Materials e recursos SAAC relazionatos con {searchText} pa familias e profesionals. Escarga documentos, tablers, fichas... de comunicazión aumentativa e alternativa...",
   "app.component.MaterialConditions.author": "Autor:"
 }
