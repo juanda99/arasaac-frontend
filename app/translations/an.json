@@ -11,5 +11,7 @@
   "app.HomePage.discover": "Escubre ARASAAC",
   "app.MaterialsView.pageDescription": "Materials e recursos SAAC pa familias e profesionals. Escarga documentos, tablers, fichas... de comunicazión aumentativa e alternativa...",
   "app.MaterialsView.pageDescriptionSearch": "Materials e recursos SAAC relazionatos con {searchText} pa familias e profesionals. Escarga documentos, tablers, fichas... de comunicazión aumentativa e alternativa...",
+  "app.MaterialsView.pageTitle": "Materials e recursos SAAC compartitos - ARASAAC",
+  "app.MaterialsView.pageTitleSearch": "Materials e recursos SAAC compartitos relazionatos con {searchText} - ARASAAC",
   "app.component.MaterialConditions.author": "Autor:"
 }
