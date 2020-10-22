@@ -45,5 +45,17 @@ export default defineMessages({
   mk: {
     id: `${scope}.mk`,
     defaultMessage: 'Macedonia'
+  },
+  it: {
+    id: `${scope}.it`,
+    defaultMessage: 'Italy'
+  },
+  el: {
+    id: `${scope}.el`,
+    defaultMessage: 'Greece'
+  },
+  bg: {
+    id: `${scope}.bg`,
+    defaultMessage: 'Bulgaria'
   }
 })

@@ -211,6 +211,33 @@ const collaborators = [
     image: 'she.jpg',
     country: 'es'
   },
+    {
+    name: 'Maria Grazia Fiore',
+    languages: ['it'],
+    image: 'maria-grazia.jpg',
+    desc: 'Docente di scuola primaria, esperto nei processi formativi. Bari. ',
+    url: 'https://visualforall.com/',
+    facebook: 'mariagrazia.fiore.71',
+    country: 'it'
+  },
+  {
+    name: 'Labrini Tsokana',
+    languages: ['el'],
+    image: 'labrini-tsokana.jpg',
+    desc: 'Speech Therapist. ',
+    instagram: 'labrini_tsokana', 
+    country: 'el'
+  },
+  {
+    name: 'Didacticmom',
+    languages: ['bg'],
+    image: 'she.jpg',
+    desc: ' ',
+    url: 'https://dondecreceresaprender.blogspot.com',
+    instagram: 'didacticmom', 
+    facebook: 'didacticmom',
+    country: 'bg'
+  },
 ]
 
 export default collaborators

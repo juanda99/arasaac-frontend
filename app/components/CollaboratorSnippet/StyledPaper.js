@@ -9,7 +9,7 @@ const StyledPaper = styled(Paper)`
   flex-wrap: wrap;
   margin-bottom: 15px;
   width: 100%;
-  height: 400px;
+  height: 430px;
   ${media.sm} {
     width: 100%;
     height: 200px;
