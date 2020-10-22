@@ -1,3 +1,7 @@
 {
+  "Login.invalidEmail": "Correu electronico erronio",
+  "Login.invalidUrl": "Url erronia",
+  "Login.required": "Obligatorio",
+  "NewPasswordForm.hintNewPassword": "Cuala ye a tuya clau nueva?",
   "app.component.MaterialConditions.author": "Autor:"
 }
