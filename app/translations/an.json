@@ -7,5 +7,8 @@
   "activate.expiredCode": "O codigo d'activazión ye caducato. T'emos ninviato unatro correu electronico pa validar a tuya cuenta",
   "activate.invalidCode": "A tuya clau d'activazión no ye valida",
   "activate.userActivated": "Emos activato a tuya cuenta d'usuario. Ya puez dentrar a Arasaac.",
+  "activate.userNotActivated": "Ha ocurrito una error en activar a tuya cuenta d'usuario",
+  "app.HomePage.discover": "Escubre ARASAAC",
+  "app.MaterialsView.pageDescription": "Materials e recursos SAAC pa familias e profesionals. Escarga documentos, tablers, fichas... de comunicazión aumentativa e alternativa...",
   "app.component.MaterialConditions.author": "Autor:"
 }
