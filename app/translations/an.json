@@ -15,5 +15,12 @@
   "app.MaterialsView.pageTitleSearch": "Materials e recursos SAAC compartitos relazionatos con {searchText} - ARASAAC",
   "app.component.MaterialConditions.adaptationQuoteDesc": "En l'adautazión d'un material esistén, s'adibirá o nombre d'a presona que ha feito l'adautazión a la fin d'a lizenzia orichinal:",
   "app.component.MaterialConditions.adaptedBy": "Adautato por:",
-  "app.component.MaterialConditions.author": "Autor:"
+  "app.component.MaterialConditions.author": "Autor:",
+  "app.component.MaterialConditions.checkRead": "He leyito e capito a informazión anterior.",
+  "app.component.MaterialConditions.intro": "Asperamos que replequez a nesezidat de siguir istos criterios pa la publicazión de\nmaterials en ARASAAC y tos agradexemos de antimano a vuestra colaborazión.\t",
+  "app.component.MaterialConditions.license": "Lizenzia:",
+  "app.component.MaterialConditions.materialPublication": "Publicazión de materials",
+  "app.component.MaterialConditions.origin": "Orichen:",
+  "app.component.MaterialConditions.pictogramsAuthor": "Autor d'os pictogramas:",
+  "app.component.MaterialConditions.publication": "Publicazión"
 }
