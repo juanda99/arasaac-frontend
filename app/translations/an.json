@@ -3,5 +3,9 @@
   "Login.invalidUrl": "Url erronia",
   "Login.required": "Obligatorio",
   "NewPasswordForm.hintNewPassword": "Cuala ye a tuya clau nueva?",
+  "activate.activateUser": "Activazión de l'usuario",
+  "activate.expiredCode": "O codigo d'activazión ye caducato. T'emos ninviato unatro correu electronico pa validar a tuya cuenta",
+  "activate.invalidCode": "A tuya clau d'activazión no ye valida",
+  "activate.userActivated": "Emos activato a tuya cuenta d'usuario. Ya puez dentrar a Arasaac.",
   "app.component.MaterialConditions.author": "Autor:"
 }
