@@ -118,9 +118,8 @@ export default class RelatedWords extends Component {
                     )}
 
                   <P important={true} marginRight={'10px'}>
-                    {keyword.keyword}{' '}
+                    {keyword.keyword}
                   </P>
-                  <P>{keyword.meaning}</P>
                 </div>
               </div>
             )
