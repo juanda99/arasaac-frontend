@@ -216,6 +216,8 @@
   "app.components.MaterialForm.addFiles": "Shto skedarët e materialeve",
   "app.components.MaterialForm.addMaterialImages": "Shto imazhet e materialeve",
   "app.components.MaterialForm.areas": "Fushat",
+  "app.components.MaterialForm.author": "Autori",
+  "app.components.MaterialForm.authors": "Autorët",
   "app.components.Pictogram.TextOptions.editText": "Ndrysho tekstin",
   "app.components.Pictogram.TextOptions.enterText": "Shtyp tekstin",
   "app.components.Pictogram.TextOptions.fontColor": "Ngjyra e shkronjave:",
