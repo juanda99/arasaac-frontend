@@ -217,5 +217,8 @@
   "app.components.MaterialForm.addMaterialImages": "Shto imazhet e materialeve",
   "app.components.MaterialForm.areas": "Fushat",
   "app.components.Pictogram.TextOptions.editText": "Ndrysho tekstin",
-  "app.components.Pictogram.TextOptions.enterText": "Shtyp tekstin"
+  "app.components.Pictogram.TextOptions.enterText": "Shtyp tekstin",
+  "app.components.Pictogram.TextOptions.fontColor": "Ngjyra e shkronjave:",
+  "app.components.Pictogram.TextOptions.fontFamily": "Familja e shkronjave:",
+  "app.components.Pictogram.TextOptions.fontSize": "Madhësia e shkrimit:"
 }
