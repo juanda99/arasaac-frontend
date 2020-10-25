@@ -1,9 +1,27 @@
 {
+  "Login.invalidEmail": "Email i pavlefshëm",
+  "Login.invalidUrl": "Url e pavlefshme",
+  "Login.required": "Kërkohet",
+  "NewPasswordForm.hintNewPassword": "Fjalëkalimi juaji i ri?",
+  "activate.activateUser": "Aktivizimi i përdoruesit",
+  "activate.expiredCode": "Kodi juaj për aktivizim ka skaduar. Ju kemi dërguar një e-mail tjetër për të verifikuar llogarinë tuaj",
+  "activate.invalidCode": "Kodi juaj i aktivizimit nuk është valid",
   "app.HomePage.discover": "Zbulo ARASAAC",
   "app.MaterialsView.pageDescription": "Burimi i materialeve për KAA për profesionist dhe familje. Shkarko dokumente, tabela, fleta pune për Komunikimin Augumentativ Alternativ...",
   "app.MaterialsView.pageDescriptionSearch": "Burimi i materialeve për KAA {searchText} për profesionist dhe familje. Shkarko dokumente, tabela, fleta pune për Komunikimin Augumentativ Alternativ...",
   "app.MaterialsView.pageTitle": "KAA burimi i materialeve - ARASAAC ",
   "app.MaterialsView.pageTitleSearch": "KAA burimi i materialeve {searchText} - ARASAAC ",
   "app.component.MaterialConditions.adaptationQuote": "Përshtatja e kuotës ",
-  "app.component.MaterialConditions.author": "Autori:"
+  "app.component.MaterialConditions.adaptationQuoteDesc": "Në përshtatje të materialit ekzistues, emri i personit që e ka përshtatur do të shtohet në fund të citatit",
+  "app.component.MaterialConditions.adaptedBy": "I përshtatur nga:",
+  "app.component.MaterialConditions.author": "Autori:",
+  "app.component.MaterialConditions.checkRead": "E kam lexuar dhe e kam kuptuar informacionin më lartë. ",
+  "app.component.MaterialConditions.intro": "Shpresojmë që kuptoni nevojën për të respektuar këto kritere për publikim të materialeve në ARASAAC. Faleminderit paraprakisht për bashkëpunimin tuaj.",
+  "app.component.MaterialConditions.license": "Licenca:",
+  "app.component.MaterialConditions.materialPublication": "Publikimi i materialeve",
+  "app.component.MaterialConditions.origin": "Origjina:",
+  "app.component.MaterialConditions.pictogramsAuthor": "Autori i piktogramave:",
+  "app.component.MaterialConditions.publication": "Publikimi",
+  "app.component.MaterialConditions.publicationDesc": "Administratorët e website të ARASAAC kanë të drejtën të publikojnë materialet nëse ato nuk i respektojnë kërkesat tona apo cilësinë bazuar në materialet e publikuara tashmë.",
+  "app.component.MaterialConditions.requirements": "Kërkesat"
 }
