@@ -449,7 +449,7 @@
   "app.containers.SearchBox.area": "Arloa",
   "app.containers.SearchBox.author": "Egilea",
   "app.containers.SearchBox.content": "Edukia",
-  "app.containers.SearchBox.disableFilters": "Filtroak desaktibatu",
+  "app.containers.SearchBox.disableFilters": "Iragazkiak desaktibatu",
   "app.containers.SearchBox.disableFiltersHint": "\nEgin klik botoi honetan bilaketa-filtroak desaktibatzeko",
   "app.containers.SearchBox.filterResults": "Filtroen emaitzak",
   "app.containers.SearchBox.filters": "Filtroak",
