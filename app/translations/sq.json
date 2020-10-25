@@ -6,6 +6,8 @@
   "activate.activateUser": "Aktivizimi i përdoruesit",
   "activate.expiredCode": "Kodi juaj për aktivizim ka skaduar. Ju kemi dërguar një e-mail tjetër për të verifikuar llogarinë tuaj",
   "activate.invalidCode": "Kodi juaj i aktivizimit nuk është valid",
+  "activate.userActivated": "Përdoruesi juaj është aktivizuar. Tani mund të kyçeni.",
+  "activate.userNotActivated": "Ndodhi një gabim ndërkohë që po aktivizonit llogarinë tuaj",
   "app.HomePage.discover": "Zbulo ARASAAC",
   "app.MaterialsView.pageDescription": "Burimi i materialeve për KAA për profesionist dhe familje. Shkarko dokumente, tabela, fleta pune për Komunikimin Augumentativ Alternativ...",
   "app.MaterialsView.pageDescriptionSearch": "Burimi i materialeve për KAA {searchText} për profesionist dhe familje. Shkarko dokumente, tabela, fleta pune për Komunikimin Augumentativ Alternativ...",
@@ -23,5 +25,9 @@
   "app.component.MaterialConditions.pictogramsAuthor": "Autori i piktogramave:",
   "app.component.MaterialConditions.publication": "Publikimi",
   "app.component.MaterialConditions.publicationDesc": "Administratorët e website të ARASAAC kanë të drejtën të publikojnë materialet nëse ato nuk i respektojnë kërkesat tona apo cilësinë bazuar në materialet e publikuara tashmë.",
-  "app.component.MaterialConditions.requirements": "Kërkesat"
+  "app.component.MaterialConditions.requirements": "Kërkesat",
+  "app.component.MaterialConditions.requirementsP1": "Materialet e publikuara në këtë seksion do të përmbajnë piktogramat nga koleksioni i ARASAAC ose nga ndonjë tjetër punë rrjedhëse.",
+  "app.component.MaterialConditions.requirementsP2": "Materialet janë publikuar nën Creative Commons License BY-NC-SA, duke autorizuar përdorimin e tyre për qëllim jo profitabil, duke dhënë autorin dhe burimin, dhe janë të ndara nën të njëjtën licencë.",
+  "app.component.MaterialConditions.requirementsP3": "Fotografitë dhe imazhet të përfshira në materiale duhet të jenë në përputhje me licencën tonë ose duhet të jenë bërë nga vet autori.",
+  "app.component.MaterialConditions.requirementsP4": "Teksti në materiale duhet të jetë në përputhje me licencën tonë. Nuk mund të jenë kopjim i një përmbajtjeje me të drejta autoriale."
 }
