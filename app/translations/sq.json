@@ -1,3 +1,9 @@
 {
+  "app.HomePage.discover": "Zbulo ARASAAC",
+  "app.MaterialsView.pageDescription": "Burimi i materialeve për KAA për profesionist dhe familje. Shkarko dokumente, tabela, fleta pune për Komunikimin Augumentativ Alternativ...",
+  "app.MaterialsView.pageDescriptionSearch": "Burimi i materialeve për KAA {searchText} për profesionist dhe familje. Shkarko dokumente, tabela, fleta pune për Komunikimin Augumentativ Alternativ...",
+  "app.MaterialsView.pageTitle": "KAA burimi i materialeve - ARASAAC ",
+  "app.MaterialsView.pageTitleSearch": "KAA burimi i materialeve {searchText} - ARASAAC ",
+  "app.component.MaterialConditions.adaptationQuote": "Përshtatja e kuotës ",
   "app.component.MaterialConditions.author": "Autori:"
 }
