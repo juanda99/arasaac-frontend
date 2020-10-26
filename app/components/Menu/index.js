@@ -172,7 +172,7 @@ class Menu extends Component {
           {showLSE && (
           <ListItem
             id='lstLSE'
-            value='/lse'
+            value='/lse/search'
             primaryText='Lengua de signos española'
             leftIcon={<LSEIcon />}
           />

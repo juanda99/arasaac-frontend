@@ -498,17 +498,34 @@ export default function createRoutes(store) {
       }
     },
     {
-      path: '/lse',
-      name: 'lse',
+      path: '/lse/search',
+      name: 'lseView',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([import('containers/LSE')])
+        const importModules = Promise.all([
+          import('containers/LSE')
+        ])
         const renderRoute = loadModule(cb)
         importModules.then(([component]) => {
           renderRoute(component)
         })
-
         importModules.catch(errorLoading)
-      }
+      },
+      childRoutes: [
+        {
+          path: '/lse/search/:searchText',
+          name: 'lseList',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('components/PictogramList')
+            ])
+            const renderRoute = loadModule(cb)
+            importModules.then(([component]) => {
+              renderRoute(component)
+            })
+            importModules.catch(errorLoading)
+          }
+        }
+      ]
     },
     {
       path: 'permissionsError',
