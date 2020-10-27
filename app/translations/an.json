@@ -82,5 +82,15 @@
   "app.components.Filters.Activity.snakeAndLadders": "Chuego d'a Oca",
   "app.components.Filters.Activity.socialHistory": "Istoria sozial",
   "app.components.Filters.Activity.software": "Programa",
-  "app.components.Filters.Activity.song": "Canta"
+  "app.components.Filters.Activity.song": "Canta",
+  "app.components.Filters.Activity.story": "Istoria",
+  "app.components.Filters.Activity.teacchMaterial": "Material TEACCH",
+  "app.components.Filters.Activity.tico": "TICO",
+  "app.components.Filters.Activity.video": "Vidio",
+  "app.components.Filters.Area": "Aria",
+  "app.components.Filters.Area.alphabet": "Alfabeto",
+  "app.components.Filters.Area.art": "Arte",
+  "app.components.Filters.Area.attention": "Atenzión",
+  "app.components.Filters.Area.auditorydiscrimination": "Discriminazión auditiva",
+  "app.components.Filters.Area.basicOperations": "Operazions basicas"
 }
