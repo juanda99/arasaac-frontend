@@ -78,5 +78,9 @@
   "app.components.Filters.Activity.semanticMap": "Mapa semantico",
   "app.components.Filters.Activity.sequence": "Secuenzia",
   "app.components.Filters.Activity.signalling": "Siñalizazión",
-  "app.components.Filters.Activity.smartNotebook": "Libreta intelichén"
+  "app.components.Filters.Activity.smartNotebook": "Libreta intelichén",
+  "app.components.Filters.Activity.snakeAndLadders": "Chuego d'a Oca",
+  "app.components.Filters.Activity.socialHistory": "Istoria sozial",
+  "app.components.Filters.Activity.software": "Programa",
+  "app.components.Filters.Activity.song": "Canta"
 }
