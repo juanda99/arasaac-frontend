@@ -30,5 +30,8 @@
   "app.component.MaterialConditions.requirementsP3": "Os retratos e imachens incluyidas en os materials cal que sigan compatibles con a nuestra lizenzia u aber estau feitas por o propio autor/a.",
   "app.component.MaterialConditions.requirementsP4": "Os testos incluyitos en os materials han d'estar compatibles con a nuestra lizenzia. No pueden estar copias literals de contenito protechito por dreitos d'autor.",
   "app.component.MaterialConditions.requirementsP5": "Toz os materials han d'incluyir a lizenzia ARASAAC, preferiblemén en o piet de pachina, de conchunta con o nombre de l'autor/a d'o material con a finalidat d'atribuyir autoridat. A propiedat intelectual d'o material tamién ye protechida baxo a mesma lizenzia.",
-  "app.component.MaterialConditions.requirementsP6": "Pa fer una zita de traza correuta, cal fer servir uno d'os siguiens formatos:"
+  "app.component.MaterialConditions.requirementsP6": "Pa fer una zita de traza correuta, cal fer servir uno d'os siguiens formatos:",
+  "app.component.MaterialConditions.standardQuote": "Zita estándar",
+  "app.component.MaterialConditions.submit": "Ninviar",
+  "app.component.MaterialConditions.suggestions": "Proposa"
 }
