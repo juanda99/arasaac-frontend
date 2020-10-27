@@ -13,6 +13,7 @@
   "app.MaterialsView.pageDescriptionSearch": "Materials e recursos SAAC relazionatos con {searchText} pa familias e profesionals. Escarga documentos, tablers, fichas... de comunicazión aumentativa e alternativa...",
   "app.MaterialsView.pageTitle": "Materials e recursos SAAC compartitos - ARASAAC",
   "app.MaterialsView.pageTitleSearch": "Materials e recursos SAAC compartitos relazionatos con {searchText} - ARASAAC",
+  "app.component.MaterialConditions.adaptationQuote": "Zita d'adaptazions",
   "app.component.MaterialConditions.adaptationQuoteDesc": "En l'adautazión d'un material esistén, s'adibirá o nombre d'a presona que ha feito l'adautazión a la fin d'a lizenzia orichinal:",
   "app.component.MaterialConditions.adaptedBy": "Adautato por:",
   "app.component.MaterialConditions.author": "Autor:",
@@ -36,5 +37,13 @@
   "app.component.MaterialConditions.suggestions": "Proposa",
   "app.component.MaterialConditions.suggestionsDesc": "En estar que ARASAAC ye un proyeuto colaborativo e internazional, tos recomendamos, si lo consideraz\noportuno, que aportez os fichers tanto en formato de lectura/visualizazión (pdf, pps, ppsx, etz.)  como en formato editable (doc, docx, \nppt, pptx, odf, pszip, etz.), con a finalidat de fazilitar a traduzión ta atros idiomas e as posibles adaptazions a ras carauteristicas de l'usuario/a. Os fichers editables quedarán protechitos igualmén por a nuestra lizenzia Creative Commons.",
   "app.component.MaterialConditions.translationQuote": "Zita de traduzions",
-  "app.component.MaterialConditions.translationQuoteDesc": "En a traduzión d'un material, s'adibirá o nombre d'o traductor/a a ra fin d'a zita:"
+  "app.component.MaterialConditions.translationQuoteDesc": "En a traduzión d'un material, s'adibirá o nombre d'o traductor/a a ra fin d'a zita:",
+  "app.component.MaterialConditions.translator": "Tradutor/a:",
+  "app.component.Participate.contact": "Mete-te en contauto con nusatros",
+  "app.component.Participate.header": "Semos construyindo ARASAAC. Te cuacarba colaborar con nusatros?",
+  "app.components.Catalog.accept": "Azeutar",
+  "app.components.Catalog.arasaacLicense": "Lizenzia de ARASAAC",
+  "app.components.Catalog.cancel": "Canzelar",
+  "app.components.Catalog.confirmLicense": "He leyito e azeuto os termins d'a lizenzia de ARASAAC",
+  "app.components.CategorySnippet.deleteList": "Eliminar a carpeta"
 }
