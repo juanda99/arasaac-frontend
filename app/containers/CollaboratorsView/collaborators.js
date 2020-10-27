@@ -99,6 +99,34 @@ const collaborators = [
     country: 'hr'
   },
   {
+    name: 'Mia Marčec',
+    desc: 'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin. ',
+    languages: ['hr'],
+    image: 'mia.jpg',
+    country: 'hr'
+  },
+  {
+    name: 'Klara Kapeš',
+    desc: 'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin. ',
+    languages: ['hr'],
+    image: 'klara.jpg',
+    country: 'hr'
+  },
+  {
+    name: 'Emili Kuhar',
+    desc: 'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin. ',
+    languages: ['hr'],
+    image: 'Emili-Kuhar.jpg',
+    country: 'hr'
+  },
+  {
+    name: 'Ivana Klapež',
+    desc: 'prof. defektolog-logoped,  working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin. ',
+    languages: ['hr'],
+    image: 'ivana.jpg',
+    country: 'hr'
+  },
+  {
     name: 'Juan Daniel Burró Aláez',
     languages: ['en'],
     desc: 'Arasaac developer.',
