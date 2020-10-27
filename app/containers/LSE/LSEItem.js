@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import P from 'components/P'
+import ShowSoundPlayer from 'components/SoundPlayer/ShowSoundPlayer'
 import { STATIC_SERVER } from 'services/config'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
@@ -31,6 +32,8 @@ class LSEItem extends Component {
 
     return (
       <div style={{padding: 30}}>
+        <ShowSoundPlayer hasLocution={true} locale='es' keyword={searchText} download={false} />
+        <ShowSoundPlayer hasLocution={true} locale='es' keyword={searchText} download={true}  />
         <H2 primary><strong>{searchText}: </strong>{data.desc} </H2>
         <div style={{display:'flex'}}>
           <div  style={{margin: 20, textAlign: 'center'}} >

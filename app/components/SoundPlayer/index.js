@@ -5,6 +5,10 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 // it's just an alias for 'withSoundCloudAudio' but makes code clearer
 import { withCustomAudio } from 'react-soundplayer/addons'
 
+import {
+  LOCUTIONS_URL,
+} from 'services/config'
+
 import SoundButton from './SoundButton'
 import './icons.css'
 
@@ -83,3 +87,35 @@ SoundPlayer.propTypes = {
   showProgress: PropTypes.bool,
   showTimer: PropTypes.bool
 }
+
+
+export const  getSoundPlayer = (hasLocution, locale, keyword, download) => {
+    // split('/').join("\\\\") for pictos like 1/3, rewrote to 1\\3 for file system restrictions
+    const streamUrl = hasLocution ? `${LOCUTIONS_URL}/${locale}/${encodeURIComponent(keyword.toLowerCase().split('/').join('\\\\'))}.mp3` : null
+    return (
+      <div style={{ display: 'flex' }}>
+      {!download && 
+        <SoundPlayer
+          crossOrigin='anonymous'
+          streamUrl={streamUrl}
+          keyword={keyword}
+          preloadType='metadata'
+          showProgress={false}
+          showTimer={false}
+        />
+      }
+
+        {download && hasLocution && (
+          <IconButton
+            touch={true}
+            onClick={
+              () =>this.props.onDownloadLocution(locale, keyword)
+            }
+          >
+            <CloudDownloadIcon/>
+          </IconButton>
+        )}
+      </div>
+    )
+  };
+
