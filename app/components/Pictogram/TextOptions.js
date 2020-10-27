@@ -192,7 +192,7 @@ class TextOptions extends Component {
             <div style={{ marginTop: '-30px' }}>
               <P>{<FormattedMessage {...messages.fontFamily} />}</P>
               <FontPicker
-                apiKey='AIzaSyCLxWCWpaWqXdBFuqfsvnzxOUzJI0JFPOE'
+                apiKey='AIzaSyAoip_N5rTGMPRkIbRqpKMti2CCsx_1iYg'
                 activeFont={font}
                 onChange={this.handleFontChange}
                 style={{ display: 'inlineBlock', width: '100%' }}
