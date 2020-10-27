@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {Helmet} from 'react-helmet'
-import Item from './Item'
+import LSEItem from './LSEItem'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import View from 'components/View'
 import SearchField from 'components/SearchField'
 import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import { withRouter } from 'react-router'
 import lseData from './lseData'
+import Item from 'components/MaterialSnippet/Item'
 
 // import PropTypes from 'prop-types'
 
@@ -15,7 +16,8 @@ const keywords =  Object.keys(lseData).sort()
 
 const styles = {
   searchBar: {
-    flexGrow: 1
+    flexGrow: 1,
+    marginBottom: 20
   }
 }
 class LSEView extends Component {
@@ -76,8 +78,10 @@ class LSEView extends Component {
           filterFromStart={true}
         />
         
-        {data.length && data.map((result, index) => 
-          <Item data={result} key={`${searchText}-${index}`} />
+        {!!data.length && data.map((result, index) => 
+          <Item>
+            <LSEItem data={result} key={`${searchText}-${index}`} searchText={searchText} />
+          </Item>
         )}
 
         

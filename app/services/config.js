@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode'
 import { searchPictogramSchema } from './schemas'
 const CLIENT_ID = '12345'
 export const WEB_URL = 'https://localhost:3000'
-const STATIC_SERVER = 'https://static.arasaac.org'
+export const STATIC_SERVER = 'https://static.arasaac.org'
 export const IMAGES_URL = `${STATIC_SERVER}/images`
 export const PICTOGRAMS_URL = `${STATIC_SERVER}/pictograms`
 export const LOCUTIONS_URL = `${STATIC_SERVER}/locutions`
