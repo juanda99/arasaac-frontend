@@ -99,6 +99,7 @@ const render = async (messages) => {
     childRoutes: createRoutes(store)
   }
   ReactGA.initialize('UA-46065439-1')
+  ReactGA.pageview(window.location.pathname + window.location.search)
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
