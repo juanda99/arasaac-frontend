@@ -69,5 +69,14 @@
   "app.components.Filters.Activity.kitchenRecipes": "Rezetas de cozina",
   "app.components.Filters.Activity.lim": "LIM",
   "app.components.Filters.Activity.notebook": "Libreta",
-  "app.components.Filters.Activity.picaa": "Picaa"
+  "app.components.Filters.Activity.picaa": "Picaa",
+  "app.components.Filters.Activity.pictodroidLite": "Pictodroid Lite",
+  "app.components.Filters.Activity.poster": "Cartel",
+  "app.components.Filters.Activity.presentation": "Presentazión",
+  "app.components.Filters.Activity.protocol": "Protocolo",
+  "app.components.Filters.Activity.routine": "Rotina",
+  "app.components.Filters.Activity.semanticMap": "Mapa semantico",
+  "app.components.Filters.Activity.sequence": "Secuenzia",
+  "app.components.Filters.Activity.signalling": "Siñalizazión",
+  "app.components.Filters.Activity.smartNotebook": "Libreta intelichén"
 }
