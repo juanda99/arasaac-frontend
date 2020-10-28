@@ -282,6 +282,7 @@
     "react-leaflet": "^1.9.1",
     "react-linkify": "^0.2.2",
     "react-masonry-component": "^5.0.3",
+    "react-player": "^1.10.0",
     "react-quill": "^1.2.7",
     "react-redux": "4.4.6",
     "react-redux-loading-bar": "^2.7.2",
