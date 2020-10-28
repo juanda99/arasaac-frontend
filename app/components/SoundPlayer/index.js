@@ -89,33 +89,3 @@ SoundPlayer.propTypes = {
 }
 
 
-export const  getSoundPlayer = (hasLocution, locale, keyword, download) => {
-    // split('/').join("\\\\") for pictos like 1/3, rewrote to 1\\3 for file system restrictions
-    const streamUrl = hasLocution ? `${LOCUTIONS_URL}/${locale}/${encodeURIComponent(keyword.toLowerCase().split('/').join('\\\\'))}.mp3` : null
-    return (
-      <div style={{ display: 'flex' }}>
-      {!download && 
-        <SoundPlayer
-          crossOrigin='anonymous'
-          streamUrl={streamUrl}
-          keyword={keyword}
-          preloadType='metadata'
-          showProgress={false}
-          showTimer={false}
-        />
-      }
-
-        {download && hasLocution && (
-          <IconButton
-            touch={true}
-            onClick={
-              () =>this.props.onDownloadLocution(locale, keyword)
-            }
-          >
-            <CloudDownloadIcon/>
-          </IconButton>
-        )}
-      </div>
-    )
-  };
-
