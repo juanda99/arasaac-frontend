@@ -1,6 +1,6 @@
 import React from 'react'
 import SoundPlayer from './index';
-import CloudDownloadIcon from 'material-ui/svg-icons/action/get-app'
+import GetAppIcon from 'material-ui/svg-icons/action/get-app'
 import IconButton from 'material-ui/IconButton'
 import {
   LOCUTIONS_URL,
@@ -30,7 +30,7 @@ const ShowSoundPlayer = ({hasLocution, locale, keyword, download, onDownloadLocu
               ()=> (window.location = downloadLocution(locale, keyword))
             }
           >
-            <CloudDownloadIcon />
+            <GetAppIcon />
           </IconButton>
         )}
       </div>
