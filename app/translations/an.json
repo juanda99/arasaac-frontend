@@ -100,5 +100,19 @@
   "app.components.Filters.Area.languages": "Luengas",
   "app.components.Filters.Area.leisure": "Ozio e cultura",
   "app.components.Filters.Area.literature": "Literatura",
-  "app.components.Filters.Area.logicReasoning": "Escurrimiento lochico"
+  "app.components.Filters.Area.logicReasoning": "Escurrimiento lochico",
+  "app.components.Filters.Area.math": "Matematicas",
+  "app.components.Filters.Area.measurementUnits": "Unidaz de mida",
+  "app.components.Filters.Area.moneyUsage": "Usache d'os diners",
+  "app.components.Filters.Area.morphosyntax": "Morfosintaxis",
+  "app.components.Filters.Area.music": "Mosica",
+  "app.components.Filters.Area.naturalSciences": "Zenzias naturals",
+  "app.components.Filters.Area.numeration": "Lumerazión",
+  "app.components.Filters.Area.phonology": "Fonolochía",
+  "app.components.Filters.Area.physicalEducation": "Educazión fisica",
+  "app.components.Filters.Area.pragmatics": "Pragmatica",
+  "app.components.Filters.Area.priorSkills": "Abelidaz previas",
+  "app.components.Filters.Area.problems": "Problemas",
+  "app.components.Filters.Area.reading": "Leutura",
+  "app.components.Filters.Area.religion": "Relichión"
 }
