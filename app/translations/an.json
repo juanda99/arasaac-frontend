@@ -186,5 +186,14 @@
   "app.components.Material.chinese": "Chino",
   "app.components.Material.confirmDeletion": "Regular que quiers esborrar iste material?",
   "app.components.Material.croatian": "Croata",
-  "app.components.Material.deleteMaterial": "Esborrar o material"
+  "app.components.Material.deleteMaterial": "Esborrar o material",
+  "app.components.Material.downloadFile": "Escargar l'archivo",
+  "app.components.Material.downloads": "Escarga:",
+  "app.components.Material.english": "Inglés",
+  "app.components.MaterialForm.nameHint": "Fica o nombre de l'autor",
+  "app.components.MaterialForm.notPublished": "Sin de publicar",
+  "app.components.MaterialForm.pending": "Pendién de publicazión",
+  "app.components.MaterialForm.published": "Publicato",
+  "app.components.MaterialForm.role": "Rol d'usuario",
+  "app.components.MaterialForm.screenshots": "Capturas de pantalla"
 }
