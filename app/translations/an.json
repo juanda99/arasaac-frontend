@@ -214,5 +214,6 @@
   "app.components.MaterialSnippet.submit": "Ninviar",
   "app.components.NotFoundPage.header": "No s'ha trobato a pachina web",
   "app.components.Pictogram.ColorPicker.showLessColors": "Amostrar menos colors",
-  "app.components.Pictogram.ColorPicker.showMoreColors": "Amostrar más colors"
+  "app.components.Pictogram.ColorPicker.showMoreColors": "Amostrar más colors",
+  "app.components.Pictogram.DragAndDrop": "Rastrar e soltar"
 }
