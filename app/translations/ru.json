@@ -9,6 +9,7 @@
   "activate.userActivated": "Ваш аккаунт успешно активирован. Теперь Вы можете войти в систему.",
   "activate.userNotActivated": "Произошла ошибка при активации пользователя",
   "app.HomePage.discover": "Откройте для себя АРАСААС",
+  "app.MaterialsView.pageDescription": "АДК ресурсы для профессионалов и семей. Скачайте документы, доски, рабочие материалы...",
   "app.component.MaterialConditions.adaptationQuote": "Адаптированная цитата",
   "app.component.MaterialConditions.adaptationQuoteDesc": "При адаптации существующего материала в конце котировки будет добавлено имя человека, который его адаптировал:",
   "app.component.MaterialConditions.adaptedBy": "Адаптировано:",
