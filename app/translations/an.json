@@ -114,5 +114,21 @@
   "app.components.Filters.Area.priorSkills": "Abelidaz previas",
   "app.components.Filters.Area.problems": "Problemas",
   "app.components.Filters.Area.reading": "Leutura",
-  "app.components.Filters.Area.religion": "Relichión"
+  "app.components.Filters.Area.religion": "Relichión",
+  "app.components.Filters.Area.schedule": "Achenda",
+  "app.components.Filters.Area.selfawareness": "Autoconzeuto e autonomía presonal",
+  "app.components.Filters.Area.semantics": "Semantica",
+  "app.components.Filters.Area.socialSciences": "Zenzias sozials",
+  "app.components.Filters.Area.time": "Tiempo",
+  "app.components.Filters.Area.visualdiscrimination": "Discriminazión visual",
+  "app.components.Filters.Area.writing": "Escritura",
+  "app.components.Filters.Catalog.blackAndWhitePictograms": "Pictogramas en blanco e niero",
+  "app.components.Filters.Catalog.catalog": "Catalogo",
+  "app.components.Filters.Catalog.colorPictograms": "Pictogramas en color",
+  "app.components.Filters.Catalog.lseColor": "Color LSE",
+  "app.components.Filters.Catalog.lseVideos": "Vidios LSE",
+  "app.components.Filters.Catalog.pictures": "Imachens",
+  "app.components.Filters.Language.chooseLanguage": "Luenga",
+  "app.components.Filters.License.license": "Lizenzia",
+  "app.components.Filters.License.nonCommercial": "Reutilizazión no comerzial"
 }
