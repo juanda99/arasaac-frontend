@@ -130,5 +130,16 @@
   "app.components.Filters.Catalog.pictures": "Imachens",
   "app.components.Filters.Language.chooseLanguage": "Luenga",
   "app.components.Filters.License.license": "Lizenzia",
-  "app.components.Filters.License.nonCommercial": "Reutilizazión no comerzial"
+  "app.components.Filters.License.nonCommercial": "Reutilizazión no comerzial",
+  "app.components.Filters.License.nonCommercialModified": "Reutilizazión no comerzial con modificazión",
+  "app.components.Filters.License.reuse": "Reutilizazión",
+  "app.components.Filters.License.reuseModified": "Reutilizazión con modificazión",
+  "app.components.Filters.Size.any": "Cualsiquier mida",
+  "app.components.Filters.Size.large": "Gran",
+  "app.components.Filters.Size.medium": "Meyo",
+  "app.components.Filters.Size.small": "Chicorrón",
+  "app.components.Filters.filterTooltip": "Sacar o filtro",
+  "app.components.Footer.cookiesPolicy": "Politica de Cookies",
+  "app.components.Footer.privacyPolicy": "Politica de privazitat",
+  "app.components.Footer.termsOfUse": "Condizions d'usache"
 }
