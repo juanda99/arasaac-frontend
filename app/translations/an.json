@@ -141,5 +141,20 @@
   "app.components.Filters.filterTooltip": "Sacar o filtro",
   "app.components.Footer.cookiesPolicy": "Politica de Cookies",
   "app.components.Footer.privacyPolicy": "Politica de privazitat",
-  "app.components.Footer.termsOfUse": "Condizions d'usache"
+  "app.components.Footer.termsOfUse": "Condizions d'usache",
+  "app.components.Gallery.header": "Ista ye a parti d'a galería!",
+  "app.components.LanguageSelector.an": "Aragonés",
+  "app.components.LanguageSelector.ar": "Arabe",
+  "app.components.LanguageSelector.bg": "Bulgaro",
+  "app.components.LanguageSelector.br": "Portugués de Brasil",
+  "app.components.LanguageSelector.ca": "Catalán",
+  "app.components.LanguageSelector.choose": "Trigue a suya luenga",
+  "app.components.LanguageSelector.de": "Alemán",
+  "app.components.LanguageSelector.el": "Griego",
+  "app.components.LanguageSelector.es": "Español",
+  "app.components.LanguageSelector.eu": "Euskera",
+  "app.components.LanguageSelector.fr": "Franzés",
+  "app.components.LanguageSelector.gl": "Gallego",
+  "app.components.LanguageSelector.he": "Ebreu",
+  "app.components.LanguageSelector.hr": "Croata"
 }
