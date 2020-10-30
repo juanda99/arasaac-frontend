@@ -427,6 +427,8 @@
   "app.containers.ProfileView.upgradeRole": "Обновить переводчик",
   "app.containers.ProfileView.user": "Пользователь",
   "app.containers.SearchBox.advancedSearch": "Расширенный поиск",
+  "app.containers.SearchBox.searchHint1": "Введите одно или несколько терминов для поиска материала, например? расписание на неделю.",
+  "app.containers.SearchBox.wordSearch": "Поиск по ключевым словам",
   "app.containers.SettingsView.DARK": "Темный",
   "app.containers.SettingsView.HIGH_CONTRAST": "Высокий контраст",
   "app.containers.SettingsView.LIGHT": "Светлый",
