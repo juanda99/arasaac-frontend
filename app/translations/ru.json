@@ -205,7 +205,7 @@
   "app.components.MaterialForm.areasHint": "Выберите области, относящиеся к материалу",
   "app.components.MaterialForm.author": "Автор",
   "app.components.MaterialForm.authors": "Авторы",
-  "app.components.MaterialForm.authorsDataDesc": "Пожалуйста, введите только адрес электронной почты авторов. Они должны быть зарегистрированными пользователями в ARASAAC. Имя заполнено автоматически.",
+  "app.components.MaterialForm.authorsDataDesc": "Пожалуйста, введите только адрес электронной почты авторов. Они должны быть зарегистрированными пользователями в ARASAAC. Имя заполняется автоматически.",
   "app.components.MaterialForm.chooseLanguage": "Выберите язык материала",
   "app.components.MaterialForm.chooseRole": "Выберите роль пользователя",
   "app.components.MaterialForm.classification": "Классификация",
