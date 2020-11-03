@@ -269,5 +269,14 @@
   "app.components.Pictogram.thick": "Amplo",
   "app.components.Pictogram.thin": "Estreito",
   "app.components.Pictogram.topTextToggleLabel": "Texto superior",
-  "app.components.Pictogram.upperCase": "Mayusclas"
+  "app.components.Pictogram.upperCase": "Mayusclas",
+  "app.components.Pictogram.verbalTense": "Tiempo verbal",
+  "app.components.PictogramSnippet.addFavorite": "Adibir a favoritos",
+  "app.components.PictogramSnippet.addFavoriteTooltip": "Adibir un pictograma a favoritos",
+  "app.components.PictogramSnippet.deleteFavorite": "Eliminar de favoritos",
+  "app.components.PictogramSnippet.download": "Escargar o pictograma",
+  "app.components.PictogramSnippet.downloadTooltip": "Escargar o pictograma",
+  "app.components.PrivatePolicy.header": "Iste ye o componén de PrivatePolicy!",
+  "app.components.SearchBox.searchField": "Fica o testo a mirar",
+  "app.components.UseConditions.license": "Lizenzia de Creative Commons (BY-NC-SA)"
 }
