@@ -351,7 +351,6 @@
   "app.components.origin": "Origine :",
   "app.components.owner": "Propriétaire : Gouvernement d'Aragon (Espagne)",
   "app.components.showcase.materials": "Matériels",
-  "app.components.showcase.pictograms": "Pictogrammes",
   "app.components.showcase.whatIsAAC": "Qu'est-ce que la CAA ?",
   "app.components.updateMaterialView.materialLoading": "Chargement du matériel...",
   "app.components.updateMaterialView.materialNotFound": "Désolé, le matériel que vous recherchez n'existe pas",
