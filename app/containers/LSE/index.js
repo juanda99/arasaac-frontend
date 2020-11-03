@@ -8,6 +8,7 @@ import SearchField from 'components/SearchField'
 import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import { withRouter } from 'react-router'
 import removeDiacritics from 'components/SearchField/removeDiacritics'
+import P from 'components/P'
 import lseData from './lseData'
 import Item from 'components/MaterialSnippet/Item'
 
@@ -49,13 +50,14 @@ class LSEView extends Component {
     if (this.props.params.searchText !== searchText) {
       if (searchText) {
         const  matchSearchText = removeDiacritics(searchText).toLowerCase()
-        Object.keys(lseData).some(keyword => {
+        const found = Object.keys(lseData).some(keyword => {
           if (exactMatch(matchSearchText, keyword)) {
             this.setState({data: lseData[keyword], keyword})
             return true
           }
           return false
         })
+        if (!found) this.setState({data: [], keyword: searchText})
       }
     }
   }
@@ -95,6 +97,8 @@ class LSEView extends Component {
             <LSEItem data={result} searchText={keyword} />
           </Item>
         )}
+        {!data.length && keyword && <P>No se han encontrado registros referidos a <strong>{keyword}</strong></P>}
+
       </View >
     )
   }
