@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player'
 import ShowSoundPlayer from 'components/SoundPlayer/ShowSoundPlayer'
 import { STATIC_SERVER } from 'services/config'
 import Div from './Div'
+import Wrapper from './Wrapper'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
 
@@ -71,19 +72,19 @@ class LSEItem extends Component {
 
         </div>
         <H3 noMargin={true} primary>{data.desc} </H3>
-        <div style={{display: 'flex',  flexWrap: 'wrap',  justifyContent: 'flexStart'}}>
+        <Wrapper>
             {imagesAcepciones}
-        </div>
+        </Wrapper>
           <div>
             <H3 primary ucase>Acepción LSE</H3>
-            <div style={{display: 'flex', flexWrap: 'wrap',  justifyContent: 'flexStart'}}>
-            {videosAcepciones}
-            </div>
+            <Wrapper>
+              {videosAcepciones}
+            </Wrapper>
 
           </div>
           <div>
             <H3 primary ucase>Definición LSE</H3>
-            <div style={{display: 'flex',  flexWrap: 'wrap',  justifyContent: 'flexStart'}}>
+            <Wrapper>
               <Div>
                 <ReactPlayer key={`${searchText}-video-def`}
                   url={`${STATIC_SERVER}/lse-definiciones/${data.idPalabra}.mp4`} 
@@ -91,7 +92,7 @@ class LSEItem extends Component {
                   controls
                 />
               </Div>
-            </div>
+            </Wrapper>
           </div>
 
         </div>

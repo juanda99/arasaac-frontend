@@ -2,19 +2,17 @@ import styled from 'styled-components'
 import media from 'utils/mediaqueries'
 
 const Div = styled.div`
-  flex-basis: 500px;
-  margin: 10px;
-  flex-grow: 1;
-  max-width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justifyContent: flexStart;
   ${media.sm} {
-    flex-basis: 250px;
+    flex-wrap: nowrap;
   }
   ${media.md} {
-    flex-basis: 250px;
+    flex-wrap: nowrap;
   }
   ${media.lg} {
-    flex-basis: 300px;
+    flex-wrap: nowrap;
   }
 `
-
 export default Div
