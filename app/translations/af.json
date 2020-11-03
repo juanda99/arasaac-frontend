@@ -355,6 +355,7 @@
   "app.components.showcase.aacSymbols": "crwdns5680:0crwdne5680:0",
   "app.components.showcase.materials": "crwdns3064:0crwdne3064:0",
   "app.components.showcase.whatIsAAC": "crwdns3572:0crwdne3572:0",
+  "app.components.showcase.whatIsARASAAC": "crwdns5688:0crwdne5688:0",
   "app.components.updateMaterialView.materialLoading": "crwdns3068:0crwdne3068:0",
   "app.components.updateMaterialView.materialNotFound": "crwdns3070:0crwdne3070:0",
   "app.components.updateMaterialView.showMaterial": "crwdns3528:0crwdne3528:0",
