@@ -5,6 +5,10 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 // it's just an alias for 'withSoundCloudAudio' but makes code clearer
 import { withCustomAudio } from 'react-soundplayer/addons'
 
+import {
+  LOCUTIONS_URL,
+} from 'services/config'
+
 import SoundButton from './SoundButton'
 import './icons.css'
 
@@ -83,3 +87,5 @@ SoundPlayer.propTypes = {
   showProgress: PropTypes.bool,
   showTimer: PropTypes.bool
 }
+
+

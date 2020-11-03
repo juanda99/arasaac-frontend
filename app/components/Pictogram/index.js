@@ -9,12 +9,11 @@ import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/RaisedButton'
 import {
   PICTOGRAMS_URL,
-  LOCUTIONS_URL,
   API_ROOT,
   IMAGES_URL
 } from 'services/config'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
-import SoundPlayer from 'components/SoundPlayer'
+import ShowSoundPlayer from 'components/SoundPlayer/ShowSoundPlayer'
 import Toggle from 'material-ui/Toggle'
 import { keywordSelector, isEmptyObject } from 'utils'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
@@ -24,8 +23,6 @@ import Konva from 'konva'
 import { Stage } from 'react-konva'
 import P from 'components/P'
 import { colorSet, black } from 'utils/colors'
-import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download'
-import IconButton from 'material-ui/IconButton'
 import Snackbar from 'material-ui/Snackbar'
 import PluralLayer from './PluralLayer'
 import StrikeThroughLayer from './StrikeThroughLayer'
@@ -181,32 +178,6 @@ class Pictogram extends Component {
   onTogglePicker = () =>
     this.setState({ pickerVisible: !this.state.pickerVisible });
 
-  getSoundPlayer = (hasLocution, locale, keyword, download) => {
-    // split('/').join("\\\\") for pictos like 1/3, rewrote to 1\\3 for file system restrictions
-    const streamUrl = hasLocution ? `${LOCUTIONS_URL}/${locale}/${encodeURIComponent(keyword.toLowerCase().split('/').join('\\\\'))}.mp3` : null
-    return (
-      <div style={{ display: 'flex' }}>
-        <SoundPlayer
-          crossOrigin='anonymous'
-          streamUrl={streamUrl}
-          keyword={keyword}
-          preloadType='metadata'
-          showProgress={false}
-          showTimer={false}
-        />
-        {download && hasLocution && (
-          <IconButton
-            touch={true}
-            onClick={
-              this.props.onDownloadLocution(locale, keyword)
-            }
-          >
-            <CloudDownloadIcon />
-          </IconButton>
-        )}
-      </div>
-    )
-  };
   needHideOptions = (event) => {
     // add data-hide to elements where if click options should hide
     if (event.target.dataset.hide) this.hideOptions()
@@ -627,7 +598,7 @@ class Pictogram extends Component {
           <PictoWrapper>
             <ConditionalPaper>
               <PictogramTitle>
-                {this.getSoundPlayer(hasLocution, locale, keyword, false)}
+                <ShowSoundPlayer hasLocution={hasLocution} locale={locale} keyword={keyword} download={false} />
                 <H2 style={{ textAlign: 'center' }} primary ucase noMargin>
                   {keyword}
                 </H2>
@@ -911,7 +882,6 @@ class Pictogram extends Component {
           language={language}
           idPictogram={idPictogram}
           onLanguageChange={this.handleLanguageChange}
-          onDownloadLocution={this.props.onDownloadLocution}
         />
 
         <H3 primary={true} style={{ padding: '5px' }}>
@@ -936,7 +906,6 @@ Pictogram.propTypes = {
   locale: PropTypes.string.isRequired,
   searchText: PropTypes.string.isRequired,
   onDownload: PropTypes.func.isRequired,
-  onDownloadLocution: PropTypes.func.isRequired,
   intl: intlShape.isRequired,
   authenticated: PropTypes.bool.isRequired,
   onAddFavorite: PropTypes.func.isRequired,

@@ -1,19 +1,77 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {Helmet} from 'react-helmet'
-import P from 'components/P'
-import H2 from 'components/H2'
+import LSEItem from './LSEItem'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 import View from 'components/View'
-import ReadMargin from 'components/ReadMargin'
-import RaisedButton from 'material-ui/RaisedButton'
+import SearchField from 'components/SearchField'
+import withWidth, { SMALL } from 'material-ui/utils/withWidth'
+import { withRouter } from 'react-router'
+import removeDiacritics from 'components/SearchField/removeDiacritics'
+import lseData from './lseData'
+import Item from 'components/MaterialSnippet/Item'
 
 // import PropTypes from 'prop-types'
 
+const exactMatch = (searchText, key) => removeDiacritics(key).toLowerCase() === searchText
 
+const keywords =  Object.keys(lseData).sort()
+
+const styles = {
+  searchBar: {
+    flexGrow: 1,
+    marginBottom: 20
+  }
+}
 class LSEView extends Component {
 
+  state = {
+    data:  [],
+    keyword: ''
+  }
 
+  componentDidMount() {
+    const { searchText } = this.props.params
+      if (searchText) {
+        const  matchSearchText = removeDiacritics(searchText).toLowerCase()
+        Object.keys(lseData).some(keyword => {
+          if (exactMatch(matchSearchText, keyword)) {
+            this.setState({data: lseData[keyword], keyword})
+            return true
+          }
+          return false
+        })
+      }
+  }
+      
+    componentWillReceiveProps(nextProps) {
+    const searchText = nextProps.params.searchText
+    if (this.props.params.searchText !== searchText) {
+      if (searchText) {
+        const  matchSearchText = removeDiacritics(searchText).toLowerCase()
+        Object.keys(lseData).some(keyword => {
+          if (exactMatch(matchSearchText, keyword)) {
+            this.setState({data: lseData[keyword], keyword})
+            return true
+          }
+          return false
+        })
+      }
+    }
+  }
+  
+
+
+  handleSubmit = (nextValue) => { 
+    if (this.props.params.searchText !== nextValue) {
+      this.props.router.push(`/lse/search/${encodeURIComponent(nextValue)
+        }`)
+    }
+  };
 
   render() {
+    const searchText = this.props.params.searchText || ''
+    const {data, keyword} = this.state
     return (
       <View left={true} right={true}>
         <Helmet>
@@ -22,19 +80,34 @@ class LSEView extends Component {
           {/* <link rel="canonical" href="http://mysite.com/example" /> */}
 
         </Helmet>
-        <ReadMargin>
-          <H2 primary={true}>Lengua de signos española (LSE)</H2>
-          <P>Estamos trabajando para importar la lengua de signos del <a href="http://old.arasaac.org" target="_blank">antiguo portal de ARASAAC</a>.</P>
-          <P>Esperamos que esté disponible durante el mes de noviembre de 2020.</P>
-          <P>Mientras tanto puedes acceder desde la web antigua:</P>
-          <a href="http://old.arasaac.org/videos_lse.php" target="_blank" ><RaisedButton primary={true} label={"Acceder a videos de acepciones (LSE)"}  style={{marginTop:10, marginRight: 20, minWidth: 310}}  /></a>
-          <a href="http://old.arasaac.org/signos_lse_color.php" target="_blank" ><RaisedButton primary={true} label={"Aceder a catálogo de signos (LSE)"} style={{ marginTop: 10, marginBottom: 20, marginRight: 20,  minWidth: 310 }} /></a>
-        </ReadMargin>
 
 
+        <SearchField
+          value={searchText}
+          onSubmit={this.handleSubmit}
+          style={styles.searchBar}
+          dataSource={keywords}
+          filterFromStart={true}
+        />
+        
+        {!!data.length && data.map((result, index) => 
+          <Item key={`${searchText}-${index}`}>
+            <LSEItem data={result} searchText={keyword} />
+          </Item>
+        )}
       </View >
     )
   }
 }
 
-export default LSEView
+LSEView.propTypes = {
+  params: PropTypes.object.isRequired,
+  muiTheme: PropTypes.object,
+  // Injected by React Router
+  router: PropTypes.any.isRequired,
+  width: PropTypes.number.isRequired
+}
+
+
+
+export default withRouter(muiThemeable()(withWidth()(LSEView)))

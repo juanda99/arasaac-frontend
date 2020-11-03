@@ -50,11 +50,8 @@ class PictogramView extends PureComponent {
     })
   }
 
-  handleDownloadLocution = (locale, keyword) =>
-    (window.location = downloadLocution(locale, keyword))
 
   handleAddFavorite = (fileName) => {
-    console.log('KKK*******************************   ')
     const { addFavorite, token } = this.props
     addFavorite(fileName, DEFAULT_LIST, token)
   }
@@ -84,7 +81,6 @@ class PictogramView extends PureComponent {
           searchText={searchText || ''}
           authenticated={!!token}
           onDownload={this.handleDownload}
-          onDownloadLocution={this.handleDownloadLocution}
           onAddFavorite={this.handleAddFavorite}
         />
       )
