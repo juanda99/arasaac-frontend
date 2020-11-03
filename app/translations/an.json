@@ -336,5 +336,8 @@
   "app.components.Welcome.header": "Zentro {aragones} pa ra Comunicazión Aumentativa e Alternativa",
   "app.components.author": "Autor d'os pictogramas:",
   "app.components.creativeCommons": "Lizenzia de Creative Commons (BY-NC-SA)",
-  "app.components.dialog.ok": "Azeutar"
+  "app.components.dialog.ok": "Azeutar",
+  "app.components.disclaimer": "Descargo de responsabilidat",
+  "app.components.license": "Lizenzia:",
+  "app.components.licenseP1": "{ARASAAC} ye una marca d'o Gubierno d'Aragón (España), inscrita en a Ofizina Española de Patens e Marcas. A colezión de pictogramas {ARASAAC} ye inscrita en o Rechistro Cheneral d'a Propiedat Inteleutual (Num. Deposito Legal Z 901-2013) como treballo coleutivo a nombre d'a Deputazión Cheneral d'Aragón, qui la ha editada y espardita d'acuerdo a lo presto en l'articlo 8 d'o testo refundito d'a Lei de Propiedat Inteleutual, aprebato por o Real Decreto Lechislativo 1/1996, de 12 d'abril."
 }
