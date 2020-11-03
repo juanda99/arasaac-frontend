@@ -10,9 +10,9 @@ export default defineMessages({
     id: 'app.components.showcase.materials',
     defaultMessage: 'Materials'
   },
-  pictograms: {
-    id: 'app.components.showcase.pictograms',
-    defaultMessage: 'Pictograms'
+  aacSymbols: {
+    id: 'app.components.showcase.aacSymbols',
+    defaultMessage: 'AAC Symbols'
   },
   whatIsAAC: {
     id: 'app.components.showcase.whatIsAAC',

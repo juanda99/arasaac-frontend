@@ -49,5 +49,13 @@ export default defineMessages({
   new: {
     id: 'app.containers.PictogramsView.new',
     defaultMessage: 'New'
-  }
+  },
+  pageTitle: {
+    id: 'app.PictogramsView.pageTitle',
+    defaultMessage: 'AAC symbols - ARASAAC'
+  },
+  pageDesc: {
+    id: 'app.PictogramsView.pageDesc',
+    defaultMessage: 'Open source symbols for Augmentative and Alternative Communication'
+  },
 })

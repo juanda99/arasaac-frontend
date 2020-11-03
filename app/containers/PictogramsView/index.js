@@ -7,7 +7,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
+import { injectIntl, FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
@@ -70,6 +70,9 @@ class PictogramsView extends PureComponent {
     offset: 0,
     listName: ''
   };
+
+  title = this.props.intl.formatMessage(messages.pageTitle)
+  description = this.props.intl.formatMessage(messages.pageDesc)
 
   processQuery = props => {
     const { location } = props || this.props
@@ -242,12 +245,10 @@ class PictogramsView extends PureComponent {
 
     return (
       <div>
-        <Helmet
-          title='PictogramsView'
-          meta={[
-            { name: 'description', content: 'Description of PictogramsView' }
-          ]}
-        />
+        <Helmet>
+          <title>{this.title}</title>
+          <meta name="description" content={this.description} />
+        </Helmet>
         <Tabs onChange={this.handleChange} value={tab}>
           <Tab
             label={hideIconText ? '' : <FormattedMessage {...messages.search} />}
@@ -430,4 +431,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(muiThemeable()(withWidth()(PictogramsView))))
+)(withRouter(muiThemeable()(withWidth()(injectIntl(PictogramsView)))))

@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import FullWidthSection from 'components/FullWidthSection'
 import { IMAGES_URL, PICTOGRAMS_URL } from 'services/config'
+import H2 from 'components/H2'
 import messages from './messages'
 import Item from './Item'
 
@@ -19,9 +20,12 @@ const Showcase = ({ locale }) => {
   }
   return (
     <FullWidthSection style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', color: 'white' }}>
-
+      <div style={{width: '100%'}}>
+        <H2 primary={true}>Symbol set and resources for Augmentive and Alternative Communicación (AAC) </H2>
+      </div>
+      
       <Item
-        title={<FormattedMessage {...messages.pictograms} />}
+        title={<FormattedMessage {...messages.aacSymbols} />}
         route='/pictograms/search'
         image={`${IMAGES_URL}/pictograms.jpg`}
       />
