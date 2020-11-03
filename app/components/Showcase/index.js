@@ -21,7 +21,7 @@ const Showcase = ({ locale }) => {
   return (
     <FullWidthSection style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', color: 'white' }}>
       <div style={{width: '100%'}}>
-        <H2 primary={true}>Symbol set and resources for Augmentive and Alternative Communicación (AAC) </H2>
+        <H2 primary={true}>{<FormattedMessage {...messages.whatIsARASAAC} />}</H2>
       </div>
       
       <Item

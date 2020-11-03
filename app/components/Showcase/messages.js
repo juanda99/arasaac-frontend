@@ -17,5 +17,9 @@ export default defineMessages({
   whatIsAAC: {
     id: 'app.components.showcase.whatIsAAC',
     defaultMessage: 'What is AAC?'
+  },
+  whatIsARASAAC: {
+    id: 'app.components.showcase.whatIsARASAAC',
+    defaultMessage: 'Symbol set and resources for Augmentive and Alternative Communicación (AAC)'
   }
 })

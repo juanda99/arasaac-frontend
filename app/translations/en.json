@@ -355,6 +355,7 @@
   "app.components.showcase.aacSymbols": "AAC Symbols",
   "app.components.showcase.materials": "Materials",
   "app.components.showcase.whatIsAAC": "What is AAC?",
+  "app.components.showcase.whatIsARASAAC": "Symbol set and resources for Augmentive and Alternative Communicación (AAC)",
   "app.components.updateMaterialView.materialLoading": "Loading material...",
   "app.components.updateMaterialView.materialNotFound": "Sorry, the material you are looking for does not exist",
   "app.components.updateMaterialView.showMaterial": "Show material",
