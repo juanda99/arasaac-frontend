@@ -328,7 +328,6 @@
   "app.components.origin": "Herkunft:",
   "app.components.owner": "Eigentümer: Regierung von Aragon (Spanien)",
   "app.components.showcase.materials": "Materialien",
-  "app.components.showcase.pictograms": "Pictogramme",
   "app.components.showcase.whatIsAAC": "Was ist AAC?",
   "app.components.updateMaterialView.materialLoading": "Material wird geladen...",
   "app.components.updateMaterialView.materialNotFound": "Es tut uns leid, das Material, das du suchst, existiert nicht",
