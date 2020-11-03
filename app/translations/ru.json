@@ -234,6 +234,8 @@
   "app.components.MaterialForm.languageHint": "Введите язык, название и описание материала.",
   "app.components.MaterialForm.languageScreenshots": "Загрузить только скриншоты конкретно для этого языка",
   "app.components.MaterialForm.languageTitle": "Языки и описание",
+  "app.components.MaterialForm.lastUpdated": "Дата обновления",
+  "app.components.MaterialForm.lastUpdatedTime": "Время обновления",
   "app.components.MaterialForm.materialStatus": "Статус материала",
   "app.components.MaterialForm.name": "Имя",
   "app.components.MaterialForm.nameHint": "Введите имя автора",
