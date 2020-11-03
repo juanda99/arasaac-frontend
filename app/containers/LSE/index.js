@@ -7,10 +7,13 @@ import View from 'components/View'
 import SearchField from 'components/SearchField'
 import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import { withRouter } from 'react-router'
+import removeDiacritics from 'components/SearchField/removeDiacritics'
 import lseData from './lseData'
 import Item from 'components/MaterialSnippet/Item'
 
 // import PropTypes from 'prop-types'
+
+const exactMatch = (searchText, key) => removeDiacritics(key).toLowerCase() === searchText
 
 const keywords =  Object.keys(lseData).sort()
 
@@ -23,14 +26,21 @@ const styles = {
 class LSEView extends Component {
 
   state = {
-    data:  []
+    data:  [],
+    keyword: ''
   }
 
   componentDidMount() {
     const { searchText } = this.props.params
       if (searchText) {
-        const data = lseData[searchText]|| []
-        this.setState({data })
+        const  matchSearchText = removeDiacritics(searchText).toLowerCase()
+        Object.keys(lseData).some(keyword => {
+          if (exactMatch(matchSearchText, keyword)) {
+            this.setState({data: lseData[keyword], keyword})
+            return true
+          }
+          return false
+        })
       }
   }
       
@@ -38,14 +48,16 @@ class LSEView extends Component {
     const searchText = nextProps.params.searchText
     if (this.props.params.searchText !== searchText) {
       if (searchText) {
-        const data = lseData[searchText]|| []
-        this.setState({data })
-      }
-      else {
-        this.setState({data: []})
+        const  matchSearchText = removeDiacritics(searchText).toLowerCase()
+        Object.keys(lseData).some(keyword => {
+          if (exactMatch(matchSearchText, keyword)) {
+            this.setState({data: lseData[keyword], keyword})
+            return true
+          }
+          return false
+        })
       }
     }
-
   }
   
 
@@ -59,7 +71,7 @@ class LSEView extends Component {
 
   render() {
     const searchText = this.props.params.searchText || ''
-    const {data} = this.state
+    const {data, keyword} = this.state
     return (
       <View left={true} right={true}>
         <Helmet>
@@ -79,14 +91,10 @@ class LSEView extends Component {
         />
         
         {!!data.length && data.map((result, index) => 
-          <Item>
-            <LSEItem data={result} key={`${searchText}-${index}`} searchText={searchText} />
+          <Item key={`${searchText}-${index}`}>
+            <LSEItem data={result} searchText={keyword} />
           </Item>
         )}
-
-        
-
-
       </View >
     )
   }

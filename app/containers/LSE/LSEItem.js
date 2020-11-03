@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import ReactPlayer from 'react-player'
 import ShowSoundPlayer from 'components/SoundPlayer/ShowSoundPlayer'
 import { STATIC_SERVER } from 'services/config'
+import Div from './Div'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
 
@@ -19,50 +20,50 @@ const styles = {
     flexDirection: 'column',
     width: '100%'
   },
-  snippetImgs: {
-    width: '100%',
-    maxWidth: '500px',
-    height: 'auto'
-  },
   actionBtn: {
     margin: '5px'
   },  
   video: {
-    width: '100%',
     maxWidth: '500px',
-    height: '500px'
+    margin: '20px'
+  },
+  image: {
+    maxWidth: '100%',
   }
 }
 
 class LSEItem extends Component {
 
   render() {
-    const {data, searchText} = this.props
-    console.log(data.items)
+    const {data, searchText, key} = this.props
     const videosAcepciones = data.items
       .filter(item => item.tipo===11)
       .map(item => (
-          <ReactPlayer key={`${item.idImagen}-video`}
+        <Div>
+          <ReactPlayer 
+            key={`${item.idImagen}-video`}
             url={`${STATIC_SERVER}/lse-acepciones/${item.idImagen}.mp4`}  
-            style={styles.video}
-            width='500px' height='500px'
-            controls
+            width='100%' height='100%'
+            controls  
           />
+        </Div>
       ))
     
     const imagesAcepciones = data.items
       .filter(item => item.tipo===12) 
       .map(item => (
+        <Div> 
           <img  
             key={`${item.idImagen}-image`} 
-            style={styles.video}
+            style={styles.image}
             src={`${STATIC_SERVER}/lse-images/${item.idImagen}.jpg`} 
           />
+        </Div>
       ))
     
 
     return (
-      <div style={{padding: 30}}>
+      <div style={{padding: 30}} key={key}>
         <div style={{display: 'flex'}}>
           <ShowSoundPlayer hasLocution={true} locale='es' keyword={searchText} download={false} />
           <ShowSoundPlayer hasLocution={true} locale='es' keyword={searchText} download={true}  />
@@ -70,25 +71,29 @@ class LSEItem extends Component {
 
         </div>
         <H3 noMargin={true} primary>{data.desc} </H3>
-        <div style={{display: 'flex', flexWrap: 'wrap',  justifyContent: 'space-between'}}>
+        <div style={{display: 'flex',  flexWrap: 'wrap',  justifyContent: 'flexStart'}}>
             {imagesAcepciones}
         </div>
-          <div  style={{margin: 20}} >
+          <div>
             <H3 primary ucase>Acepción LSE</H3>
-            <div style={{display: 'flex', flexWrap: 'wrap',  justifyContent: 'space-between'}}>
+            <div style={{display: 'flex', flexWrap: 'wrap',  justifyContent: 'flexStart'}}>
             {videosAcepciones}
             </div>
 
           </div>
-          <div  style={{margin: 20}} >
+          <div>
             <H3 primary ucase>Definición LSE</H3>
-            <ReactPlayer key={`${searchText}-video-def`}
-              url={`${STATIC_SERVER}/lse-definiciones/${data.idPalabra}.mp4`} 
-              style={styles.video}
-              width='500px' height='500px'
-              controls
-            />
+            <div style={{display: 'flex',  flexWrap: 'wrap',  justifyContent: 'flexStart'}}>
+              <Div>
+                <ReactPlayer key={`${searchText}-video-def`}
+                  url={`${STATIC_SERVER}/lse-definiciones/${data.idPalabra}.mp4`} 
+                  width='100%' height='100%'
+                  controls
+                />
+              </Div>
+            </div>
           </div>
+
         </div>
     )
   }
