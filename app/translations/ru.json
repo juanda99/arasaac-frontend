@@ -12,6 +12,7 @@
   "app.MaterialsView.pageDescription": "АДК ресурсы для профессионалов и семей. Скачайте документы, доски, рабочие материалы...",
   "app.MaterialsView.pageDescriptionSearch": "АДК ресурсы для профессионалов и семей. Скачать документы, доски, рабочие материалы...",
   "app.MaterialsView.pageTitle": "Доступные материалы по АДК - ARASAAC",
+  "app.MaterialsView.pageTitleSearch": "Доступные материалы по АДК, относящиеся к {searchText} - ARASAAC",
   "app.PictogramsView.pageDesc": "Открытый ресурс символов для альтернативной и дополнительной коммуникации",
   "app.PictogramsView.pageTitle": "Символы АДК - ARASAAC",
   "app.component.MaterialConditions.adaptationQuote": "Адаптированная цитата",
