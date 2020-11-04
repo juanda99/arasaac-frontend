@@ -90,6 +90,15 @@ const collaborators = [
     country: 'ru'
   },
   {
+    name: 'Irina Tekotskaya (Ирина Текоцкая)',
+    languages: ['ru'],
+    image: 'Irina-Tekotskaya.jpg',
+    desc: 'Speech therapist. Caritas education center for social service. President of the AAC association. ',
+    url: 'http://caritas-edu.ru',
+    facebook: '100000802752066',
+    country: 'ru'
+  },
+  {
     name: 'ICT-AAC',
     languages: ['hr'],
     image: 'ict-aac-logo.png',
