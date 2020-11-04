@@ -25,7 +25,9 @@ export const initialState = fromJS({
   showFilter: false,
   showSettings: false,
   loading: false,
+  loadingNew: false,
   error: false,
+  errorNew: false,
   search: {},
   searchText: '',
   filters: {
@@ -47,12 +49,15 @@ function materialsViewReducer(state = initialState, action) {
     case MATERIAL_REMOVE.REQUEST:
     case MATERIAL_PUBLISH.REQUEST:
     case MATERIAL_UPDATE.REQUEST:
-    case NEW_MATERIALS.REQUEST:
     case MATERIALS_NOT_PUBLISHED.REQUEST:
     case AUTHORS.REQUEST:
       return state
         .set('loading', true)
         .set('error', false)
+    case NEW_MATERIALS.REQUEST:
+      return state
+        .set('loadingNew', true)
+        .set('errorNew', false)
     case MATERIAL.SUCCESS:
       newMaterial = fromJS(action.payload.data || {})
       return state
@@ -79,11 +84,13 @@ function materialsViewReducer(state = initialState, action) {
     case MATERIAL_UPDATE.FAILURE:
     case MATERIALS.FAILURE:
     case AUTHORS.FAILURE:
-    case NEW_MATERIALS.FAILURE:
       return state
         .set('error', action.payload.error)
         .set('loading', false)
-
+    case NEW_MATERIALS.FAILURE:
+      return state
+        .set('errorNew', action.payload.error)
+        .set('loadingNew', false)
     case MATERIALS.SUCCESS:
       newMaterial = fromJS(action.payload.data.entities.materials || {})
       // we change searchType for reducer, for authors, activities and areas we don't need locale
@@ -110,7 +117,7 @@ function materialsViewReducer(state = initialState, action) {
     case NEW_MATERIALS.SUCCESS:
       newMaterial = fromJS(action.payload.data.entities.materials || {})
       return state
-        .set('loading', false)
+        .set('loadingNew', false)
         .set('newMaterials', action.payload.data.result)
         .mergeIn(['materials'], newMaterial)
     case MATERIALS_NOT_PUBLISHED.SUCCESS:

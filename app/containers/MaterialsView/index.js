@@ -36,6 +36,7 @@ import {
   makeShowFiltersSelector,
   makeShowSettingsSelector,
   makeLoadingSelector,
+  makeLoadingNewSelector,
   makeSearchResultsSelector,
   makeVisibleMaterialsSelector,
   makeNewVisibleMaterialsSelector,
@@ -321,7 +322,7 @@ class MaterialsView extends PureComponent {
 
 
   render() {
-    const { showFilter, showSettings, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, muiTheme, width, role, pendingMaterials, unpublishedMaterials, authorsName } = this.props
+    const { showFilter, showSettings, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, loadingNew, muiTheme, width, role, pendingMaterials, unpublishedMaterials, authorsName } = this.props
     const { tab, offset, searchType, running, steps } = this.state
     const { formatMessage } = this.props.intl
     const searchText = this.getSearchText(searchType, this.props.params.searchText) || ''
@@ -342,7 +343,8 @@ class MaterialsView extends PureComponent {
     else if (tab === 2) materialsList = pendingMaterials
     else if (tab === 3) materialsList = unpublishedMaterials
     let gallery = ''
-    if (loading) {
+    const loadingState = tab === 1 ? loadingNew : loading
+    if (loadingState) {
       gallery = <ReadMargin><P>{<FormattedMessage {...messages.loadingMaterials} />}</P></ReadMargin>
     } else if (!searchText && tab === 0) {
       gallery = null
@@ -548,6 +550,7 @@ const mapStateToProps = (state, ownProps) => ({
   showSettings: makeShowSettingsSelector()(state),
   locale: makeSelectLocale()(state),
   loading: makeLoadingSelector()(state),
+  loadingNew: makeLoadingNewSelector()(state),
   searchResults: makeSearchResultsSelector()(state, ownProps),
   visibleMaterials: makeVisibleMaterialsSelector()(state, ownProps),
   newVisibleMaterialsList: makeNewVisibleMaterialsSelector()(state),
