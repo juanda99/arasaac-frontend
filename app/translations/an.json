@@ -356,5 +356,13 @@
   "app.components.showcase.materials": "Materials",
   "app.components.showcase.whatIsAAC": "Qué son os AAC?",
   "app.components.showcase.whatIsARASAAC": "Pictogramas e recursos ta ra Comunicazión Aumentativa e Alternativa",
-  "app.components.updateMaterialView.materialLoading": "Se ye cargando ro material..."
+  "app.components.updateMaterialView.materialLoading": "Se ye cargando ro material...",
+  "app.components.updateMaterialView.materialNotFound": "Sincuse, o material que ye mirando no esiste",
+  "app.components.updateMaterialView.showMaterial": "Amostrar o material",
+  "app.components.updateMaterialView.updatedMaterial": "S'ha autualizato ro material.",
+  "app.components.updateMaterialView.updatingMaterial": "Se ye autualizando ro material...",
+  "app.components.uploadMaterialView.close": "Zarrar",
+  "app.components.uploadMaterialView.materialSuccessUpload": "S'ha puyato ro tuyo material e o equipo de ARASAAC lo revisará. Te ninviaremos un correu electronico cuan siga publicato!",
+  "app.components.uploadMaterialView.needAuthor": "Cal inserir a o menos un autor d'o material",
+  "app.components.uploadMaterialView.needFiles": "Cal puyar-ie a o menos un ficher de material"
 }
