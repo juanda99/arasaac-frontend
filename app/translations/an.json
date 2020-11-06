@@ -364,5 +364,11 @@
   "app.components.uploadMaterialView.close": "Zarrar",
   "app.components.uploadMaterialView.materialSuccessUpload": "S'ha puyato ro tuyo material e o equipo de ARASAAC lo revisará. Te ninviaremos un correu electronico cuan siga publicato!",
   "app.components.uploadMaterialView.needAuthor": "Cal inserir a o menos un autor d'o material",
-  "app.components.uploadMaterialView.needFiles": "Cal puyar-ie a o menos un ficher de material"
+  "app.components.uploadMaterialView.needFiles": "Cal puyar-ie a o menos un ficher de material",
+  "app.components.uploadMaterialView.needReview": "Revisar o material",
+  "app.components.uploadMaterialView.progressStatus": "Puyando-ie o material: {progressStatus}%",
+  "app.components.uploadMaterialView.tryAgain": "Intentar unatra vegata",
+  "app.components.uploadMaterialView.uploadMore": "Puyar-ie atro material",
+  "app.containers.AboutView.addressInfo": "Somos situatos en Zaragoza (España). A nuestra adreza ye:",
+  "app.containers.AboutView.arasaacTeam": "Equipo ARASAAC"
 }
