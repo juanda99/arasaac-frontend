@@ -2,7 +2,7 @@
   "Login.invalidEmail": "Неправильный адрес электронной почты",
   "Login.invalidUrl": "Недопустимый url-адрес",
   "Login.required": "Обязательно для заполнения",
-  "NewPasswordForm.hintNewPassword": "Введите новый пароль",
+  "NewPasswordForm.hintNewPassword": "Это ваш новый пароль?",
   "activate.activateUser": "Активация пользователя",
   "activate.expiredCode": "Срок действия вашего кода активации истек. Мы отправили вам письмо для подтверждения вашей учетной записи",
   "activate.invalidCode": "Ваш код активации недействителен",
