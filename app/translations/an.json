@@ -372,5 +372,9 @@
   "app.containers.AboutView.addressInfo": "Somos situatos en Zaragoza (España). A nuestra adreza ye:",
   "app.containers.AboutView.arasaacTeam": "Equipo ARASAAC",
   "app.containers.AboutView.fundedBy": "Iste proyeuto ye finanziato por o Departamento d'Educazión Cultura y Esporte d'o Gubierno d'Aragón (España) e coordinato por la Direzión Cheneral d'Innovazión e Formazión Profesional de dito departamento",
-  "app.containers.AboutView.whatArasaacOffers": "ARASAAC ofrexe recursos graficos e materials adaptatos con lizenzia Creative Commons (BY-NC-SA) pa fazilitar a comunicazión e l'azesibilidat cognitiva a totas as presonas que, por diferens fautors (autismo, discapazidat intelectual, esconoximiento d'a luenfa, presonas mayors, etz.), presientan grieus problemas en istas arias, que dificultan a suya inclusión en cualsiquier ambito d'a vida cutiana."
+  "app.containers.AboutView.whatArasaacOffers": "ARASAAC ofrexe recursos graficos e materials adaptatos con lizenzia Creative Commons (BY-NC-SA) pa fazilitar a comunicazión e l'azesibilidat cognitiva a totas as presonas que, por diferens fautors (autismo, discapazidat intelectual, esconoximiento d'a luenfa, presonas mayors, etz.), presientan grieus problemas en istas arias, que dificultan a suya inclusión en cualsiquier ambito d'a vida cutiana.",
+  "app.containers.AboutView.whatIsArasaac": "Qué ye ARASAAC?",
+  "app.containers.AboutView.whereWeAre": "An somos",
+  "app.containers.AuthorSnippet.coordinator": "Coordinador d'ARASAAC",
+  "app.containers.AuthorSnippet.developer": "Desembolicador d'ARASAAC"
 }
