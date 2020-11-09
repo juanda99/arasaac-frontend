@@ -376,5 +376,8 @@
   "app.containers.AboutView.whatIsArasaac": "Qué ye ARASAAC?",
   "app.containers.AboutView.whereWeAre": "An somos",
   "app.containers.AuthorSnippet.coordinator": "Coordinador d'ARASAAC",
-  "app.containers.AuthorSnippet.developer": "Desembolicador d'ARASAAC"
+  "app.containers.AuthorSnippet.developer": "Desembolicador d'ARASAAC",
+  "app.containers.AuthorSnippet.reachme": "Puedes contautar con yo a traviés de:",
+  "app.containers.ContactView.alertWindowErrorDesc": "Lo sentimos, pero no emos puesto rezibir o tuyo mensache. Mira de fer-lo más tardi u contauta con nusatros a traviés d'os nuestros retes sozials",
+  "app.containers.ContactView.alertWindowErrorTitle": "S'ha produzito una error de formulario de contauto"
 }
