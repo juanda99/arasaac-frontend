@@ -404,6 +404,7 @@ class App extends Component {
         </Wrapper>
         <Menu
           location={location}
+          locale={this.props.locale}
           docked={docked}
           onRequestChangeNavDrawer={this.handleChangeRequestNavDrawer}
           onChangeList={this.handleChangeList}

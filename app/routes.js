@@ -32,6 +32,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading)
       }
     },
+    // TODO: redirect saac to aac/es
     {
       path: '/saac',
       name: 'saac',
@@ -45,10 +46,34 @@ export default function createRoutes(store) {
       }
     },
     {
-      path: '/aac',
+      path: '/aac(/:language)',
       name: 'AAC',
       getComponent(nextState, cb) {
         const importModules = Promise.all([import('containers/IntroAAC')])
+        const renderRoute = loadModule(cb)
+        importModules.then(([component]) => {
+          renderRoute(component)
+        })
+        importModules.catch(errorLoading)
+      }
+    },
+    {
+      path: '/aac-users(/:language)',
+      name: 'AAC-users',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([import('containers/IntroUsersAAC')])
+        const renderRoute = loadModule(cb)
+        importModules.then(([component]) => {
+          renderRoute(component)
+        })
+        importModules.catch(errorLoading)
+      }
+    },
+    {
+      path: '/use-of-aac(/:language)',
+      name: 'AAC-usage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([import('containers/IntroUsageAAC')])
         const renderRoute = loadModule(cb)
         importModules.then(([component]) => {
           renderRoute(component)

@@ -15,6 +15,8 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import ToolsIcon from 'material-ui/svg-icons/action/build'
+import SchoolIcon from 'material-ui/svg-icons/social/school'
+import AACUsersIcon from './AACUsersIcon'
 import AppsIcon from 'material-ui/svg-icons/navigation/apps'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import LSEIcon from './LSEIcon'
@@ -55,6 +57,7 @@ class Menu extends Component {
     signout: PropTypes.func.isRequired,
     isMobile: PropTypes.bool.isRequired,
     showLSE: PropTypes.bool.isRequired,
+    locale: PropTypes.string.isRequired,
   };
 
   static contextTypes = {
@@ -93,6 +96,7 @@ class Menu extends Component {
     } = this.props
 
     const isRtl = muiTheme.direction === 'rtl'
+    const locale = this.props.locale || 'en'
 
     return (
       <Drawer
@@ -152,6 +156,30 @@ class Menu extends Component {
                 value='/materials/upload'
                 primaryText={<FormattedMessage {...messages.uploadMaterials} />}
                 leftIcon={<FileUploadIcon />}
+              />
+            ]}
+          />
+          <ListItem
+            id='lstlearning'
+            isRtl={true}
+            primaryText={<FormattedMessage {...messages.learningAAC} />}
+            primaryTogglesNestedList={true}
+            leftIcon={<SchoolIcon />}
+            nestedItems={[
+              <ListItem
+                value={`/aac/${locale}`}
+                primaryText={<FormattedMessage {...messages.whatIsAAC} />}
+                leftIcon={<InfoIcon />}
+              />,
+              <ListItem
+                value={`/aac-users/${locale}`}
+                primaryText={<FormattedMessage {...messages.aacUsers} />}
+                leftIcon={<AACUsersIcon />}
+              />,
+              <ListItem
+                value={`/use-of-aac/${locale}`}
+                primaryText={<FormattedMessage {...messages.useAAC} />}
+                leftIcon={<ToolsIcon />}
               />
             ]}
           />
