@@ -10,6 +10,8 @@
   "activate.userNotActivated": "خطأ أثناء تفعيل حسابك",
   "app.HomePage.discover": "اكْتَشِفْ الأراساك (ARASAAC)",
   "app.MaterialsView.pageDescription": "مصادر عتاد AAC لِأَجْل المهنيين و العائلات. تحميل ملفات،لوحات،أوراق عمل الإتصال المعززة و البديلة...",
+  "app.MaterialsView.pageDescriptionSearch": "مصادر عتاد AAC للمهنين و العائلات ذات صلة بِ ( نص البحث). تحميل ملفات ،لوحات،أوراق عمل الإتصال المعززة و البديلة...",
+  "app.MaterialsView.pageTitle": "AAC مشاركة مصادر العتاد - أراساك",
   "app.component.Participate.contact": "اتصل بنا",
   "app.components.Catalog.accept": "قبول",
   "app.components.Catalog.cancel": "إلغاء",
