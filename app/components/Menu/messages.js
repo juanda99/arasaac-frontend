@@ -48,7 +48,7 @@ export default defineMessages({
   useAAC: {
     id: 'menu.useAAC',
     description: 'Menu item',
-    defaultMessage: 'Use AAC'
+    defaultMessage: 'Use of AAC'
   },
   api: {
     id: 'menu.api',
