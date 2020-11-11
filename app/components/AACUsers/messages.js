@@ -3,15 +3,15 @@ const scope = 'app.components.aacusers'
 export default defineMessages({
   intro: {
     id: `${scope}.intro`,
-    defaultMessage: 'Symbols can help anyone who has difficulties with the language because of different reasons (autism, intellectual disability, lack of language, elderly people, etc.) or who simply don’t understand the language (foreign people, migrants,...).'  
+    defaultMessage: 'Symbols can help anyone who has difficulties with the language because of different reasons (autism, intellectual disability, lack of language, elderly people, etc.) or who simply don’t understand the language (foreign people, migrants...).'  
   },
   title1: {
     id: `${scope}.title1`,
-    defaultMessage: 'Children with special needs (autism, intellectual disability, Down Syndrome, hearing impairment...)'  
+    defaultMessage: 'Children with special needs (autism, intellectual disability, Down syndrome, hearing impairment...)'  
   },
   title2: {
     id: `${scope}.title2`,
-    defaultMessage: 'Children and adults with severe physical difficulties (Cerebral Palsy, head trauma, ictus...)'  
+    defaultMessage: 'Children and adults with severe physical difficulties (cerebral palsy, head trauma, ictus...)'  
   },
   title3: {
     id: `${scope}.title3`,
@@ -47,7 +47,7 @@ export default defineMessages({
   },
   p3: {
     id: `${scope}.p3`,
-    defaultMessage: 'In some cases, elderly people suffer a cognitive impairment due to Afasia, Alzheimer, Dementia or other psychiatric diseases that make necessary the use of an augmentative or alternative communication system with symbols that allow them to communicate. These visual supports can be a temporary or permanent aid.'  
+    defaultMessage: 'In some cases, elderly people suffer a cognitive impairment due to afasia, Alzheimer, dementia or other psychiatric diseases that make necessary the use of an augmentative or alternative communication system with symbols that allow them to communicate. These visual supports can be a temporary or permanent aid.'  
   },
   p4: {
     id: `${scope}.p4`,
@@ -63,7 +63,7 @@ export default defineMessages({
   },
   p7: {
     id: `${scope}.p7`,
-    defaultMessage: 'In places where they receive many tourists or foreigners live for a limited period of time, symbols are used to facilitate cognitive accessibility to culture (museums, monuments, attractions,...), to facilitate shopping (communication boards adapted to different types of stores) and being able to eat in a restaurant (adapted menus) and even to make access to administrative procedures easier when the person temporarily residing in a place needs it'  
+    defaultMessage: 'In places where they receive many tourists or foreigners live for a limited period of time, symbols are used to facilitate cognitive accessibility to culture (museums, monuments, attractions...), to facilitate shopping (communication boards adapted to different types of stores) and being able to eat in a restaurant (adapted menus) and even to make access to administrative procedures easier when the person temporarily residing in a place needs it'  
   },
   p8: {
     id: `${scope}.p8`,

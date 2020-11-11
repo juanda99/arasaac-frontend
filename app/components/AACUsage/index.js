@@ -39,69 +39,69 @@ const AACUsage = ({intl}) => {
       >
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.communicationBoards}/></H2>
-          <P><FormattedMessage {...messages.p1}/></P>
+          <P justify><FormattedMessage {...messages.p1}/></P>
           <Img style={{width: '100%', height:  'auto'}} src={`${IMAGES_URL}/aac-usage/communication-board-1.jpg`} />
-          <P><FormattedMessage {...messages.p2}/></P>
+          <P justify><FormattedMessage {...messages.p2}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/communication-board-2.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.visualSchedules}/></H2>
-          <P><FormattedMessage {...messages.p3}/></P>
+          <P justify><FormattedMessage {...messages.p3}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/bathroom-routine-aac.jpg`} />
-          <P><FormattedMessage {...messages.p4}/></P>
+          <P justify><FormattedMessage {...messages.p4}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/aac-routines.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.visualTimetables}/></H2>
-          <P><FormattedMessage {...messages.p5}/></P>
+          <P justify><FormattedMessage {...messages.p5}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/visual-timetable-aac-1.jpg`} />
-          <P><FormattedMessage {...messages.p6}/></P>
+          <P justify><FormattedMessage {...messages.p6}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/visual-timetable-aac-2.jpg`} />
         </Item>
         <Item>      
           <H2 primary={true}><FormattedMessage {...messages.socialStories}/></H2>
-          <P><FormattedMessage {...messages.p7}/></P>
+          <P justify><FormattedMessage {...messages.p7}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/social-stories-aac.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.behavioralStrategies}/></H2>
-          <P><FormattedMessage {...messages.p8}/></P>
+          <P justify><FormattedMessage {...messages.p8}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/behavioral-strategies-aac.jpg`} />
-          <P><FormattedMessage {...messages.p9}/></P>
+          <P justify><FormattedMessage {...messages.p9}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/behavioral-strategies-aac-2.jpg`} />
           
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.teacch}/></H2>
-          <P><FormattedMessage {...messages.p10}/></P>
+          <P justify><FormattedMessage {...messages.p10}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/teacch.jpg`} />
-          <P><FormattedMessage {...messages.p11}/></P>
+          <P justify><FormattedMessage {...messages.p11}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/teacch-2.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.lifeSkills}/></H2>
-          <P><FormattedMessage {...messages.p12}/></P>
+          <P justify><FormattedMessage {...messages.p12}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/life-skills.jpg`} />
-          <P><FormattedMessage {...messages.p13}/></P>
+          <P justify><FormattedMessage {...messages.p13}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/life-skills-2.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.learning}/></H2>
-          <P><FormattedMessage {...messages.p14}/></P>
+          <P justify><FormattedMessage {...messages.p14}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/learning-1.jpg`} />
-          <P><FormattedMessage {...messages.p15}/></P>
+          <P justify><FormattedMessage {...messages.p15}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/learning-2.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.signposting}/></H2>
-          <P><FormattedMessage {...messages.p16}/></P>
+          <P justify><FormattedMessage {...messages.p16}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/signage-1.jpg`} />
-          <P><FormattedMessage {...messages.p17}/></P>
+          <P justify><FormattedMessage {...messages.p17}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/signage-2.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.otherContexts}/></H2>
-          <P><FormattedMessage {...messages.p18}/></P>
+          <P justify><FormattedMessage {...messages.p18}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/16.jpg`} />
         </Item>
       </Masonry>

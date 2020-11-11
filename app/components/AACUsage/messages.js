@@ -15,7 +15,7 @@ export default defineMessages({
   },
   p2: {
     id: `${scope}.p2`,
-    defaultMessage: 'Symbols are used in low and high tech communication aids to elaborate communication boards that allow the user to communicate by pointing the desired symbol in different ways (finger, switch, eyes,...).'
+    defaultMessage: 'Symbols are used in low and high tech communication aids to elaborate communication boards that allow the user to communicate by pointing the desired symbol in different ways (finger, switch, eyes...).'
   },
   visualSchedules: {
     id: `${scope}.visualSchedules`,
@@ -55,7 +55,7 @@ export default defineMessages({
   },
   p8: {
     id: `${scope}.p8`,
-    defaultMessage: 'People with special needs sometimes have difficulties understanding and regulating social situations, their emotions, their own behavior,.... This results, on many occasions, in behaviors that we can consider bad adjusted, inappropriate, problematic…'
+    defaultMessage: 'People with special needs sometimes have difficulties understanding and regulating social situations, their emotions, their own behavior.... This results, on many occasions, in behaviors that we can consider bad adjusted, inappropriate, problematic…'
   },
   p9: {
     id: `${scope}.p9`,
@@ -83,7 +83,7 @@ export default defineMessages({
   },
   p13: {
     id: `${scope}.p13`,
-    defaultMessage: 'Visual supports (routines, cooking recipes, visual schedules, social stories,...) help people with special needs to learn these skills and become an independent person that can equally participate in their community.'
+    defaultMessage: 'Visual supports (routines, cooking recipes, visual schedules, social stories...) help people with special needs to learn these skills and become an independent person that can equally participate in their community.'
   },
   learning: {
     id: `${scope}.learning`,

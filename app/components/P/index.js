@@ -17,6 +17,10 @@ const P = styled.p`
   margin-top: ${(props) => props.marginTop};
   margin-bottom: ${(props) => props.marginBottom};
   margin-right: ${(props) => props.marginRight};
+  text-align: ${(props) =>
+    props.justify
+      ? 'justify'
+      : ''};
 `
 
 export default muiThemeable()(P)

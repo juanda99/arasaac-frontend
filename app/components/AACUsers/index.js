@@ -38,42 +38,42 @@ const AACUsers = () => {
       >
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.title1}/></H2>
-          <P><FormattedMessage {...messages.p1}/></P>
+          <P justify><FormattedMessage {...messages.p1}/></P>
           <Img src={`${IMAGES_URL}/aac-users/autism.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.title2}/></H2>
-          <P><FormattedMessage {...messages.p2}/></P>
+          <P justify><FormattedMessage {...messages.p2}/></P>
           <Img src={`${IMAGES_URL}/aac-users/cerebral-palsy.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.title3}/></H2>
-          <P><FormattedMessage {...messages.p3}/></P>
+          <P justify><FormattedMessage {...messages.p3}/></P>
           <Img src={`${IMAGES_URL}/aac-users/elderly-aac.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.title4}/></H2>
-          <P><FormattedMessage {...messages.p4}/></P>
+          <P justify><FormattedMessage {...messages.p4}/></P>
           <Img src={`${IMAGES_URL}/aac-users/sanitary-aac.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.title5}/></H2>
-          <P><FormattedMessage {...messages.p5}/></P>
+          <P justify><FormattedMessage {...messages.p5}/></P>
           <Img src={`${IMAGES_URL}/aac-users/first-reader.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.title6}/></H2>
-          <P><FormattedMessage {...messages.p6}/></P>
+          <P justify><FormattedMessage {...messages.p6}/></P>
           <Img src={`${IMAGES_URL}/aac-users/speaker.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.title7}/></H2>
-          <P><FormattedMessage {...messages.p7}/></P>
+          <P justify><FormattedMessage {...messages.p7}/></P>
           <Img src={`${IMAGES_URL}/aac-users/tourists-info.jpg`} />
         </Item>
         <Item>
           <H2 primary={true}><FormattedMessage {...messages.title8}/></H2>
-          <P><FormattedMessage {...messages.p8}/></P>
+          <P justify><FormattedMessage {...messages.p8}/></P>
           <Img src={`${IMAGES_URL}/aac-users/restaurant-aac.jpg`} />
         </Item>
 
