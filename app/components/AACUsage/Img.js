@@ -4,8 +4,10 @@ const Img = styled.img`
   width: 100%;
   height: auto;
   padding: 5px;
+  border: solid 1px #EFEFEF;
   &:hover {
-    opacity: 0.93;
+    border: solid 1px #CCC;
+    box-shadow: 1px 1px 5px #999;
   }
 `
 
