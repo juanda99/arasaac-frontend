@@ -16,20 +16,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { ImmutableLoadingBar as LoadingBar } from "react-redux-loading-bar";
-// import Helmet from 'react-helmet'
-// import styled from 'styled-components'
+import Helmet from 'react-helmet'
 import Header from "components/Header";
 import Footer from "components/Footer";
 import Menu from "components/Menu";
-import muiThemeable from "material-ui/styles/muiThemeable";
 import { FormattedMessage } from "react-intl";
 import Joyride, { STATUS } from 'react-joyride'
-import Div from "components/Div";
 import messages from "./messages";
 import Wrapper from "./Wrapper";
 import { connect } from "react-redux";
-import spacing from "material-ui/styles/spacing";
-import { white } from "material-ui/styles/colors";
 import withWidth, { LARGE, SMALL } from "material-ui/utils/withWidth";
 import {
   changeLocale,
@@ -38,7 +33,7 @@ import {
 } from "containers/LanguageProvider/actions";
 import { makeSelectRunTour } from 'containers/HomePage/selectors'
 import { stopTour } from 'containers/HomePage/actions'
-import { logout, activation } from "./actions";
+import { logout } from "./actions";
 import { makeSelectHasUser, makeSelectRole } from "./selectors";
 import { makeSelectDirection } from 'containers/LanguageProvider/selectors';
 
@@ -365,6 +360,10 @@ class App extends Component {
         style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
         dir={direction}
       >
+        <Helmet>
+          <title>AAC Symbols and shared resources - ARASAAC</title>
+          <meta name="description" content='Thousands of open source AAC symbols and shared resources for families and professionals' />
+        </Helmet>
         <Joyride
           callback={this.handleJoyrideCallback}
           continuous={true}
