@@ -14,6 +14,7 @@
   "app.MaterialsView.pageTitle": "AAC مشاركة مصادر العتاد - أراساك",
   "app.PictogramsView.pageTitle": "رُمُوزْ AAC-أراساك",
   "app.component.MaterialConditions.adaptationQuote": "ضَبْط الاقتباس",
+  "app.component.MaterialConditions.adaptationQuoteDesc": "فِي حَالَة تَعْدِيل\\ضَبْط أَدَوَات المَوْجُودَة, اِسْم المُعَدِلْ سَيُضَافُ فِي نِهَايَةِ الاقْتِبَاس:",
   "app.component.MaterialConditions.adaptedBy": "ضُبِطَ مِنْ قِبَلْ:",
   "app.component.MaterialConditions.author": "الكَاتِب:",
   "app.component.MaterialConditions.checkRead": "قَرَأْتُ و فَهِمْتُ المَعْلُومَاتْ أَعْلَاه.",
