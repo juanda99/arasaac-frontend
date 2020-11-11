@@ -5,6 +5,7 @@
   "NewPasswordForm.hintNewPassword": "ما هي سِرِّك الجديدة ؟",
   "activate.activateUser": "تفعيل المستعمل \nأو\nتفعيل المستخدم\n",
   "activate.expiredCode": "انتهت صلاحية رمز تَفْعِيلك. لقد أرسلنا لك رسالة بريد إلكتروني لتأكيد حسابك",
+  "activate.invalidCode": "رمز تَفْعِلك غير صالح",
   "app.component.Participate.contact": "اتصل بنا",
   "app.components.Catalog.accept": "قبول",
   "app.components.Catalog.cancel": "إلغاء",
