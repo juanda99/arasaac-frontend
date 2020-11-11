@@ -16,6 +16,7 @@
   "app.component.MaterialConditions.adaptationQuote": "ضَبْط الاقتباس",
   "app.component.MaterialConditions.adaptedBy": "ضُبِطَ مِنْ قِبَلْ:",
   "app.component.MaterialConditions.author": "الكَاتِب:",
+  "app.component.MaterialConditions.checkRead": "قَرَأْتُ و فَهِمْتُ المَعْلُومَاتْ أَعْلَاه.",
   "app.component.MaterialConditions.license": "تَرْخِيص:",
   "app.component.MaterialConditions.materialPublication": "نَشْر العَتَاد \nأو \nنَشْر المَوَاد",
   "app.component.MaterialConditions.origin": "الأَصْل:",
