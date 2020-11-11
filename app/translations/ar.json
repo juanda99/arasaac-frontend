@@ -1,5 +1,6 @@
 {
   "Login.invalidEmail": "البريد الإلكتروني غير صحيح",
+  "Login.invalidUrl": "الرابط غير صالح ",
   "Login.required": "مطلوبة",
   "app.component.Participate.contact": "اتصل بنا",
   "app.components.Catalog.accept": "قبول",
