@@ -4,7 +4,7 @@ import { injectIntl } from 'react-intl'
 import PropTypes from 'prop-types'
 import View from 'components/View'
 import {Helmet} from 'react-helmet'
-import AAC from 'components/AAC'
+import AACUsers from 'components/AACUsers'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ReadMargin from 'components/ReadMargin'
 import messages from './messages'
@@ -21,7 +21,7 @@ class IntroUsersAAC extends Component {
           <meta name="description" content={formatMessage(messages.desc)} />
         </Helmet>
         <ReadMargin>
-          <AAC />
+          <AACUsers />
         </ReadMargin>
       </View >
     )
