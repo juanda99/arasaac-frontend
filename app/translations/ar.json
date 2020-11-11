@@ -2,6 +2,8 @@
   "Login.invalidEmail": "البريد الإلكتروني غير صحيح",
   "Login.invalidUrl": "الرابط غير صالح ",
   "Login.required": "مطلوبة",
+  "NewPasswordForm.hintNewPassword": "ما هي سِرِّك الجديدة ؟",
+  "activate.activateUser": "تفعيل المستعمل \nأو\nتفعيل المستخدم\n",
   "app.component.Participate.contact": "اتصل بنا",
   "app.components.Catalog.accept": "قبول",
   "app.components.Catalog.cancel": "إلغاء",
