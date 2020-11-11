@@ -103,8 +103,6 @@ const AACUsage = ({intl}) => {
           <H2 primary={true}><FormattedMessage {...messages.otherContexts}/></H2>
           <P><FormattedMessage {...messages.p18}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/16.jpg`} />
-          <Img src={`${IMAGES_URL}/aac-usage/17.jpg`} />
-          <Img src={`${IMAGES_URL}/aac-usage/18.jpg`} />
         </Item>
       </Masonry>
     </div>
