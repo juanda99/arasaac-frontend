@@ -49,12 +49,7 @@ class TextOptions extends Component {
 
   handleFontChange = (nextFont) => {
     const font = new FontFaceObserver(nextFont.family);
-      font.load().then(() => {
-        console.log(`${this.state.activeFontFamily} has loaded`);
-        this.props.onFontChange(nextFont.family)
-      }, () => {
-        console.log(`${this.state.activeFontFamily} is not available`);
-      });   
+      font.load().then(() => this.props.onFontChange(nextFont.family));   
   };
 
   handleUpdateInput = (searchText) =>
