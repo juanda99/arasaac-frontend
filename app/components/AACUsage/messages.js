@@ -117,4 +117,8 @@ export default defineMessages({
     id: `${scope}.p16`,
     defaultMessage: 'The use of visual supports in other contexts increase cognitive accessibility and help people to participate in their community, enjoy the spare time and be more independent and autonomous. We can find examples of use of visual supports in museums, libraries, webpages, accessible documents, shops, hospitals, parks, traffic lights, and so on.'
   },
+  showResources: {
+    id: `${scope}.showResources`,
+    defaultMessage: 'Show resources'
+  },
 })

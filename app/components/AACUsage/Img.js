@@ -4,6 +4,7 @@ const Img = styled.img`
   width: 100%;
   height: auto;
   padding: 5px;
+  margin-bottom: 10px;
   border: solid 1px #EFEFEF;
   &:hover {
     border: solid 1px #CCC;
