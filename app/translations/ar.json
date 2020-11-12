@@ -36,6 +36,7 @@
   "app.component.MaterialConditions.standardQuote": "اقْتِبَاسْ مِعْيَارِي",
   "app.component.MaterialConditions.submit": "ارْسَال",
   "app.component.MaterialConditions.suggestions": "الاقْتِرَاحَات",
+  "app.component.MaterialConditions.suggestionsDesc": "بِمَا أَنَّ الأراساك مَشْرُوٌع تَعَاوُنِي و دُوَلِي، فَإنَّنَا نُوصِي، إِذَا كُانَ  ذَلِكَ مُنَاسِباً، أَنْ تُوَفِرَ لَيْسَ فَقَطْ المِلَفَاتْ  بِصِيغَة القِرَاءَةِ/البَصَرِيَّة  (pdf, pps,ppsx, الخ).لَكِنْ تُوَفِرهَا أَيْضًا بِصِيَغةٍ قَابِلَةٍ لِلتَّحْرِيرْ (Doc, docx, ppt, pptx, odf, pszip, الخ.)، مِنْ أَجْللِ تَيْسِيرِ تَرْجَمَاتِ إِلَى لُغَاتٍ أُخْرَى وَ تَكْيِّفَاتٍ مُمْكِنَةٍ مَعَ خَصَائِصْ المُسْتَخْدِمِينْ. \n هَذِهِ المِلَفَاتْ المُعَدَلَةُ سَيَتِمُ حِمَايتُهَا ضِمْن رُخْصَتِنَا الخَاصة بالمَشْروعْ الإبْدَاعِي.",
   "app.component.MaterialConditions.translationQuote": "الاقْتِبَاسُ لِلتَّرْجَمَةِ",
   "app.component.MaterialConditions.translationQuoteDesc": "فِي حَالَةِ تَرْجَمَةِ المَوَادِ, اسْمُ المُتَرْجِمِ سَيُكْتَبُ فِي نِهَايَةِ الاقْتِبَاسْ:",
   "app.component.MaterialConditions.translator": "المُتَرْجِم:",
