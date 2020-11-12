@@ -14,10 +14,6 @@ import messages from './messages'
 import Item from './Item'
 
 const Showcase = ({ locale }) => {
-  let saacRoute = '/aac'
-  if (locale === 'es' || locale === 'val' || locale === 'gl' || locale === 'eu') {
-    saacRoute = '/saac'
-  }
   return (
     <FullWidthSection style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', color: 'white' }}>
       <div style={{width: '100%'}}>
@@ -44,7 +40,7 @@ const Showcase = ({ locale }) => {
 
       <Item
         title={<FormattedMessage {...messages.whatIsAAC} />}
-        route={saacRoute}
+        route={`/aac/${locale}`}
         image={`${PICTOGRAMS_URL}/36723/36723_300.png`}
       />
 

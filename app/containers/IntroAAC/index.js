@@ -3,10 +3,7 @@ import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import PropTypes from 'prop-types'
 import View from 'components/View'
-import RaisedButton from 'material-ui/RaisedButton'
-import P from 'components/P'
 import {Helmet} from 'react-helmet'
-import { Link } from 'react-router'
 import AAC from 'components/AAC'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ReadMargin from 'components/ReadMargin'
@@ -15,38 +12,20 @@ class IntroAAC extends Component {
 
 
   render() {
-    const { locale, intl } = this.props
+    const { intl } = this.props
     const { formatMessage } = intl
-    let renderInfo
-    if (locale === 'es' || locale === 'gl' || locale === 'eu' || locale === 'ca' || locale === 'val') {
-      renderInfo = (
-        <P>{<FormattedMessage {...messages.infoSpanish} />}
-          <Link to='/saac'>
-            <RaisedButton label={formatMessage(messages.inSpanish)} style={{ marginLeft: 10 }} />
-          </Link>
-        </P>
-      )
-    }
-    else if (locale === 'en') renderInfo = null
-    else {
-      renderInfo = (
-        <P>{<FormattedMessage {...messages.justSpanish} />}
-          <Link to='/saac'>
-            <RaisedButton label={formatMessage(messages.inSpanish)} style={{ marginLeft: 10 }} />
-          </Link>
-        </P>
-      )
-    }
+    const title = formatMessage(messages.title)
+    const description = formatMessage(messages.desc)
+
     return (
       <View left={true} right={true}>
         <Helmet>
-          <title>What is AAC? - ARASAAC</title>
-          <meta name="description" content="The Augmentative and Alternative Systems of Communication (AAC) aim at increasing or compensate the difficulties of communication of people with disabilities." />
+          <title>{title}</title>
+          <meta name="description" content={description} />
           {/* <link rel="canonical" href="http://mysite.com/example" /> */}
 
         </Helmet>
         <ReadMargin>
-          {renderInfo}
           <AAC />
         </ReadMargin>
       </View >
@@ -54,14 +33,4 @@ class IntroAAC extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  locale: makeSelectLocale()(state)
-})
-
-export default connect(
-  mapStateToProps
-)(injectIntl(IntroAAC))
-
-IntroAAC.propTypes = {
-  locale: PropTypes.string.isRequired,
-}
+export default injectIntl(IntroAAC)

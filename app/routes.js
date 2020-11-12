@@ -32,19 +32,6 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading)
       }
     },
-    // TODO: redirect saac to aac/es
-    {
-      path: '/saac',
-      name: 'saac',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([import('containers/IntroSAAC')])
-        const renderRoute = loadModule(cb)
-        importModules.then(([component]) => {
-          renderRoute(component)
-        })
-        importModules.catch(errorLoading)
-      }
-    },
     {
       path: '/aac(/:language)',
       name: 'AAC',
