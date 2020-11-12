@@ -31,6 +31,8 @@
   "app.component.MaterialConditions.requirementsP1": "المَوَادْ المَنْشُورَة فِي هَذَا الفَرْع سَتُكَمِلْ بِيكْتوغرام مِنْ مَجْمُوعَة أراساك أو أَي عَمَلْ مُشْتَق.",
   "app.component.MaterialConditions.requirementsP3": "يَجِبُ على الصُّوَرِ الوَارِدَةِ ضِمْنَ المَوَادِ أَنْ تَتَطَابَقَ مَعَ رُخْصَتِنَا أوْ تَكُونْ صَادِرَة مِنْ طَرَفْ المُؤَلِفْ الأَصْلِي بِحَدِ ذَاتِهْ.",
   "app.component.MaterialConditions.requirementsP4": "النُّصُوصْ المُدْرَجَةِ ضِمْنَ المَوَادْ يَجِبُ أَنْ تَتَوَافَقَ مَعَ تَرْخِصِنَا. لا يُمْكِنُ نَسْخُهَا حِرْفِيًا لأَنَّها مَحْمِيَةٌ بِحُقوقْ النَّشْر و التَألِيف.",
+  "app.component.MaterialConditions.requirementsP5": "كُلُّ مَوَادِ الأراساك يَجِبُ أنْ تُرَخَصْ, يُفَضَلُ أَنْ يَكُونَ فِي أَسْفَلِ الصَفْحَةِ بالإضَافَةِ لاِسْمِ  مُؤَلِفِ المَوَادْ, كَمَا أَنَّ حُقُوقَ المِلْكِيَّة الفِكْرِيَة تَخْضَعُ لِنَفْسِ التَّرْخِيص.",
+  "app.component.MaterialConditions.requirementsP6": "كَيْ تَكْتُبَ اقْتِبَاساً صَحِيحًا, اِسْتَخْدِمْ إحْدى الاقْتِبَاسَاتِ التَّاليَة:",
   "app.component.MaterialConditions.standardQuote": "اقْتِبَاسْ مِعْيَارِي",
   "app.component.MaterialConditions.submit": "ارْسَال",
   "app.component.MaterialConditions.suggestions": "الاقْتِرَاحَات",
