@@ -36,6 +36,8 @@
   "app.component.MaterialConditions.standardQuote": "اقْتِبَاسْ مِعْيَارِي",
   "app.component.MaterialConditions.submit": "ارْسَال",
   "app.component.MaterialConditions.suggestions": "الاقْتِرَاحَات",
+  "app.component.MaterialConditions.translationQuote": "الاقْتِبَاسُ لِلتَّرْجَمَةِ",
+  "app.component.MaterialConditions.translationQuoteDesc": "فِي حَالَةِ تَرْجَمَةِ المَوَادِ, اسْمُ المُتَرْجِمِ سَيُكْتَبُ فِي نِهَايَةِ الاقْتِبَاسْ:",
   "app.component.MaterialConditions.translator": "المُتَرْجِم:",
   "app.component.Participate.contact": "اتصل بنا",
   "app.component.Participate.header": "نَحنُ بِْصَدَدِ بِنَاءْ الأراساك. هل تَرْغَبُ فِي الانْضِمَامِ إلَيْنَا؟",
