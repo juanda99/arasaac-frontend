@@ -67,14 +67,14 @@ const AACUsage = ({intl}) => {
           </Link>
         </Item>
         <Item>
-          <Link to={getUrl(26)}>
+          <Link to={getUrl(39)}>
             <H2 primary={true}><FormattedMessage {...messages.visualTimetables}/></H2>
           </Link>
           <P justify><FormattedMessage {...messages.p5}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/visual-timetable-aac-1.jpg`} />
           <P justify><FormattedMessage {...messages.p6}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/visual-timetable-aac-2.jpg`} />
-          <Link style={{margin: '0  auto'}} to={getUrl(26)}>
+          <Link style={{margin: '0  auto'}} to={getUrl(39)}>
             <RaisedButton label={<FormattedMessage {...messages.showResources}/>} style={{maxWidth: '200px'}} secondary={true}/>  
           </Link>
         </Item>
@@ -113,26 +113,21 @@ const AACUsage = ({intl}) => {
           </Link>
         </Item>
         <Item>
-          <Link to={getUrl(24)}>
-            <H2 primary={true}><FormattedMessage {...messages.lifeSkills}/></H2>
-          </Link>
+          <H2 primary={true}><FormattedMessage {...messages.lifeSkills}/></H2>
           <P justify><FormattedMessage {...messages.p12}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/life-skills.jpg`} />
           <P justify><FormattedMessage {...messages.p13}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/life-skills-2.jpg`} />
-          <Link style={{margin: '0  auto'}} to={getUrl(24)}>
-            <RaisedButton label={<FormattedMessage {...messages.showResources}/>} style={{maxWidth: '200px'}} secondary={true}/>  
-          </Link>
         </Item>
         <Item>
-          <Link to={getUrl(24)}>
+          <Link to={getUrl(40)}>
             <H2 primary={true}><FormattedMessage {...messages.learning}/></H2>
           </Link>
           <P justify><FormattedMessage {...messages.p14}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/learning-1.jpg`} />
           <P justify><FormattedMessage {...messages.p15}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/learning-2.jpg`} />
-          <Link style={{margin: '0  auto'}} to={getUrl(24)}>
+          <Link style={{margin: '0  auto'}} to={getUrl(40)}>
             <RaisedButton label={<FormattedMessage {...messages.showResources}/>} style={{maxWidth: '200px'}} secondary={true}/>  
           </Link>
         </Item>
@@ -149,14 +144,9 @@ const AACUsage = ({intl}) => {
           </Link>
         </Item>
         <Item>
-          <Link to={getUrl(24)}>
-            <H2 primary={true}><FormattedMessage {...messages.otherContexts}/></H2>
-          </Link>
+          <H2 primary={true}><FormattedMessage {...messages.otherContexts}/></H2>
           <P justify><FormattedMessage {...messages.p18}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/16.jpg`} />
-          <Link style={{margin: '0  auto'}} to={getUrl(24)}>
-            <RaisedButton label={<FormattedMessage {...messages.showResources}/>} style={{maxWidth: '200px'}} secondary={true}/>  
-          </Link>
         </Item>
       </Masonry>
     </div>
