@@ -5,6 +5,7 @@ import FontPicker from 'font-picker-react'
 import Slider from 'material-ui/Slider'
 import AutoComplete from 'material-ui/AutoComplete'
 import Toggle from 'material-ui/Toggle'
+import FontFaceObserver from 'fontfaceobserver'
 import { FormattedMessage } from 'react-intl'
 import api from 'services'
 import LanguageSelector from 'components/LanguageSelector'
@@ -16,6 +17,7 @@ import ToggleDropDown from './ToggleDropdown'
 import styles from './styles'
 import BoxOptions from './BoxOptions'
 import messages from './messages'
+
 
 class TextOptions extends Component {
   static propTypes = {
@@ -46,7 +48,13 @@ class TextOptions extends Component {
   };
 
   handleFontChange = (nextFont) => {
-    this.props.onFontChange(nextFont.family)
+    const font = new FontFaceObserver(nextFont.family);
+      font.load().then(() => {
+        console.log(`${this.state.activeFontFamily} has loaded`);
+        this.props.onFontChange(nextFont.family)
+      }, () => {
+        console.log(`${this.state.activeFontFamily} is not available`);
+      });   
   };
 
   handleUpdateInput = (searchText) =>
@@ -93,6 +101,7 @@ class TextOptions extends Component {
       upperCase
     } = this.props
 
+    console.log(this.props.font, "**************************************")
     const { keywords, editText } = this.state
     let marginBottom = 'auto'
     if (showOptions) {
@@ -193,9 +202,10 @@ class TextOptions extends Component {
               <P>{<FormattedMessage {...messages.fontFamily} />}</P>
               <FontPicker
                 apiKey='AIzaSyAoip_N5rTGMPRkIbRqpKMti2CCsx_1iYg'
-                activeFont={font}
+                activeFontFamily={font}
                 onChange={this.handleFontChange}
                 style={{ display: 'inlineBlock', width: '100%' }}
+                limit="600"
               />
 
               <RaisedButton
