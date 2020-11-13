@@ -107,7 +107,7 @@ export default defineMessages({
   },
   p17: {
     id: `${scope}.p17`,
-    defaultMessage: 'Do you want to know how to signpost with ARASAAC symbols? (Currently just in Spanish)'
+    defaultMessage: 'Do you want to know how to signpost with ARASAAC symbols? Visit {AulaAbierta}, our educational  website (currently just in Spanish).'
   },
   otherContexts: {
     id: `${scope}.otherContexts`,

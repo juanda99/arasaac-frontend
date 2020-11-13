@@ -49,7 +49,8 @@ class TextOptions extends Component {
 
   handleFontChange = (nextFont) => {
     const font = new FontFaceObserver(nextFont.family);
-      font.load().then(() => this.props.onFontChange(nextFont.family));   
+    // check  load with characters  of the font (taking text written). Case other  font characters (eg  cyrillic), time out willl come, we load  font anyway.
+    font.load(this.props.text).then(() => this.props.onFontChange(nextFont.family)).catch(()=> this.props.onFontChange(nextFont.family))
   };
 
   handleUpdateInput = (searchText) =>
@@ -96,7 +97,6 @@ class TextOptions extends Component {
       upperCase
     } = this.props
 
-    console.log(this.props.font, "**************************************")
     const { keywords, editText } = this.state
     let marginBottom = 'auto'
     if (showOptions) {

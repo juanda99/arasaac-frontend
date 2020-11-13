@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import RaisedButton from 'material-ui/RaisedButton'
 import H2 from 'components/H2'
 import P from 'components/P'
+import A from 'components/A'
 import {IMAGES_URL} from 'services/config'
 import Item from './Item'
 import Img from './Img'
@@ -31,6 +32,7 @@ const AACUsage = ({intl}) => {
     // isOriginLeft: !rtl
   }
   const numberPictograms = intl.formatNumber(11000)
+  const AulaAbierta = <A href='http://aulaabierta.arasaac.org/senalizacion-de-espacios-publicos-y-servicios-con-pictogramas-de-arasaac' target='_blank'>Aula Abierta</A>
 
   return (
     <div>
@@ -137,7 +139,7 @@ const AACUsage = ({intl}) => {
           </Link>
           <P justify><FormattedMessage {...messages.p16}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/signage-1.jpg`} />
-          <P justify><FormattedMessage {...messages.p17}/></P>
+          <P justify><FormattedMessage {...messages.p17} values={{AulaAbierta}}/> </P>
           <Img src={`${IMAGES_URL}/aac-usage/signage-2.jpg`} />
           <Link style={{margin: '0  auto'}} to={getUrl(25)}>
             <RaisedButton label={<FormattedMessage {...messages.showResources}/>} style={{maxWidth: '200px'}} secondary={true}/>  
