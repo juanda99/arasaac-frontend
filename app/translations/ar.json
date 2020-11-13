@@ -334,6 +334,7 @@
   "app.components.Welcome.aragonese": "أراجون",
   "app.components.Welcome.chooseLanguage": "اختر اللغة الخاصة بك:",
   "app.components.Welcome.header": "{أراجونين} مَرْكَزْ التَّواصل المُعَزَزْ و البديل",
+  "app.components.aac": "مِنْ الأراساك نَوَدُ أَنْ نَشْكُرَ كِلا {الكَاتِب} و {الفَرِيق} عَلَى تَعَاوِنِهِمَا فِي صِيَاغَةِ هَذَا القِسْم مِنْ مَوْقِعْنا الإليكْتْروني.",
   "app.components.author": "مُؤَلِفْ البِيكْتوغرام:",
   "app.components.creativeCommons": "رخصة الإبداع المُرَخَصة من BY-NC-SA",
   "app.components.dialog.ok": "موافق",
