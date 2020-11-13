@@ -13,6 +13,8 @@ import H2 from 'components/H2'
 import messages from './messages'
 import Item from './Item'
 
+
+
 const Showcase = ({ locale }) => {
   return (
     <FullWidthSection style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', color: 'white' }}>
@@ -41,6 +43,7 @@ const Showcase = ({ locale }) => {
       <Item
         title={<FormattedMessage {...messages.whatIsAAC} />}
         route={`/aac/${locale}`}
+
         image={`${PICTOGRAMS_URL}/36723/36723_300.png`}
       />
 

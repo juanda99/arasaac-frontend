@@ -227,6 +227,11 @@ class MaterialsView extends PureComponent {
 
   async componentDidMount() {
     const { requestMaterials, requestNewMaterials, requestNotPublishedMaterials, locale, token, role, authorsName, requestAuthors, newVisibleMaterialsList } = this.props
+    /* hack to open learning aac menu when visiting from homepage */
+    const isOpen = window.document.getElementById("lstsearchmaterials")
+    if (!isOpen) document.getElementById('lstmaterials').click()
+    
+    
     await this.processQuery()
     if (this.props.params.searchText && !this.props.searchResults) {
       requestMaterials(locale, this.props.params.searchText, this.state.searchType, token)

@@ -10,6 +10,13 @@ import ReadMargin from 'components/ReadMargin'
 import messages from './messages'
 class IntroAAC extends Component {
 
+  componentDidMount() {
+    /* hack to open learning aac menu when visiting from homepage */
+    const isOpen = window.document.getElementById("whatIsAAC")
+    if (!isOpen) document.getElementById('lstlearning').click()
+  }
+  
+
 
   render() {
     const { intl } = this.props

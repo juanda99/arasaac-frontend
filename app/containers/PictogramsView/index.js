@@ -96,6 +96,11 @@ class PictogramsView extends PureComponent {
       requestAutocomplete,
       locale
     } = this.props
+
+    /* hack to open learning aac menu when visiting from homepage */
+    const isOpen = window.document.getElementById("lstsearchpictos")
+    if (!isOpen) document.getElementById('lstpictograms').click()
+
     this.processQuery()
     if (this.props.params.searchText && !this.props.searchResults) {
       requestPictograms(locale, encodeURIComponent(this.props.params.searchText))

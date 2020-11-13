@@ -129,6 +129,7 @@ class Menu extends Component {
             leftIcon={<PictogramsIcon />}
             nestedItems={[
               <ListItem
+                id='lstsearchpictos'
                 value='/pictograms/search'
                 primaryText={<FormattedMessage {...messages.search} />}
                 leftIcon={<SearchIcon />}
@@ -148,6 +149,7 @@ class Menu extends Component {
             leftIcon={<MaterialsIcon />}
             nestedItems={[
               <ListItem
+                id='lstsearchmaterials'
                 value='/materials/search'
                 primaryText={<FormattedMessage {...messages.search} />}
                 leftIcon={<SearchIcon />}
@@ -167,6 +169,7 @@ class Menu extends Component {
             leftIcon={<SchoolIcon />}
             nestedItems={[
               <ListItem
+                id='whatIsAAC'
                 value={`/aac/${locale}`}
                 primaryText={<FormattedMessage {...messages.whatIsAAC} />}
                 leftIcon={<InfoIcon />}
