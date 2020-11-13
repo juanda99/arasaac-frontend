@@ -11,6 +11,21 @@ export default defineMessages({
     description: 'Header title',
     defaultMessage: 'Search pictograms'
   },
+  aacUsers: {
+    id: 'header.aacUsers',
+    description: 'Header title',
+    defaultMessage: 'AAC Users'
+  },
+  useOfAAC: {
+    id: 'header.useOfAAC',
+    description: 'Header title',
+    defaultMessage: 'Use of AAC'
+  },
+  whatIsAAC: {
+    id: 'header.whatIsAAC',
+    description: 'Header title',
+    defaultMessage: 'What is AAC?'
+  },
   materialsSearch: {
     id: 'header.materialsSearch',
     description: 'Header title',

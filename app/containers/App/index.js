@@ -152,11 +152,14 @@ class App extends Component {
       case /pictograms\/search/.test(url):
         title = <FormattedMessage {...messages.pictogramsSearch} />;
         break;
-      case /saac/.test(url):
-        title = '¿Qué son los SAAC?'
+      case /aac-users/.test(url):
+        title = <FormattedMessage {...messages.aacUsers} />;
+        break;
+      case /use-of-aac/.test(url):
+        title = <FormattedMessage {...messages.useOfAAC} />;
         break;
       case /aac/.test(url):
-        title = 'What is AAC?'
+        title = <FormattedMessage {...messages.whatIsAAC} />;
         break;
       case /materials\/search/.test(url):
         title = <FormattedMessage {...messages.materialsSearch} />;
@@ -403,6 +406,7 @@ class App extends Component {
         </Wrapper>
         <Menu
           location={location}
+          locale={this.props.locale}
           docked={docked}
           onRequestChangeNavDrawer={this.handleChangeRequestNavDrawer}
           onChangeList={this.handleChangeList}

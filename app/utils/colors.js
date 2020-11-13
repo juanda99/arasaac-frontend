@@ -21,7 +21,7 @@ export const deepPurple = '#673ab7'
 export const cyan = '#00bcd4'
 
 // order matters! word type for frame and background color in picto editor
-export const colorSet = [yellow, orange, green, blue, pink, white]
+export const colorSet = [yellow, orange, green, blue, pink, white, black]
 
 export const smallColorSet = [black, white, yellow]
 

@@ -33,10 +33,10 @@ export default function createRoutes(store) {
       }
     },
     {
-      path: '/saac',
-      name: 'saac',
+      path: '/aac(/:language)',
+      name: 'AAC',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([import('containers/IntroSAAC')])
+        const importModules = Promise.all([import('containers/IntroAAC')])
         const renderRoute = loadModule(cb)
         importModules.then(([component]) => {
           renderRoute(component)
@@ -45,10 +45,22 @@ export default function createRoutes(store) {
       }
     },
     {
-      path: '/aac',
-      name: 'AAC',
+      path: '/aac-users(/:language)',
+      name: 'AAC-users',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([import('containers/IntroAAC')])
+        const importModules = Promise.all([import('containers/IntroUsersAAC')])
+        const renderRoute = loadModule(cb)
+        importModules.then(([component]) => {
+          renderRoute(component)
+        })
+        importModules.catch(errorLoading)
+      }
+    },
+    {
+      path: '/use-of-aac(/:language)',
+      name: 'AAC-usage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([import('containers/IntroUsageAAC')])
         const renderRoute = loadModule(cb)
         importModules.then(([component]) => {
           renderRoute(component)

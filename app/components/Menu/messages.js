@@ -30,6 +30,26 @@ export default defineMessages({
     id: 'menu.termsOfUse',
     defaultMessage: 'Terms of use'
   },
+  learningAAC: {
+    id: 'menu.learningAAC',
+    description: 'Menu item',
+    defaultMessage: 'Learn AAC'
+  },
+  whatIsAAC: {
+    id: 'menu.whatIsAAC',
+    description: 'Menu item',
+    defaultMessage: 'What is AAC?'
+  },
+  aacUsers: {
+    id: 'menu.aacUsers',
+    description: 'Menu item',
+    defaultMessage: 'AAC Users'
+  },
+  useAAC: {
+    id: 'menu.useAAC',
+    description: 'Menu item',
+    defaultMessage: 'Use of AAC'
+  },
   api: {
     id: 'menu.api',
     description: 'Menu item',

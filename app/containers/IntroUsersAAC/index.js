@@ -1,36 +1,41 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { injectIntl } from 'react-intl'
 import PropTypes from 'prop-types'
 import View from 'components/View'
 import {Helmet} from 'react-helmet'
-import AAC from 'components/AAC'
+import AACUsers from 'components/AACUsers'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ReadMargin from 'components/ReadMargin'
 import messages from './messages'
-class IntroAAC extends Component {
+class IntroUsersAAC extends Component {
 
 
   render() {
-    const { intl } = this.props
+    const { locale, intl } = this.props
     const { formatMessage } = intl
-    const title = formatMessage(messages.title)
-    const description = formatMessage(messages.desc)
-
     return (
       <View left={true} right={true}>
         <Helmet>
-          <title>{title}</title>
-          <meta name="description" content={description} />
-          {/* <link rel="canonical" href="http://mysite.com/example" /> */}
-
+          <title>{formatMessage(messages.title)}</title>
+          <meta name="description" content={formatMessage(messages.desc)} />
         </Helmet>
         <ReadMargin>
-          <AAC />
+          <AACUsers />
         </ReadMargin>
       </View >
     )
   }
 }
 
-export default injectIntl(IntroAAC)
+const mapStateToProps = (state) => ({
+  locale: makeSelectLocale()(state)
+})
+
+export default connect(
+  mapStateToProps
+)(injectIntl(IntroUsersAAC))
+
+IntroUsersAAC.propTypes = {
+  locale: PropTypes.string.isRequired,
+}
