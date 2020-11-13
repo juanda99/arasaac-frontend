@@ -23,7 +23,7 @@ const styles = {
 }
 
 
-const getUrl = (id) => `materials/search/${id}?searchType=activity`
+const getUrl = (id) => `/materials/search/${id}?searchType=activity`
 
 
 const AACUsage = ({intl}) => {
