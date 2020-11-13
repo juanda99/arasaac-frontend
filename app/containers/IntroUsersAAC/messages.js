@@ -4,7 +4,7 @@ const scope = 'app.containers/IntroUsersAAC'
 export default defineMessages({
   title: {
     id: `${scope}.title`,
-    defaultMessage: 'AAC users | ARASAAC'
+    defaultMessage: 'AAC users - ARASAAC'
   },
   desc: {
     id: `${scope}.desc`,

@@ -4,7 +4,7 @@ const scope = 'app.containers/IntroUsageAAC'
 export default defineMessages({
   title: {
     id: `${scope}.title`,
-    defaultMessage: 'How to use AAC symbols  | ARASAAC'
+    defaultMessage: 'How to use AAC symbols - ARASAAC'
   },
   desc: {
     id: `${scope}.desc`,
