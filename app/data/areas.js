@@ -33,7 +33,8 @@ const areas = [
   { code: 30, text: 'moneyUsage' },
   { code: 31, text: 'alphabet' },
   { code: 32, text: 'logicReasoning' },
-  { code: 33, text: 'time' }
+  { code: 33, text: 'time' },
+  { code: 34, text: 'behaviour' }
 ]
 
 

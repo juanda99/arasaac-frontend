@@ -182,6 +182,11 @@ export default defineMessages({
     description: 'Menu choose material area',
     defaultMessage: 'Problems'
   },
+  behaviour: {
+    id: 'app.components.Filters.Area.behaviour',
+    description: 'Menu choose material area',
+    defaultMessage: 'Behaviour'
+  },
   geometry: {
     id: 'app.components.Filters.Area.geometry',
     description: 'Menu choose material area',

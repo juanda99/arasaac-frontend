@@ -24,6 +24,7 @@ const styles = {
 
 
 const getUrl = (id) => `/materials/search/${id}?searchType=activity`
+const behaviourUrl = '/materials/search/34?searchType=area'
 
 
 const AACUsage = ({intl}) => {
@@ -91,14 +92,14 @@ const AACUsage = ({intl}) => {
           </Link>
         </Item>
         <Item>
-          <Link to={getUrl(24)}>
+          <Link to={behaviourUrl}>
             <H2 primary={true}><FormattedMessage {...messages.behavioralStrategies}/></H2>
           </Link>
           <P justify><FormattedMessage {...messages.p8}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/behavioral-strategies-aac.jpg`} />
           <P justify><FormattedMessage {...messages.p9}/></P>
           <Img src={`${IMAGES_URL}/aac-usage/behavioral-strategies-aac-2.jpg`} />
-          <Link style={{margin: '0  auto'}} to={getUrl(24)}>
+          <Link style={{margin: '0  auto'}} to={behaviourUrl}>
             <RaisedButton label={<FormattedMessage {...messages.showResources}/>} style={{maxWidth: '200px'}} secondary={true}/>  
           </Link>
         </Item>
