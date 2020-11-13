@@ -51,7 +51,6 @@
   "app.components.Filters.Size.large": "Grote",
   "app.components.Filters.Size.small": "Kleine",
   "app.components.Filters.filterTooltip": "Filter wissen",
-  "app.components.Gallery.header": "Dit is de component Gallery!",
   "app.components.LanguageSelector.choose": "Kies uw taal",
   "app.components.MaterialForm.header": "Dit is het onderdeel van de MaterialForm!",
   "app.components.PrivatePolicy.header": "Dit is het onderdeel van de PrivatePolicy!",
