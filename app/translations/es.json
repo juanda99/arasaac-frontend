@@ -411,6 +411,7 @@
   "app.components.aacusage.teacch": "Recursos TEACCH",
   "app.components.aacusage.visualSchedules": "Anticipaciones / Rutinas",
   "app.components.aacusage.visualTimetables": "Agendas visuales",
+  "app.components.aacusers.p4": "Si alguien está intubado en la UCI de un hospital, ha sufrido un accidente o está conmocionado después de un ataque y no puede hablar, se puede utilizar como un sistema de comunicación que permite al usuario comunicar al profesional qué pasó y cómo se siente y a éste obtener información sobre el paciente. En otros casos, la comunicación a través de pictogramas permite a los médicos explicar procedimientos médicos cuando los pacientes no hablan el idioma local y obtener su consentimiento informado.",
   "app.components.aacusers.title1": "Niños con necesidades especiales (autismo, discapacidad intelectual, síndrome de Down, deficiencia auditiva...)",
   "app.components.aacusers.title2": "Niños y adultos con graves dificultades físicas (parálisis cerebral, traumatismo craneoencefálico, ictus...)",
   "app.components.aacusers.title3": "Personas mayores",
