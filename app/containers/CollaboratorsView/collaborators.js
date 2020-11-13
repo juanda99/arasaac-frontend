@@ -248,7 +248,14 @@ const collaborators = [
     image: 'she.jpg',
     country: 'es'
   },
-    {
+  {
+    name: 'Susanna Giner Segura',
+    languages: ['ca'],
+    image: 'she.jpg',
+    country: 'es',
+    desc: 'Logopeda Escola d\'Educació Especial Alba. Reus. ',
+  },
+  {
     name: 'Maria Grazia Fiore',
     languages: ['it'],
     image: 'maria-grazia.jpg',

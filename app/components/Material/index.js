@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Linkify from 'react-linkify'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
+import { withRouter } from 'react-router'
 import ReadMargin from 'components/ReadMargin'
 import ShareBar from 'components/ShareBar'
 import Divider from 'components/Divider'
@@ -34,9 +35,10 @@ import areas from 'data/areas'
 import classificationMessages from 'components/Filters/messages'
 import { MATERIALS_URL, IMAGES_URL } from 'services/config'
 import langMessages from 'components/LanguageSelector/messages'
-import { DEFAULT_PROFILE_PICTURE, ARASAAC, NOT_PUBLISHED, PUBLISHED, PENDING } from 'utils'
+import { DEFAULT_PROFILE_PICTURE, ARASAAC, NOT_PUBLISHED, PUBLISHED, PENDING, getAreaUrl, getActivityUrl } from 'utils'
 import Desc from './Desc'
 import messages from './messages'
+
 
 const styles = {
   chip: {
@@ -108,6 +110,9 @@ class Material extends Component {
   }
 
   handleClose = () => this.setState({ showDialog: false })
+
+  handleAreaClick = (id) => this.props.router.push(getAreaUrl(id))
+  handleActivityClick = (id) => this.props.router.push(getActivityUrl(id))
 
   handleRemove = () => {
     this.setState({ showDialog: false })
@@ -189,16 +194,18 @@ class Material extends Component {
     const activityTags = material.get('activities') && material.get('activities').map((id) => {
       const key = activities.filter(item => item.code === id)[0].text
       return (
-        <Chip style={styles.chip} key={id}>
+        
+        <Chip style={styles.chip} key={id} onClick={() => this.handleActivityClick(id)}>
           <Avatar icon={<ActivityIcon />} />
-          <FormattedMessage {...classificationMessages[key]} />
+            <span style={{color: 'black'}}> <FormattedMessage {...classificationMessages[key]} /></span>
         </Chip>
+
       )
     })
     const areaTags = material.get('areas') && material.get('areas').map((id) => {
       const key = areas.filter(item => item.code === id)[0].text
       return (
-        <Chip style={styles.chip} key={id}>
+        <Chip style={styles.chip} key={id} onClick={() => this.handleAreaClick(id)}>
           <Avatar icon={<AreaIcon />} />
           <FormattedMessage {...classificationMessages[key]} />
         </Chip>
@@ -340,7 +347,8 @@ Material.propTypes = {
   showActionButtons: PropTypes.bool.isRequired,
   publishMaterial: PropTypes.func.isRequired,
   removeMaterial: PropTypes.func.isRequired,
-  showSettings: PropTypes.func.isRequired
+  showSettings: PropTypes.func.isRequired,
+  router: PropTypes.any.isRequired,
 }
 
-export default muiThemeable()(injectIntl(Material))
+export default muiThemeable()(injectIntl(withRouter(Material)))

@@ -108,5 +108,9 @@ export const getMongoDBLanguage = (language) => {
       return 'none'
   }
 }
+
+export const getAreaUrl = (id) => `/materials/search/${id}?searchType=area`
+export const getActivityUrl = (id) => `/materials/search/${id}?searchType=activity`
+
 export const capitalizeFirstLetter = (string)  => string.charAt(0).toUpperCase() + string.slice(1);
 
