@@ -19,11 +19,11 @@ export default defineMessages({
   },
   p2: {
     id: 'app.components.aac.p2',
-    defaultMessage: 'Communication and language are essential for every human being to interact with other people, to learn, enjoy and take part in society. Today, thanks to these systems, they can’t be restrained by the difficulties with the oral language. For this reason, every person, whether kids, teenagers, adults or seniors, that for any cause haven’t acquired or have lost the level of spoken language needed for communicating in a satisfactory manner, have to use a SAAC. '
+    defaultMessage: 'Communication and language are essential for every human being to interact with other people, to learn, enjoy and take part in society. Today, thanks to these systems, they can’t be restrained by the difficulties with the oral language. For this reason, every person, whether kids, teenagers, adults or seniors, that for any cause haven’t acquired or have lost the level of spoken language needed for communicating in a satisfactory manner, have to use an AAC. '
   },
   p3: {
     id: 'app.components.aac.p3',
-    defaultMessage: 'Among the reasons to make the use of a SAAC necessary, we find cerebral palsy (CP), intellectual disability, autism spectrum disorders (ASD), neurological diseases such as amyotrophic lateral sclerosis (ALS), multiple sclerosis (MS) or Parkinson’s disease, muscular dystrophies, traumatic brain injuries, aphasias or multiple disabilities of different types, to name but a few.'
+    defaultMessage: 'Among the reasons to make the use of an AAC necessary, we find cerebral palsy (CP), intellectual disability, autism spectrum disorders (ASD), neurological diseases such as amyotrophic lateral sclerosis (ALS), multiple sclerosis (MS) or Parkinson’s disease, muscular dystrophies, traumatic brain injuries, aphasias or multiple disabilities of different types, to name but a few.'
   },
   p4: {
     id: 'app.components.aac.p4',
@@ -83,7 +83,7 @@ export default defineMessages({
   },
   p9: {
     id: 'app.components.aac.p9',
-    defaultMessage: 'In the case of {gesturalSymbols}, this gradation encompasses from the use of mimicry and commonly used gestures to the use of hand signs, generally in the order of spoken language; this is what is called signed or bimodal language. Sign languages used by hearing impaired people are not considered as SAAC as they constitute languages that have been naturally developed and acquired, like spoken language. The use of hand signs requires having enough motor skills as it may be the case of people with mental disability or autism spectrum disorders.'
+    defaultMessage: 'In the case of {gesturalSymbols}, this gradation encompasses from the use of mimicry and commonly used gestures to the use of hand signs, generally in the order of spoken language; this is what is called signed or bimodal language. Sign languages used by hearing impaired people are not considered as AAC as they constitute languages that have been naturally developed and acquired, like spoken language. The use of hand signs requires having enough motor skills as it may be the case of people with mental disability or autism spectrum disorders.'
   },
   p10: {
     id: 'app.components.aac.p10',
@@ -131,7 +131,7 @@ export default defineMessages({
   },
   encourageTitle: {
     id: 'app.components.aac.encourageTitle',
-    defaultMessage: 'How can we encourage the success of the intervention with SAAC?'
+    defaultMessage: 'How can we encourage the success of the intervention with AAC?'
   },
   p16: {
     id: 'app.components.aac.p16',
@@ -143,7 +143,7 @@ export default defineMessages({
   },
   p18: {
     id: 'app.components.aac.p18',
-    defaultMessage: 'The intervention process has to begin with an {evaluation} of the capacities, abilities, necessities and wishes of the person, as well as the features, supports, requirements and restrictions of his/her environment in order to define the components the most adequate system or systems are going to have. You will have to thoughtfully choose the support products as well as the access strategies and, for those SAAC users who can’t read, you will have to select the signed or pictographic vocabulary you will be teaching. This evaluation process doesn’t have to be occasional but continuous throughout life.'
+    defaultMessage: 'The intervention process has to begin with an {evaluation} of the capacities, abilities, necessities and wishes of the person, as well as the features, supports, requirements and restrictions of his/her environment in order to define the components the most adequate system or systems are going to have. You will have to thoughtfully choose the support products as well as the access strategies and, for those AAC users who can’t read, you will have to select the signed or pictographic vocabulary you will be teaching. This evaluation process doesn’t have to be occasional but continuous throughout life.'
   },
   p19: {
     id: 'app.components.aac.p19',
@@ -151,7 +151,7 @@ export default defineMessages({
   },
   p20: {
     id: 'app.components.aac.p20',
-    defaultMessage: 'To encourage the success of the intervention with SAAC, the most important thing is to achieve that the disabled person has interesting things to communicate, knows how to do it and has interlocutors willing to listen to and able to understand him/her. This objective shouldn’t be left to chance. Instead, it has to be reached through effort and the merits of competent professionals, supported by a society more and more aware of this and free of prejudices.'
+    defaultMessage: 'To encourage the success of the intervention with AAC, the most important thing is to achieve that the disabled person has interesting things to communicate, knows how to do it and has interlocutors willing to listen to and able to understand him/her. This objective shouldn’t be left to chance. Instead, it has to be reached through effort and the merits of competent professionals, supported by a society more and more aware of this and free of prejudices.'
   },
   evalulation: {
     id: 'app.components.aac.evalulation',
