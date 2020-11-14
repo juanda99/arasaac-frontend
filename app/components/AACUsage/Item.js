@@ -5,12 +5,14 @@ const Item = styled.div`
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  margin:  30px;
   max-width:  100%;
+
   ${media.md} {
-    max-width: 40%;
+    margin: 15px;
+    max-width: 44%;
   }
   ${media.lg} {
+    margin:  30px;
     max-width: 42%;
   }
   ${media.xxl} {
