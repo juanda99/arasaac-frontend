@@ -336,6 +336,8 @@
   "app.components.Welcome.aragonese": "Aragonese",
   "app.components.Welcome.chooseLanguage": "Seleziona la lingua:",
   "app.components.Welcome.header": "Centro {aragones} di Comunicazione Aumentativa e Alternativa",
+  "app.components.aac": "Da ARASAAC vorremmo ringraziare sia {author} che {team} per la loro collaborazione nella redazione di questa sezione nel nostro sito.",
+  "app.components.aac.aac": "Sistemi di Comunicazione Aumentativa e Alternativi (CAA)",
   "app.components.author": "Autore dei pittogrammi:",
   "app.components.creativeCommons": "Licenza Creative Commons BY-NC-SA",
   "app.components.dialog.ok": "Ok",
