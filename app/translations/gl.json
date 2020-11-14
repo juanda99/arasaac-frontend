@@ -351,6 +351,7 @@
   "app.components.aac.gesturalSymbols": "símbolos xestuais",
   "app.components.aac.graphicSymbols": "Símbolos gráficos",
   "app.components.aac.independentExploration": "Exploración ou varrido independiente",
+  "app.components.aac.list1": "{directSelection}: consiste en sinalar ou pulsar as teclas directamente, co dedo, coa mirada ou con outras partes do corpo, para indicar os pictogramas, palabras ou letras que se queren comunicar. Os punteiros de distinto tipo son exemplos de produtos de apoio que pode facilitar a selección ou acceso directo.",
   "app.components.author": "Autor pictogramas:",
   "app.components.creativeCommons": "Licenza Creative Commons BY-NC-SA",
   "app.components.dialog.ok": "Aceptar",
