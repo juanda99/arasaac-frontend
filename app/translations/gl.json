@@ -353,6 +353,8 @@
   "app.components.aac.independentExploration": "Exploración ou varrido independiente",
   "app.components.aac.list1": "{directSelection}: consiste en sinalar ou pulsar as teclas directamente, co dedo, coa mirada ou con outras partes do corpo, para indicar os pictogramas, palabras ou letras que se queren comunicar. Os punteiros de distinto tipo son exemplos de produtos de apoio que pode facilitar a selección ou acceso directo.",
   "app.components.aac.list2": "{mouseSelection}: soamente para produtos electrónicos, consiste en accede co rato a teclados ou cuadrículas con símbolos para a comunicación en pantalla. Pódese empregar unha gran variedade de ratóns adaptados, en forma de joystick, trackball, así como o rato facial (controlado con movementos da cabeza), o rato controlado coa mirada ou o multimouse, consistente en cinco teclas ou conmutadores.",
+  "app.components.aac.list3": "{dependentExploration}: soamente en taboleiros ou libros, consiste en que o interlocutor sinale, dun en un ou por grupos, filas ou columnas, os símbolos ou letras a comunicar, ata que o falante asistido indique cun xesto dado co que se quería comunicar.",
+  "app.components.aac.list4": "{independentExploration}: soamente para produtos electrónicos, neste caso é o coumunicador ou ordenador o que presenta as diferentes opcións a comunicar ata que o falante asistido selecciona a que lle convén pulsando un conmutador. Existen moitos tipos de conmutadores que se poden activar con diferentes partes do corpo.",
   "app.components.author": "Autor pictogramas:",
   "app.components.creativeCommons": "Licenza Creative Commons BY-NC-SA",
   "app.components.dialog.ok": "Aceptar",
