@@ -1,11 +1,13 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
+import {Helmet} from 'react-helmet'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import H2 from 'components/H2'
 import P from 'components/P'
 import {IMAGES_URL} from 'services/config'
 import Item from 'components/AACUsage/Item'
 import Img from 'components/AACUsage/Img'
 import messages from './messages'
+import metaMessages from 'containers/IntroUsersAAC/messages'
 const Masonry = require('react-masonry-component')
 
 
@@ -20,7 +22,7 @@ const styles = {
 }
 
 
-const AACUsers = () => {
+const AACUsers = ({intl}) => {
   const masonryOptions = {
     transitionDuration: '1s',
     // isOriginLeft: !rtl
@@ -28,6 +30,11 @@ const AACUsers = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>{intl.formatMessage(metaMessages.title)}</title>
+        <meta name="description" content={intl.formatMessage(metaMessages.desc)} />
+        {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+      </Helmet>
       <P><FormattedMessage {...messages.intro} /></P>
       <Masonry
         className={'my-gallery-class'} // default ''
@@ -82,6 +89,6 @@ const AACUsers = () => {
   )
 }
 
-export default AACUsers
+export default injectIntl(AACUsers)
 
 

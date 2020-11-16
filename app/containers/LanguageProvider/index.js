@@ -17,14 +17,14 @@ export class LanguageProvider extends React.PureComponent { // eslint-disable-li
 
   render() {
     // if error with a locale in React-intl....
-    let locale = this.props.locale
+    let locale = this.props.paramLocale || this.props.locale
     if (this.props.locale === 'br') {
       locale = 'pt'
     } else if (this.props.locale === 'val') {
       locale = 'ca'
     }
     return (
-      <IntlProvider locale={locale} key={this.props.locale} messages={this.props.messages[this.props.locale]}>
+      <IntlProvider locale={locale} key={this.props.locale} messages={this.props.messages[this.props.paramLocale || this.props.locale]}>
         {React.Children.only(this.props.children)}
       </IntlProvider>
     )
@@ -33,6 +33,8 @@ export class LanguageProvider extends React.PureComponent { // eslint-disable-li
 
 LanguageProvider.propTypes = {
   locale: PropTypes.string,
+  /* set locale by url for aac learning menu */
+  paramLocale: PropTypes.string,
   messages: PropTypes.object,
   children: PropTypes.element.isRequired
 }

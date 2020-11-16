@@ -1,12 +1,14 @@
 import React from 'react'
+import {Helmet} from 'react-helmet'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import H2 from 'components/H2'
 import P from 'components/P'
 import A from 'components/A'
 import Img from 'components/SAAC/Img'
+import metaMessages from 'containers/IntroAAC/messages'
 import messages from './messages'
 
-const AAC = () => {
+const AAC = ({intl}) => {
 
   const aac  = <strong><FormattedMessage {...messages.aac} /></strong>
   const systemSymbols = <strong><FormattedMessage {...messages.systemSymbols} /></strong>
@@ -31,6 +33,11 @@ const AAC = () => {
   const codedSelection = <strong><FormattedMessage {...messages.codedSelection} /></strong>
   return (
     <div>
+      <Helmet>
+        <title>{intl.formatMessage(metaMessages.title)}</title>
+        <meta name="description" content={intl.formatMessage(metaMessages.desc)} />
+        {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+      </Helmet>
       <P><FormattedMessage {...messages.gratitude} values={{ author, team }}/></P>
 
       <H2 primary={true}><FormattedMessage {...messages.whatareAACSystems}/></H2>
@@ -85,6 +92,6 @@ const AAC = () => {
   )
 }
 
-export default AAC
+export default injectIntl(AAC)
 
 

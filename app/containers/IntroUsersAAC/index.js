@@ -1,41 +1,27 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { injectIntl } from 'react-intl'
-import PropTypes from 'prop-types'
+import LanguageProvider from 'containers/LanguageProvider'
+// Import i18n messages
+import { translationMessages } from '../../i18n'
 import View from 'components/View'
-import {Helmet} from 'react-helmet'
 import AACUsers from 'components/AACUsers'
-import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import ReadMargin from 'components/ReadMargin'
-import messages from './messages'
 class IntroUsersAAC extends Component {
 
 
   render() {
-    const { locale, intl } = this.props
-    const { formatMessage } = intl
+    const { params: { language } } = this.props
     return (
-      <View left={true} right={true}>
-        <Helmet>
-          <title>{formatMessage(messages.title)}</title>
-          <meta name="description" content={formatMessage(messages.desc)} />
-        </Helmet>
-        <ReadMargin>
-          <AACUsers />
-        </ReadMargin>
-      </View >
+      <LanguageProvider messages={translationMessages} paramLocale={language}>
+        <View left={true} right={true}>
+          <ReadMargin>
+            <AACUsers />
+          </ReadMargin>
+        </View >
+      </LanguageProvider>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-  locale: makeSelectLocale()(state)
-})
 
-export default connect(
-  mapStateToProps
-)(injectIntl(IntroUsersAAC))
+export default IntroUsersAAC
 
-IntroUsersAAC.propTypes = {
-  locale: PropTypes.string.isRequired,
-}

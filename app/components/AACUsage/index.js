@@ -1,4 +1,5 @@
 import React from 'react'
+import {Helmet} from 'react-helmet'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { Link } from 'react-router'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -10,6 +11,7 @@ import { getAreaUrl, getActivityUrl } from 'utils'
 import Item from './Item'
 import Img from './Img'
 import messages from './messages'
+import metaMessages from 'containers/IntroUsageAAC/messages'
 const Masonry = require('react-masonry-component')
 
 
@@ -33,6 +35,11 @@ const AACUsage = ({intl}) => {
 
   return (
     <div>
+      <Helmet>
+        <title>{intl.formatMessage(metaMessages.title)}</title>
+        <meta name="description" content={intl.formatMessage(metaMessages.desc)} />
+        {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+      </Helmet>
       <P><FormattedMessage {...messages.intro}  values={{numberPictograms}} /></P>
       <Masonry
         className={'my-gallery-class'} // default ''
