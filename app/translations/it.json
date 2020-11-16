@@ -392,6 +392,7 @@
   "app.components.aacusers.p4": "Se qualcuno è intubato nella terapia intensiva di un ospedale, ha avuto un incidente o è sotto shock dopo aver subito un attacco e non è in grado di parlare, i simboli possono essere utilizzati come sistema di comunicazione che consente all'utente di esprimere come si sente e cosa è accaduto, permettendo così al professionista di ottenere informazioni sul paziente. In altri casi, la comunicazione attraverso i simboli consente ai medici di spiegare le procedure mediche quando i pazienti non parlano la lingua locale e di ottenere il loro consenso informato.",
   "app.components.aacusers.title1": "Bambini con bisogni educativi speciali (autismo, disabilità cognitiva, sindrome di Down, insufficienza uditiva...)",
   "app.components.aacusers.title2": "Bambini e adulti con gravi difficoltà fisiche (paralisi cerebrale, trauma cranico, ictus...)",
+  "app.components.aacusers.title3": "Anziani",
   "app.components.aacusers.title4": "Persone in ambito sanitario o in emergenza",
   "app.components.author": "Autore dei pittogrammi:",
   "app.components.creativeCommons": "Licenza Creative Commons BY-NC-SA",
