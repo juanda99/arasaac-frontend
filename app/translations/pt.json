@@ -333,6 +333,8 @@
   "app.components.Welcome.header": "Centro {aragones} de Comunicação Aumentativa e Alternativa",
   "app.components.aac.communicationBoards": "tabelas de comunicação",
   "app.components.aac.communicationBooks": "cadernos de comunicação",
+  "app.components.aacusers.p1": "Para a maioria das crianças com algumas destas dificuldades, o desenvolvimento da linguagem é um desafio que pode ser facilitado com apoio visual. Em muitas situações, a comunicação através de símbolos torna-se aumentativa, porque estas ajudas constituem uma forma de desenvolver a linguagem oral e escrita. Por outro lado, os apoios visuais são uma forma de tornar o ambiente mais previsível e compreensível. facilitando a aprendizagem e o desenvolvimento de competências.",
+  "app.components.aacusers.title1": "Crianças com necessidades especiais (autismo, deficiência intelectual, síndrome de Down, deficiência auditiva...)",
   "app.components.author": "Autor dos pictogramas:",
   "app.components.creativeCommons": "Licença Creative Commons BY-NC-SA",
   "app.components.dialog.ok": "Ok",
