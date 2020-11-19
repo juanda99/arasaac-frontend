@@ -418,6 +418,7 @@
   "app.components.aacusage.visualSchedules": "Programacions visuals / Rutines",
   "app.components.aacusage.visualTimetables": "Horaris visuals",
   "app.components.aacusers.intro": "Els símbols poden ajudar a qualsevol persona que tingui dificultats amb el llenguatge per diferents motius (autisme, discapacitat intel·lectual, manca de llenguatge, gent gran, etc.) o que simplement no l'entenguin (persones estrangeres, migrants...).",
+  "app.components.aacusers.p1": "Per a la majoria dels nens amb algunes d'aquestes dificultats, el desenvolupament del llenguatge és un repte que es facilita amb els suports visuals. En la majoria d'aquests casos, la comunicació amb símbols esdevé augmentativa perquè aquests ajuts són una manera de desenvolupar el llenguatge oral i escrit fins a un cert grau. D'altra banda, els suports visuals són una manera de fer més previsible i entenedor el seu entorn, facilitant l'aprenentatge i el desenvolupament d'habilitats per a la vida.",
   "app.components.author": "Autor dels pictogrames:",
   "app.components.creativeCommons": "Llicència Creative Commons BY-NC-SA",
   "app.components.dialog.ok": "Correcte",
