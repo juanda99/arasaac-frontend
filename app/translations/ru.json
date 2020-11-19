@@ -361,6 +361,8 @@
   "app.components.aac.supportProductsTitle": "Вспомогательные средства для коммуникации",
   "app.components.aac.systemSymbols": "системы символов",
   "app.components.aac.systemsSymbols": "Системы символов",
+  "app.components.aacusage.showResources": "Показать ресурсы",
+  "app.components.aacusage.signposting": "Назначение знаков / Размещение знаков",
   "app.components.aacusage.socialStories": "Социальные истории",
   "app.components.aacusage.teacch": "Ресурсы TEACCH",
   "app.components.aacusage.visualSchedules": "Визуальные расписания /рутины",
