@@ -355,6 +355,8 @@
   "app.components.aac.list2": "{mouseSelection}: nomás pa produtos eleutronicos, consiste en azeder con un zorz a teclaus u cuadriculas con simbolos pa comunicar-se a traviés d'a pantalla. Se pueden emplegar una gran variedat de zorzes adaptatos, en forma de joystick, trackball, asinas como o zorz fazial (controlato con movimientos d'a cabeza), o zorz controlato con a uellada u o zorz multiple, que en tien zinco teclas u conmutadors.",
   "app.components.aac.list3": "{dependentExploration}: nomás en tablers u libros. O interlocutor va siñalando, un en un u por grupos, ringleras e colunnas, os simbolos u letras a comunicar, dica que o fablán asistito endique con un zeño que s'ha dau con o cual quereba comunicar.",
   "app.components.aac.list4": "{independentExploration}: nomás pa produtos eleutronicos, en iste caso ye o comunicador u l'ordinador qui presienta as diferens opzions a comunicar dica que o fablán asistito triga a que le conviene pretando un conmutador. Bi ha muitos tipos de conmutadors que se pueden autivar con diferens partis d'o cuerpo.",
+  "app.components.aac.list5": "{codedSelection}: en iste causo cada simbolo u letra tiene un codigo, por exemplo un numero de dos u tres zifras o una color y un numero, de traza que o fablán asistito endica de traza dreita u por escobato iste codigo pa transmitir o simbolo u letra. D'ista traza con pocas teclas u casiellas puede azeder a un gran numero de simbolos.",
+  "app.components.aac.mouseSelection": "Triga con zorz",
   "app.components.author": "Autor d'os pictogramas:",
   "app.components.creativeCommons": "Lizenzia de Creative Commons (BY-NC-SA)",
   "app.components.dialog.ok": "Azeutar",
