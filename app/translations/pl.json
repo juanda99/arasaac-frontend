@@ -353,6 +353,8 @@
   "app.components.aacusage.communicationBoards": "Tablice komunikacyjne",
   "app.components.aacusage.learning": "Wsparcie w nauce",
   "app.components.aacusage.lifeSkills": "Umiejętności życia codziennego",
+  "app.components.aacusage.p1": "Znaki graficzne pomagają ludziom, którzy z różnych przyczyn (autyzm, niepełnosprawność intelektualna, brak mowy czynnej, osoby starsze itp.), doświadczają trudności w zakresie wyrażania swoich pomysłów, potrzeb, pragnień lub odczuć. Znaki graficzne pomagają im porozumiewać się ze światem.",
+  "app.components.aacusage.p12": "Czynności życia codziennego odnoszą się do tych umiejętności, które są niezbędne do życia i sukcesu zawodowego w społeczności. Obejmują one czynności związane z samoobsługą, robieniem zakupów, wykonywaniem pracy, przygotowaniem posiłków...",
   "app.components.aacusage.p13": "Wsparcie wizualne (schematy, przepisy kulinarne, plany, historie społeczne...) pomaga osobom o szczególnych potrzebach uczyć się tych umiejętności i stać się ludźmi niezależnymi, mogącymi w pełni uczestniczyć w życiu swojej społeczności.",
   "app.components.aacusage.p2": "Znaki graficzne są wykorzystywane w pomocach komunikacyjnych niskiej oraz wysokiej technologii i służą do opracowania tablic komunikacyjnych, które umożliwiają użytkownikowi komunikowanie się w dostępny dla niego sposób (wskazywanie palcem, używanie przełącznika, wskazywanie wzrokiem...).",
   "app.components.aacusage.showResources": "Pokaż materiały",
