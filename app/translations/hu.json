@@ -349,6 +349,8 @@
   "app.components.aac.graphicSymbols": "Grafikai szimbólumok",
   "app.components.aacusage.socialStories": "Szociális történetek",
   "app.components.aacusage.teacch": "TEACCH eszközök",
+  "app.components.aacusage.visualSchedules": "Vizuális napirend / rutinok",
+  "app.components.aacusage.visualTimetables": "Vizuális órarend",
   "app.components.author": "Piktogramok szerzője:",
   "app.components.creativeCommons": "Creative Commons licenc (BY-NC-SA)",
   "app.components.dialog.ok": "Rendben",
