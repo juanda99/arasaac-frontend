@@ -225,6 +225,15 @@ const collaborators = [
     country: 'fr'
   },
   {
+    name: 'Marie Cañete',
+    languages: ['fr'],
+    image: 'marie.jpg',
+    desc: 'Psychopédagogue et institutrice spécialisée. Logopède, Institut Médicoéducatif (IME) - Sireuil ',
+    url: '',
+    country: 'fr'
+  }, 
+
+  {
     name: 'Meri Nolcheva',
     languages: ['mk'],
     image: 'meri-nolcheva.jpg',
@@ -262,6 +271,15 @@ const collaborators = [
     desc: 'Docente di scuola primaria, esperto nei processi formativi. Bari. ',
     url: 'https://visualforall.com/',
     facebook: 'mariagrazia.fiore.71',
+    country: 'it'
+  },
+  {
+    name: 'Nicoletta Wojciechowski',
+    languages: ['it'],
+    image: 'NicolettaW.jpg',
+    desc: 'Educatrice, architetto. Lodi. ',
+    url: 'https://visualforall.com/',
+    facebook: 'nicoletta.wojciechowski',
     country: 'it'
   },
   {
