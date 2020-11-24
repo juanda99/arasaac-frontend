@@ -379,6 +379,7 @@
   "app.components.showcase.aacSymbols": "Znaki graficzne AAC",
   "app.components.showcase.materials": "Materiały",
   "app.components.showcase.whatIsAAC": "Co to jest AAC?",
+  "app.components.showcase.whatIsARASAAC": "Zestaw znaków graficznych i materiałów przeznaczonych do Komunikacji Wspomagającej i Alternatywnej (AAC)",
   "app.components.updateMaterialView.materialLoading": "Ładowanie materiału...",
   "app.components.updateMaterialView.materialNotFound": "Przepraszamy, materiał, którego szukasz nie istnieje",
   "app.components.updateMaterialView.showMaterial": "Pokaż materiał",
