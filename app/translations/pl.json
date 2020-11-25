@@ -344,6 +344,8 @@
   "app.components.aac.graphicSymbols": "Znaki graficzne",
   "app.components.aac.independentExploration": "Niezależne przeszukiwanie lub skanowanie",
   "app.components.aac.mouseSelection": "Wybór z użyciem myszki",
+  "app.components.aac.p1": "{aac} to formy ekspresji, inne niż język mówiony, które mają na celu zwiększenie możliwości (wspomagające) i / lub skompensowanie (alternatywnie) trudności komunikacyjnych i językowych wielu osób z trudnościami w tym obszarze.",
+  "app.components.aac.p5": "Komunikacja wspomagająca i alternatywna obejmuje różne {systemSymbols}, zarówno graficzne (fotografie, rysunki, piktogramy, słowa lub litery), jak i gestowe (mimika, gesty lub znaki manualne), a w przypadku tych pierwszych wymaga również użycia {supportProducts}. Różne systemy symboli są dostosowane do potrzeb osób w różnym wieku oraz o zróżnicowanych zdolnościach motorycznych, poznawczych i językowych.",
   "app.components.aac.pictographicSystems": "Systemy graficzne",
   "app.components.aac.resources": "Jakie materiały są wykorzystywane?",
   "app.components.aac.systemSymbols": "systemy znaków",
