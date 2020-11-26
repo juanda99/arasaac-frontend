@@ -265,6 +265,13 @@ const collaborators = [
     desc: 'Logopeda Escola d\'Educació Especial Alba. Reus. ',
   },
   {
+    name: 'Marta Donés Martínez',
+    languages: ['ca'],
+    image: 'marta-dones.jpg',
+    country: 'es',
+    desc: 'Educadora social. Educadora de Educación Especial en centro público. ',
+  },
+  {
     name: 'Maria Grazia Fiore',
     languages: ['it'],
     image: 'maria-grazia.jpg',
