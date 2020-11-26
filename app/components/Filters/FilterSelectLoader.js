@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
+import langMessages from 'components/LanguageSelector/messages'
 import FilterSelect from './FilterSelect'
 import messages from './messages'
 
@@ -8,7 +9,7 @@ export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, t
   const { formatMessage } = intl
   // const [...selectItems] = filterData.entries()
   const items = filterData.map((selectItem) => {
-    if (type === 'languages') return { value: selectItem.code, primaryText: selectItem.text }
+    if (type === 'languages') return { value: selectItem.code, primaryText: formatMessage(langMessages[selectItem.code]) }
     /* areas and activities also used in MaterialForm */
     if (type === 'areas') {
       const value = parseInt(selectItem.code, 10)

@@ -27,6 +27,13 @@ const LanguageSelector = ({
     onChange(value)
   }
   const isRtl = muiTheme.direction === 'rtl'
+  const orderLanguages = languages.map((language) =>
+        shortOption ? 
+          ({code: language.code, text: formatMessage(messages[language.code])}) : 
+          ({code: language.code, text: `${formatMessage(messages[language.code])} - ${language.text}`})
+      )
+  
+  orderLanguages.sort((a, b) => a.text.localeCompare(b.text))
 
   return (
     // maxWidth so fixed good in mobile
@@ -39,23 +46,22 @@ const LanguageSelector = ({
       iconStyle={isRtl ? { right: '', left: 0 } : {}}
       floatingLabelText={showToolTip && 'Choose your language'}
     >
-      {languages.map((language) =>
+    { orderLanguages.map((language) =>
         shortOption ? (
           <MenuItem
             key={language.code}
             value={language.code}
-            primaryText={formatMessage(messages[language.code])}
+            primaryText={language.text}
           />
         ) : (
             <MenuItem
               key={language.code}
               value={language.code}
-              primaryText={`${language.text} - ${formatMessage(
-                messages[language.code]
-              )}`}
+              primaryText={language.text}
             />
           )
       )}
+  
     </SelectField>
   )
 }

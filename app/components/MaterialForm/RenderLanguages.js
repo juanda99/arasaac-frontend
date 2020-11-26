@@ -46,6 +46,10 @@ const RenderLanguages = ({ fields, intl, status, onEmailExists, onFieldChange })
   }
   if (fields.length === 0) addLanguage()
   // if (status === 'TRANSLATION') addLanguage()
+
+
+  languages.sort((a, b) => formatMessage(languageMessages[a.code]).localeCompare(formatMessage(languageMessages[b.code])))
+
   return (
     <ul style={styles.list}>
       {fields.map((member, index) => (
