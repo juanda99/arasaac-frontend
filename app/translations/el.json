@@ -308,6 +308,7 @@
   "app.components.aac.communicationProducts": "προϊόντα υποστήριξης για επικοινωνία",
   "app.components.aac.directSelection": "Άμεση επιλογή",
   "app.components.aac.electronicCommunicators": "συσκευές ηλεκτρονικής επικοινωνίας",
+  "app.components.aac.list1": "{directSelection}: ο χρήστης δείχνει ή πατά τα κουμπιά απευθείας με το δάχτυλο, την όραση ή άλλα μέρη του σώματος για να υποδείξει τα εικονογράμματα, τις λέξεις ή τα γράμματα που θέλει για να επικοινωνήσει. Οι δείκτες διαφόρων τύπων είναι παραδείγματα βοηθητικών προϊόντων που μπορούν να διευκολύνουν την επιλογή ή την άμεση πρόσβαση.",
   "app.components.author": "Δημιουργός εικονογραμμάτων:",
   "app.components.dialog.ok": "Εντάξει",
   "app.components.disclaimer": "Αποποίηση ευθυνών",
