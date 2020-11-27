@@ -20,7 +20,9 @@ import {
 export const initialState = fromJS({
   showFilter: false,
   loading: false,
+  loadingNew: false,
   error: false,
+  errorNew: false,
   search: {},
   words: {},
   favoriteList: DEFAULT_LIST,
@@ -78,13 +80,17 @@ function pictogramsViewReducer(state = initialState, action) {
 
     case PICTOGRAM.FAILURE:
     case PICTOGRAMS.FAILURE:
-    case NEW_PICTOGRAMS.FAILURE:
       return state.set('error', action.payload.error).set('loading', false)
+
+    case NEW_PICTOGRAMS.FAILURE:
+      return state.set('errorNew', action.payload.error).set('loadingNew', false)
 
     case PICTOGRAMS.REQUEST:
     case FAVORITE_PICTOGRAMS.REQUEST:
-    case NEW_PICTOGRAMS.REQUEST:
       return state.set('loading', true).set('error', false)
+
+    case NEW_PICTOGRAMS.REQUEST:
+      return state.set('loadingNew', true).set('errorNew', false)
 
     case PICTOGRAMS.SUCCESS:
       newPictogram = fromJS(action.payload.data.entities.pictograms || {})
@@ -99,7 +105,7 @@ function pictogramsViewReducer(state = initialState, action) {
     case NEW_PICTOGRAMS.SUCCESS:
       newPictogram = fromJS(action.payload.data.entities.pictograms || {})
       return state
-        .set('loading', false)
+        .set('loadingNew', false)
         .set('newPictograms', action.payload.data.result)
         .mergeIn(['pictograms', action.payload.locale], newPictogram)
 

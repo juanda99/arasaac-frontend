@@ -65,6 +65,8 @@ function* newPictogramsGetData(action) {
     yield put(showLoading())
     const response = yield call(api[action.type], action.payload)
     yield put(newPictograms.success(locale, response))
+    const d1 = new Date();
+    sessionStorage.setItem(`newPictogramsDate_${locale}`, d1.getTime())
   } catch (error) {
     yield put(newPictograms.failure(error.message))
   } finally {
@@ -145,6 +147,8 @@ function* autoCompleteGetData(action) {
     // order by lenght so autocomplete is better:
     words.sort((a, b) => a.length - b.length)
     yield put(autocomplete.success(locale, words))
+    const d1 = new Date();
+    sessionStorage.setItem(`keywordsDate_${locale}`, d1.getTime())
   } catch (error) {
     yield put(autocomplete.failure(error.message))
   } finally {

@@ -35,6 +35,7 @@ import {
   makeFiltersSelector,
   makeShowFiltersSelector,
   makeLoadingSelector,
+  makeLoadingNewSelector,
   makeSearchResultsSelector,
   makeVisiblePictogramsSelector,
   makeNewPictogramsSelector,
@@ -94,7 +95,9 @@ class PictogramsView extends PureComponent {
       requestPictograms,
       requestNewPictograms,
       requestAutocomplete,
-      locale
+      locale,
+      newPictogramsList,
+      keywords
     } = this.props
 
     /* hack to open learning aac menu when visiting from homepage */
@@ -105,9 +108,18 @@ class PictogramsView extends PureComponent {
     if (this.props.params.searchText && !this.props.searchResults) {
       requestPictograms(locale, encodeURIComponent(this.props.params.searchText))
     }
-    //  TODO: just ask once this stuff, once the app is open, depending on locale!!!
-    requestNewPictograms(locale)
-    requestAutocomplete(locale)
+
+    /* we just ask for new pictograms twice and hour and autocomplete keywords once a day */
+    const actualDate = new Date()
+
+    const newPictogramsDate = sessionStorage.getItem(`newPictogramsDate_${locale}`)
+    let diffSeconds = newPictogramsDate ? (actualDate.getTime() - newPictogramsDate) / 1000 : 0
+    if (!newPictogramsList || newPictogramsList.size === 0 || diffSeconds > 1800) requestNewPictograms(locale)
+
+    const keywordsDate = sessionStorage.getItem(`keywordsDate_${locale}`)
+    diffSeconds = keywordsDate ? (actualDate.getTime() - keywordsDate) / 1000 : 0 
+    if (!keywords || keywords.length === 0 || diffSeconds > 86400) requestAutocomplete(locale)
+    
     // if (favorites && token) {
     //   const [...lists] = favorites.keys()
     //   const favoriteIds = lists.map((list) => favorites.get(list).toJS()).flat()
@@ -205,6 +217,7 @@ class PictogramsView extends PureComponent {
       newPictogramsList,
       locale,
       loading,
+      loadingNew,
       filtersData,
       muiTheme,
       keywords,
@@ -213,39 +226,53 @@ class PictogramsView extends PureComponent {
     } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, offset, tab } = this.state
-    let pictogramsCounter
     const hideIconText = width === SMALL
-    let pictogramsList
-    if (tab === 0) pictogramsList = visiblePictograms
-    else if (tab === 1) pictogramsList = newPictogramsList
-    let gallery
-    if ((loading && searchText) || (loading && tab !== 0)) {
-      gallery = <ReadMargin><P>{<FormattedMessage {...messages.loadingPictograms} />}</P></ReadMargin>
-    } else if (!searchText && tab !== 1) {
-      gallery = null
+    let gallery,  pictogramsCounter
+    if (tab === 0) {
+      pictogramsCounter = visiblePictograms.length
+      gallery = loading ? 
+        <ReadMargin><P>{<FormattedMessage {...messages.loadingPictograms} />}</P></ReadMargin>
+        : pictogramsCounter ?
+          <PictogramList
+            pictograms={visiblePictograms}
+            locale={locale}
+            filtersMap={filters}
+            setFilterItems={this.props.setFilterItems}
+            showLabels={visibleLabels}
+            searchText={searchText}
+            onAddFavorite={this.handleAddFavorite}
+            onDeleteFavorite={this.handleDeleteFavorite}
+            onDownload={this.handleDownload}
+            favorites={rootFavorites}
+            rtl={muiTheme.direction === 'rtl'}
+            offset={offset}
+            onPageClick={this.handlePageClick}
+          />
+          : (
+            <ReadMargin>
+              {searchText && <P>{<FormattedMessage {...messages.pictogramsNotFound} />}</P>}
+            </ReadMargin>
+          ) 
     } else {
-      pictogramsCounter = pictogramsList.length
-      gallery = pictogramsCounter ? (
-        <PictogramList
-          pictograms={pictogramsList}
-          locale={locale}
-          filtersMap={filters}
-          setFilterItems={this.props.setFilterItems}
-          showLabels={visibleLabels}
-          searchText={searchText}
-          onAddFavorite={this.handleAddFavorite}
-          onDeleteFavorite={this.handleDeleteFavorite}
-          onDownload={this.handleDownload}
-          favorites={rootFavorites}
-          rtl={muiTheme.direction === 'rtl'}
-          offset={offset}
-          onPageClick={this.handlePageClick}
-        />
-      ) : (
-          <ReadMargin>
-            <P>{<FormattedMessage {...messages.pictogramsNotFound} />}</P>
-          </ReadMargin>
-        )
+      pictogramsCounter = newPictogramsList.length
+      gallery = loadingNew ? 
+        <ReadMargin><P>{<FormattedMessage {...messages.loadingPictograms} />}</P></ReadMargin>
+        : pictogramsCounter &&
+          <PictogramList
+            pictograms={newPictogramsList}
+            locale={locale}
+            filtersMap={filters}
+            setFilterItems={this.props.setFilterItems}
+            showLabels={visibleLabels}
+            searchText={searchText}
+            onAddFavorite={this.handleAddFavorite}
+            onDeleteFavorite={this.handleDeleteFavorite}
+            onDownload={this.handleDownload}
+            favorites={rootFavorites}
+            rtl={muiTheme.direction === 'rtl'}
+            offset={offset}
+            onPageClick={this.handlePageClick}
+          />
     }
 
     return (
@@ -366,6 +393,7 @@ PictogramsView.propTypes = {
   toggleShowFilter: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   loading: PropTypes.bool.isRequired,
+  loadingNew: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired,
   filters: PropTypes.instanceOf(Map),
   muiTheme: PropTypes.object,
@@ -394,6 +422,7 @@ const mapStateToProps = (state, ownProps) => ({
   showFilter: makeShowFiltersSelector()(state),
   locale: makeSelectLocale()(state),
   loading: makeLoadingSelector()(state),
+  loadingNew: makeLoadingNewSelector()(state),
   searchResults: makeSearchResultsSelector()(state, ownProps),
   visiblePictograms: makeVisiblePictogramsSelector()(state, ownProps),
   filtersData: state.getIn(['configuration', 'filtersData']),

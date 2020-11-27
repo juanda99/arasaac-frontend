@@ -13,6 +13,11 @@ export const makeLoadingSelector = () =>
     substate.get('loading')
   )
 
+export const makeLoadingNewSelector = () =>
+  createSelector(selectPictogramsViewDomain, (substate) =>
+    substate.get('loading')
+  )
+
 const makeKeywordsSelector = () =>
   createSelector(selectPictogramsViewDomain, (substate) => substate.get('words'))
 
