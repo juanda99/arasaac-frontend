@@ -236,7 +236,7 @@ class MaterialsView extends PureComponent {
     if (this.props.params.searchText && !this.props.searchResults) {
       requestMaterials(locale, this.props.params.searchText, this.state.searchType, token)
     }
-    /* we just ask for new Materials once an hour */
+    /* we just ask for new Materials twice an hour */
     const newMaterialsDate = sessionStorage.getItem('newMaterialsDate')
     const actualDate = new Date()
     const diffSeconds = newMaterialsDate ? (actualDate.getTime() - newMaterialsDate) / 1000 : 0
