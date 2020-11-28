@@ -282,6 +282,8 @@
   "app.components.Pictogram.chooseZoom": "Zoom maila aukeratu:",
   "app.components.Pictogram.classroom": "Gelak",
   "app.components.Pictogram.color": "Kolorea",
+  "app.components.Pictogram.copy": "Kopiatu",
+  "app.components.Pictogram.copyToClipboard": "Piktograma arbelean kopiatu da",
   "app.components.Pictogram.description": "Hitzak erlazionatu",
   "app.components.Pictogram.downloadLabel": "Deskargatu",
   "app.components.Pictogram.frame": "Markoa",
