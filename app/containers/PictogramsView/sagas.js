@@ -20,10 +20,12 @@ import {
 } from 'containers/App/actions'
 import {
   PICTOGRAMS,
+  CATEGORIES,
   FAVORITE_PICTOGRAMS,
   favoritePictograms,
   NEW_PICTOGRAMS,
   pictograms,
+  categories,
   newPictograms,
   AUTOCOMPLETE,
   autocomplete
@@ -256,9 +258,32 @@ export function* pictogramData() {
   yield cancel(watcher)
 }
 
+
+function* categoriesGetData(action) {
+  try {
+    const { locale } = action.payload
+    const response = yield call(api[action.type], action.payload)
+    yield put(categories.success(locale, response))
+  } catch (error) {
+    yield put(categories.failure(error.message))
+  } finally {
+
+    // When done, we tell Redux we're not in the middle of a request any more
+    // yield put({type: SENDING_REQUEST, sending: false})
+  }
+}
+
+export function* categoriesData() {
+  const watcher = yield takeLatest(CATEGORIES.REQUEST, categoriesGetData)
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE)
+  yield cancel(watcher)
+}
+
 // All sagas to be loaded
 export default [
   pictogramsData,
+  categoriesData,
   pictogramData,
   getFavoritesData,
   newPictogramsData,

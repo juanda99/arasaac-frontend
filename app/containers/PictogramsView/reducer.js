@@ -4,11 +4,13 @@
  *
  */
 
-import { fromJS } from 'immutable'
+import { fromJS, Map } from 'immutable'
 import { PICTOGRAM } from 'containers/PictogramView/actions'
+import languages from 'data/languages'
 import { DEFAULT_LIST } from 'utils'
 import {
   PICTOGRAMS,
+  CATEGORIES,
   NEW_PICTOGRAMS,
   AUTOCOMPLETE,
   SHOW_FILTERS,
@@ -17,12 +19,25 @@ import {
   FAVORITE_PICTOGRAMS
 } from './actions'
 
+
+const pictograms = {}
+languages.forEach(language => {
+  pictograms[language.code] = {}
+})
+
+const categories = {}
+languages.forEach(language => {
+  categories[language.code] = {}
+})
+
 export const initialState = fromJS({
   showFilter: false,
   loading: false,
   loadingNew: false,
   error: false,
   errorNew: false,
+  errorCategories: false,
+  loadingCategories: false,
   search: {},
   words: {},
   favoriteList: DEFAULT_LIST,
@@ -31,34 +46,8 @@ export const initialState = fromJS({
     License: []
     // TODO: filter by violence, sex, schematic
   },
-  pictograms: {
-    es: {},
-    en: {},
-    al: {},
-    an: {},
-    ar: {},
-    bg: {},
-    br: {},
-    ca: {},
-    de: {},
-    el: {},
-    eu: {},
-    fr: {},
-    gl: {},
-    he: {},
-    hr: {},
-    hu: {},
-    it: {},
-    mk: {},
-    nl: {},
-    pl: {},
-    pt: {},
-    ro: {},
-    ru: {},
-    sk: {},
-    val: {},
-    zh: {}
-  },
+  pictograms,
+  categories,
   newPictograms: []
 })
 
@@ -114,7 +103,18 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .mergeIn(['pictograms', action.payload.locale], newPictogram)
-
+    
+    case CATEGORIES.REQUEST:
+      return state.set('loadingCategories', true).set('errorCategories', false)
+    case CATEGORIES.FAILURE:
+      return state.set('errorCategories', action.payload.error).set('loadingCategories', false)
+    case CATEGORIES.SUCCESS:
+      {
+      const categories = Map(action.payload.data.data || {})
+      return state
+        .set('loadingNew', false)
+        .setIn(['categories', action.payload.locale], categories)
+      }
     case AUTOCOMPLETE.REQUEST:
       return state
     case AUTOCOMPLETE.SUCCESS:

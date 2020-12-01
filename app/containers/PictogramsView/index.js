@@ -11,6 +11,7 @@ import { injectIntl, FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
+import PictogramTags from 'components/PictogramTags'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import Divider from 'material-ui/Divider'
 import { Tabs, Tab } from 'material-ui/Tabs'
@@ -40,12 +41,14 @@ import {
   makeVisiblePictogramsSelector,
   makeNewPictogramsSelector,
   makeKeywordsSelectorByLocale,
+  makeCategoriesSelectorByLocale,
   makeListSelector
   // makeFavoritePictogramsSelector
 } from './selectors'
 import {
   autocomplete,
   pictograms,
+  categories,
   // favoritePictograms,
   newPictograms,
   toggleShowFilter,
@@ -69,8 +72,9 @@ class PictogramsView extends PureComponent {
     visibleLabels: false,
     tab: 0,
     offset: 0,
-    listName: ''
-  };
+    listName: '',
+    selectedTags: []
+  }
 
   title = this.props.intl.formatMessage(messages.pageTitle)
   description = this.props.intl.formatMessage(messages.pageDesc)
@@ -93,11 +97,13 @@ class PictogramsView extends PureComponent {
   componentDidMount() {
     const {
       requestPictograms,
+      requestCategories,
       requestNewPictograms,
       requestAutocomplete,
       locale,
       newPictogramsList,
-      keywords
+      keywords,
+      categories
     } = this.props
 
     /* hack to open learning aac menu when visiting from homepage */
@@ -119,6 +125,10 @@ class PictogramsView extends PureComponent {
     const keywordsDate = sessionStorage.getItem(`keywordsDate_${locale}`)
     diffSeconds = keywordsDate ? (actualDate.getTime() - keywordsDate) / 1000 : 0 
     if (!keywords || keywords.length === 0 || diffSeconds > 86400) requestAutocomplete(locale)
+
+    const categoriesDate = sessionStorage.getItem(`categoriesDate_${locale}`)
+    diffSeconds = categoriesDate ? (actualDate.getTime() - categoriesDate) / 1000 : 0 
+    if (!categories || categories.size === 0 || diffSeconds > 86400) requestCategories(locale)
     
     // if (favorites && token) {
     //   const [...lists] = favorites.keys()
@@ -225,7 +235,7 @@ class PictogramsView extends PureComponent {
       width
     } = this.props
     const searchText = this.props.params.searchText || ''
-    const { visibleLabels, visibleSettings, offset, tab } = this.state
+    const { visibleLabels, visibleSettings, offset, tab, selectedTags } = this.state
     const hideIconText = width === SMALL
     let gallery,  pictogramsCounter
     if (tab === 0) {
@@ -325,6 +335,11 @@ class PictogramsView extends PureComponent {
                 ) : (
                     ''
                   )}
+                  { <PictogramTags 
+                      searchText={searchText} 
+                      selectedTags={selectedTags}
+                      categories={categories}
+                    />}
                 {gallery}
               </View>
             </div>
@@ -428,6 +443,7 @@ const mapStateToProps = (state, ownProps) => ({
   filtersData: state.getIn(['configuration', 'filtersData']),
   newPictogramsList: makeNewPictogramsSelector()(state),
   keywords: makeKeywordsSelectorByLocale()(state),
+  categories: makeCategoriesSelectorByLocale()(state),
   token: makeSelectHasUser()(state),
   rootFavorites: makeSelectRootFavorites()(state),
   selectedList: makeListSelector()(state)
@@ -438,6 +454,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
   requestPictograms: (locale, searchText) => {
     dispatch(pictograms.request(locale, searchText))
+  },
+  requestCategories: (locale) => {
+    dispatch(categories.request(locale))
   },
   requestNewPictograms: (locale) => {
     dispatch(newPictograms.request(locale))

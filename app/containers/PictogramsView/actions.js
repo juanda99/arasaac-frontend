@@ -8,6 +8,7 @@ import { createRequestTypes, action } from 'utils/actions'
 
 // constants
 export const PICTOGRAMS = createRequestTypes('PICTOGRAMS')
+export const CATEGORIES = createRequestTypes('CATEGORIES')
 export const FAVORITE_PICTOGRAMS = createRequestTypes('FAVORITE_PICTOGRAMS')
 export const NEW_PICTOGRAMS = createRequestTypes('NEW_PICTOGRAMS')
 export const SHOW_FILTERS = 'PICTOGRAMS_SHOW_FILTERS'
@@ -22,6 +23,14 @@ export const pictograms = {
   success: (locale, searchText, data) =>
     action(PICTOGRAMS.SUCCESS, { locale, searchText, data }),
   failure: (error) => action(PICTOGRAMS.FAILURE, { error })
+}
+
+export const categories = {
+  request: (locale) =>
+    action(CATEGORIES.REQUEST, { locale }),
+  success: (locale, data) =>
+    action(CATEGORIES.SUCCESS, { locale, data }),
+  failure: (error) => action(CATEGORIES.FAILURE, { error })
 }
 
 export const favoriteListSelect = (listName) =>
