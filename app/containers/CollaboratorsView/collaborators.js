@@ -99,6 +99,13 @@ const collaborators = [
     country: 'ru'
   },
   {
+    name: 'Vladimirova Alesandra ((Владимирова Александра))',
+    languages: ['ru'],
+    image: 'Vladimirova-Alesandra.jpg',
+    desc: 'Speech therapist. Saint-Petersburg. ',
+    country: 'ru'
+  },
+  {
     name: 'ICT-AAC',
     languages: ['hr'],
     image: 'ict-aac-logo.png',
