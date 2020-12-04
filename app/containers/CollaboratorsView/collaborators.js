@@ -208,6 +208,14 @@ const collaborators = [
     country: 'pt'
   },
   {
+    name: 'Sandra Marques',
+    languages: ['pt'],
+    image: 'she.jpg',
+    desc: 'Responsável pelo Núcleo de Inovação, Investigação e Desenvolvimento da  FENACERCI.',
+    url: 'https://www.linkedin.com/in/sandra-marques-13689019/',
+    country: 'pt'
+  },
+  {
     name: 'Sébastien Vermandel',
     languages: ['fr'],
     image: 'he.jpg',
@@ -267,7 +275,7 @@ const collaborators = [
   {
     name: 'Susanna Giner Segura',
     languages: ['ca'],
-    image: 'she.jpg',
+    image: 'susanna.jpg',
     country: 'es',
     desc: 'Logopeda Escola d\'Educació Especial Alba. Reus. ',
   },

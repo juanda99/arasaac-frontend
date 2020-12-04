@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 // import PropTypes from 'prop-types'
 import View from 'components/View'
 import LanguageSelector from 'components/LanguageSelector'
@@ -13,7 +14,6 @@ import {
 } from 'containers/App/selectors'
 import TranslationStatus from 'containers/TranslationStatus'
 import messages from './messages'
-import H2 from 'components/H2'
 import H3 from 'components/H3'
 import CollaboratorSnippet from 'components/CollaboratorSnippet'
 import P from 'components/P'
@@ -70,8 +70,8 @@ class CollaboratorsView extends Component {
             </Masonry>
           ) : (
               <div>
-                <P>
-                  No hay traductores en este idioma. Puedes ponerte en contacto con nosotros para colaborar.
+                <P>                
+                  There are no translators. in this language. <Link to='/contact-us'>Contact us</Link> if you want to help translating Arasaac into your native language.
                 </P>
               </div>
             )
