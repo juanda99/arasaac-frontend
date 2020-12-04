@@ -232,7 +232,8 @@ class PictogramsView extends PureComponent {
       muiTheme,
       keywords,
       rootFavorites,
-      width
+      width,
+      categories
     } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, visibleSettings, offset, tab, selectedTags } = this.state
@@ -339,6 +340,7 @@ class PictogramsView extends PureComponent {
                       searchText={searchText} 
                       selectedTags={selectedTags}
                       categories={categories}
+                      locale={locale}
                     />}
                 {gallery}
               </View>
