@@ -339,6 +339,7 @@ class PictogramsView extends PureComponent {
                   { <PictogramTags 
                       searchText={searchText} 
                       selectedTags={selectedTags}
+                      pictograms={visiblePictograms}
                       categories={categories}
                       locale={locale}
                     />}
