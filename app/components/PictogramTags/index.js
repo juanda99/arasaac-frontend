@@ -67,19 +67,30 @@ const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms
   pictoTags.forEach(tag => {
     if (pictograms.every( pictogram => pictogram.tags.indexOf(tag) !== -1)) pictoTags.delete(tag)
   })
-  
+
+  console.log(pictoTags, '++++++++++++')
+  /* we  order then by frequency */
+  const countOccurrences  = (item) => (accumulator, currentValue) => {
+    if (currentValue.tags.indexOf(item)!==-1) return accumulator + 1
+    return accumulator + 0
+  }
+  const pictoTagsOrdered = [...pictoTags].sort((a, b) => {
+    const weightA  = pictograms.reduce(countOccurrences(a), 0)
+    const weightB  = pictograms.reduce(countOccurrences(b), 0)
+    return weightB - weightA
+  })
 
   /* we add already selected tags */
 
-  console.log(pictoTags)
-  const renderTags = [...pictoTags].map((tag) => 
+  console.log(pictoTagsOrdered)
+  const renderTags = pictoTagsOrdered.map((tag) => 
     <Chip style={styles.chip} key={tag} onClick={() => this.handleAreaClick(id)}>
       {/* <FormattedMessage {...classificationMessages[key]} /> */}
       {tag}
     </Chip>
   )
   return (
-    <div>
+    <div style={{display: 'flex', flexWrap: 'wrap'}}>
       {renderTags}
     </div>
   )
