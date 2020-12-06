@@ -365,5 +365,6 @@
   "app.components.aac.p14": "The versions for Plaphoons with ARASAAC pictograms in Spanish and Catalan are freely accessible. The rest of versions are also access free but they require having the corresponding programmes and/or systems of commercial symbols.",
   "app.components.aac.p15": "Për të treguar simbolet grafike tek komunikuesit, librat dhe tabelat e komunikimit, aty ekzistojnë pesë strategji bazike:",
   "app.components.aac.resources": "Çfarë burimesh janë përdorur?",
-  "app.components.aac.strategiesTitle": "Strategjitë dhe produktet mbështetëse për qasje"
+  "app.components.aac.strategiesTitle": "Strategjitë dhe produktet mbështetëse për qasje",
+  "app.components.aac.supportProducts": "produktet mbështetëse"
 }
