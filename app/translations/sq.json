@@ -348,5 +348,6 @@
   "app.components.aac.evalulation": "vlerësimi",
   "app.components.aac.gesturalSymbols": "simbolet gjestikulative",
   "app.components.aac.graphicSymbols": "Simbolet grafike",
-  "app.components.aac.independentExploration": "Independent exploration or scanning"
+  "app.components.aac.independentExploration": "Independent exploration or scanning",
+  "app.components.aac.list1": "{directSelection}: përdoruesi shenjon ose shtyp butonin direkt me gisht, shikimin ose pjesë të tjera të trupit në mënyrë që të tregoj piktogramat, fjalët ose shkronjat që ai/ajo dëshiron të komunikoj. Shenjuesit e llojeve të ndryshme janë shembuj të produkteve mbështetëse të cilat mund të lehtësojnë përzgjedhjen ose qasjen direkte."
 }
