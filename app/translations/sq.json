@@ -13,6 +13,8 @@
   "app.MaterialsView.pageDescriptionSearch": "Burimi i materialeve për KAA {searchText} për profesionist dhe familje. Shkarko dokumente, tabela, fleta pune për Komunikimin Augumentativ Alternativ...",
   "app.MaterialsView.pageTitle": "KAA burimi i materialeve - ARASAAC ",
   "app.MaterialsView.pageTitleSearch": "KAA burimi i materialeve {searchText} - ARASAAC ",
+  "app.PictogramsView.pageDesc": "Burime simbolesh për Komunikimin Augumentative dhe Alternativ",
+  "app.PictogramsView.pageTitle": "KAA simbolet - ARASAAC",
   "app.component.MaterialConditions.adaptationQuote": "Përshtatja e kuotës ",
   "app.component.MaterialConditions.adaptationQuoteDesc": "Në përshtatje të materialit ekzistues, emri i personit që e ka përshtatur do të shtohet në fund të citatit",
   "app.component.MaterialConditions.adaptedBy": "I përshtatur nga:",
@@ -349,5 +351,6 @@
   "app.components.aac.gesturalSymbols": "simbolet gjestikulative",
   "app.components.aac.graphicSymbols": "Simbolet grafike",
   "app.components.aac.independentExploration": "Independent exploration or scanning",
-  "app.components.aac.list1": "{directSelection}: përdoruesi shenjon ose shtyp butonin direkt me gisht, shikimin ose pjesë të tjera të trupit në mënyrë që të tregoj piktogramat, fjalët ose shkronjat që ai/ajo dëshiron të komunikoj. Shenjuesit e llojeve të ndryshme janë shembuj të produkteve mbështetëse të cilat mund të lehtësojnë përzgjedhjen ose qasjen direkte."
+  "app.components.aac.list1": "{directSelection}: përdoruesi shenjon ose shtyp butonin direkt me gisht, shikimin ose pjesë të tjera të trupit në mënyrë që të tregoj piktogramat, fjalët ose shkronjat që ai/ajo dëshiron të komunikoj. Shenjuesit e llojeve të ndryshme janë shembuj të produkteve mbështetëse të cilat mund të lehtësojnë përzgjedhjen ose qasjen direkte.",
+  "app.components.aac.list2": "{mouseSelection}: është vetëm për produktet elektronike. Konsiston në përdorim të mouse për të patur qasje në tastierë ose rrjetë me simbole për komunikim përmes ekranit. Mund të përdorni llojlojshmëri të mouse siç janë joysticks, trackballs, facial mouse devices (që kontrollohen nga lëvizjet e kokës), mouse paisjet që kontrollohen përmes të pamurit ose multimouse, i cili konsiston në pesë çelësa ose ndërrues."
 }
