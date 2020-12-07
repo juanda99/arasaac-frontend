@@ -336,6 +336,7 @@
   "app.components.Welcome.aragonese": "Арагонский",
   "app.components.Welcome.chooseLanguage": "Выберите язык:",
   "app.components.Welcome.header": "Центр альтернативной и аументативной коммуникации Арагона",
+  "app.components.aac": "ARASAAC благодарит {author} и {team} за сотрудничество в подготовке этого раздела на нашем сайте.",
   "app.components.aac.aac": "Системы альтернативной и дополнительной коммуникации (АДК)",
   "app.components.aac.codedSelection": "Кодированный выбор",
   "app.components.aac.communicationBoards": "коммуникативные доски",
