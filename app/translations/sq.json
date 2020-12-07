@@ -385,5 +385,12 @@
   "app.components.creativeCommons": "Creative Commons License BY-NC-SA",
   "app.components.dialog.ok": "Në rregull",
   "app.components.disclaimer": "Mosmbajtje përgjegjësie",
-  "app.components.license": "Licenca:"
+  "app.components.license": "Licenca:",
+  "app.components.licenseP1": "{ARASAAC} është brand i Qeverisë së Aragon (Spain), regjistruar në patentën spanjolle dhe Zyrën për Trademark. Koleksioni i piktogramave {ARASAAC} është i regjistruar në General Registry of Intellectual Property (No. Deposit Legal Z 901-2013) si një punë kolektive në emër të Diputación General de Aragón, i cili ka edituar dhe shpërndarë në përputhje me Artikullin 8 të Ligjit për Pronë Intelektuale, i aprovuar nga Royal Legislative Decree 1/1996, 12 Prill.",
+  "app.components.licenseP2": "Burimet e ofruara në webfaqe (piktogramat, imazhet, shprehjet ose videot), si dhe materialet bazuar në ta, janë publikuar nën {creativeCommonsLicense}, duke autorizuar përdorimin e tyre për qëllime non-profit duke ofruar burimin dhe autorin, dhe janë të ndara nën të njëjtën licencë.",
+  "app.components.licenseP3": "Pra, përdorimi i këtyre burimeve në ndonjë produkt apo publikim për qëllime komerciale përjashtohet.",
+  "app.components.licenseP4": "Për çfarëdo përdorimi tjetër në mënyrë strikte janë të ndaluara, pa autorizim të shkruar të mbajtësit të drejtë kopjimi, nën sanksionet që janë të rregulluara me ligj, riprodhimi i plotë ose i pjesshëm i këtyre materialeve përmes çfarëdo mjeti apo procedura, përfshirë reprografinë ose procesimin kompjuterik.",
+  "app.components.licenseP8": "Ose në mënyrë skematike:",
+  "app.components.licenseP9": "Qeveria e Aragon, nuk ka përgjegjësi për përdorim jo të duhur apo të pakujdesshëm të këtyre materialeve që përmbajnë katalogjet {ARASAAC} të bëra nga palë të treta që tejkalojnë termat e {creativeCommonsLicense}.",
+  "app.components.origin": "Origjina:"
 }
