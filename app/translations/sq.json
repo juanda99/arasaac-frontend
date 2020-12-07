@@ -478,5 +478,15 @@
   "app.containers.ProfileView.googleProfilePicture": "Fotoja e profilit Google",
   "app.containers.ProfileView.greeting": "Përshëndetje!",
   "app.containers.ProfileView.lastLogin": "Kyçja e fundit:",
-  "app.containers.ProfileView.passwordChanged": "Fjalekalimi u ndryshua"
+  "app.containers.ProfileView.passwordChanged": "Fjalekalimi u ndryshua",
+  "app.containers.ProfileView.translator": "Përkthyesi",
+  "app.containers.ProfileView.user": "Përdoruesi",
+  "app.containers.SearchBox.activity": "Aktiviteti",
+  "app.containers.SearchBox.advancedSearch": "Kërkim i avancuar",
+  "app.containers.SearchBox.area": "Fushë",
+  "app.containers.SearchBox.author": "Autori",
+  "app.containers.SearchBox.content": "Përmbajtja",
+  "app.containers.SearchBox.disableFilters": "Çaktivizo filtrat",
+  "app.containers.SearchBox.filters": "Filtrat",
+  "app.containers.SettingsView.DARK": "E errët"
 }
