@@ -374,5 +374,16 @@
   "app.components.aacusage.behavioralStrategies": "Strategjitë e sjelljes",
   "app.components.aacusage.communicationBoards": "Tabelat e komunikimit",
   "app.components.aacusage.learning": "Mbështetje për mësim",
-  "app.components.aacusage.lifeSkills": "Shkathtësitë për jetë"
+  "app.components.aacusage.lifeSkills": "Shkathtësitë për jetë",
+  "app.components.aacusers.title3": "Njerëzit e moshuar",
+  "app.components.aacusers.title4": "Njerëzit në emergjencë ose situata mjekësore",
+  "app.components.aacusers.title5": "Fëmijët që sapo kanë nisur të lexojnë ose me vështirësi në lexim",
+  "app.components.aacusers.title6": "Të mësuarit e gjuhës si një gjuhë e dytë",
+  "app.components.aacusers.title7": "Turistët dhe vizitorët e vendeve tjera",
+  "app.components.aacusers.title8": "Për të gjithë",
+  "app.components.author": "Autori i piktorgramave:",
+  "app.components.creativeCommons": "Creative Commons License BY-NC-SA",
+  "app.components.dialog.ok": "Në rregull",
+  "app.components.disclaimer": "Mosmbajtje përgjegjësie",
+  "app.components.license": "Licenca:"
 }
