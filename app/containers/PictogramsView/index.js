@@ -73,7 +73,7 @@ class PictogramsView extends PureComponent {
     tab: 0,
     offset: 0,
     listName: '',
-    selectedTags: new Set()
+    selectedTags: Set()
   }
 
   title = this.props.intl.formatMessage(messages.pageTitle)
@@ -137,8 +137,10 @@ class PictogramsView extends PureComponent {
     // }
 
   }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.params.searchText !== nextProps.params.searchText) {
+      this.setState({selectedTags: Set()})
       const { requestPictograms, locale } = this.props
       requestPictograms(locale, encodeURIComponent(nextProps.params.searchText))
     }
@@ -245,13 +247,15 @@ class PictogramsView extends PureComponent {
     const { visibleLabels, visibleSettings, offset, tab, selectedTags } = this.state
     const hideIconText = width === SMALL
     let gallery,  pictogramsCounter
+    const filterVisiblePictograms = visiblePictograms.filter(pictogram => selectedTags.every(tag => pictogram.tags.indexOf(tag)!==-1))
+    console.log(filterVisiblePictograms)
     if (tab === 0) {
-      pictogramsCounter = visiblePictograms.length
+      pictogramsCounter = filterVisiblePictograms.length
       gallery = loading ? 
         <ReadMargin><P>{<FormattedMessage {...messages.loadingPictograms} />}</P></ReadMargin>
         : pictogramsCounter ?
           <PictogramList
-            pictograms={visiblePictograms}
+            pictograms={filterVisiblePictograms}
             locale={locale}
             filtersMap={filters}
             setFilterItems={this.props.setFilterItems}
@@ -345,7 +349,7 @@ class PictogramsView extends PureComponent {
                   { <PictogramTags 
                       searchText={searchText} 
                       selectedTags={selectedTags}
-                      pictograms={visiblePictograms}
+                      pictograms={filterVisiblePictograms}
                       categories={categories}
                       locale={locale}
                       onUpdateTags={this.handleUpdateTags}

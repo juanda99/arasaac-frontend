@@ -68,7 +68,7 @@ const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms
   )
   /*  if tag is available in  all pictograms, we just remove it */
   pictoTags.forEach(tag => {
-    if (pictograms.every( pictogram => pictogram.tags.indexOf(tag) !== -1)) pictoTags.delete(tag)
+    if (pictograms.every( pictogram => pictogram.tags.indexOf(tag) !== -1) && !selectedTags.has(tag)) pictoTags.delete(tag)
   })
 
   /* we  order then by frequency */
