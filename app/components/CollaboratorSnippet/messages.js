@@ -57,5 +57,9 @@ export default defineMessages({
   bg: {
     id: `${scope}.bg`,
     defaultMessage: 'Bulgaria'
-  }
+  },
+  sq: {
+    id: `${scope}.sq`,
+    defaultMessage: 'Albania'
+  },
 })

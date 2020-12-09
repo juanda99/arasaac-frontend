@@ -114,6 +114,14 @@ const collaborators = [
     twitter: 'ictaac',
     country: 'hr'
   },
+    {
+    name: 'Ermira Shabani',
+    languages: ['sq'],
+    image: 'ermire-shabani.jpg',
+    facebook: 'ermiraash',
+    desc: 'Psychologist. Kosovo - ',
+    country: 'sq'
+  },
   {
     name: 'Mia Marčec',
     desc: 'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin. ',

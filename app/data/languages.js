@@ -1,4 +1,4 @@
-/* TODO: if changed, we should also update pictograms reducer */
+/* update also getMongoDBLanguage ? */
 const languages = [
   {
     code: 'es',
