@@ -82,16 +82,15 @@ class PictogramsView extends PureComponent {
   processQuery = props => {
     const { location } = props || this.props
     const { search, query } = location
-    let parameters = { offset: 0, tab: 0 }
-    if (search) {
-      parameters = { ...parameters, ...query }
-      const validKeys = ['offset', 'tab']
-      Object.keys(parameters).forEach(key => validKeys.includes(key) || delete parameters[key])
-      parameters.offset = parseInt(parameters.offset, 10)
-      parameters.tab = parseInt(parameters.tab, 10)
-    }
-    const needUpdate = Object.keys(parameters).some(key => parameters[key] !== this.state[key])
-    if (needUpdate) this.setState(parameters)
+    let parameters = { offset: 0, tab: 0,  filters: Set()}
+    parameters = { ...parameters, ...query }
+    const validKeys = ['offset', 'tab', 'filters']
+    Object.keys(parameters).forEach(key => validKeys.includes(key) || delete parameters[key])
+    if (query.filters)  parameters.selectedTags = Set(JSON.parse(query.filters))
+    delete parameters['filters'] //use filter in url  but selectedTags in state
+    parameters.offset = parseInt(parameters.offset, 10)
+    parameters.tab = parseInt(parameters.tab, 10)
+    this.setState(parameters)
   }
 
   componentDidMount() {
@@ -186,8 +185,18 @@ class PictogramsView extends PureComponent {
 
   handleUpdateTags = (tag) => {
     const {selectedTags} =  this.state
-    if (selectedTags.has(tag))  this.setState({selectedTags: selectedTags.remove(tag)})
-    else this.setState({selectedTags: selectedTags.add(tag)})
+    const { pathname } = this.props.location
+    let filterURI
+    if (selectedTags.has(tag)) {
+      filterURI  =  encodeURIComponent(JSON.stringify(selectedTags.remove(tag)))
+    }  // this.setState({selectedTags: })
+    else {
+      // this.setState({selectedTags: selectedTags.add(tag)})
+      filterURI  =  encodeURIComponent(JSON.stringify(selectedTags.add(tag)))
+    }
+    // filter set offset to 0 and default tab is 0, where filters are used, so we remove these  parameters
+    const url = `${pathname}?filters=${filterURI}`
+    this.props.router.push(url)
   }
 
   handleAddFavorite = (fileName) => {

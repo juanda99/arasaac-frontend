@@ -7,6 +7,7 @@ import Chip from 'material-ui/Chip'
 import removeDiacritics from 'components/SearchField/removeDiacritics'
 import { lightGreen400} from 'material-ui/styles/colors'
 import stopWords from 'utils/stopWords'
+import P  from 'components/P'
 import messages from './messages'
 
 const styles = {
@@ -26,7 +27,12 @@ const getTags = (searchText, categoryTree, locale) => {
     const nodes = jp.nodes(tree, '$..keywords')
     const categories = nodes
       .filter(node => node.value.some(keyword => removeDiacritics(stopWords(keyword, locale)).toLowerCase() === searchText))
-      .map(node=>node.path[node.path.length -2])
+      .map(node=>
+        {
+          console.log(node.path)
+          // return node.path[node.path.length -2]
+          return node.path[1]
+        })
       if (categories.length) {
         const tags = []
         categories.forEach(categoryItem => {
