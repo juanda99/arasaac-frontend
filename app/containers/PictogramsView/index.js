@@ -15,7 +15,7 @@ import PictogramTags from 'components/PictogramTags'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import Divider from 'material-ui/Divider'
 import { Tabs, Tab } from 'material-ui/Tabs'
-import { Map } from 'immutable'
+import { Map, Set } from 'immutable'
 import FilterList from 'components/Filters'
 import PictogramList from 'components/PictogramList'
 import P from 'components/P'
@@ -73,7 +73,7 @@ class PictogramsView extends PureComponent {
     tab: 0,
     offset: 0,
     listName: '',
-    selectedTags: []
+    selectedTags: new Set()
   }
 
   title = this.props.intl.formatMessage(messages.pageTitle)
@@ -182,15 +182,21 @@ class PictogramsView extends PureComponent {
     }
   }
 
+  handleUpdateTags = (tag) => {
+    const {selectedTags} =  this.state
+    if (selectedTags.has(tag))  this.setState({selectedTags: selectedTags.remove(tag)})
+    else this.setState({selectedTags: selectedTags.add(tag)})
+  }
+
   handleAddFavorite = (fileName) => {
     const { addFavorite, token } = this.props
     addFavorite(fileName, DEFAULT_LIST, token)
-  };
+  }
 
   handleDeleteFavorite = (fileName) => {
     const { deleteFavorite, token } = this.props
     deleteFavorite(fileName, DEFAULT_LIST, token)
-  };
+  }
 
   handleDownload = (idPictogram, keyword) => {
     const location = downloadPictogram(idPictogram, keyword)
@@ -205,19 +211,19 @@ class PictogramsView extends PureComponent {
       this.props.router.push(`/pictograms/search/${encodeURIComponent(nextValue)
         }`)
     }
-  };
+  }
 
   showSettings = () => {
     this.setState({
       visibleSettings: !this.state.visibleSettings
     })
-  };
+  }
 
   showLabels = () => {
     this.setState({
       visibleLabels: !this.state.visibleLabels
     })
-  };
+  }
 
   render() {
     const {
@@ -342,6 +348,7 @@ class PictogramsView extends PureComponent {
                       pictograms={visiblePictograms}
                       categories={categories}
                       locale={locale}
+                      onUpdateTags={this.handleUpdateTags}
                     />}
                 {gallery}
               </View>

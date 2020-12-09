@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 import PropTypes from 'prop-types'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import jp from 'jsonpath'
 import Chip from 'material-ui/Chip'
 import removeDiacritics from 'components/SearchField/removeDiacritics'
+import { lightGreen400} from 'material-ui/styles/colors'
 import stopWords from 'utils/stopWords'
+import messages from './messages'
 
 const styles = {
   chip: {
@@ -52,7 +55,7 @@ const getSubcategoryTags = (tree, tags) => {
 }
 
 
-const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms}) => {
+const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms,  onUpdateTags}) => {
 
   const searchCategory = removeDiacritics(stopWords(searchText, locale)).toLowerCase()
   const tags = pictograms.length ? getTags(searchCategory, categories, locale) : []
@@ -68,7 +71,6 @@ const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms
     if (pictograms.every( pictogram => pictogram.tags.indexOf(tag) !== -1)) pictoTags.delete(tag)
   })
 
-  console.log(pictoTags, '++++++++++++')
   /* we  order then by frequency */
   const countOccurrences  = (item) => (accumulator, currentValue) => {
     if (currentValue.tags.indexOf(item)!==-1) return accumulator + 1
@@ -80,17 +82,24 @@ const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms
     return weightB - weightA
   })
 
+  const handleClick  = (tag) => onUpdateTags(tag)
+
   /* we add already selected tags */
 
-  console.log(pictoTagsOrdered)
   const renderTags = pictoTagsOrdered.map((tag) => 
-    <Chip style={styles.chip} key={tag} onClick={() => this.handleAreaClick(id)}>
-      {/* <FormattedMessage {...classificationMessages[key]} /> */}
-      {tag}
-    </Chip>
+    selectedTags.has(tag) ?
+      <Chip backgroundColor={lightGreen400} style={styles.chip} key={tag} onClick={() => handleClick(tag)}>
+        {<FormattedMessage {...messages[tag]} />}
+      </Chip>
+    :
+      <Chip style={styles.chip} key={tag} onClick={() => handleClick(tag)}>
+        {<FormattedMessage {...messages[tag]} />}
+      </Chip>
   )
+
   return (
     <div style={{display: 'flex', flexWrap: 'wrap'}}>
+
       {renderTags}
     </div>
   )
@@ -98,7 +107,7 @@ const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms
 
 PictogramTags.propTypes = {
   searchText: PropTypes.string,
-  selectedTags: PropTypes.array,
+  selectedTags: ImmutablePropTypes.set.isRequired,
   categories: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
   pictograms: PropTypes.array,
