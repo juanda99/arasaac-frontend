@@ -2089,5 +2089,37 @@ export default defineMessages(
       "id": "tags.pollution",
       "defaultMessage": "pollution"
     },
+    "visual system": {
+      "id": "tags.rural area",
+      "defaultMessage": "rural area"
+    },
+    "measurement unit": {
+      "id": "tags.measurement unit",
+      "defaultMessage": "measurement unit"
+    },
+    "TV show": {
+      "id": "tags.TV show",
+      "defaultMessage": "TV show"
+    },
+    "war": {
+      "id": "tags.war",
+      "defaultMessage": "war"
+    },
+    "popular festival": {
+      "id": "tags.popular festival",
+      "defaultMessage": "popular festival"
+    },
+    "container": {
+      "id": "tags.container",
+      "defaultMessage": "container"
+    },
+    "visual system": {
+      "id": "tags.visual system",
+      "defaultMessage": "visual system"
+    },
+    "auditory system": {
+      "id": "tags.auditory system",
+      "defaultMessage": "auditory system"
+    },
   }
 )
