@@ -66,9 +66,10 @@ const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms
       if (tags.indexOf(tag) !== -1) pictoTags.add(tag)
     })
   )
-  /*  if tag is available in  all pictograms, we just remove it */
+  /*  if tag is available in  all pictograms, we just remove it, we also delete selectedTags as we
+  willl sort them in first place */
   pictoTags.forEach(tag => {
-    if (pictograms.every( pictogram => pictogram.tags.indexOf(tag) !== -1) && !selectedTags.has(tag)) pictoTags.delete(tag)
+    if (pictograms.every( pictogram => pictogram.tags.indexOf(tag) !== -1) || selectedTags.has(tag)) pictoTags.delete(tag)
   })
 
   /* we  order then by frequency */
@@ -76,11 +77,13 @@ const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms
     if (currentValue.tags.indexOf(item)!==-1) return accumulator + 1
     return accumulator + 0
   }
-  const pictoTagsOrdered = [...pictoTags].sort((a, b) => {
+  const tmpPictoTagsOrdered = [...pictoTags].sort((a, b) => {
     const weightA  = pictograms.reduce(countOccurrences(a), 0)
     const weightB  = pictograms.reduce(countOccurrences(b), 0)
     return weightB - weightA
   })
+
+  const pictoTagsOrdered = [...selectedTags, ...tmpPictoTagsOrdered]
 
   const handleClick  = (tag) => onUpdateTags(tag)
 
@@ -99,7 +102,6 @@ const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms
 
   return (
     <div style={{display: 'flex', flexWrap: 'wrap'}}>
-
       {renderTags}
     </div>
   )

@@ -248,7 +248,6 @@ class PictogramsView extends PureComponent {
     const hideIconText = width === SMALL
     let gallery,  pictogramsCounter
     const filterVisiblePictograms = visiblePictograms.filter(pictogram => selectedTags.every(tag => pictogram.tags.indexOf(tag)!==-1))
-    console.log(filterVisiblePictograms)
     if (tab === 0) {
       pictogramsCounter = filterVisiblePictograms.length
       gallery = loading ? 
