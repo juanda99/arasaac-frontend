@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
 import ShareBar from 'components/ShareBar'
+import Chip from 'material-ui/Chip'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/RaisedButton'
 import {
@@ -576,6 +577,8 @@ class Pictogram extends Component {
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('_id')
+    const tags = pictogram.get('tags')
+    console.log(tags, '***+***************************')
     // first time downloadUrl is default png
     const { keyword, hasLocution } = keywordSelector(
       searchText,
@@ -882,6 +885,7 @@ class Pictogram extends Component {
           language={language}
           idPictogram={idPictogram}
           onLanguageChange={this.handleLanguageChange}
+          tags={tags}
         />
 
         <H3 primary={true} style={{ padding: '5px' }}>
@@ -909,6 +913,7 @@ Pictogram.propTypes = {
   intl: intlShape.isRequired,
   authenticated: PropTypes.bool.isRequired,
   onAddFavorite: PropTypes.func.isRequired,
+  categories: PropTypes.object.isRequired,
 }
 
 export default injectIntl(Pictogram)

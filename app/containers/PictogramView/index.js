@@ -10,12 +10,14 @@ import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import Helmet from 'react-helmet'
 import Pictogram from 'components/Pictogram'
-import { pictogram } from 'containers/PictogramView/actions'
+import { categories } from 'containers/PictogramsView/actions'
+import { makeCategoriesSelectorByLocale } from 'containers/PictogramsView/selectors'
 import { addFavorite } from 'containers/App/actions'
 import P from 'components/P'
-import api, { downloadCustomPictogram, downloadLocution } from 'services'
+import api, { downloadCustomPictogram } from 'services'
 import { DEFAULT_LIST } from 'utils'
 import { makeSelectHasUser } from 'containers/App/selectors'
+import { pictogram } from './actions'
 import { makePictogramByIdSelector } from './selectors'
 import messages from './messages'
 
@@ -24,10 +26,16 @@ import messages from './messages'
 
 class PictogramView extends PureComponent {
   componentDidMount() {
-    const { params, pictogramData } = this.props
+
+    const { params: {locale, idPictogram}, pictogramData, categories, requestCategories, } = this.props
     if (pictogramData.isEmpty()) {
-      this.props.requestPictogram(params.idPictogram, params.locale)
+      this.props.requestPictogram(idPictogram, locale)
     }
+
+    const categoriesDate = sessionStorage.getItem(`categoriesDate_${locale}`)
+    let diffSeconds = categoriesDate ? (actualDate.getTime() - categoriesDate) / 1000 : 0 
+    if (!categories || categories.size === 0 || diffSeconds > 86400) requestCategories()
+
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.params.idPictogram !== nextProps.params.idPictogram) {
@@ -61,7 +69,8 @@ class PictogramView extends PureComponent {
       pictogramData,
       loading,
       token,
-      params: { locale, searchText }
+      params: { locale, searchText },
+      categories
     } = this.props
     if (loading) {
       return (
@@ -82,6 +91,7 @@ class PictogramView extends PureComponent {
           authenticated={!!token}
           onDownload={this.handleDownload}
           onAddFavorite={this.handleAddFavorite}
+          categories={categories}
         />
       )
   }
@@ -113,10 +123,12 @@ const mapStateToProps = (state, ownProps) => {
   const pictogramData = makePictogramByIdSelector()(state, ownProps)
   const loading = state.getIn(['pictogramsView', 'loading'])
   const token = makeSelectHasUser()(state)
+  const categories = makeCategoriesSelectorByLocale()(state)
   return {
     pictogramData,
     loading,
-    token
+    token,
+    categories
   }
 }
 
@@ -126,6 +138,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   addFavorite: (fileName, listName, token) => {
     dispatch(addFavorite.request(fileName, listName, token))
+  },
+  requestCategories: () => {
+    dispatch(categories.request(ownProps.params.locale))
   }
 })
 
