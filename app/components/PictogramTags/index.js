@@ -23,24 +23,17 @@ const styles = {
 
 
 const getTags = (searchText, categoryTree, locale) => {
-    const  tree = categoryTree.toJSON()
+    const tree = categoryTree.toJSON()
     const nodes = jp.nodes(tree, '$..keywords')
     const categories = nodes
       .filter(node => node.value.some(keyword => removeDiacritics(stopWords(keyword, locale)).toLowerCase() === searchText))
-      .map(node=>
-        {
-          console.log(node.path)
-          // return node.path[node.path.length -2]
-          return node.path[1]
-        })
+      .map(node=>node.path[1])
       if (categories.length) {
         const tags = []
         categories.forEach(categoryItem => {
           const partialData = jp.value(tree, `$..["${categoryItem}"]`)
           const newTags = getSubcategoryTags(partialData, partialData.tags)
-          newTags.forEach(element => {
-            tags.push(element)
-          });
+          newTags.forEach(element => tags.push(element))
         })
         return tags
       }

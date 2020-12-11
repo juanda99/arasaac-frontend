@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
 import ShareBar from 'components/ShareBar'
-import Chip from 'material-ui/Chip'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/RaisedButton'
 import {
@@ -55,6 +54,7 @@ import PictoWrapper from './PictoWrapper'
 import Canvas from './Canvas'
 import PictogramTitle from '../BoxTitle'
 import RelatedWords from './RelatedWords'
+import PictogramCategories from './PictogramCategories'
 
 
 const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
@@ -518,7 +518,7 @@ class Pictogram extends Component {
   );
 
   render() {
-    const { pictogram, searchText, locale, intl, authenticated } = this.props
+    const { pictogram, searchText, locale, intl, authenticated, categories } = this.props
     const {
       language,
       backgroundColor,
@@ -578,7 +578,7 @@ class Pictogram extends Component {
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('_id')
     const tags = pictogram.get('tags')
-    console.log(tags, '***+***************************')
+    const pictoCategories = pictogram.get('categories')
     // first time downloadUrl is default png
     const { keyword, hasLocution } = keywordSelector(
       searchText,
@@ -606,102 +606,7 @@ class Pictogram extends Component {
                   {keyword}
                 </H2>
               </PictogramTitle>
-              <Canvas>
-                <Stage
-                  width={canvasSize}
-                  height={canvasSize}
-                  ref={(node) => {
-                    this.stageRef = node
-                  }}
-                // onContextMenu={(e) => e.evt.preventDefault()}
-                >
-                  {bgColorActive && (
-                    <BackgroundLayer
-                      color={backgroundColor}
-                      size={canvasSize}
-                    />
-                  )}
-                  <Img
-                    src={url}
-                    frameWidth={frameWidth}
-                    enableFrame={
-                      frameActive
-                    } /* alt={'alt'} style={styles.picto} */
-                    zoomLevel={zoomLevel}
-                    canvasSize={canvasSize}
-                    dragAndDrop={dragAndDrop}
-                    topMargin={topTextActive ? 50 : 0}
-                    bottomMargin={bottomTextActive ? 50 : 0}
-                  />
-                  {topTextActive && (
-                    <TextLayer
-                      font={topTextFont}
-                      text={topText}
-                      fontSize={topTextFontSize}
-                      fontColor={topTextFontColor}
-                      dragAndDrop={dragAndDrop}
-                      canvasSize={canvasSize}
-                      y={frameActive ? frameWidth / 2 + 8 : 8}
-                    />
-                  )}
-                  {bottomTextActive && (
-                    <TextLayer
-                      font={bottomTextFont}
-                      text={bottomText}
-                      fontSize={bottomTextFontSize}
-                      fontColor={bottomTextFontColor}
-                      dragAndDrop={dragAndDrop}
-                      canvasSize={canvasSize}
-                      y={
-                        frameActive
-                          ? canvasSize - bottomTextFontSize - frameWidth / 2 + 2
-                          : canvasSize - bottomTextFontSize + 2
-                      }
-                    />
-                  )}
-                  {plural && (
-                    <PluralLayer
-                      frame={frameActive}
-                      frameWidth={frameWidth}
-                      canvasSize={canvasSize}
-                      color={pluralColor}
-                    />
-                  )}
-                  {verbalTenseActive && (
-                    <VerbalTenseLayer
-                      frame={frameActive}
-                      frameWidth={frameWidth}
-                      canvasSize={canvasSize}
-                      verbalTense={verbalTense}
-                      color={verbalTenseColor}
-                    />
-                  )}
-                  {strikeThrough && (
-                    <StrikeThroughLayer
-                      frame={frameActive}
-                      frameWidth={frameWidth}
-                      canvasSize={canvasSize}
-                    />
-                  )}
-                  {identifierActive && (
-                    <IdentifierLayer
-                      enableFrame={frameActive}
-                      frameWidth={frameWidth}
-                      canvasSize={canvasSize}
-                      position={identifierPosition}
-                      src={identifierFile}
-                      dragAndDrop={dragAndDrop}
-                    />
-                  )}
-                  {frameActive && (
-                    <FrameLayer
-                      color={frameColor}
-                      frameWidth={frameWidth}
-                      size={canvasSize}
-                    />
-                  )}
-                </Stage>
-              </Canvas>
+
               <PictogramTitle>
                 <RaisedButton
                   label={<FormattedMessage {...messages.addFavoriteLabel} />}
@@ -879,13 +784,20 @@ class Pictogram extends Component {
             </div>
           </div>
         </div>
+        { !!categories.size && 
+          <PictogramCategories
+            categories={categories}
+            pictoCategories={pictoCategories}
+            tags={tags}
+          />
+        }
+
         <RelatedWords
           style={{ padding: '5px' }}
           locale={locale}
           language={language}
           idPictogram={idPictogram}
           onLanguageChange={this.handleLanguageChange}
-          tags={tags}
         />
 
         <H3 primary={true} style={{ padding: '5px' }}>

@@ -300,5 +300,9 @@ export default defineMessages({
     id: 'app.components.Pictogram.TextOptions.fontFamily',
     description: 'Label text',
     defaultMessage: 'Font family:'
+  },
+  taxonomy: {
+    id: 'app.components.PictogramCategories.taxonomy',
+    defaultMessage: 'Taxonomy'
   }
 })

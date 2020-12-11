@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import ImmutablePropTypes from 'react-immutable-proptypes'
-import Chip from 'material-ui/Chip'
 import H3 from 'components/H3'
 import ShowSoundPlayer from 'components/SoundPlayer/ShowSoundPlayer'
 import Divider from 'material-ui/Divider'
 import LanguageSelector from 'components/LanguageSelector'
 import { FormattedMessage } from 'react-intl'
-import { lightGreen400} from 'material-ui/styles/colors'
 import api from 'services'
 import P from 'components/P'
 import messages from './messages'
@@ -23,7 +20,7 @@ export default class RelatedWords extends Component {
     idPictogram: PropTypes.number.isRequired,
     onLanguageChange: PropTypes.func.isRequired,
     style: PropTypes.object,
-    tags: ImmutablePropTypes.list.isRequired,
+
   };
 
   state = {
@@ -53,16 +50,6 @@ export default class RelatedWords extends Component {
       <div style={style}>
         <H3 primary>{<FormattedMessage {...messages.description} />}</H3>
         <Divider />
-        { tags && 
-          <div style={{display: 'flex', flexWrap: 'wrap', marginTop: '10px'}}>
-            {tags.map(tag =>
-              <Chip backgroundColor={lightGreen400} key={tag} style={styles.chip}>
-                {tag}
-              {/* {<FormattedMessage {...messages[tag]} />} */}
-              </Chip>
-            )}
-          </div>
-        }
         <P>{<FormattedMessage {...messages.changePictoLanguage} />}</P>
         <LanguageSelector
           value={language}
