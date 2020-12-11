@@ -83,7 +83,7 @@ export default class PictogramCategories extends Component {
                 </span>
               : <span key={item.text}>
                   <P style={{display:  'inline'}}> / </P>
-                  <FlatButton label={item.text} />
+                  <FlatButton label={item.text}  disabled={true}/>
                 </span>
             }
           })}
