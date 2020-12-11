@@ -606,7 +606,102 @@ class Pictogram extends Component {
                   {keyword}
                 </H2>
               </PictogramTitle>
-
+              <Canvas>
+                <Stage
+                  width={canvasSize}
+                  height={canvasSize}
+                  ref={(node) => {
+                    this.stageRef = node
+                  }}
+                // onContextMenu={(e) => e.evt.preventDefault()}
+                >
+                  {bgColorActive && (
+                    <BackgroundLayer
+                      color={backgroundColor}
+                      size={canvasSize}
+                    />
+                  )}
+                  <Img
+                    src={url}
+                    frameWidth={frameWidth}
+                    enableFrame={
+                      frameActive
+                    } /* alt={'alt'} style={styles.picto} */
+                    zoomLevel={zoomLevel}
+                    canvasSize={canvasSize}
+                    dragAndDrop={dragAndDrop}
+                    topMargin={topTextActive ? 50 : 0}
+                    bottomMargin={bottomTextActive ? 50 : 0}
+                  />
+                  {topTextActive && (
+                    <TextLayer
+                      font={topTextFont}
+                      text={topText}
+                      fontSize={topTextFontSize}
+                      fontColor={topTextFontColor}
+                      dragAndDrop={dragAndDrop}
+                      canvasSize={canvasSize}
+                      y={frameActive ? frameWidth / 2 + 8 : 8}
+                    />
+                  )}
+                  {bottomTextActive && (
+                    <TextLayer
+                      font={bottomTextFont}
+                      text={bottomText}
+                      fontSize={bottomTextFontSize}
+                      fontColor={bottomTextFontColor}
+                      dragAndDrop={dragAndDrop}
+                      canvasSize={canvasSize}
+                      y={
+                        frameActive
+                          ? canvasSize - bottomTextFontSize - frameWidth / 2 + 2
+                          : canvasSize - bottomTextFontSize + 2
+                      }
+                    />
+                  )}
+                  {plural && (
+                    <PluralLayer
+                      frame={frameActive}
+                      frameWidth={frameWidth}
+                      canvasSize={canvasSize}
+                      color={pluralColor}
+                    />
+                  )}
+                  {verbalTenseActive && (
+                    <VerbalTenseLayer
+                      frame={frameActive}
+                      frameWidth={frameWidth}
+                      canvasSize={canvasSize}
+                      verbalTense={verbalTense}
+                      color={verbalTenseColor}
+                    />
+                  )}
+                  {strikeThrough && (
+                    <StrikeThroughLayer
+                      frame={frameActive}
+                      frameWidth={frameWidth}
+                      canvasSize={canvasSize}
+                    />
+                  )}
+                  {identifierActive && (
+                    <IdentifierLayer
+                      enableFrame={frameActive}
+                      frameWidth={frameWidth}
+                      canvasSize={canvasSize}
+                      position={identifierPosition}
+                      src={identifierFile}
+                      dragAndDrop={dragAndDrop}
+                    />
+                  )}
+                  {frameActive && (
+                    <FrameLayer
+                      color={frameColor}
+                      frameWidth={frameWidth}
+                      size={canvasSize}
+                    />
+                  )}
+                </Stage>
+              </Canvas>
               <PictogramTitle>
                 <RaisedButton
                   label={<FormattedMessage {...messages.addFavoriteLabel} />}

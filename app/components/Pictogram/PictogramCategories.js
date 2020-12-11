@@ -68,12 +68,23 @@ export default class PictogramCategories extends Component {
             if  (!index) {
               return !item.keyword ?
                 <FlatButton key={item.text} label={item.text} disabled={true}/>
-              : <FlatButton key={item.text} label={item.text} disabled={true}/>
+              : <Link to={`/pictograms/search/${item.keyword}`}>
+                  <FlatButton key={item.text} label={item.text} />
+              </Link>
+              
             }
             else {
               return item.keyword ?
-                <span key={item.text}><P style={{display:  'inline'}}> / </P><FlatButton key={item.text} label={item.text} /></span>
-              : <span key={item.text}><P style={{display:  'inline'}}> / </P><FlatButton label={item.text} /> </span>
+                <span key={item.text}>
+                  <P style={{display:  'inline'}}> / </P>
+                  <Link to={`/pictograms/search/${item.keyword}`}>
+                    <FlatButton key={item.text} label={item.text} />
+                  </Link>
+                </span>
+              : <span key={item.text}>
+                  <P style={{display:  'inline'}}> / </P>
+                  <FlatButton label={item.text} />
+                </span>
             }
           })}
           </div>
@@ -82,13 +93,13 @@ export default class PictogramCategories extends Component {
       <div>
         <H3 primary>{<FormattedMessage {...messages.taxonomy} />}</H3>
         <Divider />
-        <P>This pictogram belong to these categories:</P>
+        <P>{<FormattedMessage {...messages.pictoBelongs} />}</P>
         {renderPaths.map(path => 
           <div>
             {path}
           </div>
         )}
-        <P>This pictogram has been labeled as:</P>
+        <P>{<FormattedMessage {...messages.pictoLabels} />}</P>
         { tags && 
           <div style={{display: 'flex', flexWrap: 'wrap', marginTop: '10px'}}>
             {tags.map(tag =>

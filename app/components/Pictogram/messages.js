@@ -304,5 +304,13 @@ export default defineMessages({
   taxonomy: {
     id: 'app.components.PictogramCategories.taxonomy',
     defaultMessage: 'Taxonomy'
+  },
+  pictoBelongs: {
+    id: 'app.components.PictogramCategories.pictoBelongs',
+    defaultMessage: 'This pictogram belong to these categories:'
+  },
+  pictoLabels: {
+    id: 'app.components.PictogramCategories.pictoLabels',
+    defaultMessage: 'This pictogram has been labelled as:'
   }
 })
