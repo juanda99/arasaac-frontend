@@ -117,7 +117,7 @@ It's used  worldwide by thousands of users.
 This project is licensed under the MIT license, Copyright (c) 2016 . For more information see `LICENSE.md`.
 
 ## Supporters
-<img src="http://arasaac.org/images/logoAragon.jpg" alt="Gobierno de Aragón" align="left" />
-<img src="http://arasaac.org/images/logo_fse.jpg" alt="European Union" align="right" />
+<img src="https://static.arasaac.org/images/logoAragon.jpg" alt="Gobierno de Aragón" align="left" />
+<img src="https://static.arasaac.org/images/logo_fse.jpg" alt="European Union" align="right" />
 
 
