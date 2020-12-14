@@ -3,7 +3,7 @@
 </div>
 <br />
 
-<div align="center"><strong>Arasaac beta website</strong></div>
+<div align="center"><strong>Arasaac website</strong></div>
 
 <br />
 <div align="center">
