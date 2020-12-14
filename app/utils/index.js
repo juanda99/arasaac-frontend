@@ -65,20 +65,27 @@ export const keywordSelector = (searchText, keywords) => {
   const searchTextArray = searchText ? searchText.split(' ') : []
   if (!searchTextArray.length) return keywords[0]
   // if same keyword exists, return it
-  const keyword = keywords.find(
+  let keyword = keywords.find(
     (keywordsItem) => keywordsItem.keyword && keywordsItem.keyword.toLowerCase() === searchText.toLowerCase(),
   )
   if (keyword) return keyword
+
   // otherwise, return first partial match or fist keyword if no matches
-  return (
-    keywords.find((keywordsItem) => {
-      if (!keywords.keyword) return false
-      const keywordArray = keywordsItem.keyword.split(' ').map((keyword) => keyword.toLowerCase())
-      return searchTextArray.some((word) => keywordArray.includes(word.toLowerCase()))
-    }) ||
-    keywords[0] ||
-    emptyResponse
-  )
+  keyword =  keywords.find((keywordsItem) => {
+    if (!keywordsItem.keyword) return false
+    const keywordArray = keywordsItem.keyword.split(' ').map((keyword) => keyword.toLowerCase())
+    return searchTextArray.some((word) => keywordArray.includes(word.toLowerCase()))
+  }) 
+  if  (keyword) return keyword
+
+  const regexp = new RegExp(searchText, "i")
+  keyword = keywords.find((keywordsItem) => {
+    if (!keywordsItem.keyword) return false
+    //  use regex for phonemen
+    return regexp.test(keywordsItem.keyword)
+  })
+  if (keyword) return keyword
+  return keywords[0] ||emptyResponse
 }
 
 /* for hair and skin options, get object key for a given value */
