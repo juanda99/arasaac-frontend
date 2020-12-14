@@ -34,9 +34,12 @@
 
 
 ## What is Arasaac
-Arasaac is a website that offers AAC symbols and resources to facilitate communication for those with some sort of problem in this area. [See current website](http://www.arasaac.org)
 
-It's used  worldwide and everyday by thousands of users.[See website](https://arasaac.org)
+[See website](https://arasaac.org)
+
+Arasaac is a website that offers AAC symbols and resources to facilitate communication for those with some sort of problem in this area. 
+
+It's used  worldwide by thousands of users. 
 
 
 ## Quick start
