@@ -1,6 +1,42 @@
 import { defineMessages } from 'react-intl'
 export default defineMessages(
   {
+    "Aragon": {
+      "id": "tags.Aragon",
+      "defaultMessage": "Aragon"
+    },
+    "Egypt": {
+      "id": "tags.Egypt",
+      "defaultMessage": "Egypt"
+    },
+    "Greece": {
+      "id": "tags.Greece",
+      "defaultMessage": "Greece"
+    },
+    "Huesca": {
+      "id": "tags.Huesca",
+      "defaultMessage": "Huesca"
+    },
+    "Iberians": {
+      "id": "tags.Iberians",
+      "defaultMessage": "Iberians"
+    },
+    "Rome": {
+      "id": "tags.Rome",
+      "defaultMessage": "Rome"
+    },
+    "Saragossa": {
+      "id": "tags.Saragossa",
+      "defaultMessage": "Saragossa"
+    },
+    "TV show": {
+      "id": "tags.TV show",
+      "defaultMessage": "TV show"
+    },
+    "Teruel": {
+      "id": "tags.Teruel",
+      "defaultMessage": "Teruel"
+    },
     "accessories": {
       "id": "tags.accessories",
       "defaultMessage": "accessories"
@@ -8,6 +44,10 @@ export default defineMessages(
     "adapted sport": {
       "id": "tags.adapted sport",
       "defaultMessage": "adapted sport"
+    },
+    "addiction": {
+      "id": "tags.addiction",
+      "defaultMessage": "addiction"
     },
     "adjective": {
       "id": "tags.adjective",
@@ -73,6 +113,10 @@ export default defineMessages(
       "id": "tags.air transport",
       "defaultMessage": "air transport"
     },
+    "alcohol": {
+      "id": "tags.alcohol",
+      "defaultMessage": "alcohol"
+    },
     "alphabet": {
       "id": "tags.alphabet",
       "defaultMessage": "alphabet"
@@ -97,6 +141,14 @@ export default defineMessages(
       "id": "tags.animal anatomy",
       "defaultMessage": "animal anatomy"
     },
+    "animal behavior": {
+      "id": "tags.animal behavior",
+      "defaultMessage": "animal behavior"
+    },
+    "animal housing": {
+      "id": "tags.animal housing",
+      "defaultMessage": "animal housing"
+    },
     "animal material": {
       "id": "tags.animal material",
       "defaultMessage": "animal material"
@@ -116,6 +168,10 @@ export default defineMessages(
     "animal skeleton": {
       "id": "tags.animal skeleton",
       "defaultMessage": "animal skeleton"
+    },
+    "animal-assisted therapy": {
+      "id": "tags.animal-assisted therapy",
+      "defaultMessage": "animal-assisted therapy"
     },
     "animal-based food": {
       "id": "tags.animal-based food",
@@ -153,6 +209,10 @@ export default defineMessages(
       "id": "tags.architecture",
       "defaultMessage": "architecture"
     },
+    "aromatic plant": {
+      "id": "tags.aromatic plant",
+      "defaultMessage": "aromatic plant"
+    },
     "arthropod": {
       "id": "tags.arthropod",
       "defaultMessage": "arthropod"
@@ -161,13 +221,17 @@ export default defineMessages(
       "id": "tags.article",
       "defaultMessage": "article"
     },
+    "artist": {
+      "id": "tags.artist",
+      "defaultMessage": "artist"
+    },
     "astronomy": {
       "id": "tags.astronomy",
       "defaultMessage": "astronomy"
     },
-    "athlete": {
-      "id": "tags.athlete",
-      "defaultMessage": "athlete"
+    "athletics": {
+      "id": "tags.athletics",
+      "defaultMessage": "athletics"
     },
     "atmospheric device": {
       "id": "tags.atmospheric device",
@@ -176,6 +240,10 @@ export default defineMessages(
     "atmospheric phenomena": {
       "id": "tags.atmospheric phenomena",
       "defaultMessage": "atmospheric phenomena"
+    },
+    "auditory system": {
+      "id": "tags.auditory system",
+      "defaultMessage": "auditory system"
     },
     "augmentative communication": {
       "id": "tags.augmentative communication",
@@ -189,9 +257,29 @@ export default defineMessages(
       "id": "tags.baby",
       "defaultMessage": "baby"
     },
+    "babycare": {
+      "id": "tags.babycare",
+      "defaultMessage": "babycare"
+    },
     "baking": {
       "id": "tags.baking",
       "defaultMessage": "baking"
+    },
+    "basic concepts": {
+      "id": "tags.basic concepts",
+      "defaultMessage": "basic concepts"
+    },
+    "basic needs": {
+      "id": "tags.basic needs",
+      "defaultMessage": "basic needs"
+    },
+    "basketball": {
+      "id": "tags.basketball",
+      "defaultMessage": "basketball"
+    },
+    "beach": {
+      "id": "tags.beach",
+      "defaultMessage": "beach"
     },
     "beverage": {
       "id": "tags.beverage",
@@ -209,9 +297,17 @@ export default defineMessages(
       "id": "tags.bird",
       "defaultMessage": "bird"
     },
+    "birthday": {
+      "id": "tags.birthday",
+      "defaultMessage": "birthday"
+    },
     "board game": {
       "id": "tags.board game",
       "defaultMessage": "board game"
+    },
+    "body sensation": {
+      "id": "tags.body sensation",
+      "defaultMessage": "body sensation"
     },
     "book character": {
       "id": "tags.book character",
@@ -224,6 +320,10 @@ export default defineMessages(
     "building": {
       "id": "tags.building",
       "defaultMessage": "building"
+    },
+    "building facility": {
+      "id": "tags.building facility",
+      "defaultMessage": "building facility"
     },
     "bullfighting": {
       "id": "tags.bullfighting",
@@ -261,6 +361,14 @@ export default defineMessages(
       "id": "tags.carnivorous",
       "defaultMessage": "carnivorous"
     },
+    "carpentry": {
+      "id": "tags.carpentry",
+      "defaultMessage": "carpentry"
+    },
+    "categorization": {
+      "id": "tags.categorization",
+      "defaultMessage": "categorization"
+    },
     "catering establishment": {
       "id": "tags.catering establishment",
       "defaultMessage": "catering establishment"
@@ -280,6 +388,14 @@ export default defineMessages(
     "character": {
       "id": "tags.character",
       "defaultMessage": "character"
+    },
+    "chemistry": {
+      "id": "tags.chemistry",
+      "defaultMessage": "chemistry"
+    },
+    "chess": {
+      "id": "tags.chess",
+      "defaultMessage": "chess"
     },
     "child": {
       "id": "tags.child",
@@ -313,6 +429,10 @@ export default defineMessages(
       "id": "tags.city",
       "defaultMessage": "city"
     },
+    "civilization": {
+      "id": "tags.civilization",
+      "defaultMessage": "civilization"
+    },
     "cleaning product": {
       "id": "tags.cleaning product",
       "defaultMessage": "cleaning product"
@@ -324,6 +444,10 @@ export default defineMessages(
     "clothing": {
       "id": "tags.clothing",
       "defaultMessage": "clothing"
+    },
+    "clothing industry": {
+      "id": "tags.clothing industry",
+      "defaultMessage": "clothing industry"
     },
     "coelenterata": {
       "id": "tags.coelenterata",
@@ -377,6 +501,10 @@ export default defineMessages(
       "id": "tags.concessive conjunction",
       "defaultMessage": "concessive conjunction"
     },
+    "condiment": {
+      "id": "tags.condiment",
+      "defaultMessage": "condiment"
+    },
     "conditional conjunction": {
       "id": "tags.conditional conjunction",
       "defaultMessage": "conditional conjunction"
@@ -397,6 +525,10 @@ export default defineMessages(
       "id": "tags.consultancy",
       "defaultMessage": "consultancy"
     },
+    "container": {
+      "id": "tags.container",
+      "defaultMessage": "container"
+    },
     "continent": {
       "id": "tags.continent",
       "defaultMessage": "continent"
@@ -404,6 +536,10 @@ export default defineMessages(
     "contraceptive method": {
       "id": "tags.contraceptive method",
       "defaultMessage": "contraceptive method"
+    },
+    "cookery": {
+      "id": "tags.cookery",
+      "defaultMessage": "cookery"
     },
     "copulative conjunction": {
       "id": "tags.copulative conjunction",
@@ -424,6 +560,10 @@ export default defineMessages(
     "country": {
       "id": "tags.country",
       "defaultMessage": "country"
+    },
+    "covid-19": {
+      "id": "tags.covid-19",
+      "defaultMessage": "covid-19"
     },
     "craftsmanship": {
       "id": "tags.craftsmanship",
@@ -449,6 +589,10 @@ export default defineMessages(
       "id": "tags.cutlery",
       "defaultMessage": "cutlery"
     },
+    "cycling": {
+      "id": "tags.cycling",
+      "defaultMessage": "cycling"
+    },
     "dairy product": {
       "id": "tags.dairy product",
       "defaultMessage": "dairy product"
@@ -461,9 +605,29 @@ export default defineMessages(
       "id": "tags.day",
       "defaultMessage": "day"
     },
+    "day hours": {
+      "id": "tags.day hours",
+      "defaultMessage": "day hours"
+    },
+    "death": {
+      "id": "tags.death",
+      "defaultMessage": "death"
+    },
+    "decimal classification": {
+      "id": "tags.decimal classification",
+      "defaultMessage": "decimal classification"
+    },
+    "decorative item": {
+      "id": "tags.decorative item",
+      "defaultMessage": "decorative item"
+    },
     "defense": {
       "id": "tags.defense",
       "defaultMessage": "defense"
+    },
+    "demonstrative adjective": {
+      "id": "tags.demonstrative adjective",
+      "defaultMessage": "demonstrative adjective"
     },
     "demonstrative pronoun": {
       "id": "tags.demonstrative pronoun",
@@ -509,13 +673,29 @@ export default defineMessages(
       "id": "tags.disruptive behavior",
       "defaultMessage": "disruptive behavior"
     },
+    "diving": {
+      "id": "tags.diving",
+      "defaultMessage": "diving"
+    },
     "document": {
       "id": "tags.document",
       "defaultMessage": "document"
     },
+    "dog-assisted therapy": {
+      "id": "tags.dog-assisted therapy",
+      "defaultMessage": "dog-assisted therapy"
+    },
+    "drawing": {
+      "id": "tags.drawing",
+      "defaultMessage": "drawing"
+    },
     "dried fruit": {
       "id": "tags.dried fruit",
       "defaultMessage": "dried fruit"
+    },
+    "drugs": {
+      "id": "tags.drugs",
+      "defaultMessage": "drugs"
     },
     "early modern period": {
       "id": "tags.early modern period",
@@ -529,6 +709,10 @@ export default defineMessages(
       "id": "tags.echinoderm",
       "defaultMessage": "echinoderm"
     },
+    "ecology": {
+      "id": "tags.ecology",
+      "defaultMessage": "ecology"
+    },
     "economy": {
       "id": "tags.economy",
       "defaultMessage": "economy"
@@ -536,10 +720,6 @@ export default defineMessages(
     "education": {
       "id": "tags.education",
       "defaultMessage": "education"
-    },
-    "education authority": {
-      "id": "tags.education authority",
-      "defaultMessage": "education authority"
     },
     "educational equipment": {
       "id": "tags.educational equipment",
@@ -552,10 +732,6 @@ export default defineMessages(
     "educational material": {
       "id": "tags.educational material",
       "defaultMessage": "educational material"
-    },
-    "educational organization": {
-      "id": "tags.educational organization",
-      "defaultMessage": "educational organization"
     },
     "educational space": {
       "id": "tags.educational space",
@@ -572,6 +748,10 @@ export default defineMessages(
     "elderly": {
       "id": "tags.elderly",
       "defaultMessage": "elderly"
+    },
+    "election": {
+      "id": "tags.election",
+      "defaultMessage": "election"
     },
     "electrical appliance": {
       "id": "tags.electrical appliance",
@@ -596,6 +776,10 @@ export default defineMessages(
     "environmental science": {
       "id": "tags.environmental science",
       "defaultMessage": "environmental science"
+    },
+    "equine-assisted therapy": {
+      "id": "tags.equine-assisted therapy",
+      "defaultMessage": "equine-assisted therapy"
     },
     "event": {
       "id": "tags.event",
@@ -673,6 +857,10 @@ export default defineMessages(
       "id": "tags.food",
       "defaultMessage": "food"
     },
+    "football": {
+      "id": "tags.football",
+      "defaultMessage": "football"
+    },
     "footwear": {
       "id": "tags.footwear",
       "defaultMessage": "footwear"
@@ -717,6 +905,10 @@ export default defineMessages(
       "id": "tags.game",
       "defaultMessage": "game"
     },
+    "gardening": {
+      "id": "tags.gardening",
+      "defaultMessage": "gardening"
+    },
     "gastronomy": {
       "id": "tags.gastronomy",
       "defaultMessage": "gastronomy"
@@ -733,21 +925,41 @@ export default defineMessages(
       "id": "tags.geography",
       "defaultMessage": "geography"
     },
-    "grammar": {
-      "id": "tags.grammar",
-      "defaultMessage": "grammar"
+    "geology": {
+      "id": "tags.geology",
+      "defaultMessage": "geology"
+    },
+    "geometry": {
+      "id": "tags.geometry",
+      "defaultMessage": "geometry"
     },
     "group": {
       "id": "tags.group",
       "defaultMessage": "group"
     },
+    "gynecology": {
+      "id": "tags.gynecology",
+      "defaultMessage": "gynecology"
+    },
+    "hairdresser": {
+      "id": "tags.hairdresser",
+      "defaultMessage": "hairdresser"
+    },
     "halloween": {
       "id": "tags.halloween",
       "defaultMessage": "halloween"
     },
+    "hardware": {
+      "id": "tags.hardware",
+      "defaultMessage": "hardware"
+    },
     "health": {
       "id": "tags.health",
       "defaultMessage": "health"
+    },
+    "healthy habit": {
+      "id": "tags.healthy habit",
+      "defaultMessage": "healthy habit"
     },
     "heraldry": {
       "id": "tags.heraldry",
@@ -756,6 +968,10 @@ export default defineMessages(
     "herbivorous": {
       "id": "tags.herbivorous",
       "defaultMessage": "herbivorous"
+    },
+    "hervaceouos plant": {
+      "id": "tags.hervaceouos plant",
+      "defaultMessage": "hervaceouos plant"
     },
     "hinduism": {
       "id": "tags.hinduism",
@@ -769,9 +985,17 @@ export default defineMessages(
       "id": "tags.history",
       "defaultMessage": "history"
     },
+    "hobby": {
+      "id": "tags.hobby",
+      "defaultMessage": "hobby"
+    },
     "home": {
       "id": "tags.home",
       "defaultMessage": "home"
+    },
+    "horse riding": {
+      "id": "tags.horse riding",
+      "defaultMessage": "horse riding"
     },
     "hospitality industry": {
       "id": "tags.hospitality industry",
@@ -805,6 +1029,10 @@ export default defineMessages(
       "id": "tags.human value",
       "defaultMessage": "human value"
     },
+    "hunting": {
+      "id": "tags.hunting",
+      "defaultMessage": "hunting"
+    },
     "hygiene": {
       "id": "tags.hygiene",
       "defaultMessage": "hygiene"
@@ -837,6 +1065,10 @@ export default defineMessages(
       "id": "tags.information technology",
       "defaultMessage": "information technology"
     },
+    "infrastructure": {
+      "id": "tags.infrastructure",
+      "defaultMessage": "infrastructure"
+    },
     "insect": {
       "id": "tags.insect",
       "defaultMessage": "insect"
@@ -853,9 +1085,17 @@ export default defineMessages(
       "id": "tags.interjection",
       "defaultMessage": "interjection"
     },
+    "international organization": {
+      "id": "tags.international organization",
+      "defaultMessage": "international organization"
+    },
     "interrogative pronoun": {
       "id": "tags.interrogative pronoun",
       "defaultMessage": "interrogative pronoun"
+    },
+    "intimate hygiene": {
+      "id": "tags.intimate hygiene",
+      "defaultMessage": "intimate hygiene"
     },
     "invertebrate": {
       "id": "tags.invertebrate",
@@ -884,6 +1124,10 @@ export default defineMessages(
     "justice": {
       "id": "tags.justice",
       "defaultMessage": "justice"
+    },
+    "karate": {
+      "id": "tags.karate",
+      "defaultMessage": "karate"
     },
     "keyboard instrument": {
       "id": "tags.keyboard instrument",
@@ -933,6 +1177,14 @@ export default defineMessages(
       "id": "tags.letter",
       "defaultMessage": "letter"
     },
+    "library science": {
+      "id": "tags.library science",
+      "defaultMessage": "library science"
+    },
+    "lifestyle": {
+      "id": "tags.lifestyle",
+      "defaultMessage": "lifestyle"
+    },
     "light fixture": {
       "id": "tags.light fixture",
       "defaultMessage": "light fixture"
@@ -965,6 +1217,10 @@ export default defineMessages(
       "id": "tags.marine animal",
       "defaultMessage": "marine animal"
     },
+    "marital status": {
+      "id": "tags.marital status",
+      "defaultMessage": "marital status"
+    },
     "mass media": {
       "id": "tags.mass media",
       "defaultMessage": "mass media"
@@ -981,6 +1237,10 @@ export default defineMessages(
       "id": "tags.mathematics",
       "defaultMessage": "mathematics"
     },
+    "measurement unit": {
+      "id": "tags.measurement unit",
+      "defaultMessage": "measurement unit"
+    },
     "meat": {
       "id": "tags.meat",
       "defaultMessage": "meat"
@@ -988,6 +1248,10 @@ export default defineMessages(
     "medical center": {
       "id": "tags.medical center",
       "defaultMessage": "medical center"
+    },
+    "medical device": {
+      "id": "tags.medical device",
+      "defaultMessage": "medical device"
     },
     "medical equipment": {
       "id": "tags.medical equipment",
@@ -1012,6 +1276,10 @@ export default defineMessages(
     "meteorology": {
       "id": "tags.meteorology",
       "defaultMessage": "meteorology"
+    },
+    "methodology": {
+      "id": "tags.methodology",
+      "defaultMessage": "methodology"
     },
     "middle ages": {
       "id": "tags.middle ages",
@@ -1049,6 +1317,10 @@ export default defineMessages(
       "id": "tags.monument",
       "defaultMessage": "monument"
     },
+    "mountain": {
+      "id": "tags.mountain",
+      "defaultMessage": "mountain"
+    },
     "movement": {
       "id": "tags.movement",
       "defaultMessage": "movement"
@@ -1064,6 +1336,10 @@ export default defineMessages(
     "music": {
       "id": "tags.music",
       "defaultMessage": "music"
+    },
+    "music device": {
+      "id": "tags.music device",
+      "defaultMessage": "music device"
     },
     "musical composition": {
       "id": "tags.musical composition",
@@ -1117,6 +1393,10 @@ export default defineMessages(
       "id": "tags.object",
       "defaultMessage": "object"
     },
+    "obstetrics": {
+      "id": "tags.obstetrics",
+      "defaultMessage": "obstetrics"
+    },
     "occupational therapy": {
       "id": "tags.occupational therapy",
       "defaultMessage": "occupational therapy"
@@ -1153,6 +1433,10 @@ export default defineMessages(
       "id": "tags.ordinal adjective",
       "defaultMessage": "ordinal adjective"
     },
+    "organization": {
+      "id": "tags.organization",
+      "defaultMessage": "organization"
+    },
     "orthographic sign": {
       "id": "tags.orthographic sign",
       "defaultMessage": "orthographic sign"
@@ -1164,6 +1448,10 @@ export default defineMessages(
     "osseous system": {
       "id": "tags.osseous system",
       "defaultMessage": "osseous system"
+    },
+    "outdoor activity": {
+      "id": "tags.outdoor activity",
+      "defaultMessage": "outdoor activity"
     },
     "oviparous": {
       "id": "tags.oviparous",
@@ -1181,6 +1469,14 @@ export default defineMessages(
       "id": "tags.paleontology",
       "defaultMessage": "paleontology"
     },
+    "patient": {
+      "id": "tags.patient",
+      "defaultMessage": "patient"
+    },
+    "pattern": {
+      "id": "tags.pattern",
+      "defaultMessage": "pattern"
+    },
     "percussion instrument": {
       "id": "tags.percussion instrument",
       "defaultMessage": "percussion instrument"
@@ -1197,13 +1493,29 @@ export default defineMessages(
       "id": "tags.personal services",
       "defaultMessage": "personal services"
     },
+    "pet": {
+      "id": "tags.pet",
+      "defaultMessage": "pet"
+    },
     "photography": {
       "id": "tags.photography",
       "defaultMessage": "photography"
     },
+    "physical exercise": {
+      "id": "tags.physical exercise",
+      "defaultMessage": "physical exercise"
+    },
+    "physical features": {
+      "id": "tags.physical features",
+      "defaultMessage": "physical features"
+    },
     "physical geography": {
       "id": "tags.physical geography",
       "defaultMessage": "physical geography"
+    },
+    "physics": {
+      "id": "tags.physics",
+      "defaultMessage": "physics"
     },
     "physiology": {
       "id": "tags.physiology",
@@ -1221,6 +1533,10 @@ export default defineMessages(
       "id": "tags.place",
       "defaultMessage": "place"
     },
+    "planet": {
+      "id": "tags.planet",
+      "defaultMessage": "planet"
+    },
     "plant": {
       "id": "tags.plant",
       "defaultMessage": "plant"
@@ -1237,6 +1553,10 @@ export default defineMessages(
       "id": "tags.plant-based food",
       "defaultMessage": "plant-based food"
     },
+    "playground": {
+      "id": "tags.playground",
+      "defaultMessage": "playground"
+    },
     "polite set expression": {
       "id": "tags.polite set expression",
       "defaultMessage": "polite set expression"
@@ -1249,9 +1569,17 @@ export default defineMessages(
       "id": "tags.political representation",
       "defaultMessage": "political representation"
     },
+    "pollution": {
+      "id": "tags.pollution",
+      "defaultMessage": "pollution"
+    },
     "popular event": {
       "id": "tags.popular event",
       "defaultMessage": "popular event"
+    },
+    "popular festival": {
+      "id": "tags.popular festival",
+      "defaultMessage": "popular festival"
     },
     "possessive adjective": {
       "id": "tags.possessive adjective",
@@ -1268,6 +1596,10 @@ export default defineMessages(
     "preposition": {
       "id": "tags.preposition",
       "defaultMessage": "preposition"
+    },
+    "prevention measure": {
+      "id": "tags.prevention measure",
+      "defaultMessage": "prevention measure"
     },
     "primary sector": {
       "id": "tags.primary sector",
@@ -1301,6 +1633,10 @@ export default defineMessages(
       "id": "tags.psychology",
       "defaultMessage": "psychology"
     },
+    "psychomotor equipment": {
+      "id": "tags.psychomotor equipment",
+      "defaultMessage": "psychomotor equipment"
+    },
     "public administration": {
       "id": "tags.public administration",
       "defaultMessage": "public administration"
@@ -1320,6 +1656,14 @@ export default defineMessages(
     "recreational facility": {
       "id": "tags.recreational facility",
       "defaultMessage": "recreational facility"
+    },
+    "recycling": {
+      "id": "tags.recycling",
+      "defaultMessage": "recycling"
+    },
+    "recycling center": {
+      "id": "tags.recycling center",
+      "defaultMessage": "recycling center"
     },
     "region": {
       "id": "tags.region",
@@ -1369,6 +1713,14 @@ export default defineMessages(
       "id": "tags.route",
       "defaultMessage": "route"
     },
+    "routine": {
+      "id": "tags.routine",
+      "defaultMessage": "routine"
+    },
+    "rural area": {
+      "id": "tags.rural area",
+      "defaultMessage": "rural area"
+    },
     "scenic art": {
       "id": "tags.scenic art",
       "defaultMessage": "scenic art"
@@ -1397,6 +1749,10 @@ export default defineMessages(
       "id": "tags.security",
       "defaultMessage": "security"
     },
+    "seller": {
+      "id": "tags.seller",
+      "defaultMessage": "seller"
+    },
     "senses": {
       "id": "tags.senses",
       "defaultMessage": "senses"
@@ -1404,6 +1760,10 @@ export default defineMessages(
     "sensory stimulation": {
       "id": "tags.sensory stimulation",
       "defaultMessage": "sensory stimulation"
+    },
+    "service building": {
+      "id": "tags.service building",
+      "defaultMessage": "service building"
     },
     "set phrase": {
       "id": "tags.set phrase",
@@ -1441,6 +1801,22 @@ export default defineMessages(
       "id": "tags.size",
       "defaultMessage": "size"
     },
+    "skating": {
+      "id": "tags.skating",
+      "defaultMessage": "skating"
+    },
+    "smoking": {
+      "id": "tags.smoking",
+      "defaultMessage": "smoking"
+    },
+    "social event": {
+      "id": "tags.social event",
+      "defaultMessage": "social event"
+    },
+    "social movement": {
+      "id": "tags.social movement",
+      "defaultMessage": "social movement"
+    },
     "sociology": {
       "id": "tags.sociology",
       "defaultMessage": "sociology"
@@ -1452,6 +1828,14 @@ export default defineMessages(
     "spain region": {
       "id": "tags.spain region",
       "defaultMessage": "spain region"
+    },
+    "special education": {
+      "id": "tags.special education",
+      "defaultMessage": "special education"
+    },
+    "spices": {
+      "id": "tags.spices",
+      "defaultMessage": "spices"
     },
     "sponge": {
       "id": "tags.sponge",
@@ -1501,6 +1885,10 @@ export default defineMessages(
       "id": "tags.string instrument",
       "defaultMessage": "string instrument"
     },
+    "students": {
+      "id": "tags.students",
+      "defaultMessage": "students"
+    },
     "subject": {
       "id": "tags.subject",
       "defaultMessage": "subject"
@@ -1517,9 +1905,21 @@ export default defineMessages(
       "id": "tags.supporting document",
       "defaultMessage": "supporting document"
     },
+    "surf": {
+      "id": "tags.surf",
+      "defaultMessage": "surf"
+    },
     "sweets": {
       "id": "tags.sweets",
       "defaultMessage": "sweets"
+    },
+    "swimming": {
+      "id": "tags.swimming",
+      "defaultMessage": "swimming"
+    },
+    "swimming pool": {
+      "id": "tags.swimming pool",
+      "defaultMessage": "swimming pool"
     },
     "symptom": {
       "id": "tags.symptom",
@@ -1561,9 +1961,9 @@ export default defineMessages(
       "id": "tags.tertiary sector",
       "defaultMessage": "tertiary sector"
     },
-    "the falles": {
-      "id": "tags.the falles",
-      "defaultMessage": "the falles"
+    "texture": {
+      "id": "tags.texture",
+      "defaultMessage": "texture"
     },
     "theater": {
       "id": "tags.theater",
@@ -1629,6 +2029,10 @@ export default defineMessages(
       "id": "tags.ultra-processed food",
       "defaultMessage": "ultra-processed food"
     },
+    "unhealthy habit": {
+      "id": "tags.unhealthy habit",
+      "defaultMessage": "unhealthy habit"
+    },
     "unit of time": {
       "id": "tags.unit of time",
       "defaultMessage": "unit of time"
@@ -1636,6 +2040,10 @@ export default defineMessages(
     "urban area": {
       "id": "tags.urban area",
       "defaultMessage": "urban area"
+    },
+    "usual verbs": {
+      "id": "tags.usual verbs",
+      "defaultMessage": "usual verbs"
     },
     "utensil": {
       "id": "tags.utensil",
@@ -1648,6 +2056,10 @@ export default defineMessages(
     "vegetal origin material": {
       "id": "tags.vegetal origin material",
       "defaultMessage": "vegetal origin material"
+    },
+    "vehicle component": {
+      "id": "tags.vehicle component",
+      "defaultMessage": "vehicle component"
     },
     "verb": {
       "id": "tags.verb",
@@ -1669,9 +2081,17 @@ export default defineMessages(
       "id": "tags.visual art",
       "defaultMessage": "visual art"
     },
+    "visual system": {
+      "id": "tags.visual system",
+      "defaultMessage": "visual system"
+    },
     "viviparous": {
       "id": "tags.viviparous",
       "defaultMessage": "viviparous"
+    },
+    "war": {
+      "id": "tags.war",
+      "defaultMessage": "war"
     },
     "waste disposal": {
       "id": "tags.waste disposal",
@@ -1680,6 +2100,14 @@ export default defineMessages(
     "water transport": {
       "id": "tags.water transport",
       "defaultMessage": "water transport"
+    },
+    "weapon": {
+      "id": "tags.weapon",
+      "defaultMessage": "weapon"
+    },
+    "wedding": {
+      "id": "tags.wedding",
+      "defaultMessage": "wedding"
     },
     "wind instrument": {
       "id": "tags.wind instrument",
@@ -1693,9 +2121,17 @@ export default defineMessages(
       "id": "tags.work",
       "defaultMessage": "work"
     },
+    "work accident": {
+      "id": "tags.work accident",
+      "defaultMessage": "work accident"
+    },
     "work machine": {
       "id": "tags.work machine",
       "defaultMessage": "work machine"
+    },
+    "workplace": {
+      "id": "tags.workplace",
+      "defaultMessage": "workplace"
     },
     "workwear": {
       "id": "tags.workwear",
@@ -1704,422 +2140,6 @@ export default defineMessages(
     "zarzuela": {
       "id": "tags.zarzuela",
       "defaultMessage": "zarzuela"
-    },
-    "aromatic plant": {
-      "id": "tags.aromatic plant",
-      "defaultMessage": "aromatic plant"
-    },
-    "condiment": {
-      "id": "tags.condiment",
-      "defaultMessage": "condiment"
-    },
-    "spices": {
-      "id": "tags.spices",
-      "defaultMessage": "spices"
-    },
-    "medical device": {
-      "id": "tags.medical device",
-      "defaultMessage": "medical device"
-    },
-    "infrastructure": {
-      "id": "tags.infrastructure",
-      "defaultMessage": "infrastructure"
-    },
-    "prevention measure": {
-      "id": "tags.prevention measure",
-      "defaultMessage": "prevention measure"
-    },
-    "social movement": {
-      "id": "tags.social movement",
-      "defaultMessage": "social movement"
-    },
-    "psychomotor equipment": {
-      "id": "tags.psychomotor equipment",
-      "defaultMessage": "psychomotor equipment"
-    },
-    "special education": {
-      "id": "tags.special education",
-      "defaultMessage": "special education"
-    },
-    "vehicle component": {
-      "id": "tags.vehicle component",
-      "defaultMessage": "vehicle component"
-    },
-    "geometry": {
-      "id": "tags.geometry",
-      "defaultMessage": "geometry"
-    },
-    "demonstrative adjective": {
-      "id": "tags.demonstrative adjective",
-      "defaultMessage": "demonstrative adjective"
-    },
-    "hardware": {
-      "id": "tags.hardware",
-      "defaultMessage": "hardware"
-    },
-    "marital status": {
-      "id": "tags.marital status",
-      "defaultMessage": "marital status"
-    },
-    "animal housing": {
-      "id": "tags.animal housing",
-      "defaultMessage": "animal housing"
-    },
-    "weapon": {
-      "id": "tags.weapon",
-      "defaultMessage": "weapon"
-    },
-    "building facility": {
-      "id": "tags.building facility",
-      "defaultMessage": "building facility"
-    },
-    "decorative item": {
-      "id": "tags.decorative item",
-      "defaultMessage": "decorative item"
-    },
-    "hobby": {
-      "id": "tags.hobby",
-      "defaultMessage": "hobby"
-    },
-    "physics": {
-      "id": "tags.physics",
-      "defaultMessage": "physics"
-    },
-    "chemistry": {
-      "id": "tags.chemistry",
-      "defaultMessage": "chemistry"
-    },
-    "texture": {
-      "id": "tags.texture",
-      "defaultMessage": "texture"
-    },
-    "covid-19": {
-      "id": "tags.covid-19",
-      "defaultMessage": "covid-19"
-    },
-    "outdoor activity": {
-      "id": "tags.outdoor activity",
-      "defaultMessage": "outdoor activity"
-    },
-    "day time": {
-      "id": "tags.day time",
-      "defaultMessage": "day time"
-    },
-    "social event": {
-      "id": "tags.social event",
-      "defaultMessage": "social event"
-    },
-    "birthday": {
-      "id": "tags.birthday",
-      "defaultMessage": "birthday"
-    },
-    "wedding": {
-      "id": "tags.wedding",
-      "defaultMessage": "wedding"
-    },
-    "intimate hygiene": {
-      "id": "tags.intimate hygiene",
-      "defaultMessage": "intimate hygiene"
-    },
-    "ecology": {
-      "id": "tags.ecology",
-      "defaultMessage": "ecology"
-    },
-    "geology": {
-      "id": "tags.geology",
-      "defaultMessage": "geology"
-    },
-    "recycling": {
-      "id": "tags.recycling",
-      "defaultMessage": "recycling"
-    },
-    "lifestyle": {
-      "id": "tags.lifestyle",
-      "defaultMessage": "lifestyle"
-    },
-    "healthy habit": {
-      "id": "tags.healthy habit",
-      "defaultMessage": "healthy habit"
-    },
-    "unhealthy habit": {
-      "id": "tags.unhealthy habit",
-      "defaultMessage": "unhealthy habit"
-    },
-    "library science": {
-      "id": "tags.library science",
-      "defaultMessage": "library science"
-    },
-    "civilization": {
-      "id": "tags.civilization",
-      "defaultMessage": "civilization"
-    },
-    "Rome": {
-      "id": "tags.Rome",
-      "defaultMessage": "Rome"
-    },
-    "Egypt": {
-      "id": "tags.Egypt",
-      "defaultMessage": "Egypt"
-    },
-    "Greece": {
-      "id": "tags.Greece",
-      "defaultMessage": "Greece"
-    },
-    "workplace": {
-      "id": "tags.workplace",
-      "defaultMessage": "workplace"
-    },
-    "hervaceouos plant": {
-      "id": "tags.hervaceouos plant",
-      "defaultMessage": "hervaceouos plant"
-    },
-    "death": {
-      "id": "tags.death",
-      "defaultMessage": "death"
-    },
-    "gardening": {
-      "id": "tags.gardening",
-      "defaultMessage": "gardening"
-    },
-    "basketball": {
-      "id": "tags.basketball",
-      "defaultMessage": "basketball"
-    },
-    "diving": {
-      "id": "tags.diving",
-      "defaultMessage": "diving"
-    },
-    "karate": {
-      "id": "tags.karate",
-      "defaultMessage": "karate"
-    },
-    "cycling": {
-      "id": "tags.cycling",
-      "defaultMessage": "cycling"
-    },
-    "skating": {
-      "id": "tags.skating",
-      "defaultMessage": "skating"
-    },
-    "surf": {
-      "id": "tags.surf",
-      "defaultMessage": "surf"
-    },
-    "football": {
-      "id": "tags.football",
-      "defaultMessage": "football"
-    },
-    "swimming": {
-      "id": "tags.swimming",
-      "defaultMessage": "swimming"
-    },
-    "drawing": {
-      "id": "tags.drawing",
-      "defaultMessage": "drawing"
-    },
-    "gynecology": {
-      "id": "tags.gynecology",
-      "defaultMessage": "gynecology"
-    },
-    "chess": {
-      "id": "tags.chess",
-      "defaultMessage": "chess"
-    },
-    "obstetrics": {
-      "id": "tags.obstetrics",
-      "defaultMessage": "obstetrics"
-    },
-    "artist": {
-      "id": "tags.artist",
-      "defaultMessage": "artist"
-    },
-    "equine-assisted therapy": {
-      "id": "tags.equine-assisted therapy",
-      "defaultMessage": "equine-assisted therapy"
-    },
-    "horse riding": {
-      "id": "tags.horse riding",
-      "defaultMessage": "horse riding"
-    },
-    "Iberians": {
-      "id": "tags.Iberians",
-      "defaultMessage": "Iberians"
-    },
-    "decimal classification": {
-      "id": "tags.decimal classification",
-      "defaultMessage": "decimal classification"
-    },
-    "cookery": {
-      "id": "tags.cookery",
-      "defaultMessage": "cookery"
-    },
-    "animal-assisted therapy": {
-      "id": "tags.animal-assisted therapy",
-      "defaultMessage": "animal-assisted therapy"
-    },
-    "dog-assisted therapy": {
-      "id": "tags.dog-assisted therapy",
-      "defaultMessage": "dog-assisted therapy"
-    },
-    "athletics": {
-      "id": "tags.athletics",
-      "defaultMessage": "athletics"
-    },
-    "day hours": {
-      "id": "tags.day hours",
-      "defaultMessage": "day hours"
-    },
-    "pet": {
-      "id": "tags.pet",
-      "defaultMessage": "pet"
-    },
-    "categorization": {
-      "id": "tags.categorization",
-      "defaultMessage": "categorization"
-    },
-    "physical exercise": {
-      "id": "tags.physical exercise",
-      "defaultMessage": "physical exercise"
-    },
-    "recycling center": {
-      "id": "tags.recycling center",
-      "defaultMessage": "recycling center"
-    },
-    "psychomotricity": {
-      "id": "tags.psychomotricity",
-      "defaultMessage": "psychomotricity"
-    },
-    "babycare": {
-      "id": "tags.babycare",
-      "defaultMessage": "babycare"
-    },
-    "students": {
-      "id": "tags.students",
-      "defaultMessage": "students"
-    },
-    "patient": {
-      "id": "tags.patient",
-      "defaultMessage": "patient"
-    },
-    "election": {
-      "id": "tags.election",
-      "defaultMessage": "election"
-    },
-    "music device": {
-      "id": "tags.music device",
-      "defaultMessage": "music device"
-    },
-    "playground": {
-      "id": "tags.playground",
-      "defaultMessage": "playground"
-    },
-    "physical features": {
-      "id": "tags.physical features",
-      "defaultMessage": "physical features"
-    },
-    "hairdresser": {
-      "id": "tags.hairdresser",
-      "defaultMessage": "hairdresser"
-    },
-    "service building": {
-      "id": "tags.service building",
-      "defaultMessage": "service building"
-    },
-    "international organization": {
-      "id": "tags.international organization",
-      "defaultMessage": "international organization"
-    },
-    "basic needs": {
-      "id": "tags.basic needs",
-      "defaultMessage": "basic needs"
-    },
-    "feelings": {
-      "id": "tags.feelings",
-      "defaultMessage": "feelings"
-    },
-    "basic concepts": {
-      "id": "tags.basic concepts",
-      "defaultMessage": "basic concepts"
-    },
-    "clothing industry": {
-      "id": "tags.clothing industry",
-      "defaultMessage": "clothing industry"
-    },
-    "carpentry": {
-      "id": "tags.carpentry",
-      "defaultMessage": "carpentry"
-    },
-    "hunting": {
-      "id": "tags.hunting",
-      "defaultMessage": "hunting"
-    },
-    "smoking": {
-      "id": "tags.smoking",
-      "defaultMessage": "smoking"
-    },
-    "alcohol": {
-      "id": "tags.alcohol",
-      "defaultMessage": "alcohol"
-    },
-    "drugs": {
-      "id": "tags.drugs",
-      "defaultMessage": "drugs"
-    },
-    "addiction": {
-      "id": "tags.addiction",
-      "defaultMessage": "addiction"
-    },
-    "usual verbs": {
-      "id": "tags.usual verbs",
-      "defaultMessage": "usual verbs"
-    },
-    "body sensation": {
-      "id": "tags.body sensation",
-      "defaultMessage": "body sensation"
-    },
-    "work accident": {
-      "id": "tags.work accident",
-      "defaultMessage": "work accident"
-    },
-    "routine": {
-      "id": "tags.routine",
-      "defaultMessage": "routine"
-    },
-    "pollution": {
-      "id": "tags.pollution",
-      "defaultMessage": "pollution"
-    },
-    "visual system": {
-      "id": "tags.rural area",
-      "defaultMessage": "rural area"
-    },
-    "measurement unit": {
-      "id": "tags.measurement unit",
-      "defaultMessage": "measurement unit"
-    },
-    "TV show": {
-      "id": "tags.TV show",
-      "defaultMessage": "TV show"
-    },
-    "war": {
-      "id": "tags.war",
-      "defaultMessage": "war"
-    },
-    "popular festival": {
-      "id": "tags.popular festival",
-      "defaultMessage": "popular festival"
-    },
-    "container": {
-      "id": "tags.container",
-      "defaultMessage": "container"
-    },
-    "visual system": {
-      "id": "tags.visual system",
-      "defaultMessage": "visual system"
-    },
-    "auditory system": {
-      "id": "tags.auditory system",
-      "defaultMessage": "auditory system"
-    },
+    }
   }
 )
