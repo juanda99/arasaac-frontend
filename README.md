@@ -3,7 +3,7 @@
 </div>
 <br />
 
-<div align="center"><strong>Arasaac beta website</strong></div>
+<div align="center"><strong>Arasaac website</strong></div>
 
 <br />
 <div align="center">
@@ -34,13 +34,12 @@
 
 
 ## What is Arasaac
-Arasaac is a website that offers graphic resources and materials to facilitate communication for those with some sort of problem in this area. [See current website](http://www.arasaac.org)
 
-It's used  worldwide and everyday by thousands of users, so we decided to improve its usability and performance.[See new website, still in development](https://beta.arasaac.org)
+[See website](https://arasaac.org)
 
+Arasaac is a website that offers AAC symbols and resources to facilitate communication for those with some sort of problem in this area. 
 
-## Demo
-You can check our development status at https://beta.arasaac.org.
+It's used  worldwide by thousands of users. 
 
 
 ## Quick start
@@ -118,7 +117,7 @@ You can check our development status at https://beta.arasaac.org.
 This project is licensed under the MIT license, Copyright (c) 2016 . For more information see `LICENSE.md`.
 
 ## Supporters
-<img src="http://arasaac.org/images/logoAragon.jpg" alt="Gobierno de Aragón" align="left" />
-<img src="http://arasaac.org/images/logo_fse.jpg" alt="European Union" align="right" />
+<img src="https://static.arasaac.org/images/logoAragon.jpg" alt="Gobierno de Aragón" align="left" />
+<img src="https://static.arasaac.org/images/logo_fse.jpg" alt="European Union" align="right" />
 
 
