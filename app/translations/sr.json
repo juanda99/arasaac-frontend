@@ -1,1 +1,24 @@
-{}
+{
+  "Login.invalidEmail": "Имејл-адреса није валидна",
+  "Login.invalidUrl": "Неправилан Url",
+  "Login.required": "Обавезно",
+  "NewPasswordForm.hintNewPassword": "Унесите вашу нову лозинку?",
+  "activate.activateUser": "Zahtev",
+  "activate.expiredCode": "Aktivacioni kod je istekao. Poslali smo vam još jednu e- poruku da potvrdite vaš nalog",
+  "activate.invalidCode": "Vaš aktivacioni kod je nevažeći",
+  "activate.userActivated": "Vaš korisnički nalog je aktiviran. Sada se možete prijaviti.",
+  "activate.userNotActivated": "Došlo je do greške tokom ažuriranja Vaše korpe",
+  "app.HomePage.discover": "Otkrijte ARASAAC",
+  "app.MaterialsView.pageDescription": "AAC materijali za stručnjake i porodice. Preuzmite dokumenta za Augmentativnu i Alternativnu komunikaciju, panoe, radne listove...",
+  "app.components.Filters.Activity.audiovisualMaterial": "Audio-vizuelni materijal",
+  "app.components.Filters.Activity.bingo": "Bingo",
+  "app.components.Filters.Activity.board": "Tabla",
+  "app.components.Filters.Activity.book": "Knjiga",
+  "app.components.Filters.Activity.collectiveGame": "Grupna igra",
+  "app.components.Filters.Activity.communication": "Komunikacija",
+  "app.components.Filters.Activity.digitalBoard": "Digitalna tabla",
+  "app.components.Filters.Activity.domino": "Domine",
+  "app.components.Filters.Activity.exerciseSheet": "Radni list",
+  "app.components.Filters.Activity.game": "Igra",
+  "app.components.Filters.Activity.individualGame": "Individalna igra"
+}
