@@ -54,50 +54,88 @@ const getSubcategoryTags = (tree, tags) => {
 }
 
 
-const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms,  onUpdateTags}) => {
+const getKeywords = (pictoCategories, categoryTree) => {
+  const tree = categoryTree.toJSON()
+  const nodes = jp.nodes(tree, '$..keywords')
+  const keywords = pictoCategories.reduce(
+    (accumulator, currentValue) => {
+      const keywords = nodes.filter(node=>node.path[node.path.length -2]===currentValue).map(node => node.value)
+      return keywords[0].length ? [...accumulator, keywords[0][0]] : accumulator
+    }, [])
+  return keywords
+}
+
+
+const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms,  onUpdateTags, onCategoryClick}) => {
 
   const searchCategory = removeDiacritics(stopWords(searchText, locale)).toLowerCase()
-  const tags = pictograms.length ? getTags(searchCategory, categories, locale) : []
-  const pictoTags = new Set()
-  /* we just show pictoTags present in the tree and not available  in all pictograms */
-  pictograms.forEach(pictogram => 
-    pictogram.tags.forEach(tag => {
-      if (tags.indexOf(tag) !== -1) pictoTags.add(tag)
+  const tags = pictograms.length ? getTags(searchCategory, categories, locale) : null
+  let renderTags
+
+  if (tags.length) {
+    /*  if search is a category, tags wont' be empty and we use tags as filter, in other  case
+    we wet categories of first pictogram to give suggestions */
+    const pictoTags = new Set()
+    /* we just show pictoTags present in the tree and not available  in all pictograms */
+    pictograms.forEach(pictogram => 
+      pictogram.tags.forEach(tag => {
+        if (tags.indexOf(tag) !== -1) pictoTags.add(tag)
+      })
+    )
+    /*  if tag is available in  all pictograms, we just remove it, we also delete selectedTags as we
+    willl sort them in first place */
+    pictoTags.forEach(tag => {
+      if (pictograms.every( pictogram => pictogram.tags.indexOf(tag) !== -1) || selectedTags.has(tag)) pictoTags.delete(tag)
     })
-  )
-  /*  if tag is available in  all pictograms, we just remove it, we also delete selectedTags as we
-  willl sort them in first place */
-  pictoTags.forEach(tag => {
-    if (pictograms.every( pictogram => pictogram.tags.indexOf(tag) !== -1) || selectedTags.has(tag)) pictoTags.delete(tag)
-  })
 
-  /* we  order then by frequency */
-  const countOccurrences  = (item) => (accumulator, currentValue) => {
-    if (currentValue.tags.indexOf(item)!==-1) return accumulator + 1
-    return accumulator + 0
+    /* we  order then by frequency */
+    const countOccurrences  = (item) => (accumulator, currentValue) => {
+      if (currentValue.tags.indexOf(item)!==-1) return accumulator + 1
+      return accumulator + 0
+    }
+    const tmpPictoTagsOrdered = [...pictoTags].sort((a, b) => {
+      const weightA  = pictograms.reduce(countOccurrences(a), 0)
+      const weightB  = pictograms.reduce(countOccurrences(b), 0)
+      return weightB - weightA
+    })
+
+    const pictoTagsOrdered = [...selectedTags, ...tmpPictoTagsOrdered]
+
+    const handleClick  = (tag) => onUpdateTags(tag)
+
+    /* we add already selected tags */
+
+    renderTags = pictoTagsOrdered.map((tag) => 
+      selectedTags.has(tag) ?
+        <Chip backgroundColor={lightGreen400} style={styles.chip} key={tag} onClick={() => handleClick(tag)}>
+          {<FormattedMessage {...messages[tag]} />}
+        </Chip>
+      :
+        <Chip style={styles.chip} key={tag} onClick={() => handleClick(tag)}>
+          {<FormattedMessage {...messages[tag]} />}
+        </Chip>
+    )
+
   }
-  const tmpPictoTagsOrdered = [...pictoTags].sort((a, b) => {
-    const weightA  = pictograms.reduce(countOccurrences(a), 0)
-    const weightB  = pictograms.reduce(countOccurrences(b), 0)
-    return weightB - weightA
-  })
 
-  const pictoTagsOrdered = [...selectedTags, ...tmpPictoTagsOrdered]
+  else {
+    const pictoCategories = pictograms
+      .filter(pictogram =>
+        pictogram.keywords.some(keyword =>
+          searchCategory===removeDiacritics(stopWords(keyword.keyword, locale)).toLowerCase()))
+      .map(pictogram=> pictogram.categories)
+    const mergedCategories  = [].concat.apply([], pictoCategories)
+    const keywords = getKeywords(mergedCategories, categories)
+    renderTags = (
+      keywords.map((keyword) => 
+          <Chip style={styles.chip} key={keyword} onClick={() => onCategoryClick(keyword)}>
+            {keyword}
+          </Chip>
+      )
+    )
+  }
 
-  const handleClick  = (tag) => onUpdateTags(tag)
 
-  /* we add already selected tags */
-
-  const renderTags = pictoTagsOrdered.map((tag) => 
-    selectedTags.has(tag) ?
-      <Chip backgroundColor={lightGreen400} style={styles.chip} key={tag} onClick={() => handleClick(tag)}>
-        {<FormattedMessage {...messages[tag]} />}
-      </Chip>
-    :
-      <Chip style={styles.chip} key={tag} onClick={() => handleClick(tag)}>
-        {<FormattedMessage {...messages[tag]} />}
-      </Chip>
-  )
 
   return (
     <div style={{display: 'flex', flexWrap: 'wrap'}}>

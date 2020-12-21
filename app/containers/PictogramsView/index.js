@@ -214,6 +214,7 @@ class PictogramsView extends PureComponent {
     window.location = location
   }
 
+  /* also used from PictogramTags */
   handleSubmit = (nextValue) => {
     this.setState({
       tab: 0
@@ -354,13 +355,14 @@ class PictogramsView extends PureComponent {
                 ) : (
                     ''
                   )}
-                  { <PictogramTags 
+                  { !!pictogramsCounter && <PictogramTags 
                       searchText={searchText} 
                       selectedTags={selectedTags}
                       pictograms={filterVisiblePictograms}
                       categories={categories}
                       locale={locale}
                       onUpdateTags={this.handleUpdateTags}
+                      onCategoryClick={this.handleSubmit}
                     />}
                 {gallery}
               </View>
