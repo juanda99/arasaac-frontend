@@ -38,6 +38,13 @@ export default class PictogramCategories extends Component {
         const lastCategory = node.path[lastCategoryCount - 1]
         return pictoCategories.indexOf(lastCategory) !== -1
       })
+      .sort((a, b) => {
+        const aLastCategoryCount = a.path.length - 1
+        const aLastCategory = a.path[aLastCategoryCount - 1]
+        const bLastCategoryCount = b.path.length - 1
+        const bLastCategory = b.path[bLastCategoryCount - 1]
+        return pictoCategories.indexOf(aLastCategory) - pictoCategories.indexOf(bLastCategory)
+      })
       .map(node=>node.path)
       .map(path => {
         const categoryPath = []
