@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
+import Avatar from 'material-ui/Avatar'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import jp from 'jsonpath'
 import Chip from 'material-ui/Chip'
 import removeDiacritics from 'components/SearchField/removeDiacritics'
 import { lightGreen400} from 'material-ui/styles/colors'
+import SearchIcon from 'material-ui/svg-icons/action/search';
 import stopWords from 'utils/stopWords'
-import P  from 'components/P'
 import messages from './messages'
 
 const styles = {
@@ -129,7 +130,8 @@ const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms
     renderTags = (
       keywords.map((keyword) => 
           <Chip style={styles.chip} key={keyword} onClick={() => onCategoryClick(keyword)}>
-            {keyword}
+          <Avatar icon={<SearchIcon />} />
+            {keyword}			
           </Chip>
       )
     )
