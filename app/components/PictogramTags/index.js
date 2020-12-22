@@ -84,7 +84,7 @@ const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms
       })
     )
     /*  if tag is available in  all pictograms, we just remove it, we also delete selectedTags as we
-    willl sort them in first place */
+    will sort them in first place */
     pictoTags.forEach(tag => {
       if (pictograms.every( pictogram => pictogram.tags.indexOf(tag) !== -1) || selectedTags.has(tag)) pictoTags.delete(tag)
     })
