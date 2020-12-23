@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import DivSearchBox from 'components/DivSearchBox'
+import LanguageSelector from 'components/LanguageSelector'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
 import PictogramTags from 'components/PictogramTags'
@@ -78,7 +79,8 @@ class PictogramsView extends PureComponent {
     offset: 0,
     listName: '',
     selectedTags: Set(),
-    running: false
+    running: false,
+    searchLanguage: this.props.locale
   }
 
   title = this.props.intl.formatMessage(messages.pageTitle)
@@ -99,16 +101,8 @@ class PictogramsView extends PureComponent {
   }
 
   componentDidMount() {
-    const {
-      requestPictograms,
-      requestCategories,
-      requestNewPictograms,
-      requestAutocomplete,
-      locale,
-      newPictogramsList,
-      keywords,
-      categories
-    } = this.props
+    const { requestPictograms } = this.props
+    const { searchLanguage } = this.state
 
     /* hack to open learning aac menu when visiting from homepage */
     const isOpen = window.document.getElementById("lstsearchpictos")
@@ -116,23 +110,10 @@ class PictogramsView extends PureComponent {
 
     this.processQuery()
     if (this.props.params.searchText && !this.props.searchResults) {
-      requestPictograms(locale, encodeURIComponent(this.props.params.searchText))
+      requestPictograms(searchLanguage, encodeURIComponent(this.props.params.searchText))
     }
 
-    /* we just ask for new pictograms twice and hour and autocomplete keywords once a day */
-    const actualDate = new Date()
-
-    const newPictogramsDate = sessionStorage.getItem(`newPictogramsDate_${locale}`)
-    let diffSeconds = newPictogramsDate ? (actualDate.getTime() - newPictogramsDate) / 1000 : 0
-    if (!newPictogramsList || newPictogramsList.size === 0 || diffSeconds > 1800) requestNewPictograms(locale)
-
-    const keywordsDate = sessionStorage.getItem(`keywordsDate_${locale}`)
-    diffSeconds = keywordsDate ? (actualDate.getTime() - keywordsDate) / 1000 : 0 
-    if (!keywords || keywords.length === 0 || diffSeconds > 86400) requestAutocomplete(locale)
-
-    const categoriesDate = sessionStorage.getItem(`categoriesDate_${locale}`)
-    diffSeconds = categoriesDate ? (actualDate.getTime() - categoriesDate) / 1000 : 0 
-    if (!categories || categories.size === 0 || diffSeconds > 86400) requestCategories(locale)
+    this.loadInitialData()
     
     // if (favorites && token) {
     //   const [...lists] = favorites.keys()
@@ -142,11 +123,37 @@ class PictogramsView extends PureComponent {
 
   }
 
+  loadInitialData = () => {
+    const {
+      requestCategories,
+      requestNewPictograms,
+      requestAutocomplete,
+      newPictogramsList,
+      keywords,
+      categories
+    } = this.props
+    const {searchLanguage} = this.state
+    /* we just ask for new pictograms twice and hour and autocomplete keywords once a day */
+    const actualDate = new Date()
+
+    const newPictogramsDate = sessionStorage.getItem(`newPictogramsDate_${searchLanguage}`)
+    let diffSeconds = newPictogramsDate ? (actualDate.getTime() - newPictogramsDate) / 1000 : 0
+    if (!newPictogramsList || newPictogramsList.size === 0 || diffSeconds > 1800) requestNewPictograms(searchLanguage)
+
+    const keywordsDate = sessionStorage.getItem(`keywordsDate_${searchLanguage}`)
+    diffSeconds = keywordsDate ? (actualDate.getTime() - keywordsDate) / 1000 : 0 
+    if (!keywords || keywords.length === 0 || diffSeconds > 86400) requestAutocomplete(searchLanguage)
+
+    const categoriesDate = sessionStorage.getItem(`categoriesDate_${searchLanguage}`)
+    diffSeconds = categoriesDate ? (actualDate.getTime() - categoriesDate) / 1000 : 0 
+    if (!categories || categories.size === 0 || diffSeconds > 86400) requestCategories(searchLanguage)
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.params.searchText !== nextProps.params.searchText) {
       this.setState({selectedTags: Set()})
-      const { requestPictograms, locale } = this.props
-      requestPictograms(locale, encodeURIComponent(nextProps.params.searchText))
+      const { requestPictograms } = this.props
+      requestPictograms(this.state.searchLanguage, encodeURIComponent(nextProps.params.searchText))
     }
     if (this.props.location.search !== nextProps.location.search) {
       this.processQuery(nextProps)
@@ -176,6 +183,20 @@ class PictogramsView extends PureComponent {
     const { pathname } = this.props.location
     const url = `${pathname}?tab=${tab}`
     this.props.router.push(url)
+  }
+
+  handleLanguageChange = (searchLanguage) => {
+    const {
+      requestCategories,
+      requestNewPictograms,
+      requestAutocomplete,
+    } = this.props
+    this.setState({searchLanguage}, ()=> {
+      requestNewPictograms(searchLanguage)
+      requestAutocomplete(searchLanguage)
+      requestCategories(searchLanguage)
+    })
+    
   }
 
   handlePageClick = offset => {
@@ -260,7 +281,7 @@ class PictogramsView extends PureComponent {
       categories
     } = this.props
     const searchText = this.props.params.searchText || ''
-    const { visibleLabels, running, offset, tab, selectedTags } = this.state
+    const { visibleLabels, running, offset, tab, selectedTags, searchLanguage } = this.state
     const hideIconText = width === SMALL
     let gallery,  pictogramsCounter
     const filterVisiblePictograms = visiblePictograms.filter(pictogram => selectedTags.every(tag => pictogram.tags.indexOf(tag)!==-1))
@@ -335,17 +356,12 @@ class PictogramsView extends PureComponent {
           : null
         }
         {showSettings ?
-          <SelectField
-            id='advSearchField'
-            floatingLabelText={<FormattedMessage {...messages.advancedSearch} />}
-            value={searchType}
-            onChange={this.handleSearchTypeChange}
-          >
-            <MenuItem value='content' primaryText={<FormattedMessage {...messages.content} />} />
-            <MenuItem value='author' primaryText={<FormattedMessage {...messages.author} />} />
-            <MenuItem value='activity' primaryText={<FormattedMessage {...messages.activity} />} />
-            <MenuItem value='area' primaryText={<FormattedMessage {...messages.area} />} />
-          </SelectField>
+          <LanguageSelector
+            value={searchLanguage}
+            onChange={this.handleLanguageChange}
+            shortOption={true}
+            showToolTip={false}
+          />
           : null
         }
 
