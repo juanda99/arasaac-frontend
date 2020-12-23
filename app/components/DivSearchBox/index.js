@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { typography } from 'material-ui/styles'
 import media from 'utils/mediaqueries'
 
 const DivSearchBox = styled.div`

@@ -9,6 +9,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import View from 'components/View'
+import DivSearchBox from 'components/DivSearchBox'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
 import PictogramTags from 'components/PictogramTags'
@@ -18,6 +19,7 @@ import { Tabs, Tab } from 'material-ui/Tabs'
 import { Map, Set } from 'immutable'
 import FilterList from 'components/Filters'
 import PictogramList from 'components/PictogramList'
+import ActionButtons from 'components/ActionButtons'
 import P from 'components/P'
 import { withRouter } from 'react-router'
 import SearchIcon from 'material-ui/svg-icons/action/search'
@@ -35,6 +37,7 @@ import {
 import {
   makeFiltersSelector,
   makeShowFiltersSelector,
+  makeShowSettingsSelector,
   makeLoadingSelector,
   makeLoadingNewSelector,
   makeSearchResultsSelector,
@@ -52,6 +55,7 @@ import {
   // favoritePictograms,
   newPictograms,
   toggleShowFilter,
+  toggleShowSettings,
   setFilterItems
 } from './actions'
 import messages from './messages'
@@ -73,7 +77,8 @@ class PictogramsView extends PureComponent {
     tab: 0,
     offset: 0,
     listName: '',
-    selectedTags: Set()
+    selectedTags: Set(),
+    running: false
   }
 
   title = this.props.intl.formatMessage(messages.pageTitle)
@@ -239,6 +244,7 @@ class PictogramsView extends PureComponent {
 
   render() {
     const {
+      showSettings,
       showFilter,
       filters,
       visiblePictograms,
@@ -254,7 +260,7 @@ class PictogramsView extends PureComponent {
       categories
     } = this.props
     const searchText = this.props.params.searchText || ''
-    const { visibleLabels, visibleSettings, offset, tab, selectedTags } = this.state
+    const { visibleLabels, running, offset, tab, selectedTags } = this.state
     const hideIconText = width === SMALL
     let gallery,  pictogramsCounter
     const filterVisiblePictograms = visiblePictograms.filter(pictogram => selectedTags.every(tag => pictogram.tags.indexOf(tag)!==-1))
@@ -305,6 +311,47 @@ class PictogramsView extends PureComponent {
           />
     }
 
+    const renderSearchBox = (
+      <div>
+        <DivSearchBox id='searchBox'>
+          <SearchField 
+            value={searchText}
+            dataSource={keywords}
+            onSubmit={this.handleSubmit}
+            filterFromStart={true}
+            style={{ flexGrow: 1 }}
+          />
+          <ActionButtons
+            onFilterClick={this.props.toggleShowFilter}
+            onSettingsClick={this.props.toggleShowSettings}
+            filterActive={showFilter}
+            settingsActive={showSettings}
+            helpActive={running}
+            onHelpClick={this.startHelp}
+          />
+        </DivSearchBox>
+        {showFilter ?
+          <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
+          : null
+        }
+        {showSettings ?
+          <SelectField
+            id='advSearchField'
+            floatingLabelText={<FormattedMessage {...messages.advancedSearch} />}
+            value={searchType}
+            onChange={this.handleSearchTypeChange}
+          >
+            <MenuItem value='content' primaryText={<FormattedMessage {...messages.content} />} />
+            <MenuItem value='author' primaryText={<FormattedMessage {...messages.author} />} />
+            <MenuItem value='activity' primaryText={<FormattedMessage {...messages.activity} />} />
+            <MenuItem value='area' primaryText={<FormattedMessage {...messages.area} />} />
+          </SelectField>
+          : null
+        }
+
+      </div>
+    )
+
     return (
       <div>
         <Helmet>
@@ -319,28 +366,19 @@ class PictogramsView extends PureComponent {
           >
             <div>
               <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
-                <SearchField
-                  value={searchText}
-                  onSubmit={this.handleSubmit}
-                  style={styles.searchBar}
-                  dataSource={keywords}
-                  filterFromStart={true}
-                />
-                {visibleSettings ? (
-                  <div>
-                    <p>todo</p>
-                  </div>
-                ) : null}
-                {showFilter ? (
-                  <FilterList
-                    filtersMap={filters}
-                    setFilterItems={this.props.setFilterItems}
-                    filtersData={filtersData}
-                  />
-                ) : null}
+                {renderSearchBox}
               </View>
               <Divider />
               <View left={true} right={true} top={1}>
+                { !!pictogramsCounter && tab !== 1 && <PictogramTags 
+                  searchText={searchText} 
+                  selectedTags={selectedTags}
+                  pictograms={filterVisiblePictograms}
+                  categories={categories}
+                  locale={locale}
+                  onUpdateTags={this.handleUpdateTags}
+                  onCategoryClick={this.handleSubmit}
+                />}
                 {pictogramsCounter ? (
                   <ReadMargin>
                     <P>
@@ -355,15 +393,6 @@ class PictogramsView extends PureComponent {
                 ) : (
                     ''
                   )}
-                  { !!pictogramsCounter && <PictogramTags 
-                      searchText={searchText} 
-                      selectedTags={selectedTags}
-                      pictograms={filterVisiblePictograms}
-                      categories={categories}
-                      locale={locale}
-                      onUpdateTags={this.handleUpdateTags}
-                      onCategoryClick={this.handleSubmit}
-                    />}
                 {gallery}
               </View>
             </div>
@@ -377,24 +406,7 @@ class PictogramsView extends PureComponent {
 
             <div>
               <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
-                <SearchField
-                  value={searchText}
-                  onSubmit={this.handleSubmit}
-                  style={styles.searchBar}
-                  dataSource={keywords}
-                />
-                {visibleSettings ? (
-                  <div>
-                    <p>todo</p>
-                  </div>
-                ) : null}
-                {showFilter ? (
-                  <FilterList
-                    filtersMap={filters}
-                    setFilterItems={this.props.setFilterItems}
-                    filtersData={filtersData}
-                  />
-                ) : null}
+                {renderSearchBox}
               </View>
               <Divider />
               <View left={true} right={true} top={1}>
@@ -430,6 +442,7 @@ PictogramsView.propTypes = {
   requestPictograms: PropTypes.func.isRequired,
   requestNewPictograms: PropTypes.func.isRequired,
   toggleShowFilter: PropTypes.func.isRequired,
+  toggleShowSettings: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   loadingNew: PropTypes.bool.isRequired,
@@ -459,6 +472,7 @@ PictogramsView.contextTypes = {
 const mapStateToProps = (state, ownProps) => ({
   filters: makeFiltersSelector()(state),
   showFilter: makeShowFiltersSelector()(state),
+  showSettings: makeShowSettingsSelector()(state),
   locale: makeSelectLocale()(state),
   loading: makeLoadingSelector()(state),
   loadingNew: makeLoadingNewSelector()(state),
@@ -490,6 +504,9 @@ const mapDispatchToProps = (dispatch) => ({
   // },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())
+  },
+  toggleShowSettings: () => {
+    dispatch(toggleShowSettings())
   },
   setFilterItems: (filter, filterItem) => {
     dispatch(setFilterItems(filter, filterItem))

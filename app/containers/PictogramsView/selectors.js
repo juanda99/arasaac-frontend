@@ -44,6 +44,11 @@ export const makeShowFiltersSelector = () =>
     substate.get('showFilter')
   )
 
+export const makeShowSettingsSelector = () => createSelector(
+  selectPictogramsViewDomain,
+  (substate) => substate.get('showSettings')
+)
+
 export const makeFiltersSelector = () =>
   createSelector(selectPictogramsViewDomain, (substate) =>
     substate.get('filters')

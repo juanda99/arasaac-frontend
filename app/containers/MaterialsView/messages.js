@@ -6,15 +6,6 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
-  advancedSearch: {
-    id: 'app.containers.SearchBox.advancedSearch',
-    description: 'Label for filtering Search',
-    defaultMessage: 'Advanced Search'
-  },
-  showHelp: {
-    id: 'app.containers.SearchBox.showHelp',
-    defaultMessage: 'Show help'
-  },
   filtersBtn: {
     id: 'app.containers.SearchBox.filtersBtn',
     defaultMessage: 'Click on this button to filter your search results.'
@@ -79,11 +70,6 @@ export default defineMessages({
     id: 'app.containers.MaterialsView.materialsNotFound',
     description: 'Message when no materials for a specific search',
     defaultMessage: 'We are sorry, we cannot find any material'
-  },
-  showFilters: {
-    id: 'app.containers.MaterialsView.showFilters',
-    description: 'Button tooltip to show filters',
-    defaultMessage: 'Show filters'
   },
   materialsFound: {
     id: 'app.containers.MaterialsView.materialsFound',
