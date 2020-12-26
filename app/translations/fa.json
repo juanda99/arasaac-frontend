@@ -1,1 +1,4 @@
-{}
+{
+  "Login.invalidEmail": "ایمیل نامعتبر است",
+  "Login.invalidUrl": "نشانی نامعتبر است"
+}
