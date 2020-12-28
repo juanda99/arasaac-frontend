@@ -33,7 +33,12 @@ import { downloadPictogram } from 'services'
 import { DEFAULT_LIST } from 'utils'
 import {
   makeSelectHasUser,
-  makeSelectRootFavorites
+  makeSelectRootFavorites,
+  makeSelectSearchLanguage,
+  makeSelectSexPictograms,
+  makeSelectViolencePictograms,
+  makeSelectColorPictograms 
+
 } from 'containers/App/selectors'
 import {
   makeFiltersSelector,
@@ -278,7 +283,10 @@ class PictogramsView extends PureComponent {
       keywords,
       rootFavorites,
       width,
-      categories
+      categories,
+      sex,
+      violence,
+      color
     } = this.props
     const searchText = this.props.params.searchText || ''
     const { visibleLabels, running, offset, tab, selectedTags, searchLanguage } = this.state
@@ -304,6 +312,9 @@ class PictogramsView extends PureComponent {
             rtl={muiTheme.direction === 'rtl'}
             offset={offset}
             onPageClick={this.handlePageClick}
+            sex={sex}
+            violence={violence}
+            color={color}
           />
           : (
             <ReadMargin>
@@ -329,6 +340,9 @@ class PictogramsView extends PureComponent {
             rtl={muiTheme.direction === 'rtl'}
             offset={offset}
             onPageClick={this.handlePageClick}
+            sex={sex}
+            violence={violence}
+            color={color}
           />
     }
 
@@ -386,15 +400,16 @@ class PictogramsView extends PureComponent {
               </View>
               <Divider />
               <View left={true} right={true} top={1}>
-                { !!pictogramsCounter && tab !== 1 && <PictogramTags 
-                  searchText={searchText} 
-                  selectedTags={selectedTags}
-                  pictograms={filterVisiblePictograms}
-                  categories={categories}
-                  locale={locale}
-                  onUpdateTags={this.handleUpdateTags}
-                  onCategoryClick={this.handleSubmit}
-                />}
+                { !!pictogramsCounter && tab !== 1 && 
+                  <PictogramTags 
+                    searchText={searchText} 
+                    selectedTags={selectedTags}
+                    pictograms={filterVisiblePictograms}
+                    categories={categories}
+                    locale={locale}
+                    onUpdateTags={this.handleUpdateTags}
+                    onCategoryClick={this.handleSubmit}
+                  />}
                 {pictogramsCounter ? (
                   <ReadMargin>
                     <P>
@@ -500,7 +515,11 @@ const mapStateToProps = (state, ownProps) => ({
   categories: makeCategoriesSelectorByLocale()(state),
   token: makeSelectHasUser()(state),
   rootFavorites: makeSelectRootFavorites()(state),
-  selectedList: makeListSelector()(state)
+  selectedList: makeListSelector()(state),
+  sex: makeSelectSexPictograms()(state),
+  violence: makeSelectViolencePictograms()(state),
+  color: makeSelectColorPictograms()(state),
+  searchLanguage: makeSelectSearchLanguage()(state)
   // favoritePictograms: makeFavoritePictogramsSelector()(state)
 })
 // const pictoList = state.getIn(['pictogramView', 'search', ownProps.params.searchText]) || []
@@ -535,7 +554,8 @@ const mapDispatchToProps = (dispatch) => ({
   },
   deleteFavorite: (fileName, listName, token) => {
     dispatch(deleteFavorite.request(fileName, listName, token))
-  }
+  },
+
 })
 
 export default connect(

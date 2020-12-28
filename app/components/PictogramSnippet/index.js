@@ -81,14 +81,20 @@ class PictogramSnippet extends PureComponent {
 
   render() {
     const {
-      pictogram: { _id, keywords },
+      pictogram: { _id, keywords, sex, violence },
       searchText,
       muiTheme,
       locale,
       showExtra,
-      isFavorite
+      isFavorite,
+      color
     } = this.props
+    let blur=false
+    // this.props.sex means hideSex, violence hideViolence
+    if (this.props.sex && sex) blur=true
+    if (this.props.violence && violence) blur=true
     const { keyword } = keywordSelector(searchText, keywords)
+    console.log(_id, keyword, this.props.violence, 'violence', this.props.sex, 'sex', violence, sex)
     const { isAuthenticated } = this.context
     return (
       <StyledList
@@ -103,6 +109,7 @@ class PictogramSnippet extends PureComponent {
               <Image
                 src={`${PICTOGRAMS_URL}/${_id}/${_id}_300.png`}
                 alt={keyword}
+                blur={blur}
               />
               {isFavorite && (
                 <IconButton
@@ -187,6 +194,9 @@ PictogramSnippet.propTypes = {
   onClickFavorite: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool,
   onDownload: PropTypes.func.isRequired,
+  sex: PropTypes.bool.isRequired,
+  violence: PropTypes.bool.isRequired,
+  color: PropTypes.bool.isRequired,
 }
 
 export default muiThemeable()(PictogramSnippet)

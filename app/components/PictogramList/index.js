@@ -51,7 +51,10 @@ export class PictogramList extends PureComponent {
       onAddFavorite,
       rtl,
       onDownload,
-      offset
+      offset,
+      sex,
+      violence,
+      color
     } = this.props
 
     // const pagination = (pictograms.length >= itemsPerPage) ?
@@ -98,6 +101,9 @@ export class PictogramList extends PureComponent {
           onClickFavorite={isFavorite ? onDeleteFavorite : onAddFavorite}
           onDownload={onDownload}
           isFavorite={isFavorite}
+          sex={sex}
+          violence={violence}
+          color={color}
         />
       )
     })
@@ -145,6 +151,9 @@ PictogramList.propTypes = {
   onDownload: PropTypes.func.isRequired,
   offset: PropTypes.number.isRequired,
   onPageClick: PropTypes.func.isRequired,
+  sex: PropTypes.bool.isRequired,
+  violence: PropTypes.bool.isRequired,
+  color: PropTypes.bool.isRequired,
 }
 
 export default withWidth()(PictogramList)

@@ -91,17 +91,17 @@ export const makeSelectSearchLanguage = () => createSelector(
 
 export const makeSelectSexPictograms = () => createSelector(
   selectAuth,
-  (substate) => substate.get('sex') || false
+  (substate) => substate.get('sex') == null ? true : substate.get('sex')
 )
 
 export const makeSelectViolencePictograms = () => createSelector(
   selectAuth,
-  (substate) => substate.get('violence') || false
+  (substate) => substate.get('violence') == null ? true : substate.get('violence')
 )
 
 export const makeSelectColorPictograms = () => createSelector(
   selectAuth,
-  (substate) => substate.get('color') || true
+  (substate) => substate.get('color') == null ? true : substate.get('color')
 )
 
 export const makeSelectLastLogin = () => createSelector(

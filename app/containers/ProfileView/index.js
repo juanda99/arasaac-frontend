@@ -130,6 +130,7 @@ class ProfileView extends PureComponent {
       violence,
       color
     } = this.props
+    console.log(sex, 'sex', violence, 'violence', color, 'color')
     const profileImage = picture ? picture : DEFAULT_PROFILE_PICTURE
     const isRtl = muiTheme.direction === 'rtl'
 
@@ -190,9 +191,9 @@ class ProfileView extends PureComponent {
             <div  style={{marginRight: '60px'}}>
               <H2 primary={true}>Pictograms</H2>  
               <LanguageSelector value={searchLanguage} onChange={(value)=>this.handleValueChange(value, 'searchLanguage')} />
-              <Toggle value={color} onToggle={(e, value) => this.handleValueChange(e, 'color', value)} handleValueChangelabelPosition='right' label={<FormattedMessage {...messages.colorPictograms} />} style={styles.toggle} />
-              <Toggle value={sex} onToggle={(e, value) => this.handleValueChange(e, 'sex', value)}  labelPosition='right' label={<FormattedMessage {...messages.sexPictograms} />}  style={styles.toggle}  />
-              <Toggle value={violence} onToggle={(e, value) => this.handleValueChange(e, 'violence', value)} labelPosition='right' label={<FormattedMessage {...messages.violencePictograms} />}  style={styles.toggle}  />
+              <Toggle toggled={color} onToggle={(e, value) => this.handleValueChange(value, 'color')} label={<FormattedMessage {...messages.colorPictograms} />} style={styles.toggle} />
+              <Toggle toggled={sex} onToggle={(e, value) => this.handleValueChange(value, 'sex')}  label={<FormattedMessage {...messages.sexPictograms} />}  style={styles.toggle}  />
+              <Toggle toggled={violence} onToggle={(e, value) => this.handleValueChange(value, 'violence')} label={<FormattedMessage {...messages.violencePictograms} />}  style={styles.toggle}  />
             </div>
             <div>
               <H2 primary={true}>Translation Status</H2>
