@@ -58,5 +58,17 @@ export default defineMessages({
     id: 'app.containers.ProfileView.facebookProfilePicture',
     defaultMessage: 'Facebook profile picture'
   },
+  colorPictograms: {
+    id: 'app.containers.ProfileView.colorPictograms',
+    defaultMessage: 'Show pictograms in color'
+  },
+  violencePictograms: {
+    id: 'app.containers.ProfileView.violencePictograms',
+    defaultMessage: 'Hide violence related AAC Symbols'
+  },
+  sexPictograms: {
+    id: 'app.containers.ProfileView.sexPictograms',
+    defaultMessage: 'Hide sex related AAC Symbols'
+  },
 })
 

@@ -58,6 +58,8 @@ class TranslationStatus extends PureComponent {
       arasaacTranslated,
       statisticsAvailable
     } = this.state
+
+    const {hideWeb, hideAAC} = this.props
     const webTranslated = parseInt(((arasaacTranslated) / (arasaacPhrases)) * 100, 10)
     const pictosValidated = parseInt((pictogramsValidated / totalPictograms) * 100, 10)
     const webTranslatedString = webTranslated.toString()
@@ -68,10 +70,19 @@ class TranslationStatus extends PureComponent {
         {statisticsAvailable ?
           (
             <div>
-              <P><FormattedMessage {...messages.webTranslationStatus} values={{ webTranslatedString }} /></P>
-              <LinearProgress style={{ height: '5px', maxWidth: '500px' }} mode='determinate' value={webTranslated} />
-              <P><FormattedMessage {...messages.pictosTranslationStatus} values={{ pictosValidatedString }} /> </P>
-              <LinearProgress style={{ height: '5px', maxWidth: '500px' }} mode='determinate' value={pictosValidated} />
+              {!hideWeb && (
+                <div>
+                  <P><FormattedMessage {...messages.webTranslationStatus} values={{ webTranslatedString }} /></P>
+                  <LinearProgress style={{ height: '5px', maxWidth: '500px' }} mode='determinate' value={webTranslated} />
+                </div>
+              )}
+              {!hideAAC && (
+                <div>
+                  <P><FormattedMessage {...messages.pictosTranslationStatus} values={{ pictosValidatedString }} /> </P>
+                  <LinearProgress style={{ height: '5px', maxWidth: '500px' }} mode='determinate' value={pictosValidated} />
+                </div>
+              )}
+
             </div>
           ) : (
             <P><FormattedMessage {...messages.noDataAvailable} /></P>
@@ -87,8 +98,16 @@ TranslationStatus.propTypes = {
   showProgressBar: PropTypes.func.isRequired,
   hideProgressBar: PropTypes.func.isRequired,
   language: PropTypes.string,
-  locale: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired,
+  hideWeb: PropTypes.bool.isRequired,
+  hideAAC: PropTypes.bool.isRequired,
 }
+
+
+TranslationStatus.defaultProps = {
+  hideWeb: false,
+  hideAAC: false,
+};
 
 const mapStateToProps = (state) => ({
   locale: makeSelectLocale()(state)

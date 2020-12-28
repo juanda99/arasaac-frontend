@@ -83,6 +83,27 @@ export const makeSelectHasGoogle = () => createSelector(
   (substate) => !!substate.getIn([GOOGLE, 'picture'])
 )
 
+export const makeSelectSearchLanguage = () => createSelector(
+  selectAuth,
+  makeSelectUserLocale(),
+  (substate, locale) => substate.get('searchLanguage') || locale
+)
+
+export const makeSelectSexPictograms = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('sex') || false
+)
+
+export const makeSelectViolencePictograms = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('violence') || false
+)
+
+export const makeSelectColorPictograms = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('color') || true
+)
+
 export const makeSelectLastLogin = () => createSelector(
   selectAuth,
   (substate) => substate.get('lastLogin')
