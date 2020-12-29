@@ -14,7 +14,7 @@
   "app.MaterialsView.pageTitle": "KHA-k baliabide material partekatuak - ARASAAC",
   "app.MaterialsView.pageTitleSearch": "KHA-k {searchText} - ARASAAC-rekin erlazionatutako baliabide materialak partekatu ditu",
   "app.PictogramsView.pageDesc": "Komunikazio handigarri eta alternatiborako kode irekiko ikurrak",
-  "app.PictogramsView.pageTitle": "KHA ikurrak - ARASAAC",
+  "app.PictogramsView.pageTitle": "KHA piktogramak- ARASAAC",
   "app.component.MaterialConditions.adaptationQuote": "Egokitzapenaren aurrekontua",
   "app.component.MaterialConditions.adaptationQuoteDesc": "Lehendik dagoen materiala egokitzean, egokitu zaionaren izena gehituko zaio aurrekontuaren amaieran:",
   "app.component.MaterialConditions.adaptedBy": "Egokituta:",
