@@ -165,10 +165,12 @@ class PictogramSnippet extends PureComponent {
                     style={this.styles.leftIconButton}
                     onClick={this.handleDownload}
                   >
-                    <FileDownload
-                      color={muiTheme.appBar.textColor}
-                      hoverColor={muiTheme.palette.accent1Color}
-                    />
+                    {!blur  && (
+                      <FileDownload
+                        color={muiTheme.appBar.textColor}
+                        hoverColor={muiTheme.palette.accent1Color}
+                      />
+                    )}
                   </IconButton>
                 )}
                 <p style={this.styles.cardTitle}>{keyword}</p>

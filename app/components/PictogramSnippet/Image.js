@@ -9,7 +9,7 @@ const Image = styled.img`
   */
  width: 100%;
  height: auto;
- filter: ${(props) => props.blur ? 'blur(13px)' : ''};
+ filter: ${(props) => props.blur ? 'blur(11px)' : ''};
 `
 
 export default muiThemeable()(Image)

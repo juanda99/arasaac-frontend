@@ -504,7 +504,7 @@ class Pictogram extends Component {
   updateWindowDimensions = () =>
     this.setState({ windowWidth: document.body.clientWidth });
 
-  renderDownloadButton = () => (
+  renderDownloadButton = (disabled) => (
     // const userAgent = window.navigator.userAgent.toLowerCase()
     // const isIOS = /iphone|ipod|ipad/.test(userAgent)
     // const isSAFARI = /^((?!chrome|android).)*safari/i.test(userAgent)
@@ -514,6 +514,7 @@ class Pictogram extends Component {
       primary={true}
       style={styles.button}
       icon={<DownloadIcon />}
+      disabled={disabled}
     />
   );
 
@@ -592,9 +593,9 @@ class Pictogram extends Component {
     )}.png`
     const { formatMessage } = intl
 
-    let pixelSize = 0
-    if (sex && hasSex) pixelSize = 80
-    if (violence && hasViolence) pixelSize = 80
+    let blurRadius = 0
+    if (sex && hasSex) blurRadius = 160
+    if (violence && hasViolence) blurRadius = 160
     return (
       <div>
         <div style={styles.wrapper}>
@@ -638,7 +639,7 @@ class Pictogram extends Component {
                     dragAndDrop={dragAndDrop}
                     topMargin={topTextActive ? 50 : 0}
                     bottomMargin={bottomTextActive ? 50 : 0}
-                    pixelSize={pixelSize}
+                    blurRadius={blurRadius}
                   />
                   {topTextActive && (
                     <TextLayer
@@ -718,13 +719,14 @@ class Pictogram extends Component {
                   disabled={!authenticated || isFavorite ? true : false}
                   onClick={this.handleAddFavorite}
                 />
-                {this.renderDownloadButton()}
+                { this.renderDownloadButton(!!blurRadius) }
                 <RaisedButton
                   label={<FormattedMessage {...messages.copy} />}
                   primary={true}
                   style={styles.button}
                   icon={<CopyIcon />}
                   onClick={this.handleExport}
+                  disabled={blurRadius}
                 />
               </PictogramTitle>
             </ConditionalPaper>
