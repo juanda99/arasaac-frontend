@@ -1,6 +1,7 @@
 /* eslint no-mixed-operators: 0 */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router'
 // import queryString from 'query-string'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
@@ -15,6 +16,8 @@ import {
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import ShowSoundPlayer from 'components/SoundPlayer/ShowSoundPlayer'
 import Toggle from 'material-ui/Toggle'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
 import { keywordSelector, isEmptyObject } from 'utils'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
@@ -149,14 +152,24 @@ class Pictogram extends Component {
       windowWidth: 0,
       dragAndDrop: false,
       isFavorite: false,
-      snackOpen: false
+      snackOpen: false,
+      blurRadius: 0,
+      open: false
     }
   }
 
   componentDidMount() {
+    const { pictogram, sex, violence } = this.props
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
     document.body.addEventListener('click', this.needHideOptions)
+    const hasSex = pictogram.get('sex')
+    const hasViolence = pictogram.get('violence')
+    if ((sex && hasSex)  || (violence && hasViolence)) this.setState({ blurRadius: 160, open: true })
+  }
+
+  handleClose = () => {
+    this.setState({open: false});
   }
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -174,6 +187,10 @@ class Pictogram extends Component {
     this.setState({
       snackOpen: false,
     })
+  }
+
+  handleRegisterAction =  () => {
+    this.props.router.push('/signin')
   }
 
   onTogglePicker = () =>
@@ -519,7 +536,7 @@ class Pictogram extends Component {
   );
 
   render() {
-    const { pictogram, searchText, locale, intl, authenticated, categories, sex, violence } = this.props
+    const { pictogram, searchText, locale, intl, authenticated, categories } = this.props
     const {
       language,
       backgroundColor,
@@ -569,7 +586,9 @@ class Pictogram extends Component {
       windowWidth,
       dragAndDrop,
       isFavorite,
-      snackOpen
+      snackOpen,
+      blurRadius,
+      open
     } = this.state
 
     const canvasSize =
@@ -578,8 +597,6 @@ class Pictogram extends Component {
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('_id')
-    const hasSex = pictogram.get('sex')
-    const hasViolence = pictogram.get('violence')
     const tags = pictogram.get('tags')
     const pictoCategories = pictogram.get('categories')
     // first time downloadUrl is default png
@@ -593,11 +610,30 @@ class Pictogram extends Component {
     )}.png`
     const { formatMessage } = intl
 
-    let blurRadius = 0
-    if (sex && hasSex) blurRadius = 160
-    if (violence && hasViolence) blurRadius = 160
+    const actions = [
+      <FlatButton
+        label={<FormattedMessage {...messages.cancel} />}
+        primary={true}
+        onClick={this.handleClose}
+      />,
+      <FlatButton
+        label={<FormattedMessage {...messages.accept} />}
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.handleRegisterAction}
+      />
+    ]
     return (
       <div>
+        <Dialog
+          title="Dialog With Actions"
+          actions={actions}
+          modal={false}
+          open={open}
+          onRequestClose={this.handleClose}
+        >
+          {authenticated ? (<FormattedMessage {...messages.disableFilter} />) : (<FormattedMessage {...messages.authUser} /> )}
+        </Dialog>
         <div style={styles.wrapper}>
           <Snackbar
             open={snackOpen}
@@ -932,6 +968,7 @@ Pictogram.propTypes = {
   categories: PropTypes.object.isRequired,
   sex: PropTypes.bool.isRequired,
   violence: PropTypes.bool.isRequired,
+  router: PropTypes.any.isRequired
 }
 
-export default injectIntl(Pictogram)
+export default injectIntl(withRouter(Pictogram))
