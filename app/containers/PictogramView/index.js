@@ -16,7 +16,11 @@ import { addFavorite } from 'containers/App/actions'
 import P from 'components/P'
 import api, { downloadCustomPictogram } from 'services'
 import { DEFAULT_LIST } from 'utils'
-import { makeSelectHasUser } from 'containers/App/selectors'
+import { 
+  makeSelectHasUser,
+  makeSelectSexPictograms,
+  makeSelectViolencePictograms
+ } from 'containers/App/selectors'
 import { pictogram } from './actions'
 import { makePictogramByIdSelector } from './selectors'
 import messages from './messages'
@@ -70,7 +74,9 @@ class PictogramView extends PureComponent {
       loading,
       token,
       params: { locale, searchText },
-      categories
+      categories,
+      sex,
+      violence
     } = this.props
     if (loading) {
       return (
@@ -92,6 +98,8 @@ class PictogramView extends PureComponent {
           onDownload={this.handleDownload}
           onAddFavorite={this.handleAddFavorite}
           categories={categories}
+          sex={sex}
+          violence={violence}
         />
       )
   }
@@ -124,11 +132,14 @@ const mapStateToProps = (state, ownProps) => {
   const loading = state.getIn(['pictogramsView', 'loading'])
   const token = makeSelectHasUser()(state)
   const categories = makeCategoriesSelectorByLocale()(state)
+  const sex = makeSelectSexPictograms()(state)
+  const violence = makeSelectViolencePictograms()(state)
   return {
     pictogramData,
     loading,
     token,
-    categories
+    categories,
+    sex, violence
   }
 }
 

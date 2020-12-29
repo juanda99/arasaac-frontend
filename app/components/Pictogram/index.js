@@ -518,7 +518,7 @@ class Pictogram extends Component {
   );
 
   render() {
-    const { pictogram, searchText, locale, intl, authenticated, categories } = this.props
+    const { pictogram, searchText, locale, intl, authenticated, categories, sex, violence } = this.props
     const {
       language,
       backgroundColor,
@@ -577,6 +577,8 @@ class Pictogram extends Component {
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('_id')
+    const hasSex = pictogram.get('sex')
+    const hasViolence = pictogram.get('violence')
     const tags = pictogram.get('tags')
     const pictoCategories = pictogram.get('categories')
     // first time downloadUrl is default png
@@ -589,6 +591,10 @@ class Pictogram extends Component {
       1
     )}.png`
     const { formatMessage } = intl
+
+    let pixelSize = 0
+    if (sex && hasSex) pixelSize = 80
+    if (violence && hasViolence) pixelSize = 80
     return (
       <div>
         <div style={styles.wrapper}>
@@ -624,7 +630,7 @@ class Pictogram extends Component {
                   <Img
                     src={url}
                     frameWidth={frameWidth}
-                    enableFrame={
+                    enableFrame={ 
                       frameActive
                     } /* alt={'alt'} style={styles.picto} */
                     zoomLevel={zoomLevel}
@@ -632,6 +638,7 @@ class Pictogram extends Component {
                     dragAndDrop={dragAndDrop}
                     topMargin={topTextActive ? 50 : 0}
                     bottomMargin={bottomTextActive ? 50 : 0}
+                    pixelSize={pixelSize}
                   />
                   {topTextActive && (
                     <TextLayer
@@ -921,6 +928,8 @@ Pictogram.propTypes = {
   authenticated: PropTypes.bool.isRequired,
   onAddFavorite: PropTypes.func.isRequired,
   categories: PropTypes.object.isRequired,
+  sex: PropTypes.bool.isRequired,
+  violence: PropTypes.bool.isRequired,
 }
 
 export default injectIntl(Pictogram)
