@@ -190,7 +190,9 @@ class Pictogram extends Component {
   }
 
   handleRegisterAction =  () => {
-    this.props.router.push('/signin')
+    const { authenticated }  = this.props
+    const url = authenticated ? '/profile': '/signin'
+    this.props.router.push(url)
   }
 
   onTogglePicker = () =>
@@ -626,7 +628,7 @@ class Pictogram extends Component {
     return (
       <div>
         <Dialog
-          title="Dialog With Actions"
+          title={formatMessage(messages.pictogramDisabled)}
           actions={actions}
           modal={false}
           open={open}

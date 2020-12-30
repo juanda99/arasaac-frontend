@@ -329,4 +329,8 @@ export default defineMessages({
     id: 'app.components.Pictogram.accept',
     defaultMessage: 'OK'
   },
+  pictogramDisabled: {
+    id: 'app.components.Pictogram.pictogramDisabled',
+    defaultMessage: 'Pictogram disabled'
+  },
 })

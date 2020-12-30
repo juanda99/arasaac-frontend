@@ -89,10 +89,12 @@ class PictogramSnippet extends PureComponent {
       isFavorite,
       color
     } = this.props
-    let blur=false
+    let blur = false
     // this.props.sex means hideSex, violence hideViolence
     if (this.props.sex && sex) blur=true
     if (this.props.violence && violence) blur=true
+    const fileUrl = color ? `${PICTOGRAMS_URL}/${_id}/${_id}_300.png` : `${PICTOGRAMS_URL}/${_id}/${_id}_nocolor_500.png`
+    console.log(fileUrl, '**+*************************')
     const { keyword } = keywordSelector(searchText, keywords)
     console.log(_id, keyword, this.props.violence, 'violence', this.props.sex, 'sex', violence, sex)
     const { isAuthenticated } = this.context
@@ -107,7 +109,7 @@ class PictogramSnippet extends PureComponent {
           <Item url={`/pictograms/${locale}/${_id}/${encodeURIComponent(keyword)}`}>
             <div style={{ position: 'relative' }}>
               <Image
-                src={`${PICTOGRAMS_URL}/${_id}/${_id}_300.png`}
+                src={fileUrl}
                 alt={keyword}
                 blur={blur}
               />
