@@ -49,7 +49,8 @@ import messages from './messages'
 
 const styles = {
   toggle: {
-    fontWeight: 100
+    fontWeight: 100,
+    width: '90%'
   },
   divider: {
     marginTop:  50
@@ -130,7 +131,6 @@ class ProfileView extends PureComponent {
       violence,
       color
     } = this.props
-    console.log(sex, 'sex', violence, 'violence', color, 'color')
     const profileImage = picture ? picture : DEFAULT_PROFILE_PICTURE
     const isRtl = muiTheme.direction === 'rtl'
 
@@ -172,12 +172,12 @@ class ProfileView extends PureComponent {
 
           <div style={{display: 'flex', flexWrap: 'wrap',  justifyContent: 'flexStart'}}>
             <div  style={{marginRight: '60px'}}>
-              <H2 primary={true}>Idioma</H2>
+              <H2 primary={true}><FormattedMessage {...messages.language} /></H2>
               <LanguageSelector value={userLocale} onChange={(value)=>this.handleValueChange(value, 'locale')}   />
             </div>
             {(role === 'admin' || role === 'translator') && (
-              <div>
-                <H2 primary={true}>Translation Status</H2>
+              <div style={{flexGrow:  4}}>
+                <H2 primary={true}><FormattedMessage {...messages.translationStatus} /></H2>
                 <TranslationStatus language={userLocale} hideAAC={true}/>
               </div>
             )}
@@ -189,14 +189,14 @@ class ProfileView extends PureComponent {
 
           <div style={{display: 'flex', flexWrap: 'wrap',  justifyContent: 'flexStart'}}>
             <div  style={{marginRight: '60px'}}>
-              <H2 primary={true}>Pictograms</H2>  
+              <H2 primary={true}><FormattedMessage {...messages.searchPictograms} /></H2>  
               <LanguageSelector value={searchLanguage} onChange={(value)=>this.handleValueChange(value, 'searchLanguage')} />
               <Toggle toggled={color} onToggle={(e, value) => this.handleValueChange(value, 'color')} label={<FormattedMessage {...messages.colorPictograms} />} style={styles.toggle} />
               <Toggle toggled={sex} onToggle={(e, value) => this.handleValueChange(value, 'sex')}  label={<FormattedMessage {...messages.sexPictograms} />}  style={styles.toggle}  />
               <Toggle toggled={violence} onToggle={(e, value) => this.handleValueChange(value, 'violence')} label={<FormattedMessage {...messages.violencePictograms} />}  style={styles.toggle}  />
             </div>
-            <div>
-              <H2 primary={true}>Translation Status</H2>
+            <div style={{flexGrow:  4}}>
+              <H2 primary={true}><FormattedMessage {...messages.translationStatus} /></H2>
               <TranslationStatus language={searchLanguage} hideWeb={true} />
             </div>
           </div>

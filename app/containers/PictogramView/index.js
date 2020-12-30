@@ -19,7 +19,8 @@ import { DEFAULT_LIST } from 'utils'
 import { 
   makeSelectHasUser,
   makeSelectSexPictograms,
-  makeSelectViolencePictograms
+  makeSelectViolencePictograms,
+  makeSelectColorPictograms
  } from 'containers/App/selectors'
 import { pictogram } from './actions'
 import { makePictogramByIdSelector } from './selectors'
@@ -76,7 +77,8 @@ class PictogramView extends PureComponent {
       params: { locale, searchText },
       categories,
       sex,
-      violence
+      violence,
+      color
     } = this.props
     if (loading) {
       return (
@@ -100,6 +102,7 @@ class PictogramView extends PureComponent {
           categories={categories}
           sex={sex}
           violence={violence}
+          color={color}
         />
       )
   }
@@ -134,12 +137,15 @@ const mapStateToProps = (state, ownProps) => {
   const categories = makeCategoriesSelectorByLocale()(state)
   const sex = makeSelectSexPictograms()(state)
   const violence = makeSelectViolencePictograms()(state)
+  const  color = makeSelectColorPictograms()(state)
   return {
     pictogramData,
     loading,
     token,
     categories,
-    sex, violence
+    sex,
+    violence,
+    color
   }
 }
 

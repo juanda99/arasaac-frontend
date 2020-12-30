@@ -73,13 +73,13 @@ class TranslationStatus extends PureComponent {
               {!hideWeb && (
                 <div>
                   <P><FormattedMessage {...messages.webTranslationStatus} values={{ webTranslatedString }} /></P>
-                  <LinearProgress style={{ height: '5px', maxWidth: '500px' }} mode='determinate' value={webTranslated} />
+                  <LinearProgress style={{ height: '5px', minWidth: '330px', width: '100%', maxWidth: '700px' }} mode='determinate' value={webTranslated} />
                 </div>
               )}
               {!hideAAC && (
                 <div>
                   <P><FormattedMessage {...messages.pictosTranslationStatus} values={{ pictosValidatedString }} /> </P>
-                  <LinearProgress style={{ height: '5px', maxWidth: '500px' }} mode='determinate' value={pictosValidated} />
+                  <LinearProgress style={{ height: '5px', minWidth: '330px', width: '100%', maxWidth: '700px' }} mode='determinate' value={pictosValidated} />
                 </div>
               )}
 

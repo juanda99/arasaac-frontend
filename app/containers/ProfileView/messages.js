@@ -70,5 +70,17 @@ export default defineMessages({
     id: 'app.containers.ProfileView.sexPictograms',
     defaultMessage: 'Hide sex related AAC Symbols'
   },
+  language: {
+    id: 'app.containers.ProfileView.language',
+    defaultMessage: 'Language'
+  },
+  translationStatus: {
+    id: 'app.containers.ProfileView.translationStatus',
+    defaultMessage: 'Translation status'
+  },
+  searchPictograms: {
+    id: 'app.containers.ProfileView.searchPictograms',
+    defaultMessage: 'Pictograms search'
+  },
 })
 

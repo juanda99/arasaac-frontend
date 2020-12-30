@@ -84,7 +84,7 @@ const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
 class Pictogram extends Component {
   constructor(props) {
     super(props)
-    const { pictogram, searchText, locale } = this.props
+    const { pictogram, searchText, locale, color } = this.props
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('_id')
     const { keyword, type } = keywordSelector(searchText, keywords.toJS())
@@ -101,7 +101,7 @@ class Pictogram extends Component {
       pluralActive: false,
       pluralOptionsShow: false,
       pluralColor: black,
-      color: true,
+      color,
       backgroundColor: defaultColor,
       bgColorActive: false,
       bgColorOptionsShow: false,
@@ -126,7 +126,7 @@ class Pictogram extends Component {
       verbalTenseColor: 'black',
       showText: false,
       openMenu: false,
-      url: `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${STANDARD_RESOLUTION}.png`,
+      url: this.props.color ? `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${STANDARD_RESOLUTION}.png` : `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_nocolor_${STANDARD_RESOLUTION}.png` ,
       downloadUrl: '',
       activeFont: 'Open Sans',
       buttonCaption: false,
@@ -781,8 +781,8 @@ class Pictogram extends Component {
               <Toggle
                 label={<FormattedMessage {...messages.color} />}
                 labelPosition='right'
+                value={this.state.color}
                 onToggle={this.handleColor}
-                defaultToggled={true}
                 style={styles.toggle}
               />
 
@@ -970,6 +970,7 @@ Pictogram.propTypes = {
   categories: PropTypes.object.isRequired,
   sex: PropTypes.bool.isRequired,
   violence: PropTypes.bool.isRequired,
+  color: PropTypes.bool.isRequired,
   router: PropTypes.any.isRequired
 }
 
