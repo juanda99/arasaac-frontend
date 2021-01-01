@@ -56,5 +56,14 @@
   "app.components.Filters.Area.logicReasoning": "Loogiline arutluskäik",
   "app.components.Filters.Area.math": "Matemaatika",
   "app.components.Filters.Area.measurementUnits": "Mõõtühikud",
-  "app.components.Filters.Area.moneyUsage": "Raha kasutamine"
+  "app.components.Filters.Area.moneyUsage": "Raha kasutamine",
+  "app.components.Filters.Area.morphosyntax": "Morfosüntaks",
+  "app.components.Filters.Area.music": "Muusika",
+  "app.components.Filters.Area.naturalSciences": "Loodusteadused",
+  "app.components.Filters.Area.numeration": "Numeratsioon",
+  "app.components.Filters.Area.phonology": "Fonoloogia",
+  "app.components.Filters.Area.physicalEducation": "Kehaline kasvatus",
+  "app.components.Filters.Area.pragmatics": "Pragmaatika",
+  "app.components.Filters.Area.priorSkills": "Eelnevad oskused",
+  "app.components.Filters.Area.problems": "Probleemid"
 }
