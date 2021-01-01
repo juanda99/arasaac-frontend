@@ -1,1 +1,13 @@
-{}
+{
+  "Login.invalidEmail": "Kehtiv e-mail",
+  "Login.invalidUrl": "Kehtiv URL",
+  "Login.required": "Nõutud",
+  "NewPasswordForm.hintNewPassword": "Mis on teie salasõna?",
+  "activate.activateUser": "Kasutaja aktiveerimine",
+  "activate.expiredCode": "Teie aktiveerimiskood on aegunud. Me saatsime teile uue e-maili konto kinnitamiseks",
+  "activate.invalidCode": "Teie aktiveerimiskood ei ole kehtiv",
+  "activate.userActivated": "Teie kasutaja on aktiveeritud. Te võite kontole sisse logida.",
+  "activate.userNotActivated": "Teie kasutaja aktiveerimisel ilmnes viga",
+  "app.HomePage.discover": "Avastage ARASAAC-i",
+  "app.MaterialsView.pageDescription": "AAC materjalid spetsialistidele ja perekondadele. Laadige alla augmentatiivse ja alternatiivse kommunikatsiooni dokumente, tahvleid, töölehti..."
+}
