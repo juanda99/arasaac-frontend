@@ -15,5 +15,15 @@
   "app.MaterialsView.pageTitleSearch": "AAC jagas materjalide ressursse, mis on seotud sõna/sõnadega {searchText} - ARASAAC",
   "app.PictogramsView.pageDesc": "Avage augmentatiivse ja alternatiivse kommunikatsiooni otsingu sümbolid",
   "app.PictogramsView.pageTitle": "AAC sümbolid - ARASAAC",
-  "app.component.MaterialConditions.adaptationQuote": "Kohandatud viide"
+  "app.component.MaterialConditions.adaptationQuote": "Kohandatud viide",
+  "app.component.MaterialConditions.adaptationQuoteDesc": "Olemasoleva materjali kohandamiseks lisatakse viite lõppu selle kohandanud isiku nimi:",
+  "app.component.MaterialConditions.adaptedBy": "Kohandanud:",
+  "app.component.MaterialConditions.author": "Autor:",
+  "app.component.MaterialConditions.checkRead": "Olen lugenud ja saanud aru eelpool väljatoodud informatsioonist.",
+  "app.component.MaterialConditions.intro": "Me loodame, et te mõistate vajadust järgida neid kriteeriume materjalide avaldamiseks.\nOleme tänulikud teiega koostöö eest.",
+  "app.component.MaterialConditions.license": "Litsents:",
+  "app.component.MaterialConditions.materialPublication": "Materjalide publikatsioon",
+  "app.component.MaterialConditions.origin": "Allikas:",
+  "app.component.MaterialConditions.pictogramsAuthor": "Piktogrammide autor:",
+  "app.component.MaterialConditions.publication": "Publikatsioon"
 }
