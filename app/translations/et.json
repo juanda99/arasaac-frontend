@@ -46,5 +46,15 @@
   "app.components.Catalog.accept": "Nõustun",
   "app.components.Catalog.arasaacLicense": "ARASAAC-i litsents",
   "app.components.Catalog.cancel": "Tühista",
-  "app.components.Catalog.confirmLicense": "Ma olen lugenud ja nõustun ARASAAC-i litsentsi lepingutingimustega"
+  "app.components.Catalog.confirmLicense": "Ma olen lugenud ja nõustun ARASAAC-i litsentsi lepingutingimustega",
+  "app.components.CategorySnippet.deleteList": "Kustuta kaust",
+  "app.components.CategorySnippet.download": "Lae kaust alla",
+  "app.components.Filters.Area.language": "Keel",
+  "app.components.Filters.Area.languages": "Keeled",
+  "app.components.Filters.Area.leisure": "Vaba aeg ja kultuur",
+  "app.components.Filters.Area.literature": "Kirjandus",
+  "app.components.Filters.Area.logicReasoning": "Loogiline arutluskäik",
+  "app.components.Filters.Area.math": "Matemaatika",
+  "app.components.Filters.Area.measurementUnits": "Mõõtühikud",
+  "app.components.Filters.Area.moneyUsage": "Raha kasutamine"
 }
