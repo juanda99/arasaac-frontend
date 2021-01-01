@@ -31,5 +31,10 @@
   "app.component.MaterialConditions.requirementsP1": "Selles sektsioonis avaldatud materjalid sisaldavad piktogramme ARASAAC-i kogumikust või teistest samalaadsetest töödest.",
   "app.component.MaterialConditions.requirementsP2": "Materjalid on avaldatud \"Creative Commons License BY-NC-SA\" alt, lubatud on nende kasutamine mittetulunduslikel eesmärkidel tagades teile allika, autori ja sama litsentsi alusel jagamise.",
   "app.component.MaterialConditions.requirementsP3": "Materjalides olevad fotod ja pildid peavad olema meie litsentsiga kooskõlas või tehtud autori enda poolt.",
-  "app.component.MaterialConditions.requirementsP4": "Materjalides olevad tekstid peavad olema kooskõlas meie litsentsiga. Need ei tohi olla sõna-sõnalt kopeeritud autoriõigustega kaitstud sisust."
+  "app.component.MaterialConditions.requirementsP4": "Materjalides olevad tekstid peavad olema kooskõlas meie litsentsiga. Need ei tohi olla sõna-sõnalt kopeeritud autoriõigustega kaitstud sisust.",
+  "app.component.MaterialConditions.requirementsP5": "Kõikedele materjalidele tuleb märkida ARASAAC-i litsents, eelistatult jaluses, koos materjalide autoriga, et tagada autoriõiguste kaitse. Sama litsentsiga on kaitstud ka materjalide intellektuaalne omand.",
+  "app.component.MaterialConditions.requirementsP6": "Viite õigesti vormistamiseks tuleb kasutada ühte järgmistest viidetest:",
+  "app.component.MaterialConditions.standardQuote": "Tavaline viide",
+  "app.component.MaterialConditions.submit": "Esita",
+  "app.component.MaterialConditions.suggestions": "Ettepanekud"
 }
