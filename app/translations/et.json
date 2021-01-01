@@ -25,5 +25,7 @@
   "app.component.MaterialConditions.materialPublication": "Materjalide publikatsioon",
   "app.component.MaterialConditions.origin": "Allikas:",
   "app.component.MaterialConditions.pictogramsAuthor": "Piktogrammide autor:",
-  "app.component.MaterialConditions.publication": "Publikatsioon"
+  "app.component.MaterialConditions.publication": "Publikatsioon",
+  "app.component.MaterialConditions.publicationDesc": "ARASAAC-i veebisaidi administraatorid jätavad endale õiguse avaldada materjale, kui need ei vasta meie nõuetele või kvaliteedikriteeriumitele, mis tuginevad varasemalt avaldatud materjalidele.",
+  "app.component.MaterialConditions.requirements": "Nõuded"
 }
