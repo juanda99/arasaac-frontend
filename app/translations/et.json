@@ -9,5 +9,11 @@
   "activate.userActivated": "Teie kasutaja on aktiveeritud. Te võite kontole sisse logida.",
   "activate.userNotActivated": "Teie kasutaja aktiveerimisel ilmnes viga",
   "app.HomePage.discover": "Avastage ARASAAC-i",
-  "app.MaterialsView.pageDescription": "AAC materjalid spetsialistidele ja perekondadele. Laadige alla augmentatiivse ja alternatiivse kommunikatsiooni dokumente, tahvleid, töölehti..."
+  "app.MaterialsView.pageDescription": "AAC materjalid spetsialistidele ja perekondadele. Laadige alla augmentatiivse ja alternatiivse kommunikatsiooni dokumente, tahvleid, töölehti...",
+  "app.MaterialsView.pageDescriptionSearch": "AAC materjalide ressursid spetsialistidele ja perekondadele, mis on seotud sõnaga/sõnadega {searchText}. Laadige alla augmentatiivse ja alternatiivse kommunikatsiooni dokumente, tahvleid, töölehti...",
+  "app.MaterialsView.pageTitle": "AAC jagas materjalide ressursse - ARASAAC",
+  "app.MaterialsView.pageTitleSearch": "AAC jagas materjalide ressursse, mis on seotud sõna/sõnadega {searchText} - ARASAAC",
+  "app.PictogramsView.pageDesc": "Avage augmentatiivse ja alternatiivse kommunikatsiooni otsingu sümbolid",
+  "app.PictogramsView.pageTitle": "AAC sümbolid - ARASAAC",
+  "app.component.MaterialConditions.adaptationQuote": "Kohandatud viide"
 }
