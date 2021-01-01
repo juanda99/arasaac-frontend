@@ -36,5 +36,15 @@
   "app.component.MaterialConditions.requirementsP6": "Viite õigesti vormistamiseks tuleb kasutada ühte järgmistest viidetest:",
   "app.component.MaterialConditions.standardQuote": "Tavaline viide",
   "app.component.MaterialConditions.submit": "Esita",
-  "app.component.MaterialConditions.suggestions": "Ettepanekud"
+  "app.component.MaterialConditions.suggestions": "Ettepanekud",
+  "app.component.MaterialConditions.suggestionsDesc": "ARASAAC on koostööle põhinev ja rahvusvaheline projekt. Me soovitame teil tagada faile nii lugemise/visualiseerimise formaadis (pdf, pps, ppsx, etc.) kui ka muudetavas formaadis (doc, docx, ppt, pptx, odf, pszip, etc.). See hõlbustab tõlkimist teistesse keeltesse ja teeb võimalikuks kohandamise vastavalt kasutajate omadustele. Ka muudetavad failid on kaitstud Creative Commons-i litsentsiga.",
+  "app.component.MaterialConditions.translationQuote": "Tõlgitav tsitaat",
+  "app.component.MaterialConditions.translationQuoteDesc": "Juhul kui materjal on tõlgitud, siis tuleb tõlkija nimi lisada viite lõppu:",
+  "app.component.MaterialConditions.translator": "Tõlkija:",
+  "app.component.Participate.contact": "Võtke meiega ühendust",
+  "app.component.Participate.header": "Me töötame üles ARASAAC-i. Kas te sooviksite meiega ühineda?",
+  "app.components.Catalog.accept": "Nõustun",
+  "app.components.Catalog.arasaacLicense": "ARASAAC-i litsents",
+  "app.components.Catalog.cancel": "Tühista",
+  "app.components.Catalog.confirmLicense": "Ma olen lugenud ja nõustun ARASAAC-i litsentsi lepingutingimustega"
 }
