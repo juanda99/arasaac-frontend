@@ -27,5 +27,7 @@
   "app.component.MaterialConditions.pictogramsAuthor": "Piktogrammide autor:",
   "app.component.MaterialConditions.publication": "Publikatsioon",
   "app.component.MaterialConditions.publicationDesc": "ARASAAC-i veebisaidi administraatorid jätavad endale õiguse avaldada materjale, kui need ei vasta meie nõuetele või kvaliteedikriteeriumitele, mis tuginevad varasemalt avaldatud materjalidele.",
-  "app.component.MaterialConditions.requirements": "Nõuded"
+  "app.component.MaterialConditions.requirements": "Nõuded",
+  "app.component.MaterialConditions.requirementsP1": "Selles sektsioonis avaldatud materjalid sisaldavad piktogramme ARASAAC-i kogumikust või teistest samalaadsetest töödest.",
+  "app.component.MaterialConditions.requirementsP2": "Materjalid on avaldatud \"Creative Commons License BY-NC-SA\" alt, lubatud on nende kasutamine mittetulunduslikel eesmärkidel tagades teile allika, autori ja sama litsentsi alusel jagamise."
 }
