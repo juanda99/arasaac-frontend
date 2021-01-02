@@ -423,6 +423,7 @@
   "app.components.dialog.ok": "Ok",
   "app.components.disclaimer": "Ümberlükkamine",
   "app.components.license": "Litsents:",
+  "app.components.licenseP6": "Piktogrammide puhul on autoriõiguse omistamise viis:",
   "app.components.licenseP8": "Või skemaatiliselt välja tuues:",
   "app.components.origin": "Päritolu:",
   "app.components.owner": "Omanik: Aragoni valitsus (Hispaania)",
