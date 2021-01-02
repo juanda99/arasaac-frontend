@@ -259,6 +259,7 @@
   "app.components.aacusage.p5": "Visuaalsed ajakavad aitavad erivajadustega lastel mõista, mida nad peavad tegema järgmiseks ja kuhu nad peavad minema (üleminekud).",
   "app.components.aacusage.p6": "Visuaalsed ajakavad võimaldavad lastel olla rohkem iseseisvamad ja võivad lapsi tegevuste sooritamisel rohkem motiveerida, sest need teadvustavad neile, mis hakkab kindlal ajahetkel juhtuma (hommik, õhtu, päev) kindlas keskkonnas (kodu, kool, spordikeskus...).",
   "app.components.aacusage.p7": "Sotsiaalne lugu on mõjuvõimas õppimise materjal, mis on kirjutatud narratiivsel viisil kasutades visuaalseid tugesid (sümboleid). Need kirjeldavad konkreetseid oskusi ja käitumisi, erilisi sündmusi ja sotsiaalseid olukordi. Nende abil õpib laps, kuidas konkreetsetele olukordadele läheneda.",
+  "app.components.aacusage.p8": "Erivajadustega inimestel võib olla raskusi sotsiaalsete olukordade, enda emotsioonide ja käitumise mõistmisel ja enda reguleerimisel... Selle tulemusena esineb paljudel juhtudel käitumist, mis on meie arvates halb, sobimatu ja problemaatiline.",
   "app.containers.ContactView.form.messageHint": "Kirjutage enda sõnum",
   "app.containers.ContactView.form.name": "Nimi",
   "app.containers.ContactView.form.nameHint": "Kirjutage enda nimi",
