@@ -357,6 +357,8 @@
   "app.components.aac.list4": "{independentExploration}: on mõeldud ainult elektroonilistele vahenditele. Sellisel juhul näitavad kommunikaator või arvuti erinevaid valikuid, millega suhelda seni kuni abistatav kõneleja valib lülilitele vajutades nendest ühe. On loodud palju erinevaid tüüpe lüliteid, mida saab kasutada erinevate kehaosadega.",
   "app.components.aac.list5": "{codedSelection}: igal sümbolil või tähel on kood (näiteks kahe või kolme kohaline arv või värv ja number), et abistatav kõneleja saaks sellele otseselt viidata või edastada tähte või sümbolit. Sellisel viisil saab ta ligipääsu paljudele sümbolitele.",
   "app.components.aac.mouseSelection": "Hiire valik",
+  "app.components.aac.p1": "{aac} kujutab endast mitmeid väljendusviise, mis mis erinevad räägitavast kõnest. Selle eesmärk on parandada (augmentatiivne) ja/või kompenseerida (alternatiivne) erivajadustega inimeste suhtlemisraskusi ja keelt.",
+  "app.components.aac.p10": "{graphicSymbols} hõlmavad nii lihtsaid pildilisi süsteeme kui ka süsteeme, mis on piktograafiliste süsteemide või traditsioonilise ortograafia (tähed, sõnad ja laused) tõttu keerulisemad. Tänu abistavatele suhtlemise vahenditele ja mitmekülgsele ligipääsetavusele saavad graafilisi süsteeme kasutada inimesed, kellel on piiratud liikumisvõime, isegi äärmise raskusastme korral. See on põhjuseks, miks saavad seda ka kasutada motoorsete häiretega inimesed.",
   "app.components.aac.pictographicSystems": "Piktograafilised süsteemid",
   "app.components.aac.referenceName": "ligipääsuks vajalikud strateegiad ja abistavad vahendid",
   "app.components.aac.resources": "Milliseid ressursse kasutatakse?",
