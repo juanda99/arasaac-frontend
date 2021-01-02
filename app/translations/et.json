@@ -443,6 +443,7 @@
   "app.components.licenseP2": "Ressursid (piktogrammid, pildid, asukohad ja videod), mida veebilehel pakutakse ja mis nendele materjaidele tuginevad on avaldatud {creativeCommonsLicense} alt. Sellega lubatakse nende kasutamine mittetulunduslikel eesmärkidel tagades allika ja autori nime. Seda jagatakse sama litsentsi alt.",
   "app.components.licenseP3": "Seetõttu on nende ressursside kasutamine mis tahes tootes või väljaandes ärilistel eesmärkidel välistatud.",
   "app.components.licenseP4": "Teistel eesmärkidel on nende kasutamine, täielik või osaline reprodutseerimine mis tahes vahendite või protseduuridega, sealhulgas reprograafia ja arvutitöötlusega rangelt keelatud seaduses kehtestatud sanktsioonide tõttu ilma autoriõiguse omaniku kirjaliku loata.",
+  "app.components.licenseP5": "Kõik töid, mis pärinevad {ARASAAC} kataloogidest sisalduvatest ressurssidest (piktogrammid, pildid, hääleülekanded või videod), tuleb levitada sama {creativeCommonsLicense} alt. Viidata tuleb autorile (Sergioa Palao), omanikule (Gobierno de Aragón), nende päritolule ({ARASAAC}) ja levitatavat litsentsi ({creativeCommonsLicense}).",
   "app.components.licenseP6": "Piktogrammide puhul on autoriõiguse omistamise viis:",
   "app.components.licenseP7": "Kasutatavad piktograafilised sümbolid on Aragoni valitsuse vara ja loodud {ARASAAC} jaoks Sergio Palao poolt, kes levitab neid {creativeCommonsLicense} alt.",
   "app.components.licenseP8": "Või skemaatiliselt välja tuues:",
