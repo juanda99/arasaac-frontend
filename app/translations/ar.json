@@ -561,6 +561,7 @@
   "signin.forgotPassword": "هل نسيت كلمة المرور؟",
   "signin.google": "تسجيل الدخول باستخدام جوجل",
   "signin.offerAccount": "ليس لديك حساب؟",
+  "signin.offerUseAccount": "أنْتَ بالفِعْل مُسْتَخدم أرَاسَاكْ؟",
   "signin.or": "أو",
   "signin.recoverPassword": "استعادة كلمة المرور",
   "signin.recoverPasswordInfo": "أدخل بريدك الإلكتروني لتتلقى الرابط لتغيير كلمة المرور الخاصة بك",
