@@ -94,9 +94,7 @@ class PictogramSnippet extends PureComponent {
     if (this.props.sex && sex) blur=true
     if (this.props.violence && violence) blur=true
     const fileUrl = color ? `${PICTOGRAMS_URL}/${_id}/${_id}_300.png` : `${PICTOGRAMS_URL}/${_id}/${_id}_nocolor_500.png`
-    console.log(fileUrl, '**+*************************')
     const { keyword } = keywordSelector(searchText, keywords)
-    console.log(_id, keyword, this.props.violence, 'violence', this.props.sex, 'sex', violence, sex)
     const { isAuthenticated } = this.context
     return (
       <StyledList
