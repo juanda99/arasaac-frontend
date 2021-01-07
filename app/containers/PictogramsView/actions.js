@@ -20,6 +20,8 @@ export const FAVORITE_LIST_SELECT = 'FAVORITE_LIST_SELECT'
 export const TOGGLE_FILTERS = 'PICTOGRAMS_TOGGLE_FILTERS'
 export const TOGGLE_SETTINGS = 'PICTOGRAMS_TOGGLE_SETTINGS'
 
+export const SET_SEARCH_LANGUAGE = 'SET_SEARCH_LANGUAGE'
+
 export const pictograms = {
   request: (locale, searchText) =>
     action(PICTOGRAMS.REQUEST, { locale, searchText }),
@@ -61,6 +63,8 @@ export const autocomplete = {
 
 export const toggleShowFilter = () => action(TOGGLE_FILTERS)
 export const toggleShowSettings = () => action(TOGGLE_SETTINGS)
+
+export const setSearchLanguage = (locale)  => action(SET_SEARCH_LANGUAGE, {locale})
 
 // we don't use this action right now, maybe if we decide to show only some filters... mobile version?
 // export const enableFilter = (field, value) =>

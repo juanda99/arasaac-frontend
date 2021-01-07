@@ -21,10 +21,18 @@ export const makeLoadingNewSelector = () =>
 const makeKeywordsSelector = () =>
   createSelector(selectPictogramsViewDomain, (substate) => substate.get('words'))
 
+export const makeSelectPictogramSearchLanguage = () => 
+  createSelector(
+    selectPictogramsViewDomain, 
+    makeSelectSearchLanguage(),
+    (substate, locale) => 
+      substate.get('searchLanguage') ? substate.get('searchLanguage') : locale
+  )
+
 export const makeKeywordsSelectorByLocale = () =>
   createSelector(
     makeKeywordsSelector(),
-    makeSelectSearchLanguage(),
+    makeSelectPictogramSearchLanguage(),
     (substate, locale) => substate.get(locale)
   )
 
@@ -34,7 +42,7 @@ const makeCategoriesSelector = () =>
 export const makeCategoriesSelectorByLocale = () =>
   createSelector(
     makeCategoriesSelector(),
-    makeSelectSearchLanguage(),
+    makeSelectPictogramSearchLanguage(),
     (substate, locale) => substate.get(locale)
   )
 
@@ -52,7 +60,7 @@ export const makeShowSettingsSelector = () => createSelector(
 const makePictogramsSelector = () =>
   createSelector(
     selectPictogramsViewDomain,
-    makeSelectSearchLanguage(),
+    makeSelectPictogramSearchLanguage() ,
     (substate, locale) =>
       // pictograms.locale does not exists first time, just pictograms
       substate.getIn(['pictograms', locale]) || new Map()
@@ -69,7 +77,7 @@ const makeSearchTextSelector = () => (_, ownProps) =>
 export const makeSearchResultsSelector = () =>
   createSelector(
     makeSearchSelector(),
-    makeSelectSearchLanguage(),
+    makeSelectPictogramSearchLanguage() ,
     makeSearchTextSelector(),
     (pictograms, locale, searchText) => pictograms.getIn([locale, searchText])
   )

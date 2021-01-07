@@ -18,7 +18,8 @@ import {
   // SHOW_FILTERS,
   // SET_FILTER_ITEMS,
   FAVORITE_LIST_SELECT,
-  FAVORITE_PICTOGRAMS
+  FAVORITE_PICTOGRAMS,
+  SET_SEARCH_LANGUAGE
 } from './actions'
 
 
@@ -45,6 +46,7 @@ export const initialState = fromJS({
   words: {},
   favoriteList: DEFAULT_LIST,
   searchText: '',
+  searchLanguage: null,
   pictograms,
   categories,
   newPictograms: []
@@ -79,6 +81,9 @@ function pictogramsViewReducer(state = initialState, action) {
 
     case NEW_PICTOGRAMS.REQUEST:
       return state.set('loadingNew', true).set('errorNew', false)
+
+    case SET_SEARCH_LANGUAGE:
+      return state.set('searchLanguage', action.payload.locale)
 
     case PICTOGRAMS.SUCCESS:
       newPictogram = fromJS(action.payload.data.entities.pictograms || {})

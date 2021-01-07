@@ -33,13 +33,12 @@ import { DEFAULT_LIST } from 'utils'
 import {
   makeSelectHasUser,
   makeSelectRootFavorites,
-  makeSelectSearchLanguage,
   makeSelectSexPictograms,
   makeSelectViolencePictograms,
-  makeSelectColorPictograms 
+  makeSelectColorPictograms,
+  makeSelectSearchLanguage
 } from 'containers/App/selectors'
 import {
-  makeShowFiltersSelector,
   makeShowSettingsSelector,
   makeLoadingSelector,
   makeLoadingNewSelector,
@@ -48,7 +47,8 @@ import {
   makeNewPictogramsSelector,
   makeKeywordsSelectorByLocale,
   makeCategoriesSelectorByLocale,
-  makeListSelector
+  makeListSelector,
+  makeSelectPictogramSearchLanguage ,
   // makeFavoritePictogramsSelector
 } from './selectors'
 import {
@@ -59,7 +59,8 @@ import {
   newPictograms,
   toggleShowFilter,
   toggleShowSettings,
-  setFilterItems
+  setFilterItems,
+  setSearchLanguage
 } from './actions'
 import messages from './messages'
 
@@ -81,8 +82,7 @@ class PictogramsView extends PureComponent {
     offset: 0,
     listName: '',
     selectedTags: Set(),
-    running: false,
-    searchLanguage: this.props.searchLanguage 
+    running: false
   }
 
   title = this.props.intl.formatMessage(messages.pageTitle)
@@ -103,8 +103,8 @@ class PictogramsView extends PureComponent {
   }
 
   componentDidMount() {
-    const { requestPictograms } = this.props
-    const { searchLanguage } = this.state
+    const { requestPictograms, searchLanguage, defaultSearchLanguage } = this.props
+    const language = searchLanguage ? searchLanguage : defaultSearchLanguage
 
     /* hack to open learning aac menu when visiting from homepage */
     const isOpen = window.document.getElementById("lstsearchpictos")
@@ -112,10 +112,10 @@ class PictogramsView extends PureComponent {
 
     this.processQuery()
     if (this.props.params.searchText && !this.props.searchResults) {
-      requestPictograms(searchLanguage, encodeURIComponent(this.props.params.searchText))
+      requestPictograms(language, encodeURIComponent(this.props.params.searchText))
     }
 
-    this.loadInitialData()
+    this.loadInitialData(language)
     
     // if (favorites && token) {
     //   const [...lists] = favorites.keys()
@@ -125,7 +125,7 @@ class PictogramsView extends PureComponent {
 
   }
 
-  loadInitialData = () => {
+  loadInitialData = (searchLanguage) => {
     const {
       requestCategories,
       requestNewPictograms,
@@ -134,7 +134,6 @@ class PictogramsView extends PureComponent {
       keywords,
       categories
     } = this.props
-    const {searchLanguage} = this.state
     /* we just ask for new pictograms twice and hour and autocomplete keywords once a day */
     const actualDate = new Date()
 
@@ -155,7 +154,7 @@ class PictogramsView extends PureComponent {
     if (this.props.params.searchText !== nextProps.params.searchText) {
       this.setState({selectedTags: Set()})
       const { requestPictograms } = this.props
-      requestPictograms(this.state.searchLanguage, encodeURIComponent(nextProps.params.searchText))
+      requestPictograms(nextProps.searchLanguage, encodeURIComponent(nextProps.params.searchText))
     }
     if (this.props.location.search !== nextProps.location.search) {
       this.processQuery(nextProps)
@@ -192,13 +191,12 @@ class PictogramsView extends PureComponent {
       requestCategories,
       requestNewPictograms,
       requestAutocomplete,
+      setSearchLanguage
     } = this.props
-    this.setState({searchLanguage}, ()=> {
-      requestNewPictograms(searchLanguage)
-      requestAutocomplete(searchLanguage)
-      requestCategories(searchLanguage)
-    })
-    
+    setSearchLanguage(searchLanguage)
+    requestNewPictograms(searchLanguage)
+    requestAutocomplete(searchLanguage)
+    requestCategories(searchLanguage)
   }
 
   handlePageClick = offset => {
@@ -280,10 +278,11 @@ class PictogramsView extends PureComponent {
       categories,
       sex,
       violence,
-      color
+      color,
+      searchLanguage
     } = this.props
     const searchText = this.props.params.searchText || ''
-    const { visibleLabels, running, offset, tab, selectedTags, searchLanguage } = this.state
+    const { visibleLabels, running, offset, tab, selectedTags } = this.state
     const hideIconText = width === SMALL
     let gallery,  pictogramsCounter
     const filterVisiblePictograms = visiblePictograms.filter(pictogram => selectedTags.every(tag => pictogram.tags.indexOf(tag)!==-1))
@@ -500,7 +499,8 @@ const mapStateToProps = (state, ownProps) => ({
   sex: makeSelectSexPictograms()(state),
   violence: makeSelectViolencePictograms()(state),
   color: makeSelectColorPictograms()(state),
-  searchLanguage: makeSelectSearchLanguage()(state)
+  searchLanguage: makeSelectPictogramSearchLanguage()(state),
+  defaultSearchLanguage: makeSelectSearchLanguage()(state)
   // favoritePictograms: makeFavoritePictogramsSelector()(state)
 })
 // const pictoList = state.getIn(['pictogramView', 'search', ownProps.params.searchText]) || []
@@ -536,7 +536,9 @@ const mapDispatchToProps = (dispatch) => ({
   deleteFavorite: (fileName, listName, token) => {
     dispatch(deleteFavorite.request(fileName, listName, token))
   },
-
+  setSearchLanguage: (language) => {
+    dispatch(setSearchLanguage(language))
+  },
 })
 
 export default connect(
