@@ -27,7 +27,7 @@ const source = {
   },
   endDrag(props, monitor) {
     if (!monitor.didDrop()) {
-      // console.log('not dropped!')
+      // not dropped!
       return
     }
     const { onDrop } = props

@@ -69,7 +69,6 @@ class FavoritesView extends PureComponent {
   }
 
   async componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
     const { requestFavorites, locale, token, favorites } = this.props
     if (nextProps.favorites !== favorites) {
       if (favorites) {
@@ -128,14 +127,12 @@ class FavoritesView extends PureComponent {
   handleDownloadList = listName => {
 
     const { id } = this.props
-    console.log(`Download list ${listName}, id: ${id}`)
     const location = downloadList(listName, id)
     window.location = location
   }
 
   handleDownload = (idPictogram, keyword) => {
     const location = downloadPictogram(idPictogram, keyword)
-    console.log(location, 'xxxx')
     window.location = location
   }
 
