@@ -45,10 +45,6 @@ export const initialState = fromJS({
   words: {},
   favoriteList: DEFAULT_LIST,
   searchText: '',
-  filters: {
-    License: []
-    // TODO: filter by violence, sex, schematic
-  },
   pictograms,
   categories,
   newPictograms: []

@@ -1,10 +1,10 @@
 import { denormalize } from 'normalizr'
 import { createSelector } from 'reselect'
 import { searchPictogramSchema } from 'services/schemas'
-import { getFilteredItems } from 'utils'
-import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
+// import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import { makeSelectFavorites } from 'containers/App/selectors'
 import { Map } from 'immutable'
+import { makeSelectSearchLanguage } from 'containers/App/selectors'
 
 export const selectPictogramsViewDomain = (state) => state.get('pictogramsView')
 
@@ -24,7 +24,7 @@ const makeKeywordsSelector = () =>
 export const makeKeywordsSelectorByLocale = () =>
   createSelector(
     makeKeywordsSelector(),
-    makeSelectLocale(),
+    makeSelectSearchLanguage(),
     (substate, locale) => substate.get(locale)
   )
 
@@ -34,7 +34,7 @@ const makeCategoriesSelector = () =>
 export const makeCategoriesSelectorByLocale = () =>
   createSelector(
     makeCategoriesSelector(),
-    makeSelectLocale(),
+    makeSelectSearchLanguage(),
     (substate, locale) => substate.get(locale)
   )
 
@@ -49,15 +49,10 @@ export const makeShowSettingsSelector = () => createSelector(
   (substate) => substate.get('showSettings')
 )
 
-export const makeFiltersSelector = () =>
-  createSelector(selectPictogramsViewDomain, (substate) =>
-    substate.get('filters')
-  )
-
 const makePictogramsSelector = () =>
   createSelector(
     selectPictogramsViewDomain,
-    makeSelectLocale(),
+    makeSelectSearchLanguage(),
     (substate, locale) =>
       // pictograms.locale does not exists first time, just pictograms
       substate.getIn(['pictograms', locale]) || new Map()
@@ -74,7 +69,7 @@ const makeSearchTextSelector = () => (_, ownProps) =>
 export const makeSearchResultsSelector = () =>
   createSelector(
     makeSearchSelector(),
-    makeSelectLocale(),
+    makeSelectSearchLanguage(),
     makeSearchTextSelector(),
     (pictograms, locale, searchText) => pictograms.getIn([locale, searchText])
   )
@@ -95,7 +90,6 @@ export const makeVisiblePictogramsSelector = () =>
   createSelector(
     makeSearchResultsSelector(),
     makeEntitiesSelector(),
-    makeFiltersSelector(),
     (searchData, entities, filters) => {
       /* searchData could be undefined */
       if (searchData == null) return []
@@ -104,7 +98,7 @@ export const makeVisiblePictogramsSelector = () =>
         searchPictogramSchema,
         entities
       )
-      return getFilteredItems(pictogramList, filters)
+      return pictogramList
     }
   )
 

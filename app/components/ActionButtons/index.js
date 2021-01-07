@@ -23,38 +23,64 @@ const styles = {
 class ActionButtons extends PureComponent {
 
   render() {
-    const { onFilterClick, filterActive, onSettingsClick, settingsActive, muiTheme, helpActive, onHelpClick } = this.props
+    const { 
+      onFilterClick,
+      filterActive,
+      onSettingsClick,
+      settingsActive,
+      muiTheme,
+      helpActive,
+      onHelpClick,
+      showFilters,
+      showSettings,
+      showHelp
+    } = this.props
 
     return (
       <div>
-        <IconButton id='filtersBtn' style={styles.icon} onClick={onFilterClick} tooltip={<FormattedMessage {...messages.showFilters} />}>
-          {filterActive ?
-            <FilterListIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
-            : <FilterListIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} />}
-        </IconButton>
-        <IconButton id='advSearchBtn' style={styles.icon} onClick={onSettingsClick} tooltip={<FormattedMessage {...messages.advancedSearch} />}>
-          {settingsActive ?
-            <SettingsIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
-            : <SettingsIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} />}
-        </IconButton>
-        <IconButton style={styles.icon} onClick={onHelpClick} tooltip={<FormattedMessage {...messages.showHelp} />}>
-          {helpActive ?
-            <HelpIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
-            : <HelpIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} />}
-        </IconButton>
+        {showFilters && (
+          <IconButton id='filtersBtn' style={styles.icon} onClick={onFilterClick} tooltip={<FormattedMessage {...messages.showFilters} />}>
+            {filterActive ?
+              <FilterListIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
+              : <FilterListIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} />}
+          </IconButton>
+        )}
+        {showSettings && (
+          <IconButton id='advSearchBtn' style={styles.icon} onClick={onSettingsClick} tooltip={<FormattedMessage {...messages.advancedSearch} />}>
+            {settingsActive ?
+              <SettingsIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
+              : <SettingsIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} />}
+          </IconButton>
+        )}
+        {showHelp  && (
+          <IconButton style={styles.icon} onClick={onHelpClick} tooltip={<FormattedMessage {...messages.showHelp} />}>
+            {helpActive ?
+              <HelpIcon color={muiTheme.palette.accent1Color} hoverColor={muiTheme.palette.primary2Color} />
+              : <HelpIcon color={muiTheme.palette.accent3Color} hoverColor={muiTheme.palette.primary2Color} />}
+          </IconButton>
+        )}
       </div>
     )
   }
 }
 
 ActionButtons.propTypes = {
-  onFilterClick: PropTypes.func.isRequired,
-  onSettingsClick: PropTypes.func.isRequired,
-  filterActive: PropTypes.bool.isRequired,
-  settingsActive: PropTypes.bool.isRequired,
+  onFilterClick: PropTypes.func,
+  onSettingsClick: PropTypes.func,
+  filterActive: PropTypes.bool,
+  settingsActive: PropTypes.bool,
   muiTheme: PropTypes.object,
-  helpActive: PropTypes.bool.isRequired,
-  onHelpClick: PropTypes.func.isRequired,
+  helpActive: PropTypes.bool,
+  onHelpClick: PropTypes.func,
+  showHelp: PropTypes.bool,
+  showFilters: PropTypes.bool,
+  showSetting: PropTypes.bool,
+}
+
+ActionButtons.defaultProps = {
+  showHelp:  true,
+  showFilters: true,
+  showSettings:  true
 }
 
 export default muiThemeable()(ActionButtons)

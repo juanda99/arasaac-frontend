@@ -42,8 +42,6 @@ export class PictogramList extends PureComponent {
     const {
       locale,
       pictograms,
-      filtersMap,
-      setFilterItems,
       width,
       searchText,
       favorites,
@@ -56,15 +54,6 @@ export class PictogramList extends PureComponent {
       violence,
       color
     } = this.props
-
-    // const pagination = (pictograms.length >= itemsPerPage) ?
-    //   (<Pagination
-    //     total={total}
-    //     current={currentPage}
-    //     display={display}
-    //     onChange={this.handlePageClick}
-    //   />)
-    //   : null
 
     const numberItems = pictograms.length
     const totalPages = Math.ceil(numberItems / itemsPerPage)
@@ -140,8 +129,6 @@ PictogramList.propTypes = {
   // with optional parameters in the router is slower in my tests ????
   // rollback from https://github.com/react-boilerplate/react-boilerplate/issues/1748
   locale: PropTypes.string,
-  filtersMap: ImmutablePropTypes.map.isRequired,
-  setFilterItems: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   width: PropTypes.number.isRequired,
   onAddFavorite: PropTypes.func.isRequired,

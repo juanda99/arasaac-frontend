@@ -18,7 +18,6 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 import Divider from 'material-ui/Divider'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import { Map, Set } from 'immutable'
-import FilterList from 'components/Filters'
 import PictogramList from 'components/PictogramList'
 import ActionButtons from 'components/ActionButtons'
 import P from 'components/P'
@@ -38,10 +37,8 @@ import {
   makeSelectSexPictograms,
   makeSelectViolencePictograms,
   makeSelectColorPictograms 
-
 } from 'containers/App/selectors'
 import {
-  makeFiltersSelector,
   makeShowFiltersSelector,
   makeShowSettingsSelector,
   makeLoadingSelector,
@@ -85,7 +82,7 @@ class PictogramsView extends PureComponent {
     listName: '',
     selectedTags: Set(),
     running: false,
-    searchLanguage: this.props.locale
+    searchLanguage: this.props.searchLanguage 
   }
 
   title = this.props.intl.formatMessage(messages.pageTitle)
@@ -271,14 +268,11 @@ class PictogramsView extends PureComponent {
   render() {
     const {
       showSettings,
-      showFilter,
-      filters,
       visiblePictograms,
       newPictogramsList,
       locale,
       loading,
       loadingNew,
-      filtersData,
       muiTheme,
       keywords,
       rootFavorites,
@@ -300,9 +294,7 @@ class PictogramsView extends PureComponent {
         : pictogramsCounter ?
           <PictogramList
             pictograms={filterVisiblePictograms}
-            locale={locale}
-            filtersMap={filters}
-            setFilterItems={this.props.setFilterItems}
+            locale={searchLanguage}
             showLabels={visibleLabels}
             searchText={searchText}
             onAddFavorite={this.handleAddFavorite}
@@ -329,8 +321,6 @@ class PictogramsView extends PureComponent {
           <PictogramList
             pictograms={newPictogramsList}
             locale={locale}
-            filtersMap={filters}
-            setFilterItems={this.props.setFilterItems}
             showLabels={visibleLabels}
             searchText={searchText}
             onAddFavorite={this.handleAddFavorite}
@@ -357,24 +347,18 @@ class PictogramsView extends PureComponent {
             style={{ flexGrow: 1 }}
           />
           <ActionButtons
-            onFilterClick={this.props.toggleShowFilter}
             onSettingsClick={this.props.toggleShowSettings}
-            filterActive={showFilter}
             settingsActive={showSettings}
-            helpActive={running}
-            onHelpClick={this.startHelp}
+            showHelp={false}
+            showFilters={false}
           />
         </DivSearchBox>
-        {showFilter ?
-          <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
-          : null
-        }
         {showSettings ?
           <LanguageSelector
             value={searchLanguage}
             onChange={this.handleLanguageChange}
             shortOption={true}
-            showToolTip={false}
+            toolTip={this.props.intl.formatMessage(messages['languageSearch'])}
           />
           : null
         }
@@ -480,7 +464,6 @@ PictogramsView.propTypes = {
   params: PropTypes.object.isRequired,
   filters: PropTypes.instanceOf(Map),
   muiTheme: PropTypes.object,
-  showFilter: PropTypes.bool,
   setFilterItems: PropTypes.func.isRequired,
   visiblePictograms: PropTypes.arrayOf(PropTypes.object),
   newPictogramsList: PropTypes.arrayOf(PropTypes.object),
@@ -501,8 +484,6 @@ PictogramsView.contextTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  filters: makeFiltersSelector()(state),
-  showFilter: makeShowFiltersSelector()(state),
   showSettings: makeShowSettingsSelector()(state),
   locale: makeSelectLocale()(state),
   loading: makeLoadingSelector()(state),

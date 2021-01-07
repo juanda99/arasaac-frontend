@@ -140,5 +140,9 @@ export default defineMessages({
     id: 'app.MaterialsView.pageDescriptionSearch',
     defaultMessage: 'AAC material resources related to {searchText} for professionals and families. Download Augmentative and Alternative Communication documents, boards, worksheets...'
   },
-
+  advancedSearch: {
+    id: 'app.containers.LanguageSelector.advancedSearch',
+    description: 'Floating label for language selector',
+    defaultMessage: 'Advanced Search'
+  },
 })

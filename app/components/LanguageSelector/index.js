@@ -18,7 +18,7 @@ const LanguageSelector = ({
   intl,
   value,
   shortOption,
-  showToolTip,
+  toolTip,
   labelColor,
   muiTheme
 }) => {
@@ -44,7 +44,7 @@ const LanguageSelector = ({
       labelStyle={labelColor ? { color: labelColor } : {}}
       onChange={handleChange}
       iconStyle={isRtl ? { right: '', left: 0 } : {}}
-      floatingLabelText={showToolTip && 'Choose your language'}
+      floatingLabelText={!!toolTip && toolTip}
     >
     { orderLanguages.map((language) =>
         shortOption ? (
@@ -71,7 +71,7 @@ LanguageSelector.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
   shortOption: PropTypes.bool,
-  showToolTip: PropTypes.bool,
+  toolTip: PropTypes.bool,
   labelColor: PropTypes.string,
   muiTheme: PropTypes.object.isRequired,
 }
