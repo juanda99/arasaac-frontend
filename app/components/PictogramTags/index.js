@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
+import LanguageProvider from 'containers/LanguageProvider'
+// Import i18n messages
+import { translationMessages } from '../../i18n'
 import Avatar from 'material-ui/Avatar'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
@@ -140,9 +143,11 @@ const PictogramTags = ({searchText, selectedTags, categories, locale, pictograms
 
 
   return (
-    <div style={{display: 'flex', flexWrap: 'wrap'}}>
-      {renderTags}
-    </div>
+    <LanguageProvider messages={translationMessages} paramLocale={locale}>
+      <div style={{display: 'flex', flexWrap: 'wrap'}}>
+        {renderTags}
+      </div>
+    </LanguageProvider>
   )
 }
 

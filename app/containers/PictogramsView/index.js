@@ -322,7 +322,7 @@ class PictogramsView extends PureComponent {
         : pictogramsCounter &&
           <PictogramList
             pictograms={newPictogramsList}
-            locale={locale}
+            locale={searchLanguage}
             showLabels={visibleLabels}
             searchText={searchText}
             onAddFavorite={this.handleAddFavorite}
@@ -367,7 +367,7 @@ class PictogramsView extends PureComponent {
 
       </div>
     )
-
+    console.log(searchLanguage, categories, '+***++********************************')
     return (
       <div>
         <Helmet>
@@ -392,7 +392,7 @@ class PictogramsView extends PureComponent {
                     selectedTags={selectedTags}
                     pictograms={filterVisiblePictograms}
                     categories={categories}
-                    locale={locale}
+                    locale={searchLanguage}
                     onUpdateTags={this.handleUpdateTags}
                     onCategoryClick={this.handleSubmit}
                   />}

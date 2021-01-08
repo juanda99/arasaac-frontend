@@ -274,12 +274,10 @@ function* categoriesGetData(action) {
 }
 
 export function* categoriesData() {
-  console.log('wating category-requets.............')
   const watcher = yield takeLatest(CATEGORIES.REQUEST, categoriesGetData)
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE)
   yield cancel(watcher)
-  console.log('cancel category-requets.............')
 }
 
 // All sagas to be loaded
