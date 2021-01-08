@@ -89,8 +89,8 @@ const api = {
 export const downloadCustomPictogram = (fileName) =>
   `${PRIVATE_API_ROOT}/pictograms/custom/${fileName}`
 
-export const downloadPictogram = (fileName, keyword) =>
-  `${PRIVATE_API_ROOT}/pictograms/download/${fileName}/${keyword}`
+export const downloadPictogram = (fileName, keyword, color) =>
+  `${PRIVATE_API_ROOT}/pictograms/download/${fileName}/${color}/${keyword}`
 
 export const downloadList = (listName, id) =>
   `${PRIVATE_API_ROOT}/users/favorites/${id}/${listName}`

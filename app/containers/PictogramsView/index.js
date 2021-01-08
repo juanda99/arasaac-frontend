@@ -239,7 +239,7 @@ class PictogramsView extends PureComponent {
   }
 
   handleDownload = (idPictogram, keyword) => {
-    const location = downloadPictogram(idPictogram, keyword)
+    const location = downloadPictogram(idPictogram, keyword, this.props.color)
     window.location = location
   }
 
