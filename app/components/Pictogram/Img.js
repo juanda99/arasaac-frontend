@@ -80,7 +80,8 @@ class Img extends Component {
       frameWidth,
       dragAndDrop,
       topMargin,
-      bottomMargin
+      bottomMargin,
+      blurRadius
     } = this.props
     let { x, y } = this.state
     const size = enableFrame
@@ -110,6 +111,7 @@ class Img extends Component {
           draggable={dragAndDrop}
           scale={canvasSize / 500}
           preventDefault={false}
+          filters={[Konva.Filters.Blur]} blurRadius={blurRadius} 
         />
       </Layer>
     )
@@ -125,7 +127,8 @@ Img.propTypes = {
   canvasSize: PropTypes.number.isRequired,
   dragAndDrop: PropTypes.bool.isRequired,
   topMargin: PropTypes.number.isRequired,
-  bottomMargin: PropTypes.number.isRequired
+  bottomMargin: PropTypes.number.isRequired,
+  blurRadius: PropTypes.number.isRequired,
 }
 
 export default Img

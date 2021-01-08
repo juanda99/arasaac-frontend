@@ -81,13 +81,19 @@ class PictogramSnippet extends PureComponent {
 
   render() {
     const {
-      pictogram: { _id, keywords },
+      pictogram: { _id, keywords, sex, violence },
       searchText,
       muiTheme,
       locale,
       showExtra,
-      isFavorite
+      isFavorite,
+      color
     } = this.props
+    let blur = false
+    // this.props.sex means hideSex, violence hideViolence
+    if (this.props.sex && sex) blur=true
+    if (this.props.violence && violence) blur=true
+    const fileUrl = color ? `${PICTOGRAMS_URL}/${_id}/${_id}_300.png` : `${PICTOGRAMS_URL}/${_id}/${_id}_nocolor_500.png`
     const { keyword } = keywordSelector(searchText, keywords)
     const { isAuthenticated } = this.context
     return (
@@ -101,8 +107,9 @@ class PictogramSnippet extends PureComponent {
           <Item url={`/pictograms/${locale}/${_id}/${encodeURIComponent(keyword)}`}>
             <div style={{ position: 'relative' }}>
               <Image
-                src={`${PICTOGRAMS_URL}/${_id}/${_id}_300.png`}
+                src={fileUrl}
                 alt={keyword}
+                blur={blur}
               />
               {isFavorite && (
                 <IconButton
@@ -158,10 +165,12 @@ class PictogramSnippet extends PureComponent {
                     style={this.styles.leftIconButton}
                     onClick={this.handleDownload}
                   >
-                    <FileDownload
-                      color={muiTheme.appBar.textColor}
-                      hoverColor={muiTheme.palette.accent1Color}
-                    />
+                    {!blur  && (
+                      <FileDownload
+                        color={muiTheme.appBar.textColor}
+                        hoverColor={muiTheme.palette.accent1Color}
+                      />
+                    )}
                   </IconButton>
                 )}
                 <p style={this.styles.cardTitle}>{keyword}</p>
@@ -187,6 +196,9 @@ PictogramSnippet.propTypes = {
   onClickFavorite: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool,
   onDownload: PropTypes.func.isRequired,
+  sex: PropTypes.bool.isRequired,
+  violence: PropTypes.bool.isRequired,
+  color: PropTypes.bool.isRequired,
 }
 
 export default muiThemeable()(PictogramSnippet)

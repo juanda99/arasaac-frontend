@@ -24,16 +24,6 @@ const styles = {
 }
 
 export class FavoriteList extends React.Component {
-  // componentDidMount() {
-  //   document.body.addEventListener('mousemove', (e) => this.showCords(e))
-  // }
-
-  // showCords = (event) => {
-  //   const x = event.clientX
-  //   const y = event.clientY
-  //   const coor = 'X coords: ' + x + ', Y coords: ' + y
-  //   console.log(coor)
-  // };
 
   handleDeleteFavorite = (fileName) => {
     const { onDeleteFavorite, selectedList } = this.props

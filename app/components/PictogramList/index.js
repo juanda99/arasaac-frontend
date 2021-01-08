@@ -42,8 +42,6 @@ export class PictogramList extends PureComponent {
     const {
       locale,
       pictograms,
-      filtersMap,
-      setFilterItems,
       width,
       searchText,
       favorites,
@@ -51,17 +49,11 @@ export class PictogramList extends PureComponent {
       onAddFavorite,
       rtl,
       onDownload,
-      offset
+      offset,
+      sex,
+      violence,
+      color
     } = this.props
-
-    // const pagination = (pictograms.length >= itemsPerPage) ?
-    //   (<Pagination
-    //     total={total}
-    //     current={currentPage}
-    //     display={display}
-    //     onChange={this.handlePageClick}
-    //   />)
-    //   : null
 
     const numberItems = pictograms.length
     const totalPages = Math.ceil(numberItems / itemsPerPage)
@@ -98,6 +90,9 @@ export class PictogramList extends PureComponent {
           onClickFavorite={isFavorite ? onDeleteFavorite : onAddFavorite}
           onDownload={onDownload}
           isFavorite={isFavorite}
+          sex={sex}
+          violence={violence}
+          color={color}
         />
       )
     })
@@ -134,8 +129,6 @@ PictogramList.propTypes = {
   // with optional parameters in the router is slower in my tests ????
   // rollback from https://github.com/react-boilerplate/react-boilerplate/issues/1748
   locale: PropTypes.string,
-  filtersMap: ImmutablePropTypes.map.isRequired,
-  setFilterItems: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   width: PropTypes.number.isRequired,
   onAddFavorite: PropTypes.func.isRequired,
@@ -145,6 +138,9 @@ PictogramList.propTypes = {
   onDownload: PropTypes.func.isRequired,
   offset: PropTypes.number.isRequired,
   onPageClick: PropTypes.func.isRequired,
+  sex: PropTypes.bool.isRequired,
+  violence: PropTypes.bool.isRequired,
+  color: PropTypes.bool.isRequired,
 }
 
 export default withWidth()(PictogramList)

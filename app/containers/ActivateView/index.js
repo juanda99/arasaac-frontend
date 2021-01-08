@@ -20,7 +20,7 @@ class ActivateView extends Component {
   async componentDidMount() {
     const { activationCode } = this.props.params
     if (activationCode) {
-      //   console.log('asking for data....')
+      //   asking for data....
       //   this.props.requestActivation(activationCode)
       // }
       try {

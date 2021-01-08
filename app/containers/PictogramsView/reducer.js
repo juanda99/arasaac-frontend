@@ -4,61 +4,51 @@
  *
  */
 
-import { fromJS } from 'immutable'
+import { fromJS, Map } from 'immutable'
 import { PICTOGRAM } from 'containers/PictogramView/actions'
+import languages from 'data/languages'
 import { DEFAULT_LIST } from 'utils'
 import {
   PICTOGRAMS,
+  CATEGORIES,
   NEW_PICTOGRAMS,
   AUTOCOMPLETE,
-  SHOW_FILTERS,
-  SET_FILTER_ITEMS,
+  TOGGLE_FILTERS,
+  TOGGLE_SETTINGS,
+  // SHOW_FILTERS,
+  // SET_FILTER_ITEMS,
   FAVORITE_LIST_SELECT,
-  FAVORITE_PICTOGRAMS
+  FAVORITE_PICTOGRAMS,
+  SET_SEARCH_LANGUAGE
 } from './actions'
+
+
+const pictograms = {}
+languages.forEach(language => {
+  pictograms[language.code] = {}
+})
+
+const categories = {}
+languages.forEach(language => {
+  categories[language.code] = {}
+})
 
 export const initialState = fromJS({
   showFilter: false,
+  showSettings: false,
   loading: false,
   loadingNew: false,
   error: false,
   errorNew: false,
+  errorCategories: false,
+  loadingCategories: false,
   search: {},
   words: {},
   favoriteList: DEFAULT_LIST,
   searchText: '',
-  filters: {
-    License: []
-    // TODO: filter by violence, sex, schematic
-  },
-  pictograms: {
-    es: {},
-    en: {},
-    al: {},
-    an: {},
-    ar: {},
-    bg: {},
-    br: {},
-    ca: {},
-    de: {},
-    el: {},
-    eu: {},
-    fr: {},
-    gl: {},
-    he: {},
-    hr: {},
-    hu: {},
-    it: {},
-    mk: {},
-    nl: {},
-    pl: {},
-    pt: {},
-    ro: {},
-    ru: {},
-    sk: {},
-    val: {},
-    zh: {}
-  },
+  searchLanguage: null,
+  pictograms,
+  categories,
   newPictograms: []
 })
 
@@ -92,6 +82,9 @@ function pictogramsViewReducer(state = initialState, action) {
     case NEW_PICTOGRAMS.REQUEST:
       return state.set('loadingNew', true).set('errorNew', false)
 
+    case SET_SEARCH_LANGUAGE:
+      return state.set('searchLanguage', action.payload.locale)
+
     case PICTOGRAMS.SUCCESS:
       newPictogram = fromJS(action.payload.data.entities.pictograms || {})
       return state
@@ -114,20 +107,39 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .mergeIn(['pictograms', action.payload.locale], newPictogram)
-
+    
+    case CATEGORIES.REQUEST:
+      return state.set('loadingCategories', true).set('errorCategories', false)
+    case CATEGORIES.FAILURE:
+      return state.set('errorCategories', action.payload.error).set('loadingCategories', false)
+    case CATEGORIES.SUCCESS:
+      {
+      const categories = Map(action.payload.data.data || {})
+      return state
+        .set('loadingNew', false)
+        .setIn(['categories', action.payload.locale], categories)
+      }
     case AUTOCOMPLETE.REQUEST:
       return state
     case AUTOCOMPLETE.SUCCESS:
       return state.setIn(['words', action.payload.locale], action.payload.data)
     case AUTOCOMPLETE.FAILURE:
       return state.set('error', action.payload.error)
-    case SHOW_FILTERS:
-      return state.set('showFilter', !state.get('showFilter'))
-    case SET_FILTER_ITEMS:
-      return state.setIn(
-        ['filters', action.payload.filter],
-        action.payload.values
-      )
+    case TOGGLE_FILTERS:
+      return state
+        .set('showFilter', !state.get('showFilter'))
+        .set('showSettings', false)
+    case TOGGLE_SETTINGS:
+      return state
+        .set('showSettings', !state.get('showSettings'))
+        .set('showFilter', false)
+    // case SHOW_FILTERS:
+    //   return state.set('showFilter', !state.get('showFilter'))
+    // case SET_FILTER_ITEMS:
+    //   return state.setIn(
+    //     ['filters', action.payload.filter],
+    //     action.payload.values
+    //   )
     case FAVORITE_LIST_SELECT:
       return state.set('favoriteList', action.payload.listName)
     default:

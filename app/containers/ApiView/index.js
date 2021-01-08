@@ -24,7 +24,7 @@ class ApiView extends PureComponent {
   }
 
   render() {
-    // console.log(this.props.theme)
+
     return (
       <View>
         <ReadMargin>

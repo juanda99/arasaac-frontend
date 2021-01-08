@@ -300,5 +300,37 @@ export default defineMessages({
     id: 'app.components.Pictogram.TextOptions.fontFamily',
     description: 'Label text',
     defaultMessage: 'Font family:'
-  }
+  },
+  taxonomy: {
+    id: 'app.components.PictogramCategories.taxonomy',
+    defaultMessage: 'Taxonomy'
+  },
+  pictoBelongs: {
+    id: 'app.components.PictogramCategories.pictoBelongs',
+    defaultMessage: 'This pictogram belong to these categories:'
+  },
+  pictoLabels: {
+    id: 'app.components.PictogramCategories.pictoLabels',
+    defaultMessage: 'This pictogram has been labelled as:'
+  },
+  authUser: {
+    id: 'app.components.Pictogram.AuthUser',
+    defaultMessage: 'This pictogram is related to sex or violence. In order to view it, you must be registered.'
+  },
+  disableFilter: {
+    id: 'app.components.Pictogram.disableFilter',
+    defaultMessage: 'This pictogram is related to sex or violence. In order to view it, you must deactivate the corresponding filter from your user profile.'
+  },
+  cancel: {
+    id: 'app.components.Pictogram.cancel',
+    defaultMessage: 'Cancel'
+  },
+  accept: {
+    id: 'app.components.Pictogram.accept',
+    defaultMessage: 'OK'
+  },
+  pictogramDisabled: {
+    id: 'app.components.Pictogram.pictogramDisabled',
+    defaultMessage: 'Pictogram disabled'
+  },
 })

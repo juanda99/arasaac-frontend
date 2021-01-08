@@ -30,6 +30,8 @@ const api = {
     callApi(`${API_ROOT}/keywords/${locale}`),
   AUTHORS_REQUEST: () =>
     callApi(`${PRIVATE_API_ROOT}/users/authors`),
+  CATEGORIES_REQUEST: ({ locale }) =>
+    callApi(`${PRIVATE_API_ROOT}/categories/${locale}`),
   PICTOGRAMS_REQUEST: ({ locale, searchText }) =>
     callApi(`${API_ROOT}/pictograms/${locale}/search/${searchText}`, {
       schema: searchPictogramSchema

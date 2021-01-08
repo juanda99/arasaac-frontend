@@ -19,7 +19,6 @@ class WorldView extends PureComponent {
   }
 
   render() {
-    // console.log(this.props.theme)
     return (
       <div>
         <View left={true}>

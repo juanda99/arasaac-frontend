@@ -9,14 +9,17 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import View from 'components/View'
+import DivSearchBox from 'components/DivSearchBox'
+import LanguageSelector from 'components/LanguageSelector'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
+import PictogramTags from 'components/PictogramTags'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import Divider from 'material-ui/Divider'
 import { Tabs, Tab } from 'material-ui/Tabs'
-import { Map } from 'immutable'
-import FilterList from 'components/Filters'
+import { Map, Set } from 'immutable'
 import PictogramList from 'components/PictogramList'
+import ActionButtons from 'components/ActionButtons'
 import P from 'components/P'
 import { withRouter } from 'react-router'
 import SearchIcon from 'material-ui/svg-icons/action/search'
@@ -29,27 +32,35 @@ import { downloadPictogram } from 'services'
 import { DEFAULT_LIST } from 'utils'
 import {
   makeSelectHasUser,
-  makeSelectRootFavorites
+  makeSelectRootFavorites,
+  makeSelectSexPictograms,
+  makeSelectViolencePictograms,
+  makeSelectColorPictograms,
+  makeSelectSearchLanguage
 } from 'containers/App/selectors'
 import {
-  makeFiltersSelector,
-  makeShowFiltersSelector,
+  makeShowSettingsSelector,
   makeLoadingSelector,
   makeLoadingNewSelector,
   makeSearchResultsSelector,
   makeVisiblePictogramsSelector,
   makeNewPictogramsSelector,
   makeKeywordsSelectorByLocale,
-  makeListSelector
+  makeCategoriesSelectorByLocale,
+  makeListSelector,
+  makeSelectPictogramSearchLanguage ,
   // makeFavoritePictogramsSelector
 } from './selectors'
 import {
   autocomplete,
   pictograms,
+  categories,
   // favoritePictograms,
   newPictograms,
   toggleShowFilter,
-  setFilterItems
+  toggleShowSettings,
+  setFilterItems,
+  setSearchLanguage
 } from './actions'
 import messages from './messages'
 
@@ -69,8 +80,10 @@ class PictogramsView extends PureComponent {
     visibleLabels: false,
     tab: 0,
     offset: 0,
-    listName: ''
-  };
+    listName: '',
+    selectedTags: Set(),
+    running: false
+  }
 
   title = this.props.intl.formatMessage(messages.pageTitle)
   description = this.props.intl.formatMessage(messages.pageDesc)
@@ -78,27 +91,20 @@ class PictogramsView extends PureComponent {
   processQuery = props => {
     const { location } = props || this.props
     const { search, query } = location
-    let parameters = { offset: 0, tab: 0 }
-    if (search) {
-      parameters = { ...parameters, ...query }
-      const validKeys = ['offset', 'tab']
-      Object.keys(parameters).forEach(key => validKeys.includes(key) || delete parameters[key])
-      parameters.offset = parseInt(parameters.offset, 10)
-      parameters.tab = parseInt(parameters.tab, 10)
-    }
-    const needUpdate = Object.keys(parameters).some(key => parameters[key] !== this.state[key])
-    if (needUpdate) this.setState(parameters)
+    let parameters = { offset: 0, tab: 0,  filters: Set()}
+    parameters = { ...parameters, ...query }
+    const validKeys = ['offset', 'tab', 'filters']
+    Object.keys(parameters).forEach(key => validKeys.includes(key) || delete parameters[key])
+    if (query.filters)  parameters.selectedTags = Set(JSON.parse(query.filters))
+    delete parameters['filters'] //use filter in url  but selectedTags in state
+    parameters.offset = parseInt(parameters.offset, 10)
+    parameters.tab = parseInt(parameters.tab, 10)
+    this.setState(parameters)
   }
 
   componentDidMount() {
-    const {
-      requestPictograms,
-      requestNewPictograms,
-      requestAutocomplete,
-      locale,
-      newPictogramsList,
-      keywords
-    } = this.props
+    const { requestPictograms, searchLanguage, defaultSearchLanguage } = this.props
+    const language = searchLanguage ? searchLanguage : defaultSearchLanguage
 
     /* hack to open learning aac menu when visiting from homepage */
     const isOpen = window.document.getElementById("lstsearchpictos")
@@ -106,19 +112,10 @@ class PictogramsView extends PureComponent {
 
     this.processQuery()
     if (this.props.params.searchText && !this.props.searchResults) {
-      requestPictograms(locale, encodeURIComponent(this.props.params.searchText))
+      requestPictograms(language, encodeURIComponent(this.props.params.searchText))
     }
 
-    /* we just ask for new pictograms twice and hour and autocomplete keywords once a day */
-    const actualDate = new Date()
-
-    const newPictogramsDate = sessionStorage.getItem(`newPictogramsDate_${locale}`)
-    let diffSeconds = newPictogramsDate ? (actualDate.getTime() - newPictogramsDate) / 1000 : 0
-    if (!newPictogramsList || newPictogramsList.size === 0 || diffSeconds > 1800) requestNewPictograms(locale)
-
-    const keywordsDate = sessionStorage.getItem(`keywordsDate_${locale}`)
-    diffSeconds = keywordsDate ? (actualDate.getTime() - keywordsDate) / 1000 : 0 
-    if (!keywords || keywords.length === 0 || diffSeconds > 86400) requestAutocomplete(locale)
+    this.loadInitialData(language)
     
     // if (favorites && token) {
     //   const [...lists] = favorites.keys()
@@ -127,10 +124,43 @@ class PictogramsView extends PureComponent {
     // }
 
   }
+
+  loadInitialData = (searchLanguage) => {
+    const {
+      requestCategories,
+      requestNewPictograms,
+      requestAutocomplete,
+      newPictogramsList,
+      keywords,
+      categories,
+    } = this.props
+    /* we just ask for new pictograms twice and hour and autocomplete keywords once a day */
+    const actualDate = new Date()
+
+    const newPictogramsDate = sessionStorage.getItem(`newPictogramsDate_${searchLanguage}`)
+    let diffSeconds = newPictogramsDate ? (actualDate.getTime() - newPictogramsDate) / 1000 : 0
+    if (!newPictogramsList || searchLanguage !==this.props.searchLanguage || newPictogramsList.size === 0 || diffSeconds > 1800) requestNewPictograms(searchLanguage)
+
+    const keywordsDate = sessionStorage.getItem(`keywordsDate_${searchLanguage}`)
+    diffSeconds = keywordsDate ? (actualDate.getTime() - keywordsDate) / 1000 : 0 
+    if (!keywords || searchLanguage !==this.props.searchLanguage || keywords.length === 0 || diffSeconds > 86400) requestAutocomplete(searchLanguage)
+
+    const categoriesDate = sessionStorage.getItem(`categoriesDate_${searchLanguage}`)
+    diffSeconds = categoriesDate ? (actualDate.getTime() - categoriesDate) / 1000 : 0 
+    if (!categories || searchLanguage !==this.props.searchLanguage || categories.size === 0 || diffSeconds > 86400) requestCategories(searchLanguage)
+  }
+
   componentWillReceiveProps(nextProps) {
+    const { 
+      requestPictograms,
+    } = this.props
     if (this.props.params.searchText !== nextProps.params.searchText) {
-      const { requestPictograms, locale } = this.props
-      requestPictograms(locale, encodeURIComponent(nextProps.params.searchText))
+      this.setState({selectedTags: Set()})
+      requestPictograms(nextProps.searchLanguage, encodeURIComponent(nextProps.params.searchText))
+    }
+    if (this.props.searchLanguage !== nextProps.searchLanguage) {
+      this.loadInitialData(nextProps.searchLanguage)
+      requestPictograms(nextProps.searchLanguage, encodeURIComponent(nextProps.params.searchText))
     }
     if (this.props.location.search !== nextProps.location.search) {
       this.processQuery(nextProps)
@@ -162,6 +192,16 @@ class PictogramsView extends PureComponent {
     this.props.router.push(url)
   }
 
+  handleLanguageChange = (searchLanguage) => {
+    const {
+      setSearchLanguage,
+      router,
+    } = this.props
+    setSearchLanguage(searchLanguage)
+    // if (params.searchText) requestPictograms(searchLanguage, encodeURIComponent(params.searchText))
+
+  }
+
   handlePageClick = offset => {
     // fix bug if offset is not number, click comes from picto link, should not be processed here
     if (typeof offset === 'number') {
@@ -172,21 +212,38 @@ class PictogramsView extends PureComponent {
     }
   }
 
+  handleUpdateTags = (tag) => {
+    const {selectedTags} =  this.state
+    const { pathname } = this.props.location
+    let filterURI
+    if (selectedTags.has(tag)) {
+      filterURI  =  encodeURIComponent(JSON.stringify(selectedTags.remove(tag)))
+    }  // this.setState({selectedTags: })
+    else {
+      // this.setState({selectedTags: selectedTags.add(tag)})
+      filterURI  =  encodeURIComponent(JSON.stringify(selectedTags.add(tag)))
+    }
+    // filter set offset to 0 and default tab is 0, where filters are used, so we remove these  parameters
+    const url = `${pathname}?filters=${filterURI}`
+    this.props.router.push(url)
+  }
+
   handleAddFavorite = (fileName) => {
     const { addFavorite, token } = this.props
     addFavorite(fileName, DEFAULT_LIST, token)
-  };
+  }
 
   handleDeleteFavorite = (fileName) => {
     const { deleteFavorite, token } = this.props
     deleteFavorite(fileName, DEFAULT_LIST, token)
-  };
+  }
 
   handleDownload = (idPictogram, keyword) => {
     const location = downloadPictogram(idPictogram, keyword)
     window.location = location
   }
 
+  /* also used from PictogramTags */
   handleSubmit = (nextValue) => {
     this.setState({
       tab: 0
@@ -195,49 +252,51 @@ class PictogramsView extends PureComponent {
       this.props.router.push(`/pictograms/search/${encodeURIComponent(nextValue)
         }`)
     }
-  };
+  }
 
   showSettings = () => {
     this.setState({
       visibleSettings: !this.state.visibleSettings
     })
-  };
+  }
 
   showLabels = () => {
     this.setState({
       visibleLabels: !this.state.visibleLabels
     })
-  };
+  }
 
   render() {
     const {
-      showFilter,
-      filters,
+      showSettings,
       visiblePictograms,
       newPictogramsList,
       locale,
       loading,
       loadingNew,
-      filtersData,
       muiTheme,
       keywords,
       rootFavorites,
-      width
+      width,
+      categories,
+      sex,
+      violence,
+      color,
+      searchLanguage
     } = this.props
     const searchText = this.props.params.searchText || ''
-    const { visibleLabels, visibleSettings, offset, tab } = this.state
+    const { visibleLabels, running, offset, tab, selectedTags } = this.state
     const hideIconText = width === SMALL
     let gallery,  pictogramsCounter
+    const filterVisiblePictograms = visiblePictograms.filter(pictogram => selectedTags.every(tag => pictogram.tags.indexOf(tag)!==-1))
     if (tab === 0) {
-      pictogramsCounter = visiblePictograms.length
+      pictogramsCounter = filterVisiblePictograms.length
       gallery = loading ? 
         <ReadMargin><P>{<FormattedMessage {...messages.loadingPictograms} />}</P></ReadMargin>
         : pictogramsCounter ?
           <PictogramList
-            pictograms={visiblePictograms}
-            locale={locale}
-            filtersMap={filters}
-            setFilterItems={this.props.setFilterItems}
+            pictograms={filterVisiblePictograms}
+            locale={searchLanguage}
             showLabels={visibleLabels}
             searchText={searchText}
             onAddFavorite={this.handleAddFavorite}
@@ -247,6 +306,9 @@ class PictogramsView extends PureComponent {
             rtl={muiTheme.direction === 'rtl'}
             offset={offset}
             onPageClick={this.handlePageClick}
+            sex={sex}
+            violence={violence}
+            color={color}
           />
           : (
             <ReadMargin>
@@ -261,8 +323,6 @@ class PictogramsView extends PureComponent {
           <PictogramList
             pictograms={newPictogramsList}
             locale={locale}
-            filtersMap={filters}
-            setFilterItems={this.props.setFilterItems}
             showLabels={visibleLabels}
             searchText={searchText}
             onAddFavorite={this.handleAddFavorite}
@@ -272,8 +332,41 @@ class PictogramsView extends PureComponent {
             rtl={muiTheme.direction === 'rtl'}
             offset={offset}
             onPageClick={this.handlePageClick}
+            sex={sex}
+            violence={violence}
+            color={color}
           />
     }
+
+    const renderSearchBox = (
+      <div>
+        <DivSearchBox id='searchBox'>
+          <SearchField 
+            value={searchText}
+            dataSource={keywords}
+            onSubmit={this.handleSubmit}
+            filterFromStart={true}
+            style={{ flexGrow: 1 }}
+          />
+          <ActionButtons
+            onSettingsClick={this.props.toggleShowSettings}
+            settingsActive={showSettings}
+            showHelp={false}
+            showFilters={false}
+          />
+        </DivSearchBox>
+        {showSettings ?
+          <LanguageSelector
+            value={searchLanguage}
+            onChange={this.handleLanguageChange}
+            shortOption={true}
+            toolTip={this.props.intl.formatMessage(messages['languageSearch'])}
+          />
+          : null
+        }
+
+      </div>
+    )
 
     return (
       <div>
@@ -289,28 +382,20 @@ class PictogramsView extends PureComponent {
           >
             <div>
               <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
-                <SearchField
-                  value={searchText}
-                  onSubmit={this.handleSubmit}
-                  style={styles.searchBar}
-                  dataSource={keywords}
-                  filterFromStart={true}
-                />
-                {visibleSettings ? (
-                  <div>
-                    <p>todo</p>
-                  </div>
-                ) : null}
-                {showFilter ? (
-                  <FilterList
-                    filtersMap={filters}
-                    setFilterItems={this.props.setFilterItems}
-                    filtersData={filtersData}
-                  />
-                ) : null}
+                {renderSearchBox}
               </View>
               <Divider />
               <View left={true} right={true} top={1}>
+                { !!pictogramsCounter && tab !== 1 && 
+                  <PictogramTags 
+                    searchText={searchText} 
+                    selectedTags={selectedTags}
+                    pictograms={filterVisiblePictograms}
+                    categories={categories}
+                    locale={locale}
+                    onUpdateTags={this.handleUpdateTags}
+                    onCategoryClick={this.handleSubmit}
+                  />}
                 {pictogramsCounter ? (
                   <ReadMargin>
                     <P>
@@ -338,24 +423,7 @@ class PictogramsView extends PureComponent {
 
             <div>
               <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
-                <SearchField
-                  value={searchText}
-                  onSubmit={this.handleSubmit}
-                  style={styles.searchBar}
-                  dataSource={keywords}
-                />
-                {visibleSettings ? (
-                  <div>
-                    <p>todo</p>
-                  </div>
-                ) : null}
-                {showFilter ? (
-                  <FilterList
-                    filtersMap={filters}
-                    setFilterItems={this.props.setFilterItems}
-                    filtersData={filtersData}
-                  />
-                ) : null}
+                {renderSearchBox}
               </View>
               <Divider />
               <View left={true} right={true} top={1}>
@@ -391,13 +459,13 @@ PictogramsView.propTypes = {
   requestPictograms: PropTypes.func.isRequired,
   requestNewPictograms: PropTypes.func.isRequired,
   toggleShowFilter: PropTypes.func.isRequired,
+  toggleShowSettings: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   loadingNew: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired,
   filters: PropTypes.instanceOf(Map),
   muiTheme: PropTypes.object,
-  showFilter: PropTypes.bool,
   setFilterItems: PropTypes.func.isRequired,
   visiblePictograms: PropTypes.arrayOf(PropTypes.object),
   newPictogramsList: PropTypes.arrayOf(PropTypes.object),
@@ -418,8 +486,7 @@ PictogramsView.contextTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  filters: makeFiltersSelector()(state),
-  showFilter: makeShowFiltersSelector()(state),
+  showSettings: makeShowSettingsSelector()(state),
   locale: makeSelectLocale()(state),
   loading: makeLoadingSelector()(state),
   loadingNew: makeLoadingNewSelector()(state),
@@ -428,9 +495,15 @@ const mapStateToProps = (state, ownProps) => ({
   filtersData: state.getIn(['configuration', 'filtersData']),
   newPictogramsList: makeNewPictogramsSelector()(state),
   keywords: makeKeywordsSelectorByLocale()(state),
+  categories: makeCategoriesSelectorByLocale()(state),
   token: makeSelectHasUser()(state),
   rootFavorites: makeSelectRootFavorites()(state),
-  selectedList: makeListSelector()(state)
+  selectedList: makeListSelector()(state),
+  sex: makeSelectSexPictograms()(state),
+  violence: makeSelectViolencePictograms()(state),
+  color: makeSelectColorPictograms()(state),
+  searchLanguage: makeSelectPictogramSearchLanguage()(state),
+  defaultSearchLanguage: makeSelectSearchLanguage()(state)
   // favoritePictograms: makeFavoritePictogramsSelector()(state)
 })
 // const pictoList = state.getIn(['pictogramView', 'search', ownProps.params.searchText]) || []
@@ -438,6 +511,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
   requestPictograms: (locale, searchText) => {
     dispatch(pictograms.request(locale, searchText))
+  },
+  requestCategories: (locale) => {
+    dispatch(categories.request(locale))
   },
   requestNewPictograms: (locale) => {
     dispatch(newPictograms.request(locale))
@@ -447,6 +523,9 @@ const mapDispatchToProps = (dispatch) => ({
   // },
   toggleShowFilter: () => {
     dispatch(toggleShowFilter())
+  },
+  toggleShowSettings: () => {
+    dispatch(toggleShowSettings())
   },
   setFilterItems: (filter, filterItem) => {
     dispatch(setFilterItems(filter, filterItem))
@@ -459,7 +538,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   deleteFavorite: (fileName, listName, token) => {
     dispatch(deleteFavorite.request(fileName, listName, token))
-  }
+  },
+  setSearchLanguage: (language) => {
+    dispatch(setSearchLanguage(language))
+  },
 })
 
 export default connect(

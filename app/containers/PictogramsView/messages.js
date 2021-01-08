@@ -46,6 +46,10 @@ export default defineMessages({
     id: 'app.containers.PictogramsView.search',
     defaultMessage: 'Search'
   },
+  languageSearch: {
+    id: 'app.PictogramsView.languageSearch',
+    defaultMessage: 'Choose your search language'
+  },
   new: {
     id: 'app.containers.PictogramsView.new',
     defaultMessage: 'New'

@@ -14,7 +14,8 @@ import {Helmet} from 'react-helmet'
 import SearchField from 'components/SearchField'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-import DivSearchBox from './DivSearchBox'
+import DivSearchBox from 'components/DivSearchBox'
+import ActionButtons from 'components/ActionButtons'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import PendingIcon from 'material-ui/svg-icons/action/visibility-Off'
 import NotPublishedIcon from 'material-ui/svg-icons/action/thumb-down'
@@ -30,7 +31,6 @@ import ReadMargin from 'components/ReadMargin'
 import { withRouter } from 'react-router'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import { makeSelectHasUser, makeSelectRole } from 'containers/App/selectors'
-import ActionButtons from './ActionButtons'
 import {
   makeFiltersSelector,
   makeShowFiltersSelector,

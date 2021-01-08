@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect'
 import { DEFAULT_LIST, DEFAULT_PROFILE_PICTURE, ARASAAC, FACEBOOK, GOOGLE } from 'utils'
+import {makeSelectLocale as makeSelectDefaultLocale} from 'containers/LanguageProvider/selectors'
 
 // makeSelectLocationState expects a plain JS object for the routing state
 export const makeSelectLocationState = () => {
@@ -83,6 +84,27 @@ export const makeSelectHasGoogle = () => createSelector(
   (substate) => !!substate.getIn([GOOGLE, 'picture'])
 )
 
+export const makeSelectSearchLanguage = () => createSelector(
+  selectAuth,
+  makeSelectUserLocale(),
+  (substate, locale) => substate.get('searchLanguage') || locale
+)
+
+export const makeSelectSexPictograms = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('sex') == null ? true : substate.get('sex')
+)
+
+export const makeSelectViolencePictograms = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('violence') == null ? true : substate.get('violence')
+)
+
+export const makeSelectColorPictograms = () => createSelector(
+  selectAuth,
+  (substate) => substate.get('color') == null ? true : substate.get('color')
+)
+
 export const makeSelectLastLogin = () => createSelector(
   selectAuth,
   (substate) => substate.get('lastLogin')
@@ -110,7 +132,8 @@ export const makeSelectUrl = () => createSelector(
 
 export const makeSelectUserLocale = () => createSelector(
   selectAuth,
-  (substate) => substate.get('locale')
+  makeSelectDefaultLocale(),
+  (substate, locale) => substate.get('locale') || locale
 )
 
 export const makeSelectTargetLanguages = () => createSelector(

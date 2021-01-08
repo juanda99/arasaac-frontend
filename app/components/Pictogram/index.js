@@ -1,6 +1,7 @@
 /* eslint no-mixed-operators: 0 */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router'
 // import queryString from 'query-string'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
@@ -15,6 +16,8 @@ import {
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import ShowSoundPlayer from 'components/SoundPlayer/ShowSoundPlayer'
 import Toggle from 'material-ui/Toggle'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
 import { keywordSelector, isEmptyObject } from 'utils'
 import DownloadIcon from 'material-ui/svg-icons/file/file-download'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
@@ -54,6 +57,7 @@ import PictoWrapper from './PictoWrapper'
 import Canvas from './Canvas'
 import PictogramTitle from '../BoxTitle'
 import RelatedWords from './RelatedWords'
+import PictogramCategories from './PictogramCategories'
 
 
 const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
@@ -80,7 +84,7 @@ const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
 class Pictogram extends Component {
   constructor(props) {
     super(props)
-    const { pictogram, searchText, locale } = this.props
+    const { pictogram, searchText, locale, color } = this.props
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('_id')
     const { keyword, type } = keywordSelector(searchText, keywords.toJS())
@@ -97,7 +101,7 @@ class Pictogram extends Component {
       pluralActive: false,
       pluralOptionsShow: false,
       pluralColor: black,
-      color: true,
+      color,
       backgroundColor: defaultColor,
       bgColorActive: false,
       bgColorOptionsShow: false,
@@ -122,7 +126,7 @@ class Pictogram extends Component {
       verbalTenseColor: 'black',
       showText: false,
       openMenu: false,
-      url: `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${STANDARD_RESOLUTION}.png`,
+      url: this.props.color ? `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${STANDARD_RESOLUTION}.png` : `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_nocolor_${STANDARD_RESOLUTION}.png` ,
       downloadUrl: '',
       activeFont: 'Open Sans',
       buttonCaption: false,
@@ -148,14 +152,24 @@ class Pictogram extends Component {
       windowWidth: 0,
       dragAndDrop: false,
       isFavorite: false,
-      snackOpen: false
+      snackOpen: false,
+      blurRadius: 0,
+      open: false
     }
   }
 
   componentDidMount() {
+    const { pictogram, sex, violence } = this.props
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
     document.body.addEventListener('click', this.needHideOptions)
+    const hasSex = pictogram.get('sex')
+    const hasViolence = pictogram.get('violence')
+    if ((sex && hasSex)  || (violence && hasViolence)) this.setState({ blurRadius: 160, open: true })
+  }
+
+  handleClose = () => {
+    this.setState({open: false});
   }
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -173,6 +187,12 @@ class Pictogram extends Component {
     this.setState({
       snackOpen: false,
     })
+  }
+
+  handleRegisterAction =  () => {
+    const { authenticated }  = this.props
+    const url = authenticated ? '/profile': '/signin'
+    this.props.router.push(url)
   }
 
   onTogglePicker = () =>
@@ -503,7 +523,7 @@ class Pictogram extends Component {
   updateWindowDimensions = () =>
     this.setState({ windowWidth: document.body.clientWidth });
 
-  renderDownloadButton = () => (
+  renderDownloadButton = (disabled) => (
     // const userAgent = window.navigator.userAgent.toLowerCase()
     // const isIOS = /iphone|ipod|ipad/.test(userAgent)
     // const isSAFARI = /^((?!chrome|android).)*safari/i.test(userAgent)
@@ -513,11 +533,12 @@ class Pictogram extends Component {
       primary={true}
       style={styles.button}
       icon={<DownloadIcon />}
+      disabled={disabled}
     />
   );
 
   render() {
-    const { pictogram, searchText, locale, intl, authenticated } = this.props
+    const { pictogram, searchText, locale, intl, authenticated, categories } = this.props
     const {
       language,
       backgroundColor,
@@ -567,7 +588,9 @@ class Pictogram extends Component {
       windowWidth,
       dragAndDrop,
       isFavorite,
-      snackOpen
+      snackOpen,
+      blurRadius,
+      open
     } = this.state
 
     const canvasSize =
@@ -576,6 +599,8 @@ class Pictogram extends Component {
     // const backgroundColor = this.state.backgroundColor.replace('%23', '')
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('_id')
+    const tags = pictogram.get('tags')
+    const pictoCategories = pictogram.get('categories')
     // first time downloadUrl is default png
     const { keyword, hasLocution } = keywordSelector(
       searchText,
@@ -586,8 +611,31 @@ class Pictogram extends Component {
       1
     )}.png`
     const { formatMessage } = intl
+
+    const actions = [
+      <FlatButton
+        label={<FormattedMessage {...messages.cancel} />}
+        primary={true}
+        onClick={this.handleClose}
+      />,
+      <FlatButton
+        label={<FormattedMessage {...messages.accept} />}
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.handleRegisterAction}
+      />
+    ]
     return (
       <div>
+        <Dialog
+          title={formatMessage(messages.pictogramDisabled)}
+          actions={actions}
+          modal={false}
+          open={open}
+          onRequestClose={this.handleClose}
+        >
+          {authenticated ? (<FormattedMessage {...messages.disableFilter} />) : (<FormattedMessage {...messages.authUser} /> )}
+        </Dialog>
         <div style={styles.wrapper}>
           <Snackbar
             open={snackOpen}
@@ -621,7 +669,7 @@ class Pictogram extends Component {
                   <Img
                     src={url}
                     frameWidth={frameWidth}
-                    enableFrame={
+                    enableFrame={ 
                       frameActive
                     } /* alt={'alt'} style={styles.picto} */
                     zoomLevel={zoomLevel}
@@ -629,6 +677,7 @@ class Pictogram extends Component {
                     dragAndDrop={dragAndDrop}
                     topMargin={topTextActive ? 50 : 0}
                     bottomMargin={bottomTextActive ? 50 : 0}
+                    blurRadius={blurRadius}
                   />
                   {topTextActive && (
                     <TextLayer
@@ -708,13 +757,14 @@ class Pictogram extends Component {
                   disabled={!authenticated || isFavorite ? true : false}
                   onClick={this.handleAddFavorite}
                 />
-                {this.renderDownloadButton()}
+                { this.renderDownloadButton(!!blurRadius) }
                 <RaisedButton
                   label={<FormattedMessage {...messages.copy} />}
                   primary={true}
                   style={styles.button}
                   icon={<CopyIcon />}
                   onClick={this.handleExport}
+                  disabled={blurRadius}
                 />
               </PictogramTitle>
             </ConditionalPaper>
@@ -731,8 +781,8 @@ class Pictogram extends Component {
               <Toggle
                 label={<FormattedMessage {...messages.color} />}
                 labelPosition='right'
+                value={this.state.color}
                 onToggle={this.handleColor}
-                defaultToggled={true}
                 style={styles.toggle}
               />
 
@@ -876,6 +926,14 @@ class Pictogram extends Component {
             </div>
           </div>
         </div>
+        { !!categories.size && 
+          <PictogramCategories
+            categories={categories}
+            pictoCategories={pictoCategories}
+            tags={tags}
+          />
+        }
+
         <RelatedWords
           style={{ padding: '5px' }}
           locale={locale}
@@ -909,6 +967,11 @@ Pictogram.propTypes = {
   intl: intlShape.isRequired,
   authenticated: PropTypes.bool.isRequired,
   onAddFavorite: PropTypes.func.isRequired,
+  categories: PropTypes.object.isRequired,
+  sex: PropTypes.bool.isRequired,
+  violence: PropTypes.bool.isRequired,
+  color: PropTypes.bool.isRequired,
+  router: PropTypes.any.isRequired
 }
 
-export default injectIntl(Pictogram)
+export default injectIntl(withRouter(Pictogram))
