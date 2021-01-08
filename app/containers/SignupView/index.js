@@ -52,7 +52,7 @@ class SignupView extends Component {
     try {
       this.setState({ loading: true })
       showProgressBar()
-      const data = { ...userData.toJS(), locale: this.props.locale }
+      const data = { ...userData.toJS(), locale: this.props.locale, searchLanguage: this.props.locale }
       await api.SIGNUP_REQUEST(data)
       hideProgressBar()
       this.setState({ registered: true, loading: false })
