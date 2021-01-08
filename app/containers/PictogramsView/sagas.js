@@ -1,4 +1,4 @@
-import { take, takeLatest, call, put, cancel } from 'redux-saga/effects'
+import { take, takeLatest, call, put, cancel, takeEvery } from 'redux-saga/effects'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import api from 'services'
@@ -274,10 +274,12 @@ function* categoriesGetData(action) {
 }
 
 export function* categoriesData() {
+  console.log('wating category-requets.............')
   const watcher = yield takeLatest(CATEGORIES.REQUEST, categoriesGetData)
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE)
   yield cancel(watcher)
+  console.log('cancel category-requets.............')
 }
 
 // All sagas to be loaded

@@ -62,7 +62,6 @@ const makePictogramsSelector = () =>
     selectPictogramsViewDomain,
     makeSelectPictogramSearchLanguage() ,
     (substate, locale) =>
-      // pictograms.locale does not exists first time, just pictograms
       substate.getIn(['pictograms', locale]) || new Map()
   )
 

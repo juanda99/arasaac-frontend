@@ -132,28 +132,34 @@ class PictogramsView extends PureComponent {
       requestAutocomplete,
       newPictogramsList,
       keywords,
-      categories
+      categories,
     } = this.props
     /* we just ask for new pictograms twice and hour and autocomplete keywords once a day */
     const actualDate = new Date()
 
     const newPictogramsDate = sessionStorage.getItem(`newPictogramsDate_${searchLanguage}`)
     let diffSeconds = newPictogramsDate ? (actualDate.getTime() - newPictogramsDate) / 1000 : 0
-    if (!newPictogramsList || newPictogramsList.size === 0 || diffSeconds > 1800) requestNewPictograms(searchLanguage)
+    if (!newPictogramsList || searchLanguage !==this.props.searchLanguage || newPictogramsList.size === 0 || diffSeconds > 1800) requestNewPictograms(searchLanguage)
 
     const keywordsDate = sessionStorage.getItem(`keywordsDate_${searchLanguage}`)
     diffSeconds = keywordsDate ? (actualDate.getTime() - keywordsDate) / 1000 : 0 
-    if (!keywords || keywords.length === 0 || diffSeconds > 86400) requestAutocomplete(searchLanguage)
+    if (!keywords || searchLanguage !==this.props.searchLanguage || keywords.length === 0 || diffSeconds > 86400) requestAutocomplete(searchLanguage)
 
     const categoriesDate = sessionStorage.getItem(`categoriesDate_${searchLanguage}`)
     diffSeconds = categoriesDate ? (actualDate.getTime() - categoriesDate) / 1000 : 0 
-    if (!categories || categories.size === 0 || diffSeconds > 86400) requestCategories(searchLanguage)
+    if (!categories || searchLanguage !==this.props.searchLanguage || categories.size === 0 || diffSeconds > 86400) requestCategories(searchLanguage)
   }
 
   componentWillReceiveProps(nextProps) {
+    const { 
+      requestPictograms,
+    } = this.props
     if (this.props.params.searchText !== nextProps.params.searchText) {
       this.setState({selectedTags: Set()})
-      const { requestPictograms } = this.props
+      requestPictograms(nextProps.searchLanguage, encodeURIComponent(nextProps.params.searchText))
+    }
+    if (this.props.searchLanguage !== nextProps.searchLanguage) {
+      this.loadInitialData(nextProps.searchLanguage)
       requestPictograms(nextProps.searchLanguage, encodeURIComponent(nextProps.params.searchText))
     }
     if (this.props.location.search !== nextProps.location.search) {
@@ -188,15 +194,12 @@ class PictogramsView extends PureComponent {
 
   handleLanguageChange = (searchLanguage) => {
     const {
-      requestCategories,
-      requestNewPictograms,
-      requestAutocomplete,
-      setSearchLanguage
+      setSearchLanguage,
+      router,
     } = this.props
     setSearchLanguage(searchLanguage)
-    requestNewPictograms(searchLanguage)
-    requestAutocomplete(searchLanguage)
-    requestCategories(searchLanguage)
+    // if (params.searchText) requestPictograms(searchLanguage, encodeURIComponent(params.searchText))
+
   }
 
   handlePageClick = offset => {
