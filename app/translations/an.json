@@ -535,6 +535,8 @@
   "app.containers.PictogramView.pictogramLoading": "Cargando lo pictograma...",
   "app.containers.PictogramView.pictogramNotFound": "Sincuse, o pictograma que ye mirando no esiste",
   "app.containers.PictogramsView.addFolder": "Crear carpeta",
+  "app.containers.PictogramsView.addFolderHint": "Escribe o nombre d'a nueva carpeta",
+  "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "Iste conteniu ye disponible nomás pa usuarios autenticatos",
   "tags.Aragon": "Aragón",
   "tags.Egypt": "Echipto",
   "tags.Greece": "Grezia",
