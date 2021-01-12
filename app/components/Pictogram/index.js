@@ -781,7 +781,7 @@ class Pictogram extends Component {
               <Toggle
                 label={<FormattedMessage {...messages.color} />}
                 labelPosition='right'
-                value={this.state.color}
+                toggled={this.state.color}
                 onToggle={this.handleColor}
                 style={styles.toggle}
               />
