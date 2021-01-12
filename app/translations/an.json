@@ -580,6 +580,8 @@
   "app.containers.SearchBox.filters": "Filtros",
   "app.containers.SearchBox.filtersBtn": "Preta en iste botón pa filtrar os resultatos de busca.",
   "app.containers.SearchBox.filtersHint": "Puez filtrar os resultatos de busca por autividat, aria u luenga.",
+  "app.containers.SearchBox.searchHint1": "Fica un u más termins pa mirar o material, p. ex. achenda semanal.",
+  "app.containers.SearchBox.searchHint2": "Si quiers realizar una busca esauta, fica os termins de busca entre cometas, p. ex. \"cuaderno de comunicazión\".",
   "tags.Aragon": "Aragón",
   "tags.Egypt": "Echipto",
   "tags.Greece": "Grezia",
