@@ -3,29 +3,16 @@
 </div>
 <br />
 
-<div align="center"><strong>Arasaac website</strong></div>
+<div align="center"><h1>Arasaac project</h1></div>
 
 <br />
 <div align="center">
-  <!-- Dependency Status -->
-  <a href="https://david-dm.org/juanda99/arasaac-frontend">
-    <img src="https://david-dm.org/juanda99/arasaac-frontend.svg" alt="Dependency Status" />
-  </a>
-  <!-- devDependency Status -->
-  <a href="https://david-dm.org/juanda99/arasaac-frontend#info=devDependencies">
-    <img src="https://david-dm.org/juanda99/arasaac-frontend/dev-status.svg" alt="devDependency Status" />
-  </a>
-  <!-- Build Status -->
-  <a href="https://travis-ci.org/juanda99/arasaac-frontend">
-    <img src="https://travis-ci.org/juanda99/arasaac-frontend.svg" alt="Build Status" />
-  </a>
-  <!-- Test Coverage -->
-    <a href='https://coveralls.io/github/juanda99/arasaac-frontend?branch=master'><img src='https://coveralls.io/repos/github/juanda99/arasaac-frontend/badge.svg?branch=master' alt='Coverage Status' /></a>
   <!-- Localization -->
   <a target="_blank" href="https://crowdin.com/project/arasaac"><img src="https://d322cqt584bo4o.cloudfront.net/arasaac/localized.svg"></a>
+  <br/>
+    <a target="_blank" href="https://arasaac.org/translators">Show project translation to your language</a>
 
 </div>
-
 <br />
 
 <div align="center">
@@ -37,7 +24,7 @@
 
 [See website](https://arasaac.org)
 
-Arasaac is a website that offers AAC symbols and resources to facilitate communication for those with some sort of problem in this area. 
+Arasaac is a project that offers AAC symbols and resources to facilitate communication for those with some sort of problem in this area. 
 
 It's used  worldwide by thousands of users. 
 
@@ -52,47 +39,41 @@ It's used  worldwide by thousands of users.
 1. Clone this repo using `git clone https://github.com/juanda99/arasaac-frontend.git`
 2. Run `npm install` to install dependencies<br />
 3. Run `npm start` to see the app running at `http://localhost:3000`.*
-4. This app uses some backend points:
-  - *static.arasaac.org* for getting static data files (pictogram images, materials)
-  - *api.arasaac.org* for getting json data from the server
-  - *privateapi.arasaac.org* for getting json data from the server
-  - *auth.arasaac.org* for oauth2 authentication
   
   Our backend server is dockerized, you can install it locally: see [how to instal the backend server](https://github.com/juanda99/arasaac-docker) 
 
 ## Features and current status
 
 - Pictograms
-  - Search pictograms (Almost ready)
-  - Download full catalog of pictos (Almost ready)
-
-- Online Tools (Not started)
-
-- Developers
-  - API doc (WIP)
+  - Search pictograms
+  - Pictogram editor
+  - Favorites
 
 - Materials
-  - Search materials (Almost ready)
-  - Material view (Almost ready)
+  - Search materials
+  - Material view
   - Upload materials (WIP)
 
+- Learn AAC
+
+- Online tools (WIP)
+
+- Spanish Sign Language
+
+- Developers
+  - API docs
+
 - Users
-  - User creation and login (Almost ready)
-  - User roles (Not started)
-  - Social logins (WIP)
+  - User login
+  - User profile
 
-- GUI Look and feel
-  - Themes (Almost ready)
-  - Tour guide (WIP)
-  - General settings (WIP)
-
-- [Translations](docs/translations.md) (WIP)
-
-
+- Terms of use
+  
+- About  us
 
 ## Technical summary
 <dl>
-<dt>Boilerplate based on <a href="https://github.com/mxstbr/react-boilerplate">React boilerplate</a></dt>
+<dt>React SPA based on <a href="https://github.com/mxstbr/react-boilerplate">React boilerplate</a></dt>
   <dd>Using React, Redux, Immutable.js, Sagas and Reselect</dd>
 
   <dt>API with nodeJS and Express on the server side</dt>
@@ -112,6 +93,10 @@ It's used  worldwide by thousands of users.
 
 </dl>
 
+
+## Backend
+Based on node.js and MongoDB, using Doocker and microservices.
+[Show backend repo](https://github.com/juanda99/arasaac-docker)
 ## License
 
 This project is licensed under the MIT license, Copyright (c) 2016 . For more information see `LICENSE.md`.
