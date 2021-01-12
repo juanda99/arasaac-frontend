@@ -551,6 +551,8 @@
   "app.containers.ProfileView.PersonalData.personalData": "Datos presonals",
   "app.containers.ProfileView.admin": "Almenistrador",
   "app.containers.ProfileView.arasaacProfilePicture": "Imachen de perfil d'ARASAAC",
+  "app.containers.ProfileView.colorPictograms": "Amostrar pictogramas en color",
+  "app.containers.ProfileView.currentRole": "Rol autual:",
   "tags.Aragon": "Aragón",
   "tags.Egypt": "Echipto",
   "tags.Greece": "Grezia",
