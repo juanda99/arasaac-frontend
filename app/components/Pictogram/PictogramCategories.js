@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { FormattedMessage } from 'react-intl'
-import { lightGreen400} from 'material-ui/styles/colors'
 import jp from 'jsonpath'
 import Chip from 'material-ui/Chip'
 import FlatButton from 'material-ui/FlatButton'
@@ -11,6 +10,7 @@ import { Link } from 'react-router'
 import H3 from 'components/H3'
 import P from 'components/P'
 import Divider from 'material-ui/Divider'
+import tagMessages from 'components/PictogramTags/messages'
 import  messages from './messages'
 
 
@@ -111,8 +111,7 @@ export default class PictogramCategories extends Component {
           <div style={{display: 'flex', flexWrap: 'wrap', marginTop: '10px'}}>
             {tags.map(tag =>
               <Chip  key={tag} style={styles.chip}>
-                {tag}
-              {/* {<FormattedMessage {...messages[tag]} />} */}
+              {<FormattedMessage {...tagMessages[tag]} />}
               </Chip>
             )}
           </div>
