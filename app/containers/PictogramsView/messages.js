@@ -52,7 +52,7 @@ export default defineMessages({
   },
   translationsWarning: {
     id: 'app.PictogramsView.translationsWarning',
-    defaultMessage: 'Pictogram searches doesn\'t word properly in your language because translations are not complete.'
+    defaultMessage: 'Pictogram search doesn\'t work properly in your language because translations are not complete.'
   },
   translationStatus: {
     id: 'app.PictogramsView.translationStatus',

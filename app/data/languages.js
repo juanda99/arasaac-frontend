@@ -7,8 +7,8 @@ const languages = [
   {
     code: 'es',
     text: 'Español',
-    translated: false,  // web 100%,  admin 100%, pictos 100%
-    needTranslators: true
+    translated: true,  // web 100%,  admin 100%, pictos 100%
+    needTranslators: false
   },
   {
     code: 'en',
