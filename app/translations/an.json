@@ -1,5 +1,5 @@
 {
-  "Login.invalidEmail": "Correu electronico erronio",
+  "Login.invalidEmail": "Correu eleutronico erronio",
   "Login.invalidUrl": "Url erronia",
   "Login.required": "Obligatorio",
   "NewPasswordForm.hintNewPassword": "Cuala ye a tuya clau nueva?",
@@ -102,7 +102,7 @@
   "app.components.Filters.Area.health": "Salut",
   "app.components.Filters.Area.language": "Luenga",
   "app.components.Filters.Area.languages": "Luengas",
-  "app.components.Filters.Area.leisure": "Ozio e cultura",
+  "app.components.Filters.Area.leisure": "Ozio y cultura",
   "app.components.Filters.Area.literature": "Literatura",
   "app.components.Filters.Area.logicReasoning": "Escurrimiento lochico",
   "app.components.Filters.Area.math": "Matematicas",
@@ -120,13 +120,13 @@
   "app.components.Filters.Area.reading": "Leutura",
   "app.components.Filters.Area.religion": "Relichión",
   "app.components.Filters.Area.schedule": "Achenda",
-  "app.components.Filters.Area.selfawareness": "Autoconzeuto e autonomía presonal",
+  "app.components.Filters.Area.selfawareness": "Autoconzeuto y autonomía presonal",
   "app.components.Filters.Area.semantics": "Semantica",
   "app.components.Filters.Area.socialSciences": "Zenzias sozials",
   "app.components.Filters.Area.time": "Tiempo",
   "app.components.Filters.Area.visualdiscrimination": "Discriminazión visual",
   "app.components.Filters.Area.writing": "Escritura",
-  "app.components.Filters.Catalog.blackAndWhitePictograms": "Pictogramas en blanco e niero",
+  "app.components.Filters.Catalog.blackAndWhitePictograms": "Pictogramas en blanco y niero",
   "app.components.Filters.Catalog.catalog": "Catalogo",
   "app.components.Filters.Catalog.colorPictograms": "Pictogramas en color",
   "app.components.Filters.Catalog.lseColor": "Color LSE",
@@ -144,7 +144,7 @@
   "app.components.Filters.Size.small": "Chicorrón",
   "app.components.Filters.filterTooltip": "Sacar o filtro",
   "app.components.Footer.cookiesPolicy": "Politica de Cookies",
-  "app.components.Footer.privacyPolicy": "Politica de privazitat",
+  "app.components.Footer.privacyPolicy": "Politica de privazidat",
   "app.components.Footer.termsOfUse": "Condizions d'usache",
   "app.components.LanguageSelector.an": "Aragonés",
   "app.components.LanguageSelector.ar": "Arabe",
@@ -1292,5 +1292,6 @@
   "userMenu.signout": "Zarrar a sesión",
   "userMenu.stopTranslateArasaac": "Dixar de traduzir ARASAAC",
   "userMenu.translateArasaac": "Traduzir ARASAAC",
-  "userMenu.userMaterial": "O mío material"
+  "userMenu.userMaterial": "O mío material",
+  "userMenu.userProfile": "O mío perfil"
 }
