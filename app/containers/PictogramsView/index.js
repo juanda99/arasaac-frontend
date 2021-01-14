@@ -10,10 +10,12 @@ import { connect } from 'react-redux'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import DivSearchBox from 'components/DivSearchBox'
+import WarningBox from 'components/WarningBox'
 import LanguageSelector from 'components/LanguageSelector'
 import Helmet from 'react-helmet'
 import SearchField from 'components/SearchField'
 import PictogramTags from 'components/PictogramTags'
+import languages from 'data/languages'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import Divider from 'material-ui/Divider'
 import { Tabs, Tab } from 'material-ui/Tabs'
@@ -21,8 +23,11 @@ import { Map, Set } from 'immutable'
 import PictogramList from 'components/PictogramList'
 import ActionButtons from 'components/ActionButtons'
 import P from 'components/P'
-import { withRouter } from 'react-router'
+import RaisedButton from 'material-ui/RaisedButton'
+import { withRouter, Link } from 'react-router'
 import SearchIcon from 'material-ui/svg-icons/action/search'
+import CloseIcon from 'material-ui/svg-icons/navigation/close'
+import IconButton from 'material-ui/IconButton'
 import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
@@ -76,13 +81,11 @@ class PictogramsView extends PureComponent {
   // eslint-disable-line react/prefer-stateless-function
 
   state = {
-    visibleSettings: false,
-    visibleLabels: false,
     tab: 0,
     offset: 0,
     listName: '',
     selectedTags: Set(),
-    running: false
+    showLanguageWarning: false
   }
 
   title = this.props.intl.formatMessage(messages.pageTitle)
@@ -148,6 +151,10 @@ class PictogramsView extends PureComponent {
     const categoriesDate = sessionStorage.getItem(`categoriesDate_${searchLanguage}`)
     diffSeconds = categoriesDate ? (actualDate.getTime() - categoriesDate) / 1000 : 0 
     if (!categories || searchLanguage !==this.props.searchLanguage || categories.size === 0 || diffSeconds > 86400) requestCategories(searchLanguage)
+
+    const languageData = languages.find(lang => lang.code === searchLanguage)
+    const { translated, needTranslators } = languageData
+    this.setState({ showLanguageWarning: !translated, needTranslators })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -243,6 +250,10 @@ class PictogramsView extends PureComponent {
     window.location = location
   }
 
+  handleShowLanguages = () => this.props.toggleShowSettings()
+
+  handleRemoveWarning = () => this.setState({showLanguageWarning: false})
+
   /* also used from PictogramTags */
   handleSubmit = (nextValue) => {
     this.setState({
@@ -254,24 +265,12 @@ class PictogramsView extends PureComponent {
     }
   }
 
-  showSettings = () => {
-    this.setState({
-      visibleSettings: !this.state.visibleSettings
-    })
-  }
-
-  showLabels = () => {
-    this.setState({
-      visibleLabels: !this.state.visibleLabels
-    })
-  }
 
   render() {
     const {
       showSettings,
       visiblePictograms,
       newPictogramsList,
-      locale,
       loading,
       loadingNew,
       muiTheme,
@@ -285,7 +284,7 @@ class PictogramsView extends PureComponent {
       searchLanguage
     } = this.props
     const searchText = this.props.params.searchText || ''
-    const { visibleLabels, running, offset, tab, selectedTags } = this.state
+    const { offset, tab, selectedTags, showLanguageWarning, needTranslators } = this.state
     const hideIconText = width === SMALL
     let gallery,  pictogramsCounter
     const filterVisiblePictograms = visiblePictograms.filter(pictogram => selectedTags.every(tag => pictogram.tags.indexOf(tag)!==-1))
@@ -293,11 +292,10 @@ class PictogramsView extends PureComponent {
       pictogramsCounter = filterVisiblePictograms.length
       gallery = loading ? 
         <ReadMargin><P>{<FormattedMessage {...messages.loadingPictograms} />}</P></ReadMargin>
-        : pictogramsCounter ?
+        : pictogramsCounter ? 
           <PictogramList
             pictograms={filterVisiblePictograms}
             locale={searchLanguage}
-            showLabels={visibleLabels}
             searchText={searchText}
             onAddFavorite={this.handleAddFavorite}
             onDeleteFavorite={this.handleDeleteFavorite}
@@ -323,7 +321,6 @@ class PictogramsView extends PureComponent {
           <PictogramList
             pictograms={newPictogramsList}
             locale={searchLanguage}
-            showLabels={visibleLabels}
             searchText={searchText}
             onAddFavorite={this.handleAddFavorite}
             onDeleteFavorite={this.handleDeleteFavorite}
@@ -367,13 +364,13 @@ class PictogramsView extends PureComponent {
 
       </div>
     )
-    console.log(searchLanguage, categories, '+***++********************************')
     return (
       <div>
         <Helmet>
           <title>{this.title}</title>
           <meta name="description" content={this.description} />
         </Helmet>
+
         <Tabs onChange={this.handleChange} value={tab}>
           <Tab
             label={hideIconText ? '' : <FormattedMessage {...messages.search} />}
@@ -386,6 +383,28 @@ class PictogramsView extends PureComponent {
               </View>
               <Divider />
               <View left={true} right={true} top={1}>
+                {showLanguageWarning && (
+                  <WarningBox>
+                    <IconButton onClick={this.handleRemoveWarning}  tooltip={<FormattedMessage {...messages.closeWarning} />} style={{position: 'absolute', right: -10, top: -10}}>
+                      <CloseIcon />
+                    </IconButton>
+                    <div style={{display: 'flex', flexWrap: 'wrap', maxWidth: '700px'}}>
+                      <P>{<FormattedMessage {...messages.translationsWarning} />} &nbsp; <Link to='/translators'>{<FormattedMessage {...messages.translationStatus} />}</Link><br/>
+                      {needTranslators  && (
+                          <span>
+                            {<FormattedMessage {...messages.needTranslators} />} &nbsp; 
+                            <Link to='/contact-us'>{<FormattedMessage {...messages.contactTranslators} />}</Link>
+                          </span>
+                      )}
+                      </P>
+                    </div>
+                    <div>
+                      {!showSettings && (
+                          <RaisedButton style={{margin: 10}} label="Change language" onClick={this.handleShowLanguages} primary={true}  />
+                      )}
+                    </div>
+                  </WarningBox>)
+                }
                 { !!pictogramsCounter && tab !== 1 && 
                   <PictogramTags 
                     searchText={searchText} 

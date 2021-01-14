@@ -50,6 +50,22 @@ export default defineMessages({
     id: 'app.PictogramsView.languageSearch',
     defaultMessage: 'Choose your search language'
   },
+  translationsWarning: {
+    id: 'app.PictogramsView.translationsWarning',
+    defaultMessage: 'Pictogram searches doesn\'t word properly in your language because translations are not complete.'
+  },
+  translationStatus: {
+    id: 'app.PictogramsView.translationStatus',
+    defaultMessage: 'See current translation status.'
+  },
+  needTranslators: {
+    id: 'app.PictogramsView.needTranslators',
+    defaultMessage: 'We need help translating ARASAAC to your language.'
+  },
+  contactTranslators: {
+    id: 'app.PictogramsView.contactTranslators',
+    defaultMessage: 'Contact us to join as a translator!'
+  },
   new: {
     id: 'app.containers.PictogramsView.new',
     defaultMessage: 'New'
@@ -61,5 +77,9 @@ export default defineMessages({
   pageDesc: {
     id: 'app.PictogramsView.pageDesc',
     defaultMessage: 'Open source symbols for Augmentative and Alternative Communication'
+  },
+  closeWarning: {
+    id: 'app.PictogramsView.closeWarning',
+    defaultMessage: 'Close warning'
   },
 })
