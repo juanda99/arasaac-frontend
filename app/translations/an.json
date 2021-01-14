@@ -1286,5 +1286,11 @@
   "tags.workplace": "puesto de treballo",
   "tags.workwear": "ropa de treballo",
   "tags.zarzuela": "zarzuela",
-  "user.signin": "Usuario"
+  "user.signin": "Usuario",
+  "userMenu.register": "Crear cuenta",
+  "userMenu.signin": "Enzetar sesión",
+  "userMenu.signout": "Zarrar a sesión",
+  "userMenu.stopTranslateArasaac": "Dixar de traduzir ARASAAC",
+  "userMenu.translateArasaac": "Traduzir ARASAAC",
+  "userMenu.userMaterial": "O mío material"
 }
