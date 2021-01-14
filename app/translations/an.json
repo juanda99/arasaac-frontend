@@ -744,6 +744,7 @@
   "signup.userCreated": "T'emos ninviato un correu eleutronico pa verificar a tuya cuenta.",
   "signup.userNotActivated": "Ya yes dau d'alta. Por favor compreba o tuyo correu pa verificar a tuya cuenta.",
   "signup.userNotCreated": "Ha ocurrito una error en crear o tuyo usuario",
+  "size.choose": "Mida",
   "tags.Aragon": "Aragón",
   "tags.Egypt": "Echipto",
   "tags.Greece": "Grezia",
@@ -1284,5 +1285,6 @@
   "tags.work machine": "maquina de treballo",
   "tags.workplace": "puesto de treballo",
   "tags.workwear": "ropa de treballo",
-  "tags.zarzuela": "zarzuela"
+  "tags.zarzuela": "zarzuela",
+  "user.signin": "Usuario"
 }
