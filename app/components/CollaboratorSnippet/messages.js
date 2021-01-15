@@ -62,4 +62,8 @@ export default defineMessages({
     id: `${scope}.sq`,
     defaultMessage: 'Albania'
   },
+  ar: {
+    id: `${scope}.ar`,
+    defaultMessage: 'Algeria'
+  },  
 })

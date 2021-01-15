@@ -330,6 +330,15 @@ const collaborators = [
     facebook: 'didacticmom',
     country: 'bg'
   },
+    {
+    name: 'Kouiza Manel',
+    languages: ['ar'],
+    image: 'kouiza-manel.jpg',
+    desc: 'Clinical psychologist. ',
+    instagram: 'clinical_25_psychologist', 
+    facebook: 'kouimanel',
+    country: 'ar'
+  },
 ]
 
 export default collaborators
