@@ -13,6 +13,7 @@
   "app.MaterialsView.pageDescriptionSearch": "Materiais e recursos SAAC relacionados con{searchText} para familias e profesionais. Descarga documentos, taboleiros, fichas... de comunicación aumentativa e alternativa...",
   "app.MaterialsView.pageTitle": "Materiais e recursos SAAC compartidos-ARASAAC",
   "app.MaterialsView.pageTitleSearch": "Materiais e recursos SAAC compartidos relacionados con{searchText} -ARASAAC",
+  "app.PictogramsView.closeWarning": "Pechar aviso",
   "app.PictogramsView.pageDesc": "Pictogramas con licenza open source para sistemas de comunicación aumentativa e alternativa",
   "app.PictogramsView.pageTitle": "Pictogramas-ARASAAC",
   "app.component.MaterialConditions.adaptationQuote": "Cita adaptacións",
