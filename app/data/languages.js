@@ -52,12 +52,12 @@ const languages = [
     translated: false, // web 44%, admin 0%, pictograms 0%
     needTranslators: true
   },
-  // {
-  //   code: 'ess',
-  //   text: 'Estonio',
-  //   translated: 2, // web 56%, admin 100%, pictos 16%
-  //   needTranslators: false
-  // },
+  {
+    code: 'et',
+    text: 'Eestlane',
+    translated: false, // web 56%, admin 100%, pictos 16%
+    needTranslators: false
+  },
   {
     code: 'eu',
     text: 'Euskal',

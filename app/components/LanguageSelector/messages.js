@@ -138,6 +138,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Albanian'
   },
+  et: {
+    id: 'app.components.LanguageSelector.et',
+    description: 'Select language',
+    defaultMessage: 'Estonian'
+  },
   translateOnline: {
     id: 'app.components.LanguageSelector.translateOnline',
     description: 'Select language',
