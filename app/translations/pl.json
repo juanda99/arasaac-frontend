@@ -13,6 +13,7 @@
   "app.MaterialsView.pageDescriptionSearch": "Materiały AAC {searchText} przeznaczone do użytku przez rodziny użytkowników oraz specjalistów. Pobierz dokumenty, tablice, katy pracy z wykorzystaniem Komunikacji Wspomagającej oraz Alternatywnej",
   "app.MaterialsView.pageTitle": "Udostępnione materiały AAC - ARASAAC",
   "app.MaterialsView.pageTitleSearch": "Udostępnione materiały AAC, związane z {searchText} - ARASAAC",
+  "app.PictogramsView.closeWarning": "Zamknij ostrzeżenie",
   "app.PictogramsView.pageTitle": "Znaki graficzne AAC - ARASAAC",
   "app.component.MaterialConditions.adaptationQuote": "Cytat dostosowania",
   "app.component.MaterialConditions.adaptationQuoteDesc": "W adaptacji istniejącego materiału nazwisko osoby, która go dostosowała, zostanie dodane na końcu cytatu:",
