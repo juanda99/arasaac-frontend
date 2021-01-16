@@ -351,7 +351,7 @@
   "app.components.Welcome.aragonese": "أراجون",
   "app.components.Welcome.chooseLanguage": "اختر اللغة الخاصة بك:",
   "app.components.Welcome.header": "{أراجونين} مَرْكَزْ التَّواصل المُعَزَزْ و البديل",
-  "app.components.aac": "مِنْ الأراساك نَوَدُ أَنْ نَشْكُرَ كِلا {الكَاتِب} و {الفَرِيق} عَلَى تَعَاوِنِهِمَا فِي صِيَاغَةِ هَذَا القِسْم مِنْ مَوْقِعْنا الإليكْتْروني.",
+  "app.components.aac": "مِنْ الأراساك نَوَدُ أَنْ نَشْكُرَ كِلا {author} و {team} عَلَى تَعَاوِنِهِمَا فِي صِيَاغَةِ هَذَا القِسْم مِنْ مَوْقِعْنا الإليكْتْروني.",
   "app.components.aac.aac": "أَنْظِمَة الاتِصَالَاتْ المُعَزَزَة و البَديِلَة (AAC)",
   "app.components.aac.codedSelection": "اختيار غريب",
   "app.components.aac.communicationBoards": "لَوَحَات اتِصالات",
