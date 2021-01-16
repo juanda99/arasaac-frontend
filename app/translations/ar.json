@@ -535,6 +535,7 @@
   "app.containers.SearchBox.disableFilters": "إِلْغَاء \\ تَعْطِيلْ الفِلتر ( عَوَامِلْ التَّصْفِيَّة)",
   "app.containers.SearchBox.filterResults": "نَتَائِج الفَلْتَرَة",
   "app.containers.SearchBox.filters": "تَرْشِيح/تَصْفِيَة",
+  "app.containers.SearchBox.filtersHint": "يُمْكِنُكَ تَصْفِيَّة (فَلْتَرَة) نَتَائِجْ البَحْثْ من خِلالْ النَّشَاط, المَنْطِقَة أَوْ اللَُّغَة.",
   "app.containers.SearchBox.showHelp": "إِضْهَار \\ عَرْض المُسَاعَدَة",
   "app.containers.SearchBox.wordSearch": "البَحْث بِالْكَلِمَة",
   "app.containers.SettingsView.DARK": "أَسْوَدٌ \\ غَامِقٌ",
