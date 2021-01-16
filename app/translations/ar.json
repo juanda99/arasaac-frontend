@@ -19,6 +19,7 @@
   "app.PictogramsView.needTranslators": "نَحْنُ نَحْتَاجُ المُسَاعَدَة فِي تَرْجَمَة الأراساك إِلَى لُغَتِكْ.",
   "app.PictogramsView.pageDesc": "رَمْز المَصْدَرْ المَفْتُوحْ المُعَزَزْ و البَدِيل لِنَقْل المَعْلُومَات \\ للتَوَاصُل",
   "app.PictogramsView.pageTitle": "رُمُوزْ AAC-أراساك",
+  "app.PictogramsView.translationStatus": "أُنْظُرْ للحَالَة الحَالِيَّة للتَّرْجَمَة.",
   "app.component.MaterialConditions.adaptationQuote": "ضَبْط الاقتباس",
   "app.component.MaterialConditions.adaptationQuoteDesc": "فِي حَالَة تَعْدِيل\\ضَبْط أَدَوَات المَوْجُودَة, اِسْم المُعَدِلْ سَيُضَافُ فِي نِهَايَةِ الاقْتِبَاس:",
   "app.component.MaterialConditions.adaptedBy": "ضُبِطَ مِنْ قِبَلْ:",
