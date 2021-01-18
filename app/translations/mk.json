@@ -13,6 +13,7 @@
   "app.MaterialsView.pageDescriptionSearch": "Ресурси за ААК поврзани со {searchText} за професионалци и семејства. Превезмете документи за алтернативна и аугментативна комуникација, табли, наставни листови...",
   "app.MaterialsView.pageTitle": "Споделени ресурси за ААК - ARASAAC",
   "app.MaterialsView.pageTitleSearch": "Споделени ресурси за ААК поврзани со {searchText} - ARASAAC",
+  "app.PictogramsView.closeWarning": "Опомена за затворање",
   "app.PictogramsView.contactTranslators": "Контактирајте нè за да ни се приклучите како преведувач!",
   "app.PictogramsView.languageSearch": "Одберете јазик за пребарување",
   "app.PictogramsView.needTranslators": "Потребна ни е помош за превод на ARASAAC на Вашиот јазик.",
