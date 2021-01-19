@@ -64,7 +64,7 @@ const getKeywords = (pictoCategories, categoryTree) => {
   const keywords = pictoCategories.reduce(
     (accumulator, currentValue) => {
       const keywords = nodes.filter(node=>node.path[node.path.length -2]===currentValue).map(node => node.value)
-      return keywords[0].length ? [...accumulator, keywords[0][0]] : accumulator
+      return (keywords[0] && keywords[0].length) ? [...accumulator, keywords[0][0]] : accumulator
     }, [])
   return keywords
 }
