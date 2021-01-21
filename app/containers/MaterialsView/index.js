@@ -64,6 +64,7 @@ class MaterialsView extends PureComponent {
     getNewMaterials: false,
     getUnpublished: false,
     searchType: 'content',
+    showNotFound: false,
     /* running, step and steps for Joyride */
     running: false,
     step: 0,
@@ -248,6 +249,7 @@ class MaterialsView extends PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { token } = nextProps
+    this.setState({showNotFound: false})
     if (this.props.location.search !== nextProps.location.search) {
       this.processQuery(nextProps)
     }
@@ -280,12 +282,14 @@ class MaterialsView extends PureComponent {
 
   handleSubmit = (nextValue) => {
     this.setState({
-      tab: 0
+      tab: 0,
     })
     const newValue = this.getCodeText(this.state.searchType, nextValue)
-    if (this.props.params.searchText !== newValue) {
+    if (this.props.params.searchText !== newValue  && newValue) {
       this.props.router.push(`/materials/search/${encodeURIComponent(newValue)}?searchType=${this.state.searchType}`)
     }
+    /* hack if getCodeText returns  undefined, to render no found  materials */
+    if (!newValue) this.setState({showNotFound: true})
   }
 
   handlePublishMaterial = (id, publish) => {
@@ -328,9 +332,10 @@ class MaterialsView extends PureComponent {
 
   render() {
     const { showFilter, showSettings, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, loadingNew, muiTheme, width, role, pendingMaterials, unpublishedMaterials, authorsName } = this.props
-    const { tab, offset, searchType, running, steps } = this.state
+    const { tab, offset, searchType, running, steps, showNotFound } = this.state
     const { formatMessage } = this.props.intl
     const searchText = this.getSearchText(searchType, this.props.params.searchText) || ''
+    
     let materialsCounter
     const hideIconText = width === SMALL
 
@@ -349,7 +354,9 @@ class MaterialsView extends PureComponent {
     else if (tab === 3) materialsList = unpublishedMaterials
     let gallery = ''
     const loadingState = tab === 1 ? loadingNew : loading
-    if (loadingState) {
+    if  (showNotFound) {
+      gallery = <ReadMargin><P>{<FormattedMessage {...messages.materialsNotFound} />}</P></ReadMargin>
+    } else if (loadingState) {
       gallery = <ReadMargin><P>{<FormattedMessage {...messages.loadingMaterials} />}</P></ReadMargin>
     } else if (!searchText && tab === 0) {
       gallery = null
