@@ -1,4 +1,11 @@
 {
+  "Login.invalidEmail": "Ongeldig e-mailadres",
+  "Login.invalidUrl": "Ongeldige URL",
+  "Login.required": "Verplicht veld",
+  "NewPasswordForm.hintNewPassword": "Voer een nieuw wachtwoord in.",
+  "activate.activateUser": "Gebruikersactivatie",
+  "activate.expiredCode": "Uw activeringscode is verlopen. We hebben u een nieuwe e-mail gestuurd om uw account te valideren.",
+  "activate.invalidCode": "Uw activeringscode is ongeldig",
   "app.component.Participate.contact": "Neem contact op met ons",
   "app.components.Filters.Activity.activity": "Activiteit",
   "app.components.Filters.Activity.animation": "Animatie",
