@@ -299,6 +299,8 @@
   "app.components.Pictogram.upperCase": "Κεφαλαία",
   "app.components.Pictogram.verbalTense": "Χρόνος Ρήματος",
   "app.components.PictogramCategories.pictoBelongs": "Αυτό το εικονίδιο ανήκει σε αυτές τις κατηγορίες:",
+  "app.components.PictogramCategories.pictoLabels": "Αυτό το εικονίδιο έχει χαρακτηριστεί ως:",
+  "app.components.PictogramCategories.taxonomy": "Ταξινόμηση",
   "app.components.PictogramSnippet.addFavorite": "Προσθήκη στα αγαπημένα",
   "app.components.PictogramSnippet.addFavoriteTooltip": "Προσθέστε εικονόγραμμα στην καρτέλα αγαπημένα",
   "app.components.PictogramSnippet.deleteFavorite": "Διαγραφή από τα Αγαπημένα",
