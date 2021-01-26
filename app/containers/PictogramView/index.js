@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
-import Helmet from 'react-helmet'
 import Pictogram from 'components/Pictogram'
 import { categories } from 'containers/PictogramsView/actions'
 import { makeCategoriesSelectorByLocale } from 'containers/PictogramsView/selectors'
@@ -110,12 +109,6 @@ class PictogramView extends PureComponent {
   render() {
     return (
       <View left={true} right={true} top={0} readMargin={false}>
-        <Helmet
-          title='PictogramView'
-          meta={[
-            { name: 'description', content: 'Description of PictogramView' }
-          ]}
-        />
         {this.renderContent()}
       </View>
     )

@@ -333,4 +333,12 @@ export default defineMessages({
     id: 'app.components.Pictogram.pictogramDisabled',
     defaultMessage: 'Pictogram disabled'
   },
+  pictoMetaTitle: {
+    id: 'app.components.Pictogram.pictoMetaTitle',
+    defaultMessage: '{keyword} pictogram | ARASAAC AAC symbol set'
+  },
+  pictoMetaDesc: {
+    id: 'app.components.Pictogram.pictoMetaDesc',
+    defaultMessage: 'Download {keyword} pictogram. Modify the image online using our pictogram editor.'
+  },
 })

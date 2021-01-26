@@ -5,6 +5,7 @@ import { withRouter } from 'react-router'
 // import queryString from 'query-string'
 import H2 from 'components/H2'
 import H3 from 'components/H3'
+import Helmet from 'react-helmet'
 import ShareBar from 'components/ShareBar'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -625,8 +626,15 @@ class Pictogram extends Component {
         onClick={this.handleRegisterAction}
       />
     ]
+    console.log('******************', formatMessage(messages['pictoMetaTitle'], {keyword: keyword}))
     return (
+      
       <div>
+        <Helmet>
+          <title>{formatMessage(messages['pictoMetaTitle'], {keyword})}</title>
+          <meta name="description" content={formatMessage(messages['pictoMetaDesc'], {keyword})} />
+          {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+        </Helmet>
         <Dialog
           title={formatMessage(messages.pictogramDisabled)}
           actions={actions}
