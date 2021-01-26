@@ -13,6 +13,8 @@
   "app.MaterialsView.pageDescriptionSearch": "Materials y recursos SAAC relazionatos con {searchText} pa familias y profesionals. Escarga documentos, tablers, fichas... de comunicazión aumentativa y alternativa...",
   "app.MaterialsView.pageTitle": "Materials e recursos SAAC compartitos - ARASAAC",
   "app.MaterialsView.pageTitleSearch": "Materials e recursos SAAC compartitos relazionatos con {searchText} - ARASAAC",
+  "app.PictogramsView.closeWarning": "Zarrar aviso",
+  "app.PictogramsView.contactTranslators": "Contauta con nusatros pa unir-te como tradutor!",
   "app.PictogramsView.languageSearch": "Trigue a suya luenga de busca",
   "app.PictogramsView.pageDesc": "Pictogramas con lizenzia de clau ubierta pa sistemas de comunicazión aumentativa y alternativa",
   "app.PictogramsView.pageTitle": "Pictogramas - ARASAAC",
