@@ -181,7 +181,7 @@ class Material extends Component {
     const { formatMessage } = intl
     const { currentTranslation, showDialog, languages } = this.state
     const language = currentTranslation.get('lang')
-    const title = currentTranslation.get('title')
+    const title = `${currentTranslation.get('title')} | ${formatMessage(messages.aacResources)}`
     const desc = currentTranslation.get('desc')
     const langImages = (material.getIn(['screenshots', language]) || []).map(image => `${language}/${image}`)
     const images = [...langImages, ...material.get('commonScreenshots') || []]

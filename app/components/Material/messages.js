@@ -92,4 +92,8 @@ export default defineMessages({
     id: 'app.components.Material.suggestranslation',
     defaultMessage: 'You can translate this material to another language and share it with us:'
   },
+  aacResources: {
+    id: 'app.components.Material.aacResources',
+    defaultMessage: 'ARASAAC AAC resources'
+  }
 })

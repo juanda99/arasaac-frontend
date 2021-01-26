@@ -626,7 +626,6 @@ class Pictogram extends Component {
         onClick={this.handleRegisterAction}
       />
     ]
-    console.log('******************', formatMessage(messages['pictoMetaTitle'], {keyword: keyword}))
     return (
       
       <div>
