@@ -181,7 +181,8 @@ class Material extends Component {
     const { formatMessage } = intl
     const { currentTranslation, showDialog, languages } = this.state
     const language = currentTranslation.get('lang')
-    const title = `${currentTranslation.get('title')} | ${formatMessage(messages.aacResources)}`
+    const title = currentTranslation.get('title')
+    const seoTitle = `${title} | ${formatMessage(messages.aacResources)}`
     const desc = currentTranslation.get('desc')
     const langImages = (material.getIn(['screenshots', language]) || []).map(image => `${language}/${image}`)
     const images = [...langImages, ...material.get('commonScreenshots') || []]
@@ -229,7 +230,7 @@ class Material extends Component {
     return (
       <ReadMargin>
         <Helmet>
-          <title>{title}</title>
+          <title>{seoTitle}</title>
           <meta name="description" content={desc} />
           {/* <link rel="canonical" href="http://mysite.com/example" /> */}
         </Helmet>
