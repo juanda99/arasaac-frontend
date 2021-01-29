@@ -321,6 +321,8 @@
   "app.components.Pictogram.office": "مكتب",
   "app.components.Pictogram.past": "الماضي",
   "app.components.Pictogram.peopleAppearance": "مظهر الأشخاص",
+  "app.components.Pictogram.pictoMetaDesc": "حَمِّلْ{keyword} بيكْتُوغرام. عَدِّلْ الصورَة على شَبَكَةِ الأنْتِرْنيت أَوْ إسْتَخْدِم مُحَرر البيكتوغرام الخَاصْ بِنَا.",
+  "app.components.Pictogram.pictoMetaTitle": "{keyword} بيكتوغرام | آراساك AAC مُحَدِدْ الرَّمْز",
   "app.components.Pictogram.pictogramDisabled": "بيكتوغرام مُعَطَل",
   "app.components.Pictogram.pictogramOptions": "خيارات بيكتوغرام",
   "app.components.Pictogram.plural": "الجمع",
