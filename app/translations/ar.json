@@ -398,6 +398,7 @@
   "app.components.aac.whatareAACSystems": "ما هي الأَنْظِمَة المُعَزَزَة و البَديِلَة للاتِصَالَاتْ؟",
   "app.components.aacusage.behavioralStrategies": "الاستراتيجيات السلوكية",
   "app.components.aacusage.communicationBoards": "لوحات الاتصالات",
+  "app.components.aacusage.intro": "آراساك يَعْرِض مَجْمُوعَة مُتَكَامِلَة مِنْ الرُّمُوزْ لِأَجْل الإتِصَالَاتْ المُعَزَزَة و البَدِيلَة (AAC) أَكْثَر مِنْ {numberPictograms} رُمُوز وَصْفِيَّة و تَحْطِيطِيَّة مُتَرْجَمَة لِأَكْثَرْ مِنْ 23 لُغَةٍ المُسْتَعْمَلَة مِنْ طَرَفْ المِهَنِيينْ لِأغْرَاضٍ مُخْتَلِفَة:",
   "app.components.aacusage.learning": "دعم التعلم",
   "app.components.aacusage.lifeSkills": "مهارات الحياة",
   "app.components.aacusage.otherContexts": "القدرات المعرفية في سياقات أخرى",
