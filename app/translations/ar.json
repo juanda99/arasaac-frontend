@@ -677,6 +677,7 @@
   "recoverPasswordView.passwordNotReset": "نَحْنُ آسِفُونْ لَكِنْ حَصَلْ خَلَلْ خِلَالْ إِعَادَة تَعْيِّن كَلِمَة مُرُورِكْ",
   "recoverPasswordView.passwordResetSend": "أَنْتَ عَلَى وَشَكِ الإنْتِهَاء! تَحَقَقْ مِنْ بَرِيدِكْ الإلِكْتْرُنِيّ لإسْتِعادَة كَلِمَة المُرُور الخَاصَّة بِكْ",
   "recoverPasswordView.resetPassword": "استعادة كلمة المرور",
+  "recoverPasswordView.userNotExists": "نَحْنُ آسِفُونْ لَكِنْ لا يُوجَد حِسَابْ مَعَ (مُرْتَبِطْ بِ) حِسَابِ بَرِيدِكَ الإِلِكْتْرُونِيّ",
   "signin.facebook": "تسجيل الدخول باستخدام فيس بوك",
   "signin.forgotPassword": "هل نسيت كلمة المرور؟",
   "signin.google": "تسجيل الدخول باستخدام جوجل",
