@@ -375,6 +375,7 @@
   "app.components.aac.list4": "{independentExploration}: produktu elektronikoetarako soilik. Kasu honetan, hiztun-laguntzaileak nahi duen hori aukeratu eta etengailu batekin sakatu arte, komunikatzailea edo ordenagailua da komunikatu beharreko aukera desberdinak erakusten dituena. Gorputzeko atal ezberdinekin aktiba daitezkeen etengailu mota asko daude.",
   "app.components.aac.list5": "{codedSelection}: ikur edo letra bakoitzak kode bat du (adibidez, bi edo hiru digituko zenbaki bat edo kolore bat eta zenbaki bat) hiztun-laguntzaileak hautaketa zuzena eginez edo ikurra edo letra eskaneatuz kode hori adieraz dezan. Horrela, tekla edo lauki-sare batzuen bidez ikur ugari sartu ahal izango ditu.",
   "app.components.aac.mouseSelection": "Sagu aukeraketa",
+  "app.components.aac.p1": "{aac}-k ahozko hizkuntzan adierazteko modu desberdinak dira, desgaitasuna duten pertsona askoren komunikazio eta hizkuntza zailtasunak handitzea (areagotzea) edo/eta konpentsatzea (alternatiboa) helburu dutenak.",
   "app.components.aac.pictographicSystems": "Sistema piktografikoak",
   "app.components.aac.resources": "Zein baliabide erabiltzen dira?",
   "app.components.aac.strategiesTitle": "Sarbidea lortzeko estrategiak eta laguntza produktuak",
