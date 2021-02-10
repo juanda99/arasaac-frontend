@@ -10,14 +10,14 @@ import { injectIntl, FormattedMessage } from 'react-intl'
 import Joyride, { STATUS } from 'react-joyride'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import View from 'components/View'
-import {Helmet} from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import SearchField from 'components/SearchField'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import DivSearchBox from 'components/DivSearchBox'
 import ActionButtons from 'components/ActionButtons'
 import SearchIcon from 'material-ui/svg-icons/action/search'
-import PendingIcon from 'material-ui/svg-icons/action/visibility-Off'
+import PendingIcon from 'material-ui/svg-icons/action/visibility-off'
 import NotPublishedIcon from 'material-ui/svg-icons/action/thumb-down'
 import withWidth, { SMALL } from 'material-ui/utils/withWidth'
 import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
@@ -45,7 +45,19 @@ import {
   makeAuthorsNameSelector
 } from './selectors'
 
-import { materials, newMaterials, authors, notPublishedMaterials, toggleShowSettings, toggleShowFilter, setFilterItems, publishMaterial, removeMaterial, showFilters, showSettings } from './actions'
+import {
+  materials,
+  newMaterials,
+  authors,
+  notPublishedMaterials,
+  toggleShowSettings,
+  toggleShowFilter,
+  setFilterItems,
+  publishMaterial,
+  removeMaterial,
+  showFilters,
+  showSettings
+} from './actions'
 import languages from 'data/languages'
 import activities from 'data/activities'
 import areas from 'data/areas'
@@ -54,10 +66,7 @@ import messagesFilters from 'components/Filters/messages'
 
 const filtersData = { areas, activities, languages }
 
-
 class MaterialsView extends PureComponent {
-
-
   state = {
     tab: 0,
     offset: 0,
@@ -73,51 +82,73 @@ class MaterialsView extends PureComponent {
         title: <FormattedMessage {...messages.wordSearch} />,
         content: (
           <div>
-            <p dir={this.props.direction}><FormattedMessage {...messages.searchHint1} /></p>
-            <p dir={this.props.direction}><FormattedMessage {...messages.searchHint2} /></p>
+            <p dir={this.props.direction}>
+              <FormattedMessage {...messages.searchHint1} />
+            </p>
+            <p dir={this.props.direction}>
+              <FormattedMessage {...messages.searchHint2} />
+            </p>
           </div>
-
-
         ),
-        target: "#searchBox",
-        placement: "bottom",
+        target: '#searchBox',
+        placement: 'bottom',
         disableBeacon: true
       },
       {
         title: <FormattedMessage {...messages.filterResults} />,
-        content: <p dir={this.props.direction}><FormattedMessage {...messages.filtersBtn} /></p>,
-        target: "#filtersBtn",
-        placement: "bottom",
+        content: (
+          <p dir={this.props.direction}>
+            <FormattedMessage {...messages.filtersBtn} />
+          </p>
+        ),
+        target: '#filtersBtn',
+        placement: 'bottom',
         disableBeacon: true
       },
       {
         title: <FormattedMessage {...messages.filters} />,
-        content: <p dir={this.props.direction}><FormattedMessage {...messages.filtersHint} /></p>,
-        target: "#filtersArea",
-        placement: "bottom",
-        disableBeacon: true,
+        content: (
+          <p dir={this.props.direction}>
+            <FormattedMessage {...messages.filtersHint} />
+          </p>
+        ),
+        target: '#filtersArea',
+        placement: 'bottom',
+        disableBeacon: true
       },
       {
         title: <FormattedMessage {...messages.disableFilters} />,
-        content: <p dir={this.props.direction}><FormattedMessage {...messages.disableFiltersHint} /></p>,
-        target: ".btnDeleteFilter:first-of-type",
-        placement: "bottom",
-        disableBeacon: true,
-      },
-      {
-        title: <FormattedMessage {...messages.advancedSearch} />,
-        content: <p dir={this.props.direction}><FormattedMessage {...messages.advSearchBtn} /></p>,
-        target: "#advSearchBtn",
-        placement: "bottom",
+        content: (
+          <p dir={this.props.direction}>
+            <FormattedMessage {...messages.disableFiltersHint} />
+          </p>
+        ),
+        target: '.btnDeleteFilter:first-of-type',
+        placement: 'bottom',
         disableBeacon: true
       },
       {
         title: <FormattedMessage {...messages.advancedSearch} />,
-        content: <p dir={this.props.direction}><FormattedMessage {...messages.advSearchHint} /></p>,
-        target: "#advSearchField",
-        placement: "bottom",
+        content: (
+          <p dir={this.props.direction}>
+            <FormattedMessage {...messages.advSearchBtn} />
+          </p>
+        ),
+        target: '#advSearchBtn',
+        placement: 'bottom',
         disableBeacon: true
       },
+      {
+        title: <FormattedMessage {...messages.advancedSearch} />,
+        content: (
+          <p dir={this.props.direction}>
+            <FormattedMessage {...messages.advSearchHint} />
+          </p>
+        ),
+        target: '#advSearchField',
+        placement: 'bottom',
+        disableBeacon: true
+      }
     ]
   }
 
@@ -132,7 +163,7 @@ class MaterialsView extends PureComponent {
       case 27:
       case 31:
         text = `${formatMessage(messagesFilters['software'])} / ${text}`
-        break;
+        break
       case 4:
       case 5:
       case 8:
@@ -140,16 +171,16 @@ class MaterialsView extends PureComponent {
       case 20:
       case 28:
         text = `${formatMessage(messagesFilters['communication'])} / ${text}`
-        break;
+        break
       case 6:
       case 11:
       case 12:
       case 13:
       case 16:
         text = `${formatMessage(messagesFilters['game'])} / ${text}`
-        break;
+        break
       default:
-        break;
+        break
     }
     return { value, text }
   })
@@ -169,7 +200,7 @@ class MaterialsView extends PureComponent {
       case 31:
       case 32:
         text = `${formatMessage(messagesFilters['language'])} / ${text}`
-        break;
+        break
       case 13:
       case 14:
       case 15:
@@ -178,21 +209,22 @@ class MaterialsView extends PureComponent {
       case 30:
       case 33:
         text = `${formatMessage(messagesFilters['math'])} / ${text}`
-        break;
+        break
       case 1:
       case 2:
       case 27:
         text = `${formatMessage(messagesFilters['priorSkills'])} / ${text}`
-        break;
+        break
       default:
-        break;
+        break
     }
     return { value, text }
   })
 
-
   areasKeywords = this.customAreas.map(area => area.text).sort()
-  activitiesKeywords = this.customActivities.map(activity => activity.text).sort()
+  activitiesKeywords = this.customActivities
+    .map(activity => activity.text)
+    .sort()
 
   processQuery = props => {
     const { location } = props || this.props
@@ -201,65 +233,106 @@ class MaterialsView extends PureComponent {
     if (search) {
       parameters = { ...parameters, ...query }
       const validKeys = ['offset', 'tab', 'searchType']
-      Object.keys(parameters).forEach(key => validKeys.includes(key) || delete parameters[key])
+      Object.keys(parameters).forEach(
+        key => validKeys.includes(key) || delete parameters[key]
+      )
       parameters.offset = parseInt(parameters.offset, 10) || 0
       parameters.tab = parseInt(parameters.tab, 10) || 0
       parameters.searchType = parameters.searchType || 'content'
     }
-    const needUpdate = Object.keys(parameters).some(key => parameters[key] !== this.state[key])
+    const needUpdate = Object.keys(parameters).some(
+      key => parameters[key] !== this.state[key]
+    )
     if (needUpdate) this.setState(parameters)
   }
 
   getCodeText = (searchType, searchText) => {
     const { formatMessage } = this.props.intl
     if (!searchText) return ''
-    if (searchType === 'activity') return this.customActivities.filter(item => item.text === searchText).map(item => item.value)[0]
-    else if (searchType === 'area') return this.customAreas.filter(item => item.text === searchText).map(item => item.value)[0]
+    if (searchType === 'activity')
+      return this.customActivities
+        .filter(item => item.text === searchText)
+        .map(item => item.value)[0]
+    else if (searchType === 'area')
+      return this.customAreas
+        .filter(item => item.text === searchText)
+        .map(item => item.value)[0]
     return searchText
   }
 
   getSearchText = (searchType, searchText) => {
     const { formatMessage } = this.props.intl
     if (!searchText) return ''
-    if (searchType === 'activity') return this.customActivities.filter(item => item.value === parseInt(searchText)).map(item => item.text)[0]
-    else if (searchType === 'area') return this.customAreas.filter(item => item.value === parseInt(searchText)).map(item => item.text)[0]
+    if (searchType === 'activity')
+      return this.customActivities
+        .filter(item => item.value === parseInt(searchText))
+        .map(item => item.text)[0]
+    else if (searchType === 'area')
+      return this.customAreas
+        .filter(item => item.value === parseInt(searchText))
+        .map(item => item.text)[0]
     return searchText
   }
 
   async componentDidMount() {
-    const { requestMaterials, requestNewMaterials, requestNotPublishedMaterials, locale, token, role, authorsName, requestAuthors, newVisibleMaterialsList } = this.props
+    const {
+      requestMaterials,
+      requestNewMaterials,
+      requestNotPublishedMaterials,
+      locale,
+      token,
+      role,
+      authorsName,
+      requestAuthors,
+      newVisibleMaterialsList
+    } = this.props
     /* hack to open learning aac menu when visiting from homepage */
-    const isOpen = window.document.getElementById("lstsearchmaterials")
+    const isOpen = window.document.getElementById('lstsearchmaterials')
     if (!isOpen) document.getElementById('lstmaterials').click()
-    
-    
+
     await this.processQuery()
     if (this.props.params.searchText && !this.props.searchResults) {
-      requestMaterials(locale, this.props.params.searchText, this.state.searchType, token)
+      requestMaterials(
+        locale,
+        this.props.params.searchText,
+        this.state.searchType,
+        token
+      )
     }
     /* we just ask for new Materials twice an hour */
     const newMaterialsDate = sessionStorage.getItem('newMaterialsDate')
     const actualDate = new Date()
-    const diffSeconds = newMaterialsDate ? (actualDate.getTime() - newMaterialsDate) / 1000 : 0
+    const diffSeconds = newMaterialsDate
+      ? (actualDate.getTime() - newMaterialsDate) / 1000
+      : 0
     const numItems = role === 'admin' ? 10000 : 100
-    if (newVisibleMaterialsList.size === 0 || diffSeconds > 1800) requestNewMaterials(numItems, token)
+    if (newVisibleMaterialsList.size === 0 || diffSeconds > 1800)
+      requestNewMaterials(numItems, token)
     if (role === 'admin') requestNotPublishedMaterials(token)
     if (!authorsName.length) requestAuthors()
   }
 
   componentWillReceiveProps(nextProps) {
     const { token } = nextProps
-    this.setState({showNotFound: false})
+    this.setState({ showNotFound: false })
     if (this.props.location.search !== nextProps.location.search) {
       this.processQuery(nextProps)
     }
-    if (nextProps.params.searchText && this.props.params.searchText !== nextProps.params.searchText && !nextProps.searchResults) {
-      this.props.requestMaterials(nextProps.locale, nextProps.params.searchText, this.state.searchType, token)
+    if (
+      nextProps.params.searchText &&
+      this.props.params.searchText !== nextProps.params.searchText &&
+      !nextProps.searchResults
+    ) {
+      this.props.requestMaterials(
+        nextProps.locale,
+        nextProps.params.searchText,
+        this.state.searchType,
+        token
+      )
     }
-
   }
 
-  handleChange = (tab) => {
+  handleChange = tab => {
     const { pathname } = this.props.location
     const url = `${pathname}?tab=${tab}&searchType=${this.state.searchType}`
     this.props.router.push(url)
@@ -280,16 +353,20 @@ class MaterialsView extends PureComponent {
     }
   }
 
-  handleSubmit = (nextValue) => {
+  handleSubmit = nextValue => {
     this.setState({
-      tab: 0,
+      tab: 0
     })
     const newValue = this.getCodeText(this.state.searchType, nextValue)
-    if (this.props.params.searchText !== newValue  && newValue) {
-      this.props.router.push(`/materials/search/${encodeURIComponent(newValue)}?searchType=${this.state.searchType}`)
+    if (this.props.params.searchText !== newValue && newValue) {
+      this.props.router.push(
+        `/materials/search/${encodeURIComponent(newValue)}?searchType=${
+          this.state.searchType
+        }`
+      )
     }
     /* hack if getCodeText returns  undefined, to render no found  materials */
-    if (!newValue) this.setState({showNotFound: true})
+    if (!newValue) this.setState({ showNotFound: true })
   }
 
   handlePublishMaterial = (id, publish) => {
@@ -297,7 +374,7 @@ class MaterialsView extends PureComponent {
     publishMaterial(id, publish, token)
   }
 
-  handleRemoveMaterial = (id) => {
+  handleRemoveMaterial = id => {
     const { removeMaterial, token } = this.props
     removeMaterial(id, token)
   }
@@ -310,8 +387,8 @@ class MaterialsView extends PureComponent {
 
   // handleBeforeDelete = () => this.setState({ confirmationBoxOpen: true })
 
-  handleJoyrideCallback = (data) => {
-    const { status, type } = data;
+  handleJoyrideCallback = data => {
+    const { status, type } = data
     const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED]
 
     if (finishedStatuses.includes(status)) {
@@ -327,15 +404,28 @@ class MaterialsView extends PureComponent {
 
   startHelp = () => this.setState({ running: true })
 
-
-
-
   render() {
-    const { showFilter, showSettings, filters, visibleMaterials, newVisibleMaterialsList, locale, loading, loadingNew, muiTheme, width, role, pendingMaterials, unpublishedMaterials, authorsName } = this.props
+    const {
+      showFilter,
+      showSettings,
+      filters,
+      visibleMaterials,
+      newVisibleMaterialsList,
+      locale,
+      loading,
+      loadingNew,
+      muiTheme,
+      width,
+      role,
+      pendingMaterials,
+      unpublishedMaterials,
+      authorsName
+    } = this.props
     const { tab, offset, searchType, running, steps, showNotFound } = this.state
     const { formatMessage } = this.props.intl
-    const searchText = this.getSearchText(searchType, this.props.params.searchText) || ''
-    
+    const searchText =
+      this.getSearchText(searchType, this.props.params.searchText) || ''
+
     let materialsCounter
     const hideIconText = width === SMALL
 
@@ -354,10 +444,18 @@ class MaterialsView extends PureComponent {
     else if (tab === 3) materialsList = unpublishedMaterials
     let gallery = ''
     const loadingState = tab === 1 ? loadingNew : loading
-    if  (showNotFound) {
-      gallery = <ReadMargin><P>{<FormattedMessage {...messages.materialsNotFound} />}</P></ReadMargin>
+    if (showNotFound) {
+      gallery = (
+        <ReadMargin>
+          <P>{<FormattedMessage {...messages.materialsNotFound} />}</P>
+        </ReadMargin>
+      )
     } else if (loadingState) {
-      gallery = <ReadMargin><P>{<FormattedMessage {...messages.loadingMaterials} />}</P></ReadMargin>
+      gallery = (
+        <ReadMargin>
+          <P>{<FormattedMessage {...messages.loadingMaterials} />}</P>
+        </ReadMargin>
+      )
     } else if (!searchText && tab === 0) {
       gallery = null
     } else {
@@ -375,8 +473,11 @@ class MaterialsView extends PureComponent {
           publishMaterial={this.handlePublishMaterial}
           removeMaterial={this.handleRemoveMaterial}
         />
+      ) : (
+        <ReadMargin>
+          <P>{<FormattedMessage {...messages.materialsNotFound} />}</P>
+        </ReadMargin>
       )
-        : <ReadMargin><P>{<FormattedMessage {...messages.materialsNotFound} />}</P></ReadMargin>
     }
     let dataSource
     if (searchType === 'content') dataSource = []
@@ -386,8 +487,13 @@ class MaterialsView extends PureComponent {
 
     const renderSearchBox = (
       <div>
-        <DivSearchBox id='searchBox'>
-          <SearchField value={searchText} dataSource={dataSource} onSubmit={this.handleSubmit} style={{ flexGrow: 1 }} />
+        <DivSearchBox id="searchBox">
+          <SearchField
+            value={searchText}
+            dataSource={dataSource}
+            onSubmit={this.handleSubmit}
+            style={{ flexGrow: 1 }}
+          />
           <ActionButtons
             onFilterClick={this.props.toggleShowFilter}
             onSettingsClick={this.props.toggleShowSettings}
@@ -397,34 +503,49 @@ class MaterialsView extends PureComponent {
             onHelpClick={this.startHelp}
           />
         </DivSearchBox>
-        {showFilter ?
-          <FilterList filtersMap={filters} setFilterItems={this.props.setFilterItems} filtersData={filtersData} />
-          : null
-        }
-        {showSettings ?
+        {showFilter ? (
+          <FilterList
+            filtersMap={filters}
+            setFilterItems={this.props.setFilterItems}
+            filtersData={filtersData}
+          />
+        ) : null}
+        {showSettings ? (
           <SelectField
-            id='advSearchField'
-            floatingLabelText={<FormattedMessage {...messages.advancedSearch} />}
+            id="advSearchField"
+            floatingLabelText={
+              <FormattedMessage {...messages.advancedSearch} />
+            }
             value={searchType}
             onChange={this.handleSearchTypeChange}
           >
-            <MenuItem value='content' primaryText={<FormattedMessage {...messages.content} />} />
-            <MenuItem value='author' primaryText={<FormattedMessage {...messages.author} />} />
-            <MenuItem value='activity' primaryText={<FormattedMessage {...messages.activity} />} />
-            <MenuItem value='area' primaryText={<FormattedMessage {...messages.area} />} />
+            <MenuItem
+              value="content"
+              primaryText={<FormattedMessage {...messages.content} />}
+            />
+            <MenuItem
+              value="author"
+              primaryText={<FormattedMessage {...messages.author} />}
+            />
+            <MenuItem
+              value="activity"
+              primaryText={<FormattedMessage {...messages.activity} />}
+            />
+            <MenuItem
+              value="area"
+              primaryText={<FormattedMessage {...messages.area} />}
+            />
           </SelectField>
-          : null
-        }
-
+        ) : null}
       </div>
     )
-    
-    const title = searchText ? 
-      formatMessage(messages.pageTitleSearch, { searchText })
+
+    const title = searchText
+      ? formatMessage(messages.pageTitleSearch, { searchText })
       : formatMessage(messages.pageTitle)
-    
-    const description = searchText ? 
-      formatMessage(messages.pageDescriptionSearch, { searchText })
+
+    const description = searchText
+      ? formatMessage(messages.pageDescriptionSearch, { searchText })
       : formatMessage(messages.pageDescription)
 
     return (
@@ -433,7 +554,6 @@ class MaterialsView extends PureComponent {
           <title>{title}</title>
           <meta name="description" content={description} />
           {/* <link rel="canonical" href="http://mysite.com/example" /> */}
-
         </Helmet>
         <Joyride
           callback={this.handleJoyrideCallback}
@@ -452,17 +572,35 @@ class MaterialsView extends PureComponent {
         />
         <Tabs onChange={this.handleChange} value={tab}>
           <Tab
-            label={hideIconText ? '' : <FormattedMessage {...messages.search} />}
+            label={
+              hideIconText ? '' : <FormattedMessage {...messages.search} />
+            }
             icon={<SearchIcon />}
             value={0}
           >
             <div>
-              <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+              <View
+                left={true}
+                right={true}
+                style={{ backgroundColor: muiTheme.palette.accent2Color }}
+              >
                 {renderSearchBox}
               </View>
               <Divider />
-              <View left={true} right={true} top={1} >
-                {materialsCounter ? <ReadMargin><P> <FormattedMessage {...messages.materialsFound} values={{ materialsCounter }} /> </P></ReadMargin> : ''}
+              <View left={true} right={true} top={1}>
+                {materialsCounter ? (
+                  <ReadMargin>
+                    <P>
+                      {' '}
+                      <FormattedMessage
+                        {...messages.materialsFound}
+                        values={{ materialsCounter }}
+                      />{' '}
+                    </P>
+                  </ReadMargin>
+                ) : (
+                  ''
+                )}
                 {gallery}
               </View>
             </div>
@@ -473,29 +611,63 @@ class MaterialsView extends PureComponent {
             value={1}
           >
             <div>
-              <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+              <View
+                left={true}
+                right={true}
+                style={{ backgroundColor: muiTheme.palette.accent2Color }}
+              >
                 {renderSearchBox}
               </View>
               <Divider />
-              <View left={true} right={true} top={1} >
-                {materialsCounter ? <ReadMargin><P> <FormattedMessage {...messages.newMaterialsFound} values={{ materialsCounter }} /> </P> </ReadMargin> : ''}
+              <View left={true} right={true} top={1}>
+                {materialsCounter ? (
+                  <ReadMargin>
+                    <P>
+                      {' '}
+                      <FormattedMessage
+                        {...messages.newMaterialsFound}
+                        values={{ materialsCounter }}
+                      />{' '}
+                    </P>{' '}
+                  </ReadMargin>
+                ) : (
+                  ''
+                )}
                 {gallery}
               </View>
             </div>
           </Tab>
           {role === 'admin' && (
             <Tab
-              label={hideIconText ? '' : <FormattedMessage {...messages.pending} />}
+              label={
+                hideIconText ? '' : <FormattedMessage {...messages.pending} />
+              }
               icon={<PendingIcon />}
               value={2}
             >
               <div>
-                <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+                <View
+                  left={true}
+                  right={true}
+                  style={{ backgroundColor: muiTheme.palette.accent2Color }}
+                >
                   {renderSearchBox}
                 </View>
                 <Divider />
-                <View left={true} right={true} top={1} >
-                  {materialsCounter ? <ReadMargin><P> <FormattedMessage {...messages.newMaterialsFound} values={{ materialsCounter }} /> </P> </ReadMargin> : ''}
+                <View left={true} right={true} top={1}>
+                  {materialsCounter ? (
+                    <ReadMargin>
+                      <P>
+                        {' '}
+                        <FormattedMessage
+                          {...messages.newMaterialsFound}
+                          values={{ materialsCounter }}
+                        />{' '}
+                      </P>{' '}
+                    </ReadMargin>
+                  ) : (
+                    ''
+                  )}
                   {gallery}
                 </View>
               </div>
@@ -503,25 +675,45 @@ class MaterialsView extends PureComponent {
           )}
           {role === 'admin' && (
             <Tab
-              label={hideIconText ? '' : <FormattedMessage {...messages.notPublished} />}
+              label={
+                hideIconText ? (
+                  ''
+                ) : (
+                  <FormattedMessage {...messages.notPublished} />
+                )
+              }
               icon={<NotPublishedIcon />}
               value={3}
             >
               <div>
-                <View left={true} right={true} style={{ backgroundColor: muiTheme.palette.accent2Color }}>
+                <View
+                  left={true}
+                  right={true}
+                  style={{ backgroundColor: muiTheme.palette.accent2Color }}
+                >
                   {renderSearchBox}
                 </View>
                 <Divider />
-                <View left={true} right={true} top={1} >
-                  {materialsCounter ? <ReadMargin><P> <FormattedMessage {...messages.newMaterialsFound} values={{ materialsCounter }} /> </P> </ReadMargin> : ''}
+                <View left={true} right={true} top={1}>
+                  {materialsCounter ? (
+                    <ReadMargin>
+                      <P>
+                        {' '}
+                        <FormattedMessage
+                          {...messages.newMaterialsFound}
+                          values={{ materialsCounter }}
+                        />{' '}
+                      </P>{' '}
+                    </ReadMargin>
+                  ) : (
+                    ''
+                  )}
                   {gallery}
                 </View>
               </div>
             </Tab>
           )}
-
         </Tabs>
-
       </div>
     )
   }
@@ -550,9 +742,8 @@ MaterialsView.propTypes = {
   publishMaterial: PropTypes.func.isRequired,
   removeMaterial: PropTypes.func.isRequired,
   pendingMaterials: PropTypes.arrayOf(PropTypes.object).isRequired,
-  unpublishedMaterials: PropTypes.arrayOf(PropTypes.object).isRequired,
+  unpublishedMaterials: PropTypes.arrayOf(PropTypes.object).isRequired
 }
-
 
 const mapStateToProps = (state, ownProps) => ({
   filters: makeFiltersSelector()(state),
@@ -572,7 +763,7 @@ const mapStateToProps = (state, ownProps) => ({
   role: makeSelectRole()(state)
 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   requestMaterials: (locale, searchText, searchType, token) => {
     dispatch(materials.request(locale, searchText, searchType, token))
   },
@@ -582,7 +773,7 @@ const mapDispatchToProps = (dispatch) => ({
   requestAuthors: () => {
     dispatch(authors.request())
   },
-  requestNotPublishedMaterials: (token) => {
+  requestNotPublishedMaterials: token => {
     dispatch(notPublishedMaterials.request(token))
   },
   publishMaterial: (id, publish, token) => {
@@ -608,4 +799,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(muiThemeable()(withWidth()(injectIntl(MaterialsView)))))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(muiThemeable()(withWidth()(injectIntl(MaterialsView)))))
