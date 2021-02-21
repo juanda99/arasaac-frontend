@@ -9,6 +9,8 @@
   "activate.userActivated": "Ihr Account wurde aktiviert. Sie können sich nun einloggen.",
   "activate.userNotActivated": "Beim Aktivieren der Apps ist ein Fehler aufgetreten",
   "app.HomePage.discover": "Entdecke ARASAAC",
+  "app.MaterialsView.pageDescription": "Unterstützte Kommunikation-Materialressourcen für Fachleute und Familien. Lade (Laden Sie) Dokumente zur ergänzende und unterstützende Kommunikation herunter:  Dokumente, Kommunikationspaneele, Arbeitsblätter...",
+  "app.MaterialsView.pageDescriptionSearch": "Unterstützte Kommunikation-Materialressourcen zum Thema {suche Text} für Fachleute und Familien. Herunterladen von Dokumenten, Kommunikationspaneele, Arbeitsblättern zur ergänzenden und unterstützten Kommunikation...",
   "app.component.MaterialConditions.adaptationQuote": "Quellenangabe bei Bearbeitungen",
   "app.component.MaterialConditions.adaptationQuoteDesc": "Bei Bearbeitung eines vorhandenen Materials wird der Name der bearbeitenden Person am Ende der Quellenangabe hinzugefügt:",
   "app.component.MaterialConditions.adaptedBy": "Bearbeitet von:",
