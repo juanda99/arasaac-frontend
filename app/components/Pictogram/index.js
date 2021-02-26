@@ -91,12 +91,6 @@ class Pictogram extends Component {
       .toArray()
     Konva.pixelRatio = Math.ceil(HIGH_RESOLUTION / STANDARD_RESOLUTION)
     const defaultColor = type >= 0 && type < 7 ? colorSet[type - 1] : ''
-    console.log(props, this.props)
-    console.log(
-      this.props.type === 'aac',
-      this.props.type,
-      '************************AAAAAAAAAAAAAAAALLLLLLLLLLLLLLLL'
-    )
     this.state = {
       language: locale,
       highResolution: false, // true for photoResolution
@@ -605,11 +599,6 @@ class Pictogram extends Component {
       blurRadius,
       open,
     } = this.state
-
-    console.log(
-      this.state,
-      '******************************************************'
-    )
 
     const canvasSize =
       windowWidth < MAX_CANVAS_SIZE ? windowWidth : MAX_CANVAS_SIZE
