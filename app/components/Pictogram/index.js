@@ -795,7 +795,24 @@ class Pictogram extends Component {
               </PictogramTitle>
             </ConditionalPaper>
           </PictoWrapper>
+
           <div style={styles.options} data-hide={true}>
+            {this.props.type === 'aac' && (
+              <div>
+                <H3 primary={true}>Aviso</H3>
+                <Divider />
+                <div style={{ display: 'flex' }}>
+                  <P data-hide={true}>
+                    <img
+                      src="https://static.arasaac.org/pictograms/27685/27685_300.png"
+                      style={{ height: 100, width: 100 }}
+                    />
+                    Este pictograma se considera básico para la comunicación
+                  </P>
+                </div>
+              </div>
+            )}
+
             <H3 primary={true}>
               {<FormattedMessage {...messages.modifyPicto} />}
             </H3>
