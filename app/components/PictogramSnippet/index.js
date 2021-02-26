@@ -11,19 +11,20 @@ import { FormattedMessage } from 'react-intl'
 import CardActions from './CardActions'
 import StyledPaper from './StyledPaper'
 import StyledList from './StyledList'
+import AACImage from './AACImage'
 import Image from './Image'
 import Item from './Item'
 import messages from './messages'
 
 class PictogramSnippet extends PureComponent {
   state = {
-    zDepth: 1
-  };
+    zDepth: 1,
+  }
 
   styles = {
     icon: {
       width: 48,
-      height: 48
+      height: 48,
     },
     leftIconButton: {
       width: 96,
@@ -31,7 +32,7 @@ class PictogramSnippet extends PureComponent {
       padding: 24,
       position: 'absolute',
       top: '0',
-      left: '0'
+      left: '0',
     },
     rightIconButton: {
       width: 96,
@@ -40,77 +41,98 @@ class PictogramSnippet extends PureComponent {
       position: 'absolute',
       opacity: 100,
       top: '0',
-      right: '0'
+      right: '0',
     },
     cardTitle: {
       textAlign: 'center',
       fontSize: '1.4rem',
       textTransform: 'uppercase',
       color: this.props.muiTheme.appBar.textColor,
-      fontWeight: '900'
-    }
-  };
+      fontWeight: '900',
+    },
+  }
 
   handleMouseEnter = () => {
     this.setState({
-      zDepth: 3
+      zDepth: 3,
     })
-  };
+  }
 
   handleClickFavorite = (event) => {
     const {
       pictogram: { _id },
-      onClickFavorite
+      onClickFavorite,
     } = this.props
+    const id = _id.toString().replace('aac', '')
     event.preventDefault()
-    onClickFavorite(_id)
-  };
+    onClickFavorite(id)
+  }
 
   handleDownload = (event) => {
-    const { pictogram: { _id, keywords }, searchText, onDownload } = this.props
+    const {
+      pictogram: { _id, keywords },
+      searchText,
+      onDownload,
+    } = this.props
     event.preventDefault()
     const { keyword } = keywordSelector(searchText, keywords)
     onDownload(_id, keyword)
-  };
+  }
 
   handleMouseLeave = () => {
     this.setState({
-      zDepth: 1
+      zDepth: 1,
     })
-  };
+  }
 
   render() {
     const {
-      pictogram: { _id, keywords, sex, violence },
+      pictogram: { _id, keywords, sex, violence, aac, aacColor },
       searchText,
       muiTheme,
       locale,
       showExtra,
       isFavorite,
-      color
+      color,
     } = this.props
     let blur = false
+
+    // hack remove aac from _id when replicate pictogram to remove color for AAC purposes
+    const id = _id.toString().replace('aac', '')
+
     // this.props.sex means hideSex, violence hideViolence
-    if (this.props.sex && sex) blur=true
-    if (this.props.violence && violence) blur=true
-    const fileUrl = color ? `${PICTOGRAMS_URL}/${_id}/${_id}_300.png` : `${PICTOGRAMS_URL}/${_id}/${_id}_nocolor_500.png`
+    if (this.props.sex && sex) blur = true
+    if (this.props.violence && violence) blur = true
     const { keyword } = keywordSelector(searchText, keywords)
+    let fileUrl, url
+    let showAACIcon = false
+    if (aac && !aacColor) showAACIcon = true
+    if (isNaN(_id)) {
+      showAACIcon = true
+      /* it's a replicated pictogram to remove color */
+      fileUrl = `${PICTOGRAMS_URL}/${id}/${id}_nocolor_500.png`
+      url = `/pictograms/${locale}/${id}/${encodeURIComponent(
+        keyword
+      )}?type=aac`
+    } else {
+      url = `/pictograms/${locale}/${_id}/${encodeURIComponent(keyword)}`
+      fileUrl = color
+        ? `${PICTOGRAMS_URL}/${_id}/${_id}_300.png`
+        : `${PICTOGRAMS_URL}/${_id}/${_id}_nocolor_500.png`
+    }
+
     const { isAuthenticated } = this.context
     return (
       <StyledList
         key={_id}
-        className='image-element-class'
+        className="image-element-class"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
         <StyledPaper zDepth={this.state.zDepth}>
-          <Item url={`/pictograms/${locale}/${_id}/${encodeURIComponent(keyword)}`}>
+          <Item url={url}>
             <div style={{ position: 'relative' }}>
-              <Image
-                src={fileUrl}
-                alt={keyword}
-                blur={blur}
-              />
+              <Image src={fileUrl} alt={keyword} blur={blur} />
               {isFavorite && (
                 <IconButton
                   touch={true}
@@ -127,6 +149,9 @@ class PictogramSnippet extends PureComponent {
                   />
                 </IconButton>
               )}
+              {showAACIcon && (
+                <AACImage src="https://static.arasaac.org/pictograms/27685/27685_300.png" />
+              )}
               <CardActions color={true}>
                 {showExtra && isAuthenticated && (
                   <IconButton
@@ -137,8 +162,8 @@ class PictogramSnippet extends PureComponent {
                       isFavorite ? (
                         <FormattedMessage {...messages.deleteFavorite} />
                       ) : (
-                          <FormattedMessage {...messages.addFavorite} />
-                        )
+                        <FormattedMessage {...messages.addFavorite} />
+                      )
                     }
                     iconStyle={this.styles.icon}
                     style={this.styles.rightIconButton}
@@ -150,11 +175,11 @@ class PictogramSnippet extends PureComponent {
                         hoverColor={muiTheme.palette.accent1Color}
                       />
                     ) : (
-                        <FavoriteBorder
-                          color={muiTheme.appBar.textColor}
-                          hoverColor={muiTheme.palette.accent1Color}
-                        />
-                      )}
+                      <FavoriteBorder
+                        color={muiTheme.appBar.textColor}
+                        hoverColor={muiTheme.palette.accent1Color}
+                      />
+                    )}
                   </IconButton>
                 )}
                 {showExtra && (
@@ -165,7 +190,7 @@ class PictogramSnippet extends PureComponent {
                     style={this.styles.leftIconButton}
                     onClick={this.handleDownload}
                   >
-                    {!blur  && (
+                    {!blur && (
                       <FileDownload
                         color={muiTheme.appBar.textColor}
                         hoverColor={muiTheme.palette.accent1Color}
@@ -184,7 +209,7 @@ class PictogramSnippet extends PureComponent {
 }
 
 PictogramSnippet.contextTypes = {
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 }
 
 PictogramSnippet.propTypes = {

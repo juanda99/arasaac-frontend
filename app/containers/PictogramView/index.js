@@ -15,12 +15,12 @@ import { addFavorite } from 'containers/App/actions'
 import P from 'components/P'
 import api, { downloadCustomPictogram } from 'services'
 import { DEFAULT_LIST } from 'utils'
-import { 
+import {
   makeSelectHasUser,
   makeSelectSexPictograms,
   makeSelectViolencePictograms,
-  makeSelectColorPictograms
- } from 'containers/App/selectors'
+  makeSelectColorPictograms,
+} from 'containers/App/selectors'
 import { pictogram } from './actions'
 import { makePictogramByIdSelector } from './selectors'
 import messages from './messages'
@@ -30,16 +30,22 @@ import messages from './messages'
 
 class PictogramView extends PureComponent {
   componentDidMount() {
-
-    const { params: {locale, idPictogram}, pictogramData, categories, requestCategories, } = this.props
+    const {
+      params: { locale, idPictogram },
+      pictogramData,
+      categories,
+      requestCategories,
+    } = this.props
     if (pictogramData.isEmpty()) {
       this.props.requestPictogram(idPictogram, locale)
     }
 
     const categoriesDate = sessionStorage.getItem(`categoriesDate_${locale}`)
-    let diffSeconds = categoriesDate ? (actualDate.getTime() - categoriesDate) / 1000 : 0 
-    if (!categories || categories.size === 0 || diffSeconds > 86400) requestCategories()
-
+    let diffSeconds = categoriesDate
+      ? (actualDate.getTime() - categoriesDate) / 1000
+      : 0
+    if (!categories || categories.size === 0 || diffSeconds > 86400)
+      requestCategories()
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.params.idPictogram !== nextProps.params.idPictogram) {
@@ -53,7 +59,7 @@ class PictogramView extends PureComponent {
   handleDownload = (fileName, base64Data) => {
     const promiseFileName = api.GENERATE_CUSTOM_PICTOGRAM({
       fileName,
-      base64Data
+      base64Data,
     })
     promiseFileName.then((data) => {
       const location = downloadCustomPictogram(data.fileName)
@@ -61,7 +67,6 @@ class PictogramView extends PureComponent {
       // window.open(downloadCustomPictogram(data.fileName), '_blank')
     })
   }
-
 
   handleAddFavorite = (fileName) => {
     const { addFavorite, token } = this.props
@@ -71,14 +76,20 @@ class PictogramView extends PureComponent {
   renderContent() {
     const {
       pictogramData,
+      location,
       loading,
       token,
       params: { locale, searchText },
       categories,
       sex,
       violence,
-      color
+      color,
     } = this.props
+
+    // get  type as query  param for rendering  aac  pictograms  with a warning and in black and white
+    const { query } = location
+    const type = query.type ? 'aac' : ''
+
     if (loading) {
       return (
         <P>
@@ -91,19 +102,20 @@ class PictogramView extends PureComponent {
         <FormattedMessage {...messages.pictogramNotFound} />{' '}
       </P>
     ) : (
-        <Pictogram
-          pictogram={pictogramData}
-          locale={locale}
-          searchText={searchText || ''}
-          authenticated={!!token}
-          onDownload={this.handleDownload}
-          onAddFavorite={this.handleAddFavorite}
-          categories={categories}
-          sex={sex}
-          violence={violence}
-          color={color}
-        />
-      )
+      <Pictogram
+        pictogram={pictogramData}
+        locale={locale}
+        searchText={searchText || ''}
+        authenticated={!!token}
+        onDownload={this.handleDownload}
+        onAddFavorite={this.handleAddFavorite}
+        categories={categories}
+        sex={sex}
+        violence={violence}
+        color={color}
+        type={type}
+      />
+    )
   }
 
   render() {
@@ -130,7 +142,7 @@ const mapStateToProps = (state, ownProps) => {
   const categories = makeCategoriesSelectorByLocale()(state)
   const sex = makeSelectSexPictograms()(state)
   const violence = makeSelectViolencePictograms()(state)
-  const  color = makeSelectColorPictograms()(state)
+  const color = makeSelectColorPictograms()(state)
   return {
     pictogramData,
     loading,
@@ -138,7 +150,7 @@ const mapStateToProps = (state, ownProps) => {
     categories,
     sex,
     violence,
-    color
+    color,
   }
 }
 
@@ -151,7 +163,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   requestCategories: () => {
     dispatch(categories.request(ownProps.params.locale))
-  }
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PictogramView)

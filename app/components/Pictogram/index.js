@@ -9,11 +9,7 @@ import Helmet from 'react-helmet'
 import ShareBar from 'components/ShareBar'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/RaisedButton'
-import {
-  PICTOGRAMS_URL,
-  API_ROOT,
-  IMAGES_URL
-} from 'services/config'
+import { PICTOGRAMS_URL, API_ROOT, IMAGES_URL } from 'services/config'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import ShowSoundPlayer from 'components/SoundPlayer/ShowSoundPlayer'
 import Toggle from 'material-ui/Toggle'
@@ -44,7 +40,7 @@ import {
   MAX_CANVAS_SIZE,
   PRESENT,
   STANDARD_RESOLUTION,
-  HIGH_RESOLUTION
+  HIGH_RESOLUTION,
 } from './constants'
 import BackgroundColorOptions from './BackgroundColorOptions'
 import FrameOptions from './FrameOptions'
@@ -59,27 +55,27 @@ import Canvas from './Canvas'
 import PictogramTitle from '../BoxTitle'
 import RelatedWords from './RelatedWords'
 import PictogramCategories from './PictogramCategories'
-
+import { times } from 'lodash'
 
 const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
   const data = b64Data.replace('data:image/png;base64,', '')
-  const byteCharacters = atob(data);
-  const byteArrays = [];
+  const byteCharacters = atob(data)
+  const byteArrays = []
 
   for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-    const slice = byteCharacters.slice(offset, offset + sliceSize);
+    const slice = byteCharacters.slice(offset, offset + sliceSize)
 
-    const byteNumbers = new Array(slice.length);
+    const byteNumbers = new Array(slice.length)
     for (let i = 0; i < slice.length; i++) {
-      byteNumbers[i] = slice.charCodeAt(i);
+      byteNumbers[i] = slice.charCodeAt(i)
     }
 
-    const byteArray = new Uint8Array(byteNumbers);
-    byteArrays.push(byteArray);
+    const byteArray = new Uint8Array(byteNumbers)
+    byteArrays.push(byteArray)
   }
 
-  const blob = new Blob(byteArrays, { type: contentType });
-  return blob;
+  const blob = new Blob(byteArrays, { type: contentType })
+  return blob
 }
 
 class Pictogram extends Component {
@@ -95,6 +91,12 @@ class Pictogram extends Component {
       .toArray()
     Konva.pixelRatio = Math.ceil(HIGH_RESOLUTION / STANDARD_RESOLUTION)
     const defaultColor = type >= 0 && type < 7 ? colorSet[type - 1] : ''
+    console.log(props, this.props)
+    console.log(
+      this.props.type === 'aac',
+      this.props.type,
+      '************************AAAAAAAAAAAAAAAALLLLLLLLLLLLLLLL'
+    )
     this.state = {
       language: locale,
       highResolution: false, // true for photoResolution
@@ -102,7 +104,7 @@ class Pictogram extends Component {
       pluralActive: false,
       pluralOptionsShow: false,
       pluralColor: black,
-      color,
+      color: this.props.type === 'aac' ? false : color,
       backgroundColor: defaultColor,
       bgColorActive: false,
       bgColorOptionsShow: false,
@@ -127,7 +129,10 @@ class Pictogram extends Component {
       verbalTenseColor: 'black',
       showText: false,
       openMenu: false,
-      url: this.props.color ? `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${STANDARD_RESOLUTION}.png` : `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_nocolor_${STANDARD_RESOLUTION}.png` ,
+      url:
+        !this.props.color || this.props.type === 'aac'
+          ? `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_nocolor_${STANDARD_RESOLUTION}.png`
+          : `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${STANDARD_RESOLUTION}.png`,
       downloadUrl: '',
       activeFont: 'Open Sans',
       buttonCaption: false,
@@ -155,7 +160,7 @@ class Pictogram extends Component {
       isFavorite: false,
       snackOpen: false,
       blurRadius: 0,
-      open: false
+      open: false,
     }
   }
 
@@ -166,18 +171,19 @@ class Pictogram extends Component {
     document.body.addEventListener('click', this.needHideOptions)
     const hasSex = pictogram.get('sex')
     const hasViolence = pictogram.get('violence')
-    if ((sex && hasSex)  || (violence && hasViolence)) this.setState({ blurRadius: 160, open: true })
+    if ((sex && hasSex) || (violence && hasViolence))
+      this.setState({ blurRadius: 160, open: true })
   }
 
   handleClose = () => {
-    this.setState({open: false});
+    this.setState({ open: false })
   }
 
   componentDidUpdate = (prevProps, prevState) => {
     if (prevState.activeFont !== this.state.activeFont) {
       // setInterval(() => this.textLayer.draw(), 1000)
     }
-  };
+  }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions)
@@ -190,19 +196,19 @@ class Pictogram extends Component {
     })
   }
 
-  handleRegisterAction =  () => {
-    const { authenticated }  = this.props
-    const url = authenticated ? '/profile': '/signin'
+  handleRegisterAction = () => {
+    const { authenticated } = this.props
+    const url = authenticated ? '/profile' : '/signin'
     this.props.router.push(url)
   }
 
   onTogglePicker = () =>
-    this.setState({ pickerVisible: !this.state.pickerVisible });
+    this.setState({ pickerVisible: !this.state.pickerVisible })
 
   needHideOptions = (event) => {
     // add data-hide to elements where if click options should hide
     if (event.target.dataset.hide) this.hideOptions()
-  };
+  }
 
   hideOptions = () =>
     this.setState({
@@ -214,8 +220,8 @@ class Pictogram extends Component {
       topTextOptionsShow: false,
       bottomTextOptionsShow: false,
       zoomOptionsShow: false,
-      pluralOptionsShow: false
-    });
+      pluralOptionsShow: false,
+    })
 
   buildOptionsRequest = () => {
     const { pictogram } = this.props
@@ -242,47 +248,47 @@ class Pictogram extends Component {
         .then((data) => data.json())
         .then((data) => this.setState({ url: data.image, downloadUrl }))
     }
-  };
+  }
 
   handleLanguageChange = (language) => {
     this.setState({ language })
-  };
+  }
 
   handleColor = (event, color) => {
     this.setState({ color }, () => this.buildOptionsRequest())
     this.hideOptions()
-  };
+  }
 
   handleHighResolution = (event, highResolution) => {
     this.setState({ highResolution }, () => this.buildOptionsRequest())
     this.hideOptions()
-  };
+  }
 
   handleDragAndDrop = (event, dragAndDrop) => {
     this.setState({ dragAndDrop })
     this.hideOptions()
-  };
+  }
 
   // handlePlural = (event, plural) => this.setState({ plural }, () => this.buildOptionsRequest())
 
   handlePluralChange = (plural) => {
     this.hideOptions()
     this.setState({ plural, pluralOptionsShow: plural })
-  };
+  }
 
-  handlePluralColorChange = (pluralColor) => this.setState({ pluralColor });
+  handlePluralColorChange = (pluralColor) => this.setState({ pluralColor })
 
   handlePluralOptionsShow = (pluralOptionsShow) => {
     this.hideOptions()
     this.setState({ pluralOptionsShow })
-  };
+  }
 
   handleStrikeThrough = (event, strikeThrough) => {
     this.setState({ strikeThrough })
     this.hideOptions()
-  };
+  }
 
-  handleBgColorChange = (backgroundColor) => this.setState({ backgroundColor });
+  handleBgColorChange = (backgroundColor) => this.setState({ backgroundColor })
   /* this.setState({ backgroundColor: backgroundColor.replace('#', '%23') }, () =>
       this.buildOptionsRequest()
     )
@@ -291,44 +297,44 @@ class Pictogram extends Component {
   handleBgColorOptionsShow = (bgColorOptionsShow) => {
     this.hideOptions()
     this.setState({ bgColorOptionsShow })
-  };
+  }
 
   handleBgColorActive = (bgColorActive) => {
     this.hideOptions()
     this.setState({ bgColorActive, bgColorOptionsShow: bgColorActive })
-  };
+  }
 
-  handleZoomChange = (zoomLevel) => this.setState({ zoomLevel });
+  handleZoomChange = (zoomLevel) => this.setState({ zoomLevel })
 
   handleZoomOptionsShow = (zoomOptionsShow) => {
     this.hideOptions()
     this.setState({ zoomOptionsShow })
-  };
+  }
 
   handleZoomActive = (zoomActive) => {
     this.hideOptions()
     this.setState({ zoomActive, zoomOptionsShow: zoomActive, zoomLevel: 0 })
-  };
+  }
 
   handleFrameActive = (frameActive) => {
     this.hideOptions()
     this.setState({ frameActive, frameOptionsShow: frameActive })
-  };
-  handleFrameWidthChange = (frameWidth) => this.setState({ frameWidth });
+  }
+  handleFrameWidthChange = (frameWidth) => this.setState({ frameWidth })
 
-  handleFrameColorChange = (frameColor) => this.setState({ frameColor });
+  handleFrameColorChange = (frameColor) => this.setState({ frameColor })
 
   handleFrameOptionsShow = (frameOptionsShow) => {
     this.hideOptions()
     this.setState({ frameOptionsShow })
-  };
+  }
 
   handleHairChange = (hair) => {
     this.setState({ hair }, () => this.buildOptionsRequest())
-  };
+  }
   handleSkinChange = (skin) => {
     this.setState({ skin }, () => this.buildOptionsRequest())
-  };
+  }
 
   handlePeopleAppearanceActive = (peopleAppearanceActive) => {
     this.hideOptions()
@@ -337,75 +343,75 @@ class Pictogram extends Component {
         peopleAppearanceActive,
         peopleAppearanceOptionsShow: peopleAppearanceActive,
         hair: '',
-        skin: ''
+        skin: '',
       },
       () => this.buildOptionsRequest()
     )
-  };
+  }
 
   handlePeopleAppearanceOptionsShow = (peopleAppearanceOptionsShow) => {
     this.hideOptions()
     this.setState({ peopleAppearanceOptionsShow })
-  };
+  }
 
   handleVerbalTenseActive = (verbalTenseActive) => {
     this.hideOptions()
     this.setState({
       verbalTenseActive,
-      verbalTenseOptionsShow: verbalTenseActive
+      verbalTenseOptionsShow: verbalTenseActive,
     })
-  };
+  }
 
   handleVerbalTenseOptionsShow = (verbalTenseOptionsShow) => {
     this.hideOptions()
     this.setState({ verbalTenseOptionsShow })
-  };
+  }
 
-  handleVerbalTenseChange = (verbalTense) => this.setState({ verbalTense });
+  handleVerbalTenseChange = (verbalTense) => this.setState({ verbalTense })
 
   handleVerbalTenseColorChange = (verbalTenseColor) =>
-    this.setState({ verbalTenseColor });
+    this.setState({ verbalTenseColor })
 
   handleIdentifierActive = (identifierActive) => {
     this.hideOptions()
     this.setState({
       identifierActive,
-      identifierOptionsShow: identifierActive
+      identifierOptionsShow: identifierActive,
     })
-  };
+  }
 
   handleIdentifierOptionsShow = (identifierOptionsShow) => {
     this.hideOptions()
     this.setState({ identifierOptionsShow })
-  };
+  }
 
-  handleIdentifierChange = (identifier) => this.setState({ identifier });
+  handleIdentifierChange = (identifier) => this.setState({ identifier })
 
   handleIdentifierPositionChange = (identifierPosition) =>
-    this.setState({ identifierPosition });
+    this.setState({ identifierPosition })
 
   handleIdentifierColorChange = (identifierColor) =>
-    this.setState({ identifierColor });
+    this.setState({ identifierColor })
 
   handleTopTextActive = (topTextActive) => {
     this.hideOptions()
     this.setState({ topTextActive, topTextOptionsShow: topTextActive })
-  };
+  }
 
-  handleTopTextChange = (topText) => this.setState({ topText });
+  handleTopTextChange = (topText) => this.setState({ topText })
 
-  handleTopTextFontChange = (topTextFont) => this.setState({ topTextFont });
+  handleTopTextFontChange = (topTextFont) => this.setState({ topTextFont })
 
   handleTopTextFontSizeChange = (topTextFontSize) =>
-    this.setState({ topTextFontSize });
+    this.setState({ topTextFontSize })
 
   handleTopTextFontColorChange = (topTextFontColor) =>
-    this.setState({ topTextFontColor });
+    this.setState({ topTextFontColor })
 
   handleTopTextOptionsShow = (topTextOptionsShow) => {
     this.hideOptions()
     this.setState({ topTextOptionsShow })
-  };
+  }
 
   handleTopTextUpperCase = (uppercase) => {
     // if word is in our list, and uppercase is false, put it back
@@ -415,7 +421,7 @@ class Pictogram extends Component {
     if (uppercase) {
       this.setState({
         topTextUpperCase: uppercase,
-        topText: topText.toUpperCase()
+        topText: topText.toUpperCase(),
       })
     } else {
       const { keyword } = keywordSelector(topText, keywords.toJS())
@@ -425,41 +431,43 @@ class Pictogram extends Component {
       } else {
         this.setState({
           topTextUpperCase: uppercase,
-          topText: topText.toLowerCase()
+          topText: topText.toLowerCase(),
         })
       }
     }
-  };
+  }
 
   handleBottomTextActive = (bottomTextActive) => {
     this.hideOptions()
     this.setState({
       bottomTextActive,
-      bottomTextOptionsShow: bottomTextActive
+      bottomTextOptionsShow: bottomTextActive,
     })
-  };
+  }
 
-  handleBottomTextChange = (bottomText) => this.setState({ bottomText });
+  handleBottomTextChange = (bottomText) => this.setState({ bottomText })
 
   handleBottomTextFontChange = (bottomTextFont) =>
-    this.setState({ bottomTextFont });
+    this.setState({ bottomTextFont })
 
   handleBottomTextFontSizeChange = (bottomTextFontSize) =>
-    this.setState({ bottomTextFontSize });
+    this.setState({ bottomTextFontSize })
 
   handleBottomTextFontColorChange = (bottomTextFontColor) =>
-    this.setState({ bottomTextFontColor });
+    this.setState({ bottomTextFontColor })
 
   handleBottomTextOptionsShow = (bottomTextOptionsShow) => {
     this.hideOptions()
     this.setState({ bottomTextOptionsShow })
-  };
+  }
 
   handleExport = () => {
     const base64Code = this.stageRef.getStage().toDataURL()
     // var data = new Blob([base64Code], { type: "image/png" });
-    const item = new ClipboardItem({ "image/png": b64toBlob(base64Code, "image/png") });
-    navigator.clipboard.write([item]);
+    const item = new ClipboardItem({
+      'image/png': b64toBlob(base64Code, 'image/png'),
+    })
+    navigator.clipboard.write([item])
     this.setState({ snackOpen: true })
   }
 
@@ -471,7 +479,7 @@ class Pictogram extends Component {
     if (uppercase) {
       this.setState({
         bottomTextUpperCase: uppercase,
-        bottomText: bottomText.toUpperCase()
+        bottomText: bottomText.toUpperCase(),
       })
     } else {
       const { keyword } = keywordSelector(bottomText, keywords.toJS())
@@ -481,11 +489,11 @@ class Pictogram extends Component {
       } else {
         this.setState({
           bottomTextUpperCase: uppercase,
-          bottomText: bottomText.toLowerCase()
+          bottomText: bottomText.toLowerCase(),
         })
       }
     }
-  };
+  }
 
   handleOpenMenu = () => {
     const { pictogram } = this.props
@@ -496,7 +504,7 @@ class Pictogram extends Component {
       .join('&')
     const endPoint = `${API_ROOT}/pictograms/${idPictogram}?${urlParameters}&url=false&download=true`
     fetch(endPoint)
-  };
+  }
 
   handleDownload = () => {
     const { searchText, pictogram, onDownload } = this.props
@@ -511,18 +519,15 @@ class Pictogram extends Component {
   }
 
   handleAddFavorite = (event) => {
-    const {
-      pictogram,
-      onAddFavorite
-    } = this.props
+    const { pictogram, onAddFavorite } = this.props
     const idPictogram = pictogram.get('_id')
     event.preventDefault()
     onAddFavorite(idPictogram)
     this.setState({ isFavorite: true })
-  };
+  }
 
   updateWindowDimensions = () =>
-    this.setState({ windowWidth: document.body.clientWidth });
+    this.setState({ windowWidth: document.body.clientWidth })
 
   renderDownloadButton = (disabled) => (
     // const userAgent = window.navigator.userAgent.toLowerCase()
@@ -536,10 +541,17 @@ class Pictogram extends Component {
       icon={<DownloadIcon />}
       disabled={disabled}
     />
-  );
+  )
 
   render() {
-    const { pictogram, searchText, locale, intl, authenticated, categories } = this.props
+    const {
+      pictogram,
+      searchText,
+      locale,
+      intl,
+      authenticated,
+      categories,
+    } = this.props
     const {
       language,
       backgroundColor,
@@ -591,8 +603,13 @@ class Pictogram extends Component {
       isFavorite,
       snackOpen,
       blurRadius,
-      open
+      open,
     } = this.state
+
+    console.log(
+      this.state,
+      '******************************************************'
+    )
 
     const canvasSize =
       windowWidth < MAX_CANVAS_SIZE ? windowWidth : MAX_CANVAS_SIZE
@@ -624,14 +641,18 @@ class Pictogram extends Component {
         primary={true}
         keyboardFocused={true}
         onClick={this.handleRegisterAction}
-      />
+      />,
     ]
     return (
-      
       <div>
         <Helmet>
-          <title>{formatMessage(messages['pictoMetaTitle'], {keyword})}</title>
-          <meta name="description" content={formatMessage(messages['pictoMetaDesc'], {keyword})} />
+          <title>
+            {formatMessage(messages['pictoMetaTitle'], { keyword })}
+          </title>
+          <meta
+            name="description"
+            content={formatMessage(messages['pictoMetaDesc'], { keyword })}
+          />
           {/* <link rel="canonical" href="http://mysite.com/example" /> */}
         </Helmet>
         <Dialog
@@ -641,7 +662,11 @@ class Pictogram extends Component {
           open={open}
           onRequestClose={this.handleClose}
         >
-          {authenticated ? (<FormattedMessage {...messages.disableFilter} />) : (<FormattedMessage {...messages.authUser} /> )}
+          {authenticated ? (
+            <FormattedMessage {...messages.disableFilter} />
+          ) : (
+            <FormattedMessage {...messages.authUser} />
+          )}
         </Dialog>
         <div style={styles.wrapper}>
           <Snackbar
@@ -653,7 +678,12 @@ class Pictogram extends Component {
           <PictoWrapper>
             <ConditionalPaper>
               <PictogramTitle>
-                <ShowSoundPlayer hasLocution={hasLocution} locale={locale} keyword={keyword} download={false} />
+                <ShowSoundPlayer
+                  hasLocution={hasLocution}
+                  locale={locale}
+                  keyword={keyword}
+                  download={false}
+                />
                 <H2 style={{ textAlign: 'center' }} primary ucase noMargin>
                   {keyword}
                 </H2>
@@ -665,7 +695,7 @@ class Pictogram extends Component {
                   ref={(node) => {
                     this.stageRef = node
                   }}
-                // onContextMenu={(e) => e.evt.preventDefault()}
+                  // onContextMenu={(e) => e.evt.preventDefault()}
                 >
                   {bgColorActive && (
                     <BackgroundLayer
@@ -676,7 +706,7 @@ class Pictogram extends Component {
                   <Img
                     src={url}
                     frameWidth={frameWidth}
-                    enableFrame={ 
+                    enableFrame={
                       frameActive
                     } /* alt={'alt'} style={styles.picto} */
                     zoomLevel={zoomLevel}
@@ -764,7 +794,7 @@ class Pictogram extends Component {
                   disabled={!authenticated || isFavorite ? true : false}
                   onClick={this.handleAddFavorite}
                 />
-                { this.renderDownloadButton(!!blurRadius) }
+                {this.renderDownloadButton(!!blurRadius)}
                 <RaisedButton
                   label={<FormattedMessage {...messages.copy} />}
                   primary={true}
@@ -787,7 +817,7 @@ class Pictogram extends Component {
             <div style={styles.optionsWrapper} data-hide={true}>
               <Toggle
                 label={<FormattedMessage {...messages.color} />}
-                labelPosition='right'
+                labelPosition="right"
                 toggled={this.state.color}
                 onToggle={this.handleColor}
                 style={styles.toggle}
@@ -822,7 +852,7 @@ class Pictogram extends Component {
               />
               <Toggle
                 label={<FormattedMessage {...messages.strikeThrough} />}
-                labelPosition='right'
+                labelPosition="right"
                 onToggle={this.handleStrikeThrough}
                 style={styles.toggle}
               />
@@ -919,13 +949,13 @@ class Pictogram extends Component {
               />
               <Toggle
                 label={<FormattedMessage {...messages.dragAndDrop} />}
-                labelPosition='right'
+                labelPosition="right"
                 onToggle={this.handleDragAndDrop}
                 style={styles.toggle}
               />
               <Toggle
                 label={<FormattedMessage {...messages.highResolution} />}
-                labelPosition='right'
+                labelPosition="right"
                 onToggle={this.handleHighResolution}
                 defaultToggled={false}
                 style={styles.toggle}
@@ -933,13 +963,13 @@ class Pictogram extends Component {
             </div>
           </div>
         </div>
-        { !!categories.size && 
+        {!!categories.size && (
           <PictogramCategories
             categories={categories}
             pictoCategories={pictoCategories}
             tags={tags}
           />
-        }
+        )}
 
         <RelatedWords
           style={{ padding: '5px' }}
@@ -978,7 +1008,8 @@ Pictogram.propTypes = {
   sex: PropTypes.bool.isRequired,
   violence: PropTypes.bool.isRequired,
   color: PropTypes.bool.isRequired,
-  router: PropTypes.any.isRequired
+  router: PropTypes.any.isRequired,
+  type: PropTypes.string,
 }
 
 export default injectIntl(withRouter(Pictogram))

@@ -19,13 +19,15 @@ export const makeLoadingNewSelector = () =>
   )
 
 const makeKeywordsSelector = () =>
-  createSelector(selectPictogramsViewDomain, (substate) => substate.get('words'))
+  createSelector(selectPictogramsViewDomain, (substate) =>
+    substate.get('words')
+  )
 
-export const makeSelectPictogramSearchLanguage = () => 
+export const makeSelectPictogramSearchLanguage = () =>
   createSelector(
-    selectPictogramsViewDomain, 
+    selectPictogramsViewDomain,
     makeSelectSearchLanguage(),
-    (substate, locale) => 
+    (substate, locale) =>
       substate.get('searchLanguage') ? substate.get('searchLanguage') : locale
   )
 
@@ -37,7 +39,9 @@ export const makeKeywordsSelectorByLocale = () =>
   )
 
 const makeCategoriesSelector = () =>
-  createSelector(selectPictogramsViewDomain, (substate) => substate.get('categories'))
+  createSelector(selectPictogramsViewDomain, (substate) =>
+    substate.get('categories')
+  )
 
 export const makeCategoriesSelectorByLocale = () =>
   createSelector(
@@ -46,23 +50,21 @@ export const makeCategoriesSelectorByLocale = () =>
     (substate, locale) => substate.get(locale)
   )
 
-
 export const makeShowFiltersSelector = () =>
   createSelector(selectPictogramsViewDomain, (substate) =>
     substate.get('showFilter')
   )
 
-export const makeShowSettingsSelector = () => createSelector(
-  selectPictogramsViewDomain,
-  (substate) => substate.get('showSettings')
-)
+export const makeShowSettingsSelector = () =>
+  createSelector(selectPictogramsViewDomain, (substate) =>
+    substate.get('showSettings')
+  )
 
 const makePictogramsSelector = () =>
   createSelector(
     selectPictogramsViewDomain,
-    makeSelectPictogramSearchLanguage() ,
-    (substate, locale) =>
-      substate.getIn(['pictograms', locale]) || new Map()
+    makeSelectPictogramSearchLanguage(),
+    (substate, locale) => substate.getIn(['pictograms', locale]) || new Map()
   )
 
 const makeSearchSelector = () =>
@@ -70,13 +72,12 @@ const makeSearchSelector = () =>
     substate.get('search')
   )
 
-const makeSearchTextSelector = () => (_, ownProps) =>
-  ownProps.params.searchText
+const makeSearchTextSelector = () => (_, ownProps) => ownProps.params.searchText
 
 export const makeSearchResultsSelector = () =>
   createSelector(
     makeSearchSelector(),
-    makeSelectPictogramSearchLanguage() ,
+    makeSelectPictogramSearchLanguage(),
     makeSearchTextSelector(),
     (pictograms, locale, searchText) => pictograms.getIn([locale, searchText])
   )
@@ -105,6 +106,20 @@ export const makeVisiblePictogramsSelector = () =>
         searchPictogramSchema,
         entities
       )
+      const aacColorPictograms = pictogramList.filter(
+        (pictogram) => pictogram.aacColor
+      )
+      /* hack to duplicate pictograms  when we need to remove color for AAC purposes */
+      let skip = false
+      pictogramList.forEach((pictogram, index) => {
+        if (pictogram.aacColor && !skip) {
+          const AACPictogram = JSON.parse(JSON.stringify(pictogram))
+          AACPictogram.showAAC = true
+          AACPictogram._id = `${pictogram._id}aac`
+          pictogramList.splice(index, 0, AACPictogram)
+          skip = true
+        } else skip = false
+      })
       return pictogramList
     }
   )

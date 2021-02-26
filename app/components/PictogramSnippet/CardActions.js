@@ -5,7 +5,6 @@ import media from 'utils/mediaqueries'
 const CardActions = styled.div`
   position: absolute;
   top: 0;
-  button: 0;
   width: 250px;
   height: 250px;
   opacity: 0;
