@@ -375,6 +375,7 @@
   "app.components.aac.list4": "{independentExploration}: nur für Elektronikprodukte. In diesem Fall ist es der Kommunikator oder der Computer, der die verschiedenen zu kommunizierenden Möglichkeiten anzeigt, bis der assistierte Sprecher die gewünschte Option durch Drücken eines Schalters auswählt. Es gibt viele Arten von \nBefehlszeilenschalter, die mit verschiedenen Teilen des Körpers aktiviert werden können.",
   "app.components.aac.list5": "{codedSelection}: jedes Symbol oder jeder Buchstabe hat eine Kennzahl (z. B. eine zwei- oder dreistellige Ziffer oder eine Farbe und eine Zahl), so dass der assistierte Sprecher diese Kennzahl durch direkte Auswahl oder Scannen angibt, um das Symbol oder den Buchstaben zu übertragen. Auf diese Weise kann er/sie mit wenigen Tasten oder Rastern auf eine große Anzahl von Symbolen zugreifen.",
   "app.components.aac.mouseSelection": "Mausauswahl",
+  "app.components.aac.p1": "Die {aac} sind von der gesprochenen Sprache abweichende Ausdrucksformen, die darauf abzielen, die Kommunikations- und Sprachschwierigkeiten vieler Menschen mit Behinderungen zu erweitern (augmentativ) und/oder zu ergänzen (alternativ).",
   "app.components.author": "Piktogramm-Urheber",
   "app.components.creativeCommons": "Creative-Commons-Lizenz BY-NC-SA",
   "app.components.dialog.ok": "Ok",
