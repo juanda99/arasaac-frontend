@@ -88,7 +88,10 @@ class PictogramView extends PureComponent {
 
     // get  type as query  param for rendering  aac  pictograms  with a warning and in black and white
     const { query } = location
-    const type = query.type ? 'aac' : ''
+    let type = query.type ? 'aac' : ''
+    const aac = pictogramData.get('aac')
+    const aacColor = pictogramData.get('aacColor')
+    if (aac && !aacColor) type = 'aac'
 
     if (loading) {
       return (
