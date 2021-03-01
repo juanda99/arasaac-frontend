@@ -13,6 +13,7 @@
   "app.MaterialsView.pageDescriptionSearch": "Recursos materials AAC relacionats amb {searchText} per a professionals i famílies. Descarregueu documents, fulls de treball de Comunicació Augmentativa i Alternativa...",
   "app.MaterialsView.pageTitle": "AAC ha compartit recursos materials - ARASAAC",
   "app.MaterialsView.pageTitleSearch": "AAC ha compartit recursos materials relacionats amb {searchText} - ARASAAC",
+  "app.PictogramsView.closeWarning": "Advertiment de tancament",
   "app.PictogramsView.languageSearch": "Trieu l'idioma de cerca",
   "app.PictogramsView.pageDesc": "Símbols de codi obert per a la comunicació augmentativa i alternativa",
   "app.PictogramsView.pageTitle": "Símbols AAC - ARASAAC",
