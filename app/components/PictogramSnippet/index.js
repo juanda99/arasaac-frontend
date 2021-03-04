@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import muiThemeable from 'material-ui/styles/muiThemeable'
-import { PICTOGRAMS_URL } from 'services/config'
+import { PICTOGRAMS_URL, IMAGES_URL } from 'services/config'
 import IconButton from 'material-ui/IconButton'
 import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border'
 import Favorite from 'material-ui/svg-icons/action/favorite'
@@ -150,7 +150,7 @@ class PictogramSnippet extends PureComponent {
                 </IconButton>
               )}
               {showAACIcon && (
-                <AACImage src="https://static.arasaac.org/pictograms/27685/27685_300.png" />
+                <AACImage src={`${IMAGES_URL}/core-vocabulary-icon.svg`} />
               )}
               <CardActions color={true}>
                 {showExtra && isAuthenticated && (

@@ -84,6 +84,7 @@ class Pictogram extends Component {
     const { pictogram, searchText, locale, color } = this.props
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('_id')
+    const aacColor = pictogram.get('aacColor')
     const { keyword, type } = keywordSelector(searchText, keywords.toJS())
     const keywordsArray = keywords
       .valueSeq()
@@ -91,6 +92,8 @@ class Pictogram extends Component {
       .toArray()
     Konva.pixelRatio = Math.ceil(HIGH_RESOLUTION / STANDARD_RESOLUTION)
     const defaultColor = type >= 0 && type < 7 ? colorSet[type - 1] : ''
+    // if user profile bw or pictogram  without color isColor  = false
+    const isColor = !((this.props.type === 'aac' && aacColor) || !color)
     this.state = {
       language: locale,
       highResolution: false, // true for photoResolution
@@ -98,7 +101,7 @@ class Pictogram extends Component {
       pluralActive: false,
       pluralOptionsShow: false,
       pluralColor: black,
-      color: this.props.type === 'aac' ? false : color,
+      color: isColor,
       backgroundColor: defaultColor,
       bgColorActive: false,
       bgColorOptionsShow: false,
@@ -123,10 +126,9 @@ class Pictogram extends Component {
       verbalTenseColor: 'black',
       showText: false,
       openMenu: false,
-      url:
-        !this.props.color || this.props.type === 'aac'
-          ? `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_nocolor_${STANDARD_RESOLUTION}.png`
-          : `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${STANDARD_RESOLUTION}.png`,
+      url: !isColor
+        ? `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_nocolor_${STANDARD_RESOLUTION}.png`
+        : `${PICTOGRAMS_URL}/${idPictogram}/${idPictogram}_${STANDARD_RESOLUTION}.png`,
       downloadUrl: '',
       activeFont: 'Open Sans',
       buttonCaption: false,
@@ -797,22 +799,6 @@ class Pictogram extends Component {
           </PictoWrapper>
 
           <div style={styles.options} data-hide={true}>
-            {this.props.type === 'aac' && (
-              <div>
-                <H3 primary={true}>Aviso</H3>
-                <Divider />
-                <div style={{ display: 'flex' }}>
-                  <P data-hide={true}>
-                    <img
-                      src="https://static.arasaac.org/pictograms/27685/27685_300.png"
-                      style={{ height: 100, width: 100 }}
-                    />
-                    Este pictograma se considera básico para la comunicación
-                  </P>
-                </div>
-              </div>
-            )}
-
             <H3 primary={true}>
               {<FormattedMessage {...messages.modifyPicto} />}
             </H3>
