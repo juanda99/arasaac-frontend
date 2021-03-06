@@ -424,6 +424,8 @@
   "app.components.aacusage.p2": "Die Symbole werden in Low- und High-Tech-Kommunikationshilfen verwendet, um Kommunikationstafeln zu erstellen, die es dem Benutzer ermöglichen, zu kommunizieren, indem er das erforderliche Zeichen auf unterschiedliche Weise zeigt (Finger, Schalter, Augen...)",
   "app.components.aacusage.p3": "Ein grafischer Tagesablaufplan stellt festgelegte Aufgaben und Aktivitäten mit visuellen Hilfsmitteln (in diesem Fall Symbole) dar. Es hilft Kindern, die täglichen Routineabläufe zu Hause und in der Schule zu erfassen. Sie sind nützlich, um Aufgaben, die mehrere Schritte haben, zu untergliedern und sie für Kinder leichter erfahrbar zu machen. Das letztendliche Lernziel ist es, Ängste zu reduzieren und ihr Lernen und Verhalten zu verbessern.",
   "app.components.aacusage.p4": "Im Gesundheitsbereich werden die visuellen Ablaufpläne verwendet, um medizinische Verfahren zu verdeutlichen, bevor man ins Krankenhaus geht, und um die Ängste der Patienten zu reduzieren, wenn sie sich einem medizinischen Vorgang unterziehen.",
+  "app.components.aacusage.p5": "Visuelle Stundenpläne helfen Kindern mit besonderem Förderbedarf zu begreifen, was sie als nächstes zu tun haben bzw. wo sie hinmüssen (Übergänge).",
+  "app.components.aacusage.p6": "Visuelle Stundenpläne ermöglichen es Kindern, eigenverantwortlich zu handeln und können sie zusätzlich motivieren, indem sie veranschaulichen, was in den einzelnen Zeitabschnitten (morgens, abends, tagsüber) und im jeweiligen Kontext (zu Hause, in der Schule, im Sportzentrum...) jeweils vorgesehen ist.",
   "app.components.author": "Piktogramm-Urheber",
   "app.components.creativeCommons": "Creative-Commons-Lizenz BY-NC-SA",
   "app.components.dialog.ok": "Ok",
