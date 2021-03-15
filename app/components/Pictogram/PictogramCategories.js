@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import jp from 'jsonpath'
 import Chip from 'material-ui/Chip'
 import FlatButton from 'material-ui/FlatButton'
@@ -20,7 +20,7 @@ const styles = {
     margin: '4px',
   },
 }
-export default class PictogramCategories extends Component {
+class PictogramCategories extends Component {
   static propTypes = {
     categories: PropTypes.object.isRequired,
     pictoCategories: PropTypes.array.isRequired,
@@ -28,7 +28,7 @@ export default class PictogramCategories extends Component {
   }
 
   render() {
-    const { categories, pictoCategories, tags } = this.props
+    const { categories, pictoCategories, tags, intl } = this.props
     const tree = categories.toJSON()
     const nodes = jp.nodes(tree, '$..text')
     const nodesKeywords = jp.nodes(tree, '$..keywords')
@@ -105,7 +105,25 @@ export default class PictogramCategories extends Component {
       <div>
         <H3 primary>{<FormattedMessage {...messages.taxonomy} />}</H3>
         <Divider />
-
+        <div style={{ display: 'flex' }}>
+          <img
+            style={{ width: '40px', height: '40px' }}
+            src={`${IMAGES_URL}/core-vocabulary-icon.svg`}
+          />
+          <P>
+            <FormattedMessage {...messages.coreVocabularyIntro} />
+          </P>
+        </div>
+        <Link
+          to={`/pictograms/search/${intl.formatMessage(
+            tagMessages['core vocabulary']
+          )}`}
+        >
+          <RaisedButton
+            label={<FormattedMessage {...messages.showCoreVocabulary} />}
+            secondary={true}
+          />
+        </Link>
         <P>{<FormattedMessage {...messages.pictoBelongs} />}</P>
         {renderPaths.map((path) => (
           <div>{path}</div>
@@ -120,18 +138,9 @@ export default class PictogramCategories extends Component {
             ))}
           </div>
         )}
-        <div style={{ display: 'flex' }}>
-          <P>
-            Este pictograma forma parte de un vocabulario nuclear básico para la
-            Comunicación Aumentativa y Alternativa (CAA).
-          </P>
-          <img
-            style={{ width: '40px', height: '40px' }}
-            src={`${IMAGES_URL}/core-vocabulary-icon.svg`}
-          />
-        </div>
-        <RaisedButton label="Ver vocabulario nuclear" secondary={true} />
       </div>
     )
   }
 }
+
+export default injectIntl(PictogramCategories)

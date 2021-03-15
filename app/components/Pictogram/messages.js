@@ -9,336 +9,348 @@ export default defineMessages({
   sharePictogram: {
     id: 'app.components.Pictogram.sharePictogram',
     description: 'Title for list of icons for sharing pictograms',
-    defaultMessage: 'Share it!'
+    defaultMessage: 'Share it!',
   },
   description: {
     id: 'app.components.Pictogram.description',
     description: 'Title for pictogram description: keyword, meaning...',
-    defaultMessage: 'Related words'
+    defaultMessage: 'Related words',
   },
   changePictoLanguage: {
     id: 'app.components.Pictogram.changePictoLanguage',
     description: 'Dropdown to select pictogram language',
     defaultMessage:
-      'Choose a language to see the pictogram description in another language'
+      'Choose a language to see the pictogram description in another language',
   },
   modifyPicto: {
     id: 'app.components.Pictogram.modifyPicto',
     description: 'Title for the area of picto modifications',
-    defaultMessage: 'Modify pictogram'
+    defaultMessage: 'Modify pictogram',
   },
   color: {
     id: 'app.components.Pictogram.color',
     description: 'Toggle button to color the pictogram',
-    defaultMessage: 'Color'
+    defaultMessage: 'Color',
   },
   plural: {
     id: 'app.components.Pictogram.plural',
     description: 'Toggle button to set the pictogram in plural',
-    defaultMessage: 'Plural'
+    defaultMessage: 'Plural',
   },
   strikeThrough: {
     id: 'app.components.Pictogram.strikeThrough',
     description: 'Toggle button to strikeThrough the pictogram',
-    defaultMessage: 'Strikethrough'
+    defaultMessage: 'Strikethrough',
   },
   backgroundColor: {
     id: 'app.components.Pictogram.backgroundColor',
     description:
       'Toggle button to set a backgroundColor, by default transparent',
-    defaultMessage: 'Background color'
+    defaultMessage: 'Background color',
   },
   highResolution: {
     id: 'app.components.Pictogram.highResolution',
     description: 'Toggle button to activate high resolution',
-    defaultMessage: 'High resolution'
+    defaultMessage: 'High resolution',
   },
   text: {
     id: 'app.components.Pictogram.text',
     description: 'Toggle button to set a text, none by default ',
-    defaultMessage: 'Text'
+    defaultMessage: 'Text',
   },
   peopleAppearance: {
     id: 'app.components.Pictogram.peopleAppearance',
     description:
       'Toggle button to show options for people appearance in pictos: hair, skin..',
-    defaultMessage: 'People appearance'
+    defaultMessage: 'People appearance',
   },
   dragAndDrop: {
     id: 'app.components.Pictogram.DragAndDrop',
     description: 'Toggle button to enable drag and drop',
-    defaultMessage: 'Drap and drop'
+    defaultMessage: 'Drap and drop',
   },
   classroom: {
     id: 'app.components.Pictogram.classroom',
     description: 'Identifier option',
-    defaultMessage: 'Classroom'
+    defaultMessage: 'Classroom',
   },
   health: {
     id: 'app.components.Pictogram.health',
     description: 'Identifier option',
-    defaultMessage: 'Health'
+    defaultMessage: 'Health',
   },
   healthColor: {
     id: 'app.components.Pictogram.healthColor',
     description: 'Identifier option',
-    defaultMessage: 'Health with color'
+    defaultMessage: 'Health with color',
   },
   library: {
     id: 'app.components.Pictogram.library',
     description: 'Identifier option',
-    defaultMessage: 'Library'
+    defaultMessage: 'Library',
   },
   office: {
     id: 'app.components.Pictogram.office',
     description: 'Identifier option',
-    defaultMessage: 'Office'
+    defaultMessage: 'Office',
   },
   choosePosition: {
     id: 'app.components.Pictogram.choosePosition',
     description: 'Help text for identifier position',
-    defaultMessage: 'Choose position:'
+    defaultMessage: 'Choose position:',
   },
   identifier: {
     id: 'app.components.Pictogram.identifier',
     description: 'Toggle label',
-    defaultMessage: 'Identifier'
+    defaultMessage: 'Identifier',
   },
   left: {
     id: 'app.components.Pictogram.left',
     description: 'Identifier position',
-    defaultMessage: 'Left'
+    defaultMessage: 'Left',
   },
   right: {
     id: 'app.components.Pictogram.right',
     description: 'Identifier position',
-    defaultMessage: 'Right'
+    defaultMessage: 'Right',
   },
   skinColor: {
     id: 'app.components.Pictogram.skinColor',
     description: 'Help text for color of the skin selector',
-    defaultMessage: 'Choose skin color:'
+    defaultMessage: 'Choose skin color:',
   },
   hairColor: {
     id: 'app.components.Pictogram.hairColor',
     description: 'Help text for color of the hair selector',
-    defaultMessage: 'Choose hair color:'
+    defaultMessage: 'Choose hair color:',
   },
   chooseColor: {
     id: 'app.components.Pictogram.chooseColor',
     description:
       'Help text for color of the background, font and frame selector',
-    defaultMessage: 'Choose color:'
+    defaultMessage: 'Choose color:',
   },
   chooseZoom: {
     id: 'app.components.Pictogram.chooseZoom',
     description: 'Help text for zoom options',
-    defaultMessage: 'Choose zoom level:'
+    defaultMessage: 'Choose zoom level:',
   },
   chooseIdentifier: {
     id: 'app.components.Pictogram.chooseIdentifier',
     description: 'Help text for identifier options',
-    defaultMessage: 'Choose identifier:'
+    defaultMessage: 'Choose identifier:',
   },
   chooseVerbalTense: {
     id: 'app.components.Pictogram.chooseVerbalTense',
     description: 'Help text for verbal tense options',
-    defaultMessage: 'Choose verbal tense:'
+    defaultMessage: 'Choose verbal tense:',
   },
   frame: {
     id: 'app.components.Pictogram.frame',
     description: 'Toggle button to set a frame, none by default ',
-    defaultMessage: 'Frame'
+    defaultMessage: 'Frame',
   },
   frameWidth: {
     id: 'app.components.Pictogram.frameWidth',
     description: 'Frame Width',
-    defaultMessage: 'Choose width:'
+    defaultMessage: 'Choose width:',
   },
   frameColor: {
     id: 'app.components.Pictogram.frameColor',
     description: 'Frame Color',
-    defaultMessage: 'Frame Color'
+    defaultMessage: 'Frame Color',
   },
   thin: {
     id: 'app.components.Pictogram.thin',
     description: 'Frame width value',
-    defaultMessage: 'Thin'
+    defaultMessage: 'Thin',
   },
   medium: {
     id: 'app.components.Pictogram.medium',
     description: 'Frame width value',
-    defaultMessage: 'Medium'
+    defaultMessage: 'Medium',
   },
   thick: {
     id: 'app.components.Pictogram.thick',
     description: 'Frame width value',
-    defaultMessage: 'Thick'
+    defaultMessage: 'Thick',
   },
   verbalTense: {
     id: 'app.components.Pictogram.verbalTense',
     description: 'Toggle button to select the verbal tense of the pictogram',
-    defaultMessage: 'Verbal tense'
+    defaultMessage: 'Verbal tense',
   },
   past: {
     id: 'app.components.Pictogram.past',
     description: 'Toggle button to set the pictogram in past',
-    defaultMessage: 'Past'
+    defaultMessage: 'Past',
   },
   present: {
     id: 'app.components.Pictogram.present',
     description: 'Toggle button to set the pictogram in present',
-    defaultMessage: 'Present'
+    defaultMessage: 'Present',
   },
   future: {
     id: 'app.components.Pictogram.future',
     description: 'Toggle button to set the pictogram in future',
-    defaultMessage: 'Future'
+    defaultMessage: 'Future',
   },
   topText: {
     id: 'app.components.Pictogram.topTextToggleLabel',
     description: 'Toggle button label',
-    defaultMessage: 'Top text'
+    defaultMessage: 'Top text',
   },
   bottomText: {
     id: 'app.components.Pictogram.bottomTextToggleLabel',
     description: 'Toggle button label',
-    defaultMessage: 'Bottom text'
+    defaultMessage: 'Bottom text',
   },
   enterText: {
     id: 'app.components.Pictogram.TextOptions.enterText',
     description: 'Hint label for text input',
-    defaultMessage: 'Enter text'
+    defaultMessage: 'Enter text',
   },
   zoomLevel: {
     id: 'app.components.Pictogram.ZoomOptions.zoomLevel',
     description: 'Toggle button label',
-    defaultMessage: 'Zoom level'
+    defaultMessage: 'Zoom level',
   },
   addFavorite: {
     id: 'app.components.PictogramSnippet.addFavoriteTooltip',
-    defaultMessage: 'Add pictogram to the favorites tab'
+    defaultMessage: 'Add pictogram to the favorites tab',
   },
   download: {
     id: 'app.components.PictogramSnippet.downloadTooltip',
-    defaultMessage: 'Download pictogram'
+    defaultMessage: 'Download pictogram',
   },
   addFavoriteLabel: {
     id: 'app.components.Pictogram.addFavoriteLabel',
-    defaultMessage: 'Add to favorites'
+    defaultMessage: 'Add to favorites',
   },
   copy: {
     id: 'app.components.Pictogram.copy',
-    defaultMessage: 'Copy'
+    defaultMessage: 'Copy',
   },
   copyToClipboard: {
     id: 'app.components.Pictogram.copyToClipboard',
-    defaultMessage: 'Pictogram copied to clipboard'
+    defaultMessage: 'Pictogram copied to clipboard',
   },
   downloadLabel: {
     id: 'app.components.Pictogram.downloadLabel',
-    defaultMessage: 'Download'
+    defaultMessage: 'Download',
   },
   pictogramOptions: {
     id: 'app.components.Pictogram.pictogramOptions',
-    defaultMessage: 'Pictogram options'
+    defaultMessage: 'Pictogram options',
   },
   textOptions: {
     id: 'app.components.Pictogram.textOptions',
-    defaultMessage: 'Text options'
+    defaultMessage: 'Text options',
   },
   advancedOptions: {
     id: 'app.components.Pictogram.advancedOptions',
-    defaultMessage: 'Advanced options'
+    defaultMessage: 'Advanced options',
   },
   upperCase: {
     id: 'app.components.Pictogram.upperCase',
     description: 'Toggle button label',
-    defaultMessage: 'Uppercase'
+    defaultMessage: 'Uppercase',
   },
   showLessColors: {
     id: 'app.components.Pictogram.ColorPicker.showLessColors',
     description: 'Button text',
-    defaultMessage: 'Show less colors'
+    defaultMessage: 'Show less colors',
   },
   showMoreColors: {
     id: 'app.components.Pictogram.ColorPicker.showMoreColors',
     description: 'Button text',
-    defaultMessage: 'Show more colors'
+    defaultMessage: 'Show more colors',
   },
   chooseSuggestionsLanguage: {
     id: 'app.components.Pictogram.TextOptions.chooseSuggestionsLanguage',
     description: 'Label text',
-    defaultMessage: 'Choose suggestions language:'
+    defaultMessage: 'Choose suggestions language:',
   },
   writeText: {
     id: 'app.components.Pictogram.TextOptions.writeText',
     description: 'Label text',
-    defaultMessage: 'Write text or select suggestion:'
+    defaultMessage: 'Write text or select suggestion:',
   },
   textFormat: {
     id: 'app.components.Pictogram.TextOptions.textFormat',
     description: 'Button text',
-    defaultMessage: 'Text format'
+    defaultMessage: 'Text format',
   },
   editText: {
     id: 'app.components.Pictogram.TextOptions.editText',
     description: 'Button text',
-    defaultMessage: 'Edit text'
+    defaultMessage: 'Edit text',
   },
   fontColor: {
     id: 'app.components.Pictogram.TextOptions.fontColor',
     description: 'Label text',
-    defaultMessage: 'Font color:'
+    defaultMessage: 'Font color:',
   },
   fontSize: {
     id: 'app.components.Pictogram.TextOptions.fontSize',
     description: 'Label text',
-    defaultMessage: 'Font size:'
+    defaultMessage: 'Font size:',
   },
   fontFamily: {
     id: 'app.components.Pictogram.TextOptions.fontFamily',
     description: 'Label text',
-    defaultMessage: 'Font family:'
+    defaultMessage: 'Font family:',
   },
   taxonomy: {
     id: 'app.components.PictogramCategories.taxonomy',
-    defaultMessage: 'Taxonomy'
+    defaultMessage: 'Taxonomy',
   },
   pictoBelongs: {
     id: 'app.components.PictogramCategories.pictoBelongs',
-    defaultMessage: 'This pictogram belong to these categories:'
+    defaultMessage: 'This pictogram belong to these categories:',
   },
   pictoLabels: {
     id: 'app.components.PictogramCategories.pictoLabels',
-    defaultMessage: 'This pictogram has been labelled as:'
+    defaultMessage: 'This pictogram has been labelled as:',
   },
   authUser: {
     id: 'app.components.Pictogram.AuthUser',
-    defaultMessage: 'This pictogram is related to sex or violence. In order to view it, you must be registered.'
+    defaultMessage:
+      'This pictogram is related to sex or violence. In order to view it, you must be registered.',
   },
   disableFilter: {
     id: 'app.components.Pictogram.disableFilter',
-    defaultMessage: 'This pictogram is related to sex or violence. In order to view it, you must deactivate the corresponding filter from your user profile.'
+    defaultMessage:
+      'This pictogram is related to sex or violence. In order to view it, you must deactivate the corresponding filter from your user profile.',
   },
   cancel: {
     id: 'app.components.Pictogram.cancel',
-    defaultMessage: 'Cancel'
+    defaultMessage: 'Cancel',
   },
   accept: {
     id: 'app.components.Pictogram.accept',
-    defaultMessage: 'OK'
+    defaultMessage: 'OK',
   },
   pictogramDisabled: {
     id: 'app.components.Pictogram.pictogramDisabled',
-    defaultMessage: 'Pictogram disabled'
+    defaultMessage: 'Pictogram disabled',
   },
   pictoMetaTitle: {
     id: 'app.components.Pictogram.pictoMetaTitle',
-    defaultMessage: '{keyword} pictogram | ARASAAC AAC symbol set'
+    defaultMessage: '{keyword} pictogram | ARASAAC AAC symbol set',
   },
   pictoMetaDesc: {
     id: 'app.components.Pictogram.pictoMetaDesc',
-    defaultMessage: 'Download {keyword} pictogram. Modify the image online using our pictogram editor.'
+    defaultMessage:
+      'Download {keyword} pictogram. Modify the image online using our pictogram editor.',
+  },
+  showCoreVocabulary: {
+    id: 'app.components.Pictogram.showCoreVocabulary',
+    defaultMessage: 'Show core vocabulary',
+  },
+  coreVocabularyIntro: {
+    id: 'app.components.Pictogram.coreVocabularyIntro',
+    defaultMessage:
+      'This pictogram is part of a basic core vocabulary for Augmentative and Alternative Communication (AAC)',
   },
 })
