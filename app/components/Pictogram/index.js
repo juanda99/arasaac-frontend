@@ -609,6 +609,7 @@ class Pictogram extends Component {
     const keywords = pictogram.get('keywords')
     const idPictogram = pictogram.get('_id')
     const tags = pictogram.get('tags')
+    const aac = pictogram.get('aac')
     const pictoCategories = pictogram.get('categories')
     // first time downloadUrl is default png
     const { keyword, hasLocution } = keywordSelector(
@@ -960,6 +961,7 @@ class Pictogram extends Component {
             categories={categories}
             pictoCategories={pictoCategories}
             tags={tags}
+            showAAC={aac}
           />
         )}
 

@@ -25,10 +25,11 @@ class PictogramCategories extends Component {
     categories: PropTypes.object.isRequired,
     pictoCategories: PropTypes.array.isRequired,
     tags: ImmutablePropTypes.list.isRequired,
+    showAAC: PropTypes.bool.isRequired,
   }
 
   render() {
-    const { categories, pictoCategories, tags, intl } = this.props
+    const { categories, pictoCategories, tags, intl, showAAC } = this.props
     const tree = categories.toJSON()
     const nodes = jp.nodes(tree, '$..text')
     const nodesKeywords = jp.nodes(tree, '$..keywords')
@@ -105,25 +106,40 @@ class PictogramCategories extends Component {
       <div>
         <H3 primary>{<FormattedMessage {...messages.taxonomy} />}</H3>
         <Divider />
-        <div style={{ display: 'flex' }}>
-          <img
-            style={{ width: '40px', height: '40px' }}
-            src={`${IMAGES_URL}/core-vocabulary-icon.svg`}
-          />
-          <P>
-            <FormattedMessage {...messages.coreVocabularyIntro} />
-          </P>
-        </div>
-        <Link
-          to={`/pictograms/search/${intl.formatMessage(
-            tagMessages['core vocabulary']
-          )}`}
-        >
-          <RaisedButton
-            label={<FormattedMessage {...messages.showCoreVocabulary} />}
-            secondary={true}
-          />
-        </Link>
+        {showAAC && (
+          <div>
+            <div style={{ display: 'flex' }}>
+              <img
+                style={{ width: '40px', height: '40px' }}
+                src={`${IMAGES_URL}/core-vocabulary-icon.svg`}
+              />
+              <P>
+                <FormattedMessage {...messages.coreVocabularyIntro} />
+              </P>
+            </div>
+            <Link
+              to={`/pictograms/search/${intl.formatMessage(
+                tagMessages['core vocabulary']
+              )}`}
+            >
+              <RaisedButton
+                label={<FormattedMessage {...messages.showCoreVocabulary} />}
+                secondary={true}
+                style={{ marginRight: '20px' }}
+              />
+            </Link>
+            <a
+              href="http://aulaabierta.arasaac.org/vocabulario-utac-cace"
+              target="_blank"
+            >
+              <RaisedButton
+                label={<FormattedMessage {...messages.knowMore} />}
+                secondary={true}
+              />
+            </a>
+          </div>
+        )}
+
         <P>{<FormattedMessage {...messages.pictoBelongs} />}</P>
         {renderPaths.map((path) => (
           <div>{path}</div>

@@ -348,6 +348,10 @@ export default defineMessages({
     id: 'app.components.Pictogram.showCoreVocabulary',
     defaultMessage: 'Show core vocabulary',
   },
+  knowMore: {
+    id: 'app.components.Pictogram.knowMore',
+    defaultMessage: 'Know more (Spanish)',
+  },
   coreVocabularyIntro: {
     id: 'app.components.Pictogram.coreVocabularyIntro',
     defaultMessage:
