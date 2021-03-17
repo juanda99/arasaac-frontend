@@ -130,7 +130,6 @@ const PictogramTags = ({
     }
     const tmpPictoTagsOrdered = [...pictoTags].sort((a, b) => {
       const weightA = pictograms.reduce(countOccurrences(a), 0)
-      console.log(a, weightA, '******************************')
       const weightB = pictograms.reduce(countOccurrences(b), 0)
       return weightB - weightA
     })
