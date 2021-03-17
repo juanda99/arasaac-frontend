@@ -20,15 +20,65 @@ const styles = {
   },
 }
 
-// const baseTags = [
-//   'movement',
-//   'communication',
-//   'feeding',
-//   'core vocabulary',
-//   'education',
-//   'work'
-
-// ]
+const baseTags = [
+  'traffic',
+  'feeding',
+  'augmentative communication',
+  'language',
+  'mass media',
+  'signaling system',
+  'education',
+  'work',
+  'sport',
+  'traditional game',
+  'toy',
+  'game',
+  'show',
+  'hobby',
+  'outdoor activity',
+  'place',
+  'scenic art',
+  'music',
+  'visual art',
+  'environmental science',
+  'health',
+  'astronomy',
+  'biology',
+  'geography',
+  'meteorology',
+  'oceanography',
+  'paleontology',
+  'physics',
+  'chemistry',
+  'geology',
+  'law',
+  'economy',
+  'history',
+  'psychology',
+  'sociology',
+  'speech therapy',
+  'engineering',
+  'architecture',
+  'agriculture',
+  'computing',
+  'veterinary medicine',
+  'mathematics',
+  'literature',
+  'library science',
+  'religion',
+  'person',
+  'routine',
+  'human body',
+  'animal',
+  'plant',
+  'event',
+  'time',
+  'chronological device',
+  'object',
+  'document',
+  'place',
+  'categorization',
+]
 
 /* we must render:
   none: if searchText is empty or not a category
@@ -134,7 +184,17 @@ const PictogramTags = ({
       return weightB - weightA
     })
 
-    const pictoTagsOrdered = [...selectedTags, ...tmpPictoTagsOrdered]
+    let pictoTagsOrdered = [...selectedTags, ...tmpPictoTagsOrdered]
+    const concurrences = pictoTagsOrdered.reduce(
+      (acc, curVal) => (baseTags.indexOf(curVal) !== -1 ? acc + 1 : acc),
+      0
+    )
+    // core vocabulary,  show only main filters:
+    if (concurrences > 5) {
+      pictoTagsOrdered = [...selectedTags, ...tmpPictoTagsOrdered].filter(
+        (item) => baseTags.indexOf(item) !== -1
+      )
+    }
 
     const handleClick = (tag) => onUpdateTags(tag)
 
