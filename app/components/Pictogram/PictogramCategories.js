@@ -125,7 +125,7 @@ class PictogramCategories extends Component {
               <RaisedButton
                 label={<FormattedMessage {...messages.showCoreVocabulary} />}
                 secondary={true}
-                style={{ marginRight: '20px' }}
+                style={{ marginRight: '20px', minWidth: '200px' }}
               />
             </Link>
             <a
@@ -135,6 +135,7 @@ class PictogramCategories extends Component {
               <RaisedButton
                 label={<FormattedMessage {...messages.knowMore} />}
                 secondary={true}
+                style={{ minWidth: '200px' }}
               />
             </a>
           </div>
