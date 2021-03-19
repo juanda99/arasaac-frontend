@@ -68,6 +68,7 @@ import {
   setSearchLanguage,
 } from './actions'
 import messages from './messages'
+import CategoryTree from '../../components/CategoryTree'
 
 const styles = {
   searchBar: {
@@ -517,6 +518,12 @@ class PictogramsView extends PureComponent {
                   </ReadMargin>
                 ) : (
                   ''
+                )}
+                {!pictogramsCounter && tab !== 1 && (
+                  <CategoryTree
+                    categories={categories}
+                    locale={searchLanguage}
+                  />
                 )}
                 {gallery}
               </View>
