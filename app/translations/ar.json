@@ -554,6 +554,7 @@
   "app.containers.ProfileView.violencePictograms": "إِخْفَاءُ رُمُوزِ AAC ذَاتَ الصِلَةٍ بِالْعُنْفِ",
   "app.containers.SearchBox.activity": "النَّشَاط",
   "app.containers.SearchBox.advSearchBtn": "أُنْقُر عَلى هَذَا الزِّرْ للقِيَام بِبَحْثٍ مُتَقَدِمْ.",
+  "app.containers.SearchBox.advSearchHint": "أُنْقُرْ عَلَى عَلَى اللّائِحَة المُنْسَدِلَة للْبَحْث عَن المُحْتَوَى,الكَاتِبْ, النّشَاط (مِثَال الرّوتِين,جَدْول الأَعْمَال,القصة....) أَوْ المَنْطِقَة (مِثَال اللُّغَة, الرِّيَاضِيَّات, المُوسِقَى.....).",
   "app.containers.SearchBox.advancedSearch": "البحث المتقدم",
   "app.containers.SearchBox.area": "المَنْطِقَةُ",
   "app.containers.SearchBox.author": "المُؤلّفْ \\ الكَاتِبْ",
