@@ -472,6 +472,7 @@
   "app.containers.AuthorSnippet.coordinator": "مُنَسِق الأراساك",
   "app.containers.AuthorSnippet.developer": "مُطَوِّر الأراساك",
   "app.containers.AuthorSnippet.reachme": "يُمْكِنُك الوصول لي على:",
+  "app.containers.ContactView.alertWindowErrorDesc": "نَحْنُ آسِفُون وَلَكِنْ لَمْ نَتَمَكَنْ مِنْ إسْتِلاَمْ رِسَالَتَكْ. حَاوِلْ مَرَة أُخْرَى فِي وَقْتٍ لاحِقْ أَوْ تَوَاصَلْ مَعَنَا عَبْرَ شَبَكَاتنَا للتَوَاصُلْ الإجْتِمَاعِي",
   "app.containers.ContactView.alertWindowErrorTitle": "خَطَأ في الإتِّصَال",
   "app.containers.ContactView.form.email": "البريد الإلكتروني",
   "app.containers.ContactView.form.emailHint": "اكتب بريدك الالكتروني",
