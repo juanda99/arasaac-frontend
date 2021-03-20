@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import ImmutablePropTypes from 'react-immutable-proptypes'
+import React from 'react'
 import LanguageProvider from 'containers/LanguageProvider'
 import { Link } from 'react-router'
 // Import i18n messages
@@ -9,12 +8,8 @@ import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import jp from 'jsonpath'
 import Chip from 'material-ui/Chip'
-import removeDiacritics from 'components/SearchField/removeDiacritics'
-import { lightGreen400 } from 'material-ui/styles/colors'
 import SearchIcon from 'material-ui/svg-icons/action/search'
-import stopWords from 'utils/stopWords'
-import { not } from 'ip'
-import { bindKey } from 'lodash'
+import P from 'components/P'
 // import messages from './messages'
 
 const styles = {
@@ -41,56 +36,24 @@ const CategoryTree = ({ categories, locale }) => {
     return { keyword: node.value[0] || '', path: path }
   })
 
-  const nodes = textNodes.map((node) => {
-    const key = node.path.join()
-    const keyword = keywordNodes
-      .filter((node) => node.path.join() === key)
-      .map((node) => node.keyword)[0]
-    return { ...node, keyword, key }
-  })
+  const nodes = textNodes
+    .map((node) => {
+      const key = node.path.join()
+      const keyword = keywordNodes
+        .filter((node) => node.path.join() === key)
+        .map((node) => node.keyword)[0]
+      return { ...node, keyword, key }
+    })
+    .sort((a, b) => {
+      // console.log(a.path[0], a)
+      return a.path[0] - b.path[0]
+    })
 
-  const categoryItem = (node, depth) => {
-    if (depth === 1) {
-      return (
-        <CatLink keyword={node.keyword} keyprop={node.key}>
-          <h3 key={node.key}>{node.text}</h3>
-        </CatLink>
-      )
-    } else if (depth === 2) {
-      return (
-        <CatLink keyword={node.keyword} keyprop={node.key}>
-          <h4
-            style={{ display: node.keyword ? 'inline' : 'block' }}
-            key={node.key}
-          >
-            {node.text}
-          </h4>
-        </CatLink>
-      )
-    } else if (depth === 3) {
-      return (
-        <CatLink keyword={node.keyword} keyprop={node.key}>
-          <h5
-            style={{ display: node.keyword ? 'inline' : 'block' }}
-            key={node.key}
-          >
-            {node.text}
-          </h5>
-        </CatLink>
-      )
-    } else if (depth === 4) {
-      return (
-        <CatLink keyword={node.keyword} keyprop={node.key}>
-          <h6
-            style={{ display: node.keyword ? 'inline' : 'block' }}
-            key={node.key}
-          >
-            {node.text}
-          </h6>
-        </CatLink>
-      )
-    }
-  }
+  const categoryItem = (node, depth) => (
+    <CatLink keyword={node.keyword} keyprop={node.key}>
+      <CatItem keyword={node.keyword} text={node.text} depth={depth} />
+    </CatLink>
+  )
 
   const CatLink = ({ keyword, keyprop, children }) =>
     keyword ? (
@@ -104,12 +67,21 @@ const CategoryTree = ({ categories, locale }) => {
       <div>{children}</div>
     )
 
+  const CatItem = ({ keyword, text, depth }) => {
+    if (depth === 1) return <h2>{text}</h2>
+    return (
+      <P style={{ marginLeft: `${depth * 10}px` }} important={depth === 2}>
+        {text}
+      </P>
+    )
+  }
+
   const titles = (key = '', depth = 1) =>
     nodes
       .filter((node) => node.path.length === depth)
       .filter((node) => node.key.startsWith(key))
       .map((node) =>
-        node.keyword && depth > 1 ? (
+        node.keyword && depth > 5 ? (
           categoryItem(node, depth)
         ) : (
           <div>
