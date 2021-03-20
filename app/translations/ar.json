@@ -566,6 +566,7 @@
   "app.containers.SearchBox.filtersBtn": "أُنْقُرْ عَلَى هَذَا الزِّرْ لِفَلْتَرَة (تَصْفِيَة) نَتَائِجَ بَحْثِكْ.",
   "app.containers.SearchBox.filtersHint": "يُمْكِنُكَ تَصْفِيَّة (فَلْتَرَة) نَتَائِجْ البَحْثْ من خِلالْ النَّشَاط, المَنْطِقَة أَوْ اللَُّغَة.",
   "app.containers.SearchBox.searchHint1": "أَدْخِلْ مُصْطَلحًا أَوْ أَكْثَرْ للْبَحْث عَنْ المَوَادْ, مِثْل جَدْوَلْ الأَعْمَالْ الأُسْبُوعِي.",
+  "app.containers.SearchBox.searchHint2": "لِإجْرَاءْ بَحْث دَقِيق, أَدْخِلْ مُصْطَلَحَاتك بَيْنَ عَلَامَتَيّ الإِقْتِبَاسْ,مثال \"دَفْتَرْ مُلَاحَظَاتْ التَوَاصُلْ\".",
   "app.containers.SearchBox.showHelp": "إِضْهَار \\ عَرْض المُسَاعَدَة",
   "app.containers.SearchBox.wordSearch": "البَحْث بِالْكَلِمَة",
   "app.containers.SettingsView.DARK": "أَسْوَدٌ \\ غَامِقٌ",
