@@ -519,7 +519,7 @@ class PictogramsView extends PureComponent {
                 ) : (
                   ''
                 )}
-                {!pictogramsCounter && tab !== 1 && (
+                {!pictogramsCounter && tab !== 1 && !!categories.size && (
                   <CategoryTree
                     categories={categories}
                     locale={searchLanguage}
