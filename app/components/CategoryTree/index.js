@@ -22,6 +22,7 @@ class CategoryTree extends Component {
   state = {
     nodes: [],
     selectedKey: '',
+    selectedSubKey: '',
   }
 
   componentDidMount() {
@@ -49,20 +50,16 @@ class CategoryTree extends Component {
     this.setState({ nodes })
   }
 
-  getCategories = (nodes, key = '', depth = 1) =>
+  getCategories = (nodes, key = '', depthStart = 0, depth = 1) =>
     nodes
       .filter((node) => node.path.length === depth)
       .filter((node) => node.key.startsWith(key))
-      .map((node) =>
-        node.keyword && depth > 5 ? (
-          this.categoryItem(node, depth)
-        ) : (
-          <div>
-            {this.categoryItem(node, depth)}
-            {this.getCategories(nodes, node.key, depth + 1)}
-          </div>
-        )
-      )
+      .map((node) => (
+        <div>
+          {this.categoryItem(node, depth - depthStart)}
+          {this.getCategories(nodes, node.key, depthStart, depth + 1)}
+        </div>
+      ))
 
   categoryItem = (node, depth) => (
     <CatLink keyword={node.keyword} keyprop={node.key}>
@@ -70,7 +67,12 @@ class CategoryTree extends Component {
     </CatLink>
   )
 
-  handleClick = (selectedKey) => this.setState({ selectedKey })
+  handleCatClick = (selectedKey) => {
+    if (selectedKey !== this.state.selectedKey) {
+      this.setState({ selectedKey, selectedSubKey: '' })
+    }
+  }
+  handleSubCatClick = (selectedSubKey) => this.setState({ selectedSubKey })
 
   getBaseCategories = (nodes, selectedKey) =>
     nodes
@@ -81,7 +83,7 @@ class CategoryTree extends Component {
             key={node.key}
             style={styles.chip}
             backgroundColor={lightGreen400}
-            onClick={() => this.handleClick(node.key)}
+            onClick={() => this.handleCatClick(node.key)}
           >
             {node.text}
           </Chip>
@@ -89,16 +91,72 @@ class CategoryTree extends Component {
           <Chip
             key={node.key}
             style={styles.chip}
-            onClick={() => this.handleClick(node.key)}
+            onClick={() => this.handleCatClick(node.key)}
           >
             {node.text}
           </Chip>
         )
       )
 
+  getBaseSubCategories = (nodes, selectedKey, selectedSubKey) =>
+    nodes
+      .filter(
+        (node) => node.key.startsWith(selectedKey) && node.path.length === 2
+      )
+      .filter((node) => !node.key.includes('core vocabulary-knowledge'))
+      .filter((node) => !node.key.includes('core vocabulary-living being'))
+      .map((node) => {
+        const key = node.key.substr(selectedKey.length + 1)
+        return selectedSubKey && node.key.indexOf(selectedSubKey) !== -1 ? (
+          <Chip
+            key={node.key}
+            style={styles.chip}
+            backgroundColor={lightGreen400}
+            onClick={() => this.handleSubCatClick(key)}
+          >
+            {node.text}
+          </Chip>
+        ) : (
+          <Chip
+            key={node.key}
+            style={styles.chip}
+            onClick={() => this.handleSubCatClick(key)}
+          >
+            {node.text}
+          </Chip>
+        )
+      })
+
   render() {
-    const { nodes, selectedKey } = this.state
+    const { nodes, selectedKey, selectedSubKey } = this.state
     const { locale } = this.props
+    let renderSubCategories = ''
+    if (selectedKey === 'living being' || selectedKey === 'knowledge') {
+      renderSubCategories = (
+        <div>
+          <P>Elige subcategoría:</P>
+          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            {this.getBaseSubCategories(nodes, selectedKey, selectedSubKey)}
+          </div>
+        </div>
+      )
+    }
+    let renderTree = ''
+    if (selectedSubKey) {
+      renderTree = this.getCategories(
+        nodes,
+        `${selectedKey},${selectedSubKey}`,
+        1,
+        2
+      )
+    } else if (
+      selectedKey &&
+      selectedKey !== 'living being' &&
+      selectedKey !== 'knowledge'
+    ) {
+      renderTree = this.getCategories(nodes, selectedKey)
+    }
+
     return (
       <LanguageProvider messages={translationMessages} paramLocale={locale}>
         <div>
@@ -110,8 +168,8 @@ class CategoryTree extends Component {
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             {this.getBaseCategories(nodes, selectedKey)}
           </div>
-
-          {!!selectedKey && this.getCategories(nodes, selectedKey)}
+          {renderSubCategories}
+          {renderTree}
         </div>
       </LanguageProvider>
     )
@@ -138,7 +196,11 @@ const CatLink = ({ keyword, keyprop, children }) =>
 const CatItem = ({ keyword, text, depth }) => {
   if (depth === 1) return <h2>{text}</h2>
   return (
-    <P style={{ marginLeft: `${depth * 10}px` }} important={depth === 2}>
+    <P
+      style={{ marginLeft: `${depth * 15}px` }}
+      important={depth === 2 || depth === 3}
+      italic={depth === 5 || depth === 3}
+    >
       {text}
     </P>
   )
