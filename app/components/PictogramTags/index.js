@@ -185,12 +185,18 @@ const PictogramTags = ({
     })
 
     let pictoTagsOrdered = [...selectedTags, ...tmpPictoTagsOrdered]
-    const concurrences = pictoTagsOrdered.reduce(
-      (acc, curVal) => (baseTags.indexOf(curVal) !== -1 ? acc + 1 : acc),
-      0
-    )
+    const usedValues = []
+    const concurrences = pictoTagsOrdered.reduce((acc, curVal) => {
+      if (
+        baseTags.indexOf(curVal) !== -1 &&
+        usedValues.indexOf(curVal) === -1
+      ) {
+        usedValues.push(curVal)
+        return acc + 1
+      } else return acc
+    }, 0)
     // core vocabulary,  show only main filters:
-    if (concurrences > 5) {
+    if (concurrences > 10) {
       pictoTagsOrdered = [...selectedTags, ...tmpPictoTagsOrdered].filter(
         (item) => baseTags.indexOf(item) !== -1
       )
