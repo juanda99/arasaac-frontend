@@ -103,8 +103,6 @@ class CategoryTree extends Component {
       .filter(
         (node) => node.key.startsWith(selectedKey) && node.path.length === 2
       )
-      .filter((node) => !node.key.includes('core vocabulary-knowledge'))
-      .filter((node) => !node.key.includes('core vocabulary-living being'))
       .map((node) => {
         const key = node.key.substr(selectedKey.length + 1)
         return selectedSubKey && node.key.indexOf(selectedSubKey) !== -1 ? (
