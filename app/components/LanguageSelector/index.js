@@ -20,7 +20,7 @@ const LanguageSelector = ({
   shortOption,
   toolTip,
   labelColor,
-  muiTheme
+  muiTheme,
 }) => {
   const { formatMessage } = intl
   const handleChange = (event, index, value) => {
@@ -28,17 +28,29 @@ const LanguageSelector = ({
   }
   const isRtl = muiTheme.direction === 'rtl'
   const orderLanguages = languages.map((language) =>
-        shortOption ? 
-          ({code: language.code, text: formatMessage(messages[language.code])}) : 
-          ({code: language.code, text: `${formatMessage(messages[language.code])} - ${language.text}`})
-      )
-  
+    shortOption
+      ? { code: language.code, text: formatMessage(messages[language.code]) }
+      : {
+          code: language.code,
+          text: `${formatMessage(messages[language.code])} - ${language.text}`,
+        }
+  )
+
   orderLanguages.sort((a, b) => a.text.localeCompare(b.text))
 
   return (
     // maxWidth so fixed good in mobile
     <SelectField
-      style={isRtl ? { textAlign: 'right', width: '370px', maxWidth: '95%' } : { textAlign: 'left', width: '370px', maxWidth: '95%' }}
+      style={
+        isRtl
+          ? { textAlign: 'right', width: '370px', maxWidth: '95%' }
+          : {
+              textAlign: 'left',
+              width: '370px',
+              maxWidth: '95%',
+              marginRight: '20px',
+            }
+      }
       maxHeight={400}
       value={value}
       labelStyle={labelColor ? { color: labelColor } : {}}
@@ -46,7 +58,7 @@ const LanguageSelector = ({
       iconStyle={isRtl ? { right: '', left: 0 } : {}}
       floatingLabelText={!!toolTip && toolTip}
     >
-    { orderLanguages.map((language) =>
+      {orderLanguages.map((language) =>
         shortOption ? (
           <MenuItem
             key={language.code}
@@ -54,14 +66,13 @@ const LanguageSelector = ({
             primaryText={language.text}
           />
         ) : (
-            <MenuItem
-              key={language.code}
-              value={language.code}
-              primaryText={language.text}
-            />
-          )
+          <MenuItem
+            key={language.code}
+            value={language.code}
+            primaryText={language.text}
+          />
+        )
       )}
-  
     </SelectField>
   )
 }

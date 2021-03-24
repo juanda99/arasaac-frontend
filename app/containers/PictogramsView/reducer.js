@@ -14,28 +14,25 @@ import {
   NEW_PICTOGRAMS,
   AUTOCOMPLETE,
   TOGGLE_FILTERS,
-  TOGGLE_SETTINGS,
   // SHOW_FILTERS,
   // SET_FILTER_ITEMS,
   FAVORITE_LIST_SELECT,
   FAVORITE_PICTOGRAMS,
-  SET_SEARCH_LANGUAGE
+  SET_SEARCH_LANGUAGE,
 } from './actions'
 
-
 const pictograms = {}
-languages.forEach(language => {
+languages.forEach((language) => {
   pictograms[language.code] = {}
 })
 
 const categories = {}
-languages.forEach(language => {
+languages.forEach((language) => {
   categories[language.code] = {}
 })
 
 export const initialState = fromJS({
   showFilter: false,
-  showSettings: false,
   loading: false,
   loadingNew: false,
   error: false,
@@ -49,7 +46,7 @@ export const initialState = fromJS({
   searchLanguage: null,
   pictograms,
   categories,
-  newPictograms: []
+  newPictograms: [],
 })
 
 function pictogramsViewReducer(state = initialState, action) {
@@ -63,17 +60,16 @@ function pictogramsViewReducer(state = initialState, action) {
       idPictogram = action.payload.data._id.toString()
       return state
         .set('loading', false)
-        .setIn(
-          ['pictograms', action.payload.locale, idPictogram],
-          newPictogram
-        )
+        .setIn(['pictograms', action.payload.locale, idPictogram], newPictogram)
 
     case PICTOGRAM.FAILURE:
     case PICTOGRAMS.FAILURE:
       return state.set('error', action.payload.error).set('loading', false)
 
     case NEW_PICTOGRAMS.FAILURE:
-      return state.set('errorNew', action.payload.error).set('loadingNew', false)
+      return state
+        .set('errorNew', action.payload.error)
+        .set('loadingNew', false)
 
     case PICTOGRAMS.REQUEST:
     case FAVORITE_PICTOGRAMS.REQUEST:
@@ -90,7 +86,11 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .setIn(
-          ['search', action.payload.locale, decodeURIComponent(action.payload.searchText)],
+          [
+            'search',
+            action.payload.locale,
+            decodeURIComponent(action.payload.searchText),
+          ],
           action.payload.data.result
         )
         .mergeIn(['pictograms', action.payload.locale], newPictogram)
@@ -107,18 +107,19 @@ function pictogramsViewReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .mergeIn(['pictograms', action.payload.locale], newPictogram)
-    
+
     case CATEGORIES.REQUEST:
       return state.set('loadingCategories', true).set('errorCategories', false)
     case CATEGORIES.FAILURE:
-      return state.set('errorCategories', action.payload.error).set('loadingCategories', false)
-    case CATEGORIES.SUCCESS:
-      {
+      return state
+        .set('errorCategories', action.payload.error)
+        .set('loadingCategories', false)
+    case CATEGORIES.SUCCESS: {
       const categories = Map(action.payload.data.data || {})
       return state
         .set('loadingNew', false)
         .setIn(['categories', action.payload.locale], categories)
-      }
+    }
     case AUTOCOMPLETE.REQUEST:
       return state
     case AUTOCOMPLETE.SUCCESS:
@@ -126,13 +127,7 @@ function pictogramsViewReducer(state = initialState, action) {
     case AUTOCOMPLETE.FAILURE:
       return state.set('error', action.payload.error)
     case TOGGLE_FILTERS:
-      return state
-        .set('showFilter', !state.get('showFilter'))
-        .set('showSettings', false)
-    case TOGGLE_SETTINGS:
-      return state
-        .set('showSettings', !state.get('showSettings'))
-        .set('showFilter', false)
+      return state.set('showFilter', !state.get('showFilter'))
     // case SHOW_FILTERS:
     //   return state.set('showFilter', !state.get('showFilter'))
     // case SET_FILTER_ITEMS:

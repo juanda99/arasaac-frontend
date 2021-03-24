@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 import { lightGreen400 } from 'material-ui/styles/colors'
 import LanguageProvider from 'containers/LanguageProvider'
-import { Link } from 'react-router'
 // Import i18n messages
 import { translationMessages } from '../../i18n'
-import Avatar from 'material-ui/Avatar'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import jp from 'jsonpath'
 import Chip from 'material-ui/Chip'
-import SearchIcon from 'material-ui/svg-icons/action/search'
 import P from 'components/P'
+import CatLink from './CatLink'
+import CatItem from './CatItem.js'
 // import messages from './messages'
 
 const styles = {
@@ -21,8 +20,6 @@ const styles = {
 class CategoryTree extends Component {
   state = {
     nodes: [],
-    selectedKey: '',
-    selectedSubKey: '',
   }
 
   componentDidMount() {
@@ -62,17 +59,18 @@ class CategoryTree extends Component {
       ))
 
   categoryItem = (node, depth) => (
-    <CatLink keyword={node.keyword} keyprop={node.key}>
-      <CatItem keyword={node.keyword} text={node.text} depth={depth} />
+    <CatLink keyword={node.keyword} key={node.key}>
+      <CatItem text={node.text} depth={depth} />
     </CatLink>
   )
 
   handleCatClick = (selectedKey) => {
-    if (selectedKey !== this.state.selectedKey) {
-      this.setState({ selectedKey, selectedSubKey: '' })
+    if (selectedKey !== this.props.selectedKey) {
+      this.props.onCatChange(selectedKey)
     }
   }
-  handleSubCatClick = (selectedSubKey) => this.setState({ selectedSubKey })
+  handleSubCatClick = (selectedSubKey) =>
+    this.props.onSubCatChange(selectedSubKey)
 
   getBaseCategories = (nodes, selectedKey) =>
     nodes
@@ -126,7 +124,8 @@ class CategoryTree extends Component {
       })
 
   render() {
-    const { nodes, selectedKey, selectedSubKey } = this.state
+    const { nodes } = this.state
+    const { selectedKey, selectedSubKey } = this.props
     const { locale } = this.props
     let renderSubCategories = ''
     if (selectedKey === 'living being' || selectedKey === 'knowledge') {
@@ -175,33 +174,12 @@ class CategoryTree extends Component {
 }
 
 CategoryTree.propTypes = {
+  selectedKey: PropTypes.string.isRequired,
+  selectedSubKey: PropTypes.string,
   categories: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
-}
-
-const CatLink = ({ keyword, keyprop, children }) =>
-  keyword ? (
-    <Link
-      key={keyprop}
-      to={`/pictograms/search/${encodeURIComponent(keyword)}`}
-    >
-      {children}
-    </Link>
-  ) : (
-    <div>{children}</div>
-  )
-
-const CatItem = ({ keyword, text, depth }) => {
-  if (depth === 1) return <h2>{text}</h2>
-  return (
-    <P
-      style={{ marginLeft: `${depth * 15}px` }}
-      important={depth === 2 || depth === 3}
-      italic={depth === 5 || depth === 3}
-    >
-      {text}
-    </P>
-  )
+  onCatChange: PropTypes.func.isRequired,
+  onSubCatChange: PropTypes.func.isRequired,
 }
 
 export default CategoryTree
