@@ -116,7 +116,7 @@ const getTags = (searchText, categoryTree, locale) => {
       const newTags = getSubcategoryTags(partialData, partialData.tags)
       newTags.forEach((element) => tags.push(element))
     })
-    return tags.concat(importantTags)
+    return [...new Set(tags.concat(importantTags))]
   }
   return []
 }
@@ -145,7 +145,7 @@ const getKeywords = (pictoCategories, categoryTree) => {
       ? [...accumulator, keywords[0][0]]
       : accumulator
   }, [])
-  return keywords
+  return [...new Set(keywords)]
 }
 
 const PictogramTags = ({
