@@ -11,13 +11,8 @@ export const PICTOGRAMS = createRequestTypes('PICTOGRAMS')
 export const CATEGORIES = createRequestTypes('CATEGORIES')
 export const FAVORITE_PICTOGRAMS = createRequestTypes('FAVORITE_PICTOGRAMS')
 export const NEW_PICTOGRAMS = createRequestTypes('NEW_PICTOGRAMS')
-export const SHOW_FILTERS = 'PICTOGRAMS_SHOW_FILTERS'
-export const ENABLE_FILTER = 'PICTOGRAMS_ENABLE_FILTER'
-export const SET_FILTER_ITEMS = 'PICTOGRAMS_SET_FILTER_ITEMS'
 export const AUTOCOMPLETE = createRequestTypes('AUTOCOMPLETE')
 export const FAVORITE_LIST_SELECT = 'FAVORITE_LIST_SELECT'
-
-export const TOGGLE_FILTERS = 'PICTOGRAMS_TOGGLE_FILTERS'
 
 export const SET_SEARCH_LANGUAGE = 'SET_SEARCH_LANGUAGE'
 
@@ -58,14 +53,5 @@ export const autocomplete = {
   failure: (error) => action(AUTOCOMPLETE.FAILURE, { error }),
 }
 
-export const toggleShowFilter = () => action(TOGGLE_FILTERS)
-
 export const setSearchLanguage = (locale) =>
   action(SET_SEARCH_LANGUAGE, { locale })
-
-// we don't use this action right now, maybe if we decide to show only some filters... mobile version?
-// export const enableFilter = (field, value) =>
-//   action(ENABLE_FILTER, { field, value })
-
-export const setFilterItems = (filter, values) =>
-  action(SET_FILTER_ITEMS, { filter, values })

@@ -85,6 +85,17 @@ const baseTags = [
   pictogram tags that belong to the category otherwise not present in 100% pictos + selectedTags
 */
 
+const importantTags = [
+  'professional',
+  'place',
+  'verb',
+  'document',
+  'person',
+  'building',
+  'room',
+  'facility',
+]
+
 const getTags = (searchText, categoryTree, locale) => {
   const tree = categoryTree.toJSON()
   const nodes = jp.nodes(tree, '$..keywords')
@@ -97,6 +108,7 @@ const getTags = (searchText, categoryTree, locale) => {
       )
     )
     .map((node) => node.path[1])
+
   if (categories.length) {
     const tags = []
     categories.forEach((categoryItem) => {
@@ -104,7 +116,7 @@ const getTags = (searchText, categoryTree, locale) => {
       const newTags = getSubcategoryTags(partialData, partialData.tags)
       newTags.forEach((element) => tags.push(element))
     })
-    return tags
+    return tags.concat(importantTags)
   }
   return []
 }

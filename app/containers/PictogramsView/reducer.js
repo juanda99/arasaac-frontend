@@ -13,9 +13,6 @@ import {
   CATEGORIES,
   NEW_PICTOGRAMS,
   AUTOCOMPLETE,
-  TOGGLE_FILTERS,
-  // SHOW_FILTERS,
-  // SET_FILTER_ITEMS,
   FAVORITE_LIST_SELECT,
   FAVORITE_PICTOGRAMS,
   SET_SEARCH_LANGUAGE,
@@ -32,7 +29,6 @@ languages.forEach((language) => {
 })
 
 export const initialState = fromJS({
-  showFilter: false,
   loading: false,
   loadingNew: false,
   error: false,
@@ -126,15 +122,6 @@ function pictogramsViewReducer(state = initialState, action) {
       return state.setIn(['words', action.payload.locale], action.payload.data)
     case AUTOCOMPLETE.FAILURE:
       return state.set('error', action.payload.error)
-    case TOGGLE_FILTERS:
-      return state.set('showFilter', !state.get('showFilter'))
-    // case SHOW_FILTERS:
-    //   return state.set('showFilter', !state.get('showFilter'))
-    // case SET_FILTER_ITEMS:
-    //   return state.setIn(
-    //     ['filters', action.payload.filter],
-    //     action.payload.values
-    //   )
     case FAVORITE_LIST_SELECT:
       return state.set('favoriteList', action.payload.listName)
     default:

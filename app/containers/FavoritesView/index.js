@@ -24,23 +24,22 @@ import {
   addFavorite,
   addList,
   renameList,
-  deleteList
+  deleteList,
 } from 'containers/App/actions'
 import {
   makeSelectHasUser,
   makeSelectId,
   makeSelectFavorites,
-  makeSelectRootFavorites
+  makeSelectRootFavorites,
 } from 'containers/App/selectors'
 import {
   makeLoadingSelector,
   makeListSelector,
-  makeFavoritePictogramsSelector
+  makeFavoritePictogramsSelector,
 } from 'containers/PictogramsView/selectors'
 import {
   favoritePictograms,
-  toggleShowFilter,
-  favoriteListSelect
+  favoriteListSelect,
 } from 'containers/PictogramsView/actions'
 import api from 'services'
 import messages from './messages'
@@ -49,8 +48,8 @@ class FavoritesView extends PureComponent {
   // eslint-disable-line react/prefer-stateless-function
 
   state = {
-    listName: ''
-  };
+    listName: '',
+  }
 
   async componentDidMount() {
     const { requestFavorites, locale, token, favorites } = this.props
@@ -91,41 +90,40 @@ class FavoritesView extends PureComponent {
     addFavorite(fileName, listName, token)
     /* we remove material from defaultList */
     if (listName !== DEFAULT_LIST) deleteFavorite(fileName, DEFAULT_LIST, token)
-  };
+  }
 
   handleDeleteFavorite = (fileName, listName) => {
     const { deleteFavorite, token } = this.props
     deleteFavorite(fileName, listName, token)
-  };
+  }
 
   handleFavoriteListSelect = (listName) => {
     this.props.favoriteListSelect(listName)
-  };
+  }
 
   handleDeleteList = (listName) => {
     const { deleteList, token } = this.props
     deleteList(listName, token)
-  };
+  }
 
   handleListNameChange = (e) => {
     this.setState({
-      listName: e.target.value
+      listName: e.target.value,
     })
-  };
+  }
 
   handleAddList = () => {
     const { addList, token } = this.props
     addList(this.state.listName, token)
     this.setState({ listName: '' })
-  };
+  }
 
   handleRenameList = (listName, newListName) => {
     const { renameList, token } = this.props
     renameList(listName, newListName, token)
   }
 
-  handleDownloadList = listName => {
-
+  handleDownloadList = (listName) => {
     const { id } = this.props
     const location = downloadList(listName, id)
     window.location = location
@@ -137,13 +135,19 @@ class FavoritesView extends PureComponent {
   }
 
   render() {
-    const { favorites, selectedList, favoritePictograms, intl, loading } = this.props
+    const {
+      favorites,
+      selectedList,
+      favoritePictograms,
+      intl,
+      loading,
+    } = this.props
     const { formatMessage } = intl
     return (
       <View left={true} right={true}>
         <ReadMargin>
           <Helmet
-            title='Favorites View'
+            title="Favorites View"
             meta={[{ name: 'description', content: 'Pictogram favorites' }]}
           />
 
@@ -160,20 +164,26 @@ class FavoritesView extends PureComponent {
             onClick={this.handleAddList}
             disabled={!this.state.listName}
           />
-          {favoritePictograms && !loading && <FavoriteList
-            items={favorites}
-            onSelect={this.handleFavoriteListSelect}
-            selectedList={selectedList}
-            onDelete={this.handleDeleteList}
-            onDeleteFavorite={this.handleDeleteFavorite}
-            onDownloadList={this.handleDownloadList}
-            onDownload={this.handleDownload}
-            onRename={this.handleRenameList}
-            listPictograms={favoritePictograms}
-            onDrop={this.handleAddFavorite}
-          />}
+          {favoritePictograms && !loading && (
+            <FavoriteList
+              items={favorites}
+              onSelect={this.handleFavoriteListSelect}
+              selectedList={selectedList}
+              onDelete={this.handleDeleteList}
+              onDeleteFavorite={this.handleDeleteFavorite}
+              onDownloadList={this.handleDownloadList}
+              onDownload={this.handleDownload}
+              onRename={this.handleRenameList}
+              listPictograms={favoritePictograms}
+              onDrop={this.handleAddFavorite}
+            />
+          )}
 
-          {favoritePictograms && loading && <P><FormattedMessage {...messages.loadingFavorites} /></P>}
+          {favoritePictograms && loading && (
+            <P>
+              <FormattedMessage {...messages.loadingFavorites} />
+            </P>
+          )}
         </ReadMargin>
       </View>
     )
@@ -207,17 +217,13 @@ const mapStateToProps = (state) => ({
   selectedList: makeListSelector()(state),
   favoritePictograms: makeFavoritePictogramsSelector()(state),
   rootFavorites: makeSelectRootFavorites()(state),
-  id: makeSelectId()(state)
+  id: makeSelectId()(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({
   requestFavorites: (locale, idFavorites, token) => {
     dispatch(favoritePictograms.request(locale, idFavorites, token))
   },
-  toggleShowFilter: () => {
-    dispatch(toggleShowFilter())
-  },
-
   deleteFavorite: (fileName, listName, token) => {
     dispatch(deleteFavorite.request(fileName, listName, token))
   },
@@ -235,7 +241,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   addFavorite: (fileName, listName, token) => {
     dispatch(addFavorite.request(fileName, listName, token))
-  }
+  },
 })
 
 export default connect(

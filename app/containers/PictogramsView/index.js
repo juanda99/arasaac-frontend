@@ -427,27 +427,31 @@ class PictogramsView extends PureComponent {
             style={{ flexGrow: 1 }}
           />
         </DivSearchBox>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'baseline',
-          }}
-        >
-          <LanguageSelector
-            value={searchLanguage}
-            onChange={this.handleLanguageChange}
-            shortOption={true}
-            toolTip={this.props.intl.formatMessage(messages['languageSearch'])}
-          />
-          <RaisedButton
-            label={<FormattedMessage {...messages.showCategories} />}
-            onClick={this.handleReset}
-            disabled={!searchText}
-            style={{ maxHeight: '36px' }}
-            secondary={true}
-          />
-        </div>
+        <ReadMargin>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'baseline',
+            }}
+          >
+            <LanguageSelector
+              value={searchLanguage}
+              onChange={this.handleLanguageChange}
+              shortOption={true}
+              toolTip={this.props.intl.formatMessage(
+                messages['languageSearch']
+              )}
+            />
+            <RaisedButton
+              label={<FormattedMessage {...messages.searchByCategory} />}
+              onClick={this.handleReset}
+              disabled={!searchText}
+              style={{ maxHeight: '36px', marginBottom: '20px' }}
+              secondary={true}
+            />
+          </div>
+        </ReadMargin>
       </div>
     )
     return (

@@ -10,7 +10,7 @@ import Chip from 'material-ui/Chip'
 import P from 'components/P'
 import CatLink from './CatLink'
 import CatItem from './CatItem.js'
-// import messages from './messages'
+import messages from './messages'
 
 const styles = {
   chip: {
@@ -131,7 +131,9 @@ class CategoryTree extends Component {
     if (selectedKey === 'living being' || selectedKey === 'knowledge') {
       renderSubCategories = (
         <div>
-          <P>Elige subcategoría:</P>
+          <P>
+            <FormattedMessage {...messages.chooseSubcategory} />
+          </P>
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             {this.getBaseSubCategories(nodes, selectedKey, selectedSubKey)}
           </div>
@@ -157,11 +159,6 @@ class CategoryTree extends Component {
     return (
       <LanguageProvider messages={translationMessages} paramLocale={locale}>
         <div>
-          <P>
-            Los pictogramas de ARASAAC están agrupados por categorias. Pulsa en
-            cualquiera de las categorías principales para obtener más
-            información.
-          </P>
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             {this.getBaseCategories(nodes, selectedKey)}
           </div>

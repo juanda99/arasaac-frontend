@@ -84,8 +84,8 @@ export default defineMessages({
     id: 'app.PictogramsView.closeWarning',
     defaultMessage: 'Close warning',
   },
-  showCategories: {
-    id: 'app.PictogramsView.showCategories',
-    defaultMessage: 'Show Categories',
+  searchByCategory: {
+    id: 'app.PictogramsView.searchByCategories',
+    defaultMessage: 'Search by category',
   },
 })
