@@ -473,7 +473,10 @@ class PictogramsView extends PureComponent {
               <View
                 left={true}
                 right={true}
-                style={{ backgroundColor: muiTheme.palette.accent2Color }}
+                style={{
+                  backgroundColor: muiTheme.palette.accent2Color,
+                  paddingBottom: '2em',
+                }}
               >
                 {renderSearchBox}
               </View>
@@ -566,7 +569,10 @@ class PictogramsView extends PureComponent {
               <View
                 left={true}
                 right={true}
-                style={{ backgroundColor: muiTheme.palette.accent2Color }}
+                style={{
+                  backgroundColor: muiTheme.palette.accent2Color,
+                  paddingBottom: '2em',
+                }}
               >
                 {renderSearchBox}
               </View>
