@@ -21,7 +21,6 @@ import Divider from 'material-ui/Divider'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import { Map, Set } from 'immutable'
 import PictogramList from 'components/PictogramList'
-import ActionButtons from 'components/ActionButtons'
 import P from 'components/P'
 import RaisedButton from 'material-ui/RaisedButton'
 import { withRouter, Link } from 'react-router'
@@ -44,7 +43,6 @@ import {
   makeSelectSearchLanguage,
 } from 'containers/App/selectors'
 import {
-  makeShowSettingsSelector,
   makeLoadingSelector,
   makeLoadingNewSelector,
   makeSearchResultsSelector,
@@ -62,12 +60,10 @@ import {
   categories,
   // favoritePictograms,
   newPictograms,
-  toggleShowFilter,
-  toggleShowSettings,
-  setFilterItems,
   setSearchLanguage,
 } from './actions'
 import messages from './messages'
+import CategoryTree from '../../components/CategoryTree'
 
 const styles = {
   searchBar: {
@@ -86,6 +82,8 @@ class PictogramsView extends PureComponent {
     listName: '',
     selectedTags: Set(),
     showLanguageWarning: false,
+    selectedKey: '',
+    selectedSubKey: '',
   }
 
   title = this.props.intl.formatMessage(messages.pageTitle)
@@ -94,9 +92,21 @@ class PictogramsView extends PureComponent {
   processQuery = (props) => {
     const { location } = props || this.props
     const { search, query } = location
-    let parameters = { offset: 0, tab: 0, filters: Set() }
+    let parameters = {
+      offset: 0,
+      tab: 0,
+      filters: Set(),
+      selectedKey: '',
+      selectedSubKey: '',
+    }
     parameters = { ...parameters, ...query }
-    const validKeys = ['offset', 'tab', 'filters']
+    const validKeys = [
+      'offset',
+      'tab',
+      'filters',
+      'selectedKey',
+      'selectedSubKey',
+    ]
     Object.keys(parameters).forEach(
       (key) => validKeys.includes(key) || delete parameters[key]
     )
@@ -241,6 +251,19 @@ class PictogramsView extends PureComponent {
     this.props.router.push(url)
   }
 
+  handleCatClick = (selectedKey) => {
+    const { pathname } = this.props.location
+    const url = `${pathname}?selectedKey=${selectedKey}`
+    this.props.router.push(url)
+  }
+
+  handleSubCatClick = (selectedSubKey) => {
+    const { selectedKey } = this.state
+    const { pathname } = this.props.location
+    const url = `${pathname}?selectedKey=${selectedKey}&selectedSubKey=${selectedSubKey}`
+    this.props.router.push(url)
+  }
+
   handleLanguageChange = (searchLanguage) => {
     const { setSearchLanguage, router } = this.props
     setSearchLanguage(searchLanguage)
@@ -256,6 +279,8 @@ class PictogramsView extends PureComponent {
       this.props.router.push(url)
     }
   }
+
+  handleReset = () => this.props.router.push('/pictograms/search')
 
   handleUpdateTags = (tag) => {
     const { selectedTags } = this.state
@@ -290,8 +315,6 @@ class PictogramsView extends PureComponent {
     window.location = location
   }
 
-  handleShowLanguages = () => this.props.toggleShowSettings()
-
   handleRemoveWarning = () => this.setState({ showLanguageWarning: false })
 
   /* also used from PictogramTags */
@@ -308,7 +331,6 @@ class PictogramsView extends PureComponent {
 
   render() {
     const {
-      showSettings,
       visiblePictograms,
       newPictogramsList,
       loading,
@@ -328,6 +350,8 @@ class PictogramsView extends PureComponent {
       offset,
       tab,
       selectedTags,
+      selectedKey,
+      selectedSubKey,
       showLanguageWarning,
       needTranslators,
     } = this.state
@@ -402,21 +426,32 @@ class PictogramsView extends PureComponent {
             filterFromStart={true}
             style={{ flexGrow: 1 }}
           />
-          <ActionButtons
-            onSettingsClick={this.props.toggleShowSettings}
-            settingsActive={showSettings}
-            showHelp={false}
-            showFilters={false}
-          />
         </DivSearchBox>
-        {showSettings ? (
-          <LanguageSelector
-            value={searchLanguage}
-            onChange={this.handleLanguageChange}
-            shortOption={true}
-            toolTip={this.props.intl.formatMessage(messages['languageSearch'])}
-          />
-        ) : null}
+        <ReadMargin>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'baseline',
+            }}
+          >
+            <LanguageSelector
+              value={searchLanguage}
+              onChange={this.handleLanguageChange}
+              shortOption={true}
+              toolTip={this.props.intl.formatMessage(
+                messages['languageSearch']
+              )}
+            />
+            <RaisedButton
+              label={<FormattedMessage {...messages.searchByCategory} />}
+              onClick={this.handleReset}
+              disabled={!searchText}
+              style={{ maxHeight: '36px', marginBottom: '20px' }}
+              secondary={true}
+            />
+          </div>
+        </ReadMargin>
       </div>
     )
     return (
@@ -482,16 +517,6 @@ class PictogramsView extends PureComponent {
                         )}
                       </P>
                     </div>
-                    <div>
-                      {!showSettings && (
-                        <RaisedButton
-                          style={{ margin: 10 }}
-                          label="Change language"
-                          onClick={this.handleShowLanguages}
-                          primary={true}
-                        />
-                      )}
-                    </div>
                   </WarningBox>
                 )}
                 {!!pictogramsCounter && tab !== 1 && (
@@ -517,6 +542,16 @@ class PictogramsView extends PureComponent {
                   </ReadMargin>
                 ) : (
                   ''
+                )}
+                {!pictogramsCounter && tab !== 1 && !!categories.size && (
+                  <CategoryTree
+                    categories={categories}
+                    locale={searchLanguage}
+                    onCatChange={this.handleCatClick}
+                    onSubCatChange={this.handleSubCatClick}
+                    selectedKey={selectedKey}
+                    selectedSubKey={selectedSubKey}
+                  />
                 )}
                 {gallery}
               </View>
@@ -565,22 +600,18 @@ PictogramsView.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string),
   requestPictograms: PropTypes.func.isRequired,
   requestNewPictograms: PropTypes.func.isRequired,
-  toggleShowFilter: PropTypes.func.isRequired,
-  toggleShowSettings: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   loadingNew: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired,
   filters: PropTypes.instanceOf(Map),
   muiTheme: PropTypes.object,
-  setFilterItems: PropTypes.func.isRequired,
   visiblePictograms: PropTypes.arrayOf(PropTypes.object),
   newPictogramsList: PropTypes.arrayOf(PropTypes.object),
   // Injected by React Router
   router: PropTypes.any.isRequired,
   locale: PropTypes.string.isRequired,
   searchResults: PropTypes.arrayOf(PropTypes.number),
-  filtersData: PropTypes.instanceOf(Map),
   addFavorite: PropTypes.func.isRequired,
   deleteFavorite: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
@@ -593,13 +624,11 @@ PictogramsView.contextTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  showSettings: makeShowSettingsSelector()(state),
   locale: makeSelectLocale()(state),
   loading: makeLoadingSelector()(state),
   loadingNew: makeLoadingNewSelector()(state),
   searchResults: makeSearchResultsSelector()(state, ownProps),
   visiblePictograms: makeVisiblePictogramsSelector()(state, ownProps),
-  filtersData: state.getIn(['configuration', 'filtersData']),
   newPictogramsList: makeNewPictogramsSelector()(state),
   keywords: makeKeywordsSelectorByLocale()(state),
   categories: makeCategoriesSelectorByLocale()(state),
@@ -628,15 +657,6 @@ const mapDispatchToProps = (dispatch) => ({
   // requestFavorites: (locale, idFavorites, token) => {
   //   dispatch(favoritePictograms.request(locale, idFavorites, token))
   // },
-  toggleShowFilter: () => {
-    dispatch(toggleShowFilter())
-  },
-  toggleShowSettings: () => {
-    dispatch(toggleShowSettings())
-  },
-  setFilterItems: (filter, filterItem) => {
-    dispatch(setFilterItems(filter, filterItem))
-  },
   requestAutocomplete: (locale) => {
     dispatch(autocomplete.request(locale))
   },

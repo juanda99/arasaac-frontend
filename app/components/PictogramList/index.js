@@ -7,22 +7,20 @@ import PictogramSnippet from '../PictogramSnippet'
 
 const Masonry = require('react-masonry-component')
 
-
 const styles = {
   masonry: {
     listStyleType: 'none',
     display: 'flex',
     flexWrap: 'wrap',
     flexGrow: 2,
-    justifyContent: 'space-around'
-  }
+    justifyContent: 'space-around',
+  },
 }
 
 const itemsPerPage = 20 /* number of items per page */
 const display = 7 /* number of pages to see in the paginator */
 
 export class PictogramList extends PureComponent {
-
   setTopRef = (element) => {
     this.topPosition = element
   }
@@ -33,7 +31,7 @@ export class PictogramList extends PureComponent {
   //   // window.scroll(0, 0)
   // }
 
-  handleClick = currentPage => {
+  handleClick = (currentPage) => {
     const offset = (currentPage - 1) * itemsPerPage
     this.props.onPageClick(offset)
   }
@@ -52,7 +50,7 @@ export class PictogramList extends PureComponent {
       offset,
       sex,
       violence,
-      color
+      color,
     } = this.props
 
     const numberItems = pictograms.length
@@ -76,10 +74,10 @@ export class PictogramList extends PureComponent {
 
     const masonryOptions = {
       transitionDuration: '1s',
-      isOriginLeft: !rtl
+      isOriginLeft: !rtl,
     }
     const renderPictograms = visiblePictograms.map((pictogram) => {
-      const isFavorite = favorites.includes(pictogram._id)
+      const isFavorite = favorites.includes(pictogram._id.toString())
       return (
         <PictogramSnippet
           pictogram={pictogram}
@@ -114,11 +112,11 @@ export class PictogramList extends PureComponent {
             {pagination}
           </div>
         ) : (
-            <div ref={this.setTopRef}>
-              {pagination}
-              <ul>{renderPictograms}</ul>
-            </div>
-          )}
+          <div ref={this.setTopRef}>
+            {pagination}
+            <ul>{renderPictograms}</ul>
+          </div>
+        )}
       </div>
     )
   }

@@ -13,14 +13,12 @@ const P = styled.p`
       ? props.muiTheme.palette.alternateTextColor
       : props.muiTheme.palette.textColor};
   font-weight: ${(props) => (props.important ? 900 : 300)};
+  font-style: ${(props) => (props.italic ? 'italic' : '')};
   text-decoration: none;
   margin-top: ${(props) => props.marginTop};
   margin-bottom: ${(props) => props.marginBottom};
   margin-right: ${(props) => props.marginRight};
-  text-align: ${(props) =>
-    props.justify
-      ? 'justify'
-      : ''};
+  text-align: ${(props) => (props.justify ? 'justify' : '')};
 `
 
 export default muiThemeable()(P)

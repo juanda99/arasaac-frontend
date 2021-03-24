@@ -50,16 +50,6 @@ export const makeCategoriesSelectorByLocale = () =>
     (substate, locale) => substate.get(locale)
   )
 
-export const makeShowFiltersSelector = () =>
-  createSelector(selectPictogramsViewDomain, (substate) =>
-    substate.get('showFilter')
-  )
-
-export const makeShowSettingsSelector = () =>
-  createSelector(selectPictogramsViewDomain, (substate) =>
-    substate.get('showSettings')
-  )
-
 const makePictogramsSelector = () =>
   createSelector(
     selectPictogramsViewDomain,
