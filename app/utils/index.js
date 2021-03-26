@@ -18,6 +18,9 @@ export const DEFAULT_LIST = 'defaultList'
 export const DEFAULT_PROFILE_PICTURE = `${PICTOGRAMS_URL}/28307/28307_300.png`
 // export const DEFAULT_AVATAR_PICTURE = `${IMAGES_URL}/arasaac-avatar.gif`
 
+export const getDirection = (locale) =>
+  locale === 'ar' || locale === 'he' ? 'rtl' : 'ltr'
+
 const checkLanguage = (item, language) =>
   language.size === 0 ||
   language.includes(item.language) ||
@@ -66,32 +69,37 @@ export const keywordSelector = (searchText, keywords) => {
   if (!searchTextArray.length) return keywords[0]
   // if same keyword exists, return it
   let keyword = keywords.find(
-    (keywordsItem) => keywordsItem.keyword && keywordsItem.keyword.toLowerCase() === searchText.toLowerCase(),
+    (keywordsItem) =>
+      keywordsItem.keyword &&
+      keywordsItem.keyword.toLowerCase() === searchText.toLowerCase()
   )
   if (keyword) return keyword
 
   // otherwise, return first partial match or fist keyword if no matches
-  keyword =  keywords.find((keywordsItem) => {
+  keyword = keywords.find((keywordsItem) => {
     if (!keywordsItem.keyword) return false
-    const keywordArray = keywordsItem.keyword.split(' ').map((keyword) => keyword.toLowerCase())
-    return searchTextArray.some((word) => keywordArray.includes(word.toLowerCase()))
-  }) 
-  if  (keyword) return keyword
+    const keywordArray = keywordsItem.keyword
+      .split(' ')
+      .map((keyword) => keyword.toLowerCase())
+    return searchTextArray.some((word) =>
+      keywordArray.includes(word.toLowerCase())
+    )
+  })
+  if (keyword) return keyword
 
-  const regexp = new RegExp(searchText, "i")
+  const regexp = new RegExp(searchText, 'i')
   keyword = keywords.find((keywordsItem) => {
     if (!keywordsItem.keyword) return false
     //  use regex for phonemen
     return regexp.test(keywordsItem.keyword)
   })
   if (keyword) return keyword
-  return keywords[0] ||emptyResponse
+  return keywords[0] || emptyResponse
 }
 
 /* for hair and skin options, get object key for a given value */
 export const getKeyByValue = (object, value) =>
   Object.keys(object).find((key) => object[key] === value)
-
 
 export const getMongoDBLanguage = (language) => {
   switch (language) {
@@ -117,7 +125,8 @@ export const getMongoDBLanguage = (language) => {
 }
 
 export const getAreaUrl = (id) => `/materials/search/${id}?searchType=area`
-export const getActivityUrl = (id) => `/materials/search/${id}?searchType=activity`
+export const getActivityUrl = (id) =>
+  `/materials/search/${id}?searchType=activity`
 
-export const capitalizeFirstLetter = (string)  => string.charAt(0).toUpperCase() + string.slice(1);
-
+export const capitalizeFirstLetter = (string) =>
+  string.charAt(0).toUpperCase() + string.slice(1)

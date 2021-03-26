@@ -5,16 +5,14 @@
  */
 
 import { fromJS } from 'immutable'
-import { REHYDRATE } from 'redux-persist/constants'
 import { CHANGE_LOCALE, START_TRANSLATION, STOP_TRANSLATION } from './actions'
 import { DEFAULT_LOCALE } from '../App/constants'
-
-const getDirection = (locale) => locale === 'ar' || locale === 'he' ? 'rtl' : 'ltr'
+import { getDirection } from 'utils'
 
 export const initialState = fromJS({
   locale: DEFAULT_LOCALE,
   previousLocale: '',
-  direction: getDirection(DEFAULT_LOCALE)
+  direction: getDirection(DEFAULT_LOCALE),
 })
 
 function languageProviderReducer(state = initialState, action) {
