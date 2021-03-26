@@ -77,7 +77,7 @@ export class PictogramList extends PureComponent {
       isOriginLeft: !rtl,
     }
     const renderPictograms = visiblePictograms.map((pictogram) => {
-      const isFavorite = favorites.includes(pictogram._id.toString())
+      const isFavorite = favorites.includes(pictogram._id)
       return (
         <PictogramSnippet
           pictogram={pictogram}

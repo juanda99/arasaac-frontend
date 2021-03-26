@@ -65,7 +65,7 @@ class PictogramSnippet extends PureComponent {
     } = this.props
     const id = _id.toString().replace('aac', '')
     event.preventDefault()
-    onClickFavorite(id)
+    onClickFavorite(parseInt(id))
   }
 
   handleDownload = (event) => {
