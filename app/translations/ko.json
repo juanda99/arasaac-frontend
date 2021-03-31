@@ -1,1 +1,7 @@
-{}
+{
+  "Login.invalidEmail": "잘못된 이메일",
+  "Login.invalidUrl": "잘못된 URL",
+  "Login.required": "필수입력",
+  "NewPasswordForm.hintNewPassword": "새 비밀번호는 무엇인가요?",
+  "activate.activateUser": "사용자 활성화"
+}
