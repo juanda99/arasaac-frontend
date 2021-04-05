@@ -1,0 +1,9 @@
+{
+  "Login.invalidEmail": "잘못된 이메일",
+  "Login.invalidUrl": "잘못된 URL",
+  "Login.required": "필수입력",
+  "NewPasswordForm.hintNewPassword": "새 비밀번호는 무엇인가요?",
+  "activate.activateUser": "사용자 활성화",
+  "activate.expiredCode": "활성화 암호가 만료되였습니다. 계정 활성화를 위해 이메일을 보냈습니다.",
+  "activate.invalidCode": "활성화 코드가 유효하지 않습니다."
+}
