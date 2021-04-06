@@ -5,11 +5,22 @@ import langMessages from 'components/LanguageSelector/messages'
 import FilterSelect from './FilterSelect'
 import messages from './messages'
 
-export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, type, ...other }) => {
+export const FilterSelectLoader = ({
+  intl,
+  setFilterItems,
+  values,
+  filterData,
+  type,
+  ...other
+}) => {
   const { formatMessage } = intl
   // const [...selectItems] = filterData.entries()
   const items = filterData.map((selectItem) => {
-    if (type === 'languages') return { value: selectItem.code, primaryText: formatMessage(langMessages[selectItem.code]) }
+    if (type === 'languages')
+      return {
+        value: selectItem.code,
+        primaryText: formatMessage(langMessages[selectItem.code]),
+      }
     /* areas and activities also used in MaterialForm */
     if (type === 'areas') {
       const value = parseInt(selectItem.code, 10)
@@ -25,7 +36,7 @@ export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, t
         case 31:
         case 32:
           text = `${formatMessage(messages['language'])} / ${text}`
-          break;
+          break
         case 13:
         case 14:
         case 15:
@@ -34,14 +45,14 @@ export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, t
         case 30:
         case 33:
           text = `${formatMessage(messages['math'])} / ${text}`
-          break;
+          break
         case 1:
         case 2:
         case 27:
           text = `${formatMessage(messages['priorSkills'])} / ${text}`
-          break;
+          break
         default:
-          break;
+          break
       }
       return { value, primaryText: text }
     }
@@ -55,7 +66,7 @@ export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, t
         case 27:
         case 31:
           text = `${formatMessage(messages['software'])} / ${text}`
-          break;
+          break
         case 4:
         case 5:
         case 8:
@@ -63,28 +74,33 @@ export const FilterSelectLoader = ({ intl, setFilterItems, values, filterData, t
         case 20:
         case 28:
           text = `${formatMessage(messages['communication'])} / ${text}`
-          break;
+          break
         case 6:
         case 11:
         case 12:
         case 13:
         case 16:
           text = `${formatMessage(messages['game'])} / ${text}`
-          break;
+          break
         default:
-          break;
+          break
       }
       return { value, primaryText: text }
     }
-    return { value: parseInt(selectItem.code, 10) || selectItem.code, primaryText: formatMessage(messages[selectItem.text]) }
+    return {
+      value: parseInt(selectItem.code, 10) || selectItem.code,
+      primaryText: formatMessage(messages[selectItem.text]),
+    }
   })
-  const sortItems = items.sort((a, b) => a.primaryText.localeCompare(b.primaryText))
+  const sortItems = items.sort((a, b) =>
+    a.primaryText.localeCompare(b.primaryText)
+  )
   const filterProps = {
     floatingLabelText: formatMessage(messages[type]),
     multiple: true,
     setFilterItems,
     values,
-    filterType: type
+    filterType: type,
   }
   return <FilterSelect {...other} items={sortItems} {...filterProps} />
 }
@@ -96,7 +112,7 @@ FilterSelectLoader.propTypes = {
   setFilterItems: PropTypes.func.isRequired,
   values: PropTypes.array,
   filterData: PropTypes.array.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
 }
 
 export default injectIntl(FilterSelectLoader)
