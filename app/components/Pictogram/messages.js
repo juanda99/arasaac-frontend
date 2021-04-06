@@ -67,7 +67,7 @@ export default defineMessages({
   dragAndDrop: {
     id: 'app.components.Pictogram.DragAndDrop',
     description: 'Toggle button to enable drag and drop',
-    defaultMessage: 'Drap and drop',
+    defaultMessage: 'Drag and drop',
   },
   classroom: {
     id: 'app.components.Pictogram.classroom',
@@ -307,7 +307,7 @@ export default defineMessages({
   },
   pictoBelongs: {
     id: 'app.components.PictogramCategories.pictoBelongs',
-    defaultMessage: 'This pictogram belong to these categories:',
+    defaultMessage: 'This pictogram belongs to these categories:',
   },
   pictoLabels: {
     id: 'app.components.PictogramCategories.pictoLabels',
