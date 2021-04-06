@@ -330,6 +330,7 @@
   "app.components.Welcome.header": "{aragones} Centru de Comunicare Augmentativă si Alternativă",
   "app.components.aac.mouseSelection": "Selecția mouse-ului",
   "app.components.aac.p1": "{aac} sunt moduri de exprimare diferite de limba vorbită, care vizează sporirea (augmentarea) și/sau compensarea (alternativa) dificultăților de comunicare și de limbaj ale multor persoane cu dizabilități.",
+  "app.components.aac.p10": "{graphicSymbols} vizează de la sisteme foarte simple bazate pe imagini sau fotografii la sisteme din ce în ce mai complexe precum sistemele de simboluri sau cele ortografice (litere, cuvinte și propoziții). Datorită produselor de sprijin în comunicare și a diversității resurselor de acces, sistemele grafice pot fi utilizate de persoanele cu mobilitate redusă, chiar și în cazuri de severitate extremă. Din acest motiv, în afară de utilizarea de către persoanele cu dizabilități intelectuale sau de către cele cu tulburări din spectrul autist, ele sunt folosite, de asemenea, și de către persoanele cu dizabilități motorii (CP, ALS, SM…).",
   "app.components.author": "Autorul pictogramelor:",
   "app.components.creativeCommons": "Licență Creative Commons BY-NC-SA",
   "app.components.dialog.ok": "Ok",
