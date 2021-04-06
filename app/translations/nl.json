@@ -320,6 +320,7 @@
   "app.components.aac.gesturalSymbols": "gebaarsymbolen",
   "app.components.aac.graphicSymbols": "Grafische symbolen",
   "app.components.aac.list1": "{directSelection}: de gebruiker wijst naar of drukt rechtstreeks op de knoppen met de vinger, via het gezichtsvermogen of met behulp van andere delen van het lichaam om de pictogrammen, woorden of letters aan te geven die hij/zij wil communiceren. De verschillende types van aanwijzers zijn voorbeelden van ondersteunende producten die de selectie of directe toegang kunnen vergemakkelijken.",
+  "app.components.aac.list2": "{mouseSelection}: dit is alleen voor elektronische producten. Het bestaat uit het gebruik van de muis om toegang te krijgen tot toetsenborden of roosters met symbolen om via het scherm te communiceren. U kunt een grote verscheidenheid van aangepaste aanduidmaterialen gebruiken, zoals joysticks, trackballs, apparaten bestuurd door hoofdbewegingen, apparaten bestuurd met het gezichtsvermogen of de multimuis (die uit vijf toetsen of schakelaars bestaat).",
   "app.containers.MaterialView.materialNotFound": "Sorry, bestaat het materiaal dat u zoekt niet",
   "app.containers.SearchBox.advancedSearch": "Geavanceerd zoeken",
   "header.catalogs": "Downloaden van catalogi",
