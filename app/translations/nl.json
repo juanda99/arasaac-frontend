@@ -19,6 +19,7 @@
   "app.PictogramsView.needTranslators": "We hebben hulp nodig bij het vertalen van ARASAAC naar uw taal.",
   "app.PictogramsView.pageDesc": "Open source symbolen voor Ondersteunde Communicatie",
   "app.PictogramsView.pageTitle": "OC symbolen - ARASAAC",
+  "app.PictogramsView.searchByCategories": "Zoek op categorie",
   "app.PictogramsView.translationStatus": "Zie huidige vertaalstatus.",
   "app.PictogramsView.translationsWarning": "Pictogrammen zoeken werkt niet goed in uw taal, omdat de vertalingen niet compleet zijn.",
   "app.component.MaterialConditions.adaptationQuote": "Citaat aanpassing",
