@@ -716,7 +716,6 @@
   "recoverPasswordView.passwordNotReset": "S'ha produït un error en restablir la contrasenya.",
   "recoverPasswordView.passwordResetSend": "Ja quasi està. Consulteu el vostre correu electrònic per a recuperar la vostra contrasenya",
   "recoverPasswordView.resetPassword": "Recupera la contrasenya",
-  "recoverPasswordView.userNotActivated": "El vostre usuari no estava actiu. Us hem enviat un enllaç d'activació, una vegada que hàgeu iniciat la sessió podreu canviar la vostra contrasenya des del vostre perfil d'usuari",
   "recoverPasswordView.userNotExists": "No hi ha cap compte amb el vostre correu electrònic",
   "signin.facebook": "Entrar amb Facebook",
   "signin.forgotPassword": "Heu oblidat la contrasenya?",
