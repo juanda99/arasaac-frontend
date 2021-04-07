@@ -565,7 +565,6 @@
   "recoverPasswordView.passwordNotReset": "Žao nam je, ali došlo je do pogreške prilikom ponovnog postavljanja lozinke",
   "recoverPasswordView.passwordResetSend": "Skoro ste gotovi! Provjerite e-poštu kako biste vratili zaporku",
   "recoverPasswordView.resetPassword": "Povrati svoju lozinku",
-  "recoverPasswordView.userNotActivated": "Vaš korisnički račun nije aktivan. Poslali smo vam poveznicu za aktivaciju, nakon što se prijavite, možete promijeniti lozinku iz svog korisničkog profila",
   "recoverPasswordView.userNotExists": "Žao nam je, ali ne postoji korisnički račun s vašim računom e-pošte",
   "signin.facebook": "Prijavite se putem Facebook-a",
   "signin.forgotPassword": "Zaboravili ste lozinku?",
