@@ -202,7 +202,6 @@
   "recoverPasswordView.passwordNotReset": "Жао нам је али дошло је до грешке приликом ресетовања лозинке",
   "recoverPasswordView.passwordResetSend": "Скоро сте готови! Проверите свој мајл да би сте освежили лозинку",
   "recoverPasswordView.resetPassword": "Освежи лозинку",
-  "recoverPasswordView.userNotActivated": "Ваш налог није био активан. Послали смо Вам линк за активацију, након што се пријавите можете да промените лозинку на свом корисничком профилу",
   "recoverPasswordView.userNotExists": "Жао нам је али не постоји налог повезан са Вашом мејл адресом",
   "signin.facebook": "Пријави се преко Фејзбука",
   "signin.forgotPassword": "Заборављена лозинка?",
