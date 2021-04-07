@@ -558,7 +558,6 @@
   "recoverPasswordView.passwordNotReset": "Ne pare rău, dar a existat o eroare la resetarea parolei",
   "recoverPasswordView.passwordResetSend": "Aproape ați terminat! Verificați adresa dvs. de e-mail pentru a recupera parola",
   "recoverPasswordView.resetPassword": "Recuperare parolă",
-  "recoverPasswordView.userNotActivated": "Utilizatorul dvs. nu a fost activ. Vă trimitem un link de activare, după ce vă autentificați, puteți schimba parola din profilul dvs. de utilizator",
   "recoverPasswordView.userNotExists": "Ne pare rău, dar nu există niciun cont cu acest e-mail",
   "signin.facebook": "Autentificaţi-vă prin Facebook",
   "signin.forgotPassword": "Ai uitat parola?",
