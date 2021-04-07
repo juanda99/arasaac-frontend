@@ -666,7 +666,6 @@
   "recoverPasswordView.passwordNotReset": "Es tut uns leid, aber es gab einen Fehler beim Zurücksetzen Ihres Passworts",
   "recoverPasswordView.passwordResetSend": "Sie sind fast fertig! Überprüfen Sie Ihre E-Mail, um Ihr Passwort wiederherzustellen",
   "recoverPasswordView.resetPassword": "Passwort wiederherstellen",
-  "recoverPasswordView.userNotActivated": "Dein Benutzer war nicht aktiv. Wir haben dir einen Aktivierungslink gesendet, sobald du dich einloggst kannst du dein Passwort aus deinem Benutzerprofil ändern",
   "recoverPasswordView.userNotExists": "Es tut uns leid, aber es gibt kein Konto mit Ihrem E-Mail-Konto",
   "signin.facebook": "Melden Sie sich mit Facebook",
   "signin.forgotPassword": "Vergessen Passwort?",

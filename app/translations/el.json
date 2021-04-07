@@ -632,7 +632,6 @@
   "recoverPasswordView.passwordNotReset": "Λυπούμαστε αλλά παρουσιάστηκε σφάλμα κατά την επαναφορά του κωδικού πρόσβασής σας",
   "recoverPasswordView.passwordResetSend": "Σχεδόν τελειώσατε! Ελέγξτε το email σας για να ανακτήσετε τον κωδικό πρόσβασής σας",
   "recoverPasswordView.resetPassword": "Ανάκτηση κωδικού πρόσβασης",
-  "recoverPasswordView.userNotActivated": "Ο λογαριασμός σας δεν έχει ενεργοποιηθεί ακόμα. Σας στείλαμε έναν σύνδεσμο για να τον ενεργοποιήσετε. Μόλις συνδεθείτε, μπορείτε να αλλάξετε τον κωδικό πρόσβασης",
   "recoverPasswordView.userNotExists": "Λυπούμαστε αλλά δεν υπάρχει λογαριασμός με το email σας",
   "signin.facebook": "Συνδεθείτε μέσω Facebook",
   "signin.forgotPassword": "Ξεχάσατε τον κωδικό σας;",
