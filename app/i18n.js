@@ -85,7 +85,7 @@ addLocaleData([
   ...el,
   ...sq,
   ...pl,
-  ...et
+  ...et,
 ])
 
 export const formatTranslationMessages = (locale, messages) => {

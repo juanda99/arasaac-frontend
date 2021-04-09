@@ -55,7 +55,6 @@ import Canvas from './Canvas'
 import PictogramTitle from '../BoxTitle'
 import RelatedWords from './RelatedWords'
 import PictogramCategories from './PictogramCategories'
-import { times } from 'lodash'
 
 const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
   const data = b64Data.replace('data:image/png;base64,', '')
