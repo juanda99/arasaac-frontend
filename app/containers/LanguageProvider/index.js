@@ -13,7 +13,8 @@ import { createSelector } from 'reselect'
 import { IntlProvider } from 'react-intl'
 import { makeSelectLocale } from './selectors'
 
-export class LanguageProvider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class LanguageProvider extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
 
   render() {
     // if error with a locale in React-intl....
@@ -22,9 +23,17 @@ export class LanguageProvider extends React.PureComponent { // eslint-disable-li
       locale = 'pt'
     } else if (this.props.locale === 'val') {
       locale = 'ca'
+    } else if (this.props.locale === 'an') {
+      locale = 'es'
     }
     return (
-      <IntlProvider locale={locale} key={this.props.locale} messages={this.props.messages[this.props.paramLocale || this.props.locale]}>
+      <IntlProvider
+        locale={locale}
+        key={this.props.locale}
+        messages={
+          this.props.messages[this.props.paramLocale || this.props.locale]
+        }
+      >
         {React.Children.only(this.props.children)}
       </IntlProvider>
     )
@@ -36,18 +45,16 @@ LanguageProvider.propTypes = {
   /* set locale by url for aac learning menu */
   paramLocale: PropTypes.string,
   messages: PropTypes.object,
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 }
 
-
-const mapStateToProps = createSelector(
-  makeSelectLocale(),
-  (locale) => ({ locale })
-)
+const mapStateToProps = createSelector(makeSelectLocale(), (locale) => ({
+  locale,
+}))
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch
+    dispatch,
   }
 }
 
