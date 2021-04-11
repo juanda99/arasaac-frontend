@@ -410,6 +410,7 @@
   "app.components.aac.whatareAACSystems": "Zer dira Komunikazio Sistema Handigarriak eta Alternatiboak?",
   "app.components.aacusage.behavioralStrategies": "Jokabide estrategiak",
   "app.components.aacusage.communicationBoards": "Komunikazio taulak",
+  "app.components.aacusage.intro": "ARASAAC-ek Komunikazio Handigarri eta Alternatiborako (KHA) ikur multzo oso bat eskaintzen du, {numberPictograms} ikur deskribatzaile eta eskematikoak, 23 hizkuntza baino gehiagora itzuliak eta profesionalek helburu desberdinetarako erabiltzen dituztenak:",
   "app.components.aacusage.learning": "Ikasteko laguntza",
   "app.components.aacusage.lifeSkills": "Bizitza-trebetasunak",
   "app.components.aacusage.otherContexts": "Irisgarritasun kognitiboa beste testuinguru batzuetan",
