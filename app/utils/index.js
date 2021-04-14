@@ -26,7 +26,7 @@ const checkLanguage = (item, language) =>
   language.includes(item.language) ||
   (item.translations &&
     item.translations.some((translation) =>
-      language.includes(translation.language)
+      language.includes(translation.lang)
     ))
 
 export const getFilteredItems = (items, filters) =>

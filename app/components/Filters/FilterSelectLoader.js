@@ -97,7 +97,7 @@ export const FilterSelectLoader = ({
   )
   const filterProps = {
     floatingLabelText: formatMessage(messages[type]),
-    multiple: true,
+    multiple: type === 'languages' ? false : true,
     setFilterItems,
     values,
     filterType: type,

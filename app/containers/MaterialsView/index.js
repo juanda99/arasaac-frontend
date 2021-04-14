@@ -12,18 +12,16 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 import View from 'components/View'
 import { Helmet } from 'react-helmet'
 import SearchField from 'components/SearchField'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
 import DivSearchBox from 'components/DivSearchBox'
-import ActionButtons from 'components/ActionButtons'
+import HelpButton from 'components/HelpButton'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import PendingIcon from 'material-ui/svg-icons/action/visibility-off'
 import NotPublishedIcon from 'material-ui/svg-icons/action/thumb-down'
 import withWidth, { SMALL } from 'material-ui/utils/withWidth'
-import NewReleasesIcon from 'material-ui/svg-icons/av/new-releases'
 import Divider from 'material-ui/Divider'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import { Map } from 'immutable'
+import Toggle from 'material-ui/Toggle'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
 import P from 'components/P'
@@ -33,8 +31,6 @@ import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import { makeSelectHasUser, makeSelectRole } from 'containers/App/selectors'
 import {
   makeFiltersSelector,
-  makeShowFiltersSelector,
-  makeShowSettingsSelector,
   makeLoadingSelector,
   makeLoadingNewSelector,
   makeSearchResultsSelector,
@@ -42,7 +38,8 @@ import {
   makeNewVisibleMaterialsSelector,
   makePendingSelector,
   makeNotPublishedSelector,
-  makeAuthorsNameSelector
+  makeAuthorsNameSelector,
+  makeUrlParams,
 } from './selectors'
 
 import {
@@ -50,19 +47,14 @@ import {
   newMaterials,
   authors,
   notPublishedMaterials,
-  toggleShowSettings,
-  toggleShowFilter,
   setFilterItems,
   publishMaterial,
   removeMaterial,
-  showFilters,
-  showSettings
 } from './actions'
 import languages from 'data/languages'
 import activities from 'data/activities'
 import areas from 'data/areas'
 import messages from './messages'
-import messagesFilters from 'components/Filters/messages'
 
 const filtersData = { areas, activities, languages }
 
@@ -92,7 +84,7 @@ class MaterialsView extends PureComponent {
         ),
         target: '#searchBox',
         placement: 'bottom',
-        disableBeacon: true
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.filterResults} />,
@@ -103,7 +95,7 @@ class MaterialsView extends PureComponent {
         ),
         target: '#filtersBtn',
         placement: 'bottom',
-        disableBeacon: true
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.filters} />,
@@ -114,7 +106,7 @@ class MaterialsView extends PureComponent {
         ),
         target: '#filtersArea',
         placement: 'bottom',
-        disableBeacon: true
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.disableFilters} />,
@@ -125,7 +117,7 @@ class MaterialsView extends PureComponent {
         ),
         target: '.btnDeleteFilter:first-of-type',
         placement: 'bottom',
-        disableBeacon: true
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.advancedSearch} />,
@@ -136,7 +128,7 @@ class MaterialsView extends PureComponent {
         ),
         target: '#advSearchBtn',
         placement: 'bottom',
-        disableBeacon: true
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.advancedSearch} />,
@@ -147,86 +139,12 @@ class MaterialsView extends PureComponent {
         ),
         target: '#advSearchField',
         placement: 'bottom',
-        disableBeacon: true
-      }
-    ]
+        disableBeacon: true,
+      },
+    ],
   }
 
-  customActivities = activities.map(selectItem => {
-    const { formatMessage } = this.props.intl
-    const value = parseInt(selectItem.code, 10)
-    let text = formatMessage(messagesFilters[selectItem.text])
-    switch (value) {
-      case 1:
-      case 15:
-      case 21:
-      case 27:
-      case 31:
-        text = `${formatMessage(messagesFilters['software'])} / ${text}`
-        break
-      case 4:
-      case 5:
-      case 8:
-      case 17:
-      case 20:
-      case 28:
-        text = `${formatMessage(messagesFilters['communication'])} / ${text}`
-        break
-      case 6:
-      case 11:
-      case 12:
-      case 13:
-      case 16:
-        text = `${formatMessage(messagesFilters['game'])} / ${text}`
-        break
-      default:
-        break
-    }
-    return { value, text }
-  })
-
-  customAreas = areas.map(selectItem => {
-    const { formatMessage } = this.props.intl
-    const value = parseInt(selectItem.code, 10)
-    let text = formatMessage(messagesFilters[selectItem.text])
-    switch (value) {
-      case 4:
-      case 5:
-      case 6:
-      case 7:
-      case 8:
-      case 9:
-      case 10:
-      case 31:
-      case 32:
-        text = `${formatMessage(messagesFilters['language'])} / ${text}`
-        break
-      case 13:
-      case 14:
-      case 15:
-      case 16:
-      case 29:
-      case 30:
-      case 33:
-        text = `${formatMessage(messagesFilters['math'])} / ${text}`
-        break
-      case 1:
-      case 2:
-      case 27:
-        text = `${formatMessage(messagesFilters['priorSkills'])} / ${text}`
-        break
-      default:
-        break
-    }
-    return { value, text }
-  })
-
-  areasKeywords = this.customAreas.map(area => area.text).sort()
-  activitiesKeywords = this.customActivities
-    .map(activity => activity.text)
-    .sort()
-
-  processQuery = props => {
+  processQuery = (props) => {
     const { location } = props || this.props
     const { search, query } = location
     let parameters = { offset: 0, tab: 0 }
@@ -234,14 +152,14 @@ class MaterialsView extends PureComponent {
       parameters = { ...parameters, ...query }
       const validKeys = ['offset', 'tab', 'searchType']
       Object.keys(parameters).forEach(
-        key => validKeys.includes(key) || delete parameters[key]
+        (key) => validKeys.includes(key) || delete parameters[key]
       )
       parameters.offset = parseInt(parameters.offset, 10) || 0
       parameters.tab = parseInt(parameters.tab, 10) || 0
       parameters.searchType = parameters.searchType || 'content'
     }
     const needUpdate = Object.keys(parameters).some(
-      key => parameters[key] !== this.state[key]
+      (key) => parameters[key] !== this.state[key]
     )
     if (needUpdate) this.setState(parameters)
   }
@@ -251,12 +169,12 @@ class MaterialsView extends PureComponent {
     if (!searchText) return ''
     if (searchType === 'activity')
       return this.customActivities
-        .filter(item => item.text === searchText)
-        .map(item => item.value)[0]
+        .filter((item) => item.text === searchText)
+        .map((item) => item.value)[0]
     else if (searchType === 'area')
       return this.customAreas
-        .filter(item => item.text === searchText)
-        .map(item => item.value)[0]
+        .filter((item) => item.text === searchText)
+        .map((item) => item.value)[0]
     return searchText
   }
 
@@ -265,12 +183,12 @@ class MaterialsView extends PureComponent {
     if (!searchText) return ''
     if (searchType === 'activity')
       return this.customActivities
-        .filter(item => item.value === parseInt(searchText))
-        .map(item => item.text)[0]
+        .filter((item) => item.value === parseInt(searchText))
+        .map((item) => item.text)[0]
     else if (searchType === 'area')
       return this.customAreas
-        .filter(item => item.value === parseInt(searchText))
-        .map(item => item.text)[0]
+        .filter((item) => item.value === parseInt(searchText))
+        .map((item) => item.text)[0]
     return searchText
   }
 
@@ -284,7 +202,7 @@ class MaterialsView extends PureComponent {
       role,
       authorsName,
       requestAuthors,
-      newVisibleMaterialsList
+      newVisibleMaterialsList,
     } = this.props
     /* hack to open learning aac menu when visiting from homepage */
     const isOpen = window.document.getElementById('lstsearchmaterials')
@@ -313,7 +231,7 @@ class MaterialsView extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { token } = nextProps
+    const { token, filters } = nextProps
     this.setState({ showNotFound: false })
     if (this.props.location.search !== nextProps.location.search) {
       this.processQuery(nextProps)
@@ -330,9 +248,17 @@ class MaterialsView extends PureComponent {
         token
       )
     }
+
+    console.log(
+      this.props.filters,
+      nextProps.filters,
+      this.props.params.searchType,
+      this.props.params.searchText,
+      '********************+**********************'
+    )
   }
 
-  handleChange = tab => {
+  handleChange = (tab) => {
     const { pathname } = this.props.location
     const url = `${pathname}?tab=${tab}&searchType=${this.state.searchType}`
     this.props.router.push(url)
@@ -343,7 +269,7 @@ class MaterialsView extends PureComponent {
     this.props.router.push(url)
   }
 
-  handlePageClick = offset => {
+  handlePageClick = (offset) => {
     // fix bug if offset is not number, click comes from picto link, should not be processed here
     if (typeof offset === 'number') {
       const { tab, searchType } = this.state
@@ -353,10 +279,11 @@ class MaterialsView extends PureComponent {
     }
   }
 
-  handleSubmit = nextValue => {
+  handleSubmit = (nextValue) => {
     this.setState({
-      tab: 0
+      tab: 0,
     })
+    /* depending on searchType or searchText we render  a route or another */
     const newValue = this.getCodeText(this.state.searchType, nextValue)
     if (this.props.params.searchText !== newValue && newValue) {
       this.props.router.push(
@@ -374,7 +301,7 @@ class MaterialsView extends PureComponent {
     publishMaterial(id, publish, token)
   }
 
-  handleRemoveMaterial = id => {
+  handleRemoveMaterial = (id) => {
     const { removeMaterial, token } = this.props
     removeMaterial(id, token)
   }
@@ -387,27 +314,24 @@ class MaterialsView extends PureComponent {
 
   // handleBeforeDelete = () => this.setState({ confirmationBoxOpen: true })
 
-  handleJoyrideCallback = data => {
-    const { status, type } = data
+  handleJoyrideCallback = (data) => {
+    const { status } = data
     const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED]
 
     if (finishedStatuses.includes(status)) {
       this.setState({ running: false })
     }
-    if (data.index === 1) {
-      this.props.fshowFilters()
-    }
-    if (data.index === 4) {
-      this.props.fshowSettings()
-    }
   }
 
   startHelp = () => this.setState({ running: true })
 
+  searchByAuthor = (event, isInputChecked) => {
+    const searchType = isInputChecked ? 'author' : 'content'
+    this.setState({ searchType })
+  }
+
   render() {
     const {
-      showFilter,
-      showSettings,
       filters,
       visibleMaterials,
       newVisibleMaterialsList,
@@ -419,7 +343,7 @@ class MaterialsView extends PureComponent {
       role,
       pendingMaterials,
       unpublishedMaterials,
-      authorsName
+      authorsName,
     } = this.props
     const { tab, offset, searchType, running, steps, showNotFound } = this.state
     const { formatMessage } = this.props.intl
@@ -433,17 +357,21 @@ class MaterialsView extends PureComponent {
       next: <FormattedMessage {...messages.next} />,
       back: <FormattedMessage {...messages.back} />,
       skip: <FormattedMessage {...messages.skip} />,
-      last: <FormattedMessage {...messages.last} />
+      last: <FormattedMessage {...messages.last} />,
     }
 
     // depending on which slide we are, we show one or another list */
     let materialsList
-    if (tab === 0) materialsList = visibleMaterials
-    else if (tab === 1) materialsList = newVisibleMaterialsList
-    else if (tab === 2) materialsList = pendingMaterials
-    else if (tab === 3) materialsList = unpublishedMaterials
+    console.log(`searchText: ${searchText}`, newVisibleMaterialsList)
+    if (tab === 0)
+      materialsList = searchText ? visibleMaterials : newVisibleMaterialsList
+    // TODO: also for tab  0: materialsList = newVisibleMaterialsList
+    else if (tab === 1) materialsList = pendingMaterials
+    else if (tab === 2) materialsList = unpublishedMaterials
     let gallery = ''
-    const loadingState = tab === 1 ? loadingNew : loading
+    // TODO: change message:
+    // const loadingState = tab === 1 ? loadingNew : loading
+    const loadingState = loadingNew
     if (showNotFound) {
       gallery = (
         <ReadMargin>
@@ -456,8 +384,6 @@ class MaterialsView extends PureComponent {
           <P>{<FormattedMessage {...messages.loadingMaterials} />}</P>
         </ReadMargin>
       )
-    } else if (!searchText && tab === 0) {
-      gallery = null
     } else {
       materialsCounter = materialsList.length
       gallery = materialsCounter ? (
@@ -466,7 +392,7 @@ class MaterialsView extends PureComponent {
           locale={locale}
           filtersMap={filters}
           setFilterItems={this.props.setFilterItems}
-          showLabels={showFilter} // show labels if filter is active
+          showLabels={true} // show labels if filter is active
           offset={offset}
           onPageClick={this.handlePageClick}
           showActionButtons={role === 'admin'}
@@ -479,11 +405,8 @@ class MaterialsView extends PureComponent {
         </ReadMargin>
       )
     }
-    let dataSource
-    if (searchType === 'content') dataSource = []
-    else if (searchType === 'author') dataSource = authorsName
-    else if (searchType === 'area') dataSource = this.areasKeywords
-    else dataSource = this.activitiesKeywords
+
+    const dataSource = searchType === 'author' ? authorsName : []
 
     const renderSearchBox = (
       <div>
@@ -494,49 +417,22 @@ class MaterialsView extends PureComponent {
             onSubmit={this.handleSubmit}
             style={{ flexGrow: 1 }}
           />
-          <ActionButtons
-            onFilterClick={this.props.toggleShowFilter}
-            onSettingsClick={this.props.toggleShowSettings}
-            filterActive={showFilter}
-            settingsActive={showSettings}
-            helpActive={running}
-            onHelpClick={this.startHelp}
-          />
+          <HelpButton helpActive={running} onHelpClick={this.startHelp} />
         </DivSearchBox>
-        {showFilter ? (
+        <div style={{ display: 'flex', wrap: 'wrap', alignItems: 'baseline' }}>
           <FilterList
             filtersMap={filters}
             setFilterItems={this.props.setFilterItems}
             filtersData={filtersData}
+            onChange={this.handleSubmit}
           />
-        ) : null}
-        {showSettings ? (
-          <SelectField
-            id="advSearchField"
-            floatingLabelText={
-              <FormattedMessage {...messages.advancedSearch} />
-            }
-            value={searchType}
-            onChange={this.handleSearchTypeChange}
-          >
-            <MenuItem
-              value="content"
-              primaryText={<FormattedMessage {...messages.content} />}
-            />
-            <MenuItem
-              value="author"
-              primaryText={<FormattedMessage {...messages.author} />}
-            />
-            <MenuItem
-              value="activity"
-              primaryText={<FormattedMessage {...messages.activity} />}
-            />
-            <MenuItem
-              value="area"
-              primaryText={<FormattedMessage {...messages.area} />}
-            />
-          </SelectField>
-        ) : null}
+          <Toggle
+            label="Buscar por autor"
+            labelPosition="right"
+            style={{ maxWidth: 250, marginLeft: '20px', marginBottom: '10px' }}
+            onToggle={this.searchByAuthor}
+          />
+        </div>
       </div>
     )
 
@@ -555,6 +451,7 @@ class MaterialsView extends PureComponent {
           <meta name="description" content={description} />
           {/* <link rel="canonical" href="http://mysite.com/example" /> */}
         </Helmet>
+        {/* TODO: remove joyride? */}
         <Joyride
           callback={this.handleJoyrideCallback}
           continuous={true}
@@ -577,6 +474,7 @@ class MaterialsView extends PureComponent {
             }
             icon={<SearchIcon />}
             value={0}
+            style={{ height: role === 'admin' ? '' : '0px' }}
           >
             <div>
               <View
@@ -597,38 +495,6 @@ class MaterialsView extends PureComponent {
                         values={{ materialsCounter }}
                       />{' '}
                     </P>
-                  </ReadMargin>
-                ) : (
-                  ''
-                )}
-                {gallery}
-              </View>
-            </div>
-          </Tab>
-          <Tab
-            label={hideIconText ? '' : <FormattedMessage {...messages.new} />}
-            icon={<NewReleasesIcon />}
-            value={1}
-          >
-            <div>
-              <View
-                left={true}
-                right={true}
-                style={{ backgroundColor: muiTheme.palette.accent2Color }}
-              >
-                {renderSearchBox}
-              </View>
-              <Divider />
-              <View left={true} right={true} top={1}>
-                {materialsCounter ? (
-                  <ReadMargin>
-                    <P>
-                      {' '}
-                      <FormattedMessage
-                        {...messages.newMaterialsFound}
-                        values={{ materialsCounter }}
-                      />{' '}
-                    </P>{' '}
                   </ReadMargin>
                 ) : (
                   ''
@@ -722,13 +588,11 @@ class MaterialsView extends PureComponent {
 MaterialsView.propTypes = {
   requestMaterials: PropTypes.func.isRequired,
   requestNewMaterials: PropTypes.func.isRequired,
-  toggleShowFilter: PropTypes.func.isRequired,
   searchText: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired,
   filters: PropTypes.instanceOf(Map),
   muiTheme: PropTypes.object,
-  showFilter: PropTypes.bool,
   setFilterItems: PropTypes.func.isRequired,
   visibleMaterials: PropTypes.arrayOf(PropTypes.object),
   newMaterialsList: PropTypes.array.isRequired,
@@ -742,15 +606,13 @@ MaterialsView.propTypes = {
   publishMaterial: PropTypes.func.isRequired,
   removeMaterial: PropTypes.func.isRequired,
   pendingMaterials: PropTypes.arrayOf(PropTypes.object).isRequired,
-  unpublishedMaterials: PropTypes.arrayOf(PropTypes.object).isRequired
+  unpublishedMaterials: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 const mapStateToProps = (state, ownProps) => ({
   filters: makeFiltersSelector()(state),
   // authors: makeAuthorsSelector()(state),
   authorsName: makeAuthorsNameSelector()(state),
-  showFilter: makeShowFiltersSelector()(state),
-  showSettings: makeShowSettingsSelector()(state),
   locale: makeSelectLocale()(state),
   loading: makeLoadingSelector()(state),
   loadingNew: makeLoadingNewSelector()(state),
@@ -759,11 +621,12 @@ const mapStateToProps = (state, ownProps) => ({
   newVisibleMaterialsList: makeNewVisibleMaterialsSelector()(state),
   pendingMaterials: makePendingSelector()(state),
   unpublishedMaterials: makeNotPublishedSelector()(state),
+  urlParams: makeUrlParams()(state),
   token: makeSelectHasUser()(state),
-  role: makeSelectRole()(state)
+  role: makeSelectRole()(state),
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   requestMaterials: (locale, searchText, searchType, token) => {
     dispatch(materials.request(locale, searchText, searchType, token))
   },
@@ -773,7 +636,7 @@ const mapDispatchToProps = dispatch => ({
   requestAuthors: () => {
     dispatch(authors.request())
   },
-  requestNotPublishedMaterials: token => {
+  requestNotPublishedMaterials: (token) => {
     dispatch(notPublishedMaterials.request(token))
   },
   publishMaterial: (id, publish, token) => {
@@ -782,21 +645,9 @@ const mapDispatchToProps = dispatch => ({
   removeMaterial: (id, token) => {
     dispatch(removeMaterial.request(id, token))
   },
-  toggleShowFilter: () => {
-    dispatch(toggleShowFilter())
-  },
-  toggleShowSettings: () => {
-    dispatch(toggleShowSettings())
-  },
-  fshowFilters: () => {
-    dispatch(showFilters())
-  },
-  fshowSettings: () => {
-    dispatch(showSettings())
-  },
   setFilterItems: (filter, filterItem) => {
     dispatch(setFilterItems(filter, filterItem))
-  }
+  },
 })
 
 export default connect(

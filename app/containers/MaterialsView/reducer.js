@@ -10,32 +10,15 @@ import {
   MATERIALS,
   NEW_MATERIALS,
   AUTHORS,
-  TOGGLE_FILTERS,
-  TOGGLE_SETTINGS,
-  SHOW_SETTINGS,
   SET_FILTER_ITEMS,
   MATERIAL_PUBLISH,
   MATERIAL_REMOVE,
   MATERIAL,
   MATERIAL_UPDATE,
   MATERIALS_NOT_PUBLISHED,
-  SHOW_FILTERS,
 } from './actions'
 
-let navigatorLanguage = navigator.language.split('-')[0] // es-ES get reduced to es
-
-let defaultLanguages = appLocales.includes(navigatorLanguage)
-  ? [navigatorLanguage]
-  : ['en', 'es']
-
-if (navigator.language === 'pt-br') defaultLanguages = ['pt', 'br']
-else if (navigator.language === 'ca') defaultLanguages = ['ca', 'es', 'val']
-else if (navigator.language === 'eu') defaultLanguages = ['eu', 'es']
-else if (navigator.language === 'gl') defaultLanguages = ['gl', 'es']
-
 export const initialState = fromJS({
-  showFilter: false,
-  showSettings: false,
   loading: false,
   loadingNew: false,
   error: false,
@@ -48,7 +31,7 @@ export const initialState = fromJS({
   filters: {
     activities: List(),
     areas: List(),
-    languages: List(defaultLanguages),
+    languages: '',
   },
   materials: {},
   newMaterials: [],
@@ -136,18 +119,6 @@ function materialsViewReducer(state = initialState, action) {
     case MATERIALS_NOT_PUBLISHED.SUCCESS:
       newMaterial = fromJS(action.payload.data.entities.materials || {})
       return state.set('loading', false).mergeIn(['materials'], newMaterial)
-    case TOGGLE_FILTERS:
-      return state
-        .set('showFilter', !state.get('showFilter'))
-        .set('showSettings', false)
-    case TOGGLE_SETTINGS:
-      return state
-        .set('showSettings', !state.get('showSettings'))
-        .set('showFilter', false)
-    case SHOW_SETTINGS:
-      return state.set('showSettings', true).set('showFilter', false)
-    case SHOW_FILTERS:
-      return state.set('showSettings', false).set('showFilter', true)
     case SET_FILTER_ITEMS:
       return state.setIn(
         ['filters', action.payload.filter],

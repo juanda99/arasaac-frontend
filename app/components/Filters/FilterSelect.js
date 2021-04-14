@@ -12,7 +12,11 @@ import messages from './messages'
 
 class FilterSelect extends React.Component {
   handleChange = (event, index, values) => {
-    this.props.setFilterItems(this.props.filterType, List(values))
+    if (this.props.multiple) {
+      this.props.setFilterItems(this.props.filterType, List(values))
+    } else {
+      this.props.setFilterItems(this.props.filterType, values)
+    }
   }
 
   handleReset = () => {

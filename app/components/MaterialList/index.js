@@ -8,7 +8,6 @@ const itemsPerPage = 10 /* number of items per page */
 const display = 7 /* number of pages to see in the paginator */
 
 export class MaterialList extends PureComponent {
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.materials !== this.props.materials) {
       // reset pagination, as data has changed:
@@ -26,7 +25,7 @@ export class MaterialList extends PureComponent {
   //   // window.scroll(0, 0)
   // }
 
-  handleClick = currentPage => {
+  handleClick = (currentPage) => {
     const offset = (currentPage - 1) * itemsPerPage
     this.props.onPageClick(offset)
   }
@@ -41,8 +40,13 @@ export class MaterialList extends PureComponent {
       showLabels,
       showActionButtons,
       publishMaterial,
-      removeMaterial
+      removeMaterial,
     } = this.props
+
+    console.log(
+      'render!***********************************************************************',
+      materials
+    )
 
     //   : null
     const numberItems = materials.length
@@ -67,7 +71,7 @@ export class MaterialList extends PureComponent {
       <div ref={this.setTopRef}>
         {pagination}
         <ul>
-          {visibleMaterials.map((material) =>
+          {visibleMaterials.map((material) => (
             <MaterialSnippet
               key={material.idMaterial}
               material={material}
@@ -79,7 +83,7 @@ export class MaterialList extends PureComponent {
               publishMaterial={publishMaterial}
               removeMaterial={removeMaterial}
             />
-          )}
+          ))}
         </ul>
         {pagination}
       </div>
@@ -99,7 +103,7 @@ MaterialList.propTypes = {
   onPageClick: PropTypes.func.isRequired,
   showActionButtons: PropTypes.bool.isRequired,
   publishMaterial: PropTypes.func.isRequired,
-  removeMaterial: PropTypes.func.isRequired
+  removeMaterial: PropTypes.func.isRequired,
 }
 
 export default MaterialList
