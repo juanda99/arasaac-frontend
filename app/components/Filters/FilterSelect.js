@@ -13,14 +13,18 @@ import messages from './messages'
 class FilterSelect extends React.Component {
   handleChange = (event, index, values) => {
     if (this.props.multiple) {
-      this.props.setFilterItems(this.props.filterType, List(values))
+      this.props.onChange(this.props.filterType, List(values))
     } else {
-      this.props.setFilterItems(this.props.filterType, values)
+      this.props.onChange(this.props.filterType, values)
     }
   }
 
   handleReset = () => {
-    this.props.setFilterItems(this.props.filterType, List())
+    if (this.props.multiple) {
+      this.props.onChange(this.props.filterType, List())
+    } else {
+      this.props.onChange(this.props.filterType, '')
+    }
   }
 
   menuItems(values, items) {
@@ -100,8 +104,8 @@ FilterSelect.propTypes = {
     PropTypes.number,
     PropTypes.array,
   ]).isRequired,
-  setFilterItems: PropTypes.func.isRequired,
   filterType: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
 export default muiThemeable()(FilterSelect)

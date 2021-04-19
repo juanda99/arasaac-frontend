@@ -7,22 +7,20 @@ import messages from './messages'
 
 export const FilterSelectLoader = ({
   intl,
-  setFilterItems,
   values,
-  filterData,
+  filtersData,
   type,
   ...other
 }) => {
   const { formatMessage } = intl
-  // const [...selectItems] = filterData.entries()
-  const items = filterData.map((selectItem) => {
-    if (type === 'languages')
+  const items = filtersData.map((selectItem) => {
+    if (type === 'language')
       return {
         value: selectItem.code,
         primaryText: formatMessage(langMessages[selectItem.code]),
       }
     /* areas and activities also used in MaterialForm */
-    if (type === 'areas') {
+    if (type === 'area') {
       const value = parseInt(selectItem.code, 10)
       let text = formatMessage(messages[selectItem.text])
       switch (value) {
@@ -56,7 +54,7 @@ export const FilterSelectLoader = ({
       }
       return { value, primaryText: text }
     }
-    if (type === 'activities') {
+    if (type === 'activity') {
       const value = parseInt(selectItem.code, 10)
       let text = formatMessage(messages[selectItem.text])
       switch (value) {
@@ -97,8 +95,7 @@ export const FilterSelectLoader = ({
   )
   const filterProps = {
     floatingLabelText: formatMessage(messages[type]),
-    multiple: type === 'languages' ? false : true,
-    setFilterItems,
+    multiple: false,
     values,
     filterType: type,
   }
@@ -109,10 +106,14 @@ FilterSelectLoader.displayName = 'FilterSelectLoader'
 
 FilterSelectLoader.propTypes = {
   intl: intlShape.isRequired,
-  setFilterItems: PropTypes.func.isRequired,
-  values: PropTypes.array,
-  filterData: PropTypes.array.isRequired,
+  values: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+  filtersData: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
 export default injectIntl(FilterSelectLoader)

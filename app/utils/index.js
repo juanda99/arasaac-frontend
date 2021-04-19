@@ -21,13 +21,14 @@ export const DEFAULT_PROFILE_PICTURE = `${PICTOGRAMS_URL}/28307/28307_300.png`
 export const getDirection = (locale) =>
   locale === 'ar' || locale === 'he' ? 'rtl' : 'ltr'
 
-const checkLanguage = (item, language) =>
-  language.size === 0 ||
-  language.includes(item.language) ||
-  (item.translations &&
-    item.translations.some((translation) =>
-      language.includes(translation.lang)
-    ))
+const checkLanguage = (item, language) => {
+  const prueba =
+    !language ||
+    language === item.language ||
+    (item.translations &&
+      item.translations.some((translation) => language === translation.lang))
+  return prueba
+}
 
 export const getFilteredItems = (items, filters) =>
   items.filter((item) => {
@@ -35,14 +36,11 @@ export const getFilteredItems = (items, filters) =>
     return filterNames.every((filterName) => {
       // filterName can have a name different to material structure... small hack:
       let fieldName = filterName
-      // if (filterName === 'activities') fieldName = 'activity'
-      // else if (filterName === 'areas') fieldName = 'area'
-      if (filterName === 'languages') {
-        return checkLanguage(item, filters.get('languages'))
-      } else if (
-        filters.get(filterName).size === 0 ||
-        filters.get(filterName) === ''
-      ) {
+      if (filterName === 'activity') fieldName = 'activities'
+      else if (filterName === 'area') fieldName = 'areas'
+      if (filterName === 'language') {
+        return checkLanguage(item, filters.get(filterName))
+      } else if (filters.get(filterName) === '') {
         return true
       } else if (
         typeof item[fieldName] === 'string' ||
@@ -50,11 +48,11 @@ export const getFilteredItems = (items, filters) =>
       ) {
         return (
           item[fieldName] === filters.get(filterName) ||
-          filters.get(filterName).includes(item[fieldName])
+          filters.get(filterName) === item[fieldName]
         )
       } else if (isArray(item[fieldName]) && item[fieldName].length) {
-        return item[fieldName].some((keyItems) =>
-          filters.get(filterName).includes(keyItems)
+        return item[fieldName].some(
+          (keyItems) => filters.get(filterName) === keyItems
         )
       }
       return false
@@ -124,9 +122,8 @@ export const getMongoDBLanguage = (language) => {
   }
 }
 
-export const getAreaUrl = (id) => `/materials/search/${id}?searchType=area`
-export const getActivityUrl = (id) =>
-  `/materials/search/${id}?searchType=activity`
+export const getAreaUrl = (id) => `/materials/search?area=${id}`
+export const getActivityUrl = (id) => `/materials/search?activity=${id}`
 
 export const capitalizeFirstLetter = (string) =>
   string.charAt(0).toUpperCase() + string.slice(1)

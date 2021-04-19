@@ -47,10 +47,9 @@ const makeSearchSelector = () =>
 
 const makeSearchTextSelector = () => (_, ownProps) => ownProps.params.searchText
 
-const makeSearchTypeSelector = () => (_, ownProps) => {
-  const searchType = ownProps.location.search.split('searchType=')[1]
-  return searchType
-}
+const makeSearchTypeSelector = () => (_, ownProps) => ({
+  ...ownProps.location.query,
+})
 
 /* get materials id's from a material search (specific for locale and search keywords) */
 /* if undefined, it means it's necessary to make an ajax call */
@@ -61,23 +60,26 @@ export const makeSearchResultsSelector = () =>
     makeSearchTypeSelector(),
     makeSelectLocale(),
     makeSearchTextSelector(),
-    (materials, searchType, locale, searchText) =>
-      searchType && searchType !== 'content'
-        ? materials.getIn([searchType, searchText])
-        : materials.getIn([locale, searchText])
-  )
-
-/* changing language, area or activity may need a  new url, we minimize ajax request if possible */
-
-export const makeUrlParams = () =>
-  createSelector(
-    makeSearchSelector(),
-    makeSearchTypeSelector(),
-    makeSelectLocale(),
-    makeSearchTextSelector(),
-    makeFiltersSelector(),
-    (materials, searchType, locale, searchText, filters) => {
-      console.log(filters, filter.get(searchType))
+    (materials, searchType, locale, searchText) => {
+      const activity = searchType.activity
+        ? parseInt(searchType.activity)
+        : null
+      const area = searchType.area ? parseInt(searchType.area) : null
+      const language = searchType.language || null
+      const searchByAuthor = searchType.searchByAuthor || false
+      /* if searchText, we use it, if not present return undefined to make ajax call */
+      if (searchText && !searchByAuthor)
+        return materials.getIn([locale, searchText])
+      else if (searchText && searchByAuthor) {
+        return materials.getIn(['author', searchText])
+      } else if (activity && materials.getIn(['activity', activity])) {
+        return materials.getIn(['activity', activity])
+      } else if (area && materials.getIn(['area', area])) {
+        return materials.getIn(['area', area])
+      } else if (language && materials.getIn(['language', language])) {
+        return materials.getIn(['language', language])
+      }
+      return null
     }
   )
 

@@ -39,7 +39,7 @@ import {
   makePendingSelector,
   makeNotPublishedSelector,
   makeAuthorsNameSelector,
-  makeUrlParams,
+  // makeUrlParams,
 } from './selectors'
 
 import {
@@ -56,15 +56,16 @@ import activities from 'data/activities'
 import areas from 'data/areas'
 import messages from './messages'
 
-const filtersData = { areas, activities, languages }
+const filtersData = { area: areas, activity: activities, language: languages }
 
 class MaterialsView extends PureComponent {
   state = {
     tab: 0,
     offset: 0,
+    firstRender: false,
     getNewMaterials: false,
     getUnpublished: false,
-    searchType: 'content',
+    searchByAuthor: false,
     showNotFound: false,
     /* running, step and steps for Joyride */
     running: false,
@@ -145,51 +146,56 @@ class MaterialsView extends PureComponent {
   }
 
   processQuery = (props) => {
-    const { location } = props || this.props
+    const { location, params, searchResults, token, locale, setFilterItems } =
+      props || this.props
     const { search, query } = location
-    let parameters = { offset: 0, tab: 0 }
-    if (search) {
-      parameters = { ...parameters, ...query }
-      const validKeys = ['offset', 'tab', 'searchType']
-      Object.keys(parameters).forEach(
-        (key) => validKeys.includes(key) || delete parameters[key]
-      )
-      parameters.offset = parseInt(parameters.offset, 10) || 0
-      parameters.tab = parseInt(parameters.tab, 10) || 0
-      parameters.searchType = parameters.searchType || 'content'
-    }
+    const { loading, searchByAuthor } = this.state
+
+    /* update offset or tab if  needed */
+    let parameters = { offset: 0, tab: 0, searchByAuthor }
+    const validKeys = Object.keys(parameters)
+    parameters = { ...parameters, ...query }
+    Object.keys(parameters).forEach(
+      (key) => validKeys.includes(key) || delete parameters[key]
+    )
+    parameters.offset = parseInt(parameters.offset, 10) || 0
+    parameters.tab = parseInt(parameters.tab, 10) || 0
     const needUpdate = Object.keys(parameters).some(
       (key) => parameters[key] !== this.state[key]
     )
     if (needUpdate) this.setState(parameters)
-  }
 
-  getCodeText = (searchType, searchText) => {
-    const { formatMessage } = this.props.intl
-    if (!searchText) return ''
-    if (searchType === 'activity')
-      return this.customActivities
-        .filter((item) => item.text === searchText)
-        .map((item) => item.value)[0]
-    else if (searchType === 'area')
-      return this.customAreas
-        .filter((item) => item.text === searchText)
-        .map((item) => item.value)[0]
-    return searchText
-  }
+    const { activity, language, area } = { ...location.query }
+    /* we set the  state: */
+    if (activity) setFilterItems('activity', parseInt(activity))
+    if (area) setFilterItems('area', parseInt(area))
+    if (languages) setFilterItems('language', language)
 
-  getSearchText = (searchType, searchText) => {
-    const { formatMessage } = this.props.intl
-    if (!searchText) return ''
-    if (searchType === 'activity')
-      return this.customActivities
-        .filter((item) => item.value === parseInt(searchText))
-        .map((item) => item.text)[0]
-    else if (searchType === 'area')
-      return this.customAreas
-        .filter((item) => item.value === parseInt(searchText))
-        .map((item) => item.text)[0]
-    return searchText
+    /* if  changes we make ajax call  is not cached */
+    if (
+      (activity || area || language || params.searchText) &&
+      !searchResults &&
+      !loading
+    ) {
+      if (params.searchText) {
+        const searchType = parameters.searchByAuthor ? 'author' : 'content'
+        this.props.requestMaterials(
+          language || locale,
+          params.searchText,
+          searchType,
+          token
+        )
+      } else if (area) {
+        this.props.requestMaterials(locale, area, 'area', token)
+      } else if (activity) {
+        this.props.requestMaterials(locale, activity, 'activity', token)
+      } else if (languages) {
+        this.props.requestMaterials(locale, language, 'language', token)
+      }
+    }
+
+    /* if  we  get filters through params we proccess them */
+    // const searchType = params.location.search.split('searchType=')[1]
   }
 
   async componentDidMount() {
@@ -209,14 +215,7 @@ class MaterialsView extends PureComponent {
     if (!isOpen) document.getElementById('lstmaterials').click()
 
     await this.processQuery()
-    if (this.props.params.searchText && !this.props.searchResults) {
-      requestMaterials(
-        locale,
-        this.props.params.searchText,
-        this.state.searchType,
-        token
-      )
-    }
+
     /* we just ask for new Materials twice an hour */
     const newMaterialsDate = sessionStorage.getItem('newMaterialsDate')
     const actualDate = new Date()
@@ -231,69 +230,78 @@ class MaterialsView extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { token, filters } = nextProps
-    this.setState({ showNotFound: false })
-    if (this.props.location.search !== nextProps.location.search) {
-      this.processQuery(nextProps)
-    }
+    const { token, filters, loading } = nextProps
+    // this.setState({ showNotFound: false })
+    const previousParams = JSON.stringify(this.props.location.query)
+    const nextParams = JSON.stringify(nextProps.location.query)
     if (
-      nextProps.params.searchText &&
-      this.props.params.searchText !== nextProps.params.searchText &&
-      !nextProps.searchResults
-    ) {
-      this.props.requestMaterials(
-        nextProps.locale,
-        nextProps.params.searchText,
-        this.state.searchType,
-        token
-      )
-    }
-
-    console.log(
-      this.props.filters,
-      nextProps.filters,
-      this.props.params.searchType,
-      this.props.params.searchText,
-      '********************+**********************'
+      this.props.params.searchText !== nextProps.params.searchText ||
+      previousParams !== nextParams
     )
+      this.processQuery(nextProps)
   }
 
   handleChange = (tab) => {
     const { pathname } = this.props.location
-    const url = `${pathname}?tab=${tab}&searchType=${this.state.searchType}`
-    this.props.router.push(url)
-  }
-
-  handleSearchTypeChange = (event, index, value) => {
-    const url = `/materials/search?tab=${this.state.tab}&searchType=${value}`
+    const url = `${pathname}?tab=${tab}&searchByAuthor=${this.state.searchByAuthor}`
     this.props.router.push(url)
   }
 
   handlePageClick = (offset) => {
     // fix bug if offset is not number, click comes from picto link, should not be processed here
     if (typeof offset === 'number') {
-      const { tab, searchType } = this.state
-      const { pathname } = this.props.location
-      const url = `${pathname}?offset=${offset}&tab=${tab}&searchType=${searchType}`
+      const { params, location, setFilterItems } = this.props
+      const searchText = params.searchText || ''
+      // const searchType = params.location.search.split('searchType=')[1]
+      // TODO: setFilterItems would  be recollected from url!!!
+      const objParams = { ...location.query, offset }
+      let urlParameters = this.getUrlParameters(objParams)
+      const url = searchText
+        ? `${location.pathname}/${searchText}?${urlParameters}`
+        : `${location.pathname}?${urlParameters}`
       this.props.router.push(url)
+
+      // const { pathname } = this.props.location
+      // const url = `${pathname}?offset=${offset}&tab=${tab}&searchType=${searchType}`
+      // this.props.router.push(url)
     }
   }
+
+  handleUrlChange = (filterType, filterValue, searchValue) => {
+    const { params, location, setFilterItems } = this.props
+    const { searchByAuthor } = this.state
+    const searchText = searchValue || params.searchText || ''
+    // const searchType = params.location.search.split('searchType=')[1]
+    // TODO: setFilterItems would  be recollected from url!!!
+    const objParams = { ...location.query, searchByAuthor, offset: 0 }
+    if (filterValue) {
+      objParams[filterType] = filterValue
+      // setFilterItems(filterType, filterValue)
+    } else if (filterType) {
+      delete objParams[filterType]
+      setFilterItems(filterType, '')
+    }
+    let urlParameters = this.getUrlParameters(objParams)
+    const url = searchText
+      ? `/materials/search/${searchText}?${urlParameters}`
+      : `/materials/search?${urlParameters}`
+    this.props.router.push(url)
+  }
+
+  getUrlParameters = (objParams) =>
+    Object.entries(objParams)
+      .map((e) => e.join('='))
+      .join('&')
 
   handleSubmit = (nextValue) => {
     this.setState({
       tab: 0,
+      firstRender: false,
     })
-    /* depending on searchType or searchText we render  a route or another */
-    const newValue = this.getCodeText(this.state.searchType, nextValue)
-    if (this.props.params.searchText !== newValue && newValue) {
-      this.props.router.push(
-        `/materials/search/${encodeURIComponent(newValue)}?searchType=${
-          this.state.searchType
-        }`
-      )
+    /* if new value and not null we get all the info */
+    if (this.props.params.searchText !== nextValue && nextValue) {
+      this.handleUrlChange(null, null, nextValue)
     }
-    /* hack if getCodeText returns  undefined, to render no found  materials */
-    if (!newValue) this.setState({ showNotFound: true })
   }
 
   handlePublishMaterial = (id, publish) => {
@@ -325,10 +333,8 @@ class MaterialsView extends PureComponent {
 
   startHelp = () => this.setState({ running: true })
 
-  searchByAuthor = (event, isInputChecked) => {
-    const searchType = isInputChecked ? 'author' : 'content'
-    this.setState({ searchType })
-  }
+  handleSearchByAuthor = (event, isInputChecked) =>
+    this.setState({ searchByAuthor: isInputChecked })
 
   render() {
     const {
@@ -345,10 +351,16 @@ class MaterialsView extends PureComponent {
       unpublishedMaterials,
       authorsName,
     } = this.props
-    const { tab, offset, searchType, running, steps, showNotFound } = this.state
+    const {
+      tab,
+      offset,
+      searchByAuthor,
+      running,
+      steps,
+      showNotFound,
+    } = this.state
     const { formatMessage } = this.props.intl
-    const searchText =
-      this.getSearchText(searchType, this.props.params.searchText) || ''
+    const searchText = this.props.params.searchText
 
     let materialsCounter
     const hideIconText = width === SMALL
@@ -362,9 +374,8 @@ class MaterialsView extends PureComponent {
 
     // depending on which slide we are, we show one or another list */
     let materialsList
-    console.log(`searchText: ${searchText}`, newVisibleMaterialsList)
-    if (tab === 0)
-      materialsList = searchText ? visibleMaterials : newVisibleMaterialsList
+    if (tab === 0) materialsList = visibleMaterials
+    //  : newVisibleMaterialsList
     // TODO: also for tab  0: materialsList = newVisibleMaterialsList
     else if (tab === 1) materialsList = pendingMaterials
     else if (tab === 2) materialsList = unpublishedMaterials
@@ -391,7 +402,7 @@ class MaterialsView extends PureComponent {
           materials={materialsList}
           locale={locale}
           filtersMap={filters}
-          setFilterItems={this.props.setFilterItems}
+          onFilterChange={this.handleUrlChange}
           showLabels={true} // show labels if filter is active
           offset={offset}
           onPageClick={this.handlePageClick}
@@ -406,7 +417,9 @@ class MaterialsView extends PureComponent {
       )
     }
 
-    const dataSource = searchType === 'author' ? authorsName : []
+    const dataSource = searchByAuthor ? authorsName : []
+
+    /* we prepare filtersMap and filterData from url */
 
     const renderSearchBox = (
       <div>
@@ -422,15 +435,15 @@ class MaterialsView extends PureComponent {
         <div style={{ display: 'flex', wrap: 'wrap', alignItems: 'baseline' }}>
           <FilterList
             filtersMap={filters}
-            setFilterItems={this.props.setFilterItems}
             filtersData={filtersData}
-            onChange={this.handleSubmit}
+            onChange={this.handleUrlChange}
           />
           <Toggle
             label="Buscar por autor"
             labelPosition="right"
             style={{ maxWidth: 250, marginLeft: '20px', marginBottom: '10px' }}
-            onToggle={this.searchByAuthor}
+            onToggle={this.handleSearchByAuthor}
+            toggled={searchByAuthor}
           />
         </div>
       </div>
@@ -621,7 +634,7 @@ const mapStateToProps = (state, ownProps) => ({
   newVisibleMaterialsList: makeNewVisibleMaterialsSelector()(state),
   pendingMaterials: makePendingSelector()(state),
   unpublishedMaterials: makeNotPublishedSelector()(state),
-  urlParams: makeUrlParams()(state),
+  // urlParams: makeUrlParams()(state),
   token: makeSelectHasUser()(state),
   role: makeSelectRole()(state),
 })

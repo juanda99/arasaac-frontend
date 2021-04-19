@@ -26,12 +26,13 @@ export const initialState = fromJS({
   search: {
     area: [],
     activity: [],
+    language: {},
   },
   searchText: '',
   filters: {
-    activities: List(),
-    areas: List(),
-    languages: '',
+    activity: '',
+    area: '',
+    language: '',
   },
   materials: {},
   newMaterials: [],

@@ -35,18 +35,13 @@ export class MaterialList extends PureComponent {
       locale,
       materials,
       filtersMap,
-      setFilterItems,
+      onFilterChange,
       offset,
       showLabels,
       showActionButtons,
       publishMaterial,
       removeMaterial,
     } = this.props
-
-    console.log(
-      'render!***********************************************************************',
-      materials
-    )
 
     //   : null
     const numberItems = materials.length
@@ -77,7 +72,7 @@ export class MaterialList extends PureComponent {
               material={material}
               locale={locale}
               filtersMap={filtersMap}
-              setFilterItems={setFilterItems}
+              onFilterChange={onFilterChange}
               showLabels={showLabels}
               showActionButtons={showActionButtons}
               publishMaterial={publishMaterial}
@@ -98,7 +93,7 @@ MaterialList.propTypes = {
   locale: PropTypes.string,
   showLabels: PropTypes.bool.isRequired,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
-  setFilterItems: PropTypes.func.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
   offset: PropTypes.number.isRequired,
   onPageClick: PropTypes.func.isRequired,
   showActionButtons: PropTypes.bool.isRequired,

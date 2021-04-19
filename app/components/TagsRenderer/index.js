@@ -9,30 +9,27 @@ import { lightGreen400, lightGreen800 } from 'material-ui/styles/colors'
 import { FormattedMessage } from 'react-intl'
 
 import muiThemeable from 'material-ui/styles/muiThemeable'
-import { List } from 'immutable'
 
 import activities from 'data/activities'
 import areas from 'data/areas'
 import messages from 'components/Filters/messages'
 
-
 const styles = {
   chip: {
-    margin: '4px'
+    margin: '4px',
   },
   div: {
     display: 'flex',
-    flexWrap: 'wrap'
-
-  }
+    flexWrap: 'wrap',
+  },
 }
 
 class TagsRenderer extends Component {
   getIcon(type) {
     switch (type) {
-      case 'activities':
+      case 'activity':
         return <ActivityIcon />
-      case 'areas':
+      case 'area':
         return <AreaIcon />
       default:
         return null
@@ -41,9 +38,9 @@ class TagsRenderer extends Component {
 
   getArray(type) {
     switch (type) {
-      case 'activities':
+      case 'activity':
         return activities
-      case 'areas':
+      case 'area':
         return areas
       default:
         return null
@@ -60,8 +57,8 @@ class TagsRenderer extends Component {
     const customIcon = this.getIcon(type)
     const selectedArray = this.getArray(type)
     const rendered = tags.map((tag) => {
-      const tagCode = selectedArray.filter(item => item.code === tag)[0].text
-      if (selected && selected.includes(tag)) {
+      const tagCode = selectedArray.filter((item) => item.code === tag)[0].text
+      if (selected && selected === tag) {
         return (
           <Chip
             backgroundColor={lightGreen400}
@@ -90,15 +87,15 @@ class TagsRenderer extends Component {
         </Chip>
       )
     })
-    return <div style={styles.div}> {rendered}</div >
+    return <div style={styles.div}> {rendered}</div>
   }
 }
 
 TagsRenderer.propTypes = {
   tags: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
-  selected: PropTypes.instanceOf(List),
-  onClick: PropTypes.func
+  selected: PropTypes.string,
+  onClick: PropTypes.func,
 }
 
 export default muiThemeable()(TagsRenderer)
