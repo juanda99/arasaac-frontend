@@ -23,6 +23,7 @@ import Toggle from 'material-ui/Toggle'
 import FilterList from 'components/Filters'
 import MaterialList from 'components/MaterialList'
 import P from 'components/P'
+import FilterWrapper from './FilterWrapper'
 import ReadMargin from 'components/ReadMargin'
 import { withRouter } from 'react-router'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
@@ -130,10 +131,8 @@ class MaterialsView extends PureComponent {
 
   async componentDidMount() {
     const {
-      requestMaterials,
       requestNewMaterials,
       requestNotPublishedMaterials,
-      locale,
       token,
       role,
       authorsName,
@@ -160,7 +159,6 @@ class MaterialsView extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { token, filters, loading } = nextProps
     const previousParams = JSON.stringify(this.props.location.query)
     const nextParams = JSON.stringify(nextProps.location.query)
     if (
@@ -333,7 +331,7 @@ class MaterialsView extends PureComponent {
             style={{ flexGrow: 1 }}
           />
         </DivSearchBox>
-        <div style={{ display: 'flex', wrap: 'wrap', alignItems: 'baseline' }}>
+        <FilterWrapper>
           <FilterList
             filtersMap={filters}
             filtersData={filtersData}
@@ -346,7 +344,7 @@ class MaterialsView extends PureComponent {
             onToggle={this.handleSearchByAuthor}
             toggled={searchByAuthor}
           />
-        </div>
+        </FilterWrapper>
       </div>
     )
 
