@@ -7,13 +7,11 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { injectIntl, FormattedMessage } from 'react-intl'
-import Joyride, { STATUS } from 'react-joyride'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import View from 'components/View'
 import { Helmet } from 'react-helmet'
 import SearchField from 'components/SearchField'
 import DivSearchBox from 'components/DivSearchBox'
-import HelpButton from 'components/HelpButton'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import PendingIcon from 'material-ui/svg-icons/action/visibility-off'
 import NotPublishedIcon from 'material-ui/svg-icons/action/thumb-down'
@@ -62,97 +60,19 @@ class MaterialsView extends PureComponent {
   state = {
     tab: 0,
     offset: 0,
-    firstRender: false,
+    showNewMaterials: true,
     getNewMaterials: false,
     getUnpublished: false,
-    searchByAuthor: false,
-    showNotFound: false,
-    /* running, step and steps for Joyride */
-    running: false,
-    step: 0,
-    steps: [
-      {
-        title: <FormattedMessage {...messages.wordSearch} />,
-        content: (
-          <div>
-            <p dir={this.props.direction}>
-              <FormattedMessage {...messages.searchHint1} />
-            </p>
-            <p dir={this.props.direction}>
-              <FormattedMessage {...messages.searchHint2} />
-            </p>
-          </div>
-        ),
-        target: '#searchBox',
-        placement: 'bottom',
-        disableBeacon: true,
-      },
-      {
-        title: <FormattedMessage {...messages.filterResults} />,
-        content: (
-          <p dir={this.props.direction}>
-            <FormattedMessage {...messages.filtersBtn} />
-          </p>
-        ),
-        target: '#filtersBtn',
-        placement: 'bottom',
-        disableBeacon: true,
-      },
-      {
-        title: <FormattedMessage {...messages.filters} />,
-        content: (
-          <p dir={this.props.direction}>
-            <FormattedMessage {...messages.filtersHint} />
-          </p>
-        ),
-        target: '#filtersArea',
-        placement: 'bottom',
-        disableBeacon: true,
-      },
-      {
-        title: <FormattedMessage {...messages.disableFilters} />,
-        content: (
-          <p dir={this.props.direction}>
-            <FormattedMessage {...messages.disableFiltersHint} />
-          </p>
-        ),
-        target: '.btnDeleteFilter:first-of-type',
-        placement: 'bottom',
-        disableBeacon: true,
-      },
-      {
-        title: <FormattedMessage {...messages.advancedSearch} />,
-        content: (
-          <p dir={this.props.direction}>
-            <FormattedMessage {...messages.advSearchBtn} />
-          </p>
-        ),
-        target: '#advSearchBtn',
-        placement: 'bottom',
-        disableBeacon: true,
-      },
-      {
-        title: <FormattedMessage {...messages.advancedSearch} />,
-        content: (
-          <p dir={this.props.direction}>
-            <FormattedMessage {...messages.advSearchHint} />
-          </p>
-        ),
-        target: '#advSearchField',
-        placement: 'bottom',
-        disableBeacon: true,
-      },
-    ],
   }
 
   processQuery = (props) => {
     const { location, params, searchResults, token, locale, setFilterItems } =
       props || this.props
     const { search, query } = location
-    const { loading, searchByAuthor } = this.state
+    const { loading } = this.state
 
     /* update offset or tab if  needed */
-    let parameters = { offset: 0, tab: 0, searchByAuthor }
+    let parameters = { offset: 0, tab: 0, searchByAuthor: false }
     const validKeys = Object.keys(parameters)
     parameters = { ...parameters, ...query }
     Object.keys(parameters).forEach(
@@ -160,12 +80,21 @@ class MaterialsView extends PureComponent {
     )
     parameters.offset = parseInt(parameters.offset, 10) || 0
     parameters.tab = parseInt(parameters.tab, 10) || 0
+    parameters.searchByAuthor = parameters.searchByAuthor == 'true' // move string to boolean
+    const { activity, language, area } = { ...location.query }
+    if (
+      activity ||
+      area ||
+      language ||
+      parameters.searchByAuthor ||
+      params.searchText
+    )
+      parameters.showNewMaterials = false
     const needUpdate = Object.keys(parameters).some(
       (key) => parameters[key] !== this.state[key]
     )
     if (needUpdate) this.setState(parameters)
 
-    const { activity, language, area } = { ...location.query }
     /* we set the  state: */
     if (activity) setFilterItems('activity', parseInt(activity))
     if (area) setFilterItems('area', parseInt(area))
@@ -231,7 +160,6 @@ class MaterialsView extends PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { token, filters, loading } = nextProps
-    // this.setState({ showNotFound: false })
     const previousParams = JSON.stringify(this.props.location.query)
     const nextParams = JSON.stringify(nextProps.location.query)
     if (
@@ -250,30 +178,21 @@ class MaterialsView extends PureComponent {
   handlePageClick = (offset) => {
     // fix bug if offset is not number, click comes from picto link, should not be processed here
     if (typeof offset === 'number') {
-      const { params, location, setFilterItems } = this.props
+      const { params, location } = this.props
       const searchText = params.searchText || ''
-      // const searchType = params.location.search.split('searchType=')[1]
-      // TODO: setFilterItems would  be recollected from url!!!
       const objParams = { ...location.query, offset }
       let urlParameters = this.getUrlParameters(objParams)
       const url = searchText
-        ? `${location.pathname}/${searchText}?${urlParameters}`
-        : `${location.pathname}?${urlParameters}`
+        ? `/materials/search/${searchText}?${urlParameters}`
+        : `/materials/search?${urlParameters}`
       this.props.router.push(url)
-
-      // const { pathname } = this.props.location
-      // const url = `${pathname}?offset=${offset}&tab=${tab}&searchType=${searchType}`
-      // this.props.router.push(url)
     }
   }
 
   handleUrlChange = (filterType, filterValue, searchValue) => {
     const { params, location, setFilterItems } = this.props
-    const { searchByAuthor } = this.state
     const searchText = searchValue || params.searchText || ''
-    // const searchType = params.location.search.split('searchType=')[1]
-    // TODO: setFilterItems would  be recollected from url!!!
-    const objParams = { ...location.query, searchByAuthor, offset: 0 }
+    const objParams = { ...location.query, offset: 0 }
     if (filterValue) {
       objParams[filterType] = filterValue
       // setFilterItems(filterType, filterValue)
@@ -294,10 +213,6 @@ class MaterialsView extends PureComponent {
       .join('&')
 
   handleSubmit = (nextValue) => {
-    this.setState({
-      tab: 0,
-      firstRender: false,
-    })
     /* if new value and not null we get all the info */
     if (this.props.params.searchText !== nextValue && nextValue) {
       this.handleUrlChange(null, null, nextValue)
@@ -314,27 +229,17 @@ class MaterialsView extends PureComponent {
     removeMaterial(id, token)
   }
 
-  // handleDelete = accept => {
-  //   const { idPictogram, requestPictogramDelete, token } = this.props
-  //   this.setState({ confirmationBoxOpen: false })
-  //   if (accept) requestPictogramDelete(idPictogram, token)
-  // }
-
-  // handleBeforeDelete = () => this.setState({ confirmationBoxOpen: true })
-
-  handleJoyrideCallback = (data) => {
-    const { status } = data
-    const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED]
-
-    if (finishedStatuses.includes(status)) {
-      this.setState({ running: false })
+  handleSearchByAuthor = (event, isInputChecked) => {
+    const { location } = this.props
+    const objParams = {
+      ...location.query,
+      searchByAuthor: isInputChecked,
+      offset: 0,
     }
+    let urlParameters = this.getUrlParameters(objParams)
+    const url = `/materials/search?${urlParameters}`
+    this.props.router.push(url)
   }
-
-  startHelp = () => this.setState({ running: true })
-
-  handleSearchByAuthor = (event, isInputChecked) =>
-    this.setState({ searchByAuthor: isInputChecked })
 
   render() {
     const {
@@ -350,46 +255,35 @@ class MaterialsView extends PureComponent {
       pendingMaterials,
       unpublishedMaterials,
       authorsName,
+      location,
     } = this.props
-    const {
-      tab,
-      offset,
-      searchByAuthor,
-      running,
-      steps,
-      showNotFound,
-    } = this.state
+    const { tab, offset, showNewMaterials } = this.state
     const { formatMessage } = this.props.intl
     const searchText = this.props.params.searchText
+
+    const searchByAuthor = location.query.searchByAuthor == 'true'
 
     let materialsCounter
     const hideIconText = width === SMALL
 
-    const localeTour = {
-      next: <FormattedMessage {...messages.next} />,
-      back: <FormattedMessage {...messages.back} />,
-      skip: <FormattedMessage {...messages.skip} />,
-      last: <FormattedMessage {...messages.last} />,
+    // depending on which slide we are, we show one or another list */
+    let materialsList, gallery
+    switch (tab) {
+      case 0:
+        materialsList = showNewMaterials
+          ? newVisibleMaterialsList
+          : visibleMaterials
+        break
+      case 1:
+        materialsList = pendingMaterials
+        break
+      case 2:
+        materialsList = unpublishedMaterials
     }
 
-    // depending on which slide we are, we show one or another list */
-    let materialsList
-    if (tab === 0) materialsList = visibleMaterials
-    //  : newVisibleMaterialsList
-    // TODO: also for tab  0: materialsList = newVisibleMaterialsList
-    else if (tab === 1) materialsList = pendingMaterials
-    else if (tab === 2) materialsList = unpublishedMaterials
-    let gallery = ''
-    // TODO: change message:
-    // const loadingState = tab === 1 ? loadingNew : loading
-    const loadingState = loadingNew
-    if (showNotFound) {
-      gallery = (
-        <ReadMargin>
-          <P>{<FormattedMessage {...messages.materialsNotFound} />}</P>
-        </ReadMargin>
-      )
-    } else if (loadingState) {
+    const loadingState = showNewMaterials ? loadingNew : loading
+
+    if (loadingState) {
       gallery = (
         <ReadMargin>
           <P>{<FormattedMessage {...messages.loadingMaterials} />}</P>
@@ -419,8 +313,6 @@ class MaterialsView extends PureComponent {
 
     const dataSource = searchByAuthor ? authorsName : []
 
-    /* we prepare filtersMap and filterData from url */
-
     const renderSearchBox = (
       <div>
         <DivSearchBox id="searchBox">
@@ -430,7 +322,6 @@ class MaterialsView extends PureComponent {
             onSubmit={this.handleSubmit}
             style={{ flexGrow: 1 }}
           />
-          <HelpButton helpActive={running} onHelpClick={this.startHelp} />
         </DivSearchBox>
         <div style={{ display: 'flex', wrap: 'wrap', alignItems: 'baseline' }}>
           <FilterList
@@ -464,22 +355,6 @@ class MaterialsView extends PureComponent {
           <meta name="description" content={description} />
           {/* <link rel="canonical" href="http://mysite.com/example" /> */}
         </Helmet>
-        {/* TODO: remove joyride? */}
-        <Joyride
-          callback={this.handleJoyrideCallback}
-          continuous={true}
-          floaterProps={{ disableAnimation: true }}
-          // // getHelpers={this.getHelpers}
-          run={running}
-          showSkipButton={true}
-          steps={steps}
-          // styles={{
-          //   options: {
-          //     zIndex: 10000,
-          //   },
-          // }}
-          locale={localeTour}
-        />
         <Tabs onChange={this.handleChange} value={tab}>
           <Tab
             label={
@@ -499,6 +374,9 @@ class MaterialsView extends PureComponent {
               </View>
               <Divider />
               <View left={true} right={true} top={1}>
+                {showNewMaterials && (
+                  <P important={true}>Materiales Nuevossss</P>
+                )}
                 {materialsCounter ? (
                   <ReadMargin>
                     <P>

@@ -66,7 +66,7 @@ export const makeSearchResultsSelector = () =>
         : null
       const area = searchType.area ? parseInt(searchType.area) : null
       const language = searchType.language || null
-      const searchByAuthor = searchType.searchByAuthor || false
+      const searchByAuthor = searchType.searchByAuthor == 'true'
       /* if searchText, we use it, if not present return undefined to make ajax call */
       if (searchText && !searchByAuthor)
         return materials.getIn([locale, searchText])
