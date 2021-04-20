@@ -72,7 +72,7 @@ class TagsRenderer extends Component {
               backgroundColor={lightGreen800}
               icon={customIcon}
             />
-            {<FormattedMessage {...messages[tagCode]} />}
+            <FormattedMessage {...messages[tagCode]} />
           </Chip>
         )
       }
@@ -83,7 +83,7 @@ class TagsRenderer extends Component {
           onClick={(e) => this.handleClick(tag, 1, e)}
         >
           <Avatar icon={customIcon} />
-          {<FormattedMessage {...messages[tagCode]} />}
+          <FormattedMessage {...messages[tagCode]} />
         </Chip>
       )
     })

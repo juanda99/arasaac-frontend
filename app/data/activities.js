@@ -3,7 +3,7 @@
 const activities = [
   { code: 1, text: 'picaa' },
   // no animation materials,  they're all and unpublished
-  // { code: 2, text: 'animation' },
+  { code: 2, text: 'animation' },
   { code: 3, text: 'software' },
   { code: 4, text: 'araBoard' },
   { code: 5, text: 'board' },

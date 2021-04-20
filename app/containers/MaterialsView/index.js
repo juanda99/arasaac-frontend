@@ -103,6 +103,7 @@ class MaterialsView extends PureComponent {
     /* if  changes we make ajax call  is not cached */
     if (
       (activity || area || language || params.searchText) &&
+      parameters.tab === 0 &&
       !searchResults &&
       !loading
     ) {
@@ -151,7 +152,7 @@ class MaterialsView extends PureComponent {
     const diffSeconds = newMaterialsDate
       ? (actualDate.getTime() - newMaterialsDate) / 1000
       : 0
-    const numItems = role === 'admin' ? 10000 : 100
+    const numItems = role === 'admin' ? 100 : 100
     if (newVisibleMaterialsList.size === 0 || diffSeconds > 1800)
       requestNewMaterials(numItems, token)
     if (role === 'admin') requestNotPublishedMaterials(token)
@@ -200,6 +201,7 @@ class MaterialsView extends PureComponent {
       delete objParams[filterType]
       setFilterItems(filterType, '')
     }
+    if (searchValue) objParams.tab = 0 //  if searching, we move to first tab
     let urlParameters = this.getUrlParameters(objParams)
     const url = searchText
       ? `/materials/search/${searchText}?${urlParameters}`
@@ -256,10 +258,11 @@ class MaterialsView extends PureComponent {
       unpublishedMaterials,
       authorsName,
       location,
+      params,
     } = this.props
     const { tab, offset, showNewMaterials } = this.state
     const { formatMessage } = this.props.intl
-    const searchText = this.props.params.searchText
+    const searchText = params.searchText
 
     const searchByAuthor = location.query.searchByAuthor == 'true'
 
@@ -283,6 +286,9 @@ class MaterialsView extends PureComponent {
 
     const loadingState = showNewMaterials ? loadingNew : loading
 
+    let hideMessage = true
+    const { activity, language, area } = { ...location.query }
+    if (activity || area || language || params.searchText) hideMessage = false
     if (loadingState) {
       gallery = (
         <ReadMargin>
@@ -306,7 +312,11 @@ class MaterialsView extends PureComponent {
         />
       ) : (
         <ReadMargin>
-          <P>{<FormattedMessage {...messages.materialsNotFound} />}</P>
+          <P>
+            {!hideMessage && (
+              <FormattedMessage {...messages.materialsNotFound} />
+            )}
+          </P>
         </ReadMargin>
       )
     }
@@ -402,7 +412,7 @@ class MaterialsView extends PureComponent {
                 hideIconText ? '' : <FormattedMessage {...messages.pending} />
               }
               icon={<PendingIcon />}
-              value={2}
+              value={1}
             >
               <div>
                 <View
@@ -442,7 +452,7 @@ class MaterialsView extends PureComponent {
                 )
               }
               icon={<NotPublishedIcon />}
-              value={3}
+              value={2}
             >
               <div>
                 <View

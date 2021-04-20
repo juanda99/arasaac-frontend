@@ -103,23 +103,35 @@ const makeMaterialsFromEntitiesSelector = () =>
   )
 
 export const makePendingSelector = () =>
-  createSelector(makeMaterialsFromEntitiesSelector(), (materials) =>
-    materials
-      .filter((material) => material.status === PENDING)
-      .sort(
-        (a, b) =>
-          new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime()
-      )
+  createSelector(
+    makeMaterialsFromEntitiesSelector(),
+    makeFiltersSelector(),
+    (materials, filters) => {
+      const materialList = materials
+        .filter((material) => material.status === PENDING)
+        .sort(
+          (a, b) =>
+            new Date(b.lastUpdated).getTime() -
+            new Date(a.lastUpdated).getTime()
+        )
+      return getFilteredItems(materialList, filters)
+    }
   )
 
 export const makeNotPublishedSelector = () =>
-  createSelector(makeMaterialsFromEntitiesSelector(), (materials) =>
-    materials
-      .filter((material) => material.status === NOT_PUBLISHED)
-      .sort(
-        (a, b) =>
-          new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime()
-      )
+  createSelector(
+    makeMaterialsFromEntitiesSelector(),
+    makeFiltersSelector(),
+    (materials, filters) => {
+      const materialList = materials
+        .filter((material) => material.status === NOT_PUBLISHED)
+        .sort(
+          (a, b) =>
+            new Date(b.lastUpdated).getTime() -
+            new Date(a.lastUpdated).getTime()
+        )
+      return getFilteredItems(materialList, filters)
+    }
   )
 
 export const makeVisibleMaterialsSelector = () =>
