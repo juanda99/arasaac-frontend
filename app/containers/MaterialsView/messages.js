@@ -40,6 +40,15 @@ export default defineMessages({
     id: 'app.containers.MaterialsView.loadingMaterials',
     defaultMessage: 'Loading materials...',
   },
+  searchByAuthor: {
+    id: 'app.containers.MaterialsView.searchByAuthor',
+    description: 'Label for button',
+    defaultMessage: 'Search by author',
+  },
+  newMaterials: {
+    id: 'app.containers.MaterialsView.newMaterials',
+    defaultMessage: 'New materials',
+  },
   pageTitle: {
     id: 'app.MaterialsView.pageTitle',
     defaultMessage: 'AAC shared material resources - ARASAAC',

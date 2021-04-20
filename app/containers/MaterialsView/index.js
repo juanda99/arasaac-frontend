@@ -330,7 +330,7 @@ class MaterialsView extends PureComponent {
             onChange={this.handleUrlChange}
           />
           <Toggle
-            label="Buscar por autor"
+            label={<FormattedMessage {...messages.searchByAuthor} />}
             labelPosition="right"
             style={{ maxWidth: 250, marginLeft: '20px', marginBottom: '10px' }}
             onToggle={this.handleSearchByAuthor}
@@ -375,7 +375,9 @@ class MaterialsView extends PureComponent {
               <Divider />
               <View left={true} right={true} top={1}>
                 {showNewMaterials && (
-                  <P important={true}>Materiales Nuevossss</P>
+                  <P important={true}>
+                    <FormattedMessage {...messages.newMaterials} />
+                  </P>
                 )}
                 {materialsCounter ? (
                   <ReadMargin>
