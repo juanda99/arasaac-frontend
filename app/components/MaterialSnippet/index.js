@@ -18,89 +18,53 @@ import messages from 'components/Material/messages'
 import { NOT_PUBLISHED, PENDING } from 'utils'
 
 const styles = {
-
   wrapper: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   snippetText: {
     flexGrow: 3,
     width: '600px',
-    padding: '1rem'
+    padding: '1rem',
   },
   snippet: {
     display: 'flex',
     flexWrap: 'wrap-reverse',
-    width: '100%'
+    width: '100%',
   },
   snippetImg: {
     flexGrow: 1,
-    width: '300px'
+    width: '300px',
   },
   actionBtn: {
-    margin: '5px'
-  }
+    margin: '5px',
+  },
 }
 
-
 class MaterialSnippet extends PureComponent {
-
   state = {
-    showDialog: false
+    showDialog: false,
   }
 
   // nextStatus 0 to desactivate the filter, 1 for activating
   handleTouchTap = (filterName, filterItem, nextStatus, e) => {
     e.preventDefault()
     e.stopPropagation()
+    const filterValue = nextStatus ? filterItem : ''
+    this.props.onFilterChange(filterName, filterValue)
     // we get all the values from the filter
-    const { setFilterItems, filtersMap } = this.props
-    const filterItems = filtersMap.get(filterName).toArray()
-    if (!nextStatus) {
-      const i = filterItems.indexOf(filterItem)
-      if (i !== -1) filterItems.splice(i, 1)
-      setFilterItems(filterName, List(filterItems))
-    } else {
-      filterItems.push(filterItem)
-      setFilterItems(filterName, List(filterItems))
-    }
-    return false
+    // const { setFilterItems, filtersMap } = this.props
+    // const filterItems = filtersMap.get(filterName).toArray()
+    // if (!nextStatus) {
+    //   const i = filterItems.indexOf(filterItem)
+    //   if (i !== -1) filterItems.splice(i, 1)
+    //   setFilterItems(filterName, List(filterItems))
+    // } else {
+    //   filterItems.push(filterItem)
+    //   setFilterItems(filterName, List(filterItems))
+    // }
+    // return false
   }
-  /* How we show messages...*/
-  /* catalan: ca, va, es, en, ...*/
-  /* br: pt, br, en, ....*/
-  /* eu: eu, es, en, ....*/
-  /* ga: ga, es, en, .....*/
-
-  // renderActionButtons = () => {
-  //   const { showActionButtons, material } = this.props
-  //   const { idMaterial } = material
-  //   return showActionButtons ? (
-  //     <span>
-  //       <Link to={`/materials/update/${idMaterial}`} >
-  //         <FloatingActionButton mini={true} style={styles.actionBtn}>
-  //           <EditIcon />
-  //         </FloatingActionButton>
-  //       </Link>
-  //       {
-  //         material.status !== PUBLISHED ? (
-  //           <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PUBLISHED)}>
-  //             <VisibilityIcon />
-  //           </FloatingActionButton>
-  //         ) : (
-  //             <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handlePublish(e, PENDING)}>
-  //               <VisibilityOffIcon />
-  //             </FloatingActionButton>
-  //           )
-  //       }
-  //       <FloatingActionButton mini={true} style={styles.actionBtn} onClick={(e) => this.handleBeforeRemove(e)}>
-  //         <DeleteIcon />
-  //       </FloatingActionButton>
-
-  //     </span >
-
-  //   ) : ''
-  // }
 
   handlePublish = (e, publish) => {
     // e.preventDefault()
@@ -129,12 +93,11 @@ class MaterialSnippet extends PureComponent {
 
     moment.locale(locale)
 
-
     const activityTags = (
       <TagsRenderer
         tags={material.activities}
-        type={'activities'}
-        selected={filtersMap.get('activities')}
+        type={'activity'}
+        selected={filtersMap.get('activity')}
         onClick={this.handleTouchTap}
       />
     )
@@ -142,15 +105,19 @@ class MaterialSnippet extends PureComponent {
     const areaTags = (
       <TagsRenderer
         tags={material.areas}
-        type={'areas'}
-        selected={filtersMap.get('areas')}
+        type={'area'}
+        selected={filtersMap.get('area')}
         onClick={this.handleTouchTap}
       />
     )
-    const localeImages = [...material.screenshots[locale] || []].map(image => `${locale}/${image}`)
-    const images = [...material.commonScreenshots || [], ...localeImages]
+    const localeImages = [...(material.screenshots[locale] || [])].map(
+      (image) => `${locale}/${image}`
+    )
+    const images = [...(material.commonScreenshots || []), ...localeImages]
     let title, desc
-    let chooseTranslation = material.translations.filter(translation => translation.lang === locale)
+    let chooseTranslation = material.translations.filter(
+      (translation) => translation.lang === locale
+    )
     if (chooseTranslation.length) {
       title = chooseTranslation[0].title
       desc = chooseTranslation[0].desc
@@ -170,31 +137,59 @@ class MaterialSnippet extends PureComponent {
         keyboardFocused={true}
         primary={true}
         onClick={this.handleRemove}
-      />
-    ];
+      />,
+    ]
 
     return (
       <Item>
         <div style={styles.snippet}>
-
-          {material.status === PENDING && <Ribbon text={<FormattedMessage {...messages.pending} />} type='warning' />}
-          {material.status === NOT_PUBLISHED && <Ribbon text={<FormattedMessage {...messages.notPublished} />} type='danger' />}
-          <ImageSlider images={images} id={material.idMaterial} style={styles.snippetImg} />
+          {material.status === PENDING && (
+            <Ribbon
+              text={<FormattedMessage {...messages.pending} />}
+              type="warning"
+            />
+          )}
+          {material.status === NOT_PUBLISHED && (
+            <Ribbon
+              text={<FormattedMessage {...messages.notPublished} />}
+              type="danger"
+            />
+          )}
+          <ImageSlider
+            images={images}
+            id={material.idMaterial}
+            style={styles.snippetImg}
+          />
           <div style={styles.snippetText}>
             <Link to={`/materials/${locale}/${material.idMaterial}`}>
-              <H2 primary ucase>{title}</H2>
+              <H2 primary ucase>
+                {title}
+              </H2>
             </Link>
-            <em><P>{moment(material.lastUpdated).format('LLL')} ({moment(material.lastUpdated).fromNow()})</P></em>
+            <em>
+              <P>
+                {moment(material.lastUpdated).format('LLL')} (
+                {moment(material.lastUpdated).fromNow()})
+              </P>
+            </em>
             <ReadMore style={{ textAlign: 'justify' }}>
               {desc.split('\n').map((i, key) => {
-                return <P key={key}><Linkify properties={{ target: '_blank' }}>{i}</Linkify></P>
+                return (
+                  <P key={key}>
+                    <Linkify properties={{ target: '_blank' }}>{i}</Linkify>
+                  </P>
+                )
               })}
             </ReadMore>
 
-            {showLabels ?
-              <div style={styles.wrapper}> {activityTags} {areaTags}</div>
-              : ''
-            }
+            {showLabels ? (
+              <div style={styles.wrapper}>
+                {' '}
+                {activityTags} {areaTags}
+              </div>
+            ) : (
+              ''
+            )}
           </div>
         </div>
         <Dialog
@@ -216,11 +211,11 @@ MaterialSnippet.propTypes = {
   material: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
-  setFilterItems: PropTypes.func.isRequired,
   showLabels: PropTypes.bool.isRequired,
   publishMaterial: PropTypes.func.isRequired,
   removeMaterial: PropTypes.func.isRequired,
   showActionButtons: PropTypes.func.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
 }
 
 export default injectIntl(MaterialSnippet)

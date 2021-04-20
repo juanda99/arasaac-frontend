@@ -10,13 +10,17 @@ import { FormattedMessage } from 'react-intl'
 import View from 'components/View'
 import Material from 'components/Material'
 import { makeSelectHasUser, makeSelectRole } from 'containers/App/selectors'
-import { publishMaterial, removeMaterial, material, showSettings } from 'containers/MaterialsView/actions'
+import {
+  publishMaterial,
+  removeMaterial,
+  material,
+  showSettings,
+} from 'containers/MaterialsView/actions'
 import P from 'components/P'
 import { Map } from 'immutable'
 import messages from './messages'
 
 class MaterialView extends PureComponent {
-
   componentDidMount() {
     if (this.props.materialData.isEmpty()) {
       this.props.requestMaterial(this.props.params.idMaterial, this.props.token)
@@ -39,21 +43,27 @@ class MaterialView extends PureComponent {
   }
 
   renderContent() {
-    const { materialData, loading, params, role, showSettings } = this.props
+    const { materialData, loading, params, role } = this.props
     const { locale } = params
-    if (loading) return <p><FormattedMessage {...messages.materialLoading} /></p>
-    return materialData.isEmpty()
-      ? <P><FormattedMessage {...messages.materialNotFound} /> </P>
-      : (
-        <Material
-          material={materialData}
-          locale={locale}
-          showActionButtons={role === 'admin'}
-          publishMaterial={this.handlePublishMaterial}
-          removeMaterial={this.handleRemoveMaterial}
-          showSettings={showSettings}
-        />
+    if (loading)
+      return (
+        <p>
+          <FormattedMessage {...messages.materialLoading} />
+        </p>
       )
+    return materialData.isEmpty() ? (
+      <P>
+        <FormattedMessage {...messages.materialNotFound} />{' '}
+      </P>
+    ) : (
+      <Material
+        material={materialData}
+        locale={locale}
+        showActionButtons={role === 'admin'}
+        publishMaterial={this.handlePublishMaterial}
+        removeMaterial={this.handleRemoveMaterial}
+      />
+    )
   }
 
   render() {
@@ -78,16 +88,21 @@ MaterialView.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const materialData = state.getIn(['materialsView', 'materials', parseInt(ownProps.params.idMaterial, 10)]) || Map()
+  const materialData =
+    state.getIn([
+      'materialsView',
+      'materials',
+      parseInt(ownProps.params.idMaterial, 10),
+    ]) || Map()
   const loading = state.getIn(['materialsView', 'loading'])
   const token = makeSelectHasUser()(state)
   const role = makeSelectRole()(state)
-  return ({
+  return {
     materialData,
     loading,
     token,
-    role
-  })
+    role,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -99,10 +114,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   publishMaterial: (id, publish, token) => {
     dispatch(publishMaterial.request(id, publish, token))
-  },
-  /* use to show advaced search when watching an author materials */
-  showSettings: () => {
-    dispatch(showSettings())
   },
 })
 

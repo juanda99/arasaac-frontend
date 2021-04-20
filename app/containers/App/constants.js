@@ -16,13 +16,16 @@
 /* default locale from browser */
 
 import languages from 'data/languages'
-const appLocales = languages.map((language) => language.code)
+export const appLocales = languages.map((language) => language.code)
 appLocales.push('af')
 
 // pt-br for brasilian
 // valencian doesn't exist
 
-let navigatorLanguage = navigator.language.split('-')[0] // es-ES get reduced to es
+// also used in MaterialsView
+
+let navigatorLanguage = navigator.language.split('-')[0]
+console.log(navigatorLanguage, 'navigatorLanguage') // es-ES get reduced to es
 if (navigator.language === 'pt-br') navigatorLanguage = 'br'
 export const DEFAULT_LOCALE = appLocales.includes(navigatorLanguage)
   ? navigatorLanguage

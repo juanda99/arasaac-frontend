@@ -8,7 +8,6 @@ const itemsPerPage = 10 /* number of items per page */
 const display = 7 /* number of pages to see in the paginator */
 
 export class MaterialList extends PureComponent {
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.materials !== this.props.materials) {
       // reset pagination, as data has changed:
@@ -26,7 +25,7 @@ export class MaterialList extends PureComponent {
   //   // window.scroll(0, 0)
   // }
 
-  handleClick = currentPage => {
+  handleClick = (currentPage) => {
     const offset = (currentPage - 1) * itemsPerPage
     this.props.onPageClick(offset)
   }
@@ -36,12 +35,12 @@ export class MaterialList extends PureComponent {
       locale,
       materials,
       filtersMap,
-      setFilterItems,
+      onFilterChange,
       offset,
       showLabels,
       showActionButtons,
       publishMaterial,
-      removeMaterial
+      removeMaterial,
     } = this.props
 
     //   : null
@@ -67,19 +66,19 @@ export class MaterialList extends PureComponent {
       <div ref={this.setTopRef}>
         {pagination}
         <ul>
-          {visibleMaterials.map((material) =>
+          {visibleMaterials.map((material) => (
             <MaterialSnippet
               key={material.idMaterial}
               material={material}
               locale={locale}
               filtersMap={filtersMap}
-              setFilterItems={setFilterItems}
+              onFilterChange={onFilterChange}
               showLabels={showLabels}
               showActionButtons={showActionButtons}
               publishMaterial={publishMaterial}
               removeMaterial={removeMaterial}
             />
-          )}
+          ))}
         </ul>
         {pagination}
       </div>
@@ -94,12 +93,12 @@ MaterialList.propTypes = {
   locale: PropTypes.string,
   showLabels: PropTypes.bool.isRequired,
   filtersMap: PropTypes.instanceOf(Map).isRequired,
-  setFilterItems: PropTypes.func.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
   offset: PropTypes.number.isRequired,
   onPageClick: PropTypes.func.isRequired,
   showActionButtons: PropTypes.bool.isRequired,
   publishMaterial: PropTypes.func.isRequired,
-  removeMaterial: PropTypes.func.isRequired
+  removeMaterial: PropTypes.func.isRequired,
 }
 
 export default MaterialList

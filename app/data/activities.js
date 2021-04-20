@@ -2,7 +2,8 @@
 // translations inside app/componentsFilters/messages
 const activities = [
   { code: 1, text: 'picaa' },
-  { code: 2, text: 'animation' },
+  // no animation materials,  they're all and unpublished
+  // { code: 2, text: 'animation' },
   { code: 3, text: 'software' },
   { code: 4, text: 'araBoard' },
   { code: 5, text: 'board' },
@@ -40,8 +41,7 @@ const activities = [
   { code: 41, text: 'poster' },
   { code: 42, text: 'intruder' },
   { code: 43, text: 'semanticMap' },
-  { code: 44, text: 'accessibleDoc' }
-
+  { code: 44, text: 'accessibleDoc' },
 ]
 
 export default activities
