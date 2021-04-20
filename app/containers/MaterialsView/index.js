@@ -393,10 +393,17 @@ class MaterialsView extends PureComponent {
                   <ReadMargin>
                     <P>
                       {' '}
-                      <FormattedMessage
-                        {...messages.materialsFound}
-                        values={{ materialsCounter }}
-                      />{' '}
+                      {showNewMaterials ? (
+                        <FormattedMessage
+                          {...messages.newMaterialsFound}
+                          values={{ materialsCounter }}
+                        />
+                      ) : (
+                        <FormattedMessage
+                          {...messages.materialsFound}
+                          values={{ materialsCounter }}
+                        />
+                      )}{' '}
                     </P>
                   </ReadMargin>
                 ) : (
@@ -429,7 +436,7 @@ class MaterialsView extends PureComponent {
                       <P>
                         {' '}
                         <FormattedMessage
-                          {...messages.newMaterialsFound}
+                          {...messages.materialsFound}
                           values={{ materialsCounter }}
                         />{' '}
                       </P>{' '}
@@ -469,7 +476,7 @@ class MaterialsView extends PureComponent {
                       <P>
                         {' '}
                         <FormattedMessage
-                          {...messages.newMaterialsFound}
+                          {...messages.materialsFound}
                           values={{ materialsCounter }}
                         />{' '}
                       </P>{' '}
