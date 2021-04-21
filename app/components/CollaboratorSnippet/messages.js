@@ -4,66 +4,74 @@ const scope = 'app.containers/collaboratorsSnippet'
 export default defineMessages({
   es: {
     id: `${scope}.es`,
-    defaultMessage: 'Spain'
+    defaultMessage: 'Spain',
   },
   au: {
     id: `${scope}.au`,
-    defaultMessage: 'Austria  '
+    defaultMessage: 'Austria  ',
   },
   is: {
     id: `${scope}.is`,
-    defaultMessage: 'Israel'
+    defaultMessage: 'Israel',
   },
   pt: {
     id: `${scope}.pt`,
-    defaultMessage: 'Portugal'
+    defaultMessage: 'Portugal',
   },
   hr: {
     id: `${scope}.hr`,
-    defaultMessage: 'Croatia'
+    defaultMessage: 'Croatia',
   },
   ru: {
     id: `${scope}.ru`,
-    defaultMessage: 'Russia'
+    defaultMessage: 'Russia',
   },
   hu: {
     id: `${scope}.hu`,
-    defaultMessage: 'Hungary'
+    defaultMessage: 'Hungary',
   },
   pl: {
     id: `${scope}.pl`,
-    defaultMessage: 'Poland'
+    defaultMessage: 'Poland',
   },
   ir: {
     id: `${scope}.ir`,
-    defaultMessage: 'Ireland'
+    defaultMessage: 'Ireland',
   },
   fr: {
     id: `${scope}.fr`,
-    defaultMessage: 'France'
+    defaultMessage: 'France',
   },
   mk: {
     id: `${scope}.mk`,
-    defaultMessage: 'Macedonia'
+    defaultMessage: 'Macedonia',
   },
   it: {
     id: `${scope}.it`,
-    defaultMessage: 'Italy'
+    defaultMessage: 'Italy',
   },
   el: {
     id: `${scope}.el`,
-    defaultMessage: 'Greece'
+    defaultMessage: 'Greece',
   },
   bg: {
     id: `${scope}.bg`,
-    defaultMessage: 'Bulgaria'
+    defaultMessage: 'Bulgaria',
   },
   sq: {
     id: `${scope}.sq`,
-    defaultMessage: 'Albania'
+    defaultMessage: 'Albania',
   },
   ar: {
     id: `${scope}.ar`,
-    defaultMessage: 'Algeria'
-  },  
+    defaultMessage: 'Algeria',
+  },
+  be: {
+    id: `${scope}.be`,
+    defaultMessage: 'Belgium',
+  },
+  canada: {
+    id: `${scope}.canada`,
+    defaultMessage: 'Canada',
+  },
 })

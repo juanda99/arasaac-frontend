@@ -57,6 +57,8 @@ import messages from './messages'
 
 const filtersData = { area: areas, activity: activities, language: languages }
 
+const homeUrl = '/materials/search'
+
 class MaterialsView extends PureComponent {
   state = {
     tab: 0,
@@ -83,14 +85,11 @@ class MaterialsView extends PureComponent {
     parameters.tab = parseInt(parameters.tab, 10) || 0
     parameters.searchByAuthor = parameters.searchByAuthor == 'true' // move string to boolean
     const { activity, language, area } = { ...location.query }
-    if (
-      activity ||
-      area ||
-      language ||
-      parameters.searchByAuthor ||
-      params.searchText
-    )
+    if (activity || area || language || params.searchText)
       parameters.showNewMaterials = false
+    else {
+      parameters.showNewMaterials = true
+    }
     const needUpdate = Object.keys(parameters).some(
       (key) => parameters[key] !== this.state[key]
     )
@@ -169,8 +168,13 @@ class MaterialsView extends PureComponent {
   }
 
   handleChange = (tab) => {
-    const { pathname } = this.props.location
-    const url = `${pathname}?tab=${tab}&searchByAuthor=${this.state.searchByAuthor}`
+    const { params, location } = this.props
+    const searchText = params.searchText || ''
+    const objParams = { ...location.query, tab }
+    let urlParameters = this.getUrlParameters(objParams)
+    const url = searchText
+      ? `${homeUrl}/${searchText}?${urlParameters}`
+      : `${homeUrl}?${urlParameters}`
     this.props.router.push(url)
   }
 
@@ -182,8 +186,8 @@ class MaterialsView extends PureComponent {
       const objParams = { ...location.query, offset }
       let urlParameters = this.getUrlParameters(objParams)
       const url = searchText
-        ? `/materials/search/${searchText}?${urlParameters}`
-        : `/materials/search?${urlParameters}`
+        ? `${homeUrl}/${searchText}?${urlParameters}`
+        : `${homeUrl}?${urlParameters}`
       this.props.router.push(url)
     }
   }
@@ -202,8 +206,8 @@ class MaterialsView extends PureComponent {
     if (searchValue) objParams.tab = 0 //  if searching, we move to first tab
     let urlParameters = this.getUrlParameters(objParams)
     const url = searchText
-      ? `/materials/search/${searchText}?${urlParameters}`
-      : `/materials/search?${urlParameters}`
+      ? `${homeUrl}/${searchText}?${urlParameters}`
+      : `${homeUrl}?${urlParameters}`
     this.props.router.push(url)
   }
 
@@ -237,7 +241,7 @@ class MaterialsView extends PureComponent {
       offset: 0,
     }
     let urlParameters = this.getUrlParameters(objParams)
-    const url = `/materials/search?${urlParameters}`
+    const url = `${homeUrl}?${urlParameters}`
     this.props.router.push(url)
   }
 
