@@ -366,6 +366,13 @@ const collaborators = [
     desc: 'Special education assistant.',
     country: 'canada',
   },
+  {
+    name: 'Francisco Javier Marcén Cobos',
+    languages: ['an'],
+    image: 'francisco-marcen.png',
+    desc: ' ',
+    country: 'es',
+  },
 ]
 
 export default collaborators
