@@ -180,7 +180,7 @@ class Material extends Component {
         ? DEFAULT_PROFILE_PICTURE
         : author.getIn([pictureProvider, 'picture'])
     return (
-      <Link to={`/materials/search/${author.get('name')}?searchType=author`}>
+      <Link to={`/materials/search/${author.get('name')}?searchByAuthor=true`}>
         <ListItem key={author.get('_id')}>
           <div style={{ display: 'flex' }}>
             <div>
