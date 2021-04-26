@@ -360,6 +360,14 @@ const collaborators = [
     country: 'be',
   },
   {
+    name: 'Leen Schruers',
+    languages: ['nl'],
+    image: 'leen-schruers.jpg',
+    desc: 'English-Dutch teacher, specialised in foreign language education.',
+    linkedIn: 'leen-schruers-b294201a5',
+    country: 'be',
+  },
+  {
     name: 'Adriana Yamamura Gonçalves',
     languages: ['br'],
     image: 'she.jpg',
