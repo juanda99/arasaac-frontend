@@ -8,5 +8,6 @@
   "activate.invalidCode": "Tento aktivačný kód je neplatný",
   "activate.userActivated": "Váš účet bol aktivovaný. Môžete sa prihlásiť.",
   "activate.userNotActivated": "Pri aktivácii vášho používateľského účtu sa vyskytla chyba",
-  "app.HomePage.discover": "Spoznajte ARASAAC"
+  "app.HomePage.discover": "Spoznajte ARASAAC",
+  "app.MaterialsView.pageDescription": "Materiály pre augmentatívnu a alternatívnu komunikáciou určené profesionálom aj rodinám. Stiahnite si AAK dokumenty, hry aj pracovné listy..."
 }
