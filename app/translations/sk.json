@@ -3,5 +3,8 @@
   "Login.invalidUrl": "Neplatná webová adresa",
   "Login.required": "Pole je povinné",
   "NewPasswordForm.hintNewPassword": "Aké heslo si vyberiete?",
-  "activate.activateUser": "Aktivácia používateľského účtu"
+  "activate.activateUser": "Aktivácia používateľského účtu",
+  "activate.expiredCode": "Platnosť aktivačného kódu vypršala. Poslali sme vám nový email s možnosťou potvrdiť váš účet",
+  "activate.invalidCode": "Váš aktivačný kód je neplatný",
+  "activate.userActivated": "Vaše konto bolo aktivované. Môžete sa prihlásiť."
 }
