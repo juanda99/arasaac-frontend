@@ -1,3 +1,7 @@
 {
-  "Login.invalidEmail": "Neplatný email"
+  "Login.invalidEmail": "Neplatný email",
+  "Login.invalidUrl": "Neplatná webová adresa",
+  "Login.required": "Pole je povinné",
+  "NewPasswordForm.hintNewPassword": "Aké heslo si vyberiete?",
+  "activate.activateUser": "Aktivácia používateľského účtu"
 }
