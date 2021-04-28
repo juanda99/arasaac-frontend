@@ -30,5 +30,10 @@
   "app.component.MaterialConditions.intro": "Veríme, že chápete, že pri publikovaní materiálov na portáli ARASAAC je potrebné držať sa týchto požiadaviek. Vopred vám ďakujeme za spoluprácu.",
   "app.component.MaterialConditions.license": "Licencia:",
   "app.component.MaterialConditions.materialPublication": "Publikácia materiálov",
-  "app.component.MaterialConditions.origin": "Zdroj:"
+  "app.component.MaterialConditions.origin": "Zdroj:",
+  "app.component.MaterialConditions.pictogramsAuthor": "Autor piktogramu:",
+  "app.component.MaterialConditions.publication": "Publikácia",
+  "app.component.MaterialConditions.publicationDesc": "Administrátori webovej stránky ARASAAC si vyhradzujú právo nepublikovať materiály v prípade, že nespĺňajú požiadavky alebo kritériá kvality vyplývajúce z už publikovaných materiálov.",
+  "app.component.MaterialConditions.requirements": "Požiadavky",
+  "app.component.MaterialConditions.requirementsP1": "Materiály publikované v tejto sekcii obsahujú piktogramy z databázy ARASAAC alebo z iných nepôvoddných prác."
 }
