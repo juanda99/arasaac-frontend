@@ -36,7 +36,7 @@
   "app.component.MaterialConditions.publicationDesc": "Administrátori webovej stránky ARASAAC si vyhradzujú právo nepublikovať materiály v prípade, že nespĺňajú požiadavky alebo kritériá kvality vyplývajúce z už publikovaných materiálov.",
   "app.component.MaterialConditions.requirements": "Požiadavky",
   "app.component.MaterialConditions.requirementsP1": "Materiály publikované v tejto sekcii obsahujú piktogramy z databázy ARASAAC alebo z iných nepôvodných prác.",
-  "app.component.MaterialConditions.requirementsP2": "Materiály sú publikované na základe licencie Creative Commons BY-NC-SA, môžu byť použité na neziskové účely s odvolaním sa na zdroj a autora a je možné ich šíriť pod rovnakou licenciou.",
+  "app.component.MaterialConditions.requirementsP2": "Materiály sú publikované na základe licencie Creative Commons BY-NC-SA, môžu byť použité na nekomerčné účely s odvolaním sa na zdroj a autora a je možné ich šíriť pod rovnakou licenciou.",
   "app.component.MaterialConditions.requirementsP3": "Fotografie a obrázky zahrnuté v materiáloch musia zodpovedať našej lincencii alebo musia byť autorským materiálom ich autora.",
   "app.component.MaterialConditions.requirementsP4": "Texty zahrnuté v materiáloch musia zodpovedať našej lincencii. Nesmú byť doslovnou kópiou obsahu, na ktorý sa vzťahujú autorské práva.",
   "app.component.MaterialConditions.requirementsP5": "Všetky materiály musia, najlepšie v spodnej časti textu, uvádzať licenciu ARASAAC a meno autora materiálu, aby mu bolo možné pripísať jeho autorstvo. Licencia sa zároveň vzťahuje na intelektuálne vlastníctvo materiálu.",
@@ -44,8 +44,13 @@
   "app.component.MaterialConditions.standardQuote": "Štandarná citácia",
   "app.component.MaterialConditions.submit": "Potvrdiť",
   "app.component.MaterialConditions.suggestions": "Návrhy",
+  "app.component.MaterialConditions.suggestionsDesc": "Keďže ARASAAC je kolaboratívny a medzinárodný projekt, odporúčame vám, aby ste nám v prípade, že to považujete za vhodné, poskytli nielen súbory vo formáte na čítanie/zobrazenie (pdf, pps, ppsx atď.) ale aj v editovateľnom formáte (doc, docx, ppt, pptx, odf, pszip atď.), aby ich bolo možné preložiť do iných jazykov a vykonať v nich prípadné zmeny podľa potrieb používateľa. Naša licencia Creative Commons sa vzťahuje aj na tieto editovateľné materiály.",
   "app.component.MaterialConditions.translationQuote": "Citácia prekladu",
   "app.component.MaterialConditions.translationQuoteDesc": "U preložených materiálov bude meno prekladateľa uvedené na konci citácie:",
   "app.component.MaterialConditions.translator": "Autor prekladu:",
-  "app.component.Participate.contact": "Kontaktujte nás"
+  "app.component.Participate.contact": "Kontaktujte nás",
+  "app.component.Participate.header": "Vytvárame ARASAAC. Chcete sa k nám pridať?",
+  "app.components.Catalog.accept": "Prijať",
+  "app.components.Catalog.arasaacLicense": "Licencia ARASAAC",
+  "app.components.Catalog.cancel": "Zamietnuť"
 }
