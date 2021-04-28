@@ -21,5 +21,7 @@
   "app.PictogramsView.pageTitle": "Symboly AAK - ARASAAC",
   "app.PictogramsView.searchByCategories": "Vyhľadávanie podľa kategórií",
   "app.PictogramsView.translationStatus": "Aktuálny status prekladu.",
-  "app.PictogramsView.translationsWarning": "Vyhľadávanie piktogramov vo vašom jazyku nefunguje správne, pretože preklad nie je úplný."
+  "app.PictogramsView.translationsWarning": "Vyhľadávanie piktogramov vo vašom jazyku nefunguje správne, pretože preklad nie je úplný.",
+  "app.component.MaterialConditions.adaptationQuote": "Citácia adaptácie",
+  "app.component.MaterialConditions.adaptationQuoteDesc": "Pri adaptácii jestvujúceho materiálu bude na konci citácie uvedené meno osoby, ktorá ho adaptovala:"
 }
