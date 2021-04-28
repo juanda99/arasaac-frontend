@@ -43,5 +43,9 @@
   "app.component.MaterialConditions.requirementsP6": "Ak má byť citácia správna, je potrebné použiť jeden z nasledujúcich formátov:",
   "app.component.MaterialConditions.standardQuote": "Štandarná citácia",
   "app.component.MaterialConditions.submit": "Potvrdiť",
-  "app.component.MaterialConditions.suggestions": "Návrhy"
+  "app.component.MaterialConditions.suggestions": "Návrhy",
+  "app.component.MaterialConditions.translationQuote": "Citácia prekladu",
+  "app.component.MaterialConditions.translationQuoteDesc": "U preložených materiálov bude meno prekladateľa uvedené na konci citácie:",
+  "app.component.MaterialConditions.translator": "Autor prekladu:",
+  "app.component.Participate.contact": "Kontaktujte nás"
 }
