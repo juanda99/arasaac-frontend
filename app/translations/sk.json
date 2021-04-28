@@ -23,5 +23,12 @@
   "app.PictogramsView.translationStatus": "Aktuálny status prekladu.",
   "app.PictogramsView.translationsWarning": "Vyhľadávanie piktogramov vo vašom jazyku nefunguje správne, pretože preklad nie je úplný.",
   "app.component.MaterialConditions.adaptationQuote": "Citácia adaptácie",
-  "app.component.MaterialConditions.adaptationQuoteDesc": "Pri adaptácii jestvujúceho materiálu bude na konci citácie uvedené meno osoby, ktorá ho adaptovala:"
+  "app.component.MaterialConditions.adaptationQuoteDesc": "Pri adaptácii jestvujúceho materiálu bude na konci citácie uvedené meno osoby, ktorá ho adaptovala:",
+  "app.component.MaterialConditions.adaptedBy": "Autor adaptácie:",
+  "app.component.MaterialConditions.author": "Autor:",
+  "app.component.MaterialConditions.checkRead": "Vyššie uvedené informácie som si prečítal a rozumiem im.",
+  "app.component.MaterialConditions.intro": "Veríme, že chápete, že pri publikovaní materiálov na portáli ARASAAC je potrebné držať sa týchto požiadaviek. Vopred vám ďakujeme za spoluprácu.",
+  "app.component.MaterialConditions.license": "Licencia:",
+  "app.component.MaterialConditions.materialPublication": "Publikácia materiálov",
+  "app.component.MaterialConditions.origin": "Zdroj:"
 }
