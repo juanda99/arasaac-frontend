@@ -9,12 +9,17 @@
   "activate.userActivated": "Váš účet bol aktivovaný. Môžete sa prihlásiť.",
   "activate.userNotActivated": "Pri aktivácii vášho používateľského účtu sa vyskytla chyba",
   "app.HomePage.discover": "Spoznajte ARASAAC",
-  "app.MaterialsView.pageDescription": "Materiály pre augmentatívnu a alternatívnu komunikáciou určené profesionálom aj rodinám. Stiahnite si AAK dokumenty, hry aj pracovné listy...",
+  "app.MaterialsView.pageDescription": "Materiály pre augmentatívnu a alternatívnu komunikáciu určené profesionálom aj rodinám. Stiahnite si AAK dokumenty, hry aj pracovné listy...",
   "app.MaterialsView.pageDescriptionSearch": "Materiály pre augmentatívnu a alternatívnu komunikáciu z oblasti {searchText} určené profesionálom aj rodinám. Stiahnite si AAK dokumenty, hry aj pracovné listy...",
   "app.MaterialsView.pageTitle": "Dostupné materiály AAK - ARASAAC",
   "app.MaterialsView.pageTitleSearch": "Dostupné materiály AAK - ARASAAC z oblasti {searchText}",
   "app.PictogramsView.closeWarning": "Zatvoriť varovanie",
   "app.PictogramsView.contactTranslators": "Ak sa k nám pridať ako prekladateľ, kontaktujte nás!",
   "app.PictogramsView.languageSearch": "Vyberte si jazyk",
-  "app.PictogramsView.needTranslators": "Potrebujeme pomoc pri preklade ARASAAC-u do slovenčiny."
+  "app.PictogramsView.needTranslators": "Potrebujeme pomoc pri preklade ARASAAC-u do slovenčiny.",
+  "app.PictogramsView.pageDesc": "Voľné dostupné symboly pre augmentatívnu a alternatívnu komunikáciu",
+  "app.PictogramsView.pageTitle": "Symboly AAK - ARASAAC",
+  "app.PictogramsView.searchByCategories": "Vyhľadávanie podľa kategórií",
+  "app.PictogramsView.translationStatus": "Aktuálny status prekladu.",
+  "app.PictogramsView.translationsWarning": "Vyhľadávanie piktogramov vo vašom jazyku nefunguje správne, pretože preklad nie je úplný."
 }
