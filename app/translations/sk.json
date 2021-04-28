@@ -35,5 +35,8 @@
   "app.component.MaterialConditions.publication": "Publikácia",
   "app.component.MaterialConditions.publicationDesc": "Administrátori webovej stránky ARASAAC si vyhradzujú právo nepublikovať materiály v prípade, že nespĺňajú požiadavky alebo kritériá kvality vyplývajúce z už publikovaných materiálov.",
   "app.component.MaterialConditions.requirements": "Požiadavky",
-  "app.component.MaterialConditions.requirementsP1": "Materiály publikované v tejto sekcii obsahujú piktogramy z databázy ARASAAC alebo z iných nepôvoddných prác."
+  "app.component.MaterialConditions.requirementsP1": "Materiály publikované v tejto sekcii obsahujú piktogramy z databázy ARASAAC alebo z iných nepôvodných prác.",
+  "app.component.MaterialConditions.requirementsP2": "Materiály sú publikované na základe licencie Creative Commons BY-NC-SA, môžu byť použité na neziskové účely s odvolaním sa na zdroj a autora a je možné ich šíriť pod rovnakou licenciou.",
+  "app.component.MaterialConditions.requirementsP3": "Fotografie a obrázky zahrnuté v materiáloch musia zodpovedať našej lincencii alebo musia byť autorským materiálom ich autora.",
+  "app.component.MaterialConditions.requirementsP4": "Texty zahrnuté v materiáloch musia zodpovedať našej lincencii. Nesmú byť doslovnou kópiou obsahu, na ktorý sa vzťahujú autorské práva."
 }
