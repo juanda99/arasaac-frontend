@@ -440,6 +440,7 @@
   "app.components.aacusage.visualTimetables": "Ikusizko ordutegiak",
   "app.components.aacusers.intro": "Sinboloek arrazoi desberdinak direla eta (autismoa, adimen urritasuna, hizkuntza falta, adinekoak, etab.) Hizkuntzarekin zailtasunak dituzten edonori lagun diezaiokete edo, besterik gabe, hizkuntza ulertzen ez dutenak (atzerritarrak, migratzaileak...).",
   "app.components.aacusers.p1": "Zailtasun horietako batzuk dituzten haur gehienentzat, hizkuntzaren garapena ikusizko euskarriekin errazten den erronka da. Kasu horietako gehienetan, sinboloekin komunikazioa areagotzen da, laguntza horiek ahozko eta idatzizko hizkuntza neurri batean garatzeko modu bat direlako. Bestalde, euskarri bisualak ingurunea aurreikusteko eta ulergarriagoa izan dadin modu bat dira, bizitzako trebetasunak ikastea eta garatzea erraztuz.",
+  "app.components.aacusers.p2": "Gaitasun motorikoak kaltetuak egonik aho-hizkuntzaren erabilera ezinezkoa den kasuetan, sinboloen erabilera komunikazio sistema alternatibo batean bihurtzen da, pertsonak bere munduarekin konektatzen eta bere beharrak, nahiak edo desirak ez ezik, ideiak, emozioak eta iritziak komunikatzen uzten diena.",
   "app.components.aacusers.title2": "Zailtasun fisiko larriak dituzten haurrak eta helduak (garun paralisia, buruko traumatismoa, iktusa...)",
   "app.components.aacusers.title3": "Adineko pertsonak",
   "app.components.aacusers.title4": "Larrialdi edo egoera sanitarioan dauden pertsonak",
