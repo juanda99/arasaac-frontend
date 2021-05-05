@@ -106,6 +106,7 @@
   "app.components.Filters.Area.foreignLanguages": "Foreign languages",
   "app.components.Filters.Area.geometry": "Geometry",
   "app.components.Filters.Area.health": "Health",
+  "app.components.Filters.Area.langSelector": "Language",
   "app.components.Filters.Area.language": "Language",
   "app.components.Filters.Area.leisure": "Leisure and culture",
   "app.components.Filters.Area.literature": "Literature",

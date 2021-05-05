@@ -113,6 +113,11 @@ export default defineMessages({
   },
   language: {
     id: 'app.components.Filters.Area.language',
+    description: 'items language selector',
+    defaultMessage: 'Language',
+  },
+  langSelector: {
+    id: 'app.components.Filters.Area.langSelector',
     description: 'Menu choose material area',
     defaultMessage: 'Language',
   },

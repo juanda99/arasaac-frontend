@@ -94,7 +94,10 @@ export const FilterSelectLoader = ({
     a.primaryText.localeCompare(b.primaryText)
   )
   const filterProps = {
-    floatingLabelText: formatMessage(messages[type]),
+    floatingLabelText:
+      type === 'language'
+        ? formatMessage(messages.langSelector)
+        : formatMessage(messages[type]),
     multiple: false,
     values,
     filterType: type,
