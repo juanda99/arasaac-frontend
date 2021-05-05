@@ -106,6 +106,7 @@
   "app.components.Filters.Area.foreignLanguages": "crwdns2610:0crwdne2610:0",
   "app.components.Filters.Area.geometry": "crwdns2612:0crwdne2612:0",
   "app.components.Filters.Area.health": "crwdns2614:0crwdne2614:0",
+  "app.components.Filters.Area.langSelector": "crwdns7280:0crwdne7280:0",
   "app.components.Filters.Area.language": "crwdns2616:0crwdne2616:0",
   "app.components.Filters.Area.leisure": "crwdns2620:0crwdne2620:0",
   "app.components.Filters.Area.literature": "crwdns2622:0crwdne2622:0",
