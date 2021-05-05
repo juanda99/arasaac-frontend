@@ -51,38 +51,6 @@ const makeSearchTypeSelector = () => (_, ownProps) => ({
   ...ownProps.location.query,
 })
 
-/* get materials id's from a material search (specific for locale and search keywords) */
-/* if undefined, it means it's necessary to make an ajax call */
-
-export const makeSearchResultsSelector = () =>
-  createSelector(
-    makeSearchSelector(),
-    makeSearchTypeSelector(),
-    makeSelectLocale(),
-    makeSearchTextSelector(),
-    (materials, searchType, locale, searchText) => {
-      const activity = searchType.activity
-        ? parseInt(searchType.activity)
-        : null
-      const area = searchType.area ? parseInt(searchType.area) : null
-      const language = searchType.language || null
-      const searchByAuthor = searchType.searchByAuthor == 'true'
-      /* if searchText, we use it, if not present return undefined to make ajax call */
-      if (searchText && !searchByAuthor)
-        return materials.getIn([locale, searchText])
-      else if (searchText && searchByAuthor) {
-        return materials.getIn(['author', searchText])
-      } else if (activity && materials.getIn(['activity', activity])) {
-        return materials.getIn(['activity', activity])
-      } else if (area && materials.getIn(['area', area])) {
-        return materials.getIn(['area', area])
-      } else if (language && materials.getIn(['language', language])) {
-        return materials.getIn(['language', language])
-      }
-      return null
-    }
-  )
-
 /* get materials id's for last modify materials (configured in client/server API for 30 days) */
 const makeSearchNewMaterialsSelector = () =>
   createSelector(selectMaterialsViewDomain, (substate) =>
@@ -134,13 +102,46 @@ export const makeNotPublishedSelector = () =>
     }
   )
 
+/* get materials id's from a material search (specific for locale and search keywords) */
+/* if undefined, it means it's necessary to make an ajax call */
+
+export const makeSearchResultsSelector = () =>
+  createSelector(
+    makeSearchSelector(),
+    makeSearchTypeSelector(),
+    makeSelectLocale(),
+    makeSearchTextSelector(),
+    (materials, searchType, locale, searchText) => {
+      const activity = searchType.activity
+        ? parseInt(searchType.activity)
+        : null
+      const area = searchType.area ? parseInt(searchType.area) : null
+      const language = searchType.language || null
+      const searchByAuthor = searchType.searchByAuthor == 'true'
+      /* if searchText, we use it, if not present return undefined to make ajax call */
+      if (searchText && !searchByAuthor)
+        return materials.getIn([locale, searchText])
+      else if (searchText && searchByAuthor) {
+        return materials.getIn(['author', searchText])
+      } else if (activity && materials.getIn(['activity', activity])) {
+        return materials.getIn(['activity', activity])
+      } else if (area && materials.getIn(['area', area])) {
+        return materials.getIn(['area', area])
+      } else if (language && materials.getIn(['language', language])) {
+        return materials.getIn(['language', language])
+      }
+      return null
+    }
+  )
+
 export const makeVisibleMaterialsSelector = () =>
   createSelector(
     makeSearchResultsSelector(),
     makeEntitiesSelector(),
     makeFiltersSelector(),
     makeSearchTypeSelector(),
-    (searchData, entities, filters, searchType) => {
+    makeSearchTextSelector(),
+    (searchData, entities, filters, searchType, searchText) => {
       /* searchData could be undefined */
       if (searchData == null) return []
       const materialList = denormalize(
@@ -148,14 +149,27 @@ export const makeVisibleMaterialsSelector = () =>
         searchMaterialSchema,
         entities
       )
-      const filterList = getFilteredItems(materialList, filters)
-      return searchType === 'content'
-        ? filterList
-        : filterList.sort(
-            (a, b) =>
-              new Date(b.lastUpdated).getTime() -
-              new Date(a.lastUpdated).getTime()
-          )
+      const searchByAuthor = searchType.searchByAuthor == 'true'
+      /* if searchText, we use it, if not present return undefined to make ajax call */
+      let data = []
+      if (searchText && !searchByAuthor) {
+        data = materialList.sort((a, b) => b.score - a.score)
+      } else {
+        data = materialList.sort(
+          (a, b) =>
+            new Date(b.lastUpdated).getTime() -
+            new Date(a.lastUpdated).getTime()
+        )
+      }
+
+      return getFilteredItems(data, filters)
+      // return searchType === 'content'
+      //   ? filterList
+      //   : filterList.sort(
+      //       (a, b) =>
+      //         new Date(b.lastUpdated).getTime() -
+      //         new Date(a.lastUpdated).getTime()
+      //     )
     }
   )
 
