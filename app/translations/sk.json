@@ -98,5 +98,21 @@
   "app.components.Filters.Activity.video": "Video",
   "app.components.Filters.Area": "Oblasť",
   "app.components.Filters.Area.alphabet": "Abeceda",
-  "app.components.Filters.Area.art": "Umenie"
+  "app.components.Filters.Area.art": "Umenie",
+  "app.components.Filters.Area.attention": "Pozor",
+  "app.components.Filters.Area.auditorydiscrimination": "Rozlišovanie sluchom",
+  "app.components.Filters.Area.basicOperations": "Základné operácie",
+  "app.components.Filters.Area.behaviour": "Správanie",
+  "app.components.Filters.Area.foreignLanguages": "Cudzie jazyky",
+  "app.components.Filters.Area.geometry": "Geometria",
+  "app.components.Filters.Area.health": "Zdravie",
+  "app.components.Filters.Area.langSelector": "Jazyk",
+  "app.components.Filters.Area.language": "Jazyk",
+  "app.components.Filters.Area.leisure": "Voľný čas a kultúra",
+  "app.components.Filters.Area.literature": "Literatúra",
+  "app.components.Filters.Area.logicReasoning": "Logické myslenie",
+  "app.components.Filters.Area.math": "Matematika",
+  "app.components.Filters.Area.measurementUnits": "Jednotky miery",
+  "app.components.Filters.Area.moneyUsage": "Používanie peňazí",
+  "app.components.Filters.Area.morphosyntax": "Morfosyntax"
 }
