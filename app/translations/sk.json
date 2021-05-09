@@ -236,5 +236,7 @@
   "app.components.MaterialForm.classification": "Klasifikácia",
   "app.components.MaterialForm.description": "Popis",
   "app.components.MaterialForm.descriptionHint": "Vložte popis materiálu",
-  "app.components.MaterialForm.email": "E-mail"
+  "app.components.MaterialForm.email": "E-mail",
+  "app.components.MaterialForm.emailHint": "Zadajte e-mail autora",
+  "app.components.MaterialForm.files": "Súbory"
 }
