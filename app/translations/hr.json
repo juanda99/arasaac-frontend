@@ -379,6 +379,7 @@
   "app.components.aac.list4": "{independentExploration}: samo za elektroničke proizvode. U ovom slučaju komunikator ili računalo prikazuje različite mogućnosti za komunikaciju sve dok asistent pritiskom na prekidač ne odabere onu koju želi. Postoje mnoge vrste prekidača koje se mogu aktivirati različitim dijelovima tijela.",
   "app.components.aac.list5": "{codedSelection}: svaki znak ili slovo ima pridružen kôd (na primjer broj od dvije ili tri znamenke ili boje i broja), korisnik označava kôd izravnim odabirom ili skeniranjem kako bi se prenio simbol ili slovo. Na taj način, s nekoliko tipki ili rešetki može se pristupiti velikom broju simbola.",
   "app.components.aac.mouseSelection": "Odabir mišem",
+  "app.components.aac.p1": "{aac} su načini izražavanja koji su različiti od govornog jezika, te su usmjereni na povećanje (potpomognuto) i / ili kompenzaciju (nadomjesno) poteškoća u komunikaciji i jeziku mnogih osoba s trajnim mentalnim i/ili tjelesnim teškoćama.",
   "app.components.author": "Autor piktograma:",
   "app.components.creativeCommons": "Licenca Creative Commons BY-NC-SA",
   "app.components.dialog.ok": "U redu",
