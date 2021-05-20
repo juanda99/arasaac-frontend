@@ -174,7 +174,7 @@ class Material extends Component {
     const role = authorData.get('role') || 'author'
     const author = authorData.get('author')
     const pictureProvider =
-      authorData.get('pictureProvider') || ARASAAC /* legacy users data */
+      author.get('pictureProvider') || ARASAAC /* legacy users data */
     const picture =
       pictureProvider === ARASAAC
         ? DEFAULT_PROFILE_PICTURE
