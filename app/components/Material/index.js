@@ -38,6 +38,8 @@ import langMessages from 'components/LanguageSelector/messages'
 import {
   DEFAULT_PROFILE_PICTURE,
   ARASAAC,
+  FACEBOOK,
+  FB_CLIENT_TOKEN,
   NOT_PUBLISHED,
   PUBLISHED,
   PENDING,
@@ -175,10 +177,13 @@ class Material extends Component {
     const author = authorData.get('author')
     const pictureProvider =
       author.get('pictureProvider') || ARASAAC /* legacy users data */
-    const picture =
+    let picture =
       pictureProvider === ARASAAC
         ? DEFAULT_PROFILE_PICTURE
         : author.getIn([pictureProvider, 'picture'])
+
+    if (pictureProvider === FACEBOOK)
+      picture = `${picture}&access_token=${FB_CLIENT_TOKEN}`
     return (
       <Link to={`/materials/search/${author.get('name')}?searchByAuthor=true`}>
         <ListItem key={author.get('_id')}>

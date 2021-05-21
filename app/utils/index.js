@@ -2,6 +2,7 @@ import { PICTOGRAMS_URL, IMAGES_URL } from 'services/config'
 export const ARASAAC = 'arasaac'
 export const GOOGLE = 'google'
 export const FACEBOOK = 'facebook'
+export const FB_CLIENT_TOKEN = '1687810071473822|kI26Z4s_U5SYFBZLBc_sTR9QJYc'
 /* for material status */
 export const NOT_PUBLISHED = 0
 export const PUBLISHED = 1

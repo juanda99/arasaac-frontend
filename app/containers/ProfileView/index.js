@@ -36,32 +36,31 @@ import {
   makeSelectSearchLanguage,
   makeSelectViolencePictograms,
   makeSelectSexPictograms,
-  makeSelectColorPictograms
+  makeSelectColorPictograms,
 } from 'containers/App/selectors'
 import { updateUser } from 'containers/App/actions'
 import { changeLocale } from 'containers/LanguageProvider/actions'
 import api from 'services'
 import P from 'components/P'
 import TranslationStatus from 'containers/TranslationStatus'
-
+import { FACEBOOK, FB_CLIENT_TOKEN } from 'utils'
 import ProfileIntro from './ProfileIntro'
 import messages from './messages'
 
 const styles = {
   toggle: {
     fontWeight: 100,
-    width: '90%'
+    width: '90%',
   },
   divider: {
-    marginTop:  50
-  }
+    marginTop: 50,
+  },
 }
-
 
 class ProfileView extends PureComponent {
   state = {
     showPassword: true,
-    errorPassword: false
+    errorPassword: false,
   }
 
   handleChangePassword = async (data) => {
@@ -80,7 +79,7 @@ class ProfileView extends PureComponent {
 
   handleValueChange = (value, paramName) => {
     const { updateUser, token, changeLocale } = this.props
-    const  user = {}
+    const user = {}
     user[paramName] = value
     updateUser({ user }, token)
     if (paramName === 'locale') changeLocale(value)
@@ -103,16 +102,20 @@ class ProfileView extends PureComponent {
     }
     if (errorPassword) {
       return (
-        <P style={{ marginRight: 20 }} ><FormattedMessage {...messages.errorPassword} /></P>
+        <P style={{ marginRight: 20 }}>
+          <FormattedMessage {...messages.errorPassword} />
+        </P>
       )
     }
     return (
-      <P style={{ marginRight: 20 }}><FormattedMessage {...messages.passwordChanged} /></P>
+      <P style={{ marginRight: 20 }}>
+        <FormattedMessage {...messages.passwordChanged} />
+      </P>
     )
   }
 
   render() {
-    const { 
+    const {
       lastLogin,
       name,
       picture,
@@ -129,19 +132,26 @@ class ProfileView extends PureComponent {
       searchLanguage,
       sex,
       violence,
-      color
+      color,
     } = this.props
-    const profileImage = picture ? picture : DEFAULT_PROFILE_PICTURE
+
+    let profileImage = picture ? picture : DEFAULT_PROFILE_PICTURE
+    if (pictureProvider === FACEBOOK && picture) {
+      profileImage = `${profileImage}&access_token=${FB_CLIENT_TOKEN}`
+    }
+
     const isRtl = muiTheme.direction === 'rtl'
 
     return (
-      <View left={true} right={true} top={2} bottom={2} >
+      <View left={true} right={true} top={2} bottom={2}>
         <ReadMargin>
           <ProfileIntro
             name={name}
             lastLogin={lastLogin}
             picture={profileImage}
-            onPictureChange={(value) =>this.handleValueChange(value, 'pictureProvider')}
+            onPictureChange={(value) =>
+              this.handleValueChange(value, 'pictureProvider')
+            }
             role={role}
             targetLanguages={targetLanguages}
             isRtl={isRtl}
@@ -162,23 +172,39 @@ class ProfileView extends PureComponent {
             <FormattedMessage {...messages.personalData} />
           </H2>
           <div style={{ maxWidth: 400 }}>
-            <RegisterForm update={true} initialValues={{ name, company, url, email }} onSubmit={this.handleSubmitUser} />
+            <RegisterForm
+              update={true}
+              initialValues={{ name, company, url, email }}
+              onSubmit={this.handleSubmitUser}
+            />
           </div>
 
           <div style={styles.divider}>
             <Divider />
           </div>
-      
 
-          <div style={{display: 'flex', flexWrap: 'wrap',  justifyContent: 'flexStart'}}>
-            <div  style={{marginRight: '60px'}}>
-              <H2 primary={true}><FormattedMessage {...messages.language} /></H2>
-              <LanguageSelector value={userLocale} onChange={(value)=>this.handleValueChange(value, 'locale')}   />
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'flexStart',
+            }}
+          >
+            <div style={{ marginRight: '60px' }}>
+              <H2 primary={true}>
+                <FormattedMessage {...messages.language} />
+              </H2>
+              <LanguageSelector
+                value={userLocale}
+                onChange={(value) => this.handleValueChange(value, 'locale')}
+              />
             </div>
             {(role === 'admin' || role === 'translator') && (
-              <div style={{flexGrow:  4}}>
-                <H2 primary={true}><FormattedMessage {...messages.translationStatus} /></H2>
-                <TranslationStatus language={userLocale} hideAAC={true}/>
+              <div style={{ flexGrow: 4 }}>
+                <H2 primary={true}>
+                  <FormattedMessage {...messages.translationStatus} />
+                </H2>
+                <TranslationStatus language={userLocale} hideAAC={true} />
               </div>
             )}
           </div>
@@ -187,24 +213,53 @@ class ProfileView extends PureComponent {
             <Divider />
           </div>
 
-          <div style={{display: 'flex', flexWrap: 'wrap',  justifyContent: 'flexStart'}}>
-            <div  style={{marginRight: '60px'}}>
-              <H2 primary={true}><FormattedMessage {...messages.searchPictograms} /></H2>  
-              <LanguageSelector value={searchLanguage} onChange={(value)=>this.handleValueChange(value, 'searchLanguage')} />
-              <Toggle toggled={color} onToggle={(e, value) => this.handleValueChange(value, 'color')} label={<FormattedMessage {...messages.colorPictograms} />} style={styles.toggle} />
-              <Toggle toggled={sex} onToggle={(e, value) => this.handleValueChange(value, 'sex')}  label={<FormattedMessage {...messages.sexPictograms} />}  style={styles.toggle}  />
-              <Toggle toggled={violence} onToggle={(e, value) => this.handleValueChange(value, 'violence')} label={<FormattedMessage {...messages.violencePictograms} />}  style={styles.toggle}  />
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'flexStart',
+            }}
+          >
+            <div style={{ marginRight: '60px' }}>
+              <H2 primary={true}>
+                <FormattedMessage {...messages.searchPictograms} />
+              </H2>
+              <LanguageSelector
+                value={searchLanguage}
+                onChange={(value) =>
+                  this.handleValueChange(value, 'searchLanguage')
+                }
+              />
+              <Toggle
+                toggled={color}
+                onToggle={(e, value) => this.handleValueChange(value, 'color')}
+                label={<FormattedMessage {...messages.colorPictograms} />}
+                style={styles.toggle}
+              />
+              <Toggle
+                toggled={sex}
+                onToggle={(e, value) => this.handleValueChange(value, 'sex')}
+                label={<FormattedMessage {...messages.sexPictograms} />}
+                style={styles.toggle}
+              />
+              <Toggle
+                toggled={violence}
+                onToggle={(e, value) =>
+                  this.handleValueChange(value, 'violence')
+                }
+                label={<FormattedMessage {...messages.violencePictograms} />}
+                style={styles.toggle}
+              />
             </div>
-            <div style={{flexGrow:  4}}>
-              <H2 primary={true}><FormattedMessage {...messages.translationStatus} /></H2>
+            <div style={{ flexGrow: 4 }}>
+              <H2 primary={true}>
+                <FormattedMessage {...messages.translationStatus} />
+              </H2>
               <TranslationStatus language={searchLanguage} hideWeb={true} />
             </div>
           </div>
-
-
         </ReadMargin>
-
-      </View >
+      </View>
     )
   }
 }
@@ -257,8 +312,10 @@ const mapDispatchToProps = (dispatch) => ({
   showProgressBar: () => dispatch(showLoading()),
   hideProgressBar: () => dispatch(hideLoading()),
   updateUser: (user, token) => dispatch(updateUser.request(user, token)),
-  changeLocale: (language) => dispatch(changeLocale(language))
+  changeLocale: (language) => dispatch(changeLocale(language)),
 })
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(muiThemeable()(userIsAuthenticated(ProfileView)))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(muiThemeable()(userIsAuthenticated(ProfileView)))
