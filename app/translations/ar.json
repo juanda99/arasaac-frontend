@@ -465,6 +465,8 @@
   "app.components.updateMaterialView.updatedMaterial": "تم تحديث المادة.",
   "app.components.updateMaterialView.updatingMaterial": "جاري تحميل المواد...",
   "app.components.uploadMaterialView.close": "غلق",
+  "app.components.uploadMaterialView.materialSuccessUpload": "تَمَّ تَحْمِيلْ المَواَدْ و سَيتِمُّ عَرْضُهَا و مُرَاجَعَتُهَا مِنْ طَرَفْ فَرِيقْ الآرَاساك. سَنُرْسِلُ لَكَ بَريدًا إلِكْتْرُونِيّ ح] نَ يَتِم نَشْرُهَا!",
+  "app.components.uploadMaterialView.needAuthor": "لَابُد مِنْ وُجُود مُؤَلِّفْ \\ كَاتِبْ عَلَى الأَقَّلْ لِهَذِه المَوَاد",
   "app.components.uploadMaterialView.needFiles": "عَلَى الأقَلْ تَوَفُرْ وَثِيقَة وَاحِدَة",
   "app.components.uploadMaterialView.needReview": "فَحْصْ \\ مُرَاجَعَة المَّادَة",
   "app.components.uploadMaterialView.progressStatus": "تَحْمِيل المَوَادْ: {progressStatus}%",
