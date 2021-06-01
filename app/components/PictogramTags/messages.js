@@ -836,6 +836,7 @@ export default defineMessages({
     defaultMessage: 'onomatopoeia',
   },
   opera: { id: 'tags.opera', defaultMessage: 'opera' },
+  ophthalmology: { id: 'tags.ophthalmology', defaultMessage: 'ophthalmology' },
   'ordinal adjective': {
     id: 'tags.ordinal adjective',
     defaultMessage: 'ordinal adjective',
