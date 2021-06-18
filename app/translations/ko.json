@@ -8,5 +8,20 @@
   "activate.invalidCode": "활성화 코드가 유효하지 않습니다.",
   "activate.userActivated": "계정이 활성화 되었습니다. 이제 로그인 하실 수 있습니다.",
   "activate.userNotActivated": "나는 학교에 간다.",
-  "app.PictogramsView.closeWarning": "경고 닫기"
+  "app.PictogramsView.closeWarning": "경고 닫기",
+  "app.components.Filters.Activity.assessmentTest": "평가",
+  "app.components.Filters.Activity.audiovisualMaterial": "시청각 자료",
+  "app.components.Filters.Activity.bingo": "빙고",
+  "app.components.Filters.Activity.board": "보드. 판",
+  "app.components.Filters.Activity.book": "책",
+  "app.components.Filters.Activity.collectiveGame": "단체 게임, 그룹 게임, 그룹 놀이",
+  "app.components.Filters.Activity.communication": "의사소통",
+  "app.components.Filters.Activity.digitalBoard": "디지털 보드, 전자적 보드",
+  "app.components.Filters.Activity.domino": "도미노",
+  "app.components.Filters.Activity.game": "게임",
+  "app.components.Filters.Activity.individualGame": "개인전",
+  "app.components.Filters.Activity.kitchenRecipes": "요리법",
+  "app.components.Filters.Activity.notebook": "노트북",
+  "app.components.Filters.Activity.poster": "포스터",
+  "app.components.Filters.Activity.routine": "루틴, 일상, 규치적인 일상"
 }
