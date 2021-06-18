@@ -151,5 +151,12 @@
   "app.components.Pictogram.chooseZoom": "확대/축소 수준 선택:",
   "app.components.Pictogram.classroom": "교실",
   "app.components.Pictogram.color": "색",
-  "app.components.Pictogram.copy": "복사"
+  "app.components.Pictogram.copy": "복사",
+  "app.components.Pictogram.copyToClipboard": "픽토그램이 클립보드에 복사되었습니다.",
+  "app.components.Pictogram.coreVocabularyIntro": "이 픽토그램은 보완대체의사소통을 위한 기본 핵심 어휘의 일부입니다.",
+  "app.components.Pictogram.description": "관련 어휘",
+  "app.components.Pictogram.disableFilter": "이 픽토그램은 성 또는 폭력과 관련이 있다. 이 필터를 보려면 사용자 프로필에서 해당 필터를 비활성화해야 합니다.",
+  "app.components.Pictogram.downloadLabel": "다운로드",
+  "app.components.Pictogram.frame": "프레임",
+  "app.components.Pictogram.frameColor": "프레임 색상"
 }
