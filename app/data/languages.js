@@ -30,6 +30,7 @@ const languages = [
   // FEB: web 90%,  admin 100%, pictos 0%
   // MARCH: web 99%,  admin 99%, pictos 26%
   // APRI: web 99%,  admin 99%, pictos 53%
+  // JUNE: web 99%,  admin 99%, pictos 72%
   {
     code: 'an',
     text: 'Aragonés',
@@ -40,6 +41,7 @@ const languages = [
   // FEB: web 100%, admin 100%, pictos  3%
   // MARCH: web 99%, admin 100%, pictos 10.5%
   // MARCH: web 100%, admin 100%, pictos 13%
+  // JUNE: web 100%, admin 100%, pictos 21%
   {
     code: 'bg',
     text: 'български',
@@ -76,7 +78,7 @@ const languages = [
     translated: false,
     needTranslators: true,
   },
-  // ET
+  // ET - Estonian
   // FEB: web 56%, admin 100%, pictos 16%
   // MARCH: web 98%, admin 99%, pictos 19%
   // APRIL: web 97%, admin 99%, pictos 19%
@@ -90,6 +92,7 @@ const languages = [
   // FEB: web 92%, admin 99%, pictos 65%
   // MARCH: web 95%, admin 99%, pictos 77%
   // APRIL: web 97%, admin 99%, pictos 83%
+  // JUNE: web 97%, admin 99%, pictos 85%
   {
     code: 'eu',
     text: 'Euskal',
@@ -104,6 +107,7 @@ const languages = [
   // FEB: web 98%, admin 100%, pictos 1%
   // MARCH: web 99%, admin 99%, pictos 8.6%
   // APRIL: web 99%, admin 99%, pictos 23%
+  // JUNE: web 99%, admin 99%, pictos 33%
   {
     code: 'fr',
     text: 'Français',
@@ -134,6 +138,7 @@ const languages = [
   // FEB: web 39%, admin 45%, pictos 1%
   // MARCH: web 47%, admin 46%, pictos 1%
   // APRIL: =
+  // JUNE: web 96%, admin 99%, pictos 30%
   {
     code: 'hr',
     text: 'Hrvatski',
@@ -144,6 +149,7 @@ const languages = [
   // FEB: web 90%, admin 99%, pictos 41%
   // MARCH: web 89%, admin 99%, pictos 47%
   // APRIL: web 99%, admin 100%, pictos 49%
+  // JUNE: =
   {
     code: 'hu',
     text: 'Magyar',
@@ -154,16 +160,18 @@ const languages = [
   // FEB: web 98%,  admin 99%, pictos 44%
   // MARCH: web 99%,  admin 99%, pictos 73%
   // APRIL: web 99%,  admin 99%, pictos 88%
+  // JUNE: web 100%,  admin 100%, pictos 100%
   {
     code: 'it',
     text: 'Italiano',
-    translated: false,
+    translated: true,
     needTranslators: false,
   },
   // MK
   // FEB: web 100%, admin 100%, pictos 18%
   // MARCH: web 99%, admin 100%, pictos 33%
   // APRIL: =
+  // JUNE: =
   {
     code: 'mk',
     text: 'Македонски',
@@ -184,6 +192,7 @@ const languages = [
   // FEB: web 7%,  admin 0%, pictos 0%
   // MARCH: web 11%, admin 45%, pictos 0%
   // APRIL: web 99%, admin 99%, pictos 0%
+  // JUNE: web 100%, admin 100%, pictos 2%
   {
     code: 'nl',
     text: 'Nederlands',
@@ -214,6 +223,7 @@ const languages = [
   // FEB:  web 37%, admin 6%, pictos 0%
   // MARCH: web 37%, admin 6%, pictos 0%
   // APRIL: web 47%, admin 6%, pictos 19%
+  // JUNE: web 47%, admin 6%, pictos 21%
   {
     code: 'ro',
     text: 'Română',
@@ -224,6 +234,7 @@ const languages = [
   // FEB:  web 95%, admin 95%, pictos 17%
   // MARCH: web 99%, admin 99%, pictos 21%
   // APRIL: =
+  // JUNE: web 99%, admin 99%, pictos 25%
   {
     code: 'ru',
     text: 'Pусский',
@@ -234,6 +245,7 @@ const languages = [
   // FEB:  web 0%, admin 0%, pictos  0%
   // MARCH: web 0%, admin 0%, pictos  0%
   // APRIL: =
+  // JUNE: web 19%, admin 0%, pictos  0%
   {
     code: 'sk',
     text: 'Slovenský',
