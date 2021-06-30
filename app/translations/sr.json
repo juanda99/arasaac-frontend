@@ -207,6 +207,7 @@
   "app.components.Material.german": "Немачки",
   "app.components.Material.italian": "Италијански",
   "app.components.Material.languages": "Језици",
+  "app.components.Material.notPublished": "Neobjavljen",
   "app.components.Material.pending": "Na čekanju",
   "app.components.Material.suggestranslation": "Можете превести овај материјал на други језик и поделити са нама:",
   "app.components.MaterialForm.nameHint": "Унесите име аутора",
