@@ -221,6 +221,8 @@
   "app.components.Material.translator": "Преводилац",
   "app.components.Material.zipFileLabel": "Преузмите све датотеке",
   "app.components.MaterialForm.activities": "Активности",
+  "app.components.MaterialForm.activitiesHint": "Одаберите активности повезане са материјалом",
+  "app.components.MaterialForm.addFiles": "Додајте садржај датотеке",
   "app.components.MaterialForm.nameHint": "Унесите име аутора",
   "app.components.MaterialForm.notPublished": "Није објављено",
   "app.components.MaterialForm.pending": "Објава на чекању",
