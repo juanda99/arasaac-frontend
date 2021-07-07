@@ -30,5 +30,7 @@
   "app.component.MaterialConditions.publication": "Utgivelse",
   "app.component.MaterialConditions.requirements": "Krav",
   "app.component.MaterialConditions.requirementsP1": "Materialet publisert i denne seksjonen vil inneholde piktogrammer fra ARASAACs samling eller et annet relatert arbeid.",
-  "app.component.MaterialConditions.requirementsP2": "Materialet er publisert under Creative Commons-lisensen BY-NC-SA, som godkjenner dets bruk med non-profit-hensikt når man opplyser kilden og forfatteren, og er delt under den samme lisensen."
+  "app.component.MaterialConditions.requirementsP2": "Materialet er publisert under Creative Commons-lisensen BY-NC-SA, som godkjenner dets bruk med non-profit-hensikt når man opplyser kilden og forfatteren, og er delt under den samme lisensen.",
+  "app.component.MaterialConditions.requirementsP3": "Bilder og fotografier inkludert i materialet skal være i henhold med vår lisens eller bli tatt av selve forfatteren.",
+  "app.component.MaterialConditions.requirementsP4": "Tekst inkluder i materialet skal være i henhold med vår lisens. De skal ikke være verbatim-kopiering av copyrighted material."
 }
