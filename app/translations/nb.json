@@ -16,5 +16,14 @@
   "app.PictogramsView.closeWarning": "Advarsel",
   "app.PictogramsView.contactTranslators": "Ta kontakt for å bli oversetter!",
   "app.PictogramsView.languageSearch": "Velg språk",
-  "app.PictogramsView.needTranslators": "Vi trenger hjelp med å oversette ARASAAC til ditt språk."
+  "app.PictogramsView.needTranslators": "Vi trenger hjelp med å oversette ARASAAC til ditt språk.",
+  "app.PictogramsView.pageDesc": "Åpenkilde-symboler for Augmentativ og Supplerende Kommunikasjon",
+  "app.PictogramsView.pageTitle": "ASK-symboler - ARASAAC",
+  "app.PictogramsView.searchByCategories": "Søk etter kategori",
+  "app.PictogramsView.translationStatus": "Sjekk nåværende oversettelsesstatus.",
+  "app.PictogramsView.translationsWarning": "Piktogramsøk funker ikke ordentlig på ditt språk fordi vi ikke har fulle oversettelser.",
+  "app.component.MaterialConditions.author": "Forfatter:",
+  "app.component.MaterialConditions.checkRead": "Jeg har lest og forstått informasjonen overfor.",
+  "app.component.MaterialConditions.intro": "Vi håper du forstår behovet for å følge disse kriteriene for å publisere material på ARASAAC. Tusen takk på forhånd for ditt bidrag.",
+  "app.component.MaterialConditions.license": "Lisens:"
 }
