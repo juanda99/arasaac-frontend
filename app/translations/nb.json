@@ -25,5 +25,10 @@
   "app.component.MaterialConditions.author": "Forfatter:",
   "app.component.MaterialConditions.checkRead": "Jeg har lest og forstått informasjonen overfor.",
   "app.component.MaterialConditions.intro": "Vi håper du forstår behovet for å følge disse kriteriene for å publisere material på ARASAAC. Tusen takk på forhånd for ditt bidrag.",
-  "app.component.MaterialConditions.license": "Lisens:"
+  "app.component.MaterialConditions.license": "Lisens:",
+  "app.component.MaterialConditions.pictogramsAuthor": "Piktogramforfatter:",
+  "app.component.MaterialConditions.publication": "Utgivelse",
+  "app.component.MaterialConditions.requirements": "Krav",
+  "app.component.MaterialConditions.requirementsP1": "Materialet publisert i denne seksjonen vil inneholde piktogrammer fra ARASAACs samling eller et annet relatert arbeid.",
+  "app.component.MaterialConditions.requirementsP2": "Materialet er publisert under Creative Commons-lisensen BY-NC-SA, som godkjenner dets bruk med non-profit-hensikt når man opplyser kilden og forfatteren, og er delt under den samme lisensen."
 }
