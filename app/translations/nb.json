@@ -1,10 +1,20 @@
 {
-  "Login.invalidEmail": "Logginn.ugyldigEpost",
-  "Login.invalidUrl": "Logginn.ugyldigUrl",
-  "Login.required": "Logginn.nødvendig",
-  "NewPasswordForm.hintNewPassword": "NyttPassordForm.hintNyttPassord?",
-  "activate.activateUser": "aktivere.aktivereBruker",
-  "activate.expiredCode": "aktivere.utløptKode",
-  "activate.invalidCode": "aktivere.ugyldigKode",
-  "activate.userActivated": "aktivere.brukerAktivert"
+  "Login.invalidEmail": "Ugyldig epost",
+  "Login.invalidUrl": "Ugyldig url",
+  "Login.required": "Nødvendig",
+  "NewPasswordForm.hintNewPassword": "Hva er ditt nye passord?",
+  "activate.activateUser": "Brukeraktivering",
+  "activate.expiredCode": "Din aktiveringskode er utløpt. Vi har sendt deg en ny epost for å validere din konto",
+  "activate.invalidCode": "Din aktiveringskode er ugyldig",
+  "activate.userActivated": "Din brukerkonto har blitt aktivert. Du kan logge inn.",
+  "activate.userNotActivated": "En feil har oppstått mens vi aktiverte din brukerkonto",
+  "app.HomePage.discover": "Oppdag ARASAAC",
+  "app.MaterialsView.pageDescription": "ASK-material for fagpersoner og familier. Las ned Augmentativ og Supplerende Kommunikasjon dokumenter, tavler, jobbark...",
+  "app.MaterialsView.pageDescriptionSearch": "ASK-material knyttet til {searchText} for fagpersoner og familier. Las ned Augmentativ og Supplerende Kommunikasjon dokumenter, tavler, jobbark...",
+  "app.MaterialsView.pageTitle": "Delt ASK-material - ARASAAC",
+  "app.MaterialsView.pageTitleSearch": "Delt ASK-material knyttet til {searchText} - ARASAAC",
+  "app.PictogramsView.closeWarning": "Advarsel",
+  "app.PictogramsView.contactTranslators": "Ta kontakt for å bli oversetter!",
+  "app.PictogramsView.languageSearch": "Velg språk",
+  "app.PictogramsView.needTranslators": "Vi trenger hjelp med å oversette ARASAAC til ditt språk."
 }
