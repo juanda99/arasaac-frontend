@@ -1,1 +1,10 @@
-{}
+{
+  "Login.invalidEmail": "Logginn.ugyldigEpost",
+  "Login.invalidUrl": "Logginn.ugyldigUrl",
+  "Login.required": "Logginn.nødvendig",
+  "NewPasswordForm.hintNewPassword": "NyttPassordForm.hintNyttPassord?",
+  "activate.activateUser": "aktivere.aktivereBruker",
+  "activate.expiredCode": "aktivere.utløptKode",
+  "activate.invalidCode": "aktivere.ugyldigKode",
+  "activate.userActivated": "aktivere.brukerAktivert"
+}
