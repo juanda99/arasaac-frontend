@@ -32,5 +32,10 @@
   "app.component.MaterialConditions.requirementsP1": "Materialet publisert i denne seksjonen vil inneholde piktogrammer fra ARASAACs samling eller et annet relatert arbeid.",
   "app.component.MaterialConditions.requirementsP2": "Materialet er publisert under Creative Commons-lisensen BY-NC-SA, som godkjenner dets bruk med non-profit-hensikt når man opplyser kilden og forfatteren, og er delt under den samme lisensen.",
   "app.component.MaterialConditions.requirementsP3": "Bilder og fotografier inkludert i materialet skal være i henhold med vår lisens eller bli tatt av selve forfatteren.",
-  "app.component.MaterialConditions.requirementsP4": "Tekst inkluder i materialet skal være i henhold med vår lisens. De skal ikke være verbatim-kopiering av copyrighted material."
+  "app.component.MaterialConditions.requirementsP4": "Tekst inkluder i materialet skal være i henhold med vår lisens. De skal ikke være verbatim-kopiering av copyrighted material.",
+  "app.component.MaterialConditions.requirementsP5": "Alt material skal sitere ARASAACs lisens, gjerne i tekstfoten, samt materialforfatterens navn for å attribuere forfatterskap. Det intellektuelle eierskapet av materialet er også beskyttet under samme lisens.",
+  "app.component.MaterialConditions.requirementsP6": "For å ordentlig sitere, skal man bruke én av de følgende sitatene:",
+  "app.component.MaterialConditions.standardQuote": "Standardsitat",
+  "app.component.MaterialConditions.submit": "Send",
+  "app.component.MaterialConditions.suggestions": "Forslag"
 }
