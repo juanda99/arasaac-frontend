@@ -1,6 +1,3 @@
-// status 0, no message
-// status 1 warning: 'AAC symbols are just only partial translated to your language. You should change your search language from the advanced options or from your user profile to improve searches.'
-// status 2 error: 'AAC symbols aren't fully translated to your language. Change your default search language from the advanced options or from your user profile to improve searches.'
 // need translatos: true -> We need translators in your language. Contact us if you want to collaborate with ARASAAC project.
 
 const languages = [
@@ -259,7 +256,7 @@ const languages = [
   {
     code: 'sq',
     text: 'Shqip',
-    status: false,
+    translated: false,
     needTranslators: true,
   },
   // SV - SWEDISH
@@ -271,7 +268,12 @@ const languages = [
   // FEB:  web 0%, admin 0%, pictos  0%
   // MARCH: web 19%, admin 0%, pictos  0%
   // APRIL: web 18%, admin 0%, pictos 0%
-
+  {
+    code: 'sr',
+    text: 'Српски',
+    translated: false,
+    needTranslators: true,
+  },
   // VAL
   // FEB:  web 44%, admin  84%, pictos 96%
   // MARCH: web 77%, admin 95%, pictos  95%
@@ -279,7 +281,7 @@ const languages = [
   {
     code: 'val',
     text: 'Valencia',
-    status: false, //
+    translated: false,
     needTranslators: true,
   },
   // ZH
@@ -289,7 +291,7 @@ const languages = [
   {
     code: 'zh',
     text: '简体中文）',
-    status: 2,
+    translated: false,
     needTranslators: true,
   },
 ]
