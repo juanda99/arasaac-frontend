@@ -352,6 +352,7 @@
   "app.components.PictogramSnippet.downloadTooltip": "Преузми пиктограм",
   "app.components.PrivatePolicy.header": "Ово је компонента ПолитикеПриватности!",
   "app.components.SearchBox.searchField": "Унесите текст претраживања",
+  "app.components.UseConditions.license": "Creative Commons Лиценца ( BY-NC-SA)",
   "app.components.UseConditions.owner": "Влада Арагоније",
   "app.components.UseConditions.property": "{owner} има власништво над оригиналним датотекама из којих се објављују пиктограми на овом вебсајту.",
   "app.components.Welcome.aragonese": "Арагонски",
