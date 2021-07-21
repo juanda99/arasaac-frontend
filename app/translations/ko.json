@@ -66,6 +66,7 @@
   "app.components.Filters.Activity.didacticUnit": "교육 단위",
   "app.components.Filters.Activity.digitalBoard": "디지털 보드, 전자적 보드",
   "app.components.Filters.Activity.domino": "도미노",
+  "app.components.Filters.Activity.exerciseSheet": "연습용 장",
   "app.components.Filters.Activity.game": "게임",
   "app.components.Filters.Activity.individualGame": "개인전",
   "app.components.Filters.Activity.kitchenRecipes": "요리법",
