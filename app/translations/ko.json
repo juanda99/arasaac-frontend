@@ -82,6 +82,7 @@
   "app.components.Filters.Activity.routine": "루틴, 일상, 규치적인 일상",
   "app.components.Filters.Activity.semanticMap": "의미적 지도",
   "app.components.Filters.Activity.sequence": "시퀀스, 순서",
+  "app.components.Filters.Activity.signalling": "신호보내는 중",
   "app.components.Filters.Activity.smartNotebook": "스마트 노트북",
   "app.components.Filters.Activity.snakeAndLadders": "사다리타기",
   "app.components.Filters.Activity.software": "소프트웨어",
