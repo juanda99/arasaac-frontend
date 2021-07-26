@@ -164,6 +164,12 @@ const languages = [
     translated: true,
     needTranslators: false,
   },
+  {
+    code: 'ko',
+    text: '한국어',
+    translated: true,
+    needTranslators: true,
+  },
   // MK
   // FEB: web 100%, admin 100%, pictos 18%
   // MARCH: web 99%, admin 100%, pictos 33%
