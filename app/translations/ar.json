@@ -505,6 +505,7 @@
   "app.containers.DevelopersView.grantTypes": "أَنْوَاعُ المِنْحَة",
   "app.containers.DevelopersView.grantTypesDesc": "اعتماداً على نوع التطبيق والاحتياجات المحددة، يجب أن تنفذ نوع المنحة محددة أو غيرها. لا تترددوا في الاتصال بنا لمزيد من المعلومات.",
   "app.containers.DevelopersView.howto": "استخدام API",
+  "app.containers.DevelopersView.introApi": "الآراساك له بَرْنَامَج APl وَاسِعُ النِّطَاق لِخِدْمَة مَوَارِدنا لطَلَبَات الأَطْرَافْ الثَّالِثَة.",
   "app.containers.DevelopersView.license": "أرَاساك الإبدَاعِيَّة المُشْتَرَكَة المرخَصَة بِمُوجَبْ CC BY-NC-SA",
   "app.containers.DevelopersView.termsOfUse": "شروط الاستخدام",
   "app.containers.DevelopersView.termsOfUseDesc": "أرزاق API متوفر فقط للتطبيقات غير التجارية. تأكد من تلبية شروط الترخيص.",
