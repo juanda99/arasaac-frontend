@@ -23,7 +23,7 @@
   "app.PictogramsView.translationStatus": "Sjekk nåværende oversettelsesstatus.",
   "app.PictogramsView.translationsWarning": "Piktogramsøk funker ikke ordentlig på ditt språk fordi vi ikke har fulle oversettelser.",
   "app.component.MaterialConditions.adaptationQuote": "Tilpasningssitat",
-  "app.component.MaterialConditions.adaptationQuoteDesc": "Når et eksisterende material blir endret, blir navnet til personen som har tilpasset det lagt til til slutten av sitatet:",
+  "app.component.MaterialConditions.adaptationQuoteDesc": "Når et eksisterende material blir endret, vil navnet til personen som har tilpasset det bli lagt til i slutten av sitatet:",
   "app.component.MaterialConditions.adaptedBy": "Tilpasset av:",
   "app.component.MaterialConditions.author": "Forfatter:",
   "app.component.MaterialConditions.checkRead": "Jeg har lest og forstått informasjonen overfor.",
@@ -33,6 +33,7 @@
   "app.component.MaterialConditions.origin": "Opprinnelse:",
   "app.component.MaterialConditions.pictogramsAuthor": "Piktogramforfatter:",
   "app.component.MaterialConditions.publication": "Utgivelse",
+  "app.component.MaterialConditions.publicationDesc": "ARASAAC-nettsidens administratorer forbehold rettigheten til å ikke publisere et bestemt material hvis det ikke fyller våre krav eller våre kvalitetskriteria.",
   "app.component.MaterialConditions.requirements": "Krav",
   "app.component.MaterialConditions.requirementsP1": "Materialet publisert i denne seksjonen vil inneholde piktogrammer fra ARASAACs samling eller et annet relatert arbeid.",
   "app.component.MaterialConditions.requirementsP2": "Materialet er publisert under Creative Commons-lisensen BY-NC-SA, som godkjenner dets bruk med non-profit-hensikt når man opplyser kilden og forfatteren, og er delt under den samme lisensen.",
@@ -42,5 +43,13 @@
   "app.component.MaterialConditions.requirementsP6": "For å ordentlig sitere, skal man bruke én av de følgende sitatene:",
   "app.component.MaterialConditions.standardQuote": "Standardsitat",
   "app.component.MaterialConditions.submit": "Send",
-  "app.component.MaterialConditions.suggestions": "Forslag"
+  "app.component.MaterialConditions.suggestions": "Forslag",
+  "app.component.MaterialConditions.suggestionsDesc": "ARASAAC er et internasjonalt, kollaborativt prosjekt, så vi anbefaler -hvis du anser det som riktig- du bidrar med ikke bare filer i lesing/visualisering-format (pdf, pps, ppsx, osv.) men også i redigerbart format (doc, docx, ppt, pptx, odf, pszip, osv.). Dette for å gjøre det lettere å oversette det til andre språk og gjøre potensielle tilpasninger til brukers vilkår. Disse redigerbare filene vil også være beskyttet av vår Creative Commons-lisens.",
+  "app.component.MaterialConditions.translationQuote": "Oversettelsessitat",
+  "app.component.MaterialConditions.translationQuoteDesc": "I tilfelle oversatt material, vil oversetterens navn bli lagt til i slutten av sitatet:",
+  "app.component.MaterialConditions.translator": "Oversetter:",
+  "app.component.Participate.contact": "Ta kontakt",
+  "app.component.Participate.header": "Vi bygger opp ARASAAC. Vil du bli med?",
+  "app.components.Catalog.accept": "Godkjenn",
+  "app.components.Catalog.arasaacLicense": "ARASAAC-lisens"
 }
