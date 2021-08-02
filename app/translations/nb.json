@@ -105,5 +105,11 @@
   "app.components.Filters.Area.geometry": "Geometri",
   "app.components.Filters.Area.health": "Helse",
   "app.components.Filters.Area.langSelector": "Språk",
-  "app.components.Filters.Area.language": "Språk"
+  "app.components.Filters.Area.language": "Språk",
+  "app.components.Filters.Area.leisure": "Fritid og kultur",
+  "app.components.Filters.Area.literature": "Litteratur",
+  "app.components.Filters.Area.logicReasoning": "Logisk resonnering",
+  "app.components.Filters.Area.math": "Matte",
+  "app.components.Filters.Area.measurementUnits": "Måleenhet",
+  "app.components.Filters.Area.moneyUsage": "Pengebruk"
 }
