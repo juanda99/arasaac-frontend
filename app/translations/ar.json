@@ -715,7 +715,7 @@
   "signin.recoverPassword": "استعادة كلمة المرور",
   "signin.recoverPasswordInfo": "أدخل بريدك الإلكتروني لتتلقى الرابط لتغيير كلمة المرور الخاصة بك",
   "signin.signup": "سجل",
-  "signup.agreement": "بالنقر على التسجيل، فإنك توافق على {شروط الاستخدام} وعلى {سياسةالخصوصية}",
+  "signup.agreement": "بالنّضقْر عَلَى التَّسْجؤيل، فَإنَّك تُوافِق علَى {useConditions} وعَلى {privacyPolicy}",
   "signup.buttonSignUp": "سجل",
   "signup.createUser": "مستخدم أراساك جديد",
   "signup.creatingUser": "إنشاء حساب أراساك جديد...",
