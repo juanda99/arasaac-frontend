@@ -175,5 +175,22 @@
   "app.components.LanguageSelector.ru": "Russisk",
   "app.components.LanguageSelector.sk": "Slovakisk",
   "app.components.LanguageSelector.sq": "Albansk",
-  "app.components.LanguageSelector.sr": "Serbisk"
+  "app.components.LanguageSelector.sr": "Serbisk",
+  "app.components.LanguageSelector.translateOnline": "Oversett på nett",
+  "app.components.LanguageSelector.val": "Valensiansk",
+  "app.components.LanguageSelector.zh": "Kinesisk (Forenklet)",
+  "app.components.MaterialForm.areasHint": "Velg områder knyttet til material",
+  "app.components.MaterialForm.author": "Forfatter",
+  "app.components.MaterialForm.authors": "Forfattere",
+  "app.components.MaterialForm.authorsDataDesc": "Vennligst skriv inn bare forfatternes epostadresse. De må være registrert brukere hos ARASAAC. Filnavnet is automatisk fylt inn.",
+  "app.components.MaterialForm.chooseLanguage": "Velg språket til materialet",
+  "app.components.MaterialForm.chooseRole": "Velg brukerens rolle",
+  "app.components.MaterialForm.classification": "Klassifisering",
+  "app.components.MaterialForm.description": "Beskrivelse",
+  "app.components.MaterialForm.descriptionHint": "Skriv inn materialets beskrivelse",
+  "app.components.MaterialForm.email": "E-post",
+  "app.components.MaterialForm.emailHint": "Skriv inn forfatterens epostadresse",
+  "app.components.MaterialForm.files": "Filer",
+  "app.components.MaterialForm.filesHint": "Vennligst bruk beskrivende filnavn for å gjøre nedlastningen lettere.",
+  "app.components.MaterialForm.filesUpload": "Opplasting av filer"
 }
