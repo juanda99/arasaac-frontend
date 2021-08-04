@@ -214,6 +214,7 @@
   "app.components.MaterialForm.updateMaterial": "Oppdater materiale",
   "app.components.MaterialSnippet.confirmDeletion": "Er du sikker på at du ønsker å slette dette materialet?",
   "app.components.MaterialSnippet.deleteMaterial": "Slett materiale",
+  "app.components.aacusage.p10": "Ressurser basert på Teacch-metoden er formbare materialer som er visuelt tiltrekkende og motiverer til å gjennomføre en aktivitet, inkludert akademiske aktiviteter.",
   "app.components.showcase.materials": "Materialer",
   "app.components.updateMaterialView.materialLoading": "Laster inn materiale...",
   "app.components.updateMaterialView.materialNotFound": "Beklager, materialet du ser etter fins ikke",
