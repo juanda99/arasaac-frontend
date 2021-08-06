@@ -1,9 +1,9 @@
 {
   "Login.invalidEmail": "البريد الإلكتروني غير صحيح",
-  "Login.invalidUrl": "الرابط غير صالح ",
+  "Login.invalidUrl": "الرَّابِط غَير صَالِح",
   "Login.required": "إِلْزَامِيّ",
   "NewPasswordForm.hintNewPassword": "ما هي سِرِّك الجديدة ؟",
-  "activate.activateUser": "تفعيل المستعمل \nأو\nتفعيل المستخدم\n",
+  "activate.activateUser": "تفعيل المستعمل \nأو\nتفعيل المستخدم",
   "activate.expiredCode": "انتهت صلاحية رمز تَفْعِيلك. لقد أرسلنا لك رسالة بريد إلكتروني لتأكيد حسابك",
   "activate.invalidCode": "رمز تَفْعِلك غير صالح",
   "activate.userActivated": "تم تفعيل حسابك. يمكنك الوُلوجْ\nأو\nتم تفعيل حسابك. يمكنك تسجيل الدخول",
