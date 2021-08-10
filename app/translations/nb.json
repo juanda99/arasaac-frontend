@@ -316,6 +316,7 @@
   "app.components.PictogramSnippet.addFavorite": "Legg til favoriter",
   "app.components.PictogramSnippet.addFavoriteTooltip": "Legg piktogram til favorittrad",
   "app.components.PictogramSnippet.deleteFavorite": "Fjern fra favoritter",
+  "app.components.PictogramSnippet.download": "Last ned piktogram",
   "app.components.aac.p10": "{graphicSymbols} er alt fra veldig enkle bilde- eller fotografisystemer til mer komplekse systemer som f. eks., piktografiske systemer eller tradisjonell ortografi (bokstaver, ord og setninger). Takket være kommunikasjonshjelpemidler og forskjellige ressurser, kan grafiske systemer bli brukt av personer med stor bevegelseshemming. Derfor er de brukt av bevegelseshemmede (CP, ALS, MS...), i tillegg til personer med kognitiv vansker og autister.",
   "app.components.aac.p12": "Vi kan sortere kommunikasjonshjelpemidler etter enkle eller teknologiske. {communicationBoards} er enkle hjelpemidler med overflater i forskjellige materieller hvor grafiske kommunikasjonssymboler er plassert (fotografier, piktogrammer, bokstaver, ord og/eller setninger).",
   "app.components.aac.p6": "{communicationProducts} inkluderer teknologiske ressurser som f. eks. talesyntese (kunstig tale), pc-er eller nettbrett med spesielle programmer som gir forskjellige typer tilgang tilpasset til brukere med nedsatt bevegelsesfunksjon. De tillater også ulike systemer basert på piktogram- og ortografiske symboler, og stemmeoutput. De kan også inkludere ikke-teknologiske ressurser som kommunikasjonstavler og -bøker.",
