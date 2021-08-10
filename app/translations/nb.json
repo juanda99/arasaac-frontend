@@ -267,6 +267,7 @@
   "app.components.MaterialSnippet.notPublished": "Ikke publisert",
   "app.components.MaterialSnippet.pending": "Avventer",
   "app.components.MaterialSnippet.submit": "Send inn",
+  "app.components.aac.p10": "{graphicSymbols} er alt fra veldig enkle bilde- eller fotografisystemer til mer komplekse systemer som f. eks., piktografiske systemer eller tradisjonell ortografi (bokstaver, ord og setninger). Takket være kommunikasjonshjelpemidler og forskjellige ressurser, kan grafiske systemer bli brukt av personer med stor bevegelseshemming. Derfor er de brukt av bevegelseshemmede (CP, ALS, MS...), i tillegg til personer med kognitiv vansker og autister.",
   "app.components.aac.p12": "Vi kan sortere kommunikasjonshjelpemidler etter enkle eller teknologiske. {communicationBoards} er enkle hjelpemidler med overflater i forskjellige materieller hvor grafiske kommunikasjonssymboler er plassert (fotografier, piktogrammer, bokstaver, ord og/eller setninger).",
   "app.components.aacusage.p10": "Ressurser basert på Teacch-metoden er formbare materieller som er visuelt tiltrekkende og motiverer til å gjennomføre en aktivitet, inkludert akademiske aktiviteter.",
   "app.components.aacusage.p11": "Strukturen til disse materiellene bidrar til autonomi og fremmer selvstendig arbeid.",
