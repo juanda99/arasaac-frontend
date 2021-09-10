@@ -23,6 +23,6 @@ export default defineMessages({
   },
   lmNotes: {
     id: 'app.containers.AuthorSnippet.lmNotes',
-    defaultMessage: 'External collaborator'
+    defaultMessage: 'Collaborating as external developer'
   }
 })
