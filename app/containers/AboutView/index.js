@@ -12,10 +12,9 @@ const Masonry = require('react-masonry-component')
 const masonryOptions = {
   transitionDuration: '1s'
 }
-// import PropTypes from 'prop-types'
-//www.facebook.com/saracachanm
-https: const authors = [
-  //desc value is taken as react-intl key in AuthorSnippet
+
+const authors = [
+  // desc value is taken as react-intl key in AuthorSnippet
   {
     name: 'Sara Cachán',
     imageSource: `${IMAGES_URL}/team/sara-cachan-320.png`,

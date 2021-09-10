@@ -111,20 +111,26 @@ class AuthorSnippet extends PureComponent {
               <H3 style={this.styles.cardTitle} primary={true}>
                 {author.name}
               </H3>
-              <H3 style={{ textAlign: 'center' }}>
+              <P
+                style={{
+                  textAlign: 'center',
+                  fontWeight: '900',
+                  marginTop: '30px'
+                }}
+              >
                 {<FormattedMessage {...messages[author.desc]} />}
-              </H3>
-              {/* <P style={{ textAlign: 'center', strong: true }}>
+              </P>
+              <P style={{ textAlign: 'center', fontWeight: '900' }}>
                 {author.startYear} - {author.endYear}
               </P>
               {author.notes && (
-                <P style={{ textAlign: 'center' }}>
+                <P style={{ textAlign: 'center', fontStyle: 'italic' }}>
                   {<FormattedMessage {...messages[author.notes]} />}
                 </P>
               )}
-              <P style={{ textAlign: 'center' }}>
+              <P style={{ textAlign: 'center', paddingTop: '30px' }}>
                 {<FormattedMessage {...messages.reachme} />}
-              </P> */}
+              </P>
 
               {author.facebook && (
                 <P style={{ textAlign: 'center' }}>
