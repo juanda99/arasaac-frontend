@@ -5,6 +5,10 @@ export default defineMessages({
     id: 'app.containers.AuthorSnippet.coordinator',
     defaultMessage: 'ARASAAC coordinator'
   },
+  coordinatorFemale: {
+    id: 'app.containers.AuthorSnippet.coordinator.FEMALE',
+    defaultMessage: 'ARASAAC coordinator'
+  },
   developer: {
     id: 'app.containers.AuthorSnippet.developer',
     defaultMessage: 'ARASAAC developer'
@@ -13,5 +17,12 @@ export default defineMessages({
     id: 'app.containers.AuthorSnippet.reachme',
     defaultMessage: 'You can reach me on:'
   },
-
+  jmNotes: {
+    id: 'app.containers.AuthorSnippet.jmNotes',
+    defaultMessage: 'Retired but collaborating on the project'
+  },
+  lmNotes: {
+    id: 'app.containers.AuthorSnippet.lmNotes',
+    defaultMessage: 'External collaborator'
+  }
 })

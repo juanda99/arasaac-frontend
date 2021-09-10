@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import ReactCardFlip from 'react-card-flip'
-import CardActions from 'components/PictogramSnippet/CardActions'
 import Facebook from 'components/SocialLogin/icons/svg/facebook'
 import GitHub from 'components/SocialLogin/icons/svg/github'
 import Twitter from 'components/SocialLogin/icons/svg/twitter'
@@ -15,12 +14,11 @@ import P from 'components/P'
 import Image from 'components/PictogramSnippet/Image'
 import messages from './messages'
 
-
 class AuthorSnippet extends PureComponent {
   state = {
     zDepth: 1,
     isFlipped: false
-  };
+  }
 
   styles = {
     icon: {
@@ -58,28 +56,28 @@ class AuthorSnippet extends PureComponent {
     },
     smallIcon: {
       width: 72,
-      height: 72,
+      height: 72
     },
     small: {
       width: 144,
       height: 144,
-      padding: 32,
+      padding: 32
     }
-  };
+  }
 
   handleMouseEnter = () => {
     this.setState({
       zDepth: 3,
       isFlipped: true
     })
-  };
+  }
 
   handleMouseLeave = () => {
     this.setState({
       zDepth: 1,
       isFlipped: false
     })
-  };
+  }
 
   handleClick = () => this.setState({ isFlipped: !this.state.isFlipped })
 
@@ -88,76 +86,108 @@ class AuthorSnippet extends PureComponent {
     return (
       <StyledList
         key={name}
-        className='image-element-class'
+        className="image-element-class"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         onClick={this.handleClick}
       >
         <ReactCardFlip isFlipped={this.state.isFlipped}>
-          <div key='front'>
+          <div key="front">
             <StyledPaper zDepth={this.state.zDepth}>
-
-              <div style={{ position: 'relative' }} >
+              <div style={{ position: 'relative' }}>
                 <Image
                   src={author.imageSource}
                   alt={author.name}
                   style={{ padding: '5px', paddingTop: '35px' }}
                 />
-                <H3 style={this.styles.cardTitle} primary={true}>{author.name}</H3>
+                <H3 style={this.styles.cardTitle} primary={true}>
+                  {author.name}
+                </H3>
               </div>
-            </StyledPaper >
+            </StyledPaper>
           </div>
-          <div key='back'>
+          <div key="back">
             <StyledPaper zDepth={this.state.zDepth}>
-              <H3 style={this.styles.cardTitle} primary={true}>{author.name}</H3>
-              <H3 style={{ textAlign: 'center' }}>{<FormattedMessage {...messages[author.desc]} />}</H3>
-              <P style={{ textAlign: 'center' }}>{<FormattedMessage {...messages.reachme} />}</P>
+              <H3 style={this.styles.cardTitle} primary={true}>
+                {author.name}
+              </H3>
+              <H3 style={{ textAlign: 'center' }}>
+                {<FormattedMessage {...messages[author.desc]} />}
+              </H3>
+              {/* <P style={{ textAlign: 'center', strong: true }}>
+                {author.startYear} - {author.endYear}
+              </P>
+              {author.notes && (
+                <P style={{ textAlign: 'center' }}>
+                  {<FormattedMessage {...messages[author.notes]} />}
+                </P>
+              )}
+              <P style={{ textAlign: 'center' }}>
+                {<FormattedMessage {...messages.reachme} />}
+              </P> */}
+
               {author.facebook && (
                 <P style={{ textAlign: 'center' }}>
-                  <a href={author.facebook} target='_blank'>
+                  <a href={author.facebook} target="_blank">
                     <IconButton
                       iconStyle={this.styles.smallIcon}
                       style={this.styles.small}
                     >
-                      <Facebook color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                      <Facebook
+                        color={this.props.muiTheme.palette.primary1Color}
+                        hoverColor={this.props.muiTheme.palette.accent1Color}
+                      />
                     </IconButton>
                   </a>
                 </P>
               )}
               {author.github && (
                 <P style={{ textAlign: 'center' }}>
-                  <a href={author.github} target='_blank' style={{ margin: '75px' }}>
+                  <a
+                    href={author.github}
+                    target="_blank"
+                    style={{ margin: '75px' }}
+                  >
                     <IconButton
                       iconStyle={this.styles.smallIcon}
                       style={this.styles.small}
                     >
-                      <GitHub color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                      <GitHub
+                        color={this.props.muiTheme.palette.primary1Color}
+                        hoverColor={this.props.muiTheme.palette.accent1Color}
+                      />
                     </IconButton>
                   </a>
                 </P>
               )}
               {author.twitter && (
-                <a href={author.twitter} target='_blank' style={{ margin: '75px' }}>
+                <a
+                  href={author.twitter}
+                  target="_blank"
+                  style={{ margin: '75px' }}
+                >
                   <IconButton
                     iconStyle={this.styles.smallIcon}
                     style={this.styles.small}
                   >
-                    <Twitter color={this.props.muiTheme.palette.primary1Color} hoverColor={this.props.muiTheme.palette.accent1Color} />
+                    <Twitter
+                      color={this.props.muiTheme.palette.primary1Color}
+                      hoverColor={this.props.muiTheme.palette.accent1Color}
+                    />
                   </IconButton>
                 </a>
               )}
-            </StyledPaper >
+            </StyledPaper>
           </div>
         </ReactCardFlip>
-      </StyledList >
+      </StyledList>
     )
   }
 }
 
-
 AuthorSnippet.propTypes = {
   muiTheme: PropTypes.object,
-  author: PropTypes.object.isRequired,
+  author: PropTypes.object.isRequired
 }
 
 export default muiThemeable()(AuthorSnippet)
