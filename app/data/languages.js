@@ -249,12 +249,12 @@ const languages = [
   // MARCH: web 99%, admin 99%, pictos 21%
   // APRIL: =
   // JUNE: web 99%, admin 99%, pictos 25%
-  // JUNE: web 99%, admin 99%, pictos 27%
+  // SEP: web 99%, admin 99%, pictos 27%
   {
     code: 'ru',
     text: 'Pусский',
     translated: false,
-    needTranslators: false,
+    needTranslators: true,
   },
   // SK
   // FEB:  web 0%, admin 0%, pictos  0%
