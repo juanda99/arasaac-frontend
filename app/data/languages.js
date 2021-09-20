@@ -254,7 +254,7 @@ const languages = [
     code: 'ru',
     text: 'Pусский',
     translated: false,
-    needTranslators: true,
+    needTranslators: false,
   },
   // SK
   // FEB:  web 0%, admin 0%, pictos  0%

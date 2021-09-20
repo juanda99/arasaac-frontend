@@ -42,6 +42,10 @@ const activities = [
   { code: 42, text: 'intruder' },
   { code: 43, text: 'semanticMap' },
   { code: 44, text: 'accessibleDoc' },
+  { code: 45, text: 'guide' },
+  { code: 46, text: 'calendar' },
+  { code: 47, text: 'roulette' },
+  { code: 48, text: 'cards' },
 ]
 
 export default activities

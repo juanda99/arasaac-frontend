@@ -10,8 +10,22 @@ import ReadMargin from 'components/ReadMargin'
 import messages from './messages'
 const Masonry = require('react-masonry-component')
 const masonryOptions = {
-  transitionDuration: '1s'
+  transitionDuration: '1s',
 }
+
+const address = (
+  <P>
+    <strong>
+      Centro Aragonés para la Comunicación Aumentativa y Alternativa - ARASAAC
+    </strong>
+    <br />
+    Andador Pilar Cuartero Molinero, 1, 50018 Zaragoza
+    <br /> España (Spain)
+    <br />
+    <a href="tel:+34976736526"> +34 976 73 65 26</a> (10:00am - 2:00pm CET -
+    Español/English)
+  </P>
+)
 
 const authors = [
   // desc value is taken as react-intl key in AuthorSnippet
@@ -21,7 +35,7 @@ const authors = [
     desc: 'coordinatorFemale',
     facebook: 'https://www.facebook.com/saracachanm/',
     startYear: 2021,
-    endYear: '...'
+    endYear: '...',
   },
   {
     name: 'David Romero',
@@ -30,7 +44,7 @@ const authors = [
     facebook: 'https://www.facebook.com/david.romerocorral',
     startYear: 2007,
     endYear: '...',
-    notes: ''
+    notes: '',
   },
   {
     name: 'José Manuel Marcos',
@@ -39,7 +53,7 @@ const authors = [
     facebook: 'https://www.facebook.com/josemanuelmarcosrodrigo',
     startYear: 2007,
     endYear: 2021,
-    notes: 'jmNotes'
+    notes: 'jmNotes',
   },
   {
     name: 'Juan Daniel Burró',
@@ -47,7 +61,7 @@ const authors = [
     desc: 'developer',
     github: 'https://github.com/juanda99',
     startYear: 2014,
-    endYear: '...'
+    endYear: '...',
   },
   {
     name: 'Luis Miguel Morillas',
@@ -56,8 +70,8 @@ const authors = [
     github: 'https://github.com/lmorillas',
     startYear: 2014,
     endYear: 2021,
-    notes: 'lmNotes'
-  }
+    notes: 'lmNotes',
+  },
 ]
 
 const styles = {
@@ -66,14 +80,14 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     flexGrow: 2,
-    justifyContent: 'space-around'
-  }
+    justifyContent: 'space-around',
+  },
 }
 class AboutView extends Component {
   state = {
     lat: 41.66747,
     lng: -0.89407,
-    zoom: 3
+    zoom: 3,
   }
 
   render() {
@@ -108,31 +122,14 @@ class AboutView extends Component {
                   src={`${IMAGES_URL}/arasaac-logo.png`}
                   alt="Screenshot"
                 />
-                <P>
-                  <strong>
-                    Centro Aragonés para la Comunicación Aumentativa y
-                    Alternativa - ARASAAC
-                  </strong>
-                  <br />
-                  Andador Pilar Cuartero Molinero, 1, 50018 Zaragoza
-                  <br /> España (Spain)
-                </P>
+                {address}
               </div>
             </Popup>
           </Marker>
         </Map>
         <ReadMargin>
           <P>{<FormattedMessage {...messages.addressInfo} />}</P>
-          <P>
-            <strong>
-              Centro Aragonés para la Comunicación Aumentativa y Alternativa -
-              ARASAAC
-            </strong>
-            <br />
-            Andador Pilar Cuartero Molinero, 1, 50018 Zaragoza
-            <br /> España (Spain)
-          </P>
-
+          {address}
           <H2 primary={true}>
             {<FormattedMessage {...messages.arasaacTeam} />}
           </H2>
@@ -143,7 +140,7 @@ class AboutView extends Component {
             disableImagesLoaded={false} // default false
             style={styles.masonry}
           >
-            {authors.map(author => (
+            {authors.map((author) => (
               <AuthorSnippet key={author.name} author={author} />
             ))}
           </Masonry>

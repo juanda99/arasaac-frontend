@@ -27,166 +27,232 @@ const DateTimeFormat = global.Intl.DateTimeFormat
 // }
 
 class MaterialForm extends React.Component {
-
-
   render() {
-    const { handleSubmit, pristine, submitting, reset, activities, areas, intl, onEmailExists, invalid, changeStep, stepIndex, isAdmin, isNew } = this.props
+    const {
+      handleSubmit,
+      pristine,
+      submitting,
+      reset,
+      activities,
+      areas,
+      intl,
+      onEmailExists,
+      invalid,
+      changeStep,
+      stepIndex,
+      isAdmin,
+      isNew,
+    } = this.props
     const { formatMessage } = intl
-    const listActivities = activities.map(
-      (selectItem) => {
-        const value = parseInt(selectItem.code, 10)
-        let text = formatMessage(filterMessages[selectItem.text])
-        switch (value) {
-          case 1:
-          case 15:
-          case 21:
-          case 27:
-          case 31:
-            text = `${formatMessage(filterMessages['software'])} / ${text}`
-            break;
-          case 4:
-          case 5:
-          case 8:
-          case 17:
-          case 20:
-          case 28:
-            text = `${formatMessage(filterMessages['communication'])} / ${text}`
-            break;
-          case 6:
-          case 11:
-          case 12:
-          case 13:
-          case 16:
-            text = `${formatMessage(filterMessages['game'])} / ${text}`
-            break;
-          default:
-            break;
-        }
-        return { value, text }
+    const listActivities = activities.map((selectItem) => {
+      const value = parseInt(selectItem.code, 10)
+      let text = formatMessage(filterMessages[selectItem.text])
+      switch (value) {
+        case 1:
+        case 15:
+        case 21:
+        case 27:
+        case 31:
+          text = `${formatMessage(filterMessages['software'])} / ${text}`
+          break
+        case 4:
+        case 5:
+        case 8:
+        case 17:
+        case 20:
+        case 28:
+          text = `${formatMessage(filterMessages['communication'])} / ${text}`
+          break
+        case 6:
+        case 11:
+        case 12:
+        case 13:
+        case 16:
+          text = `${formatMessage(filterMessages['game'])} / ${text}`
+          break
+        default:
+          break
       }
-    )
+      return { value, text }
+    })
     /* also used in FilterSelectLoader */
-    const listAreas = areas.map(
-      (selectItem) => {
-        const value = parseInt(selectItem.code, 10)
-        let text = formatMessage(filterMessages[selectItem.text])
-        switch (value) {
-          case 4:
-          case 5:
-          case 6:
-          case 7:
-          case 8:
-          case 9:
-          case 10:
-          case 31:
-          case 32:
-            text = `${formatMessage(filterMessages['language'])} / ${text}`
-            break;
-          case 13:
-          case 14:
-          case 15:
-          case 16:
-          case 29:
-          case 30:
-          case 33:
-            text = `${formatMessage(filterMessages['math'])} / ${text}`
-            break;
-          case 1:
-          case 2:
-          case 27:
-            text = `${formatMessage(filterMessages['priorSkills'])} / ${text}`
-            break;
-          default:
-            break;
-        }
-        return { value, text }
+    const listAreas = areas.map((selectItem) => {
+      const value = parseInt(selectItem.code, 10)
+      let text = formatMessage(filterMessages[selectItem.text])
+      switch (value) {
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+        case 31:
+        case 32:
+          text = `${formatMessage(filterMessages['language'])} / ${text}`
+          break
+        case 13:
+        case 14:
+        case 15:
+        case 16:
+        case 29:
+        case 30:
+        case 33:
+          text = `${formatMessage(filterMessages['math'])} / ${text}`
+          break
+        case 1:
+        case 2:
+        case 27:
+          text = `${formatMessage(filterMessages['priorSkills'])} / ${text}`
+          break
+        case 36:
+        case 37:
+        case 38:
+          text = `${formatMessage(
+            filterMessages['socio-emotionalSkills']
+          )} / ${text}`
+          break
+        default:
+          break
       }
+      return { value, text }
+    })
+
+    const sortListActivities = listActivities.sort((a, b) =>
+      a.text.localeCompare(b.text)
     )
-
-
-    const sortListActivities = listActivities.sort((a, b) => a.text.localeCompare(b.text))
     const sortListAreas = listAreas.sort((a, b) => a.text.localeCompare(b.text))
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <Stepper activeStep={stepIndex} linear={false} orientation='vertical'>
+          <Stepper activeStep={stepIndex} linear={false} orientation="vertical">
             <Step>
               <StepButton onClick={() => changeStep(0)}>
-                <H3><FormattedMessage {...messages.authors} /></H3>
+                <H3>
+                  <FormattedMessage {...messages.authors} />
+                </H3>
               </StepButton>
               <StepContent>
-                <P><FormattedMessage {...messages.authorsDataDesc} /></P>
-                <FieldArray name='authors' component={RenderAuthors} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} showRole={true} mandatory={false} showDesc={false} />
+                <P>
+                  <FormattedMessage {...messages.authorsDataDesc} />
+                </P>
+                <FieldArray
+                  name="authors"
+                  component={RenderAuthors}
+                  onEmailExists={onEmailExists}
+                  onFieldChange={(field, value) =>
+                    this.props.change(field, value)
+                  }
+                  showRole={true}
+                  mandatory={false}
+                  showDesc={false}
+                />
               </StepContent>
             </Step>
             <Step>
               <StepButton onClick={() => changeStep(1)}>
-                <H3><FormattedMessage {...messages.classification} /></H3>
+                <H3>
+                  <FormattedMessage {...messages.classification} />
+                </H3>
               </StepButton>
               <StepContent>
                 <Field
-                  name='areas'
+                  name="areas"
                   component={RenderChip}
                   hintText={<FormattedMessage {...messages.areasHint} />}
                   floatingLabelText={<FormattedMessage {...messages.areas} />}
                   dataSource={sortListAreas}
                 />
                 <Field
-                  name='activities'
+                  name="activities"
                   component={RenderChip}
                   hintText={<FormattedMessage {...messages.activitiesHint} />}
-                  floatingLabelText={<FormattedMessage {...messages.activities} />}
+                  floatingLabelText={
+                    <FormattedMessage {...messages.activities} />
+                  }
                   dataSource={sortListActivities}
                 />
               </StepContent>
             </Step>
             <Step>
               <StepButton onClick={() => changeStep(2)}>
-                <H3><FormattedMessage {...messages.languageTitle} /></H3>
+                <H3>
+                  <FormattedMessage {...messages.languageTitle} />
+                </H3>
               </StepButton>
               <StepContent>
-
-                <P><FormattedMessage {...messages.languageHint} /></P>
-                <FieldArray name='languages' component={RenderLanguages} onEmailExists={onEmailExists} onFieldChange={(field, value) => this.props.change(field, value)} status={UPDATE_MATERIAL} />
-
+                <P>
+                  <FormattedMessage {...messages.languageHint} />
+                </P>
+                <FieldArray
+                  name="languages"
+                  component={RenderLanguages}
+                  onEmailExists={onEmailExists}
+                  onFieldChange={(field, value) =>
+                    this.props.change(field, value)
+                  }
+                  status={UPDATE_MATERIAL}
+                />
               </StepContent>
             </Step>
-
           </Stepper>
           <div style={{ paddingLeft: '40px', paddingTop: '30px' }}>
             {isAdmin && (
               <div>
                 <Field
-                  name='status'
+                  name="status"
                   component={SelectField}
                   hintText={<FormattedMessage {...messages.materialStatus} />}
-                  floatingLabelText={<FormattedMessage {...messages.materialStatus} />}
+                  floatingLabelText={
+                    <FormattedMessage {...messages.materialStatus} />
+                  }
                 >
-
-                  <MenuItem key={0} value={0} primaryText={<FormattedMessage {...messages.notPublished} />} />
-                  <MenuItem key={1} value={1} primaryText={<FormattedMessage {...messages.published} />} />
-                  <MenuItem key={2} value={2} primaryText={<FormattedMessage {...messages.pending} />} />
+                  <MenuItem
+                    key={0}
+                    value={0}
+                    primaryText={
+                      <FormattedMessage {...messages.notPublished} />
+                    }
+                  />
+                  <MenuItem
+                    key={1}
+                    value={1}
+                    primaryText={<FormattedMessage {...messages.published} />}
+                  />
+                  <MenuItem
+                    key={2}
+                    value={2}
+                    primaryText={<FormattedMessage {...messages.pending} />}
+                  />
                 </Field>
                 <Field
                   name="lastUpdated"
                   component={DatePicker}
                   DateTimeFormat={DateTimeFormat}
                   locale={'es'}
-                  floatingLabelText={<FormattedMessage {...messages.lastUpdated} />}
+                  floatingLabelText={
+                    <FormattedMessage {...messages.lastUpdated} />
+                  }
                 />
                 <Field
                   name="lastUpdated"
                   component={TimePicker}
                   locale={'es'}
                   DateTimeFormat={DateTimeFormat}
-                  floatingLabelText={<FormattedMessage {...messages.lastUpdatedTime} />}
+                  floatingLabelText={
+                    <FormattedMessage {...messages.lastUpdatedTime} />
+                  }
                 />
               </div>
             )}
-            <RaisedButton style={{ marginTop: '30px' }} type='submit' disabled={pristine || submitting} label={<FormattedMessage {...messages.updateMaterial} />} primary={true} />
-
+            <RaisedButton
+              style={{ marginTop: '30px' }}
+              type="submit"
+              disabled={pristine || submitting}
+              label={<FormattedMessage {...messages.updateMaterial} />}
+              primary={true}
+            />
           </div>
-
 
           {/* <RaisedButton label='Clear values' disabled={pristine || submitting} onClick={reset} /> */}
         </form>
@@ -206,5 +272,5 @@ MaterialForm.propTypes = {
 }
 
 export default reduxForm({
-  form: 'MaterialFormUpdate'
+  form: 'MaterialFormUpdate',
 })(injectIntl(MaterialForm))

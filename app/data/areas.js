@@ -34,8 +34,11 @@ const areas = [
   { code: 31, text: 'alphabet' },
   { code: 32, text: 'logicReasoning' },
   { code: 33, text: 'time' },
-  { code: 34, text: 'behaviour' }
+  { code: 34, text: 'executiveFunctions' },
+  { code: 35, text: 'socio-emotionalSkills' },
+  { code: 36, text: 'feelings' },
+  { code: 37, text: 'socialSkills' },
+  { code: 38, text: 'knowledgeTheory' },
 ]
-
 
 export default areas

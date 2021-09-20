@@ -18,11 +18,11 @@ import {
   makeSelectName,
   makeSelectEmail,
   makeSelectId,
-  makeSelectRole
+  makeSelectRole,
 } from 'containers/App/selectors'
 import {
   makeLoadingSelector,
-  makeErrorSelector
+  makeErrorSelector,
 } from 'containers/MaterialsView/selectors'
 import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 import Dialog from 'material-ui/Dialog'
@@ -30,12 +30,12 @@ import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
 import userIsAuthenticated from 'utils/auth'
 import messages from '../UploadMaterialView/messages'
+import introMessages from './messages'
 import { makeSelectUserLocale } from '../App/selectors'
 import { updateMaterial } from 'containers/MaterialsView/actions'
 import { getMongoDBLanguage } from 'utils'
 
 class UploadTranslationView extends PureComponent {
-
   state = {
     stepIndex: 0,
     showDialog: false,
@@ -43,7 +43,7 @@ class UploadTranslationView extends PureComponent {
     progressStatus: 0,
     sending: false,
     loading: false,
-    error: ''
+    error: '',
   }
 
   componentDidMount() {
@@ -59,7 +59,6 @@ class UploadTranslationView extends PureComponent {
     }
   }
 
-
   handleChangeStep = (stepIndex) => this.setState({ stepIndex })
 
   getUserByEmail = async (email) => {
@@ -73,14 +72,24 @@ class UploadTranslationView extends PureComponent {
     const { formatMessage } = intl
     const { files, screenshots, languages, authors } = formValues
 
-    const Authors = authors.filter(author => author._id).map(author => ({ author: author._id, role: 'translator' }))
+    const Authors = authors
+      .filter((author) => author._id)
+      .map((author) => ({ author: author._id, role: 'translator' }))
     if (authors.length === 0) {
-      this.setState({ stepIndex: 0, showDialog: true, dialogText: formatMessage(messages.needAuthor) })
+      this.setState({
+        stepIndex: 0,
+        showDialog: true,
+        dialogText: formatMessage(messages.needAuthor),
+      })
       return
     }
 
     if (!files) {
-      this.setState({ stepIndex: 1, showDialog: true, dialogText: formatMessage(messages.needFiles) })
+      this.setState({
+        stepIndex: 1,
+        showDialog: true,
+        dialogText: formatMessage(messages.needFiles),
+      })
       return
     }
 
@@ -89,9 +98,12 @@ class UploadTranslationView extends PureComponent {
     const targetLanguage = languages[0].lang
 
     const formData = new FormData()
-    if (files) files.map((file) => formData.append(`${targetLanguage}_files`, file))
+    if (files)
+      files.map((file) => formData.append(`${targetLanguage}_files`, file))
     if (screenshots) {
-      screenshots.map((screenshot) => formData.append(`${targetLanguage}_screenshots`, screenshot))
+      screenshots.map((screenshot) =>
+        formData.append(`${targetLanguage}_screenshots`, screenshot)
+      )
     }
 
     /* try to process it, we use axios to get progress */
@@ -106,27 +118,31 @@ class UploadTranslationView extends PureComponent {
       JSON.stringify({ translations: languages, name, email })
     )
 
-    axios.request({
-      method: "POST",
-      url: `${PRIVATE_API_ROOT}/materials/translations/${params.idMaterial}`,
-      data: formData,
-      headers: { Authorization: `Bearer ${token}` },
-      onUploadProgress: ProgressEvent => {
-        this.setState({
-          progressStatus: parseInt(ProgressEvent.loaded / ProgressEvent.total * 100),
-        })
-      }
-    }).then(data => {
-      this.setState({
-        progressStatus: 100,
-        loading: false,
-        error: ''
+    axios
+      .request({
+        method: 'POST',
+        url: `${PRIVATE_API_ROOT}/materials/translations/${params.idMaterial}`,
+        data: formData,
+        headers: { Authorization: `Bearer ${token}` },
+        onUploadProgress: (ProgressEvent) => {
+          this.setState({
+            progressStatus: parseInt(
+              (ProgressEvent.loaded / ProgressEvent.total) * 100
+            ),
+          })
+        },
       })
-    }).catch((error) => {
-      //handle error  
-      this.setState({ error: error.message, loading: false })
-    });
-
+      .then((data) => {
+        this.setState({
+          progressStatus: 100,
+          loading: false,
+          error: '',
+        })
+      })
+      .catch((error) => {
+        //handle error
+        this.setState({ error: error.message, loading: false })
+      })
   }
 
   handleClose = () => this.setState({ showDialog: false, dialogText: '' })
@@ -135,64 +151,78 @@ class UploadTranslationView extends PureComponent {
     this.setState({ sending: false, stepIndex: 0 })
   }
 
-  getAuthorsData = (authors) => authors.map(author => {
-    if (author.author.pictureProvider === ARASAAC) author.author.picture = DEFAULT_PROFILE_PICTURE
-    else author.author.picture = author.author[author.author.pictureProvider].picture
-    return ({
-      name: author.author.name,
-      email: author.author.email,
-      picture: author.author.picture,
-      _id: author.author._id,
-      role: author.role
+  getAuthorsData = (authors) =>
+    authors.map((author) => {
+      if (author.author.pictureProvider === ARASAAC)
+        author.author.picture = DEFAULT_PROFILE_PICTURE
+      else
+        author.author.picture =
+          author.author[author.author.pictureProvider].picture
+      return {
+        name: author.author.name,
+        email: author.author.email,
+        picture: author.author.picture,
+        _id: author.author._id,
+        role: author.role,
+      }
     })
-  })
 
   renderContent() {
-    const {
-      materialData,
-      loading,
-      intl,
-      role,
-      name,
-      email,
-      picture,
-      _id
-    } = this.props
+    const { materialData, loading, intl, role, name, email, picture, _id } =
+      this.props
     const { formatMessage } = intl
-    if (loading) return <P><FormattedMessage {...messages.materialLoading} /></P>
-    if (materialData.size === 0) return <P><FormattedMessage {...messages.materialNotFound} /> </P>
+    if (loading)
+      return (
+        <P>
+          <FormattedMessage {...messages.materialLoading} />
+        </P>
+      )
+    if (materialData.size === 0)
+      return (
+        <P>
+          <FormattedMessage {...messages.materialNotFound} />{' '}
+        </P>
+      )
     const formData = materialData.toJS()
 
-    const languages = formData.translations.map(translation => {
+    const languages = formData.translations.map((translation) => {
       const authors = this.getAuthorsData(translation.authors)
       return { ...translation, authors }
     })
     // add item 'to change' and change order to improve translation
     languages.push({})
     const invertLanguages = languages.reverse()
-    const initialValues = { authors: [{ name, email, picture, _id, role: 'translator' }], languages: invertLanguages }
+    const initialValues = {
+      authors: [{ name, email, picture, _id, role: 'translator' }],
+      languages: invertLanguages,
+    }
 
     return (
-      <TranslationForm
-        onSubmit={(values) => this.handleSubmit(values)}
-        languages={languages}
-        onEmailExists={this.getUserByEmail}
-        initialValues={initialValues}
-        changeStep={this.handleChangeStep}
-        stepIndex={this.state.stepIndex}
-        isAdmin={role === 'admin'}
-      />
+      <div>
+        <P>
+          <FormattedMessage {...introMessages.intro} />{' '}
+          <Link to={'/contact-us'}>
+            <FormattedMessage {...introMessages.contactus} />
+          </Link>
+        </P>
+
+        <TranslationForm
+          onSubmit={(values) => this.handleSubmit(values)}
+          languages={languages}
+          onEmailExists={this.getUserByEmail}
+          initialValues={initialValues}
+          changeStep={this.handleChangeStep}
+          stepIndex={this.state.stepIndex}
+          isAdmin={role === 'admin'}
+        />
+      </div>
     )
   }
 
-
   render() {
-    const {
-      intl,
-      materialData,
-      locale,
-    } = this.props
-    const { showDialog, dialogText, sending, progressStatus, error, loading } = this.state
+    const { intl, materialData, locale } = this.props
+    const { showDialog, dialogText, sending, progressStatus, error, loading } =
+      this.state
     const idMaterial = materialData.get('idMaterial')
     const { formatMessage } = intl
     const actions = [
@@ -201,39 +231,55 @@ class UploadTranslationView extends PureComponent {
         primary={true}
         keyboardFocused={true}
         onClick={this.handleClose}
-      />
-    ];
+      />,
+    ]
 
     return (
       <View left={true} right={true}>
         {!sending ? (
           this.renderContent()
         ) : (
-            <div>
-              <FormattedMessage {...messages.updatingMaterial} />
-              <P><FormattedMessage {...messages.progressStatus} values={{ progressStatus: `${progressStatus}` }} /></P>
-              <LinearProgress mode="determinate" value={progressStatus} style={{ maxWidth: '600px', height: '6px' }} />
-              {!loading && (
-                <div>
-                  {error ? (
-                    <div>
-                      <P>{error}</P>
-                      <RaisedButton label={formatMessage(messages.tryAgain)} onClick={this.resetForm} />
-                    </div>
-                  ) : (
-                      <div>
-                        <P><FormattedMessage {...messages.updatedMaterial} /></P>
-                        <Link to={`/materials/${locale}/${idMaterial}`}>
-                          <RaisedButton primary={true} label={formatMessage(messages.showMaterial)} onClick={this.showMaterial} />
-                        </Link>
-
-                      </div>
-                    )}
-                </div>
-              )}
-            </div>
-          )
-        }
+          <div>
+            <FormattedMessage {...messages.updatingMaterial} />
+            <P>
+              <FormattedMessage
+                {...messages.progressStatus}
+                values={{ progressStatus: `${progressStatus}` }}
+              />
+            </P>
+            <LinearProgress
+              mode="determinate"
+              value={progressStatus}
+              style={{ maxWidth: '600px', height: '6px' }}
+            />
+            {!loading && (
+              <div>
+                {error ? (
+                  <div>
+                    <P>{error}</P>
+                    <RaisedButton
+                      label={formatMessage(messages.tryAgain)}
+                      onClick={this.resetForm}
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    <P>
+                      <FormattedMessage {...messages.updatedMaterial} />
+                    </P>
+                    <Link to={`/materials/${locale}/${idMaterial}`}>
+                      <RaisedButton
+                        primary={true}
+                        label={formatMessage(messages.showMaterial)}
+                        onClick={this.showMaterial}
+                      />
+                    </Link>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
         <Dialog
           title={formatMessage(messages.needReview)}
           actions={actions}
@@ -243,11 +289,10 @@ class UploadTranslationView extends PureComponent {
         >
           {dialogText}
         </Dialog>
-      </View >
+      </View>
     )
   }
 }
-
 
 UploadTranslationView.propTypes = {
   role: PropTypes.string.isRequired,
@@ -268,9 +313,14 @@ const mapStateToProps = (state, ownProps) => {
   const locale = makeSelectLocale()(state)
   const _id = makeSelectId()(state)
   const role = makeSelectRole()(state)
-  const materialData = state.getIn(['materialsView', 'materials', parseInt(ownProps.params.idMaterial, 10)]) || new Map()
+  const materialData =
+    state.getIn([
+      'materialsView',
+      'materials',
+      parseInt(ownProps.params.idMaterial, 10),
+    ]) || new Map()
   const error = makeErrorSelector()(state)
-  return ({
+  return {
     token,
     name,
     email,
@@ -280,10 +330,9 @@ const mapStateToProps = (state, ownProps) => {
     _id,
     role,
     materialData,
-    error
-  })
+    error,
+  }
 }
-
 
 const mapDispatchToProps = (dispatch) => ({
   requestMaterial: (idMaterial, token) => {
@@ -291,8 +340,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updateMaterial: (id, data, token) => {
     dispatch(updateMaterial.request(id, data, token))
-  }
+  },
 })
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(userIsAuthenticated(injectIntl(UploadTranslationView)))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(userIsAuthenticated(injectIntl(UploadTranslationView)))

@@ -266,6 +266,31 @@ export default defineMessages({
     description: 'Menu choose material area',
     defaultMessage: 'Time',
   },
+  executiveFunctions: {
+    id: 'app.components.Filters.Area.executiveFunctions',
+    description: 'Menu choose material area',
+    defaultMessage: 'Executive functions',
+  },
+  'socio-emotionalSkills': {
+    id: 'app.components.Filters.Area.socio-emotionalSkills',
+    description: 'Menu choose material area',
+    defaultMessage: 'Socio-Emotional skills',
+  },
+  feelings: {
+    id: 'app.components.Filters.Area.feelings',
+    description: 'Menu choose material area',
+    defaultMessage: 'Feelings',
+  },
+  socialSkills: {
+    id: 'app.components.Filters.Area.socialSkills',
+    description: 'Menu choose material area',
+    defaultMessage: 'Social skills',
+  },
+  knowledgeTheory: {
+    id: 'app.components.Filters.Area.knowledgeTheory',
+    description: 'Menu choose material area',
+    defaultMessage: 'Knowledge theory',
+  },
   activity: {
     id: 'app.components.Filters.Activity.activity',
     description: 'Menu choose material activity',
@@ -465,6 +490,26 @@ export default defineMessages({
     id: 'app.components.Filters.Activity.semanticMap',
     description: 'Menu choose material activity',
     defaultMessage: 'Semantic map',
+  },
+  guide: {
+    id: 'app.components.Filters.Activity.guide',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Guide',
+  },
+  calendar: {
+    id: 'app.components.Filters.Activity.calendar',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Calendar',
+  },
+  roulette: {
+    id: 'app.components.Filters.Activity.roulette',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Roulette',
+  },
+  cards: {
+    id: 'app.components.Filters.Activity.cards',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Cards',
   },
   chooseLanguage: {
     id: 'app.components.Filters.Language.chooseLanguage',
