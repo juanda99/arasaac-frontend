@@ -19,6 +19,7 @@
   "app.PictogramsView.needTranslators": "Potrzebujemy pomocy z tłumaczeniu ARASAAC na Twój język",
   "app.PictogramsView.pageDesc": "Symbole AAC o otwartym kodzie źródłowym",
   "app.PictogramsView.pageTitle": "Znaki graficzne AAC - ARASAAC",
+  "app.PictogramsView.searchByCategories": "Szukaj według kategorii",
   "app.PictogramsView.translationStatus": "Zobacz aktualny status tłumaczenia.",
   "app.PictogramsView.translationsWarning": "Wyszukiwanie piktogramów w Twoim języku nie działa poprawnie, ponieważ tłumaczenia nie są kompletne.",
   "app.component.MaterialConditions.adaptationQuote": "Cytat dostosowania",
