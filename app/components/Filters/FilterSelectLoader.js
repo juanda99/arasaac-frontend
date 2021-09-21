@@ -49,6 +49,13 @@ export const FilterSelectLoader = ({
         case 27:
           text = `${formatMessage(messages['priorSkills'])} / ${text}`
           break
+        case 36:
+        case 37:
+        case 38:
+          text = `${formatMessage(
+            filterMessages['socio-emotionalSkills']
+          )} / ${text}`
+          break
         default:
           break
       }
