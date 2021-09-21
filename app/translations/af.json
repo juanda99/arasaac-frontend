@@ -500,6 +500,8 @@
   "app.components.uploadMaterialView.progressStatus": "crwdns3082:0{progressStatus}crwdne3082:0",
   "app.components.uploadMaterialView.tryAgain": "crwdns3084:0crwdne3084:0",
   "app.components.uploadMaterialView.uploadMore": "crwdns3086:0crwdne3086:0",
+  "app.components.uploadTranslatorView.contactus": "crwdns7315:0crwdne7315:0",
+  "app.components.uploadTranslatorView.intro": "crwdns7317:0crwdne7317:0",
   "app.containers.AboutView.addressInfo": "crwdns3088:0crwdne3088:0",
   "app.containers.AboutView.arasaacTeam": "crwdns3090:0crwdne3090:0",
   "app.containers.AboutView.fundedBy": "crwdns3092:0crwdne3092:0",
