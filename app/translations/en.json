@@ -500,6 +500,8 @@
   "app.components.uploadMaterialView.progressStatus": "Uploading material: {progressStatus}%",
   "app.components.uploadMaterialView.tryAgain": "Try again",
   "app.components.uploadMaterialView.uploadMore": "Upload another material",
+  "app.components.uploadTranslatorView.contactus": "If in doubt, contact us.",
+  "app.components.uploadTranslatorView.intro": "Use this form exclusively to upload your translation of the material into another language. You should translate all files.",
   "app.containers.AboutView.addressInfo": "We are located in Zaragoza (Spain). Our postal address is:",
   "app.containers.AboutView.arasaacTeam": "ARASAAC team",
   "app.containers.AboutView.fundedBy": "This project is funded by the Department of Culture, Sports and Education of the Government of Aragon (Spain). Specifically ARASAAC belongs to the area of ​​innovation and professional training",
