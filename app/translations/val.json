@@ -32,7 +32,6 @@
   "app.component.MaterialConditions.origin": "Origen:",
   "app.component.MaterialConditions.pictogramsAuthor": "Autor dels pictogrames:",
   "app.component.MaterialConditions.publication": "Publicació",
-  "app.component.MaterialConditions.publicationDesc": "Els administradors del lloc web ARASAAC ens reservem el dret de publicar materials si no compleixen els nostres requisits o els nostres criteris de qualitat basats en els materials ja publicats.",
   "app.component.MaterialConditions.requirements": "Requisits",
   "app.component.MaterialConditions.requirementsP1": "Els materials publicats en aquesta secció contindran pictogrames de la col·lecció D'ARASAAC o de qualsevol obra derivada.",
   "app.component.MaterialConditions.requirementsP2": "Els materials es publiquen amb la llicència Creative Commons BY-NC-SA, que autoritza el seu ús amb finalitats sense ànim de lucre si es proporciona la font i l’autor i es comparteixen sota la mateixa llicència.",
