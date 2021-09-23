@@ -461,7 +461,6 @@
   "app.components.licenseP3": "따라서 상업적 목적으로 제품 또는 출판물 내에서 이러한 리소스를 사용하는 것을 제한합니다.",
   "app.components.licenseP4": "다른 용도의 경우 저작권 소유자의 서면 승인 없이 법에 의해 설정된 제재에 따라 복제 및 컴퓨터 처리 등의 수단이나 절차를 통해 이러한 리소스의 전체 또는 일부를 복제하는 것이 엄격히 금지됩니다.",
   "app.components.licenseP5": "{ARASAAC} 카탈로그에 포함된 리소스(픽토그램, 이미지, 음성 해설 또는 비디오)에서 파생된 모든 작업은 동일한 {creativeCommonsLicense} 와 함께 배포해야 합니다. 저자(Sergio Palao), 소유자(Gobierno de Aragón), 출처({ARASAAC}) 및 배포된 라이센스({creativeCommonsLicense})를 인용해야 합니다.",
-  "app.components.licenseP6": "픽토그램의 경우 저작자 표시 방법은 다음과 같습니다:",
   "app.components.licenseP7": "사용된 그림 기호는 Aragón 정부의 자산이며 Sergio Palao가 {ARASAAC}용으로 제작하였으며 {creativeCommonsLicense}에 따라 배포됩니다.",
   "app.components.licenseP9": "아라곤 정부는 {creativeCommonsLicense}의 조항을 초과하여 제 3자가 만든 {ARASAAC} 카탈로그에 포함된 리소스의 부적절하고 부주의한 사용에 대해 책임을 지지 않습니다.",
   "app.components.origin": "출처:",
