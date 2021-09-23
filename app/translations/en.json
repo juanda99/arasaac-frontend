@@ -33,7 +33,7 @@
   "app.component.MaterialConditions.origin": "Origin:",
   "app.component.MaterialConditions.pictogramsAuthor": "Pictograms author:",
   "app.component.MaterialConditions.publication": "Publication",
-  "app.component.MaterialConditions.publicationDesc": "The administrators of ARASAAC website reserve the right to publish materials if they don’t meet our requirements or our quality criteria based on the materials already published.",
+  "app.component.MaterialConditions.publicationDesc": "The administrators of ARASAAC website reserve the right not to publish materials if they don’t meet our requirements or our quality criteria based on the materials already published.",
   "app.component.MaterialConditions.requirements": "Requirements",
   "app.component.MaterialConditions.requirementsP1": "The materials published in this section will contain pictograms from the ARASAAC collection or from any derivative work.",
   "app.component.MaterialConditions.requirementsP2": "Materials are published under Creative Commons License BY-NC-SA, authorizing their use for non-profit purposes providing the source and the author, and are shared under the same license.",
