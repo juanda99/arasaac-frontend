@@ -67,9 +67,9 @@ export default defineMessages({
     defaultMessage: `The {ARASAAC} logo must be included on all signs, posters, and plates when the pictograms are used for signage of public areas, services, stores, and so on.`,
   },
 
-  licenseP8c: {
-    id: 'app.components.licenseP8c',
-    defaultMessage: `For other uses and in case of doubts, contact us.`,
+  licenseP8d: {
+    id: 'app.components.licenseP8d',
+    defaultMessage: `For other uses and any queries, contact us.`,
   },
 
   licenseP9: {

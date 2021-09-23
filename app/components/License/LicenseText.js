@@ -2,6 +2,7 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import P from 'components/P'
 import H3 from 'components/H3'
+import { Link } from 'react-router'
 import Divider from 'material-ui/Divider'
 import CreativeCommons from './CreativeCommons'
 import Arasaac from './Arasaac'
@@ -78,9 +79,13 @@ const LicenseText = ({ locale }) => (
         }}
       />
     </P>
+
     <P>
-      <FormattedMessage {...messages.licenseP8c} />
+      <Link to={'/contact-us'}>
+        <FormattedMessage {...messages.licenseP8d} />
+      </Link>
     </P>
+
     <Divider />
     <H3>
       <FormattedMessage {...messages.disclaimer} />
