@@ -33,7 +33,6 @@
   "app.component.MaterialConditions.origin": "Zdroj:",
   "app.component.MaterialConditions.pictogramsAuthor": "Autor piktogramu:",
   "app.component.MaterialConditions.publication": "Publikácia",
-  "app.component.MaterialConditions.publicationDesc": "Administrátori webovej stránky ARASAAC si vyhradzujú právo nepublikovať materiály v prípade, že nespĺňajú požiadavky alebo kritériá kvality vyplývajúce z už publikovaných materiálov.",
   "app.component.MaterialConditions.requirements": "Požiadavky",
   "app.component.MaterialConditions.requirementsP1": "Materiály publikované v tejto sekcii obsahujú piktogramy z databázy ARASAAC alebo z iných nepôvodných prác.",
   "app.component.MaterialConditions.requirementsP2": "Materiály sú publikované na základe licencie Creative Commons BY-NC-SA, môžu byť použité na nekomerčné účely s odvolaním sa na zdroj a autora a je možné ich šíriť pod rovnakou licenciou.",
