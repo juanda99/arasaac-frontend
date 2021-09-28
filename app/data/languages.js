@@ -79,7 +79,7 @@ const languages = [
     code: 'de',
     text: 'Deutsche',
     translated: false,
-    needTranslators: true,
+    needTranslators: false,
   },
   // ET - Estonian
   // FEB: web 56%, admin 100%, pictos 16%
