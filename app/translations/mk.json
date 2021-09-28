@@ -503,6 +503,7 @@
   "app.components.uploadMaterialView.tryAgain": "Обидете се повторно",
   "app.components.uploadMaterialView.uploadMore": "Прикачи друг материјал",
   "app.components.uploadTranslatorView.contactus": "Доколу имате некакви сомнежи, контактирајте не'.",
+  "app.components.uploadTranslatorView.intro": "Користете го овој формат исклучиво за да го испратите вашиот превод на материјалот на друг јазик. Треба да ги преведете сите датотеки.",
   "app.containers.AboutView.addressInfo": "Лоцирани сме во Сарагоса (Шпанија). Нашата поштенска адреса е:",
   "app.containers.AboutView.arasaacTeam": "Тимот на ARASAAC",
   "app.containers.AboutView.fundedBy": "Овој проект е финансиран од Министерството за Култура, Спорт и Образование при Владата на Арагон (Шпанија). Поточно ARASAAC припаѓа во областа за иновација и професионален тренинг",
