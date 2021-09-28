@@ -1,13 +1,7 @@
 import { defineMessages } from 'react-intl'
 export default defineMessages({
-  Aragon: {
-    id: 'tags.Aragon',
-    defaultMessage: 'Aragon',
-  },
-  Egypt: {
-    id: 'tags.Egypt',
-    defaultMessage: 'Egypt',
-  },
+  Aragon: { id: 'tags.Aragon', defaultMessage: 'Aragon' },
+  Egypt: { id: 'tags.Egypt', defaultMessage: 'Egypt' },
   Greece: { id: 'tags.Greece', defaultMessage: 'Greece' },
   Huesca: { id: 'tags.Huesca', defaultMessage: 'Huesca' },
   Iberians: { id: 'tags.Iberians', defaultMessage: 'Iberians' },
@@ -543,7 +537,7 @@ export default defineMessages({
   herbivorous: { id: 'tags.herbivorous', defaultMessage: 'herbivorous' },
   'hervaceouos plant': {
     id: 'tags.hervaceouos plant',
-    defaultMessage: 'herbaceouos plant',
+    defaultMessage: 'hervaceouos plant',
   },
   hinduism: { id: 'tags.hinduism', defaultMessage: 'hinduism' },
   'historical character': {
@@ -603,10 +597,6 @@ export default defineMessages({
     id: 'tags.information document',
     defaultMessage: 'information document',
   },
-  'information technology': {
-    id: 'tags.information technology',
-    defaultMessage: 'information technology',
-  },
   infrastructure: {
     id: 'tags.infrastructure',
     defaultMessage: 'infrastructure',
@@ -638,7 +628,6 @@ export default defineMessages({
     defaultMessage: 'invertebrate',
   },
   islamism: { id: 'tags.islamism', defaultMessage: 'islamism' },
-  it: { id: 'tags.it', defaultMessage: 'it' },
   jewelry: { id: 'tags.jewelry', defaultMessage: 'jewelry' },
   'joint system': {
     id: 'tags.joint system',
@@ -836,7 +825,10 @@ export default defineMessages({
     defaultMessage: 'onomatopoeia',
   },
   opera: { id: 'tags.opera', defaultMessage: 'opera' },
-  ophthalmology: { id: 'tags.ophthalmology', defaultMessage: 'ophthalmology' },
+  ophthalmology: {
+    id: 'tags.ophthalmology',
+    defaultMessage: 'ophthalmology',
+  },
   'ordinal adjective': {
     id: 'tags.ordinal adjective',
     defaultMessage: 'ordinal adjective',
