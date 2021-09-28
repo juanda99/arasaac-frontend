@@ -537,7 +537,7 @@ export default defineMessages({
   herbivorous: { id: 'tags.herbivorous', defaultMessage: 'herbivorous' },
   'hervaceouos plant': {
     id: 'tags.hervaceouos plant',
-    defaultMessage: 'hervaceouos plant',
+    defaultMessage: 'herbaceous plant',
   },
   hinduism: { id: 'tags.hinduism', defaultMessage: 'hinduism' },
   'historical character': {
