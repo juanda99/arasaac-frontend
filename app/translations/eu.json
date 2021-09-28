@@ -33,7 +33,6 @@
   "app.component.MaterialConditions.origin": "Jatorria:",
   "app.component.MaterialConditions.pictogramsAuthor": "Piktograma egilea:",
   "app.component.MaterialConditions.publication": "Argitalpena",
-  "app.component.MaterialConditions.publicationDesc": "ARASAAC webguneko administratzaileek materialak argitaratzeko eskubidea gordetzen dute, baldin eta argitaratuko materialek dagozkien baldintza edo kalitate-irizpideak betetzen ez badituzte.\n",
   "app.component.MaterialConditions.requirements": "Baldintzak",
   "app.component.MaterialConditions.requirementsP1": "Atal honetan argitaratutako materialek ARASAAC bildumako edo eratorritako edozein lanetako piktogramak izango dituzte.",
   "app.component.MaterialConditions.requirementsP2": "Materialak Creative Commons BY-NC-SA lizentziapean argitaratzen dira, irabazi asmorik gabeko helburuetarako erabiltzeko baimena emanez, eta lizentzia berarekin partekatzen dira.",

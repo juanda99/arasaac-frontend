@@ -60,11 +60,10 @@ const LicenseText = ({ locale }) => (
         <li>
           <blockquote>
             <em>
-              <FormattedMessage {...messages.author} /> Sergio Palao <br />
+              <FormattedMessage {...messages.author} /> Sergio Palao.{' '}
               <FormattedMessage {...messages.origin} /> <Arasaac link={true} />
-              <br />
-              <FormattedMessage {...messages.license} /> CC (BY-NC-SA)
-              <br />
+              {'. '}
+              <FormattedMessage {...messages.license} /> CC (BY-NC-SA){'. '}
               <FormattedMessage {...messages.owner} />
             </em>
           </blockquote>

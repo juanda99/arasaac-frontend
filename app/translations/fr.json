@@ -33,7 +33,6 @@
   "app.component.MaterialConditions.origin": "Origine :",
   "app.component.MaterialConditions.pictogramsAuthor": "Auteur des pictogrammes :",
   "app.component.MaterialConditions.publication": "Publication",
-  "app.component.MaterialConditions.publicationDesc": "Les administrateurs d'ARASAAC se réservent le droit de ne pas publier certains matériels s’ils ne répondent pas à leurs exigences ou aux critères de qualité des matériels déjà publiés.",
   "app.component.MaterialConditions.requirements": "Conditions",
   "app.component.MaterialConditions.requirementsP1": "Les documents publiés dans cette section contiennent des pictogrammes provenant de la collection ARASAAC ou de tout travail dérivé.",
   "app.component.MaterialConditions.requirementsP2": "Les matériels sont publiés sous licence Creative Commons BY-NC-SA, autorisant leur utilisation à des fins à but non lucratif en fournissant la source et l'auteur, et sont partagées sous la même licence.",
