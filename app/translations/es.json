@@ -485,6 +485,7 @@
   "app.components.licenseP8a": "En el caso de uso de los pictogramas para la señalización de espacios públicos, servicios, comercios, etc., se debe incluir el logotipo de {ARASAAC} en todas las señales, carteles y placas.",
   "app.components.licenseP8d": "Para otros usos y en caso de dudas, consúltanos.",
   "app.components.licenseP9": "El Gobierno de Aragón, no se responsabiliza del uso indebido o negligente de recursos contenidos en los catálogos de {ARASAAC} realizado por terceros que exceda los términos de la {creativeCommonsLicense}.",
+  "app.components.onlySpanish": "Estos recursos están sólo en español.",
   "app.components.origin": "Origen:",
   "app.components.owner": "Propiedad: Gobierno de Aragón (España)",
   "app.components.showcase.aacSymbols": "Pictogramas",
