@@ -101,4 +101,22 @@ export default defineMessages({
     id: 'app.components.origin',
     defaultMessage: 'Origin:',
   },
+  downloadLogo: {
+    id: 'app.components.downloadLogo',
+    defaultMessage: 'Download ARASAAC logo',
+  },
+  onlySpanish: {
+    id: 'app.components.onlySpanish',
+    defaultMessage: ' These resources are only in Spanish',
+  },
+  guideAulaAbierta: {
+    id: 'app.components.guideAulaAbierta',
+    defaultMessage:
+      'On our website Aula Abierta you can find a {guideAndResources}',
+  },
+  urlGuideAulaAbierta: {
+    id: 'app.components.urlGuideAulaAbierta',
+    defaultMessage:
+      'guide and resources to signal public spaces, services and shops with ARASAAC pictograms.',
+  },
 })

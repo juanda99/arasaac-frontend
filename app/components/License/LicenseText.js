@@ -1,11 +1,15 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import P from 'components/P'
+import A from 'components/A'
 import H3 from 'components/H3'
+import { IMAGES_URL } from 'services/config'
+import RaisedButton from 'material-ui/RaisedButton'
 import { Link } from 'react-router'
 import Divider from 'material-ui/Divider'
 import CreativeCommons from './CreativeCommons'
 import Arasaac from './Arasaac'
+import Guide from './Guide'
 import messages from './messages'
 const LicenseText = ({ locale }) => (
   <div>
@@ -79,6 +83,15 @@ const LicenseText = ({ locale }) => (
       />
     </P>
 
+    <Link style={{ margin: '0  auto' }} to={`${IMAGES_URL}/logo_ARASAAC.zip`}>
+      <RaisedButton label={<FormattedMessage {...messages.downloadLogo} />} />
+    </Link>
+    <P>
+      <FormattedMessage
+        {...messages.guideAulaAbierta}
+        values={{ guideAndResources: <Guide locale={locale} /> }}
+      />
+    </P>
     <P>
       <Link to={'/contact-us'}>
         <FormattedMessage {...messages.licenseP8d} />

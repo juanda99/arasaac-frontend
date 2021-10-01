@@ -9,7 +9,7 @@ import messages from './messages'
 
 class License extends Component {
   state = {
-    isChecked: false
+    isChecked: false,
   }
 
   readLicense = (event, isChecked) => {
@@ -17,7 +17,6 @@ class License extends Component {
   }
 
   handleAccept = () => this.props.closeDialog()
-
 
   render() {
     const { isChecked } = this.state
@@ -29,35 +28,32 @@ class License extends Component {
         primary={true}
         disabled={!isChecked}
         onClick={this.handleAccept}
-      />
+      />,
     ]
     return (
       <div>
-        {
-          showDialog ? (
-            <Dialog
-              title={
-                <p>
-                  <FormattedMessage {...messages.arasaacLicense} />
-                </p>
-              }
-              actions={actions}
-              modal={true}
-              open={this.props.open}
-              autoScrollBodyContent={true}
-            >
-              <LicenseText locale={locale} />
-              <Checkbox
-                label={<FormattedMessage {...messages.confirmLicense} />}
-                checked={isChecked}
-                onCheck={this.readLicense}
-              />
-            </Dialog >
-          ) : (
-              <div>
-                {<LicenseText />}
-              </div>
-            )}
+        {showDialog ? (
+          <Dialog
+            title={
+              <p>
+                <FormattedMessage {...messages.arasaacLicense} />
+              </p>
+            }
+            actions={actions}
+            modal={true}
+            open={this.props.open}
+            autoScrollBodyContent={true}
+          >
+            <LicenseText locale={locale} />
+            <Checkbox
+              label={<FormattedMessage {...messages.confirmLicense} />}
+              checked={isChecked}
+              onCheck={this.readLicense}
+            />
+          </Dialog>
+        ) : (
+          <div>{<LicenseText locale={locale} />}</div>
+        )}
       </div>
     )
   }
