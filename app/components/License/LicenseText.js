@@ -83,9 +83,9 @@ const LicenseText = ({ locale }) => (
       />
     </P>
 
-    <Link style={{ margin: '0  auto' }} to={`${IMAGES_URL}/logo_ARASAAC.zip`}>
+    <A href={`${IMAGES_URL}/logo_ARASAAC.zip`} target="_blank">
       <RaisedButton label={<FormattedMessage {...messages.downloadLogo} />} />
-    </Link>
+    </A>
     <P>
       <FormattedMessage
         {...messages.guideAulaAbierta}
