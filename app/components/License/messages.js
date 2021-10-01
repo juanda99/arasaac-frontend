@@ -107,7 +107,7 @@ export default defineMessages({
   },
   onlySpanish: {
     id: 'app.components.onlySpanish',
-    defaultMessage: ' These resources are only in Spanish',
+    defaultMessage: ' These resources are only in Spanish.',
   },
   guideAulaAbierta: {
     id: 'app.components.guideAulaAbierta',

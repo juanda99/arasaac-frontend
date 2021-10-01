@@ -485,7 +485,7 @@
   "app.components.licenseP8a": "The {ARASAAC} logo must be included on all signs, posters, and plates when the pictograms are used for signage of public areas, services, stores, and so on.",
   "app.components.licenseP8d": "For other uses and any queries, contact us.",
   "app.components.licenseP9": "The Government of Aragon, is not responsible for the improper or negligent use of resources contained in the {ARASAAC} catalogs made by third parties that exceeds the terms of the {creativeCommonsLicense}.",
-  "app.components.onlySpanish": "These resources are only in Spanish",
+  "app.components.onlySpanish": "These resources are only in Spanish.",
   "app.components.origin": "Origin:",
   "app.components.owner": "Owner: Government of Aragon (Spain)",
   "app.components.showcase.aacSymbols": "AAC Symbols",
