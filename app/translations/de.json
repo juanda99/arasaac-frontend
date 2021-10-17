@@ -7,7 +7,7 @@
   "activate.expiredCode": "Ihr Aktivierungscode ist abgelaufen. Wir haben Ihnen eine weitere E-Mail gesendet, um Ihr Konto zu bestätigen",
   "activate.invalidCode": "Der Aktivierungscode ist ungültig",
   "activate.userActivated": "Ihr Account wurde aktiviert. Sie können sich nun einloggen.",
-  "activate.userNotActivated": "Beim Aktivieren der Apps ist ein Fehler aufgetreten",
+  "activate.userNotActivated": "Beim Freischalten Ihres Users ist ein Fehler aufgetreten",
   "app.HomePage.discover": "Entdecke ARASAAC",
   "app.MaterialsView.pageDescription": "Unterstützte Kommunikation-Materialressourcen für Fachleute und Familien. Herunterladen von Dokumenten, Tafeln, Arbeitsblätter, ... zur ergänzende und unterstützende Kommunikation.",
   "app.MaterialsView.pageDescriptionSearch": "Unterstützte Kommunikationsmaterialressourcen zum Thema {searchText} für Fachleute und Familien. Herrunterladen von Dokumenten, Tafeln, Arbeitsblättern zur unterstützten Kommunikation...",
