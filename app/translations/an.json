@@ -472,6 +472,7 @@
   "app.components.dialog.ok": "Azeutar",
   "app.components.disclaimer": "Descargo de responsabilidat",
   "app.components.downloadLogo": "Escargar o logo d'ARASAAC",
+  "app.components.guideAulaAbierta": "En o nuestro puesto web Aula Ubierta puez trobar una {guideAndResources}",
   "app.components.license": "Lizenzia:",
   "app.components.licenseP1": "{ARASAAC} ye una marca d'o Gubierno d'Aragón (España), inscrita en a Ofizina Española de Patens y Marcas. A colezión de pictogramas {ARASAAC} ye inscrita en o Rechistro Cheneral d'a Propiedat Inteleutual (Num. Deposito Legal Z 901-2013) como treballo coleutivo a nombre d'a Deputazión Cheneral d'Aragón, qui la ha editada y espardita d'alcuerdo a o presto en l'articlo 8 d'o testo refundito d'a Lei de Propiedat Inteleutual, aprebato por o Real Decreto Lechislativo 1/1996, de 12 d'abril.",
   "app.components.licenseP2": "Os recursos que s'ofrexen en o puesto web (pictogramas, imachens, locuzions u vidios), igual que os materials elaboratos a partir de istos, se publican baxo {creativeCommonsLicense}, autorizando-se o suyo usache pa fins sin animo lucrativo perén que se zite a fuen, l'autor y se compartan baxo a mesma lizenzia.",
