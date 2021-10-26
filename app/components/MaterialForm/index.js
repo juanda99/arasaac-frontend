@@ -63,6 +63,7 @@ class MaterialForm extends React.Component {
         case 12:
         case 13:
         case 16:
+        case 49:
           text = `${formatMessage(filterMessages['game'])} / ${text}`
           break
         default:

@@ -46,6 +46,7 @@ const activities = [
   { code: 46, text: 'calendar' },
   { code: 47, text: 'roulette' },
   { code: 48, text: 'cards' },
+  { code: 49, text: 'dobble' },
 ]
 
 export default activities

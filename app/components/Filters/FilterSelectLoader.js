@@ -83,6 +83,7 @@ export const FilterSelectLoader = ({
         case 12:
         case 13:
         case 16:
+        case 49:
           text = `${formatMessage(messages['game'])} / ${text}`
           break
         default:

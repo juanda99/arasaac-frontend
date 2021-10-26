@@ -511,6 +511,11 @@ export default defineMessages({
     description: 'Menu choose material activity',
     defaultMessage: 'Cards',
   },
+  dobble: {
+    id: 'app.components.Filters.Activity.dobble',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Dobble',
+  },
   chooseLanguage: {
     id: 'app.components.Filters.Language.chooseLanguage',
     description: 'Menu choose material language',
