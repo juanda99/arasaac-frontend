@@ -1,1 +1,5 @@
-{}
+{
+  "Login.invalidEmail": "Neteisingas el. pašto adresas",
+  "Login.invalidUrl": "Klaidingas url",
+  "Login.required": "Privaloma"
+}
