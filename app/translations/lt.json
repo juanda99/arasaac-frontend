@@ -9,5 +9,8 @@
   "activate.userActivated": "Jūsų vartotojas suaktyvintas. Galite prisijungti.",
   "activate.userNotActivated": "Įvyko klaida aktyvuojant jūsų paskyrą",
   "app.HomePage.discover": "Susipažinkite su ARASAAC",
-  "app.MaterialsView.pageDescription": "AAC materialiniai ištekliai specialistams ir šeimoms. Atsisiųskite papildomos ir alternatyvios komunikacijos dokumentus, lentas, darbalapius..."
+  "app.MaterialsView.pageDescription": "AAC materialiniai ištekliai specialistams ir šeimoms. Atsisiųskite papildomos ir alternatyvios komunikacijos dokumentus, lentas, darbalapius...",
+  "app.MaterialsView.pageDescriptionSearch": "AAC materialiniai ištekliai {searchText} specialistams ir šeimoms. Atsisiųskite augmentinės ir alternatyvios komunikacijos dokumentus, lentas, darbalapius...",
+  "app.MaterialsView.pageTitle": "AAC pasidalinti materialiniai ištekliai – ARASAAC",
+  "app.MaterialsView.pageTitleSearch": "AAC bendrino materialinius išteklius, susijusius su {searchText} – ARASAAC"
 }
