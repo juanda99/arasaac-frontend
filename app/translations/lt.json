@@ -1,5 +1,13 @@
 {
   "Login.invalidEmail": "Neteisingas el. pašto adresas",
   "Login.invalidUrl": "Klaidingas url",
-  "Login.required": "Privaloma"
+  "Login.required": "Privaloma",
+  "NewPasswordForm.hintNewPassword": "Koks yra jūsų naujas slaptažodis?",
+  "activate.activateUser": "Vartotojo aktyvinimas",
+  "activate.expiredCode": "Jūsų aktyvinimo kodas baigėsi. Išsiuntėme jums kitą el. laišką, kad patvirtintume jūsų paskyrą",
+  "activate.invalidCode": "Jūsų aktyvacijos kodas negalioja",
+  "activate.userActivated": "Jūsų vartotojas suaktyvintas. Galite prisijungti.",
+  "activate.userNotActivated": "Įvyko klaida aktyvuojant jūsų paskyrą",
+  "app.HomePage.discover": "Susipažinkite su ARASAAC",
+  "app.MaterialsView.pageDescription": "AAC materialiniai ištekliai specialistams ir šeimoms. Atsisiųskite papildomos ir alternatyvios komunikacijos dokumentus, lentas, darbalapius..."
 }
