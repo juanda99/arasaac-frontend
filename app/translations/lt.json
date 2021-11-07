@@ -12,5 +12,9 @@
   "app.MaterialsView.pageDescription": "AAC materialiniai ištekliai specialistams ir šeimoms. Atsisiųskite papildomos ir alternatyvios komunikacijos dokumentus, lentas, darbalapius...",
   "app.MaterialsView.pageDescriptionSearch": "AAC materialiniai ištekliai {searchText} specialistams ir šeimoms. Atsisiųskite augmentinės ir alternatyvios komunikacijos dokumentus, lentas, darbalapius...",
   "app.MaterialsView.pageTitle": "AAC pasidalinti materialiniai ištekliai – ARASAAC",
-  "app.MaterialsView.pageTitleSearch": "AAC bendrino materialinius išteklius, susijusius su {searchText} – ARASAAC"
+  "app.MaterialsView.pageTitleSearch": "AAC bendrino materialinius išteklius, susijusius su {searchText} – ARASAAC",
+  "app.PictogramsView.closeWarning": "Įspėjimas uždaryti",
+  "app.PictogramsView.contactTranslators": "Susisiekite su mumis norėdami tapti vertėju!",
+  "app.PictogramsView.languageSearch": "Pasirinkite paieškos kalbą",
+  "app.PictogramsView.needTranslators": "Mums reikia pagalbos išverčiant ARASAAC į jūsų kalbą."
 }
