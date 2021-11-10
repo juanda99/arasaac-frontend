@@ -525,6 +525,15 @@ export default defineMessages({
   geometry: { id: 'tags.geometry', defaultMessage: 'geometry' },
   group: { id: 'tags.group', defaultMessage: 'group' },
   gynecology: { id: 'tags.gynecology', defaultMessage: 'gynecology' },
+  gymnastics: { id: 'tags.gymnastics', defaultMessage: 'gymnastics' },
+  'rhythmic gymnastics': {
+    id: 'tags.rhythmic gymnastics',
+    defaultMessage: 'rhythmic gymnastics',
+  },
+  'acrobatic gymnastics': {
+    id: 'tags.acrobatic gymnastics',
+    defaultMessage: 'acrobatic gymnastics',
+  },
   hairdresser: { id: 'tags.hairdresser', defaultMessage: 'hairdresser' },
   halloween: { id: 'tags.halloween', defaultMessage: 'halloween' },
   hardware: { id: 'tags.hardware', defaultMessage: 'hardware' },
@@ -537,7 +546,7 @@ export default defineMessages({
   herbivorous: { id: 'tags.herbivorous', defaultMessage: 'herbivorous' },
   'hervaceouos plant': {
     id: 'tags.hervaceouos plant',
-    defaultMessage: 'herbaceous plant',
+    defaultMessage: 'hervaceouos plant',
   },
   hinduism: { id: 'tags.hinduism', defaultMessage: 'hinduism' },
   'historical character': {
