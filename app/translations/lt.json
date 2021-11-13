@@ -38,5 +38,6 @@
   "app.component.MaterialConditions.requirementsP1": "Šioje skiltyje paskelbta medžiaga bus piktogramos iš ARASAAC kolekcijos arba bet kokio išvestinio kūrinio.",
   "app.component.MaterialConditions.requirementsP2": "Medžiaga skelbiama pagal Creative Commons licenciją BY-NC-SA, leidžiančią ją naudoti ne pelno tikslais, nurodant šaltinį ir autorių, ir yra dalijama pagal tą pačią licenciją.",
   "app.component.MaterialConditions.requirementsP3": "Medžiagoje esančios nuotraukos ir vaizdai turi atitikti mūsų licenciją arba būti padarytos paties autoriaus.",
-  "app.component.MaterialConditions.requirementsP4": "Medžiagoje esantys tekstai turi atitikti mūsų licenciją. Tai negali būti pažodžiui autorių teisių saugomo turinio kopijavimas."
+  "app.component.MaterialConditions.requirementsP4": "Medžiagoje esantys tekstai turi atitikti mūsų licenciją. Tai negali būti pažodžiui autorių teisių saugomo turinio kopijavimas.",
+  "app.component.MaterialConditions.requirementsP5": "Visoje medžiagoje turi būti nurodyta ARASAAC licencija, pageidautina poraštėje, kartu su medžiagos autoriaus pavarde, kad būtų priskirta autorystė. Medžiagos intelektinė nuosavybė taip pat saugoma pagal tą pačią licenciją."
 }
