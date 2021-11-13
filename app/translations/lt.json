@@ -54,5 +54,12 @@
   "app.components.Catalog.arasaacLicense": "ARASAAC licencija",
   "app.components.Catalog.cancel": "Atšaukti",
   "app.components.Catalog.confirmLicense": "Aš perskaičiau ARASAAC licencijos sutarties sąlygas ir su jomis sutinku",
-  "app.components.CategorySnippet.deleteList": "Trinti aplanką"
+  "app.components.CategorySnippet.deleteList": "Trinti aplanką",
+  "app.components.CategorySnippet.download": "Atsisiųsti aplanką",
+  "app.components.Filters.Activity.accessibleDoc": "Prieinamas dokumentas",
+  "app.components.Filters.Activity.activity": "Veikla",
+  "app.components.Filters.Activity.animation": "Animacija",
+  "app.components.Filters.Activity.araBoard": "AraBoard",
+  "app.components.Filters.Activity.assessmentTest": "Vertinimo skyrius",
+  "app.components.Filters.Activity.audiovisualMaterial": "Audiovizualinė medžiaga"
 }
