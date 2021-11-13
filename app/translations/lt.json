@@ -36,5 +36,7 @@
   "app.component.MaterialConditions.publicationDesc": "ARASAAC svetainės administratoriai pasilieka teisę nepublikuoti medžiagos neatitinkančios mūsų deklaruotų reikalavimų ar kokybės kriterijų.",
   "app.component.MaterialConditions.requirements": "Reikalavimai",
   "app.component.MaterialConditions.requirementsP1": "Šioje skiltyje paskelbta medžiaga bus piktogramos iš ARASAAC kolekcijos arba bet kokio išvestinio kūrinio.",
-  "app.component.MaterialConditions.requirementsP2": "Medžiaga skelbiama pagal Creative Commons licenciją BY-NC-SA, leidžiančią ją naudoti ne pelno tikslais, nurodant šaltinį ir autorių, ir yra dalijama pagal tą pačią licenciją."
+  "app.component.MaterialConditions.requirementsP2": "Medžiaga skelbiama pagal Creative Commons licenciją BY-NC-SA, leidžiančią ją naudoti ne pelno tikslais, nurodant šaltinį ir autorių, ir yra dalijama pagal tą pačią licenciją.",
+  "app.component.MaterialConditions.requirementsP3": "Medžiagoje esančios nuotraukos ir vaizdai turi atitikti mūsų licenciją arba būti padarytos paties autoriaus.",
+  "app.component.MaterialConditions.requirementsP4": "Medžiagoje esantys tekstai turi atitikti mūsų licenciją. Tai negali būti pažodžiui autorių teisių saugomo turinio kopijavimas."
 }
