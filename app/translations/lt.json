@@ -32,5 +32,7 @@
   "app.component.MaterialConditions.materialPublication": "Publikuota medžiaga",
   "app.component.MaterialConditions.origin": "Šaltinis:",
   "app.component.MaterialConditions.pictogramsAuthor": "Piktogramų autorius:",
-  "app.component.MaterialConditions.publication": "Publikuota"
+  "app.component.MaterialConditions.publication": "Publikuota",
+  "app.component.MaterialConditions.publicationDesc": "ARASAAC svetainės administratoriai pasilieka teisę nepublikuoti medžiagos neatitinkančios mūsų deklaruotų reikalavimų ar kokybės kriterijų.",
+  "app.component.MaterialConditions.requirements": "Reikalavimai"
 }
