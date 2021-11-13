@@ -42,5 +42,7 @@
   "app.component.MaterialConditions.requirementsP5": "Visoje medžiagoje turi būti nurodyta ARASAAC licencija, pageidautina poraštėje, kartu su medžiagos autoriaus pavarde, kad būtų priskirta autorystė. Medžiagos intelektinė nuosavybė taip pat saugoma pagal tą pačią licenciją.",
   "app.component.MaterialConditions.requirementsP6": "Norint teisingai pateikti citatą, reikia naudoti vieną iš šių citavimo pavyzdžių:",
   "app.component.MaterialConditions.standardQuote": "Įprastas citavimas",
-  "app.component.MaterialConditions.submit": "Pateikti"
+  "app.component.MaterialConditions.submit": "Pateikti",
+  "app.component.MaterialConditions.suggestions": "Pasiūlymai",
+  "app.component.MaterialConditions.suggestionsDesc": "Kadangi ARASAAC yra bendradarbiavimo ir tarptautinis projektas, rekomenduojame, jei manote, kad tai tikslinga, pateikti failus ne tik skaitymo / vizualizavimo formatu (pdf, pps, ppsx ir kt.), bet ir redaguojamu formatu (doc, docx, ppt, pptx, odf, pszip ir kt.), siekiant palengvinti vertimus į kitas kalbas ir galimus pritaikymus pagal vartotojo poreikius. Šie redaguojami failai taip pat bus apsaugoti mūsų Creative Commons licencija."
 }
