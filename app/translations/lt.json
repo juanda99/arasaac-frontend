@@ -28,5 +28,6 @@
   "app.component.MaterialConditions.author": "Autorius:",
   "app.component.MaterialConditions.checkRead": "Perskaičiau ir supratau aukščiau pateiktą informaciją.",
   "app.component.MaterialConditions.intro": "Tikimės, kad suprantate, kad reikia laikytis šių kriterijų skelbdami medžiagą ARASAAC. Iš anksto dėkojame už bendradarbiavimą.",
-  "app.component.MaterialConditions.license": "Leidimas:"
+  "app.component.MaterialConditions.license": "Leidimas:",
+  "app.component.MaterialConditions.materialPublication": "Publikuota medžiaga"
 }
