@@ -21,5 +21,12 @@
   "app.PictogramsView.pageTitle": "AAC simboliai – ARASAAC",
   "app.PictogramsView.searchByCategories": "Ieškoti pagal kategoriją",
   "app.PictogramsView.translationStatus": "Žr. dabartinę operacijos būseną.",
-  "app.PictogramsView.translationsWarning": "Piktogramų paieška jūsų kalba neveikia tinkamai, nes vertimai nebaigti."
+  "app.PictogramsView.translationsWarning": "Piktogramų paieška jūsų kalba neveikia tinkamai, nes vertimai nebaigti.",
+  "app.component.MaterialConditions.adaptationQuote": "Leidimas pritaikyti",
+  "app.component.MaterialConditions.adaptationQuoteDesc": "Adaptuojant esamą medžiagą, citatos pabaigoje bus įrašytas ją pritaikiusio asmens vardas:",
+  "app.component.MaterialConditions.adaptedBy": "Pritaikė:",
+  "app.component.MaterialConditions.author": "Autorius:",
+  "app.component.MaterialConditions.checkRead": "Perskaičiau ir supratau aukščiau pateiktą informaciją.",
+  "app.component.MaterialConditions.intro": "Tikimės, kad suprantate, kad reikia laikytis šių kriterijų skelbdami medžiagą ARASAAC. Iš anksto dėkojame už bendradarbiavimą.",
+  "app.component.MaterialConditions.license": "Leidimas:"
 }
