@@ -48,5 +48,11 @@
   "app.component.MaterialConditions.translationQuote": "Vertimo citata",
   "app.component.MaterialConditions.translationQuoteDesc": "Jei medžiaga išversta, vertėjo vardas ir pavardė bus įrašyti citatos pabaigoje:",
   "app.component.MaterialConditions.translator": "Vertėjas:",
-  "app.component.Participate.contact": "Susisiekite su mumis"
+  "app.component.Participate.contact": "Susisiekite su mumis",
+  "app.component.Participate.header": "Mes kuriame ARASAAC. Ar norėtumėte prisijungti?",
+  "app.components.Catalog.accept": "Sutikti",
+  "app.components.Catalog.arasaacLicense": "ARASAAC licencija",
+  "app.components.Catalog.cancel": "Atšaukti",
+  "app.components.Catalog.confirmLicense": "Aš perskaičiau ARASAAC licencijos sutarties sąlygas ir su jomis sutinku",
+  "app.components.CategorySnippet.deleteList": "Trinti aplanką"
 }
