@@ -34,5 +34,7 @@
   "app.component.MaterialConditions.pictogramsAuthor": "Piktogramų autorius:",
   "app.component.MaterialConditions.publication": "Publikuota",
   "app.component.MaterialConditions.publicationDesc": "ARASAAC svetainės administratoriai pasilieka teisę nepublikuoti medžiagos neatitinkančios mūsų deklaruotų reikalavimų ar kokybės kriterijų.",
-  "app.component.MaterialConditions.requirements": "Reikalavimai"
+  "app.component.MaterialConditions.requirements": "Reikalavimai",
+  "app.component.MaterialConditions.requirementsP1": "Šioje skiltyje paskelbta medžiaga bus piktogramos iš ARASAAC kolekcijos arba bet kokio išvestinio kūrinio.",
+  "app.component.MaterialConditions.requirementsP2": "Medžiaga skelbiama pagal Creative Commons licenciją BY-NC-SA, leidžiančią ją naudoti ne pelno tikslais, nurodant šaltinį ir autorių, ir yra dalijama pagal tą pačią licenciją."
 }
