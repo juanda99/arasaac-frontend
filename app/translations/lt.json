@@ -76,5 +76,11 @@
   "app.components.Filters.Activity.exerciseSheet": "Užduočių lapas",
   "app.components.Filters.Activity.game": "Žaidimas",
   "app.components.Filters.Activity.guide": "Vedlys",
-  "app.components.Filters.Activity.individualGame": "Asmeninis žaidimas"
+  "app.components.Filters.Activity.individualGame": "Asmeninis žaidimas",
+  "app.components.Filters.Activity.intruder": "Neprašytas svečias",
+  "app.components.Filters.Activity.jClic": "JClic",
+  "app.components.Filters.Activity.kitchenRecipes": "Virtuvės receptai",
+  "app.components.Filters.Activity.lim": "LIM",
+  "app.components.Filters.Activity.notebook": "Užrašai",
+  "app.components.Filters.Activity.picaa": "Picaa"
 }
