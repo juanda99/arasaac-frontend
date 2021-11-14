@@ -61,5 +61,10 @@
   "app.components.Filters.Activity.animation": "Animacija",
   "app.components.Filters.Activity.araBoard": "AraBoard",
   "app.components.Filters.Activity.assessmentTest": "Vertinimo skyrius",
-  "app.components.Filters.Activity.audiovisualMaterial": "Audiovizualinė medžiaga"
+  "app.components.Filters.Activity.audiovisualMaterial": "Audiovizualinė medžiaga",
+  "app.components.Filters.Activity.bingo": "Bingo",
+  "app.components.Filters.Activity.board": "Lenta",
+  "app.components.Filters.Activity.book": "Knyga",
+  "app.components.Filters.Activity.calendar": "Kalendorius",
+  "app.components.Filters.Activity.cards": "Kortelės"
 }
