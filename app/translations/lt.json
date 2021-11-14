@@ -90,5 +90,13 @@
   "app.components.Filters.Activity.roulette": "Matuoklė",
   "app.components.Filters.Activity.routine": "Rutina",
   "app.components.Filters.Activity.semanticMap": "Semantinis žemėlapis",
-  "app.components.Filters.Activity.sequence": "Seka"
+  "app.components.Filters.Activity.sequence": "Seka",
+  "app.components.Filters.Activity.signalling": "Žadinimas",
+  "app.components.Filters.Activity.smartNotebook": "Smart Notebook",
+  "app.components.Filters.Activity.snakeAndLadders": "Gyvatė ir kopėčios",
+  "app.components.Filters.Activity.socialHistory": "Socialinė istorija",
+  "app.components.Filters.Activity.software": "Programinė įranga",
+  "app.components.Filters.Activity.song": "Daina",
+  "app.components.Filters.Activity.story": "Istorija",
+  "app.components.Filters.Activity.teacchMaterial": "MOKYMO medžiaga"
 }
