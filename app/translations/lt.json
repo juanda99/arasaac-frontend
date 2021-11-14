@@ -82,5 +82,13 @@
   "app.components.Filters.Activity.kitchenRecipes": "Virtuvės receptai",
   "app.components.Filters.Activity.lim": "LIM",
   "app.components.Filters.Activity.notebook": "Užrašai",
-  "app.components.Filters.Activity.picaa": "Picaa"
+  "app.components.Filters.Activity.picaa": "Picaa",
+  "app.components.Filters.Activity.pictodroidLite": "Pictodroid Lite",
+  "app.components.Filters.Activity.poster": "Plakatas",
+  "app.components.Filters.Activity.presentation": "Pateiktis",
+  "app.components.Filters.Activity.protocol": "Protokolas",
+  "app.components.Filters.Activity.roulette": "Matuoklė",
+  "app.components.Filters.Activity.routine": "Rutina",
+  "app.components.Filters.Activity.semanticMap": "Semantinis žemėlapis",
+  "app.components.Filters.Activity.sequence": "Seka"
 }
