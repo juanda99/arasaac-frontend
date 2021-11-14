@@ -70,5 +70,11 @@
   "app.components.Filters.Activity.collectiveGame": "Kolektyvinis žaidimas",
   "app.components.Filters.Activity.communication": "Bendravimas",
   "app.components.Filters.Activity.didacticUnit": "Didaktinis skyrius",
-  "app.components.Filters.Activity.digitalBoard": "Skaitmeninė lenta"
+  "app.components.Filters.Activity.digitalBoard": "Skaitmeninė lenta",
+  "app.components.Filters.Activity.dobble": "Dvigubas",
+  "app.components.Filters.Activity.domino": "Domino",
+  "app.components.Filters.Activity.exerciseSheet": "Užduočių lapas",
+  "app.components.Filters.Activity.game": "Žaidimas",
+  "app.components.Filters.Activity.guide": "Vedlys",
+  "app.components.Filters.Activity.individualGame": "Asmeninis žaidimas"
 }
