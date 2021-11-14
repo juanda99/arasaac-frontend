@@ -66,5 +66,9 @@
   "app.components.Filters.Activity.board": "Lenta",
   "app.components.Filters.Activity.book": "Knyga",
   "app.components.Filters.Activity.calendar": "Kalendorius",
-  "app.components.Filters.Activity.cards": "Kortelės"
+  "app.components.Filters.Activity.cards": "Kortelės",
+  "app.components.Filters.Activity.collectiveGame": "Kolektyvinis žaidimas",
+  "app.components.Filters.Activity.communication": "Bendravimas",
+  "app.components.Filters.Activity.didacticUnit": "Didaktinis skyrius",
+  "app.components.Filters.Activity.digitalBoard": "Skaitmeninė lenta"
 }
