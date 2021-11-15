@@ -101,5 +101,11 @@
   "app.components.Filters.Activity.teacchMaterial": "MOKYMO medžiaga",
   "tags.war": "karas",
   "tags.waste disposal": "atliekų šalinimas",
-  "tags.weapon": "ginklas"
+  "tags.weapon": "ginklas",
+  "userMenu.signin": "Prisijungti",
+  "userMenu.signout": "Atsijungti",
+  "userMenu.stopTranslateArasaac": "Nustoti versti ARASAAC",
+  "userMenu.translateArasaac": "versti ARASAAC",
+  "userMenu.userMaterial": "Mano medžiaga",
+  "userMenu.userProfile": "Mano profilis"
 }
