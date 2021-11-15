@@ -98,5 +98,7 @@
   "app.components.Filters.Activity.software": "Programinė įranga",
   "app.components.Filters.Activity.song": "Daina",
   "app.components.Filters.Activity.story": "Istorija",
-  "app.components.Filters.Activity.teacchMaterial": "MOKYMO medžiaga"
+  "app.components.Filters.Activity.teacchMaterial": "MOKYMO medžiaga",
+  "tags.war": "karas",
+  "tags.weapon": "ginklas"
 }
