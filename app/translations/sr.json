@@ -514,6 +514,7 @@
   "app.containers.AuthorSnippet.coordinator": "АРАСААК координатор",
   "app.containers.AuthorSnippet.coordinator.FEMALE": "ARASAAC координатор",
   "app.containers.AuthorSnippet.developer": "АРАСААК програмер",
+  "app.containers.AuthorSnippet.jmNotes": "Пензионисан али сарађује на пројекту",
   "app.containers.AuthorSnippet.reachme": "Можете ме контактирати на:",
   "app.containers.ContactView.alertWindowErrorDesc": "Жао нам је али нисмо примили вашу поруку. Покушајте поново касније или нас контактирајте путем наше друштвене мреже",
   "app.containers.ContactView.alertWindowErrorTitle": "Грешка у контакт обрасцу",
