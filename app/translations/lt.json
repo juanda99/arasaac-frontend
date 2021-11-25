@@ -144,6 +144,7 @@
   "app.components.Filters.Size.small": "Mažas",
   "app.components.Filters.filterTooltip": "Išvalyti filtrą",
   "app.components.Footer.cookiesPolicy": "Slapukų politika",
+  "app.components.Footer.privacyPolicy": "Privatumo politika",
   "app.components.LanguageSelector.et": "Estų",
   "app.components.LanguageSelector.eu": "Baskų",
   "app.components.LanguageSelector.fr": "Prancūzų",
