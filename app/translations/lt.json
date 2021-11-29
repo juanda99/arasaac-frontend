@@ -180,6 +180,8 @@
   "app.components.Material.addTranslation": "Pridėti vertimą",
   "app.components.Material.areas": "Sritys",
   "app.components.Material.author": "Autorius",
+  "app.components.Material.basque": "Baskų kalba",
+  "app.components.Material.brazilian": "Brazilų kalba",
   "app.components.Material.confirmDeletion": "Ar tikrai norite pašalinti šią medžiagą?",
   "app.components.Material.deleteMaterial": "Ištrinti medžiagą",
   "app.components.Material.downloadFile": "Atsisiųsti failą",
