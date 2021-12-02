@@ -1,5 +1,6 @@
 import { defineMessages } from 'react-intl'
 export default defineMessages({
+  'AAC implementation': { id: 'tags.AAC implementation', defaultMessage: 'AAC implementation' },
   Aragon: { id: 'tags.Aragon', defaultMessage: 'Aragon' },
   Egypt: { id: 'tags.Egypt', defaultMessage: 'Egypt' },
   Greece: { id: 'tags.Greece', defaultMessage: 'Greece' },
