@@ -258,6 +258,8 @@
   "app.components.Pictogram.classroom": "Klasė",
   "app.components.Pictogram.color": "Spalva",
   "app.components.Pictogram.copy": "Kopijuoti",
+  "app.components.Pictogram.copyToClipboard": "Piktograma nukopijuota į iškarpinę",
+  "app.components.Pictogram.coreVocabularyIntro": "Ši piktograma yra pagrindinio Augmentinės ir alternatyvios komunikacijos (angl. AAC) žodyno dalis",
   "tags.apiculture": "bitininkystė",
   "tags.educational institution": "švietimo institucija",
   "tags.educational material": "mokomoji medžiaga",
