@@ -253,6 +253,8 @@
   "app.components.Pictogram.cancel": "Atšaukti",
   "app.components.Pictogram.changePictoLanguage": "Pasirinkite kalbą, jei norite matyti piktogramos aprašymą kita kalba",
   "app.components.Pictogram.chooseColor": "Pasirinkite spalvą:",
+  "app.components.Pictogram.chooseIdentifier": "Pasirinkti identifikatorių:",
+  "app.components.Pictogram.choosePosition": "Pasirinkite poziciją:",
   "tags.apiculture": "bitininkystė",
   "tags.educational institution": "švietimo institucija",
   "tags.educational material": "mokomoji medžiaga",
