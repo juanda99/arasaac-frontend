@@ -244,6 +244,8 @@
   "app.components.Pictogram.TextOptions.fontSize": "Šrifto dydis:",
   "app.components.Pictogram.TextOptions.textFormat": "Teksto formatas",
   "app.components.Pictogram.TextOptions.writeText": "Įrašykite tekstą arba pasirinkite pasiūlymą:",
+  "app.components.Pictogram.ZoomOptions.zoomLevel": "Priartinimo lygis",
+  "app.components.Pictogram.accept": "Gerai",
   "app.components.Pictogram.cancel": "Atšaukti",
   "tags.apiculture": "bitininkystė",
   "tags.educational institution": "švietimo institucija",
