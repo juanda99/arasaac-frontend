@@ -224,6 +224,8 @@
   "app.components.MaterialForm.language": "Kalba",
   "app.components.MaterialForm.languageFiles": "Įkelkite tik šiai kalbai būdingus failus",
   "app.components.MaterialForm.languageHint": "Įrašykite kalbą, pavadinimą ir medžiagos apibūdinimą.",
+  "app.components.MaterialForm.notPublished": "Nepublikuota",
+  "app.components.MaterialForm.translator": "Vertėjas",
   "app.components.Pictogram.cancel": "Atšaukti",
   "tags.apiculture": "bitininkystė",
   "tags.educational institution": "švietimo institucija",
