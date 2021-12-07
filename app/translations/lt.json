@@ -139,6 +139,8 @@
   "app.components.Filters.Area.socio-emotionalSkills": "Socialiniai emociniai įgūdžiai",
   "app.components.Filters.Area.time": "Laikas",
   "app.components.Filters.Area.writing": "Rašymas",
+  "app.components.Filters.Catalog.blackAndWhitePictograms": "Juodai-baltos piktogramos",
+  "app.components.Filters.Catalog.catalog": "Katalogas",
   "app.components.Filters.Catalog.colorPictograms": "Spalvotos piktogramos",
   "app.components.Filters.Catalog.pictures": "Paveikslėliai",
   "app.components.Filters.Language.chooseLanguage": "Kalba",
