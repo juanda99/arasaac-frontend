@@ -426,6 +426,8 @@
   "app.components.aacusage.learning": "Podrška za učenje",
   "app.components.aacusage.lifeSkills": "Vještine za život",
   "app.components.aacusage.otherContexts": "Kognitivna pristupačnost u drugim situacijama",
+  "app.components.aacusage.p1": "Simboli pomažu ljudima sa značajnim teškoćama komuniciranja, zbog raznovrsnih razloga (autizam, intelektualne teškoće, nerazvijen govor, osobe starije životne dobi, idr.) u izražavanju njihovih ideja, htijenja, želja, potreba ili osjećaja. Simboli im pomažu u komunikaciji s njihovim okruženjem.",
+  "app.components.aacusage.p10": "Izvori temeljeni na Teacch metodi su promjenjivi materijali, vizualno privlačni i poticajni za ostvarivanje bilo kakve aktivnosti, uključujući i kurikularne aktivnosti.",
   "app.components.aacusage.showResources": "Prikaži resurse",
   "app.components.aacusage.visualSchedules": "Vizualni rasporedi/ Rutina",
   "app.components.aacusage.visualTimetables": "Vizualni rasporedi",
