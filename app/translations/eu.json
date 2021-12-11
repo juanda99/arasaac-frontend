@@ -363,7 +363,7 @@
   "app.components.UseConditions.property": "{jabea} webgune honetan argitaratutako piktogramen jatorrizko fitxategien jabea da.",
   "app.components.Welcome.aragonese": "Aragoiarra",
   "app.components.Welcome.chooseLanguage": "Aukeratu zure hizkuntza:",
-  "app.components.Welcome.header": "{aragones} Komunikazio handitzaile eta ordezkoaren zentrua",
+  "app.components.Welcome.header": "Komunikazio Handigarri eta Alternatiborako zentro {aragones}",
   "app.components.aac": "ARASAAC-etik eskerrak eman nahi dizkiegu bai {author} -ri eta bai {team} -i gure webgunean atal hau idazteko egindako lankidetzagatik.",
   "app.components.aac.aac": "Komunikazio handigarri eta alternatiborako sistema (KHA)",
   "app.components.aac.codedSelection": "Aukeraketa kodetua",
