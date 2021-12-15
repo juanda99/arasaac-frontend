@@ -291,6 +291,11 @@ export default defineMessages({
     description: 'Menu choose material area',
     defaultMessage: 'Knowledge theory',
   },
+  behavior: {
+    id: 'app.components.Filters.Area.behavior',
+    description: 'Menu choose material area',
+    defaultMessage: 'Behavior',
+  },
   activity: {
     id: 'app.components.Filters.Activity.activity',
     description: 'Menu choose material activity',
@@ -515,6 +520,11 @@ export default defineMessages({
     id: 'app.components.Filters.Activity.dobble',
     description: 'Menu choose material activity',
     defaultMessage: 'Dobble',
+  },
+  anticipation: {
+    id: 'app.components.Filters.Activity.anticipation',
+    description: 'Menu choose material activity',
+    defaultMessage: 'Anticipation',
   },
   chooseLanguage: {
     id: 'app.components.Filters.Language.chooseLanguage',

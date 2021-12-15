@@ -102,6 +102,7 @@ class MaterialForm extends React.Component {
         case 36:
         case 37:
         case 38:
+        case 39:
           text = `${formatMessage(
             filterMessages['socio-emotionalSkills']
           )} / ${text}`
