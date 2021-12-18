@@ -302,6 +302,8 @@
   "app.components.Pictogram.left": "Kairė",
   "app.components.Pictogram.library": "Biblioteka",
   "app.components.Pictogram.medium": "Vidutinis",
+  "app.components.Pictogram.office": "Biuras",
+  "app.components.Pictogram.past": "Praeitis",
   "app.components.Pictogram.peopleAppearance": "Žmonių išvaizda",
   "app.components.Pictogram.pictoMetaDesc": "Atsisiųsti {keyword} piktogramą. Keiskite internete vaizdą naudodami mūsų piktogramų redaktorių.",
   "app.components.Pictogram.pictogramDisabled": "Piktogramų parinktys",
