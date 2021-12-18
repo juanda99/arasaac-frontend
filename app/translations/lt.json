@@ -379,6 +379,7 @@
   "app.components.aac.list1": "{directSelection}: naudotojas pirštu rodo į mygtukus arba tiesiogiai juos spaudžia, žvilgsniu arba kitomis kūno dalimis parodo piktogramas, žodžius ar raides, kuriomis jis/ji nori komunikuoti. Skirtingų tipų rodyklės yra pagalbinių produktų, kurie gali palengvinti pasirinkimą arba tiesioginę prieigą, pavyzdžiai.",
   "app.components.aac.list2": "{mouseSelection}: tik elektroniniams produktams. Naudojant pelę galima pasiekti klaviatūras arba valdymo tinklelius su simboliais, kad būtų galima bendrauti per ekraną.. Galite naudoti įvairius pritaikytus pelės įtaisus, pavyzdžiui, valdymo rankenas, bėgimo kamuoliukus, veido pelės įtaisus (valdomus galvos judesiais), pelės įtaisus, valdomus žvilgsniu, arba daugiafunkcinę pelę, kurią sudaro penki klavišai arba jungikliai.",
   "app.components.aac.list3": "{dependentExploration}: tik lentoms ar knygoms. Kalbėtojas rodo į norimus perduoti simbolius ar raides po vieną, grupėmis, eilutėmis ar stulpeliais, kol asistuojantis kalbėtojas gestu parodo, kad raidė ar žodis yra identifikuotas.",
+  "app.components.aac.list4": "{independentExploration}: tik elektroniniams produktams. Komunikatorius arba kompiuteris rodo įvairias bendravimo galimybes, kol kalbėtojas, kuriam teikiama pagalba, paspaudžia jungiklį ir pasirenka norimą. Yra daugybė jungiklių, kuriuos galima įjungti skirtingomis kūno dalimis.",
   "tags.apiculture": "bitininkystė",
   "tags.augmentative communication": "augmentinė komunikacija",
   "tags.autumn": "ruduo",
