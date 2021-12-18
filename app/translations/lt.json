@@ -380,6 +380,8 @@
   "app.components.aac.list2": "{mouseSelection}: tik elektroniniams produktams. Naudojant pelę galima pasiekti klaviatūras arba valdymo tinklelius su simboliais, kad būtų galima bendrauti per ekraną.. Galite naudoti įvairius pritaikytus pelės įtaisus, pavyzdžiui, valdymo rankenas, bėgimo kamuoliukus, veido pelės įtaisus (valdomus galvos judesiais), pelės įtaisus, valdomus žvilgsniu, arba daugiafunkcinę pelę, kurią sudaro penki klavišai arba jungikliai.",
   "app.components.aac.list3": "{dependentExploration}: tik lentoms ar knygoms. Kalbėtojas rodo į norimus perduoti simbolius ar raides po vieną, grupėmis, eilutėmis ar stulpeliais, kol asistuojantis kalbėtojas gestu parodo, kad raidė ar žodis yra identifikuotas.",
   "app.components.aac.list4": "{independentExploration}: tik elektroniniams produktams. Komunikatorius arba kompiuteris rodo įvairias bendravimo galimybes, kol kalbėtojas, kuriam teikiama pagalba, paspaudžia jungiklį ir pasirenka norimą. Yra daugybė jungiklių, kuriuos galima įjungti skirtingomis kūno dalimis.",
+  "app.components.aac.list5": "{codedSelection}: kiekvienas simbolis ar raidė turi kodą (pavyzdžiui, dviejų ar trijų skaitmenų skaičius arba spalva ir skaičius), kad pagalbinis kalbantysis šį kodą nurodytų tiesiogiai pasirinkdamas arba nuskaitydamas perduotą simbolį ar raidę. Tokiu būdu, naudodamasis keliais klavišais arvaldymo tinkleliais, jis gali pasiekti daugybę simbolių.",
+  "app.components.aac.mouseSelection": "Pelės pasirinkimas",
   "tags.apiculture": "bitininkystė",
   "tags.augmentative communication": "augmentinė komunikacija",
   "tags.autumn": "ruduo",
