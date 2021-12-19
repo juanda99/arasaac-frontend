@@ -400,6 +400,7 @@
   "app.components.aac.p5": "Augmentinė ir altentyvi komunikacija apima skirtingas {systemSymbols}, kartu grafiką (paveikslėliai, piešiniai, piktogramos, žodžiai ar raidės) ir gestus (mimika, gestai ar rankų signalai), o pirmuoju atveju taip pat reikia naudoti {supportProducts}. Skirtingos simbolių sistemos pritaikomos prie įvairaus amžiaus ir nevienodų motorinių, kognityvinių ir kalbinių įgūdžių žmonių poreikių.",
   "app.components.aac.p6": "{communicationProducts} apima technologinius išteklius, pavyzdžiui, dirbtinės kalbos komunikatorius, asmeninius kompiuterius ar planšetinius kompiuterius su specialiomis programomis, leidžiančiomis įvairias prieigos formas, pritaikytas labai riboto judėjimo žmonėms. Jos taip pat palengvina įvairių piktografinių ir ortografinių simbolių sistemų, taip pat įvairių išvesties priemonių, įskaitant balso išvestį, įtraukimą. Jos taip pat gali apimti ir netechnologines priemones, pavyzdžiui, komunikacines lentas ir knygas.",
   "app.components.aac.p7": "Yra įvairių strategijų ir priemonių, leidžiančių naudotis kompiuteriais, komunikatoriais, komunikacinėmis lentomis ar knygomis, apibendrintai vadinamomis {referenceName}, pavyzdžiui, rodyklės, pritaikytos ar virtualios klaviatūros ir pelės įtaisai arba jungikliai.",
+  "app.components.aac.pictographicSystems": "Piktogramų sistemos",
   "tags.apiculture": "bitininkystė",
   "tags.augmentative communication": "augmentinė komunikacija",
   "tags.autumn": "ruduo",
