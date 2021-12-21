@@ -492,6 +492,8 @@
   "app.containers.ContactView.form.wrongFingers": "Neteisingas pirštų skaičius",
   "app.containers.ContactView.formIntro": "Mes kalbame angliškai ir ispaniškai. Prašome susisiekti su mumis naudodamiesi šia forma ir pateikti bet kokį klausimą, pasiūlymą ar bendradarbiavimą. Mes pasistengsime su jumis kuo greičiau susisiekti.",
   "app.containers.ContactView.sendMessage": "Dėkojame už žinutę. Kaip galima greičiau su jumis susisieksime.",
+  "app.containers.ContactView.sendingMessage": "Siunčiamas pranešimas...",
+  "app.containers.DevelopersView.grantTypes": "Dotacijų tipai",
   "app.containers/collaboratorsSnippet.ar": "Alžyras",
   "app.containers/collaboratorsSnippet.au": "Austrija",
   "app.containers/collaboratorsSnippet.be": "Belgija",
