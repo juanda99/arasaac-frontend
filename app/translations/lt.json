@@ -430,6 +430,8 @@
   "app.components.aacusage.p3": "Vizualiniame tvarkaraštyje suplanuotos užduotys ir veikla vaizduojamos naudojant vaizdines pagalbines priemones (šiuo atveju simbolius). Jis padeda vaikams suprasti namų ir mokyklos dienotvarkę. Jie naudingi užduotims, susidedančioms iš kelių etapų, suskirstyti bei padeda vaikams lengviau jas išmokti. Galutinis tikslas - sumažinti nerimą ir pagerinti jų mokymąsi bei elgesį.",
   "app.components.aacusage.p4": "Sveikatos priežiūros sistemoje vizualinės dienotvarkės naudojamos siekiant paaiškinti medicinines procedūras prieš vykstant į ligoninę ir sumažinti nerimą atliekant medicininę procedūrą.",
   "app.components.aacusage.p5": "Vaizdiniai tvarkaraščiai padeda vaikams, turintiems specialiųjų poreikių, suprasti, ką jie darys toliau arba kur turi eiti (perėjimai).",
+  "app.components.aacusage.p6": "Vaizdiniai tvarkaraščiai padeda vaikams būti savarankiškiems, juos motyvuoja, paaiškina, kas vyks skirtingu laiku (ryte, vakare, dieną) ir įvairiuose kontekstuose (namuose, mokykloje, sporto centre...).",
+  "app.components.aacusage.p7": "Socialinė istorija - tai veiksminga mokomoji medžiaga, parašyta pasakojimo būdu su vaizdinėmis priemonėmis (simboliais), kurioje paaiškinami konkretūs įgūdžiai ir elgesys, taip pat ypatingi įvykiai ir socialinės situacijos, padedančios vaikams suprasti, kaip jie galėtų į jas reaguoti.",
   "app.components.aacusage.showResources": "Rodyti išteklius",
   "app.components.aacusage.socialStories": "Socialinės istorijos",
   "app.components.aacusage.teacch": "TEACCH ištekliai",
