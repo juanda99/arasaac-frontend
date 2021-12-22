@@ -18,6 +18,7 @@ const languages = [
   // MARCH: web 95%,  admin: 96%  pictos: 2.5%
   // APRIL:  =
   // SEP: web 99%, admin: 96%,  pictos: 2,6%
+  // DIC: web 99%, admin: 96%,  pictos: 2,8%
   {
     code: 'ar',
     text: 'عربى',
@@ -30,6 +31,7 @@ const languages = [
   // APRI: web 99%,  admin 99%, pictos 53%
   // JUNE: web 99%,  admin 99%, pictos 72%
   // SEP: web 98%,  admin 99%, pictos 88%
+  // DIC: web 99%, admin: 99%,  pictos: 100%
   {
     code: 'an',
     text: 'Aragonés',
@@ -42,6 +44,7 @@ const languages = [
   // MARCH: web 100%, admin 100%, pictos 13%
   // JUNE: web 100%, admin 100%, pictos 21%
   // SEP: web 99%,  admin 99%, pictos 23%
+  // DEC: web 99%,  admin 99%, pictos 59%
   {
     code: 'bg',
     text: 'български',
@@ -53,6 +56,7 @@ const languages = [
   // MARCH: // web 99%, admin 99%, pictos 28%
   // APRIL:  web 99%, admin 99%, pictos 100%
   // SEP: web 99%,  admin 99%, pictos 99%
+  // DEC: web 99%,  admin 99%, pictos 97%
   {
     code: 'br',
     text: 'Português do Brasil',
@@ -64,6 +68,7 @@ const languages = [
   // MARCH: web 99%, admin 99%, pictos 99%
   // APRIL: web 99%, admin 99%, pictos 99%
   // SEP: =
+  // DEC: =
   {
     code: 'ca',
     text: 'Català',
@@ -75,6 +80,7 @@ const languages = [
   // MARCH: // web 77%, admin 90%, pictograms 0%
   // APRIL: // web 77%, admin 90%, pictograms 0%
   // SEP:  =
+  // DEC: web 99%,  admin 89%, pictos 25%
   {
     code: 'de',
     text: 'Deutsche',
@@ -86,6 +92,7 @@ const languages = [
   // MARCH: web 98%, admin 99%, pictos 19%
   // APRIL: web 97%, admin 99%, pictos 19%
   // SEP: web 96%,  admin 99%, pictos 19%
+  // DEC: web 95%,  admin 99%, pictos 19%
   {
     code: 'et',
     text: 'Eestlane',
@@ -98,6 +105,7 @@ const languages = [
   // APRIL: web 97%, admin 99%, pictos 83%
   // JUNE: web 97%, admin 99%, pictos 85%
   // SEP: =
+  // DEC: =
   {
     code: 'eu',
     text: 'Euskal',
@@ -114,6 +122,7 @@ const languages = [
   // APRIL: web 99%, admin 99%, pictos 23%
   // JUNE: web 99%, admin 99%, pictos 33%
   // SEP: web 99%,  admin 100%, pictos 99%
+  // DEC: =
   {
     code: 'fr',
     text: 'Français',
@@ -125,6 +134,7 @@ const languages = [
   // MARCH: web 99%, admin 99%, pictos 90%
   // APRIL: =
   // JUN: =
+  // DEC: web 100%, admin 100%, pictos 89%
   {
     code: 'gl',
     text: 'Galego',
@@ -136,6 +146,7 @@ const languages = [
   // MARCH: web 99%, admin 100%, pictos 99%
   // APRIL: =
   // SEP: =
+  // DEC: web 100%, admin 100%, pictos 100%
   {
     code: 'he',
     text: 'עברי', // hebreo
@@ -147,6 +158,7 @@ const languages = [
   // MARCH: web 47%, admin 46%, pictos 1%
   // APRIL: =
   // JUNE: web 96%, admin 99%, pictos 30%
+  // DEC: web 97%, admin 99%, pictos 54%
   {
     code: 'hr',
     text: 'Hrvatski',
@@ -158,6 +170,7 @@ const languages = [
   // MARCH: web 89%, admin 99%, pictos 47%
   // APRIL: web 99%, admin 100%, pictos 49%
   // JUNE: =
+  // DEC: web 97%, admin 100%, pictos 53%
   {
     code: 'hu',
     text: 'Magyar',
@@ -169,15 +182,26 @@ const languages = [
   // MARCH: web 99%,  admin 99%, pictos 73%
   // APRIL: web 99%,  admin 99%, pictos 88%
   // JUNE: web 100%,  admin 100%, pictos 100%
+  // DEC: web 100%, admin 100%, pictos 97%
   {
     code: 'it',
     text: 'Italiano',
     translated: true,
     needTranslators: false,
   },
+  // KO
+  // DEC: web 96%, admin 70%, pictos 0%
   {
     code: 'ko',
     text: '한국어',
+    translated: false,
+    needTranslators: true,
+  },
+  // LT - Lithuanian
+  // DEC:
+  {
+    code: 'lt',
+    text: 'Lietuvių',
     translated: false,
     needTranslators: true,
   },
@@ -186,6 +210,7 @@ const languages = [
   // MARCH: web 99%, admin 100%, pictos 33%
   // APRIL: =
   // JUNE: =
+  // DEC: =
   {
     code: 'mk',
     text: 'Македонски',
@@ -196,6 +221,7 @@ const languages = [
   // FEB: web 50%, admin 0%, pictos 0%
   // MARCH: web 57%, admin 47%, pictos 0%
   // APRIL: =
+  // DEC: =
   {
     code: 'el',
     text: 'Ελληνικά',
@@ -207,6 +233,7 @@ const languages = [
   // MARCH: web 11%, admin 45%, pictos 0%
   // APRIL: web 99%, admin 99%, pictos 0%
   // JUNE: web 100%, admin 100%, pictos 2%
+  // DEC: web 100%, admin 100%, pictos 8%
   {
     code: 'nl',
     text: 'Nederlands',
@@ -217,6 +244,7 @@ const languages = [
   // FEB: web 97%, admin 99%, pictos 99%
   // MARCH: web 99%, admin 100%, pictos 99%
   // APRIL: =
+  // DEC: =
   {
     code: 'pl',
     text: 'Polski',
@@ -227,6 +255,7 @@ const languages = [
   // FEB:  web 98%, admin 96%, pictos 99%
   // MARCH: web 99%, admin 99%, pictos 99%
   // APRIL: =
+  // DEC: web 100%, admin 100%, pictos 96%
   {
     code: 'pt',
     text: 'Português',
@@ -238,6 +267,7 @@ const languages = [
   // MARCH: web 37%, admin 6%, pictos 0%
   // APRIL: web 47%, admin 6%, pictos 19%
   // JUNE: web 47%, admin 6%, pictos 21%
+  // DEC: =
   {
     code: 'ro',
     text: 'Română',
@@ -250,6 +280,7 @@ const languages = [
   // APRIL: =
   // JUNE: web 99%, admin 99%, pictos 25%
   // SEP: web 99%, admin 99%, pictos 27%
+  // DEC: web 100%, admin 99%, pictos 29%
   {
     code: 'ru',
     text: 'Pусский',
@@ -261,6 +292,7 @@ const languages = [
   // MARCH: web 0%, admin 0%, pictos  0%
   // APRIL: =
   // JUNE: web 19%, admin 0%, pictos  0%
+  // DEC: =
   {
     code: 'sk',
     text: 'Slovenský',
@@ -271,6 +303,7 @@ const languages = [
   // FEB: web 98%, admin 95%, pictos 0%
   // MARCH: web 98%, admin 95%, pictos 0%
   // APRIL: =
+  // DEC: web 94%, admin 94%, pictos 0%
   {
     code: 'sq',
     text: 'Shqip',
@@ -287,6 +320,7 @@ const languages = [
   // MARCH: web 19%, admin 0%, pictos  0%
   // APRIL: web 18%, admin 0%, pictos 0%
   // SEP: web 99%, admin 71%, pictos 0%
+  // DEC: =
   {
     code: 'sr',
     text: 'Српски',
@@ -297,6 +331,7 @@ const languages = [
   // FEB:  web 44%, admin  84%, pictos 96%
   // MARCH: web 77%, admin 95%, pictos  95%
   // APRIL:  =
+  // DEC: web 74%, admin 95%, pictos 90%
   {
     code: 'val',
     text: 'Valencia',
@@ -307,6 +342,7 @@ const languages = [
   // FEB:  web 15%, admin 0%, pictos  0%
   // MARCH: web 14%, admin 0%, pictos  0%
   // APRIL: =
+  // DEC: web 31%, admin 0%, pictos 0%
   {
     code: 'zh',
     text: '简体中文）',

@@ -153,6 +153,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Korean',
   },
+  lt: {
+    id: 'app.components.LanguageSelector.lt',
+    description: 'Select language',
+    defaultMessage: 'Lithuanian',
+  },
   translateOnline: {
     id: 'app.components.LanguageSelector.translateOnline',
     description: 'Select language',
