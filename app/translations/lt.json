@@ -501,6 +501,7 @@
   "app.containers.ListMenu.submit": "Pateikti",
   "app.containers.ListSnippet.newFolderName": "Naujas aplanko pavadinimas",
   "app.containers.MaterialView.materialLoading": "Medžiagos pakrovimas...",
+  "app.containers.MaterialView.materialNotFound": "Atsiprašome, ieškoma medžiaga neegzistuoja",
   "app.containers/collaboratorsSnippet.ar": "Alžyras",
   "app.containers/collaboratorsSnippet.au": "Austrija",
   "app.containers/collaboratorsSnippet.be": "Belgija",
