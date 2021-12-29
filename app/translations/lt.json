@@ -482,6 +482,7 @@
   "app.containers.AuthorSnippet.lmNotes": "Bendradarbiaujate kaip išorinis kūrėjas",
   "app.containers.AuthorSnippet.reachme": "Galite susisiekti su manimi šiuo numeriu:",
   "app.containers.ContactView.alertWindowErrorDesc": "Atsiprašome, bet negavome jūsų žinutės. Pabandykite dar kartą vėliau arba susisiekite su mumis per mūsų socialinius tinklus",
+  "app.containers.ContactView.form.message": "Žinutė",
   "app.containers.ContactView.form.name": "Pavadinimas",
   "app.containers.ContactView.form.nameHint": "Įrašykite savo vardą",
   "app.containers.ContactView.form.preventSpam": "Atsakykite į šį klausimą siekdami išvengti nepageidaujamo el. pašto:",
