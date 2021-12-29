@@ -518,6 +518,7 @@
   "app.containers.PictogramsView.addFolderHint": "Įveskite naujo aplanko pavadinimą",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "Šis turinys prieinamas tik patvirtintiems naudotojams",
   "app.containers.PictogramsView.folderName": "Aplanko pavadinimas",
+  "app.containers.ProfileView.searchPictograms": "Piktogramų paieška",
   "app.containers.ProfileView.translator": "Vertėjas",
   "app.containers.ProfileView.upgradeRole": "Pakeisti vaidmenį į vertėjo",
   "app.containers.ProfileView.user": "Vartotojas",
