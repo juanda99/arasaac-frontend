@@ -525,6 +525,8 @@
   "app.containers.ProfileView.PersonalData.personalData": "Asmens duomenys",
   "app.containers.ProfileView.admin": "Administratorius",
   "app.containers.ProfileView.arasaacProfilePicture": "ARASAAC profilio nuotrauka",
+  "app.containers.ProfileView.colorPictograms": "Rodyti spalvotas piktogramas",
+  "app.containers.ProfileView.currentRole": "Dabartinis vaidmuo:",
   "app.containers.ProfileView.greeting": "Sveiki {name}!",
   "app.containers.ProfileView.language": "Kalba",
   "app.containers.ProfileView.lastLogin": "Paskutinis prisijungimas:",
