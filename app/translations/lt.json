@@ -481,6 +481,8 @@
   "app.components.uploadMaterialView.close": "Uždaryti",
   "app.components.uploadMaterialView.materialSuccessUpload": "Jūsų medžiaga jau įkelta ir ARASAAC komanda ją peržiūrės. Atsiųsime jums el. laišką, kai medžiaga bus paskelbta!",
   "app.components.uploadMaterialView.needAuthor": "Būtina nurodyti bent vieną medžiagos autorių",
+  "app.components.uploadMaterialView.needReview": "Peržiūrėti medžiagą",
+  "app.components.uploadMaterialView.tryAgain": "Bandykite dar kartą",
   "app.containers.AuthorSnippet.coordinator": "ARASAAC koordinatorius",
   "app.containers.AuthorSnippet.coordinator.FEMALE": "ARASAAC koordinatorius",
   "app.containers.AuthorSnippet.developer": "ARASAAC programuotojas",
