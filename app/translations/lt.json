@@ -523,6 +523,7 @@
   "app.containers.PictogramsView.addFolderHint": "Įveskite naujo aplanko pavadinimą",
   "app.containers.PictogramsView.contentNotAvailableWithoutAuth": "Šis turinys prieinamas tik patvirtintiems naudotojams",
   "app.containers.PictogramsView.folderName": "Aplanko pavadinimas",
+  "app.containers.PictogramsView.newPictogramsFound": "Radome {pictogramsCounter} neseniai sukurtų piktogramų",
   "app.containers.PictogramsView.pictogramsNotFound": "Apgailestaujame, bet negalime rasti ieškomos piktogramos",
   "app.containers.PictogramsView.search": "Ieškoti",
   "app.containers.PictogramsView.signin": "Prisijungti",
