@@ -597,6 +597,7 @@
   "app.containers/collaboratorsView.translateArasaac": "ARASAAC į įvairias kalbas verčia savanoriai. Susisiekite su mumis, jei norite padėti išversti ARASAAC į naują kalbą arba patobulinti esamą vertimą.",
   "app.containersTranslationStatus.noDataAvailable": "Nėra duomenų",
   "app.containersTranslationStatus.pictosTranslationStatus": "Piktogramų vertimas (galbūt jau išversta, bet nepatvirtinta):{pictosValidatedString}%",
+  "email.signin": "el. paštas",
   "tags.alphabet": "abėcėlė",
   "tags.apiculture": "bitininkystė",
   "tags.augmentative communication": "augmentinė komunikacija",
