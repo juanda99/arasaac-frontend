@@ -598,6 +598,7 @@
   "app.containersTranslationStatus.noDataAvailable": "Nėra duomenų",
   "app.containersTranslationStatus.pictosTranslationStatus": "Piktogramų vertimas (galbūt jau išversta, bet nepatvirtinta):{pictosValidatedString}%",
   "email.signin": "el. paštas",
+  "header.aacUsers": "AAK naudotojai",
   "tags.alphabet": "abėcėlė",
   "tags.apiculture": "bitininkystė",
   "tags.augmentative communication": "augmentinė komunikacija",
