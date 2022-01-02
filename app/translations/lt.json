@@ -644,6 +644,8 @@
   "joyride.userMenuDesc": "Vartotojo konkretūs veiksmai, pavyzdžiui, asmeninių duomenų keitimas.",
   "loginView.authentication": "Autentiškumo nustatymo klaida",
   "loginView.communicationError": "Autentifikavimo serveris nepasiekiamas",
+  "loginView.invalidUser": "Neteisingas vartotojo vardas arba slaptažodis",
+  "menu.aacUsers": "AAK vartotojas",
   "menu.pictograms": "Piktogramos",
   "menu.prizes": "Prizai",
   "tags.alphabet": "abėcėlė",
