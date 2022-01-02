@@ -642,6 +642,8 @@
   "joyride.startNavigation": "Spustelėkite mygtuką, jei norite naršyti ARASAAC svetainėje.",
   "joyride.userMenu": "Vartotojo meniu",
   "joyride.userMenuDesc": "Vartotojo konkretūs veiksmai, pavyzdžiui, asmeninių duomenų keitimas.",
+  "loginView.authentication": "Autentiškumo nustatymo klaida",
+  "loginView.communicationError": "Autentifikavimo serveris nepasiekiamas",
   "menu.pictograms": "Piktogramos",
   "menu.prizes": "Prizai",
   "tags.alphabet": "abėcėlė",
