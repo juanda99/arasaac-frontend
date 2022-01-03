@@ -572,6 +572,7 @@
   "app.containers.SettingsView.language": "Kalba",
   "app.containers.TabsHeader.new": "Naujas",
   "app.containers.TabsHeader.search": "Ieškoti",
+  "app.containers/IntroAAC.desc": "Augmentinės ir alternatyvios komunikacijos sistemomis (AAK) siekiama padidinti arba kompensuoti neįgaliųjų bendravimo sunkumus.",
   "app.containers/IntroAAC.title": "Kas yra AAK? - ARASAAC",
   "app.containers/IntroUsageAAC.desc": "AAK simbolių rinkinį specialistai ir šeimos nariai naudoja įvairiais tikslais: kaip bendravimo lentas, vaizdinius tvarkaraščius ir laiko juostas, TEACCH resursus...",
   "app.containers/IntroUsageAAC.title": "Kaip naudoti AAK simbolius - ARASAAC",
