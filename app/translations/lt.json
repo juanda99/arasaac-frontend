@@ -572,6 +572,8 @@
   "app.containers.SettingsView.language": "Kalba",
   "app.containers.TabsHeader.new": "Naujas",
   "app.containers.TabsHeader.search": "Ieškoti",
+  "app.containers.WorldView.arasaacInWorld": "ARASAAC veikia visame pasaulyje. Žemiau pateiktame žemėlapyje galite pamatyti keletą jos naudojimo pavyzdžių. Susisiekite su mumis, jei norite žemėlapyje pasidalyti savo ARASAAC naudojimo patirtimi",
+  "app.containers.introArasaacPrizes": "ARASAAC yra bendradarbiavimo projektas, kurį koordinuoja ir finansuoja Aragono vyriausybė, projektas nuo pat jo sukūrimo 2007 m. už bendradarbių altruistinį darbą pelnė nemažai apdovanojimų.",
   "app.containers/IntroAAC.desc": "Augmentinės ir alternatyvios komunikacijos sistemomis (AAK) siekiama padidinti arba kompensuoti neįgaliųjų bendravimo sunkumus.",
   "app.containers/IntroAAC.title": "Kas yra AAK? - ARASAAC",
   "app.containers/IntroUsageAAC.desc": "AAK simbolių rinkinį specialistai ir šeimos nariai naudoja įvairiais tikslais: kaip bendravimo lentas, vaizdinius tvarkaraščius ir laiko juostas, TEACCH resursus...",
