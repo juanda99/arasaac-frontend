@@ -462,6 +462,7 @@
   "app.components.dialog.ok": "Gerai",
   "app.components.disclaimer": "Atsakomybės apribojimas",
   "app.components.downloadLogo": "Atsisiųsti ARASAAC logotipą",
+  "app.components.guideAulaAbierta": "Mūsų svetainėje Aula Abierta galite rasti {guideAndResources}",
   "app.components.license": "Licencija:",
   "app.components.licenseP3": "Todėl šių išteklių naudojimas komerciniais tikslais ar kituose produktuose ar leidiniuose yra draudžiamas.",
   "app.components.licenseP4": "Be raštiško autorių teisių turėtojų leidimo, laikantis teisės aktuose nustatytų sankcijų, griežtai draudžiama visiškai ar iš dalies atgaminti šiuos išteklius bet kokiomis priemonėmis ar procedūromis, įskaitant reprografiją ir kompiuterinį apdorojimą.",
