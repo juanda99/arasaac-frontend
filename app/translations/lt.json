@@ -572,6 +572,8 @@
   "app.containers.SettingsView.language": "Kalba",
   "app.containers.TabsHeader.new": "Naujas",
   "app.containers.TabsHeader.search": "Ieškoti",
+  "app.containers/IntroAAC.title": "Kas yra AAK? - ARASAAC",
+  "app.containers/IntroUsageAAC.desc": "AAK simbolių rinkinį specialistai ir šeimos nariai naudoja įvairiais tikslais: kaip bendravimo lentas, vaizdinius tvarkaraščius ir laiko juostas, TEACCH resursus...",
   "app.containers/IntroUsageAAC.title": "Kaip naudoti AAK simbolius - ARASAAC",
   "app.containers/IntroUsersAAC.desc": "AAK simboliai gali padėti visiems, kurie susiduria su kalbos sunkumais: autizmui, intelekto sutrikimams, kalbos stokai, pagyvenusiems žmonėms...",
   "app.containers/IntroUsersAAC.title": "AAK naudotojai - ARASAAC",
