@@ -1,1 +1,15 @@
-{}
+{
+  "Login.invalidEmail": "無効なメールアドレスです",
+  "Login.invalidUrl": "無効なURL",
+  "Login.required": "要求",
+  "NewPasswordForm.hintNewPassword": "新しいパスワードは何ですか？",
+  "activate.activateUser": "ユーザーの有効化",
+  "activate.expiredCode": "アクティベーションコードの有効期限が切れました。アカウントを認証するために別のメールを送信しました。",
+  "activate.invalidCode": "アクティベーションコードが無効です",
+  "activate.userActivated": "ユーザーがアクティブになりました。サインインできます。",
+  "activate.userNotActivated": "アプリを有効化中にエラーが発生しました",
+  "app.HomePage.discover": "ARASAACを発見する",
+  "app.MaterialsView.pageDescription": "専門家や家族向けのAAC材料リソース。 拡張通信および代替通信文書、ボード、ワークシートをダウンロード...",
+  "app.MaterialsView.pageDescriptionSearch": "専門家や家族向けの {searchText} に関連する AAC マテリアルリソース 拡張通信および代替通信ドキュメント、ボード、ワークシートをダウンロード...",
+  "app.MaterialsView.pageTitle": "AAC共有材料リソース - ARASAAC"
+}
