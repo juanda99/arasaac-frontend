@@ -48,5 +48,12 @@
   "app.component.MaterialConditions.translationQuote": "翻訳の引用",
   "app.component.MaterialConditions.translationQuoteDesc": "翻訳された資料の場合、引用の最後に翻訳者の名前が追加されます。",
   "app.component.MaterialConditions.translator": "翻訳者",
-  "app.component.Participate.contact": "お問い合わせ"
+  "app.component.Participate.contact": "お問い合わせ",
+  "app.components.Filters.Activity.teacchMaterial": "TEACCH (ティーチ) 素材",
+  "app.components.Filters.Activity.tico": "TICO",
+  "app.components.Filters.Activity.video": "ビデオ",
+  "app.components.Filters.Area": "エリア",
+  "app.components.Filters.Area.alphabet": "アルファベット",
+  "app.components.Filters.Area.art": "芸術",
+  "app.components.Filters.Area.attention": "注意"
 }
