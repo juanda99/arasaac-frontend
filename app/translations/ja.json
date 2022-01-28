@@ -43,5 +43,10 @@
   "app.component.MaterialConditions.requirementsP6": "見積もりを正しく作成するには、次のいずれかの引用符を使用する必要があります:",
   "app.component.MaterialConditions.standardQuote": "標準の引用",
   "app.component.MaterialConditions.submit": "送信",
-  "app.component.MaterialConditions.suggestions": "提案"
+  "app.component.MaterialConditions.suggestions": "提案",
+  "app.component.MaterialConditions.suggestionsDesc": "ARASAAC は共同および国際的なプロジェクトであり、適切であると考えられる場合は、お勧めします。 読み取り/可視化形式(pdf、pps、ppsxなど)のファイルだけではありません。 しかし、編集可能な形式でもあります (doc、docx、ppt、pptx、odf、pszipなど)。 をクリックすると、他の言語への翻訳やユーザーの特性への適応が可能になります。 Hese Editable files will be protected by our Creative Commons License.",
+  "app.component.MaterialConditions.translationQuote": "翻訳の引用",
+  "app.component.MaterialConditions.translationQuoteDesc": "翻訳された資料の場合、引用の最後に翻訳者の名前が追加されます。",
+  "app.component.MaterialConditions.translator": "翻訳者",
+  "app.component.Participate.contact": "お問い合わせ"
 }
