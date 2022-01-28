@@ -72,6 +72,8 @@
   "app.components.Filters.Activity.communication": "コミュニケーション",
   "app.components.Filters.Activity.didacticUnit": "教訓的なユニット",
   "app.components.Filters.Activity.digitalBoard": "デジタルボード",
+  "app.components.Filters.Activity.dobble": "Dobble",
+  "app.components.Filters.Activity.domino": "ドミノ",
   "app.components.Filters.Activity.teacchMaterial": "TEACCH (ティーチ) 素材",
   "app.components.Filters.Activity.tico": "TICO",
   "app.components.Filters.Activity.video": "ビデオ",
