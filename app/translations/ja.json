@@ -11,5 +11,22 @@
   "app.HomePage.discover": "ARASAACを発見する",
   "app.MaterialsView.pageDescription": "専門家や家族向けのAAC材料リソース。 拡張通信および代替通信文書、ボード、ワークシートをダウンロード...",
   "app.MaterialsView.pageDescriptionSearch": "専門家や家族向けの {searchText} に関連する AAC マテリアルリソース 拡張通信および代替通信ドキュメント、ボード、ワークシートをダウンロード...",
-  "app.MaterialsView.pageTitle": "AAC共有材料リソース - ARASAAC"
+  "app.MaterialsView.pageTitle": "AAC共有材料リソース - ARASAAC",
+  "app.MaterialsView.pageTitleSearch": "{searchText} に関連する AAC 共有材料リソース - ARASAAC",
+  "app.PictogramsView.closeWarning": "警告を閉じる",
+  "app.PictogramsView.contactTranslators": "翻訳者として参加するにはお問い合わせください！",
+  "app.PictogramsView.languageSearch": "ご希望の言語を選択してください",
+  "app.PictogramsView.needTranslators": "ARASAACをあなたの言語に翻訳する手助けが必要です。",
+  "app.PictogramsView.pageDesc": "拡張および代替通信のためのオープンソースシンボル",
+  "app.PictogramsView.pageTitle": "AAC symbols - ARASAAC",
+  "app.PictogramsView.searchByCategories": "カテゴリーで検索",
+  "app.PictogramsView.translationStatus": "現在の翻訳ステータスを参照してください。",
+  "app.PictogramsView.translationsWarning": "翻訳が完了していないため、Pictogram検索はあなたの言語で正しく機能しません。",
+  "app.component.MaterialConditions.adaptationQuote": "Adaptation quote",
+  "app.component.MaterialConditions.adaptationQuoteDesc": "既存の資料の適応では、引用の最後に適応した人の名前が追加されます。",
+  "app.component.MaterialConditions.adaptedBy": "次のユーザによって適応されました:",
+  "app.component.MaterialConditions.author": "作成者:",
+  "app.component.MaterialConditions.checkRead": "上記の情報を理解しました。",
+  "app.component.MaterialConditions.intro": "ARASAACにおける資料の出版には、以下の条件に従う必要があることをご理解いただきたいと思います。ご協力ありがとうございます。",
+  "app.component.MaterialConditions.license": "ライセンス："
 }
