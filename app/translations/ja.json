@@ -28,5 +28,16 @@
   "app.component.MaterialConditions.author": "作成者:",
   "app.component.MaterialConditions.checkRead": "上記の情報を理解しました。",
   "app.component.MaterialConditions.intro": "ARASAACにおける資料の出版には、以下の条件に従う必要があることをご理解いただきたいと思います。ご協力ありがとうございます。",
-  "app.component.MaterialConditions.license": "ライセンス："
+  "app.component.MaterialConditions.license": "ライセンス：",
+  "app.component.MaterialConditions.materialPublication": "資料の公開",
+  "app.component.MaterialConditions.origin": "由来",
+  "app.component.MaterialConditions.pictogramsAuthor": "ピクトグラム作者:",
+  "app.component.MaterialConditions.publication": "出版日",
+  "app.component.MaterialConditions.publicationDesc": "ARASAAC ウェブサイトの管理者は、すでに公開されている資料に基づいて、当社の要件または当社の品質基準を満たしていない場合は、資料を公開しない権利を留保します。",
+  "app.component.MaterialConditions.requirements": "条件",
+  "app.component.MaterialConditions.requirementsP1": "本項に掲載された資料には、ARASAAC コレクションまたは任意の派生物のピクトグラムが含まれます。",
+  "app.component.MaterialConditions.requirementsP2": "マテリアルはCreative Commons License BY-NC-SAに基づいて公開されています ソースと作成者を提供する非営利目的での使用を承認し、同じライセンスの下で共有されます。",
+  "app.component.MaterialConditions.requirementsP3": "資料に含まれる写真や画像は、当社のライセンスと一致しているか、または著者自身によって作られている必要があります.",
+  "app.component.MaterialConditions.requirementsP4": "素材に含まれるテキストは、当社のライセンスと一致している必要があります。著作権で保護されたコンテンツを元にコピーすることはできません。",
+  "app.component.MaterialConditions.requirementsP5": "すべての材料は、好ましくはフッターにARASAACライセンスを引用する必要があります。 作者の名前と共に作者の名をつけています 素材の知的財産も同じライセンスで保護されています。"
 }
