@@ -39,5 +39,9 @@
   "app.component.MaterialConditions.requirementsP2": "マテリアルはCreative Commons License BY-NC-SAに基づいて公開されています ソースと作成者を提供する非営利目的での使用を承認し、同じライセンスの下で共有されます。",
   "app.component.MaterialConditions.requirementsP3": "資料に含まれる写真や画像は、当社のライセンスと一致しているか、または著者自身によって作られている必要があります.",
   "app.component.MaterialConditions.requirementsP4": "素材に含まれるテキストは、当社のライセンスと一致している必要があります。著作権で保護されたコンテンツを元にコピーすることはできません。",
-  "app.component.MaterialConditions.requirementsP5": "すべての材料は、好ましくはフッターにARASAACライセンスを引用する必要があります。 作者の名前と共に作者の名をつけています 素材の知的財産も同じライセンスで保護されています。"
+  "app.component.MaterialConditions.requirementsP5": "すべての材料は、好ましくはフッターにARASAACライセンスを引用する必要があります。 作者の名前と共に作者の名をつけています 素材の知的財産も同じライセンスで保護されています。",
+  "app.component.MaterialConditions.requirementsP6": "見積もりを正しく作成するには、次のいずれかの引用符を使用する必要があります:",
+  "app.component.MaterialConditions.standardQuote": "標準の引用",
+  "app.component.MaterialConditions.submit": "送信",
+  "app.component.MaterialConditions.suggestions": "提案"
 }
