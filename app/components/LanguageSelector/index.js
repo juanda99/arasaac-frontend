@@ -57,6 +57,7 @@ const LanguageSelector = ({
       onChange={handleChange}
       iconStyle={isRtl ? { right: '', left: 0 } : {}}
       floatingLabelText={!!toolTip && toolTip}
+      translate="no"
     >
       {orderLanguages.map((language) =>
         shortOption ? (
