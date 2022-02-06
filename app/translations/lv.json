@@ -1,3 +1,7 @@
 {
-  "Login.invalidEmail": "Nederīga e-pasta adrese"
+  "Login.invalidEmail": "Nederīga e-pasta adrese",
+  "Login.invalidUrl": "Nederīga URL adrese",
+  "Login.required": "Obligāts",
+  "NewPasswordForm.hintNewPassword": "Kāda ir Jūsu jaunā parole?",
+  "activate.activateUser": "Lietotāja aktivizēšana"
 }
