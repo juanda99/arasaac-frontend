@@ -35,5 +35,8 @@
   "app.component.MaterialConditions.publication": "Publikācija",
   "app.component.MaterialConditions.publicationDesc": "ARASAAC tīmekļa vietnes administratori patur tiesības nepublicēt materiālus, ja tie neatbilst mūsu prasībām vai mūsu kvalitātes kritērijiem, pamatojoties uz jau publicētajiem materiāliem.",
   "app.component.MaterialConditions.requirements": "Prasības",
-  "app.component.MaterialConditions.requirementsP1": "Šajā sadaļā publicētie materiāli saturēs piktogrammas no ARASAAC kolekcijas vai no jebkura atvasināta darba."
+  "app.component.MaterialConditions.requirementsP1": "Šajā sadaļā publicētie materiāli saturēs piktogrammas no ARASAAC kolekcijas vai no jebkura atvasināta darba.",
+  "app.component.MaterialConditions.requirementsP2": "Materiāli tiek publicēti ar licenci Creative Commons License BY-NC-SA, kas atļauj tos izmantot bezpeļņas mērķiem, atsaucoties uz avotu un autoru, un koplieto ar to pašu licenci.",
+  "app.component.MaterialConditions.requirementsP3": "Materiāliem pievienotajām fotogrāfijām un attēliem ir jāatbilst mūsu licencei, vai arī jābūt paša autora darbiem.",
+  "app.component.MaterialConditions.requirementsP4": "Materiāliem pievienotajiem tekstiem ir jāatbilst mūsu licencei. Tie nevar būt ar autortiesībām aizsargāta satura burtiska kopija."
 }
