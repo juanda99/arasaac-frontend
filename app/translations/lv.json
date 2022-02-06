@@ -249,5 +249,20 @@
   "app.components.Pictogram.TextOptions.fontColor": "Fonta krāsa:",
   "app.components.Pictogram.TextOptions.fontFamily": "Fontu saime:",
   "app.components.Pictogram.TextOptions.fontSize": "Fonta izmērs:",
-  "app.components.Pictogram.TextOptions.textFormat": "Teksta formāts"
+  "app.components.Pictogram.TextOptions.textFormat": "Teksta formāts",
+  "app.components.Pictogram.TextOptions.writeText": "Rakstiet tekstu vai izvēlieties ieteikumu:",
+  "app.components.Pictogram.ZoomOptions.zoomLevel": "Tuvinājuma līmenis",
+  "app.components.Pictogram.accept": "Labi",
+  "app.components.Pictogram.addFavoriteLabel": "Pievienot izlasei",
+  "app.components.Pictogram.advancedOptions": "Papildu opcijas",
+  "app.components.Pictogram.backgroundColor": "Fona krāsa",
+  "app.components.Pictogram.bottomTextToggleLabel": "Apakšējais teksts",
+  "app.components.Pictogram.cancel": "Atcelt",
+  "app.components.Pictogram.changePictoLanguage": "Izvēlieties valodu, lai skatītu piktogrammas aprakstu citā valodā",
+  "app.components.Pictogram.chooseColor": "Izvēlieties krāsu:",
+  "app.components.Pictogram.chooseIdentifier": "Izvēlēties identifikatoru:",
+  "app.components.Pictogram.choosePosition": "Izvēleties novietojumu:",
+  "app.components.Pictogram.chooseVerbalTense": "Izvēlēties darbības vārda laiku:",
+  "app.components.Pictogram.chooseZoom": "Izvēlēties tuvinājuma līmeni:",
+  "app.components.Pictogram.classroom": "Klase"
 }
