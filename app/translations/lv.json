@@ -137,5 +137,17 @@
   "app.components.Material.translator": "Tulkotājs",
   "app.components.Material.valencian": "Valensiešu",
   "app.components.Material.zipFileLabel": "Lejuplādēt visus failus",
-  "app.components.MaterialForm.activities": "Aktivitātes"
+  "app.components.MaterialForm.activities": "Aktivitātes",
+  "app.components.MaterialForm.activitiesHint": "Atlasīt ar materiālu saistītās aktivitātes",
+  "app.components.MaterialForm.addFiles": "Pievienot materiālu failus",
+  "app.components.MaterialForm.addMaterialImages": "Pievienot materiālu attēlus",
+  "app.components.MaterialForm.areas": "Jomas",
+  "app.components.MaterialForm.areasHint": "Atlasīt ar materiālu saistītās jomas",
+  "app.components.MaterialForm.author": "Autors",
+  "app.components.MaterialForm.authors": "Autori",
+  "app.components.MaterialForm.authorsDataDesc": "Lūdzu, ievadiet tikai autoru e-pastus. Viņiem ir jābūt reģistrētiem ARASAAC lietotājiem. Vārds tiek aizpildīts automātiski.",
+  "app.components.MaterialForm.chooseLanguage": "Izvēlieties materiāla valodu",
+  "app.components.MaterialForm.chooseRole": "Izvēlieties lomas šim lietotājam",
+  "app.components.MaterialForm.classification": "Klasifikācija",
+  "app.components.Pictogram.TextOptions.textFormat": "Teksta formāts"
 }
