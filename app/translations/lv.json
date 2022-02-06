@@ -8,5 +8,9 @@
   "activate.invalidCode": "Jūsu aktivizācijas kods nav derīgs",
   "activate.userActivated": "Jūsu konts ir aktivizēts. Varat pieslēgties sistēmai.",
   "activate.userNotActivated": "Kļūda veidojot Jūsu kontu",
-  "app.HomePage.discover": "Iepazīsti ARASAAC"
+  "app.HomePage.discover": "Iepazīsti ARASAAC",
+  "app.MaterialsView.pageDescription": "AAC resursi speciālistiem un ģimenēm. Lejuplādē augmentālās un alternatīvās komunikācijas dokumentus, izvēles dēļus, darba lapas...",
+  "app.MaterialsView.pageDescriptionSearch": "AAC resursi par {searchText} speciālistiem un ģimenēm. Lejuplādē augmentālās un alternatīvās komunikācijas dokumentus, izvēles dēļus, darba lapas...",
+  "app.MaterialsView.pageTitle": "AAC koplietojamie materiālu resursi - ARASAAC",
+  "app.MaterialsView.pageTitleSearch": "AAC koplietojamie materiālu resursi par {searchText} - ARASAAC"
 }
