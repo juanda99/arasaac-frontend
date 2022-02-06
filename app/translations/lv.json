@@ -21,5 +21,19 @@
   "app.PictogramsView.pageTitle": "AAC simboli - ARASAAC",
   "app.PictogramsView.searchByCategories": "Meklēt pēc kategorijas",
   "app.PictogramsView.translationStatus": "Skatīt pašreizējo tulkošanas statusu.",
-  "app.PictogramsView.translationsWarning": "Piktogrammu meklēšana Jūsu valodā nedarbojas pareizi, jo tulkojumi nav pabeigti."
+  "app.PictogramsView.translationsWarning": "Piktogrammu meklēšana Jūsu valodā nedarbojas pareizi, jo tulkojumi nav pabeigti.",
+  "app.component.MaterialConditions.adaptationQuote": "Atsauce uz adaptēto materiālu",
+  "app.component.MaterialConditions.adaptationQuoteDesc": "Esoša materiāla adaptācijas gadījumā, tās personas vārds, kas to adaptējusi, tiks pievienots atsauces beigās:",
+  "app.component.MaterialConditions.adaptedBy": "Adaptēja:",
+  "app.component.MaterialConditions.author": "Autors:",
+  "app.component.MaterialConditions.checkRead": "Esmu izlasījis un saprotu iepriekšminēto informāciju.",
+  "app.component.MaterialConditions.intro": "Mēs ceram, ka Jūs saprotat vajadzību ievērot šos kritērijus materiālu publicēšanai ARASAAC. Iepriekš pateicamies Jums par sadarbību.",
+  "app.component.MaterialConditions.license": "Licence:",
+  "app.component.MaterialConditions.materialPublication": "Materiālu publicēšana",
+  "app.component.MaterialConditions.origin": "Pirmavots:",
+  "app.component.MaterialConditions.pictogramsAuthor": "Piktogrammu autors:",
+  "app.component.MaterialConditions.publication": "Publikācija",
+  "app.component.MaterialConditions.publicationDesc": "ARASAAC tīmekļa vietnes administratori patur tiesības nepublicēt materiālus, ja tie neatbilst mūsu prasībām vai mūsu kvalitātes kritērijiem, pamatojoties uz jau publicētajiem materiāliem.",
+  "app.component.MaterialConditions.requirements": "Prasības",
+  "app.component.MaterialConditions.requirementsP1": "Šajā sadaļā publicētie materiāli saturēs piktogrammas no ARASAAC kolekcijas vai no jebkura atvasināta darba."
 }
