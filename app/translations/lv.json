@@ -3,5 +3,10 @@
   "Login.invalidUrl": "Nederīga URL adrese",
   "Login.required": "Obligāts",
   "NewPasswordForm.hintNewPassword": "Kāda ir Jūsu jaunā parole?",
-  "activate.activateUser": "Lietotāja aktivizēšana"
+  "activate.activateUser": "Lietotāja konta aktivizēšana",
+  "activate.expiredCode": "Jūsu aktivizācijas koda derīguma termiņš ir beidzies. Mēs esam nosūtījuši Jums citu e-pastu, lai apstiprinātu Jūsu kontu",
+  "activate.invalidCode": "Jūsu aktivizācijas kods nav derīgs",
+  "activate.userActivated": "Jūsu konts ir aktivizēts. Varat pieslēgties sistēmai.",
+  "activate.userNotActivated": "Kļūda veidojot Jūsu kontu",
+  "app.HomePage.discover": "Iepazīsti ARASAAC"
 }
