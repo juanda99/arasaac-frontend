@@ -38,5 +38,22 @@
   "app.component.MaterialConditions.requirementsP1": "Šajā sadaļā publicētie materiāli saturēs piktogrammas no ARASAAC kolekcijas vai no jebkura atvasināta darba.",
   "app.component.MaterialConditions.requirementsP2": "Materiāli tiek publicēti ar licenci Creative Commons License BY-NC-SA, kas atļauj tos izmantot bezpeļņas mērķiem, atsaucoties uz avotu un autoru, un koplieto ar to pašu licenci.",
   "app.component.MaterialConditions.requirementsP3": "Materiāliem pievienotajām fotogrāfijām un attēliem ir jāatbilst mūsu licencei, vai arī jābūt paša autora darbiem.",
-  "app.component.MaterialConditions.requirementsP4": "Materiāliem pievienotajiem tekstiem ir jāatbilst mūsu licencei. Tie nevar būt ar autortiesībām aizsargāta satura burtiska kopija."
+  "app.component.MaterialConditions.requirementsP4": "Materiāliem pievienotajiem tekstiem ir jāatbilst mūsu licencei. Tie nevar būt ar autortiesībām aizsargāta satura burtiska kopija.",
+  "app.component.MaterialConditions.requirementsP5": "Visos materiālos jānorāda ARASAAC licence, vēlams kājenē, kā arī materiāla autora vārds, lai norādītu materiāla autorību. Materiāla intelektuālais īpašums arī ir aizsargāts ar to pašu licenci.",
+  "app.component.MaterialConditions.requirementsP6": "Lai atsauce būtu pareiza, jāizmanto viena no šīm atsaucēm:",
+  "app.component.MaterialConditions.standardQuote": "Standarta atsauce",
+  "app.component.MaterialConditions.submit": "Apstiprināt",
+  "app.component.MaterialConditions.suggestions": "Ieteikumi",
+  "app.component.MaterialConditions.suggestionsDesc": "Tā kā ARASAAC ir sadarbības un starptautisks projekts, mēs iesakām, ja uzskatāt to par pieņemamu, nodrošināt ne tikai failus lasīšanas/vizualizācijas formātā (pdf, pps, ppsx utt.), bet arī rediģējamā formātā (doc, docx, ppt, pptx, odf, pszip utt.), lai atvieglotu tulkojumus citās valodās un iespēju lietotājam pielāgot materiālu savām vajadzībām. Šos rediģējamos failus tāpat aizsargās mūsu Creative Commons licence.",
+  "app.component.MaterialConditions.translationQuote": "Atsauce uz tulkoto materiālu",
+  "app.component.MaterialConditions.translationQuoteDesc": "Tulkota materiāla gadījumā tulkotāja vārds tiks pievienots atsauces beigās:",
+  "app.component.MaterialConditions.translator": "Tulkotājs:",
+  "app.component.Participate.contact": "Sazinieties ar mums",
+  "app.components.Filters.Activity.teacchMaterial": "TEACCH materiāli",
+  "app.components.Filters.Activity.tico": "TICO",
+  "app.components.Filters.Activity.video": "Video",
+  "app.components.Filters.Area": "Apkaime",
+  "app.components.Filters.Area.alphabet": "Alfabēts",
+  "app.components.Filters.Area.art": "Māksla",
+  "app.components.Filters.Area.attention": "Uzmanība"
 }
