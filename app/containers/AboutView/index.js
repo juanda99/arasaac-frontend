@@ -3,7 +3,8 @@ import { FormattedMessage } from 'react-intl'
 import P from 'components/P'
 import H2 from 'components/H2'
 import View from 'components/View'
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
+import Address from 'components/Address'
+import Map from 'components/Map'
 import { IMAGES_URL } from 'services/config'
 import AuthorSnippet from 'components/AuthorSnippet'
 import ReadMargin from 'components/ReadMargin'
@@ -12,20 +13,6 @@ const Masonry = require('react-masonry-component')
 const masonryOptions = {
   transitionDuration: '1s',
 }
-
-const address = (
-  <P>
-    <strong>
-      Centro Aragonés para la Comunicación Aumentativa y Alternativa - ARASAAC
-    </strong>
-    <br />
-    Andador Pilar Cuartero Molinero, 1, 50018 Zaragoza
-    <br /> España (Spain)
-    <br />
-    <a href="tel:+34976736526"> +34 976 73 65 26</a> (10:00am - 2:00pm CET -
-    Español/English)
-  </P>
-)
 
 const authors = [
   // desc value is taken as react-intl key in AuthorSnippet
@@ -105,31 +92,9 @@ class AboutView extends Component {
           </H2>
         </ReadMargin>
 
-        <Map
-          center={position}
-          zoom={this.state.zoom}
-          style={{ height: '400px' }}
-        >
-          <TileLayer
-            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={position}>
-            <Popup>
-              <div>
-                <img
-                  width="150px"
-                  src={`${IMAGES_URL}/arasaac-logo.png`}
-                  alt="Screenshot"
-                />
-                {address}
-              </div>
-            </Popup>
-          </Marker>
-        </Map>
+        <Map />
         <ReadMargin>
-          <P>{<FormattedMessage {...messages.addressInfo} />}</P>
-          {address}
+          <Address />
           <H2 primary={true}>
             {<FormattedMessage {...messages.arasaacTeam} />}
           </H2>

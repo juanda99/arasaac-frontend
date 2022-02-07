@@ -540,6 +540,7 @@
   "app.containers.ContactView.form.send": "Send",
   "app.containers.ContactView.form.subject": "Subject",
   "app.containers.ContactView.form.subjectHint": "Type the subject of your message",
+  "app.containers.ContactView.form.title": "Contact us",
   "app.containers.ContactView.form.wrongFingers": "Wrong number of fingers",
   "app.containers.ContactView.formIntro": "We speak english and spanish. Please contact us preferably through this form for any question, suggestion or collaboration. We will get back to you as soon as possible.",
   "app.containers.ContactView.sendMessage": "Thank you for your message. We will contact you as soon as possible.",
