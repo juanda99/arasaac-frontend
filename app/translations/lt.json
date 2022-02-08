@@ -727,6 +727,7 @@
   "newPasswordForm.changePassword": "Keisti slaptažodį",
   "newPasswordForm.changePasswordInfo": "Žemiau esančiame laukelyje įveskite įrašykite naują slaptažodį",
   "password.signin": "Slaptažodis",
+  "permissionsErrorView.forbidden": "Jums kaip vartotojui nesuteikta prieiga prie šio ištekliaus.",
   "readmmore.more": "...skaityti daugiau",
   "readmore.less": "...rodyti mažiau",
   "recoverPasswordView.passwordNotReset": "Atsiprašome, bet įvyko klaida atstatant jūsų slaptažodį",
