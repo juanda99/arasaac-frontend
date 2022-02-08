@@ -78,12 +78,6 @@ class ContactView extends Component {
           </H3>
         ) : (
           <div>
-            <H2 primary={true}>
-              {<FormattedMessage {...messages2.whereWeAre} />}
-            </H2>
-            <Map />
-            <Address />
-            <H2 primary={true}>{<FormattedMessage {...messages.contact} />}</H2>
             <P important={true} style={{ marginTop: 30 }}>
               <FormattedMessage {...messages.formIntro} />
             </P>
@@ -93,6 +87,11 @@ class ContactView extends Component {
               idPictogram={idPictogram}
               pictograms={pictos}
             />
+            <H2 primary={true}>
+              {<FormattedMessage {...messages2.whereWeAre} />}
+            </H2>
+            <Map maxWidth="800px" />
+            <Address />
           </div>
         )}
 

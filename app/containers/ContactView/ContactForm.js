@@ -10,31 +10,36 @@ import { Field, reduxForm, propTypes } from 'redux-form/immutable'
 import messages from './messages'
 
 const email = (value) =>
-  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-    ? <FormattedMessage {...messages.invalidEmail} />
-    : undefined
+  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? (
+    <FormattedMessage {...messages.invalidEmail} />
+  ) : undefined
 
-const required = (value) => (value ? undefined : <FormattedMessage {...messages.required} />)
+const required = (value) =>
+  value ? undefined : <FormattedMessage {...messages.required} />
 
-
-const getNumber = (idPictogram, pictograms) => pictograms.indexOf(idPictogram).toString()
+const getNumber = (idPictogram, pictograms) =>
+  pictograms.indexOf(idPictogram).toString()
 
 class ContactForm extends Component {
-
   fingersCount = (value) => {
     const { idPictogram, pictograms } = this.props
     const number = getNumber(idPictogram, pictograms)
-    return value === number ? undefined : <FormattedMessage {...messages.wrongFingers} />
-  };
+    return value === number ? undefined : (
+      <FormattedMessage {...messages.wrongFingers} />
+    )
+  }
 
   render() {
     const { handleSubmit, pristine, submitting, idPictogram } = this.props
 
     return (
-      <form onSubmit={handleSubmit} style={{ maxWidth: '500px', marginBottom: '30px' }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{ maxWidth: '500px', marginBottom: '60px' }}
+      >
         <Field
-          name='name'
-          type='text'
+          name="name"
+          type="text"
           component={TextField}
           validate={[required]}
           hintText={<FormattedMessage {...messages.nameHint} />}
@@ -42,8 +47,8 @@ class ContactForm extends Component {
           fullWidth
         />
         <Field
-          name='email'
-          type='email'
+          name="email"
+          type="email"
           component={TextField}
           validate={[required, email]}
           hintText={<FormattedMessage {...messages.emailHint} />}
@@ -51,8 +56,8 @@ class ContactForm extends Component {
           fullWidth
         />
         <Field
-          name='subject'
-          type='text'
+          name="subject"
+          type="text"
           component={TextField}
           validate={[required]}
           hintText={<FormattedMessage {...messages.subjectHint} />}
@@ -61,8 +66,8 @@ class ContactForm extends Component {
           fullWidth
         />
         <Field
-          name='message'
-          type='text'
+          name="message"
+          type="text"
           component={TextField}
           validate={[required]}
           hintText={<FormattedMessage {...messages.messageHint} />}
@@ -71,7 +76,9 @@ class ContactForm extends Component {
           rows={2}
           fullWidth
         />
-        <P><FormattedMessage {...messages.preventSpam} /></P>
+        <P>
+          <FormattedMessage {...messages.preventSpam} />
+        </P>
 
         <div>
           <img
@@ -82,8 +89,8 @@ class ContactForm extends Component {
         </div>
 
         <Field
-          name='fingers'
-          type='text'
+          name="fingers"
+          type="text"
           component={TextField}
           validate={[required, this.fingersCount]}
           hintText={<FormattedMessage {...messages.fingersHint} />}
@@ -92,7 +99,7 @@ class ContactForm extends Component {
         />
 
         <RaisedButton
-          type='submit'
+          type="submit"
           disabled={pristine || submitting}
           label={<FormattedMessage {...messages.send} />}
           style={{ float: 'right' }}
@@ -106,13 +113,13 @@ class ContactForm extends Component {
 ContactForm.propTypes = {
   ...propTypes,
   idPictogram: PropTypes.number.isRequired,
-  pictograms: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired
+  pictograms: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
 }
 
 ContactForm = reduxForm({
   form: 'ContactForm',
   touchOnBlur: false,
-  touchOnChange: true
+  touchOnChange: true,
 })(ContactForm)
 
 // ContactForm = connect(

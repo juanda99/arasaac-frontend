@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import P from 'components/P'
 import { Map as ReactMap, TileLayer, Marker, Popup } from 'react-leaflet'
 import { IMAGES_URL } from 'services/config'
@@ -30,7 +30,7 @@ class Map extends Component {
       <ReactMap
         center={position}
         zoom={this.state.zoom}
-        style={{ height: '400px' }}
+        style={{ height: '400px', maxWidth: this.props.maxWidth }}
       >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -54,3 +54,7 @@ class Map extends Component {
 }
 
 export default Map
+
+Map.propTypes = {
+  maxWidth: PropTypes.string,
+}

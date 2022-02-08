@@ -26,11 +26,6 @@ export default defineMessages({
     description: 'email',
     defaultMessage: 'Type your email',
   },
-  contact: {
-    id: 'app.containers.ContactView.form.title',
-    description: 'contact us',
-    defaultMessage: 'Contact us',
-  },
   message: {
     id: 'app.containers.ContactView.form.message',
     description: 'message',
