@@ -314,5 +314,8 @@
   "app.components.Pictogram.choosePosition": "Izvēleties novietojumu:",
   "app.components.Pictogram.chooseVerbalTense": "Izvēlēties darbības vārda laiku:",
   "app.components.Pictogram.chooseZoom": "Izvēlēties tuvinājuma līmeni:",
-  "app.components.Pictogram.classroom": "Klase"
+  "app.components.Pictogram.classroom": "Klase",
+  "app.components.Pictogram.color": "Krāsains",
+  "app.components.Pictogram.copy": "Kopēt",
+  "app.components.Pictogram.copyToClipboard": "Piktogramma iekopēta starpliktuvē"
 }
