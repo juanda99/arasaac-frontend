@@ -382,5 +382,10 @@
   "app.components.aac.dependentExploration": "Atkarīgo komponentu izpēte vai pārskatīšana",
   "app.components.aac.directSelection": "Tiešā izvēle",
   "app.components.aac.electronicCommunicators": "elektroniskie komunikatori",
-  "app.components.aac.empowerment": "pilnvarošana"
+  "app.components.aac.empowerment": "pilnvarošana",
+  "app.components.aac.encourageTitle": "Kā mēs varam veicināt AAC metožu pielietošanas panākumus?",
+  "app.components.aac.evalulation": "izvērtējums",
+  "app.components.aac.gesturalSymbols": "žestu simboli",
+  "app.components.aac.graphicSymbols": "Grafiskie simboli",
+  "app.components.aac.independentExploration": "Neatkarīga izpēte vai pārskatīšana"
 }
