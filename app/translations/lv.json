@@ -363,5 +363,6 @@
   "app.components.PictogramSnippet.addFavorite": "Pievienot izlasei",
   "app.components.PictogramSnippet.addFavoriteTooltip": "Pievienot piktogrammu manai izlasei",
   "app.components.PictogramSnippet.deleteFavorite": "Dzēst no izlases",
-  "app.components.PictogramSnippet.download": "Lejuplādēt piktogrammu"
+  "app.components.PictogramSnippet.download": "Lejuplādēt piktogrammu",
+  "app.components.PictogramSnippet.downloadTooltip": "Lejuplādēt piktogrammu"
 }
