@@ -390,5 +390,18 @@
   "app.components.aac.independentExploration": "Neatkarīga izpēte vai pārskatīšana",
   "app.components.aac.mouseSelection": "Peles izvēle",
   "app.components.onlySpanish": "Šie resursi pieejami tikai spāņu valodā.",
-  "app.components.origin": "Pirmavots:"
+  "app.components.origin": "Pirmavots:",
+  "app.components.owner": "Īpašnieks: Aragonas pasvaldība (Spānija)",
+  "app.components.showcase.aacSymbols": "AAC simboli",
+  "app.components.showcase.materials": "Materiāli",
+  "app.components.showcase.whatIsAAC": "Kas ir AAC?",
+  "app.components.showcase.whatIsARASAAC": "Simbolu kopa un resursi augmentatīvai un alternatīvai komunikācijai (AAC)",
+  "app.components.updateMaterialView.materialLoading": "Ielādē materiālu...",
+  "app.components.updateMaterialView.materialNotFound": "Atvainojiet, Jūsu meklētais materiāls nepastāv",
+  "app.components.updateMaterialView.showMaterial": "Parādīt materiālu",
+  "app.components.updateMaterialView.updatedMaterial": "Materiāls atjaunināts.",
+  "app.components.updateMaterialView.updatingMaterial": "Atjaunina materiālu...",
+  "app.components.uploadMaterialView.close": "Aizvērt",
+  "app.components.uploadMaterialView.materialSuccessUpload": "Jūsu materiāls ir augšupielādēts, un to pārskatīs ARASAAC komanda. Mēs jums nosūtīsim e-pasta ziņojumu, kad tas tiks publicēts!",
+  "app.components.uploadMaterialView.needAuthor": "Janorāda vismaz viens materiāla autors"
 }
