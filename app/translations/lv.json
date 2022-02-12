@@ -403,5 +403,10 @@
   "app.components.updateMaterialView.updatingMaterial": "Atjaunina materiālu...",
   "app.components.uploadMaterialView.close": "Aizvērt",
   "app.components.uploadMaterialView.materialSuccessUpload": "Jūsu materiāls ir augšupielādēts, un to pārskatīs ARASAAC komanda. Mēs jums nosūtīsim e-pasta ziņojumu, kad tas tiks publicēts!",
-  "app.components.uploadMaterialView.needAuthor": "Janorāda vismaz viens materiāla autors"
+  "app.components.uploadMaterialView.needAuthor": "Janorāda vismaz viens materiāla autors",
+  "app.components.uploadMaterialView.needFiles": "Nepieciešams vismaz viens materiāla fails",
+  "app.components.uploadMaterialView.needReview": "Pārskatīt materiālu",
+  "app.components.uploadMaterialView.progressStatus": "Augšuplādē materiālu: {progressStatus}%",
+  "app.components.uploadMaterialView.tryAgain": "Mēģināt vēlreiz",
+  "app.components.uploadMaterialView.uploadMore": "Augšuplādēt citu materiālu"
 }
