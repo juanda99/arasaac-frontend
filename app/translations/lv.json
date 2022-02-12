@@ -410,5 +410,9 @@
   "app.components.uploadMaterialView.tryAgain": "Mēģināt vēlreiz",
   "app.components.uploadMaterialView.uploadMore": "Augšuplādēt citu materiālu",
   "app.components.uploadTranslatorView.contactus": "Neskaidrību gadījumā sazinieties ar mums.",
-  "app.components.uploadTranslatorView.intro": "Lietojiet šo formu tikai tad, ja augšupielādējat materiāla tulkojumu citā valodā. Nepieciešams iztulkot visus failus."
+  "app.components.uploadTranslatorView.intro": "Lietojiet šo formu tikai tad, ja augšupielādējat materiāla tulkojumu citā valodā. Nepieciešams iztulkot visus failus.",
+  "app.components.urlGuideAulaAbierta": "norādes un resursi, lai ar ARASAAC piktogrammām signalizētu par sabiedriskām vietām, pakalpojumiem un veikaliem.",
+  "app.containers.AboutView.addressInfo": "Mēs atrodamies Saragosā (Spānija). Mūsu pasta adrese ir:",
+  "app.containers.AboutView.arasaacTeam": "ARASAAC komanda",
+  "app.containers.AboutView.fundedBy": "Šo projektu finansē Aragonas (Spānija) valdības Kultūras, sporta un izglītības departaments. ARASAAC ietilpst inovācijas un profesionālās apmācības jomā"
 }
