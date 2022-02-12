@@ -434,5 +434,11 @@
   "app.containers.ContactView.form.message": "Ziņojums",
   "app.containers.ContactView.form.messageHint": "Ievadiet ziņojuma tekstu",
   "app.containers.ContactView.form.name": "Vārds",
-  "app.containers.ContactView.form.nameHint": "Ierakstiet savu vārdu"
+  "app.containers.ContactView.form.nameHint": "Ierakstiet savu vārdu",
+  "app.containers.ContactView.form.preventSpam": "Lūdzu, atbildiet uz šo jautājumu, lai novērstu surogātpasta ziņojumus:",
+  "app.containers.ContactView.form.required": "Obligāts",
+  "app.containers.ContactView.form.send": "Nosūtīt",
+  "app.containers.ContactView.form.subject": "Tēma",
+  "app.containers.ContactView.form.subjectHint": "Ierakstiet ziņojuma tēmu",
+  "app.containers.ContactView.form.wrongFingers": "Nepareizs pirkstu skaits"
 }
