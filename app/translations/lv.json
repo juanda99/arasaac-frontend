@@ -408,5 +408,7 @@
   "app.components.uploadMaterialView.needReview": "Pārskatīt materiālu",
   "app.components.uploadMaterialView.progressStatus": "Augšuplādē materiālu: {progressStatus}%",
   "app.components.uploadMaterialView.tryAgain": "Mēģināt vēlreiz",
-  "app.components.uploadMaterialView.uploadMore": "Augšuplādēt citu materiālu"
+  "app.components.uploadMaterialView.uploadMore": "Augšuplādēt citu materiālu",
+  "app.components.uploadTranslatorView.contactus": "Neskaidrību gadījumā sazinieties ar mums.",
+  "app.components.uploadTranslatorView.intro": "Lietojiet šo formu tikai tad, ja augšupielādējat materiāla tulkojumu citā valodā. Nepieciešams iztulkot visus failus."
 }
