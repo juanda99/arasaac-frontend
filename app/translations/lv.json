@@ -440,5 +440,11 @@
   "app.containers.ContactView.form.send": "Nosūtīt",
   "app.containers.ContactView.form.subject": "Tēma",
   "app.containers.ContactView.form.subjectHint": "Ierakstiet ziņojuma tēmu",
-  "app.containers.ContactView.form.wrongFingers": "Nepareizs pirkstu skaits"
+  "app.containers.ContactView.form.wrongFingers": "Nepareizs pirkstu skaits",
+  "app.containers.ContactView.formIntro": "Mēs runājam angliski un spāniski. Ja rodas jautājumi, ieteikumi vai vēlaties ar mums sadarboties, lūdzu, sazinieties ar mums, izmantojot šo veidlapu. Mēs Jums atbildēsim, cik drīz vien iespējams.",
+  "app.containers.ContactView.sendMessage": "Paldies par ziņu. Mēs sazināsimies ar jums, cik drīz vien iespējams.",
+  "app.containers.ContactView.sendingMessage": "Sūta ziņu...",
+  "app.containers.DevelopersView.grantTypes": "Grantu veidi",
+  "app.containers.DevelopersView.grantTypesDesc": "Atkarībā no pieteikuma veida un konkrētajām vajadzībām, iespējams izmantot tādu vai citādu grantu veidu. Lai iegūtu plašāku informāciju, sazinieties ar mums.",
+  "app.containers.DevelopersView.howto": "API izmantošana"
 }
