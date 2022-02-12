@@ -468,5 +468,6 @@
   "app.containers.WorldView.arasaacInWorld": "ARASAAC ir klātesošs visā pasaulē. Kartē ir redzami daži tā lietojuma piemēri. Sazinieties ar mums, ja vēlaties zemāk esošajā kartē dalīties ar savu pieredzi ARASAAC lietošanā",
   "app.containers.introArasaacPrizes": "ARASAAC ir sadarbības projekts, ko koordinē un finansē Aragonas pašvaldība, kura kopš tās izveidošanas 2007. gadā ir saņēmusi vairākus apbalvojumus, pateicoties daudzu sadarbības partneru pašaizliedzīgajam darbam.",
   "app.containers/IntroAAC.desc": "Augmentatīvo un alternatīvo komunikācijas sistēmu (AAC) mērķis ir uzlabot komunikāciju vai kompensēt grūtības, kas saistītas ar komunikāciju, cilvēkiem ar dažādiem traucējumiem.",
-  "app.containers/IntroAAC.title": "Kas ir AAC? - ARASAAC"
+  "app.containers/IntroAAC.title": "Kas ir AAC? - ARASAAC",
+  "app.containers/IntroUsageAAC.desc": "Pilnīga AAC simbolu kopa, ko speciālisti un ģimenes izmanto dažādiem mērķiem: saziņas dēļi, vizuālie grafiki un laika plānojumi, TEACCH resursi..."
 }
