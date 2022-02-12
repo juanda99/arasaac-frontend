@@ -387,5 +387,8 @@
   "app.components.aac.evalulation": "izvērtējums",
   "app.components.aac.gesturalSymbols": "žestu simboli",
   "app.components.aac.graphicSymbols": "Grafiskie simboli",
-  "app.components.aac.independentExploration": "Neatkarīga izpēte vai pārskatīšana"
+  "app.components.aac.independentExploration": "Neatkarīga izpēte vai pārskatīšana",
+  "app.components.aac.mouseSelection": "Peles izvēle",
+  "app.components.onlySpanish": "Šie resursi pieejami tikai spāņu valodā.",
+  "app.components.origin": "Pirmavots:"
 }
