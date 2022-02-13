@@ -478,6 +478,7 @@
   "app.components.downloadLogo": "Lejuplādēt ARASAAC logo",
   "app.components.guideAulaAbierta": "Mūsu tīmekļa vietnē Aula Abierta jūs varat atrast {guideAndResources}",
   "app.components.license": "Licence:",
+  "app.components.licenseP1": "{ARASAAC} ir Aragonas (Spānija) pašvaldības zīmols, kas reģistrēts Spānijas Patentu un preču zīmju birojā. {ARASAAC} piktogrammu kolekcija ir reģistrēta Intelektuālā īpašuma vispārējā reģistrā (No. Deposit Legal Z 901-2013) kā kolektīvs darbs Diputación General de Aragón vārdā, kas to ir rediģējusi un izplata saskaņā ar Intelektuālā īpašuma likuma pārskatītā teksta 8. panta noteikumiem, kas apstiprināti ar Karalisko likumdošanas dekrētu 1/1996, 12. aprīlis.",
   "app.components.onlySpanish": "Šie resursi pieejami tikai spāņu valodā.",
   "app.components.origin": "Pirmavots:",
   "app.components.owner": "Īpašnieks: Aragonas pasvaldība (Spānija)",
