@@ -4,7 +4,7 @@
   "Login.required": "ضروری",
   "NewPasswordForm.hintNewPassword": "رمز عبور جدید شما چیست ؟",
   "activate.activateUser": "فعال سازی کاربر",
-  "activate.expiredCode": "کد فغال سازی شما باطل شده است. یک کد جدید به ایمیل شما ارسال خواهد شد",
+  "activate.expiredCode": "کد فعال سازی شما باطل شده است. یک کد جدید به ایمیل شما ارسال خواهد شد",
   "activate.invalidCode": "کد فعال سازی شما معتبر نیست",
   "activate.userActivated": "حساب کاربری شما فعال شده است. شما میتوانید وارد شوید.",
   "activate.userNotActivated": "در هنگام فغال سازی حساب شما خطا رخ داده است",
