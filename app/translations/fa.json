@@ -93,6 +93,8 @@
   "app.components.Filters.Activity.software": "نرم افزار",
   "app.components.Filters.Activity.song": "آهنگ",
   "app.components.Filters.Activity.story": "داستان",
+  "app.components.Filters.Activity.teacchMaterial": "محتوای TEACCH",
+  "app.components.Filters.Activity.tico": "TICO",
   "app.components.Filters.Activity.video": "ویدیو",
   "app.components.Filters.Area.alphabet": "الفبا",
   "app.components.Filters.Area.art": "هنر",
