@@ -1121,6 +1121,10 @@
   "tags.nervous system": "nervu sistēma",
   "tags.new year": "jaunais gads",
   "tags.number": "skaitlis",
+  "tags.numeral adjective": "skaitļa apzīmētājs",
+  "tags.nursing equipment": "slimnieku kopšanas aprīkojums",
+  "tags.object": "objekts",
+  "tags.obstetrics": "dzemdniecība",
   "tags.occupational therapy": "ergoterapija",
   "tags.ocean": "okeāns",
   "tags.oceanography": "okeanogrāfija",
@@ -1139,5 +1143,6 @@
   "tags.outdoor activity": "āra aktivitātes",
   "tags.oviparous": "olas dējoši dzīvnieki",
   "tags.ovoviviparous": "dzīvdzemdētāji",
-  "tags.painting": "gleznošana"
+  "tags.painting": "gleznošana",
+  "tags.recycling center": "otrreizējās pārstrādes centrs"
 }
