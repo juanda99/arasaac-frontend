@@ -1192,5 +1192,9 @@
   "tags.spices": "garšvielas",
   "tags.sponge": "sūklis",
   "tags.sport": "sports",
-  "tags.sport event": "sporta pasākums"
+  "tags.sport event": "sporta pasākums",
+  "tags.sport material": "sporta materiāls",
+  "tags.vegetal origin material": "augu izcelsmes materiāls",
+  "tags.vehicle component": "transporta līdzekļa komponente",
+  "tags.verb": "darbības vārds"
 }
