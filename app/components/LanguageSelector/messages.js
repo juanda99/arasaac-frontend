@@ -158,6 +158,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Lithuanian',
   },
+  lv: {
+    id: 'app.components.LanguageSelector.lv',
+    description: 'Select language',
+    defaultMessage: 'Latvian',
+  },
   translateOnline: {
     id: 'app.components.LanguageSelector.translateOnline',
     description: 'Select language',

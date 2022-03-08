@@ -205,6 +205,14 @@ const languages = [
     translated: false,
     needTranslators: true,
   },
+  // -LV - Letón
+  // first on March 2022
+  {
+    code: 'lv',
+    text: 'Latviski',
+    translated: false,
+    needTranslators: true,
+  },
   // MK
   // FEB: web 100%, admin 100%, pictos 18%
   // MARCH: web 99%, admin 100%, pictos 33%

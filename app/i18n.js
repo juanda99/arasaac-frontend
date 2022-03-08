@@ -33,6 +33,7 @@ import et from 'react-intl/locale-data/et'
 import sr from 'react-intl/locale-data/sr'
 import ko from 'react-intl/locale-data/ko'
 import lt from 'react-intl/locale-data/lt'
+import lv from 'react-intl/locale-data/lv'
 
 import { DEFAULT_LOCALE, appLocales } from './containers/App/constants'
 import enTranslationMessages from './translations/en.json'
@@ -65,6 +66,7 @@ import etTranslationMessages from './translations/et.json'
 import srTranslationMessages from './translations/sr.json'
 import koTranslationMessages from './translations/ko.json'
 import ltTranslationMessages from './translations/lt.json'
+import lvTranslationMessages from './translations/lv.json'
 
 addLocaleData([
   ...en,
@@ -95,6 +97,7 @@ addLocaleData([
   ...sr,
   ...ko,
   ...lt,
+  ...lv,
 ])
 
 export const formatTranslationMessages = (locale, messages) => {
@@ -143,4 +146,5 @@ export const translationMessages = {
   sr: formatTranslationMessages('sr', srTranslationMessages),
   ko: formatTranslationMessages('ko', koTranslationMessages),
   lt: formatTranslationMessages('lt', ltTranslationMessages),
+  lv: formatTranslationMessages('lv', lvTranslationMessages),
 }
