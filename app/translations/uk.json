@@ -62,6 +62,8 @@
   "app.components.Filters.Area.morphosyntax": "Морфосинтаксис",
   "app.components.Filters.Area.music": "Музика",
   "app.components.Filters.Area.naturalSciences": "Природні науки",
+  "app.components.Filters.Area.numeration": "Нумерація",
+  "app.components.Filters.Area.phonology": "Фонологія",
   "app.components.Filters.Catalog.pictures": "Малюнки",
   "app.components.Filters.Language.chooseLanguage": "Мова",
   "app.components.Filters.License.license": "Ліцензія",
