@@ -104,5 +104,10 @@
   "app.components.MaterialForm.descriptionHint": "Введіть опис матеріалу",
   "app.components.MaterialForm.email": "Електронна адреса",
   "app.components.MaterialForm.emailHint": "Введіть email автора",
-  "app.components.MaterialForm.files": "Файли"
+  "app.components.MaterialForm.files": "Файли",
+  "app.components.MaterialForm.filesHint": "Будь ласка, використовуйте імена файлів для полегшення завантаження.",
+  "app.components.MaterialForm.filesUpload": "Завантаження файлів",
+  "app.components.MaterialForm.header": "Це компонент форми матеріалу!",
+  "app.components.MaterialForm.language": "Мова",
+  "app.components.MaterialForm.languageFiles": "Завантажте лише файли, визначені для цієї мови"
 }
