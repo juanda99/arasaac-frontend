@@ -109,5 +109,19 @@
   "app.components.MaterialForm.filesUpload": "Завантаження файлів",
   "app.components.MaterialForm.header": "Це компонент форми матеріалу!",
   "app.components.MaterialForm.language": "Мова",
-  "app.components.MaterialForm.languageFiles": "Завантажте лише файли, визначені для цієї мови"
+  "app.components.MaterialForm.languageFiles": "Завантажте лише файли, визначені для цієї мови",
+  "app.components.MaterialForm.languageHint": "Введіть мову, заголовок і опис матеріалу.",
+  "app.components.MaterialForm.languageScreenshots": "Завантажити тільки скріншоти, визначені для цієї мови",
+  "app.components.MaterialForm.languageTitle": "Мови та опис",
+  "app.components.MaterialForm.lastUpdated": "Дата оновлення",
+  "app.components.MaterialForm.lastUpdatedTime": "Час оновлення",
+  "app.components.MaterialForm.materialStatus": "Стан матеріалу",
+  "app.components.MaterialForm.name": "Ім'я",
+  "app.components.MaterialForm.nameHint": "Введіть ім'я автора",
+  "app.components.MaterialForm.notPublished": "Не опубліковано",
+  "app.components.MaterialForm.pending": "Очікує публікації",
+  "app.components.MaterialForm.published": "Опубліковано",
+  "app.components.MaterialForm.role": "Роль користувача",
+  "app.components.MaterialForm.screenshots": "Скріншоти",
+  "app.components.MaterialForm.screenshotsDesc": "Будь ласка, завантажте зображення матеріалу, щоб показати користувачам без потреби скачувати їх."
 }
