@@ -1,1 +1,8 @@
-{}
+{
+  "Login.invalidEmail": "Невірний email",
+  "Login.invalidUrl": "Недопустимий URL",
+  "Login.required": "Необхідний",
+  "NewPasswordForm.hintNewPassword": "Який ваш новий пароль?",
+  "activate.activateUser": "Активація користувача",
+  "app.component.Participate.contact": "Зв'язатися з нами"
+}
