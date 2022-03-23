@@ -4,5 +4,11 @@
   "Login.required": "Необхідний",
   "NewPasswordForm.hintNewPassword": "Який ваш новий пароль?",
   "activate.activateUser": "Активація користувача",
+  "activate.expiredCode": "Термін дії коду активації минув. Ми надіслали вам іншу електронну пошту, щоб підтвердити вашого користувача",
+  "activate.invalidCode": "Код активації недійсний",
+  "activate.userActivated": "Ваш користувач активовано. Ви можете увійти.",
+  "activate.userNotActivated": "Сталася помилка під час активації користувача",
+  "app.HomePage.discover": "Відкрийте ARASAAC",
+  "app.MaterialsView.pageDescription": "ААК матеріальні ресурси для професіоналів та сімей. Завантажте документи з Аугментативної і Альтернативної Комунікації на дошки, робочі таблиці...",
   "app.component.Participate.contact": "Зв'язатися з нами"
 }
