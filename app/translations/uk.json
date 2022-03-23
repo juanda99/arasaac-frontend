@@ -10,6 +10,7 @@
   "activate.userNotActivated": "Сталася помилка під час активації користувача",
   "app.HomePage.discover": "Відкрийте ARASAAC",
   "app.MaterialsView.pageDescription": "ААК матеріальні ресурси для професіоналів та сімей. Звантажити документи з Аугментативної і Альтернативної Комунікації на дошки, робочі таблиці...",
+  "app.component.MaterialConditions.author": "Автор:",
   "app.component.Participate.contact": "Зв'язатися з нами",
   "app.components.CategorySnippet.deleteList": "Видалити папку",
   "app.components.Filters.Activity.audiovisualMaterial": "Аудіовізуальні матеріали",
@@ -183,6 +184,13 @@
   "app.components.downloadLogo": "Звантажити логотип ARASAAC",
   "header.catalogs": "Звантажити каталоги",
   "menu.downloads": "Звантажити каталоги",
+  "tags.sport": "Спорт",
+  "user.signin": "Користувач",
+  "userMenu.register": "Зареєструватися",
+  "userMenu.signin": "Увійти",
+  "userMenu.signout": "Вийти",
+  "userMenu.stopTranslateArasaac": "Зупинити переклад ARASAAC",
+  "userMenu.translateArasaac": "Перекласти ARASAAC",
   "userMenu.userMaterial": "Мої матеріали",
   "userMenu.userProfile": "Мій профіль"
 }
