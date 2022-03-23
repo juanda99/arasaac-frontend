@@ -94,5 +94,15 @@
   "app.components.LanguageSelector.sr": "Сербська",
   "app.components.LanguageSelector.translateOnline": "Переклад онлайн",
   "app.components.LanguageSelector.val": "Валенсійська",
-  "app.components.LanguageSelector.zh": "Китайська (спрощена)"
+  "app.components.LanguageSelector.zh": "Китайська (спрощена)",
+  "app.components.MaterialForm.authors": "Автори",
+  "app.components.MaterialForm.authorsDataDesc": "Введіть тільки е-пошту авторів. Вони повинні бути зареєстровані користувачі ARASAAC. Ім'я заповнюється автоматично.",
+  "app.components.MaterialForm.chooseLanguage": "Виберіть мову матеріалу",
+  "app.components.MaterialForm.chooseRole": "Вибрати роль користувача",
+  "app.components.MaterialForm.classification": "Класифікація",
+  "app.components.MaterialForm.description": "Опис",
+  "app.components.MaterialForm.descriptionHint": "Введіть опис матеріалу",
+  "app.components.MaterialForm.email": "Електронна адреса",
+  "app.components.MaterialForm.emailHint": "Введіть email автора",
+  "app.components.MaterialForm.files": "Файли"
 }
