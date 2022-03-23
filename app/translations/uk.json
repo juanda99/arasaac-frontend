@@ -168,10 +168,21 @@
   "app.components.Pictogram.classroom": "Клас",
   "app.components.Pictogram.color": "Колір",
   "app.components.Pictogram.copy": "Копія",
+  "app.components.Pictogram.copyToClipboard": "Піктограма скопійована до буферу обміну",
+  "app.components.Pictogram.coreVocabularyIntro": "Ця піктограма є частиною основного словника для Аугментативної та Альтернативної Комунікації (AAК)",
+  "app.components.Pictogram.description": "Споріднені слова",
+  "app.components.Pictogram.disableFilter": "Ця піктограма пов'язана з сексом або насильством. Для його перегляду необхідно деактивувати відповідний фільтр у вашому профілі користувача.",
   "app.components.Pictogram.downloadLabel": "Звантажити",
+  "app.components.Pictogram.frame": "Рамка",
+  "app.components.Pictogram.frameColor": "Колір рамки",
+  "app.components.Pictogram.frameWidth": "Оберіть ширину:",
+  "app.components.Pictogram.future": "Майбутнє",
+  "app.components.Pictogram.hairColor": "Оберіть колір волосся:",
   "app.components.PictogramSnippet.download": "Звантажити піктограми",
   "app.components.PictogramSnippet.downloadTooltip": "Звантажити піктограми",
   "app.components.downloadLogo": "Звантажити логотип ARASAAC",
   "header.catalogs": "Звантажити каталоги",
-  "menu.downloads": "Звантажити каталоги"
+  "menu.downloads": "Звантажити каталоги",
+  "userMenu.userMaterial": "Мої матеріали",
+  "userMenu.userProfile": "Мій профіль"
 }
