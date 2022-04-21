@@ -1229,7 +1229,10 @@
   "tags.utensil": "وسایل آشپزی",
   "tags.vegetable": "سبزی",
   "tags.vegetal origin material": "مواد با منشاء گیاهی",
+  "tags.vehicle component": "قطعات وسیله نقلیه",
   "tags.verb": "فعل",
+  "tags.vertebrate": "مهره داران",
+  "tags.veterinary medicine": "دامپزشکی",
   "tags.video game": "بازی‌های ویدیویی",
   "tags.visual art": "هنرهای تجسمی",
   "tags.visual system": "سیستم دیداری",
@@ -1252,5 +1255,8 @@
   "userMenu.register": "عضویت",
   "userMenu.signin": "ورود",
   "userMenu.signout": "خروج",
-  "userMenu.userProfile": "مشخصات من"
+  "userMenu.stopTranslateArasaac": "توقف ترجمه ARASAAC",
+  "userMenu.translateArasaac": "ترجمه ARASAAC",
+  "userMenu.userMaterial": "مطالب و محتوای من",
+  "userMenu.userProfile": "پروفایل من"
 }
