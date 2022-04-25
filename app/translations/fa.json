@@ -479,6 +479,7 @@
   "app.components.downloadLogo": "دانلود لوگو ARASAAC",
   "app.components.guideAulaAbierta": "در وب سایت ما Aula Abierta می توانید یک {guideAndResources} پیدا کنید",
   "app.components.license": "مجوز:",
+  "app.components.licenseP1": "{ARASAAC} نام تجاری دولت آراگون (اسپانیا) است که در اداره ثبت اختراع و علائم تجاری اسپانیا به ثبت رسیده است. مجموعه پیکتوگرام {ARASAAC} در اداره کل ثبت مالکیت معنوی (شماره سپرده قانونی Z 901-2013) به ثبت رسیده است. به عنوان یک کار جمعی از طرف Diputación General de Aragón، که آن را مطابق با مفاد ماده 8 متن اصلاح شده قانون مالکیت فکری، مصوب 1/1996 سلطنتی در 12 آوریل، ویرایش و منتشر کرده است.",
   "app.components.licenseP3": "بنابراین، استفاده از این منابع در هر محصول یا نشریه برای مقاصد تجاری مجاز نیست.",
   "app.components.licenseP6Title": "نحوه استناد به مجوز ARASAAC",
   "app.components.licenseP6bis": "دو روش برای نسبت دادن نویسندگی وجود دارد:",
