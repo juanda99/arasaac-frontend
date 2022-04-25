@@ -516,6 +516,7 @@
   "app.containers.AboutView.addressInfo": "ما در ساراگوسا (اسپانیا) قرار داریم. آدرس پستی ما:",
   "app.containers.AboutView.arasaacTeam": "تیم ARASAAC",
   "app.containers.AboutView.fundedBy": "این پروژه توسط وزارت فرهنگ، ورزش و آموزش دولت آراگون (اسپانیا) حمایت می‌شود. به طور خاص ARASAAC متعلق به حوزه نوآوری و آموزش حرفه‌ای است",
+  "app.containers.AboutView.whatArasaacOffers": "ARASAAC منابع گرافیکی و مادی را با مجوز Creative Commons (BY - NC - SA)، به منظور تسهیل ارتباط و دسترسی شناختی برای همه افرادی که به دلیل عوامل مختلف (اوتیسم، ناتوانی ذهنی، فقدان مهارت زبانی، افراد مسن و...) با مشکلات جدی در این زمینه‌ها مواجه‌ هستند که مانع ورود آنها به هر حوزه ای از زندگی روزمره می‌شود، ارائه می‌کند.",
   "app.containers.AboutView.whatIsArasaac": "آراساک چیست؟",
   "app.containers.AboutView.whereWeAre": "ما کجا هستیم؟",
   "app.containers.AuthorSnippet.coordinator": "هماهنگ کننده ARASAAC",
