@@ -115,7 +115,12 @@ const languages = [
   // FA - PERSIAN:
   // MARCH: web 25%, admin 0%, pictos 0%
   // APRIL: web 25%, admin 0%, pictos 0%
-
+  {
+    code: 'fa',
+    text: 'فارسی',
+    translated: false,
+    needTranslators: true,
+  },
   // FR
   // FEB: web 98%, admin 100%, pictos 1%
   // MARCH: web 99%, admin 99%, pictos 8.6%

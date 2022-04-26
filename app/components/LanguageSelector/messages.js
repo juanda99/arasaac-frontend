@@ -163,6 +163,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Latvian',
   },
+  fa: {
+    id: 'app.components.LanguageSelector.fa',
+    description: 'Select language',
+    defaultMessage: 'Persian',
+  },
   translateOnline: {
     id: 'app.components.LanguageSelector.translateOnline',
     description: 'Select language',
