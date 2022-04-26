@@ -20,7 +20,7 @@ export const DEFAULT_PROFILE_PICTURE = `${PICTOGRAMS_URL}/28307/28307_300.png`
 // export const DEFAULT_AVATAR_PICTURE = `${IMAGES_URL}/arasaac-avatar.gif`
 
 export const getDirection = (locale) =>
-  locale === 'ar' || locale === 'he' ? 'rtl' : 'ltr'
+  locale === 'ar' || locale === 'he' || locale === 'fa' ? 'rtl' : 'ltr'
 
 const checkLanguage = (item, language) => {
   const prueba =
