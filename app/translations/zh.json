@@ -35,6 +35,7 @@
   "app.component.MaterialConditions.publication": "发布日期 & 时间",
   "app.component.MaterialConditions.publicationDesc": "如果材料不符合我们的要求或不满足当前已发布的材料质量标准，RASAAC网站管理员将保留不发布材料的权利。",
   "app.component.MaterialConditions.requirements": "要求：",
+  "app.component.MaterialConditions.requirementsP1": "本区域发布的材料将包括来自ARAASAAC收藏集或其它衍生作品的图片。",
   "app.component.MaterialConditions.submit": "提交",
   "app.component.MaterialConditions.translationQuoteDesc": "对翻译材料而言，您需要在引文末尾添加译者名称：",
   "app.component.MaterialConditions.translator": "译者：",
