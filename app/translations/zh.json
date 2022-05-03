@@ -36,6 +36,8 @@
   "app.component.MaterialConditions.publicationDesc": "如果材料不符合我们的要求或不满足当前已发布的材料质量标准，RASAAC网站管理员将保留不发布材料的权利。",
   "app.component.MaterialConditions.requirements": "要求：",
   "app.component.MaterialConditions.requirementsP1": "本区域发布的材料将包括来自ARAASAAC收藏集或其它衍生作品的图片。",
+  "app.component.MaterialConditions.requirementsP2": "材料基于知识共享许可协议BY-NC-SA发布，即材料源和作者授权允许将其用于非营利目的，并在该协议基础上进行分享。",
+  "app.component.MaterialConditions.requirementsP3": "材料中所包含的照片和图像必须符合我们的许可，或者必须是由作者原创。",
   "app.component.MaterialConditions.submit": "提交",
   "app.component.MaterialConditions.translationQuoteDesc": "对翻译材料而言，您需要在引文末尾添加译者名称：",
   "app.component.MaterialConditions.translator": "译者：",
