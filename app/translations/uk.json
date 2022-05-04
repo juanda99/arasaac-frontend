@@ -361,6 +361,7 @@
   "app.components.PictogramSnippet.deleteFavorite": "Видалити з обраних",
   "app.components.PictogramSnippet.download": "Звантажити піктограми",
   "app.components.PictogramSnippet.downloadTooltip": "Звантажити піктограми",
+  "app.components.PrivatePolicy.header": "Це компонент приватної політики!",
   "app.components.SearchBox.searchField": "Введіть текст для пошуку",
   "app.components.UseConditions.license": "Ліцензія Creative Commons (BY-NC-SA)",
   "app.components.UseConditions.owner": "Арагонський уряд",
