@@ -325,6 +325,8 @@
   "app.components.Welcome.aragonese": "阿拉贡",
   "app.components.Welcome.chooseLanguage": "选择您的语言:",
   "app.components.Welcome.header": "{aragones}辅助沟通系统中心",
+  "app.components.aac": "代表ARASAAC我们衷心感谢 {author} 和 {team} 的在我们网站上这个部分提供的合作。",
+  "app.components.aac.aac": "辅助和替代通信系统(AAC)",
   "app.components.dialog.ok": "还行",
   "app.components.owner": "版权所有：阿拉贡政府（西班牙）",
   "app.components.showcase.whatIsAAC": "何为辅助沟通系统 (AAC)？",
