@@ -397,6 +397,7 @@
   "app.components.aac.list5": "{codedSelection}: 每个符号或字母都有一个编码(例如两个或三个数字或一个颜色和一个数字), 以便协助发言者直接选择或扫描该符号或字母来表示这个符号。 这样，他（她）可以用几个键或格子访问大量符号。",
   "app.components.aac.mouseSelection": "鼠标选择",
   "app.components.aac.p1": "{aac} 是不同于口语的表达方式， 它旨在增加(增强) 和/或弥补(替代) 许多残疾人在沟通和语言方面的困难。",
+  "app.components.aac.p10": "{graphicSymbols} 涵盖从简单的基于图片或照片的系统到逐渐复杂化的象形图系统或传统拼写系统(字母，词语和句子)。 借助这些沟通辅助产品和各种方便获取的资源， 即使在极端情况下，动作不便的人也可能使用该图形系统。 这就是为什么除了在前一种情况下患有精神残疾或自闭症的人可以使用，该系统也被运动机能受损者使用(CP, ALS, MS…)。",
   "app.components.dialog.ok": "还行",
   "app.components.owner": "版权所有：阿拉贡政府（西班牙）",
   "app.components.showcase.whatIsAAC": "何为辅助沟通系统 (AAC)？",
