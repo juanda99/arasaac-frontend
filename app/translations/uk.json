@@ -595,7 +595,7 @@
   "app.containers.ProfileView.errorPassword": "Уппппс! Під час зміни пароля сталася помилка",
   "app.containers.ProfileView.facebookProfilePicture": "Зображення профілю Facebook",
   "app.containers.ProfileView.googleProfilePicture": "Зображення профілю Google",
-  "app.containers.ProfileView.greeting": "Вітаємо, {ім´я}!",
+  "app.containers.ProfileView.greeting": "Вітаємо, {name}!",
   "app.containers.ProfileView.language": "Мова",
   "app.containers.ProfileView.lastLogin": "Останній вхід:",
   "app.containers.ProfileView.passwordChanged": "Пароль змінено",
