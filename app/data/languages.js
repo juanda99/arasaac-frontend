@@ -344,7 +344,7 @@ const languages = [
 
   {
     code: 'uk',
-    text: 'Yкраїнський',
+    text: 'Yкраїнська',
     translated: false,
     needTranslators: true,
   },
