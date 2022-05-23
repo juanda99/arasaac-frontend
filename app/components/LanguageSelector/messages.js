@@ -168,6 +168,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Persian',
   },
+  uk: {
+    id: 'app.components.LanguageSelector.uk',
+    description: 'Select language',
+    defaultMessage: 'Ukrainian',
+  },
   translateOnline: {
     id: 'app.components.LanguageSelector.translateOnline',
     description: 'Select language',

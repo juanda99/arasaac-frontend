@@ -340,6 +340,14 @@ const languages = [
     translated: false,
     needTranslators: true,
   },
+  // Ukranian
+
+  {
+    code: 'uk',
+    text: 'Yкраїнський',
+    translated: false,
+    needTranslators: true,
+  },
   // VAL
   // FEB:  web 44%, admin  84%, pictos 96%
   // MARCH: web 77%, admin 95%, pictos  95%
