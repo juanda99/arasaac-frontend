@@ -356,7 +356,7 @@
   "app.components.Pictogram.upperCase": "أحرف كبيرة",
   "app.components.Pictogram.verbalTense": "الوَقْتْ اللَفْظِي",
   "app.components.PictogramCategories.pictoBelongs": "هَذا البيكتوغرام يَنْتَمِي لهَذِه الفِئَات:",
-  "app.components.PictogramCategories.pictoLabels": "هذَا البيكتوغرام صُنِّفَ كَ:",
+  "app.components.PictogramCategories.pictoLabels": "هذَا البيكتوغرام صُنِّفَ كَـ:",
   "app.components.PictogramCategories.taxonomy": "التَّصْنِيف",
   "app.components.PictogramSnippet.addFavorite": "إضافة إلى المفضلة",
   "app.components.PictogramSnippet.addFavoriteTooltip": "إضافة بيكتوغرام إلى علامة التبويب المفضلة",
