@@ -370,7 +370,7 @@
   "app.components.UseConditions.property": "{owner} لَه الأَوْلَوِيَة للحصول على المِلَفَاتْ الأَصْلِيَة من البيكتوغرام المَنْشُورَة عَلى هَذا المَوْقِعْ.",
   "app.components.Welcome.aragonese": "أراجون",
   "app.components.Welcome.chooseLanguage": "اختر اللغة الخاصة بك:",
-  "app.components.Welcome.header": "{aragones} مَرْكَزْ التَّواصل المُعَزَزْ و البديل",
+  "app.components.Welcome.header": "{aragones} مَرْكَزْ التَّواصل المُعَزَز و البديل",
   "app.components.aac": "مِنْ الأراساك نَوَدُ أَنْ نَشْكُرَ كِلا {author} و {team} عَلَى تَعَاوِنِهِمَا فِي صِيَاغَةِ هَذَا القِسْم مِنْ مَوْقِعْنا الإليكْتْروني.",
   "app.components.aac.aac": "أَنْظِمَة الاتِصَالَاتْ المُعَزَزَة و البَديِلَة (AAC)",
   "app.components.aac.codedSelection": "اختيار غريب",
@@ -1311,7 +1311,7 @@
   "userMenu.register": "سجل",
   "userMenu.signin": "تسجيل الدخول",
   "userMenu.signout": "قم بتسجيل الخروج",
-  "userMenu.stopTranslateArasaac": "إيقاف ترجمة الأراساك",
+  "userMenu.stopTranslateArasaac": "إيقاف ترجمة الآراساك",
   "userMenu.translateArasaac": "ترجمة الأراساك",
   "userMenu.userMaterial": "المواد بلدي",
   "userMenu.userProfile": "ملف التعريف الخاص بي"
