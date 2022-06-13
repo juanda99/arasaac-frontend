@@ -19,8 +19,7 @@ const collaborators = [
     name: 'Barbara Salinas-Horngacher',
     languages: ['de'],
     image: 'Barbara-Salinas-Horngacher.jpg',
-    desc:
-      'Lectora de didáctica de lenguas extranjeras,  Karl-Franzens-Universität, Graz.',
+    desc: 'Lectora de didáctica de lenguas extranjeras,  Karl-Franzens-Universität, Graz.',
     country: 'au',
   },
   {
@@ -94,8 +93,7 @@ const collaborators = [
     name: 'Irina Tekotskaya (Ирина Текоцкая)',
     languages: ['ru'],
     image: 'Irina-Tekotskaya.jpg',
-    desc:
-      'Speech therapist. Caritas education center for social service. President of the AAC association.',
+    desc: 'Speech therapist. Caritas education center for social service. President of the AAC association.',
     url: 'http://caritas-edu.ru',
     facebook: '100000802752066',
     country: 'ru',
@@ -126,32 +124,28 @@ const collaborators = [
   },
   {
     name: 'Mia Marčec',
-    desc:
-      'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
+    desc: 'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
     languages: ['hr'],
     image: 'mia.jpg',
     country: 'hr',
   },
   {
     name: 'Klara Kapeš',
-    desc:
-      'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
+    desc: 'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
     languages: ['hr'],
     image: 'klara.jpg',
     country: 'hr',
   },
   {
     name: 'Emili Kuhar',
-    desc:
-      'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
+    desc: 'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
     languages: ['hr'],
     image: 'Emili-Kuhar.jpg',
     country: 'hr',
   },
   {
     name: 'Ivana Klapež',
-    desc:
-      'prof. defektolog-logoped,  working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
+    desc: 'prof. defektolog-logoped,  working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
     languages: ['hr'],
     image: 'ivana.jpg',
     country: 'hr',
@@ -200,8 +194,7 @@ const collaborators = [
     name: 'Olga Świeża',
     languages: ['pl'],
     image: 'Olga_Swieza.jpg',
-    desc:
-      'Maestra de educación especial, pedagoga. Fundación SYNAPSIS, Varsovia.',
+    desc: 'Maestra de educación especial, pedagoga. Fundación SYNAPSIS, Varsovia.',
     url: 'https://synapsis.org.pl',
     facebook: 'fundacja.synapsis',
     country: 'pl',
@@ -226,8 +219,7 @@ const collaborators = [
     name: 'Sandra Marques',
     languages: ['pt'],
     image: 'she.jpg',
-    desc:
-      'Responsável pelo Núcleo de Inovação, Investigação e Desenvolvimento da  FENACERCI.',
+    desc: 'Responsável pelo Núcleo de Inovação, Investigação e Desenvolvimento da  FENACERCI.',
     url: 'https://www.linkedin.com/in/sandra-marques-13689019/',
     country: 'pt',
   },
@@ -259,8 +251,7 @@ const collaborators = [
     name: 'Marie Cañete',
     languages: ['fr'],
     image: 'marie.jpg',
-    desc:
-      'Psychopédagogue et institutrice spécialisée. Logopède, Institut Médicoéducatif (IME) - Sireuil.',
+    desc: 'Psychopédagogue et institutrice spécialisée. Logopède, Institut Médicoéducatif (IME) - Sireuil.',
     url: '',
     country: 'fr',
   },
@@ -269,8 +260,7 @@ const collaborators = [
     name: 'Meri Nolcheva',
     languages: ['mk'],
     image: 'meri-nolcheva.jpg',
-    desc:
-      'Special educator and rehabilitator. SES "D-r Zlatan Sremec" - Skopje.',
+    desc: 'Special educator and rehabilitator. SES "D-r Zlatan Sremec" - Skopje.',
     url: 'http://www.zlatansremec.edu.mk/',
     facebook: 'zlatansremec',
     country: 'mk',
@@ -279,8 +269,7 @@ const collaborators = [
     name: 'Jasmina Troshanska',
     languages: ['mk'],
     image: 'jt.jpg',
-    desc:
-      'Professor in Special Education and Rehabilitation. Association  "Blue Firefly".',
+    desc: 'Professor in Special Education and Rehabilitation. Association  "Blue Firefly".',
     url: 'http://www.sinasvetulka.mk/',
     facebook: 'autismmacedonia',
     country: 'mk',
@@ -303,8 +292,7 @@ const collaborators = [
     languages: ['ca'],
     image: 'marta-dones.jpg',
     country: 'es',
-    desc:
-      'Educadora social. Educadora de Educación Especial en centro público.',
+    desc: 'Educadora social. Educadora de Educación Especial en centro público.',
   },
   {
     name: 'Maria Grazia Fiore',
@@ -350,6 +338,21 @@ const collaborators = [
     instagram: 'clinical_25_psychologist',
     facebook: 'kouimanel',
     country: 'ar',
+  },
+  {
+    name: 'Sukyang (Susan) Kim',
+    languages: ['ko'],
+    image: 'susan-kim.jpg',
+    desc: 'Profession, Work Center; BCBA,  EL Seeds Center ',
+    url: 'http://www.elchild.com',
+    country: 'ko',
+  },
+  {
+    name: 'Yuting Li',
+    languages: ['zh'],
+    image: 'yuting-li.jpg',
+    desc: 'Student. Universidad de Salamanca, España ',
+    country: 'zh',
   },
   {
     name: 'Liza De Waegenaere',
