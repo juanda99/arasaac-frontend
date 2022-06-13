@@ -74,9 +74,9 @@ export default defineMessages({
     id: `${scope}.canada`,
     defaultMessage: 'Canada',
   },
-  ko: {
+  sko: {
     id: `${scope}.ko`,
-    defaultMessage: 'Korea',
+    defaultMessage: 'South Korea',
   },
   zh: {
     id: `${scope}.zh`,

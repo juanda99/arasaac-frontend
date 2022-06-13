@@ -345,7 +345,7 @@ const collaborators = [
     image: 'susan-kim.jpg',
     desc: 'Profession, Work Center; BCBA,  EL Seeds Center ',
     url: 'http://www.elchild.com',
-    country: 'ko',
+    country: 'sko',
   },
   {
     name: 'Yuting Li',
