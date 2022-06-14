@@ -26,5 +26,11 @@
   "app.component.MaterialConditions.adaptationQuoteDesc": "Mevcut bir materyalin uyarlanmasında, onu uyarlayan kişinin adı alıntının sonuna eklenecektir:",
   "app.component.MaterialConditions.adaptedBy": "Uyarlayan:",
   "app.component.MaterialConditions.author": "Yazar:",
-  "app.component.MaterialConditions.checkRead": "Yukarıdaki bilgileri okudum ve anladım."
+  "app.component.MaterialConditions.checkRead": "Yukarıdaki bilgileri okudum ve anladım.",
+  "app.component.MaterialConditions.intro": "ARASAAC'ta materyallerin yayınlanması için bu ölçütleri takip etmeniz gerektiğini anladığınızı umuyoruz. İşbirliğiniz için şimdiden teşekkür ederiz.",
+  "app.component.MaterialConditions.license": "Lisans:",
+  "app.component.MaterialConditions.materialPublication": "Materyallerin yayınlanması",
+  "app.component.MaterialConditions.origin": "Menşei:",
+  "app.component.MaterialConditions.pictogramsAuthor": "Piktogramın yazarı:",
+  "app.component.MaterialConditions.publication": "Yayın"
 }
