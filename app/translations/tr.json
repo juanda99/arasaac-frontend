@@ -9,5 +9,8 @@
   "activate.userActivated": "Hesabınız etkinleştirildi. Şimdi giriş yapabilirsiniz.",
   "activate.userNotActivated": "Kullanıcı etkinleştirilirken bir hata oluştu",
   "app.HomePage.discover": "ARASAAC'ı keşfet",
-  "app.MaterialsView.pageDescription": "Aileler ve uzmanlar için alternatif ve destekleyici iletişim (ADİ) materyalleri kaynağı. ADİ dokümanlarını, panolarını ve çalışma sayfalarını indir..."
+  "app.MaterialsView.pageDescription": "Aileler ve uzmanlar için alternatif ve destekleyici iletişim (ADİ) materyalleri kaynağı. ADİ dokümanlarını, panolarını ve çalışma sayfalarını indir...",
+  "app.MaterialsView.pageDescriptionSearch": "{searchText} ile ilgili aileler ve uzmanlar için ADİ materyal kaynakları. Alternatif ve destekleyici letişim dokümanlarını, panolarını ve çalışma sayfalarını indir...",
+  "app.MaterialsView.pageTitle": "ADİ paylaşılan materyal kaynakları - ARASAAC",
+  "app.MaterialsView.pageTitleSearch": "{searchText} ile ilgili paylaşılmış ADİ materyal kaynakları"
 }
