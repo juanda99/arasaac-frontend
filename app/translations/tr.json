@@ -4,5 +4,7 @@
   "Login.required": "Gerekli",
   "NewPasswordForm.hintNewPassword": "Yeni şifreniz ne?",
   "activate.activateUser": "Kullanıcı aktivasyonu",
-  "activate.expiredCode": "Aktivasyon kodunuzun süresi doldu. Hesabınızı doğrulamanız için size başka bir e-posta gönderdik"
+  "activate.expiredCode": "Aktivasyon kodunuzun süresi doldu. Hesabınızı doğrulamanız için size başka bir e-posta gönderdik",
+  "activate.invalidCode": "Aktivasyon kodunuz geçerli değil",
+  "activate.userActivated": "Hesabınız etkinleştirildi. Şimdi giriş yapabilirsiniz."
 }
