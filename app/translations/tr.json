@@ -1,1 +1,8 @@
-{}
+{
+  "Login.invalidEmail": "Geçersiz e-posta",
+  "Login.invalidUrl": "Geçersiz url",
+  "Login.required": "Gerekli",
+  "NewPasswordForm.hintNewPassword": "Yeni şifreniz ne?",
+  "activate.activateUser": "Kullanıcı aktivasyonu",
+  "activate.expiredCode": "Aktivasyon kodunuzun süresi doldu. Hesabınızı doğrulamanız için size başka bir e-posta gönderdik"
+}
