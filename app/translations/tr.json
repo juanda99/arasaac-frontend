@@ -32,5 +32,7 @@
   "app.component.MaterialConditions.materialPublication": "Materyallerin yayınlanması",
   "app.component.MaterialConditions.origin": "Menşei:",
   "app.component.MaterialConditions.pictogramsAuthor": "Piktogramın yazarı:",
-  "app.component.MaterialConditions.publication": "Yayın"
+  "app.component.MaterialConditions.publication": "Yayın",
+  "app.component.MaterialConditions.requirements": "Gereklilikler",
+  "app.component.MaterialConditions.suggestions": "Öneriler"
 }
