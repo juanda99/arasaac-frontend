@@ -6,5 +6,8 @@
   "activate.activateUser": "Kullanıcı aktivasyonu",
   "activate.expiredCode": "Aktivasyon kodunuzun süresi doldu. Hesabınızı doğrulamanız için size başka bir e-posta gönderdik",
   "activate.invalidCode": "Aktivasyon kodunuz geçerli değil",
-  "activate.userActivated": "Hesabınız etkinleştirildi. Şimdi giriş yapabilirsiniz."
+  "activate.userActivated": "Hesabınız etkinleştirildi. Şimdi giriş yapabilirsiniz.",
+  "activate.userNotActivated": "Kullanıcı etkinleştirilirken bir hata oluştu",
+  "app.HomePage.discover": "ARASAAC'ı keşfet",
+  "app.MaterialsView.pageDescription": "Aileler ve uzmanlar için alternatif ve destekleyici iletişim (ADİ) materyalleri kaynağı. ADİ dokümanlarını, panolarını ve çalışma sayfalarını indir..."
 }
