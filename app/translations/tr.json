@@ -12,5 +12,19 @@
   "app.MaterialsView.pageDescription": "Aileler ve uzmanlar için alternatif ve destekleyici iletişim (ADİ) materyalleri kaynağı. ADİ dokümanlarını, panolarını ve çalışma sayfalarını indir...",
   "app.MaterialsView.pageDescriptionSearch": "{searchText} ile ilgili aileler ve uzmanlar için ADİ materyal kaynakları. Alternatif ve destekleyici letişim dokümanlarını, panolarını ve çalışma sayfalarını indir...",
   "app.MaterialsView.pageTitle": "ADİ paylaşılan materyal kaynakları - ARASAAC",
-  "app.MaterialsView.pageTitleSearch": "{searchText} ile ilgili paylaşılmış ADİ materyal kaynakları"
+  "app.MaterialsView.pageTitleSearch": "{searchText} ile ilgili paylaşılmış ADİ materyal kaynakları",
+  "app.PictogramsView.closeWarning": "Kapat uyarısı",
+  "app.PictogramsView.contactTranslators": "Çevirmen olarak katılmak için bizimle iletişime geçin!",
+  "app.PictogramsView.languageSearch": "Arama dilinizi seçin",
+  "app.PictogramsView.needTranslators": "ARASAAC'ı sizin dilinize çevirmek için yardıma ihtiyacımız var.",
+  "app.PictogramsView.pageDesc": "Alternatif ve Destekleyici İletişim sembolleri için açık kaynak",
+  "app.PictogramsView.pageTitle": "ADİ sembolleri",
+  "app.PictogramsView.searchByCategories": "Kategoriye göre ara",
+  "app.PictogramsView.translationStatus": "Mevcut çeviri durumunu gör.",
+  "app.PictogramsView.translationsWarning": "Piktogram araması, dilinizdeki çeviriler tamamlanmadığından düzgün çalışmıyor.",
+  "app.component.MaterialConditions.adaptationQuote": "Uyarlama alıntısı",
+  "app.component.MaterialConditions.adaptationQuoteDesc": "Mevcut bir materyalin uyarlanmasında, onu uyarlayan kişinin adı alıntının sonuna eklenecektir:",
+  "app.component.MaterialConditions.adaptedBy": "Uyarlayan:",
+  "app.component.MaterialConditions.author": "Yazar:",
+  "app.component.MaterialConditions.checkRead": "Yukarıdaki bilgileri okudum ve anladım."
 }
