@@ -384,6 +384,20 @@ const collaborators = [
     desc: ' ',
     country: 'es',
   },
+  {
+    name: 'Renata Greimaitė',
+    languages: ['lt'],
+    image: 'renata-greimaite.jpg',
+    desc: 'Counselling Division for Children with Developmental Disorders Spec. Education Specialist. ',
+    country: 'lt',
+  },
+  {
+    name: 'Laura Slare',
+    languages: ['lv'],
+    image: 'she.jpg',
+    desc: ' ',
+    country: 'lv',
+  },
 ]
 
 export default collaborators

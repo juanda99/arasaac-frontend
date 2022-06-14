@@ -82,4 +82,12 @@ export default defineMessages({
     id: `${scope}.zh`,
     defaultMessage: 'China',
   },
+  lt: {
+    id: `${scope}.lt`,
+    defaultMessage: 'Lithuania',
+  },
+  lv: {
+    id: `${scope}.lv`,
+    defaultMessage: 'Latvia',
+  },
 })
