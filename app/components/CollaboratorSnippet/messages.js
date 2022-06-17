@@ -90,4 +90,8 @@ export default defineMessages({
     id: `${scope}.lv`,
     defaultMessage: 'Latvia',
   },
+  fa: {
+    id: `${scope}.fa`,
+    defaultMessage: 'Iran',
+  },
 })

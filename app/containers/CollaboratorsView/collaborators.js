@@ -398,6 +398,14 @@ const collaborators = [
     desc: ' ',
     country: 'lv',
   },
+  {
+    name: 'Maryam Arab Nakhaei',
+    languages: ['fa'],
+    image: 'she.jpg',
+    linkedIn: 'MARYAM-ARAB-NAKHAEI',
+    desc: 'Speech and Language Pathologist. Mashhad University of Medical Sciences. ',
+    country: 'fa',
+  },
 ]
 
 export default collaborators
