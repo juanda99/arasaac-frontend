@@ -48,5 +48,22 @@
   "app.components.Filters.Activity.animation": "Animasyon",
   "app.components.Filters.Activity.anticipation": "Beklenti",
   "app.components.Filters.Activity.araBoard": "AraBoard",
-  "app.components.Filters.Activity.audiovisualMaterial": "Görsel-işitsel materyal"
+  "app.components.Filters.Activity.audiovisualMaterial": "Görsel-işitsel materyal",
+  "app.components.Filters.Activity.board": "Pano",
+  "app.components.Filters.Activity.book": "Kitap",
+  "app.components.Filters.Activity.calendar": "Takvim",
+  "app.components.Filters.Activity.cards": "Kartlar",
+  "app.components.Filters.Activity.story": "Hikaye",
+  "app.components.Filters.Activity.video": "Video",
+  "app.components.Filters.Area": "Alan",
+  "app.components.Filters.Area.alphabet": "Alfabe",
+  "app.components.Filters.Area.art": "Sanat",
+  "app.components.Filters.Area.attention": "Dikkat",
+  "app.components.Filters.Area.behavior": "Davranış",
+  "app.components.Filters.Area.behaviour": "Davranış",
+  "app.components.Filters.Area.feelings": "Duygular",
+  "app.components.Filters.Area.foreignLanguages": "Yabancı diller",
+  "app.components.Filters.Area.geometry": "Geometri",
+  "app.components.Filters.Area.health": "Sağlık",
+  "app.components.Filters.Area.knowledgeTheory": "Bilgi teorisi"
 }
