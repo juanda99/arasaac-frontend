@@ -45,5 +45,8 @@
   "app.components.CategorySnippet.download": "Dosyayı indir",
   "app.components.Filters.Activity.accessibleDoc": "Erişilebilir belge",
   "app.components.Filters.Activity.activity": "Aktivite",
-  "app.components.Filters.Activity.animation": "Animasyon"
+  "app.components.Filters.Activity.animation": "Animasyon",
+  "app.components.Filters.Activity.anticipation": "Beklenti",
+  "app.components.Filters.Activity.araBoard": "AraBoard",
+  "app.components.Filters.Activity.audiovisualMaterial": "Görsel-işitsel materyal"
 }
