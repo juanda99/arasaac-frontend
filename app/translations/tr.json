@@ -34,5 +34,16 @@
   "app.component.MaterialConditions.pictogramsAuthor": "Piktogramın yazarı:",
   "app.component.MaterialConditions.publication": "Yayın",
   "app.component.MaterialConditions.requirements": "Gereklilikler",
-  "app.component.MaterialConditions.suggestions": "Öneriler"
+  "app.component.MaterialConditions.suggestions": "Öneriler",
+  "app.component.MaterialConditions.translator": "Çevirmen:",
+  "app.component.Participate.contact": "Bizimle iletişime geçin",
+  "app.components.Catalog.accept": "Kabul Et",
+  "app.components.Catalog.arasaacLicense": "ARASAAC Lisansı",
+  "app.components.Catalog.cancel": "İptal Et",
+  "app.components.Catalog.confirmLicense": "ARASAAC lisans sözleşmesinin şartlarını okudum ve kabul ediyorum",
+  "app.components.CategorySnippet.deleteList": "Dosyayı sil",
+  "app.components.CategorySnippet.download": "Dosyayı indir",
+  "app.components.Filters.Activity.accessibleDoc": "Erişilebilir belge",
+  "app.components.Filters.Activity.activity": "Aktivite",
+  "app.components.Filters.Activity.animation": "Animasyon"
 }
