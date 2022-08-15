@@ -10,7 +10,7 @@
   "activate.userNotActivated": "خطأ أثناء تفعيل حسابك",
   "app.HomePage.discover": "اِكْتَشِفْ الآراساك",
   "app.MaterialsView.pageDescription": "مصادر عتاد AAC لِأَجْل المهنيين و العائلات. تحميل ملفات،لوحات،أوراق عمل الاتصال المعززة و البديلة...",
-  "app.MaterialsView.pageDescriptionSearch": "مَصَادِر المَوَاد AAC لِلْمِهَنِيِّن و العَائِلَات ذَات صِلَة بِ{searchText}. تَحْمِيل مِلَفَات ،لَوْحَات،أَوْرَاق عَمَل, الإِتِّصَال المُّعَزَزة و البَدِيلَة...",
+  "app.MaterialsView.pageDescriptionSearch": "مَصَادِر المَوَاد AAC لِلْمِهَنِيِّن و العَائِلَات ذَات صِلَة بِ{searchText}. تَحْمِيل مِلَفَات ،لَوْحَات،أَوْرَاق عَمَل, الاتصال المُّعَزَزة و البَدِيلَة...",
   "app.MaterialsView.pageTitle": "AAC مُشَارَكَة مَصَادِر العَتَاد - آراساك",
   "app.MaterialsView.pageTitleSearch": "AAC مُشَارَكَة مَصَادِر المَواد ذَات صِلَة بِ{searchText} - آراساك",
   "app.PictogramsView.closeWarning": "إِغْلَاقُ التَّحْذِير",
