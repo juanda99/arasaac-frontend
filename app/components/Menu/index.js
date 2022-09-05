@@ -38,12 +38,9 @@ import messages from './messages'
 import styles from './styles'
 import PrizeIcon from './PrizeIcon'
 import WorldIcon from './WorldIcon'
+import AstericsIcon from './AstericsIcon'
 
 const SelectableList = makeSelectable(List)
-
-
-
-
 
 class Menu extends Component {
   static propTypes = {
@@ -58,28 +55,27 @@ class Menu extends Component {
     isMobile: PropTypes.bool.isRequired,
     showLSE: PropTypes.bool.isRequired,
     locale: PropTypes.string.isRequired,
-  };
+  }
 
   static contextTypes = {
-    router: PropTypes.object.isRequired
-  };
+    router: PropTypes.object.isRequired,
+  }
 
   state = {
-    muiVersions: []
-  };
-
+    muiVersions: [],
+  }
 
   handleLink = (value) => window.open(value, '_blank')
 
   handleRouterChangeLink = (value) => {
     this.context.router.push(value)
     this.props.onRequestChangeNavDrawer(false)
-  };
+  }
 
   handleTouchTapHeader = () => {
     this.context.router.push('/')
     this.props.onRequestChangeNavDrawer(false)
-  };
+  }
 
   render() {
     const {
@@ -92,7 +88,7 @@ class Menu extends Component {
       isAuthenticated,
       signout,
       isMobile,
-      showLSE
+      showLSE,
     } = this.props
 
     const isRtl = muiTheme.direction === 'rtl'
@@ -104,10 +100,10 @@ class Menu extends Component {
         docked={docked}
         open={open}
         openSecondary={isRtl}
-        id='menu'
+        id="menu"
         onRequestChange={onRequestChangeNavDrawer}
-      // containerStyle={{zIndex: zIndex.drawer - 100}}
-      // containerStyle={{ Index: 1200 }}
+        // containerStyle={{zIndex: zIndex.drawer - 100}}
+        // containerStyle={{ Index: 1200 }}
       >
         {
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -115,61 +111,68 @@ class Menu extends Component {
         <Div
           bg={muiTheme.palette.primary1Color}
           color={muiTheme.palette.logoColor}
-          role='button'
+          role="button"
           style={styles.logo}
           onClick={this.handleTouchTapHeader}
         >
-          <img src={`${IMAGES_URL}/logo-arasaac-texto.svg`} style={{ width: '140px', marginLeft: '-20px' }} />
+          <img
+            src={`${IMAGES_URL}/logo-arasaac-texto.svg`}
+            style={{ width: '140px', marginLeft: '-20px' }}
+          />
         </Div>
         <SelectableList value={location.pathname} onChange={onChangeList}>
           <ListItem
-            id='lstpictograms'
-            primaryText={<span><FormattedMessage {...messages.pictograms} /></span>}
+            id="lstpictograms"
+            primaryText={
+              <span>
+                <FormattedMessage {...messages.pictograms} />
+              </span>
+            }
             primaryTogglesNestedList={true}
             leftIcon={<PictogramsIcon />}
             nestedItems={[
               <ListItem
-                id='lstsearchpictos'
-                value='/pictograms/search'
+                id="lstsearchpictos"
+                value="/pictograms/search"
                 primaryText={<FormattedMessage {...messages.search} />}
                 leftIcon={<SearchIcon />}
               />,
               <ListItem
-                value='/pictograms/favorites'
+                value="/pictograms/favorites"
                 primaryText={<FormattedMessage {...messages.favorites} />}
                 leftIcon={<FavoriteIcon />}
-              />
+              />,
             ]}
           />
           <ListItem
-            id='lstmaterials'
+            id="lstmaterials"
             isRtl={true}
             primaryText={<FormattedMessage {...messages.materials} />}
             primaryTogglesNestedList={true}
             leftIcon={<MaterialsIcon />}
             nestedItems={[
               <ListItem
-                id='lstsearchmaterials'
-                value='/materials/search'
+                id="lstsearchmaterials"
+                value="/materials/search"
                 primaryText={<FormattedMessage {...messages.search} />}
                 leftIcon={<SearchIcon />}
               />,
               <ListItem
-                value='/materials/upload'
+                value="/materials/upload"
                 primaryText={<FormattedMessage {...messages.uploadMaterials} />}
                 leftIcon={<FileUploadIcon />}
-              />
+              />,
             ]}
           />
           <ListItem
-            id='lstlearning'
+            id="lstlearning"
             isRtl={true}
             primaryText={<FormattedMessage {...messages.learningAAC} />}
             primaryTogglesNestedList={true}
             leftIcon={<SchoolIcon />}
             nestedItems={[
               <ListItem
-                id='whatIsAAC'
+                id="whatIsAAC"
                 value={`/aac/${locale}`}
                 primaryText={<FormattedMessage {...messages.whatIsAAC} />}
                 leftIcon={<InfoIcon />}
@@ -183,52 +186,64 @@ class Menu extends Component {
                 value={`/use-of-aac/${locale}`}
                 primaryText={<FormattedMessage {...messages.useAAC} />}
                 leftIcon={<ToolsIcon />}
-              />
+              />,
             ]}
           />
+
           <ListItem
-            id='lstonlinetools'
-            primaryText={<FormattedMessage {...messages.onlineTools} />}
-            // primaryTogglesNestedList={true}
-            onClick={() => this.handleLink('http://old.arasaac.org/herramientas.php')}
-            leftIcon={<AppsIcon />}
-          // nestedItems={[
-          //   <ListItem
-          //     value='/onlinetools/araword'
-          //     primaryText={<FormattedMessage {...messages.araword} />}
-          //     leftIcon={<MenuIcon />}
-          //   />
-          // ]}
+            id="lstsoftware"
+            primaryText={
+              <span>
+                <FormattedMessage {...messages.software} />
+              </span>
+            }
+            primaryTogglesNestedList={true}
+            leftIcon={<PictogramsIcon />}
+            nestedItems={[
+              <ListItem
+                id="lstonlinetools"
+                onClick={() =>
+                  this.handleLink('http://old.arasaac.org/herramientas.php')
+                }
+                primaryText={<FormattedMessage {...messages.onlineTools} />}
+                leftIcon={<AppsIcon />}
+              />,
+              <ListItem
+                onClick={() => this.handleLink('https://grid.asterics.eu/')}
+                primaryText={<FormattedMessage {...messages.asTerIk} />}
+                leftIcon={<AstericsIcon />}
+              />,
+            ]}
           />
+
           {showLSE && (
-          <ListItem
-            id='lstLSE'
-            value='/lse/search'
-            primaryText='Lengua de signos española'
-            leftIcon={<LSEIcon />}
-          />
+            <ListItem
+              id="lstLSE"
+              value="/lse/search"
+              primaryText="Lengua de signos española"
+              leftIcon={<LSEIcon />}
+            />
           )}
 
           <ListItem
-            id='lstaulaabierta'
-            value='http://aulaabierta.arasaac.org'
+            id="lstaulaabierta"
             onClick={() => this.handleLink('http://aulaabierta.arasaac.org')}
-            primaryText='Aula abierta'
+            primaryText="Aula abierta"
             leftIcon={<SoftwareIcon />}
           />
           <ListItem
-            id='lstdevelopers'
+            id="lstdevelopers"
             primaryText={<FormattedMessage {...messages.dev} />}
             primaryTogglesNestedList={true}
             leftIcon={<ToolsIcon />}
             nestedItems={[
               <ListItem
-                value='/developers'
+                value="/developers"
                 primaryText={<FormattedMessage {...messages.devInfo} />}
                 leftIcon={<InfoIcon />}
               />,
               <ListItem
-                value='/developers/api'
+                value="/developers/api"
                 primaryText={<FormattedMessage {...messages.api} />}
                 leftIcon={<ApiIcon />}
               />,
@@ -240,14 +255,14 @@ class Menu extends Component {
             ]}
           />
           <ListItem
-            id='lstsettings'
-            value='/settings'
+            id="lstsettings"
+            value="/settings"
             primaryText={<FormattedMessage {...messages.settings} />}
             leftIcon={<SettingsIcon />}
           />
           <ListItem
-            id='lstusage'
-            value='/terms-of-use'
+            id="lstusage"
+            value="/terms-of-use"
             primaryText={<FormattedMessage {...messages.termsOfUse} />}
             leftIcon={<TermsOfUseIcon />}
           />
@@ -259,61 +274,61 @@ class Menu extends Component {
             {isAuthenticated ? (
               <div>
                 <ListItem
-                  id='lstsignout'
+                  id="lstsignout"
                   primaryText={<FormattedMessage {...messages.signout} />}
                   leftIcon={<SignoutIcon />}
                   onClick={signout}
                 />
               </div>
             ) : (
-                <div>
-                  <ListItem
-                    id='lstlogin'
-                    value='/signin'
-                    primaryText={<FormattedMessage {...messages.signin} />}
-                    leftIcon={<LoginIcon />}
-                    onClick={() => this.handleRouterChangeLink('/signin')}
-                  />
-                  <ListItem
-                    id='lstregister'
-                    value='/register'
-                    primaryText={<FormattedMessage {...messages.register} />}
-                    leftIcon={<AccountIcon />}
-                    onClick={() => this.handleRouterChangeLink('/register')}
-                  />
-                </div>
-              )}
+              <div>
+                <ListItem
+                  id="lstlogin"
+                  value="/signin"
+                  primaryText={<FormattedMessage {...messages.signin} />}
+                  leftIcon={<LoginIcon />}
+                  onClick={() => this.handleRouterChangeLink('/signin')}
+                />
+                <ListItem
+                  id="lstregister"
+                  value="/register"
+                  primaryText={<FormattedMessage {...messages.register} />}
+                  leftIcon={<AccountIcon />}
+                  onClick={() => this.handleRouterChangeLink('/register')}
+                />
+              </div>
+            )}
           </SelectableList>
         )}
         <Divider />
-        <SelectableList value='' onChange={onChangeList}>
+        <SelectableList value="" onChange={onChangeList}>
           <Subheader>{<FormattedMessage {...messages.info} />}</Subheader>
           <ListItem
-            id='lstarasaacteam'
-            value='/about-us'
+            id="lstarasaacteam"
+            value="/about-us"
             primaryText={<FormattedMessage {...messages.whoWeAre} />}
             leftIcon={<PeopleIcon />}
           />
           <ListItem
-            id='lstworld'
-            value='/world'
+            id="lstworld"
+            value="/world"
             primaryText={<FormattedMessage {...messages.arasaacWorld} />}
             leftIcon={<WorldIcon />}
           />
           <ListItem
-            id='lstprizes'
-            value='/prizes'
+            id="lstprizes"
+            value="/prizes"
             primaryText={<FormattedMessage {...messages.prizes} />}
             leftIcon={<PrizeIcon />}
           />
           <ListItem
-            id='lstcollaborators'
-            value='/translators'
+            id="lstcollaborators"
+            value="/translators"
             primaryText={<FormattedMessage {...messages.translators} />}
             leftIcon={<ThumbUpIcon />}
           />
           <ListItem
-            value='/contact-us'
+            value="/contact-us"
             primaryText={<FormattedMessage {...messages.contact} />}
             leftIcon={<ContactMailIcon />}
           />
