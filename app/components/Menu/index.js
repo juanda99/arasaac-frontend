@@ -201,17 +201,17 @@ class Menu extends Component {
             leftIcon={<PictogramsIcon />}
             nestedItems={[
               <ListItem
+                onClick={() => this.handleLink('https://grid.asterics.eu/')}
+                primaryText={<FormattedMessage {...messages.asTerIk} />}
+                leftIcon={<AstericsIcon />}
+              />,
+              <ListItem
                 id="lstonlinetools"
                 onClick={() =>
                   this.handleLink('http://old.arasaac.org/herramientas.php')
                 }
                 primaryText={<FormattedMessage {...messages.onlineTools} />}
                 leftIcon={<AppsIcon />}
-              />,
-              <ListItem
-                onClick={() => this.handleLink('https://grid.asterics.eu/')}
-                primaryText={<FormattedMessage {...messages.asTerIk} />}
-                leftIcon={<AstericsIcon />}
               />,
             ]}
           />
