@@ -6,63 +6,64 @@ const collaborators = [
     desc: 'Profesora de educación especial, Sonderschule Rosenhain, Graz.',
     country: 'au',
     facebook: 'abeneguilogopedia',
-    instagram: 'abeneguilogopedia',
+    instagram: 'abeneguilogopedia'
   },
   {
     name: 'Pablo Salinas Gracia',
     languages: ['de'],
     image: 'Pablo-Salinas-Gracia.jpg',
     desc: 'Profesor de educación especial,  Sonderschule Rosenhain, Graz.',
-    country: 'au',
+    country: 'au'
   },
   {
     name: 'Barbara Salinas-Horngacher',
     languages: ['de'],
     image: 'Barbara-Salinas-Horngacher.jpg',
-    desc: 'Lectora de didáctica de lenguas extranjeras,  Karl-Franzens-Universität, Graz.',
-    country: 'au',
+    desc:
+      'Lectora de didáctica de lenguas extranjeras,  Karl-Franzens-Universität, Graz.',
+    country: 'au'
   },
   {
     name: 'Aiala Grajirena Juanena',
     languages: ['eu'],
     image: 'she.jpg',
     desc: 'P.T maistra.',
-    country: 'es',
+    country: 'es'
   },
   {
     name: 'Ane Cuesta Muguruza',
     languages: ['eu'],
     image: 'she.jpg',
     desc: 'P.T maistra.',
-    country: 'es',
+    country: 'es'
   },
   {
     name: 'Marina Argote Larrauri',
     languages: ['eu'],
     image: 'she.jpg',
     desc: 'H.H maistra.',
-    country: 'es',
+    country: 'es'
   },
   {
     name: 'Onintze Aguirre Méndez',
     languages: ['eu'],
     image: 'she.jpg',
     desc: 'Gizarte Integrazio, Gautena.',
-    country: 'es',
+    country: 'es'
   },
   {
     name: 'Marisa Lorenzo Rodríguez',
     languages: ['gl'],
     image: 'marisa.jpg',
     desc: 'Maestra de pedagogía terapéutica.',
-    country: 'es',
+    country: 'es'
   },
   {
     name: 'Nitzan Cohen',
     languages: ['he'],
     image: 'nitzan.jpg',
     desc: 'Ph.D. Speech Therapist and Educator. Kaye College. Beer Sheva.',
-    country: 'is',
+    country: 'is'
   },
   {
     name: 'Laura Pedrós Cuadra',
@@ -70,7 +71,7 @@ const collaborators = [
     twitter: 'lapku',
     image: 'Laura_Pedros.jpg',
     desc: 'Profesora de Inglés.',
-    country: 'es',
+    country: 'es'
   },
   {
     name: 'Claudia Adelina Benegui',
@@ -80,30 +81,31 @@ const collaborators = [
     url: 'http://www.abeneguilogopedia.com',
     facebook: 'abeneguilogopedia',
     instagram: 'abeneguilogopedia',
-    country: 'es',
+    country: 'es'
   },
   {
     name: 'Gulnara Ibragimova',
     languages: ['ru'],
     image: 'Gulnara_400x400.jpg',
     instagram: 'mom_box_tratata',
-    country: 'ru',
+    country: 'ru'
   },
   {
     name: 'Irina Tekotskaya (Ирина Текоцкая)',
     languages: ['ru'],
     image: 'Irina-Tekotskaya.jpg',
-    desc: 'Speech therapist. Caritas education center for social service. President of the AAC association.',
+    desc:
+      'Speech therapist. Caritas education center for social service. President of the AAC association.',
     url: 'http://caritas-edu.ru',
     facebook: '100000802752066',
-    country: 'ru',
+    country: 'ru'
   },
   {
     name: 'Vladimirova Alesandra ((Владимирова Александра))',
     languages: ['ru'],
     image: 'Vladimirova-Alesandra.jpg',
     desc: 'Speech therapist. Saint-Petersburg.',
-    country: 'ru',
+    country: 'ru'
   },
   {
     name: 'ICT-AAC',
@@ -112,7 +114,7 @@ const collaborators = [
     url: 'http://www.ict-aac.hr/',
     facebook: 'ictaac',
     twitter: 'ictaac',
-    country: 'hr',
+    country: 'hr'
   },
   {
     name: 'Ermira Shabani',
@@ -120,35 +122,39 @@ const collaborators = [
     image: 'ermire-shabani.jpg',
     facebook: 'ermiraash',
     desc: 'Psychologist. Kosovo - ',
-    country: 'sq',
+    country: 'sq'
   },
   {
     name: 'Mia Marčec',
-    desc: 'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
+    desc:
+      'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
     languages: ['hr'],
     image: 'mia.jpg',
-    country: 'hr',
+    country: 'hr'
   },
   {
     name: 'Klara Kapeš',
-    desc: 'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
+    desc:
+      'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
     languages: ['hr'],
     image: 'klara.jpg',
-    country: 'hr',
+    country: 'hr'
   },
   {
     name: 'Emili Kuhar',
-    desc: 'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
+    desc:
+      'Prof. logoped, working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
     languages: ['hr'],
     image: 'Emili-Kuhar.jpg',
-    country: 'hr',
+    country: 'hr'
   },
   {
     name: 'Ivana Klapež',
-    desc: 'prof. defektolog-logoped,  working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
+    desc:
+      'prof. defektolog-logoped,  working in Centar za odgoj i obrazovanje Tomislav Špoljar, Varaždin.',
     languages: ['hr'],
     image: 'ivana.jpg',
-    country: 'hr',
+    country: 'hr'
   },
   {
     name: 'Juan Daniel Burró Aláez',
@@ -157,7 +163,7 @@ const collaborators = [
     image: 'juanda.jpeg',
     github: 'juanda99',
     twitter: 'juandawrite',
-    country: 'es',
+    country: 'es'
   },
   {
     name: 'David Romero Corral  ',
@@ -165,7 +171,7 @@ const collaborators = [
     image: 'david-romero-320.jpg',
     desc: 'Arasaac coordinator. ',
     facebook: 'david.romerocorral',
-    country: 'es',
+    country: 'es'
   },
   {
     name: 'José Manuel Marcos Rodrigo',
@@ -173,7 +179,7 @@ const collaborators = [
     image: 'Jose_Manuel.jpg',
     desc: 'Arasaac coordinator. ',
     facebook: 'josemanuelmarcosrodrigo',
-    country: 'es',
+    country: 'es'
   },
   {
     name: 'Katalin Révész',
@@ -181,23 +187,24 @@ const collaborators = [
     image: 'katalin.png',
     desc: 'Special education teacher, Pilis.',
     instagram: 'revesz.kata',
-    country: 'hu',
+    country: 'hu'
   },
   {
     name: 'Timea Ulrich',
     languages: ['hu'],
     image: 'Timea-Ulrich.jpg',
     desc: 'Special Needs Teacher in the Field of Autism Spectrum Disorders.',
-    country: 'hu',
+    country: 'hu'
   },
   {
     name: 'Olga Świeża',
     languages: ['pl'],
     image: 'Olga_Swieza.jpg',
-    desc: 'Maestra de educación especial, pedagoga. Fundación SYNAPSIS, Varsovia.',
+    desc:
+      'Maestra de educación especial, pedagoga. Fundación SYNAPSIS, Varsovia.',
     url: 'https://synapsis.org.pl',
     facebook: 'fundacja.synapsis',
-    country: 'pl',
+    country: 'pl'
   },
   {
     name: 'Pilar Marcos Lázaro',
@@ -205,7 +212,7 @@ const collaborators = [
     image: 'pilar-marcos.jpg',
     desc: 'PhD Walsh Scholar at Teagasc. University College Dublin.',
     linkedIn: 'pilar-marcos-lázaro-989a308a',
-    country: 'ir',
+    country: 'ir'
   },
   {
     name: 'Rui Fernandes',
@@ -213,15 +220,16 @@ const collaborators = [
     image: 'rui-fernandes.jpg',
     desc: 'CANTIC (CRTIC-Amadora).',
     url: 'http://www.cantic.org.pt',
-    country: 'pt',
+    country: 'pt'
   },
   {
     name: 'Sandra Marques',
     languages: ['pt'],
     image: 'she.jpg',
-    desc: 'Responsável pelo Núcleo de Inovação, Investigação e Desenvolvimento da  FENACERCI.',
+    desc:
+      'Responsável pelo Núcleo de Inovação, Investigação e Desenvolvimento da  FENACERCI.',
     url: 'https://www.linkedin.com/in/sandra-marques-13689019/',
-    country: 'pt',
+    country: 'pt'
   },
   {
     name: 'Sébastien Vermandel',
@@ -229,7 +237,7 @@ const collaborators = [
     image: 'he.jpg',
     desc: 'Head Engineer. APF Lab – le Hub.',
     url: '',
-    country: 'fr',
+    country: 'fr'
   },
   {
     name: 'Aurélie Régent',
@@ -237,7 +245,7 @@ const collaborators = [
     image: 'she.jpg',
     desc: 'Speech Therapist. APF Lab – le Hub.',
     url: '',
-    country: 'fr',
+    country: 'fr'
   },
   {
     name: 'Thierry Danigo',
@@ -245,54 +253,57 @@ const collaborators = [
     image: 'he.jpg',
     desc: 'Ergothérapeute Conseil. APF Lab - le Hub.',
     url: '',
-    country: 'fr',
+    country: 'fr'
   },
   {
     name: 'Marie Cañete',
     languages: ['fr'],
     image: 'marie.jpg',
-    desc: 'Psychopédagogue et institutrice spécialisée. Logopède, Institut Médicoéducatif (IME) - Sireuil.',
+    desc:
+      'Psychopédagogue et institutrice spécialisée. Logopède, Institut Médicoéducatif (IME) - Sireuil.',
     url: '',
-    country: 'fr',
+    country: 'fr'
   },
 
   {
     name: 'Meri Nolcheva',
     languages: ['mk'],
     image: 'meri-nolcheva.jpg',
-    desc: 'Special educator and rehabilitator. SES "D-r Zlatan Sremec" - Skopje.',
+    desc:
+      'Special educator and rehabilitator. SES "D-r Zlatan Sremec" - Skopje.',
     url: 'http://www.zlatansremec.edu.mk/',
     facebook: 'zlatansremec',
-    country: 'mk',
+    country: 'mk'
   },
   {
     name: 'Jasmina Troshanska',
     languages: ['mk'],
     image: 'jt.jpg',
-    desc: 'Professor in Special Education and Rehabilitation. Association  "Blue Firefly".',
+    desc:
+      'Professor in Special Education and Rehabilitation. Association  "Blue Firefly".',
     url: 'http://www.sinasvetulka.mk/',
     facebook: 'autismmacedonia',
-    country: 'mk',
+    country: 'mk'
   },
   {
     name: 'Olga Serra Pellicer',
     languages: ['ca'],
     image: 'she.jpg',
-    country: 'es',
+    country: 'es'
   },
   {
     name: 'Susanna Giner Segura',
     languages: ['ca'],
     image: 'susanna.jpg',
     country: 'es',
-    desc: "Logopeda Escola d'Educació Especial Alba. Reus. ",
+    desc: "Logopeda Escola d'Educació Especial Alba. Reus. "
   },
   {
     name: 'Marta Donés Martínez',
     languages: ['ca'],
     image: 'marta-dones.jpg',
     country: 'es',
-    desc: 'Educadora social. Educadora de Educación Especial en centro público.',
+    desc: 'Educadora social. Educadora de Educación Especial en centro público.'
   },
   {
     name: 'Maria Grazia Fiore',
@@ -301,7 +312,7 @@ const collaborators = [
     desc: 'Docente di scuola primaria, esperto nei processi formativi. Bari.',
     url: 'https://visualforall.com/',
     facebook: 'mariagrazia.fiore.71',
-    country: 'it',
+    country: 'it'
   },
   {
     name: 'Nicoletta Wojciechowski',
@@ -310,7 +321,7 @@ const collaborators = [
     desc: 'Educatrice, architetto. Lodi.',
     url: 'https://visualforall.com/',
     facebook: 'nicoletta.wojciechowski',
-    country: 'it',
+    country: 'it'
   },
   {
     name: 'Labrini Tsokana',
@@ -318,7 +329,7 @@ const collaborators = [
     image: 'labrini-tsokana.jpg',
     desc: 'Speech Therapist.',
     instagram: 'labrini_tsokana',
-    country: 'el',
+    country: 'el'
   },
   {
     name: 'Didacticmom',
@@ -328,7 +339,7 @@ const collaborators = [
     url: 'https://dondecreceresaprender.blogspot.com',
     instagram: 'didacticmom',
     facebook: 'didacticmom',
-    country: 'bg',
+    country: 'bg'
   },
   {
     name: 'Kouiza Manel',
@@ -337,7 +348,7 @@ const collaborators = [
     desc: 'Clinical psychologist. ',
     instagram: 'clinical_25_psychologist',
     facebook: 'kouimanel',
-    country: 'ar',
+    country: 'ar'
   },
   {
     name: 'Sukyang (Susan) Kim',
@@ -345,14 +356,14 @@ const collaborators = [
     image: 'susan-kim.jpg',
     desc: 'Profession, Work Center; BCBA,  EL Seeds Center ',
     url: 'http://www.elchild.com',
-    country: 'sko',
+    country: 'sko'
   },
   {
     name: 'Yuting Li',
     languages: ['zh'],
     image: 'yuting-li.jpg',
     desc: 'Student. Universidad de Salamanca, España ',
-    country: 'zh',
+    country: 'zh'
   },
   {
     name: 'Liza De Waegenaere',
@@ -360,7 +371,7 @@ const collaborators = [
     image: 'she.jpg',
     desc: 'Speech therapist.',
     facebook: 'kouimanel',
-    country: 'be',
+    country: 'be'
   },
   {
     name: 'Leen Schruers',
@@ -368,44 +379,61 @@ const collaborators = [
     image: 'leen-schruers.jpg',
     desc: 'English-Dutch teacher, specialised in foreign language education.',
     linkedIn: 'leen-schruers-b294201a5',
-    country: 'be',
+    country: 'be'
   },
   {
     name: 'Adriana Yamamura Gonçalves',
     languages: ['br'],
     image: 'she.jpg',
     desc: 'Special education assistant.',
-    country: 'canada',
+    country: 'canada'
   },
   {
     name: 'Francisco Javier Marcén Cobos',
     languages: ['an'],
     image: 'francisco-marcen.png',
     desc: ' ',
-    country: 'es',
+    country: 'es'
   },
   {
     name: 'Renata Greimaitė',
     languages: ['lt'],
     image: 'renata-greimaite.jpg',
-    desc: 'Counselling Division for Children with Developmental Disorders Spec. Education Specialist. ',
-    country: 'lt',
+    desc:
+      'Counselling Division for Children with Developmental Disorders Spec. Education Specialist. ',
+    country: 'lt'
   },
   {
     name: 'Laura Slare',
     languages: ['lv'],
     image: 'she.jpg',
     desc: ' ',
-    country: 'lv',
+    country: 'lv'
   },
   {
     name: 'Maryam Arab Nakhaei',
     languages: ['fa'],
     image: 'she.jpg',
     linkedIn: 'MARYAM-ARAB-NAKHAEI',
-    desc: 'Speech and Language Pathologist. Mashhad University of Medical Sciences. ',
-    country: 'fa',
+    desc:
+      'Speech and Language Pathologist. Mashhad University of Medical Sciences. ',
+    country: 'fa'
   },
+  {
+    name: 'Maria Paola Fortuna',
+    languages: ['it'],
+    image: 'maria-paola-fortuna.jpg',
+    desc: "Docente di sostegno presso l'I.C.Guicciardini di Roma. ",
+    facebook: 'groups/260262742326946',
+    country: 'it'
+  },
+  {
+    name: 'Vittorio Graziano',
+    languages: ['it'],
+    image: 'vittorio-graziano.jpg',
+    desc: 'Speech and Language Pathologist, Avellino',
+    country: 'it'
+  }
 ]
 
 export default collaborators
