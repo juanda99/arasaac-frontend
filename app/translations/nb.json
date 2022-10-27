@@ -1,5 +1,5 @@
 {
-  "Login.invalidEmail": "Ugyldig epost",
+  "Login.invalidEmail": "Ugyldig e-postadresse",
   "Login.invalidUrl": "Ugyldig url",
   "Login.required": "Nødvendig",
   "NewPasswordForm.hintNewPassword": "Hva er ditt nye passord?",
@@ -187,6 +187,7 @@
   "app.components.LanguageSelector.lt": "Litauisk",
   "app.components.LanguageSelector.lv": "Latvisk",
   "app.components.LanguageSelector.mk": "Makedonsk",
+  "app.components.LanguageSelector.nb": "Norsk",
   "app.components.LanguageSelector.nl": "Nederlandsk",
   "app.components.LanguageSelector.pl": "Polsk",
   "app.components.LanguageSelector.pt": "Portugisisk",
