@@ -433,6 +433,13 @@ const collaborators = [
     image: 'vittorio-graziano.jpg',
     desc: 'Speech and Language Pathologist, Avellino',
     country: 'it'
+  },
+  {
+    name: 'Beatriz González Rodríguez',
+    languages: ['nb'],
+    image: 'beatriz-gonzalez.jpg',
+    desc: 'Special Education teacher. Bergen.',
+    country: 'nb'
   }
 ]
 
