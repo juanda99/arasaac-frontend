@@ -30,7 +30,22 @@ export default function createRoutes(store) {
         })
 
         importModules.catch(errorLoading)
-      }
+      },
+    },
+    {
+      path: '/index.html',
+      name: 'home',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([import('containers/HomePage')])
+
+        const renderRoute = loadModule(cb)
+
+        importModules.then(([component]) => {
+          renderRoute(component)
+        })
+
+        importModules.catch(errorLoading)
+      },
     },
     {
       path: '/aac(/:language)',
@@ -42,7 +57,7 @@ export default function createRoutes(store) {
           renderRoute(component)
         })
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/aac-users(/:language)',
@@ -54,7 +69,7 @@ export default function createRoutes(store) {
           renderRoute(component)
         })
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/use-of-aac(/:language)',
@@ -66,7 +81,7 @@ export default function createRoutes(store) {
           renderRoute(component)
         })
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/pictograms/search',
@@ -75,7 +90,7 @@ export default function createRoutes(store) {
         const importModules = Promise.all([
           import('containers/PictogramsView/reducer'),
           import('containers/PictogramsView/sagas'),
-          import('containers/PictogramsView')
+          import('containers/PictogramsView'),
         ])
 
         const renderRoute = loadModule(cb)
@@ -93,16 +108,16 @@ export default function createRoutes(store) {
           name: 'gallery',
           getComponent(nextState, cb) {
             const importModules = Promise.all([
-              import('components/PictogramList')
+              import('components/PictogramList'),
             ])
             const renderRoute = loadModule(cb)
             importModules.then(([component]) => {
               renderRoute(component)
             })
             importModules.catch(errorLoading)
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     {
       path: '/pictograms/favorites',
@@ -111,7 +126,7 @@ export default function createRoutes(store) {
         const importModules = Promise.all([
           import('containers/PictogramsView/reducer'),
           import('containers/PictogramsView/sagas'),
-          import('containers/FavoritesView')
+          import('containers/FavoritesView'),
         ])
 
         const renderRoute = loadModule(cb)
@@ -122,7 +137,7 @@ export default function createRoutes(store) {
           renderRoute(component)
         })
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/activate/:activationCode',
@@ -131,7 +146,7 @@ export default function createRoutes(store) {
         import('containers/ActivateView')
           .then(loadModule(cb))
           .catch(errorLoading)
-      }
+      },
     },
     // {
     //   path: '/activate/:activationCode',
@@ -163,7 +178,7 @@ export default function createRoutes(store) {
         const importModules = Promise.all([
           import('containers/MaterialsView/reducer'),
           import('containers/MaterialsView/sagas'),
-          import('containers/MaterialsView')
+          import('containers/MaterialsView'),
         ])
 
         const renderRoute = loadModule(cb)
@@ -181,16 +196,16 @@ export default function createRoutes(store) {
           name: 'gallery',
           getComponent(nextState, cb) {
             const importModules = Promise.all([
-              import('components/MaterialList')
+              import('components/MaterialList'),
             ])
             const renderRoute = loadModule(cb)
             importModules.then(([component]) => {
               renderRoute(component)
             })
             importModules.catch(errorLoading)
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     {
       path: '/news/upload',
@@ -224,7 +239,7 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/UploadNewsView'),
-          System.import('containers/UploadNewsView/reducer')
+          System.import('containers/UploadNewsView/reducer'),
         ])
 
         const renderRoute = loadModule(cb)
@@ -235,7 +250,7 @@ export default function createRoutes(store) {
         })
 
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/materials/upload',
@@ -244,7 +259,7 @@ export default function createRoutes(store) {
         import('containers/UploadMaterialView')
           .then(loadModule(cb))
           .catch(errorLoading)
-      }
+      },
     },
     {
       path: '/materials/update(/:idMaterial)',
@@ -252,7 +267,7 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/MaterialsView/sagas'),
-          import('containers/UpdateMaterialView/')
+          import('containers/UpdateMaterialView/'),
         ])
 
         const renderRoute = loadModule(cb)
@@ -264,7 +279,7 @@ export default function createRoutes(store) {
         })
 
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/materials/add-translation(/:idMaterial)',
@@ -272,7 +287,7 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/MaterialsView/sagas'),
-          import('containers/UploadTranslationView/')
+          import('containers/UploadTranslationView/'),
         ])
 
         const renderRoute = loadModule(cb)
@@ -284,7 +299,7 @@ export default function createRoutes(store) {
         })
 
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/materials/:locale/:idMaterial',
@@ -292,7 +307,7 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/MaterialsView/sagas'),
-          import('containers/MaterialView/')
+          import('containers/MaterialView/'),
         ])
 
         const renderRoute = loadModule(cb)
@@ -304,7 +319,7 @@ export default function createRoutes(store) {
         })
 
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/pictograms/:locale/:idPictogram(/:searchText)',
@@ -313,7 +328,7 @@ export default function createRoutes(store) {
         const importModules = Promise.all([
           import('containers/PictogramsView/reducer'),
           import('containers/PictogramsView/sagas'),
-          import('containers/PictogramView/')
+          import('containers/PictogramView/'),
         ])
 
         const renderRoute = loadModule(cb)
@@ -326,7 +341,7 @@ export default function createRoutes(store) {
         })
 
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/developers',
@@ -335,7 +350,7 @@ export default function createRoutes(store) {
         import('containers/DevelopersView')
           .then(loadModule(cb))
           .catch(errorLoading)
-      }
+      },
     },
     {
       path: '/developers/accounts',
@@ -344,16 +359,14 @@ export default function createRoutes(store) {
         import('containers/DevAccountView')
           .then(loadModule(cb))
           .catch(errorLoading)
-      }
+      },
     },
     {
       path: '/developers/api',
       name: 'ApiView',
       getComponent(location, cb) {
-        import('containers/ApiView')
-          .then(loadModule(cb))
-          .catch(errorLoading)
-      }
+        import('containers/ApiView').then(loadModule(cb)).catch(errorLoading)
+      },
     },
     {
       path: '/profile',
@@ -361,7 +374,7 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/ProfileView/sagas'),
-          import('containers/ProfileView/')
+          import('containers/ProfileView/'),
         ])
         const renderRoute = loadModule(cb)
         // if reducer is async, render values:  defaultToggled:
@@ -371,7 +384,7 @@ export default function createRoutes(store) {
           renderRoute(component)
         })
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/signin',
@@ -384,7 +397,7 @@ export default function createRoutes(store) {
         })
 
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/registerform',
@@ -396,28 +409,28 @@ export default function createRoutes(store) {
           renderRoute(component)
         })
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/recoverpassword(/:email)',
       name: 'RecoverPasswordView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/RecoverPasswordView')
+          import('containers/RecoverPasswordView'),
         ])
         const renderRoute = loadModule(cb)
         importModules.then(([component]) => {
           renderRoute(component)
         })
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: '/register',
       name: 'SignupOptionsView',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/SignupOptionsView')
+          import('containers/SignupOptionsView'),
         ])
 
         const renderRoute = loadModule(cb)
@@ -426,7 +439,7 @@ export default function createRoutes(store) {
           renderRoute(component)
         })
         importModules.catch(errorLoading)
-      }
+      },
     },
     {
       path: 'terms-of-use',
@@ -435,7 +448,7 @@ export default function createRoutes(store) {
         import('containers/TermsOfUseView')
           .then(loadModule(cb))
           .catch(errorLoading)
-      }
+      },
     },
     {
       path: 'privacy-policy',
@@ -444,7 +457,7 @@ export default function createRoutes(store) {
         import('containers/PrivacyPolicyView')
           .then(loadModule(cb))
           .catch(errorLoading)
-      }
+      },
     },
     {
       path: 'cookies-policy',
@@ -453,25 +466,21 @@ export default function createRoutes(store) {
         import('containers/CookiesPolicyView')
           .then(loadModule(cb))
           .catch(errorLoading)
-      }
+      },
     },
     {
       path: '/prizes',
       name: 'prizes',
       getComponent(location, cb) {
-        import('containers/PrizesView')
-          .then(loadModule(cb))
-          .catch(errorLoading)
-      }
+        import('containers/PrizesView').then(loadModule(cb)).catch(errorLoading)
+      },
     },
     {
       path: '/world',
       name: 'world',
       getComponent(location, cb) {
-        import('containers/WorldView')
-          .then(loadModule(cb))
-          .catch(errorLoading)
-      }
+        import('containers/WorldView').then(loadModule(cb)).catch(errorLoading)
+      },
     },
     {
       path: '/settings',
@@ -480,7 +489,7 @@ export default function createRoutes(store) {
         import('containers/SettingsView')
           .then(loadModule(cb))
           .catch(errorLoading)
-      }
+      },
     },
     {
       path: '/translators',
@@ -489,7 +498,7 @@ export default function createRoutes(store) {
         import('containers/CollaboratorsView')
           .then(loadModule(cb))
           .catch(errorLoading)
-      }
+      },
     },
     {
       path: 'contact-us',
@@ -498,24 +507,20 @@ export default function createRoutes(store) {
         import('containers/ContactView')
           .then(loadModule(cb))
           .catch(errorLoading)
-      }
+      },
     },
     {
       path: 'about-us',
       name: 'about-us',
       getComponent(location, cb) {
-        import('containers/AboutView')
-          .then(loadModule(cb))
-          .catch(errorLoading)
-      }
+        import('containers/AboutView').then(loadModule(cb)).catch(errorLoading)
+      },
     },
     {
       path: '/lse/search',
       name: 'lseView',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/LSE')
-        ])
+        const importModules = Promise.all([import('containers/LSE')])
         const renderRoute = loadModule(cb)
         importModules.then(([component]) => {
           renderRoute(component)
@@ -528,16 +533,16 @@ export default function createRoutes(store) {
           name: 'lseList',
           getComponent(nextState, cb) {
             const importModules = Promise.all([
-              import('components/PictogramList')
+              import('components/PictogramList'),
             ])
             const renderRoute = loadModule(cb)
             importModules.then(([component]) => {
               renderRoute(component)
             })
             importModules.catch(errorLoading)
-          }
-        }
-      ]
+          },
+        },
+      ],
     },
     {
       path: 'permissionsError',
@@ -546,7 +551,7 @@ export default function createRoutes(store) {
         import('containers/PermissionsErrorView')
           .then(loadModule(cb))
           .catch(errorLoading)
-      }
+      },
     },
     {
       path: '*',
@@ -555,7 +560,7 @@ export default function createRoutes(store) {
         import('containers/NotFoundPage')
           .then(loadModule(cb))
           .catch(errorLoading)
-      }
-    }
+      },
+    },
   ]
 }
