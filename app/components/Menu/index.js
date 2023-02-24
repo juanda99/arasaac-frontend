@@ -39,6 +39,7 @@ import styles from './styles'
 import PrizeIcon from './PrizeIcon'
 import WorldIcon from './WorldIcon'
 import AstericsIcon from './AstericsIcon'
+import PictogramAgendaIcon from './PictogramAgendaIcon'
 
 const SelectableList = makeSelectable(List)
 
@@ -204,6 +205,13 @@ class Menu extends Component {
                 onClick={() => this.handleLink('https://grid.asterics.eu/')}
                 primaryText={<FormattedMessage {...messages.asTerIk} />}
                 leftIcon={<AstericsIcon />}
+              />,
+              <ListItem
+                onClick={() =>
+                  this.handleLink('https://www.pictogramagenda.es/')
+                }
+                primaryText="PictogramAgenda"
+                leftIcon={<PictogramAgendaIcon />}
               />,
               <ListItem
                 id="lstonlinetools"
