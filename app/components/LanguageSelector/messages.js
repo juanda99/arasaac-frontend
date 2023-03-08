@@ -11,182 +11,187 @@ export default defineMessages({
   ca: {
     id: 'app.components.LanguageSelector.ca',
     description: 'Select language',
-    defaultMessage: 'Catalan'
+    defaultMessage: 'Catalan',
   },
   es: {
     id: 'app.components.LanguageSelector.es',
     description: 'Select language',
-    defaultMessage: 'Spanish'
+    defaultMessage: 'Spanish',
   },
   en: {
     id: 'app.components.LanguageSelector.en',
     description: 'Select language',
-    defaultMessage: 'English'
+    defaultMessage: 'English',
   },
   eu: {
     id: 'app.components.LanguageSelector.eu',
     description: 'Select language',
-    defaultMessage: 'Basque'
+    defaultMessage: 'Basque',
   },
   fr: {
     id: 'app.components.LanguageSelector.fr',
     description: 'Select language',
-    defaultMessage: 'French'
+    defaultMessage: 'French',
   },
   gl: {
     id: 'app.components.LanguageSelector.gl',
     description: 'Select language',
-    defaultMessage: 'Galician'
+    defaultMessage: 'Galician',
   },
   he: {
     id: 'app.components.LanguageSelector.he',
     description: 'Select language',
-    defaultMessage: 'Hebrew'
+    defaultMessage: 'Hebrew',
   },
   hr: {
     id: 'app.components.LanguageSelector.hr',
     description: 'Select language',
-    defaultMessage: 'Croatian'
+    defaultMessage: 'Croatian',
   },
   hu: {
     id: 'app.components.LanguageSelector.hu',
     description: 'Select language',
-    defaultMessage: 'Hungarian'
+    defaultMessage: 'Hungarian',
   },
   it: {
     id: 'app.components.LanguageSelector.it',
     description: 'Select language',
-    defaultMessage: 'Italian'
+    defaultMessage: 'Italian',
   },
   nl: {
     id: 'app.components.LanguageSelector.nl',
     description: 'Select language',
-    defaultMessage: 'Dutch'
+    defaultMessage: 'Dutch',
   },
   bg: {
     id: 'app.components.LanguageSelector.bg',
     description: 'Select language',
-    defaultMessage: 'Bulgarian'
+    defaultMessage: 'Bulgarian',
   },
   pl: {
     id: 'app.components.LanguageSelector.pl',
     description: 'Select language',
-    defaultMessage: 'Polish'
+    defaultMessage: 'Polish',
   },
   pt: {
     id: 'app.components.LanguageSelector.pt',
     description: 'Select language',
-    defaultMessage: 'Portuguese'
+    defaultMessage: 'Portuguese',
   },
   br: {
     id: 'app.components.LanguageSelector.br',
     description: 'Select language',
-    defaultMessage: 'Brazil Portuguese'
+    defaultMessage: 'Brazil Portuguese',
   },
   val: {
     id: 'app.components.LanguageSelector.val',
     description: 'Select language',
-    defaultMessage: 'Valencian'
+    defaultMessage: 'Valencian',
   },
   de: {
     id: 'app.components.LanguageSelector.de',
     description: 'Select language',
-    defaultMessage: 'German'
+    defaultMessage: 'German',
   },
   ro: {
     id: 'app.components.LanguageSelector.ro',
     description: 'Select language',
-    defaultMessage: 'Romanian'
+    defaultMessage: 'Romanian',
   },
   ru: {
     id: 'app.components.LanguageSelector.ru',
     description: 'Select language',
-    defaultMessage: 'Russian'
+    defaultMessage: 'Russian',
   },
   sk: {
     id: 'app.components.LanguageSelector.sk',
     description: 'Select language',
-    defaultMessage: 'Slovak'
+    defaultMessage: 'Slovak',
   },
   ar: {
     id: 'app.components.LanguageSelector.ar',
     description: 'Select language',
-    defaultMessage: 'Arabic'
+    defaultMessage: 'Arabic',
   },
   zh: {
     id: 'app.components.LanguageSelector.zh',
     description: 'Select language',
-    defaultMessage: 'Chinese (Simplified)'
+    defaultMessage: 'Chinese (Simplified)',
   },
   mk: {
     id: 'app.components.LanguageSelector.mk',
     description: 'Select language',
-    defaultMessage: 'Macedonian'
+    defaultMessage: 'Macedonian',
   },
   el: {
     id: 'app.components.LanguageSelector.el',
     description: 'Select language',
-    defaultMessage: 'Greek'
+    defaultMessage: 'Greek',
   },
   an: {
     id: 'app.components.LanguageSelector.an',
     description: 'Select language',
-    defaultMessage: 'Aragonese'
+    defaultMessage: 'Aragonese',
   },
   sq: {
     id: 'app.components.LanguageSelector.sq',
     description: 'Select language',
-    defaultMessage: 'Albanian'
+    defaultMessage: 'Albanian',
   },
   et: {
     id: 'app.components.LanguageSelector.et',
     description: 'Select language',
-    defaultMessage: 'Estonian'
+    defaultMessage: 'Estonian',
   },
   sr: {
     id: 'app.components.LanguageSelector.sr',
     description: 'Select language',
-    defaultMessage: 'Serbian'
+    defaultMessage: 'Serbian',
   },
   ko: {
     id: 'app.components.LanguageSelector.ko',
     description: 'Select language',
-    defaultMessage: 'Korean'
+    defaultMessage: 'Korean',
   },
   lt: {
     id: 'app.components.LanguageSelector.lt',
     description: 'Select language',
-    defaultMessage: 'Lithuanian'
+    defaultMessage: 'Lithuanian',
   },
   lv: {
     id: 'app.components.LanguageSelector.lv',
     description: 'Select language',
-    defaultMessage: 'Latvian'
+    defaultMessage: 'Latvian',
   },
   fa: {
     id: 'app.components.LanguageSelector.fa',
     description: 'Select language',
-    defaultMessage: 'Persian'
+    defaultMessage: 'Persian',
   },
   uk: {
     id: 'app.components.LanguageSelector.uk',
     description: 'Select language',
-    defaultMessage: 'Ukrainian'
+    defaultMessage: 'Ukrainian',
   },
   nb: {
     id: 'app.components.LanguageSelector.nb',
     description: 'Select language',
-    defaultMessage: 'Norwegian'
+    defaultMessage: 'Norwegian',
+  },
+  sl: {
+    id: 'app.components.LanguageSelector.sl',
+    description: 'Select language',
+    defaultMessage: 'Slovenian',
   },
   translateOnline: {
     id: 'app.components.LanguageSelector.translateOnline',
     description: 'Select language',
-    defaultMessage: 'Translate online'
+    defaultMessage: 'Translate online',
   },
 
   chooseLanguage: {
     id: 'app.components.LanguageSelector.choose',
     description: 'Select language',
-    defaultMessage: 'Choose your language'
-  }
+    defaultMessage: 'Choose your language',
+  },
 })

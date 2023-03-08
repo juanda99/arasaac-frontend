@@ -347,6 +347,12 @@ const languages = [
     translated: false,
     needTranslators: true,
   },
+  {
+    code: 'sl',
+    text: 'Slovenščina',
+    translated: false,
+    needTranslators: true,
+  },
   // SQ -  ALBANIAN
   // FEB: web 98%, admin 95%, pictos 0%
   // MARCH: web 98%, admin 95%, pictos 0%
