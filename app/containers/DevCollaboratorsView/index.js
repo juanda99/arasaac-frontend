@@ -60,15 +60,23 @@ class DevCollaboratorsView extends Component {
             Ingeniero Informático. Desarrollador de software, especializado en
             aplicaciones móviles y soluciones web.
           </P>
-          <A
-            alternative={false}
-            href="https://www.lorenzomoreno.com/"
-            target="_blank"
-          >
-            {' '}
-            https://www.lorenzomoreno.com/
-          </A>
-          <A />
+          <P>
+            <A
+              alternative={false}
+              href="https://www.lorenzomoreno.com/"
+              target="_blank"
+            >
+              {' '}
+              https://www.lorenzomoreno.com/
+            </A>
+          </P>
+
+          <P>
+            Creador de{' '}
+            <A href="https://www.pictogramagenda.es/" target="_blank">
+              PictogramAgenda
+            </A>
+          </P>
         </ReadMargin>
       </View>
     )
