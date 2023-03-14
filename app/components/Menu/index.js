@@ -24,7 +24,8 @@ import AccountIcon from 'material-ui/svg-icons/social/person-add'
 import LoginIcon from 'material-ui/svg-icons/social/person'
 import InfoIcon from 'material-ui/svg-icons/action/info'
 import PictogramsIcon from 'material-ui/svg-icons/image/collections'
-import PeopleIcon from 'material-ui/svg-icons/social/people'
+import PeopleIcon from 'material-ui/svg-icons/action/info'
+import GroupIcon from 'material-ui/svg-icons/social/people'
 import SoftwareIcon from 'material-ui/svg-icons/action/important-devices'
 import ThumbUpIcon from 'material-ui/svg-icons/action/thumb-up'
 import MaterialsIcon from 'material-ui/svg-icons/av/library-books'
@@ -328,6 +329,12 @@ class Menu extends Component {
             value="/prizes"
             primaryText={<FormattedMessage {...messages.prizes} />}
             leftIcon={<PrizeIcon />}
+          />
+          <ListItem
+            id="lstarasaacteam"
+            value="/collaborators"
+            primaryText={<FormattedMessage {...messages.collaborators} />}
+            leftIcon={<GroupIcon />}
           />
           <ListItem
             id="lstcollaborators"

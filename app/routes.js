@@ -501,6 +501,15 @@ export default function createRoutes(store) {
       },
     },
     {
+      path: '/collaborators',
+      name: 'collaborators',
+      getComponent(location, cb) {
+        import('containers/DevCollaboratorsView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
       path: 'contact-us',
       name: 'contact-us',
       getComponent(location, cb) {

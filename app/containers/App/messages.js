@@ -4,210 +4,220 @@ export default defineMessages({
   pictograms: {
     id: 'header.pictograms',
     description: 'Header title',
-    defaultMessage: 'Pictograms'
+    defaultMessage: 'Pictograms',
   },
   pictogramsSearch: {
     id: 'header.pictogramsSearch',
     description: 'Header title',
-    defaultMessage: 'Search pictograms'
+    defaultMessage: 'Search pictograms',
   },
   aacUsers: {
     id: 'header.aacUsers',
     description: 'Header title',
-    defaultMessage: 'AAC Users'
+    defaultMessage: 'AAC Users',
   },
   useOfAAC: {
     id: 'header.useOfAAC',
     description: 'Header title',
-    defaultMessage: 'Use of AAC'
+    defaultMessage: 'Use of AAC',
   },
   whatIsAAC: {
     id: 'header.whatIsAAC',
     description: 'Header title',
-    defaultMessage: 'What is AAC?'
+    defaultMessage: 'What is AAC?',
   },
   materialsSearch: {
     id: 'header.materialsSearch',
     description: 'Header title',
-    defaultMessage: 'Search materials'
+    defaultMessage: 'Search materials',
   },
   api: {
     id: 'header.api',
     description: 'Header title',
-    defaultMessage: 'API for developers'
+    defaultMessage: 'API for developers',
   },
   userActivation: {
     id: 'header.userActivation',
     description: 'Header title',
-    defaultMessage: 'User activation'
+    defaultMessage: 'User activation',
   },
   recoverPassword: {
     id: 'header.recoverPassword',
     description: 'Header title',
-    defaultMessage: 'Recover password'
+    defaultMessage: 'Recover password',
   },
   devAccounts: {
     id: 'header.devAccounts',
     description: 'Header title',
-    defaultMessage: 'Create a dev account'
+    defaultMessage: 'Create a dev account',
   },
   howto: {
     id: 'header.howto',
     description: 'Header title',
-    defaultMessage: 'How-to for developers'
+    defaultMessage: 'How-to for developers',
   },
   catalogs: {
     id: 'header.catalogs',
     description: 'Header title',
-    defaultMessage: 'Download catalogs'
+    defaultMessage: 'Download catalogs',
   },
   onlineTools: {
     id: 'header.onlineTools',
     description: 'Header title',
-    defaultMessage: 'Online Tools'
+    defaultMessage: 'Online Tools',
   },
   software: {
     id: 'header.software',
     description: 'Header title',
-    defaultMessage: 'Software'
+    defaultMessage: 'Software',
   },
   materials: {
     id: 'header.materials',
     description: 'Header title',
-    defaultMessage: 'Materials'
+    defaultMessage: 'Materials',
   },
   signinTitle: {
     id: 'header.signinTitle',
     description: 'Header Title',
-    defaultMessage: 'Sign in to ARASAAC'
+    defaultMessage: 'Sign in to ARASAAC',
   },
   registerTitle: {
     id: 'header.registerTitle',
     description: 'Header title',
-    defaultMessage: 'Sign up for ARASAAC'
+    defaultMessage: 'Sign up for ARASAAC',
   },
   userProfileTitle: {
     id: 'header.userProfileTitle',
     description: 'Header title',
-    defaultMessage: 'My profile'
+    defaultMessage: 'My profile',
   },
   configurationTitle: {
     id: 'header.configurationTitle',
     description: 'Header title',
-    defaultMessage: 'ARASAAC configuration'
+    defaultMessage: 'ARASAAC configuration',
   },
   contactusTitle: {
     id: 'header.contactusTitle',
     description: 'Header title',
-    defaultMessage: 'Contact us'
+    defaultMessage: 'Contact us',
   },
   translatorsTitle: {
     id: 'header.translatorsTitle',
     description: 'Header title',
-    defaultMessage: 'Translators'
+    defaultMessage: 'Translators',
+  },
+  collaboratorsTitle: {
+    id: 'header.collaboratorsTitle',
+    description: 'Header title',
+    defaultMessage: 'Collaborators',
   },
   settings: {
     id: 'header.settingsTitle',
     description: 'Header title',
-    defaultMessage: 'Settings'
+    defaultMessage: 'Settings',
   },
   termsOfUse: {
     id: 'header.termsOfUse',
-    defaultMessage: 'Terms of use'
+    defaultMessage: 'Terms of use',
   },
   cookiesPolicy: {
     id: 'header.cookiesPolicy',
-    defaultMessage: 'Cookies Policy'
+    defaultMessage: 'Cookies Policy',
   },
   privacyPolicy: {
     id: 'header.privacyPolicy',
-    defaultMessage: 'Privacy Policy'
+    defaultMessage: 'Privacy Policy',
   },
   arasaacWorld: {
     id: 'header.arasaacWorld',
-    defaultMessage: 'ARASAAC in the world'
+    defaultMessage: 'ARASAAC in the world',
   },
   prizes: {
     id: 'header.prizesTitle',
     description: 'Header title',
-    defaultMessage: 'Prizes'
+    defaultMessage: 'Prizes',
   },
   aboutUs: {
     id: 'header.aboutUs',
-    defaultMessage: 'About us'
+    defaultMessage: 'About us',
   },
   translate: {
     id: 'header.translate',
-    defaultMessage: 'Translate ARASAAC'
+    defaultMessage: 'Translate ARASAAC',
   },
   forbidden: {
     id: 'header.forbidden',
-    defaultMessage: 'Forbidden access'
+    defaultMessage: 'Forbidden access',
   },
   startNavigation: {
     id: 'joyride.startNavigation',
-    defaultMessage: 'Click the button to navigate through ARASAAC website.'
+    defaultMessage: 'Click the button to navigate through ARASAAC website.',
   },
   next: {
     id: 'joyride.next',
-    defaultMessage: 'Next'
+    defaultMessage: 'Next',
   },
   back: {
     id: 'joyride.back',
-    defaultMessage: 'Back'
+    defaultMessage: 'Back',
   },
   skip: {
     id: 'joyride.skip',
-    defaultMessage: 'Skip'
+    defaultMessage: 'Skip',
   },
   last: {
     id: 'joyride.last',
-    defaultMessage: 'Last'
+    defaultMessage: 'Last',
   },
   openMenu: {
     id: 'joyride.openMenu',
-    defaultMessage: 'Open menu'
+    defaultMessage: 'Open menu',
   },
   userMenu: {
     id: 'joyride.userMenu',
-    defaultMessage: 'User menu'
+    defaultMessage: 'User menu',
   },
   userMenuDesc: {
     id: 'joyride.userMenuDesc',
-    defaultMessage: 'User-specific actions such as changing personal data.'
+    defaultMessage: 'User-specific actions such as changing personal data.',
   },
   loginMenu: {
     id: 'joyride.loginMenu',
-    defaultMessage: 'Login menu'
+    defaultMessage: 'Login menu',
   },
   loginMenuDesc: {
     id: 'joyride.loginMenuDesc',
-    defaultMessage: 'Create a user account or access through your social network to enjoy all the possibilities of the ARASAAC website.'
+    defaultMessage:
+      'Create a user account or access through your social network to enjoy all the possibilities of the ARASAAC website.',
   },
   pictogramsDesc1: {
     id: 'joyride.pictogramsDesc1',
-    defaultMessage: 'Arasaac has a collection of more than 10,000 pictograms in 20 different languages.'
+    defaultMessage:
+      'Arasaac has a collection of more than 10,000 pictograms in 20 different languages.',
   },
   pictogramsDesc2: {
     id: 'joyride.pictogramsDesc2',
-    defaultMessage: 'Using this menu you can search pictograms to download, modify or save them in favorites lists.'
+    defaultMessage:
+      'Using this menu you can search pictograms to download, modify or save them in favorites lists.',
   },
 
   materialsDesc1: {
     id: 'joyride.materialsDesc1',
-    defaultMessage: 'The ARASAAC team and its user community create and adapt materials for communication and cognitive accessibility based on the ARASAAC pictogram collection.'
+    defaultMessage:
+      'The ARASAAC team and its user community create and adapt materials for communication and cognitive accessibility based on the ARASAAC pictogram collection.',
   },
   materialsDesc2: {
     id: 'joyride.materialsDesc2',
-    defaultMessage: 'In addition to searching and downloading materials, we encourage you to translate them into other languages ​​or even publish new materials to share.'
+    defaultMessage:
+      'In addition to searching and downloading materials, we encourage you to translate them into other languages ​​or even publish new materials to share.',
   },
   aulaAbiertaDesc: {
     id: 'joyride.aulaAbiertaDesc',
-    defaultMessage: 'The Open Classroom of ARASAAC is a repository of quality content related to Augmentative and Alternative Communication, in which any professional or family can be freely trained in everything related to documents, free software tools and resources that use pictograms of ARASAAC.'
+    defaultMessage:
+      'The Open Classroom of ARASAAC is a repository of quality content related to Augmentative and Alternative Communication, in which any professional or family can be freely trained in everything related to documents, free software tools and resources that use pictograms of ARASAAC.',
   },
   onlySpanish: {
     id: 'joyride.onlySpanish',
-    defaultMessage: 'Only available in Spanish.'
-  }
+    defaultMessage: 'Only available in Spanish.',
+  },
 })
-

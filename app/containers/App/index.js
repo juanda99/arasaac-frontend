@@ -13,29 +13,29 @@
 
 /* eslint-disable */
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { ImmutableLoadingBar as LoadingBar } from "react-redux-loading-bar";
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { ImmutableLoadingBar as LoadingBar } from 'react-redux-loading-bar'
 import Helmet from 'react-helmet'
-import Header from "components/Header";
-import Footer from "components/Footer";
-import Menu from "components/Menu";
-import { FormattedMessage } from "react-intl";
+import Header from 'components/Header'
+import Footer from 'components/Footer'
+import Menu from 'components/Menu'
+import { FormattedMessage } from 'react-intl'
 import Joyride, { STATUS } from 'react-joyride'
-import messages from "./messages";
-import Wrapper from "./Wrapper";
-import { connect } from "react-redux";
-import withWidth, { LARGE, SMALL } from "material-ui/utils/withWidth";
+import messages from './messages'
+import Wrapper from './Wrapper'
+import { connect } from 'react-redux'
+import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth'
 import {
   changeLocale,
   startTranslation,
-  stopTranslation
-} from "containers/LanguageProvider/actions";
+  stopTranslation,
+} from 'containers/LanguageProvider/actions'
 import { makeSelectRunTour } from 'containers/HomePage/selectors'
 import { stopTour } from 'containers/HomePage/actions'
-import { logout } from "./actions";
-import { makeSelectHasUser, makeSelectRole } from "./selectors";
-import { makeSelectDirection } from 'containers/LanguageProvider/selectors';
+import { logout } from './actions'
+import { makeSelectHasUser, makeSelectRole } from './selectors'
+import { makeSelectDirection } from 'containers/LanguageProvider/selectors'
 
 class App extends Component {
   static propTypes = {
@@ -47,11 +47,11 @@ class App extends Component {
     stopTour: PropTypes.func.isRequired,
     run: PropTypes.bool.isRequired,
     direction: PropTypes.string.isRequired,
-  };
+  }
 
   static contextTypes = {
-    router: PropTypes.object.isRequired
-  }; // import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
+    router: PropTypes.object.isRequired,
+  } // import { makeSelectLocale } from 'containers/LanguageProvider/selectors'
 
   state = {
     menuOpen: false,
@@ -62,225 +62,254 @@ class App extends Component {
     steps: [
       {
         title: <FormattedMessage {...messages.openMenu} />,
-        content: <p dir={this.props.direction}><FormattedMessage {...messages.startNavigation} /></p>,
-        target: "#header button",
-        placement: "bottom",
-        disableBeacon: true
+        content: (
+          <p dir={this.props.direction}>
+            <FormattedMessage {...messages.startNavigation} />
+          </p>
+        ),
+        target: '#header button',
+        placement: 'bottom',
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.userMenu} />,
-        content: <p dir={this.props.direction}><FormattedMessage {...messages.userMenuDesc} /></p>,
-        target: "#header #userMenu",
-        placement: "bottom",
-        disableBeacon: true
+        content: (
+          <p dir={this.props.direction}>
+            <FormattedMessage {...messages.userMenuDesc} />
+          </p>
+        ),
+        target: '#header #userMenu',
+        placement: 'bottom',
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.loginMenu} />,
-        content: <p dir={this.props.direction}><FormattedMessage {...messages.loginMenuDesc} /></p>,
-        target: "#header #loginMenu",
-        placement: "bottom",
-        disableBeacon: true
+        content: (
+          <p dir={this.props.direction}>
+            <FormattedMessage {...messages.loginMenuDesc} />
+          </p>
+        ),
+        target: '#header #loginMenu',
+        placement: 'bottom',
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.pictograms} />,
         content: (
           <div>
-            <p dir={this.props.direction}><FormattedMessage {...messages.pictogramsDesc1} /></p>
-            <p dir={this.props.direction}><FormattedMessage {...messages.pictogramsDesc2} /></p>
+            <p dir={this.props.direction}>
+              <FormattedMessage {...messages.pictogramsDesc1} />
+            </p>
+            <p dir={this.props.direction}>
+              <FormattedMessage {...messages.pictogramsDesc2} />
+            </p>
           </div>
         ),
-        target: "#lstpictograms",
-        placement: "right",
-        disableBeacon: true
+        target: '#lstpictograms',
+        placement: 'right',
+        disableBeacon: true,
       },
       {
         title: <FormattedMessage {...messages.materials} />,
         content: (
           <div>
-            <p dir={this.props.direction}><FormattedMessage {...messages.materialsDesc1} /></p>
-            <p dir={this.props.direction}><FormattedMessage {...messages.materialsDesc2} /></p>
+            <p dir={this.props.direction}>
+              <FormattedMessage {...messages.materialsDesc1} />
+            </p>
+            <p dir={this.props.direction}>
+              <FormattedMessage {...messages.materialsDesc2} />
+            </p>
           </div>
         ),
-        target: "#lstmaterials",
-        placement: "right",
-        disableBeacon: true
+        target: '#lstmaterials',
+        placement: 'right',
+        disableBeacon: true,
       },
       {
         title: 'Aula abierta',
         content: (
           <div>
-            <p dir={this.props.direction}><strong><FormattedMessage {...messages.onlySpanish} /></strong></p>
-            <p dir={this.props.direction}><FormattedMessage {...messages.aulaAbiertaDesc} /></p>
+            <p dir={this.props.direction}>
+              <strong>
+                <FormattedMessage {...messages.onlySpanish} />
+              </strong>
+            </p>
+            <p dir={this.props.direction}>
+              <FormattedMessage {...messages.aulaAbiertaDesc} />
+            </p>
           </div>
         ),
-        target: "#lstaulaabierta",
-        placement: "right",
-        disableBeacon: true
-      }
-    ]
-  };
+        target: '#lstaulaabierta',
+        placement: 'right',
+        disableBeacon: true,
+      },
+    ],
+  }
 
   handleTranslate = () => {
     if (!this.props.isTranslating) {
-      this.props.startTranslation();
-      const script = document.createElement("script");
-      script.src = "//cdn.crowdin.com/jipt/jipt.js";
-      script.async = true;
-      document.body.appendChild(script);
+      this.props.startTranslation()
+      const script = document.createElement('script')
+      script.src = '//cdn.crowdin.com/jipt/jipt.js'
+      script.async = true
+      document.body.appendChild(script)
     } else {
-      this.props.stopTranslation();
+      this.props.stopTranslation()
     }
-  };
+  }
 
   getStyles() {
     const styles = {
       LoadingBar: {
         height: 2,
-        backgroundColor: "rgb(0, 188, 212)",
-        zIndex: 100000
-      }
-    };
-    return styles;
+        backgroundColor: 'rgb(0, 188, 212)',
+        zIndex: 100000,
+      },
+    }
+    return styles
   }
 
   getViewProps(width) {
-    let title = "";
-    let docked = width === LARGE;
-    const url = this.props.location.pathname;
-    if (url === "/") docked = false;
+    let title = ''
+    let docked = width === LARGE
+    const url = this.props.location.pathname
+    if (url === '/') docked = false
     switch (true) {
       case /pictograms\/search/.test(url):
-        title = <FormattedMessage {...messages.pictogramsSearch} />;
-        break;
+        title = <FormattedMessage {...messages.pictogramsSearch} />
+        break
       case /aac-users/.test(url):
-        title = <FormattedMessage {...messages.aacUsers} />;
-        break;
+        title = <FormattedMessage {...messages.aacUsers} />
+        break
       case /use-of-aac/.test(url):
-        title = <FormattedMessage {...messages.useOfAAC} />;
-        break;
+        title = <FormattedMessage {...messages.useOfAAC} />
+        break
       case /aac/.test(url):
-        title = <FormattedMessage {...messages.whatIsAAC} />;
-        break;
+        title = <FormattedMessage {...messages.whatIsAAC} />
+        break
       case /materials\/search/.test(url):
-        title = <FormattedMessage {...messages.materialsSearch} />;
-        break;
+        title = <FormattedMessage {...messages.materialsSearch} />
+        break
       case /catalogs/.test(url):
-        title = <FormattedMessage {...messages.catalogs} />;
-        break;
+        title = <FormattedMessage {...messages.catalogs} />
+        break
       case /materials/.test(url):
-        title = <FormattedMessage {...messages.materials} />;
-        break;
+        title = <FormattedMessage {...messages.materials} />
+        break
       case /pictograms/.test(url):
-        title = <FormattedMessage {...messages.pictograms} />;
-        break;
+        title = <FormattedMessage {...messages.pictograms} />
+        break
       case /activate/.test(url):
-        title = <FormattedMessage {...messages.userActivation} />;
-        break;
+        title = <FormattedMessage {...messages.userActivation} />
+        break
       case /recoverpassword/.test(url):
-        title = <FormattedMessage {...messages.recoverPassword} />;
-        break;
+        title = <FormattedMessage {...messages.recoverPassword} />
+        break
       case /onlinetools/.test(url):
-        title = <FormattedMessage {...messages.onlineTools} />;
-        break;
+        title = <FormattedMessage {...messages.onlineTools} />
+        break
       case /software/.test(url):
-        title = <FormattedMessage {...messages.software} />;
-        break;
+        title = <FormattedMessage {...messages.software} />
+        break
       case /signin/.test(url):
-        title = <FormattedMessage {...messages.signinTitle} />;
-        docked = false;
-        break;
+        title = <FormattedMessage {...messages.signinTitle} />
+        docked = false
+        break
       case /register/.test(url):
-        title = <FormattedMessage {...messages.registerTitle} />;
-        docked = false;
-        break;
+        title = <FormattedMessage {...messages.registerTitle} />
+        docked = false
+        break
       case /profile/.test(url):
-        title = <FormattedMessage {...messages.userProfileTitle} />;
-        break;
+        title = <FormattedMessage {...messages.userProfileTitle} />
+        break
       case /configuration/.test(url):
-        title = <FormattedMessage {...messages.configurationTitle} />;
-        break;
+        title = <FormattedMessage {...messages.configurationTitle} />
+        break
       case /developers\/api/.test(url):
-        title = <FormattedMessage {...messages.api} />;
-        break;
+        title = <FormattedMessage {...messages.api} />
+        break
       case /developers\/accounts/.test(url):
-        title = <FormattedMessage {...messages.devAccounts} />;
-        break;
+        title = <FormattedMessage {...messages.devAccounts} />
+        break
       case /developers/.test(url):
-        title = <FormattedMessage {...messages.howto} />;
-        break;
+        title = <FormattedMessage {...messages.howto} />
+        break
       case /uploadmaterial/.test(url):
-        title = <FormattedMessage {...messages.configurationTitle} />;
-        break;
+        title = <FormattedMessage {...messages.configurationTitle} />
+        break
       case /contact-us/.test(url):
-        title = <FormattedMessage {...messages.contactusTitle} />;
-        break;
+        title = <FormattedMessage {...messages.contactusTitle} />
+        break
       case /translators/.test(url):
-        title = <FormattedMessage {...messages.translatorsTitle} />;
-        break;
+        title = <FormattedMessage {...messages.translatorsTitle} />
+        break
+      case /collaborators/.test(url):
+        title = <FormattedMessage {...messages.collaboratorsTitle} />
+        break
       case /world/.test(url):
-        title = <FormattedMessage {...messages.arasaacWorld} />;
-        break;
+        title = <FormattedMessage {...messages.arasaacWorld} />
+        break
       case /settings/.test(url):
-        title = <FormattedMessage {...messages.settings} />;
-        break;
+        title = <FormattedMessage {...messages.settings} />
+        break
       case /activate/.test(url):
-        title = <FormattedMessage {...messages.userActivation} />;
-        break;
+        title = <FormattedMessage {...messages.userActivation} />
+        break
       case /prizes/.test(url):
-        title = <FormattedMessage {...messages.prizes} />;
-        break;
+        title = <FormattedMessage {...messages.prizes} />
+        break
       case /about-us/.test(url):
-        title = <FormattedMessage {...messages.aboutUs} />;
-        break;
+        title = <FormattedMessage {...messages.aboutUs} />
+        break
       case /translate/.test(url):
-        title = <FormattedMessage {...messages.translate} />;
-        break;
+        title = <FormattedMessage {...messages.translate} />
+        break
       case /terms-of-use/.test(url):
-        title = <FormattedMessage {...messages.termsOfUse} />;
-        break;
+        title = <FormattedMessage {...messages.termsOfUse} />
+        break
       case /cookies-policy/.test(url):
-        title = <FormattedMessage {...messages.cookiesPolicy} />;
-        break;
+        title = <FormattedMessage {...messages.cookiesPolicy} />
+        break
       case /privacy-policy/.test(url):
-        title = <FormattedMessage {...messages.privacyPolicy} />;
-        break;
+        title = <FormattedMessage {...messages.privacyPolicy} />
+        break
       case /permissionsError/.test(url):
-        title = <FormattedMessage {...messages.forbidden} />;
-        break;
+        title = <FormattedMessage {...messages.forbidden} />
+        break
       case /lse/.test(url):
-        title = "Lengua de  signos";
-        break;
+        title = 'Lengua de  signos'
+        break
       default:
-        docked = false;
-        break;
+        docked = false
+        break
     }
-    return { docked, title };
+    return { docked, title }
   }
 
   handleTouchTapLeftIconButton = () => {
     this.setState({
-      menuOpen: !this.state.menuOpen
-    });
-  };
+      menuOpen: !this.state.menuOpen,
+    })
+  }
 
-  handleChangeRequestNavDrawer = open => {
+  handleChangeRequestNavDrawer = (open) => {
     this.setState({
-      menuOpen: open
-    });
-  };
+      menuOpen: open,
+    })
+  }
 
   getChildContext() {
-    return { isAuthenticated: this.props.isAuthenticated };
+    return { isAuthenticated: this.props.isAuthenticated }
   }
 
   handleChangeList = (event, value) => {
     if (value) {
-      this.context.router.push(value);
+      this.context.router.push(value)
       this.setState({
-        menuOpen: false
-      });
+        menuOpen: false,
+      })
     }
-  };
+  }
 
   // handleJoyrideCallback = result => {
   //   const { joyride } = this.props;
@@ -309,19 +338,19 @@ class App extends Component {
   // };
 
   handleJoyrideCallback = (data) => {
-    const { status, type } = data;
+    const { status, type } = data
     const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED]
 
     if (finishedStatuses.includes(status)) {
       this.props.stopTour()
     }
     if (data.index === 0) {
-      this.setState({ menuOpen: false });
+      this.setState({ menuOpen: false })
     }
     if (data.index === 1) {
-      this.setState({ menuOpen: true });
+      this.setState({ menuOpen: true })
     }
-  };
+  }
 
   render() {
     const {
@@ -334,38 +363,43 @@ class App extends Component {
       role,
       run,
       direction, // runTour
-    } = this.props;
+    } = this.props
 
     const locale = {
       next: <FormattedMessage {...messages.next} />,
       back: <FormattedMessage {...messages.back} />,
       skip: <FormattedMessage {...messages.skip} />,
-      last: <FormattedMessage {...messages.last} />
+      last: <FormattedMessage {...messages.last} />,
     }
 
-    let { menuOpen, steps } = this.state;
+    let { menuOpen, steps } = this.state
 
-    const styles = this.getStyles();
+    const styles = this.getStyles()
 
-    const { title, docked } = this.getViewProps(width);
+    const { title, docked } = this.getViewProps(width)
 
-    let showMenuIconButton = true;
-    let isMobile = width === SMALL;
+    let showMenuIconButton = true
+    let isMobile = width === SMALL
     if (width === LARGE && docked) {
-      menuOpen = true;
-      showMenuIconButton = false;
+      menuOpen = true
+      showMenuIconButton = false
     }
 
-    const showLSE = ['es', 'val', 'eu', 'gl', 'ca', 'an'].includes(this.props.locale)
+    const showLSE = ['es', 'val', 'eu', 'gl', 'ca', 'an'].includes(
+      this.props.locale
+    )
 
     return (
       <div
-        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+        style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
         dir={direction}
       >
         <Helmet>
           <title>AAC Symbols and shared resources - ARASAAC</title>
-          <meta name="description" content='Thousands of open source AAC symbols and shared resources for families and professionals' />
+          <meta
+            name="description"
+            content="Thousands of open source AAC symbols and shared resources for families and professionals"
+          />
         </Helmet>
         <Joyride
           callback={this.handleJoyrideCallback}
@@ -418,13 +452,13 @@ class App extends Component {
         />
         <Footer docked={docked} />
       </div>
-    );
+    )
   }
 }
-const mapStateToProps = state => {
-  const locale = state.getIn(["language", "locale"]);
-  const isTranslating = locale === "af";
-  const isAuthenticated = (makeSelectHasUser()(state) && true) || false;
+const mapStateToProps = (state) => {
+  const locale = state.getIn(['language', 'locale'])
+  const isTranslating = locale === 'af'
+  const isAuthenticated = (makeSelectHasUser()(state) && true) || false
   const role = makeSelectRole()(state)
   const run = makeSelectRunTour()(state)
   const direction = makeSelectDirection()(state)
@@ -434,18 +468,18 @@ const mapStateToProps = state => {
     isTranslating,
     role,
     run,
-    direction
-  };
-};
+    direction,
+  }
+}
 
 export default connect(mapStateToProps, {
   changeLocale,
   logout,
   startTranslation,
   stopTranslation,
-  stopTour
-})(withWidth()(App));
+  stopTour,
+})(withWidth()(App))
 
 App.childContextTypes = {
-  isAuthenticated: PropTypes.bool
-};
+  isAuthenticated: PropTypes.bool,
+}

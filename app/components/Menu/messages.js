@@ -130,6 +130,11 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'Translators',
   },
+  collaborators: {
+    id: 'menu.collaborators',
+    description: 'Menu item',
+    defaultMessage: 'Collaborators',
+  },
   arasaacWorld: {
     id: 'menu.arasaacWorld',
     description: 'Menu item',
