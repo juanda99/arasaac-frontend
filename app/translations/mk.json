@@ -657,6 +657,7 @@
   "app.containers/collaboratorsView.removeFilter": "Отстрани филтер",
   "app.containers/collaboratorsView.translateArasaac": "ARASAAC е преведен од страна на волонтери на повеќе јазици. Контактирајте нѐ доколку сакате да помогнете во преводот на ARASAAC на нов јазик или да го подобрите постоечкиот превод.",
   "app.containers/collaboratorsView.translationStatus": "Статус на превод",
+  "app.containers/devCollaboratorsView.collaboratorsARASAAC": "Во ARASAAC имаме непристрасна соработка на креатори и програмери на различен вид на софтер, поврзан со аугментативна комуникација и когнитивна пристапност. Овие програми им помагаат на лицата да ја подобрат нивната интеракција и учество во општеството.",
   "app.containers/devCollaboratorsView.pageTitle": "Соработници",
   "app.containersTranslationStatus.noDataAvailable": "Нема податоци",
   "app.containersTranslationStatus.pictosTranslationStatus": "Превод на пиктограми (можеби веќе се преведени, но не и одобрени): {pictosValidatedString}%",
