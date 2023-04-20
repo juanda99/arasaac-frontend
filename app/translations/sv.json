@@ -8,5 +8,18 @@
   "activate.invalidCode": "Ogiltig aktiveringskod",
   "activate.userActivated": "Användare aktiverad. Logga in.",
   "activate.userNotActivated": "Ett fel inträffade vid aktivering av användaren",
-  "app.HomePage.discover": "Upptäck ARASAAC"
+  "app.HomePage.discover": "Upptäck ARASAAC",
+  "app.MaterialsView.pageDescription": "AKK - material och resurser för professionella, familjer och förskolor/ skolor. Ladda ner dokument, bildstöd, övningsmaterial m.m. ",
+  "app.MaterialsView.pageDescriptionSearch": "AKK - material och resurser för professionella, familjer och förskolor/ skolor. Ladda ner dokument, bildstöd, övningsmaterial m.m. ",
+  "app.MaterialsView.pageTitle": "AKK: delat material - ARASAAC",
+  "app.MaterialsView.pageTitleSearch": "AKK: delade material och resurser relaterade till ARASAAC",
+  "app.PictogramsView.closeWarning": "Stäng varningsmeddelande",
+  "app.PictogramsView.contactTranslators": "Kontakta oss för att gå med som översättare!",
+  "app.PictogramsView.languageSearch": "Välj språk",
+  "app.PictogramsView.needTranslators": "Vi behöver översättare för fler språk",
+  "app.PictogramsView.pageDesc": "Symbolbas med öppen källkod",
+  "app.PictogramsView.pageTitle": "Bildstöd för AKK",
+  "app.PictogramsView.searchByCategories": "Sök kategori",
+  "app.PictogramsView.translationStatus": "Se aktuell översättningsstatus.",
+  "app.PictogramsView.translationsWarning": "Symbolsökning å ditt språk misslyckas p.g.a. ofullständig översättning"
 }
