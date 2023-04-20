@@ -10,7 +10,7 @@
   "activate.userNotActivated": "Ett fel inträffade vid aktivering av användaren",
   "app.HomePage.discover": "Upptäck ARASAAC",
   "app.MaterialsView.pageDescription": "AKK - material och resurser för professionella, familjer och förskolor/ skolor. Ladda ner dokument, bildstöd, övningsmaterial m.m. ",
-  "app.MaterialsView.pageDescriptionSearch": "AKK - material och resurser för professionella, familjer och förskolor/ skolor. Ladda ner dokument, bildstöd, övningsmaterial m.m. ",
+  "app.MaterialsView.pageDescriptionSearch": "AKK - material och resurser för professionella, familjer och förskolor/ skolor {search Text}. Ladda ner dokument, bildstöd, övningsmaterial...",
   "app.MaterialsView.pageTitle": "AKK: delat material - ARASAAC",
   "app.MaterialsView.pageTitleSearch": "AKK: delade material och resurser relaterade till ARASAAC",
   "app.PictogramsView.closeWarning": "Stäng varningsmeddelande",
@@ -21,5 +21,17 @@
   "app.PictogramsView.pageTitle": "Bildstöd för AKK",
   "app.PictogramsView.searchByCategories": "Sök kategori",
   "app.PictogramsView.translationStatus": "Se aktuell översättningsstatus.",
-  "app.PictogramsView.translationsWarning": "Symbolsökning å ditt språk misslyckas p.g.a. ofullständig översättning"
+  "app.PictogramsView.translationsWarning": "Symbolsökning å ditt språk misslyckas p.g.a. ofullständig översättning",
+  "app.component.MaterialConditions.adaptationQuoteDesc": "I anpassningen av ett befintligt material kommer namnet på den person som har gjort anpassningen att läggas till i slutet av citatet:",
+  "app.component.MaterialConditions.adaptedBy": "Anpassad av:",
+  "app.component.MaterialConditions.author": "Utvecklare:",
+  "app.component.MaterialConditions.checkRead": "Jag har läst och förstått ovanstående information.",
+  "app.component.MaterialConditions.intro": "Vi hoppas att du förstår behovet av att följa dessa kriterier inför publicering av material på ARASAAC. Tack på förhand för ditt samarbete.",
+  "app.component.MaterialConditions.license": "Licens:",
+  "app.component.MaterialConditions.materialPublication": "Publicering av material",
+  "app.component.MaterialConditions.origin": "Ursprung:",
+  "app.component.MaterialConditions.pictogramsAuthor": "Symbolernas utvecklare:",
+  "app.component.MaterialConditions.publication": "Publikation",
+  "app.component.MaterialConditions.requirements": "Krav",
+  "app.component.MaterialConditions.requirementsP1": "Materialet som publiceras i detta avsnitt kommer att innehålla symboler från ARASAAC-samlingen eller från alla derivat."
 }
