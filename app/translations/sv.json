@@ -1,1 +1,12 @@
-{}
+{
+  "Login.invalidEmail": "Ogiltigt mail",
+  "Login.invalidUrl": "Ogiltig URL",
+  "Login.required": "Obligatoriskt",
+  "NewPasswordForm.hintNewPassword": "Vad är ditt nya lösenord?",
+  "activate.activateUser": "Aktivera användaren",
+  "activate.expiredCode": "Din aktiveringskod har löpt ut. Vi har skickat ett nytt e-postmeddelande för att validera ditt konto",
+  "activate.invalidCode": "Ogiltig aktiveringskod",
+  "activate.userActivated": "Användare aktiverad. Logga in.",
+  "activate.userNotActivated": "Ett fel inträffade vid aktivering av användaren",
+  "app.HomePage.discover": "Upptäck ARASAAC"
+}
