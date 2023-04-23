@@ -37,5 +37,17 @@
   "app.component.MaterialConditions.requirements": "Krav",
   "app.component.MaterialConditions.requirementsP1": "Materialet som publiceras i detta avsnitt kommer att innehålla symboler från ARASAAC-samlingen eller från alla derivat.",
   "app.component.MaterialConditions.requirementsP2": "Material publiceras under Creative C ommons License BY-NC-SA som godkänner deras användning för ideella ändamål för källa och författare, och delas under samma licens.",
-  "app.component.MaterialConditions.requirementsP3": "De fotografier och bilder som ingår i materialet måste vara förenliga med vår licens eller måste ha skapats av författaren själv."
+  "app.component.MaterialConditions.requirementsP3": "De fotografier och bilder som ingår i materialet måste vara förenliga med vår licens eller måste ha skapats av författaren själv.",
+  "app.component.MaterialConditions.requirementsP4": "All text i materialet måste vara förenlig med vår och får inte vara ordagrann kopiering av upphovsrättsskyddat innehåll.",
+  "app.component.MaterialConditions.requirementsP5": "Allt material måste hänvisa till ARASAAC-licensen och - tillsammans med författarens namn - för att tillerkänna författarskap kan författarskap. Även den immateriella äganderätten skyddas under samma licens.",
+  "app.component.MaterialConditions.requirementsP6": "För att referensen är korrekt bör ett av följande citat användas:",
+  "app.component.MaterialConditions.standardQuote": "Standard referens",
+  "app.component.MaterialConditions.submit": "Skicka",
+  "app.component.MaterialConditions.suggestions": "Förslag",
+  "app.component.MaterialConditions.suggestionsDesc": "ARASAAC är ett internationellt samarbetsprojekt. Ifall det bedöms vaara lämpligt rekommenderas därför att filer publiceras inte enbart som text- och bildfiler (pdf, ps, ppsx etc.) med även i format som kan redigeras (doc, docx, pptx, odf, pszip etc.) i syfte att underlätta översättning till andra språk och möjliggöra idiomatiska ändringar. Dessa filer kommer också att vara upphovsrättsskydaddade enigt vår Creative Commons license.",
+  "app.component.MaterialConditions.translationQuote": "Översättningskvot",
+  "app.component.MaterialConditions.translationQuoteDesc": "Avseende översatta material kommer författarens namn att läggas till i slutet av kvoten:",
+  "app.component.MaterialConditions.translator": "Översättare:",
+  "app.component.Participate.contact": "Kontakta oss",
+  "app.component.Participate.header": "Vi skapar ARASAAC. Skulle du vilja ansluta dig till oss?"
 }
