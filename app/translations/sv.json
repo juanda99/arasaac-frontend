@@ -149,5 +149,7 @@
   "app.components.MaterialForm.areas": "Områden",
   "app.components.MaterialForm.areasHint": "Välj områden relaterade till material",
   "app.components.MaterialForm.author": "Utvecklare",
-  "app.components.MaterialForm.authors": "Utvecklare"
+  "app.components.MaterialForm.authors": "Utvecklare",
+  "app.components.MaterialForm.authorsDataDesc": "Ange enbart författarens e-post. Hen måste vara registrerade användare i ARASAAC. Namnet fylls i automatiskt.",
+  "app.components.MaterialForm.chooseLanguage": "Välj språk"
 }
