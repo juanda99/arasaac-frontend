@@ -22,6 +22,7 @@
   "app.PictogramsView.searchByCategories": "Sök kategori",
   "app.PictogramsView.translationStatus": "Se aktuell översättningsstatus.",
   "app.PictogramsView.translationsWarning": "Symbolsökning å ditt språk misslyckas p.g.a. ofullständig översättning",
+  "app.component.MaterialConditions.adaptationQuote": "Anpassningskvot",
   "app.component.MaterialConditions.adaptationQuoteDesc": "I anpassningen av ett befintligt material kommer namnet på den person som har gjort anpassningen att läggas till i slutet av citatet:",
   "app.component.MaterialConditions.adaptedBy": "Anpassad av:",
   "app.component.MaterialConditions.author": "Utvecklare:",
@@ -32,6 +33,9 @@
   "app.component.MaterialConditions.origin": "Ursprung:",
   "app.component.MaterialConditions.pictogramsAuthor": "Symbolernas utvecklare:",
   "app.component.MaterialConditions.publication": "Publikation",
+  "app.component.MaterialConditions.publicationDesc": "Administratörerna av ARASAAC: s webbplats förbehåller sig rätten att inte publicera material om de inte uppfyller våra krav eller våra kvalitetskriterier baserat på redan publicerat material.",
   "app.component.MaterialConditions.requirements": "Krav",
-  "app.component.MaterialConditions.requirementsP1": "Materialet som publiceras i detta avsnitt kommer att innehålla symboler från ARASAAC-samlingen eller från alla derivat."
+  "app.component.MaterialConditions.requirementsP1": "Materialet som publiceras i detta avsnitt kommer att innehålla symboler från ARASAAC-samlingen eller från alla derivat.",
+  "app.component.MaterialConditions.requirementsP2": "Material publiceras under Creative C ommons License BY-NC-SA som godkänner deras användning för ideella ändamål för källa och författare, och delas under samma licens.",
+  "app.component.MaterialConditions.requirementsP3": "De fotografier och bilder som ingår i materialet måste vara förenliga med vår licens eller måste ha skapats av författaren själv."
 }
