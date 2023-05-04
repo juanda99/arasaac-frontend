@@ -657,6 +657,7 @@
   "app.containers/collaboratorsView.removeFilter": "Szűrő eltávolítása",
   "app.containers/collaboratorsView.translateArasaac": "Az ARASAAC-ot önkéntesek fordítják le különböző nyelveken. Vegye fel velünk a kapcsolatot, ha szeretne segíteni lefordítani az ARASAAC-ot egy új nyelvre vagy fejleszteni egy már meglévő fordítást.",
   "app.containers/collaboratorsView.translationStatus": "Fordítás állapota",
+  "app.containers/devCollaboratorsView.collaboratorsARASAAC": "Az ARASAAC-nál haszonmentes kollaboráció létezik alkotók és az augmentatív kommunikációhoz és kognitív hozzáférhetőséghez kapcsolódó különböző szoftverfejlesztők között. Ezek a programok az interakciók javulásában és a társadalmi részvételben segítik az embereket.",
   "app.containers/devCollaboratorsView.pageTitle": "Közreműködők",
   "app.containersTranslationStatus.noDataAvailable": "Nincs elérhető adat",
   "app.containersTranslationStatus.pictosTranslationStatus": "Piktogram fordítása (lehet, hogy már le van fordítva, de nincs jóváhagyva): {pictosValidatedString}%",
