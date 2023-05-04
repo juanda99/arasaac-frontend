@@ -13,7 +13,6 @@ export const API_SERVER = 'https://api.arasaac.org'
 export const API_ROOT = `${API_SERVER}/api`
 export const AUTH_ROOT = 'https://auth.arasaac.org'
 export const PRIVATE_API_ROOT = 'https://privateapi.arasaac.org/api'
-export const STORAGE_URL = 'http://storage.arasaac.org'
 
 export const login = {
   url: `${AUTH_ROOT}/oauth/token`,
@@ -27,10 +26,10 @@ export const login = {
         client_id: CLIENT_ID,
         client_secret: CLIENT_ID,
         grant_type: 'password',
-        scope: 'offline_access'
-      })
-    }
-  })
+        scope: 'offline_access',
+      }),
+    },
+  }),
 }
 export const socialLogin = {
   url: `${AUTH_ROOT}/oauth/token`,
@@ -44,10 +43,10 @@ export const socialLogin = {
         client_secret: CLIENT_ID,
         grant_type: provider,
         scope: 'offline_access',
-        locale
-      })
-    }
-  })
+        locale,
+      }),
+    },
+  }),
 }
 export const changePassword = {
   url: `${PRIVATE_API_ROOT}/users/password`,
@@ -55,9 +54,9 @@ export const changePassword = {
     config: {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password })
-    }
-  })
+      body: JSON.stringify({ password }),
+    },
+  }),
 }
 
 export const signup = {
@@ -69,10 +68,10 @@ export const signup = {
       config: {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      }
+        body: JSON.stringify(data),
+      },
     }
-  }
+  },
 }
 
 export const updateUser = {
@@ -84,9 +83,9 @@ export const updateUser = {
     config: {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data.user)
-    }
-  })
+      body: JSON.stringify(data.user),
+    },
+  }),
 }
 
 export const contactForm = {
@@ -98,10 +97,10 @@ export const contactForm = {
       config: {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      }
+        body: JSON.stringify(data),
+      },
     }
-  }
+  },
 }
 
 export const resetPassword = {
@@ -113,10 +112,10 @@ export const resetPassword = {
       config: {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      }
+        body: JSON.stringify(data),
+      },
     }
-  }
+  },
 }
 
 export const customPicto = {
@@ -125,9 +124,9 @@ export const customPicto = {
     config: {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(parameters)
-    }
-  })
+      body: JSON.stringify(parameters),
+    },
+  }),
 }
 
 export const addFavorite = {
@@ -136,9 +135,9 @@ export const addFavorite = {
     config: {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    }
-  })
+      body: JSON.stringify(data),
+    },
+  }),
 }
 
 export const getFavorites = {
@@ -146,10 +145,10 @@ export const getFavorites = {
   options: (favoriteIds) => ({
     config: {
       method: 'POST',
-      body: JSON.stringify({ favoriteIds })
+      body: JSON.stringify({ favoriteIds }),
     },
-    schema: searchPictogramSchema
-  })
+    schema: searchPictogramSchema,
+  }),
 }
 
 export const removeFavorite = {
@@ -157,27 +156,27 @@ export const removeFavorite = {
   options: (data) => ({
     config: {
       method: 'DELETE',
-      body: JSON.stringify(data)
-    }
-  })
+      body: JSON.stringify(data),
+    },
+  }),
 }
 
 export const addFavoriteList = {
   url: (listName) => `${PRIVATE_API_ROOT}/users/favorites/list/${listName}`,
   options: {
     config: {
-      method: 'POST'
-    }
-  }
+      method: 'POST',
+    },
+  },
 }
 
 export const deleteFavoriteList = {
   url: (listName) => `${PRIVATE_API_ROOT}/users/favorites/list/${listName}`,
   options: {
     config: {
-      method: 'DELETE'
-    }
-  }
+      method: 'DELETE',
+    },
+  },
 }
 
 export const renameFavoriteList = {
@@ -186,9 +185,9 @@ export const renameFavoriteList = {
     config: {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ newListName })
-    }
-  })
+      body: JSON.stringify({ newListName }),
+    },
+  }),
 }
 
 export const materialPublish = {
@@ -197,9 +196,9 @@ export const materialPublish = {
     config: {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status })
-    }
-  })
+      body: JSON.stringify({ status }),
+    },
+  }),
 }
 
 export const materialUpdate = {
@@ -208,9 +207,9 @@ export const materialUpdate = {
     config: {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    }
-  })
+      body: JSON.stringify(data),
+    },
+  }),
 }
 
 export const materialRemove = {
@@ -218,13 +217,10 @@ export const materialRemove = {
   options: () => ({
     config: {
       method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' }
-    }
-  })
+      headers: { 'Content-Type': 'application/json' },
+    },
+  }),
 }
-
-
-
 
 /*
 export const customPictogram = {
@@ -245,4 +241,3 @@ export const customPictogram = {
     author: {id, name}
     language: {language(string), title (string), description(string), screenshots[file], files[file]}
 */
-
