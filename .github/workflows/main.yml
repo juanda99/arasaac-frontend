@@ -9,6 +9,7 @@ jobs:
       with:
         node-version: 8
     - run: npm install --production
+    - run: npm install rimraf
     - run: npm run build
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@v5
