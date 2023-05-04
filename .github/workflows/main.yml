@@ -8,7 +8,7 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 8
-    - run: npm run install
+    - run: npm install
     - run: npm run build
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@v5
