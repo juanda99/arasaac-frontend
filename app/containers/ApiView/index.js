@@ -18,18 +18,27 @@ class ApiView extends PureComponent {
   componentDidMount() {
     SwaggerUi({
       dom_id: '#swaggerContainer',
-      url: `${API_SERVER}/arasaac.json`,
-      presets: [presets.apis]
+      // url: `${API_SERVER}/arasaac_v1.json`,
+      // urls: [
+      //   {
+      //     url: `${API_SERVER}/arasaac_v1.json`,
+      //     name: 'Version1',
+      //   },
+      //   {
+      //     url: `${API_SERVER}/arasaac_v2.json`,
+      //     name: 'Version2',
+      //   },
+      // ],
+      url: `${API_SERVER}/arasaac_v1.json`,
+      presets: [presets.apis],
     })
   }
 
   render() {
-
     return (
       <View>
         <ReadMargin>
-          <div id='swaggerContainer'>
-          </div>
+          <div id="swaggerContainer"></div>
         </ReadMargin>
       </View>
     )
@@ -37,11 +46,11 @@ class ApiView extends PureComponent {
 }
 
 ApiView.propTypes = {
-  theme: PropTypes.string.isRequired
+  theme: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = (state) => ({
-  theme: state.get('theme')
+  theme: state.get('theme'),
 })
 
 export default connect(mapStateToProps)(ApiView)
