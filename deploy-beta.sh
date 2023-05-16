@@ -2,7 +2,7 @@
 
 # Get the version from the parameter
 VERSION=$1
-
+npm run build
 # If version is empty, exit with warning
 if [ -z "$VERSION" ]
 then
