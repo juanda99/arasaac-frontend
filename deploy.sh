@@ -10,6 +10,9 @@ then
   exit 1
 fi
 
+# Build the project
+npm run build
+
 # Build the Docker image
 docker build -t cateduac/arasaac-frontend:$VERSION .
 

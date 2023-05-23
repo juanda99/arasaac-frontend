@@ -2,7 +2,7 @@
 
 # Get the version from the parameter
 VERSION=$1
-npm run build
+
 # If version is empty, exit with warning
 if [ -z "$VERSION" ]
 then
@@ -14,6 +14,9 @@ if [[ $VERSION != *"beta"* ]]; then
   echo "Version must include 'beta'."
   exit 1
 fi
+
+# Build the project
+npm run build
 
 # Build the Docker image
 docker build -f Dockerfile.beta -t cateduac/arasaac-frontend:$VERSION .
