@@ -19,7 +19,7 @@ export const login = {
   options: (username, password) => ({
     config: {
       method: 'POST',
-      // headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         username,
         password,
@@ -36,7 +36,7 @@ export const socialLogin = {
   options: (token, provider, locale) => ({
     config: {
       method: 'POST',
-      // headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         token,
         client_id: CLIENT_ID,
