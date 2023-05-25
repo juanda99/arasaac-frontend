@@ -377,5 +377,11 @@
   "app.components.UseConditions.property": "Originalfilerna till de symboler som publicerats på denna Webb ägs av {owner}.",
   "app.components.Welcome.aragonese": "Aragonesiska",
   "app.components.Welcome.chooseLanguage": "Välj språk:",
-  "app.components.Welcome.header": "{aragones} Centrum för Alternativ och Kompletterande Kommunikation"
+  "app.components.Welcome.header": "{aragones} Centrum för Alternativ och Kompletterande Kommunikation",
+  "app.components.aac": "ARASAC vill tacka både {author} och {team} för deras samarbete med att utarbeta denna del av vår webbplats.",
+  "app.components.aac.aac": "Alternativa och kompletterande kommunikationssystem (AAK)",
+  "app.components.aac.codedSelection": "Kodad urval",
+  "app.components.aac.communicationBoards": "kommunikationskartor",
+  "app.components.aac.communicationBooks": "kommunikationsböcker",
+  "app.components.aac.communicationProducts": "olika kommunikationshjälpmedel"
 }
