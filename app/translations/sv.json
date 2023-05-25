@@ -380,8 +380,17 @@
   "app.components.Welcome.header": "{aragones} Centrum för Alternativ och Kompletterande Kommunikation",
   "app.components.aac": "ARASAC vill tacka både {author} och {team} för deras samarbete med att utarbeta denna del av vår webbplats.",
   "app.components.aac.aac": "Alternativa och kompletterande kommunikationssystem (AAK)",
-  "app.components.aac.codedSelection": "Kodad urval",
+  "app.components.aac.codedSelection": "Kodad val",
   "app.components.aac.communicationBoards": "kommunikationskartor",
   "app.components.aac.communicationBooks": "kommunikationsböcker",
-  "app.components.aac.communicationProducts": "olika kommunikationshjälpmedel"
+  "app.components.aac.communicationProducts": "olika kommunikationshjälpmedel",
+  "app.components.aac.dependentExploration": "Partnerstyrd skaning",
+  "app.components.aac.directSelection": "Pekning",
+  "app.components.aac.electronicCommunicators": "teknologiska kommunikationshjälpmedel",
+  "app.components.aac.empowerment": "möjliggöra",
+  "app.components.aac.encourageTitle": "Främja AKK-insatser",
+  "app.components.aac.evalulation": "utvärdering",
+  "app.components.aac.gesturalSymbols": "gester",
+  "app.components.aac.graphicSymbols": "Grafiska symboler",
+  "app.components.aac.independentExploration": "Kontaktstyrd skanning"
 }
