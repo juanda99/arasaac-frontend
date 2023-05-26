@@ -393,5 +393,7 @@
   "app.components.aac.gesturalSymbols": "gester",
   "app.components.aac.graphicSymbols": "Grafiska symboler",
   "app.components.aac.independentExploration": "Kontaktstyrd skanning",
-  "app.components.aac.list1": "{directSelection}: användaren styr med direktpekning, blick eller olika kroppsdelar för att välja symboler, ord eller bokstäver som han/hon vill kommunicera. Dessa alternativa styrsätt är exempel på stödfunktioner som kan underlätta tillgängligheten."
+  "app.components.aac.list1": "{directSelection}: användaren styr med direktpekning, blick eller olika kroppsdelar för att välja symboler, ord eller bokstäver som han/hon vill kommunicera. Dessa alternativa styrsätt är exempel på stödfunktioner som kan underlätta tillgängligheten.",
+  "app.components.aac.list2": "{mouseSelection}:styrsätt enbart för teknologiska enheter. Musfunktionen ger åtkomst till skärmkartor eller skärmtangentbord",
+  "app.components.aac.list3": "{dependentExploration}: enbart för pappersbaserade kartor eller kommunikationsböcker. Samtalspartnern skannar det anpassade rutnätet genom att peka på en grupp av tecken /symboler, en kolumn alternativt rad i taget. Hjälpmedelsanvändaren bekräftar när avsett tecken /symbol nåtts (s. k. partnerstyrd skanning)."
 }
