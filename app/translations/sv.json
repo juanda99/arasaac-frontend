@@ -392,5 +392,6 @@
   "app.components.aac.evalulation": "utvärdering",
   "app.components.aac.gesturalSymbols": "gester",
   "app.components.aac.graphicSymbols": "Grafiska symboler",
-  "app.components.aac.independentExploration": "Kontaktstyrd skanning"
+  "app.components.aac.independentExploration": "Kontaktstyrd skanning",
+  "app.components.aac.list1": "{directSelection}: användaren styr med direktpekning, blick eller olika kroppsdelar för att välja symboler, ord eller bokstäver som han/hon vill kommunicera. Dessa alternativa styrsätt är exempel på stödfunktioner som kan underlätta tillgängligheten."
 }
