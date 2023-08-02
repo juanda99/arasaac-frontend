@@ -1,1 +1,4 @@
-{}
+{
+  "Login.invalidEmail": "Book",
+  "Login.required": "Китеп"
+}
