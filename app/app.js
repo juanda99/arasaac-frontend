@@ -11,7 +11,7 @@ import 'babel-polyfill'
 // Import all the third party stuff
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga4'
 import { Provider } from 'react-redux'
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
@@ -91,15 +91,22 @@ const render = async (messages) => {
   const initialState = {}
   const store = await configureStore(initialState, browserHistory)
   const history = syncHistoryWithStore(browserHistory, store, {
-    selectLocationState: makeSelectLocationState()
+    selectLocationState: makeSelectLocationState(),
   })
   // Set up the router, wrapping all Routes in the App component
   const rootRoute = {
     component: App,
-    childRoutes: createRoutes(store)
+    childRoutes: createRoutes(store),
   }
-  ReactGA.initialize('UA-46065439-1')
-  ReactGA.pageview(window.location.pathname + window.location.search)
+  ReactGA.initialize('G-3H233XF985')
+
+  // Send pageview with a custom path
+  ReactGA.send({
+    hitType: 'pageview',
+    page: window.location.pathname + window.location.search,
+  })
+
+  // ReactGA.pageview(window.location.pathname + window.location.search)
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>

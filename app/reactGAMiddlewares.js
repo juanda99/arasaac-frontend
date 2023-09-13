@@ -1,18 +1,18 @@
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga4'
 
 const options = {}
 
 const trackPage = (page) => {
-  ReactGA.set({
+  // Send pageview with a custom path
+  ReactGA.send({
+    hitType: 'pageview',
     page,
-    ...options
   })
-  ReactGA.pageview(page)
 }
 
 let currentPage = ''
 
-export const googleAnalytics = store => next => action => {
+export const googleAnalytics = (store) => (next) => (action) => {
   if (action.type === '@@router/LOCATION_CHANGE') {
     const nextPage = `${action.payload.pathname}${action.payload.search}`
     if (currentPage !== nextPage) {
