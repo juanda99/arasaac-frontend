@@ -419,5 +419,22 @@
   "app.components.aac.p7": "Det finns olika alternativa styrsätt för användare som inte kan peka både dör samtalsapparater och kommunikationskartor eller -böcker, allmänt kallade {referenceName}, som t.ex. peklampor, specialanpassade tangentbord eller skärmtangentbord, huvudmus och kontakter och ögonstyrning.",
   "app.components.aac.p8": "Tidigare delade vi in symbolsystemen för AKK i gester respektive bilder. Båda dessa AKK-system omfattar av de allra enklaste till komplexa system något som möjliggör anpassningar till den enskildes kognitiva och språkliga förmåga.",
   "app.components.aac.p9": "{gesturalSymbols} kan vara naturliga uttryck som mimik, kroppsspråk och vedertagna gester, tecken som stöd för att förstärka de viktigaste orden i ett yttrande. Tecknad svenska räknas inte som AKK utan är ett språk som lärs in och utvecklas analogt till talat språk. Användningen av {gesturalSymbols} förutsätter givetvis funktionell handmotorik men kan även försvåras av t.ex. en intellektuell funktionsnedsättning eller  autismspektrumtillstånd.",
-  "app.components.aac.pictographicSystems": "Grafisk AKK"
+  "app.components.aac.pictographicSystems": "Grafisk AKK",
+  "app.components.aac.referenceName": "Strategier för att ge stöd och göra AKK tillgänglig för användaren",
+  "app.components.aac.resources": "Vilka strategier och medel används?",
+  "app.components.aac.strategiesTitle": "Specifika strategier som stöd för AKK-användaren",
+  "app.components.aac.supportProducts": "Hjälpmedel",
+  "app.components.aac.supportProductsTitle": "Kommunikationshjälpmedel",
+  "app.components.aac.systemSymbols": "symbolsystem",
+  "app.components.aac.systemsSymbols": "Symbolsystem",
+  "app.components.aac.teaching": "introduktion och träning ",
+  "app.components.aac.whatareAACSystems": "Vad är alternativa och kompletterande kommunikationssytem?",
+  "app.components.aacusage.behavioralStrategies": "Modellering",
+  "app.components.aacusage.communicationBoards": "Kommunikationskartor",
+  "app.components.aacusage.intro": "ARASAAC erbjuder ett bildmaterial för AKK och omfattar ett stort antal symboler {numberPictograms} översatta till 23 språk. Materialet används av experter på AKK för olika syften:",
+  "app.components.aacusage.learning": "Modellering",
+  "app.components.aacusage.lifeSkills": "Vardagliga färdigheter",
+  "app.components.aacusage.otherContexts": "Kognitiv tillgänglighet i andra sammanhang",
+  "app.components.aacusage.p1": "Grafisk AKK ger personer som av olika skäl (autism, intellektuell funktionsnedsättning m.fl.) har kommunikationssvårigheter möjlighet att uttrycka sina behov, känslor, tankar och önskemål.  Symboler (bilder) underlättar för AKK-användaren att förmedla sig med sin omgivning.",
+  "app.components.aacusage.p10": "Metoden TEACCH (tydliggörande pedagogik) använder sig av lösa bilder som ska vara intressanta, relevanta och motiverande  och uppmuntra användaren i olika aktiviteter, både strukturerade och fria."
 }
