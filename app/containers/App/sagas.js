@@ -14,7 +14,7 @@ import {
   cancel,
   race,
   takeEvery,
-  fork
+  fork,
 } from 'redux-saga/effects'
 
 import api from 'services'
@@ -27,7 +27,7 @@ import { REHYDRATE } from 'redux-persist/constants'
 import {
   makeSelectTokens,
   makeSelectHasUser,
-  makeSelectRefreshing
+  makeSelectRefreshing,
 } from './selectors'
 import {
   TOKEN_VALIDATION,
@@ -39,7 +39,7 @@ import {
   tokenRefresh,
   login,
   logout,
-  socialLogin
+  socialLogin,
 } from './actions'
 
 import { changeLocale } from '../LanguageProvider/actions'
@@ -74,7 +74,7 @@ function* loggedOutFlowSaga() {
   const { credentials, tokens, socialCredentials } = yield race({
     credentials: take(LOGIN.REQUEST),
     tokens: take(TOKEN_VALIDATION.REQUEST),
-    socialCredentials: take(SOCIAL_LOGIN.REQUEST)
+    socialCredentials: take(SOCIAL_LOGIN.REQUEST),
   })
 
   // if (credentials) yield call(loginAuth, credentials.payload.username, credentials.payload.password)
@@ -144,8 +144,8 @@ function* authenticate() {
         yield put(tokenValidation.success(response))
         yield put(changeLocale(response.locale))
       },
-      onError
-    }
+      onError,
+    },
   })
 }
 
@@ -196,7 +196,7 @@ function* refreshTokens() {
   if (isRefreshing) {
     const { error } = yield race({
       success: take(TOKEN_REFRESH.SUCCESS),
-      error: take(TOKEN_REFRESH.FAILURE)
+      error: take(TOKEN_REFRESH.FAILURE),
     })
     return error
   }
@@ -238,6 +238,14 @@ function* logoutSaga() {
  *  @param   {Object}     action
  *  @return  {Generator}
  */
+
+function isTokenExpired(token) {
+  const decodedToken = JSON.parse(atob(token.split('.')[1]))
+  const expirationTime = decodedToken.exp * 1000 // convert to milliseconds
+  const currentTime = Date.now()
+  return expirationTime < currentTime
+}
+
 function* makeAuthenticatedRequest(action) {
   // Check for a specific outdated access token error. If the error matches, the
   // saga will try to refresh the access token then retry the initial request if
@@ -258,6 +266,8 @@ function* makeAuthenticatedRequest(action) {
   const token = tokens.accessToken
 
   try {
+    console.log(payload.url, payload.options, token)
+    if (isTokenExpired(token)) throw err('token expired')
     const response = yield callApi(payload.url, payload.options, token)
     yield payload.onSuccess(response)
   } catch (err) {
