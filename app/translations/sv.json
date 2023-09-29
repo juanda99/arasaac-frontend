@@ -436,5 +436,6 @@
   "app.components.aacusage.lifeSkills": "Vardagliga färdigheter",
   "app.components.aacusage.otherContexts": "Kognitiv tillgänglighet i andra sammanhang",
   "app.components.aacusage.p1": "Grafisk AKK ger personer som av olika skäl (autism, intellektuell funktionsnedsättning m.fl.) har kommunikationssvårigheter möjlighet att uttrycka sina behov, känslor, tankar och önskemål.  Symboler (bilder) underlättar för AKK-användaren att förmedla sig med sin omgivning.",
-  "app.components.aacusage.p10": "Metoden TEACCH (tydliggörande pedagogik) använder sig av lösa bilder som ska vara intressanta, relevanta och motiverande  och uppmuntra användaren i olika aktiviteter, både strukturerade och fria."
+  "app.components.aacusage.p10": "Metoden TEACCH (tydliggörande pedagogik) använder sig av lösa bilder som ska vara intressanta, relevanta och motiverande  och uppmuntra användaren i olika aktiviteter, både strukturerade och fria.",
+  "app.components.aacusage.p11": "En strukturerad introduktion av dessa bildsystem gör användaren mer självständig i olika aktiviteter."
 }
