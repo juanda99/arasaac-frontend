@@ -1,1 +1,12 @@
-{}
+{
+  "Login.invalidEmail": "Neplatný e-mail",
+  "Login.invalidUrl": "Neplatná URL adresa",
+  "Login.required": "Požadované",
+  "NewPasswordForm.hintNewPassword": "Jaké je Vaše nové heslo?",
+  "activate.activateUser": "Aktivace uživatele",
+  "activate.expiredCode": "Váš aktivační kód vypršel. Poslali jsme vám další e-mail pro ověření vašeho účtu",
+  "activate.invalidCode": "Váš aktivační kód není platný",
+  "activate.userActivated": "Váš uživatel byl aktivován. Můžete se přihlásit.",
+  "activate.userNotActivated": "Došlo k chybě během aktivace uživatele",
+  "app.HomePage.discover": "Objevte ARASAAC"
+}
