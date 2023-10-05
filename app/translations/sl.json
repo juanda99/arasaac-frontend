@@ -489,7 +489,6 @@
   "app.components.licenseP4": "Za kakršno koli drugo uporabo je strogo prepovedano, brez pisnega dovoljenja imetnikov avtorskih pravic, pod sankcijami, ki jih določa zakon, popolna ali delna reprodukcija teh virov na kakršen koli način ali postopek, vključno z reprografijo in računalniško obdelavo.",
   "app.components.licenseP5": "Če je delo izvedeno iz virov, ki se nahajajo v katalogih {ARASAAC} (piktogrami, slike, glasovi ali videoposnetki), se mora distribuirati pod isto licenco {creativeCommonsLicense}. Potrebno je navesti avtorja (Sergio Palao), lastnika (Gobierno de Aragón), podjetje ({ARASAAC}) in licenco, pod katero se distribuira ({creativeCommonsLicense}).",
   "app.components.licenseP6Title": "Kako navajati licenco ARASAAC",
-  "app.components.licenseP6bis": "Avtorstvo lahko navajamo na dva načina:",
   "app.components.licenseP7": "Uporabljeni piktografski simboli so last Aragonske vlade in jih je ustvaril Sergio Palao za {ARASAAC}, ki jih distribuira pod {creativeCommonsLicense}.",
   "app.components.licenseP8a": "Logotip {ARASAAC} mora biti vključen na vse znake, plakate in tablice, kadar se piktogrami uporabljajo za označevanje javnih površin, storitev, trgovin itd.",
   "app.components.licenseP8d": "Za druge uporabe in kakršna koli vprašanja se obrnite na nas.",
