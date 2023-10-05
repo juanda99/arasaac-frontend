@@ -489,6 +489,7 @@
   "app.components.licenseP4": "Til annen bruk har de strengt forbudt uten skriftlig tillatelse fra de opphavsrettighetshaverne, i henhold til de sanksjoner som er fastsatt i lovgivningen, total eller delvis gjengivelse av disse ressursene ved enhver måte eller framgangsmåte, herunder overbevisning og databehandling.",
   "app.components.licenseP5": "Ethvert arbeid som hentes fra ressursene i {ARASAAC} -katalogene (piktogrammer), bilder, lyd eller videoer), må distribueres med samme {creativeCommonsLicense}. Forfatteren (Sergio Palao), eierskapet (Gobino de Arago∙n), deres opprinnelse ({ARASAAC}) og lisens under som er distribuert ({creativeCommonsLicense}) må angis.",
   "app.components.licenseP6Title": "Hvordan skal du sitere ARASAAC lisens",
+  "app.components.licenseP6b": "Det er to måter å sitere forfatteren:",
   "app.components.licenseP7": "De piktografiske symbolene som er brukt, er rettigheter til regjeringen i Aragon og er laget av Sergio Palao for {ARASAAC}, som utdeler dem under {creativeCommonsLicense}.",
   "app.components.licenseP8a": "{ARASAAC} logoen må inkluderes på alle tegn, plakater, og plater når piktogrammene brukes til skilting av offentlige områder, tjenester, lagre osv.",
   "app.components.licenseP8d": "For annen bruk, og eventuelle spørsmål, kontakt oss.",
