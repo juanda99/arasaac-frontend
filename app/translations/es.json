@@ -489,7 +489,6 @@
   "app.components.licenseP4": "Para cualquier otro uso quedan rigurosamente prohibidas, sin la autorización por escrito de los titulares del \"Copyright\", bajo las sanciones establecidas por las leyes, la reproducción total o parcial de estos recursos por cualquier medio o procedimiento, incluyendo la reprografía y el tratamiento informático.",
   "app.components.licenseP5": "Cualquier obra derivada a partir los recursos contenidos en los catálogos de {ARASAAC} (pictogramas, imágenes, locuciones o vídeos), se debe distribuir con la misma {creativeCommonsLicense}, se debe citar al autor (Sergio Palao) y al propietario (Gobierno de Aragón), la procedencia de los mismos ({ARASAAC}) y la licencia bajo la que se distribuyen ({creativeCommonsLicense}).",
   "app.components.licenseP6Title": "Cómo citar la licencia de ARASAAC",
-  "app.components.licenseP6bis": "Hay dos formas de atribuir la autoría:",
   "app.components.licenseP7": "Los símbolos pictográficos utilizados son propiedad del Gobierno de Aragón y han sido creados por Sergio Palao para {ARASAAC}, que los distribuye bajo {creativeCommonsLicense}.",
   "app.components.licenseP8a": "En el caso de uso de los pictogramas para la señalización de espacios públicos, servicios, comercios, etc., se debe incluir el logotipo de {ARASAAC} en todas las señales, carteles y placas.",
   "app.components.licenseP8d": "Para otros usos y en caso de dudas, consúltanos.",
