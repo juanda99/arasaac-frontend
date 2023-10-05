@@ -486,6 +486,7 @@
   "app.components.licenseP4": "Be raštiško autorių teisių turėtojų leidimo, laikantis teisės aktuose nustatytų sankcijų, griežtai draudžiama visiškai ar iš dalies atgaminti šiuos išteklius bet kokiomis priemonėmis ar procedūromis, įskaitant reprografiją ir kompiuterinį apdorojimą.",
   "app.components.licenseP5": "Bet koks darbas, sukurtas naudojant {ARASAAC} kataloguose esančius išteklius (piktogramas, paveikslėlius, įgarsinimą ar vaizdo įrašus), turi būti platinamas su ta pačia {creativeCommonsLicense}. Turi būti nurodytas autorius (Sergio Palao), savininkas (Gobierno de Aragón), jų kilmė ({ARASAAC}) ir licencija, pagal kurią jie platinami ({creativeCommonsLicense}).",
   "app.components.licenseP6Title": "ARASAAC licencijos citavimas",
+  "app.components.licenseP6b": "Yra du būdai autorystei priskirti:",
   "app.components.licenseP7": "Naudojami piktografiniai simboliai yra Aragono vyriausybės nuosavybė, juos sukūrė Sergio Palao {ARASAAC}, kuri juos platina pagal {creativeCommonsLicense}.",
   "app.components.licenseP8a": "{ARASAAC} logotipas turi būti nurodytas visuose ženkluose, plakatuose ir lentelėse, kai piktogramos naudojamos ženklinimui viešosiose erdvėse, paslaugoms, parduotuvėms ir pan.",
   "app.components.licenseP8d": "Dėl kitų naudojimo būdų ir kitų klausimų kreipkitės į mus.",
