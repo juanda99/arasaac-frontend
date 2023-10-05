@@ -53,8 +53,8 @@ export default defineMessages({
     id: 'app.components.licenseP6Title',
     defaultMessage: 'How to cite the ARASAAC license',
   },
-  licenseP6bis: {
-    id: 'app.components.licenseP6bis',
+  licenseP6: {
+    id: 'app.components.licenseP6',
     defaultMessage: 'There are two ways to to attribute authorship:',
   },
   licenseP7: {

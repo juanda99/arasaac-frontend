@@ -45,7 +45,7 @@ const LicenseText = ({ locale }) => (
       <FormattedMessage {...messages.licenseP6Title} />
     </H3>
     <P>
-      <FormattedMessage {...messages.licenseP6bis} />
+      <FormattedMessage {...messages.licenseP6} />
       <br />
       <ul>
         <li>
