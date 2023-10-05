@@ -489,7 +489,7 @@
   "app.components.licenseP4": "Całkowite lub częściowe kopiowanie zawartości strony, w celach innych, niż niekomercyjne, niezależnie od zastosowanych w tym celu technik mechanicznych czy cyfrowych, jest całkowicie zabroniona bez pisemnej zgody posiadaczy praw autorskich i obwarowane sankcjami prawnymi.",
   "app.components.licenseP5": "Zasoby w katalogach {ARASAAC} (piktogramy, obrazy, teksty lub filmy) mogą być wykorzystywane i udostępniane jedynie na licencji {creativeCommonsLicense}, podaniem nazwiska autora (Sergio Palao) oraz właściciela (rząd Aragon), źródłem ich pochodzenia ({ARASAAC}) i informacji o licencji, na podstawie której podlegają udostępnianiu ({creativeCommonsLicense}).",
   "app.components.licenseP6Title": "Cytowanie licencji ARASAAC",
-  "app.components.licenseP6bis": "Istnieją dwa sposoby przypisywania autorstwa:",
+  "app.components.licenseP6b": "Istnieją dwa sposoby przypisywania autorstwa:",
   "app.components.licenseP7": "Wykorzystane symbole graficzne są własnością rządu Aragonii i zostały stworzone przez Sergio Palao dla {ARASAAC} a rozpowszechniane są na licencji {creativeCommonsLicense}.",
   "app.components.licenseP8a": "Logo {ARASAAC} musi być obecne na wszystkich symbolach, plakatach i znakach, w przypadku użycia piktogramów w miejscach publicznych, miejscach świadczenia usług, sklepach itd.",
   "app.components.licenseP8d": "W przypadku innego zastosowania lub pytań, skontaktuj się z nami.",

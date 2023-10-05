@@ -487,7 +487,7 @@
   "app.components.licenseP4": "Guztiz debekatuta dago, copyrigth titularren idatzizko baimenik gabe eta legeak ezarritako zigorren arabera, baliabide horien erreprodukzio osoa edo partziala edozein bide edo prozedurekin, erreprografia eta tratamendu informatikoa barne.",
   "app.components.licenseP5": "{ARASAAC} katalogoetan (piktogramak, irudiak, ahots bideoak edo bideoak) jasotako baliabideetatik eratorritako edozein obra {creativeCommonsLicense} berarekin banatu behar da. Egilea (Sergio Palao), jabea (Aragoiko Gobernua), horien jatorria ({ARASAAC}) eta banatu beharreko lizentzia ({creativeCommonsLicense}) aipatu behar dira.",
   "app.components.licenseP6Title": "Nola aipatu ARASAAC lizentzia",
-  "app.components.licenseP6bis": "Egiletza egozteko bi modu daude:",
+  "app.components.licenseP6b": "Egiletza egozteko bi modu daude:",
   "app.components.licenseP7": "Erabiltzen diren sinbolo piktografikoak Aragoiko Gobernuaren jabetzakoak dira eta Sergio Palaok sortu ditu {ARASAAC} enpresarako, {creativeCommonsLicense} atalean banatzen dituelarik.",
   "app.components.licenseP8a": "Errotulu, kartel eta plaka guztietan {ARASAAC} logotipoa jarri behar da piktogramak eremu publikoen, zerbitzuen, denden eta abarren seinaleztapenerako erabiltzen direnean.",
   "app.components.licenseP8d": "Beste erabilera batzuetarako eta edozein kontsultarako, jar zaitez gurekin harremanetan.",

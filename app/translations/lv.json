@@ -485,7 +485,7 @@
   "app.components.licenseP4": "Jebkurai citai lietošanai tie ir stingri aizliegti bez autortiesību īpašnieku rakstiskas atļaujas, saskaņā ar likumā noteiktajām sankcijām, un tāpat kā šo resursu pilnīga vai daļēja reproducēšana ar jebkādiem līdzekļiem vai procedūrām, ieskaitot reprogrāfiju un datorapstrādi.",
   "app.components.licenseP5": "Jebkurš darbs, kas radīts, izmantojot {ARASAAC} katalogos iekļautos resursus (piktogrammas, attēlus, audioierakstus vai video), jāizplata ar to pašu {creativeCommonsLicense}. Jānorāda autors (Sergio Palao), īpašnieks (Gobierno de Aragón), to izcelsme ({ARASAAC}) un licence, ar kuru tie tiek izplatīti ({creativeCommonsLicense}).",
   "app.components.licenseP6Title": "Kā citēt ARASAAC licenci",
-  "app.components.licenseP6bis": "Ir divi veidi, kā norādīt autorību:",
+  "app.components.licenseP6b": "Ir divi veidi, kā norādīt autorību:",
   "app.components.licenseP7": "Izmantotie piktogrāfiskie simboli ir Aragonas pašvaldības īpašums, un tos ir izveidojis Serhio Palao {ARASAAC}, kas tos izplata ar {creativeCommonsLicense}.",
   "app.components.licenseP8a": "{ARASAAC} logo ir jābūt uz visām izkārtnēm, plakātiem un plāksnēm, ja piktogrammas tiek izmantotas sabiedrisko vietu, pakalpojumu, veikalu utt. apzīmēšanai.",
   "app.components.licenseP8d": "Par citiem izmantošanas veidiem un citiem jautājumiem sazinieties ar mums.",

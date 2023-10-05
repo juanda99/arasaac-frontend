@@ -489,7 +489,7 @@
   "app.components.licenseP4": "Ezek a források szerzői jogi védelem alá tartoznak. Ezért teljes vagy részbeni másolásuk, beleértve a sokszorosítást és a számítógépes feldolgozást is, szigorúan tilos a szerzői jogokat tartalmazó írásbeli nyilatkozat nélkül.",
   "app.components.licenseP5": "Any work derived from the resources contained in the {ARASAAC} catalogs (pictograms, images, voiceovers or videos), must distribute with the same {creativeCommonsLicense}, it must be cited the author and the owner thereof (Gobierno de Aragón), their origin ({ARASAAC}) and the license under which is distributed ({creativeCommonsLicense}).",
   "app.components.licenseP6Title": "Hogyan hivatkozzak az ARASAAC engedélyére",
-  "app.components.licenseP6bis": "Két módon jellemezhetjük a szerzőséget:",
+  "app.components.licenseP6b": "Két módon jellemezhetjük a szerzőséget:",
   "app.components.licenseP7": "A képes szimbólumok az Aragon Kormány tulajdonát képezik. Sergio Palao készítette az {ARASAAC} számára, terjesztésük pedig a {creativeCommonsLicense} alapján történik.",
   "app.components.licenseP8a": "Az {ARASAAC} logó minden jelképen, poszteren és táblán amikor a piktogrammok nyilvános teret jelölnek, szolgáltásokon, üzleteken, stb. jelen kell legyen.",
   "app.components.licenseP8d": "Egyéb használat és kérdések esetében vegye fel a kapcsolatot velünk.",
