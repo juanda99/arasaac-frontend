@@ -489,6 +489,7 @@
   "app.components.licenseP4": "לשימושים אחרים, יש צורך באישור בעלי הזכויות של האתר. הכוונה לשימוש מלא, חלקי או עיבוד החומרים במחשב.",
   "app.components.licenseP5": "כל החומרים שנוצרים באמצעות {ARASAAC} (תמונות, איורים, מלל וסרטים) חייבים לכלול את אותם {creativeCommonsLicense}. חובה לציין את המחבר (סרג'יו פאולו), הבעלים (ממשלת אראגון), המקור ({ARASAAC}) והזכויות ({creativeCommonsLicense}).",
   "app.components.licenseP6Title": "כיצד לצטט את רישיון ARASAAC",
+  "app.components.licenseP6b": "ישנן שתי דרכים לציין בעלות:",
   "app.components.licenseP7": "התמונות הינם רכוש של ממשלת אראגון ונוצרו על ידי סרג'יו פאולו ל {ARASAAC}, הם נמצאות תחת {creativeCommonsLicense}.",
   "app.components.licenseP8a": "הלוגו של {ARASAAC} חייב להופיע בכל השלטים, הפוסטרים והדפים בהם משתמשים בסמלים שלנו, באזורים ציבוריים, מקומות שירות, חנויות וכדומה.",
   "app.components.licenseP8d": "עבור שימושים אחרים ובכל שאלה, פנו אלינו.",
