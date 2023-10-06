@@ -38,6 +38,7 @@ import fa from 'react-intl/locale-data/fa'
 import uk from 'react-intl/locale-data/uk'
 import nb from 'react-intl/locale-data/nb'
 import sl from 'react-intl/locale-data/sl'
+import cs from 'react-intl/locale-data/cs'
 
 import { DEFAULT_LOCALE, appLocales } from './containers/App/constants'
 import enTranslationMessages from './translations/en.json'
@@ -75,6 +76,7 @@ import faTranslationMessages from './translations/fa.json'
 import ukTranslationMessages from './translations/uk.json'
 import nbTranslationMessages from './translations/nb.json'
 import slTranslationMessages from './translations/sl.json'
+import csTranslationMessages from './translations/cs.json'
 
 addLocaleData([
   ...en,
@@ -110,6 +112,7 @@ addLocaleData([
   ...uk,
   ...nb,
   ...sl,
+  ...cs,
 ])
 
 export const formatTranslationMessages = (locale, messages) => {
@@ -163,4 +166,5 @@ export const translationMessages = {
   uk: formatTranslationMessages('uk', ukTranslationMessages),
   nb: formatTranslationMessages('nb', nbTranslationMessages),
   sl: formatTranslationMessages('sl', slTranslationMessages),
+  cs: formatTranslationMessages('cs', csTranslationMessages),
 }

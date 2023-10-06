@@ -183,6 +183,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Slovenian',
   },
+  cs: {
+    id: 'app.components.LanguageSelector.cs',
+    description: 'Select language',
+    defaultMessage: 'Czech',
+  },
   translateOnline: {
     id: 'app.components.LanguageSelector.translateOnline',
     description: 'Select language',

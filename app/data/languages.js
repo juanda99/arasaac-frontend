@@ -80,6 +80,13 @@ const languages = [
     translated: true,
     needTranslators: false,
   },
+
+  {
+    code: 'cs',
+    text: 'Čeština',
+    translated: false,
+    needTranslators: true,
+  },
   // DE
   // FEB: web 44%, admin 0%, pictograms 0%
   // MARCH: // web 77%, admin 90%, pictograms 0%
