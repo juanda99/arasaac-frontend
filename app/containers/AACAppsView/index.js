@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import View from 'components/View'
-import AACUsers from 'components/AACUsers'
 import ReadMargin from 'components/ReadMargin'
-class IntroUsersAAC extends Component {
+import AACApps from '../../components/AACApps'
+class AACAppsView extends Component {
   render() {
     return (
       <View left={true} right={true}>
         <ReadMargin>
-          <AACUsers />
+          <AACApps />
         </ReadMargin>
       </View>
     )
   }
 }
 
-export default IntroUsersAAC
+export default AACAppsView

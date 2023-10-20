@@ -193,36 +193,10 @@ class Menu extends Component {
           />
 
           <ListItem
-            id="lstsoftware"
-            primaryText={
-              <span>
-                <FormattedMessage {...messages.software} />
-              </span>
-            }
-            primaryTogglesNestedList={true}
-            leftIcon={<PictogramsIcon />}
-            nestedItems={[
-              <ListItem
-                onClick={() => this.handleLink('https://grid.asterics.eu/')}
-                primaryText={<FormattedMessage {...messages.asTerIk} />}
-                leftIcon={<AstericsIcon />}
-              />,
-              <ListItem
-                onClick={() =>
-                  this.handleLink('https://www.pictogramagenda.es/')
-                }
-                primaryText="PictogramAgenda"
-                leftIcon={<PictogramAgendaIcon />}
-              />,
-              <ListItem
-                id="lstonlinetools"
-                onClick={() =>
-                  this.handleLink('http://old.arasaac.org/herramientas.php')
-                }
-                primaryText={<FormattedMessage {...messages.onlineTools} />}
-                leftIcon={<AppsIcon />}
-              />,
-            ]}
+            id="lstapps"
+            value="/aac-apps"
+            primaryText="AAC apps"
+            leftIcon={<AppsIcon />}
           />
 
           {showLSE && (
