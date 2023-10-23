@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import RaisedButton from 'material-ui/RaisedButton'
 import H2 from 'components/H2'
 import P from 'components/P'
-import PictogramTitle from '../BoxTitle'
+import CenterDiv from './CenterDiv'
 import { IMAGES_URL } from 'services/config'
 
 const styles = {
@@ -24,14 +24,14 @@ class AppItem extends Component {
         <H2 primary={true}>{title}</H2>
 
         <Img src={`${IMAGES_URL}/apps/${img}`} />
-        <PictogramTitle>
+        <CenterDiv>
           <RaisedButton
             label="Ver tutorial"
             style={styles.button}
             secondary={true}
           />
           <RaisedButton primary={true} label="Acceder" style={styles.button} />
-        </PictogramTitle>
+        </CenterDiv>
         <P justify>{desc}</P>
       </Item>
     )

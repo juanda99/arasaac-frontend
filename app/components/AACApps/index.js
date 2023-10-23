@@ -45,8 +45,8 @@ const AACApps = ({ intl }) => {
             bingos, ocas o dominós, y recursos relacionados con la organización
             del tiempo como horarios o calendarios."
           img="arasaac-apps.jpg"
-          tutorialUrl="https://www.youtube.com/watch?v=Z3Z4Z3Z3Z3Z"
-          appUrl="https://catedu.gitbooks.io/arasaac/content/"
+          tutorialUrl="https://aulaabierta.arasaac.org/herramientas-online-arasaac"
+          appUrl="http://old.arasaac.org/herramientas.php"
         />
         <AppItem
           title="PictogramAgenda"
@@ -55,8 +55,8 @@ const AACApps = ({ intl }) => {
             Android e iOS. Permite configurar y ordenar una secuencia de
             imágenes o pictogramas que formarán la agenda visual."
           img="pictogram-agenda.jpg"
-          tutorialUrl="https://www.youtube.com/watch?v=Z3Z4Z3Z3Z3Z"
-          appUrl="https://catedu.gitbooks.io/arasaac/content/"
+          tutorialUrl="https://aulaabierta.arasaac.org/pictogramagenda-0-inicio"
+          appUrl="https://www.pictogramagenda.es/"
         />
         <AppItem
           title="AsTeRICS GRID"
@@ -67,8 +67,8 @@ const AACApps = ({ intl }) => {
             de la UAS Technikum Wien y la Fundación Asterics con sede en Viena
             (Austria)."
           img="asterics-grid.jpg"
-          tutorialUrl="https://www.youtube.com/watch?v=Z3Z4Z3Z3Z3Z"
-          appUrl="https://catedu.gitbooks.io/arasaac/content/"
+          tutorialUrl="https://aulaabierta.arasaac.org/asterics-grid_inicio"
+          appUrl="https://grid.asterics.eu/"
         />
         <AppItem
           title="SequenciAAC"
