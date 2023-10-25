@@ -29,8 +29,14 @@ class AppItem extends Component {
             label="Ver tutorial"
             style={styles.button}
             secondary={true}
+            onClick={() => window.open(tutorialUrl, '_blank')}
           />
-          <RaisedButton primary={true} label="Acceder" style={styles.button} />
+          <RaisedButton
+            primary={true}
+            label="Acceder"
+            style={styles.button}
+            onClick={() => window.open(appUrl, '_blank')}
+          />
         </CenterDiv>
         <P justify>{desc}</P>
       </Item>

@@ -76,8 +76,8 @@ const AACApps = ({ intl }) => {
             imprimir secuencias visuales para la comprensión, anticipación y
             ejecución de actividades y tareas de la vida cotidiana."
           img="sequenciAAC.jpg"
-          tutorialUrl="https://www.youtube.com/watch?v=Z3Z4Z3Z3Z3Z"
-          appUrl="https://catedu.gitbooks.io/arasaac/content/"
+          tutorialUrl="https://aulaabierta.arasaac.org/sequenciaac"
+          appUrl="https://sequenciaac.arasaac.org/"
         />
       </Masonry>
       <p></p>
