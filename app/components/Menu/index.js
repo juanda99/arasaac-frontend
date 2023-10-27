@@ -17,6 +17,7 @@ import SearchIcon from 'material-ui/svg-icons/action/search'
 import ToolsIcon from 'material-ui/svg-icons/action/build'
 import SchoolIcon from 'material-ui/svg-icons/social/school'
 import AACUsersIcon from './AACUsersIcon'
+import SequenciIcon from './SequenciIcon'
 import AppsIcon from 'material-ui/svg-icons/navigation/apps'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import LSEIcon from './LSEIcon'
@@ -192,12 +193,50 @@ class Menu extends Component {
             ]}
           />
 
+
           <ListItem
             id="lstapps"
             value="/aac-apps"
             primaryText="AAC apps"
+            primaryTogglesNestedList={true}
             leftIcon={<AppsIcon />}
+            nestedItems={[
+              <ListItem
+                onClick={() => this.handleLink('https://grid.asterics.eu/')}
+                primaryText={<FormattedMessage {...messages.asTerIk} />}
+                leftIcon={<AstericsIcon />}
+              />,
+              <ListItem
+                onClick={() =>
+                  this.handleLink('https://www.pictogramagenda.es/')
+                }
+                primaryText="PictogramAgenda"
+                leftIcon={<PictogramAgendaIcon />}
+              />,
+              <ListItem
+              id="lstsequence"
+              onClick={() =>
+                this.handleLink('https://sequenciaac.arasaac.org/')
+              }
+              primaryText="SequenciAAC"
+              leftIcon={<SequenciIcon />}
+            />,
+              <ListItem
+                id="lstonlinetools"
+                onClick={() =>
+                  this.handleLink('http://old.arasaac.org/herramientas.php')
+                }
+                primaryText={<FormattedMessage {...messages.onlineTools} />}
+                leftIcon={<AppsIcon />}
+              />,
+
+            ]}
           />
+
+
+
+
+
 
           {showLSE && (
             <ListItem
