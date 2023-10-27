@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import View from 'components/View'
 import ReadMargin from 'components/ReadMargin'
-import AACApps from '../../components/AACApps'
+import AACApps from 'components/AACApps'
 class AACAppsView extends Component {
   render() {
     return (

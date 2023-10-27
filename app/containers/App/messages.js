@@ -26,6 +26,11 @@ export default defineMessages({
     description: 'Header title',
     defaultMessage: 'What is AAC?',
   },
+  aacApps: {
+    id: 'header.aacApps',
+    description: 'Header title',
+    defaultMessage: 'AAC Apps',
+  },
   materialsSearch: {
     id: 'header.materialsSearch',
     description: 'Header title',
