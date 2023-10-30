@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { injectIntl } from 'react-intl'
 import Item from 'components/AACUsage/Item'
 import Img from 'components/AACUsage/Img'
 import PropTypes from 'prop-types'
@@ -7,6 +8,7 @@ import H2 from 'components/H2'
 import P from 'components/P'
 import CenterDiv from './CenterDiv'
 import { IMAGES_URL } from 'services/config'
+import messages from './messages'
 
 const styles = {
   button: {
@@ -18,22 +20,25 @@ const styles = {
 
 class AppItem extends Component {
   render() {
-    const { title, desc, img, tutorialUrl, appUrl } = this.props
+    const { title, desc, img, tutorialUrl, appUrl, intl } = this.props
     return (
       <Item>
         <H2 primary={true}>{title}</H2>
 
-        <Img src={`${IMAGES_URL}/apps/${img}`} />
+        <Img
+          src={`${IMAGES_URL}/apps/${img}`}
+          onClick={() => window.open(appUrl, '_blank')}
+        />
         <CenterDiv>
           <RaisedButton
-            label="Ver tutorial"
+            label={intl.formatMessage(messages.showTutorial)}
             style={styles.button}
             secondary={true}
             onClick={() => window.open(tutorialUrl, '_blank')}
           />
           <RaisedButton
             primary={true}
-            label="Acceder"
+            label={intl.formatMessage(messages.access)}
             style={styles.button}
             onClick={() => window.open(appUrl, '_blank')}
           />
@@ -52,4 +57,4 @@ AppItem.propTypes = {
   appUrl: PropTypes.string.isRequired,
 }
 
-export default AppItem
+export default injectIntl(AppItem)
