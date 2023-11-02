@@ -165,8 +165,8 @@ export default defineMessages({
     description: 'Menu item',
     defaultMessage: 'About us',
   },
-  aacApps: {
-    id: 'menu.aacApps',
+  aacApp: {
+    id: 'menu.aacApp',
     description: 'AAC Apps',
     defaultMessage: 'AAC Apps',
   },
