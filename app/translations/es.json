@@ -724,6 +724,7 @@
   "loginView.authentication": "Error de autenticación",
   "loginView.communicationError": "No se puede acceder al servidor de autenticación",
   "loginView.invalidUser": "Usuario o contraseña erróneo",
+  "menu.aacApp": "Software CAA",
   "menu.aacUsers": "Usuarios de SAAC",
   "menu.api": "API para desarrolladores",
   "menu.arasaacWorld": "ARASAAC en el mundo",
