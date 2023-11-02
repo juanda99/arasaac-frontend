@@ -196,7 +196,7 @@ class Menu extends Component {
           <ListItem
             id="lstapps"
             value="/aac-apps"
-            primaryText="AAC apps"
+            primaryText={<FormattedMessage {...messages.aacApps} />}
             primaryTogglesNestedList={true}
             leftIcon={<AppsIcon />}
             nestedItems={[
