@@ -17,6 +17,7 @@ import SearchIcon from 'material-ui/svg-icons/action/search'
 import ToolsIcon from 'material-ui/svg-icons/action/build'
 import SchoolIcon from 'material-ui/svg-icons/social/school'
 import AACUsersIcon from './AACUsersIcon'
+import SequenciIcon from './SequenciIcon'
 import AppsIcon from 'material-ui/svg-icons/navigation/apps'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import LSEIcon from './LSEIcon'
@@ -193,19 +194,24 @@ class Menu extends Component {
           />
 
           <ListItem
-            id="lstsoftware"
-            primaryText={
-              <span>
-                <FormattedMessage {...messages.software} />
-              </span>
-            }
+            id="lstapps"
+            value="/aac-apps"
+            primaryText="AAC apps"
             primaryTogglesNestedList={true}
-            leftIcon={<PictogramsIcon />}
+            leftIcon={<AppsIcon />}
             nestedItems={[
               <ListItem
                 onClick={() => this.handleLink('https://grid.asterics.eu/')}
                 primaryText={<FormattedMessage {...messages.asTerIk} />}
                 leftIcon={<AstericsIcon />}
+              />,
+              <ListItem
+                id="lstsequence"
+                onClick={() =>
+                  this.handleLink('https://sequenciaac.arasaac.org/')
+                }
+                primaryText="SequenciAAC"
+                leftIcon={<SequenciIcon />}
               />,
               <ListItem
                 onClick={() =>
@@ -214,6 +220,7 @@ class Menu extends Component {
                 primaryText="PictogramAgenda"
                 leftIcon={<PictogramAgendaIcon />}
               />,
+
               <ListItem
                 id="lstonlinetools"
                 onClick={() =>

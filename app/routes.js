@@ -369,6 +369,15 @@ export default function createRoutes(store) {
       },
     },
     {
+      path: '/aac-apps',
+      name: 'AACAppsView',
+      getComponent(location, cb) {
+        import('containers/AACAppsView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
       path: '/profile',
       name: 'profileView',
       getComponent(nextState, cb) {

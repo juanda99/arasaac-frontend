@@ -175,6 +175,9 @@ class App extends Component {
     const url = this.props.location.pathname
     if (url === '/') docked = false
     switch (true) {
+      case /aac-apps/.test(url):
+        title = <FormattedMessage {...messages.aacApps} />
+        break
       case /pictograms\/search/.test(url):
         title = <FormattedMessage {...messages.pictogramsSearch} />
         break
@@ -279,6 +282,7 @@ class App extends Component {
       case /lse/.test(url):
         title = 'Lengua de  signos'
         break
+
       default:
         docked = false
         break
