@@ -193,7 +193,6 @@ class Menu extends Component {
             ]}
           />
 
-
           <ListItem
             id="lstapps"
             value="/aac-apps"
@@ -207,20 +206,21 @@ class Menu extends Component {
                 leftIcon={<AstericsIcon />}
               />,
               <ListItem
+                id="lstsequence"
+                onClick={() =>
+                  this.handleLink('https://sequenciaac.arasaac.org/')
+                }
+                primaryText="SequenciAAC"
+                leftIcon={<SequenciIcon />}
+              />,
+              <ListItem
                 onClick={() =>
                   this.handleLink('https://www.pictogramagenda.es/')
                 }
                 primaryText="PictogramAgenda"
                 leftIcon={<PictogramAgendaIcon />}
               />,
-              <ListItem
-              id="lstsequence"
-              onClick={() =>
-                this.handleLink('https://sequenciaac.arasaac.org/')
-              }
-              primaryText="SequenciAAC"
-              leftIcon={<SequenciIcon />}
-            />,
+
               <ListItem
                 id="lstonlinetools"
                 onClick={() =>
@@ -229,14 +229,8 @@ class Menu extends Component {
                 primaryText={<FormattedMessage {...messages.onlineTools} />}
                 leftIcon={<AppsIcon />}
               />,
-
             ]}
           />
-
-
-
-
-
 
           {showLSE && (
             <ListItem

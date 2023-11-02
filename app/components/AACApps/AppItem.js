@@ -24,23 +24,19 @@ class AppItem extends Component {
     return (
       <Item>
         <H2 primary={true}>{title}</H2>
-
-        <Img
-          src={`${IMAGES_URL}/apps/${img}`}
-          onClick={() => window.open(appUrl, '_blank')}
-        />
+        <a href={appUrl} target="_black">
+          <Img src={`${IMAGES_URL}/apps/${img}`} />
+        </a>
         <CenterDiv>
           <RaisedButton
-            label={intl.formatMessage(messages.showTutorial)}
+            label={intl.formatMessage(messages.tutorial)}
             style={styles.button}
             secondary={true}
-            onClick={() => window.open(tutorialUrl, '_blank')}
           />
           <RaisedButton
             primary={true}
-            label={intl.formatMessage(messages.access)}
+            label={intl.formatMessage(messages.open)}
             style={styles.button}
-            onClick={() => window.open(appUrl, '_blank')}
           />
         </CenterDiv>
         <P justify>{desc}</P>

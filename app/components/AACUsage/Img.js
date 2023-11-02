@@ -5,9 +5,9 @@ const Img = styled.img`
   height: auto;
   padding: 5px;
   margin-bottom: 10px;
-  border: solid 1px #EFEFEF;
+  border: solid 1px #efefef;
   &:hover {
-    border: solid 1px #CCC;
+    border: solid 1px #ccc;
     box-shadow: 1px 1px 5px #999;
   }
 `

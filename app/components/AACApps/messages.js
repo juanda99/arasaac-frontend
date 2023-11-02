@@ -31,12 +31,12 @@ export default defineMessages({
     id: `${scope}.desc`,
     defaultMessage: `AAC software applications used by people with communication difficulties. Communication boards, visual schedules, dynamic communicators, etc.`,
   },
-  access: {
-    id: `${scope}.access`,
-    defaultMessage: `Access`,
+  open: {
+    id: `${scope}.open`,
+    defaultMessage: `Open`,
   },
-  showTutorial: {
-    id: `${scope}.showTutorial`,
-    defaultMessage: `Show tutorial`,
+  tutorial: {
+    id: `${scope}.tutorial`,
+    defaultMessage: `Tutorial`,
   },
 })
