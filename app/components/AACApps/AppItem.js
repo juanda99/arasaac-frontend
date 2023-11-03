@@ -32,11 +32,13 @@ class AppItem extends Component {
             label={intl.formatMessage(messages.tutorial)}
             style={styles.button}
             secondary={true}
+            onClick={() => window.open(tutorialUrl, '_blank')}
           />
           <RaisedButton
             primary={true}
             label={intl.formatMessage(messages.open)}
             style={styles.button}
+            onClick={() => window.open(appUrl, '_blank')}
           />
         </CenterDiv>
         <P justify>{desc}</P>
