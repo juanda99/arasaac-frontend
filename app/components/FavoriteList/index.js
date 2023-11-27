@@ -10,7 +10,7 @@ import ListSnippet from './ListSnippet'
 
 const Masonry = require('react-masonry-component')
 const masonryOptions = {
-  transitionDuration: '1s'
+  transitionDuration: '1s',
 }
 
 const styles = {
@@ -19,16 +19,15 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     flexGrow: 2,
-    justifyContent: 'space-around'
-  }
+    justifyContent: 'space-around',
+  },
 }
 
 export class FavoriteList extends React.Component {
-
   handleDeleteFavorite = (fileName) => {
     const { onDeleteFavorite, selectedList } = this.props
     onDeleteFavorite(fileName, selectedList)
-  };
+  }
 
   render() {
     const {
@@ -40,12 +39,12 @@ export class FavoriteList extends React.Component {
       onSelect,
       onRename,
       onDrop,
+      locale,
       listPictograms,
-      onDownloadList
+      onDownloadList,
     } = this.props
     let renderLists
     /* if not authenticated item.keys is undefined and should not render anything */
-
 
     const [...lists] = items.keys()
 
@@ -79,17 +78,17 @@ export class FavoriteList extends React.Component {
         />
       )
     }
-    const renderPictograms = listPictograms.map((pictogram) =>
+    const renderPictograms = listPictograms.map((pictogram) => (
       <DragPictogramSnippet
         pictogram={pictogram}
-        locale={'es'}
+        locale={locale}
         key={pictogram._id}
         showExtra={width === LARGE}
         onDrop={onDrop}
         onDelete={this.handleDeleteFavorite}
         onDownload={onDownload}
       />
-    )
+    ))
 
     return (
       <div>
@@ -105,11 +104,11 @@ export class FavoriteList extends React.Component {
             {renderPictograms}
           </Masonry>
         ) : (
-            <ul>
-              {renderLists}
-              {renderPictograms}
-            </ul>
-          )}
+          <ul>
+            {renderLists}
+            {renderPictograms}
+          </ul>
+        )}
         <CustomDragLayer />
       </div>
     )
@@ -127,7 +126,8 @@ FavoriteList.propTypes = {
   onRename: PropTypes.func.isRequired,
   selectedList: PropTypes.string.isRequired,
   onDrop: PropTypes.func.isRequired,
-  onDeleteFavorite: PropTypes.func.isRequired
+  onDeleteFavorite: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
 }
 
 export default withWidth()(DragDropContext(HTML5Backend)(FavoriteList))
