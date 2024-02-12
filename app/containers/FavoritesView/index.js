@@ -141,6 +141,7 @@ class FavoritesView extends PureComponent {
       favoritePictograms,
       intl,
       loading,
+      locale,
     } = this.props
     const { formatMessage } = intl
     return (
@@ -167,6 +168,7 @@ class FavoritesView extends PureComponent {
           {favoritePictograms && !loading && (
             <FavoriteList
               items={favorites}
+              locale={locale}
               onSelect={this.handleFavoriteListSelect}
               selectedList={selectedList}
               onDelete={this.handleDeleteList}
