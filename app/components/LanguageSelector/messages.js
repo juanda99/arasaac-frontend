@@ -188,6 +188,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Czech',
   },
+  da: {
+    id: 'app.components.LanguageSelector.da',
+    description: 'Select language',
+    defaultMessage: 'Dansk',
+  },
   translateOnline: {
     id: 'app.components.LanguageSelector.translateOnline',
     description: 'Select language',

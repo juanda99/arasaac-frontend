@@ -87,6 +87,14 @@ const languages = [
     translated: false,
     needTranslators: true,
   },
+  // DA - DENMARK
+  // SEP 24:
+  {
+    code: 'da',
+    text: 'Danish',
+    translated: false,
+    needTranslators: true,
+  },
   // DE
   // FEB: web 44%, admin 0%, pictograms 0%
   // MARCH: // web 77%, admin 90%, pictograms 0%
