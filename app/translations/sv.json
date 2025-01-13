@@ -459,5 +459,8 @@
   "app.components.aacusage.p2": "Symboler används både med pappersbaserad AKK och avancerade samtals-hjälpmedel för att utforma kommunikationsupplägg på vilket användaren väljer önskad symbol på olika sätt (direktpekning, kontakter, huvudmus, ögonstyrning...).",
   "app.components.aacusage.p3": "Ett bildschema består av uppgifter och aktiviteter arrangerade i den ordningsföljd de sker i förhållande till varandra. Syftet är att förtydliga rutiner både i och utanför skolan för användaren. Målet är att minska oro och oönskade beteenden och förbättra förutsättningarna för inlärning.",
   "app.components.aacusage.p4": "I vårdsammanhang kan bildscheman användas för att förbereda inför kontakt med sjukvården och förklara vad som kommer att hända i syfte att minska ängsla inför en behandling.",
-  "app.components.aacusage.p5": "Bildscheman hjälper barn med särskilda behov att förstå vad som kommer att hända härnäst och vart man är på väg (övergångar)."
+  "app.components.aacusage.p5": "Bildscheman hjälper barn med särskilda behov att förstå vad som kommer att hända härnäst och vart man är på väg (övergångar).",
+  "app.components.aacusage.p6": "Bildbaserade scheman ger barn ökar barns självständighet och motivation genom att tydliggöra vad som kommer att hända i olika sitautioner och sammanhang.",
+  "app.components.aacusage.p7": "Sociala berättelser är ett text- och symbolbaserat verktyg som beskriver och förklarar olika färdigheter och beteenden, specifika händelser och sociala situationer på ett pedagogiskt sätt. Dessa berättelser syftar till ökad förståelse för hur de kan agera i dessa sammanhang.",
+  "app.components.aacusage.p8": "Personer med särskilda behov kan ha svårigheter att förstå och kontrollera sociala situationer, sina känslor och sina beteenden. Detta kan ge upphov till beteenden som inte är önskvärda, adekvata och är problematiska..."
 }
