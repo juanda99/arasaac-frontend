@@ -399,6 +399,12 @@ const languages = [
     translated: false,
     needTranslators: true,
   },
+  {
+    code: 'tr',
+    text: 'Türkçe',
+    translated: false,
+    needTranslators: true,
+  },
   // Ukranian
   // JAN'23: web 99%, admin 71%, pictos 0%
   {
