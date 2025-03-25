@@ -6,7 +6,9 @@
   "app.component.MaterialConditions.translationQuoteDesc": "மொழிபெயர்க்கப்பட்ட பொருளைப் பொறுத்தவரை, மொழிபெயர்ப்பாளரின் பெயர் மேற்கோளின் முடிவில் சேர்க்கப்படும்:",
   "app.components.Catalog.confirmLicense": "ARASAAC உரிம ஒப்பந்தத்தின் விதிமுறைகளைப் படித்து ஏற்றுக்கொண்டேன்",
   "app.components.CategorySnippet.deleteList": "கோப்புறையை அழிக்கவும்",
+  "app.components.CategorySnippet.download": "கோப்புறையைப் பதிவிறக்குக",
   "app.components.Filters.Activity.kitchenRecipes": "சமையல் குறிப்புகள்",
   "app.components.Filters.Activity.lim": "LIM",
-  "app.components.Filters.Area.basicOperations": "அடிப்படை செயல்பாடுகள்"
+  "app.components.Filters.Area.basicOperations": "அடிப்படை செயல்பாடுகள்",
+  "app.components.Filters.Area.behaviour": "நடத்தை"
 }
