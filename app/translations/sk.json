@@ -1,5 +1,5 @@
 {
-  "Login.invalidEmail": "Neplatný email",
+  "Login.invalidEmail": "Neplatný e-mail",
   "Login.invalidUrl": "Neplatná webová adresa",
   "Login.required": "Pole je povinné",
   "NewPasswordForm.hintNewPassword": "Aké heslo si vyberiete?",
