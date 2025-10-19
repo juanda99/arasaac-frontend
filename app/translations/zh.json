@@ -1,3 +1,4 @@
 {
-  "activate.expiredCode": "您的啟動碼已過期，我們已向您發送了新郵件以驗證帳戶"
+  "activate.expiredCode": "您的啟動碼已過期，我們已向您發送了新郵件以驗證帳戶",
+  "app.component.MaterialConditions.requirementsP1": "於本節發布之素材須包含來自 ARASAAC 圖庫或其任何衍生作品之溝通符號。"
 }
