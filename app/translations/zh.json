@@ -7,5 +7,6 @@
   "app.component.MaterialConditions.requirementsP2": "材料基於知識共享授權協議BY-NC-SA發布，即材料來源和作者授權允許將其用於非營利目的，並在該協議基礎上進行分享。",
   "app.component.MaterialConditions.suggestionsDesc": "鑑於 ARASAAC 為一協作性國際計畫，若您認為合適，我們建議您不僅提供閱讀/檢視格式（如 pdf, pps, ppsx 等）檔案，亦同時提供可編輯格式（如 doc, docx, ppt, pptx, odf, pszip 等）檔案，以便利翻譯成其他語言及因應使用者特性進行調整。此類可編輯檔案同樣受我們的創用Creative Commons 授權條款所保護。",
   "app.components.Catalog.confirmLicense": "我已閱讀並接受ARASAAC許可證協議的條款",
-  "app.components.Filters.Activity.roulette": ""
+  "app.components.Filters.Activity.roulette": "",
+  "app.components.Filters.Activity.routine": "常規"
 }
