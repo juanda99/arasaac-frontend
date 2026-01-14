@@ -20,6 +20,7 @@ const languages = [
   // SEP: web 99%, admin: 96%,  pictos: 2,6%
   // DIC: web 99%, admin: 96%,  pictos: 2,8%
   // JAN'23: web 98%, admin 95%, pictos 2,75%
+  // JUN'24: web 97%, admin 96%, pictos 2.8%
   {
     code: 'ar',
     text: 'عربى',
@@ -34,6 +35,7 @@ const languages = [
   // SEP: web 98%,  admin 99%, pictos 88%
   // DIC: web 99%, admin: 99%,  pictos: 100%
   // JAN'23: web 99%, admin 99%, pictos 99%
+  // JUN'24: web 100%, admin 100%, pictos 97.6%
   {
     code: 'an',
     text: 'Aragonés',
@@ -48,6 +50,7 @@ const languages = [
   // SEP: web 99%,  admin 99%, pictos 23%
   // DEC: web 99%,  admin 99%, pictos 59%
   // JAN'23: web 98%, admin 99%, pictos 56%
+  // JUN'24: web 97%, admin 98%, pictos 55%
   {
     code: 'bg',
     text: 'български',
@@ -61,6 +64,7 @@ const languages = [
   // SEP: web 99%,  admin 99%, pictos 99%
   // DEC: web 99%,  admin 99%, pictos 97%
   // JAN'23: web 100%, admin 100%, pictos 99%
+  // JUN'24: web 100%, admin 100%, pictos 99.7%
   {
     code: 'br',
     text: 'Português do Brasil',
@@ -74,13 +78,15 @@ const languages = [
   // SEP: =
   // DEC: =
   // JAN'23: web 100%, admin 100%, pictos 99%
+  // JUN'24: web 99%, admin 100%, pictos 99%
   {
     code: 'ca',
     text: 'Català',
     translated: true,
     needTranslators: false,
   },
-
+  // CS - CZECH
+  // JUN 24: web 100%, admin 100%, pictos 10%
   {
     code: 'cs',
     text: 'Čeština',
@@ -102,6 +108,7 @@ const languages = [
   // SEP:  =
   // DEC: web 99%,  admin 89%, pictos 25%
   // JAN'23: web 98%, admin 89%, pictos 99%
+  // JUN'24: web 97%, admin 88%, pictos 99.7%
   {
     code: 'de',
     text: 'Deutsche',
@@ -115,6 +122,7 @@ const languages = [
   // SEP: web 96%,  admin 99%, pictos 19%
   // DEC: web 95%,  admin 99%, pictos 19%
   // JAN'23: web 93%, admin 98%, pictos 17%
+  // JUN'24: web 92%, admin 98%, pictos 17%
   {
     code: 'et',
     text: 'Eestlane',
@@ -129,6 +137,7 @@ const languages = [
   // SEP: =
   // DEC: =
   // JAN'23: web 99%, admin 99%, pictos 96%
+  // JUN'24: web 98%, admin 99%, pictos 94%
   {
     code: 'eu',
     text: 'Euskal',
@@ -139,6 +148,7 @@ const languages = [
   // MARCH: web 25%, admin 0%, pictos 0%
   // APRIL: web 25%, admin 0%, pictos 0%
   // JAN'23: web 99%, admin 71%, pictos 8%
+  // JUN'24: web 98%, admin 71%, pictos 100%
   {
     code: 'fa',
     text: 'فارسی',
@@ -153,6 +163,7 @@ const languages = [
   // SEP: web 99%,  admin 100%, pictos 99%
   // DEC: =
   // JAN'23: web 97%, admin 99%, pictos 99%
+  // JUN'24: web 95%, admin 99%, pictos 99.5%
   {
     code: 'fr',
     text: 'Français',
@@ -166,6 +177,8 @@ const languages = [
   // JUN: =
   // DEC: web 100%, admin 100%, pictos 89%
   // JAN'23: web 100%, admin 100%, pictos 93%
+  // JUN'24: web 100%, admin 100%, pictos 99.8%
+
   {
     code: 'gl',
     text: 'Galego',
@@ -179,6 +192,7 @@ const languages = [
   // SEP: =
   // DEC: web 100%, admin 100%, pictos 100%
   // JAN'23: web 100%, admin 100%, pictos 99%
+  // JUN'24: web 100%, admin 100%, pictos 100%
   {
     code: 'he',
     text: 'עברי', // hebreo
@@ -192,6 +206,7 @@ const languages = [
   // JUNE: web 96%, admin 99%, pictos 30%
   // DEC: web 97%, admin 99%, pictos 54%
   // JAN'23: web 99%, admin 99%, pictos 86%
+  // JUN'24: web 98%, admin 98%, pictos 100%
   {
     code: 'hr',
     text: 'Hrvatski',
@@ -205,6 +220,7 @@ const languages = [
   // JUNE: =
   // DEC: web 97%, admin 100%, pictos 53%
   // JAN'23: web 99%, admin 100%, pictos 52%
+  // JUN'24: web 99%, admin 100%, pictos 52%
   {
     code: 'hu',
     text: 'Magyar',
@@ -218,6 +234,7 @@ const languages = [
   // JUNE: web 100%,  admin 100%, pictos 100%
   // DEC: web 100%, admin 100%, pictos 97%
   // JAN'23: web 99%, admin 100%, pictos 98%
+  // JUN'24: web 100%, admin 100%, pictos 96%
   {
     code: 'it',
     text: 'Italiano',
@@ -227,6 +244,7 @@ const languages = [
   // KO
   // DEC: web 96%, admin 70%, pictos 0%
   // JAN'23: web 99%, admin 70%, pictos 78%
+  // JUN'24: web 98%, admin 98%, pictos 76%
   {
     code: 'ko',
     text: '한국어',
@@ -236,6 +254,7 @@ const languages = [
   // LT - Lithuanian
   // DEC:
   // JAN'23: web 99%, admin 1%, pictos 10%
+  // JUN'24: web 100%, admin 1%, pictos 11%
   {
     code: 'lt',
     text: 'Lietuvių',
@@ -245,6 +264,7 @@ const languages = [
   // -LV - Letón
   // first on March 2022
   // JAN'23: web 99%, admin 80%, pictos 0%
+  // JUN'24: web 98%, admin 100%, pictos 0%
   {
     code: 'lv',
     text: 'Latviski',
@@ -258,6 +278,7 @@ const languages = [
   // JUNE: =
   // DEC: =
   // JAN'23: web 99%, admin 100%, pictos 31%
+  // JUN'24: web 99%, admin 100%, pictos 31%
   {
     code: 'mk',
     text: 'Македонски',
@@ -270,6 +291,7 @@ const languages = [
   // APRIL: =
   // DEC: =
   // JAN'23: web 54%, admin 46%, pictos 0%
+  // JUN'24: web 63%, admin 46%, pictos 0%
   {
     code: 'el',
     text: 'Ελληνικά',
@@ -292,6 +314,7 @@ const languages = [
   // JUNE: web 100%, admin 100%, pictos 2%
   // DEC: web 100%, admin 100%, pictos 8%
   // JAN'23: web 98%, admin 99%, pictos 10%
+  // JUN'24: web 99%, admin 100%, pictos 10%
   {
     code: 'nl',
     text: 'Nederlands',
@@ -304,6 +327,7 @@ const languages = [
   // APRIL: =
   // DEC: =
   // JAN'23: web 99%, admin 100%, pictos 98%
+  // JUN'24: web 99%, admin 100%, pictos 97%
   {
     code: 'pl',
     text: 'Polski',
@@ -316,6 +340,7 @@ const languages = [
   // APRIL: =
   // DEC: web 100%, admin 100%, pictos 96%
   // JAN'23: web 100%, admin 100%, pictos 96%
+  // JUN'24: web 100%, admin 100%, pictos 97%
   {
     code: 'pt',
     text: 'Português',
@@ -329,6 +354,7 @@ const languages = [
   // JUNE: web 47%, admin 6%, pictos 21%
   // DEC: =
   // JAN'23: web 47%, admin 6%, pictos 19%
+  // JUN'24: web 55%, admin 6%, pictos 20%
   {
     code: 'ro',
     text: 'Română',
@@ -343,25 +369,29 @@ const languages = [
   // SEP: web 99%, admin 99%, pictos 27%
   // DEC: web 100%, admin 99%, pictos 29%
   // JAN'23: web 99%, admin 99%, pictos 30%
+  // JUN'24: web 100%, admin 100%, pictos 37%
   {
     code: 'ru',
     text: 'Pусский',
     translated: false,
     needTranslators: true,
   },
-  // SK
+  // SK - SLOVAK
   // FEB:  web 0%, admin 0%, pictos  0%
   // MARCH: web 0%, admin 0%, pictos  0%
   // APRIL: =
   // JUNE: web 19%, admin 0%, pictos  0%
   // DEC: =
   // JAN'23: web 18%, admin 0%, pictos 0%
+  // JUN'24: web 18%, admin 0%, pictos 0%
   {
     code: 'sk',
     text: 'Slovenský',
     translated: false,
     needTranslators: true,
   },
+  // SL - SLOVENIAN
+  // JUN'24: web 100%, admin 100%, pictos  9%
   {
     code: 'sl',
     text: 'Slovenščina',
@@ -374,6 +404,7 @@ const languages = [
   // APRIL: =
   // DEC: web 94%, admin 94%, pictos 0%
   // JAN'23: web 93%, admin 93%, pictos 0%
+  // JUN'24: web 92%, admin 93%, pictos 0%
   {
     code: 'sq',
     text: 'Shqip',
@@ -385,6 +416,7 @@ const languages = [
   // MARCH: web 0%, admin 0%, pictos  0%
   // APRIL: =
   // JAN'23: web 0%, admin 0%, pictos 0%
+  // JUN'24: web: 33%, admin: 0%, pictos: 0%
 
   // SR  - SERBIAN
   // FEB:  web 0%, admin 0%, pictos  0%
@@ -393,6 +425,7 @@ const languages = [
   // SEP: web 99%, admin 71%, pictos 0%
   // DEC: =
   // JAN'23: web 98%, admin 70%, pictos 42%
+  // JUN'24: web 98%, admin 70%, pictos 63%
   {
     code: 'sr',
     text: 'Српски',
@@ -407,6 +440,7 @@ const languages = [
   },
   // Ukranian
   // JAN'23: web 99%, admin 71%, pictos 0%
+  // JUN'24: web 98%, admin 71%, pictos 0%
   {
     code: 'uk',
     text: 'Yкраїнська',
@@ -419,6 +453,7 @@ const languages = [
   // APRIL:  =
   // DEC: web 74%, admin 95%, pictos 90%
   // JAN'23: web 99%, admin 99%, pictos 85%
+  // JUN'24: web 98%, admin 99%, pictos 83%
   {
     code: 'val',
     text: 'Valencia',
@@ -431,6 +466,7 @@ const languages = [
   // APRIL: =
   // DEC: web 31%, admin 0%, pictos 0%
   // JAN'23: web 100%, admin 100%, pictos 8%
+  // JUN'24: web 99%, admin 100%, pictos 20%
   {
     code: 'zh',
     text: '简体中文）',

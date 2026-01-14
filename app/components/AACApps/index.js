@@ -123,6 +123,24 @@ const arasaacUrl = (locale) => {
   return url
 }
 
+const araWriteUrl = (locale) => {
+  let url = ''
+  switch (locale) {
+    case 'ca':
+    case 'es':
+    case 'an':
+    case 'val':
+    case 'gl':
+    case 'eu':
+      url = 'https://aulaabierta.arasaac.org/arawrite_inicio'
+      break
+    default:
+      url = 'https://aulaabierta.arasaac.org/arawrite_inicio'
+      break
+  }
+  return url
+}
+
 const styles = {
   masonry: {
     listStyleType: 'none',
@@ -155,6 +173,13 @@ const AACApps = ({ intl, locale }) => {
         style={styles.masonry}
       >
         <AppItem
+          title="AraWrite"
+          desc={intl.formatMessage(messages.araWrite)}
+          img="AraWrite.jpg"
+          tutorialUrl={araWriteUrl(locale)}
+          appUrl="https://arawrite.arasaac.org"
+        />
+        <AppItem
           title="AsTeRICS GRID"
           desc={intl.formatMessage(messages.astericsGrid)}
           img="asterics-grid.jpg"
@@ -176,6 +201,7 @@ const AACApps = ({ intl, locale }) => {
           tutorialUrl={pictogramAgendaUrl(locale)}
           appUrl="https://www.pictogramagenda.es/"
         />
+
         <AppItem
           title={intl.formatMessage(messages.onlineToolsTitle)}
           desc={intl.formatMessage(messages.onlineTools)}

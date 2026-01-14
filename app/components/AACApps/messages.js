@@ -39,4 +39,8 @@ export default defineMessages({
     id: `${scope}.tutorial`,
     defaultMessage: `Tutorial`,
   },
+  araWrite: {
+    id: `${scope}.araWrite`,
+    defaultMessage: `AraWrite is a free web application that translates phrases into pictograms to support people with communication and cognitive accessibility needs.`,
+  },
 })
