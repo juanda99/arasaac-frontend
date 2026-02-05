@@ -42,6 +42,7 @@ import PrizeIcon from './PrizeIcon'
 import WorldIcon from './WorldIcon'
 import AstericsIcon from './AstericsIcon'
 import PictogramAgendaIcon from './PictogramAgendaIcon'
+import AraWriteIcon from './AraWriteIcon'
 
 const SelectableList = makeSelectable(List)
 
@@ -200,6 +201,12 @@ class Menu extends Component {
             primaryTogglesNestedList={true}
             leftIcon={<AppsIcon />}
             nestedItems={[
+              <ListItem
+                id="lstarawrite"
+                onClick={() => this.handleLink('https://arawrite.arasaac.org/')}
+                primaryText="AraWrite"
+                leftIcon={<AraWriteIcon />}
+              />,
               <ListItem
                 onClick={() => this.handleLink('https://grid.asterics.eu/')}
                 primaryText={<FormattedMessage {...messages.asTerIk} />}
