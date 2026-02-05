@@ -231,7 +231,7 @@ class Menu extends Component {
               <ListItem
                 id="lstonlinetools"
                 onClick={() =>
-                  this.handleLink('http://old.arasaac.org/herramientas.php')
+                  this.handleLink('http://antiguo.arasaac.org/herramientas.php')
                 }
                 primaryText={<FormattedMessage {...messages.onlineTools} />}
                 leftIcon={<AppsIcon />}
