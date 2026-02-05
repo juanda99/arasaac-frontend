@@ -207,7 +207,7 @@ const AACApps = ({ intl, locale }) => {
           desc={intl.formatMessage(messages.onlineTools)}
           img="arasaac-apps.jpg"
           tutorialUrl={arasaacUrl(locale)}
-          appUrl="http://old.arasaac.org/herramientas.php"
+          appUrl="http://antiguo.arasaac.org/herramientas.php"
         />
       </Masonry>
       <p></p>
