@@ -360,7 +360,7 @@
     "morgan": "^1.7.0",
     "ngrok": "^3.4.1",
     "node-plop": "0.5.4",
-    "node-sass": "^4.9.3",
+    "node-sass": "^7.0.0",
     "null-loader": "0.1.1",
     "offline-plugin": "4.5.2",
     "plop": "1.7.3",
