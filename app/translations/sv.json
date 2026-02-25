@@ -562,6 +562,8 @@
   "app.containers.ContactView.formIntro": "Vi talar engelska och spanska. Kontakta oss gärna genom detta formulär för eventuella frågor, förslag eller samarbete. Vi återkommer till dig så snart som möjligt.",
   "app.containers.ContactView.sendMessage": "Tack för ditt meddelande. Vi kommer att kontakta dig så snart som möjligt.",
   "app.containers.ContactView.sendingMessage": "Skickar meddelande...",
+  "app.containers.DevelopersView.grantTypes": "Tilldelningstyper",
+  "app.containers.DevelopersView.grantTypesDesc": "Beroende på typ av ansökan och specifika behov måste en viss typ av bidrag eller annat implementeras. Tveka inte att kontakta oss för mer information.",
   "app.containers.DevelopersView.howto": "API-användning",
   "app.containers.DevelopersView.howtoDesc": "För att kunna använda ARASAAC API behöver du åtkomstuppgifter. Vi använder Oauth2-auktoriseringsprotokollet som gör det möjligt för tredjepartsapplikationer att få åtkomst till både ARASAAC och dess användares data.",
   "app.containers.DevelopersView.introApi": "ARASAAC har ett omfattande API för att erbjuda våra resurser till tredjepartsapplikationer.",
