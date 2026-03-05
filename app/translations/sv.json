@@ -8,7 +8,7 @@
   "activate.invalidCode": "Din aktiveringskod är ogiltig",
   "activate.userActivated": "Ditt konto är nu aktiverat och du kan logga in.",
   "activate.userNotActivated": "Ett fel uppstod vid aktivering av användaren",
-  "app.HomePage.discover": "Upptäck ARASAAC",
+  "app.HomePage.discover": "Upptäck ARASAAC\n app.HomePage.discover",
   "app.MaterialsView.pageDescription": "AKK - material och resurser för professionella, familjer och förskolor/ skolor. Ladda ner dokument, bildstöd, övningsmaterial m.m. ",
   "app.MaterialsView.pageDescriptionSearch": "AKK - material och resurser för professionella, familjer och förskolor/ skolor {search Text}. Ladda ner dokument, bildstöd, övningsmaterial...",
   "app.MaterialsView.pageTitle": "AKK: delat material - ARASAAC",
