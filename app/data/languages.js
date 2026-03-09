@@ -417,6 +417,12 @@ const languages = [
   // APRIL: =
   // JAN'23: web 0%, admin 0%, pictos 0%
   // JUN'24: web: 33%, admin: 0%, pictos: 0%
+  {
+    code: 'sv',
+    text: 'Svenska',
+    translated: true,
+    needTranslators: false,
+  },
 
   // SR  - SERBIAN
   // FEB:  web 0%, admin 0%, pictos  0%
