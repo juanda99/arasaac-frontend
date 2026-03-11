@@ -17,23 +17,23 @@ const astericsUrl = (locale) => {
     case 'val':
     case 'gl':
     case 'eu':
-      url = 'https://aulaabierta.arasaac.org/asterics-grid_inicio'
+      url = 'https://aulaabierta.arasaac.org/asterics-aac_inicio'
       break
     case 'fr':
-      url = 'https://aulaabierta.arasaac.org/fr/asterics-grid_accueil'
+      url = 'https://aulaabierta.arasaac.org/fr/asterics-aac_accueil'
       break
     case 'pt':
     case 'br':
-      url = 'https://aulaabierta.arasaac.org/pt-pt/asterics-grid_inicio_pt'
+      url = 'https://aulaabierta.arasaac.org/pt-pt/asterics-aac_inicio_pt'
       break
     case 'it':
-      url = 'https://aulaabierta.arasaac.org/it/asterics-grid_inizio'
+      url = 'https://aulaabierta.arasaac.org/it/asterics-aac_inicio'
       break
     case 'de':
-      url = 'https://aulaabierta.arasaac.org/en/asterics-grid_home'
+      url = 'https://aulaabierta.arasaac.org/de/asterics-aac_startseite'
       break
     default:
-      url = 'https://aulaabierta.arasaac.org/en/asterics-grid_home'
+      url = 'https://aulaabierta.arasaac.org/en/asterics-aac_home'
       break
   }
   return url
