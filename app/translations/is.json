@@ -18,5 +18,20 @@
   "app.PictogramsView.languageSearch": "Veldu leitartungumál",
   "app.PictogramsView.needTranslators": "Við þurfum aðstoð við að þýða ARASAAC yfir á þitt tungumál.",
   "app.PictogramsView.pageDesc": "Opin hugbúnaðartákn fyrir viðbótar- og valsamskipti",
-  "app.PictogramsView.pageTitle": "AAC tákn - ARASAAC"
+  "app.PictogramsView.pageTitle": "AAC tákn - ARASAAC",
+  "app.PictogramsView.searchByCategories": "Leita eftir flokkum",
+  "app.PictogramsView.translationStatus": "Sjá núverandi stöðu þýðingar.",
+  "app.PictogramsView.translationsWarning": "Leit að myndtáknum virkar ekki rétt á þínu tungumáli því þýðingarnar eru ekki tilbúnar.",
+  "app.component.MaterialConditions.adaptationQuote": "Aðlögun tilvitnun ",
+  "app.component.MaterialConditions.adaptationQuoteDesc": "Í aðlögun á fyrirliggjandi efni verður nafn þess sem aðlagaði það bætt við í lok tilvitnunarinnar:",
+  "app.component.MaterialConditions.adaptedBy": "Aðlagað af:",
+  "app.component.MaterialConditions.author": "Höfundur:",
+  "app.component.MaterialConditions.checkRead": "Ég hef lesið og skilið ofangreindar upplýsingar.",
+  "app.component.MaterialConditions.intro": "Við vonum að þú skiljir þörfina á að fylgja þessum viðmiðum við birtingu efnis hjá ARASAAC. Þökkum þér fyrirfram fyrir samstarfið.",
+  "app.component.MaterialConditions.license": "Leyfi:",
+  "app.component.MaterialConditions.materialPublication": "Útgáfa efnis",
+  "app.component.MaterialConditions.origin": "Uppruni:",
+  "app.component.MaterialConditions.pictogramsAuthor": "Höfundur myndtákna:",
+  "app.component.MaterialConditions.publication": "Útgáfa",
+  "app.components.Filters.Activity.calendar": "Dagatal"
 }
