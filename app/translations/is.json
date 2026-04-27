@@ -1,1 +1,22 @@
-{}
+{
+  "Login.invalidEmail": "Ógilt tölvupóstfang",
+  "Login.invalidUrl": "Ógild vefslóð",
+  "Login.required": "Áskilið",
+  "NewPasswordForm.hintNewPassword": "Hvað er nýja lykilorðið þitt?",
+  "activate.activateUser": "Virkjun notanda",
+  "activate.expiredCode": "Virkjunarkóðinn þinn er útrunninn. Við höfum sent þér annan tölvupóst til að staðfesta aðganginn þinn. ",
+  "activate.invalidCode": "Virkjunarkóðinn þinn er ekki gildur.",
+  "activate.userActivated": "Notandinn þinn hefur verið virkjaður. Þú getur skráð þig inn. ",
+  "activate.userNotActivated": "Villa kom upp við að virkja notandann þinn.",
+  "app.HomePage.discover": "Uppgötva ARASAAC",
+  "app.MaterialsView.pageDescription": "AAC efnisúrræði fyrir fagfólk og fjölskyldur. Sækja AAC skjöl, töflur, vinnublöð um viðbótar- og valsamskipti...",
+  "app.MaterialsView.pageDescriptionSearch": "AAC efnisúrræði tengd {searchText} fyrir fagfólk og fjölskyldur. Sækja skjöl, töflur, vinnublöð um viðbótar- og valsamskipti...",
+  "app.MaterialsView.pageTitle": "Sameiginleg efnisúrræði AAC - ARASAAC",
+  "app.MaterialsView.pageTitleSearch": "AAC hefur sameiginlegt efni sem tengist {searchText} - ARASAAC",
+  "app.PictogramsView.closeWarning": "Lokaviðvörun",
+  "app.PictogramsView.contactTranslators": "Hafðu samband til að taka þátt sem þýðandi!",
+  "app.PictogramsView.languageSearch": "Veldu leitartungumál",
+  "app.PictogramsView.needTranslators": "Við þurfum aðstoð við að þýða ARASAAC yfir á þitt tungumál.",
+  "app.PictogramsView.pageDesc": "Opin hugbúnaðartákn fyrir viðbótar- og valsamskipti",
+  "app.PictogramsView.pageTitle": "AAC tákn - ARASAAC"
+}
