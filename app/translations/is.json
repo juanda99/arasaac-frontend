@@ -447,5 +447,13 @@
   "app.components.aacusage.communicationBoards": "Samskiptaborð",
   "app.components.aacusage.intro": "ARASAAC býður upp á heilt táknasett fyrir viðbótar- og valsamskipti (AAC) með meira en {numberPictograms} lýsandi og skýringarmynduðum táknum þýddum á meira en 23 tungumál sem fagfólk notar í mismunandi tilgangi:",
   "app.components.aacusage.learning": "Námsstuðningur",
-  "app.components.aacusage.lifeSkills": "Lífsleikni"
+  "app.components.aacusage.lifeSkills": "Lífsleikni",
+  "app.components.aacusage.otherContexts": "Hugræn aðgengileiki í öðrum samhengjum",
+  "app.components.aacusage.p1": "Tákn hjálpa fólki sem á í alvarlegum samskiptaerfiðleikum, vegna ýmissa þátta (einhverfu, þroskahömlunar, tungumálaskorts, aldraðra o.s.frv.), að tjá hugmyndir sínar, langanir, þarfir, langanir eða tilfinningar. Tákn hjálpa þeim að eiga samskipti við heiminn.",
+  "app.components.aacusage.p10": "Gagnleg námsgögn sem byggja á aðferðafræði Teacch eru meðfærileg, sjónrænt aðlaðandi og hvetjandi til að framkvæma hvaða starfsemi sem er, þar á meðal námskrárstarfsemi.",
+  "app.components.aacusage.p11": "Uppbygging þessa efnis eykur sjálfstæði einstaklingsins og eflir einstaklingsbundið og sjálfstætt starf.",
+  "app.components.aacusage.p12": "Dagleg lífsleikni vísar til þeirrar færni sem þarf til að ná árangri í lífi og starfi í samfélaginu. Þar á meðal eru færni í sjálfsumönnun, innkaup, vinna, matreiðslu...",
+  "app.components.aacusers.title8": "Fyrir alla",
+  "app.components.author": "Höfundur myndtákna:",
+  "app.components.license": "Leyfi:"
 }
