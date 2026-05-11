@@ -58,6 +58,11 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Italian',
   },
+  is: {
+    id: 'app.components.LanguageSelector.is',
+    description: 'Select language',
+    defaultMessage: 'Icelandic',
+  },
   nl: {
     id: 'app.components.LanguageSelector.nl',
     description: 'Select language',

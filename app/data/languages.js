@@ -241,6 +241,12 @@ const languages = [
     translated: true,
     needTranslators: false,
   },
+  {
+    code: 'is',
+    text: 'Íslenskur',
+    translated: false,
+    needTranslators: false,
+  },
   // KO
   // DEC: web 96%, admin 70%, pictos 0%
   // JAN'23: web 99%, admin 70%, pictos 78%
