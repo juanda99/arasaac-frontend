@@ -373,8 +373,8 @@ const collaborators = [
   {
     name: 'Adriana Yamamura Gonçalves',
     languages: ['br'],
-    image: 'she.jpg',
-    desc: 'Special education assistant.',
+    image: 'adriana-yamamura.jpg',
+    desc: 'Special Education Teacher.',
     country: 'canada',
   },
   {
