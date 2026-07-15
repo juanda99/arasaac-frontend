@@ -261,7 +261,7 @@
     "material-ui-pagination": "1.1.7",
     "material-ui-search-bar": "^0.4.0",
     "minimist": "1.2.0",
-    "moment": "^2.28.0",
+    "moment": "^2.29.4",
     "normalizr": "^3.2.2",
     "prop-types": "^15.6.0",
     "query-string": "^6.1.0",
