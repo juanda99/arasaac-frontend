@@ -158,7 +158,7 @@ export default defineMessages({
   asTerIk: {
     id: 'menu.asTerIk',
     description: 'Menu item',
-    defaultMessage: 'AsTeRICS Grid communicator',
+    defaultMessage: 'Asterics AAC communicator',
   },
   whoWeAre: {
     id: 'menu.whoWeAre',

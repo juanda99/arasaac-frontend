@@ -17,7 +17,7 @@ export default defineMessages({
   },
   astericsGrid: {
     id: `${scope}.astericsGrid`,
-    defaultMessage: `AsTeRICS Grid is a free, multiplatform and customizable dynamic communicator that allows the use of pictograms, images and orthographic signs to facilitate communication and participation for all people.`,
+    defaultMessage: `Asterics AAC is a free, multiplatform and customizable dynamic communicator that allows the use of pictograms, images and orthographic signs to facilitate communication and participation for all people.`,
   },
   sequenciAAC: {
     id: `${scope}.sequenciAAC`,

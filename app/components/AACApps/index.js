@@ -180,7 +180,7 @@ const AACApps = ({ intl, locale }) => {
           appUrl="https://arawrite.arasaac.org"
         />
         <AppItem
-          title="AsTeRICS GRID"
+          title="Asterics AAC"
           desc={intl.formatMessage(messages.astericsGrid)}
           img="asterics-grid.jpg"
           tutorialUrl={astericsUrl(locale)}
