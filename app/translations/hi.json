@@ -1,1 +1,5 @@
-{}
+{
+  "Login.invalidEmail": "अमान्य ई-मेल",
+  "Login.required": "आवश्यक",
+  "app.MaterialsView.pageDescriptionSearch": "पेशेवरों और परिवारों के लिए {searchText} से संबंधित AAC संसाधन सामग्री। ऑगमेंटेटिव एंड अल्टरनेटिव कम्युनिकेशन AAC दस्तावेज़, बोर्ड और वर्कशीट डाउनलोड करें..."
+}
