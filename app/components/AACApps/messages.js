@@ -43,4 +43,8 @@ export default defineMessages({
     id: `${scope}.araWrite`,
     defaultMessage: `AraWrite is a free web application that translates phrases into pictograms to support people with communication and cognitive accessibility needs.`,
   },
+  ARActivities: {
+    id: `${scope}.ARActivities`,
+    defaultMessage: `ARActivities is a set of online tools developed by the ARASAAC team that allow the generation of augmentative communication resources and personalized educational materials through pictograms, images, and text.`,
+  },
 })

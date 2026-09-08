@@ -141,6 +141,16 @@ const araWriteUrl = (locale) => {
   return url
 }
 
+const aractivitiesUrl = (locale) => {
+  let url = ''
+  switch (locale) {
+    default:
+      url = 'https://aulaabierta.arasaac.org/aractivities_inicio'
+      break
+  }
+  return url
+}
+
 const styles = {
   masonry: {
     listStyleType: 'none',
@@ -178,6 +188,13 @@ const AACApps = ({ intl, locale }) => {
           img="AraWrite.jpg"
           tutorialUrl={araWriteUrl(locale)}
           appUrl="https://arawrite.arasaac.org"
+        />
+        <AppItem
+          title="ARActivities"
+          desc={intl.formatMessage(messages.ARActivities)}
+          img="aractivities.jpg"
+          tutorialUrl={aractivitiesUrl(locale)}
+          appUrl="https://aractivities.arasaac.org"
         />
         <AppItem
           title="Asterics AAC"
