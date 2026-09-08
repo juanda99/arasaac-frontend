@@ -434,6 +434,7 @@
   "app.components.aac.systemsSymbols": "Sistemas de símbolos",
   "app.components.aac.teaching": "enseñanza",
   "app.components.aac.whatareAACSystems": "¿Qué son los Sistemas Aumentativos y Alternativos de Comunicación (SAAC)?",
+  "app.components.aacapps.ARActivities": "ARActivities es un conjunto de herramientas en línea desarrolladas por el equipo de ARASAAC que permiten la generación de recursos de comunicación aumentativa y materiales educativos personalizados a través de pictogramas, imágenes y textos.",
   "app.components.aacapps.araWrite": "AraWrite es una aplicación web gratuita que traduce frases a pictogramas para hacerlas accesibles a personas con dificultades en la comunicación y en la accesibilidad cognitiva.",
   "app.components.aacapps.astericsGrid": "AsTeRICS Grid es un comunicador dinámico multiplataforma, gratuito y personalizable, que permite la utilización de pictogramas, imágenes y signos ortográficos para facilitar la comunicación y la participación a todas las personas.",
   "app.components.aacapps.desc": "Aplicaciones de software CAA que usan personas con dificultades en la comunicación. Tableros de comunicación, agendas visuales, comunicadores dinámicos, etc.",
