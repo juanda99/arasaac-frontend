@@ -208,12 +208,21 @@ export default defineMessages({
     description: 'Select language',
     defaultMessage: 'Swedish',
   },
+  sv: {
+    id: 'app.components.LanguageSelector.sv',
+    description: 'Select language',
+    defaultMessage: 'Swedish',
+  },
+  hi: {
+    id: 'app.components.LanguageSelector.hi',
+    description: 'Select language',
+    defaultMessage: 'Hindi',
+  },
   translateOnline: {
     id: 'app.components.LanguageSelector.translateOnline',
     description: 'Select language',
     defaultMessage: 'Translate online',
   },
-
   chooseLanguage: {
     id: 'app.components.LanguageSelector.choose',
     description: 'Select language',

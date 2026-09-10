@@ -43,6 +43,7 @@ import da from 'react-intl/locale-data/da'
 import tr from 'react-intl/locale-data/tr'
 import sv from 'react-intl/locale-data/sv'
 import is from 'react-intl/locale-data/is'
+import hi from 'react-intl/locale-data/hi'
 
 import { DEFAULT_LOCALE, appLocales } from './containers/App/constants'
 import enTranslationMessages from './translations/en.json'
@@ -85,6 +86,7 @@ import daTranslationMessages from './translations/da.json'
 import trTranslationMessages from './translations/tr.json'
 import svTranslationMessages from './translations/sv.json'
 import isTranslationMessages from './translations/is.json'
+import hiTranslationMessages from './translations/hi.json'
 
 addLocaleData([
   ...en,
@@ -125,6 +127,7 @@ addLocaleData([
   ...tr,
   ...sv,
   ...is,
+  ...hi,
 ])
 
 export const formatTranslationMessages = (locale, messages) => {
@@ -183,4 +186,5 @@ export const translationMessages = {
   tr: formatTranslationMessages('tr', trTranslationMessages),
   sv: formatTranslationMessages('sv', svTranslationMessages),
   is: formatTranslationMessages('is', isTranslationMessages),
+  hi: formatTranslationMessages('hi', hiTranslationMessages),
 }

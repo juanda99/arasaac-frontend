@@ -213,6 +213,12 @@ const languages = [
     translated: false,
     needTranslators: true,
   },
+  {
+    code: 'hi',
+    text: 'वेलेंसिया',
+    translated: true,
+    needTranslators: false,
+  },
   // HU
   // FEB: web 90%, admin 99%, pictos 41%
   // MARCH: web 89%, admin 99%, pictos 47%
