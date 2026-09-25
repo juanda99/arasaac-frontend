@@ -43,6 +43,7 @@ import WorldIcon from './WorldIcon'
 import AstericsIcon from './AstericsIcon'
 import PictogramAgendaIcon from './PictogramAgendaIcon'
 import AraWriteIcon from './AraWriteIcon'
+import ARActivitiesIcon from './ARActivitiesIcon'
 
 const SelectableList = makeSelectable(List)
 
@@ -206,6 +207,14 @@ class Menu extends Component {
                 onClick={() => this.handleLink('https://arawrite.arasaac.org/')}
                 primaryText="AraWrite"
                 leftIcon={<AraWriteIcon />}
+              />,
+              <ListItem
+                id="lstaractivities"
+                onClick={() =>
+                  this.handleLink('https://aractivities.arasaac.org/')
+                }
+                primaryText="ARActivities"
+                leftIcon={<ARActivitiesIcon />}
               />,
               <ListItem
                 onClick={() => this.handleLink('https://grid.asterics.eu/')}
