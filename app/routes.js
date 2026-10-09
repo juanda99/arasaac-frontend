@@ -492,6 +492,15 @@ export default function createRoutes(store) {
       },
     },
     {
+      path: '/world/upload',
+      name: 'uploadWorld',
+      getComponent(location, cb) {
+        import('containers/UploadWorldView')
+          .then(loadModule(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
       path: '/settings',
       name: 'settings',
       getComponent(location, cb) {

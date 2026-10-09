@@ -165,6 +165,7 @@ export default defineMessages({
     defaultMessage: 'basic concepts',
   },
   'basic needs': { id: 'tags.basic needs', defaultMessage: 'basic needs' },
+  baseball: { id: 'tags.baseball', defaultMessage: 'baseball' },
   basketball: { id: 'tags.basketball', defaultMessage: 'basketball' },
   beach: { id: 'tags.beach', defaultMessage: 'beach' },
   beverage: { id: 'tags.beverage', defaultMessage: 'beverage' },

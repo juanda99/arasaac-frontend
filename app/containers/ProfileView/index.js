@@ -15,9 +15,12 @@ import { DEFAULT_PROFILE_PICTURE } from 'utils'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import ReadMargin from 'components/ReadMargin'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import H2 from 'components/H2'
 import Toggle from 'material-ui/Toggle'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton'
 import { RegisterForm, NewPasswordForm } from 'components/Login'
 import {
   makeSelectName,
@@ -38,7 +41,7 @@ import {
   makeSelectSexPictograms,
   makeSelectColorPictograms,
 } from 'containers/App/selectors'
-import { updateUser } from 'containers/App/actions'
+import { updateUser, logout } from 'containers/App/actions'
 import { changeLocale } from 'containers/LanguageProvider/actions'
 import api from 'services'
 import P from 'components/P'
@@ -57,10 +60,34 @@ const styles = {
   },
 }
 
-class ProfileView extends PureComponent {
+export class ProfileView extends PureComponent {
   state = {
     showPassword: true,
     errorPassword: false,
+    showDeleteDialog: false,
+    deleteError: false,
+  }
+
+  handleOpenDeleteDialog = () => {
+    this.setState({ showDeleteDialog: true, deleteError: false })
+  }
+
+  handleCloseDeleteDialog = () => {
+    this.setState({ showDeleteDialog: false })
+  }
+
+  handleDeleteUser = async () => {
+    const { showProgressBar, hideProgressBar, logout, token } = this.props
+    this.setState({ showDeleteDialog: false })
+    showProgressBar()
+    try {
+      await api.DELETE_USER_REQUEST({ token })
+      hideProgressBar()
+      logout()
+    } catch (error) {
+      hideProgressBar()
+      this.setState({ deleteError: true })
+    }
   }
 
   handleChangePassword = async (data) => {
@@ -133,7 +160,10 @@ class ProfileView extends PureComponent {
       sex,
       violence,
       color,
+      intl,
     } = this.props
+
+    const formatMessage = intl ? intl.formatMessage : (msg) => msg.defaultMessage
 
     let profileImage = picture ? picture : DEFAULT_PROFILE_PICTURE
     if (pictureProvider === FACEBOOK && picture) {
@@ -258,6 +288,52 @@ class ProfileView extends PureComponent {
               <TranslationStatus language={searchLanguage} hideWeb={true} />
             </div>
           </div>
+
+          <div style={styles.divider}>
+            <Divider />
+          </div>
+
+          <H2 primary={true} style={{ color: '#d32f2f' }}>
+            <FormattedMessage {...messages.deleteAccount} />
+          </H2>
+          <P style={{ maxWidth: 600 }}>
+            <FormattedMessage {...messages.deleteAccountDesc} />
+          </P>
+          {this.state.deleteError && (
+            <P style={{ color: '#d32f2f' }}>
+              <FormattedMessage {...messages.errorDeletingAccount} />
+            </P>
+          )}
+          <RaisedButton
+            label={<FormattedMessage {...messages.deleteAccount} />}
+            secondary={true}
+            onClick={this.handleOpenDeleteDialog}
+            style={{ marginTop: 10 }}
+          />
+
+          <Dialog
+            title={formatMessage(messages.deleteAccount)}
+            actions={[
+              <FlatButton
+                label={formatMessage(messages.cancel)}
+                primary={true}
+                onClick={this.handleCloseDeleteDialog}
+              />,
+              <RaisedButton
+                label={formatMessage(messages.deleteAccountConfirm)}
+                secondary={true}
+                onClick={this.handleDeleteUser}
+                style={{ marginLeft: 10 }}
+              />,
+            ]}
+            modal={false}
+            open={this.state.showDeleteDialog}
+            onRequestClose={this.handleCloseDeleteDialog}
+          >
+            <P>
+              <FormattedMessage {...messages.deleteAccountWarning} />
+            </P>
+          </Dialog>
         </ReadMargin>
       </View>
     )
@@ -279,6 +355,7 @@ ProfileView.propTypes = {
   hideProgressBar: PropTypes.func.isRequired,
   updateUser: PropTypes.func.isRequired,
   changeLocale: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
   hasGoogle: PropTypes.bool.isRequired,
   hasFacebook: PropTypes.bool.isRequired,
   pictureProvider: PropTypes.string.isRequired,
@@ -286,6 +363,7 @@ ProfileView.propTypes = {
   violence: PropTypes.bool.isRequired,
   sex: PropTypes.bool.isRequired,
   color: PropTypes.bool.isRequired,
+  intl: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
@@ -313,9 +391,10 @@ const mapDispatchToProps = (dispatch) => ({
   hideProgressBar: () => dispatch(hideLoading()),
   updateUser: (user, token) => dispatch(updateUser.request(user, token)),
   changeLocale: (language) => dispatch(changeLocale(language)),
+  logout: () => dispatch(logout()),
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(muiThemeable()(userIsAuthenticated(ProfileView)))
+)(muiThemeable()(userIsAuthenticated(injectIntl(ProfileView))))

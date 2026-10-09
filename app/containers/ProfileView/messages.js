@@ -82,5 +82,29 @@ export default defineMessages({
     id: 'app.containers.ProfileView.searchPictograms',
     defaultMessage: 'Pictograms search'
   },
+  deleteAccount: {
+    id: 'app.containers.ProfileView.deleteAccount',
+    defaultMessage: 'Delete account'
+  },
+  deleteAccountDesc: {
+    id: 'app.containers.ProfileView.deleteAccountDesc',
+    defaultMessage: 'Once you delete your account, this action cannot be undone. If you have published materials, your personal details will be deleted and your account deactivated, but your materials will remain available with your author name.'
+  },
+  deleteAccountWarning: {
+    id: 'app.containers.ProfileView.deleteAccountWarning',
+    defaultMessage: 'Are you sure you want to delete your account? This action is permanent and cannot be undone.'
+  },
+  deleteAccountConfirm: {
+    id: 'app.containers.ProfileView.deleteAccountConfirm',
+    defaultMessage: 'Yes, delete my account'
+  },
+  cancel: {
+    id: 'app.containers.ProfileView.cancel',
+    defaultMessage: 'Cancel'
+  },
+  errorDeletingAccount: {
+    id: 'app.containers.ProfileView.errorDeletingAccount',
+    defaultMessage: 'There was an error deleting your account. Please try again later.'
+  },
 })
 

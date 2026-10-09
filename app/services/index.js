@@ -15,6 +15,7 @@ import {
   renameFavoriteList,
   changePassword,
   updateUser,
+  deleteUser,
   materialPublish,
   materialUpdate,
   materialRemove,
@@ -61,6 +62,7 @@ const api = {
     ),
   SIGNUP_REQUEST: (userData) => callApi(signup.url, signup.options(userData)),
   UPDATE_USER_REQUEST: ({ user, token }) => callApi(updateUser.url(token), updateUser.options(user), token),
+  DELETE_USER_REQUEST: ({ token }) => callApi(deleteUser.url(token), deleteUser.options(), token),
   CONTACTFORM_REQUEST: (userData) => callApi(contactForm.url, contactForm.options(userData)),
   FAVORITE_PICTOGRAMS_REQUEST: ({ locale, favoriteIds, token }) => callApi(getFavorites.url(locale), getFavorites.options(favoriteIds), token),
   ADD_FAVORITE_REQUEST: ({ ...data, token }) => callApi(addFavorite.url, addFavorite.options(data), token),
@@ -82,7 +84,8 @@ const api = {
   TRANSLATIONS_STATUS: (locale) => callApi(`${PRIVATE_API_ROOT}/translations/status/${locale}`),
   MATERIAL_PUBLISH_REQUEST: ({ id, status, token }) => callApi(materialPublish.url(id), materialPublish.options(status), token),
   MATERIAL_REMOVE_REQUEST: ({ id, token }) => callApi(materialRemove.url(id), materialRemove.options(), token),
-  MATERIAL_UPDATE_REQUEST: ({ id, data, token }) => callApi(materialUpdate.url(id), materialUpdate.options(data), token)
+  MATERIAL_UPDATE_REQUEST: ({ id, data, token }) => callApi(materialUpdate.url(id), materialUpdate.options(data), token),
+  WORLD_REQUEST: () => callApi(`${PRIVATE_API_ROOT}/world`)
   /* CUSTOM_PICTOGRAM_REQUEST: (idPictogram, options) => callApi(customPictogram.url(idPictogram, options))*/
 }
 

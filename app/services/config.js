@@ -88,6 +88,19 @@ export const updateUser = {
   }),
 }
 
+export const deleteUser = {
+  url: (token) => {
+    const { sub } = jwtDecode(token)
+    return `${PRIVATE_API_ROOT}/users/${sub}`
+  },
+  options: () => ({
+    config: {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    },
+  }),
+}
+
 export const contactForm = {
   url: `${PRIVATE_API_ROOT}/users/contact`,
   options: (userData) => {
