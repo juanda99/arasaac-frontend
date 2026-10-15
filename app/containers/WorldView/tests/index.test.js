@@ -133,7 +133,7 @@ describe('Helper functions and Category mapping', () => {
       expect(getLocationCategoryKey({ tipo: 'Software CAA' })).toBe('software')
       expect(getLocationCategoryKey({ tipo: 'Residencia' })).toBe('residencias')
       expect(getLocationCategoryKey({ tipo: 'Parque' })).toBe('deporte')
-      expect(getLocationCategoryKey({ tipo: 'Comercios' })).toBe('empresas')
+      expect(getLocationCategoryKey({ tipo: 'Comercios' })).toBe('comercios')
       expect(getLocationCategoryKey({ tipo: 'Transportes' })).toBe('transportes')
       expect(getLocationCategoryKey({ tipo: 'Ocio y Turismo' })).toBe('ocio_turismo')
       expect(getLocationCategoryKey({ tipo: 'Justicia' })).toBe('justicia')

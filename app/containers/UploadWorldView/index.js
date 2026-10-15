@@ -53,7 +53,7 @@ export const CATEGORIES = [
   { key: 'asociaciones', tipo: 'Asociaciones y fundaciones', messageKey: 'categoryAsociaciones' },
   { key: 'cultura', tipo: 'Cultura', messageKey: 'categoryCultura' },
   { key: 'ocio_turismo', tipo: 'Ocio y Turismo', messageKey: 'categoryOcioTurismo' },
-  { key: 'empresas', tipo: 'Comercios', messageKey: 'categoryEmpresas' },
+  { key: 'comercios', tipo: 'Comercios', messageKey: 'categoryComercios' },
   { key: 'software', tipo: 'Web y software', messageKey: 'categorySoftware' },
   { key: 'deporte', tipo: 'Deporte', messageKey: 'categoryDeporte' },
   { key: 'transportes', tipo: 'Transportes', messageKey: 'categoryTransportes' },

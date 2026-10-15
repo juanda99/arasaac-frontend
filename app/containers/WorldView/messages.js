@@ -110,6 +110,10 @@ export default defineMessages({
     id: 'app.containers.WorldView.categoryEmpresas',
     defaultMessage: 'Companies & Shops',
   },
+  categoryComercios: {
+    id: 'app.containers.WorldView.categoryComercios',
+    defaultMessage: 'Companies & Shops',
+  },
   categoryOtro: {
     id: 'app.containers.WorldView.categoryOtro',
     defaultMessage: 'Other initiatives',

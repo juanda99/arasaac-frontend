@@ -104,10 +104,18 @@ export const CATEGORY_DEFINITIONS = {
     svgPath:
       'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-14.93v2.02c-2.38.42-4.27 2.31-4.69 4.69H4.29c.47-3.66 3.37-6.56 7.03-7.03z',
   },
+  comercios: {
+    key: 'comercios',
+    color: '#C2185B',
+    message: messages.categoryComercios,
+    // Store / shopping bag icon
+    svgPath:
+      'M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm6 16H6V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h4v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z',
+  },
   empresas: {
     key: 'empresas',
     color: '#C2185B',
-    message: messages.categoryEmpresas,
+    message: messages.categoryComercios,
     // Store / shopping bag icon
     svgPath:
       'M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm6 16H6V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h4v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z',
@@ -225,14 +233,14 @@ export const TIPO_TO_CATEGORY_KEY = {
   bodega: 'ocio_turismo',
 
   // Comercios
-  empresa: 'empresas',
-  comercios: 'empresas',
-  comercio: 'empresas',
-  cafeterías: 'empresas',
-  cafeterias: 'empresas',
-  hipermercado: 'empresas',
-  'entidad financiera': 'empresas',
-  empresas: 'empresas',
+  comercios: 'comercios',
+  comercio: 'comercios',
+  empresa: 'comercios',
+  empresas: 'comercios',
+  cafeterías: 'comercios',
+  cafeterias: 'comercios',
+  hipermercado: 'comercios',
+  'entidad financiera': 'comercios',
 
   // Web y software
   'web y software': 'software',
