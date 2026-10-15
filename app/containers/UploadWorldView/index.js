@@ -48,15 +48,20 @@ import messages from './messages'
 
 export const CATEGORIES = [
   { key: 'educacion', tipo: 'Educación', messageKey: 'categoryEducacion' },
-  { key: 'salud', tipo: 'Salud', messageKey: 'categorySalud' },
   { key: 'localidades', tipo: 'Localidades', messageKey: 'categoryLocalidades' },
+  { key: 'salud', tipo: 'Salud', messageKey: 'categorySalud' },
+  { key: 'asociaciones', tipo: 'Asociaciones y fundaciones', messageKey: 'categoryAsociaciones' },
   { key: 'cultura', tipo: 'Cultura', messageKey: 'categoryCultura' },
-  { key: 'asociaciones', tipo: 'Asociaciones', messageKey: 'categoryAsociaciones' },
-  { key: 'organismos', tipo: 'Organismos', messageKey: 'categoryOrganismos' },
-  { key: 'software', tipo: 'Software', messageKey: 'categorySoftware' },
-  { key: 'residencias', tipo: 'Residencias', messageKey: 'categoryResidencias' },
+  { key: 'ocio_turismo', tipo: 'Ocio y Turismo', messageKey: 'categoryOcioTurismo' },
+  { key: 'empresas', tipo: 'Comercios', messageKey: 'categoryEmpresas' },
+  { key: 'software', tipo: 'Web y software', messageKey: 'categorySoftware' },
   { key: 'deporte', tipo: 'Deporte', messageKey: 'categoryDeporte' },
-  { key: 'empresas', tipo: 'Empresas', messageKey: 'categoryEmpresas' },
+  { key: 'transportes', tipo: 'Transportes', messageKey: 'categoryTransportes' },
+  { key: 'organismos', tipo: 'Administración pública', messageKey: 'categoryOrganismos' },
+  { key: 'accesibilidad', tipo: 'Accesibilidad vial y espacio urbano', messageKey: 'categoryAccesibilidadVial' },
+  { key: 'residencias', tipo: 'Residencias y centros atención', messageKey: 'categoryResidencias' },
+  { key: 'seguridad', tipo: 'Seguridad y emergencias', messageKey: 'categorySeguridad' },
+  { key: 'justicia', tipo: 'Justicia', messageKey: 'categoryJusticia' },
   { key: 'otro', tipo: 'Otro', messageKey: 'categoryOtro' },
 ]
 
@@ -312,11 +317,11 @@ export class UploadWorldView extends PureComponent {
         province: province.trim(),
         country: country.trim(),
       },
-      links: {
-        mainWeb: mainWeb.trim(),
-        proyectWeb: proyectWeb.trim(),
-        urlNews: urlNews.trim(),
-      },
+      links: [
+        mainWeb.trim() ? { url: mainWeb.trim(), type: 'web' } : null,
+        proyectWeb.trim() ? { url: proyectWeb.trim(), type: 'project' } : null,
+        urlNews.trim() ? { url: urlNews.trim(), type: 'news' } : null,
+      ].filter(Boolean),
       video: video.trim(),
       email: email.trim(),
     }

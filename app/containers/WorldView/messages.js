@@ -114,4 +114,28 @@ export default defineMessages({
     id: 'app.containers.WorldView.categoryOtro',
     defaultMessage: 'Other initiatives',
   },
+  categoryOcioTurismo: {
+    id: 'app.containers.WorldView.categoryOcioTurismo',
+    defaultMessage: 'Leisure & Tourism',
+  },
+  categoryTransportes: {
+    id: 'app.containers.WorldView.categoryTransportes',
+    defaultMessage: 'Transport',
+  },
+  categoryAccesibilidadVial: {
+    id: 'app.containers.WorldView.categoryAccesibilidadVial',
+    defaultMessage: 'Road accessibility & urban space',
+  },
+  categorySeguridad: {
+    id: 'app.containers.WorldView.categorySeguridad',
+    defaultMessage: 'Safety & Emergencies',
+  },
+  categoryJusticia: {
+    id: 'app.containers.WorldView.categoryJusticia',
+    defaultMessage: 'Justice',
+  },
+  award: {
+    id: 'app.containers.WorldView.award',
+    defaultMessage: 'Award',
+  },
 })

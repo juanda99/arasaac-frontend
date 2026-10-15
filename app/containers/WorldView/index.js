@@ -24,6 +24,7 @@ import ActionLanguage from 'material-ui/svg-icons/action/language'
 import AvVideoLibrary from 'material-ui/svg-icons/av/video-library'
 import ActionAssignment from 'material-ui/svg-icons/action/assignment'
 import ActionDescription from 'material-ui/svg-icons/action/description'
+import ActionGrade from 'material-ui/svg-icons/action/grade'
 
 import ReadMargin from 'components/ReadMargin'
 import View from 'components/View'
@@ -111,9 +112,49 @@ export const CATEGORY_DEFINITIONS = {
     svgPath:
       'M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm6 16H6V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h4v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z',
   },
+  ocio_turismo: {
+    key: 'ocio_turismo',
+    color: '#00897B',
+    message: messages.categoryOcioTurismo,
+    // Compass / explore icon
+    svgPath:
+      'M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6l-3.81 8.19z',
+  },
+  transportes: {
+    key: 'transportes',
+    color: '#1E88E5',
+    message: messages.categoryTransportes,
+    // Bus / transportation icon
+    svgPath:
+      'M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z',
+  },
+  accesibilidad: {
+    key: 'accesibilidad',
+    color: '#00ACC1',
+    message: messages.categoryAccesibilidadVial,
+    // Accessibility / road space icon
+    svgPath:
+      'M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z',
+  },
+  seguridad: {
+    key: 'seguridad',
+    color: '#D32F2F',
+    message: messages.categorySeguridad,
+    // Shield / security icon
+    svgPath:
+      'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z',
+  },
+  justicia: {
+    key: 'justicia',
+    color: '#5D4037',
+    message: messages.categoryJusticia,
+    // Scales / justice icon
+    svgPath:
+      'M12 3v2.24c3.67.43 6.57 3.39 6.94 7.1H21c-.42-4.91-4.14-8.81-9-9.34zm0 15.52c-3.67-.43-6.57-3.39-6.94-7.1H3c.42 4.91 4.14 8.81 9 9.34V18.52zM12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z',
+  },
   otro: {
     key: 'otro',
-    color: '#00BCD4',
+    color: '#607D8B',
     message: messages.categoryOtro,
     // General location pin icon
     svgPath:
@@ -144,8 +185,6 @@ export const TIPO_TO_CATEGORY_KEY = {
 
   // Localidades
   ayuntamiento: 'localidades',
-  'accesibilidad vial': 'localidades',
-  'mobiliario urbano': 'localidades',
   comarca: 'localidades',
   localidades: 'localidades',
 
@@ -161,49 +200,49 @@ export const TIPO_TO_CATEGORY_KEY = {
   fiestas: 'cultura',
   belén: 'cultura',
   belen: 'cultura',
-  'oficina turismo': 'cultura',
   'arte y cultura': 'cultura',
+  cultura: 'cultura',
 
   // Asociaciones
   asociación: 'asociaciones',
   asociacion: 'asociaciones',
   fundación: 'asociaciones',
   fundacion: 'asociaciones',
+  'asociaciones y fundaciones': 'asociaciones',
   'centro de psicopedagogía': 'asociaciones',
   'centro de psicopedagogia': 'asociaciones',
   centro: 'asociaciones',
   asociaciones: 'asociaciones',
 
-  // Organismos
-  organismos: 'organismos',
-  'centro estatal': 'organismos',
-  ministerio: 'organismos',
-  consejería: 'organismos',
-  consejeria: 'organismos',
-  parlamento: 'organismos',
-  policía: 'organismos',
-  policia: 'organismos',
-  bomberos: 'organismos',
-  justicia: 'organismos',
-  seguridad: 'organismos',
-  'edificio administrativo': 'organismos',
-  'sociedad pública': 'organismos',
-  'sociedad publica': 'organismos',
+  // Ocio y Turismo
+  'ocio y turismo': 'ocio_turismo',
+  ocio: 'ocio_turismo',
+  turismo: 'ocio_turismo',
+  'oficina turismo': 'ocio_turismo',
+  'centro ocio': 'ocio_turismo',
+  camping: 'ocio_turismo',
+  balneario: 'ocio_turismo',
+  bodega: 'ocio_turismo',
 
-  // Software - App - Web
+  // Comercios
+  empresa: 'empresas',
+  comercios: 'empresas',
+  comercio: 'empresas',
+  cafeterías: 'empresas',
+  cafeterias: 'empresas',
+  hipermercado: 'empresas',
+  'entidad financiera': 'empresas',
+  empresas: 'empresas',
+
+  // Web y software
+  'web y software': 'software',
   'software caa': 'software',
   software: 'software',
   web: 'software',
   'página web': 'software',
   'pagina web': 'software',
 
-  // Centros residenciales
-  residencia: 'residencias',
-  'centros residenciales': 'residencias',
-  'centro de actividades alternativas para discapacidad': 'residencias',
-  residencias: 'residencias',
-
-  // Deporte y Tiempo Libre
+  // Deporte
   deporte: 'deporte',
   'instalaciones deportivas': 'deporte',
   piscina: 'deporte',
@@ -213,24 +252,52 @@ export const TIPO_TO_CATEGORY_KEY = {
   parques: 'deporte',
   escalada: 'deporte',
   zoo: 'deporte',
-  camping: 'deporte',
   cine: 'deporte',
-  'centro ocio': 'deporte',
   'centro comunitario': 'deporte',
 
-  // Empresas
-  empresa: 'empresas',
-  comercios: 'empresas',
-  comercio: 'empresas',
-  transporte: 'empresas',
-  balneario: 'empresas',
-  bodega: 'empresas',
-  cafeterías: 'empresas',
-  cafeterias: 'empresas',
-  hipermercado: 'empresas',
-  'entidad financiera': 'empresas',
-  turismo: 'empresas',
-  empresas: 'empresas',
+  // Transportes
+  transportes: 'transportes',
+  transporte: 'transportes',
+
+  // Organismos / Administración pública
+  'administración pública': 'organismos',
+  'administracion publica': 'organismos',
+  organismos: 'organismos',
+  'centro estatal': 'organismos',
+  ministerio: 'organismos',
+  consejería: 'organismos',
+  consejeria: 'organismos',
+  parlamento: 'organismos',
+  'edificio administrativo': 'organismos',
+  'sociedad pública': 'organismos',
+  'sociedad publica': 'organismos',
+
+  // Accesibilidad vial y espacio urbano
+  'accesibilidad vial y espacio urbano': 'accesibilidad',
+  'accesibilidad vial': 'accesibilidad',
+  'mobiliario urbano': 'accesibilidad',
+  accesibilidad: 'accesibilidad',
+
+  // Centros residenciales / Residencias y centros atención
+  'residencias y centros atención': 'residencias',
+  'residencias y centros atencion': 'residencias',
+  residencia: 'residencias',
+  'centros residenciales': 'residencias',
+  'centro de actividades alternativas para discapacidad': 'residencias',
+  residencias: 'residencias',
+
+  // Seguridad y emergencias
+  'seguridad y emergencias': 'seguridad',
+  seguridad: 'seguridad',
+  policía: 'seguridad',
+  policia: 'seguridad',
+  bomberos: 'seguridad',
+
+  // Justicia
+  justicia: 'justicia',
+
+  // Fallback
+  otro: 'otro',
 }
 
 export function getLocationCategoryKey(loc) {
@@ -364,6 +431,62 @@ const VideoIcon = () => (
     <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8 12.5v-9l6 4.5-6 4.5z" />
   </svg>
 )
+
+const AwardIcon = () => (
+  <svg
+    style={{
+      width: '14px',
+      height: '14px',
+      marginRight: '5px',
+      verticalAlign: 'middle',
+      fill: 'currentColor',
+      flexShrink: 0,
+    }}
+    viewBox="0 0 24 24"
+  >
+    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+  </svg>
+)
+
+export function normalizeLinks(links) {
+  if (!links) return []
+  if (Array.isArray(links)) {
+    return links
+      .map((l) => ({
+        url: (l && (l.url || l.enlace || (typeof l === 'string' ? l : '')) || '').trim(),
+        type: (l && (l.type || l.tipo) || 'web').trim().toLowerCase(),
+      }))
+      .filter((l) => isValidUrl(l.url))
+  }
+  if (typeof links === 'object') {
+    const res = []
+    if (links.mainWeb && isValidUrl(links.mainWeb)) {
+      res.push({ url: links.mainWeb.trim(), type: 'web' })
+    }
+    if (links.proyectWeb && isValidUrl(links.proyectWeb)) {
+      res.push({ url: links.proyectWeb.trim(), type: 'project' })
+    }
+    if (links.urlNews && isValidUrl(links.urlNews)) {
+      res.push({ url: links.urlNews.trim(), type: 'news' })
+    }
+    return res
+  }
+  return []
+}
+
+function getPopupLinkConfig(type, formatMessage) {
+  switch (type) {
+    case 'project':
+      return { icon: <ProjectIcon />, label: formatMessage(messages.proyectWeb) }
+    case 'news':
+      return { icon: <NewsIcon />, label: formatMessage(messages.urlNews) }
+    case 'award':
+      return { icon: <AwardIcon />, label: formatMessage(messages.award) }
+    case 'web':
+    default:
+      return { icon: <GlobeIcon />, label: formatMessage(messages.mainWeb) }
+  }
+}
 
 const ZoomInIcon = () => (
   <svg
@@ -824,45 +947,21 @@ export class WorldLocationPopup extends PureComponent {
 
           {/* Links */}
           <div style={styles.popupLinks}>
-            {loc.links &&
-              loc.links.mainWeb &&
-              isValidUrl(loc.links.mainWeb) && (
+            {normalizeLinks(loc.links).map((link, idx) => {
+              const config = getPopupLinkConfig(link.type, formatMessage)
+              return (
                 <a
-                  href={loc.links.mainWeb}
+                  key={link.url + idx}
+                  href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={styles.linkBtn}
                 >
-                  <GlobeIcon />
-                  {formatMessage(messages.mainWeb)}
+                  {config.icon}
+                  {config.label}
                 </a>
-              )}
-            {loc.links &&
-              loc.links.proyectWeb &&
-              isValidUrl(loc.links.proyectWeb) && (
-                <a
-                  href={loc.links.proyectWeb}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={styles.linkBtn}
-                >
-                  <ProjectIcon />
-                  {formatMessage(messages.proyectWeb)}
-                </a>
-              )}
-            {loc.links &&
-              loc.links.urlNews &&
-              isValidUrl(loc.links.urlNews) && (
-                <a
-                  href={loc.links.urlNews}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={styles.linkBtn}
-                >
-                  <NewsIcon />
-                  {formatMessage(messages.urlNews)}
-                </a>
-              )}
+              )
+            })}
             {loc.video && isValidUrl(loc.video) && !hasEmbedVideo && (
               <a
                 href={loc.video}
@@ -1497,43 +1596,35 @@ export class WorldView extends PureComponent {
                   marginTop: '14px',
                 }}
               >
-                {selectedLocation.links &&
-                  selectedLocation.links.mainWeb &&
-                  isValidUrl(selectedLocation.links.mainWeb) && (
+                {normalizeLinks(selectedLocation.links).map((link, idx) => {
+                  let icon = <ActionLanguage />
+                  let label = formatMessage(messages.mainWeb)
+                  let isPrimary = false
+                  if (link.type === 'project') {
+                    icon = <ActionAssignment />
+                    label = formatMessage(messages.proyectWeb)
+                  } else if (link.type === 'news') {
+                    icon = <ActionDescription />
+                    label = formatMessage(messages.urlNews)
+                  } else if (link.type === 'award') {
+                    icon = <ActionGrade />
+                    label = formatMessage(messages.award)
+                  } else {
+                    isPrimary = true
+                  }
+                  return (
                     <RaisedButton
-                      href={selectedLocation.links.mainWeb}
+                      key={link.url + idx}
+                      href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      primary={true}
-                      label={formatMessage(messages.mainWeb)}
-                      icon={<ActionLanguage />}
+                      primary={isPrimary}
+                      label={label}
+                      icon={icon}
                       style={{ marginRight: '10px', marginBottom: '8px' }}
                     />
-                  )}
-                {selectedLocation.links &&
-                  selectedLocation.links.proyectWeb &&
-                  isValidUrl(selectedLocation.links.proyectWeb) && (
-                    <RaisedButton
-                      href={selectedLocation.links.proyectWeb}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      label={formatMessage(messages.proyectWeb)}
-                      icon={<ActionAssignment />}
-                      style={{ marginRight: '10px', marginBottom: '8px' }}
-                    />
-                  )}
-                {selectedLocation.links &&
-                  selectedLocation.links.urlNews &&
-                  isValidUrl(selectedLocation.links.urlNews) && (
-                    <RaisedButton
-                      href={selectedLocation.links.urlNews}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      label={formatMessage(messages.urlNews)}
-                      icon={<ActionDescription />}
-                      style={{ marginRight: '10px', marginBottom: '8px' }}
-                    />
-                  )}
+                  )
+                })}
                 {selectedLocation.video &&
                   isValidUrl(selectedLocation.video) &&
                   !dialogEmbedVideo && (

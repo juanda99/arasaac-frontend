@@ -29,6 +29,7 @@ import {
   getAllPictures,
   getLocationCategoryKey,
   getCategoryIcon,
+  normalizeLinks,
   CATEGORY_DEFINITIONS,
 } from '../index'
 import messages from '../messages'
@@ -127,11 +128,16 @@ describe('Helper functions and Category mapping', () => {
       expect(getLocationCategoryKey({ tipo: 'Ayuntamiento' })).toBe('localidades')
       expect(getLocationCategoryKey({ tipo: 'Museo' })).toBe('cultura')
       expect(getLocationCategoryKey({ tipo: 'Asociación' })).toBe('asociaciones')
-      expect(getLocationCategoryKey({ tipo: 'Policía' })).toBe('organismos')
+      expect(getLocationCategoryKey({ tipo: 'Policía' })).toBe('seguridad')
+      expect(getLocationCategoryKey({ tipo: 'Ministerio' })).toBe('organismos')
       expect(getLocationCategoryKey({ tipo: 'Software CAA' })).toBe('software')
       expect(getLocationCategoryKey({ tipo: 'Residencia' })).toBe('residencias')
       expect(getLocationCategoryKey({ tipo: 'Parque' })).toBe('deporte')
       expect(getLocationCategoryKey({ tipo: 'Comercios' })).toBe('empresas')
+      expect(getLocationCategoryKey({ tipo: 'Transportes' })).toBe('transportes')
+      expect(getLocationCategoryKey({ tipo: 'Ocio y Turismo' })).toBe('ocio_turismo')
+      expect(getLocationCategoryKey({ tipo: 'Justicia' })).toBe('justicia')
+      expect(getLocationCategoryKey({ tipo: 'Accesibilidad vial' })).toBe('accesibilidad')
       expect(getLocationCategoryKey({ tipo: 'Desconocido' })).toBe('otro')
     })
 
@@ -140,6 +146,56 @@ describe('Helper functions and Category mapping', () => {
       expect(icon).toBeDefined()
       expect(icon.className).toBe('custom-cat-marker')
       expect(icon.html).toContain(CATEGORY_DEFINITIONS.educacion.color)
+    })
+  })
+
+  describe('normalizeLinks', () => {
+    it('should return empty array for null/undefined', () => {
+      expect(normalizeLinks(null)).toEqual([])
+      expect(normalizeLinks(undefined)).toEqual([])
+    })
+
+    it('should normalize array of links with url and type', () => {
+      const links = [
+        { url: 'https://example.com', type: 'web' },
+        { url: 'https://award.org', type: 'award' },
+      ]
+      expect(normalizeLinks(links)).toEqual([
+        { url: 'https://example.com', type: 'web' },
+        { url: 'https://award.org', type: 'award' },
+      ])
+    })
+
+    it('should normalize array with enlace and tipo aliases', () => {
+      const links = [
+        { enlace: 'https://example.com/project', tipo: 'project' },
+      ]
+      expect(normalizeLinks(links)).toEqual([
+        { url: 'https://example.com/project', type: 'project' },
+      ])
+    })
+
+    it('should normalize legacy links object', () => {
+      const legacy = {
+        mainWeb: 'https://example.com',
+        proyectWeb: 'https://project.com',
+        urlNews: 'https://news.com',
+      }
+      expect(normalizeLinks(legacy)).toEqual([
+        { url: 'https://example.com', type: 'web' },
+        { url: 'https://project.com', type: 'project' },
+        { url: 'https://news.com', type: 'news' },
+      ])
+    })
+
+    it('should filter out invalid URLs', () => {
+      const links = [
+        { url: 'not-a-url', type: 'web' },
+        { url: 'https://valid.com', type: 'web' },
+      ]
+      expect(normalizeLinks(links)).toEqual([
+        { url: 'https://valid.com', type: 'web' },
+      ])
     })
   })
 })
