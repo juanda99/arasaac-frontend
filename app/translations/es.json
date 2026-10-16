@@ -683,7 +683,7 @@
   "app.containers.UploadWorldView.successTitle": "¡Iniciativa enviada con éxito!",
   "app.containers.UploadWorldView.tryAgain": "Intentar otra vez",
   "app.containers.UploadWorldView.uploadAnother": "Enviar otra iniciativa",
-  "app.containers.UploadWorldView.uploadWorldDesc": "Comparte tu proyecto, centro o iniciativa usando pictogramas ARASAAC. Una vez enviado, será revisado por el equipo de ARASAAC antes de aparecer en el mapa.",
+  "app.containers.UploadWorldView.uploadWorldDesc": "Comparte tu iniciativa o proyecto de accesibilidad cognitiva usando pictogramas ARASAAC. Una vez enviado, será revisado por el equipo de ARASAAC antes de su publicación en el mapa.",
   "app.containers.UploadWorldView.uploadWorldTitle": "Añadir iniciativa a ARASAAC en el mundo",
   "app.containers.UploadWorldView.uploading": "Presentando iniciativa...",
   "app.containers.UploadWorldView.urlNewsHint": "ej. https://periodico.com/noticia-senaletica",
