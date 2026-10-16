@@ -31,7 +31,14 @@ jest.mock('react-dropzone', () => {
   }
 })
 
-import { UploadWorldView, CATEGORIES } from '../index'
+import {
+  UploadWorldView,
+  CATEGORIES,
+  MAX_IMAGES,
+  MAX_DESCRIPTION_LENGTH,
+  MAX_DESCRIPTION_WORDS,
+  countWords,
+} from '../index'
 import messages from '../messages'
 
 const mockIntl = {
@@ -138,8 +145,73 @@ describe('<UploadWorldView />', () => {
     wrapper.instance().handleSubmit()
     expect(wrapper.state('errors').name).toBeDefined()
     expect(wrapper.state('errors').tipo).toBeDefined()
+    expect(wrapper.state('errors').description).toBeDefined()
     expect(wrapper.state('errors').coords).toBeDefined()
     expect(mockRequest).not.toHaveBeenCalled()
+  })
+
+  it('should validate description limit (1800 characters or 300 words)', () => {
+    const wrapper = shallow(<UploadWorldView {...defaultProps} />)
+    const mockRequest = jest.fn()
+    axios.request = mockRequest
+
+    // Exceeding character limit
+    const longDesc = 'a'.repeat(MAX_DESCRIPTION_LENGTH + 1)
+    wrapper.setState({
+      name: 'Centro Test',
+      tipo: 'Educación',
+      latitude: '41.6561',
+      longitude: '-0.8773',
+      description: longDesc,
+    })
+    wrapper.instance().handleSubmit()
+    expect(wrapper.state('errors').description).toBeDefined()
+    expect(mockRequest).not.toHaveBeenCalled()
+
+    // Exceeding word limit (>300 words)
+    const manyWords = Array(MAX_DESCRIPTION_WORDS + 1).fill('palabra').join(' ')
+    wrapper.setState({
+      name: 'Centro Test',
+      tipo: 'Educación',
+      latitude: '41.6561',
+      longitude: '-0.8773',
+      description: manyWords,
+    })
+    wrapper.instance().handleSubmit()
+    expect(wrapper.state('errors').description).toBeDefined()
+    expect(mockRequest).not.toHaveBeenCalled()
+  })
+
+  it('should enforce photo limit of 15 maximum and prevent adding more', () => {
+    const wrapper = shallow(<UploadWorldView {...defaultProps} />)
+    expect(MAX_IMAGES).toBe(15)
+
+    // Dropping 16 files should only keep 15 and set warning
+    const files16 = Array.from({ length: 16 }, (_, i) => ({
+      name: `photo_${i}.jpg`,
+      preview: `blob:preview_${i}`,
+    }))
+    wrapper.instance().handleDropFiles(files16)
+    expect(wrapper.state('files').length).toBe(15)
+    expect(wrapper.state('errors').files).toBeDefined()
+
+    // Trying to add another when already at 15
+    wrapper.instance().handleDropFiles([{ name: 'extra.jpg' }])
+    expect(wrapper.state('files').length).toBe(15)
+
+    // Removing a file should clear file error
+    wrapper.instance().handleRemoveFile(0)
+    expect(wrapper.state('files').length).toBe(14)
+    expect(wrapper.state('errors').files).toBe('')
+  })
+
+  it('should correctly count words with countWords helper', () => {
+    expect(countWords('')).toBe(0)
+    expect(countWords('   ')).toBe(0)
+    expect(countWords(null)).toBe(0)
+    expect(countWords('hola')).toBe(1)
+    expect(countWords('hola mundo desde ARASAAC')).toBe(4)
+    expect(countWords('  palabra1   palabra2\npalabra3\tpalabra4  ')).toBe(4)
   })
 
   it('should submit form data via axios and show success state', async () => {
@@ -150,6 +222,7 @@ describe('<UploadWorldView />', () => {
     wrapper.setState({
       name: 'Centro Aragonés',
       tipo: 'Educación',
+      description: 'Una descripción válida de prueba',
       latitude: '41.6561',
       longitude: '-0.8773',
       address: 'Calle Mayor 1',
@@ -177,6 +250,7 @@ describe('<UploadWorldView />', () => {
     wrapper.setState({
       name: 'Centro Aragonés',
       tipo: 'Educación',
+      description: 'Una descripción válida de prueba',
       latitude: '41.6561',
       longitude: '-0.8773',
     })

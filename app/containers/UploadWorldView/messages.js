@@ -36,7 +36,21 @@ export default defineMessages({
   },
   descriptionLabel: {
     id: 'app.containers.UploadWorldView.descriptionLabel',
-    defaultMessage: 'Description',
+    defaultMessage: 'Description *',
+  },
+  descriptionRequired: {
+    id: 'app.containers.UploadWorldView.descriptionRequired',
+    defaultMessage: 'Description is required',
+  },
+  descriptionTooLong: {
+    id: 'app.containers.UploadWorldView.descriptionTooLong',
+    defaultMessage:
+      'Description cannot exceed 1800 characters (approx. 300 words)',
+  },
+  descriptionCounter: {
+    id: 'app.containers.UploadWorldView.descriptionCounter',
+    defaultMessage:
+      '{currentChars} / {maxChars} characters (~{currentWords} / {maxWords} words)',
   },
   descriptionHint: {
     id: 'app.containers.UploadWorldView.descriptionHint',
@@ -122,7 +136,15 @@ export default defineMessages({
   },
   imagesLabel: {
     id: 'app.containers.UploadWorldView.imagesLabel',
-    defaultMessage: 'Photos & Images',
+    defaultMessage: 'Photos & Images (max. 15)',
+  },
+  maxImagesReached: {
+    id: 'app.containers.UploadWorldView.maxImagesReached',
+    defaultMessage: 'Maximum of 15 photos allowed',
+  },
+  maxImagesExceeded: {
+    id: 'app.containers.UploadWorldView.maxImagesExceeded',
+    defaultMessage: 'You cannot upload more than 15 photos',
   },
   dropzoneImagesText: {
     id: 'app.containers.UploadWorldView.dropzoneImagesText',

@@ -46,6 +46,16 @@ import {
 import worldMessages from 'containers/WorldView/messages'
 import messages from './messages'
 
+export const MAX_IMAGES = 15
+export const MAX_DESCRIPTION_LENGTH = 1800
+export const MAX_DESCRIPTION_WORDS = 300
+
+export const countWords = (text) => {
+  if (!text || typeof text !== 'string') return 0
+  const trimmed = text.trim()
+  return trimmed ? trimmed.split(/\s+/).length : 0
+}
+
 export const CATEGORIES = [
   { key: 'educacion', tipo: 'Educación', messageKey: 'categoryEducacion' },
   { key: 'localidades', tipo: 'Localidades', messageKey: 'categoryLocalidades' },
@@ -232,20 +242,43 @@ export class UploadWorldView extends PureComponent {
   }
 
   handleDropFiles = (acceptedFiles) => {
-    this.setState((prevState) => ({
-      files: [...prevState.files, ...acceptedFiles],
-    }))
+    const { formatMessage } = this.props.intl
+    this.setState((prevState) => {
+      const currentCount = prevState.files.length
+      if (currentCount >= MAX_IMAGES) {
+        return {
+          errors: {
+            ...prevState.errors,
+            files: formatMessage(messages.maxImagesReached),
+          },
+        }
+      }
+      const availableSlots = MAX_IMAGES - currentCount
+      const filesToAdd = acceptedFiles.slice(0, availableSlots)
+      const hasExceeded = acceptedFiles.length > availableSlots
+      return {
+        files: [...prevState.files, ...filesToAdd],
+        errors: {
+          ...prevState.errors,
+          files: hasExceeded ? formatMessage(messages.maxImagesReached) : '',
+        },
+      }
+    })
   }
 
   handleRemoveFile = (index) => {
     this.setState((prevState) => ({
       files: prevState.files.filter((_, idx) => idx !== index),
+      errors: {
+        ...prevState.errors,
+        files: '',
+      },
     }))
   }
 
   validateForm = () => {
     const { formatMessage } = this.props.intl
-    const { name, tipo, latitude, longitude } = this.state
+    const { name, tipo, description, latitude, longitude, files } = this.state
     const errors = {}
 
     if (!name.trim()) {
@@ -256,18 +289,33 @@ export class UploadWorldView extends PureComponent {
       errors.tipo = formatMessage(messages.categoryRequired)
     }
 
+    if (!description.trim()) {
+      errors.description = formatMessage(messages.descriptionRequired)
+    } else if (
+      description.length > MAX_DESCRIPTION_LENGTH ||
+      countWords(description) > MAX_DESCRIPTION_WORDS
+    ) {
+      errors.description = formatMessage(messages.descriptionTooLong)
+    }
+
     const lat = parseFloat(latitude)
     const lng = parseFloat(longitude)
     if (isNaN(lat) || isNaN(lng)) {
       errors.coords = formatMessage(messages.coordinatesRequired)
     }
 
+    if (files && files.length > MAX_IMAGES) {
+      errors.files = formatMessage(messages.maxImagesExceeded)
+    }
+
     // Jump to the first step that contains an error
     let stepWithError = null
-    if (errors.name || errors.tipo) {
+    if (errors.name || errors.tipo || errors.description) {
       stepWithError = 0
     } else if (errors.coords) {
       stepWithError = 1
+    } else if (errors.files) {
+      stepWithError = 2
     }
     this.setState(
       stepWithError !== null ? { errors, stepIndex: stepWithError } : { errors },
@@ -545,9 +593,32 @@ export class UploadWorldView extends PureComponent {
                 multiLine={true}
                 rows={2}
                 rowsMax={5}
+                inputProps={{ maxLength: MAX_DESCRIPTION_LENGTH }}
                 value={description}
                 onChange={this.handleInputChange('description')}
+                errorText={errors.description}
               />
+              <div
+                id="world-desc-counter"
+                style={{
+                  fontSize: '0.75rem',
+                  color:
+                    description.length > MAX_DESCRIPTION_LENGTH ||
+                    countWords(description) > MAX_DESCRIPTION_WORDS
+                      ? '#d32f2f'
+                      : '#757575',
+                  textAlign: 'right',
+                  marginTop: '-4px',
+                  marginBottom: '8px',
+                }}
+              >
+                {formatMessage(messages.descriptionCounter, {
+                  currentChars: description.length,
+                  maxChars: MAX_DESCRIPTION_LENGTH,
+                  currentWords: countWords(description),
+                  maxWords: MAX_DESCRIPTION_WORDS,
+                })}
+              </div>
             </div>
           </div>
 
@@ -709,14 +780,39 @@ export class UploadWorldView extends PureComponent {
 
           {/* Photos Dropzone */}
           <div style={{ marginTop: '16px' }}>
-            <P style={{ fontWeight: 'bold', color: '#555', marginBottom: '4px' }}>
-              <FormattedMessage {...messages.imagesLabel} />
-            </P>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'baseline',
+                marginBottom: '4px',
+              }}
+            >
+              <P style={{ fontWeight: 'bold', color: '#555', margin: 0 }}>
+                <FormattedMessage {...messages.imagesLabel} />
+              </P>
+              <span
+                id="world-files-counter"
+                style={{
+                  fontSize: '0.85rem',
+                  color: files.length >= MAX_IMAGES ? '#e65100' : '#757575',
+                  fontWeight: files.length >= MAX_IMAGES ? 'bold' : 'normal',
+                }}
+              >
+                {files.length} / {MAX_IMAGES}
+              </span>
+            </div>
             <Dropzone
               accept="image/*"
               multiple={true}
+              disabled={files.length >= MAX_IMAGES}
               onDrop={this.handleDropFiles}
-              style={styles.dropzone}
+              style={{
+                ...styles.dropzone,
+                ...(files.length >= MAX_IMAGES
+                  ? { backgroundColor: '#f5f5f5', cursor: 'not-allowed', borderColor: '#ccc' }
+                  : {}),
+              }}
             >
               {files.length > 0 && (
                 <div style={styles.thumbnailsContainer}>
@@ -731,12 +827,29 @@ export class UploadWorldView extends PureComponent {
                 </div>
               )}
               <FileUpload
-                style={{ width: 44, height: 44, color: '#00796B', marginBottom: 8 }}
+                style={{
+                  width: 44,
+                  height: 44,
+                  color: files.length >= MAX_IMAGES ? '#9e9e9e' : '#00796B',
+                  marginBottom: 8,
+                }}
               />
               <P style={{ margin: 0, color: '#666' }}>
                 <FormattedMessage {...messages.dropzoneImagesText} />
               </P>
             </Dropzone>
+            {errors.files && (
+              <div
+                id="world-files-error"
+                style={{
+                  color: '#d32f2f',
+                  fontSize: '0.75rem',
+                  marginTop: '4px',
+                }}
+              >
+                {errors.files}
+              </div>
+            )}
           </div>
               </StepContent>
             </Step>
