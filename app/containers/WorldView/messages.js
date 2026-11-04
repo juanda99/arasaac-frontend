@@ -142,4 +142,8 @@ export default defineMessages({
     id: 'app.containers.WorldView.award',
     defaultMessage: 'Award',
   },
+  other: {
+    id: 'app.containers.WorldView.other',
+    defaultMessage: 'Other link',
+  },
 })

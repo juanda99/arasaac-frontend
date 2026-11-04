@@ -85,7 +85,8 @@ describe('<UploadWorldView />', () => {
     expect(wrapper.find('#world-lng-input').length).toBe(1)
     expect(wrapper.find('#world-address-input').length).toBe(1)
     expect(wrapper.find('#world-city-input').length).toBe(1)
-    expect(wrapper.find('#world-mainweb-input').length).toBe(1)
+    expect(wrapper.find('#world-link-url-0').length).toBe(1)
+    expect(wrapper.find('#world-add-link-btn').length).toBe(1)
     expect(wrapper.find('#world-video-input').length).toBe(1)
     expect(wrapper.find('MockDropzone').length).toBe(1)
     expect(wrapper.find('RaisedButton').length).toBe(1)
@@ -259,5 +260,95 @@ describe('<UploadWorldView />', () => {
 
     expect(wrapper.state('sending')).toBe(false)
     expect(wrapper.state('error')).toBe('Network error')
+  })
+
+  it('should support adding, modifying, and removing dynamic links of various types', () => {
+    const wrapper = shallow(<UploadWorldView {...defaultProps} />)
+    expect(wrapper.state('links').length).toBe(1)
+
+    // Add a link
+    wrapper.instance().handleAddLink()
+    expect(wrapper.state('links').length).toBe(2)
+
+    // Modify first link type and url
+    wrapper.instance().handleLinkTypeChange(0)({}, 0, 'project')
+    wrapper.instance().handleLinkUrlChange(0)({ target: { value: 'https://project.org' } })
+
+    // Modify second link type and url
+    wrapper.instance().handleLinkTypeChange(1)({}, 1, 'news')
+    wrapper.instance().handleLinkUrlChange(1)({ target: { value: 'https://news.org/article' } })
+
+    const updatedLinks = wrapper.state('links')
+    expect(updatedLinks[0].type).toBe('project')
+    expect(updatedLinks[0].url).toBe('https://project.org')
+    expect(updatedLinks[1].type).toBe('news')
+    expect(updatedLinks[1].url).toBe('https://news.org/article')
+
+    // Remove first link
+    wrapper.instance().handleRemoveLink(0)()
+    expect(wrapper.state('links').length).toBe(1)
+    expect(wrapper.state('links')[0].url).toBe('https://news.org/article')
+  })
+
+  it('should submit dynamic links in payload and exclude empty URLs', async () => {
+    let capturedData = null
+    const mockRequest = jest.fn().mockImplementation((config) => {
+      capturedData = config.data
+      return Promise.resolve({ data: { id: 10 } })
+    })
+    axios.request = mockRequest
+    const wrapper = shallow(<UploadWorldView {...defaultProps} />)
+
+    wrapper.setState({
+      name: 'Centro Con Múltiples Links',
+      tipo: 'Educación',
+      description: 'Una descripción válida de prueba',
+      latitude: '41.6561',
+      longitude: '-0.8773',
+      links: [
+        { id: '1', url: 'https://arasaac.org', type: 'web' },
+        { id: '2', url: 'https://arasaac.org/proyecto', type: 'project' },
+        { id: '3', url: '   ', type: 'news' }, // should be filtered out
+        { id: '4', url: 'https://premio.org', type: 'award' },
+      ],
+    })
+
+    await wrapper.instance().handleSubmit()
+
+    expect(mockRequest).toHaveBeenCalled()
+    expect(capturedData).toBeInstanceOf(FormData)
+    const jsonPayload = JSON.parse(capturedData.get('formData'))
+    expect(jsonPayload.links).toEqual([
+      { url: 'https://arasaac.org', type: 'web' },
+      { url: 'https://arasaac.org/proyecto', type: 'project' },
+      { url: 'https://premio.org', type: 'award' },
+    ])
+  })
+
+  it('should display server error message with error details if available', async () => {
+    const errorResponse = {
+      response: {
+        data: {
+          message: 'Error creating world location',
+          error: 'EACCES: permission denied',
+        },
+      },
+    }
+    const mockRequest = jest.fn().mockImplementation(() => Promise.reject(errorResponse))
+    axios.request = mockRequest
+    const wrapper = shallow(<UploadWorldView {...defaultProps} />)
+
+    wrapper.setState({
+      name: 'Centro Test',
+      tipo: 'Educación',
+      description: 'Una descripción válida',
+      latitude: '41.6561',
+      longitude: '-0.8773',
+    })
+
+    await wrapper.instance().handleSubmit()
+
+    expect(wrapper.state('sending')).toBe(false)
+    expect(wrapper.state('error')).toBe('Error creating world location: EACCES: permission denied')
   })
 })

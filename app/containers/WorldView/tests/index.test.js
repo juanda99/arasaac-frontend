@@ -159,10 +159,12 @@ describe('Helper functions and Category mapping', () => {
       const links = [
         { url: 'https://example.com', type: 'web' },
         { url: 'https://award.org', type: 'award' },
+        { url: 'https://other.org', type: 'other' },
       ]
       expect(normalizeLinks(links)).toEqual([
         { url: 'https://example.com', type: 'web' },
         { url: 'https://award.org', type: 'award' },
+        { url: 'https://other.org', type: 'other' },
       ])
     })
 

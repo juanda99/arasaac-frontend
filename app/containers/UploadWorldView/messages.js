@@ -102,6 +102,50 @@ export default defineMessages({
     id: 'app.containers.UploadWorldView.linksAndMedia',
     defaultMessage: 'Links & Multimedia',
   },
+  links: {
+    id: 'app.containers.UploadWorldView.links',
+    defaultMessage: 'Links & Websites',
+  },
+  addLink: {
+    id: 'app.containers.UploadWorldView.addLink',
+    defaultMessage: 'Add link',
+  },
+  removeLink: {
+    id: 'app.containers.UploadWorldView.removeLink',
+    defaultMessage: 'Remove link',
+  },
+  linkType: {
+    id: 'app.containers.UploadWorldView.linkType',
+    defaultMessage: 'Link type',
+  },
+  urlLabel: {
+    id: 'app.containers.UploadWorldView.urlLabel',
+    defaultMessage: 'URL / Web link',
+  },
+  urlHint: {
+    id: 'app.containers.UploadWorldView.urlHint',
+    defaultMessage: 'e.g. https://...',
+  },
+  linkTypeWeb: {
+    id: 'app.containers.UploadWorldView.linkTypeWeb',
+    defaultMessage: 'Main website',
+  },
+  linkTypeProject: {
+    id: 'app.containers.UploadWorldView.linkTypeProject',
+    defaultMessage: 'Project website',
+  },
+  linkTypeNews: {
+    id: 'app.containers.UploadWorldView.linkTypeNews',
+    defaultMessage: 'News / Press article',
+  },
+  linkTypeAward: {
+    id: 'app.containers.UploadWorldView.linkTypeAward',
+    defaultMessage: 'Award / Recognition',
+  },
+  linkTypeOther: {
+    id: 'app.containers.UploadWorldView.linkTypeOther',
+    defaultMessage: 'Other',
+  },
   mainWebLabel: {
     id: 'app.containers.UploadWorldView.mainWebLabel',
     defaultMessage: 'Main Website',

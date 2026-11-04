@@ -490,6 +490,8 @@ function getPopupLinkConfig(type, formatMessage) {
       return { icon: <NewsIcon />, label: formatMessage(messages.urlNews) }
     case 'award':
       return { icon: <AwardIcon />, label: formatMessage(messages.award) }
+    case 'other':
+      return { icon: <GlobeIcon />, label: formatMessage(messages.other || messages.mainWeb) }
     case 'web':
     default:
       return { icon: <GlobeIcon />, label: formatMessage(messages.mainWeb) }
@@ -1617,6 +1619,9 @@ export class WorldView extends PureComponent {
                   } else if (link.type === 'award') {
                     icon = <ActionGrade />
                     label = formatMessage(messages.award)
+                  } else if (link.type === 'other') {
+                    icon = <ActionLanguage />
+                    label = formatMessage(messages.other || messages.mainWeb)
                   } else {
                     isPrimary = true
                   }

@@ -20,8 +20,11 @@ import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
+import IconButton from 'material-ui/IconButton'
 import LinearProgress from 'material-ui/LinearProgress'
 import ActionCheckCircle from 'material-ui/svg-icons/action/check-circle'
+import ActionDelete from 'material-ui/svg-icons/action/delete'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 import FileUpload from 'material-ui/svg-icons/file/file-upload'
 
 import View from 'components/View'
@@ -73,6 +76,14 @@ export const CATEGORIES = [
   { key: 'seguridad', tipo: 'Seguridad y emergencias', messageKey: 'categorySeguridad' },
   { key: 'justicia', tipo: 'Justicia', messageKey: 'categoryJusticia' },
   { key: 'otro', tipo: 'Otro', messageKey: 'categoryOtro' },
+]
+
+export const LINK_TYPES = [
+  { value: 'web', messageKey: 'linkTypeWeb' },
+  { value: 'project', messageKey: 'linkTypeProject' },
+  { value: 'news', messageKey: 'linkTypeNews' },
+  { value: 'award', messageKey: 'linkTypeAward' },
+  { value: 'other', messageKey: 'linkTypeOther' },
 ]
 
 const styles = {
@@ -170,6 +181,7 @@ export class UploadWorldView extends PureComponent {
     postalCode: '',
     province: '',
     country: 'España',
+    links: [{ id: 'link-0', url: '', type: 'web' }],
     mainWeb: '',
     proyectWeb: '',
     urlNews: '',
@@ -208,6 +220,49 @@ export class UploadWorldView extends PureComponent {
     this.setState({
       [field]: value,
       errors: { ...this.state.errors, [field]: '' },
+    })
+  }
+
+  handleAddLink = () => {
+    this.setState((prevState) => ({
+      links: [
+        ...(prevState.links || []),
+        { id: `link-${Date.now()}-${Math.random()}`, url: '', type: 'web' },
+      ],
+    }))
+  }
+
+  handleRemoveLink = (index) => () => {
+    this.setState((prevState) => {
+      const current = prevState.links || []
+      const filtered = current.filter((_, idx) => idx !== index)
+      return {
+        links:
+          filtered.length > 0
+            ? filtered
+            : [{ id: `link-${Date.now()}`, url: '', type: 'web' }],
+      }
+    })
+  }
+
+  handleLinkTypeChange = (index) => (event, key, value) => {
+    this.setState((prevState) => {
+      const links = [...(prevState.links || [])]
+      if (links[index]) {
+        links[index] = { ...links[index], type: value }
+      }
+      return { links }
+    })
+  }
+
+  handleLinkUrlChange = (index) => (event) => {
+    const value = event.target.value
+    this.setState((prevState) => {
+      const links = [...(prevState.links || [])]
+      if (links[index]) {
+        links[index] = { ...links[index], url: value }
+      }
+      return { links }
     })
   }
 
@@ -300,7 +355,14 @@ export class UploadWorldView extends PureComponent {
 
     const lat = parseFloat(latitude)
     const lng = parseFloat(longitude)
-    if (isNaN(lat) || isNaN(lng)) {
+    if (
+      isNaN(lat) ||
+      isNaN(lng) ||
+      lat < -90 ||
+      lat > 90 ||
+      lng < -180 ||
+      lng > 180
+    ) {
       errors.coords = formatMessage(messages.coordinatesRequired)
     }
 
@@ -341,6 +403,7 @@ export class UploadWorldView extends PureComponent {
       postalCode,
       province,
       country,
+      links,
       mainWeb,
       proyectWeb,
       urlNews,
@@ -350,6 +413,23 @@ export class UploadWorldView extends PureComponent {
     } = this.state
 
     this.setState({ sending: true, progressStatus: 0, error: '' })
+
+    const activeLinks =
+      links && links.length > 0
+        ? links
+            .map((l) => ({ url: (l.url || '').trim(), type: l.type || 'web' }))
+            .filter((l) => l.url.length > 0)
+        : [
+            mainWeb && mainWeb.trim()
+              ? { url: mainWeb.trim(), type: 'web' }
+              : null,
+            proyectWeb && proyectWeb.trim()
+              ? { url: proyectWeb.trim(), type: 'project' }
+              : null,
+            urlNews && urlNews.trim()
+              ? { url: urlNews.trim(), type: 'news' }
+              : null,
+          ].filter(Boolean)
 
     const formData = new FormData()
     const payload = {
@@ -365,11 +445,7 @@ export class UploadWorldView extends PureComponent {
         province: province.trim(),
         country: country.trim(),
       },
-      links: [
-        mainWeb.trim() ? { url: mainWeb.trim(), type: 'web' } : null,
-        proyectWeb.trim() ? { url: proyectWeb.trim(), type: 'project' } : null,
-        urlNews.trim() ? { url: urlNews.trim(), type: 'news' } : null,
-      ].filter(Boolean),
+      links: activeLinks,
       video: video.trim(),
       email: email.trim(),
     }
@@ -405,12 +481,19 @@ export class UploadWorldView extends PureComponent {
         })
       })
       .catch((err) => {
-        const errMsg =
-          (err.response &&
-            err.response.data &&
-            err.response.data.message) ||
-          err.message ||
-          formatMessage(messages.tryAgain)
+        const serverData = err.response && err.response.data
+        let errMsg = formatMessage(messages.tryAgain)
+        if (serverData) {
+          if (serverData.message && serverData.error) {
+            errMsg = `${serverData.message}: ${serverData.error}`
+          } else if (serverData.message) {
+            errMsg = serverData.message
+          } else if (serverData.error) {
+            errMsg = serverData.error
+          }
+        } else if (err.message) {
+          errMsg = err.message
+        }
         this.setState({
           sending: false,
           error: errMsg,
@@ -431,6 +514,7 @@ export class UploadWorldView extends PureComponent {
       postalCode: '',
       province: '',
       country: 'España',
+      links: [{ id: 'link-0', url: '', type: 'web' }],
       mainWeb: '',
       proyectWeb: '',
       urlNews: '',
@@ -459,6 +543,7 @@ export class UploadWorldView extends PureComponent {
       postalCode,
       province,
       country,
+      links,
       mainWeb,
       proyectWeb,
       urlNews,
@@ -735,38 +820,80 @@ export class UploadWorldView extends PureComponent {
               </StepButton>
               <StepContent>
 
+          {/* Dynamic Links Section */}
+          <div style={{ marginTop: '8px', marginBottom: '16px' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '8px',
+              }}
+            >
+              <P style={{ fontWeight: 'bold', color: '#555', margin: 0 }}>
+                <FormattedMessage {...messages.links} />
+              </P>
+              <FlatButton
+                id="world-add-link-btn"
+                label={formatMessage(messages.addLink)}
+                primary={true}
+                icon={<ContentAdd />}
+                onClick={this.handleAddLink}
+              />
+            </div>
+
+            {(links || []).map((link, index) => (
+              <div
+                key={link.id || `world-link-${index}`}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  margin: '0 -8px 8px -8px',
+                }}
+              >
+                <div style={{ flex: '1 1 200px', padding: '0 8px' }}>
+                  <SelectField
+                    id={`world-link-type-${index}`}
+                    floatingLabelText={formatMessage(messages.linkType)}
+                    value={link.type || 'web'}
+                    onChange={this.handleLinkTypeChange(index)}
+                    fullWidth={true}
+                  >
+                    {LINK_TYPES.map((lt) => (
+                      <MenuItem
+                        key={lt.value}
+                        value={lt.value}
+                        primaryText={formatMessage(messages[lt.messageKey])}
+                      />
+                    ))}
+                  </SelectField>
+                </div>
+                <div style={{ flex: '2 1 300px', padding: '0 8px' }}>
+                  <TextField
+                    id={`world-link-url-${index}`}
+                    floatingLabelText={formatMessage(messages.urlLabel)}
+                    hintText={formatMessage(messages.urlHint)}
+                    fullWidth={true}
+                    value={link.url || ''}
+                    onChange={this.handleLinkUrlChange(index)}
+                  />
+                </div>
+                <div style={{ flex: '0 0 auto', padding: '16px 8px 0 8px' }}>
+                  <IconButton
+                    id={`world-link-remove-${index}`}
+                    tooltip={formatMessage(messages.removeLink)}
+                    onClick={this.handleRemoveLink(index)}
+                  >
+                    <ActionDelete color="#757575" hoverColor="#d32f2f" />
+                  </IconButton>
+                </div>
+              </div>
+            ))}
+          </div>
+
           <div style={styles.row}>
-            <div style={styles.colHalf}>
-              <TextField
-                id="world-mainweb-input"
-                floatingLabelText={formatMessage(messages.mainWebLabel)}
-                hintText={formatMessage(messages.mainWebHint)}
-                fullWidth={true}
-                value={mainWeb}
-                onChange={this.handleInputChange('mainWeb')}
-              />
-            </div>
-            <div style={styles.colHalf}>
-              <TextField
-                id="world-proyectweb-input"
-                floatingLabelText={formatMessage(messages.proyectWebLabel)}
-                hintText={formatMessage(messages.proyectWebHint)}
-                fullWidth={true}
-                value={proyectWeb}
-                onChange={this.handleInputChange('proyectWeb')}
-              />
-            </div>
-            <div style={styles.colHalf}>
-              <TextField
-                id="world-urlnews-input"
-                floatingLabelText={formatMessage(messages.urlNewsLabel)}
-                hintText={formatMessage(messages.urlNewsHint)}
-                fullWidth={true}
-                value={urlNews}
-                onChange={this.handleInputChange('urlNews')}
-              />
-            </div>
-            <div style={styles.colHalf}>
+            <div style={styles.colFull}>
               <TextField
                 id="world-video-input"
                 floatingLabelText={formatMessage(messages.videoLabel)}
