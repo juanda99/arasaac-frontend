@@ -51,6 +51,7 @@ import worldMessages from 'containers/WorldView/messages'
 import messages from './messages'
 
 export const MAX_IMAGES = 15
+export const MAX_TOTAL_SIZE = 100 * 1024 * 1024 // 100 MB
 export const MAX_DESCRIPTION_LENGTH = 1800
 export const MAX_DESCRIPTION_WORDS = 300
 
@@ -453,6 +454,20 @@ export class UploadWorldView extends PureComponent {
 
     formData.append('formData', JSON.stringify(payload))
     const processedFiles = await resizeImages(files)
+    const totalSize = processedFiles.reduce((acc, f) => acc + (f.size || 0), 0)
+    if (totalSize > MAX_TOTAL_SIZE) {
+      this.setState({
+        sending: false,
+        error: formatMessage(messages.maxTotalSizeExceeded),
+        errors: {
+          ...this.state.errors,
+          files: formatMessage(messages.maxTotalSizeExceeded),
+        },
+        stepIndex: 2,
+      })
+      return
+    }
+
     processedFiles.forEach((file) => {
       formData.append('images', file)
     })
@@ -484,8 +499,18 @@ export class UploadWorldView extends PureComponent {
       })
       .catch((err) => {
         const serverData = err.response && err.response.data
-        let errMsg = formatMessage(messages.tryAgain)
-        if (serverData) {
+        const isPayloadTooLarge =
+          (err.response && err.response.status === 413) ||
+          (serverData &&
+            serverData.error &&
+            typeof serverData.error === 'string' &&
+            serverData.error.toLowerCase().includes('maxfilesize'))
+
+        let errMsg = isPayloadTooLarge
+          ? formatMessage(messages.maxTotalSizeExceeded)
+          : formatMessage(messages.tryAgain)
+
+        if (!isPayloadTooLarge && serverData) {
           if (serverData.message && serverData.error) {
             errMsg = `${serverData.message}: ${serverData.error}`
           } else if (serverData.message) {
@@ -493,12 +518,16 @@ export class UploadWorldView extends PureComponent {
           } else if (serverData.error) {
             errMsg = serverData.error
           }
-        } else if (err.message) {
+        } else if (!isPayloadTooLarge && err.message) {
           errMsg = err.message
         }
         this.setState({
           sending: false,
           error: errMsg,
+          errors: isPayloadTooLarge
+            ? { ...this.state.errors, files: errMsg }
+            : this.state.errors,
+          stepIndex: isPayloadTooLarge ? 2 : this.state.stepIndex,
         })
       })
   }

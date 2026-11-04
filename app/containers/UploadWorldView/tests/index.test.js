@@ -351,4 +351,66 @@ describe('<UploadWorldView />', () => {
     expect(wrapper.state('sending')).toBe(false)
     expect(wrapper.state('error')).toBe('Error creating world location: EACCES: permission denied')
   })
+
+  it('should block submission and show warning if processed files exceed 100MB', async () => {
+    const mockRequest = jest.fn()
+    axios.request = mockRequest
+    const wrapper = shallow(<UploadWorldView {...defaultProps} />)
+
+    const hugeFile = {
+      name: 'huge.bin',
+      type: 'application/octet-stream',
+      size: 105 * 1024 * 1024,
+    }
+
+    wrapper.setState({
+      name: 'Centro Test',
+      tipo: 'Educación',
+      description: 'Una descripción válida',
+      latitude: '41.6561',
+      longitude: '-0.8773',
+      files: [hugeFile],
+    })
+
+    await wrapper.instance().handleSubmit()
+
+    expect(mockRequest).not.toHaveBeenCalled()
+    expect(wrapper.state('errors').files).toBe(
+      'The selected photos exceed the maximum allowed size of 100MB. Please reduce the number of photos or their size.',
+    )
+    expect(wrapper.state('stepIndex')).toBe(2)
+  })
+
+  it('should display maxTotalSizeExceeded message when server responds with 413', async () => {
+    const errorResponse = {
+      response: {
+        status: 413,
+        data: {
+          message: 'The uploaded files exceed the maximum allowed size (100MB). Please reduce the number or size of photos.',
+          error: 'maxFileSize exceeded',
+        },
+      },
+    }
+    const mockRequest = jest.fn().mockImplementation(() => Promise.reject(errorResponse))
+    axios.request = mockRequest
+    const wrapper = shallow(<UploadWorldView {...defaultProps} />)
+
+    wrapper.setState({
+      name: 'Centro Test',
+      tipo: 'Educación',
+      description: 'Una descripción válida',
+      latitude: '41.6561',
+      longitude: '-0.8773',
+    })
+
+    await wrapper.instance().handleSubmit()
+
+    expect(wrapper.state('sending')).toBe(false)
+    expect(wrapper.state('error')).toBe(
+      'The selected photos exceed the maximum allowed size of 100MB. Please reduce the number of photos or their size.',
+    )
+    expect(wrapper.state('errors').files).toBe(
+      'The selected photos exceed the maximum allowed size of 100MB. Please reduce the number of photos or their size.',
+    )
+  })
 })

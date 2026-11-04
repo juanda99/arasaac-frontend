@@ -680,6 +680,7 @@
   "app.containers.UploadWorldView.mainWebHint": "ej. https://colegio.educa.aragon.es",
   "app.containers.UploadWorldView.mainWebLabel": "Página principal",
   "app.containers.UploadWorldView.maxImagesExceeded": "No puedes subir más de 15 fotos",
+  "app.containers.UploadWorldView.maxTotalSizeExceeded": "Las fotos seleccionadas superan el tamaño máximo permitido de 100MB. Por favor, reduce el número de fotos o su tamaño.",
   "app.containers.UploadWorldView.maxImagesReached": "Máximo de 15 fotos alcanzadas",
   "app.containers.UploadWorldView.nameHint": "por ejemplo, C.E.I.P. San Josede Calasanz, Hospital San...",
   "app.containers.UploadWorldView.nameLabel": "Nombre del centro o iniciativa *",

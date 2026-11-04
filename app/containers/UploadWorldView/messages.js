@@ -190,6 +190,11 @@ export default defineMessages({
     id: 'app.containers.UploadWorldView.maxImagesExceeded',
     defaultMessage: 'You cannot upload more than 15 photos',
   },
+  maxTotalSizeExceeded: {
+    id: 'app.containers.UploadWorldView.maxTotalSizeExceeded',
+    defaultMessage:
+      'The selected photos exceed the maximum allowed size of 100MB. Please reduce the number of photos or their size.',
+  },
   dropzoneImagesText: {
     id: 'app.containers.UploadWorldView.dropzoneImagesText',
     defaultMessage:
