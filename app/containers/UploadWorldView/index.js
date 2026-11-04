@@ -34,6 +34,7 @@ import H3 from 'components/H3'
 import FilePreview from 'components/MaterialForm/FilePreview'
 import P from 'components/P'
 import userIsAuthenticated from 'utils/auth'
+import resizeImages from 'utils/imageResize'
 import { PRIVATE_API_ROOT } from 'services/config'
 import {
   makeSelectHasUser,
@@ -385,7 +386,7 @@ export class UploadWorldView extends PureComponent {
     return Object.keys(errors).length === 0
   }
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     if (!this.validateForm()) {
       return
     }
@@ -451,7 +452,8 @@ export class UploadWorldView extends PureComponent {
     }
 
     formData.append('formData', JSON.stringify(payload))
-    files.forEach((file) => {
+    const processedFiles = await resizeImages(files)
+    processedFiles.forEach((file) => {
       formData.append('images', file)
     })
 
