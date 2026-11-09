@@ -264,6 +264,8 @@ function* categoriesGetData(action) {
     const { locale } = action.payload
     const response = yield call(api[action.type], action.payload)
     yield put(categories.success(locale, response))
+    const d1 = new Date()
+    sessionStorage.setItem(`categoriesDate_${locale}`, d1.getTime())
   } catch (error) {
     yield put(categories.failure(error.message))
   } finally {

@@ -73,7 +73,7 @@ const styles = {
     width: '150px',
   },
 }
-class PictogramsView extends PureComponent {
+export class PictogramsView extends PureComponent {
   // eslint-disable-line react/prefer-stateless-function
 
   state = {
@@ -216,10 +216,12 @@ class PictogramsView extends PureComponent {
     }
     if (this.props.searchLanguage !== nextProps.searchLanguage) {
       this.loadInitialData(nextProps.searchLanguage)
-      requestPictograms(
-        nextProps.searchLanguage,
-        encodeURIComponent(nextProps.params.searchText)
-      )
+      if (nextProps.params.searchText) {
+        requestPictograms(
+          nextProps.searchLanguage,
+          encodeURIComponent(nextProps.params.searchText)
+        )
+      }
     }
     if (this.props.location.search !== nextProps.location.search) {
       this.processQuery(nextProps)
@@ -443,13 +445,14 @@ class PictogramsView extends PureComponent {
                 messages['languageSearch']
               )}
             />
-            <RaisedButton
-              label={<FormattedMessage {...messages.searchByCategory} />}
-              onClick={this.handleReset}
-              disabled={!searchText}
-              style={{ maxHeight: '36px', marginBottom: '20px' }}
-              secondary={true}
-            />
+            {(tab !== 0 || !!searchText) && (
+              <RaisedButton
+                label={<FormattedMessage {...messages.searchByCategory} />}
+                onClick={this.handleReset}
+                style={{ maxHeight: '36px', marginBottom: '20px' }}
+                secondary={true}
+              />
+            )}
           </div>
         </ReadMargin>
       </div>
@@ -546,8 +549,9 @@ class PictogramsView extends PureComponent {
                 ) : (
                   ''
                 )}
-                {!pictogramsCounter && tab !== 1 && !!categories.size && (
+                {!pictogramsCounter && !searchText && tab !== 1 && !!categories.size && (
                   <CategoryTree
+                    key={searchLanguage}
                     categories={categories}
                     locale={searchLanguage}
                     onCatChange={this.handleCatClick}

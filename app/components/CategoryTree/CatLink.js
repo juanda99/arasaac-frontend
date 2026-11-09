@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 
-const CatLink = ({ keyword, key, children }) =>
+const CatLink = ({ keyword, children }) =>
   keyword ? (
-    <Link key={key} to={`/pictograms/search/${encodeURIComponent(keyword)}`}>
+    <Link to={`/pictograms/search/${encodeURIComponent(keyword)}`}>
       {children}
     </Link>
   ) : (
@@ -12,7 +12,6 @@ const CatLink = ({ keyword, key, children }) =>
   )
 
 CatLink.propTypes = {
-  key: PropTypes.string.isRequired,
   keyword: PropTypes.string,
   children: PropTypes.node.isRequired,
 }

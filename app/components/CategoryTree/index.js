@@ -18,33 +18,51 @@ const styles = {
   },
 }
 class CategoryTree extends Component {
-  state = {
-    nodes: [],
+  constructor(props) {
+    super(props)
+    this.state = {
+      nodes: this.getNodes(props.categories),
+    }
   }
 
   componentDidMount() {
-    const tree = this.props.categories.toJSON()
+    if (!this.state.nodes || this.state.nodes.length === 0) {
+      this.setState({ nodes: this.getNodes(this.props.categories) })
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.categories !== nextProps.categories ||
+      this.props.locale !== nextProps.locale
+    ) {
+      this.setState({ nodes: this.getNodes(nextProps.categories) })
+    }
+  }
+
+  getNodes(categories) {
+    if (!categories || !categories.toJSON) return []
+    const tree = categories.toJSON()
     const textNodes = jp.nodes(tree, '$..text').map((node) => {
       const path = node.path.filter(
         (item) => ['$', 'children', 'text'].indexOf(item) === -1
       )
-      return { text: node.value, path: path }
+      return { text: node.value, path }
     })
     const keywordNodes = jp.nodes(tree, '$..keywords').map((node) => {
       const path = node.path.filter(
         (item) => ['$', 'children', 'keywords'].indexOf(item) === -1
       )
-      return { keyword: node.value[0] || '', path: path }
+      return { keyword: node.value[0] || '', path }
     })
 
     const nodes = textNodes.map((node) => {
       const key = node.path.join()
-      const keyword = keywordNodes
-        .filter((node) => node.path.join() === key)
-        .map((node) => node.keyword)[0]
+      const keywordItem = keywordNodes.find((kn) => kn.path.join() === key)
+      const keyword = (keywordItem && keywordItem.keyword) || node.text
       return { ...node, keyword, key }
     })
-    this.setState({ nodes })
+    return nodes
   }
 
   getCategories = (nodes, key = '', depthStart = 0, depth = 1) =>
@@ -52,14 +70,14 @@ class CategoryTree extends Component {
       .filter((node) => node.path.length === depth)
       .filter((node) => node.key.startsWith(key))
       .map((node) => (
-        <div>
+        <div key={node.key}>
           {this.categoryItem(node, depth - depthStart)}
           {this.getCategories(nodes, node.key, depthStart, depth + 1)}
         </div>
       ))
 
   categoryItem = (node, depth) => (
-    <CatLink keyword={node.keyword} key={node.key}>
+    <CatLink keyword={node.keyword || node.text} key={node.key}>
       <CatItem text={node.text} depth={depth} />
     </CatLink>
   )
