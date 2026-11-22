@@ -631,6 +631,8 @@
   "app.containers.SettingsView.language": "Γλώσσα",
   "app.containers.TabsHeader.new": "Νέο",
   "app.containers.TabsHeader.search": "Αναζήτηση",
+  "app.containers.UploadWorldView.nameHint": "π.χ. C.E.I.P. San José de Calasanz, Hospital San Jorge...",
+  "app.containers.UploadWorldView.nameLabel": "Ονομασία του φορέα ή της πρωτοβουλίας *",
   "app.containers.WorldView.arasaacInWorld": "Το Arasaac είναι παρόν παγκοσμίως. Στον παρακάτω χάρτη μπορείτε να δείτε μερικά παραδείγματα της χρήσης του. Επικοινωνήστε μαζί μας εάν θέλετε να προσθέσετε την εμπειρία σας από τη χρήση του ARASAAC στον χάρτη μας",
   "app.containers.introArasaacPrizes": "Το ARASAAC είναι ένα συνεργατικό έργο που συντονίζεται και χρηματοδοτείται από την κυβέρνηση της Αραγονίας. Έχει λάβει πολλά βραβεία, από τότε που ιδρύθηκε το 2007, χάρη στην εθελοντική εργασία πολλών συνεργατών.",
   "app.containers/IntroAAC.desc": "Τα Επαυξητικά και Εναλλακτικά Συστήματα Επικοινωνίας (AAC) στοχεύουν στην αύξηση ή την αντιστάθμιση των δυσκολιών επικοινωνίας των ατόμων με αναπηρίες.",
