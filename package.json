@@ -255,7 +255,7 @@
     "jwt-decode": "^2.2.0",
     "konva": "^2.6.0",
     "leaflet": "^1.6.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "material-ui": "^0.19.4",
     "material-ui-chip-input": "^0.17.1",
     "material-ui-pagination": "1.1.7",
