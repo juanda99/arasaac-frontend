@@ -309,7 +309,7 @@
     "stopword": "^1.0.3",
     "stopwords-iso": "^1.1.0",
     "styled-components": "2.2.0",
-    "swagger-ui": "^3.19.0",
+    "swagger-ui": "^3.52.5",
     "warning": "3.0.0",
     "whatwg-fetch": "2.0.1",
     "yaml-js": "^0.1.5"
@@ -376,6 +376,6 @@
     "url-loader": "0.5.7",
     "webpack": "2.2.0-rc.3",
     "webpack-dev-middleware": "1.9.0",
-    "webpack-hot-middleware": "2.15.0"
+    "webpack-hot-middleware": "2.25.3"
   }
 }
